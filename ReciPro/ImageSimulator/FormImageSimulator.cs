@@ -436,6 +436,26 @@ public partial class FormImageSimulator : FormBase
         //260805Cl 追加 (作者承認): EDX は native ヘルパ必須 (managed 経路は非実装のまま確定)。backend の
         //ガード (BetheMethod の NotSupportedException) は worker の奥で英語の生例外ダイアログになるため、
         //実行前にここで説明付きで止める。実際に踏み得るのはポータブル版で native DLL が欠落したケース。
+        //261105Cl 追加: native は読み込めたが、オプションの「Crystallography.Native を無効化」で止めている場合 (BetheMethod.EigenEnabled = false)。
+        //旧: ここを素通りして worker の奥で NotSupportedException になり、StemCompleted が「スライス数が多すぎる」という古い案内を出していた
+        if (NativeWrapper.Enabled && !BetheMethod.EigenEnabled)
+        {
+            MessageBox.Show(
+                Loc(en: "STEM-EDX requires the native library (Crystallography.Native), which is turned off in Options > \"Disable Crystallography.Native library\". STEM itself runs without it, but EDX maps cannot be computed.\r\nClear that option and restart ReciPro, or clear the checkbox to run without EDX.",
+                    ja: "STEM-EDX にはネイティブライブラリ (Crystallography.Native) が必要ですが、オプション >「Crystallography.Native.dll を無効化」で止められています。STEM 自体は動作しますが、EDX マップは計算できません。\r\nその項目のチェックを外して ReciPro を再起動するか、EDX なしで実行するにはチェックを外してください。",
+                    de: "STEM-EDX benötigt die native Bibliothek (Crystallography.Native), die unter Optionen > „Crystallography.Native-Bibliothek deaktivieren“ ausgeschaltet ist. STEM selbst funktioniert auch ohne sie, aber EDX-Karten können nicht berechnet werden.\r\nDeaktivieren Sie diese Option und starten Sie ReciPro neu, oder deaktivieren Sie das Kontrollkästchen, um ohne EDX zu rechnen.",
+                    fr: "STEM-EDX nécessite la bibliothèque native (Crystallography.Native), qui est désactivée dans Options > « Désactiver la bibliothèque Crystallography.Native ». STEM fonctionne sans elle, mais les cartes EDX ne peuvent pas être calculées.\r\nDécochez cette option et redémarrez ReciPro, ou décochez la case pour calculer sans EDX.",
+                    es: "STEM-EDX requiere la biblioteca nativa (Crystallography.Native), que está desactivada en Opciones > «Desactivar biblioteca Crystallography.Native». STEM funciona sin ella, pero los mapas EDX no se pueden calcular.\r\nDesmarque esa opción y reinicie ReciPro, o desmarque la casilla para calcular sin EDX.",
+                    pt: "O STEM-EDX requer a biblioteca nativa (Crystallography.Native), que está desativada em Opções > \"Desativar biblioteca Crystallography.Native\". O STEM funciona sem ela, mas os mapas EDX não podem ser calculados.\r\nDesmarque essa opção e reinicie o ReciPro, ou desmarque a caixa para calcular sem EDX.",
+                    it: "STEM-EDX richiede la libreria nativa (Crystallography.Native), che è disattivata in Opzioni > \"Disabilita la libreria Crystallography.Native\". STEM funziona anche senza, ma le mappe EDX non possono essere calcolate.\r\nDeselezionare tale opzione e riavviare ReciPro, oppure deselezionare la casella per calcolare senza EDX.",
+                    ru: "Для STEM-EDX требуется нативная библиотека (Crystallography.Native), но она отключена в меню Параметры > «Отключить библиотеку Crystallography.Native». STEM работает и без неё, но карты EDX рассчитать нельзя.\r\nСнимите этот флажок в меню и перезапустите ReciPro или снимите флажок, чтобы считать без EDX.",
+                    zhHans: "STEM-EDX 需要原生库 (Crystallography.Native)，但已在 选项 >「禁用 Crystallography.Native 库」中关闭。STEM 本身可以运行，但无法计算 EDX 分布图。\r\n请取消该选项并重新启动 ReciPro，或取消勾选以在不计算 EDX 的情况下运行。",
+                    zhHant: "STEM-EDX 需要原生程式庫 (Crystallography.Native)，但已在 選項 >「停用 Crystallography.Native 程式庫」中關閉。STEM 本身可以執行，但無法計算 EDX 分布圖。\r\n請取消該選項並重新啟動 ReciPro，或取消勾選以在不計算 EDX 的情況下執行。",
+                    ko: "STEM-EDX 에는 네이티브 라이브러리 (Crystallography.Native) 가 필요하지만 옵션 >「Crystallography.Native 라이브러리 사용 안 함」에서 꺼져 있습니다. STEM 자체는 동작하지만 EDX 맵은 계산할 수 없습니다.\r\n그 옵션을 해제하고 ReciPro 를 다시 시작하거나, EDX 없이 실행하려면 체크를 해제하세요."),
+                "STEM-EDX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
         if (!NativeWrapper.Enabled)
         {
             MessageBox.Show(
@@ -1038,18 +1058,33 @@ public partial class FormImageSimulator : FormBase
             //生の英語メッセージだけでは何を直せばよいか分からないので、操作に翻訳して案内する (設計書 §5.9.1-7)。
             //260802Cl 変更: 経路一本化で slice 数や波数の制約は消えた。残るのは native ヘルパ (Crystallography.Native) が
             //無い環境だけで、これは利用者の操作では直せないので案内文もその旨に寄せる。
+            //var msg = e.Error is NotSupportedException // 261105Cl 変更前 (案内が経路一本化の前の「スライス数が多すぎる」のままだった)
+            //    ? Loc(en: "STEM-EDX could not run with these settings: the number of depth slices is too large for the calculation path it needs.\r\nIncrease 'Slice thickness (TDS)', reduce the specimen thickness, or increase 'Diffracted waves'.",
+            //          ja: "この設定では STEM-EDX を実行できません。深さ方向のスライス数が、必要な計算経路に対して多すぎます。\r\n「スライス厚 (TDS)」を大きくするか、試料の厚さを減らすか、「回折波」の数を増やしてください。",
+            //          de: "STEM-EDX konnte mit diesen Einstellungen nicht laufen: die Zahl der Tiefenschichten ist für den benötigten Rechenweg zu groß.\r\nErhöhen Sie 'Schichtdicke (TDS)', verringern Sie die Probendicke oder erhöhen Sie 'Wellen'.",
+            //          fr: "STEM-EDX n'a pas pu s'exécuter avec ces réglages : le nombre de tranches en profondeur est trop grand pour le chemin de calcul requis.\r\nAugmentez « Épaisseur de tranche (TDS) », réduisez l'épaisseur de l'échantillon ou augmentez le nombre d'ondes.",
+            //          es: "STEM-EDX no pudo ejecutarse con estos ajustes: el número de capas en profundidad es demasiado grande para la ruta de cálculo necesaria.\r\nAumente 'Espesor de capa (TDS)', reduzca el espesor de la muestra o aumente el número de ondas.",
+            //          pt: "O STEM-EDX não pôde ser executado com estas definições: o número de fatias em profundidade é grande demais para o caminho de cálculo necessário.\r\nAumente 'Espessura da fatia (TDS)', reduza a espessura da amostra ou aumente o número de ondas.",
+            //          it: "STEM-EDX non ha potuto essere eseguito con queste impostazioni: il numero di fette in profondità è troppo grande per il percorso di calcolo richiesto.\r\nAumentare 'Spessore della fetta (TDS)', ridurre lo spessore del campione o aumentare il numero di onde.",
+            //          ru: "STEM-EDX не удалось запустить с этими настройками: число слоёв по глубине слишком велико для требуемого пути расчёта.\r\nУвеличьте «Толщина слоя (TDS)», уменьшите толщину образца или увеличьте число волн.",
+            //          zhHans: "当前设置无法运行 STEM-EDX：深度方向的切片数对所需的计算路径而言过多。\r\n请增大「切片厚度 (TDS)」、减小试样厚度，或增加衍射波数。",
+            //          zhHant: "目前設定無法執行 STEM-EDX：深度方向的切片數對所需的計算路徑而言過多。\r\n請增大「切片厚度 (TDS)」、減小試樣厚度，或增加繞射波數。",
+            //          ko: "현재 설정으로는 STEM-EDX 를 실행할 수 없습니다. 깊이 방향 슬라이스 수가 필요한 계산 경로에 비해 너무 많습니다.\r\n「슬라이스 두께 (TDS)」를 크게 하거나, 시료 두께를 줄이거나, 회절파 수를 늘리세요.")
+            //    : e.Error.Message;
+            //261105Cl 変更: NotSupportedException は今は「native ヘルパが使えない」ときだけ (BetheMethod.StemDoWork)。
+            //実行前の ValidateEdxRequest で止めるようにしたので通常は来ないが、来たときも実際の原因を案内する
             var msg = e.Error is NotSupportedException
-                ? Loc(en: "STEM-EDX could not run with these settings: the number of depth slices is too large for the calculation path it needs.\r\nIncrease 'Slice thickness (TDS)', reduce the specimen thickness, or increase 'Diffracted waves'.",
-                      ja: "この設定では STEM-EDX を実行できません。深さ方向のスライス数が、必要な計算経路に対して多すぎます。\r\n「スライス厚 (TDS)」を大きくするか、試料の厚さを減らすか、「回折波」の数を増やしてください。",
-                      de: "STEM-EDX konnte mit diesen Einstellungen nicht laufen: die Zahl der Tiefenschichten ist für den benötigten Rechenweg zu groß.\r\nErhöhen Sie 'Schichtdicke (TDS)', verringern Sie die Probendicke oder erhöhen Sie 'Wellen'.",
-                      fr: "STEM-EDX n'a pas pu s'exécuter avec ces réglages : le nombre de tranches en profondeur est trop grand pour le chemin de calcul requis.\r\nAugmentez « Épaisseur de tranche (TDS) », réduisez l'épaisseur de l'échantillon ou augmentez le nombre d'ondes.",
-                      es: "STEM-EDX no pudo ejecutarse con estos ajustes: el número de capas en profundidad es demasiado grande para la ruta de cálculo necesaria.\r\nAumente 'Espesor de capa (TDS)', reduzca el espesor de la muestra o aumente el número de ondas.",
-                      pt: "O STEM-EDX não pôde ser executado com estas definições: o número de fatias em profundidade é grande demais para o caminho de cálculo necessário.\r\nAumente 'Espessura da fatia (TDS)', reduza a espessura da amostra ou aumente o número de ondas.",
-                      it: "STEM-EDX non ha potuto essere eseguito con queste impostazioni: il numero di fette in profondità è troppo grande per il percorso di calcolo richiesto.\r\nAumentare 'Spessore della fetta (TDS)', ridurre lo spessore del campione o aumentare il numero di onde.",
-                      ru: "STEM-EDX не удалось запустить с этими настройками: число слоёв по глубине слишком велико для требуемого пути расчёта.\r\nУвеличьте «Толщина слоя (TDS)», уменьшите толщину образца или увеличьте число волн.",
-                      zhHans: "当前设置无法运行 STEM-EDX：深度方向的切片数对所需的计算路径而言过多。\r\n请增大「切片厚度 (TDS)」、减小试样厚度，或增加衍射波数。",
-                      zhHant: "目前設定無法執行 STEM-EDX：深度方向的切片數對所需的計算路徑而言過多。\r\n請增大「切片厚度 (TDS)」、減小試樣厚度，或增加繞射波數。",
-                      ko: "현재 설정으로는 STEM-EDX 를 실행할 수 없습니다. 깊이 방향 슬라이스 수가 필요한 계산 경로에 비해 너무 많습니다.\r\n「슬라이스 두께 (TDS)」를 크게 하거나, 시료 두께를 줄이거나, 회절파 수를 늘리세요.")
+                ? Loc(en: "STEM-EDX could not run: it requires the native library (Crystallography.Native), which is not available in this session (it could not be loaded, or it is turned off in Options).\r\nClear the checkbox to run without EDX.",
+                      ja: "STEM-EDX を実行できませんでした。ネイティブライブラリ (Crystallography.Native) が必要ですが、このセッションでは使えません (読み込めなかったか、オプションで無効にされています)。\r\nEDX なしで実行するにはチェックを外してください。",
+                      de: "STEM-EDX konnte nicht laufen: es benötigt die native Bibliothek (Crystallography.Native), die in dieser Sitzung nicht verfügbar ist (sie konnte nicht geladen werden oder ist in den Optionen ausgeschaltet).\r\nDeaktivieren Sie das Kontrollkästchen, um ohne EDX zu rechnen.",
+                      fr: "STEM-EDX n'a pas pu s'exécuter : il nécessite la bibliothèque native (Crystallography.Native), qui n'est pas disponible dans cette session (elle n'a pas pu être chargée ou elle est désactivée dans les Options).\r\nDécochez la case pour calculer sans EDX.",
+                      es: "STEM-EDX no pudo ejecutarse: requiere la biblioteca nativa (Crystallography.Native), que no está disponible en esta sesión (no se pudo cargar o está desactivada en Opciones).\r\nDesmarque la casilla para calcular sin EDX.",
+                      pt: "O STEM-EDX não pôde ser executado: requer a biblioteca nativa (Crystallography.Native), que não está disponível nesta sessão (não pôde ser carregada ou está desativada em Opções).\r\nDesmarque a caixa para calcular sem EDX.",
+                      it: "STEM-EDX non ha potuto essere eseguito: richiede la libreria nativa (Crystallography.Native), che non è disponibile in questa sessione (non è stato possibile caricarla oppure è disattivata in Opzioni).\r\nDeselezionare la casella per calcolare senza EDX.",
+                      ru: "Не удалось выполнить STEM-EDX: требуется нативная библиотека (Crystallography.Native), которая недоступна в этом сеансе (её не удалось загрузить или она отключена в меню Параметры).\r\nСнимите флажок, чтобы считать без EDX.",
+                      zhHans: "无法运行 STEM-EDX：需要原生库 (Crystallography.Native)，但本次会话中不可用（无法加载，或已在选项中关闭）。\r\n取消勾选可在不计算 EDX 的情况下运行。",
+                      zhHant: "無法執行 STEM-EDX：需要原生程式庫 (Crystallography.Native)，但本次工作階段中無法使用（無法載入，或已在選項中關閉）。\r\n取消勾選可在不計算 EDX 的情況下執行。",
+                      ko: "STEM-EDX 를 실행할 수 없습니다. 네이티브 라이브러리 (Crystallography.Native) 가 필요하지만 이 세션에서는 사용할 수 없습니다 (로드할 수 없었거나 옵션에서 꺼져 있습니다).\r\nEDX 없이 실행하려면 체크를 해제하세요.")
                 : e.Error.Message;
             MessageBox.Show(msg, "STEM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
