@@ -115,7 +115,7 @@ all'intensità delle linee di Kikuchi</value>
     <value>Sorgente non locale</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>Spessore</value>
+    <value>Profondità</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>a</value>
@@ -279,9 +279,11 @@ solo le linee di Kikuchi il cui 1/d è inferiore a questo valore, quindi
 valori più bassi mantengono solo riflessioni con distanza interplanare maggiore.</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>Passo della scansione dello spessore del
-campione, in nm; l'intervallo da Start a End
-viene calcolato con questo incremento.</value>
+    <value>Passo tra le sezioni di profondità del master pattern, in nm.
+Le profondità automatiche non sono equispaziate (più fitte vicino
+alla superficie); i campi mostrano allora il primo punto, l'ultimo
+punto e il primo intervallo. Modificare un campo rende i passi
+uguali.</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Numero di fasci diffratti (vettori g) inclusi
@@ -289,13 +291,16 @@ nel calcolo dinamico a onde di Bloch (1-2048);
 più fasci migliorano l'accuratezza ma rallentano il calcolo.</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>Inizio dell'intervallo di scansione dello
-spessore del campione, in nm; Start, End e Step
-definiscono le sezioni di spessore da calcolare.</value>
+    <value>Prima sezione di profondità (la meno profonda) del master
+pattern, in nm. La profondità è la lunghezza del percorso nella
+direzione di uscita (profondità della sorgente ÷ cos χ). Start,
+End e Step definiscono le sezioni.
+Impostata automaticamente finché "Intervalli di energia e
+profondità automatici (MC)" è selezionato.</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>Fine dell'intervallo di scansione dello spessore del campione, in nm; Start,
-End e Step definiscono le sezioni di spessore da calcolare.</value>
+    <value>Ultima sezione di profondità (la più profonda) del master
+pattern, in nm; Start, End e Step definiscono le sezioni.</value>
   </data>
   <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
     <value>Energia finale (inferiore) degli elettroni
@@ -305,7 +310,9 @@ Backscatter Diffraction), in keV.</value>
   <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
     <value>Energia iniziale (superiore) degli elettroni
 retrodiffusi usati nella scansione EBSD (Electron
-Backscatter Diffraction), in keV.</value>
+Backscatter Diffraction), in keV.
+Impostata automaticamente finché "Intervalli di energia e
+profondità automatici (MC)" è selezionato.</value>
   </data>
   <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
     <value>Passo della scansione dell'energia degli
@@ -586,11 +593,15 @@ gli elettroni retrodiffusi rilevati hanno
 subito l'ultimo evento di diffusione anelastica
 (o la profondità massima di penetrazione in
 assenza di essi). È la stessa definizione di
-profondità usata per pesare il master pattern.</value>
+profondità usata per pesare il master pattern.
+Fare doppio clic sul grafico per copiarne i valori negli
+appunti come testo (x e y separati da tabulazione).</value>
   </data>
   <data name="labelBseDeltaE.ToolTip" xml:space="preserve">
     <value>Distribuzione della perdita di energia ΔE (keV)
-degli elettroni retrodiffusi simulati.</value>
+degli elettroni retrodiffusi simulati.
+Fare doppio clic sul grafico per copiarne i valori negli
+appunti come testo (x e y separati da tabulazione).</value>
   </data>
   <data name="labelBseStereonetNote.ToolTip" xml:space="preserve">
     <value>In questo stereogramma, il centro
@@ -1024,5 +1035,19 @@ materiali o tensioni.
 Prima della modifica: 0,8 keV per la gaussiana asimmetrica; 0,9 keV per istogramma + A per elettrone (mediana provvisoria di 18 bande fisse Si004 a 20 kV).
 Dopo aver modificato E_c, il valore viene mantenuto quando si cambia distribuzione.
 I valori dipendono da materiale e riflessi; botallackite: circa 0,43–0,71 keV. Ricalibrare se cambiano griglia energia/profondità, sintesi o metrica.</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.Text" xml:space="preserve">
+    <value>Intervalli di energia e profondità automatici (MC)</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.ToolTip" xml:space="preserve">
+    <value>Attivo (predefinito): ogni Simula e Crea master pattern imposta gli
+intervalli di energia e profondità qui sotto dal risultato Monte Carlo
+(energia: da E0 fino a circa il 95 % della perdita di energia;
+profondità: fino al punto del 99,9 % della lunghezza del percorso di
+uscita, 40 passi non uniformi). I campi sono allora di sola lettura.
+Disattivo: i campi mantengono i valori inseriti e il master pattern
+viene creato con essi. Un intervallo con limite inferiore non sotto
+quello superiore, un'energia sopra E0 o un intervallo fuori dalla
+distribuzione Monte Carlo viene rifiutato con un messaggio.</value>
   </data>
 </root>

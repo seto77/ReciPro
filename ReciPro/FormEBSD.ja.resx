@@ -261,8 +261,9 @@ PCHIP補間で圧縮し、生成ソースを出力します。</value>
     <value>ステップ</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>試料厚みスキャンのステップ幅 (nm) です。
-Start から End までをこの増分で計算します。</value>
+    <value>マスターパターンの深さスライスの間隔 (nm) です。
+自動の深さは不等間隔 (表面側が細かい) で、欄には最初の点・
+最後の点・最初の間隔を表示します。欄を編集すると等間隔になります。</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
     <value>計算に取り入れる波の数</value>
@@ -294,15 +295,18 @@ U' (熱散漫散乱、TDS) の側で、両者は独立です。</value>
     <value>深さ範囲</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>試料厚みスキャン範囲の開始値 (nm) です。Start、
-End、Step で計算する厚みの列を決めます。</value>
+    <value>マスターパターンの深さスライスの最初 (最も浅い) の値 (nm) です。
+深さは出射方向に測った経路長 (源の深さ ÷ cos χ) です。
+Start、End、Step で深さのスライスを決めます。
+「エネルギー・深さの範囲を MC から自動で決める」がオンの間は
+自動で設定されます。</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>～</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>試料厚みスキャン範囲の終端値 (nm) です。Start、
-End、Step で計算する厚みの列を決めます。</value>
+    <value>マスターパターンの深さスライスの最後 (最も深い) の値 (nm)
+です。Start、End、Step で深さのスライスを決めます。</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>停止</value>
@@ -403,7 +407,9 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   </data>
   <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
     <value>EBSD（電子線後方散乱回折）スキャンで使う後方散乱電子
-エネルギー範囲の開始（上限）値 (keV) です。</value>
+エネルギー範囲の開始（上限）値 (keV) です。
+「エネルギー・深さの範囲を MC から自動で決める」がオンの間は
+自動で設定されます。</value>
   </data>
   <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
     <value>ステップ</value>
@@ -418,11 +424,15 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   <data name="labelBseDepth.ToolTip" xml:space="preserve">
     <value>検出された後方散乱電子が最後に非弾性散乱を起こした深さ
 (nm) の分布です (非弾性散乱が無い電子は最大侵入深さ)。
-マスターパターンの重み付けに使う深さと同じ定義です。</value>
+マスターパターンの重み付けに使う深さと同じ定義です。
+グラフをダブルクリックすると、値をテキスト (x と y の
+タブ区切り) でクリップボードにコピーします。</value>
   </data>
   <data name="labelBseDeltaE.ToolTip" xml:space="preserve">
     <value>シミュレーションした後方散乱電子の
-エネルギー損失ΔE(keV)の分布です。</value>
+エネルギー損失ΔE(keV)の分布です。
+グラフをダブルクリックすると、値をテキスト (x と y の
+タブ区切り) でクリップボードにコピーします。</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Text" xml:space="preserve">
     <value>動力学EBSD</value>
@@ -1074,9 +1084,6 @@ ON では E_c の再較正が必要です。Si004, 20 kV の固定 18 本の
 帯の幅の中央値では約 0.9 keV が暫定の目安ですが、評価の指標に
 よって異なります。保存済みのモンテカルロ電子の再ビニングで効きます。</value>
   </data>
-  <data name="checkBoxEnergyHistogram.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>背景を平坦化</value>
   </data>
@@ -1246,6 +1253,18 @@ E_c を編集した後は、分布を切り替えても入力値を保持しま�
 実測画像を読み込み直したときも同じです。
 元に戻す操作はありません。</value>
   </data>
+  <data name="checkBoxRangesFromMonteCarlo.Text" xml:space="preserve">
+    <value>エネルギー・深さの範囲を MC から自動で決める</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.ToolTip" xml:space="preserve">
+    <value>オン (既定): 「分布を計算」と「マスターパターンを構築」のたびに、
+下のエネルギー・深さの範囲を MC の結果から決めます
+(エネルギー: E0 から損失の約 95 % 点まで。深さ: 出射方向の経路長の
+99.9 % 点まで、浅い側が細かい 40 点)。範囲の欄は読み取り専用です。
+オフ: 欄は入力した値のまま残り、構築はその範囲で行います。
+下限が上限以上、エネルギーが E0 を超える、MC の分布と重ならない
+範囲のときは、構築せずにメッセージで知らせます。</value>
+  </data>
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
@@ -1283,6 +1302,9 @@ E_c を編集した後は、分布を切り替えても入力値を保持しま�
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxTDSBackground.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonStop.Font" type="System.Drawing.Font, System.Drawing">
@@ -1423,6 +1445,12 @@ E_c を編集した後は、分布を切り替えても入力値を保持しま�
   <data name="checkBoxPhosphorWeight.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="checkBoxEnergyHistogram.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxCoherenceLoss.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
   <data name="flowLayoutPanelViewAlong.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
@@ -1438,9 +1466,6 @@ E_c を編集した後は、分布を切り替えても入力値を保持しま�
   <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="tabControlSettings.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
   <data name="tabPageGeometry.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
@@ -1448,6 +1473,9 @@ E_c を編集した後は、分布を切り替えても入力値を保持しま�
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="tabPageOverlays.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabControlSettings.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">
@@ -1482,8 +1510,5 @@ E_c を編集した後は、分布を切り替えても入力値を保持しま�
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxCoherenceLoss.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
   </data>
 </root>

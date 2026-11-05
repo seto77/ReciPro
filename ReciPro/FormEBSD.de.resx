@@ -115,7 +115,7 @@ Kikuchi-Linien-Intensität anwenden</value>
     <value>Nichtlokale Quelle</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>Dicke</value>
+    <value>Tiefe</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>bis</value>
@@ -281,9 +281,11 @@ Kikuchi-Linien gezeichnet, deren 1/d unter diesem Wert liegt; niedrigere
 Werte behalten also nur Reflexe mit größerem d-Wert.</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>Schrittweite des Probendicken-Scans,
-in nm; der Bereich von Start bis Ende
-wird mit diesem Inkrement berechnet.</value>
+    <value>Abstand der Tiefenscheiben des Master-Patterns, in nm.
+Die automatischen Tiefen sind ungleich verteilt (nahe der
+Oberfläche feiner); die Felder zeigen dann den ersten Punkt,
+den letzten Punkt und den ersten Abstand. Bearbeiten eines
+Feldes ergibt gleiche Abstände.</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Anzahl der gebeugten Strahlen (g-Vektoren), die in die
@@ -291,13 +293,16 @@ dynamische Bloch-Wellen-Rechnung einbezogen werden (1-2048);
 mehr Strahlen erhöhen die Genauigkeit, verlangsamen aber die Rechnung.</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>Startwert des Probendicken-Scanbereichs,
-in nm; Start, Ende und Schritt
-legen die zu berechnenden Dickenscheiben fest.</value>
+    <value>Erste (flachste) Tiefenscheibe des Master-Patterns, in nm.
+Die Tiefe ist die Weglänge in Austrittsrichtung
+(Quelltiefe ÷ cos χ). Start, Ende und Schritt legen die
+Tiefenscheiben fest.
+Wird automatisch gesetzt, solange „Energie- und
+Tiefenbereich automatisch aus MC“ aktiviert ist.</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>Endwert des Probendicken-Scanbereichs, in nm; Start,
-Ende und Schritt legen die zu berechnenden Dickenscheiben fest.</value>
+    <value>Letzte (tiefste) Tiefenscheibe des Master-Patterns, in nm;
+Start, Ende und Schritt legen die Tiefenscheiben fest.</value>
   </data>
   <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
     <value>End-Energie (untere) der rückgestreuten
@@ -307,7 +312,9 @@ Backscatter Diffraction) verwendet wird, in keV.</value>
   <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
     <value>Start-Energie (obere) der rückgestreuten
 Elektronen, die im EBSD-Scan (Electron
-Backscatter Diffraction) verwendet wird, in keV.</value>
+Backscatter Diffraction) verwendet wird, in keV.
+Wird automatisch gesetzt, solange „Energie- und
+Tiefenbereich automatisch aus MC“ aktiviert ist.</value>
   </data>
   <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
     <value>Schrittweite des Energie-Scans der rückgestreuten
@@ -587,11 +594,15 @@ energie für die EBSD-Simulation).</value>
 rückgestreuten Elektronen ihr letztes inelastisches
 Streuereignis hatten (andernfalls die maximale
 Eindringtiefe). Dies ist dieselbe Tiefendefinition,
-mit der das Master-Pattern gewichtet wird.</value>
+mit der das Master-Pattern gewichtet wird.
+Doppelklick auf die Grafik kopiert ihre Werte als Text
+(x und y, tabulatorgetrennt) in die Zwischenablage.</value>
   </data>
   <data name="labelBseDeltaE.ToolTip" xml:space="preserve">
     <value>Verteilung des Energieverlusts ΔE (keV)
-der simulierten rückgestreuten Elektronen.</value>
+der simulierten rückgestreuten Elektronen.
+Doppelklick auf die Grafik kopiert ihre Werte als Text
+(x und y, tabulatorgetrennt) in die Zwischenablage.</value>
   </data>
   <data name="labelBseStereonetNote.ToolTip" xml:space="preserve">
     <value>In diesem Stereonetz entspricht das Zentrum
@@ -1021,5 +1032,19 @@ Spannungen gilt, ist nicht bekannt.
 Vor einer Eingabe: 0,8 keV für die asymmetrische Gaußverteilung; 0,9 keV für Histogramm + A je Elektron (vorläufiger Median aus 18 festen Si004-Bändern bei 20 kV).
 Nach einer Eingabe bleibt Ihr E_c beim Verteilungswechsel erhalten.
 Die Werte hängen von Material und Reflexen ab; Botallackit: etwa 0,43–0,71 keV. Bei geänderter Energie-/Tiefengitterung, Synthese oder Bewertungsmaß neu kalibrieren.</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.Text" xml:space="preserve">
+    <value>Energie- und Tiefenbereich automatisch aus MC</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.ToolTip" xml:space="preserve">
+    <value>Ein (Standard): Bei jedem Simulieren und Master-Pattern erstellen
+werden die Energie- und Tiefenbereiche unten aus dem Monte-Carlo-
+Ergebnis gesetzt (Energie: von E0 bis etwa 95 % des Energieverlusts;
+Tiefe: bis zum 99,9-%-Punkt der Austrittsweglänge, 40 ungleiche
+Schritte). Die Bereichsfelder sind dann schreibgeschützt.
+Aus: Die Felder behalten Ihre Eingaben, und das Master-Pattern wird
+damit erstellt. Ein Bereich mit unterer Grenze nicht unter der oberen,
+einer Energie über E0 oder ohne Überlappung mit der Monte-Carlo-
+Verteilung wird mit einer Meldung abgelehnt.</value>
   </data>
 </root>

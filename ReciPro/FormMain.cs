@@ -832,6 +832,8 @@ public partial class FormMain : FormBase
                 rw(() => FormEBSD.FlattenBackgroundFwhmPx); // 260920Cl 追加
                 rw(() => FormEBSD.ExpFlattenBackground); // 260920Cl 追加
                 rw(() => FormEBSD.ExpFlattenBackgroundFwhmPx); // 260920Cl 追加
+                rw(() => FormEBSD.CoherenceLossWeight); // 261105Cl 追加 (監査 F18・作者決定): 「損失でコントラストを減衰」のチェックだけ保存 (E_c は分布に合わせた既定値への追従を保つため保存しない)
+                rw(() => FormEBSD.RangesFromMonteCarlo); // 261105Cl 追加 (監査 F5・作者決定): 「範囲を MC から自動」のチェック (範囲の値そのものは保存しない)
             }
             #endregion
 

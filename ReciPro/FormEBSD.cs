@@ -161,6 +161,10 @@ public partial class FormEBSD : FormBase
     public bool FlipDetectorLeftRight { get => checkBoxFlipDetectorLeftRight.Checked; set => checkBoxFlipDetectorLeftRight.Checked = value; }
     public double AmorphousLayerThicknessNm { get => numericBoxAmorphousLayer.Value; set => numericBoxAmorphousLayer.Value = value; } // 260919Cl 追加: 表面非晶質層の厚さ [nm]
     public int MonteCarloSourceDepthMode { get => comboBoxMonteCarloDepthMode.SelectedIndex; set { if ((uint)value < (uint)comboBoxMonteCarloDepthMode.Items.Count) comboBoxMonteCarloDepthMode.SelectedIndex = value; } } // 260919Cl 追加: 源の深さモード (層厚と同様に永続化)
+    /// <summary>261105Cl 追加 (監査 F5・作者決定): Energy・Depth の範囲を MC の結果から自動で決めるか (既定 ON = 従来の動き)。
+    /// ON の間は Simulate・構築・読み込み後の MC が欄を書き換え、欄は読み取り専用。OFF なら MC は欄を書き換えず、構築は手入力の範囲で行う
+    /// (<see cref="buttonCreateMasterPattern_Click"/> が範囲を検査する)。範囲の値そのものは保存しない</summary>
+    public bool RangesFromMonteCarlo { get => checkBoxRangesFromMonteCarlo.Checked; set => checkBoxRangesFromMonteCarlo.Checked = value; }
     #endregion
 
     public double SmpTilt => numericBoxSampleTilt.RadianValue;
@@ -175,6 +179,9 @@ public partial class FormEBSD : FormBase
     /// (<see cref="MasterPatternFile.CrystalFingerprint"/>) と加速電圧 (kV)。窓を閉じている間の結晶の変更や電圧の変更のあとで、
     /// 旧い MC の結果を表示し続けないように照合する (MasterPattern の <see cref="masterPatternBasis"/> と同じ考え方)</summary>
     (string CrystalFingerprint, double VoltageKeV) bsesBasis = ("", double.NaN);
+    /// <summary>261105Cl 追加 (監査 F5): 直近の MC が自動で決めた範囲のうち、エネルギーの下限 (keV、損失の 95 % 点) と深さ (出射方向の経路長) の上限 (nm、99.9 % 点)。
+    /// 「範囲を MC から自動」が OFF のとき、手入力の範囲が MC の分布の外 (重なりが無い) かを構築の前に判定するのに使う (欄は書き換えないのでここに控える)</summary>
+    (double EnergyLowerKeV, double DepthUpperNm) lastMcAutoRanges = (double.NaN, double.NaN);
 
     public Crystal Crystal => FormMain.Crystal;
 
@@ -396,6 +403,7 @@ public partial class FormEBSD : FormBase
         checkBoxShowDyanmicalEBSD.CheckedChanged += (_, _) => { if (checkBoxShowDyanmicalEBSD.Checked) tabControlPatternSettings.SelectedTab = tabPageOutputParameter; };
         // checkBoxShowExperimentalImage.CheckedChanged += (_, _) => { if (checkBoxShowExperimentalImage.Checked) tabControlPatternSettings.SelectedTab = tabPageExperimentalImage; }; // 260922Cl 廃止 (作者指示): 実測画像の表示 ON でタブを切り替えない
         checkBoxShowOverlays.CheckedChanged += (_, _) => { if (checkBoxShowOverlays.Checked) tabControlSettings.SelectedTab = tabPageOverlays; };
+        checkBoxRangesFromMonteCarlo_CheckedChanged(checkBoxRangesFromMonteCarlo, EventArgs.Empty); // 261105Cl 追加 (監査 F5): 既定 ON の範囲欄を読み取り専用にする (Designer の Checked = true ではイベントが来ない)
     }
 
     private void Timer_Tick(object sender, EventArgs e)
@@ -1067,7 +1075,11 @@ public partial class FormEBSD : FormBase
             graphControlDepthProfile.ClearProfile();
         }
         masterPatternBWarning = ""; // 260919Cl 追加
-        tabPageOutputParameter.Enabled = false;
+        // tabPageOutputParameter.Enabled = false; // 261105Cl 変更前
+        // 261105Cl 変更 (監査 F16・作者決定): タブ全体ではなく、パターンの表示の欄 (Polarity・Color・平坦化、明るさ・コントラスト、BSE 分布の有無とスライス) だけを
+        //   構築まで無効にする。同じタブの MC の設定欄 (源の深さ・損失によるコントラスト・蛍光体重み・非晶質層・フィルター・ヒストグラム) は
+        //   最初の Simulate や構築の MC に効くので、構築の前から使えるようにする (配置は変えない)
+        flowLayoutPanelColorScale.Enabled = flowLayoutPanelBrightness.Enabled = flowLayoutPanelWithBseDistribution.Enabled = false;
         checkBoxShowDyanmicalEBSD.Enabled = false;
         UpdateMasterPatternSelectors();
         DrawMasterPattern2D(); // 3D キャッシュのクリア (ResetMasterPattern3DCache) と placeholder 描画もここで行われる
@@ -1097,11 +1109,35 @@ public partial class FormEBSD : FormBase
     }
 
     /// <summary>試料傾斜が変更されたとき。260723Cl 追加
-    /// BSEs は MC 生成時の試料傾斜を織り込み済みのため再ビニングでは反映できない (厳密には MC 再実行が必要。既存挙動どおり stale のまま描画のみ更新)。</summary>
+    /// BSEs は MC 生成時の試料傾斜を織り込み済みのため再ビニングでは反映できない (厳密には MC 再実行が必要。既存挙動どおり stale のまま描画のみ更新)。
+    /// <para>261105Cl 変更 (監査 F17・作者決定): 古い傾斜の MC の結果を残さず捨てる (下のコメント)。上の「stale のまま」は変更前の動き</para></summary>
     private void numericBoxSampleTilt_ValueChanged(object sender, EventArgs e)
     {
         UpdateEbsdTiltCoeffs();
         InvalidateIndexingResults(); //260725Ch: SampleTilt は指数付けの lab↔sample 変換を変えるため、候補と実行中結果を失効させる
+        // 261105Cl 追加 (監査 F17・作者決定): MC の結果 (BSE の射出方向・エネルギー・深さ、それを射出半球へ分けた重みの分布、「BSE 分布」タブの極点図・ΔE・深さのグラフ) は
+        //   MC を回したときの傾斜で決まり、再ビニングでは新しい傾斜にできない。以前は古い傾斜のまま表示と重み付けに使い続けていたので、
+        //   結晶・電圧の変更 (4bc81f06) と同じく捨てる。走っている MC (Simulate・構築の前段・読み込み後) も結果が古い傾斜になるので止める
+        //   (構築の MC 段なら構築も止まる。結晶・電圧の変更と同じ)。
+        //   MasterPattern は残す: Bethe の計算は結晶の座標系で解き、構築の要求 (EBSD.MasterPatternBuildRequest) に傾斜は入らない。
+        //   傾斜は合成時に画素ごとの射出方向と μ (EbsdPatternComposer.UpdateTiltCoefficients) として今の値が使われる。
+        //   MC 由来なのは格子の取り方 (エネルギーの下限、深さの上限 T) だけで、T を超える経路は同じエネルギーの中で配り直されるので、傾斜を変えても使える
+        if (monteCarloCts != null && !monteCarloCts.IsCancellationRequested)
+            monteCarloCts.Cancel();
+        if (BSEs is { Length: > 0 } && !(Math.Abs(bsesSampleTilt - SmpTilt) < 1E-9)) // 読み込み時に電子を使い回す判定 (LoadMasterPatternFromAsync) と同じ許容差。NaN なら捨てる
+        {
+            BSEs = []; // ここから 7 行は SetCrystal の破棄と同じ
+            bsesSampleTilt = double.NaN;
+            bsesBasis = ("", double.NaN);
+            mcDistribution = null;
+            poleFigureControl.Vectors = [];
+            graphControlEnergyProfile.ClearProfile();
+            graphControlDepthProfile.ClearProfile();
+            composedPatternCache = default; // 古い分布で作った ZNCC 照合用の合成も捨てる
+            toolStripStatusLabelSummary.Text = "Monte Carlo results discarded";
+            toolStripStatusLabelDetail.Text = $"The sample tilt was changed to {SampleTiltDegree:g6}°. Run Simulate again"
+                + (MasterPattern != null ? " to weight the master pattern by the BSE distribution (the master pattern does not depend on the tilt and is kept)." : ".");
+        }
         Draw();
     }
 
@@ -1120,7 +1156,10 @@ public partial class FormEBSD : FormBase
         // 261105Cl 追加: 深さ分布 (labelBseDepth) は GetMonteCarloSourceDepth = このモードの深さで描くので、ツールチップもモードに追随させる。
         //  resx の文は「最後の非弾性散乱」固定で、該当イベントが無い電子を「最大侵入深さ」としていた (実際は最後の散乱イベントの深さ = e.Depth)。
         //  起動時も SelectedIndex が -1 から設定されるのでここを必ず通る
-        toolTip.SetToolTip(labelBseDepth, monteCarloDistributionDepthMode switch
+        // toolTip.SetToolTip(labelBseDepth, monteCarloDistributionDepthMode switch // 261105Cl 変更前
+        // 261105Cl 変更 (監査 F23・作者決定): 末尾に「グラフをダブルクリックで値をコピー」を足す (ΔE のグラフの見出しは resx に同じ文)。
+        //   コピーのボタンは無く、GraphControl のダブルクリック (x と y をタブ区切りのテキスト) が唯一のコピーの手段
+        toolTip.SetToolTip(labelBseDepth, (monteCarloDistributionDepthMode switch
         {
             MonteCarloDistributionDepthMode.LastTransportEventDepth => Localization.Loc(
                 en: "Distribution of the depth (nm) of the last\nscattering event (elastic or inelastic) of the\ndetected backscattered electrons before they\nleft the sample. Follows \"Source depth (MC)\";\nthe same depth weights the master pattern.",
@@ -1158,7 +1197,19 @@ public partial class FormEBSD : FormBase
                 zhHans: "被检出的背散射电子最后一次发生非弹性散射的\n深度 (nm) 分布（若无非弹性散射则取最后一次散射\n的深度）。随“源深度 (MC)”的选择而变，主花样\n加权也使用同一深度。",
                 zhHant: "被偵測到的背向散射電子最後一次發生非彈性散射\n的深度 (nm) 分佈（若無非彈性散射則取最後一次散射\n的深度）。隨「源深度 (MC)」的選擇而變，主圖樣\n加權也使用同一深度。",
                 ko: "검출된 후방산란 전자가 마지막으로 비탄성\n산란을 일으킨 깊이(nm)의 분포입니다(비탄성\n산란이 없는 전자는 마지막 산란의 깊이). '소스\n깊이 (MC)' 선택을 따르며, 마스터 패턴의 가중에도\n같은 깊이를 사용합니다."),
-        });
+        // }); // 261105Cl 変更前
+        }) + "\n" + Localization.Loc( // 261105Cl 追加 (監査 F23)
+                en: "Double-click the graph to copy its values to the clipboard\nas text (x and y, tab-separated).",
+                ja: "グラフをダブルクリックすると、値をテキスト (x と y の\nタブ区切り) でクリップボードにコピーします。",
+                de: "Doppelklick auf die Grafik kopiert ihre Werte als Text\n(x und y, tabulatorgetrennt) in die Zwischenablage.",
+                fr: "Double-cliquez sur le graphique pour copier ses valeurs\ndans le presse-papiers sous forme de texte (x et y séparés\npar une tabulation).",
+                es: "Haga doble clic en la gráfica para copiar sus valores al\nportapapeles como texto (x e y separados por tabulación).",
+                pt: "Clique duas vezes no gráfico para copiar seus valores para\na área de transferência como texto (x e y separados por\ntabulação).",
+                it: "Fare doppio clic sul grafico per copiarne i valori negli\nappunti come testo (x e y separati da tabulazione).",
+                ru: "Двойной щелчок по графику копирует его значения в буфер\nобмена в виде текста (x и y через табуляцию).",
+                zhHans: "双击图表可将其数值以文本（x 与 y，以制表符分隔）\n复制到剪贴板。",
+                zhHant: "雙擊圖表可將其數值以文字（x 與 y，以定位字元分隔）\n複製到剪貼簿。",
+                ko: "그래프를 더블클릭하면 값을 텍스트(x와 y, 탭 구분)로\n클립보드에 복사합니다."));
         if (BSEs == null || BSEs.Length == 0) return;
         RebinMcDistribution();
         CalcStatistics();
@@ -2602,6 +2653,14 @@ public partial class FormEBSD : FormBase
         trackBarOutputEnergy.Value = 0;
     }
 
+    /// <summary>261105Cl 追加 (監査 F5・作者決定): 「範囲を MC から自動」の切り替え。ON の間は MC が Energy・Depth の範囲欄を書き換えるので、
+    /// 手で入れても上書きされないように欄を読み取り専用にする (値は読める)。OFF にすると欄を編集でき、構築はその範囲で行う</summary>
+    private void checkBoxRangesFromMonteCarlo_CheckedChanged(object sender, EventArgs e)
+    {
+        foreach (var box in new[] { numericBoxEnergyStart, numericBoxEnergyEnd, numericBoxEnergyStep, numericBoxThicknessStart, numericBoxThicknessEnd, numericBoxThicknessStep })
+            box.ReadOnly = RangesFromMonteCarlo;
+    }
+
     #endregion
 
     private bool skipProgressChangedEvent = false;
@@ -3029,29 +3088,32 @@ public partial class FormEBSD : FormBase
 
 
     #region グラフをコピー
-    private void buttonCopyEnergyProfile_Click(object sender, EventArgs e)
-    {
-        if (graphControlEnergyProfile.Profile == null) return;
-
-        var pt = graphControlEnergyProfile.Profile.Pt;
-        var sb = new StringBuilder();
-        for (int i = 0; i < pt.Count; i++)
-            sb.AppendLine(pt[i].X + "\t" + pt[i].Y);
-
-        Clipboard.SetDataObject(sb.ToString());
-    }
-
-    private void buttonDepthProfile_Click(object sender, EventArgs e)
-    {
-        if (graphControlDepthProfile.Profile == null) return;
-
-        var pt = graphControlDepthProfile.Profile.Pt;
-        var sb = new StringBuilder();
-        for (int i = 0; i < pt.Count; i++)
-            sb.AppendLine(pt[i].X + "\t" + pt[i].Y);
-
-        Clipboard.SetDataObject(sb.ToString());
-    }
+    // 261105Cl 廃止 (監査 F23・作者決定): 下の 2 つはどのボタンにもつながっていない孤立ハンドラだった (コピーのボタンが無い)。
+    //   ΔE・深さのグラフ (GraphControl) はダブルクリックで同じ内容 (x と y をタブ区切りのテキスト) をクリップボードへコピーするので、
+    //   ボタンは足さず、ダブルクリックでコピーできることをグラフの見出し (labelBseDeltaE・labelBseDepth) のツールチップに書いた
+    //private void buttonCopyEnergyProfile_Click(object sender, EventArgs e)
+    //{
+    //    if (graphControlEnergyProfile.Profile == null) return;
+    //
+    //    var pt = graphControlEnergyProfile.Profile.Pt;
+    //    var sb = new StringBuilder();
+    //    for (int i = 0; i < pt.Count; i++)
+    //        sb.AppendLine(pt[i].X + "\t" + pt[i].Y);
+    //
+    //    Clipboard.SetDataObject(sb.ToString());
+    //}
+    //
+    //private void buttonDepthProfile_Click(object sender, EventArgs e)
+    //{
+    //    if (graphControlDepthProfile.Profile == null) return;
+    //
+    //    var pt = graphControlDepthProfile.Profile.Pt;
+    //    var sb = new StringBuilder();
+    //    for (int i = 0; i < pt.Count; i++)
+    //        sb.AppendLine(pt[i].X + "\t" + pt[i].Y);
+    //
+    //    Clipboard.SetDataObject(sb.ToString());
+    //}
     #endregion
 
     #region MasterPattern
@@ -3092,6 +3154,7 @@ public partial class FormEBSD : FormBase
         // double energy = Voltage, ..., detectorR = DetR, ...; // 260723Cl 変更前: 円形検出器 (半径)
         // double energy = Voltage, sampleTilt = SmpTilt, detectorTilt = DetTilt, detectorX = DetX, detectorY = DetY, detectorZ = DetZ, detectorHalfW = DetHalfWidth, detectorHalfH = DetHalfHeight, energyThreshold = EnergyThreshold; // 260723Cl 変更: 矩形検出器 (半幅・半高) + 中心 X //260921Cl 変更前
         double energy = Voltage, sampleTilt = SmpTilt, energyThreshold = EnergyThreshold; //260921Cl (/simplify): MC 分布が検出器に依存しなくなり、検出器ローカルは未使用になった
+        bool setRanges = RangesFromMonteCarlo; // 261105Cl 追加 (監査 F5): 範囲欄を MC の結果で書き換えるか (開始時の設定で決める。OFF なら手入力の範囲を残す)
         var loop = BackscatterMonteCarloLoopCount;
         var sampleRotation = M3.CreateRotationX(sampleTilt);
         var monteCarloStopwatch = Stopwatch.StartNew();
@@ -3163,13 +3226,16 @@ public partial class FormEBSD : FormBase
 
             // 261105Cl 追加 (監査 N5): MC の間に結晶・加速電圧が替わっていたら結果を使わない (旧結晶の MC と新結晶の MasterPattern を混ぜない)。
             //   窓を開いていれば SetCrystal・電圧の変更で MC は止まるが、窓を閉じている間は SetCrystal が呼ばれないので最後まで走ってここへ来る
-            if (!ReferenceEquals(cry, FormMain.Crystal) || energy != Voltage)
+            // if (!ReferenceEquals(cry, FormMain.Crystal) || energy != Voltage) // 261105Cl 変更前
+            // 261105Cl 変更 (監査 F17): 試料傾斜が替わっていても使わない (傾斜の変更は MC を止めるが、止める前に終わっていた結果がここへ来うる)
+            if (!ReferenceEquals(cry, FormMain.Crystal) || energy != Voltage || sampleTilt != SmpTilt)
             {
                 masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds;
                 toolStripProgressBar.Value = 0;
                 toolStripStatusLabelSummary.Text = $"{statusPrefix}: MonteCarlo discarded";
                 toolStripStatusLabelProgress.Text = $"Stopped after {StatusBarHelper.FormatElapsed(monteCarloStopwatch.Elapsed)}";
-                toolStripStatusLabelDetail.Text = "The crystal or the accelerating voltage was changed during the Monte Carlo. Run it again.";
+                // toolStripStatusLabelDetail.Text = "The crystal or the accelerating voltage was changed during the Monte Carlo. Run it again."; // 261105Cl 変更前
+                toolStripStatusLabelDetail.Text = "The crystal, the accelerating voltage or the sample tilt was changed during the Monte Carlo. Run it again."; // 261105Cl 変更 (監査 F17)
                 return false;
             }
 
@@ -3192,20 +3258,27 @@ public partial class FormEBSD : FormBase
             BSEs = result.Bses;
             bsesSampleTilt = sampleTilt; //260921Cl 追加 (/simplify): このワーカーが MC に使った傾斜
             bsesBasis = (MasterPatternFile.CrystalFingerprint(cry), energy); // 261105Cl 追加 (監査 F 追加 c): この MC の結晶・電圧
-            numericBoxEnergyStart.Value = result.energyStart;
-            numericBoxEnergyEnd.Value = result.energyEnd;
-            numericBoxEnergyStep.Value = result.energyStep;
-            //260921Cl 変更 (深さ写像 A2): 格子は不等間隔なので配列そのものを保持し、欄は目安 (開始 = 最浅の点、終了 = T、刻み = 最初の区間幅) として表示する。
-            //  欄への代入で発火する ValueChanged をユーザー操作とみなさないよう、代入の間だけフラグを立てる
-            mcDepthGrid = result.Depths;
-            settingDepthGridBoxes = true;
-            try
+            lastMcAutoRanges = (result.energyEnd, result.depthEnd); // 261105Cl 追加 (監査 F5): 手入力の範囲が MC の分布の外かの判定用 (欄を書き換えないときも控える)
+            // 261105Cl 変更 (監査 F5・作者決定): 「範囲を MC から自動」が OFF なら欄 (と深さの不等間隔格子) を書き換えない。
+            //   以前は常に書き換え、手で入れた範囲は次の Simulate・構築で必ず上書きされていた。重みの分布 (下の mcDistribution) は MC の格子で作り、
+            //   手入力の格子の MasterPattern とは描画時に EnsureMcDistributionMatchesMasterPattern が揃える (構築後の Simulate と同じ経路)
+            if (setRanges)
             {
-                numericBoxThicknessStart.Value = result.depthStart;
-                numericBoxThicknessEnd.Value = result.depthEnd;
-                numericBoxThicknessStep.Value = result.depthStep;
+                numericBoxEnergyStart.Value = result.energyStart;
+                numericBoxEnergyEnd.Value = result.energyEnd;
+                numericBoxEnergyStep.Value = result.energyStep;
+                //260921Cl 変更 (深さ写像 A2): 格子は不等間隔なので配列そのものを保持し、欄は目安 (開始 = 最浅の点、終了 = T、刻み = 最初の区間幅) として表示する。
+                //  欄への代入で発火する ValueChanged をユーザー操作とみなさないよう、代入の間だけフラグを立てる
+                mcDepthGrid = result.Depths;
+                settingDepthGridBoxes = true;
+                try
+                {
+                    numericBoxThicknessStart.Value = result.depthStart;
+                    numericBoxThicknessEnd.Value = result.depthEnd;
+                    numericBoxThicknessStep.Value = result.depthStep;
+                }
+                finally { settingDepthGridBoxes = false; }
             }
-            finally { settingDepthGridBoxes = false; }
             // trackBarOutputThickness.Maximum = Math.Max(0, ThicknessArray.Length - 1); //260921Cl: 欄の値が前回と同じで ValueChanged が来ない場合にも格子の点数へ揃える // 261105Cl 変更前
             trackBarOutputThickness.Maximum = Math.Max(0, (MasterPattern?.Depths ?? ThicknessArray).Length - 1); // 261105Cl 変更 (監査 F11): 構築後の Calc BSE では表示中の MasterPattern の格子を保つ (無ければ従来どおり MC の格子)
             mcDistribution = result.Distribution;
@@ -3233,8 +3306,11 @@ public partial class FormEBSD : FormBase
             toolStripStatusLabelProgress.Text = $"Stopped after {StatusBarHelper.FormatElapsed(monteCarloStopwatch.Elapsed)}";
             // toolStripStatusLabelDetail.Text = ""; // 261105Cl 変更前
             // 261105Cl 変更 (監査 N5): 結晶・電圧の変更で止めた (SetCrystal・電圧の変更) ときは理由を出す
-            toolStripStatusLabelDetail.Text = !ReferenceEquals(cry, FormMain.Crystal) || energy != Voltage
-                ? "Stopped because the crystal or the accelerating voltage was changed. Run it again." : "";
+            // toolStripStatusLabelDetail.Text = !ReferenceEquals(cry, FormMain.Crystal) || energy != Voltage
+            //     ? "Stopped because the crystal or the accelerating voltage was changed. Run it again." : ""; // 261105Cl 変更前
+            // 261105Cl 変更 (監査 F17): 試料傾斜の変更でも止めるので、その理由も出す
+            toolStripStatusLabelDetail.Text = !ReferenceEquals(cry, FormMain.Crystal) || energy != Voltage || sampleTilt != SmpTilt
+                ? "Stopped because the crystal, the accelerating voltage or the sample tilt was changed. Run it again." : "";
             return false;
         }
     }
@@ -3274,6 +3350,76 @@ public partial class FormEBSD : FormBase
         // if (masterPatternEbsd.IsBuilding) // 261105Cl 変更前
         if (masterPatternEbsd.IsBuilding || monteCarloCts != null) // 261105Cl 変更 (監査 F6): MC (Calc BSE・読み込み後の MC) の最中も始めない (ボタンは無効だが PrepareCaptureForGuiAudit はコードから呼ぶ)
             return;
+
+        // 261105Cl 追加 (監査 F5・作者決定): 「範囲を MC から自動」が OFF なら、手入力の Energy・Depth の範囲で構築する (MC は欄を書き換えない)。
+        //   範囲の扱い (作者決定「不正なときの扱いを決めて知らせる」への答え): 構築せず、理由と値をダイアログとステータスバーで知らせる。
+        //   ・MC の前に調べる: Energy は 下限 (End) < 上限 (Start) ≤ 加速電圧 E0 (E0 を超える後方散乱電子は無い)、Depth は 下限 < 上限
+        //     (深さの欄を編集していなければ、前回の自動の不等間隔格子をそのまま使う = 欄はその目安。編集すると等間隔。従来どおり)
+        //   ・MC の後で調べる: MC の分布との重なりが無い (Energy の上限が MC の下限 (損失の 95 % 点) より下、Depth の下限が MC の上限 T (経路長の 99.9 % 点) 以上)。
+        //     MC の結果 (「BSE 分布」タブ) は残る。一部だけ重なる範囲は使う (外の分は重みが小さいだけ)
+        //   範囲の値は構築の開始時に控える (MC の間に欄を書き換えられても、検査した範囲で構築する)
+        bool interactive = !skipDisplacementParameterPrompt; // PrepareCaptureForGuiAudit (自動撮影) からはダイアログを出さない (B=0 の確認と同じ)。最初の await の前に読む
+        double[] manualEnergies = null, manualDepths = null;
+        double eLow = numericBoxEnergyEnd.Value, eHigh = numericBoxEnergyStart.Value;
+        var (dLow, dHigh) = mcDepthGrid is { Length: > 0 } ? (mcDepthGrid[0], mcDepthGrid[^1]) : (numericBoxThicknessStart.Value, numericBoxThicknessEnd.Value);
+        if (!RangesFromMonteCarlo)
+        {
+            if (!(eLow < eHigh) || eHigh > Voltage + 1E-9 || !(dLow < dHigh))
+            {
+                var cb = checkBoxRangesFromMonteCarlo.Text;
+                var message = Localization.Loc(
+                    en: "The hand-entered Energy and Depth ranges cannot be used, so the master pattern was not built.\n"
+                        + $"Energy: {eLow:g6} – {eHigh:g6} keV (needs lower < upper ≤ E0 = {Voltage:g6} keV)\n"
+                        + $"Depth: {dLow:g6} – {dHigh:g6} nm (needs lower < upper)\n"
+                        + $"Correct the ranges, or check \"{cb}\".",
+                    ja: "手入力のエネルギー・深さの範囲が使えないため、マスターパターンを構築しませんでした。\n"
+                        + $"エネルギー: {eLow:g6} ～ {eHigh:g6} keV (下限 < 上限 ≤ E0 = {Voltage:g6} keV が必要)\n"
+                        + $"深さ: {dLow:g6} ～ {dHigh:g6} nm (下限 < 上限 が必要)\n"
+                        + $"範囲を直すか、「{cb}」をオンにしてください。",
+                    de: "Die von Hand eingegebenen Energie- und Tiefenbereiche sind ungültig; das Master-Pattern wurde nicht erstellt.\n"
+                        + $"Energie: {eLow:g6} – {eHigh:g6} keV (erforderlich: untere < obere ≤ E0 = {Voltage:g6} keV)\n"
+                        + $"Tiefe: {dLow:g6} – {dHigh:g6} nm (erforderlich: untere < obere)\n"
+                        + $"Korrigieren Sie die Bereiche oder aktivieren Sie „{cb}“.",
+                    fr: "Les plages d'énergie et de profondeur saisies à la main ne sont pas valides ; le master pattern n'a pas été créé.\n"
+                        + $"Énergie : {eLow:g6} – {eHigh:g6} keV (il faut borne inférieure < borne supérieure ≤ E0 = {Voltage:g6} keV)\n"
+                        + $"Profondeur : {dLow:g6} – {dHigh:g6} nm (il faut borne inférieure < borne supérieure)\n"
+                        + $"Corrigez les plages ou cochez « {cb} ».",
+                    es: "Los rangos de energía y profundidad introducidos a mano no son válidos; no se creó el patrón maestro.\n"
+                        + $"Energía: {eLow:g6} – {eHigh:g6} keV (se requiere inferior < superior ≤ E0 = {Voltage:g6} keV)\n"
+                        + $"Profundidad: {dLow:g6} – {dHigh:g6} nm (se requiere inferior < superior)\n"
+                        + $"Corrija los rangos o marque «{cb}».",
+                    pt: "As faixas de energia e profundidade digitadas à mão não são válidas; o master pattern não foi criado.\n"
+                        + $"Energia: {eLow:g6} – {eHigh:g6} keV (é preciso inferior < superior ≤ E0 = {Voltage:g6} keV)\n"
+                        + $"Profundidade: {dLow:g6} – {dHigh:g6} nm (é preciso inferior < superior)\n"
+                        + $"Corrija as faixas ou marque \"{cb}\".",
+                    it: "Gli intervalli di energia e profondità inseriti a mano non sono validi; il master pattern non è stato creato.\n"
+                        + $"Energia: {eLow:g6} – {eHigh:g6} keV (serve inferiore < superiore ≤ E0 = {Voltage:g6} keV)\n"
+                        + $"Profondità: {dLow:g6} – {dHigh:g6} nm (serve inferiore < superiore)\n"
+                        + $"Correggere gli intervalli o selezionare \"{cb}\".",
+                    ru: "Введённые вручную диапазоны энергии и глубины недопустимы; мастер-картина не создана.\n"
+                        + $"Энергия: {eLow:g6} – {eHigh:g6} keV (нужно: нижняя < верхняя ≤ E0 = {Voltage:g6} keV)\n"
+                        + $"Глубина: {dLow:g6} – {dHigh:g6} nm (нужно: нижняя < верхняя)\n"
+                        + $"Исправьте диапазоны или включите «{cb}».",
+                    zhHans: "手动输入的能量与深度范围无效，未构建主花样。\n"
+                        + $"能量：{eLow:g6} – {eHigh:g6} keV（须满足 下限 < 上限 ≤ E0 = {Voltage:g6} keV）\n"
+                        + $"深度：{dLow:g6} – {dHigh:g6} nm（须满足 下限 < 上限）\n"
+                        + $"请修正范围，或勾选“{cb}”。",
+                    zhHant: "手動輸入的能量與深度範圍無效，未建立主圖樣。\n"
+                        + $"能量：{eLow:g6} – {eHigh:g6} keV（須滿足 下限 < 上限 ≤ E0 = {Voltage:g6} keV）\n"
+                        + $"深度：{dLow:g6} – {dHigh:g6} nm（須滿足 下限 < 上限）\n"
+                        + $"請修正範圍，或勾選「{cb}」。",
+                    ko: "직접 입력한 에너지·깊이 범위를 사용할 수 없어 마스터 패턴을 생성하지 않았습니다.\n"
+                        + $"에너지: {eLow:g6} – {eHigh:g6} keV (하한 < 상한 ≤ E0 = {Voltage:g6} keV 이어야 함)\n"
+                        + $"깊이: {dLow:g6} – {dHigh:g6} nm (하한 < 상한 이어야 함)\n"
+                        + $"범위를 고치거나 '{cb}'을(를) 켜 주세요.");
+                toolStripStatusLabelSummary.Text = "MasterPattern not built";
+                toolStripStatusLabelDetail.Text = message.Replace("\n", " ");
+                if (interactive) MessageBox.Show(this, message, groupBoxSimulationParameters.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            manualEnergies = EnergyArray;
+            manualDepths = ThicknessArray;
+        }
 
         // 261104Cl 追加 (GitHub issue #68): B=0 の原子があると吸収ポテンシャル U' がゼロで、非局所源 ON では MasterPattern が全面 0 (真っ黒) になる。
         //   B=0 (静止格子) は非物理なのでそのまま計算せず、構築前に確認する。完了時のステータスバー警告は、ウィンドウ幅が足りないと
@@ -3337,13 +3483,74 @@ public partial class FormEBSD : FormBase
             }
             DisposeMonteCarloCts(); // 260406Cl MC 完了後は CTS を破棄 (Bethe は masterPatternEbsd が管理)
 
+            // 261105Cl 追加 (監査 F5): 手入力の範囲が MC の分布と重ならなければ構築しない (上の「範囲の扱い」)。MC の結果はそのまま表示に残る
+            if (manualEnergies != null && (eHigh < lastMcAutoRanges.EnergyLowerKeV - 1E-9 || dLow >= lastMcAutoRanges.DepthUpperNm))
+            {
+                var (autoLow, T) = lastMcAutoRanges;
+                var cb = checkBoxRangesFromMonteCarlo.Text;
+                var message = Localization.Loc(
+                    en: "The hand-entered Energy and Depth ranges lie outside the Monte Carlo distribution, so the master pattern was not built.\n"
+                        + $"Monte Carlo: energy {autoLow:g4} – {Voltage:g6} keV (95 % of the energy loss), depth up to {T:g4} nm (99.9 % of the exit path length)\n"
+                        + $"Entered: energy {eLow:g6} – {eHigh:g6} keV, depth {dLow:g6} – {dHigh:g6} nm\n"
+                        + $"Set ranges that overlap the Monte Carlo ones, or check \"{cb}\".",
+                    ja: "手入力のエネルギー・深さの範囲が MC の分布の外にあるため、マスターパターンを構築しませんでした。\n"
+                        + $"MC: エネルギー {autoLow:g4} ～ {Voltage:g6} keV (損失の 95 %)、深さ {T:g4} nm まで (出射方向の経路長の 99.9 %)\n"
+                        + $"入力: エネルギー {eLow:g6} ～ {eHigh:g6} keV、深さ {dLow:g6} ～ {dHigh:g6} nm\n"
+                        + $"MC の範囲と重なるように直すか、「{cb}」をオンにしてください。",
+                    de: "Die von Hand eingegebenen Energie- und Tiefenbereiche liegen außerhalb der Monte-Carlo-Verteilung; das Master-Pattern wurde nicht erstellt.\n"
+                        + $"Monte Carlo: Energie {autoLow:g4} – {Voltage:g6} keV (95 % des Energieverlusts), Tiefe bis {T:g4} nm (99,9 % der Austrittsweglänge)\n"
+                        + $"Eingegeben: Energie {eLow:g6} – {eHigh:g6} keV, Tiefe {dLow:g6} – {dHigh:g6} nm\n"
+                        + $"Wählen Sie Bereiche, die sich mit denen der Monte-Carlo-Rechnung überschneiden, oder aktivieren Sie „{cb}“.",
+                    fr: "Les plages d'énergie et de profondeur saisies à la main sont hors de la distribution Monte-Carlo ; le master pattern n'a pas été créé.\n"
+                        + $"Monte-Carlo : énergie {autoLow:g4} – {Voltage:g6} keV (95 % de la perte d'énergie), profondeur jusqu'à {T:g4} nm (99,9 % de la longueur du trajet de sortie)\n"
+                        + $"Saisi : énergie {eLow:g6} – {eHigh:g6} keV, profondeur {dLow:g6} – {dHigh:g6} nm\n"
+                        + $"Choisissez des plages qui recouvrent celles du Monte-Carlo, ou cochez « {cb} ».",
+                    es: "Los rangos de energía y profundidad introducidos a mano quedan fuera de la distribución de Monte Carlo; no se creó el patrón maestro.\n"
+                        + $"Monte Carlo: energía {autoLow:g4} – {Voltage:g6} keV (95 % de la pérdida de energía), profundidad hasta {T:g4} nm (99,9 % de la longitud de la trayectoria de salida)\n"
+                        + $"Introducido: energía {eLow:g6} – {eHigh:g6} keV, profundidad {dLow:g6} – {dHigh:g6} nm\n"
+                        + $"Elija rangos que se solapen con los de Monte Carlo o marque «{cb}».",
+                    pt: "As faixas de energia e profundidade digitadas à mão estão fora da distribuição de Monte Carlo; o master pattern não foi criado.\n"
+                        + $"Monte Carlo: energia {autoLow:g4} – {Voltage:g6} keV (95 % da perda de energia), profundidade até {T:g4} nm (99,9 % do comprimento do percurso de saída)\n"
+                        + $"Digitado: energia {eLow:g6} – {eHigh:g6} keV, profundidade {dLow:g6} – {dHigh:g6} nm\n"
+                        + $"Escolha faixas que se sobreponham às de Monte Carlo ou marque \"{cb}\".",
+                    it: "Gli intervalli di energia e profondità inseriti a mano sono fuori dalla distribuzione Monte Carlo; il master pattern non è stato creato.\n"
+                        + $"Monte Carlo: energia {autoLow:g4} – {Voltage:g6} keV (95 % della perdita di energia), profondità fino a {T:g4} nm (99,9 % della lunghezza del percorso di uscita)\n"
+                        + $"Inserito: energia {eLow:g6} – {eHigh:g6} keV, profondità {dLow:g6} – {dHigh:g6} nm\n"
+                        + $"Scegliere intervalli che si sovrappongano a quelli Monte Carlo o selezionare \"{cb}\".",
+                    ru: "Введённые вручную диапазоны энергии и глубины лежат вне распределения Монте-Карло; мастер-картина не создана.\n"
+                        + $"Монте-Карло: энергия {autoLow:g4} – {Voltage:g6} keV (95 % потерь энергии), глубина до {T:g4} nm (99,9 % длины пути выхода)\n"
+                        + $"Введено: энергия {eLow:g6} – {eHigh:g6} keV, глубина {dLow:g6} – {dHigh:g6} nm\n"
+                        + $"Задайте диапазоны, пересекающиеся с диапазонами Монте-Карло, или включите «{cb}».",
+                    zhHans: "手动输入的能量与深度范围位于 MC 分布之外，未构建主花样。\n"
+                        + $"MC：能量 {autoLow:g4} – {Voltage:g6} keV（能量损失的 95 %），深度至 {T:g4} nm（出射路径长度的 99.9 %）\n"
+                        + $"输入：能量 {eLow:g6} – {eHigh:g6} keV，深度 {dLow:g6} – {dHigh:g6} nm\n"
+                        + $"请设置与 MC 范围重叠的范围，或勾选“{cb}”。",
+                    zhHant: "手動輸入的能量與深度範圍位於 MC 分佈之外，未建立主圖樣。\n"
+                        + $"MC：能量 {autoLow:g4} – {Voltage:g6} keV（能量損失的 95 %），深度至 {T:g4} nm（出射路徑長度的 99.9 %）\n"
+                        + $"輸入：能量 {eLow:g6} – {eHigh:g6} keV，深度 {dLow:g6} – {dHigh:g6} nm\n"
+                        + $"請設定與 MC 範圍重疊的範圍，或勾選「{cb}」。",
+                    ko: "직접 입력한 에너지·깊이 범위가 MC 분포 밖에 있어 마스터 패턴을 생성하지 않았습니다.\n"
+                        + $"MC: 에너지 {autoLow:g4} – {Voltage:g6} keV (에너지 손실의 95 %), 깊이 {T:g4} nm까지 (출사 경로 길이의 99.9 %)\n"
+                        + $"입력: 에너지 {eLow:g6} – {eHigh:g6} keV, 깊이 {dLow:g6} – {dHigh:g6} nm\n"
+                        + $"MC 범위와 겹치도록 고치거나 '{cb}'을(를) 켜 주세요.");
+                buttonStop.Visible = false;
+                buttonCreateMasterPattern.Enabled = true;
+                comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = flowLayoutPanelPhosphorWeight.Enabled = true;
+                toolStripStatusLabelSummary.Text = "MasterPattern not built";
+                toolStripStatusLabelDetail.Text = message.Replace("\n", " ");
+                if (interactive) MessageBox.Show(this, message, groupBoxSimulationParameters.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // var request = CreateMasterPatternBuildRequest(); // (260321Ch) 旧実装: request 生成を別 helper に切り出していた
             request = new EBSD.MasterPatternBuildRequest(
                 // Crystal, // 261105Cl 変更前
                 crystal, // 261105Cl 変更 (監査 N5): MC と同じ、構築の開始時の結晶 (MC の後で結晶が替わっていれば上の MC が false を返してここへ来ない)
                 MaxNumOfBloch,
-                EnergyArray,
-                ThicknessArray,
+                // EnergyArray, // 261105Cl 変更前 (2 行)
+                // ThicknessArray,
+                manualEnergies ?? EnergyArray, // 261105Cl 変更 (監査 F5): 「範囲を MC から自動」が OFF なら開始時に検査して控えた手入力の格子、ON なら MC が今書いた欄の格子 (従来どおり)
+                manualDepths ?? ThicknessArray,
                 GetSelectedMasterPatternGridSize(),
                 BetheMethod.Solver.Eigen_Eigen,
                 32,
@@ -3499,7 +3706,8 @@ public partial class FormEBSD : FormBase
         // labelMasterPatternInfo.Text = $"Ready: full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // 260406Cl 廃止: Label3へ統合
 
         // 260325Cl 追加: MasterPattern 完了時に groupBoxOutput を有効化し、trackbar を同期する
-        tabPageOutputParameter.Enabled = true;
+        // tabPageOutputParameter.Enabled = true; // 261105Cl 変更前
+        flowLayoutPanelColorScale.Enabled = flowLayoutPanelBrightness.Enabled = flowLayoutPanelWithBseDistribution.Enabled = true; // 261105Cl 変更 (監査 F16): 構築まで無効にしているのは表示の欄だけ (SetCrystal)
         tabControlPatternSettings.SelectedTab = tabPageOutputParameter; // 260725Ch: build直後は出力設定を前面へ
         checkBoxShowDyanmicalEBSD.Enabled = true; // 260724Cl 追加: dynamical EBSD の表示切替も MasterPattern 構築後に解禁
         trackBarOutputEnergy.Maximum = Math.Max(0, MasterPattern.Energies.Length - 1);

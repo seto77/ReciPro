@@ -115,7 +115,7 @@ a la intensidad de las líneas de Kikuchi</value>
     <value>Fuente no local</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>Espesor</value>
+    <value>Profundidad</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>hasta</value>
@@ -279,9 +279,11 @@ las líneas de Kikuchi cuyo 1/d está por debajo de este valor, de modo
 que valores menores conservan solo reflexiones con mayor distancia interplanar.</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>Tamaño de paso del barrido de espesor de la
-muestra, en nm; el rango de Inicio a Fin
-se calcula con este incremento.</value>
+    <value>Paso entre las secciones de profundidad del patrón maestro, en nm.
+Las profundidades automáticas no están equiespaciadas (más finas
+cerca de la superficie); los campos muestran entonces el primer
+punto, el último y el primer intervalo. Editar un campo hace los
+pasos iguales.</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Número de haces difractados (vectores g) incluidos
@@ -289,13 +291,16 @@ en el cálculo dinámico de ondas de Bloch (1-2048);
 más haces mejoran la precisión pero ralentizan el cálculo.</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>Inicio del rango del barrido de espesor de
-la muestra, en nm; Inicio, Fin y Paso
-definen las secciones de espesor a calcular.</value>
+    <value>Primera sección de profundidad (la más superficial) del patrón
+maestro, en nm. La profundidad es la longitud de la trayectoria en
+la dirección de salida (profundidad de la fuente ÷ cos χ). Inicio,
+Fin y Paso definen las secciones.
+Se fija automáticamente mientras «Rangos de energía y
+profundidad automáticos (MC)» está marcado.</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>Fin del rango del barrido de espesor de la muestra, en nm; Inicio,
-Fin y Paso definen las secciones de espesor a calcular.</value>
+    <value>Última sección de profundidad (la más profunda) del patrón
+maestro, en nm; Inicio, Fin y Paso definen las secciones.</value>
   </data>
   <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
     <value>Energía final (inferior) de los electrones
@@ -305,7 +310,9 @@ de electrones retrodispersados), en keV.</value>
   <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
     <value>Energía inicial (superior) de los electrones
 retrodispersados usada en el barrido EBSD (difracción
-de electrones retrodispersados), en keV.</value>
+de electrones retrodispersados), en keV.
+Se fija automáticamente mientras «Rangos de energía y
+profundidad automáticos (MC)» está marcado.</value>
   </data>
   <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
     <value>Tamaño de paso del barrido de energía de los
@@ -584,11 +591,15 @@ electrones retrodispersados detectados sufrieron
 su último evento de dispersión inelástica (o la
 profundidad máxima de penetración si no hubo
 ninguno). Es la misma definición de profundidad
-usada para ponderar el patrón maestro.</value>
+usada para ponderar el patrón maestro.
+Haga doble clic en la gráfica para copiar sus valores al
+portapapeles como texto (x e y separados por tabulación).</value>
   </data>
   <data name="labelBseDeltaE.ToolTip" xml:space="preserve">
     <value>Distribución de la pérdida de energía ΔE (keV)
-de los electrones retrodispersados simulados.</value>
+de los electrones retrodispersados simulados.
+Haga doble clic en la gráfica para copiar sus valores al
+portapapeles como texto (x e y separados por tabulación).</value>
   </data>
   <data name="labelBseStereonetNote.ToolTip" xml:space="preserve">
     <value>En este estereograma, el centro
@@ -1019,5 +1030,20 @@ materiales o tensiones.
 Antes de editar: 0,8 keV para la gaussiana asimétrica; 0,9 keV para histograma + A por electrón (mediana provisional de 18 bandas fijas de Si004 a 20 kV).
 Después de editar E_c, el valor se conserva al cambiar la distribución.
 Los valores dependen del material y las reflexiones; botallackita: aproximadamente 0,43–0,71 keV. Recalibre si cambia la cuadrícula energía/profundidad, la síntesis o la métrica.</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.Text" xml:space="preserve">
+    <value>Rangos de energía y profundidad automáticos (MC)</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.ToolTip" xml:space="preserve">
+    <value>Activado (predeterminado): cada Simular y Crear patrón maestro fija
+los rangos de energía y profundidad de abajo a partir del resultado de
+Monte Carlo (energía: desde E0 hasta cerca del 95 % de la pérdida de
+energía; profundidad: hasta el punto del 99,9 % de la longitud de la
+trayectoria de salida, 40 pasos desiguales). Los campos quedan de solo
+lectura.
+Desactivado: los campos conservan sus valores y el patrón maestro se
+crea con ellos. Un rango cuyo límite inferior no está por debajo del
+superior, una energía mayor que E0 o un rango fuera de la distribución
+de Monte Carlo se rechaza con un mensaje.</value>
   </data>
 </root>
