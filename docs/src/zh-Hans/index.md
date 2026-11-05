@@ -58,8 +58,8 @@
 
 ## 快速开始
 1. 从 [Releases](https://github.com/seto77/ReciPro/releases/latest) 下载并安装。
-2. 从内置列表（约 80 个晶体）中选择一个晶体。你也可以导入 CIF 文件或使用 [CSManager](https://github.com/seto77/CSManager)。
-3. 从右侧面板调用各项功能：结构查看器、极射赤平投影、衍射模拟器、HRTEM 模拟等。
+2. 从内置列表（66 个晶体）中选择一个晶体。你也可以导入 CIF 文件或使用 [CSManager](https://github.com/seto77/CSManager)。
+3. 从右侧面板调用各项功能：结构查看器、极射赤平投影、衍射模拟器、HRTEM/STEM 模拟器等。
 4. 通过鼠标拖动或输入晶带轴/晶面指数来旋转晶体。
 
 ## 引用

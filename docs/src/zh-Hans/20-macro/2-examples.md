@@ -32,7 +32,7 @@ circumference = 2 * math.pi * r
 ### C. 旋转当前晶体
 
 ```python
-# Rotate the current crystal by 30 degrees around the a-axis (x-axis).
+# Rotate the current crystal by 30 degrees around its a-axis [100].
 ReciPro.Dir.RotateAroundAxisInDeg(1, 0, 0, 30)
 ```
 
@@ -148,7 +148,7 @@ ReciPro.File.SaveText(info, "spot_info.csv")
 
 - **查看变量值**：`print()` 在此环境中不起作用（没有控制台）。请使用 **Step by step** 执行方式，并观察调试面板，它会在每一行列出局部变量。
 - **`math` 已预先导入**：`math.sqrt(x)`、`math.sin(x)`、`math.pi`、`math.radians(deg)` 无需 `import math` 即可使用。
-- **批处理加速**：在密集循环期间设置 `ReciPro.DifSim.SkipRendering = True`，之后再将其重置为 `False`。
+- **批处理加速**：`ReciPro.DifSim.SkipRendering = True` 仅在**动力学**模式下跳过衍射斑点的绘制（计算本身照常进行，因此适合批量调用 `SpotInfo()`；保存的图像中将没有斑点）。之后请将其重置为 `False`。在运动学/仅激发误差模式下无效。
 - **等待渲染**：当需要让 GUI 跟上时，调用 `ReciPro.Sleep(ms)` 来暂停执行。
 - **自动补全**：弹出框显示完整的 `ReciPro.Class.Member` 形式。输入几个字母，然后用 `Enter` 或 `Tab` 确认。
 
