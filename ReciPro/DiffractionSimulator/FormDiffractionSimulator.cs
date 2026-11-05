@@ -571,6 +571,9 @@ public partial class FormDiffractionSimulator : FormBase
             FormDiffractionBeamTable.Visible = false;
             FormDiffractionSimulatorGeometry.Visible = false;
             FormDiffractionSimulatorCBED.Visible = false;
+            FormDiffractionSimulatorDynamicCompression.Visible = false; // 261105Cl 追加 (監査 C25): 本体を閉じても動的圧縮・試料ホルダー・ALCHEMI の窓が残っていた
+            FormDiffractionSimulatorHolder.Visible = false; // 261105Cl
+            FormALCHEMI.Visible = false; // 261105Cl
         }
     }
 
