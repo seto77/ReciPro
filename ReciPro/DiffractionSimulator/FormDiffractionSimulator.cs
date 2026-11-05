@@ -3147,7 +3147,8 @@ public partial class FormDiffractionSimulator : FormBase
             for (int t = FormDiffractionSimulatorCBED.trackBarOutputThickness.Minimum; t <= FormDiffractionSimulatorCBED.trackBarOutputThickness.Maximum; t++)
             {
                 FormDiffractionSimulatorCBED.trackBarOutputThickness.Value = t;
-                var thickness = FormDiffractionSimulatorCBED.ThicknessArray[t];
+                //var thickness = FormDiffractionSimulatorCBED.ThicknessArray[t]; // 261105Cl 変更前: 今の入力欄の厚み (計算の後に範囲を変えるとファイル名の厚さが中身と違った)
+                var thickness = FormDiffractionSimulatorCBED.CompletedThicknesses[t]; // 261105Cl 変更 (監査 D7): 計算した厚み
                 foreach (var disk in FormDiffractionSimulatorCBED.Disks)
                 {
                     var info = $" ({thickness}nm_{disk.H}_{disk.K}_{disk.L})";
@@ -3199,7 +3200,8 @@ public partial class FormDiffractionSimulator : FormBase
         for (int t = FormDiffractionSimulatorCBED.trackBarOutputThickness.Minimum; t <= FormDiffractionSimulatorCBED.trackBarOutputThickness.Maximum; t++)
         {
             FormDiffractionSimulatorCBED.trackBarOutputThickness.Value = t;
-            var thickness = FormDiffractionSimulatorCBED.ThicknessArray[t];
+            //var thickness = FormDiffractionSimulatorCBED.ThicknessArray[t]; // 261105Cl 変更前
+            var thickness = FormDiffractionSimulatorCBED.CompletedThicknesses[t]; // 261105Cl 変更 (監査 D7): 計算した厚み
 
             var disk0 = FormDiffractionSimulatorCBED.Disks.Where(d => d.Bitmap != null).First();
             var resolution = disk0.Size.Width / disk0.PixelSize.Width;//1ピクセル辺りの長さ (mm/pixel)

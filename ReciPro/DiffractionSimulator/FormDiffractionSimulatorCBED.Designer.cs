@@ -174,7 +174,7 @@
             toolTip.SetToolTip(numericBoxThread, resources.GetString("numericBoxThread.ToolTip"));
             numericBoxThread.Value = 4D;
             numericBoxThread.ValueBoxWidth = 25;
-            numericBoxThread.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
+            // numericBoxThread.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged; // 261105Cl 削除 (監査 D7): 配線の誤り: スレッド数を変えると表示する厚みが 0 に戻っていた
             // 
             // flowLayoutPanel6
             // 
@@ -319,7 +319,7 @@
             numericBoxWholeThicknessStart.Value = 20D;
             numericBoxWholeThicknessStart.ValueBoxWidth = 40;
             numericBoxWholeThicknessStart.ValueFontSize = 9F;
-            numericBoxWholeThicknessStart.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
+            // numericBoxWholeThicknessStart.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged; // 261105Cl 削除 (監査 D7): 厚みの範囲の欄は表示する厚みの選択を変えない (選択は計算の完了時に作る)
             // 
             // numericBoxThicknessEnd
             // 
@@ -335,7 +335,7 @@
             numericBoxThicknessEnd.Value = 200D;
             numericBoxThicknessEnd.ValueBoxWidth = 40;
             numericBoxThicknessEnd.ValueFontSize = 9F;
-            numericBoxThicknessEnd.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
+            // numericBoxThicknessEnd.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged; // 261105Cl 削除 (監査 D7): 厚みの範囲の欄は表示する厚みの選択を変えない (選択は計算の完了時に作る)
             // 
             // numericBoxThicknessStep
             // 
@@ -351,7 +351,7 @@
             numericBoxThicknessStep.Value = 20D;
             numericBoxThicknessStep.ValueBoxWidth = 40;
             numericBoxThicknessStep.ValueFontSize = 9F;
-            numericBoxThicknessStep.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
+            // numericBoxThicknessStep.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged; // 261105Cl 削除 (監査 D7): 厚みの範囲の欄は表示する厚みの選択を変えない (選択は計算の完了時に作る)
             // 
             // buttonStop
             // 

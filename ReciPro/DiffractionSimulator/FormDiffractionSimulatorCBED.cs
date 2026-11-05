@@ -94,6 +94,21 @@ public partial class FormDiffractionSimulatorCBED : FormBase
 
     private Vector3DBase[] Directions;
 
+    /// <summary>261105Cl 追加 (監査 #32・D7・D8): 計算中の run の Bethe (開始時の結晶のもの)・収束半角 (rad)・厚みの列。null = 計算していない。
+    /// 計算中に主窓で結晶を替えても、Stop と完了の処理はこの run に対して行う (以前は Crystal.Bethe = 新しい結晶の Bethe に対して行っていた)</summary>
+    private BetheMethod runningBethe;
+    private double runningAlphaMax;
+    private double[] runningThicknesses = [];
+
+    /// <summary>261105Cl 追加 (監査 #32・D7・D8): 最後に完了した run の結果 (ディスク・入射方向・収束半角 (rad)・厚みの列)。表示・厚みの切り替え・保存はこれだけを見る。
+    /// Bethe.Disks は Stop・例外のときに途中の状態 (振幅の無いディスク) で上書きされ、EBSD の計算でも上書きされるので見ない。
+    /// 厚み・収束半角は計算したときの値で、計算の後に入力欄を変えても表示・ファイル名は変わらない</summary>
+    private BetheMethod.CBED_Disk[][] completedDisks;
+    private Vector3DBase[] completedDirections;
+    private double completedAlphaMax;
+    /// <summary>261105Cl 追加: 最後に完了した run の厚みの列 (nm)。trackBarOutputThickness の値はこの添字</summary>
+    public double[] CompletedThicknesses { get; private set; } = [];
+
     private readonly Stopwatch sw1 = new();
     private readonly Stopwatch sw2 = new();
 
@@ -138,14 +153,20 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     #region 実行/停止ボタン
     private void buttonSimulate_Click(object sender, EventArgs e)
     {
-        if (Crystal.Bethe.IsCBED_Busy) return;
+        //if (Crystal.Bethe.IsCBED_Busy) return; // 261105Cl 変更前
+        if (runningBethe != null || Crystal.Bethe.IsCBED_Busy) return; // 261105Cl 変更: 別の結晶の Bethe で計算中のときも二重に始めない
 
         buttonStop.Visible = true;
         sw2.Reset();
         sw1.Restart();
         FormDiffractionSimulator.SkipDrawing = true;
-        Crystal.Bethe.CBED_Completed += Bethe_CbedCompleted;
-        Crystal.Bethe.CBED_ProgressChanged += Bethe_CbedProgressChanged;
+        //Crystal.Bethe.CBED_Completed += Bethe_CbedCompleted; // 261105Cl 変更前
+        //Crystal.Bethe.CBED_ProgressChanged += Bethe_CbedProgressChanged;
+        runningBethe = Crystal.Bethe; // 261105Cl 追加 (監査 #32)
+        runningAlphaMax = AlphaMax; // 261105Cl 追加 (監査 D7)
+        runningThicknesses = ThicknessArray; // 261105Cl 追加 (監査 D7)
+        runningBethe.CBED_Completed += Bethe_CbedCompleted; // 261105Cl 変更
+        runningBethe.CBED_ProgressChanged += Bethe_CbedProgressChanged; // 261105Cl 変更
 
         //ローテーション配列を作る //一辺が2.の正方形の中に一辺1/Nのピクセルを詰め込み、中心ピクセルが、円の中心とちょうど一致するような問題を考える
         //260717Cl 変更: List+spread を固定長配列の直接構築に (要素数 = Division² で既知)
@@ -166,12 +187,14 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         else
             solver = comboBoxSolver.Text.Contains("MKL") ? BetheMethod.Solver.MtxExp_MKL : BetheMethod.Solver.MtxExp_Eigen;
 
-        Crystal.Bethe.RunCBED(MaxNumOfBloch, Voltage, Crystal.RotationMatrix, ThicknessArray, Directions, LACBED, solver, numericBoxThread.ValueInteger);
+        //Crystal.Bethe.RunCBED(MaxNumOfBloch, Voltage, Crystal.RotationMatrix, ThicknessArray, Directions, LACBED, solver, numericBoxThread.ValueInteger); // 261105Cl 変更前
+        runningBethe.RunCBED(MaxNumOfBloch, Voltage, Crystal.RotationMatrix, runningThicknesses, Directions, LACBED, solver, numericBoxThread.ValueInteger); // 261105Cl 変更
     }
     private void buttonStop_Click(object sender, EventArgs e)
     {
-        Crystal.Bethe.CancelCBED();
-        buttonSimulate.Text = "Simulate"; // 260520Cl: Execute→Simulate (用語統一)
+        //Crystal.Bethe.CancelCBED(); // 261105Cl 変更前
+        runningBethe?.CancelCBED(); // 261105Cl 変更 (監査 #32): 計算を始めた結晶の Bethe を止める
+        //buttonSimulate.Text = "Simulate"; // 260520Cl: Execute→Simulate (用語統一) // 261105Cl 削除 (監査 D23): 計算中に文言を変えていないのに、英語の "Simulate" で上書きして ja などの訳 (「開始」) を消していた
         buttonStop.Visible = false;
     }
     #endregion
@@ -221,14 +244,40 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     {
         buttonStop.Visible = false;
         FormDiffractionSimulator.SkipDrawing = false;
-        Crystal.Bethe.CBED_Completed -= Bethe_CbedCompleted;
-        Crystal.Bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
+        //Crystal.Bethe.CBED_Completed -= Bethe_CbedCompleted; // 261105Cl 変更前
+        //Crystal.Bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
+        var bethe = runningBethe; // 261105Cl 変更 (監査 #32): 計算を始めた結晶の Bethe から外す
+        runningBethe = null;
+        bethe.CBED_Completed -= Bethe_CbedCompleted;
+        bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
+        sw1.Stop(); // 261105Cl 追加: Bloch の段階で中止・例外になったとき、経過時間が流れ続けないように
         sw2.Stop();
         var sec1 = sw1.ElapsedMilliseconds / 1000.0;
         var sec2 = sw2.ElapsedMilliseconds / 1000.0;
 
-        if (!e.Cancelled)
+        // 261105Cl 追加 (監査 D8): 計算中の例外 (e.Error) を成功 (「100% completed!」) として扱い、途中のディスクで画像を作っていた。
+        //   前回の結果 (completedDisks) はそのまま残す
+        if (e.Error != null)
         {
+            toolStripStatusLabel2.Text = "Failed:  ";
+            toolStripStatusLabel1.Text = $"Time elapsed: {sec1 + sec2:f2} s,  {e.Error.Message}";
+            groupBoxOutput.Enabled = completedDisks != null;
+        }
+        //if (!e.Cancelled) // 261105Cl 変更前
+        else if (!e.Cancelled) // 261105Cl 変更
+        {
+            // 261105Cl 追加 (監査 #32・D7): 完了した run だけを結果として公開する。厚みの選択の範囲も、計算した厚みの列に合わせる
+            completedDisks = bethe.Disks;
+            completedDirections = Directions;
+            completedAlphaMax = runningAlphaMax;
+            CompletedThicknesses = runningThicknesses;
+            skipEvent = true; // ここでは画像を作らない (下の generateImage で 1 回だけ作る)
+            trackBarOutputThickness.Maximum = Math.Max(0, CompletedThicknesses.Length - 1);
+            trackBarOutputThickness.Value = Math.Min(trackBarOutputThickness.Value, trackBarOutputThickness.Maximum);
+            skipEvent = false;
+            if (CompletedThicknesses.Length > 0)
+                textBoxThickness.Text = CompletedThicknesses[trackBarOutputThickness.Value].ToString();
+
             toolStripStatusLabel2.Text = "100% completed!  ";
             toolStripStatusLabel1.Text = $"Total time: {sec1 + sec2:f2} s   ";
             toolStripStatusLabel1.Text += $"Bloch problem: {sec1:f2} s (";
@@ -243,7 +292,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         else
         {
             toolStripStatusLabel1.Text = $"Time elapsed: {sec1 + sec2:f2} s,  Manually interrupted."; // 260520Cl: typo fix (ellapsed → elapsed, interupted → interrupted)
-            groupBoxOutput.Enabled = false;
+            //groupBoxOutput.Enabled = false; // 261105Cl 変更前: 前回のディスクは表示したまま出力の欄だけ無効にしていた
+            groupBoxOutput.Enabled = completedDisks != null; // 261105Cl 変更 (監査 #32): 中止した run は公開せず、前回完了した結果をそのまま使えるようにする
         }
         toolStripProgressBar.Value = toolStripProgressBar.Maximum;
         FormDiffractionSimulator.Draw();
@@ -257,13 +307,15 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     {
         //以下の二つのパラメータはγ値の調整のところで使う。（あまり意味のないパラメータなので、廃止したい）
         //AngleResolution = Math.Acos(Vector3DBase.AngleBetVectors(Directions[Directions.Length / 2], Directions[Directions.Length / 2 + 1]) / 2);// (260715Ch) 旧: 既に radian の角度へ回転行列 trace 用 acos を二重適用していた
-        AngleResolution = Vector3DBase.AngleBetVectors(Directions[Directions.Length / 2], Directions[Directions.Length / 2 + 1]);// (260715Ch)
+        //AngleResolution = Vector3DBase.AngleBetVectors(Directions[Directions.Length / 2], Directions[Directions.Length / 2 + 1]);// (260715Ch) // 261105Cl 変更前
+        AngleResolution = Vector3DBase.AngleBetVectors(completedDirections[completedDirections.Length / 2], completedDirections[completedDirections.Length / 2 + 1]); // 261105Cl 変更 (監査 D7): 表示中の結果を計算したときの入射方向 (次の run の Simulate で Directions が替わっても、中止すれば表示は前の結果)
         ImagePixelSize = FormDiffractionSimulator.CameraLength2 * Math.Tan(AngleResolution);
     }
 
     private void generateImage(bool resetDisks = true)
     {
-        if (skipEvent || FormDiffractionSimulator == null || Crystal == null || Crystal.Bethe.Disks == null)
+        //if (skipEvent || FormDiffractionSimulator == null || Crystal == null || Crystal.Bethe.Disks == null) // 261105Cl 変更前
+        if (skipEvent || FormDiffractionSimulator == null || completedDisks == null) // 261105Cl 変更 (監査 #32): 完了した run の結果だけを見る
             return;
 
         setImagePixelSize();
@@ -331,12 +383,14 @@ public partial class FormDiffractionSimulatorCBED : FormBase
 
     private void setDisks()
     {
-        if (Crystal.Bethe.Disks == null || trackBarOutputThickness.Value >= Crystal.Bethe.Disks.Length)
+        //if (Crystal.Bethe.Disks == null || trackBarOutputThickness.Value >= Crystal.Bethe.Disks.Length) // 261105Cl 変更前
+        if (completedDisks == null || trackBarOutputThickness.Value >= completedDisks.Length) // 261105Cl 変更 (監査 #32)
         {
             Disks = null;
             return;
         }
-        var disks = Crystal.Bethe.Disks[trackBarOutputThickness.Value];
+        //var disks = Crystal.Bethe.Disks[trackBarOutputThickness.Value]; // 261105Cl 変更前
+        var disks = completedDisks[trackBarOutputThickness.Value]; // 261105Cl 変更 (監査 #32)
         Disks = new (int H, int K, int L, PointD Center, SizeD Size, Size PixelSize, PseudoBitmap PBitmap, Bitmap Bitmap)[disks.Length];
         var pixWidth = (int)Math.Sqrt(disks[0].Amplitudes.Length);
         Parallel.For(0, disks.Length, i =>
@@ -353,7 +407,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
                     FilterAlfha = disks[i].Amplitudes.Select(intensity => intensity == 0 ? (byte)0 : (byte)255).ToList()
                 };
 
-                var realWidth = Math.Tan(AlphaMax) * FormDiffractionSimulator.CameraLength2 * 2;
+                //var realWidth = Math.Tan(AlphaMax) * FormDiffractionSimulator.CameraLength2 * 2; // 261105Cl 変更前
+                var realWidth = Math.Tan(completedAlphaMax) * FormDiffractionSimulator.CameraLength2 * 2; // 261105Cl 変更 (監査 D7): 計算したときの収束半角 (計算後に欄を変えるとディスクの大きさが中身と合わなくなっていた)
 
                 Disks[i] = (disks[i].H, disks[i].K, disks[i].L, center.ToPointD, new SizeD(realWidth, realWidth), new Size(pixWidth, pixWidth), pbmp, null);
             }
@@ -363,11 +418,13 @@ public partial class FormDiffractionSimulatorCBED : FormBase
 
     private void TrackBarOutputThickness_Scroll(object sender, EventArgs e)
     {
-        if (Crystal.Bethe.Disks == null || trackBarOutputThickness.Value >= Crystal.Bethe.Disks.Length)
+        //if (Crystal.Bethe.Disks == null || trackBarOutputThickness.Value >= Crystal.Bethe.Disks.Length) // 261105Cl 変更前
+        if (skipEvent || completedDisks == null || trackBarOutputThickness.Value >= completedDisks.Length) // 261105Cl 変更 (監査 #32)
             return;
         if (trackBarOutputThickness.Value < 0)
             return;
-        textBoxThickness.Text = ThicknessArray[trackBarOutputThickness.Value].ToString();
+        //textBoxThickness.Text = ThicknessArray[trackBarOutputThickness.Value].ToString(); // 261105Cl 変更前: 今の入力欄の厚み (計算後に範囲を変えると中身と違う値)
+        textBoxThickness.Text = CompletedThicknesses[trackBarOutputThickness.Value].ToString(); // 261105Cl 変更 (監査 D7): 計算した厚み
         generateImage();
         FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy);
     }
@@ -405,11 +462,13 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     private void NumericBoxDivision_ValueChanged(object sender, EventArgs e) =>
         labelDivisionNumber.Text = $"{DivisionNumber:#,0}";
 
-    private void NumericBoxWholeThicknessStart_ValueChanged(object sender, EventArgs e)
-    {
-        trackBarOutputThickness.Maximum = ThicknessArray.Length - 1;
-        trackBarOutputThickness.Value = 0;
-    }
+    // 261105Cl 削除 (監査 D7): 厚みの範囲 (と、配線の誤りでスレッド数) の欄を変えるたびに、表示する厚みの選択を今の欄の列に作り直して 0 に戻していた。
+    //   選択は計算した厚みの列の添字なので、計算の完了時 (Bethe_CbedCompleted) にだけ作る。Designer の配線 4 本も外した
+    //private void NumericBoxWholeThicknessStart_ValueChanged(object sender, EventArgs e)
+    //{
+    //    trackBarOutputThickness.Maximum = ThicknessArray.Length - 1;
+    //    trackBarOutputThickness.Value = 0;
+    //}
 
     private void ComboBoxSolver_SelectedIndexChanged(object sender, EventArgs e)
     {
