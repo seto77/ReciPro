@@ -56,7 +56,7 @@
 
 ![SEMのセッティング](../assets/cap-ja-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
-- **エネルギー** : 入射電子線の加速電圧（keV）。
+- **エネルギー** : 入射電子線の加速電圧（keV）。値は次の起動で戻ります (手入力のエネルギー・深さの範囲も一緒に戻ります)。 <!-- 261106Cl 仕上げ R3 D4: FormEBSD.AcceleratingVoltageKV をレジストリに保存 -->
 - **波長** : 電子線の波長。エネルギーと連動します。**単位** で Å と nm を選びます。
 - **試料傾斜** : 試料の傾斜角（通常 −70°）。EBSDでは試料を大きく傾けることで後方散乱電子の収量を高めます。変えるとモンテカルロの結果 (BSE 分布とその重み) は破棄されます (もう一度 **「分布を計算」**)。マスターパターンは傾斜に依らないので残ります。 <!-- 261106Cl 作者の決定 F17 --> <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormEBSD.ja.resx: numericBoxSampleTilt / numericBoxDetTilt / numericBoxDetWidth / numericBoxDetHeight の HeaderText) -->
 
