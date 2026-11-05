@@ -1051,13 +1051,47 @@ public partial class FormSpotIDV2 : FormBase
     #region スポット同定
     private void buttonIdentifySpots_Click(object sender, EventArgs e)
     {
+        // 261105Cl 追加 (監査 #30): 画像が無い・スポットが 2 個未満・結晶が未選択のときは始めない (マクロの Identify() と同じ条件)。
+        //  旧は画像の読込前に押すと identifySpots の p.Width で、スポット 0 個だと ReciprocalVectors が null で例外になり、
+        //  完了ハンドラの e.Result の参照でさらに例外になって、主窓が無効 (FormMain.Enabled = false) のまま戻らなかった
+        if (scalablePictureBoxAdvanced.PseudoBitmap == null || dataSet.DataTableSpot.Rows.Count < 2) // 261105Cl 追加
+        {
+            MessageBox.Show(this, Localization.Loc(en: "Load a diffraction pattern and register at least two spots before identifying.", // 261105Cl 追加
+                ja: "同定の前に回折図形を読み込み、スポットを 2 個以上登録してください。",
+                de: "Laden Sie vor der Identifizierung ein Beugungsbild und registrieren Sie mindestens zwei Reflexe.",
+                fr: "Chargez un cliché de diffraction et enregistrez au moins deux taches avant l'identification.",
+                es: "Cargue un patrón de difracción y registre al menos dos manchas antes de identificar.",
+                pt: "Carregue um padrão de difração e registre pelo menos dois pontos antes de identificar.",
+                it: "Caricare un pattern di diffrazione e registrare almeno due spot prima dell'identificazione.",
+                ru: "Перед идентификацией загрузите дифракционную картину и отметьте не менее двух рефлексов.",
+                zhHans: "识别前请先读入衍射图样并登记至少两个斑点。", zhHant: "識別前請先讀入繞射圖樣並登錄至少兩個斑點。",
+                ko: "식별하기 전에 회절 패턴을 불러오고 스폿을 두 개 이상 등록하세요."));
+            return; // 261105Cl 追加
+        }
+        var crystals = FormMain.listBox.SelectedItems.Cast<Crystal>().ToList(); // 261105Cl 追加 (旧は RunWorkerAsync の引数で直接作っていた)
+        if (crystals.Count == 0) // 261105Cl 追加
+        {
+            MessageBox.Show(this, Localization.Loc(en: "Select at least one crystal in the crystal list of the main window.", // 261105Cl 追加
+                ja: "メインウィンドウの結晶リストで結晶を 1 つ以上選んでください。",
+                de: "Wählen Sie in der Kristallliste des Hauptfensters mindestens einen Kristall aus.",
+                fr: "Sélectionnez au moins un cristal dans la liste des cristaux de la fenêtre principale.",
+                es: "Seleccione al menos un cristal en la lista de cristales de la ventana principal.",
+                pt: "Selecione pelo menos um cristal na lista de cristais da janela principal.",
+                it: "Selezionare almeno un cristallo nell'elenco dei cristalli della finestra principale.",
+                ru: "Выберите хотя бы один кристалл в списке кристаллов главного окна.",
+                zhHans: "请在主窗口的晶体列表中选择至少一个晶体。", zhHant: "請在主視窗的晶體清單中選擇至少一個晶體。",
+                ko: "메인 창의 결정 목록에서 결정을 하나 이상 선택하세요."));
+            return; // 261105Cl 追加
+        }
+
         sw.Restart();
         clearStatusLabel();
         FormMain.Enabled = false;
         buttonIdentifySpots.Visible = false;
         buttonStop.Visible = true;
         //260801Cl 変更: 選択結晶の収集を Cast<Crystal>() に (旧: for ループで 1 件ずつ Add。Identify() と同じ処理が二重にあった)
-        backgroundWorkerSpotID.RunWorkerAsync(FormMain.listBox.SelectedItems.Cast<Crystal>().ToList());
+        //backgroundWorkerSpotID.RunWorkerAsync(FormMain.listBox.SelectedItems.Cast<Crystal>().ToList()); // 261105Cl 変更前
+        backgroundWorkerSpotID.RunWorkerAsync(crystals); // 261105Cl 変更 (上で集めた一覧を渡す)
     }
 
     private void buttonStop_Click(object sender, EventArgs e)
@@ -1068,15 +1102,35 @@ public partial class FormSpotIDV2 : FormBase
 
     private void backgroundWorkerSpotID_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
-        if (e.Result != null && e.Result is List<List<Grain>> candidates)
+        // 261105Cl 変更 (監査 #30): e.Error があるときに e.Result を読むと TargetInvocationException になり、下のボタン・主窓の復帰まで届かなかった。
+        //  先に e.Error を見て知らせ、復帰は finally で必ず行う
+        //if (e.Result != null && e.Result is List<List<Grain>> candidates) // 261105Cl 変更前
+        //{
+        //    setCandidates(candidates); // 260801Cl 変更: 表への反映を setCandidates() へ (マクロの同期実行と共通化)
+        //    MessageBox.Show(candidates.Count.ToString() + " candidates found.");
+        //}
+        //
+        //buttonIdentifySpots.Visible = true;
+        //buttonStop.Visible = false;
+        //FormMain.Enabled = true;
+        try // 261105Cl
         {
-            setCandidates(candidates); // 260801Cl 変更: 表への反映を setCandidates() へ (マクロの同期実行と共通化)
-            MessageBox.Show(candidates.Count.ToString() + " candidates found.");
+            if (e.Error != null) // 261105Cl 追加
+                MessageBox.Show(this, Localization.Loc(en: "Identification failed: ", ja: "同定に失敗しました: ", de: "Identifizierung fehlgeschlagen: ", // 261105Cl 追加
+                    fr: "Échec de l'identification : ", es: "La identificación falló: ", pt: "A identificação falhou: ", it: "Identificazione non riuscita: ",
+                    ru: "Ошибка идентификации: ", zhHans: "识别失败: ", zhHant: "識別失敗: ", ko: "식별 실패: ") + e.Error.Message);
+            else if (e.Result is List<List<Grain>> candidates) // 261105Cl
+            {
+                setCandidates(candidates); // 260801Cl 変更: 表への反映を setCandidates() へ (マクロの同期実行と共通化) // 261105Cl 字下げ
+                MessageBox.Show(candidates.Count.ToString() + " candidates found."); // 261105Cl 字下げ
+            }
         }
-
-        buttonIdentifySpots.Visible = true;
-        buttonStop.Visible = false;
-        FormMain.Enabled = true;
+        finally // 261105Cl
+        {
+            buttonIdentifySpots.Visible = true; // 261105Cl 字下げ
+            buttonStop.Visible = false; // 261105Cl 字下げ
+            FormMain.Enabled = true; // 261105Cl 字下げ
+        }
     }
 
     /// <summary>260801Cl 追加: 同定結果を候補テーブルへ反映する (GUI 実行とマクロ実行の共通処理)。
