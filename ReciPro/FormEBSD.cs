@@ -1046,6 +1046,9 @@ public partial class FormEBSD : FormBase
         // 260724Cl 追加: 結晶が変わると旧結晶の MasterPattern は無効なので、build 中なら停止したうえで破棄し、依存 UI も無効化する
         if (masterPatternEbsd.IsBuilding)
             masterPatternEbsd.CancelMasterPatternBuild();
+        // 261105Cl 追加 (監査 N5): 構築の前段の MC (と Calc BSE の MC) も止める。IsBuilding は Bethe 段からしか true にならないので、
+        //   MC の最中に結晶を替えると構築は止まらず、旧結晶の MC (エネルギー・深さ格子、BSE 分布) で新結晶の MasterPattern を作っていた
+        monteCarloCts?.Cancel();
         masterPatternEbsd.ClearMasterPattern();
         masterPatternBWarning = ""; // 260919Cl 追加
         tabPageOutputParameter.Enabled = false;
@@ -3109,6 +3112,18 @@ public partial class FormEBSD : FormBase
                 return (Bses: bses, Distribution: distribution, Energies: grid.energies, Depths: grid.depths, grid.energyStart, grid.energyEnd, grid.energyStep, grid.depthStart, grid.depthEnd, grid.depthStep);
             }, cancellationToken); // 260406Cl cancellationToken を Task.Run にも渡す
 
+            // 261105Cl 追加 (監査 N5): MC の間に結晶・加速電圧が替わっていたら結果を使わない (旧結晶の MC と新結晶の MasterPattern を混ぜない)。
+            //   窓を開いていれば SetCrystal・電圧の変更で MC は止まるが、窓を閉じている間は SetCrystal が呼ばれないので最後まで走ってここへ来る
+            if (!ReferenceEquals(cry, FormMain.Crystal) || energy != Voltage)
+            {
+                masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds;
+                toolStripProgressBar.Value = 0;
+                toolStripStatusLabelSummary.Text = $"{statusPrefix}: MonteCarlo discarded";
+                toolStripStatusLabelProgress.Text = $"Stopped after {StatusBarHelper.FormatElapsed(monteCarloStopwatch.Elapsed)}";
+                toolStripStatusLabelDetail.Text = "The crystal or the accelerating voltage was changed during the Monte Carlo. Run it again.";
+                return false;
+            }
+
             if (result.Bses == null || result.Bses.Length == 0)
             {
                 masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds; // (260327Ch)
@@ -3165,7 +3180,10 @@ public partial class FormEBSD : FormBase
             toolStripProgressBar.Value = 0;
             toolStripStatusLabelSummary.Text = $"{statusPrefix}: MonteCarlo cancelled";
             toolStripStatusLabelProgress.Text = $"Stopped after {StatusBarHelper.FormatElapsed(monteCarloStopwatch.Elapsed)}";
-            toolStripStatusLabelDetail.Text = "";
+            // toolStripStatusLabelDetail.Text = ""; // 261105Cl 変更前
+            // 261105Cl 変更 (監査 N5): 結晶・電圧の変更で止めた (SetCrystal・電圧の変更) ときは理由を出す
+            toolStripStatusLabelDetail.Text = !ReferenceEquals(cry, FormMain.Crystal) || energy != Voltage
+                ? "Stopped because the crystal or the accelerating voltage was changed. Run it again." : "";
             return false;
         }
     }
@@ -3269,7 +3287,8 @@ public partial class FormEBSD : FormBase
 
             // var request = CreateMasterPatternBuildRequest(); // (260321Ch) 旧実装: request 生成を別 helper に切り出していた
             request = new EBSD.MasterPatternBuildRequest(
-                Crystal,
+                // Crystal, // 261105Cl 変更前
+                crystal, // 261105Cl 変更 (監査 N5): MC と同じ、構築の開始時の結晶 (MC の後で結晶が替わっていれば上の MC が false を返してここへ来ない)
                 MaxNumOfBloch,
                 EnergyArray,
                 ThicknessArray,
@@ -3364,7 +3383,9 @@ public partial class FormEBSD : FormBase
         {
             toolStripStatusLabelSummary.Text = "MasterPattern cancelled";
             toolStripStatusLabelProgress.Text = $"Stopped after {StatusBarHelper.FormatElapsed(sw2.Elapsed)}";
-            toolStripStatusLabelDetail.Text = "";
+            // toolStripStatusLabelDetail.Text = ""; // 261105Cl 変更前
+            // 261105Cl 変更 (監査 N5): 結晶・電圧の変更で止めた (SetCrystal・電圧の変更) ときは理由を出す
+            toolStripStatusLabelDetail.Text = MasterPatternBasisIsCurrent ? "" : "Stopped because the crystal or the accelerating voltage was changed. Build the master pattern again.";
             // labelMasterPatternInfo.Text = "MasterPattern build was cancelled."; // 260406Cl 廃止: Label2 "MasterPattern cancelled" で代替
             UpdateMasterPatternSelectors();
             DrawMasterPattern2D();
