@@ -51,13 +51,13 @@
 
 ## 幾何
 
-### SEM & 試片條件
+### SEM & 試樣條件
 
-![SEM & 試片條件](../assets/cap-zh-Hant-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
+![SEM & 試樣條件](../assets/cap-zh-Hant-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
-- **能量**：入射束的加速電壓 (keV)。
+- **能量**：入射束的加速電壓 (keV)。此值會保留到下次啟動。 <!-- 261106Cl 作者の決定 D4 -->
 - **波長**：電子波長，與 **能量** 連動。**Unit** 可選擇 Å 或 nm。
-- **試片傾角**：試樣傾斜角（通常為 −70°）。EBSD 中的大傾角可增加背向散射電子的產率。變更此值會捨棄蒙地卡羅結果（BSE 分布及其權重；請再次執行 **模擬**）；master pattern 與傾角無關，因此會保留。 <!-- 261106Cl 作者の決定 F17 -->
+- **試樣傾角**：試樣傾斜角（通常為 −70°）。EBSD 中的大傾角可增加背向散射電子的產率。變更此值會捨棄蒙地卡羅結果（BSE 分布及其權重；請再次執行 **模擬**）；master pattern 與傾角無關，因此會保留。 <!-- 261106Cl 作者の決定 F17 -->
 
 ### EBSD 幾何
 

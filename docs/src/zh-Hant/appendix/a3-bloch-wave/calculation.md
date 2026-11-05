@@ -49,7 +49,7 @@ $\mathbf g$ 的笛卡兒分量由倒易基向量和米勒指數得到：
 $$\begin{pmatrix} g_x\\ g_y\\ g_z\end{pmatrix} = \begin{pmatrix} a_x^{*} & b_x^{*} & c_x^{*}\\ a_y^{*} & b_y^{*} & c_y^{*}\\ a_z^{*} & b_z^{*} & c_z^{*}\end{pmatrix}\begin{pmatrix} h\\ k\\ l\end{pmatrix} = \begin{pmatrix} h\,a_x^{*} + k\,b_x^{*} + l\,c_x^{*}\\ h\,a_y^{*} + k\,b_y^{*} + l\,c_y^{*}\\ h\,a_z^{*} + k\,b_z^{*} + l\,c_z^{*}\end{pmatrix}$$
 
 !!! note
-    繞射模擬器的 **Details** 表中顯示的 $U_{\mathbf g}$ 值是在套用相對論因子 $\gamma$ *之前*的原始值。
+    繞射模擬器的 **繞射點詳情** 表中顯示的 $U_{\mathbf g}$ 值是在套用相對論因子 $\gamma$ *之前*的原始值。
 
 ---
 
