@@ -117,6 +117,7 @@ public partial class FormStructureViewer : FormBase
             flowLayoutPanelLegend.BackColor = SystemColors.Control;
         GLObjectsP = GLObjects.AsParallel();
 
+        if (neighborKeys.Count != 0) return; // 261105Cl 追加: static なので、2 個目のインスタンス (撮影ハーネスの生成など) で 27 個ずつ重複し、結合・多面体の頂点が二重に数えられていた
         for (int a = -1; a < 2; a++)
             for (int b = -1; b < 2; b++)
                 for (int c = -1; c < 2; c++)
@@ -704,7 +705,8 @@ public partial class FormStructureViewer : FormBase
         sw.Restart();
         static bool within(double d, double max, double min) => d < max && d > min;
         var dic1 = new Dictionary<string, bondVertex[]>();
-        var dicMaterial = new ConcurrentDictionary<int, Material>();
+        //var dicMaterial = new ConcurrentDictionary<int, Material>(); // 261105Cl 変更前: 多面体の材質の鍵を Index + 1000 としていたので、原子サイトが 1000 を超えると結合の材質の鍵と衝突した
+        var dicMaterial = new ConcurrentDictionary<(int Index, bool Poly), Material>(); // 261105Cl 変更
         //260731Cl 追加: 中心原子(Serial)ごとに多面体頂点と付随ボンド(円柱)を全ボンド定義にわたって統合するための辞書 (例: Cu-O と Cu-Cl の両定義から一つの多面体を生成)
         //構成原子(中心+頂点)がすべて描画範囲外の多面体は付随ボンドごと描かない (判定と原子の Rendered 設定は一括生成ループ側で行う)
         var polyDic = new Dictionary<int, (bondVertex c, List<bondVertex> vertices, List<GLObject> bondObjs, DrawingMode mode)>();
@@ -728,15 +730,19 @@ public partial class FormStructureViewer : FormBase
                         {
                             var s = e.Obj as Sphere;
                             var id = s.Tag as atomID;
-                            if (!dicMaterial.TryGetValue(id.Index, out var bondMat))
+                            //if (!dicMaterial.TryGetValue(id.Index, out var bondMat)) // 261105Cl 変更前 (鍵 id.Index / id.Index + 1000)
+                            if (!dicMaterial.TryGetValue((id.Index, false), out var bondMat)) // 261105Cl 変更
                             {
                                 bondMat = new Material(s.Material.Color, bondTrans);
-                                dicMaterial.TryAdd(id.Index, bondMat);
+                                //dicMaterial.TryAdd(id.Index, bondMat); // 261105Cl 変更前
+                                dicMaterial.TryAdd((id.Index, false), bondMat); // 261105Cl 変更
                             }
-                            if (!dicMaterial.TryGetValue(id.Index + 1000, out var polyMat))
+                            //if (!dicMaterial.TryGetValue(id.Index + 1000, out var polyMat)) // 261105Cl 変更前
+                            if (!dicMaterial.TryGetValue((id.Index, true), out var polyMat)) // 261105Cl 変更
                             {
                                 polyMat = new Material(s.Material.Color, polyTrans);
-                                dicMaterial.TryAdd(id.Index + 1000, polyMat);
+                                //dicMaterial.TryAdd(id.Index + 1000, polyMat); // 261105Cl 変更前
+                                dicMaterial.TryAdd((id.Index, true), polyMat); // 261105Cl 変更
                             }
                             //return new bondVertex(e.ObjIndex, id.Index, id.CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat);
                             return new bondVertex(e.ObjIndex, id.Index, id.CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat, id.IsInside);//260731Cl 変更: IsInsideを追加
@@ -1911,7 +1917,10 @@ public partial class FormStructureViewer : FormBase
 
             var atoms = atomControl.GetAll().Where(a => a.GLEnabled).ToList();
             if (atoms.Count == 0)
+            {
+                flowLayoutPanelLegend.Controls.Clear(); // 261105Cl 追加: 原子をすべて非表示にしたとき、前の凡例が残っていた
                 return;
+            }
             if (atoms.Count > 40 && !checkBoxGroupByElement.Checked)
             {
                 checkBoxGroupByElement.Checked = true;
