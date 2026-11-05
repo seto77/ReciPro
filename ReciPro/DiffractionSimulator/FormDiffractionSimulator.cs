@@ -2494,8 +2494,10 @@ public partial class FormDiffractionSimulator : FormBase
             //コントロールキーが押されていて、かつ検出器エリアが表示の時
             else if ((ModifierKeys & Keys.Control) == Keys.Control && FormDiffractionSimulatorGeometry.ShowDetectorArea)
             {
+                SkipEvent = true; // 261105Cl 追加 (監査 D11): Geometry 窓の検出器の欄の ValueChanged (親を描き直す) を X・Y の 2 回走らせない。描画は下で 1 回
                 FormDiffractionSimulatorGeometry.FootX += (lastMousePositionScreen.X - e.X) * Resolution / FormDiffractionSimulatorGeometry.DetectorPixelSize;
                 FormDiffractionSimulatorGeometry.FootY += (lastMousePositionScreen.Y - e.Y) * Resolution / FormDiffractionSimulatorGeometry.DetectorPixelSize;
+                SkipEvent = false; // 261105Cl 追加
                 if (FormDiffractionSimulatorGeometry.Visible)
                     FormDiffractionSimulatorGeometry.Refresh();
                 Draw(null, false);

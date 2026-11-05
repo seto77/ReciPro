@@ -212,6 +212,7 @@
             numericBoxFootX.Value = 512D;
             numericBoxFootX.ValueBoxWidth = 60;
             numericBoxFootX.ValueFontSize = 9F;
+            numericBoxFootX.ValueChanged += detectorArea_ValueChanged; // 261105Cl 追加 (監査 D11): 変更で親の検出器の枠・重ねた画像を描き直す
             // 
             // numericBoxFootY
             // 
@@ -234,6 +235,7 @@
             numericBoxFootY.Value = 512D;
             numericBoxFootY.ValueBoxWidth = 60;
             numericBoxFootY.ValueFontSize = 9F;
+            numericBoxFootY.ValueChanged += detectorArea_ValueChanged; // 261105Cl 追加 (監査 D11): 変更で親の検出器の枠・重ねた画像を描き直す
             // 
             // numericBoxPixelSize
             // 
@@ -256,6 +258,7 @@
             numericBoxPixelSize.Value = 0.1D;
             numericBoxPixelSize.ValueBoxWidth = 40;
             numericBoxPixelSize.ValueFontSize = 9F;
+            numericBoxPixelSize.ValueChanged += detectorArea_ValueChanged; // 261105Cl 追加 (監査 D11): 変更で親の検出器の枠・重ねた画像を描き直す
             // 
             // sizeControl1
             // 
@@ -272,6 +275,7 @@
             toolTip.SetToolTip(sizeControl1, resources.GetString("sizeControl1.ToolTip"));
             sizeControl1.Value = new System.Drawing.Size(1024, 1024);
             sizeControl1.ValueFontSize = 9F;
+            sizeControl1.ValueChanged += detectorArea_ValueChanged; // 261105Cl 追加 (監査 D11): 変更で親の検出器の枠・重ねた画像を描き直す
             // 
             // buttonClearPicture
             // 

@@ -92,6 +92,16 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
         FormDiffractionSimulator.Draw();
     }
 
+    /// <summary>261105Cl 追加 (監査 D11): 検出器の大きさ・Foot・画素サイズの変更。以前はどこにも配線されておらず、親 (回折シミュレータ) の検出器の枠・重ねた画像・
+    /// 「検出器の中心」に固定した中心が、次に別の操作で再描画されるまで古いままだった</summary>
+    private void detectorArea_ValueChanged(object sender, EventArgs e)
+    {
+        if (FormDiffractionSimulator == null || FormDiffractionSimulator.SkipEvent) return; // 親のマウス操作 (Ctrl + 中ボタンで検出器を動かす) は親が自分で 1 回描く
+        if (FormDiffractionSimulator.IsCenterFixed)
+            FormDiffractionSimulator.Foot = FormDiffractionSimulator.FixedCenter;
+        FormDiffractionSimulator.Draw();
+    }
+
     private void numericBoxTau_ValueChanged(object sender, EventArgs e)
     {
         FormDiffractionSimulator.SetVector();
