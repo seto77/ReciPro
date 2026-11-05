@@ -40,7 +40,7 @@
 
 ![样品参数](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
 
-- **Thickness** ：样品厚度（nm）。在 **Serial image** 模式下此值被忽略。
+- **厚度** ：样品厚度（nm）。在 **序列图像** 模式下此值被忽略。
 
 ---
 
@@ -50,7 +50,7 @@
 
 | 参数 | 说明 | 默认值 / 典型值 |
 |-----------|-------------|-------------------|
-| **加速电压 (kV)** | 加速电压。旁边显示经相对论修正的电子波长 | 200 kV |
+| **加速电压** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | 加速电压 (kV)。旁边显示经相对论修正的电子波长 | 200 kV |
 | **Defocus Δf** | 物镜（探针形成透镜）的欠焦量（nm） | −57.8 nm |
 | **Cs** | 球差系数（mm）。影响探针尺寸 | 0.5–1.0 mm |
 | **Cc** | 色差系数（mm） | 1.0–2.0 mm |
@@ -68,10 +68,10 @@
 
 | 参数 | 说明 | 默认值 / 典型值 |
 |-----------|-------------|-------------------|
-| **α (convergence angle)** | 会聚探针的半角（mrad）。较大的值得到更细的探针并改变衍射衬度 | 25 mrad（默认）；15–25 mrad |
+| **Conv. semi-angle α** | 会聚探针的半角（mrad）。较大的值得到更细的探针并改变衍射衬度 | 25 mrad（默认）；15–25 mrad |
 | **环形探测器 — 内** | 环形探测器的内侧收集半角（mrad）。此角度以内的信号被排除 | 0（默认）；BF: 0, HAADF: 80 |
 | **环形探测器 — 外** | 环形探测器的外侧收集半角（mrad）。此角度以外的信号被排除 | 20（默认）；BF: 5, HAADF: 250 |
-| **Effective source size (σs, FWHM)** | 有效电子源尺寸（pm）。在计算之后以高斯卷积的形式作用于每一幅 Elastic / TDS / EDX 图像。较大的值会使图像模糊并降低细节衬度 | 20 pm（默认） |
+| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | 有效电子源尺寸（pm）。在计算之后以高斯卷积的形式作用于每一幅 Elastic / TDS / EDX 图像。较大的值会使图像模糊并降低细节衬度 | 20 pm（默认） |
 
 探测器角度只作用于 STEM 参考图像（Elastic / TDS / Elastic & TDS）；STEM-EDX 分布图不使用它们。上述默认值仅在首次启动时适用；之后会恢复上次使用的值。
 
@@ -86,12 +86,13 @@
 
 ---
 
-## 图像模式（single / serial）
+## 单幅/序列模式
 
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text) と HRTEM のページに合わせた -->
 ![单幅/序列模式](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
-- **Single image** ：在当前厚度下计算一张 STEM 图像。
-- **Serial image** ：生成一系列图像，厚度 / 欠焦量按阶梯变化（由 **Start / Step / Num** 设置；下方的列表也可直接编辑）。
+- **单幅图像** ：在当前厚度下计算一张 STEM 图像。
+- **序列图像** ：生成一系列图像，厚度 / 欠焦量按阶梯变化（由 **起始 / 步长 / 数量** 设置；下方的列表也可直接编辑）。
 
 ---
 
@@ -99,8 +100,8 @@
 
 ![图像属性](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-- **Size (W×H)** ：扫描图像的像素数（默认 512×512）。本征解和 $I(Q)$ 的计算（状态栏中的第 1–4 阶段）与它无关；它只参与由 $I(Q)$ 系数合成实空间图像的最后一步，其开销正比于 像素数 × $Q$ 矢量数。
-- **Resolution** ：采样分辨率（pm/px）。
+- **尺寸 (宽×高)** ：扫描图像的像素数（默认 512×512）。本征解和 $I(Q)$ 的计算（状态栏中的第 1–4 阶段）与它无关；它只参与由 $I(Q)$ 系数合成实空间图像的最后一步，其开销正比于 像素数 × $Q$ 矢量数。
+- **分辨率** ：采样分辨率（pm/px）。
 
 ---
 
@@ -108,7 +109,7 @@
 
 ![衍射波](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** ：Bethe 方法中使用的布洛赫波最大数量（默认 80）。本征值问题的计算量按波数的立方增长。
+- Bethe 方法中使用的布洛赫波最大数量（默认 80）。本征值问题的计算量按波数的立方增长。
 
 ---
 

@@ -183,11 +183,11 @@ for k in range(-2, 3):
 
 | 函数 | 说明 |
 |------|------|
-| `SpotID.LoadFile(filename)` | 按 **File > Load** 的方式读入文件：`.csv` 作为斑点列表读取（须先读入图像），其他扩展名作为衍射花样图像读取（dm3、dm4、mrc、ipa、tif 等支持的格式）。省略 `filename` 则打开文件选择对话框 |
-| `SpotID.FindSpots()` | 在读入的图像中检测斑点并拟合（等同 **Find spots** 按钮） |
-| `SpotID.Identify()` | 搜索能解释所检测斑点的取向（等同 **Identify spots** 按钮），并返回候选数。参与检验的晶体为主窗口晶体列表中选中的那些 |
+| `SpotID.LoadFile(filename)` | 按 **文件 > 载入** 的方式读入文件：`.csv` 作为斑点列表读取（须先读入图像），其他扩展名作为衍射花样图像读取（dm3、dm4、mrc、ipa、tif 等支持的格式）。省略 `filename` 则打开文件选择对话框 |
+| `SpotID.FindSpots()` | 在读入的图像中检测斑点并拟合（等同 **检测 & 拟合衍射点** 按钮） <!-- 261105Cl 監査: ボタン名を FormSpotIDV2.resx に合わせた --> |
+| `SpotID.Identify()` | 搜索能解释所检测斑点的取向（等同 **识别衍射点** 按钮），并返回候选数。参与检验的晶体为主窗口晶体列表中选中的那些。未读入图像、登记的斑点少于两个或未选中任何晶体时，不进行搜索而返回 0 |
 | `SpotID.CandidateList()` | 以 CSV 文本返回候选取向列表 |
-| `SpotID.SpotList()` | 以 CSV 文本返回观测斑点列表（列与 **File > Save** 相同）。与 `File.SaveText()` 配合保存后，可用 `LoadFile()` 再次读入 |
+| `SpotID.SpotList()` | 以 CSV 文本返回观测斑点列表（列与 **衍射点信息** 中 **保存** 按钮的输出相同）。与 `File.SaveText()` 配合保存后，可用 `LoadFile()` 再次读入 |
 
 `CandidateList()` 对每个候选返回：晶体名、Z-X-Z 欧拉角（度）、旋转矩阵的九个元素 R11–R33（晶体坐标系→实验室坐标系，作用于列向量）、残差的均方（nm⁻²），以及观测斑点与 *hkl* 指数的对应。候选按已指派斑点数降序、其次按残差升序排列。数值以 invariant culture 写出，因此小数点始终为句点。
 
@@ -197,13 +197,13 @@ for k in range(-2, 3):
 |------|------|------|
 | `Energy` | double | 入射线能量（X 射线与电子束为 keV，中子束为 meV） |
 | `CameraLength` | double | 相机长度（mm） |
-| `PixelSizeInMM` | double | 图像的像素尺寸（mm）。读写该属性同时会把像素尺寸单位切换为 mm |
-| `PixelSizeInNMinv` | double | 图像的像素尺寸（nm⁻¹）。读写该属性同时会把单位切换为 nm⁻¹ |
+| `PixelSizeInMM` | double | 图像的像素尺寸（mm）。写入时会把像素尺寸单位切换为 mm；读取时返回换算为 mm 的值，不改变单位 <!-- 261105Cl 監査: Macro.cs の Help 文 (I6) --> |
+| `PixelSizeInNMinv` | double | 图像的像素尺寸（nm⁻¹）。写入时会把单位切换为 nm⁻¹；读取时返回换算为 nm⁻¹ 的值，不改变单位 |
 | `MaxNumberOfSpots` | int | `FindSpots()` 可检测的斑点数上限 |
 | `NearestNeighbor` | int | 所检测斑点之间允许的最小间隔（像素） |
 | `FittingRange` | double | 峰拟合所用的、每个斑点周围区域的半径（像素） |
 | `AcceptableError` | double | 将观测斑点与候选衍射对应时允许的面间距相对偏差（%） |
-| `IgnoreProhibitedReflections` | bool | 是否忽略运动学消光但可经多重衍射出现的衍射 |
+| `IgnoreProhibitedReflections` | bool | 是否忽略运动学消光但可经多重衍射出现的衍射。对 X 射线和中子始终为 `true`；此时设置的值在入射源切回电子时生效 <!-- 261106Cl 作者の決定 I4 --> |
 | `MultiGrain` | bool | 是否搜索多个晶粒；`False` 表示单晶 |
 | `MaxNumberOfGrains` | int | `MultiGrain` 为 `True` 时搜索的晶粒取向数上限 |
 | `NumberOfDetectedSpots` | int | 已检测的斑点数（只读） |
@@ -220,7 +220,7 @@ for k in range(-2, 3):
 | `StructureViewer.Open()` | 打开结构查看器窗口 |
 | `StructureViewer.Close()` | 关闭结构查看器窗口 |
 | `StructureViewer.SaveImage(filename)` | 将主视图渲染图像保存为 PNG（像素尺寸取窗口的 **Size (W×H)** 框）。省略 `filename` 则打开保存对话框 |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 将显示中的结构导出用于 3D 打印（与 File 菜单的 **Export 3D Model (3MF/STL)** 相同）。格式由扩展名决定（`.stl` = 单色 / `.3mf` = 按元素着色）。仅 `filename` 为必需，其余默认值与对话框相同（最长边 80 mm、晶胞边框 ⌀2.4 mm、化学键增粗至 ⌀1.2 mm）。传入 `fixedScaleInMMperNm` > 0 可按同一比例制作多个模型。`filename` 必须以 `.stl` 或 `.3mf` 结尾（不会打开对话框）；返回包含三角形数和打印尺寸的信息字符串 |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 将显示中的结构导出用于 3D 打印（与 **文件** 菜单的 **Export 3D model (3MF/STL)** 相同）。格式由扩展名决定（`.stl` = 单色 / `.3mf` = 按元素着色）。仅 `filename` 为必需，其余默认值与对话框相同（最长边 80 mm、晶胞边框 ⌀2.4 mm、化学键增粗至 ⌀1.2 mm）。传入 `fixedScaleInMMperNm` > 0 可按同一比例制作多个模型。`filename` 必须以 `.stl` 或 `.3mf` 结尾（不会打开对话框）；返回包含三角形数和打印尺寸的信息字符串 |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -317,7 +317,7 @@ ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60,
 
 | 函数 | 说明 |
 |----------|-------------|
-| `ReciPro.Sleep(ms)` | 等待指定的毫秒数。以 `ReciPro.Sleep(ms)` 的形式调用；它不列在编辑器的内置函数表中 |
+| `ReciPro.Sleep(ms)` | 等待指定的毫秒数。以 `ReciPro.Sleep(ms)` 的形式调用 <!-- 261105Cl 監査: エディタの関数表にも出るようになった (41cb5a7b) --> |
 
 ---
 

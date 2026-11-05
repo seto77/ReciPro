@@ -22,14 +22,14 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 |----------|--------|
 | <kbd>F1</kbd> | 打开在线手册的本页 |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + 方向键 | 将晶体朝该方向旋转一步（同时按住两个方向键可斜向旋转） |
-| ReciPro 启动时按住 <kbd>CTRL</kbd> | 以禁用 OpenGL 的方式启动（用于在图形问题时恢复） |
+| ReciPro 启动时按住 <kbd>CTRL</kbd> | 以禁用 OpenGL 的方式启动（用于在图形问题时恢复；仅限本次启动，不保存） |
 | 用左键拖动取向控件（左下方，*当前取向* 下方） | 旋转晶体 |
 | 在取向控件上右键双击 | 将控件图像复制到剪贴板 |
 | 单击功能按钮 | 打开 / 关闭该窗口（若窗口已最小化，则改为将其还原，而不是关闭） |
 | 双击功能按钮 | 强制窗口可见并置于最前 |
 | 在列表中右键单击晶体 | 上下文菜单（重命名 / 导出为 CIF / 复制 / 删除） |
 | 双击晶带轴指数标签（*当前取向* 下方的 `[u v w]`） | 显示 / 隐藏 max-UVW 框 |
-| 将文件拖放到窗口上 | 加载晶体列表（`.xml`、`.out`、`.cdb2`；会询问是替换当前列表还是追加）或单个晶体（`.cif`、`.amc`） |
+| 将文件拖放到窗口上 | 加载晶体列表（`.xml`、`.out`；会询问是替换当前列表还是追加）或单个晶体（`.cif`、`.amc`） <!-- 261105Cl 監査: .cdb2 はドロップで読めないので外した (FormMain.cs:FormMain_DragDrop) --> |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> | 为当前活动窗口打开（实验性的）GUI 捕获工具 |
 
 → 关于各窗口快捷键的一览，请参阅 **[21. 键盘与鼠标快捷键](21-shortcuts.md)**。
@@ -49,7 +49,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 ## 文件菜单
 
-### File
+### 文件
 
 
 | 菜单项 | 说明 |
@@ -61,14 +61,14 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 | 保存晶体列表 | 保存当前晶体列表（可在对话框中选择要写入哪些晶体） |
 | 将选定晶体导出为 CIF 文件 | 以 CIF 格式保存所选晶体 |
 | 清除所有晶体 | 从列表中移除所有晶体 |
-| Exit | 关闭应用程序 |
+| 退出 | 关闭应用程序 |
 
-### Options
+### 选项
 
 
 | 菜单项 | 说明 |
 |-----------|-------------|
-| 显示工具提示 | 切换工具提示的显示 |
+| 显示工具提示 | 在所有窗口中显示或隐藏工具提示——包括控件、工具栏和菜单项、表格单元格以及选项卡的工具提示；该设置会保留到下次启动 <!-- 261106Cl 作者の決定 C9 --> <!-- 261106Cl 作者の決定 A20 --> |
 | 深色模式 | 在浅色和深色配色主题之间切换 |
 | 使用米勒-布拉维 (hkil) 指数 | 在整个应用程序中对三方/六方晶系使用 4 指数标记 |
 | 使用离子散射因子 | 在动力学（布洛赫波）电子计算（包括菊池线轮廓）中，对原子所指定的离子使用离子电子散射因子（Peng）；$g \neq 0$ 的单极项只加到弹性系数 $U_g$ 上（TDS 吸收和菊池 TDS 源使用有限的离子部分）。未勾选时使用中性原子的散射因子。若晶胞不呈电中性（$\Sigma q \neq 0$），则舍去单极项，只使用有限的（屏蔽离子）部分；开启该选项时会显示一条提示 |
@@ -81,7 +81,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 | 捕获 GUI 组件... | 用于保存 GUI 截图的开发者工具 |
 | 粉末衍射功能（开发中） | 启用多晶（粉末）衍射窗口 |
 
-### Help
+### 帮助
 
 | 菜单项 | 说明 |
 |-----------|-------------|
@@ -95,11 +95,11 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 界面语言通过单独的 **语言** 菜单切换（需要重启）。
 
-### Language
+### 语言
 
 切换界面语言。共支持 11 种语言 —— English、日本語、Deutsch、Français、Español、Português、Italiano、Русский、简体中文、繁體中文、한국어 —— 菜单中以各语言自身的文字显示。更改在重启 ReciPro 后生效。在线手册也遵循同一设置，因此 <kbd>F1</kbd> 和 **帮助 ▸ 帮助（网页）** 会以您所选的语言打开相应页面。
 
-### Macro
+### 宏
 
 **Editor** 打开[宏](20-macro/index.md)窗口，使用 Python 风格的脚本自动化 ReciPro 操作。在该窗口中注册的宏也会列在 **Editor** 下方；选择其中一项即可直接运行。对于重复性的工作流程，请参阅[内置函数](20-macro/1-built-in-functions.md)和[宏示例](20-macro/2-examples.md)。
 
@@ -137,7 +137,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 按 **步长** 角度旋转（默认 10°）。↺ / ↻ 绕屏幕法线旋转。勾选 **Animation** 可连续旋转；此时 **步长** 表示旋转速率（°/s）。
 
-### 沿向观察
+### 观察方向
 
 ![观察方向](../assets/cap-zh-Hans-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
@@ -153,8 +153,8 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 |--------|----------|-------|
 | 鼠标拖动 | 您希望在观察晶轴的同时自由旋转。 | **当前取向**面板 |
 | 箭头按钮 | 您希望进行小幅、可重复的旋转。 | **箭头**面板 |
-| 晶带轴 | 您已知观察方向，例如 \([001]\) 或 \([110]\)。 | **沿向观察** / 晶带轴输入 |
-| 晶面法线 | 您希望某个晶面 \((hkl)\) 垂直于屏幕。 | **沿向观察** / 晶面输入 |
+| 晶带轴 | 您已知观察方向，例如 \([001]\) 或 \([110]\)。 | **观察方向** / 晶带轴输入 |
+| 晶面法线 | 您希望某个晶面 \((hkl)\) 垂直于屏幕。 | **观察方向** / 晶面输入 |
 | 欧拉角 | 您需要一个可复现的数值取向。 | **欧拉角 (Z-X-Z)** |
 
 关于旋转矩阵和坐标约定，请参阅[旋转几何](4-rotation-geometry.md)和[附录 A1. 坐标系](appendix/a1-coordinate-system/1-orientation.md)。
@@ -180,7 +180,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 ## 晶体信息
 
-编辑晶格参数、对称性和原子；将 CIF/AMC 文件拖放进来以加载结构。该控件由 ReciPro、PDIndexer 和 CSManager 共享，但所显示的选项卡和功能因应用程序而异。ReciPro 显示 Basic Info、Atom 和 Reference 选项卡（EOS、Elasticity 等选项卡属于其他应用程序，在 ReciPro 中不显示）。
+编辑晶格参数、对称性和原子；将 CIF/AMC 文件拖放进来以加载结构。该控件由 ReciPro、PDIndexer 和 CSManager 共享，但所显示的选项卡和功能因应用程序而异。ReciPro 显示 **基本信息**、**原子信息** 和 **文献** 选项卡（EOS、Elasticity 等选项卡属于其他应用程序，在 ReciPro 中不显示）。
 
 > **重要**：按 **添加** 或 **替换** 以保存更改。
 
@@ -188,15 +188,15 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 面板顶部始终显示 **Name**（晶体名称）、**化学式**（根据原子列表计算得出）、**Z**（每个晶胞中的化学式单位数）和 **颜色**（晶体的显示颜色，用于 3D 结构视图和衍射轮廓曲线）。**对称性信息** 和 **射束相互作用** 按钮分别打开[对称性信息](2-symmetry-information.md)和[射束相互作用](3-beam-interaction.md)窗口。 质量%、原子% 以及换算为氧化物，可通过右键菜单的[化学组成详情](#chemical-composition)查看。
 
-### Basic Info 选项卡
+### 基本信息选项卡 {#basic-info-tab}
 
-![Basic Info](../assets/cap-zh-Hans-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
+![基本信息](../assets/cap-zh-Hans-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
 
 晶格参数、对称性以及由它们导出的量。
 
 | 项目 | 说明 |
 |------|------|
-| 晶胞参数 | 晶格参数 a、b、c（**单位**：Å = 10⁻¹⁰ m 或 nm）以及 α、β、γ。选择某种对称性会自动对它们加以约束（例如立方晶系中 a=b=c、α=β=γ=90°）。 |
+| 晶胞参数 | 晶格参数 a、b、c（**单位**：Å = 10⁻¹⁰ m 或 nm；该单位会保留到下次启动）以及 α、β、γ。选择某种对称性会自动对它们加以约束（例如立方晶系中 a=b=c、α=β=γ=90°）。 |
 | 对称性 | 选择**晶系**、**点群**和**空间群**。在**搜索**框中输入可列出匹配的候选项（区分大小写）。 |
 | 晶胞体积 / 晶胞质量 | 晶胞的体积和质量。体积按**单位**选择以 Å³ / nm³ 显示；质量以 10⁻²⁴ g 为单位。 |
 | 摩尔体积 / 摩尔质量 / 密度 | 摩尔体积（cm³/mol，按每个化学式单位计）、摩尔质量（g/mol）和密度（g/cm³）。**仅在已输入原子时**显示。 |
@@ -205,15 +205,15 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 | Change axes/origin setting | 与上下文菜单项 **更改轴/原点设置** 相同：转换为同一空间群的另一种轴/原点设定。 |
 | 原子密度 / 电子密度 | 单位晶胞体积中的原子数和电子数，按**单位**选择以 Å⁻³ / nm⁻³ 显示。 |
 
-### Atom 选项卡
+### 原子信息选项卡 {#atom-tab}
 
-![Atom](../assets/cap-zh-Hans-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
+![原子信息](../assets/cap-zh-Hans-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
 设置每个原子的种类、位置、温度因子和散射因子。使用 **添加**、**替换**（替换所选行）、**上移/下移**（调整顺序）和 **删除** 编辑原子列表。原子列表还会为每个位置显示其 **多重性**、**威科夫字母** 和 **位置对称性**。每个原子具有：
 
 | 项目 | 说明 |
 |------|------|
-| Label | 原子标签（任意标识符）。 |
+| 标签 | 原子标签（任意标识符）。 |
 | Element | 元素（包含离子化合价）。 |
 | X, Y, Z | 分数坐标（0–1）。可输入诸如 1/2 或 2/3 之类的分数。 |
 | Occ | 占据率（0–1）。 |
@@ -222,7 +222,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 **原点平移**：移动所有原子坐标的原点。先用 **+** / **−** 选择符号，再按其中一个预设矢量 —— (⅛ ⅛ ⅛)、(¼ ¼ ¼)、(0 ¼ ⅛)、(¼ 0 ¼)、(0 ¼ ¼)、(¼ ¼ 0)、(¼ −¼ 0)、(¼ −¼ ¼)、(0 ¼ −⅛) —— 或使用 **Apply custom shift** 设置任意偏移量。
 
-**Debye–Waller factor（温度因子）**：
+**原子位移 (B)**（德拜–沃勒因子 / 温度因子）：
 
 | 项目 | 说明 |
 |------|------|
@@ -238,11 +238,11 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 | Electron | 电子散射因子 —— 中性原子取自 Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276；离子取自 Peng (1998), *Acta Cryst.* **A54**, 481–485。 |
 | Neutron | 中子散射长度。可选择 **Natural isotope abundance** 或 **Custom isotope abundance**（任意同位素组成）。 |
 
-### Reference 选项卡
+### 文献选项卡 {#reference-tab}
 
-![Reference](../assets/cap-zh-Hans-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
+![文献](../assets/cap-zh-Hans-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
 
-记录结构的来源：**Note**、**Authors**、**Journal** 和 **Title**。
+记录结构的来源：**Note**、**作者**、**期刊** 和 **标题**。
 
 ### 上下文菜单（右键单击）
 
@@ -280,19 +280,19 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 | 按钮 | 说明 | 详情 |
 |--------|-------------|---------|
-| Crystal Database | 从随附 / 在线数据库中搜索并导入晶体 | [1. 晶体数据库](1-crystal-database.md) |
-| Symmetry Information | 空间群信息及 *International Tables* Vol. A 对称图 | [2. 对称性信息](2-symmetry-information.md) |
-| Beam Interaction | 射束–晶体相互作用：反射、衰减、散射因子、荧光 | [3. 射束相互作用](3-beam-interaction.md) |
-| Rotation Geometry | 3D 旋转矩阵 / 测角仪角度 | [4. 旋转几何](4-rotation-geometry.md) |
-| Structure Viewer | 3D 晶体结构 | [5. 结构查看器](5-structure-viewer.md) |
-| Stereonet | 极射赤平投影 | [6. 极射赤平投影](6-stereonet.md) |
-| Diffraction Simulator | 单晶 X 射线 / 电子衍射 | [7. 衍射模拟器](7-diffraction-simulator/index.md) |
-| Trajectory Simulator | 蒙特卡洛电子轨迹模拟 | [8. 电子轨迹](8-electron-trajectory.md) |
-| HRTEM/STEM Simulator | HRTEM / STEM 图像模拟 | [9. HRTEM/STEM 模拟器](9-hrtem-stem-simulator/index.md) |
+| 晶体数据库 | 从随附 / 在线数据库中搜索并导入晶体 | [1. 晶体数据库](1-crystal-database.md) |
+| 对称性信息 | 空间群信息及 *International Tables* Vol. A 对称图 | [2. 对称性信息](2-symmetry-information.md) |
+| 射束相互作用 | 射束–晶体相互作用：反射、衰减、散射因子、荧光 | [3. 射束相互作用](3-beam-interaction.md) |
+| 旋转几何 | 3D 旋转矩阵 / 测角仪角度 | [4. 旋转几何](4-rotation-geometry.md) |
+| 结构查看器 | 3D 晶体结构 | [5. 结构查看器](5-structure-viewer.md) |
+| 极射赤平网 | 极射赤平投影 | [6. 极射赤平投影](6-stereonet.md) |
+| 衍射模拟器 | 单晶 X 射线 / 电子衍射 | [7. 衍射模拟器](7-diffraction-simulator/index.md) |
+| 轨迹模拟器 | 蒙特卡洛电子轨迹模拟 | [8. 电子轨迹](8-electron-trajectory.md) |
+| HRTEM/STEM 模拟器 | HRTEM / STEM 图像模拟 | [9. HRTEM/STEM 模拟器](9-hrtem-stem-simulator/index.md) |
 | Spot ID v1 | SAED 花样标定（原称 "TEM ID"） | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | 衍射斑检测与标定 | [11. Spot ID v2](11-spot-id-v2.md) |
-| EBSD Simulator | EBSD 花样模拟 | [12. EBSD 模拟](12-ebsd-simulation.md) |
-| Powder Diffraction | 多晶（粉末）衍射——通过 **选项 ▸ 粉末衍射功能（开发中）** 启用 | - |
+| EBSD 模拟器 | EBSD 花样模拟 | [12. EBSD 模拟](12-ebsd-simulation.md) |
+| 粉末衍射 | 多晶（粉末）衍射——通过 **选项 ▸ 粉末衍射功能（开发中）** 启用 | - |
 
 ---
 

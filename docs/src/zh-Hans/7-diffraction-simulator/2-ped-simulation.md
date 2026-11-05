@@ -2,9 +2,9 @@
 
 **PED（进动电子衍射，Precession Electron Diffraction）** 模拟计算的是通过使入射束在绕光轴的锥面上进动而获得的电子衍射图。
 
-> 本页列出当您选择 **Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)** 时右侧出现的全部设置项。请注意，**为入射束选择 Precession (electron) 会自动将强度计算切换为 Dynamical**。关于绘制和保存等窗口级操作，请参见[概览页面](index.md)。
+> 本页列出当您选择 **波源 = 电子，光学 = 进动（电子），强度计算 = 动力学理论（自动）** 时右侧出现的全部设置项。请注意，**在光学中选择 进动（电子） 会自动将强度计算切换为 动力学理论**。关于绘制和保存等窗口级操作，请参见[概览页面](index.md)。
 
-GUI 条件：**Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)**
+GUI 条件：**波源 = 电子，光学 = 进动（电子），强度计算 = 动力学理论（自动）**
 
 ![PED 模式下的衍射模拟器](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator-ped.png)
 
@@ -20,21 +20,21 @@ GUI 条件：**Wave = Electron beam, Incident beam = Precession (electron), Inte
 
 ---
 
-## 波长设置
+## 波源 {#wavelength-setup}
 
-![波长](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![波源](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-由于 PED 属于电子衍射，请选择 **Electron beam** 作为波源。输入电子能量 (keV) 或波长（Å 或 nm，可切换；默认 Å）即可计算出经相对论修正的波长。
+由于 PED 属于电子衍射，请选择 **电子** 作为 **波源**。输入电子能量 (keV) 或波长（Å 或 nm，可切换；默认 Å）即可计算出经相对论修正的波长。
 
 ---
 
-## 入射束
+## 光学 {#incident-beam}
 
-![入射束模式](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![光学](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-对于入射束的几何，请选择 **Precession (electron)**（仅在选择了电子束时可用）。
+在 **光学**（入射束的几何）中，请选择 **进动（电子）**（仅在选择了 **电子** 时可用）。
 
-> **注意** : 选择 **Precession (electron)** 会**自动将强度计算切换为 Dynamical**，并出现布洛赫波法设置面板和进动设置面板。**Only excitation error** / **Kinematical** 将无法再被选择。
+> **注意** : 选择 **进动（电子）** 会**自动将强度计算切换为 动力学理论**，并出现布洛赫波法设置面板和进动设置面板。**仅激发误差** / **运动学 & 激发误差** 将无法再被选择。
 
 ---
 
@@ -53,7 +53,7 @@ GUI 条件：**Wave = Electron beam, Incident beam = Precession (electron), Inte
 
 ## 强度计算与布洛赫波设置
 
-一旦选择 **Precession (electron)**，**Intensity = Dynamical (automatic)** 即被固定。对于每个进动方向上的平行束，用布洛赫波法（动力学计算）计算衍射强度，再对所有方向积分即得到 PED 图。
+一旦选择 **进动（电子）**，**强度计算** 即被固定为 **动力学理论**（自动）。对于每个进动方向上的平行束，用布洛赫波法（动力学计算）计算衍射强度，再对所有方向积分即得到 PED 图。
 
 ![布洛赫波参数](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
@@ -72,10 +72,10 @@ GUI 条件：**Wave = Electron beam, Incident beam = Precession (electron), Inte
 
 控制每个衍射斑的绘制方式。
 
-- **Solid sphere / Gaussian** : 倒易点阵点的几何模型。**Solid sphere** 绘制半径为 $R$ 的球与埃瓦尔德球的截面，**Gaussian** 绘制 $\sigma = R$ 的三维高斯函数与埃瓦尔德球的截面（一个二维高斯函数）。
-- **Opacity** : 衍射斑的透明度（0 = 透明，1 = 不透明）。
-- **Radius (R)** : 倒易点阵点的半径。对于动力学强度，高斯积分 $=$ Brightness $\times I_\text{dyn}$，而 Solid sphere 使用半径 $R \times I_\text{dyn}^{1/2}$（使面积正比于动力学强度）。
-- **亮度**、**色阶**、**对数刻度** : 仅在 **高斯** 模式下显示。**亮度** 缩放所绘高斯函数的积分强度；**色阶** 可选 **Gray**（衍射斑使用下面的斑点颜色）、**Cold-Warm**、**Spectrum** 或 **Fire**；**对数刻度** 以对数刻度显示强度。
+- **实心球 / 高斯** : 倒易点阵点的几何模型。**实心球** 绘制半径为 $R$ 的球与埃瓦尔德球的截面，**高斯** 绘制 $\sigma = R$ 的三维高斯函数与埃瓦尔德球的截面（一个二维高斯函数）。
+- **不透明度** : 衍射斑的透明度（0 = 透明，1 = 不透明）。
+- **斑点半径 (R)** : 倒易点阵点的半径。对于动力学强度，高斯积分 $=$ 亮度 $\times I_\text{dyn}$，而实心球使用半径 $R \times I_\text{dyn}^{1/2}$（使面积正比于动力学强度）。
+- **亮度**、**色阶**、**对数刻度** : 仅在 **高斯** 模式下显示。**亮度** 缩放所绘高斯函数的积分强度；**色阶** 可选 **Gray**（衍射斑使用下面的斑点颜色）、**Cold-warm**、**Spectrum** 或 **Fire**；**对数刻度** 以对数刻度显示强度。
 - **斑点颜色** : 在 **色阶** 为 **Gray**（初始设置）时显示：**一般斑点** / **消光斑点 (螺旋或滑移)** / **消光斑点 (点阵心化)**。
 - **按晶体指定颜色** : 以分配给每个晶体的颜色绘制衍射斑。
 

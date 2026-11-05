@@ -7,7 +7,7 @@
 该窗口分为空间群标识区（左上）、带选项卡的计算/表格区（右上）以及两幅示意图（底部）。
 
 !!! tip "对称性理论（附录 A4）"
-    Hermann–Mauguin/Hall/Schoenflies 符号究竟编码了什么、**群性质** 选项卡上的群论分类（中心对称、Sohncke、简单型、极性、…）、下方对称元素/一般位置示意图的含义，以及 **群关系...** 所展示的群-子群关系，都在 **[附录 A4. 对称性与空间群](appendix/a4-symmetry-space-groups/index.md)** 中有详细说明。
+    Hermann–Mauguin/Hall/Schoenflies 符号究竟编码了什么、**群性质** 选项卡上的群论分类（中心对称、Sohncke、点式、极性、…）、下方对称元素/一般位置示意图的含义，以及 **群关系...** 所展示的群-子群关系，都在 **[附录 A4. 对称性与空间群](appendix/a4-symmetry-space-groups/index.md)** 中有详细说明。
 
 ---
 
@@ -38,8 +38,8 @@
 
 - 每个晶面的面间距 / 每个晶轴的长度，
 - 两个晶面之间（或两个晶轴之间）的夹角，
-- 晶面 1 与晶轴 1 之间、晶面 2 与晶轴 2 之间的夹角，
-- **同时垂直于两晶面的方向指数** 以及 **同时垂直于两晶轴的晶面指数**。
+- 晶面 1 的法线与晶轴 1 之间、晶面 2 的法线与晶轴 2 之间的夹角（晶轴位于晶面内时为 90°），
+- **同时平行于两晶面的晶轴**（两晶面的晶带轴 [*uvw*]）以及 **同时包含两晶轴的晶面**（包含这两个晶轴的晶面 (*hkl*)）。符号遵循 [*uvw*] = (*h*₁*k*₁*l*₁) × (*h*₂*k*₂*l*₂) 以及 (*hkl*) = [*u*₁*v*₁*w*₁] × [*u*₂*v*₂*w*₂]。<!-- 261106Cl 作者の決定 B16 --> <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップ (numericBoxAnglePlaneAxis1/2.ToolTip) に合わせた。以前の「normal to」は逆 -->
 
 这些计算均基于当前晶胞的度量。长度以 Å 显示，角度以度显示。
 
@@ -49,7 +49,7 @@
 
 ![Wyckoff 位置](../assets/cap-zh-Hans-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-列出每一个 Wyckoff 位置及其多重度（**重数**）、Wyckoff 字母（**Wyck. 字母**）、位置对称性（**位置对称**）和 **坐标**（每行最多四个；更多的坐标接续在后面的行中）。第一个 Wyckoff 条目（多重度最高）即一般位置。对于带心点阵，点阵平移矢量会显示在表头行中。
+列出每一个 Wyckoff 位置及其多重度（**重数**）、Wyckoff 字母（**Wyck. 字母**）、位置对称性（**位置对称**）和 **坐标**（每行最多四个；更多的坐标接续在后面的行中）。第一个 Wyckoff 条目（多重度最高）即一般位置。对于带心点阵，点阵平移矢量会显示在表头行中；对于采用六方轴的 R 群，这些是正向（obverse）设定的三个带心平移 (0,0,0)+、(2/3,1/3,1/3)+ 和 (1/3,2/3,2/3)+。<!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
 
 ---
 
@@ -77,7 +77,7 @@
 
 ![群性质](../assets/cap-zh-Hans-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageProperties.png)
 
-报告当前空间群的群论分类（一般位置多重性、点群阶数、中心对称、Sohncke、简单型、极性方向、对映体伙伴、晶族/格子系/布拉维型、算术晶类、Patterson 对称），以及哪些宏观物性（热电/铁电、压电、二次谐波发生、旋光性）为该对称性所允许。
+报告当前空间群的群论分类（一般位置多重性、点群阶数、中心对称、Sohncke、点式、极性方向、对映体伙伴、晶族/格子系/布拉维型、算术晶类、Patterson 对称），以及哪些宏观物性（热电/铁电、压电、二次谐波发生、旋光性）为该对称性所允许。
 
 → 各术语的含义参见 **[附录 A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#群论分类群性质选项卡)**。
 
@@ -108,7 +108,7 @@
 
 - **方向**（`a` / `b` / `c`） : 选择用于投影的晶轴。仅对正交晶系的空间群可选（默认 `c`）；单斜晶系的空间群自动使用唯一轴，其他所有晶系使用 `c`。
 - **复制** : 将每幅示意图按 **复制格式** 所选的格式（矢量 **emf** / 位图 **bmp**）复制到剪贴板；emf 可在 PowerPoint 中取消组合并编辑。
-- **群关系...**（Group Relations...）打开浏览当前空间群极大子群/极小超群关系的浏览器。其读法参见[附录 A4.2](appendix/a4-symmetry-space-groups/group-subgroup-relations.md)。
+- **群关系...**（Group relations...）打开浏览当前空间群极大子群/极小超群关系的浏览器。其读法参见[附录 A4.2](appendix/a4-symmetry-space-groups/group-subgroup-relations.md)。
 
 ---
 
