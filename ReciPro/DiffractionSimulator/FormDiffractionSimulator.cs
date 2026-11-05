@@ -2444,14 +2444,17 @@ public partial class FormDiffractionSimulator : FormBase
         labelMousePositionDetector.Text = $"({detectorPos.X:f3}, {detectorPos.Y:f3})";
 
         var realPos = convertDetectorToReal(detectorPos.X, detectorPos.Y);
-        labelMousePositionReal.Text = $"{realPos.X:f3}, {realPos.Y:f3}, {realPos.Z:f3})";
+        //labelMousePositionReal.Text = $"{realPos.X:f3}, {realPos.Y:f3}, {realPos.Z:f3})"; // 261105Cl 変更前: 開き括弧が無かった
+        labelMousePositionReal.Text = $"({realPos.X:f3}, {realPos.Y:f3}, {realPos.Z:f3})"; // 261105Cl 修正
 
         var invPos = convertRealToReciprocal(realPos, false);
         labelMousePositionReciprocal.Text = radioButtonBeamBackLaue.Checked ? $"(-, -, -)" : $"({invPos.X:f3}, {invPos.Y:f3}, {invPos.Z:f3})";
 
-        labelDinv.Text = radioButtonBeamBackLaue.Checked ? "$d⁻¹: - nm⁻¹" : $"d⁻¹: {invPos.Length:f4} nm⁻¹";
+        //labelDinv.Text = radioButtonBeamBackLaue.Checked ? "$d⁻¹: - nm⁻¹" : $"d⁻¹: {invPos.Length:f4} nm⁻¹"; // 261105Cl 変更前: Back Laue で "$" がそのまま出ていた
+        labelDinv.Text = radioButtonBeamBackLaue.Checked ? "d⁻¹: - nm⁻¹" : $"d⁻¹: {invPos.Length:f4} nm⁻¹"; // 261105Cl 修正
         var d = 1.0 / invPos.Length;
-        labelD.Text = radioButtonBeamBackLaue.Checked ? "$\"d: - nm\" " : $"d: {d:f4} nm";
+        //labelD.Text = radioButtonBeamBackLaue.Checked ? "$\"d: - nm\" " : $"d: {d:f4} nm"; // 261105Cl 変更前: Back Laue で $"d: - nm" (引用符と末尾の空白込み) と出ていた
+        labelD.Text = radioButtonBeamBackLaue.Checked ? "d: - nm" : $"d: {d:f4} nm"; // 261105Cl 修正
         var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d);
         var twoThetaDeg = twoThetaRad / Math.PI * 180;
         labelTwoThetaDeg.Text = $"2θ: {twoThetaDeg:g4}°";
