@@ -2551,13 +2551,19 @@ public partial class FormEBSD : FormBase
     private void NumericBoxThicknessStart_ValueChanged(object sender, EventArgs e)
     {
         if (!settingDepthGridBoxes) mcDepthGrid = null; //260921Cl 追加 (深さ写像 A2): ユーザーが開始・終了・刻みを手で変えたら MC の不等間隔格子をやめて等間隔に戻す
-        trackBarOutputThickness.Maximum = ThicknessArray.Length - 1;
+        // trackBarOutputThickness.Maximum = ThicknessArray.Length - 1; // 261105Cl 変更前
+        // 261105Cl 変更 (監査 #25・F11): 開始 > 終了 の途中状態では格子が空になり Maximum = −1 → 直後の Value = 0 が例外だった。
+        //   出力スライスの選択は今の MasterPattern の格子 (無ければ欄の格子) に合わせる (欄は次の構築の条件で、表示中の MasterPattern とは別物)
+        trackBarOutputThickness.Maximum = Math.Max(0, (MasterPattern?.Depths ?? ThicknessArray).Length - 1);
         trackBarOutputThickness.Value = 0;
     }
 
     private void NumericBoxEnergyStart_ValueChanged(object sender, EventArgs e)
     {
-        trackBarOutputEnergy.Maximum = EnergyArray.Length - 1;
+        // trackBarOutputEnergy.Maximum = EnergyArray.Length - 1; // 261105Cl 変更前
+        // 261105Cl 変更 (監査 #25): 低 kV の初回の構築では、MC が開始 (例 10 keV) を先に書き、終了が既定の 15 keV のままの瞬間に格子が空 → Maximum = −1 →
+        //   Value = 0 で ArgumentOutOfRangeException (構築が必ず落ちた)。どの順で書いても途中で空になりうるので 0 未満にしない。格子は Thickness と同じく MasterPattern を優先
+        trackBarOutputEnergy.Maximum = Math.Max(0, (MasterPattern?.Energies ?? EnergyArray).Length - 1);
         trackBarOutputEnergy.Value = 0;
     }
 
@@ -2579,7 +2585,11 @@ public partial class FormEBSD : FormBase
     }
     private void trackBarOutputEnergy_ValueChanged(object sender, EventArgs e)
     {
-        numericBoxEnergy.Value = EnergyArray[trackBarOutputEnergy.Value];
+        // numericBoxEnergy.Value = EnergyArray[trackBarOutputEnergy.Value]; // 261105Cl 変更前
+        // 261105Cl 変更 (監査 F11・#25): 描いているのは MasterPattern.Energies[添字] (DrawEBSDCore) なので、表示もその値にする (深さの TrackBarOutputThickness_Scroll と同じ)。
+        //   以前は欄の格子 (EnergyArray) の値で、構築後に Calc BSE や欄の手入力で格子が変わると描いているスライスと違う値を出し、格子が空なら IndexOutOfRange だった
+        var shownEnergies = MasterPattern?.Energies is { Length: > 0 } mpEnergies ? mpEnergies : EnergyArray;
+        if ((uint)trackBarOutputEnergy.Value < (uint)shownEnergies.Length) numericBoxEnergy.Value = shownEnergies[trackBarOutputEnergy.Value];
         if (mcDistribution == null && MasterPattern != null) InvalidateIndexingResults(); //260725Ch: Radon-only時に無関係な候補を消さない
         Draw();
     }
@@ -3156,7 +3166,8 @@ public partial class FormEBSD : FormBase
                 numericBoxThicknessStep.Value = result.depthStep;
             }
             finally { settingDepthGridBoxes = false; }
-            trackBarOutputThickness.Maximum = Math.Max(0, ThicknessArray.Length - 1); //260921Cl: 欄の値が前回と同じで ValueChanged が来ない場合にも格子の点数へ揃える
+            // trackBarOutputThickness.Maximum = Math.Max(0, ThicknessArray.Length - 1); //260921Cl: 欄の値が前回と同じで ValueChanged が来ない場合にも格子の点数へ揃える // 261105Cl 変更前
+            trackBarOutputThickness.Maximum = Math.Max(0, (MasterPattern?.Depths ?? ThicknessArray).Length - 1); // 261105Cl 変更 (監査 F11): 構築後の Calc BSE では表示中の MasterPattern の格子を保つ (無ければ従来どおり MC の格子)
             mcDistribution = result.Distribution;
             composedPatternCache = default; // 260725Cl 追加 (/simplify): 旧 MC 分布・旧 MasterPattern を掴んだままにしない
             InvalidateIndexingResults(); //260725Ch: ZNCC 辞書の重みが変わるため候補と実行中結果を失効させる
