@@ -69,10 +69,10 @@
     <value>Hilos</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
-    <value>Número de ondas difractadas</value>
+    <value>Ondas difractadas</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
-    <value>Semiángulo</value>
+    <value>Semiáng. conv. α</value>
   </data>
   <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
     <value>Resolución del disco</value>

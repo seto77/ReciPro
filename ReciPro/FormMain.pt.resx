@@ -216,7 +216,7 @@
     <value>Usar índice de Miller-Bravais (hkil)</value>
   </data>
   <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
-    <value>Capturar componentes da GUI...</value>
+    <value>(experimental) Capturar componentes da GUI...</value>
   </data>
   <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
     <value>Informação do cristal</value>
@@ -488,5 +488,8 @@ acima pelo novo cristal abaixo.</value>
   <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
     <value>  Simulador
   HRTEM/STEM</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
+    <value>Aceitar comandos de macro externos (pipe nomeado)</value>
   </data>
 </root>

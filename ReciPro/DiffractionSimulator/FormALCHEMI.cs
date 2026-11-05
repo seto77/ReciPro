@@ -173,8 +173,14 @@ public partial class FormALCHEMI : FormBase
         // 261105Cl 変更前 (2 行):
         //numericBoxMaxNumOfBloch.HeaderText = Localization.Loc(en: "Max. beams", ja: "最大波数", de: "Max. Strahlen", fr: "Faisceaux max.",
         //es: "Haces máx.", pt: "Feixes máx.", it: "Fasci max.", ru: "Макс. пучков", zhHans: "最大波数", zhHant: "最大波數", ko: "최대 빔 수");
-        numericBoxMaxNumOfBloch.HeaderText = Localization.Loc(en: "Max. diffr. waves", ja: "回折波の最大数", de: "Max. Strahlen", fr: "Faisceaux max.",
-            es: "Haces máx.", pt: "Feixes máx.", it: "Fasci max.", ru: "Макс. пучков", zhHans: "最大衍射波数", zhHant: "最大繞射波數", ko: "최대 빔 수"); // 261105Cl 変更 (作者決定 K1-A1: 「最大波数」は wavenumber と読める。en は欄 (166 px 固定) に収まる略記。zh も同じ理由で)
+        // 261106Cl 変更前 (2 行):
+        //numericBoxMaxNumOfBloch.HeaderText = Localization.Loc(en: "Max. diffr. waves", ja: "回折波の最大数", de: "Max. Strahlen", fr: "Faisceaux max.",
+        //    es: "Haces máx.", pt: "Feixes máx.", it: "Fasci max.", ru: "Макс. пучков", zhHans: "最大衍射波数", zhHant: "最大繞射波數", ko: "최대 빔 수"); // 261105Cl 変更 (作者決定 K1-A1: 「最大波数」は wavenumber と読める。en は欄 (166 px 固定) に収まる略記。zh も同じ理由で)
+        // 261106Cl 変更 (作者決定 K1-A1 を残りの 7 言語へ: 「ビーム」でなく「回折波」)。欄は 166 px 固定で、見出しが約 107 px を超えると数値欄が
+        //   "1600" より狭くなる。de・ru は「Max. gebeugte Wellen」「Макс. дифр. волн」が入らないので CBED の欄と同じ「Gebeugte Wellen」「Дифр. волны」
+        //   (上限であることはツールチップ)
+        numericBoxMaxNumOfBloch.HeaderText = Localization.Loc(en: "Max. diffr. waves", ja: "回折波の最大数", de: "Gebeugte Wellen", fr: "Ondes diffr. max.",
+            es: "Ondas difr. máx.", pt: "Ondas difr. máx.", it: "Onde diffr. max.", ru: "Дифр. волны", zhHans: "最大衍射波数", zhHant: "最大繞射波數", ko: "최대 회절파 수"); // 261106Cl
         labelSolver.Text = Localization.Loc(en: "Solver", ja: "ソルバ", de: "Löser", fr: "Solveur", es: "Solucionador",
             pt: "Solucionador", it: "Risolutore", ru: "Решатель", zhHans: "求解器", zhHant: "求解器", ko: "솔버");
         labelAngularSpread.Text = Localization.Loc(en: "Angular spread", ja: "角度広がり", de: "Winkelverbreiterung",

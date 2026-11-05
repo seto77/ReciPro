@@ -72,7 +72,7 @@
     <value>衍射波数目</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
-    <value>会聚半角</value>
+    <value>会聚半角 α</value>
   </data>
   <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
     <value>衍射盘分辨率</value>

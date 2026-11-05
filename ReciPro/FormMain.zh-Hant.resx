@@ -219,7 +219,7 @@
     <value>使用米勒-布拉維 (hkil) 指數</value>
   </data>
   <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
-    <value>擷取 GUI 元件...</value>
+    <value>(實驗性) 擷取 GUI 元件...</value>
   </data>
   <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
     <value>晶體資訊</value>
@@ -486,5 +486,8 @@
   <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
     <value>  HRTEM/STEM
   模擬器</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
+    <value>接受外部巨集命令 (具名管道)</value>
   </data>
 </root>

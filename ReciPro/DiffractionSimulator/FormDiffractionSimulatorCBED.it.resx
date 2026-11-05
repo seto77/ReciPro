@@ -69,10 +69,10 @@
     <value>Thread</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
-    <value>Numero di onde diffratte</value>
+    <value>Onde diffratte</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
-    <value>Semiangolo</value>
+    <value>Semiang. conv. α</value>
   </data>
   <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
     <value>Risoluzione disco</value>

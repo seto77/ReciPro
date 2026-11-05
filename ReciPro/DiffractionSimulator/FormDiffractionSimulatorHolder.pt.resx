@@ -84,8 +84,8 @@ Inclinação Y</value>
   </data>
   <data name="buttonLink.Text" xml:space="preserve">
     <value>Vincular à
-Direção
-Atual</value>
+direção
+atual</value>
   </data>
   <data name="groupBoxIndexRange.Text" xml:space="preserve">
     <value>Faixa de índices</value>
@@ -136,7 +136,7 @@ Atual</value>
     <value>Ativar teclas de seta</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Simulação de Suporte TEM</value>
+    <value>Simulação de suporte TEM</value>
   </data>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
     <value>Cor de fundo da área de desenho do estereograma.</value>

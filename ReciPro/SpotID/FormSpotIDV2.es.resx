@@ -96,7 +96,7 @@
     <value>Múltiples granos</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Metafile (EMF)</value>
+    <value>como metarchivo (EMF)</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.Text" xml:space="preserve">
     <value>Mostrar etiqueta</value>
@@ -165,7 +165,7 @@
     <value>N.º</value>
   </data>
   <data name="copyAsBitmapToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Imagen</value>
+    <value>como imagen</value>
   </data>
   <data name="buttonGlobalFit.Text" xml:space="preserve">
     <value>Ajuste global</value>
@@ -174,7 +174,7 @@
     <value>Nombre del cristal</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Metafile (EMF)</value>
+    <value>como metarchivo (EMF)</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
     <value>Grano único</value>
@@ -201,7 +201,7 @@
     <value>Puntos asignados</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>como Imagen (formato PNG)</value>
+    <value>como imagen (formato PNG)</value>
   </data>
   <data name="groupBoxOptics.Text" xml:space="preserve">
     <value>Óptica</value>

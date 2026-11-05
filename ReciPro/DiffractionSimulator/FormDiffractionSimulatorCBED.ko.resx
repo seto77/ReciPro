@@ -72,7 +72,7 @@
     <value>회절파 수</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
-    <value>반각</value>
+    <value>수렴 반각 α</value>
   </data>
   <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
     <value>디스크 해상도</value>

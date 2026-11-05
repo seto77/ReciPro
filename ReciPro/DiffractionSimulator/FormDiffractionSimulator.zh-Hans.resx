@@ -239,7 +239,7 @@
     <value>保存图像</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>为图像  （PNG 格式）</value>
+    <value>为图像（PNG 格式）</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>为图元文件 (EMF)</value>

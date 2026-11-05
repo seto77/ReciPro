@@ -84,7 +84,7 @@
     <value>Непрозрачность</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
-    <value>Обрезать объекты</value>
+    <value>Обрезать объекты по граничным плоскостям</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>Границы по элементарной ячейке</value>

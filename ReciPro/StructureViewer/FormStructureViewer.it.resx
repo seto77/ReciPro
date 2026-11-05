@@ -84,7 +84,7 @@
     <value>Opacità</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
-    <value>Ritaglia oggetti</value>
+    <value>Ritaglia oggetti ai piani di delimitazione</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>Limiti definiti dalla cella elementare</value>

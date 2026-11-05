@@ -239,7 +239,7 @@ simulation</value>
     <value>Bild speichern</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>als Bild  (PNG-Format)</value>
+    <value>als Bild (PNG-Format)</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>als Metadatei (EMF)</value>

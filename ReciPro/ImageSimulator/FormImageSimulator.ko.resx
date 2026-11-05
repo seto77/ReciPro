@@ -942,4 +942,10 @@ Step 및 Num과 조합하여 아래의
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
     <value>ADF 계열 상 대신 STEM-EDX 원소 맵을 표시합니다. 특성 X 선 종류는 아래 목록에서 고릅니다. 껍질 채널(K, L, M)의 값은 입사 전자당 내각 공공 생성량(모델 값)입니다. 선 계열(Kα, Kβ, Lα, Lβ, Mα)의 값은 입사 전자당 생성되는 X 선 광자 수로, 형광 수율·Coster–Kronig 및 복사 캐스케이드·선 분기비를 적용했으며 오제 캐스케이드는 포함하지 않습니다. 자기흡수·검출기 입체각·검출 효율은 어느 쪽에도 적용되지 않았으므로 실측 X 선 계수가 아닙니다.</value>
   </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.HeaderText" xml:space="preserve">
+    <value>수렴 반각 α</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
+    <value>유효 전자원 크기 (FWHM)</value>
+  </data>
 </root>

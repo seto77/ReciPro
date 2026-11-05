@@ -227,7 +227,7 @@ l'intensité relative</value>
     <value>Enregistrer l'image</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>comme image  (format PNG)</value>
+    <value>comme image (format PNG)</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>comme métafichier (EMF)</value>

@@ -66,10 +66,10 @@
     <value>Solveur</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
-    <value>Nombre d'ondes diffractées</value>
+    <value>Ondes diffractées</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
-    <value>Demi-angle</value>
+    <value>Demi-angle conv. α</value>
   </data>
   <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
     <value>Résolution des disques</value>

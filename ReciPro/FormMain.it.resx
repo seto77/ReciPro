@@ -210,7 +210,7 @@
     <value>Usa indici di Miller-Bravais (hkil)</value>
   </data>
   <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
-    <value>Cattura componenti GUI...</value>
+    <value>(sperimentale) Cattura componenti GUI...</value>
   </data>
   <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
     <value>Informazioni sul cristallo</value>
@@ -485,5 +485,8 @@ sopra con il nuovo cristallo sottostante.</value>
   </data>
   <data name="toolStripButtonStereonet.Text" xml:space="preserve">
     <value>  Stereogramma</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
+    <value>Accetta comandi macro esterni (named pipe)</value>
   </data>
 </root>

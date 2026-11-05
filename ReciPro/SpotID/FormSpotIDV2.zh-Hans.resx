@@ -96,7 +96,7 @@
     <value>多晶粒</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>图元文件 (EMF)</value>
+    <value>为图元文件 (EMF)</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.Text" xml:space="preserve">
     <value>显示标签</value>
@@ -165,7 +165,7 @@
     <value>序号</value>
   </data>
   <data name="copyAsBitmapToolStripMenuItem.Text" xml:space="preserve">
-    <value>图像</value>
+    <value>为图像</value>
   </data>
   <data name="buttonGlobalFit.Text" xml:space="preserve">
     <value>全局拟合</value>
@@ -174,7 +174,7 @@
     <value>晶体名称</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>图元文件 (EMF)</value>
+    <value>为图元文件 (EMF)</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
     <value>单晶粒</value>
@@ -201,7 +201,7 @@
     <value>已指认衍射点</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>图像 (PNG 格式)</value>
+    <value>为图像 (PNG 格式)</value>
   </data>
   <data name="groupBoxOptics.Text" xml:space="preserve">
     <value>光学</value>

@@ -96,7 +96,7 @@
     <value>多晶粒</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>複製為中繼檔（EMF）</value>
+    <value>複製為中繼檔 (EMF)</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.Text" xml:space="preserve">
     <value>顯示標籤</value>
@@ -174,7 +174,7 @@
     <value>晶體名稱</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>另存為中繼檔（EMF）</value>
+    <value>另存為中繼檔 (EMF)</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
     <value>單晶粒</value>

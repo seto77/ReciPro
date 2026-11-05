@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>Ausgewähltes Kristall als CIF-&amp;Datei exportieren</value>
+    <value>Ausgewählten Kristall als CIF-&amp;Datei exportieren</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Lizenz</value>
@@ -219,7 +219,7 @@
     <value>Miller-Bravais-Index (hkil) verwenden</value>
   </data>
   <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
-    <value>GUI-Komponenten erfassen...</value>
+    <value>(experimentell) GUI-Komponenten erfassen...</value>
   </data>
   <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
     <value>Kristallinformation</value>
@@ -433,7 +433,7 @@ Wenn zusätzlich ein Ebenenindex angegeben ist, wird diese Ebenenrichtung nach o
     <value>Verschiebt den ausgewählten Kristall nach oben</value>
   </data>
   <data name="toolStripButtonBeamInteraction.ToolTipText" xml:space="preserve">
-    <value>Beam Interaction öffnen</value>
+    <value>Strahlwechselwirkung öffnen</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
     <value>Lädt die native Intel-MKL-Bibliothek (ca. 55 MB) herunter.
@@ -457,7 +457,7 @@ Um alle Kristalle aus der Liste zu entfernen, klicken Sie auf 'Alle Kristalle le
     <value>Aktuelle Orientierung des ausgewählten Kristalls.</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
-    <value>Öffnet den Trajectory Simulator.</value>
+    <value>Öffnet den Trajektorien-Simulator.</value>
   </data>
   <data name="checkBoxAnimation.ToolTip" xml:space="preserve">
     <value>Wenn aktiviert, dreht ein Klick auf die obigen Schaltflächen
@@ -491,5 +491,8 @@ Kristall durch den neuen Kristall unten.</value>
   <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
     <value>  HRTEM/STEM-
   Simulator</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
+    <value>Externe Makrobefehle annehmen (Named Pipe)</value>
   </data>
 </root>

@@ -72,7 +72,7 @@
     <value>繞射波數目</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
-    <value>半角</value>
+    <value>會聚半角 α</value>
   </data>
   <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
     <value>圓盤解析度</value>

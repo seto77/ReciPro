@@ -84,7 +84,7 @@
     <value>Deckkraft</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
-    <value>Objekte abschneiden</value>
+    <value>Objekte an Begrenzungsebenen abschneiden</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>Grenzen durch Elementarzelle definiert</value>

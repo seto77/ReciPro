@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
-    <value>試片傾角</value>
+    <value>試樣傾角</value>
   </data>
   <data name="buttonViewQuarter.Text" xml:space="preserve">
     <value>鳥瞰視角</value>
@@ -178,7 +178,7 @@
     <value>EBSD 幾何</value>
   </data>
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
-    <value>SEM &amp;&amp; 試片條件</value>
+    <value>SEM &amp;&amp; 試樣條件</value>
   </data>
   <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>幾何</value>

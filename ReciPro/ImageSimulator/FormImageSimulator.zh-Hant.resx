@@ -937,4 +937,10 @@ sin(theta)/lambda (nm^-1) 表示；
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
     <value>顯示 STEM-EDX 元素分佈圖，取代 ADF 類影像；特徵 X 射線在下方選擇。殼層通道（K、L、M）的數值是每個入射電子產生的內殼空穴數（模型值）。譜線系（Kα、Kβ、Lα、Lβ、Mα）的數值是每個入射電子產生的 X 射線光子數：已計入螢光產率、Coster–Kronig 與輻射級聯以及譜線分支比，未計入歐傑級聯。自吸收、偵測器立體角與偵測效率均未計入，因此兩者都不是預測的 X 射線計數。</value>
   </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.HeaderText" xml:space="preserve">
+    <value>會聚半角 α</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
+    <value>有效電子源尺寸 (FWHM)</value>
+  </data>
 </root>

@@ -219,7 +219,7 @@
     <value>밀러-브라베 (hkil) 지수 사용</value>
   </data>
   <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
-    <value>GUI 구성 요소 캡처...</value>
+    <value>(실험적) GUI 구성 요소 캡처...</value>
   </data>
   <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
     <value>결정 정보</value>
@@ -491,5 +491,8 @@ EBSD(전자 후방산란 회절) 시뮬레이터를
   <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
     <value>  HRTEM/STEM
   시뮬레이터</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
+    <value>외부 매크로 명령 수락 (명명된 파이프)</value>
   </data>
 </root>

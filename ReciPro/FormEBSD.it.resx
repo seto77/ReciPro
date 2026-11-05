@@ -115,7 +115,7 @@ all'intensità delle linee di Kikuchi</value>
     <value>Sorgente non locale</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>Profondità</value>
+    <value>Profondità da</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>a</value>
@@ -161,7 +161,7 @@ griglia di pixel del rivelatore invece di un'immagine.</value>
     <value>a</value>
   </data>
   <data name="numericBoxEnergyStart.HeaderText" xml:space="preserve">
-    <value>Energia</value>
+    <value>Energia da</value>
   </data>
   <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
     <value>passo</value>

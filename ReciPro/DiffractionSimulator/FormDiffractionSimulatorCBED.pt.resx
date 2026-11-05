@@ -66,10 +66,10 @@
     <value>Solucionador</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
-    <value>Número de ondas difratadas</value>
+    <value>Ondas difratadas</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
-    <value>Semiângulo</value>
+    <value>Semiâng. conv. α</value>
   </data>
   <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
     <value>Resolução do disco</value>

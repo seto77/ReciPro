@@ -239,7 +239,7 @@
     <value>Сохранить изображение</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>как изображение  (формат PNG)</value>
+    <value>как изображение (формат PNG)</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>как метафайл (EMF)</value>

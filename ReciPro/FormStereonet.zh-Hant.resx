@@ -66,16 +66,16 @@
     <value>檔案</value>
   </data>
   <data name="asBitmapToolStripMenuItem.Text" xml:space="preserve">
-    <value>影像</value>
+    <value>複製為影像</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
     <value>另存為影像 (PNG 格式)</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>中繼檔 (EMF)</value>
+    <value>複製為中繼檔 (EMF)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>中繼檔 (EMF)</value>
+    <value>另存為中繼檔 (EMF)</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>儲存影像</value>

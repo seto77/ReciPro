@@ -949,4 +949,10 @@ ao longo do eixo horizontal da grade de imagens em série.</value>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
     <value>Mostra o mapa elementar STEM-EDX em vez da imagem do tipo ADF; a linha de raios X característica escolhe-se abaixo. Para um canal de camada (K, L, M), os valores são lacunas de ionização modeladas por eletrão incidente. Para uma série de linhas (Kα, Kβ, Lα, Lβ, Mα), são fotões de raios X gerados por eletrão incidente: aplicam-se o rendimento de fluorescência, as cascatas Coster–Kronig e radiativas e a ramificação das linhas, mas não a cascata Auger. A autoabsorção, o ângulo sólido e a eficiência do detetor NÃO são aplicados, pelo que nenhum é uma contagem de raios X prevista.</value>
   </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.HeaderText" xml:space="preserve">
+    <value>Semiâng. conv. α</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
+    <value>Tamanho efetivo da fonte (FWHM)</value>
+  </data>
 </root>

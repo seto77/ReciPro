@@ -949,4 +949,10 @@ der horizontalen Achse des Bildserien-Gitters variiert.</value>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
     <value>Zeigt die STEM-EDX-Elementkarte anstelle des ADF-artigen Bildes; die charakteristische Röntgenlinie wird unten gewählt. Für einen Schalenkanal (K, L, M) sind die Werte modellierte Ionisationslücken pro einfallendem Elektron. Für eine Linienserie (Kα, Kβ, Lα, Lβ, Mα) sind es erzeugte Röntgenphotonen pro einfallendem Elektron: Fluoreszenzausbeute, Coster-Kronig- und Strahlungskaskaden sowie Linienverzweigung sind berücksichtigt, die Auger-Kaskade nicht. Selbstabsorption, Detektorraumwinkel und Detektoreffizienz sind NICHT berücksichtigt - beides ist also keine vorhergesagte Röntgenzählrate.</value>
   </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.HeaderText" xml:space="preserve">
+    <value>Konv.-Halbwinkel α</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
+    <value>Effektive Quellgröße (FWHM)</value>
+  </data>
 </root>

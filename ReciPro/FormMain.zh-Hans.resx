@@ -219,7 +219,7 @@
     <value>使用米勒-布拉维 (hkil) 指数</value>
   </data>
   <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
-    <value>捕获 GUI 组件...</value>
+    <value>(实验性) 捕获 GUI 组件...</value>
   </data>
   <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
     <value>晶体信息</value>
@@ -489,5 +489,8 @@ STEM 为扫描透射电子显微镜。</value>
   <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
     <value>  HRTEM/STEM
   模拟器</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
+    <value>接受外部宏命令 (命名管道)</value>
   </data>
 </root>

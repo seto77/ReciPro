@@ -499,7 +499,7 @@ EBSD atualmente renderizada (modo de fatia única).</value>
     <value>Define o ângulo de inclinação da tela do detector em graus,
 medido a partir do plano horizontal (perpendicular ao eixo do
 feixe Z): 0° = horizontal, 90° = tela vertical (padrão). Isso
-afeta o comprimento de câmara e a forma projetada das
+afeta o comprimento de câmera e a forma projetada das
 bandas de Kikuchi.</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
@@ -537,7 +537,7 @@ câmera. (O deslocamento lateral é ajustado com X.)</value>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>Define a coordenada Z (ao longo da direção do feixe)
 do centro do detector, em mm. Em conjunto com Y
-ela determina o comprimento de câmara.</value>
+ela determina o comprimento de câmera.</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>Seleciona reflexões para as linhas de Kikuchi
@@ -770,7 +770,7 @@ normalizada de média zero).</value>
     <value>Coordenada X do centro do detector, em mm: o deslocamento
 lateral (esquerda-direita) da tela ao longo do eixo de
 inclinação da amostra. Y e Z definem o deslocamento no
-plano e o comprimento de câmara. (Faixa -1000 a 1000.)</value>
+plano e o comprimento de câmera. (Faixa -1000 a 1000.)</value>
   </data>
   <data name="numericBoxDetWidth.ToolTip" xml:space="preserve">
     <value>Número de pixels do detector na direção horizontal
@@ -804,7 +804,7 @@ graus em relação ao eixo do feixe e tamanho em pixels
   <data name="labelDetectorCenter.ToolTip" xml:space="preserve">
     <value>Posição do centro do detector em mm (X, Y, Z), medida a
 partir do ponto onde o feixe atinge a amostra. Y e Z com a
-inclinação determinam o comprimento de câmara;
+inclinação determinam o comprimento de câmera;
 X é o deslocamento lateral.</value>
   </data>
   <data name="numericBoxResolution.ToolTip" xml:space="preserve">

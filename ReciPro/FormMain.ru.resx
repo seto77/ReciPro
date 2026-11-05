@@ -219,7 +219,7 @@
     <value>Использовать индексы Миллера–Браве (hkil)</value>
   </data>
   <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
-    <value>Захватить компоненты GUI...</value>
+    <value>(экспериментально) Захватить компоненты GUI...</value>
   </data>
   <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
     <value>Сведения о кристалле</value>
@@ -491,5 +491,8 @@ STEM — сканирующая просвечивающая электронн�
   <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
     <value>  Симулятор
   HRTEM/STEM</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
+    <value>Принимать внешние команды макросов (именованный канал)</value>
   </data>
 </root>

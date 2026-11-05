@@ -119,7 +119,7 @@
     <value>디바이 링</value>
   </data>
   <data name="checkBoxScaleLabel.Text" xml:space="preserve">
-    <value>축척 라벨 표시</value>
+    <value>축척 레이블 표시</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
     <value>분할</value>
@@ -239,7 +239,7 @@
     <value>이미지 저장</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>이미지로  (PNG 형식)</value>
+    <value>이미지로 (PNG 형식)</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>메타파일로 (EMF)</value>

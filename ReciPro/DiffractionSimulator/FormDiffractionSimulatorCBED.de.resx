@@ -66,10 +66,10 @@
     <value>Löser</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
-    <value>Anzahl gebeugter Wellen</value>
+    <value>Gebeugte Wellen</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
-    <value>Halbwinkel</value>
+    <value>Konv.-Halbwinkel α</value>
   </data>
   <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
     <value>Scheibenauflösung</value>

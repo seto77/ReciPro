@@ -84,7 +84,7 @@
     <value>Opacité</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
-    <value>Découper les objets</value>
+    <value>Découper les objets aux plans limites</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>Limites définies par la maille élémentaire</value>

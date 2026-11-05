@@ -735,7 +735,7 @@ Radon 밴드 증거의 z 값, ZNCC = 시뮬레이션 패턴과의
     <value>크기 (W×H)</value>
   </data>
   <data name="numericBoxDetTilt.HeaderText" xml:space="preserve">
-    <value>경사</value>
+    <value>기울기</value>
   </data>
   <data name="numericBoxXofDet.ToolTip" xml:space="preserve">
     <value>검출기 중심의 X 좌표 (mm) — 시료 경사축을 따른
