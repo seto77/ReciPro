@@ -978,7 +978,9 @@ public partial class FormDiffractionSimulator : FormBase
                     .Where(g => g.Flag1)//Flag1がtrueのものだけを取り出し、
                     .Select(g => new Vector3D(crystal.RotationMatrix * g) { Index = g.Index, Flag1 = true, RelativeIntensity = g.RelativeIntensity, Text = g.Text })//回転させて新しいリストを作る
                     .Where(g => g.Length2 - 2 * g.Z * maxEwaldR < 0 && g.Z2 / g.Length2 > minCosTheta2).ToList();//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別
-                if (gVector.Count == 0) return null;
+                // 261105Cl 変更 (監査 C17): 結晶ごとのループの中で return していたので、複数の結晶を選んでも 1 つ目しか描かれなかった。次の結晶へ進む
+                //if (gVector.Count == 0) return null; // 261105Cl 変更前
+                if (gVector.Count == 0) continue; // 261105Cl
                 //260403Cl indexから位置へのDictionaryを構築 (IndexOfの線形検索→O(1)ルックアップ)
                 //var indexList = gVector.Select(g => g.Index).ToList();
                 var indexDict = new Dictionary<(int h, int k, int l), int>();
@@ -1010,12 +1012,14 @@ public partial class FormDiffractionSimulator : FormBase
                 });
 
                 gVector = [.. gVector.Where(g => g.Flag1)];
-                if (gVector.Count == 0) return null;
+                //if (gVector.Count == 0) return null; // 261105Cl 変更前 (監査 C17)
+                if (gVector.Count == 0) continue; // 261105Cl
                 var maxIntensity = gVector.Max(g => g.RelativeIntensity);
                 Parallel.ForEach(gVector, g => g.RelativeIntensity /= maxIntensity);
 
                 //スポットを描画
-                var color = colorControlNoCondition.Color;
+                //var color = colorControlNoCondition.Color; // 261105Cl 変更前 (監査 C17)
+                var color = formMain.Crystals.Length == 1 && !checkBoxUseCrystalColor.Checked ? colorControlNoCondition.Color : Color.FromArgb(crystal.Argb); // 261105Cl 他のモード (SetVector) と同じく、複数の結晶は結晶の色で
                 foreach (var g in gVector.Where(g => g.RelativeIntensity > 0))
                 {
                     var pt = new PointD(g.X, g.Y);
@@ -1044,15 +1048,16 @@ public partial class FormDiffractionSimulator : FormBase
                     }
                 }
 
-                //ダイレクトスポットの描画
-                var origin = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0));
-                if (IsScreenArea(origin))
-                {
-                    //graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), origin, spotRadiusOnDetector); // (260611Ch) 旧: Pen が未解放
-                    using var originPen = new Pen(colorControlOrigin.Color, (float)Resolution); // (260611Ch)
-                    graphics.DrawCross(originPen, origin, spotRadiusOnDetector);
-                }
-                return null;
+                //ダイレクトスポットの描画 → 261105Cl (監査 C17) 全結晶を描いた後 (foreach の後) へ移した
+                //var origin = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0)); // 261105Cl 変更前 (以下 return null まで)
+                //if (IsScreenArea(origin))
+                //{
+                //    //graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), origin, spotRadiusOnDetector); // (260611Ch) 旧: Pen が未解放
+                //    using var originPen = new Pen(colorControlOrigin.Color, (float)Resolution); // (260611Ch)
+                //    graphics.DrawCross(originPen, origin, spotRadiusOnDetector);
+                //}
+                //return null;
+                continue; // 261105Cl
                 #endregion
             }
             //ベーテ法による動力学回折の場合
@@ -1225,6 +1230,16 @@ public partial class FormDiffractionSimulator : FormBase
                     }
                 }
             }
+        }
+        if (radioButtonBeamBackLaue.Checked) // 261105Cl 追加 (監査 C17): Back Laue のダイレクトスポット (入射ビームの穴) は全結晶を描いた後に 1 回だけ描く (旧は 1 つ目の結晶のループ内)
+        {
+            var origin = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0)); // 261105Cl
+            if (IsScreenArea(origin)) // 261105Cl
+            {
+                using var originPen = new Pen(colorControlOrigin.Color, (float)Resolution); // 261105Cl
+                graphics.DrawCross(originPen, origin, spotRadiusOnDetector); // 261105Cl
+            }
+            return null; // 261105Cl
         }
         if (outputOnlySpotInformation)
             return [.. spotInformation];
@@ -2372,14 +2387,18 @@ public partial class FormDiffractionSimulator : FormBase
 
                 //最も方向が近くて、逆格子原点からも近い点を表示
                 #region 最大θを検索
+                // 261105Cl 変更 (監査 C16): 描画 (DrawDiffractionSpots の Back Laue) と候補の条件が違っていた。描画は get2ThetaRange の最大角と cos² で
+                //  選ぶのに、ここは画面の 2 倍の範囲の四隅から最大角を求め、cos² を cos と比べていた (端に描かれたスポットが候補から漏れる)。描画と同じ条件にする
                 //260717Cl 変更: 一時配列 + LINQ Max を Math.Max ネストに
-                var L = Math.Max(
-                    Math.Max(convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length,
-                             convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length),
-                    Math.Max(convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length,
-                             convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length));
-                var maxTwoTheta = Math.Atan(L / CameraLength2);
-                var minCosTheta = Math.Cos(maxTwoTheta / 2);
+                //var L = Math.Max( // 261105Cl 変更前 (以下 minCosTheta まで)
+                //    Math.Max(convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length,
+                //             convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length),
+                //    Math.Max(convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length,
+                //             convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length));
+                //var maxTwoTheta = Math.Atan(L / CameraLength2);
+                //var minCosTheta = Math.Cos(maxTwoTheta / 2);
+                var (_, maxTwoTheta) = get2ThetaRange(); // 261105Cl
+                double minCosTheta = Math.Cos(maxTwoTheta / 2), minCosTheta2 = minCosTheta * minCosTheta; // 261105Cl
                 #endregion
 
                 var maxEwaldR = 1 / UniversalConstants.Convert.EnergyToXrayWaveLength(50_000);
@@ -2387,7 +2406,8 @@ public partial class FormDiffractionSimulator : FormBase
                 var gVector = crystal.VectorOfG_P
                   .Where(g => g.Flag1)//Flag1がtrueのものだけを取り出し、
                   .Select(g => new Vector3D(crystal.RotationMatrix * g) { Index = g.Index, Flag1 = true, RelativeIntensity = g.RelativeIntensity, F = g.F, Text = g.Text })//回転させて新しいリストを作る
-                  .Where(g => g.Length2 - 2 * g.Z * maxEwaldR < 0 && g.Z * g.Z / g.Length2 > minCosTheta)//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別
+                  //.Where(g => g.Length2 - 2 * g.Z * maxEwaldR < 0 && g.Z * g.Z / g.Length2 > minCosTheta)//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別 // 261105Cl 変更前
+                  .Where(g => g.Length2 - 2 * g.Z * maxEwaldR < 0 && g.Z * g.Z / g.Length2 > minCosTheta2)//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別 // 261105Cl
                   .OrderByDescending(g => g * v / g.Length).ToList();//ベクトルv に近いもの順に並び替え
                 if (gVector.Count == 0) return;
 
