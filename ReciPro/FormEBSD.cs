@@ -1276,6 +1276,9 @@ public partial class FormEBSD : FormBase
 
     private void FormEBSD_VisibleChanged(object sender, EventArgs e)
     {
+        // 261105Cl 追加 (監査 F22): 隠すとき (Visible = false) にも下の SetVector・3D の軸・DrawGeometry (GL)・DrawMasterPattern2D を回していた。
+        //   以下の処理はすべて再表示のためのもの (先頭の sizeControl と #15 の照合の 2 ブロックはもともと Visible のときだけ) なので、隠すときは何もしない
+        if (!Visible) return;
         // 260723Cl 追加: sizeControl を graphicsBox の現在サイズで初期化 (FormDiffractionSimulator と同方式)
         if (Visible && graphicsBox.ClientSize.Width > 0 && graphicsBox.ClientSize.Height > 0)
         {
@@ -4416,6 +4419,16 @@ public partial class FormEBSD : FormBase
         if (expPbmp == null) { MessageBox.Show(this, "Load an experimental image first.", "Zone axis", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
         if (zoneAxisPicks.Count < 2)
         { MessageBox.Show(this, "Pick at least 2 band intersections (3 or more is recommended).", "Zone axis", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
+        // 261105Cl 追加 (監査 F21): 方位探索・較正の最中は走らせない (候補一覧を書き換えたあとで実行中の探索の結果に上書きされる。探索側は世代を見ているが、この探索は世代を進めない)
+        if (indexingBusy)
+        {
+            toolStripStatusLabelSummary.Text = "Wait for the running orientation search or geometry calibration to finish.";
+            return;
+        }
+        // 261105Cl 追加 (監査 F21): カメラ長 0 (検出器面が照射点を通る。Y・Z・Tilt の組み合わせで入力できる) では下の BuildDetectorGeometry
+        //   (EbsdDetectorGeometry のコンストラクタ) が ArgumentException を投げ、このハンドラには try が無いので未捕捉の例外になっていた。DrawZoneAxisPicks と同じしきい値
+        if (CameraLength2 <= 1E-6)
+        { MessageBox.Show(this, "The detector plane passes through the beam-impact point (camera length 0). Check Y, Z and Tilt of the detector.", "Zone axis", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
 
         var sw = Stopwatch.StartNew();
         var geom = BuildDetectorGeometry(expPbmp.Width, expPbmp.Height);
