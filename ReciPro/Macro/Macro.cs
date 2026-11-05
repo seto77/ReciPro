@@ -1274,10 +1274,13 @@ public class Macro : MacroBase
         [Help("Gets or sets the camera length in mm.")]
         public double CameraLength { get => spotID.CameraLength; set => spotID.CameraLength = value; }
 
-        [Help("Gets or sets the pixel size of the image in mm. Reading or writing it also switches the pixel-size unit to mm.")]
+        //[Help("Gets or sets the pixel size of the image in mm. Reading or writing it also switches the pixel-size unit to mm.")] // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I6): 取得では単位を切り替えず、mm に換算した値を返すようにしたので説明を直す
+        [Help("Gets or sets the pixel size of the image in mm. Writing it switches the pixel-size unit to mm; reading it returns the value converted to mm without changing the unit.")] // 261105Cl
         public double PixelSizeInMM { get => spotID.PixelSizeInMM; set => spotID.PixelSizeInMM = value; }
 
-        [Help("Gets or sets the pixel size of the image in nm^-1. Reading or writing it also switches the pixel-size unit to nm^-1.")]
+        //[Help("Gets or sets the pixel size of the image in nm^-1. Reading or writing it also switches the pixel-size unit to nm^-1.")] // 261105Cl 変更前
+        [Help("Gets or sets the pixel size of the image in nm^-1. Writing it switches the pixel-size unit to nm^-1; reading it returns the value converted to nm^-1 without changing the unit.")] // 261105Cl
         public double PixelSizeInNMinv { get => spotID.PixelSizeInNMinv; set => spotID.PixelSizeInNMinv = value; }
 
         [Help("Gets or sets the maximum number of spots to be detected by FindSpots().")]

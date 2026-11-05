@@ -209,27 +209,37 @@ public partial class FormSpotIDV2 : FormBase
 
     #endregion 画像読み込み関連
 
-    #region カメラ長、波長、ピクセルサイズが変更されたとき 
-    private void WaveLengthControl1_WavelengthChanged(object sender, EventArgs e)
-    {
-        if (dataSet.DataTableSpot.AreaDetector != null)
-            dataSet.DataTableSpot.AreaDetector.WaveLength = waveLengthControl1.WaveLength;
-        dataSet.DataTableSpot.ResetDspacing();
-    }
+    #region カメラ長、波長、ピクセルサイズが変更されたとき
+    // 261105Cl 変更 (監査 I6): 波長・カメラ長・ピクセルサイズ (値と単位) のどれが変わっても、検出器の 3 つの値をまとめて設定し直す。
+    //  ピクセルサイズを nm⁻¹ で入れているとき、mm に直した値 (PixelSize) は波長とカメラ長にもよるが、旧は波長・カメラ長の変更で Resolution を
+    //  直さず、単位の切り替え (radioButtonPixelSizeUnitReal_CheckedChanged) では何も直さなかったので、表の d と同定に使う観測ベクトル
+    //  (ReciprocalVectors) が古い分解能のままだった
+    //private void WaveLengthControl1_WavelengthChanged(object sender, EventArgs e) // 261105Cl 変更前
+    //{
+    //    if (dataSet.DataTableSpot.AreaDetector != null)
+    //        dataSet.DataTableSpot.AreaDetector.WaveLength = waveLengthControl1.WaveLength;
+    //    dataSet.DataTableSpot.ResetDspacing();
+    //}
+    private void WaveLengthControl1_WavelengthChanged(object sender, EventArgs e) => NumericBoxPixelSize_ValueChanged(sender, e); // 261105Cl 変更
 
     private void NumericBoxPixelSize_ValueChanged(object sender, EventArgs e)
     {
         if (dataSet.DataTableSpot.AreaDetector != null)
-            dataSet.DataTableSpot.AreaDetector.Resolution = PixelSize;
+        {// 261105Cl
+            dataSet.DataTableSpot.AreaDetector.WaveLength = waveLengthControl1.WaveLength; // 261105Cl 追加
+            dataSet.DataTableSpot.AreaDetector.CameraLength = numericBoxCameraLength.Value; // 261105Cl 追加
+            dataSet.DataTableSpot.AreaDetector.Resolution = PixelSize; // 261105Cl 字下げ
+        }// 261105Cl
         dataSet.DataTableSpot.ResetDspacing();
     }
 
-    private void NumericBoxCameraLength_ValueChanged(object sender, EventArgs e)
-    {
-        if (dataSet.DataTableSpot.AreaDetector != null)
-            dataSet.DataTableSpot.AreaDetector.CameraLength = numericBoxCameraLength.Value;
-        dataSet.DataTableSpot.ResetDspacing();
-    }
+    //private void NumericBoxCameraLength_ValueChanged(object sender, EventArgs e) // 261105Cl 変更前
+    //{
+    //    if (dataSet.DataTableSpot.AreaDetector != null)
+    //        dataSet.DataTableSpot.AreaDetector.CameraLength = numericBoxCameraLength.Value;
+    //    dataSet.DataTableSpot.ResetDspacing();
+    //}
+    private void NumericBoxCameraLength_ValueChanged(object sender, EventArgs e) => NumericBoxPixelSize_ValueChanged(sender, e); // 261105Cl 変更
     #endregion
 
     #region マウスイベント
@@ -1819,6 +1829,7 @@ public partial class FormSpotIDV2 : FormBase
     private void radioButtonPixelSizeUnitReal_CheckedChanged(object sender, EventArgs e)
     {
         numericBoxCameraLength.Enabled = radioButtonPixelSizeUnitReal.Checked;
+        NumericBoxPixelSize_ValueChanged(sender, e); // 261105Cl 追加 (監査 I6): 単位を替えると同じ数値でも mm での値が変わるので、検出器と d を直す
     }
 
     private void FormSpotIDV2_KeyDown(object sender, KeyEventArgs e)
@@ -1900,17 +1911,22 @@ public partial class FormSpotIDV2 : FormBase
     // (AreaDetector が mm を要求するため)、外部から読み書きすると値が往復しない。単位ごとに対称な入口を用意する。
     // DifSim の ImageResolutionInMM / ImageResolutionInNMinv と同じ形。
 
-    /// <summary>ピクセルサイズを mm 単位で取得/設定する (単位表示も mm へ切り替わる)。</summary>
+    /// <summary>ピクセルサイズを mm 単位で取得/設定する (設定すると単位表示も mm へ切り替わる。取得では切り替えない)。</summary>
     public double PixelSizeInMM
     {
-        get { radioButtonPixelSizeUnitReal.Checked = true; return numericBoxPixelSize.Value; }
+        //get { radioButtonPixelSizeUnitReal.Checked = true; return numericBoxPixelSize.Value; } // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I6): 取得するだけで単位を mm に切り替えると、欄の数値 (nm⁻¹ の値) がそのまま mm と読み替えられて校正が変わっていた。
+        //  単位は替えずに mm へ換算した値を返す (PixelSize の getter と同じ換算)
+        get => PixelSize; // 261105Cl
         set { radioButtonPixelSizeUnitReal.Checked = true; numericBoxPixelSize.Value = value; }
     }
 
-    /// <summary>ピクセルサイズを nm^-1 単位で取得/設定する (単位表示も nm^-1 へ切り替わる)。</summary>
+    /// <summary>ピクセルサイズを nm^-1 単位で取得/設定する (設定すると単位表示も nm^-1 へ切り替わる。取得では切り替えない)。</summary>
     public double PixelSizeInNMinv
     {
-        get { radioButtonPixelSizeUnitInverse.Checked = true; return numericBoxPixelSize.Value; }
+        //get { radioButtonPixelSizeUnitInverse.Checked = true; return numericBoxPixelSize.Value; } // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I6): 同上。mm で入れているときは PixelSize の換算 (mm = L tan(2 asin(λ p / 2))) の逆 p = 2 sin(atan(mm / L) / 2) / λ で返す
+        get => radioButtonPixelSizeUnitInverse.Checked ? numericBoxPixelSize.Value : 2 * Math.Sin(Math.Atan(numericBoxPixelSize.Value / CameraLength) / 2) / WaveLength; // 261105Cl
         set { radioButtonPixelSizeUnitInverse.Checked = true; numericBoxPixelSize.Value = value; }
     }
 
