@@ -114,7 +114,12 @@ public partial class FormCTF : FormBase
                 //色収差の部分
                 //var tmp2 = Math.PI * Lambda * delta * (kq2 - k2);
                 var tmp2 = coeff3 * (kq2 - k2);
-                return Complex.Exp(tmp1 - tmp2 * tmp2);
+                //return Complex.Exp(tmp1 - tmp2 * tmp2); // 261105Cl 変更前: 指数の 1/2 が抜けていた (包絡が exp(−(πλδ)²(k²−kq²)²) で、減衰が 2 乗の指数で 2 倍強い)
+                // 261105Cl 修正: 色収差 (時間的インコヒーレンス) の包絡は exp(−½(πλδ)²(k² − kq²)²)。
+                //   δ = Cc·σ_V/V は焦点の広がりの rms (標準偏差)。焦点が ε ~ N(0, δ²) だけずれると、T(k)·T*(k−q) の位相は πλε(k² − kq²) だけずれ、
+                //   ガウス平均 ⟨exp(iaε)⟩ = exp(−a²δ²/2) から上の式になる。コヒーレントの曲線 (上の ec = exp(−½(πλδ)²u⁴)) と同じ 1/2
+                //   (BetheMethod の STEM の同じ式も同じ理由で 1/2 を足す作者の決定 2026-11-05)
+                return Complex.Exp(tmp1 - tmp2 * tmp2 / 2);
             }
 
             //絞り内の空間を192x192に分割
