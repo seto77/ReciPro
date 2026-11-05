@@ -197,6 +197,7 @@ public partial class FormStructureViewer : FormBase
         glControlMainZsort.MouseDown += glControlMain_MouseDown;
         glControlMainZsort.MouseMove += glControlMain_MouseMove;
         glControlMainZsort.ProjWidthChanged += glControlMain_ProjWidthChanged; // 260703Cl 追加: ズーム操作(右ドラッグ/ホイール)で numericBoxProjWidth を同期
+        glControlMainZsort.ProjectionModeChanged += glControlMain_ProjectionModeChanged; // 261105Cl 追加: CTRL+右ダブルクリックの投影モード切替をコンボへ反映
 
         // glControlMainDDP
         glControlMainDDP = new GLControlAlpha(GLControlAlpha.FragShaders.DDP) // (260319Ch) DDP を StructureViewer の比較対象へ追加
@@ -220,6 +221,7 @@ public partial class FormStructureViewer : FormBase
         glControlMainDDP.MouseDown += glControlMain_MouseDown;
         glControlMainDDP.MouseMove += glControlMain_MouseMove;
         glControlMainDDP.ProjWidthChanged += glControlMain_ProjWidthChanged; // 260703Cl 追加
+        glControlMainDDP.ProjectionModeChanged += glControlMain_ProjectionModeChanged; // 261105Cl 追加
         glControlMainDDP.Visible = false;
 
         #region ARM64環境の対応待ちのため、PPLLは一旦コメントアウト (2025/12/10)
@@ -247,6 +249,7 @@ public partial class FormStructureViewer : FormBase
         glControlMainPPLL.MouseDown += glControlMain_MouseDown;
         glControlMainPPLL.MouseMove += glControlMain_MouseMove;
         glControlMainPPLL.ProjWidthChanged += glControlMain_ProjWidthChanged; // 260703Cl 追加
+        glControlMainPPLL.ProjectionModeChanged += glControlMain_ProjectionModeChanged; // 261105Cl 追加
         glControlMainPPLL.Visible = false;
         #endregion
 
@@ -2171,6 +2174,16 @@ public partial class FormStructureViewer : FormBase
 
         glControlMain.ProjectionMode = comboBoxProjectionMode.SelectedIndex == 0 ?
                 GLControlAlpha.ProjectionModes.Orhographic : GLControlAlpha.ProjectionModes.Perspective;
+    }
+
+    /// <summary>261105Cl 追加: CTRL+右ダブルクリックで GL 側の投影モードが切り替わったとき、コンボ (と遠近の強さのスライダの有効/無効) を合わせる</summary>
+    private void glControlMain_ProjectionModeChanged(object sender, EventArgs e)
+    {
+        if (!ReferenceEquals(sender, glControlMain))
+            return; // 透明モード切替の swap 中など、非アクティブな GL コントロールからの通知は無視
+        var index = glControlMain.ProjectionMode == GLControlAlpha.ProjectionModes.Orhographic ? 0 : 1;
+        if (comboBoxProjectionMode.SelectedIndex != index)
+            comboBoxProjectionMode.SelectedIndex = index; // SelectedIndexChanged が同じモードを set し直すだけ (値が同じなのでイベントは再発しない)
     }
 
     private void trackBarPerspective_Scroll(object sender, EventArgs e)
