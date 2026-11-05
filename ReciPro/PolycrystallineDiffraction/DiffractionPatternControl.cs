@@ -1046,6 +1046,11 @@ public partial class DiffractionPatternControl : UserControlBase
         double[] diffractionPixels = new double[ImageLength];
         foreach (Crystal c in Crystals)
         {
+            // 261105Cl 追加 (監査 A19): 結晶の欄を編集すると CrystalControl.GenerateFromInterface が新しい Crystal を作り、結晶子の集合 (Crystallites) は
+            // 前の結晶から引き継ぐ。Crystallites.BaseCrystal が前の結晶のままだと、応力・歪み・Hill 係数・弾性定数・結晶子サイズの編集が計算に効かない。
+            // 角度の分割 (配列の大きさを決める AngleResolution・SubDivision) が同じなら、計算する結晶に付け替える (違うときは従来どおり。Ctrl+Simulate で作り直す)
+            if (c.Crystallites?.BaseCrystal is Crystal b && !ReferenceEquals(b, c) && b.AngleResolution == c.AngleResolution && b.SubDivision == c.SubDivision)
+                c.Crystallites.BaseCrystal = c;
             if (renewGVector)
             {
                 if (c.Crystallites == null)
