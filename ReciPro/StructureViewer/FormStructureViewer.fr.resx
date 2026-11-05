@@ -332,7 +332,7 @@ des limites</value>
     <value>Direction de la lumière</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copier l'image principale dans le presse-papiers</value>
+    <value>Copier l'image dans le presse-papiers</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Image principale</value>
@@ -688,7 +688,7 @@ de symétrie (plans miroir et plans de glissement).</value>
 de symétrie (axes de rotation, hélicoïdaux et de rotoinversion).</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>Afficher les étiquettes dans les légendes</value>
+    <value>Afficher les étiquettes des atomes dans la vue 3D</value>
   </data>
   <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
     <value>Utiliser la couleur du matériau comme couleur d'étiquette </value>
@@ -703,7 +703,7 @@ de symétrie (axes de rotation, hélicoïdaux et de rotoinversion).</value>
     <value>Taille de police des étiquettes d'atomes (0–200).</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>Si coché, les étiquettes de légende sont entourées de blanc.</value>
+    <value>Si coché, les étiquettes des atomes dans la vue 3D sont entourées de blanc.</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
     <value>Afficher les atomes liés même s'ils sont hors des limites</value>

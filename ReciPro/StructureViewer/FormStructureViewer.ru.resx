@@ -347,7 +347,7 @@
     <value>Направление света</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Копировать основное изображение в буфер обмена</value>
+    <value>Копировать изображение в буфер обмена</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Основное изображение</value>
@@ -703,7 +703,7 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
 симметрии (поворотные, винтовые и инверсионно-поворотные оси).</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>Показывать подписи в легендах</value>
+    <value>Показывать подписи атомов в 3D-виде</value>
   </data>
   <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
     <value>Использовать цвет материала как цвет подписи </value>
@@ -718,7 +718,7 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
     <value>Размер шрифта подписей атомов (0–200).</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>Если отмечено, подписи легенды обводятся белым контуром.</value>
+    <value>Если отмечено, подписи атомов в 3D-виде обводятся белым контуром.</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
     <value>Показывать связанные атомы, даже если они за пределами границ</value>

@@ -347,7 +347,7 @@
     <value>광원 방향</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>주 이미지를 클립보드에 복사</value>
+    <value>이미지를 클립보드에 복사</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
     <value>주 이미지</value>
@@ -703,7 +703,7 @@
 표시 색을 설정합니다.</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>범례에 레이블 표시</value>
+    <value>3D 보기에 원자 레이블 표시</value>
   </data>
   <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
     <value>재질 색을 레이블 색으로 사용 </value>
@@ -718,7 +718,7 @@
     <value>원자 라벨의 글자 크기(0–200).</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>체크하면 범례 레이블에 흰색 윤곽선이 붙습니다.</value>
+    <value>체크하면 3D 보기의 원자 레이블에 흰색 윤곽선이 붙습니다.</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
     <value>경계 밖에 있더라도 결합된 원자를 표시</value>

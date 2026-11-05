@@ -347,7 +347,7 @@ der Grenzen liegen</value>
     <value>Lichtrichtung</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Hauptbild in Zwischenablage kopieren</value>
+    <value>Bild in Zwischenablage kopieren</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Hauptbild</value>
@@ -703,7 +703,7 @@ Symbole (Spiegel- und Gleitspiegelebenen) festlegen.</value>
 Symbole (Dreh-, Schrauben- und Drehinversionsachsen) festlegen.</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>Beschriftungen in Legenden anzeigen</value>
+    <value>Atombeschriftungen in der 3D-Ansicht anzeigen</value>
   </data>
   <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
     <value>Die Materialfarbe als Beschriftungsfarbe verwenden </value>
@@ -718,7 +718,7 @@ Symbole (Dreh-, Schrauben- und Drehinversionsachsen) festlegen.</value>
     <value>Schriftgröße der Atombeschriftungen (0-200).</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>Wenn aktiviert, werden Legendenbeschriftungen weiß umrandet.</value>
+    <value>Wenn aktiviert, werden die Atombeschriftungen in der 3D-Ansicht weiß umrandet.</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
     <value>Gebundene Atome auch dann anzeigen, wenn sie außerhalb der Grenzen liegen</value>

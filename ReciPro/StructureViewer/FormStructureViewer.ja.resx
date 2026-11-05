@@ -251,7 +251,7 @@
     <value>結晶の境界面の表示/非表示</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderText" xml:space="preserve">
-    <value>透明度</value>
+    <value>不透明度</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.ToolTip" xml:space="preserve">
     <value>境界面の不透明度（0=透明、1=不透明）</value>
@@ -338,7 +338,7 @@
     <value>不透明度</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip" xml:space="preserve">
-    <value>格子面の不透明度 (1: 不透明, 0: 透明)</value>
+    <value>単位胞の面の不透明度 (1: 不透明, 0: 透明)</value>
   </data>
   <data name="flowLayoutPanelCellEdgeColors.ToolTip" xml:space="preserve">
     <value />
@@ -572,7 +572,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
 遠方境界と対で遠い原子をフェードします。</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>最遠</value>
+    <value>遠方</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>デプスキューイングの遠方境界 (Å): これより遠い
@@ -584,7 +584,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
 近方境界と対で遠い原子をフェードします。</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>最近</value>
+    <value>近方</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>デプスキューイングの近方境界 (Å): これより近い
@@ -698,7 +698,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>原子ラベルを表示</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>凡例にラベルを表示</value>
+    <value>3D 表示に原子ラベルを表示</value>
   </data>
   <data name="radioButtonUseMaterialColor.Text" xml:space="preserve">
     <value>原子色を使う</value>
@@ -722,7 +722,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>白く縁取り</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>チェックすると、凡例の文字に白い縁取りが付きます</value>
+    <value>チェックすると、3D 表示の原子ラベルに白い縁取りが付きます</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>(凡例をクリックして
@@ -953,7 +953,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>c 軸に垂直な単位胞面の色（「Each plane」選択時に使用）。</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip1" xml:space="preserve">
-    <value>格子面の不透明度 (1: 不透明, 0: 透明)</value>
+    <value>単位胞の面の不透明度 (1: 不透明, 0: 透明)</value>
   </data>
   <data name="colorControlCellEdge.ToolTip1" xml:space="preserve">
     <value>すべてのセル辺の色を設定</value>

@@ -347,7 +347,7 @@ dos limites</value>
     <value>Direção da luz</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copiar imagem principal para a área de transferência</value>
+    <value>Copiar imagem para a área de transferência</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Imagem principal</value>
@@ -703,7 +703,7 @@ simetria (planos de espelho e de deslizamento).</value>
 simetria (eixos de rotação, helicoidais e de rotoinversão).</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>Mostra rótulos nas legendas</value>
+    <value>Mostra os rótulos dos átomos na vista 3D</value>
   </data>
   <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
     <value>Usa a cor do material como cor do rótulo </value>
@@ -718,7 +718,7 @@ simetria (eixos de rotação, helicoidais e de rotoinversão).</value>
     <value>Tamanho da fonte dos rótulos dos átomos (0–200).</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>Quando marcado, os rótulos da legenda recebem um contorno branco.</value>
+    <value>Quando marcado, os rótulos dos átomos na vista 3D recebem um contorno branco.</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
     <value>Mostra átomos ligados mesmo que estejam fora dos limites</value>

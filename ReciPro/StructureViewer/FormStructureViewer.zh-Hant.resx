@@ -347,7 +347,7 @@
     <value>光照方向</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>複製主影像至剪貼簿</value>
+    <value>複製影像至剪貼簿</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
     <value>主影像</value>
@@ -703,7 +703,7 @@ Per-Pixel Linked List，需要較新的 OpenGL）。</value>
 （旋轉軸、螺旋軸與旋轉反演軸）的顯示顏色。</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>在圖例中顯示標籤</value>
+    <value>在 3D 檢視中顯示原子標籤</value>
   </data>
   <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
     <value>使用材質顏色作為標籤顏色 </value>
@@ -718,7 +718,7 @@ Per-Pixel Linked List，需要較新的 OpenGL）。</value>
     <value>原子標籤的字型大小（0–200）。</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>勾選時，圖例標籤會加上白色外框。</value>
+    <value>勾選時，3D 檢視中的原子標籤會加上白色外框。</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
     <value>即使鍵結原子位於邊界之外也予以顯示</value>

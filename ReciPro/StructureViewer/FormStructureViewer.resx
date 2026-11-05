@@ -3494,7 +3494,7 @@ point is placed at the center of the view.</value>
     <value>0</value>
   </data>
   <data name="comboBoxProjectionMode.Items" xml:space="preserve">
-    <value>Orhographic</value>
+    <value>Orthographic</value>
   </data>
   <data name="comboBoxProjectionMode.Items1" xml:space="preserve">
     <value>Perspective</value>
@@ -3951,7 +3951,7 @@ than this depth stay fully opaque (-30 to 30)</value>
     <value>6</value>
   </data>
   <data name="checkBoxSymElems_Inversions.Text" xml:space="preserve">
-    <value>Inversion Cneters
+    <value>Inversion Centers
 </value>
   </data>
   <data name="checkBoxSymElems_Inversions.ToolTip" xml:space="preserve">
@@ -4858,7 +4858,7 @@ when 'Use fixed color' is selected)</value>
     <value>White edge</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>When checked, legend labels are outlined in white.</value>
+    <value>When checked, the atom labels in the 3D view are outlined in white.</value>
   </data>
   <data name="&gt;&gt;checkBoxLabelWhiteEdge.Name" xml:space="preserve">
     <value>checkBoxLabelWhiteEdge</value>
@@ -4927,7 +4927,7 @@ when 'Use fixed color' is selected)</value>
     <value>Show label</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>Show labels in legends</value>
+    <value>Show the atom labels in the 3D view</value>
   </data>
   <data name="&gt;&gt;checkBoxShowLabel.Name" xml:space="preserve">
     <value>checkBoxShowLabel</value>
@@ -5804,7 +5804,7 @@ symbols) overlaid on each atom.</value>
     <value>257, 22</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copy Main Image to Clipboard</value>
+    <value>Copy Image to Clipboard</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 22</value>

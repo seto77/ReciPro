@@ -347,7 +347,7 @@ dai limiti</value>
     <value>Direzione luce</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copia immagine principale negli appunti</value>
+    <value>Copia immagine negli appunti</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Immagine principale</value>
@@ -700,7 +700,7 @@ dei piani di simmetria (piani di riflessione e di scorrimento).</value>
 degli assi di simmetria (assi di rotazione, elicoidali e di rotoinversione).</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>Mostra le etichette nelle legende</value>
+    <value>Mostra le etichette degli atomi nella vista 3D</value>
   </data>
   <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
     <value>Usa il colore del materiale come colore dell'etichetta </value>
@@ -715,7 +715,7 @@ degli assi di simmetria (assi di rotazione, elicoidali e di rotoinversione).</va
     <value>Dimensione del carattere delle etichette degli atomi (0-200).</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>Se selezionato, le etichette della legenda hanno un contorno bianco.</value>
+    <value>Se selezionato, le etichette degli atomi nella vista 3D hanno un contorno bianco.</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
     <value>Mostra gli atomi legati anche se si trovano fuori dai limiti</value>
