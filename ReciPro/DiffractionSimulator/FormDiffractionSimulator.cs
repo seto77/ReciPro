@@ -1287,7 +1287,15 @@ public partial class FormDiffractionSimulator : FormBase
         }
         if (toolStripButtonDspacing.Checked) sb.AppendLine($"{g.d * 10:#.###} Å");
         if (toolStripButtonDspacingInv.Checked) sb.AppendLine($"{1 / g.d:#.###} /nm");
-        if (toolStripButtonDistance.Checked) sb.AppendLine($"{CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2)):#.###} mm");
+        //if (toolStripButtonDistance.Checked) sb.AppendLine($"{CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2)):#.###} mm"); // 261105Cl 変更前 (監査 C15)
+        // 261105Cl 変更: CL·tan2θ は傾けていない平板の検出器でしか画面上の距離と合わない (検出器の傾斜・X 線プリセッション CL·λ/d・Back Laue で違う)。
+        //  ツールチップのとおり「透過スポットまでの検出器上の距離」を、描いた位置 pt と透過スポットの位置 (Back Laue は入射ビームの穴 = 原点) から求める
+        if (toolStripButtonDistance.Checked) // 261105Cl
+        {
+            var distance = (pt - ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0))).Length; // 261105Cl
+            if (!double.IsNaN(distance)) // 261105Cl 透過波が検出器に当たらないほど傾けたときは書かない
+                sb.AppendLine($"{distance:#.###} mm"); // 261105Cl
+        }
         if (toolStripButton2Theta.Checked || toolStripButtonAzimuth.Checked)//260703Cl 追加: 散乱角2θと方位角χのラベル (issue #64)。スケール(同心円/放射線)と同じ定義になるよう実空間座標から算出
         {
             var real = convertDetectorToReal(pt);
