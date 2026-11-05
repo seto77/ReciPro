@@ -175,7 +175,7 @@ unidad de índice (escalada según los valores del
 índice). Los valores negativos invierten el sentido.</value>
   </data>
   <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
-    <value>Añade un fotograma adicional en t = Duration para
+    <value>Añade un fotograma adicional en t = Duración para
 que el vídeo termine exactamente en la
 orientación/posición final.</value>
   </data>

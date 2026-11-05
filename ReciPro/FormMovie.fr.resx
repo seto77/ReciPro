@@ -175,7 +175,7 @@ du réseau par seconde (periods/s) par unité d'indice
 valeurs négatives inversent le sens.</value>
   </data>
   <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
-    <value>Ajoute une image supplémentaire à t = Duration
+    <value>Ajoute une image supplémentaire à t = Durée
 afin que la vidéo se termine exactement à
 l'orientation/position finale.</value>
   </data>

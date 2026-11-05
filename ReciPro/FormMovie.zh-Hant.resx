@@ -168,7 +168,7 @@
 負值會使移動方向反轉。</value>
   </data>
   <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
-    <value>在 t = Duration 處額外加入一個影格，
+    <value>在 t = 持續時間 處額外加入一個影格，
 使影片恰好結束於最終的方位／位置。</value>
   </data>
   <data name="checkBoxRotation.ToolTip" xml:space="preserve">

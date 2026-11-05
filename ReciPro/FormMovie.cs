@@ -47,7 +47,11 @@ public partial class FormMovie : FormBase
     private bool encoding = false; //260405Cl 追加: エンコード中フラグ
     //private bool translationModeAvailable = false; // (260629Ch) → 260703Cl 削除: checkBoxTranslation.Checked から導出可能な冗長状態だった
 
-    public bool MillerBravaisIndex { set => indexControl.MillerBravais = value; }
+    //public bool MillerBravaisIndex { set => indexControl.MillerBravais = value; } // 261105Cl 変更前: 方向指数のモードでも 4 指数の欄 (i = −(u+v)) になり、その値を 3 指数 [uvw] として使っていた
+    private bool millerBravaisIndex; // 261105Cl 追加
+    public bool MillerBravaisIndex { set { millerBravaisIndex = value; indexControl.MillerBravais = value && radioButtonPlane.Checked; } } // 261105Cl 変更 (監査 G-9): 4 指数は格子面のときだけ (主画面・ステレオ投影と同じく方向は [uvw])
+
+    private Vector3DBase currentDirection = new(0, 1, 0); // 261105Cl 追加: 「現在の投影」モードで矢印ボタンが選んでいる回転軸 (画面の座標)。既定は buttonRight
 
 
     public FormMovie()
@@ -64,7 +68,8 @@ public partial class FormMovie : FormBase
 
     private void buttonDirection_Click(object sender, EventArgs e)
     {
-        Direction = (sender as Button).Name switch
+        //Direction = (sender as Button).Name switch // 261105Cl 変更前
+        Direction = currentDirection = (sender as Button).Name switch // 261105Cl 変更: 方向指数・格子面から戻ったときに使えるよう、選んだ軸を覚えておく
         {
             "buttonTopRight" => new Vector3DBase(-1, 1, 0),
             "buttonRight" => new Vector3DBase(0, 1, 0),
@@ -95,6 +100,7 @@ public partial class FormMovie : FormBase
         }
 
         indexControl.Mode = radioButtonAxis.Checked ? IndexControl.ModeEnum.Axis : IndexControl.ModeEnum.Plane;
+        indexControl.MillerBravais = millerBravaisIndex && radioButtonPlane.Checked; // 261105Cl 追加 (監査 G-9): モードの切替にも 4 指数の表示を追随させる
         indexControl.Enabled = !radioButtonCurrent.Checked; // 260518Cl 旧 tableLayoutPanelAxis/Plane の Enabled 切替に対応: Current のとき入力欄を無効化
         tableLayoutPanelCurrent.Enabled = radioButtonCurrent.Checked && !EnableTranslation; // (260629Ch)
         numericBoxAxisU_ValueChanged(sender, e);
@@ -110,6 +116,8 @@ public partial class FormMovie : FormBase
             var rot = new Matrix3D(A, B, C).Inverse();
             Direction = Rot * (x * rot.Row1 + y * rot.Row2 + z * rot.Row3);
         }
+        else
+            Direction = currentDirection; // 261105Cl 追加: 「現在の投影」では矢印ボタンの軸 (旧: 直前の方向指数・格子面の軸が残り、表示中のボタンと食い違っていた)
     }
 
     //260405Cl 変更: ffmpeg.exe Process.Start → FFMediaToolkit API, async化
@@ -117,11 +125,24 @@ public partial class FormMovie : FormBase
     private async void buttonOK_Click(object sender, EventArgs e)
     {
         if (encoding) return; //260405Cl エンコード中は無視
+        numericBoxAxisU_ValueChanged(this, EventArgs.Empty); // 261105Cl 追加 (監査 G-16): ダイアログを開いたまま結晶を回しても、今の方位で [uvw]/(hkl) から回転軸を求め直す (旧: 入力した時点の方位で求めた軸のまま回り、軸がずれた)
         Visible = false;
 
         if (!EnableRotation && !EnableTranslation)
         {
-            MessageBox.Show("Please select Rotation and/or Translation"); // (260629Ch)
+            //MessageBox.Show("Please select Rotation and/or Translation"); // (260629Ch) // 261105Cl 変更前: 英語のみ
+            MessageBox.Show(Localization.Loc( // 261105Cl 変更 (監査 G-25): 11 言語に
+                en: "Please select Rotation and/or Translation.",
+                ja: "「回転」と「平行移動」の少なくとも一方を選んでください。",
+                de: "Bitte „Rotation“ und/oder „Translation“ auswählen.",
+                fr: "Veuillez sélectionner « Rotation » et/ou « Translation ».",
+                es: "Seleccione «Rotación» y/o «Traslación».",
+                pt: "Selecione \"Rotação\" e/ou \"Translação\".",
+                it: "Selezionare \"Rotazione\" e/o \"Traslazione\".",
+                ru: "Выберите «Вращение» и/или «Перенос».",
+                zhHans: "请选择“旋转”和/或“平移”。",
+                zhHant: "請選擇「旋轉」和/或「平移」。",
+                ko: "'회전'과 '평행 이동' 중 하나 이상을 선택하세요."));
             Visible = true; // (260629Ch)
             return;
         }
@@ -129,13 +150,37 @@ public partial class FormMovie : FormBase
         //if (Direction.X == 0 && Direction.Y == 0 && Direction.Z == 0) // (260629Ch) 変更前: Translation 単独時も回転軸 Direction で判定していた
         if (EnableRotation && Direction.X == 0 && Direction.Y == 0 && Direction.Z == 0)
         {
-            MessageBox.Show("Please input a valid orientation");
+            //MessageBox.Show("Please input a valid orientation"); // 261105Cl 変更前: 英語のみ
+            MessageBox.Show(Localization.Loc( // 261105Cl 変更 (監査 G-25): 11 言語に
+                en: "Please input a valid rotation axis (the index must not be 0 0 0).",
+                ja: "有効な回転軸を入力してください (指数 0 0 0 は使えません)。",
+                de: "Bitte eine gültige Rotationsachse eingeben (der Index darf nicht 0 0 0 sein).",
+                fr: "Veuillez saisir un axe de rotation valide (l'indice ne doit pas être 0 0 0).",
+                es: "Introduzca un eje de rotación válido (el índice no puede ser 0 0 0).",
+                pt: "Insira um eixo de rotação válido (o índice não pode ser 0 0 0).",
+                it: "Inserire un asse di rotazione valido (l'indice non può essere 0 0 0).",
+                ru: "Введите допустимую ось вращения (индекс не может быть 0 0 0).",
+                zhHans: "请输入有效的旋转轴（指数不能为 0 0 0）。",
+                zhHant: "請輸入有效的旋轉軸（指數不能為 0 0 0）。",
+                ko: "유효한 회전축을 입력하세요 (지수는 0 0 0일 수 없습니다)."));
             Visible = true; // (260629Ch)
             return;
         }
         if (EnableTranslation && indexControl.IsZero)
         {
-            MessageBox.Show("Please input a valid translation direction"); // (260629Ch)
+            //MessageBox.Show("Please input a valid translation direction"); // (260629Ch) // 261105Cl 変更前: 英語のみ
+            MessageBox.Show(Localization.Loc( // 261105Cl 変更 (監査 G-25): 11 言語に
+                en: "Please input a valid translation direction (the index must not be 0 0 0).",
+                ja: "有効な平行移動の方向を入力してください (指数 0 0 0 は使えません)。",
+                de: "Bitte eine gültige Translationsrichtung eingeben (der Index darf nicht 0 0 0 sein).",
+                fr: "Veuillez saisir une direction de translation valide (l'indice ne doit pas être 0 0 0).",
+                es: "Introduzca una dirección de traslación válida (el índice no puede ser 0 0 0).",
+                pt: "Insira uma direção de translação válida (o índice não pode ser 0 0 0).",
+                it: "Inserire una direzione di traslazione valida (l'indice non può essere 0 0 0).",
+                ru: "Введите допустимое направление переноса (индекс не может быть 0 0 0).",
+                zhHans: "请输入有效的平移方向（指数不能为 0 0 0）。",
+                zhHant: "請輸入有效的平移方向（指數不能為 0 0 0）。",
+                ko: "유효한 평행 이동 방향을 입력하세요 (지수는 0 0 0일 수 없습니다)."));
             Visible = true; // (260629Ch)
             return;
         }
@@ -223,7 +268,14 @@ public partial class FormMovie : FormBase
             {
                 frames.Clear();
                 FormMain.Enabled = Caller.Enabled = true;
-                MessageBox.Show($"Failed to capture frames: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show($"Failed to capture frames: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // 261105Cl 変更前: 英語のみ
+                MessageBox.Show(Localization.Loc( // 261105Cl 変更 (監査 G-25): 11 言語に
+                    en: "Failed to capture frames: ", ja: "フレームの取り込みに失敗しました: ", de: "Bilder konnten nicht aufgenommen werden: ",
+                    fr: "Échec de la capture des images : ", es: "No se pudieron capturar los fotogramas: ", pt: "Falha ao capturar os quadros: ",
+                    it: "Acquisizione dei fotogrammi non riuscita: ", ru: "Не удалось захватить кадры: ", zhHans: "捕获帧失败：",
+                    zhHant: "擷取影格失敗：", ko: "프레임을 캡처하지 못했습니다: ") + ex.Message,
+                    Localization.Loc(en: "Error", ja: "エラー", de: "Fehler", fr: "Erreur", es: "Error", pt: "Erro", it: "Errore", ru: "Ошибка", zhHans: "错误", zhHant: "錯誤", ko: "오류"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

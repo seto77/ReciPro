@@ -175,7 +175,7 @@ por segundo (periods/s) por unidade de índice
 negativos invertem a direção.</value>
   </data>
   <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
-    <value>Adiciona um quadro extra em t = Duration para que o
+    <value>Adiciona um quadro extra em t = Duração para que o
 vídeo termine exatamente na orientação/posição final.</value>
   </data>
   <data name="checkBoxRotation.ToolTip" xml:space="preserve">

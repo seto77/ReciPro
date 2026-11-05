@@ -127,7 +127,7 @@
   </data>
   <data name="radioButtonAxis.ToolTip" xml:space="preserve">
     <value>회전축을 결정의 방향 지수 [uvw]로 지정합니다.
-Translation이 켜져 있으면 [uvw]가 병진 이동 방향도
+'평행 이동'이 켜져 있으면 [uvw]가 병진 이동 방향도
 지정하며, 이 모드만 선택할 수 있습니다.</value>
   </data>
   <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
@@ -150,7 +150,7 @@ Translation이 켜져 있으면 [uvw]가 병진 이동 방향도
     <value>회전축을 정의하는 지수를 입력합니다. 방향 지수
 모드에서는 방향 [uvw]로, 격자면 모드에서는 격자면
 (hkl) (그 법선을 중심으로 회전)으로 해석됩니다.
-Translation이 켜져 있으면 [uvw]가 병진 이동
+'평행 이동'이 켜져 있으면 [uvw]가 병진 이동
 방향도 지정합니다.</value>
   </data>
   <data name="numericBoxFps.ToolTip" xml:space="preserve">
@@ -169,14 +169,14 @@ Translation이 켜져 있으면 [uvw]가 병진 이동
 음수 값은 이동 방향을 반전시킵니다.</value>
   </data>
   <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
-    <value>t = Duration 시점에 프레임을 하나 더 추가하여
+    <value>t = 지속 시간 시점에 프레임을 하나 더 추가하여
 동영상이 정확히 마지막 방위/위치에서 끝나도록
 합니다.</value>
   </data>
   <data name="checkBoxRotation.ToolTip" xml:space="preserve">
     <value>동영상에서 시점을 회전시킵니다. 체크를 해제하면
-병진 이동만 하는 동영상이 됩니다 (Rotation과
-Translation 중 적어도 하나는 켜져 있어야 합니다).</value>
+병진 이동만 하는 동영상이 됩니다 ('회전'과
+'평행 이동' 중 적어도 하나는 켜져 있어야 합니다).</value>
   </data>
   <data name="checkBoxTranslation.ToolTip" xml:space="preserve">
     <value>동영상에서 투영 중심을 병진 이동시킵니다.
