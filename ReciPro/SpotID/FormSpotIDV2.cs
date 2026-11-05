@@ -1237,7 +1237,8 @@ public partial class FormSpotIDV2 : FormBase
                 // 同数の候補の順序、ひいては直後の近接方位の間引きでどの代表が残るかまで揺らいでいた。
                 // 完全同点まで解決する全順序 (compareGrain) で並べ替えて再現性を確保する。
                 // 旧: var cand = getRotationCandidatesFrom2Spots2(...).OrderByDescending(c => c.Indices.Length).ToList();
-                var cand = getRotationCandidatesFrom2Spots2(vec[id].ToArray(), v2.ToArray(), exceptedIndices);
+                //var cand = getRotationCandidatesFrom2Spots2(vec[id].ToArray(), v2.ToArray(), exceptedIndices); // 261105Cl 変更前
+                var cand = getRotationCandidatesFrom2Spots2(vec[id].ToArray(), v2.ToArray(), exceptedIndices, crystals[id].Symmetry); // 261105Cl 変更 (監査 I8): その結晶の対称性で代表指数を選ぶ
                 if (cand == null)//260801Cl 追加: Stop 押下時は null が返る (旧実装はここで NullReferenceException になっていた)
                     return [];
                 cand.Sort(compareGrain);
@@ -1247,8 +1248,13 @@ public partial class FormSpotIDV2 : FormBase
                         if (Math.Cos(ToleranceAngle) < Math.Abs(((cand[k].Rotation * cand[j].Rotation.Inverse()).SumOfDiagonalCompenent() - 1) / 2))
                             cand.RemoveAt(k--);
                     cand[j].ID = id;
-                    cand[j].CrystalName = ((Crystal)FormMain.listBox.SelectedItems[id]).Name;
-                    cand[j].Spots = ((Crystal)FormMain.listBox.SelectedItems[id]).Crystallites.GetSpotPosition(Detector, cand[j].Rotation);
+                    // 261105Cl 変更 (監査 I8): 主窓のリストの「今の」選択 (FormMain.listBox.SelectedItems、別スレッドから読んでいた) でなく、同定を始めたときに集めた crystals[id] を使う。
+                    //  同定中に選択を変えると、別の結晶の名前・スポット位置が付いていた
+                    //cand[j].CrystalName = ((Crystal)FormMain.listBox.SelectedItems[id]).Name; // 261105Cl 変更前
+                    //cand[j].Spots = ((Crystal)FormMain.listBox.SelectedItems[id]).Crystallites.GetSpotPosition(Detector, cand[j].Rotation); // 261105Cl 変更前
+                    cand[j].Crystal = crystals[id]; // 261105Cl 追加 (Grain.Crystal。精密化・粒の選択で、主窓の結晶と照合する)
+                    cand[j].CrystalName = crystals[id].Name; // 261105Cl
+                    cand[j].Spots = crystals[id].Crystallites.GetSpotPosition(Detector, cand[j].Rotation); // 261105Cl
                 }
                 return cand;
             });
@@ -1354,8 +1360,12 @@ public partial class FormSpotIDV2 : FormBase
     /// <param name="gVectors"></param>
     /// <param name="obsSpotsReciprocal"></param>
     /// <returns></returns>
-    private List<Grain> getRotationCandidatesFrom2Spots2(Vector3D[] vectorOfG, Vector3DBase[] obsSpotsReciprocal, int[] exceptedIndices = null)
+    //private List<Grain> getRotationCandidatesFrom2Spots2(Vector3D[] vectorOfG, Vector3DBase[] obsSpotsReciprocal, int[] exceptedIndices = null) // 261105Cl 変更前
+    // 261105Cl 変更 (監査 I8): symmetry (vectorOfG の結晶の対称性) を追加。旧は下の代表指数の判定に常に主窓の結晶 (FormMain.Crystal) の対称性を使っていたので、
+    //  複数の結晶で同定すると 2 番目以降の結晶も 1 番目 (主窓) の点群で代表指数を選び、点群が違うと探索する組み合わせが欠けたり余ったりした
+    private List<Grain> getRotationCandidatesFrom2Spots2(Vector3D[] vectorOfG, Vector3DBase[] obsSpotsReciprocal, int[] exceptedIndices = null, Symmetry? symmetry = null)
     {
+        var sym = symmetry ?? FormMain.Crystal.Symmetry; // 261105Cl 追加 (省略時は従来どおり主窓の結晶。Symmetry は構造体)
         //maxNum個数のobsSpotに対する候補となるgVectorsを定義しておく
         var gVectors = new List<List<Vector3D>>();
         for (int i = 0; i < obsSpotsReciprocal.Length; i++)
@@ -1381,7 +1391,8 @@ public partial class FormSpotIDV2 : FormBase
         {
             for (int i = 0; i < max; i++)
             {
-                foreach (var vec1 in gVectors2[i].Where(g => FormMain.Crystal.Symmetry.IsPlaneRootIndex(g.Index)))
+                //foreach (var vec1 in gVectors2[i].Where(g => FormMain.Crystal.Symmetry.IsPlaneRootIndex(g.Index))) // 261105Cl 変更前
+                foreach (var vec1 in gVectors2[i].Where(g => sym.IsPlaneRootIndex(g.Index))) // 261105Cl
                 {
                     var angle = Vector3DBase.AngleBetVectors(obsSpotsReciprocal2[i], obsSpotsReciprocal2[max]);//i番目のスポットと、j番目のスポットのなす角度
                     if (angle > 30.0 / 180.0 * Math.PI && angle < 150.0 / 180.0 * Math.PI)
@@ -1513,6 +1524,9 @@ public partial class FormSpotIDV2 : FormBase
 
         public int ID;
         public string CrystalName;
+
+        /// <summary>261105Cl 追加: この粒を同定した結晶 (主窓の結晶リストの結晶オブジェクト)。粒の選択・精密化で、主窓の結晶と同じものかを確かめるのに使う</summary>
+        public Crystal Crystal;
 
         // 260801Cl 削除: 呼び出し箇所ゼロで、かつ新しい compareGrain (割当スポット数優先) と矛盾する順序だったため。
         // 残しておくと引数なしの Sort()/OrderBy() が意図と違う順序を黙って返す罠になる。
