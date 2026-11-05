@@ -134,7 +134,13 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
 
     private void crystalControl_CrystalChanged(object sender, EventArgs e)
     {
-        Crystals[(sender as CrystalControl).Crystal.id] = (sender as CrystalControl).Crystal;
+        //Crystals[(sender as CrystalControl).Crystal.id] = (sender as CrystalControl).Crystal; // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I12): タブの番号は送り手の CrystalControl の位置で決める。編集すると CrystalControl.GenerateFromInterface が新しい Crystal (id = 0) を作るので、
+        //  旧は 2 番目以降のタブの結晶を編集すると 1 番目の結晶 (Crystals[0]) を置き換え、その結晶自身は古いまま計算に使われていた
+        var index = CrystalContlols.IndexOf((CrystalControl)sender); // 261105Cl 追加
+        if (index < 0 || index >= Crystals.Count) return; // 261105Cl 追加
+        (sender as CrystalControl).Crystal.id = index; // 261105Cl 追加 (id も合わせておく)
+        Crystals[index] = (sender as CrystalControl).Crystal; // 261105Cl
     }
     private void FormPolycrystallineDiffractionSimulator_FormClosing(object sender, FormClosingEventArgs e)
     {
