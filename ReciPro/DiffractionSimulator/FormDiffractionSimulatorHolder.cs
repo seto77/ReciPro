@@ -85,6 +85,18 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
         e.Cancel = true;
         this.Visible = false;
     }
+
+    /// <summary>261105Cl 追加 (監査 #18): 再表示のたびに、今の結晶の方位を「今の傾斜での方位」として NeutralDirection を作り直し、晶帯軸も今の結晶で作り直す。
+    /// 親は窓が見えているときしか RotationChanged / CrystalChanged を呼ばず、Load は初回の表示でしか来ないので、閉じている間に方位 (や結晶) を変えて
+    /// 開き直すと NeutralDirection が古いまま残り、Tilt を動かすと結晶が昔の方位へ飛んでいた (方位 = HolderRotation⁻¹ · NeutralDirection)</summary>
+    protected override void OnVisibleChanged(EventArgs e)
+    {
+        base.OnVisibleChanged(e);
+        if (!Visible || FormDiffractionSimulator?.formMain?.Crystal == null) return;
+        NeutralDirection = HolderRotation * crystal.RotationMatrix;
+        setVector();
+        Draw();
+    }
     #endregion
 
     #region 描画
@@ -311,7 +323,16 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
     private void checkBox1DegLine_CheckedChanged(object sender, EventArgs e) => Draw();
     private void colorControlUniqueAxis_ColorChanged(object sender, EventArgs e) => Draw();
     private void numericBoxDrawingArea_ValueChanged(object sender, EventArgs e) => Draw();
-    private void numericBoxPrimaryAxisDirection_ValueChanged(object sender, EventArgs e) => Draw();
+    //private void numericBoxPrimaryAxisDirection_ValueChanged(object sender, EventArgs e) => Draw(); // 261105Cl 変更前
+    /// <summary>傾斜軸の向き (numericBoxTiltXDirection)・Tilt Y の極性 (radioButtonTiltY_Plus) の変更。
+    /// 261105Cl 変更 (監査 #18): どちらも HolderRotation を変えるが、結晶は実際には動いていないので、今の方位を保ったまま NeutralDirection を作り直す。
+    /// 以前は作り直さなかったので、次に Tilt を動かしたとき 方位 = H_new⁻¹ · H_old · R となって結晶が飛んでいた</summary>
+    private void numericBoxPrimaryAxisDirection_ValueChanged(object sender, EventArgs e)
+    {
+        if (FormDiffractionSimulator?.formMain?.Crystal != null) // InitializeComponent 中は親が未配線
+            NeutralDirection = HolderRotation * crystal.RotationMatrix;
+        Draw();
+    }
 
     private void numericBoxU_ValueChanged(object sender, EventArgs e)
     {
