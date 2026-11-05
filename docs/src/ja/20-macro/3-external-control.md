@@ -56,7 +56,8 @@ if ($p.ExitCode -ne 0) { Get-Content C:\work\result.txt }
 
 リスナーは**既定で OFF** です。メインウィンドウのメニューから有効化します:
 
-**Option → 外部からのマクロ命令を受け付ける (Named Pipe)**
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.ja.resx:optionToolStripMenuItem.Text) -->
+**オプション → 外部からのマクロ命令を受け付ける (Named Pipe)**
 
 設定は次回起動時も保持されます。
 

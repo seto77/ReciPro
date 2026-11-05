@@ -125,13 +125,13 @@ Euler angles are not unique at gimbal positions (θ = 0 or 180°): `GetEuler()` 
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `Energy` | double | Energy (keV) |
-| `Wavelength` | double | Wavelength (Å) |
+| `Energy` | double | <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Macro.cs:DifSimClass.Energy) --> Energy (keV for X-rays and electrons, meV for neutrons) |
+| `Wavelength` | double | <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Macro.cs:DifSimClass.Wavelength / WaveLengthControl.cs:WaveLength) --> Wavelength (nm) |
 | `Thickness` | double | Specimen thickness (nm) |
 | `NumberOfDiffractedWaves` | int | Number of Bloch waves |
 | `CameraLength2` | double | Camera length (mm) |
 | `ExcitationError` | double | Spot radius (nm⁻¹): in kinematical/excitation mode, `SpotInfo()` exports reflections with \|Sg\| within this value |
-| `SkipRendering` | bool | Skip rendering for batch processing |
+| `SkipRendering` | bool | <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:Draw (SkipRendering && bethe)) --> Effective only in dynamical mode (`Calc_Dynamical()`): the Bloch-wave calculation still runs (so `SpotInfo()` is valid), but no spots are drawn — images saved meanwhile contain no spots. No effect in kinematical/excitation mode |
 
 ### Beam mode
 
@@ -156,7 +156,7 @@ Euler angles are not unique at gimbal positions (θ = 0 or 180°): `GetEuler()` 
 |----------|-------------|
 | `Tau` / `TauInDeg` | Detector tilt angle τ (rad / deg) |
 | `Phi` / `PhiInDeg` | Detector rotation axis φ (rad / deg) |
-| `Foot(x, y)` | Foot position in pixels |
+| `Foot(x, y)` | <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Macro.cs:DifSimClass.Foot / FormDiffractionSimulator.cs:Foot) --> Position of the image centre in detector coordinates (mm); (0, 0) is the foot of the perpendicular from the sample to the detector |
 
 ### Output
 
@@ -220,7 +220,7 @@ Drives the Structure Viewer window from a macro. `SaveImage()` and `Export3DMode
 | `StructureViewer.Open()` | Open the Structure Viewer window |
 | `StructureViewer.Close()` | Close the Structure Viewer window |
 | `StructureViewer.SaveImage(filename)` | Save the rendered main view as a PNG file, at the pixel size given by the **Size (W×H)** box; omit `filename` to open a dialog |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Export the displayed structure for 3D printing, like **Export 3D Model (3MF/STL)** in the File menu. The extension picks the format (`.stl` single color / `.3mf` colored by element); only `filename` is required — the other defaults equal the dialog defaults (largest dimension 80 mm, unit-cell edges ⌀2.4 mm, bonds thickened to ⌀1.2 mm). Pass `fixedScaleInMMperNm` > 0 to build several models at the same scale |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Export the displayed structure for 3D printing, like **Export 3D Model (3MF/STL)** in the File menu. The extension picks the format (`.stl` single color / `.3mf` colored by element); only `filename` is required — the other defaults equal the dialog defaults (largest dimension 80 mm, unit-cell edges ⌀2.4 mm, bonds thickened to ⌀1.2 mm). Pass `fixedScaleInMMperNm` > 0 to build several models at the same scale. <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Macro.cs:StructureViewerClass.Export3DModel) --> `filename` must end with `.stl` or `.3mf` (no dialog is opened); returns an information string with the triangle count and the printed size |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -317,7 +317,7 @@ These three image-simulation classes share many members. To avoid repetition, th
 
 | Function | Description |
 |----------|-------------|
-| `Sleep(ms)` | Wait for specified milliseconds |
+| `ReciPro.Sleep(ms)` | <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Macro.cs:Macro.Sleep / Macro ctor (addHelp は子クラスのみ)) --> Wait for specified milliseconds. Called as `ReciPro.Sleep(ms)`; it is not listed in the built-in-function table of the editor |
 
 ---
 
