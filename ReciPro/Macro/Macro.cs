@@ -66,6 +66,10 @@ public class Macro : MacroBase
 
         Potential = new PotentialClass(this);
         addHelp(Potential.GetType(), nameof(Potential));
+
+        // 261105Cl 追加 (監査 J15): root クラス自身の Help (ReciPro.Sleep) も一覧・補完に載せる。PDIndexer の Macro と同じく名前なしで呼ぶと "ReciPro.Sleep(int millisec)" になる。
+        //  以前は root を GenerateHelpText に渡していなかったので、Sleep は使えるのに一覧にも補完にも出なかった
+        addHelp(GetType(), null);
     }
 
     // (260414Ch) Help text revised throughout this file to match the implementation and improve English.
