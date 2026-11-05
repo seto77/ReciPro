@@ -749,8 +749,10 @@ public partial class FormMain : FormBase
             FormDiffractionSimulator.CancelSetVector = true;
 
             rw(() => FormDiffractionSimulator.Bounds);
-            rw(() => FormDiffractionSimulator.Resolution);
-            rw(() => FormDiffractionSimulator.ResolutionUnit);
+            // 261105Cl 変更 (監査 C7): 解像度は下の波長・カメラ長の後に読む (下へ移した)。先に読むと、単位 nm⁻¹/pix の換算 (radioButtonResoUnit_CheckedChanged) が
+            //  既定の波長・カメラ長で行われ、その後で実際の値を戻すので、次の起動で倍率 (mm/pix) が変わっていた
+            //rw(() => FormDiffractionSimulator.Resolution); // 261105Cl 変更前 (2 行)
+            //rw(() => FormDiffractionSimulator.ResolutionUnit);
             rw(() => FormDiffractionSimulator.FlipHorizontally);
             rw(() => FormDiffractionSimulator.FlipVertically);
             //rw(() => FormDiffractionSimulator.NegativeImage); //260731Cl 変更前
@@ -773,6 +775,12 @@ public partial class FormMain : FormBase
             rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorHeight);
             rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Tau);
             rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Phi);
+            // 261105Cl 追加 (監査 C18): 検出器の画素寸法と「検出器の範囲を表示」が保存されず、画素単位で保存している Foot・検出器の大きさと食い違っていた
+            rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorPixelSize); // 261105Cl
+            rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.ShowDetectorArea); // 261105Cl
+            // 261105Cl (監査 C7): 解像度は波長・カメラ長を戻した後に、単位 → 値の順で読む (Resolution の値は常に mm/pix で保存され、setter が今の単位へ換算する)
+            rw(() => FormDiffractionSimulator.ResolutionUnit); // 261105Cl
+            rw(() => FormDiffractionSimulator.Resolution); // 261105Cl
             FormDiffractionSimulator.CancelSetVector = false;
             #endregion
 
