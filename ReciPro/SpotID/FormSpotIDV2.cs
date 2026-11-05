@@ -1618,7 +1618,18 @@ public partial class FormSpotIDV2 : FormBase
                     calcSpots.Add(s);
                 }
 
-                FormMain.SetRotation(g.Rotation);
+                // 261105Cl 追加 (監査 I11): 複数の結晶で同定したとき、粒の結晶が主窓の結晶と違えば、主窓のリストでその結晶を選んでから方位を設定する
+                //  (FormSpotIDv1Results のダブルクリックと同じ選び方)。旧は別の結晶の粒の方位を主窓の結晶に設定し、晶帯軸の表示・精密化もその結晶で行っていた
+                if (g.Crystal != null && g.Crystal != FormMain.Crystal && FormMain.listBox.Items.IndexOf(g.Crystal) is int listIndex && listIndex >= 0) // 261105Cl 追加
+                {
+                    var mode = FormMain.listBox.SelectionMode; // 261105Cl 追加
+                    FormMain.listBox.SelectionMode = SelectionMode.One; // 261105Cl 追加
+                    FormMain.listBox.SelectedIndex = listIndex; // 261105Cl 追加
+                    FormMain.listBox.SelectionMode = mode; // 261105Cl 追加
+                }
+                //FormMain.SetRotation(g.Rotation); // 261105Cl 変更前
+                if (g.Crystal == null || g.Crystal == FormMain.Crystal) // 261105Cl 追加: 結晶がリストから消えているなど、主窓で選べなかったときは別の結晶へ方位を設定しない
+                    FormMain.SetRotation(g.Rotation); // 261105Cl 字下げ
             }
 
             scalablePictureBoxAdvanced.Symbols.AddRange(calcSpots);
@@ -1688,19 +1699,38 @@ public partial class FormSpotIDV2 : FormBase
     #endregion
 
     #region Refine thickness and direction機能
+    /// <summary>261105Cl 追加 (監査 I11): 精密化を計算している結晶。完了ハンドラは、その間に主窓の結晶が替わっても、この結晶の Bethe から結果を読む</summary>
+    private Crystal refineCrystal;
+
     private void ButtonRefineThicknessAndDirection_Click(object sender, EventArgs e)
     {
         if (FormMain.Crystal.Bethe.IsCBED_Busy) return;
         // 261105Cl 追加: 粒が選ばれていないときは何もしない (旧は下の bindingSourceGrains.Current で例外になり、splitContainer1 が無効のまま残った)
         if (bindingSourceGrains.Current is not DataRowView) return;
+        // 261105Cl 追加 (監査 I11): この精密化は電子線の動力学回折 (Bethe 法) と比べるので、電子線のときだけ行う (旧は X 線・中性子でも 200 kV の電子線で計算していた)
+        if (waveLengthControl1.WaveSource != WaveSource.Electron)
+        {
+            toolStripStatusLabelRefine.Text = "Refinement compares the spots with dynamical electron diffraction; set the source in Optics to electrons."; // 261105Cl 追加
+            return; // 261105Cl 追加
+        }
+        // 261105Cl 追加 (監査 I11): 粒を同定した結晶が主窓の結晶と違うときは計算しない (旧は主窓の結晶で計算していた)。粒を選ぶと主窓でもその結晶が選ばれるので、通常は一致する
+        var selectedGrain = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"]; // 261105Cl 追加
+        if (selectedGrain.Crystal != null && selectedGrain.Crystal != FormMain.Crystal)
+        {
+            toolStripStatusLabelRefine.Text = $"The selected grain belongs to {selectedGrain.CrystalName}, not to the crystal in the main window. Select the grain again (this selects its crystal) and retry."; // 261105Cl 追加
+            return; // 261105Cl 追加
+        }
+        refineCrystal = FormMain.Crystal; // 261105Cl 追加
         clearStatusLabel();
         sw.Restart(); // 261105Cl 追加: 進捗表示の経過時間をこの計算の開始から数える (旧はスポット検出・同定のときの時刻からの経過を表示していた)
 
         splitContainer1.Enabled = false;
 
         //イベント追加
-        FormMain.Crystal.Bethe.CBED_Completed += Bethe_CbedCompleted;
-        FormMain.Crystal.Bethe.CBED_ProgressChanged += Bethe_CbedProgressChanged;
+        //FormMain.Crystal.Bethe.CBED_Completed += Bethe_CbedCompleted; // 261105Cl 変更前
+        //FormMain.Crystal.Bethe.CBED_ProgressChanged += Bethe_CbedProgressChanged; // 261105Cl 変更前
+        refineCrystal.Bethe.CBED_Completed += Bethe_CbedCompleted; // 261105Cl
+        refineCrystal.Bethe.CBED_ProgressChanged += Bethe_CbedProgressChanged; // 261105Cl
 
         //ローテーション配列を作る //半径1の円の中に一辺1/Nの長さの正方形を詰め込み、一つの正方形の中心は、円の中心と一致するような問題を考える
         var directions = new List<Vector3DBase>();
@@ -1725,19 +1755,26 @@ public partial class FormSpotIDV2 : FormBase
         var rotArray = directions.ToArray();
         var thicknessArray = ValueEnumerable.Range(50, 500).Select(v => (double)v).ToArray();
 
-        var g = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"];
+        //var g = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"]; // 261105Cl 変更前 (上で selectedGrain として取得済み)
+        var g = selectedGrain; // 261105Cl
         //FormMain.Crystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, 200, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto); // 261105Cl 変更前
         // 261105Cl 修正: 加速電圧を 200 kV 固定でなく Optics 欄の値 (電子線のとき waveLengthControl1.Energy = kV) にする。
         //  電子線以外の線源ではこの動力学計算は意味を持たないので、従来どおり 200 kV のままにしておく
         var accVoltage = waveLengthControl1.WaveSource == WaveSource.Electron ? waveLengthControl1.Energy : 200; // 261105Cl
-        FormMain.Crystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, accVoltage, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto); // 261105Cl
+        //FormMain.Crystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, accVoltage, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto); // 261105Cl 変更前 (1 時間以上前の別セッションの変更なので残す)
+        refineCrystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, accVoltage, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto); // 261105Cl
     }
 
     private void Bethe_CbedCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
         //イベント削除
-        FormMain.Crystal.Bethe.CBED_Completed -= Bethe_CbedCompleted;
-        FormMain.Crystal.Bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
+        //FormMain.Crystal.Bethe.CBED_Completed -= Bethe_CbedCompleted; // 261105Cl 変更前
+        //FormMain.Crystal.Bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged; // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I11): 計算を始めた結晶 (refineCrystal) の Bethe から外し、結果も読む。旧は完了時の主窓の結晶を見たので、
+        //  計算中に主窓の結晶を替えると購読が外れず、別の結晶の Disks を読んでいた
+        var bethe = refineCrystal.Bethe; // 261105Cl 追加
+        bethe.CBED_Completed -= Bethe_CbedCompleted; // 261105Cl
+        bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged; // 261105Cl
 
         // 261105Cl 追加: 計算が失敗・中断したときは結果を使わずに戻る (旧は不完全な Disks のまま下へ進んだ)
         if (e.Error != null || e.Cancelled)
@@ -1755,7 +1792,8 @@ public partial class FormSpotIDV2 : FormBase
 
         //Bethe.Disk中のインデックスと、g.Indicesの対応付け
         //260718Cl 変更: index ごとの disk 全走査 + spots.Max の反復を、(H,K,L)→index 辞書 (重複キーは旧挙動どおり不採用) と maxA の一次計算に
-        var disks = FormMain.Crystal.Bethe.Disks;
+        //var disks = FormMain.Crystal.Bethe.Disks; // 261105Cl 変更前
+        var disks = bethe.Disks; // 261105Cl
         var maxA = spots.Count > 0 ? spots.Max(s => s.A) : 1.0;//260718Cl (codex 指摘): 旧は foreach 内で呼ぶため空 spots で Max が走らなかった。ループ前 hoist に伴い空ガード
         var diskIndex = new Dictionary<(int H, int K, int L), int>();
         for (int i = 0; i < disks[0].Length; i++)
@@ -1772,9 +1810,11 @@ public partial class FormSpotIDV2 : FormBase
 
         // R = (oI_1 - a * cI_1)^2 + (oI_2 - a * cI_2)^2 + .... + (oI_n - a * cI_n)^2 の最小化問題
         //この時 a = (oI_1 * cI_1 + oI_2 * cI_2 + ... oI_n * cI_n) / (cI_1^2 + cI_2^2 + ... cI_n^2)
-        for (int t = 0; t < FormMain.Crystal.Bethe.Thicknesses.Length; t++)
+        //for (int t = 0; t < FormMain.Crystal.Bethe.Thicknesses.Length; t++) // 261105Cl 変更前
+        for (int t = 0; t < bethe.Thicknesses.Length; t++) // 261105Cl
         {
-            for (int r = 0; r < FormMain.Crystal.Bethe.BeamDirections.Length; r++)
+            //for (int r = 0; r < FormMain.Crystal.Bethe.BeamDirections.Length; r++) // 261105Cl 変更前
+            for (int r = 0; r < bethe.BeamDirections.Length; r++) // 261105Cl
             {
                 //var numer = corrTable.Sum(c => c.intensity * disks[t][c.index].Amplitudes[r].MagnitudeSquared()); // 261105Cl 変更前
                 //var denom = corrTable.Sum(c => Math.Pow(disks[t][c.index].Amplitudes[r].MagnitudeSquared(), 2)); // 261105Cl 変更前
@@ -1790,8 +1830,10 @@ public partial class FormSpotIDV2 : FormBase
                     if (bestResidual > residual)
                     {
                         bestResidual = residual;
-                        bestThickness = FormMain.Crystal.Bethe.Thicknesses[t];
-                        bestDirection = FormMain.Crystal.Bethe.BeamDirections[r];
+                        //bestThickness = FormMain.Crystal.Bethe.Thicknesses[t]; // 261105Cl 変更前
+                        //bestDirection = FormMain.Crystal.Bethe.BeamDirections[r]; // 261105Cl 変更前
+                        bestThickness = bethe.Thicknesses[t]; // 261105Cl
+                        bestDirection = bethe.BeamDirections[r]; // 261105Cl
                     }
                 }
             }
@@ -1814,15 +1856,23 @@ public partial class FormSpotIDV2 : FormBase
         //  (FormMain の回転ボタンと同じく、画面座標系の回転を左から掛ける流儀)。軸が面内なので、面内の回転 (スポットの位置) は 1 次では変わらない
         var tilt = Math.Asin(Math.Min(1, Math.Sqrt(bestDirection.X * bestDirection.X + bestDirection.Y * bestDirection.Y))); // 261105Cl 追加
         grain.Rotation = Matrix3D.Rot(Vector3DBase.VectorProduct(bestDirection, new Vector3DBase(0, 0, -1)), tilt) * grain.Rotation; // 261105Cl 追加
-        FormMain.SetRotation(grain.Rotation); // 261105Cl 追加
-        scalablePictureBoxAdvanced.Title = (FormMain.CurrentZoneAxis, new Font(WineCompat.Resolve("Arial"), 20f), Color.White, Color.Red); // 261105Cl 追加: 晶帯軸の表示を更新
-        scalablePictureBoxAdvanced.Refresh(); // 261105Cl 追加
+        // 261105Cl 変更 (監査 I11): 主窓の結晶が計算した結晶のままのときだけ方位を主窓へ設定する (計算中に替えられたときは粒の方位だけ更新する)
+        var applied = FormMain.Crystal == refineCrystal; // 261105Cl 追加
+        if (applied) // 261105Cl 追加
+        {
+            FormMain.SetRotation(grain.Rotation); // 261105Cl 追加 // 261105Cl 字下げ
+            scalablePictureBoxAdvanced.Title = (FormMain.CurrentZoneAxis, new Font(WineCompat.Resolve("Arial"), 20f), Color.White, Color.Red); // 261105Cl 追加: 晶帯軸の表示を更新 // 261105Cl 字下げ
+            scalablePictureBoxAdvanced.Refresh(); // 261105Cl 追加 // 261105Cl 字下げ
+        }
 
         FormMain.FormDiffractionSimulator.Thickness = bestThickness;
 
         // 261105Cl 追加: 結果をステータスバーへ。最良の方向が探索範囲の外周 (傾きが Search angle range 以上。外周の点はすべてこれに入る) にあるときは、
         //  真の最適が範囲の外にあり得ることを知らせる。粒の方位は更新済みなので、もう一度押せば新しい方位のまわりを探す
-        toolStripStatusLabelRefine.Text = $"Refined: thickness {bestThickness:f0} nm, beam tilt {tilt * 1000:f2} mrad, zone axis {FormMain.CurrentZoneAxis}, residual {bestResidual:g3}"; // 261105Cl 追加
+        //toolStripStatusLabelRefine.Text = $"Refined: thickness {bestThickness:f0} nm, beam tilt {tilt * 1000:f2} mrad, zone axis {FormMain.CurrentZoneAxis}, residual {bestResidual:g3}"; // 261105Cl 変更前 (別セッションの 1 時間以上前の追加なので残す)
+        toolStripStatusLabelRefine.Text = applied // 261105Cl 変更 (監査 I11)
+            ? $"Refined: thickness {bestThickness:f0} nm, beam tilt {tilt * 1000:f2} mrad, zone axis {FormMain.CurrentZoneAxis}, residual {bestResidual:g3}" // 261105Cl
+            : $"Refined: thickness {bestThickness:f0} nm, beam tilt {tilt * 1000:f2} mrad, residual {bestResidual:g3}. The crystal in the main window changed during the calculation, so the orientation was only stored in the grain."; // 261105Cl 追加
         if (tilt >= numericBoxSemiangle.Value / 1000 * (1 - 1e-9)) // 261105Cl 追加
             toolStripStatusLabelRefine.Text += $". The best direction is at the edge of the search range ({numericBoxSemiangle.Value:f1} mrad); the optimum may lie outside. Refine again or widen the range."; // 261105Cl 追加
     }
@@ -1835,7 +1885,8 @@ public partial class FormSpotIDV2 : FormBase
         skipProgressChangedEvent = true;
         var current = e.ProgressPercentage;
         var solver = (string)e.UserState; var sec = sw.ElapsedMilliseconds / 1000.0;
-        var divisionNumber = FormMain.Crystal.Bethe.RotationArrayValidLength;
+        //var divisionNumber = FormMain.Crystal.Bethe.RotationArrayValidLength; // 261105Cl 変更前
+        var divisionNumber = refineCrystal.Bethe.RotationArrayValidLength; // 261105Cl (監査 I11: 計算している結晶の Bethe)
         var progress = (int)(100.0 * current / divisionNumber);
         if (progress <= 100)
             toolStripProgressBar.Value = toolStripProgressBar.Maximum * current / divisionNumber;
