@@ -1597,7 +1597,9 @@ public partial class FormSpotIDV2 : FormBase
         //ローテーション配列を作る //半径1の円の中に一辺1/Nの長さの正方形を詰め込み、一つの正方形の中心は、円の中心と一致するような問題を考える
         var directions = new List<Vector3DBase>();
         var side = 2.0 / 30;//30分割
-        var alphaMax = numericBoxSemiangle.Value * Math.PI / 1000;// 3 mrad;
+        //var alphaMax = numericBoxSemiangle.Value * Math.PI / 1000;// 3 mrad; // 261105Cl 変更前
+        // 261105Cl 修正: 入力欄 "Search angle range" の単位は mrad なので rad へは /1000 だけ (旧式は余分に π 倍で、2 mrad 指定が 6.28 mrad になっていた)
+        var alphaMax = numericBoxSemiangle.Value / 1000;// 3 mrad; // 261105Cl
         var max = (int)(1 / side) + 1;
 
         for (int h = -max; h <= max; h++)
@@ -1610,7 +1612,11 @@ public partial class FormSpotIDV2 : FormBase
         var thicknessArray = ValueEnumerable.Range(50, 500).Select(v => (double)v).ToArray();
 
         var g = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"];
-        FormMain.Crystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, 200, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto);
+        //FormMain.Crystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, 200, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto); // 261105Cl 変更前
+        // 261105Cl 修正: 加速電圧を 200 kV 固定でなく Optics 欄の値 (電子線のとき waveLengthControl1.Energy = kV) にする。
+        //  電子線以外の線源ではこの動力学計算は意味を持たないので、従来どおり 200 kV のままにしておく
+        var accVoltage = waveLengthControl1.WaveSource == WaveSource.Electron ? waveLengthControl1.Energy : 200; // 261105Cl
+        FormMain.Crystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, accVoltage, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto); // 261105Cl
     }
 
     private void Bethe_CbedCompleted(object sender, RunWorkerCompletedEventArgs e)
