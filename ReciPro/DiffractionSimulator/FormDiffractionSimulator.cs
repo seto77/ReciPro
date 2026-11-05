@@ -2598,22 +2598,47 @@ public partial class FormDiffractionSimulator : FormBase
 
     private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
     {
-        System.Drawing.Printing.PageSettings ps = printDocument1.PrinterSettings.DefaultPageSettings;
-        //用紙サイズ取得 このサイズは1/100インチ
-        float height = (ps.PaperSize.Height - ps.Margins.Top - ps.Margins.Bottom) / 100f;
-        float width = (ps.PaperSize.Width - ps.Margins.Left - ps.Margins.Right) / 100f;
-
-        if (printDocument1.PrinterSettings.DefaultPageSettings.Landscape)
-            (height, width) = (width, height);//縦横を逆転
-        double originalReso = Resolution;
-        switch (MessageBox.Show("Real scale printing ?", "Print Option", MessageBoxButtons.YesNoCancel))
+        // 261105Cl 変更: 描画部分がコメントアウトされたままで白紙が印刷され、「Real scale」で変えた Resolution も戻していなかった。
+        //  画面に表示中の図形を、Save/Copy image (SaveOrCopy) と同じ経路 (graphicsBox の大きさの Bitmap に Draw) で描き、
+        //  余白の内側 (e.MarginBounds, 1/100 inch) に置く。Resolution などフォームの状態は一切変えない。
+        //   Yes (Real scale): 画面の 1 ピクセル = Resolution (mm) として実寸 (カメラ長 CameraLength2 の検出面上の長さ) で印刷。余白からはみ出す部分は切る
+        //   No: 縦横比を保って余白の内側いっぱいに拡大縮小
+        //System.Drawing.Printing.PageSettings ps = printDocument1.PrinterSettings.DefaultPageSettings; // 261105Cl 変更前 (以下 if 文まで)
+        ////用紙サイズ取得 このサイズは1/100インチ
+        //float height = (ps.PaperSize.Height - ps.Margins.Top - ps.Margins.Bottom) / 100f;
+        //float width = (ps.PaperSize.Width - ps.Margins.Left - ps.Margins.Right) / 100f;
+        //
+        //if (printDocument1.PrinterSettings.DefaultPageSettings.Landscape)
+        //    (height, width) = (width, height);//縦横を逆転
+        //double originalReso = Resolution;
+        //switch (MessageBox.Show("Real scale printing ?", "Print Option", MessageBoxButtons.YesNoCancel))
+        //{
+        //    case DialogResult.Yes:
+        //        Resolution = (300 / 25.4);
+        //        break;
+        //
+        //    case DialogResult.Cancel: return;
+        //}
+        bool realScale; // 261105Cl
+        switch (MessageBox.Show("Real scale printing ?", "Print Option", MessageBoxButtons.YesNoCancel)) // 261105Cl
         {
-            case DialogResult.Yes:
-                Resolution = (300 / 25.4);
-                break;
-
-            case DialogResult.Cancel: return;
+            case DialogResult.Yes: realScale = true; break; // 261105Cl
+            case DialogResult.No: realScale = false; break; // 261105Cl
+            default: e.Cancel = true; return; // 261105Cl 旧は return だけで、白紙のページが出ていた
         }
+        if (graphicsBox.ClientSize.Width <= 0 || graphicsBox.ClientSize.Height <= 0) { e.Cancel = true; return; } // 261105Cl 最小化中などは描けない
+
+        using var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height); // 261105Cl SaveOrCopy と同じ描き方
+        using (var g = Graphics.FromImage(bmp)) // 261105Cl
+            Draw(g, true, true); // 261105Cl
+
+        var area = e.MarginBounds; // 261105Cl 1/100 inch 単位 (横置きも反映済み)
+        var scale = realScale ? Resolution / 25.4 * 100 // 261105Cl (1/100 inch)/pixel: 1 pixel = Resolution mm
+            : Math.Min(area.Width / (double)bmp.Width, area.Height / (double)bmp.Height); // 261105Cl
+        float w = (float)(bmp.Width * scale), h = (float)(bmp.Height * scale); // 261105Cl
+        e.Graphics.SetClip(area); // 261105Cl
+        e.Graphics.DrawImage(bmp, new RectangleF(area.X + (area.Width - w) / 2f, area.Y + (area.Height - h) / 2f, w, h)); // 261105Cl 余白の内側の中央に置く
+        e.HasMorePages = false; // 261105Cl
 
         /*
          //解像度300dpiのときのイメージサイズは
