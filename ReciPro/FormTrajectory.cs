@@ -128,7 +128,8 @@ public partial class FormTrajectory : FormBase
         //サンプルの傾き
         double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
         var monte = new MonteCarlo(Z, A, ρ, energy, tilt,2,
-            MonteCarlo.StoppingPowerModels.JablonskiModified2008,
+            // MonteCarlo.StoppingPowerModels.JablonskiModified2008, // 261106Cl 変更前
+            MonteCarlo.StoppingPowerModels.BetheRelativisticJoyLuo, // 261106Cl 既定の阻止能へ
             MonteCarlo.ElasticScatteringModels.MottNistSampler2023,
             MonteCarlo.InelasticScatteringModels.DiscreteBulkDiimfpApproximation,
             valenceElectronCount: valenceElectronCount,
