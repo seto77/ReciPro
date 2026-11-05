@@ -377,7 +377,8 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
         var sigma = spots[0].Sigma;
         int range = 2;// (int)(s.Sigma * / fdsg.DetectorPixelSize + 0.5);//時間がかかりすぎる。どうするか。。。
         int range2 = range * range;
-        var coeff1 = 1 / 2 / sigma / sigma;
+        //var coeff1 = 1 / 2 / sigma / sigma; // 261105Cl 変更前: 1 / 2 が整数除算で 0 になり、打点が半径 2 px の平らな円板になっていた
+        var coeff1 = 1.0 / 2 / sigma / sigma; // 261105Cl 修正: exp(−d²/(2σ²))。sigma は検出器上の Gaussian の σ (mm)
 
         foreach (var s in spots)
         {
@@ -397,7 +398,10 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
                 }
         }
 
-        data = ImageProcess.GaussianBlurFast(data, width, sigma / fdsg.DetectorPixelSize / 2);//半値幅なので、ちゃんと計算しなければ
+        //data = ImageProcess.GaussianBlurFast(data, width, sigma / fdsg.DetectorPixelSize / 2);//半値幅なので、ちゃんと計算しなければ // 261105Cl 変更前
+        // 261105Cl 修正: GaussianBlurFast の第 3 引数は半値半幅 (HWHM, px)。sigma は Gaussian の σ なので HWHM = σ·√(2 ln 2) ≈ 1.1774σ。
+        //  旧式 (σ/2) ではぼかしの σ が 0.42σ しかなく、スポットが 2.3 倍ほど細かった (σ ≥ 3 px で σ_eff ≈ 0.43σ + 打点幅)
+        data = ImageProcess.GaussianBlurFast(data, width, sigma / fdsg.DetectorPixelSize * Math.Sqrt(2 * Math.Log(2))); // 261105Cl
 
         return data;
     }
