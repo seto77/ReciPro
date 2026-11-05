@@ -85,13 +85,14 @@ public partial class DiffractionPatternControl : UserControlBase
         get => numericBoxConvergentAngle.Value;
     }
 
-    private double monochromaticity = 0;
+    //private double monochromaticity = 0; // 261105Cl 変更前 (欄の値そのものを使うので不要)
 
+    /// <summary>261105Cl 追加: 単色性 (Δλ/λ)。欄 numericBoxMonochromaticity は % で表示する</summary>
     public double Monochromaticity
     {
         set
         {
-            monochromaticity = value;
+            //monochromaticity = value; // 261105Cl 変更前
             try
             {
                 if (numericBoxMonochromaticity.Value != value * 100.0)
@@ -99,7 +100,10 @@ public partial class DiffractionPatternControl : UserControlBase
             }
             catch { }
         }
-        get => monochromaticity;
+        //get => monochromaticity; // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I13): 欄の値 (%) から読む。旧は setter (参照パターンの読込) でしか変わらない別の変数を返したので、
+        //  欄に入れた単色性は計算 (WaveProperty → Crystallite.SetGVector / SetDiffractedPixels) に効かず、シミュレーションのタブでは常に 0 だった
+        get => numericBoxMonochromaticity.Value / 100.0; // 261105Cl
     }
 
     #endregion WaveProperty関連
