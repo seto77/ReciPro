@@ -59,9 +59,9 @@ $U_g$ 與 $U'_g$ 可同時顯示（每勾選一個就會增加一個顯示窗格
 
 ---
 
-## 波
+## 繞射波
 
-![波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![繞射波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** — 納入位能傅立葉合成中的布洛赫波（傅立葉係數）的最大數目（預設 80）。數值越大，納入的空間頻率越高，並能重現位能更細緻的細節。
 

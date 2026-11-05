@@ -31,7 +31,7 @@
 
 ---
 
-## TEM 條件
+## TEM 條件 {#tem-conditions}
 
 ![TEM 條件](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
@@ -41,16 +41,22 @@
 |-----------|-------------|-------------------|
 | **加速電壓 (kV)** | 加速電壓。經相對論修正的電子波長顯示於右側 | 200 kV |
 | **散焦 Δf** | 物鏡的散焦 (nm)。下方顯示參考用的 **Scherzer 散焦** 值 | −57.8 nm |
-| **Cs** | 球面像差係數 (mm)。影響 CTF 與 Scherzer 散焦 | 0.5–1.0（傳統）、< 0.01（Cs 校正） |
-| **Cc** | 色像差係數 (mm)。決定能量擴展所造成的影像模糊 | 1.0–2.0 mm |
-| **β** | 照明半角 (mrad)。代表有限光源尺寸效應（空間同調） | 0.1–1.0 mrad |
-| **ΔV** | 電子能量擴展的半高全寬 (eV)。與 Cc 共同決定色像差造成的焦點擴展 | 0.5–2.0 eV |
+| **Cs** | 球面像差係數 (mm)。影響 CTF 與 Scherzer 散焦。也可輸入負值（−20 至 20 mm） | 1.0 mm（預設）；0.5–1.0（傳統）、< 0.01（Cs 校正） |
+| **Cc** | 色像差係數 (mm)。決定能量擴展所造成的影像模糊 | 1.4 mm（預設）；1.0–2.0 mm |
+| **β** | 照明半角 (mrad)。代表有限光源尺寸效應（空間同調） | 0 mrad（預設）；0.1–1.0 mrad |
+| **ΔV** | 電子能量擴展的半高全寬 (eV)。與 Cc 共同決定色像差造成的焦點擴展 | 0.8 eV（預設）；0.5–2.0 eV |
 
-> **右鍵選單**：在 TEM 條件面板上，可一鍵套用 **將所有像差設為零** / **將散焦設為 Scherzer 值** / **將散焦設為 0 nm**。條件預設組（300kV ARM300F、200kV 2100F 等）可從左下方的 **預設設定** 叫用。
+上述預設值僅適用於首次啟動；之後會還原上次使用的值。內部會將 ΔV（半高全寬）換算為標準差 $\sigma_V = \Delta V / (2\sqrt{2\ln 2})$，焦點擴展為 $\delta = C_c\,\sigma_V / V$。像差函式為
+
+$$\chi(u) = \pi\lambda\,\Delta f\,u^2 + \tfrac{\pi}{2}\,C_s\lambda^3 u^4 ,$$
+
+每個繞射波都乘上 $\exp[-i\chi(u)]$，因此**負的 Δf 為欠焦**（在此慣例下 Scherzer 散焦為負值）。
+
+> **右鍵選單**：在 TEM 條件面板上，可一鍵套用 **將散焦設為 0 nm** / **將散焦設為 Scherzer 值** / **將所有像差設為零**（最後一項會將 Cs、Cc、β、ΔV **以及散焦**都設為 0）。同一選單中還有四個顯微鏡預設組——*300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔE 0.3) ARM300F*、*200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔE 0.8) 2100F*、*200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔE 0.8) 2100F* 與 *200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔE 2.0) 2100*——會依項目所寫的值設定加速電壓、Cs、Cc 與 ΔV，然後將散焦設為 Scherzer 值（β 保持不變）。右下方的 **預設設定** 核取方塊會開啟儲存您自訂條件的視窗（請參閱[預設清單](index.md#preset-list)）。
 
 ### Scherzer 散焦
 
-在此散焦值附近相位對比最佳；由目前的波長與球面像差 $C_s$ 計算而得（僅供參考）。
+在此散焦值附近相位對比最佳；由目前的波長與球面像差 $C_s$ 計算而得（僅供參考）。當 $C_s$ 為負值時，顯示的值為 $+\sqrt{\tfrac{4}{3}|C_s|\lambda}$。
 
 $$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\approx -1.155\,\sqrt{C_s \lambda}\right)$$
 
@@ -68,7 +74,11 @@ $$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\appr
 - $E_\text{s}(u)$ ：空間同調包絡函式；有限光源尺寸 ($\beta$) 所造成的衰減
 - $E_\text{c}(u)$ ：時間同調包絡函式；能量起伏 ($C_c$, $\Delta V$) 所造成的衰減
 
-變更橫軸 $u$（空間頻率）的上限，即可改變繪圖範圍。
+每條曲線各有其核取方塊：$\sin\chi$、$\cos\chi$、$E_\text{s}$、$E_\text{c}$、**PCTF** $=\sin\chi\,E_\text{s}E_\text{c}$ 與 **ACTF** $=\cos\chi\,E_\text{s}E_\text{c}$；PCTF 與 ACTF 在物鏡光圈之外設為零。在 HRTEM 模式下
+
+$$E_\text{s}(u)=\exp\!\left[-\pi^2\beta^2u^2\left(\Delta f+C_s\lambda^2u^2\right)^2\right],\qquad E_\text{c}(u)=\exp\!\left[-\tfrac{1}{2}\pi^2\lambda^2\delta^2u^4\right].$$
+
+**最大 u**（nm⁻¹，預設 6）設定橫軸的上限。**複製** 會將所繪曲線以 Tab 分隔的文字放到剪貼簿。此視窗在 STEM 模式下也可使用（請參閱 [STEM 模擬](2-stem-simulation.md#ctf-stem)）；在 Potential 模式下則停用。
 
 ---
 
@@ -76,10 +86,10 @@ $$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\appr
 
 ![物鏡光圈 (HRTEM 選項)](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
-限制通過物鏡光圈的繞射波。被光圈截去的繞射波數量，也會改變納入布洛赫波計算的繞射點數量（上限為 **繞射波** 中設定的最大布洛赫波數）。
+限制通過物鏡光圈的繞射波。布洛赫波計算本身一律使用 **繞射波** 中設定的波數；光圈再從這些繞射束中選出對影像有貢獻者（當 $|\mathbf{g}-\mathbf{c}| < 2\sin(\alpha_\text{obj}/2)/\lambda$ 時繞射束通過，$\mathbf{c}$ 為光圈中心）。若通過的繞射束少於兩條，計算會停止，並顯示請您放大光圈的訊息。
 
-- **大小** ：物鏡光圈的半角 (mrad)。值越小，被截去的高角度繞射波越多，高解析細節也越平滑。同時顯示對應的倒易空間半徑 $\sin\theta/\lambda$ (nm⁻¹)。
-- **位移 X** / **Y** ：物鏡光圈中心的位移 (mrad)。用於暗場成像與傾斜成像。
+- **大小** ：物鏡光圈的半角 (mrad，預設 12)。值越小，被截去的高角度繞射波越多，高解析細節也越平滑。同時顯示對應的倒易空間半徑 $\sin\theta/\lambda$ (nm⁻¹)。
+- **位移 X** / **Y** ：物鏡光圈中心的位移 (mrad)。用於移位光圈的暗場成像；照明本身並不傾斜。
 - **光圈全開** ：將物鏡光圈全開（無限大），使所有繞射波皆參與成像。
 - **內部光點** ：落在光圈內的繞射束（光點）數量（唯讀）。
 - **光點資訊** ：開啟一個表格，列出光圈內的繞射束（強度、複數振幅等）。
@@ -92,10 +102,10 @@ $$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\appr
 
 ![HRTEM 選項（部分同調模型）](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
 
-選擇在整合所有入射束方向的貢獻時所用的干涉模型。
+選擇如何納入部分同調（β 與焦點擴展 δ）。出射波只針對單一入射方向（光軸）計算；照明的發散與能量擴展只透過下列的包絡函式納入。
 
-- **線性影像** ：計算成本低。適用於弱相位物體近似成立的薄試樣；將 PCTF 乘上空間與時間同調包絡。
-- **穿透交叉係數** ：計算成本高但較準確。對完整的穿透交叉係數進行積分，適用於會激發許多強繞射波的強散射體。
+- **線性影像**（準同調模型）：計算成本低。動力學出射波的每個繞射波 $\psi_g$ 都乘上 $\exp[-i\chi(g)]\,E_\text{s}(g)\,E_\text{c}(g)$，影像為 $\left|\sum_g\right|^2$。當影像主要由與穿透束的干涉構成時（薄試樣）是準確的。
+- **穿透交叉係數** ：計算成本高但較準確。每一對繞射束 $(g,h)$ 都以相互包絡（完整的穿透交叉係數）加總，適用於會激發許多強繞射波的強散射體。計算成本隨光圈內繞射束數的平方增加。
 
 詳情請參閱[附錄 A3.2 — HRTEM 成像](../appendix/a3-bloch-wave/hrtem.md)。
 
@@ -116,7 +126,7 @@ $$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\appr
 | **Start / 步進 / 數量** | 起始值、步進寬度與影像張數。這些值會展開至下方的清單框，清單框也可直接編輯 |
 | **水平方向：** | 同時掃描厚度與散焦時，沿格狀排列水平方向配置的量（**散焦** 或 **厚度**） |
 
-同時掃描厚度與散焦時，會產生列 × 行的影像矩陣。
+同時掃描厚度與散焦時，會產生列 × 行的影像矩陣。每個量的 **數量** 上限為 20。只掃描一個量且影像多於兩張時，該列會折返排成近似正方形的格狀。
 
 ---
 
@@ -125,13 +135,13 @@ $$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\appr
 ![影像屬性](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 - **尺寸 (寬×高)** ：模擬影像的像素數（預設為 512×512）。
-- **解析度** ：取樣解析度 (pm/px)。值越小可解析越細的晶格條紋，但 FFT 時間也會成比例增加。
+- **解析度** ：取樣解析度 (pm/px，預設 2)。視野為 尺寸 × 解析度，因此值越小，會在越小的範圍內越細地取樣條紋。影像是在每個像素上對各繞射束直接進行傅立葉求和而合成的（不使用 FFT），因此計算時間取決於像素數與繞射束數，而與此值無關。
 
 ---
 
-## 波
+## 繞射波
 
-![波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![繞射波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - Bethe 法（動力學計算）所用布洛赫波的最大數量，預設為 80。數量越多準確度越高，但本徵值問題的求解時間為 $O(N^3)$。
 
