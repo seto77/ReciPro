@@ -1264,6 +1264,16 @@ public partial class FormEBSD : FormBase
             try { sizeControl.Value = graphicsBox.ClientSize; }
             finally { skipViewEvent = false; }
         }
+        // 261105Cl 追加 (監査 #15): 窓を閉じている間は FormMain が SetCrystal を呼ばないので、閉じている間に結晶を替えて開き直すと
+        //   旧結晶の MasterPattern (構築中ならその構築) のまま表示・指数付けしていた。作成時の結晶・電圧と比べ、違えば SetCrystal と同じく止めて破棄する。
+        //   名前・色・方位だけの違い (指紋が同じ) なら物理的に同じ MasterPattern なので残す
+        if (Visible && FormMain?.Crystal != null && (MasterPattern != null || masterPatternEbsd.IsBuilding) && !MasterPatternBasisIsCurrent)
+        {
+            SetCrystal(); // 下の SetVector・3D の軸・DrawGeometry・DrawMasterPattern2D もここで済む
+            toolStripStatusLabelSummary.Text = "MasterPattern discarded";
+            toolStripStatusLabelDetail.Text = "The crystal was changed while this window was closed. Build the master pattern again.";
+            return;
+        }
         SetVector();
         ResetMasterPattern3DAxes(); // (260322Ch) 再表示時に MasterPattern3D axes inset も現在の結晶へ合わせる
         DrawGeometry();
@@ -3217,6 +3227,7 @@ public partial class FormEBSD : FormBase
             FormMain.Crystal = crystal; // 原子表の表示を更新し、各フォームへ変更を伝える (SetCrystal で B=0 の旧 MasterPattern も破棄される)
         }
 
+        masterPatternBasis = (MasterPatternFile.CrystalFingerprint(crystal), Voltage); // 261105Cl 追加 (監査 #15): この構築の結晶・電圧を控える (開き直し・完了時に照合)
         buttonCreateMasterPattern.Enabled = false; // (260327Ch) MC 前処理中の多重起動を防ぐ
         comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = flowLayoutPanelPhosphorWeight.Enabled = false; // 260919Cl 追加 (/simplify2): 構築中の再ビニングと結果の取り合いを防ぐ
         // buttonStop.Visible = false; // (260327Ch) MC 前処理はまだ停止できないため、Bethe 開始まで出さない // 260406Cl 旧: MC 中も Stop を表示するよう変更
@@ -3349,6 +3360,19 @@ public partial class FormEBSD : FormBase
             return;
         }
 
+        // 261105Cl 追加 (監査 #15): 構築中に結晶 (または電圧) が替わっていたら使わずに破棄する。窓を閉じている間は SetCrystal が呼ばれず構築が最後まで走る。
+        //   開いていても、停止の要求が plane 変換の終わり際に間に合わないと旧結晶の MasterPattern がここへ届く
+        if (!MasterPatternBasisIsCurrent)
+        {
+            masterPatternEbsd.ClearMasterPattern();
+            UpdateMasterPatternSelectors();
+            DrawMasterPattern2D();
+            toolStripStatusLabelSummary.Text = "MasterPattern discarded";
+            toolStripStatusLabelProgress.Text = $"Stopped after {StatusBarHelper.FormatElapsed(sw2.Elapsed)}";
+            toolStripStatusLabelDetail.Text = "The crystal or the accelerating voltage was changed during the build. Build the master pattern again.";
+            return;
+        }
+
         masterPatternInfo = MasterPatternFileInfo.FromBuildRequest(e.Request, Voltage, $"ReciPro {Application.ProductVersion}"); //260921Cl 追加: 保存用に作成条件を控える
         var totalSec = sw2.ElapsedMilliseconds / 1000.0;
         var monteCarloSec = masterPatternMonteCarloElapsedMilliseconds / 1000.0;
@@ -3404,6 +3428,14 @@ public partial class FormEBSD : FormBase
 
     /// <summary>260921Cl 追加: 今の MasterPattern の作成条件 (構築完了時または読み込み時に設定)。保存するファイルのヘッダになる</summary>
     private MasterPatternFileInfo masterPatternInfo = null;
+
+    /// <summary>261105Cl 追加 (監査 #15): 今の MasterPattern (構築中ならその構築) を作った結晶の指紋 (<see cref="MasterPatternFile.CrystalFingerprint"/>:
+    /// 格子定数・空間群・原子の Z/座標/占有率/B) と加速電圧 (kV)。構築の開始時とファイルの読み込み時に控え、窓を開き直したとき・構築の完了時に今の結晶・電圧と比べる。
+    /// <see cref="masterPatternInfo"/> は完了時にしか作らないので、構築中の照合にはこちらを使う</summary>
+    private (string CrystalFingerprint, double VoltageKeV) masterPatternBasis = ("", double.NaN);
+
+    /// <summary>261105Cl 追加 (監査 #15): <see cref="masterPatternBasis"/> が今の結晶・加速電圧と同じか (名前・色・方位だけの違いは同じとみなす)</summary>
+    private bool MasterPatternBasisIsCurrent => Crystal != null && masterPatternBasis == (MasterPatternFile.CrystalFingerprint(Crystal), Voltage);
 
     /// <summary>260921Cl 追加: 今の MasterPattern をファイルへ保存する (<see cref="MasterPatternFile"/>)。</summary>
     internal bool SaveMasterPatternTo(string path)
@@ -3461,6 +3493,7 @@ public partial class FormEBSD : FormBase
         }
         if (!masterPatternEbsd.SetMasterPattern(mp)) return false;
         masterPatternInfo = info;
+        masterPatternBasis = (MasterPatternFile.CrystalFingerprint(Crystal), Voltage); // 261105Cl 追加 (監査 #15): 読み込んだ時点の結晶・電圧に対するもの (allowMismatch で読み込んだときも、以後の結晶・電圧の変更で破棄できるように)
 
         bool reuseElectrons = electrons is { Length: > 0 } && Math.Abs(info.McSampleTiltRad - SmpTilt) < 1E-9 && Math.Abs(info.McEnergyThresholdKeV - EnergyThreshold) < 1E-9;
         if (reuseElectrons)
