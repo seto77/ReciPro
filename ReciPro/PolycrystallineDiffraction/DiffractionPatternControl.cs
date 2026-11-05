@@ -956,6 +956,10 @@ public partial class DiffractionPatternControl : UserControlBase
                     SimulatedPixels[i] = ScaleFactor * DiffractionPixels[i] + BackgroundPixels[i];
 
             Profile p = setFrequencyProfile(SimulatedPixels);
+            // 261105Cl 追加: 0 番目 (参照画像の頻度) は SetImage でしか入らないので、シミュレーションのタブでは空のまま。旧はこのとき下の
+            //  ProfileList[1] で IndexOutOfRangeException になり、シミュレーションのタブの「Simulate Debye ring pattern」が毎回例外で止まっていた。空の 0 番目を置く
+            if (graphControlFrequency.ProfileList.Length == 0) // 261105Cl 追加
+                graphControlFrequency.AddProfile(new Profile()); // 261105Cl 追加
             if (graphControlFrequency.ProfileList.Length == 1)
                 graphControlFrequency.AddProfile(p);
             else
