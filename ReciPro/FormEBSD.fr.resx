@@ -492,9 +492,11 @@ bouton « View Along » pour orienter le master pattern 3D.</value>
 EBSD actuellement rendue (mode tranche unique).</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>Définit l'angle d'inclinaison du plan du détecteur en degrés
-par rapport à l'axe du faisceau (Z). Cela affecte la longueur de
-caméra et la forme projetée des bandes de Kikuchi.</value>
+    <value>Définit l'angle d'inclinaison de l'écran du détecteur en degrés,
+mesuré depuis le plan horizontal (perpendiculaire à l'axe du
+faisceau Z) : 0° = horizontal, 90° = écran vertical (par défaut).
+Cela affecte la longueur de caméra et la forme projetée des
+bandes de Kikuchi.</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
     <value>Affiche l'énergie des électrons (keV) de la tranche du diagramme
@@ -521,12 +523,12 @@ par le curseur d'énergie pour l'aperçu.</value>
 la géométrie de projection de la rétrodiffusion.</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>Définit la coordonnée Y du centre du détecteur, en mm
-: le décalage de l'échantillon vers l'écran dans le
-plan de la surface de l'échantillon,
-perpendiculairement à l'axe de rotation X. Avec Z et
-l'inclinaison du détecteur, elle détermine la longueur
-de caméra. (Le décalage gauche-droite se règle avec X.)</value>
+    <value>Définit la coordonnée Y du centre du détecteur, en mm :
+le décalage horizontal perpendiculaire à l'axe du faisceau (Z)
+et à l'axe d'inclinaison de l'échantillon (X), dans le repère du
+microscope (pas dans la surface inclinée de l'échantillon).
+Avec Z et l'inclinaison du détecteur, elle détermine la
+longueur de caméra. (Le décalage gauche-droite se règle avec X.)</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>Définit la coordonnée Z (le long de la direction du faisceau)

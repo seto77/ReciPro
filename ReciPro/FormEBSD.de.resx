@@ -494,9 +494,11 @@ Schaltfläche 'View Along' zur Ausrichtung des 3D-Master-Patterns verwendet werd
 EBSD-Musterscheibe an (Einzelscheiben-Modus).</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>Legt den Neigungswinkel der Detektorebene in Grad
-relativ zur Strahlachse (Z) fest. Dies beeinflusst die Kameralänge
-und die projizierte Form der Kikuchi-Bänder.</value>
+    <value>Legt den Neigungswinkel des Detektorschirms in Grad fest,
+gemessen gegen die horizontale Ebene (senkrecht zur
+Strahlachse Z): 0° = horizontal, 90° = senkrechter Schirm
+(Standard). Dies beeinflusst die Kameralänge und die
+projizierte Form der Kikuchi-Bänder.</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
     <value>Zeigt die Elektronenenergie (keV) der aktuell dargestellten
@@ -523,12 +525,12 @@ mit dem Energie-Schieberegler für die Vorschau ausgewählt ist.</value>
 die Geometrie der Rückstreuprojektion fest.</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>Legt die Y-Koordinate des Detektorzentrums in mm
-fest - der Abstand von der Probe zum Schirm
-innerhalb der Probenoberflächenebene, senkrecht
-zur X-Rotationsachse. Zusammen mit Z und der
-Detektorneigung bestimmt sie die Kameralänge.
-(Der Links-Rechts-Versatz wird mit X eingestellt.)</value>
+    <value>Legt die Y-Koordinate des Detektorzentrums in mm fest -
+der horizontale Versatz senkrecht zur Strahlachse (Z) und
+zur Probenkippachse (X), im Koordinatensystem des
+Mikroskops (nicht in der gekippten Probenoberfläche).
+Zusammen mit Z und der Detektorneigung bestimmt sie die
+Kameralänge. (Der Links-Rechts-Versatz wird mit X eingestellt.)</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>Legt die Z-Koordinate (entlang der Strahlrichtung)

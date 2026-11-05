@@ -548,9 +548,11 @@ stereonet centre is the sample surface normal.</value>
     <value>3</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>Set the tilt angle of the detector plane in degrees
-relative to the beam (Z) axis. This affects the camera
-length and the projected shape of the Kikuchi bands.</value>
+    <value>Set the tilt angle of the detector screen in degrees,
+measured from the horizontal plane (perpendicular to
+the beam, Z): 0° = horizontal, 90° = vertical screen
+(default). This affects the camera length and the
+projected shape of the Kikuchi bands.</value>
   </data>
   <data name="&gt;&gt;numericBoxDetTilt.Name" xml:space="preserve">
     <value>numericBoxDetTilt</value>
@@ -643,10 +645,11 @@ it determines the camera length.</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
     <value>Set the Y coordinate of the detector center, in mm -
-the sample-to-screen offset within the sample-surface
-plane, perpendicular to the X rotation axis. Together
-with Z and the detector tilt it determines the camera
-length. (Left-right offset is set by X.)</value>
+the horizontal offset perpendicular to both the beam (Z)
+and the sample tilt axis (X), in the microscope frame
+(not within the tilted sample surface). Together with Z
+and the detector tilt it determines the camera length.
+(Left-right offset is set by X.)</value>
   </data>
   <data name="&gt;&gt;numericBoxYofDet.Name" xml:space="preserve">
     <value>numericBoxYofDet</value>

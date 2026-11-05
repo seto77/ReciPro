@@ -467,8 +467,9 @@ Negative（反轉）灰階。</value>
 深度 (nm)（單一切片模式）。</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>以度設定偵測器平面相對於電子束 (Z) 軸的傾斜
-角。此會影響相機長度與菊池帶的投影形狀。</value>
+    <value>以度設定偵測器螢幕相對於水平面（垂直於電子束 Z 軸）的
+傾斜角：0° = 水平，90° = 垂直的螢幕（預設）。此會影響
+相機長度與菊池帶的投影形狀。</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
     <value>顯示目前繪製的 EBSD 圖樣切片的
@@ -493,9 +494,10 @@ Negative（反轉）灰階。</value>
 背向散射投影的幾何。</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>以 mm 為單位設定偵測器中心的 Y 座標（在試片表面內、
-與旋轉軸 X 垂直、由試片指向螢幕的方向）。與 Z
-及偵測器傾角共同決定相機長度。左右方向的偏移由 X 設定。</value>
+    <value>以 mm 為單位設定偵測器中心的 Y 座標（在顯微鏡座標系中，
+與電子束 Z 及試片傾轉軸 X 皆垂直的水平方向，而非傾斜後
+試片表面內的方向）。與 Z 及偵測器傾角共同決定相機長度。
+左右方向的偏移由 X 設定。</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>以 mm 設定偵測器中心的 Z 座標

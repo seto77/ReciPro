@@ -490,9 +490,11 @@ botón 'View Along' para orientar el patrón maestro 3D.</value>
 patrón EBSD renderizada actualmente (modo de sección única).</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>Fija el ángulo de inclinación del plano del detector en grados
-respecto al eje del haz (Z). Afecta a la longitud de cámara
-y a la forma proyectada de las bandas de Kikuchi.</value>
+    <value>Fija el ángulo de inclinación de la pantalla del detector en
+grados, medido desde el plano horizontal (perpendicular al
+eje del haz Z): 0° = horizontal, 90° = pantalla vertical (por
+defecto). Afecta a la longitud de cámara y a la forma
+proyectada de las bandas de Kikuchi.</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
     <value>Muestra la energía de los electrones (keV) de la sección del
@@ -519,12 +521,12 @@ con el control deslizante para la vista previa.</value>
 la geometría de proyección de la retrodispersión.</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>Establece la coordenada Y del centro del detector,
-en mm: el desplazamiento de la muestra a la pantalla
-dentro del plano de la superficie de la muestra,
-perpendicular al eje de rotación X. Junto con Z y la
-inclinación del detector determina la longitud de
-cámara. (El desplazamiento lateral se ajusta con X.)</value>
+    <value>Establece la coordenada Y del centro del detector, en mm:
+el desplazamiento horizontal perpendicular al eje del haz (Z)
+y al eje de inclinación de la muestra (X), en el sistema del
+microscopio (no en la superficie inclinada de la muestra).
+Junto con Z y la inclinación del detector determina la
+longitud de cámara. (El desplazamiento lateral se ajusta con X.)</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>Fija la coordenada Z (a lo largo de la dirección del haz)

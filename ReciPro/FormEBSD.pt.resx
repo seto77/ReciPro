@@ -489,9 +489,11 @@ botão 'View Along' para orientar o master pattern 3D.</value>
 EBSD atualmente renderizada (modo de fatia única).</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>Define o ângulo de inclinação do plano do detector em graus
-em relação ao eixo do feixe (Z). Isso afeta o comprimento de
-câmara e a forma projetada das bandas de Kikuchi.</value>
+    <value>Define o ângulo de inclinação da tela do detector em graus,
+medido a partir do plano horizontal (perpendicular ao eixo do
+feixe Z): 0° = horizontal, 90° = tela vertical (padrão). Isso
+afeta o comprimento de câmara e a forma projetada das
+bandas de Kikuchi.</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
     <value>Mostra a energia do elétron (keV) da fatia do padrão
@@ -518,12 +520,12 @@ pelo controle deslizante de energia para pré-visualização.</value>
 a geometria de projeção do retroespalhamento.</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>Define a coordenada Y do centro do detector, em
-mm: o deslocamento da amostra para a tela dentro
-do plano da superfície da amostra, perpendicular
-ao eixo de rotação X. Junto com Z e a inclinação
-do detector determina o comprimento de câmera.
-(O deslocamento lateral é ajustado com X.)</value>
+    <value>Define a coordenada Y do centro do detector, em mm:
+o deslocamento horizontal perpendicular ao eixo do feixe (Z)
+e ao eixo de inclinação da amostra (X), no referencial do
+microscópio (não na superfície inclinada da amostra). Junto
+com Z e a inclinação do detector determina o comprimento de
+câmera. (O deslocamento lateral é ajustado com X.)</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>Define a coordenada Z (ao longo da direção do feixe)

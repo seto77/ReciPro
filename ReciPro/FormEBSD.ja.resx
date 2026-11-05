@@ -172,18 +172,19 @@ PCHIP補間で圧縮し、生成ソースを出力します。</value>
     <value>傾斜</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>検出器面の傾き角を度単位で設定します(電子線=Z軸に対す
-る傾き)。カメラ長や菊池バンドの投影形状に影響します。</value>
+    <value>検出器面の傾き角を度単位で設定します。電子線 (Z 軸) に垂直な
+水平面からの傾きで、0° = 水平、90° = 鉛直なスクリーン (既定)
+です。カメラ長や菊池バンドの投影形状に影響します。</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>検出器中心のZ座標(電子線方向の位置)をmm単位で
 設定します。Yとあわせてカメラ長が決まります。</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>検出器中心の Y 座標を mm 単位で設定します
-(試料表面内で回転軸 X に垂直な、試料からスクリーン
-へ向かう方向)。Z と検出器傾斜とあわせてカメラ長が
-決まります。左右方向のずれは X で設定します。</value>
+    <value>検出器中心の Y 座標を mm 単位で設定します (顕微鏡の座標系で、
+電子線 Z と試料の傾斜軸 X の両方に垂直な水平方向。傾けた
+試料の表面内の方向ではありません)。Z と検出器傾斜とあわせて
+カメラ長が決まります。左右方向のずれは X で設定します。</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>オーバーレイ指数文字のフォントサイズを調整します。</value>

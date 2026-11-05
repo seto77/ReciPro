@@ -490,9 +490,11 @@ pulsante 'Vista lungo' per orientare il master pattern 3D.</value>
 pattern EBSD attualmente renderizzata (modalità a sezione singola).</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>Imposta l'angolo di inclinazione del piano del rivelatore in gradi
-rispetto all'asse del fascio (Z). Questo influisce sulla lunghezza
-di camera e sulla forma proiettata delle bande di Kikuchi.</value>
+    <value>Imposta l'angolo di inclinazione dello schermo del rivelatore in
+gradi, misurato dal piano orizzontale (perpendicolare all'asse
+del fascio Z): 0° = orizzontale, 90° = schermo verticale
+(predefinito). Questo influisce sulla lunghezza di camera e
+sulla forma proiettata delle bande di Kikuchi.</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
     <value>Mostra l'energia degli elettroni (keV) della sezione del
@@ -519,12 +521,12 @@ dal cursore di energia per l'anteprima.</value>
 la geometria di proiezione della retrodiffusione.</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>Imposta la coordinata Y del centro del rivelatore, in
-mm: lo scostamento dal campione allo schermo nel piano
-della superficie del campione, perpendicolare all'asse
-di rotazione X. Insieme a Z e all'inclinazione del
-rivelatore determina la lunghezza di camera. (Lo
-scostamento sinistra-destra si imposta con X.)</value>
+    <value>Imposta la coordinata Y del centro del rivelatore, in mm:
+lo scostamento orizzontale perpendicolare all'asse del fascio (Z)
+e all'asse di inclinazione del campione (X), nel sistema del
+microscopio (non nella superficie inclinata del campione).
+Insieme a Z e all'inclinazione del rivelatore determina la
+lunghezza di camera. (Lo scostamento sinistra-destra si imposta con X.)</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>Imposta la coordinata Z (lungo la direzione del fascio)

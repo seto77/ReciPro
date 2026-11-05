@@ -483,8 +483,9 @@ Cold-Warm, Spectrum 또는 Fire)을 선택합니다.</value>
 깊이(nm)를 표시합니다(단일 슬라이스 모드).</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>검출기면의 기울기 각을 전자선(Z) 축에 대해 도 단위로
-설정합니다. 이는 카메라 길이와 기쿠치 밴드의
+    <value>검출기 스크린의 기울기 각을 도 단위로 설정합니다. 전자선(Z)
+축에 수직인 수평면에서 잰 각도로, 0° = 수평, 90° = 수직
+스크린(기본값)입니다. 이는 카메라 길이와 기쿠치 밴드의
 투영 형상에 영향을 줍니다.</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
@@ -512,10 +513,10 @@ EBSD에서는 일반적으로 -70)입니다.
 후방산란 투영 기하를 결정합니다.</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>검출기 중심의 Y 좌표를 mm 단위로 설정합니다(시료
-표면 내에서 회전축 X에 수직인, 시료에서 스크린을
-향하는 방향). Z와 검출기 경사와 함께 카메라 길이가
-결정됩니다. 좌우 방향의 어긋남은 X로 설정합니다.</value>
+    <value>검출기 중심의 Y 좌표를 mm 단위로 설정합니다(현미경 좌표계에서
+전자선 Z와 시료 경사축 X 모두에 수직인 수평 방향이며, 기울인
+시료 표면 내의 방향이 아닙니다). Z와 검출기 경사와 함께 카메라
+길이가 결정됩니다. 좌우 방향의 어긋남은 X로 설정합니다.</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>검출기 중심의 Z 좌표(전자선 방향의 위치)를
