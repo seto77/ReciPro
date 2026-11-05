@@ -654,7 +654,8 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>↑ Add ↑</value>
   </data>
   <data name="buttonAdd.ToolTip" xml:space="preserve">
-    <value>Add the selected crystal to the above list.</value>
+    <value>Add the new crystal below
+to the list above.</value>
   </data>
   <data name="&gt;&gt;buttonAdd.Name" xml:space="preserve">
     <value>buttonAdd</value>
@@ -1886,7 +1887,7 @@ rotates the crystal at a constant speed.</value>
     <value>°</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>Set/show Euler angle ψ (deg), the third
+    <value>Set/show Euler angle Ψ (deg), the third
 rotation defining the crystal orientation.</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
@@ -1929,7 +1930,7 @@ rotation defining the crystal orientation.</value>
     <value>5</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
-    <value>Set/show Euler angle ψ (deg), the third
+    <value>Set/show Euler angle Ψ (deg), the third
 rotation defining the crystal orientation.</value>
   </data>
   <data name="&gt;&gt;numericBoxEulerPsi.Name" xml:space="preserve">
@@ -2012,7 +2013,7 @@ rotation defining the crystal orientation.</value>
     <value>4</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
-    <value>Set/show Euler angle θ (deg), the second
+    <value>Set/show Euler angle Θ (deg), the second
 rotation defining the crystal orientation.</value>
   </data>
   <data name="&gt;&gt;numericBoxEulerTheta.Name" xml:space="preserve">
@@ -2095,7 +2096,7 @@ rotation defining the crystal orientation.</value>
     <value>°</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value>Set/show Euler angle θ (deg), the second
+    <value>Set/show Euler angle Θ (deg), the second
 rotation defining the crystal orientation.</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
@@ -2255,7 +2256,7 @@ rotation defining the crystal orientation.</value>
     <value>Euler angles</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>Euler angles (φ, θ, ψ) describing
+    <value>Euler angles (Φ, Θ, Ψ) describing
 the crystal's current 3-D rotation;
 edit to set the orientation directly.</value>
   </data>
@@ -2329,7 +2330,7 @@ edit to set the orientation directly.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxMaxUVW.HeaderText" xml:space="preserve">
-    <value>|u| + |v| + |w| &lt;</value>
+    <value>|u| + |v| + |w| ≤</value>
   </data>
   <data name="numericBoxMaxUVW.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>

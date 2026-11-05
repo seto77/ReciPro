@@ -318,7 +318,8 @@ rotation définissant l'orientation du cristal.</value>
 rotation définissant l'orientation du cristal.</value>
   </data>
   <data name="buttonAdd.ToolTip" xml:space="preserve">
-    <value>Ajoute le cristal sélectionné à la liste ci-dessus.</value>
+    <value>Ajoute le nouveau cristal ci-dessous
+à la liste ci-dessus.</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
     <value>Ouvre les informations de symétrie</value>
@@ -336,11 +337,11 @@ Si un indice d'axe est également spécifié, cette direction d'axe est affiché
     <value>Ouvre la diffraction sur poudre</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value>Définit/affiche l'angle d'Euler θ (deg), la deuxième
+    <value>Définit/affiche l'angle d'Euler Θ (deg), la deuxième
 rotation définissant l'orientation du cristal.</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
-    <value>Définit/affiche l'angle d'Euler θ (deg), la deuxième
+    <value>Définit/affiche l'angle d'Euler Θ (deg), la deuxième
 rotation définissant l'orientation du cristal.</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
@@ -352,11 +353,11 @@ rotation définissant l'orientation du cristal.</value>
 rotation définissant l'orientation du cristal.</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>Définit/affiche l'angle d'Euler ψ (deg), la troisième
+    <value>Définit/affiche l'angle d'Euler Ψ (deg), la troisième
 rotation définissant l'orientation du cristal.</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
-    <value>Définit/affiche l'angle d'Euler ψ (deg), la troisième
+    <value>Définit/affiche l'angle d'Euler Ψ (deg), la troisième
 rotation définissant l'orientation du cristal.</value>
   </data>
   <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
@@ -381,7 +382,7 @@ est utilisée comme vitesse de rotation en degrés par seconde.</value>
     <value>Ouvre le visualiseur de structure (structure cristalline 3D).</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>Angles d'Euler (φ, θ, ψ) décrivant
+    <value>Angles d'Euler (Φ, Θ, Ψ) décrivant
 la rotation 3D actuelle du cristal ;
 modifiez-les pour définir l'orientation directement.</value>
   </data>

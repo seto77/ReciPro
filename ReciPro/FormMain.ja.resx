@@ -177,7 +177,7 @@
   </data>
   <data name="buttonSetPlane.ToolTip" xml:space="preserve">
     <value>指定された面を画面手前方向にセットします。
-軸指数が指定されているときは、その面方向が画面上向きに表示されます。</value>
+軸指数が指定されているときは、その軸方向が画面上向きに表示されます。</value>
   </data>
   <data name="checkBoxFixePlane.Text" xml:space="preserve">
     <value>固定</value>
@@ -259,29 +259,29 @@
     <value>選択された結晶の現在の方位</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>結晶方位を定義するオイラー角 ψ（度）を設定／表示します。</value>
+    <value>結晶方位を定義するオイラー角 Ψ（度）を設定／表示します。</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
-    <value>結晶方位を定義するオイラー角 ψ（度）を設定／表示します。</value>
+    <value>結晶方位を定義するオイラー角 Ψ（度）を設定／表示します。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>結晶方位を定義するオイラー角 Φ（度）を設定／表示します。</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
-    <value>結晶方位を定義するオイラー角 θ（度）を設定／表示します。</value>
+    <value>結晶方位を定義するオイラー角 Θ（度）を設定／表示します。</value>
   </data>
   <data name="numericBoxEulerPhi.ToolTip" xml:space="preserve">
     <value>結晶方位を定義するオイラー角 Φ（度）を設定／表示します。</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value>結晶方位を定義するオイラー角 θ（度）を設定／表示します。</value>
+    <value>結晶方位を定義するオイラー角 Θ（度）を設定／表示します。</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>オイラー角</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>結晶の現在の3次元回転姿勢を表すオイラー角(φ,
-θ, ψ)。値を編集すると方位を直接設定できます。</value>
+    <value>結晶の現在の3次元回転姿勢を表すオイラー角(Φ,
+Θ, Ψ)。値を編集すると方位を直接設定できます。</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
     <value>方向リセット</value>
@@ -357,7 +357,7 @@
  シミュレータ</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
-    <value>「軌道シミュレータ」機能を開きます。</value>
+    <value>「電子飛程シミュレータ」を開きます。</value>
   </data>
   <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
     <value>HR/STEM

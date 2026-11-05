@@ -324,7 +324,8 @@
 вращение, определяющее ориентацию кристалла.</value>
   </data>
   <data name="buttonAdd.ToolTip" xml:space="preserve">
-    <value>Добавить выбранный кристалл в список выше.</value>
+    <value>Добавить новый кристалл ниже
+в список выше.</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
     <value>Открыть «Сведения о симметрии»</value>
@@ -342,11 +343,11 @@ STEM — сканирующая просвечивающая электронн�
     <value>Открыть «Порошковую дифракцию»</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value>Задать/показать угол Эйлера θ (град), второе
+    <value>Задать/показать угол Эйлера Θ (град), второе
 вращение, определяющее ориентацию кристалла.</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
-    <value>Задать/показать угол Эйлера θ (град), второе
+    <value>Задать/показать угол Эйлера Θ (град), второе
 вращение, определяющее ориентацию кристалла.</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
@@ -358,11 +359,11 @@ STEM — сканирующая просвечивающая электронн�
 вращение, определяющее ориентацию кристалла.</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>Задать/показать угол Эйлера ψ (град), третье
+    <value>Задать/показать угол Эйлера Ψ (град), третье
 вращение, определяющее ориентацию кристалла.</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
-    <value>Задать/показать угол Эйлера ψ (град), третье
+    <value>Задать/показать угол Эйлера Ψ (град), третье
 вращение, определяющее ориентацию кристалла.</value>
   </data>
   <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
@@ -387,7 +388,7 @@ STEM — сканирующая просвечивающая электронн�
     <value>Открыть «Просмотр структуры» (3D-структура кристалла).</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>Углы Эйлера (φ, θ, ψ), описывающие
+    <value>Углы Эйлера (Φ, Θ, Ψ), описывающие
 текущее 3D-вращение кристалла;
 редактируйте, чтобы задать ориентацию напрямую.</value>
   </data>
