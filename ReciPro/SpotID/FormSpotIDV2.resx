@@ -1472,7 +1472,7 @@ current 'Fitting range' value (px).</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxCameraLength.HeaderText" xml:space="preserve">
-    <value>Camera Length</value>
+    <value>Camera length</value>
   </data>
   <data name="numericBoxCameraLength.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 0</value>
@@ -1523,7 +1523,7 @@ current 'Fitting range' value (px).</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxPixelSize.HeaderText" xml:space="preserve">
-    <value>Pixel Size</value>
+    <value>Pixel size</value>
   </data>
   <data name="numericBoxPixelSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>

@@ -788,7 +788,8 @@
             toolTip.SetToolTip(label45, resources.GetString("label45.ToolTip")); // 260531Cl
             label45.Size = new System.Drawing.Size(79, 14);
             label45.TabIndex = 65;
-            label45.Text = "Convergence";
+            //label45.Text = "Convergence"; // 261105Cl 変更前
+            label45.Text = "Conv. semi-angle"; // 261105Cl 変更 (作者決定 K1-A2: 収束半角 (各言語は LocalizationData))
             // 
             // label44
             // 
@@ -965,7 +966,8 @@
             toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
             label2.Size = new System.Drawing.Size(90, 14);
             label2.TabIndex = 47;
-            label2.Text = "Camera Length";
+            //label2.Text = "Camera Length"; // 261105Cl 変更前
+            label2.Text = "Camera length"; // 261105Cl 変更 (作者決定 K1-A6)
             // 
             // numericBoxCameraLength
             // 

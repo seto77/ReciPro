@@ -243,7 +243,8 @@
             numericBoxPixelSize.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxPixelSize.FooterText = "mm";
             numericBoxPixelSize.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            numericBoxPixelSize.HeaderText = "pix. size";
+            //numericBoxPixelSize.HeaderText = "pix. size"; // 261105Cl 変更前
+            numericBoxPixelSize.HeaderText = "Pixel size"; // 261105Cl 変更 (作者決定 K1-A6)
             numericBoxPixelSize.Location = new System.Drawing.Point(441, 0);
             numericBoxPixelSize.Margin = new System.Windows.Forms.Padding(0);
             numericBoxPixelSize.MaximumSize = new System.Drawing.Size(1000, 30);

@@ -134,8 +134,8 @@
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
     <value>LACBED（大角度収束電子回折）モード：透過ディスク (000)
 だけを出力・表示し、重なる隣のディスクを足し合わせない
-ので、Bragg 角より大きい半頂角を使えます (明視野 LACBED)。
-このモードで半頂角そのものが広がるわけではありません。</value>
+ので、Bragg 角より大きい収束半角を使えます (明視野 LACBED)。
+このモードで収束半角そのものが広がるわけではありません。</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
     <value>回折波の数</value>
@@ -146,16 +146,16 @@
 精度は上がりますが計算は遅くなります。</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
-    <value>収束電子の半頂角</value>
+    <value>収束半角 α</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
     <value>ディスクの解像度</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
-    <value>各ディスクを横切る 1 画素あたりの角度刻み (mrad/pixel)
-を設定します。小さいほどディスクが精細になり画素数が
-増えます。1 ディスクの画素数は右の「総ピクセル数」に
+    <value>各ディスクを横切る 1 ピクセルあたりの角度刻み (mrad/pixel)
+を設定します。小さいほどディスクが精細になりピクセル数が
+増えます。1 ディスクのピクセル数は右の「総ピクセル数」に
 表示され、計算時間はこれに比例して増えます。</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
@@ -165,10 +165,10 @@
     <value>nm</value>
   </data>
   <data name="numericBoxWholeThicknessStart.HeaderText" xml:space="preserve">
-    <value>試料厚み</value>
+    <value>試料厚さ</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
-    <value>試料の厚さの範囲とステップを設定</value>
+    <value>試料厚さの範囲とステップを設定</value>
   </data>
   <data name="numericBoxThicknessEnd.FooterText" xml:space="preserve">
     <value>nmまで</value>
@@ -177,7 +177,7 @@
     <value>から</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>試料の厚さの範囲とステップを設定</value>
+    <value>試料厚さの範囲とステップを設定</value>
   </data>
   <data name="numericBoxThicknessStep.FooterText" xml:space="preserve">
     <value>nm 刻み</value>
@@ -186,7 +186,7 @@
     <value />
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>試料の厚さの範囲とステップを設定</value>
+    <value>試料厚さの範囲とステップを設定</value>
   </data>
   <data name="comboBoxSolver.ToolTip" xml:space="preserve">
     <value>Bloch 波方程式の解き方（固有値問題/行列指数、
@@ -235,7 +235,7 @@ Eigen/MKL ライブラリ）を選択します。結果は同じになる
 この値が大きいほど、外側のディスクが明るく見えます。</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>輝度</value>
+    <value>明るさ</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>最大</value>
@@ -250,7 +250,7 @@ Eigen/MKL ライブラリ）を選択します。結果は同じになる
     <value>明るさが最大値として表示される強度を設定します。</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>輝度調整</value>
+    <value>明るさの調整</value>
   </data>
   <data name="radioButtonAllDisks.Text" xml:space="preserve">
     <value>全ディスク共通</value>
@@ -266,19 +266,19 @@ Eigen/MKL ライブラリ）を選択します。結果は同じになる
     <value>各ディスクの上限/下限に個別の明るさレベルを適用します。</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>試料の厚さ </value>
+    <value>試料厚さ </value>
   </data>
   <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
-    <value>表示する試料の厚さを選択します。</value>
+    <value>表示する試料厚さを選択します。</value>
   </data>
   <data name="textBoxThickness.ToolTip" xml:space="preserve">
-    <value>現在表示中のディスクパターンの試料厚み (nm)。</value>
+    <value>現在表示中のディスクパターンの試料厚さ (nm)。</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>現在表示中のディスクパターンの試料厚み (nm)。</value>
+    <value>現在表示中のディスクパターンの試料厚さ (nm)。</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>現在表示中のディスクパターンの試料厚み (nm)。</value>
+    <value>現在表示中のディスクパターンの試料厚さ (nm)。</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
     <value>明るさが最大値として表示される強度を設定します。</value>
@@ -291,13 +291,13 @@ Eigen/MKL ライブラリ）を選択します。結果は同じになる
 レベル（最小/最大）を適用します。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>1 ディスクの画素数 (収束円の内側にある入射ビームの
-方向の数) です。画素ごとに 1 回ブロッホ波の計算を
+    <value>1 ディスクのピクセル数 (収束円の内側にある入射ビームの
+方向の数) です。ピクセルごとに 1 回ブロッホ波の計算を
 行うので、計算時間はこの数に比例します。</value>
   </data>
   <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
-    <value>1 ディスクの画素数 (収束円の内側にある入射ビームの
-方向の数) です。画素ごとに 1 回ブロッホ波の計算を
+    <value>1 ディスクのピクセル数 (収束円の内側にある入射ビームの
+方向の数) です。ピクセルごとに 1 回ブロッホ波の計算を
 行うので、計算時間はこの数に比例します。</value>
   </data>
   <data name="labelGamma.ToolTip" xml:space="preserve">
@@ -317,19 +317,19 @@ Eigen/MKL ライブラリ）を選択します。結果は同じになる
 想定ですが速度が異なります。通常は Auto を使います。</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
-    <value>収束電子ビームの半頂角（半収束角）の最大値 (mrad)</value>
+    <value>収束電子ビームの収束半角 α の最大値 (mrad)</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>明るさが最大値として表示される強度を設定します。</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
-    <value>試料の厚さの範囲とステップを設定</value>
+    <value>試料厚さの範囲とステップを設定</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
-    <value>試料の厚さの範囲とステップを設定</value>
+    <value>試料厚さの範囲とステップを設定</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
-    <value>試料の厚さの範囲とステップを設定</value>
+    <value>試料厚さの範囲とステップを設定</value>
   </data>
   <data name="numericBoxThread.ToolTip1" xml:space="preserve">
     <value>CBED（収束電子回折）の Bloch 波計算に

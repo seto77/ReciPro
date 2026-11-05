@@ -165,11 +165,11 @@
 す。検出器上の回折リング半径のスケールを決めます。</value>
   </data>
   <data name="numericBoxCenterX.ToolTip" xml:space="preserve">
-    <value>ダイレクトビーム(回折パターン)中心の X 座標をピクセル
+    <value>直接ビーム(回折パターン)中心の X 座標をピクセル
 単位で設定します。回折リングの中心位置を決めます。</value>
   </data>
   <data name="numericBoxCenterY.ToolTip" xml:space="preserve">
-    <value>ダイレクトビーム(回折パターン)中心の Y 座標をピクセル
+    <value>直接ビーム(回折パターン)中心の Y 座標をピクセル
 単位で設定します。回折リングの中心位置を決めます。</value>
   </data>
   <data name="numericBoxFilmBlur.ToolTip" xml:space="preserve">
@@ -225,12 +225,12 @@ mm/pixel 単位で設定します。カメラ長とと
 着色表示し、除外範囲を確認できるようにします。</value>
   </data>
   <data name="numericBoxMaxInt.ToolTip" xml:space="preserve">
-    <value>表示輝度ウィンドウの上限（最も明るい色に対応す
+    <value>表示の明るさの範囲の上限（最も明るい色に対応す
 る強度カウント）を設定します。表示コントラスト
 のみに作用し、データは変えません。</value>
   </data>
   <data name="numericBoxMinInt.ToolTip" xml:space="preserve">
-    <value>表示輝度ウィンドウの下限（最も暗い色に対応する
+    <value>表示の明るさの範囲の下限（最も暗い色に対応する
 強度カウント）を設定します。表示コントラストの
 みに作用し、データは変えません。</value>
   </data>
@@ -331,7 +331,7 @@ mm/pixel 単位で設定します。カメラ長とと
     <value>手動スポットマスクの半径(ピクセル)。</value>
   </data>
   <data name="label13.ToolTip" xml:space="preserve">
-    <value>ダイレクトビーム中心の座標(ピクセル
+    <value>直接ビーム中心の座標(ピクセル
 単位)。回折リングの中心位置を示します。</value>
   </data>
   <data name="label17.ToolTip" xml:space="preserve">
@@ -365,11 +365,11 @@ mm/pixel 単位で設定します。カメラ長とと
     <value>元画像の解像度(mm/pixel)。散乱角をピクセル半径に換算します。</value>
   </data>
   <data name="label33.ToolTip" xml:space="preserve">
-    <value>ダイレクトビーム中心の X
+    <value>直接ビーム中心の X
 座標(ピクセル)。リング中心を決めます。</value>
   </data>
   <data name="label37.ToolTip" xml:space="preserve">
-    <value>ダイレクトビーム中心の Y
+    <value>直接ビーム中心の Y
 座標(ピクセル)。リング中心を決めます。</value>
   </data>
   <data name="label39.ToolTip" xml:space="preserve">
@@ -380,12 +380,12 @@ mm/pixel 単位で設定します。カメラ長とと
     <value>フィルムにじみ量(μm)。リングを畳み込みピーク幅を再現します。</value>
   </data>
   <data name="label25.ToolTip" xml:space="preserve">
-    <value>表示輝度ウィンドウの上限（最も明るい色に対応す
+    <value>表示の明るさの範囲の上限（最も明るい色に対応す
 る強度カウント）を設定します。表示コントラスト
 のみに作用し、データは変えません。</value>
   </data>
   <data name="label36.ToolTip" xml:space="preserve">
-    <value>表示輝度ウィンドウの下限（最も暗い色に対応する
+    <value>表示の明るさの範囲の下限（最も暗い色に対応する
 強度カウント）を設定します。表示コントラストの
 みに作用し、データは変えません。</value>
   </data>

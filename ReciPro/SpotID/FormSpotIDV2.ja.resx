@@ -128,7 +128,7 @@
     <value>Yu Gothic UI, 7pt</value>
   </data>
   <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
-    <value>観測スポットの一覧表です。'Direct'で直接ビーム
+    <value>観測スポットの一覧表です。'Direct'で直接スポット
 を指定、行の'Fit'でピークをフィット、行選択で
 パターン上の該当スポットを強調します</value>
   </data>
@@ -339,7 +339,7 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.Text" xml:space="preserve">
-    <value>試料厚みと方位の最適化 (制限視野電子回折のみ)</value>
+    <value>試料厚さと方位の最適化 (制限視野電子回折のみ)</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
     <value>選択した結晶粒について、観測スポット強度を
@@ -359,7 +359,7 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
     <value>厚さ・方位の精密化で入射ビーム方向を
-探索する角度半径（半収束角、mrad）。</value>
+探索する角度半径（収束半角、mrad）。</value>
   </data>
   <data name="buttonStop.ToolTip" xml:space="preserve">
     <value>現在の計算を中止</value>

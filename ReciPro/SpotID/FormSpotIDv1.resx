@@ -952,7 +952,7 @@ from the accelerating voltage (read-only).</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxCamaraLength.HeaderText" xml:space="preserve">
-    <value>Camera Length</value>
+    <value>Camera length</value>
   </data>
   <data name="numericBoxCamaraLength.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 44</value>

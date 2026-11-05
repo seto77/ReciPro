@@ -8176,7 +8176,7 @@ crystal potential (Fourier coefficient Ug).</value>
     <value>$this</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.HeaderText" xml:space="preserve">
-    <value>α (convergence angle)</value>
+    <value>Conv. semi-angle α</value>
   </data>
   <data name="&gt;&gt;label11.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

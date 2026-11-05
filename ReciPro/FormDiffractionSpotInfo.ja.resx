@@ -174,7 +174,7 @@ Vg/V'g から Ug/U'g に切り替わります。</value>
 最大収束半角(mrad)を表示します。読み取り専用です。</value>
   </data>
   <data name="textBoxThickness.ToolTip" xml:space="preserve">
-    <value>動力学計算に用いる試料の厚さ(nm)を表示します。
+    <value>動力学計算に用いる試料厚さ (nm)を表示します。
 回折波振幅 Φ はこの厚さに依存します。読み取り専用です。</value>
   </data>
   <data name="textBoxWaveLength.ToolTip" xml:space="preserve">
@@ -194,11 +194,11 @@ Vg/V'g から Ug/U'g に切り替わります。</value>
 最大収束半角(mrad)を表示します。読み取り専用です。</value>
   </data>
   <data name="label12.ToolTip" xml:space="preserve">
-    <value>動力学計算に用いる試料の厚さ(nm)を表示します。
+    <value>動力学計算に用いる試料厚さ (nm)を表示します。
 回折波振幅 Φ はこの厚さに依存します。読み取り専用です。</value>
   </data>
   <data name="label13.ToolTip" xml:space="preserve">
-    <value>動力学計算に用いる試料の厚さ(nm)を表示します。
+    <value>動力学計算に用いる試料厚さ (nm)を表示します。
 回折波振幅 Φ はこの厚さに依存します。読み取り専用です。</value>
   </data>
   <data name="label15.ToolTip" xml:space="preserve">

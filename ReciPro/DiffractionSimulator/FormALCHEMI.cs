@@ -157,8 +157,11 @@ public partial class FormALCHEMI : FormBase
             pt: "Faixa  ±", it: "Intervallo  ±", ru: "Диапазон  ±", zhHans: "范围  ±", zhHant: "範圍  ±", ko: "범위  ±");
         numericBoxPoints.HeaderText = Localization.Loc(en: "Points", ja: "点数", de: "Punkte", fr: "Points", es: "Puntos",
             pt: "Pontos", it: "Punti", ru: "Точки", zhHans: "点数", zhHant: "點數", ko: "점 수");
-        groupBoxThickness.Text = Localization.Loc(en: "Thickness", ja: "厚み", de: "Dicke", fr: "Épaisseur", es: "Espesor",
-            pt: "Espessura", it: "Spessore", ru: "Толщина", zhHans: "厚度", zhHant: "厚度", ko: "두께");
+        // 261105Cl 変更前 (2 行):
+        //groupBoxThickness.Text = Localization.Loc(en: "Thickness", ja: "厚み", de: "Dicke", fr: "Épaisseur", es: "Espesor",
+        //pt: "Espessura", it: "Spessore", ru: "Толщина", zhHans: "厚度", zhHant: "厚度", ko: "두께");
+        groupBoxThickness.Text = Localization.Loc(en: "Thickness", ja: "試料厚さ", de: "Dicke", fr: "Épaisseur", es: "Espesor",
+            pt: "Espessura", it: "Spessore", ru: "Толщина", zhHans: "厚度", zhHant: "厚度", ko: "두께"); // 261105Cl 変更 (作者決定 K1-A3: 試料厚さ)
         numericBoxThicknessStart.HeaderText = Localization.Loc(en: "from", ja: "開始", de: "von", fr: "de", es: "desde",
             pt: "de", it: "da", ru: "от", zhHans: "从", zhHant: "從", ko: "부터");
         numericBoxThicknessEnd.HeaderText = Localization.Loc(en: "to", ja: "終了", de: "bis", fr: "à", es: "hasta",
@@ -167,8 +170,11 @@ public partial class FormALCHEMI : FormBase
             pt: "passo", it: "passo", ru: "шаг", zhHans: "步长", zhHant: "步長", ko: "간격");
         groupBoxCalculation.Text = Localization.Loc(en: "Calculation", ja: "計算条件", de: "Berechnung", fr: "Calcul",
             es: "Cálculo", pt: "Cálculo", it: "Calcolo", ru: "Расчёт", zhHans: "计算", zhHant: "計算", ko: "계산");
-        numericBoxMaxNumOfBloch.HeaderText = Localization.Loc(en: "Max. beams", ja: "最大波数", de: "Max. Strahlen", fr: "Faisceaux max.",
-            es: "Haces máx.", pt: "Feixes máx.", it: "Fasci max.", ru: "Макс. пучков", zhHans: "最大波数", zhHant: "最大波數", ko: "최대 빔 수");
+        // 261105Cl 変更前 (2 行):
+        //numericBoxMaxNumOfBloch.HeaderText = Localization.Loc(en: "Max. beams", ja: "最大波数", de: "Max. Strahlen", fr: "Faisceaux max.",
+        //es: "Haces máx.", pt: "Feixes máx.", it: "Fasci max.", ru: "Макс. пучков", zhHans: "最大波数", zhHant: "最大波數", ko: "최대 빔 수");
+        numericBoxMaxNumOfBloch.HeaderText = Localization.Loc(en: "Max. diffr. waves", ja: "回折波の最大数", de: "Max. Strahlen", fr: "Faisceaux max.",
+            es: "Haces máx.", pt: "Feixes máx.", it: "Fasci max.", ru: "Макс. пучков", zhHans: "最大衍射波数", zhHant: "最大繞射波數", ko: "최대 빔 수"); // 261105Cl 変更 (作者決定 K1-A1: 「最大波数」は wavenumber と読める。en は欄 (166 px 固定) に収まる略記。zh も同じ理由で)
         labelSolver.Text = Localization.Loc(en: "Solver", ja: "ソルバ", de: "Löser", fr: "Solveur", es: "Solucionador",
             pt: "Solucionador", it: "Risolutore", ru: "Решатель", zhHans: "求解器", zhHant: "求解器", ko: "솔버");
         labelAngularSpread.Text = Localization.Loc(en: "Angular spread", ja: "角度広がり", de: "Winkelverbreiterung",
@@ -223,10 +229,12 @@ public partial class FormALCHEMI : FormBase
         toolTip.SetToolTip(numericBoxMaxNumOfBloch, Localization.Loc(
             //en: "Upper bound on the number of Bloch waves per orientation. The union over the whole scan is larger. The ionization form factor is tabulated to s = 16 A^-1, and this cap of 1600 is its counterpart: even at 1600 beams the basis only reaches about 10.5 A^-1. The diagnostic line below the graph reports how far it actually reached.", // 261105Cl 変更前
             en: "Upper bound on the number of Bloch waves per orientation. The union over the whole scan is larger. The ionization form factor is tabulated to s = 16 Å⁻¹, and this cap of 1600 is its counterpart: even at 1600 beams the basis only reaches about 10.5 Å⁻¹. The diagnostic line below the graph reports how far it actually reached.", // 261105Cl 変更 (監査 K21): A^-1 → Å⁻¹ (ja と同じ表記)
-            ja: "1 方位あたりのブロッホ波数の上限です。走査全体の union はこれより大きくなります。イオン化形状因子は s = 16 Å⁻¹ まで収録されており、この上限 1600 はその対です (1600 波でも基底が要求する s は約 10.5 Å⁻¹ に留まります)。実際の到達値はグラフ下の診断行に出ます。"));
+            //ja: "1 方位あたりのブロッホ波数の上限です。走査全体の union はこれより大きくなります。イオン化形状因子は s = 16 Å⁻¹ まで収録されており、この上限 1600 はその対です (1600 波でも基底が要求する s は約 10.5 Å⁻¹ に留まります)。実際の到達値はグラフ下の診断行に出ます。")); // 261105Cl 変更前
+            ja: "1 方位あたりのブロッホ波 (回折波) の数の上限です。走査全体の union はこれより大きくなります。イオン化形状因子は s = 16 Å⁻¹ まで収録されており、この上限 1600 はその対です (1600 波でも基底が要求する s は約 10.5 Å⁻¹ に留まります)。実際の到達値はグラフ下の診断行に出ます。")); // 261105Cl 変更 (作者決定 K1-A1: 「波数」は wavenumber と読める)
         toolTip.SetToolTip(checkBoxDechannelling, Localization.Loc(
             en: "Electrons removed from the coherent Bloch field by thermal-diffuse absorption are re-emitted as randomly directed electrons over the remaining thickness. Omitting this dilutes the site contrast by tens of percent at typical thicknesses.",
-            ja: "熱散漫吸収でコヒーレントなブロッホ場から失われた電子を、方向がランダム化された電子として残りの厚みぶん走らせます。省くと典型的な厚みでサイトコントラストが数十パーセント薄まります。"));
+            //ja: "熱散漫吸収でコヒーレントなブロッホ場から失われた電子を、方向がランダム化された電子として残りの厚みぶん走らせます。省くと典型的な厚みでサイトコントラストが数十パーセント薄まります。")); // 261105Cl 変更前
+            ja: "熱散漫吸収でコヒーレントなブロッホ場から失われた電子を、方向がランダム化された電子として残りの厚さぶん走らせます。省くと典型的な厚さでサイトコントラストが数十パーセント薄まります。")); // 261105Cl 変更 (作者決定 K1-A3: 厚み → 厚さ)
         //toolTip.SetToolTip(checkedListBoxChannels, Localization.Loc(//260925Cl 変更前
         //    en: "Element and shell to ionize. Cross sections are Bote-Salvat and the shape factors are self-generated DHFS tables; channels that cannot be excited or fall outside the tabulated range are listed with the reason and cannot be selected.",
         //    ja: "イオン化する元素と殻です。断面積は Bote-Salvat、形状因子は自前の DHFS テーブルです。励起できない、または収録範囲外のチャネルは理由付きで表示され選択できません。"));
@@ -249,16 +257,20 @@ public partial class FormALCHEMI : FormBase
             ja: "走査全体で標本化する方位の個数です (3〜1001)。-Range から +Range まで等間隔に並ぶので、奇数にすると 1 点がちょうど出発方位に来ます (スピンボタンは奇数を保つため 2 刻みです)。曲線の角度分解能を決め、計算時間はこれに比例します。走査の広さを決める Range とは役割が違います。"));
         toolTip.SetToolTip(numericBoxThicknessStart, Localization.Loc(
             en: "First thickness of the series, in nm. from, to and step build the list of thicknesses computed in one run; every site/channel curve is evaluated at all of them and the Thickness box under the graph then picks which one is drawn. Site contrast can reverse sign with thickness, so start thin enough to see that.",
-            ja: "厚み列の最初の値です (nm)。開始・終了・刻みで 1 回の計算で扱う厚みの列を作り、各サイト / チャネル曲線をそのすべてについて求めます。どれをグラフに描くかはグラフ下の厚みボックスで選びます。サイトコントラストは厚みで符号が反転しうるので、それが見える程度に薄い値から始めてください。"));
+            //ja: "厚み列の最初の値です (nm)。開始・終了・刻みで 1 回の計算で扱う厚みの列を作り、各サイト / チャネル曲線をそのすべてについて求めます。どれをグラフに描くかはグラフ下の厚みボックスで選びます。サイトコントラストは厚みで符号が反転しうるので、それが見える程度に薄い値から始めてください。")); // 261105Cl 変更前
+            ja: "厚さ列の最初の値です (nm)。開始・終了・刻みで 1 回の計算で扱う厚さの列を作り、各サイト / チャネル曲線をそのすべてについて求めます。どれをグラフに描くかはグラフ下の厚さボックスで選びます。サイトコントラストは厚さで符号が反転しうるので、それが見える程度に薄い値から始めてください。")); // 261105Cl 変更 (作者決定 K1-A3: 厚み → 厚さ)
         toolTip.SetToolTip(numericBoxThicknessEnd, Localization.Loc(
             en: "Last thickness of the series, in nm. The list runs from the start value up to this one in increments of step, and a value not on the grid is simply not reached. Extending it costs almost nothing in solve time - the Bloch-wave problem is solved once per orientation and only the thickness propagation is repeated - but it does enlarge the CSV export.",
-            ja: "厚み列の最後の値です (nm)。開始からこの値まで刻みぶんずつ進み、刻みに乗らない端数には到達しません。ここを伸ばしても対角化は方位ごとに 1 回で厚み伝播だけを繰り返すため計算時間はほとんど増えませんが、CSV 出力は大きくなります。"));
+            //ja: "厚み列の最後の値です (nm)。開始からこの値まで刻みぶんずつ進み、刻みに乗らない端数には到達しません。ここを伸ばしても対角化は方位ごとに 1 回で厚み伝播だけを繰り返すため計算時間はほとんど増えませんが、CSV 出力は大きくなります。")); // 261105Cl 変更前
+            ja: "厚さ列の最後の値です (nm)。開始からこの値まで刻みぶんずつ進み、刻みに乗らない端数には到達しません。ここを伸ばしても対角化は方位ごとに 1 回で厚さ伝播だけを繰り返すため計算時間はほとんど増えませんが、CSV 出力は大きくなります。")); // 261105Cl 変更 (作者決定 K1-A3: 厚み → 厚さ)
         toolTip.SetToolTip(numericBoxThicknessStep, Localization.Loc(
             en: "Spacing of the thickness series, in nm. It also becomes the spin step of the Thickness box under the graph, so a coarse step makes it impossible to land between two thicknesses. A fine step multiplies the number of curves stored and exported without re-solving the Bloch-wave problem.",
-            ja: "厚み列の間隔です (nm)。この値がそのままグラフ下の厚みボックスのスピン刻みになるので、粗くすると 2 つの厚みの中間を選べません。細かくすると保存・出力される曲線の本数が増えますが、ブロッホ波の対角化はやり直しません。"));
+            //ja: "厚み列の間隔です (nm)。この値がそのままグラフ下の厚みボックスのスピン刻みになるので、粗くすると 2 つの厚みの中間を選べません。細かくすると保存・出力される曲線の本数が増えますが、ブロッホ波の対角化はやり直しません。")); // 261105Cl 変更前
+            ja: "厚さ列の間隔です (nm)。この値がそのままグラフ下の厚さボックスのスピン刻みになるので、粗くすると 2 つの厚さの中間を選べません。細かくすると保存・出力される曲線の本数が増えますが、ブロッホ波の対角化はやり直しません。")); // 261105Cl 変更 (作者決定 K1-A3: 厚み → 厚さ)
         toolTip.SetToolTip(buttonSimulate, Localization.Loc(
             en: "Run the ALCHEMI simulation with the settings on the left: for every orientation of the rocking scan a Bloch-wave calculation is solved, and the ionization yield of each selected site/channel pair is accumulated over the thickness series. Cost grows with Points x thicknesses x Max. beams^3, so a wide scan with many beams can take minutes; progress is shown in the status bar and Stop cancels it.",
-            ja: "左側の設定で ALCHEMI 計算を実行します。ロッキング走査の各方位についてブロッホ波計算を解き、選択したサイト / チャネルの組ごとにイオン化収量を厚みの列にわたって積算します。計算量は 点数 × 厚み数 × 最大波数³ で増えるので、広い走査と多波条件では数分かかります。進捗はステータスバーに出て、中止は Stop ボタンです。"));
+            //ja: "左側の設定で ALCHEMI 計算を実行します。ロッキング走査の各方位についてブロッホ波計算を解き、選択したサイト / チャネルの組ごとにイオン化収量を厚みの列にわたって積算します。計算量は 点数 × 厚み数 × 最大波数³ で増えるので、広い走査と多波条件では数分かかります。進捗はステータスバーに出て、中止は Stop ボタンです。")); // 261105Cl 変更前
+            ja: "左側の設定で ALCHEMI 計算を実行します。ロッキング走査の各方位についてブロッホ波計算を解き、選択したサイト / チャネルの組ごとにイオン化収量を厚さの列にわたって積算します。計算量は 点数 × 厚さの数 × 回折波の最大数³ で増えるので、広い走査と多波条件では数分かかります。進捗はステータスバーに出て、中止は Stop ボタンです。")); // 261105Cl 変更 (作者決定 K1-A1/A3)
         toolTip.SetToolTip(buttonStop, Localization.Loc(
             en: "Cancel the running simulation. The button only appears while a run is in progress. Cancellation takes effect at the next orientation, so it is not instantaneous; the graph and the diagnostics keep the result of the previous completed run.",
             ja: "実行中の計算を中止します。このボタンは計算中だけ表示されます。中止は次の方位の区切りで効くので即座ではありません。グラフと診断表示は直前に完了した計算の結果を保持します。"));
@@ -268,7 +280,8 @@ public partial class FormALCHEMI : FormBase
         //    ja: "グラフに表示する厚みです。サイトコントラストは薄い試料と厚い試料で大きく変わり符号すら反転しうるので、結論を出す前に複数の厚みを確認してください。"));
         toolTip.SetToolTip(numericBoxThickness, Localization.Loc(
             en: "Thickness shown in the graph. The spin buttons step through the computed thicknesses; a typed value snaps to the nearest one. The site contrast changes strongly - and can even reverse sign - between thin and thick specimens, so check several thicknesses before drawing conclusions.",
-            ja: "グラフに表示する厚みです。スピンボタンで計算済みの厚みを順送りし、直接入力した値は最寄りの計算済み厚みに揃えられます。サイトコントラストは薄い試料と厚い試料で大きく変わり符号すら反転しうるので、結論を出す前に複数の厚みを確認してください。"));
+            //ja: "グラフに表示する厚みです。スピンボタンで計算済みの厚みを順送りし、直接入力した値は最寄りの計算済み厚みに揃えられます。サイトコントラストは薄い試料と厚い試料で大きく変わり符号すら反転しうるので、結論を出す前に複数の厚みを確認してください。")); // 261105Cl 変更前
+            ja: "グラフに表示する厚さです。スピンボタンで計算済みの厚さを順送りし、直接入力した値は最寄りの計算済み厚さに揃えられます。サイトコントラストは薄い試料と厚い試料で大きく変わり符号すら反転しうるので、結論を出す前に複数の厚さを確認してください。")); // 261105Cl 変更 (作者決定 K1-A3: 厚み → 厚さ)
         //toolTip.SetToolTip(comboBoxNormalization, Localization.Loc(//260925Cl 変更前
         //    en: "Display normalization only; the stored quantity is always vacancies generated per incident electron. Maximum = 1 is for display and must not be used as an ICP reference.",
         //    ja: "表示上の規格化だけで、保存される量は常に入射電子 1 個あたりの発生空孔数です。最大値 = 1 は表示専用で、ICP の基準には使えません。"));
@@ -277,14 +290,17 @@ public partial class FormALCHEMI : FormBase
             ja: "表示上の規格化だけで、保存される量は殻のチャネルでは入射電子 1 個あたりの発生空孔数、線の系列では入射電子 1 個あたりに発生する X 線の光子数です。最大値 = 1 は表示専用で、ICP の基準には使えません。"));
         toolTip.SetToolTip(buttonExport, Localization.Loc(
             en: "Write the raw curves (dynamic, dechannelled and total, per incident electron) for every orientation, thickness, site and channel to a CSV file, together with a header that records the crystal, the voltage, the scan, the basis diagnostic, the angular spread and the data provenance.",
-            ja: "全方位・全厚み・全サイト・全チャネルの生の曲線 (動力学・非チャネリング・合計、入射電子 1 個あたり) を、結晶・電圧・走査・基底診断・角度広がり・データ出所を記録したヘッダとともに CSV に書き出します。"));
+            //ja: "全方位・全厚み・全サイト・全チャネルの生の曲線 (動力学・非チャネリング・合計、入射電子 1 個あたり) を、結晶・電圧・走査・基底診断・角度広がり・データ出所を記録したヘッダとともに CSV に書き出します。")); // 261105Cl 変更前
+            ja: "全方位・全厚さ・全サイト・全チャネルの生の曲線 (動力学・非チャネリング・合計、入射電子 1 個あたり) を、結晶・電圧・走査・基底診断・角度広がり・データ出所を記録したヘッダとともに CSV に書き出します。")); // 261105Cl 変更 (作者決定 K1-A3: 厚み → 厚さ)
         //260809Cl 追加
         toolTip.SetToolTip(comboBoxAngularSpread, Localization.Loc(
             en: "Convolution of the rocking curve with the angular spread of the incident beam (convergence semi-angle, drift). It is a post-process on the orientation axis and is applied BEFORE the display normalization. Nothing else about the experiment - thickness distribution, bending, self-absorption, detector response, background - is modelled, so this alone will not reproduce a measurement.",
-            ja: "入射ビームの角度広がり (収束半角・ドリフト) をロッキング曲線に畳み込みます。方位軸上の後処理で、表示の規格化より「前」に適用されます。厚み分布・曲げ・自己吸収・検出器応答・背景は一切モデル化していないので、これだけで実測を再現できるわけではありません。"));
+            //ja: "入射ビームの角度広がり (収束半角・ドリフト) をロッキング曲線に畳み込みます。方位軸上の後処理で、表示の規格化より「前」に適用されます。厚み分布・曲げ・自己吸収・検出器応答・背景は一切モデル化していないので、これだけで実測を再現できるわけではありません。")); // 261105Cl 変更前
+            ja: "入射ビームの角度広がり (収束半角・ドリフト) をロッキング曲線に畳み込みます。方位軸上の後処理で、表示の規格化より「前」に適用されます。厚さの分布・曲げ・自己吸収・検出器応答・背景は一切モデル化していないので、これだけで実測を再現できるわけではありません。")); // 261105Cl 変更 (作者決定 K1-A3)
         toolTip.SetToolTip(numericBoxSpreadFwhm, Localization.Loc(
             en: "Full width at half maximum of the Gaussian, in mrad. Ends of the scan are handled by renormalizing the kernel. Fitting this width together with thickness and occupancy makes them correlated, so use a measured value or a narrow prior.",
-            ja: "ガウシアンの半値全幅 (mrad) です。走査の端はカーネルを再規格化して扱います。この幅を厚みや占有率と一緒にフィットすると互いに相関するので、実測値か狭い事前範囲を使ってください。"));
+            //ja: "ガウシアンの半値全幅 (mrad) です。走査の端はカーネルを再規格化して扱います。この幅を厚みや占有率と一緒にフィットすると互いに相関するので、実測値か狭い事前範囲を使ってください。")); // 261105Cl 変更前
+            ja: "ガウシアンの半値全幅 (mrad) です。走査の端はカーネルを再規格化して扱います。この幅を厚さや占有率と一緒にフィットすると互いに相関するので、実測値か狭い事前範囲を使ってください。")); // 261105Cl 変更 (作者決定 K1-A3: 厚み → 厚さ)
         //260820Cl 追加
         toolTip.SetToolTip(textBoxDiagnostics, Localization.Loc(
             en: "Diagnostics of the last run, one item per line: basis size and expanded-basis convergence, fit eligibility, the Experimental notice, any warnings, and the contrast (max−min)/mean of every site/channel curve with its correlation to the first one. Scroll for the rest; the text can be selected and copied.",

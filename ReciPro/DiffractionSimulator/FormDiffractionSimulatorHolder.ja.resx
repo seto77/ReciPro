@@ -134,7 +134,7 @@
     <value>ステレオネット設定</value>
   </data>
   <data name="groupBoxIndexRange.Text" xml:space="preserve">
-    <value>軸指数範囲</value>
+    <value>方向指数の範囲</value>
   </data>
   <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
     <value>等価な指数を含める</value>
@@ -188,7 +188,7 @@
     <value>1° 線を表示</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
-    <value>軸指数を表示</value>
+    <value>指数ラベルを表示</value>
   </data>
   <data name="groupBoxHolderAngles.Text" xml:space="preserve">
     <value>ホルダー角度</value>

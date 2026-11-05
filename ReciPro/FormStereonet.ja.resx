@@ -300,7 +300,7 @@
 へ投影してラベル表示します。</value>
   </data>
   <data name="radioButtonPlanes.Text" xml:space="preserve">
-    <value>結晶面</value>
+    <value>面指数</value>
   </data>
   <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
     <value>晶面の法線方向をステレオネットへ投影し、

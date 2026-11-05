@@ -224,14 +224,14 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="trackBarAdvancedMax.ToolTip" xml:space="preserve">
-    <value>表示画像の輝度レンジ上限(白に対応)。
+    <value>表示画像の明るさのレンジ上限(白に対応)。
 コントラストの上限を調整します。</value>
   </data>
   <data name="trackBarAdvancedMin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="trackBarAdvancedMin.ToolTip" xml:space="preserve">
-    <value>表示画像の輝度レンジ下限(黒に対応)。
+    <value>表示画像の明るさのレンジ下限(黒に対応)。
 コントラストの下限を調整します。</value>
   </data>
   <data name="groupBoxAdjust.Font" type="System.Drawing.Font, System.Drawing">
@@ -262,7 +262,7 @@
     <value>画像ごとに規格化</value>
   </data>
   <data name="checkBoxNormarizeIndividually.ToolTip" xml:space="preserve">
-    <value>チェックすると、個々の画像で強度を正規化します</value>
+    <value>チェックすると、個々の画像で強度を規格化します</value>
   </data>
   <data name="checkBoxIntensityMin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -271,10 +271,10 @@
     <value>最小</value>
   </data>
   <data name="checkBoxIntensityMin.ToolTip" xml:space="preserve">
-    <value>正規化の強度下限を画像最小値でなく右の指定値に固定します。</value>
+    <value>規格化の強度下限を画像最小値でなく右の指定値に固定します。</value>
   </data>
   <data name="numericBoxIntensityMin.ToolTip" xml:space="preserve">
-    <value>正規化の強度下限値。左のMinに
+    <value>規格化の強度下限値。左のMinに
 チェックしたときに有効になります。</value>
   </data>
   <data name="checkBoxIntensityMax.Font" type="System.Drawing.Font, System.Drawing">
@@ -284,7 +284,7 @@
     <value>最大</value>
   </data>
   <data name="checkBoxIntensityMax.ToolTip" xml:space="preserve">
-    <value>正規化の強度上限を画像最大値でなく右の指定値に固定します。</value>
+    <value>規格化の強度上限を画像最大値でなく右の指定値に固定します。</value>
   </data>
   <data name="numericBoxIntensityMax.ToolTip" xml:space="preserve">
     <value>シミュレーション画像の最大強度</value>
@@ -477,7 +477,7 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxSerialThickness.Text" xml:space="preserve">
-    <value>試料厚み (nm)</value>
+    <value>試料厚さ (nm)</value>
   </data>
   <data name="checkBoxSerialThickness.ToolTip" xml:space="preserve">
     <value>異なる膜厚のシリーズ画像を作成</value>
@@ -518,7 +518,7 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonHorizontalThickness.Text" xml:space="preserve">
-    <value>試料厚み</value>
+    <value>試料厚さ</value>
   </data>
   <data name="radioButtonHorizontalThickness.ToolTip" xml:space="preserve">
     <value>シリーズ画像のグリッドの横方向に厚さを
@@ -538,7 +538,7 @@
   </data>
   <data name="radioButtonSingleMode.ToolTip" xml:space="preserve">
     <value>単一画像モード。現在のデフォーカス・
-厚みの設定で1枚の画像を生成します。</value>
+厚さの設定で1枚の画像を生成します。</value>
   </data>
   <data name="radioButtonSerialMode.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -547,7 +547,7 @@
     <value>シリーズ画像</value>
   </data>
   <data name="radioButtonSerialMode.ToolTip" xml:space="preserve">
-    <value>シリーズ画像モード。デフォーカスや試料厚みを
+    <value>シリーズ画像モード。デフォーカスや試料厚さを
 段階的に変えた一連の画像 (through-focus /
 through-thickness シリーズ) を生成します。</value>
   </data>
@@ -873,7 +873,7 @@ through-thickness シリーズ) を生成します。</value>
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
-    <value>波の数</value>
+    <value>回折波の数</value>
   </data>
   <data name="groupBoxDiffractedWaves.ToolTip" xml:space="preserve">
     <value />
@@ -1053,14 +1053,14 @@ STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マ�
   </data>
   <data name="textBoxConvRadius.ToolTip" xml:space="preserve">
     <value>STEM収束半角を逆空間半径 sin(θ)/λ に換算した値 (nm⁻¹)。
-収束角の変更で自動更新される読み取り専用表示です。</value>
+収束半角の変更で自動更新される読み取り専用表示です。</value>
   </data>
   <data name="label36.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label36.ToolTip" xml:space="preserve">
     <value>STEM収束半角を逆空間半径 sin(θ)/λ に換算した値 (nm⁻¹)。
-収束角の変更で自動更新される読み取り専用表示です。</value>
+収束半角の変更で自動更新される読み取り専用表示です。</value>
   </data>
   <data name="flowLayoutPanelConvergenceRadius.ToolTip" xml:space="preserve">
     <value />
@@ -1295,7 +1295,7 @@ microscopy, 高分解能透過電子顕微鏡）像を、選択した
   </data>
   <data name="radioButtonSTEM.ToolTip" xml:space="preserve">
     <value>STEM（scanning transmission electron
-microscopy, 走査透過電子顕微鏡）像を、収束角と
+microscopy, 走査透過電子顕微鏡）像を、収束半角と
 環状検出器の設定でシミュレートします。</value>
   </data>
   <data name="radioButtonProjectedPotential.Font" type="System.Drawing.Font, System.Drawing">
@@ -1321,10 +1321,10 @@ microscopy, 走査透過電子顕微鏡）像を、収束角と
     <value />
   </data>
   <data name="numericBoxThickness.HeaderText" xml:space="preserve">
-    <value>厚み</value>
+    <value>厚さ</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
-    <value>試料の厚さ
+    <value>試料厚さ
 「シリーズ画像」モードが選択されている場合、この値は無視されます。</value>
   </data>
   <data name="groupBoxSampleProperty.Font" type="System.Drawing.Font, System.Drawing">
@@ -1516,5 +1516,8 @@ Managed code(.NET)。通常は Native が高速です。</value>
   </data>
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
     <value>個数</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.HeaderText" xml:space="preserve">
+    <value>収束半角 α</value>
   </data>
 </root>

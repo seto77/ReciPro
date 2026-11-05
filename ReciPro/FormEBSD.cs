@@ -3434,8 +3434,11 @@ public partial class FormEBSD : FormBase
             const double defaultBAng2 = 0.5;
             var message = $"{zeroBSites.Length} of {crystal.Atoms.Length} atom site(s) in \"{crystal.Name}\" have B = 0 (the atomic displacement parameter is not set).\r\n\r\n"
                 + "With B = 0 these sites cause no thermal diffuse scattering, so they add no absorption and no non-local backscatter source. If every site has B = 0, the master pattern with the non-local source is blank.\r\n\r\n"
-                + $"OK: set B = {defaultBAng2.ToString(CultureInfo.InvariantCulture)} Å² (isotropic) for these site(s) and build. You can change the value later in the atom list of the main window.\r\n"
-                + "Cancel: do not build (set B yourself in the main window).";
+                //+ $"OK: set B = {defaultBAng2.ToString(CultureInfo.InvariantCulture)} Å² (isotropic) for these site(s) and build. You can change the value later in the atom list of the main window.\r\n" // 261105Cl 変更前 (2 行)
+                //+ "Cancel: do not build (set B yourself in the main window).";
+                // 261105Cl 変更 (作者決定 K1-A7): 案内先を画面のタブ名で書く (主画面の原子の欄 › 原子変位 (B) タブ。en の名前は "Atomic displacement (B)")
+                + $"OK: set B = {defaultBAng2.ToString(CultureInfo.InvariantCulture)} Å² (isotropic) for these site(s) and build. You can change the value later in the main window: atom list › Atomic displacement (B) tab.\r\n"
+                + "Cancel: do not build (set B yourself in the main window: atom list › Atomic displacement (B) tab).";
             if (MessageBox.Show(this, message, "Atomic displacement parameter B", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK || !ReferenceEquals(crystal, Crystal))
                 return;
             foreach (var a in zeroBSites)

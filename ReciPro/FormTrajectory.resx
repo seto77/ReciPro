@@ -221,7 +221,7 @@ distribution graphs and 3-D trajectory view.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
-    <value>Sample Tilt</value>
+    <value>Sample tilt</value>
   </data>
   <data name="numericBoxSampleTilt.Location" type="System.Drawing.Point, System.Drawing">
     <value>370, 0</value>

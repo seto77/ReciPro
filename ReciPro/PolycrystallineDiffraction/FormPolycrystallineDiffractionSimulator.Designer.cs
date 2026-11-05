@@ -609,7 +609,8 @@
             toolTip.SetToolTip(checkBoxRefineConvergence, resources.GetString("checkBoxRefineConvergence.ToolTip")); // 260531Cl
             checkBoxRefineConvergence.Size = new System.Drawing.Size(102, 36);
             checkBoxRefineConvergence.TabIndex = 409;
-            checkBoxRefineConvergence.Text = "Beam\r\n convergence";
+            //checkBoxRefineConvergence.Text = "Beam\r\n convergence"; // 261105Cl 変更前
+            checkBoxRefineConvergence.Text = "Convergence\r\n semi-angle"; // 261105Cl 変更 (作者決定 K1-A2: 収束半角)
             checkBoxRefineConvergence.UseVisualStyleBackColor = true;
             // 
             // checkBoxRefineStress

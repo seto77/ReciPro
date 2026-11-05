@@ -127,7 +127,7 @@
 分布グラフ・3D 軌跡表示を更新します。</value>
   </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
-    <value>サンプルの傾き</value>
+    <value>試料傾斜</value>
   </data>
   <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
     <value>入射ビームに対する試料表面の傾斜角

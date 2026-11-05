@@ -653,7 +653,7 @@ This mode does not widen the semi-angle itself.</value>
     <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
-    <value>Number of diffracted waves</value>
+    <value>Diffracted waves</value>
   </data>
   <data name="numericBoxMaxNumOfG.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -692,7 +692,7 @@ accuracy but slow the computation.</value>
     <value>0, 2, 0, 0</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
-    <value>Semiangle</value>
+    <value>Conv. semi-angle α</value>
   </data>
   <data name="numericBoxAlphaMax.Location" type="System.Drawing.Point, System.Drawing">
     <value>232, 0</value>

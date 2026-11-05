@@ -723,7 +723,8 @@
             toolTip.SetToolTip(label10, resources.GetString("label10.ToolTip")); // 260531Cl
             label10.Size = new System.Drawing.Size(297, 17);
             label10.TabIndex = 2;
-            label10.Text = "Max semiangle of electron beam (CBED mode): ";
+            //label10.Text = "Max semiangle of electron beam (CBED mode): "; // 261105Cl 変更前
+            label10.Text = "Convergence semi-angle α (CBED mode): "; // 261105Cl 変更 (作者決定 K1-A2: 収束半角)
             // 
             // textBoxSemiangle
             // 

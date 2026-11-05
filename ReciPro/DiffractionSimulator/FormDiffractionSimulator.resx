@@ -5704,7 +5704,7 @@ reciprocal-space length per pixel (nm⁻¹/px).</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxCameraLength2.HeaderText" xml:space="preserve">
-    <value>Camera Length 2</value>
+    <value>Camera length 2</value>
   </data>
   <data name="numericBoxCameraLength2.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>

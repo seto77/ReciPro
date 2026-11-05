@@ -84,7 +84,7 @@
 回折パターンの中心位置を参照像に合うよう精密化します。</value>
   </data>
   <data name="checkBoxRefineConvergence.ToolTip" xml:space="preserve">
-    <value>ビームの収束角をフィットの自由パラメータに含め
+    <value>ビームの収束半角をフィットの自由パラメータに含め
 ます(入射ビームの収束度を精密化)。要確認。</value>
   </data>
   <data name="checkBoxRefineFilmBlur.ToolTip" xml:space="preserve">
