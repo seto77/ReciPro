@@ -160,19 +160,38 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
         var path = (folderBrowserDialog.SelectedPath.Length == 0 ? "" : folderBrowserDialog.SelectedPath + "\\") + textBoxFileName.Text;
         sw.Restart();
 
-        for (int i = 0; i < count; i++)
+        //for (int i = 0; i < count; i++) // 261105Cl 変更前: 途中の例外 (画像・保存先の書き込みの失敗など) で抜けると、主窓の結晶が P1 に展開したまま、描画も止まったままだった
+        //{
+        //    ...
+        //}
+        //FormDiffractionSimulator.formMain.Crystal.RotationMatrix = initialRot;
+        //
+        //RevertCrystal();
+        //toolStripStatusLabel1.Text = "Elapsed time: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f1") + " s, Completed!";
+        // 261105Cl 変更 (監査 D14): 例外でも結晶・方位・描画を必ず元に戻し、理由をステータスバーに出す
+        try
         {
-            var filename = "";
-            if (checkBoxSaveSimulatedPattern.Checked)
-                filename = count == 1 ? path + ".tif" : path + "(omega=" + (numericBoxOmegaStep.Value * i).ToString() + ").tif";
+            for (int i = 0; i < count; i++)
+            {
+                var filename = "";
+                if (checkBoxSaveSimulatedPattern.Checked)
+                    filename = count == 1 ? path + ".tif" : path + "(omega=" + (numericBoxOmegaStep.Value * i).ToString() + ").tif";
 
-            FormDiffractionSimulator.formMain.Crystal.RotationMatrix = Matrix3D.Rot(new Vector3DBase(1, 0, 0), numericBoxOmegaStep.RadianValue * i) * initialRot;
-            execute(filename);
+                FormDiffractionSimulator.formMain.Crystal.RotationMatrix = Matrix3D.Rot(new Vector3DBase(1, 0, 0), numericBoxOmegaStep.RadianValue * i) * initialRot;
+                execute(filename);
+            }
+            toolStripStatusLabel1.Text = "Elapsed time: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f1") + " s, Completed!";
         }
-        FormDiffractionSimulator.formMain.Crystal.RotationMatrix = initialRot;
-
-        RevertCrystal();
-        toolStripStatusLabel1.Text = "Elapsed time: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f1") + " s, Completed!";
+        catch (Exception ex)
+        {
+            toolStripStatusLabel1.Text = "Elapsed time: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f1") + " s, Failed: " + ex.Message;
+        }
+        finally
+        {
+            FormDiffractionSimulator.formMain.Crystal.RotationMatrix = initialRot;
+            RevertCrystal();
+            FormDiffractionSimulator.SkipDrawing = FormDiffractionSimulator.formMain.SkipDrawing = false;
+        }
     }
 
     private void execute(string filename = "")
@@ -416,10 +435,15 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
             compiledImage[j] *= 1E6;
         PseudoBitmap pseud = new(compiledImage, FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth);
 
-        Tiff.Writer("temp.tif", compiledImage, 2, FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth);
-        FormDiffractionSimulator.FormDiffractionSimulatorGeometry.ReadImage("temp.tif");
+        //Tiff.Writer("temp.tif", compiledImage, 2, FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth); // 261105Cl 変更前: 作業ディレクトリ (インストール先など、書けないことがある) に書いていた
+        //FormDiffractionSimulator.FormDiffractionSimulatorGeometry.ReadImage("temp.tif");
+        //
+        //if (filename != "") File.Copy("temp.tif", filename, true);
+        var tempFile = Path.Combine(Path.GetTempPath(), "ReciPro_DynamicCompression.tif"); // 261105Cl 変更 (監査 D14): 一時ファイルは一時フォルダに置く
+        Tiff.Writer(tempFile, compiledImage, 2, FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth);
+        FormDiffractionSimulator.FormDiffractionSimulatorGeometry.ReadImage(tempFile);
 
-        if (filename != "") File.Copy("temp.tif", filename, true);
+        if (filename != "") File.Copy(tempFile, filename, true);
 
         FormDiffractionSimulator.SkipDrawing = FormDiffractionSimulator.formMain.SkipDrawing = false;
     }
@@ -615,6 +639,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
         //cosTau = FormDiffractionSimulator.CosTau; // 261105Cl 変更前
         //sinTau = FormDiffractionSimulator.SinTau;
         detectorRotationInv = new Matrix3D(FormDiffractionSimulator.DetectorRotationInv); // 261105Cl 追加 (監査 #17): 親と同じ検出器の変換 (φ も含む)
+        startArea = new PointD(double.NaN, double.NaN); // 261105Cl 追加 (監査 D13): 検出器の範囲は IsDetectorArea が初回に控えたまま二度と作り直さず、Geometry 窓で検出器の大きさ・Foot・画素サイズを変えても 1 回目の範囲で判定していた。実行のたびに作り直す
         spotRadiusOnDetector = cameraLength2 * Math.Tan(2 * Math.Asin(waveLength * excitationError / 2));
         error2 = excitationError * excitationError;
         error3 = excitationError * excitationError * excitationError;
