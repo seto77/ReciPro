@@ -186,16 +186,23 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
         if (fileName.Length == 1 && fileName[0].EndsWith("prm", StringComparison.OrdinalIgnoreCase))//260718Cl ToLower→OrdinalIgnoreCase
         {
             var prm = DiffractionOptics.Read(fileName[0]);
+            // 261105Cl 追加: .prm の数値は DiffractionOptics.ParseNumber で読む。CurrentCulture の Convert.ToDouble では、IPAnalyzer の
+            //   新しい .prm ("0.1", InvariantCulture) を de-DE が桁区切りとみなして黙って 1 と読み、fr-FR / sv-SE は例外になる。
+            //   旧形式 ("0,1" や U+2212 の負号) も読める。要素が無い (null) ときは従来の Convert.ToDouble(null) と同じく 0 にする
+            static double num(string s) => s == null ? 0 : DiffractionOptics.ParseNumber(s); // 261105Cl 追加
             FormDiffractionSimulator.SkipDrawing = true;
             {
                 FormDiffractionSimulator.waveLengthControl.WaveSource = WaveSource.Xray;
                 FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber = 0;
-                FormDiffractionSimulator.waveLengthControl.WaveLength = Convert.ToDouble(prm.waveLength) * 0.1;
+                //FormDiffractionSimulator.waveLengthControl.WaveLength = Convert.ToDouble(prm.waveLength) * 0.1; // 261105Cl 変更前
+                FormDiffractionSimulator.waveLengthControl.WaveLength = num(prm.waveLength) * 0.1; // 261105Cl 変更
 
                 if (prm.SACLA_EH5_PixelHeight != null)
-                    DetectorHeight = Convert.ToInt32(prm.SACLA_EH5_PixelHeight);
+                    //DetectorHeight = Convert.ToInt32(prm.SACLA_EH5_PixelHeight); // 261105Cl 変更前
+                    DetectorHeight = (int)num(prm.SACLA_EH5_PixelHeight); // 261105Cl 変更
                 if (prm.SACLA_EH5_PixelWidth != null)
-                    DetectorWidth = Convert.ToInt32(prm.SACLA_EH5_PixelWidth);
+                    //DetectorWidth = Convert.ToInt32(prm.SACLA_EH5_PixelWidth); // 261105Cl 変更前
+                    DetectorWidth = (int)num(prm.SACLA_EH5_PixelWidth); // 261105Cl 変更
 
                 if (pseudBitmap != null && (pseudBitmap.Width != DetectorWidth || pseudBitmap.Height != DetectorHeight))//既に読み込んでいる画像のサイズと異なっていたら
                 {
@@ -204,14 +211,20 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
                     SetPseudoBitmap(null); // 260716Cl キャッシュ Bitmap を含む所有リソースを破棄してから参照を外す
                 }
 
-                FootX = Convert.ToDouble(prm.FootX);
-                FootY = Convert.ToDouble(prm.FootY);
-                Tau = Convert.ToDouble(prm.tiltTau) / 180.0 * Math.PI;
-                Phi = Convert.ToDouble(prm.tiltPhi) / 180.0 * Math.PI;
-                CameraLength2 = Convert.ToDouble(prm.CameraLength2);
+                //FootX = Convert.ToDouble(prm.FootX); // 261105Cl 変更前
+                //FootY = Convert.ToDouble(prm.FootY); // 261105Cl 変更前
+                //Tau = Convert.ToDouble(prm.tiltTau) / 180.0 * Math.PI; // 261105Cl 変更前
+                //Phi = Convert.ToDouble(prm.tiltPhi) / 180.0 * Math.PI; // 261105Cl 変更前
+                //CameraLength2 = Convert.ToDouble(prm.CameraLength2); // 261105Cl 変更前
+                FootX = num(prm.FootX); // 261105Cl 変更
+                FootY = num(prm.FootY); // 261105Cl 変更
+                Tau = num(prm.tiltTau) / 180.0 * Math.PI; // 261105Cl 変更
+                Phi = num(prm.tiltPhi) / 180.0 * Math.PI; // 261105Cl 変更
+                CameraLength2 = num(prm.CameraLength2); // 261105Cl 変更
             }
             //DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeX)) / 2.0; // 旧: Y 方向のピクセル寸法を無視
-            DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeY)) / 2.0; // (260715Ch)
+            //DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeY)) / 2.0; // (260715Ch) 261105Cl 変更前
+            DetectorPixelSize = (num(prm.pixSizeX) + num(prm.pixSizeY)) / 2.0; // 261105Cl 変更
 
             ShowDetectorArea = true;
             FormDiffractionSimulator.SkipDrawing = false;
