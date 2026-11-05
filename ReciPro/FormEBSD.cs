@@ -1098,6 +1098,48 @@ public partial class FormEBSD : FormBase
     private void ComboBoxMonteCarloDepthMode_SelectedIndexChanged(object sender, EventArgs e)
     {
         monteCarloDistributionDepthMode = (MonteCarloDistributionDepthMode)Math.Clamp(comboBoxMonteCarloDepthMode.SelectedIndex, 0, Enum.GetValues<MonteCarloDistributionDepthMode>().Length - 1); // (/simplify) enum の要素数に追随
+        // 261105Cl 追加: 深さ分布 (labelBseDepth) は GetMonteCarloSourceDepth = このモードの深さで描くので、ツールチップもモードに追随させる。
+        //  resx の文は「最後の非弾性散乱」固定で、該当イベントが無い電子を「最大侵入深さ」としていた (実際は最後の散乱イベントの深さ = e.Depth)。
+        //  起動時も SelectedIndex が -1 から設定されるのでここを必ず通る
+        toolTip.SetToolTip(labelBseDepth, monteCarloDistributionDepthMode switch
+        {
+            MonteCarloDistributionDepthMode.LastTransportEventDepth => Localization.Loc(
+                en: "Distribution of the depth (nm) of the last\nscattering event (elastic or inelastic) of the\ndetected backscattered electrons before they\nleft the sample. Follows \"Source depth (MC)\";\nthe same depth weights the master pattern.",
+                ja: "検出された後方散乱電子が試料を出る前の最後の散乱\n(弾性・非弾性を問わず) の深さ (nm) の分布です。\n「源の深さ (MC)」の選択に従い、マスターパターンの\n重み付けにも同じ深さを使います。",
+                de: "Verteilung der Tiefe (nm) des letzten Streuereignisses\n(elastisch oder inelastisch) der detektierten\nrückgestreuten Elektronen vor dem Austritt aus der\nProbe. Folgt „Quelltiefe (MC)“; mit derselben Tiefe\nwird das Master-Pattern gewichtet.",
+                fr: "Distribution de la profondeur (nm) de la dernière\ndiffusion (élastique ou inélastique) des électrons\nrétrodiffusés détectés avant leur sortie de\nl'échantillon. Suit « Profondeur de la source (MC) » ;\nla même profondeur pondère le master pattern.",
+                es: "Distribución de la profundidad (nm) de la última\ndispersión (elástica o inelástica) de los electrones\nretrodispersados detectados antes de salir de la\nmuestra. Sigue «Profundidad de la fuente (MC)»; la\nmisma profundidad pondera el patrón maestro.",
+                pt: "Distribuição da profundidade (nm) do último\nespalhamento (elástico ou inelástico) dos elétrons\nretroespalhados detectados antes de saírem da\namostra. Segue \"Profundidade da fonte (MC)\"; a\nmesma profundidade pondera o master pattern.",
+                it: "Distribuzione della profondità (nm) dell'ultima\ndiffusione (elastica o anelastica) degli elettroni\nretrodiffusi rilevati prima di uscire dal campione.\nSegue \"Profondità della sorgente (MC)\"; la stessa\nprofondità pesa il master pattern.",
+                ru: "Распределение глубины (нм) последнего рассеяния\n(упругого или неупругого) зарегистрированных обратно\nрассеянных электронов перед выходом из образца.\nСледует выбору «Глубина источника (MC)»; та же\nглубина используется для взвешивания мастер-картины.",
+                zhHans: "被检出的背散射电子离开试样前最后一次散射\n（弹性或非弹性）的深度 (nm) 分布。随“源深度 (MC)”\n的选择而变，主花样加权也使用同一深度。",
+                zhHant: "被偵測到的背向散射電子離開試樣前最後一次散射\n（彈性或非彈性）的深度 (nm) 分佈。隨「源深度 (MC)」\n的選擇而變，主圖樣加權也使用同一深度。",
+                ko: "검출된 후방산란 전자가 시료를 빠져나가기 전\n마지막 산란(탄성·비탄성 불문)의 깊이(nm)\n분포입니다. '소스 깊이 (MC)' 선택을 따르며,\n마스터 패턴의 가중에도 같은 깊이를 사용합니다."),
+            MonteCarloDistributionDepthMode.LastDecoherenceEventDepth => Localization.Loc(
+                en: "Distribution of the depth (nm) of the last\ndecoherence event (DW-weighted) of the detected\nbackscattered electrons (electrons without one:\nthe depth of their last scattering event).\nFollows \"Source depth (MC)\"; the same depth\nweights the master pattern.",
+                ja: "検出された後方散乱電子の最後のコヒーレンス破壊 (DW 重み)\nの深さ (nm) の分布です (コヒーレンス破壊が無い電子は\n最後の散乱の深さ)。「源の深さ (MC)」の選択に従い、\nマスターパターンの重み付けにも同じ深さを使います。",
+                de: "Verteilung der Tiefe (nm) des letzten Kohärenzverlusts\n(DW-gewichtet) der detektierten rückgestreuten\nElektronen (ohne einen solchen: Tiefe des letzten\nStreuereignisses). Folgt „Quelltiefe (MC)“; mit\nderselben Tiefe wird das Master-Pattern gewichtet.",
+                fr: "Distribution de la profondeur (nm) de la dernière\ndécohérence (pondérée DW) des électrons rétrodiffusés\ndétectés (sinon : profondeur de leur dernière\ndiffusion). Suit « Profondeur de la source (MC) » ;\nla même profondeur pondère le master pattern.",
+                es: "Distribución de la profundidad (nm) de la última\ndecoherencia (ponderada por DW) de los electrones\nretrodispersados detectados (si no hubo ninguna:\nprofundidad de su última dispersión). Sigue\n«Profundidad de la fuente (MC)»; la misma\nprofundidad pondera el patrón maestro.",
+                pt: "Distribuição da profundidade (nm) da última\ndecoerência (ponderada por DW) dos elétrons\nretroespalhados detectados (se não houve nenhuma:\nprofundidade do último espalhamento). Segue\n\"Profundidade da fonte (MC)\"; a mesma profundidade\npondera o master pattern.",
+                it: "Distribuzione della profondità (nm) dell'ultima\ndecoerenza (pesata DW) degli elettroni retrodiffusi\nrilevati (in sua assenza: profondità dell'ultima\ndiffusione). Segue \"Profondità della sorgente (MC)\";\nla stessa profondità pesa il master pattern.",
+                ru: "Распределение глубины (нм) последней потери\nкогерентности (с весом DW) зарегистрированных обратно\nрассеянных электронов (при её отсутствии - глубина\nпоследнего рассеяния). Следует выбору «Глубина\nисточника (MC)»; та же глубина используется для\nвзвешивания мастер-картины.",
+                zhHans: "被检出的背散射电子最后一次退相干 (DW 加权) 的\n深度 (nm) 分布（若无退相干则取最后一次散射的\n深度）。随“源深度 (MC)”的选择而变，主花样加权\n也使用同一深度。",
+                zhHant: "被偵測到的背向散射電子最後一次退相干 (DW 加權)\n的深度 (nm) 分佈（若無退相干則取最後一次散射的\n深度）。隨「源深度 (MC)」的選擇而變，主圖樣加權\n也使用同一深度。",
+                ko: "검출된 후방산란 전자의 마지막 결맞음 상실\n(DW 가중)의 깊이(nm) 분포입니다(결맞음 상실이\n없는 전자는 마지막 산란의 깊이). '소스 깊이 (MC)'\n선택을 따르며, 마스터 패턴의 가중에도 같은 깊이를\n사용합니다."),
+            _ => Localization.Loc(
+                en: "Distribution of the depth (nm) at which the\ndetected backscattered electrons had their\nlast inelastic scattering event (electrons\nwithout one: the depth of their last\nscattering event). Follows \"Source depth (MC)\";\nthe same depth weights the master pattern.",
+                ja: "検出された後方散乱電子が最後に非弾性散乱を起こした深さ\n(nm) の分布です (非弾性散乱が無い電子は最後の散乱の深さ)。\n「源の深さ (MC)」の選択に従い、マスターパターンの\n重み付けにも同じ深さを使います。",
+                de: "Verteilung der Tiefe (nm), in der die detektierten\nrückgestreuten Elektronen ihr letztes inelastisches\nStreuereignis hatten (ohne ein solches: Tiefe des\nletzten Streuereignisses). Folgt „Quelltiefe (MC)“;\nmit derselben Tiefe wird das Master-Pattern gewichtet.",
+                fr: "Distribution de la profondeur (nm) à laquelle les\nélectrons rétrodiffusés détectés ont subi leur\ndernière diffusion inélastique (sinon : profondeur\nde leur dernière diffusion). Suit « Profondeur de la\nsource (MC) » ; la même profondeur pondère le master\npattern.",
+                es: "Distribución de la profundidad (nm) a la que los\nelectrones retrodispersados detectados sufrieron\nsu último evento de dispersión inelástica (si no\nhubo ninguno: profundidad de su última dispersión).\nSigue «Profundidad de la fuente (MC)»; la misma\nprofundidad pondera el patrón maestro.",
+                pt: "Distribuição da profundidade (nm) na qual os\nelétrons retroespalhados detectados tiveram seu\núltimo evento de espalhamento inelástico (se não\nhouve nenhum: profundidade do último espalhamento).\nSegue \"Profundidade da fonte (MC)\"; a mesma\nprofundidade pondera o master pattern.",
+                it: "Distribuzione della profondità (nm) alla quale\ngli elettroni retrodiffusi rilevati hanno subito\nl'ultimo evento di diffusione anelastica (in sua\nassenza: profondità dell'ultima diffusione). Segue\n\"Profondità della sorgente (MC)\"; la stessa\nprofondità pesa il master pattern.",
+                ru: "Распределение глубины (нм), на которой у\nзарегистрированных обратно рассеянных электронов\nпроизошло последнее неупругое рассеяние (при его\nотсутствии - глубина последнего рассеяния).\nСледует выбору «Глубина источника (MC)»; та же\nглубина используется для взвешивания мастер-картины.",
+                zhHans: "被检出的背散射电子最后一次发生非弹性散射的\n深度 (nm) 分布（若无非弹性散射则取最后一次散射\n的深度）。随“源深度 (MC)”的选择而变，主花样\n加权也使用同一深度。",
+                zhHant: "被偵測到的背向散射電子最後一次發生非彈性散射\n的深度 (nm) 分佈（若無非彈性散射則取最後一次散射\n的深度）。隨「源深度 (MC)」的選擇而變，主圖樣\n加權也使用同一深度。",
+                ko: "검출된 후방산란 전자가 마지막으로 비탄성\n산란을 일으킨 깊이(nm)의 분포입니다(비탄성\n산란이 없는 전자는 마지막 산란의 깊이). '소스\n깊이 (MC)' 선택을 따르며, 마스터 패턴의 가중에도\n같은 깊이를 사용합니다."),
+        });
         if (BSEs == null || BSEs.Length == 0) return;
         RebinMcDistribution();
         CalcStatistics();
