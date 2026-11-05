@@ -6,7 +6,7 @@
 
 열기: [회절 시뮬레이터](index.md) 의 **옵션** 메뉴 → **ALCHEMI 시뮬레이터...**
 
-GUI 조건: Wave Length = Electron (결정·가속 전압·방위는 상위 회절 시뮬레이터에서 받아옵니다)
+GUI 조건: 파원 = 전자 (결정·가속 전압·방위는 상위 회절 시뮬레이터에서 받아옵니다). 다른 선원에서도 창은 열리지만, θ_B 표시와 **계산**은 *ALCHEMI 는 전자선 전용입니다. 회절 시뮬레이터의 선원을 전자로 설정하세요.* 라는 안내만 보여 줍니다. <!-- 261105Cl 監査: FormALCHEMI.cs NotElectronNotice (6ae7a85) -->
 
 ![ALCHEMI 시뮬레이터](../../assets/cap-ko-auto/FormALCHEMI.png)
 
@@ -115,13 +115,13 @@ $$
 
 ### 계산 / 중지
 
-**계산**으로 스캔을 시작합니다. 진행 상황은 상태 표시줄에 5 단계 (이온화 데이터 해결 → 합집합 기저 구성 → 이온화 행렬 구성 → 방위 계산 → 확장 기저 검증) 로 표시되며, **중지**로 언제든 중단할 수 있습니다.
+**계산**으로 스캔을 시작합니다. 진행 상황은 상태 표시줄에 5 단계 (이온화 데이터 해결 → 합집합 기저 구성 → 이온화 행렬 구성 → 방위 계산 → 확장 기저 검증) 로 표시되며, **중지**로 언제든 중단할 수 있습니다. 반사열 **g** 가 빔과 평행하면 스캔으로 그 Bragg 조건을 통과시킬 수 없으므로, **계산**은 그 이유를 상태 표시줄에 알릴 뿐입니다. <!-- 261105Cl 監査: FormALCHEMI.cs BuildRequest (732813e) -->
 
 ---
 
 ## 오른쪽 창: 곡선 탭
 
-계산이 끝나면 자리 × 채널 조합마다 곡선이 하나씩 그려집니다. 범례는 `자리 라벨 / 채널` 입니다.
+계산이 끝나면 자리 × 채널 조합마다 곡선이 하나씩 그려집니다. 범례는 `자리 라벨 / 채널` 입니다. 그 뒤에 결정이나 가속 전압을 바꾸면(창이 닫혀 있는 동안이라도) 곡선, 진단, 두께 선택이 지워지며, 상태 줄에 그 이유가 표시됩니다. <!-- 261106Cl 作者の決定 ALCHEMI -->
 
 | 항목 | 설명 |
 |------|------|
@@ -166,7 +166,7 @@ basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3
 
 ## CSV 내보내기 {#csv-내보내기}
 
-**CSV 내보내기**는 `# key: value` 형식의 머리글 (아래는 발췌) 에 이어 long-format 표를 씁니다. 머리글은 **그 파일만으로 재현 조건을 알 수 있도록** 작성되어 있습니다.
+**CSV 내보내기**는 `# key: value` 형식의 머리글 (아래는 발췌) 에 이어 long-format 표를 씁니다. 머리글은 **그 파일만으로 재현 조건을 알 수 있도록** 작성되어 있습니다. `scan_origin_rotation_matrix` 는 스캔 원점(기울기 0)에서의 결정 방위를 행 우선(row-major) 회전 행렬로 기록합니다. <!-- 261105Cl 監査: FormALCHEMI.cs buttonExport_Click の Key("scan_origin_rotation_matrix", ...) -->
 
 ```text
 # generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
@@ -175,6 +175,7 @@ basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3
 # crystal: MgAl2O4 (spinel) / F d -3 m
 # cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
 # accelerating_voltage_kV: 200.000
+# scan_origin_rotation_matrix: 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 (row-major; the crystal orientation of the parent diffraction simulator at the run, mapping the crystal's Cartesian frame to the laboratory frame, in which the beam travels along -z)
 # scan_row_hkl: 1 0 0
 # theta_B_mrad: 1.552030
 # thicknesses_nm: 10.0000 20.0000 ... 100.0000

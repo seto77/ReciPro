@@ -2,9 +2,9 @@
 
 **PED (Precession Electron Diffraction)** 시뮬레이션은 입사빔을 광축 둘레로 원뿔 형태로 세차시켜 얻어지는 전자 회절 패턴을 계산합니다.
 
-> 이 페이지에서는 **Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)** 을 선택했을 때 오른쪽에 나타나는 모든 설정을 정리합니다. **입사빔으로 Precession (electron) 을 선택하면 강도 계산이 자동으로 Dynamical 로 전환된다**는 점에 유의하세요. 그리기·저장과 같은 창 전체에 적용되는 조작은 [개요 페이지](index.md)를 참조하세요.
+> 이 페이지에서는 **파원 = 전자, 광학계 = 세차 (전자), 강도 계산 = 동역학 이론 (자동)** 을 선택했을 때 오른쪽에 나타나는 모든 설정을 정리합니다. **광학계에서 세차 (전자) 를 선택하면 강도 계산이 자동으로 동역학 이론으로 전환된다**는 점에 유의하세요. 그리기·저장과 같은 창 전체에 적용되는 조작은 [개요 페이지](index.md)를 참조하세요.
 
-GUI 조건: **Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)**
+GUI 조건: **파원 = 전자, 광학계 = 세차 (전자), 강도 계산 = 동역학 이론 (자동)**
 
 ![PED 모드의 회절 시뮬레이터](../../assets/cap-ko-auto/FormDiffractionSimulator-ped.png)
 
@@ -20,21 +20,21 @@ PED 에서는 전자빔을 광축 둘레로 원뿔 형태로 세차시키고, �
 
 ---
 
-## 파장 설정
+## 파원 {#wavelength-setup}
 
-![파장](../../assets/cap-ko-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![파원](../../assets/cap-ko-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-PED 는 전자 회절이므로 선원으로 **전자** 를 선택합니다. 전자 에너지(keV) 또는 파장(Å 또는 nm, 전환 가능, 기본값 Å)을 입력하면 상대론적으로 보정된 파장이 계산됩니다.
+PED 는 전자 회절이므로 **파원** 으로 **전자** 를 선택합니다. 전자 에너지(keV) 또는 파장(Å 또는 nm, 전환 가능, 기본값 Å)을 입력하면 상대론적으로 보정된 파장이 계산됩니다.
 
 ---
 
-## 입사빔
+## 광학계 {#incident-beam}
 
-![입사빔 모드](../../assets/cap-ko-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![광학계](../../assets/cap-ko-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-입사빔의 기하 구조로 **Precession (electron)** 을 선택합니다(전자빔이 선택된 경우에만 사용할 수 있습니다).
+**광학계**(입사빔의 기하 구조)에서 **세차 (전자)** 를 선택합니다(**전자** 가 선택된 경우에만 사용할 수 있습니다).
 
-> **참고** : **Precession (electron)** 을 선택하면 **강도 계산이 자동으로 Dynamical 로 전환되고**, 블로흐파 방법 설정 패널과 세차 설정 패널이 나타납니다. **Only excitation error** / **Kinematical** 은 더 이상 선택할 수 없습니다.
+> **참고** : **세차 (전자)** 를 선택하면 **강도 계산이 자동으로 동역학 이론으로 전환되고**, 블로흐파 방법 설정 패널과 세차 설정 패널이 나타납니다. **여기 오차만** / **운동학적 & 여기 오차** 는 더 이상 선택할 수 없습니다.
 
 ---
 
@@ -53,7 +53,7 @@ PED 는 전자 회절이므로 선원으로 **전자** 를 선택합니다. 전�
 
 ## 강도 계산과 블로흐파 방법 설정
 
-**Precession (electron)** 을 선택하는 순간 **Intensity = Dynamical (automatic)** 으로 고정됩니다. 각 세차 방향의 평행빔에 대해 회절 강도를 블로흐파 방법(동역학적 계산)으로 계산하고, 모든 방향에 대해 적분하면 PED 패턴이 얻어집니다.
+**세차 (전자)** 를 선택하는 순간 **강도 계산** 이 **동역학 이론** (자동) 으로 고정됩니다. 각 세차 방향의 평행빔에 대해 회절 강도를 블로흐파 방법(동역학적 계산)으로 계산하고, 모든 방향에 대해 적분하면 PED 패턴이 얻어집니다.
 
 ![블로흐파 매개변수](../../assets/cap-ko-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
@@ -72,10 +72,10 @@ PED 는 전자 회절이므로 선원으로 **전자** 를 선택합니다. 전�
 
 각 회절 스폿을 그리는 방식을 제어합니다.
 
-- **Solid sphere / Gaussian** : 역격자점의 기하 모델입니다. **Solid sphere** 는 반지름 $R$ 인 구와 에발트 구의 단면을 그리고, **Gaussian** 은 $\sigma = R$ 인 3차원 가우스 함수와 에발트 구의 단면(2차원 가우스 함수)을 그립니다.
-- **Opacity** : 스폿의 투명도(0 = 투명, 1 = 불투명).
-- **Radius (R)** : 역격자점의 반지름. 동역학적 강도의 경우 가우스 적분 $=$ Brightness $\times I_\text{dyn}$ 이고, Solid sphere 는 반지름 $R \times I_\text{dyn}^{1/2}$ 을 사용합니다(따라서 면적이 동역학적 강도에 비례합니다).
-- **밝기**, **색 척도**, **로그 척도** : **Gaussian** 모드에서만 표시됩니다. **밝기**는 그려지는 가우스 함수의 적분 강도를 조정합니다. **색 척도**는 **Gray**(아래의 반사점 색으로 스폿을 그림), **Cold-Warm**, **Spectrum**, **Fire** 중 하나입니다. **로그 척도**는 강도를 로그 스케일로 표시합니다.
+- **꽉 찬 구 / 가우시안** : 역격자점의 기하 모델입니다. **꽉 찬 구** 는 반지름 $R$ 인 구와 에발트 구의 단면을 그리고, **가우시안** 은 $\sigma = R$ 인 3차원 가우스 함수와 에발트 구의 단면(2차원 가우스 함수)을 그립니다.
+- **불투명도** : 스폿의 불투명도(0 = 투명, 1 = 불투명).
+- **반사점 반지름 (R)** : 역격자점의 반지름. 동역학적 강도의 경우 가우스 적분 $=$ 밝기 $\times I_\text{dyn}$ 이고, 꽉 찬 구는 반지름 $R \times I_\text{dyn}^{1/2}$ 을 사용합니다(따라서 면적이 동역학적 강도에 비례합니다).
+- **밝기**, **색 척도**, **로그 척도** : **가우시안** 모드에서만 표시됩니다. **밝기**는 그려지는 가우스 함수의 적분 강도를 조정합니다. **색 척도**는 **Gray**(아래의 반사점 색으로 스폿을 그림), **Cold-warm**, **Spectrum**, **Fire** 중 하나입니다. **로그 척도**는 강도를 로그 스케일로 표시합니다.
 - **반사점 색** : **색 척도**가 **Gray**(초기 설정)일 때 표시됩니다: **일반 점** / **소광 점(나선축/글라이드)** / **소광 점(격자 중심화)**.
 - **결정별 지정 색** : 각 결정에 할당된 색상으로 스폿을 그립니다.
 

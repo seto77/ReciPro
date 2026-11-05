@@ -22,14 +22,14 @@ ReciPro를 실행하면 메인 창이 나타납니다. 이 창에서 결정을 �
 |----------|--------|
 | <kbd>F1</kbd> | 온라인 매뉴얼의 이 페이지 열기 |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + 화살표 키 | 해당 방향으로 결정을 한 단계 회전 (두 개의 화살표를 함께 눌러 대각선) |
-| ReciPro 시작 시 <kbd>CTRL</kbd> 누르고 있기 | OpenGL을 비활성화한 상태로 시작 (그래픽 문제 복구용) |
+| ReciPro 시작 시 <kbd>CTRL</kbd> 누르고 있기 | OpenGL을 비활성화한 상태로 시작 (그래픽 문제 복구용. 이번 실행에만 적용되며 저장되지 않음) |
 | 방향 위젯을 왼쪽 드래그 (왼쪽 하단, *현재 방위* 아래) | 결정 회전 |
 | 방향 위젯을 오른쪽 더블 클릭 | 위젯 이미지를 클립보드에 복사 |
 | 기능 버튼 한 번 클릭 | 해당 창 열기 / 닫기 (최소화된 창은 닫지 않고 원래 크기로 복원) |
 | 기능 버튼 더블 클릭 | 창을 강제로 표시하고 맨 앞으로 가져오기 |
 | 목록에서 결정을 오른쪽 클릭 | 컨텍스트 메뉴 (이름 바꾸기 / CIF로 내보내기 / 복제 / 삭제) |
 | 정대축 지수 레이블(`[u v w]`, *현재 방위* 아래) 더블 클릭 | max-UVW 상자 표시 / 숨기기 |
-| 창에 파일 끌어다 놓기 | 결정 목록 (`.xml`, `.out`, `.cdb2`; 교체할지 추가할지 묻습니다) 또는 결정 (`.cif`, `.amc`) 불러오기 |
+| 창에 파일 끌어다 놓기 | 결정 목록 (`.xml`, `.out`; 교체할지 추가할지 묻습니다) 또는 결정 (`.cif`, `.amc`) 불러오기 <!-- 261105Cl 監査: .cdb2 はドロップで読めないので外した (FormMain.cs:FormMain_DragDrop) --> |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> | 활성 창에 대한 (실험적) GUI 캡처 도구 열기 |
 
 → 모든 창을 한눈에 보려면 **[21. 키보드 & 마우스 단축키](21-shortcuts.md)**를 참조하십시오.
@@ -68,7 +68,7 @@ ReciPro를 처음 사용하는 경우 다음 단계를 참조하십시오:
 
 | 메뉴 항목 | 설명 |
 |-----------|-------------|
-| 툴팁 표시 | 툴팁 표시 전환 |
+| 툴팁 표시 | 모든 창의 툴팁(컨트롤, 툴바·메뉴 항목, 표의 셀, 탭의 툴팁)을 표시하거나 숨깁니다. 이 설정은 다음 시작 시에도 유지됩니다 <!-- 261106Cl 作者の決定 C9 --> <!-- 261106Cl 作者の決定 A20 --> |
 | 다크 모드 | 밝은 색상 테마와 어두운 색상 테마 간 전환 |
 | 밀러-브라베 (hkil) 지수 사용 | 응용 프로그램 전체에서 삼방/육방 결정계에 4-지수 표기법 사용 |
 | 이온 산란 인자 사용 | 동역학적 (블로흐파) 전자 계산(키쿠치 프로파일 포함)에서 각 원자에 지정된 이온에 대해 이온 전자 산란 인자 (Peng)를 사용. $g \neq 0$ 의 단극(monopole) 항은 탄성 계수 $U_g$ 에만 더해짐 (TDS 흡수와 키쿠치 TDS 원천은 유한한 이온 부분을 사용). 체크를 해제하면 중성 원자 인자를 사용. 단위 격자가 전기적으로 중성이 아니면 ($\Sigma q \neq 0$) 단극 항을 버리고 유한한 (차폐 이온) 부분만 사용하며, 이 옵션을 켤 때 안내가 표시됨 |
@@ -180,23 +180,23 @@ UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, 
 
 ## 결정 정보
 
-격자 상수, 대칭, 원자를 편집하고; 구조를 불러오려면 CIF/AMC 파일을 끌어다 놓으십시오. 이 컨트롤은 ReciPro, PDIndexer, CSManager에서 공유되지만, 표시되는 탭과 기능은 응용 프로그램마다 다릅니다. ReciPro는 Basic Info, Atom, Reference 탭을 표시합니다 (EOS, Elasticity 및 기타 탭은 다른 응용 프로그램용이며 ReciPro에서는 표시되지 않습니다).
+격자 상수, 대칭, 원자를 편집하고; 구조를 불러오려면 CIF/AMC 파일을 끌어다 놓으십시오. 이 컨트롤은 ReciPro, PDIndexer, CSManager에서 공유되지만, 표시되는 탭과 기능은 응용 프로그램마다 다릅니다. ReciPro는 **기본 정보**, **원자 정보**, **참고** 탭을 표시합니다 (EOS, Elasticity 및 기타 탭은 다른 응용 프로그램용이며 ReciPro에서는 표시되지 않습니다).
 
-> **중요**: 변경 사항을 저장하려면 **Add** 또는 **Replace**를 누르십시오.
+> **중요**: 변경 사항을 저장하려면 **추가** 또는 **교체**를 누르십시오.
 
 ![Crystal Control](../assets/cap-ko-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
 패널 상단에는 항상 **Name** (결정 이름), **화학식** (원자 목록에서 계산), **Z** (단위 격자당 화학식 단위 수), **색** (결정의 표시 색. 3D 구조 뷰와 회절 프로파일 곡선에 사용)이 표시됩니다. **대칭 정보** · **빔 상호작용** 버튼은 각각 [대칭 정보](2-symmetry-information.md) · [빔 상호작용](3-beam-interaction.md) 창을 엽니다. 질량%, 원자% 및 산화물로의 환산은 오른쪽 클릭 메뉴의 [화학 조성 상세](#chemical-composition)에서 볼 수 있습니다.
 
-### Basic Info 탭
+### 기본 정보 탭 {#basic-info-tab}
 
-![Basic Info](../assets/cap-ko-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
+![기본 정보](../assets/cap-ko-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
 
 격자 상수, 대칭 및 그로부터 유도된 양.
 
 | 항목 | 설명 |
 |------|------|
-| 격자 상수 | 격자 상수 a, b, c (**단위**: Å = 10⁻¹⁰ m 또는 nm) 및 α, β, γ. 대칭을 선택하면 자동으로 제한됩니다 (예: 입방의 경우 a=b=c, α=β=γ=90°). |
+| 격자 상수 | 격자 상수 a, b, c (**단위**: Å = 10⁻¹⁰ m 또는 nm. 단위는 다음 시작 시에도 유지됩니다) 및 α, β, γ. 대칭을 선택하면 자동으로 제한됩니다 (예: 입방의 경우 a=b=c, α=β=γ=90°). |
 | 대칭 | **결정계** · **점군** · **공간군**을 선택합니다. **검색** 상자에 입력하여 일치하는 후보를 나열합니다 (대소문자 구분). |
 | 단위 격자 부피 / 단위 격자 질량 | 단위 격자의 부피와 질량. 부피는 **단위** 선택에 따라 Å³ / nm³로, 질량은 10⁻²⁴ g 단위로 표시됩니다. |
 | 몰 부피 / 몰 질량 / 밀도 | 몰 부피 (cm³/mol, 화학식 단위당), 몰 질량 (g/mol), 밀도 (g/cm³). **원자가 입력된 경우에만** 표시됩니다. |
@@ -205,9 +205,9 @@ UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, 
 | Change axes/origin setting | 컨텍스트 메뉴의 **축/원점 설정 변경** 과 같습니다. 같은 공간군의 다른 축/원점 설정으로 변환합니다. |
 | 원자 밀도 / 전자 밀도 | 단위 격자 부피당 원자 수와 전자 수. **단위** 선택에 따라 Å⁻³ / nm⁻³로 표시됩니다. |
 
-### Atom 탭
+### 원자 정보 탭 {#atom-tab}
 
-![Atom](../assets/cap-ko-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
+![원자 정보](../assets/cap-ko-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
 각 원자의 종, 위치, 온도 인자, 산란 인자를 설정합니다. **추가**, **교체** (선택한 행 대체), **위로/아래로** (순서 변경), **삭제**로 원자 목록을 편집합니다. 원자 목록에는 각 자리의 다중도 (**다중도**), 와이코프 문자 (**와이코프**), 자리 대칭 (**자리 대칭**)도 표시됩니다. 각 원자는 다음을 가집니다:
 
@@ -222,7 +222,7 @@ UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, 
 
 **원점 이동**: 모든 원자 좌표의 원점을 이동합니다. **+** / **−** 로 부호를 고른 다음 프리셋 벡터 — (⅛ ⅛ ⅛), (¼ ¼ ¼), (0 ¼ ⅛), (¼ 0 ¼), (0 ¼ ¼), (¼ ¼ 0), (¼ −¼ 0), (¼ −¼ ¼), (0 ¼ −⅛) — 중 하나를 누르거나, 임의의 양에는 **Apply custom shift**를 사용하십시오.
 
-**디바이-월러 인자 (온도 인자)**:
+**원자 변위 (B)** (디바이-월러 인자 / 온도 인자):
 
 | 항목 | 설명 |
 |------|------|
@@ -238,9 +238,9 @@ UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, 
 | Electron | 전자 산란 인자 — 중성 원자는 Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276; 이온은 Peng (1998), *Acta Cryst.* **A54**, 481–485. |
 | Neutron | 중성자 산란 길이. **Natural isotope abundance** 또는 **Custom isotope abundance** (임의의 동위원소 조성)을 선택합니다. |
 
-### Reference 탭
+### 참고 탭 {#reference-tab}
 
-![Reference](../assets/cap-ko-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
+![참고](../assets/cap-ko-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
 
 구조의 출처를 기록합니다: **Note**, **Authors**, **Journal**, **Title**.
 
@@ -280,19 +280,19 @@ UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, 
 
 | 버튼 | 설명 | 세부 정보 |
 |--------|-------------|---------|
-| Crystal Database | 번들 / 온라인 데이터베이스에서 결정 검색 및 가져오기 | [1. 결정 데이터베이스](1-crystal-database.md) |
-| Symmetry Information | 공간군 정보 및 *International Tables* Vol. A 대칭 도표 | [2. 대칭 정보](2-symmetry-information.md) |
-| Beam Interaction | 빔-결정 상호작용: 반사, 감쇠, 산란 인자, 형광 | [3. 빔 상호작용](3-beam-interaction.md) |
-| Rotation Geometry | 3D 회전 행렬 / 고니오미터 각도 | [4. 회전 기하학](4-rotation-geometry.md) |
-| Structure Viewer | 3D 결정 구조 | [5. 구조 뷰어](5-structure-viewer.md) |
-| Stereonet | 입체 투영 | [6. 스테레오넷](6-stereonet.md) |
-| Diffraction Simulator | 단결정 X선 / 전자 회절 | [7. 회절 시뮬레이터](7-diffraction-simulator/index.md) |
-| Trajectory Simulator | 몬테카를로 전자 궤적 시뮬레이션 | [8. 전자 궤적](8-electron-trajectory.md) |
-| HRTEM/STEM Simulator | HRTEM / STEM 이미지 시뮬레이션 | [9. HRTEM/STEM 시뮬레이터](9-hrtem-stem-simulator/index.md) |
+| 결정 데이터베이스 | 번들 / 온라인 데이터베이스에서 결정 검색 및 가져오기 | [1. 결정 데이터베이스](1-crystal-database.md) |
+| 대칭 정보 | 공간군 정보 및 *International Tables* Vol. A 대칭 도표 | [2. 대칭 정보](2-symmetry-information.md) |
+| 빔 상호작용 | 빔-결정 상호작용: 반사, 감쇠, 산란 인자, 형광 | [3. 빔 상호작용](3-beam-interaction.md) |
+| 회전 기하학 | 3D 회전 행렬 / 고니오미터 각도 | [4. 회전 기하학](4-rotation-geometry.md) |
+| 구조 뷰어 | 3D 결정 구조 | [5. 구조 뷰어](5-structure-viewer.md) |
+| 스테레오넷 | 입체 투영 | [6. 스테레오넷](6-stereonet.md) |
+| 회절 시뮬레이터 | 단결정 X선 / 전자 회절 | [7. 회절 시뮬레이터](7-diffraction-simulator/index.md) |
+| 궤적 시뮬레이터 | 몬테카를로 전자 궤적 시뮬레이션 | [8. 전자 궤적](8-electron-trajectory.md) |
+| HRTEM/STEM 시뮬레이터 | HRTEM / STEM 이미지 시뮬레이션 | [9. HRTEM/STEM 시뮬레이터](9-hrtem-stem-simulator/index.md) |
 | Spot ID v1 | SAED 패턴 지수화 (이전 명칭 "TEM ID") | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | 스폿 검출 & 지수화 | [11. Spot ID v2](11-spot-id-v2.md) |
-| EBSD Simulator | EBSD 패턴 시뮬레이션 | [12. EBSD 시뮬레이션](12-ebsd-simulation.md) |
-| Powder Diffraction | 다결정(분말) 회절 — **옵션 ▸ 분말 회절 기능 (개발 중)**으로 활성화 | - |
+| EBSD 시뮬레이터 | EBSD 패턴 시뮬레이션 | [12. EBSD 시뮬레이션](12-ebsd-simulation.md) |
+| 분말 회절 | 다결정(분말) 회절 — **옵션 ▸ 분말 회절 기능 (개발 중)**으로 활성화 | - |
 
 ---
 

@@ -7,7 +7,7 @@
 이 창은 공간군 정보 영역(왼쪽 위), 탭으로 구성된 계산/표 영역(오른쪽 위), 그리고 두 개의 모식도(아래)로 나뉩니다.
 
 !!! tip "대칭 이론 (부록 A4)"
-    Hermann–Mauguin/Hall/Schoenflies 기호가 실제로 무엇을 담고 있는지, **군의 성질** 탭의 군론적 분류(중심대칭, Sohncke, symmorphic, 극성, …), 아래쪽 대칭 요소/일반 위치 다이어그램의 의미, 그리고 **군 관계...**가 보여 주는 군-부분군 관계는 모두 **[부록 A4. 대칭과 공간군](appendix/a4-symmetry-space-groups/index.md)**에서 설명합니다.
+    Hermann–Mauguin/Hall/Schoenflies 기호가 실제로 무엇을 담고 있는지, **군의 성질** 탭의 군론적 분류(중심대칭, Sohncke, 심모픽(symmorphic), 극성, …), 아래쪽 대칭 요소/일반 위치 다이어그램의 의미, 그리고 **군 관계...**가 보여 주는 군-부분군 관계는 모두 **[부록 A4. 대칭과 공간군](appendix/a4-symmetry-space-groups/index.md)**에서 설명합니다.
 
 ---
 
@@ -24,9 +24,9 @@
 왼쪽 위 패널에는 현재 공간군에 대해 다음이 나열됩니다.
 
 - **번호**(Number, 1–230)와 설정 인덱스
-- **결정계**(Crystal System)
-- **점군**(Point Group) : Hermann–Mauguin(HM) 기호와 Schoenflies(SF) 기호
-- **공간군**(Space Group) : HM 단축형 기호, HM 완전형 기호, SF 기호, 그리고 **Hall 기호**
+- **결정계**(Crystal system)
+- **점군**(Point group) : Hermann–Mauguin(HM) 기호와 Schoenflies(SF) 기호
+- **공간군**(Space group) : HM 단축형 기호, HM 완전형 기호, SF 기호, 그리고 **Hall 기호**
 
 ---
 
@@ -38,8 +38,8 @@
 
 - 각 면의 면간 거리 / 각 축의 길이,
 - 두 면(또는 두 축) 사이의 각도,
-- 면 1과 축 1 사이, 그리고 면 2와 축 2 사이의 각도,
-- **두 면 모두에 수직인 방향 지수**와 **두 축 모두에 수직인 면 지수**.
+- 면 1의 법선과 축 1 사이, 그리고 면 2의 법선과 축 2 사이의 각도(축이 면 안에 있으면 90°),
+- **두 면에 평행한 축**(두 면의 정대축 [*uvw*])과 **두 축을 포함하는 면**(두 축을 포함하는 면 (*hkl*)). 부호는 [*uvw*] = (*h*₁*k*₁*l*₁) × (*h*₂*k*₂*l*₂), (*hkl*) = [*u*₁*v*₁*w*₁] × [*u*₂*v*₂*w*₂] 를 따릅니다. <!-- 261106Cl 作者の決定 B16 --> <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップ (numericBoxAnglePlaneAxis1/2.ToolTip) に合わせた。以前の「normal to」は逆 -->
 
 이 계산은 현재 단위 격자의 메트릭을 따릅니다. 길이는 Å, 각도는 도(°)로 표시됩니다.
 
@@ -49,7 +49,7 @@
 
 ![와이코프 위치](../assets/cap-ko-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-모든 와이코프 위치를 다중도(**다중도**), 와이코프 문자(**Wyck. 문자**), 자리 대칭(**자리 대칭**), **좌표**(한 행에 최대 4개, 더 긴 목록은 다음 행으로 이어짐)와 함께 나열합니다. 첫 번째 와이코프 항목(다중도가 가장 큰 것)이 일반 위치입니다. 중심 격자에서는 격자 병진 벡터가 머리글 행에 표시됩니다.
+모든 와이코프 위치를 다중도(**다중도**), 와이코프 문자(**Wyck. 문자**), 자리 대칭(**자리 대칭**), **좌표**(한 행에 최대 4개, 더 긴 목록은 다음 행으로 이어짐)와 함께 나열합니다. 첫 번째 와이코프 항목(다중도가 가장 큰 것)이 일반 위치입니다. 중심 격자에서는 격자 병진 벡터가 머리글 행에 표시됩니다. 육방 축으로 나타낸 R 군에서는 obverse 설정의 세 중심화 병진 (0,0,0)+, (2/3,1/3,1/3)+, (1/3,2/3,2/3)+ 입니다. <!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
 
 ---
 
@@ -77,7 +77,7 @@
 
 ![군의 성질](../assets/cap-ko-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageProperties.png)
 
-현재 공간군의 군론적 분류(일반 위치 다중도, 점군의 위수, 중심대칭, Sohncke, symmorphic, 극성 방향, 거울상 짝, 결정족/격자계/브라베 유형, 산술 결정류, Patterson 대칭)와, 그 대칭성이 허용하는 거시적 물성(초전성/강유전성, 압전성, 제2고조파 발생, 광학 활성)을 보고합니다.
+현재 공간군의 군론적 분류(일반 위치 다중도, 점군의 위수, 중심대칭, Sohncke, 심모픽(symmorphic), 극성 방향, 거울상 짝, 결정족/격자계/브라베 유형, 산술 결정류, Patterson 대칭)와, 그 대칭성이 허용하는 거시적 물성(초전성/강유전성, 압전성, 제2고조파 발생, 광학 활성)을 보고합니다.
 
 → 각 용어의 의미는 **[부록 A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#군론적-분류-군의-성질-탭)**을 참조하십시오.
 

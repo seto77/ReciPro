@@ -40,7 +40,7 @@
 
 ![시료 파라미터](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
 
-- **Thickness** : 시료 두께 (nm). 이 값은 **Serial image** 모드에서는 무시됩니다.
+- **두께** : 시료 두께 (nm). 이 값은 **연속 이미지** 모드에서는 무시됩니다.
 
 ---
 
@@ -50,7 +50,7 @@
 
 | 파라미터 | 설명 | 기본값 / 전형값 |
 |-----------|-------------|-------------------|
-| **가속 전압 (kV)** | 가속 전압. 상대론적으로 보정된 전자 파장이 옆에 표시됩니다 | 200 kV |
+| **가속 전압** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | 가속 전압 (kV). 상대론적으로 보정된 전자 파장이 옆에 표시됩니다 | 200 kV |
 | **Defocus Δf** | 대물(프로브 형성) 렌즈의 디포커스 (nm) | −57.8 nm |
 | **Cs** | 구면 수차 계수 (mm). 프로브 크기에 영향을 줍니다 | 0.5–1.0 mm |
 | **Cc** | 색 수차 계수 (mm) | 1.0–2.0 mm |
@@ -68,10 +68,10 @@
 
 | 파라미터 | 설명 | 기본값 / 전형값 |
 |-----------|-------------|-------------------|
-| **α (convergence angle)** | 수렴 프로브의 반각 (mrad). 값이 클수록 프로브가 미세해지고 회절 콘트라스트가 변합니다 | 25 mrad (기본값); 15–25 mrad |
+| **Conv. semi-angle α** | 수렴 프로브의 반각 (mrad). 값이 클수록 프로브가 미세해지고 회절 콘트라스트가 변합니다 | 25 mrad (기본값); 15–25 mrad |
 | **환형 검출기 — 내측** | 환형 검출기의 내측 수집 반각 (mrad). 이 각도 안쪽의 신호는 제외됩니다 | 0 (기본값); BF: 0, HAADF: 80 |
 | **환형 검출기 — 외측** | 환형 검출기의 외측 수집 반각 (mrad). 이 각도 바깥쪽의 신호는 제외됩니다 | 20 (기본값); BF: 5, HAADF: 250 |
-| **Effective source size (σs, FWHM)** | 유효 전자원 크기 (pm). 계산 후에 모든 탄성 / TDS / EDX 영상에 가우스 합성곱으로 적용됩니다. 값이 클수록 영상이 흐려지고 미세 세부 콘트라스트가 감소합니다 | 20 pm (기본값) |
+| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | 유효 전자원 크기 (pm). 계산 후에 모든 탄성 / TDS / EDX 영상에 가우스 합성곱으로 적용됩니다. 값이 클수록 영상이 흐려지고 미세 세부 콘트라스트가 감소합니다 | 20 pm (기본값) |
 
 검출기 각도는 STEM 기준 영상(탄성 / TDS / 탄성 & TDS)에만 적용되며, STEM-EDX 맵에는 사용되지 않습니다. 기본값은 처음 시작할 때만 적용되며, 이후에는 마지막으로 사용한 값이 복원됩니다.
 
@@ -86,12 +86,13 @@
 
 ---
 
-## 영상 모드 (single / serial)
+## 단일/연속 모드
 
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text) と HRTEM のページに合わせた -->
 ![단일/연속 모드](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
-- **Single image** : 현재 두께에서 STEM 영상 하나를 계산합니다.
-- **Serial image** : 두께 / 디포커스를 단계적으로 변화시킨 영상 시리즈를 생성합니다(**Start / Step / Num**으로 설정하며, 아래의 목록을 직접 편집할 수도 있습니다).
+- **단일 이미지** : 현재 두께에서 STEM 영상 하나를 계산합니다.
+- **연속 이미지** : 두께 / 디포커스를 단계적으로 변화시킨 영상 시리즈를 생성합니다(**시작 / 간격 / 개수**로 설정하며, 아래의 목록을 직접 편집할 수도 있습니다).
 
 ---
 
@@ -108,7 +109,7 @@
 
 ![회절파](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** : 베테 방법에서 사용하는 블로흐파의 최대 개수 (기본값 80). 고유값 문제의 비용은 파의 개수의 세제곱에 비례합니다.
+- 베테 방법에서 사용하는 블로흐파의 최대 개수 (기본값 80). 고유값 문제의 비용은 파의 개수의 세제곱에 비례합니다.
 
 ---
 

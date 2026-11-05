@@ -59,7 +59,7 @@
 ## 빠른 시작
 1. [Releases](https://github.com/seto77/ReciPro/releases/latest)에서 다운로드하여 설치합니다.
 2. 내장 목록(66개 결정)에서 결정을 선택합니다. CIF 파일을 가져오거나 [CSManager](https://github.com/seto77/CSManager)를 사용할 수도 있습니다.
-3. 오른쪽 패널에서 기능을 호출합니다: 구조 뷰어, 스테레오넷, 회절 시뮬레이터, HRTEM/STEM Simulator 등.
+3. 오른쪽 패널에서 기능을 호출합니다: 구조 뷰어, 스테레오넷, 회절 시뮬레이터, HRTEM/STEM 시뮬레이터 등.
 4. 마우스 드래그 또는 정대축/결정면 지수 입력으로 결정을 회전합니다.
 
 ## 인용

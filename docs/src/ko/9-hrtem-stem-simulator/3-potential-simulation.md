@@ -20,7 +20,7 @@
 
 ![TEM 조건](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **가속 전압 (kV)** — 가속 전압. 전자 파장을 결정하며, 퍼텐셜의 푸리에 계수 $U_g$를 계산하는 데 사용됩니다.
+- **가속 전압** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> — 가속 전압 (kV). 전자 파장을 결정하며, 퍼텐셜의 푸리에 계수 $U_g$를 계산하는 데 사용됩니다.
 
 > **디포커스, Cs, Cc, β, ΔV 및 PCTF는 퍼텐셜 모드에서 비활성화되며**(결상 광학이 적용되지 않음) 흐리게 표시됩니다.
 
@@ -63,7 +63,7 @@ $U_g$와 $U'_g$는 동시에 표시할 수 있습니다(체크된 각 항목마�
 
 ![회절파](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** — 퍼텐셜의 푸리에 합성에 포함되는 블로흐파(푸리에 계수)의 최대 개수(기본값 80). 값이 클수록 더 높은 공간 주파수가 포함되어 퍼텐셜의 미세한 세부를 재현합니다.
+- 퍼텐셜의 푸리에 합성에 포함되는 블로흐파(푸리에 계수)의 최대 개수(기본값 80). 값이 클수록 더 높은 공간 주파수가 포함되어 퍼텐셜의 미세한 세부를 재현합니다.
 
 ---
 
