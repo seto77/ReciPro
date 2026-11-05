@@ -68,10 +68,10 @@ Imposta la geometria della sonda convergente e del rivelatore anulare. Ogni ango
 
 | Parametro | Descrizione | Predefinito / tipico |
 |-----------|-------------|-------------------|
-| **Conv. semi-angle α** | Semiangolo della sonda convergente (mrad). Valori maggiori danno una sonda più fine e modificano il contrasto di diffrazione | 25 mrad (predefinito); 15–25 mrad |
+| **Semiang. conv. α** | Semiangolo della sonda convergente (mrad). Valori maggiori danno una sonda più fine e modificano il contrasto di diffrazione | 25 mrad (predefinito); 15–25 mrad |
 | **Rivelatore anulare — Interno** | Semiangolo di raccolta interno del rivelatore anulare (mrad). Il segnale all'interno di questo angolo è escluso | 0 (predefinito); BF: 0, HAADF: 80 |
 | **Rivelatore anulare — Esterno** | Semiangolo di raccolta esterno del rivelatore anulare (mrad). Il segnale all'esterno di questo angolo è escluso | 20 (predefinito); BF: 5, HAADF: 250 |
-| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Dimensione effettiva della sorgente di elettroni (pm). Viene applicata dopo il calcolo come convoluzione gaussiana di ogni immagine Elastico / TDS / EDX. Valori maggiori sfocano l'immagine e riducono il contrasto dei dettagli fini | 20 pm (predefinito) |
+| **Dim. efficace della sorgente (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Dimensione effettiva della sorgente di elettroni (pm). Viene applicata dopo il calcolo come convoluzione gaussiana di ogni immagine Elastico / TDS / EDX. Valori maggiori sfocano l'immagine e riducono il contrasto dei dettagli fini | 20 pm (predefinito) |
 
 Gli angoli del rivelatore si applicano solo all'immagine STEM di riferimento (Elastico / TDS / Elastico & TDS); le mappe STEM-EDX non li utilizzano. I valori predefiniti valgono solo al primo avvio; successivamente vengono ripristinati gli ultimi valori utilizzati.
 

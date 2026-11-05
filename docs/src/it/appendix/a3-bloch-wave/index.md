@@ -105,7 +105,7 @@ $$
 
 La diagonalizzazione di $\mathbf{A}$ fornisce **tutti** i vettori d'onda di Bloch e le ampiezze in una sola volta. Le ampiezze dei fasci diffratti — e quindi le intensità — seguono poi dalle condizioni al contorno sulle superfici di entrata e di uscita e dallo spessore del campione. Questi passaggi, il potenziale ottico (complesso), il fattore di Debye–Waller e i coefficienti di trasmissione $T_{\mathbf g}$ sono descritti in [Calcolo dinamico (nucleo comune)](calculation.md).
 
-> **Nota:** I valori $V_{\mathbf g}$ mostrati nella tabella **Details** del simulatore di diffrazione sono i valori grezzi *prima* dell'applicazione del fattore di correzione relativistico.
+> **Nota:** I valori $V_{\mathbf g}$ mostrati nella tabella **Dettagli riflessi** del simulatore di diffrazione sono i valori grezzi *prima* dell'applicazione del fattore di correzione relativistico.
 
 ---
 

@@ -30,7 +30,7 @@ L'elenco degli spot si costruisce direttamente sull'immagine caricata. Il riquad
 
 ## Menu File
 
-Apre un'immagine di diffrazione; **Salva** / **Copia** scrivono l'immagine visualizzata come Metafile (EMF) o come immagine (PNG). Le immagini si possono caricare anche tramite trascinamento (drag and drop). Per un file Gatan DM3/DM4 calibrato in nm⁻¹, la radiazione viene impostata su elettroni e la tensione di accelerazione e la dimensione del pixel (nm⁻¹) vengono lette dal file (in tal caso la lunghezza di camera non è necessaria).
+Apre un'immagine di diffrazione; **Salva** / **Copia** scrivono l'immagine visualizzata come metafile (EMF) o come immagine (PNG). Le immagini si possono caricare anche tramite trascinamento (drag and drop). Per un file Gatan DM3/DM4 calibrato in nm⁻¹, la radiazione viene impostata su elettroni e la tensione di accelerazione e la dimensione del pixel (nm⁻¹) vengono lette dal file (in tal caso la lunghezza di camera non è necessaria).
 
 **Salva ▸ Candidate list (CSV)...** esporta i candidati di orientazione trovati dall'indicizzazione e **Copia ▸ Candidate list (TSV)** copia la stessa tabella negli appunti: una riga per candidato × grano, con il rango, l'indice del grano, il nome del cristallo, gli angoli di Eulero ZXZ (°), i nove elementi della matrice di rotazione, il residuo quadratico medio (nm⁻²), il numero di spot assegnati e le assegnazioni spot → (hkl). Il CSV usa sempre il punto come separatore decimale; il TSV si incolla direttamente in un foglio di calcolo.
 

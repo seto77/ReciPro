@@ -46,7 +46,7 @@ Impostare la forma e il campionamento del cono di precessione (gruppo **Propriet
 
 | Parametro | Descrizione | Consigliato |
 |-----------|-------------|-------------|
-| **Semiangolo** | Semiapertura del cono di precessione (mrad; 0.1–500, predefinito 50) | 10–40 mrad |
+| **Ang. prec.** | Angolo di precessione = semiapertura del cono di precessione (mrad; 0.1–500, predefinito 50) <!-- 261106Cl 作者の決定 D1 --> | 10–40 mrad |
 | **Passo** | Numero di direzioni di fascio parallelo campionate sul cono di precessione (2–1080, predefinito 36). Valori maggiori danno un'integrazione più regolare ma aumentano linearmente il tempo di calcolo | 36–72 |
 
 ---

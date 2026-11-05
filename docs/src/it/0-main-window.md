@@ -73,12 +73,12 @@ Se è la prima volta che usi ReciPro, segui questi passaggi:
 | Usa indici di Miller-Bravais (hkil) | Usa la notazione a 4 indici per i sistemi trigonale/esagonale in tutta l'applicazione |
 | Usa fattori di diffusione ionici | Usa i fattori di diffusione elettronica ionici (Peng) per gli ioni assegnati agli atomi nei calcoli elettronici dinamici (onde di Bloch), inclusi i profili di Kikuchi; il termine di monopolo per $g \neq 0$ viene aggiunto solo ai coefficienti elastici $U_g$ (l'assorbimento TDS e la sorgente TDS di Kikuchi usano la parte ionica finita). Se non è spuntata, si usano i fattori degli atomi neutri. Se la cella elementare non è elettricamente neutra ($\Sigma q \neq 0$), il termine di monopolo viene omesso e si usa solo la parte finita (ione schermato); all'attivazione dell'opzione viene mostrato un avviso |
 | Scarica libreria MKL | Scarica la libreria nativa Intel MKL (~55 MB); una volta installata viene usata automaticamente per i calcoli pesanti |
-| Accept external macro commands (named pipe) | Restare in ascolto sulla named pipe `ReciPro.Macro.v1` ed eseguire le macro inviate da programmi esterni — vedi [Controllo esterno](20-macro/3-external-control.md) |
+| Accetta comandi macro esterni (named pipe) | Restare in ascolto sulla named pipe `ReciPro.Macro.v1` ed eseguire le macro inviate da programmi esterni — vedi [Controllo esterno](20-macro/3-external-control.md) |
 | Reimposta le impostazioni del registro all'uscita (attivo dopo il riavvio) | Reimposta le impostazioni al prossimo riavvio |
 | Disabilita la libreria Crystallography.Native (richiede il riavvio) | Ricade sul codice gestito se la libreria nativa (C++) non si carica |
 | Disabilita tutto il rendering OpenGL (richiede il riavvio) | Per GPU più datate / desktop remoto |
 | Disabilita il rendering del testo OpenGL (richiede il riavvio) | Soluzione alternativa per problemi di resa del testo su alcune GPU |
-| Cattura componenti GUI... | Strumento per sviluppatori per salvare screenshot della GUI |
+| (sperimentale) Cattura componenti GUI... | Strumento per sviluppatori per salvare screenshot della GUI |
 | Funzione di diffrazione da polveri (in sviluppo) | Abilita la finestra di diffrazione policristallina (polveri) |
 
 ### Guida

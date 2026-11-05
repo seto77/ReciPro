@@ -65,7 +65,7 @@ Imposta la lunghezza del filmato (**Durata**), la frequenza dei fotogrammi (**FP
 
 #### Export 3D model (3MF/STL)
 
-**Export 3D model (3MF/STL)** esporta il modello di struttura attualmente disegnato sullo schermo come modello solido per la stampa 3D. Si possono esportare solo solidi chiusi: atomi (sfere ed ellissoidi), legami (cilindri) e poliedri di coordinazione. Le etichette degli atomi, i piani di delimitazione, i piani reticolari e i simboli degli elementi di simmetria non vengono esportati. <!-- 261105Cl 監査: 配位多面体を出力し、対称要素は出さない (6c31fc0d) --> Il telaio della cella elementare è fatto di segmenti, quindi viene sostituito da cilindri (con sfere ai vertici) solo se selezioni l'opzione corrispondente. **Ritaglia oggetti** (taglio con i piani di delimitazione) non si applica all'output: gli oggetti che attraversano i piani di delimitazione vengono esportati per intero (la finestra di dialogo lo segnala). <!-- 261106Cl 作者の決定 H10 -->
+**Export 3D model (3MF/STL)** esporta il modello di struttura attualmente disegnato sullo schermo come modello solido per la stampa 3D. Si possono esportare solo solidi chiusi: atomi (sfere ed ellissoidi), legami (cilindri) e poliedri di coordinazione. Le etichette degli atomi, i piani di delimitazione, i piani reticolari e i simboli degli elementi di simmetria non vengono esportati. <!-- 261105Cl 監査: 配位多面体を出力し、対称要素は出さない (6c31fc0d) --> Il telaio della cella elementare è fatto di segmenti, quindi viene sostituito da cilindri (con sfere ai vertici) solo se selezioni l'opzione corrispondente. **Ritaglia oggetti ai piani di delimitazione** non si applica all'output: gli oggetti che attraversano i piani di delimitazione vengono esportati per intero (la finestra di dialogo lo segnala). <!-- 261106Cl 作者の決定 H10 -->
 
 ![Finestra di dialogo Esporta modello 3D](../assets/cap-it-auto/FormExport3DModel.png)
 
@@ -115,7 +115,7 @@ In questa modalità gli assi *a*, *b*, *c* della cella elementare sono l'unità 
 
 ![Limiti dai piani cristallini](../assets/cap-it-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
-In questa modalità l'area di disegno è delimitata da un insieme di piani cristallini. Se i piani non definiscono una regione spazialmente chiusa, ReciPro aggiunge, per chiuderla, un poliedro quasi sferico di raggio **Distanza max dall'origine** (Å, misurata dal [centro di proiezione](#centro-di-proiezione)). <!-- 261106Cl 作者の決定 C4 -->
+In questa modalità l'area di disegno è delimitata da un insieme di piani cristallini. Se i piani non definiscono una regione spazialmente chiusa, ReciPro aggiunge, per chiuderla, un poliedro quasi sferico di raggio **Dist. max (c. proiez.)** (Å, misurata dal [centro di proiezione](#centro-di-proiezione)). <!-- 261106Cl 作者の決定 C4 -->
 
 #### Elenco dei limiti
 
@@ -131,15 +131,17 @@ Imposta il piano di delimitazione tramite il suo indice di Miller. La casella di
 
 La distanza dal [centro di proiezione](#centro-di-proiezione) (non dall'origine della cella) al piano di delimitazione, inserita <!-- 261106Cl 作者の決定 C4 --> come multiplo della distanza interplanare *d* di (*hkl*) selezionato (casella **d×**) oppure in Å (la casella tra parentesi). Le due caselle sono collegate: la modifica di una aggiorna l'altra.
 
-- **Translation** (Å): sposta l'intera regione delimitata dai piani di questa quantità lungo la normale del (*hkl*) indicato; i valori positivi la spostano verso +**g**, cioè nel verso della normale di (*hkl*). Funziona con qualsiasi numero di piani, anche con un solo piano senza **Piani equivalenti**. <!-- 261106Cl 作者の決定 B11, C5 -->
-- **Distanza max dall'origine** (Å): raggio del poliedro di chiusura usato quando i piani non racchiudono una regione (vedi sopra).
+Ogni piano si trova dal lato +**g** del centro di proiezione (nel verso della normale di (*hkl*)), e viene disegnato il lato che contiene il centro. Con un solo piano, la regione disegnata è il semispazio che, rispetto a quel piano, sta dal lato del centro. <!-- 261106Cl 作者の決定 D5 -->
+
+- **Traslazione** (Å): sposta l'intera regione delimitata dai piani di questa quantità lungo la normale del (*hkl*) indicato; i valori positivi la spostano verso +**g**, cioè nel verso della normale di (*hkl*). Funziona con qualsiasi numero di piani, anche con un solo piano senza **Piani equivalenti**. <!-- 261106Cl 作者の決定 B11, C5 -->
+- **Dist. max (c. proiez.)** (Å): distanza massima dal centro di proiezione, cioè il raggio del poliedro di chiusura usato quando i piani non racchiudono una regione (vedi sopra). <!-- 261106Cl 作者の決定 D3 -->
 - **Aggiorna subito**: applica le modifiche al piano selezionato senza premere **Sostituisci**.
 
 #### Mostra piani di delimitazione / Opacità
 
 Mostra o nasconde i piani di delimitazione stessi. Quando sono mostrati, **Opacità** imposta la trasparenza (0 = trasparente, 1 = opaco).
 
-#### Taglia gli oggetti con i piani di delimitazione
+#### Ritaglia oggetti ai piani di delimitazione
 
 Se selezionato, viene renderizzata solo la regione interna definita dai limiti; gli atomi, i legami e i poliedri che intersecano i limiti vengono tagliati.
 
@@ -166,9 +168,9 @@ L'elenco degli atomi nel cristallo. Usa **Aggiungi / Sostituisci / Elimina** per
 - **X, Y, Z**: coordinate frazionarie. Numeri reali in 0–1, oppure frazioni come `1/2` o `2/3`.
 - **Occ**: occupazione, un numero reale 0–1.
 
-#### Spostamento dell'origine
+#### Traslazione origine
 
-![Spostamento dell'origine](../assets/cap-it-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.atomControl.tabControl.tabPageOriginShift.png)
+![Traslazione origine](../assets/cap-it-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.atomControl.tabControl.tabPageOriginShift.png)
 
 Sposta ogni atomo dello stesso scostamento frazionario. Premi un pulsante preimpostato (ad esempio, per scambiare la scelta dell'origine 1 / 2 per lo stesso gruppo spaziale), oppure inserisci un (Δx, Δy, Δz) personalizzato e premi **Apply custom shift**.
 

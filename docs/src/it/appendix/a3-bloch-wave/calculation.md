@@ -49,7 +49,7 @@ Le componenti cartesiane di $\mathbf g$ si ottengono dai vettori di base recipro
 $$\begin{pmatrix} g_x\\ g_y\\ g_z\end{pmatrix} = \begin{pmatrix} a_x^{*} & b_x^{*} & c_x^{*}\\ a_y^{*} & b_y^{*} & c_y^{*}\\ a_z^{*} & b_z^{*} & c_z^{*}\end{pmatrix}\begin{pmatrix} h\\ k\\ l\end{pmatrix} = \begin{pmatrix} h\,a_x^{*} + k\,b_x^{*} + l\,c_x^{*}\\ h\,a_y^{*} + k\,b_y^{*} + l\,c_y^{*}\\ h\,a_z^{*} + k\,b_z^{*} + l\,c_z^{*}\end{pmatrix}$$
 
 !!! note
-    I valori $U_{\mathbf g}$ mostrati nella tabella **Details** del simulatore di diffrazione sono i valori grezzi *prima* dell'applicazione del fattore relativistico $\gamma$.
+    I valori $U_{\mathbf g}$ mostrati nella tabella **Dettagli riflessi** del simulatore di diffrazione sono i valori grezzi *prima* dell'applicazione del fattore relativistico $\gamma$.
 
 ---
 

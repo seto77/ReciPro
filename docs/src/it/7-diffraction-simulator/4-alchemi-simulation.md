@@ -93,7 +93,7 @@ Il contrasto di sito cambia molto — e può perfino invertire segno — tra cam
 
 | Voce | Descrizione | Predefinito |
 |------|-------------|-------------|
-| **Fasci max.** | Limite superiore del numero di onde di Bloch per orientazione (1–1600). L'unione su tutta la scansione è maggiore | 120 |
+| **Onde diffr. max.** | Limite superiore del numero di onde di Bloch per orientazione (1–1600). L'unione su tutta la scansione è maggiore | 120 |
 | **Risolutore** | Motore di calcolo del problema agli autovalori: **Nativo** (Eigen C++) o **Gestito** (.NET). Dove il risolutore nativo non è disponibile, la scelta è fissata su Gestito | Nativo |
 | **Includi la componente decanalizzata** | Se aggiungere $Y_\text{dech}$ sopra | attivo |
 | **Allargamento angolare** | Convolve la curva con l'allargamento angolare del fascio incidente: **Nessuno** o **Gaussian** con una larghezza a metà altezza in mrad. È una post-elaborazione sull'asse delle orientazioni, applicata **prima** della normalizzazione di visualizzazione | Nessuno |
