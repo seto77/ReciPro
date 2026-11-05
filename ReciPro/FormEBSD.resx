@@ -1628,9 +1628,6 @@ the value is shown in the Depth box.</value>
   <data name="labelPolarity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="labelPolarity.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="labelPolarity.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -1670,9 +1667,6 @@ gray-level polarity for the displayed image.</value>
   </data>
   <data name="labelColor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="labelColor.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="labelColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
