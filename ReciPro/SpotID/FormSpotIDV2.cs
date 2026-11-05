@@ -95,6 +95,16 @@ public partial class FormSpotIDV2 : FormBase
         FormSpotDetails.Visible = false;
     }
 
+    /// <summary>261105Cl 追加 (監査 I24): この窓を隠すと (× ボタンでも主窓のツールバーでも)、「詳細」の窓も閉じてチェックを外す。
+    /// 旧は × ボタンで詳細の窓だけ隠してチェックを残し (次に開くとチェックが付いているのに窓は無く、1 回目のクリックは外すだけ)、
+    /// ツールバーで隠したときは詳細の窓が出たまま残った</summary>
+    protected override void OnVisibleChanged(EventArgs e)
+    {
+        base.OnVisibleChanged(e);
+        if (!Visible && !Disposing && !IsDisposed && checkBoxDetailsOfSpot.Checked && FormSpotDetails is { IsDisposed: false })
+            checkBoxDetailsOfSpot.Checked = false; // → checkBoxDetailsOfSpot_CheckedChanged が FormSpotDetails.Visible = false にする
+    }
+
     #endregion ロード, クローズ関連
 
     #region ステータスラベルのクリア
