@@ -717,11 +717,17 @@ public partial class FormStructureViewer : FormBase
         //List のインデクサ読取と Add の並走は arm64 の weak memory model では grow 時に理論上 null 読取の窓があるため、
         //書込対象 (この時点で追加済みの Sphere。ObjIndex は追記オンリーで不変) のスナップショット配列経由でアクセスして競合を消す。
         var glSnap = GLObjects.ToArray();
+        // 261105Cl 追加: 多面体の定義の「Show Center Atom」「Show Vertex Atoms」(従来は保存されるだけで描画に効いていなかった)。
+        // 定義をまたいで統合する中心 (Serial) では、先に処理された定義の値が勝つ (PolyMat・mode と同じ規則)
+        var polyShowAtoms = new Dictionary<int, (bool Center, bool Vertex)>();
+        // 261105Cl 追加: ボンドのみの定義で実際に描く結合の両端の原子 (多面体の定義の「隠す」より表示を優先する)
+        var bondOnlyShown = new ConcurrentDictionary<int, byte>();
         bondControl.GetAll().Where(b => b.Enabled && (b.ShowPolyhedron || b.ShowBond)).ToList().ForEach(bond =>
         {
             double min = Math.Max(bond.MinLength, 0), min2 = min * min, max = bond.MaxLength, max2 = max * max, radius = bond.Radius;
             var polyhedronMode = bond.ShowEdges ? DrawingMode.SurfacesAndEdges : DrawingMode.Surfaces;
             float bondTrans = bond.BondTransParency, polyTrans = bond.PolyhedronTransParency;
+            var showCylinder = bond.ShowBond && (!bond.ShowPolyhedron || bond.ShowInnerBonds); // 261105Cl 追加: 多面体の定義では「Show Inner Bonds」(中心と頂点を結ぶ結合) も見る
 
             //最初に、中心と頂点をdic1に格納する. こうしておけば、2回目に出てきたとき、再検索しなくて済む.
             foreach (var element in (new[] { bond.Element1, bond.Element2 }).Where(element => !dic1.ContainsKey(element)))
@@ -841,12 +847,16 @@ public partial class FormStructureViewer : FormBase
                         if (!c.IsInside && !v.IsInside)
                             continue;
                         glSnap[c.ObjIndex].Rendered = glSnap[v.ObjIndex].Rendered = true;
+                        bondOnlyShown.TryAdd(c.ObjIndex, 0); // 261105Cl 追加
+                        bondOnlyShown.TryAdd(v.ObjIndex, 0); // 261105Cl 追加
                     }
                     var vec = v.O - c.O;//中心間を結ぶベクトル
                     var m = (1 + (c.R - v.R) / vec.Length) * vec / 2;//中間地点
                     var tag = new bondID(c.Serial, v.Serial);
-                    objects[n++] = new Cylinder(c.O, m, radius, c.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = bond.ShowBond };
-                    objects[n++] = new Cylinder(v.O, m - vec, radius, v.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = bond.ShowBond };
+                    //objects[n++] = new Cylinder(c.O, m, radius, c.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = bond.ShowBond }; // 261105Cl 変更前 (2 行)
+                    //objects[n++] = new Cylinder(v.O, m - vec, radius, v.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = bond.ShowBond };
+                    objects[n++] = new Cylinder(c.O, m, radius, c.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = showCylinder }; // 261105Cl 変更
+                    objects[n++] = new Cylinder(v.O, m - vec, radius, v.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = showCylinder }; // 261105Cl 変更
                 }
                 //lock (lockObj3)
                 //    GLObjects.AddRange(objects);
@@ -862,7 +872,10 @@ public partial class FormStructureViewer : FormBase
                     lock (lockObj3)
                     {
                         if (!polyDic.TryGetValue(c.Serial, out var p))
+                        {
                             polyDic.Add(c.Serial, p = (c, [], [], polyhedronMode));
+                            polyShowAtoms.Add(c.Serial, (bond.ShowCenterAtom, bond.ShowVertexAtom)); // 261105Cl 追加
+                        }
                         p.vertices.AddRange(verts);
                         p.bondObjs.AddRange(bondSlice);
                     }
@@ -912,11 +925,18 @@ public partial class FormStructureViewer : FormBase
 
         //260731Cl 追加: 描画が確定した中心原子ごとに、構成原子の表示化と、付随ボンド(円柱)+統合頂点から成る多面体の生成を並列実行
         //(Polyhedron コンストラクタが重いので、旧コードの ForAll 内生成と同等の並列度を保つ。GLObjects への追加のみ lock)
+        var shownAtoms = new ConcurrentDictionary<int, byte>(); // 261105Cl 追加
+        var hiddenAtoms = new ConcurrentDictionary<int, byte>(); // 261105Cl 追加
         drawn.AsParallel().ForAll(e =>
         {
-            glSnap[e.c.ObjIndex].Rendered = true;
+            //glSnap[e.c.ObjIndex].Rendered = true; // 261105Cl 変更前 (3 行): 中心・頂点を常に表示していた
+            //foreach (var v in e.vertices)
+            //    glSnap[v.ObjIndex].Rendered = true;
+            // 261105Cl 変更: 中心・頂点を表示するか隠すかを集め、ループの後でまとめて設定する (隠すのは、表示を求める役割がどこにも無い原子だけ)
+            var (showCenter, showVertex) = polyShowAtoms[e.c.Serial];
+            (showCenter ? shownAtoms : hiddenAtoms).TryAdd(e.c.ObjIndex, 0);
             foreach (var v in e.vertices)
-                glSnap[v.ObjIndex].Rendered = true;
+                (showVertex ? shownAtoms : hiddenAtoms).TryAdd(v.ObjIndex, 0);
             //IEnumerable<GLObject> polys = e.vertices.Count switch // 261105Cl 変更前: 分解後の面 (Polygon) しか残らず、3D モデル出力 (閉じた立体だけを拾う) に多面体が出なかった
             //{
             //    <= 2 => [],
@@ -940,6 +960,12 @@ public partial class FormStructureViewer : FormBase
                 GLObjects.AddRange(polys);
             }
         });
+        // 261105Cl 追加: 他の多面体の中心・頂点として表示を求められた原子、ボンドのみの定義の結合の端の原子は隠さない
+        foreach (var i in hiddenAtoms.Keys)
+            if (!shownAtoms.ContainsKey(i) && !bondOnlyShown.ContainsKey(i))
+                glSnap[i].Rendered = false;
+        foreach (var i in shownAtoms.Keys)
+            glSnap[i].Rendered = true;
 
         textBoxCalcInformation.AppendText($"Generation of bonds & polyhedra: {sw.ElapsedMilliseconds}ms.\r\n");
     }
