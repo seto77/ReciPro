@@ -1709,7 +1709,10 @@ public partial class FormSpotIDV2 : FormBase
     {
         SetCrystal();
         for (int i = 0; i < scalablePictureBoxAdvanced.Symbols.Count; i++)
-            if (scalablePictureBoxAdvanced.Symbols[i].Shape == ScalablePictureBox.SymbolShape.Circle)
+            //if (scalablePictureBoxAdvanced.Symbols[i].Shape == ScalablePictureBox.SymbolShape.Circle) // 261105Cl 変更前
+            // 261105Cl 変更 (監査 I10): ガイド円 (Guide circles, tagScale) も同じ Circle の記号なので、このチェックを外すとガイド円まで消えていた。
+            //  Debye リングの描画 (SetCrystal の本体) は以前から無効なので、ガイド円以外の円 (= Debye リング) だけを対象にする
+            if (scalablePictureBoxAdvanced.Symbols[i].Shape == ScalablePictureBox.SymbolShape.Circle && scalablePictureBoxAdvanced.Symbols[i].Tag != tagScale) // 261105Cl
                 scalablePictureBoxAdvanced.Symbols[i].SymbolVisible = checkBoxShowDebyeRing.Checked;
         scalablePictureBoxAdvanced.Refresh();
     }
