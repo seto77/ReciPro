@@ -45,6 +45,16 @@ public partial class FormSpotIDV2 : FormBase
     }
     public double CameraLength { set => numericBoxCameraLength.Value = value; get => numericBoxCameraLength.Value; }
 
+    /// <summary>261105Cl 追加 (監査 I23): ピクセルサイズ欄の単位が nm⁻¹ か (false なら mm)。レジストリに保存するため (PixelSize は取得と設定で単位が違うので使えない)</summary>
+    public bool PixelSizeUnitInverse
+    {
+        get => radioButtonPixelSizeUnitInverse.Checked;
+        set { if (value) radioButtonPixelSizeUnitInverse.Checked = true; else radioButtonPixelSizeUnitReal.Checked = true; }
+    }
+
+    /// <summary>261105Cl 追加 (監査 I23): ピクセルサイズ欄の数値そのもの (単位は PixelSizeUnitInverse)。レジストリに保存するため</summary>
+    public double PixelSizeValue { get => numericBoxPixelSize.Value; set => numericBoxPixelSize.Value = value; }
+
     public double WaveLength => waveLengthControl1.WaveLength;
 
     public double ToleranceLength { get => numericBoxAcceptableError.Value * 0.01; set => numericBoxAcceptableError.Value = value * 100; }

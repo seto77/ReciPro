@@ -795,6 +795,14 @@ public partial class FormMain : FormBase
             rw(() => FormSpotIDv2.NearestNeighbor);
             rw(() => FormSpotIDv2.FittingRange);
             rw(() => FormSpotIDv2.ToleranceLength);
+            // 261105Cl 追加 (監査 I23): 窓の位置と校正値 (線源・エネルギー・カメラ長・ピクセルサイズの単位と値) も保存する。旧は毎回 200 kV・1000 mm・0.05 mm に戻った。
+            //  単位は値より先に戻す (値は単位の欄で読み替えるため)。エネルギーは線源ごとの単位 (X 線・電子線 keV、中性子 meV)
+            rw(() => FormSpotIDv2.Bounds); // 261105Cl 追加
+            rw(() => FormSpotIDv2.Source); // 261105Cl 追加
+            rw(() => FormSpotIDv2.Energy); // 261105Cl 追加
+            rw(() => FormSpotIDv2.CameraLength); // 261105Cl 追加
+            rw(() => FormSpotIDv2.PixelSizeUnitInverse); // 261105Cl 追加
+            rw(() => FormSpotIDv2.PixelSizeValue); // 261105Cl 追加
             #endregion
 
             #region EBSD 260724Cl 追加: 検出器幾何 (中心座標・傾き・ピクセル定義)・試料傾斜・Flip L-R の永続化
