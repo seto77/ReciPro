@@ -230,9 +230,9 @@ UI 言語を切り替えます。English・日本語・Deutsch・Français・Esp
 
 | 項目 | 説明 |
 |------|------|
-| Notation | U か B のどちらの表記を使うか。 |
+| Notation | U か B のどちらの表記を使うか。切り替えると表示中の値を換算します（$B = 8\pi^2 U$）。 |
 | Model | 等方性（Isotropy）か異方性（Anisotropy）か。 |
-| B##, U## | 異方性の場合は各成分（B11 など）を入力。 |
+| U##, β## | 異方性の場合は各成分を入力。U 表記では $U_{ij}$（Å²）、B 表記では無次元の $\beta_{ij} = 2\pi^2 a^*_i a^*_j U_{ij}$（AMCSD のファイルの B(i,j) と同じ）。 |
 
 **Scattering factor（散乱因子）**: 原子ごとに使用する散乱因子を選びます。
 

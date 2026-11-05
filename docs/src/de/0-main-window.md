@@ -223,9 +223,9 @@ Klicken Sie mit der rechten Maustaste auf eine Atomzeile und wählen Sie **Äqui
 
 | Element | Beschreibung |
 |------|------|
-| Notation | Die U- oder B-Notation verwenden. |
+| Notation | Die U- oder B-Notation verwenden. Beim Umschalten werden die angezeigten Werte umgerechnet ($B = 8\pi^2 U$). |
 | Modell | Isotrop oder anisotrop. |
-| B##, U## | Für den anisotropen Fall jede Komponente eingeben (B11, …). |
+| U##, β## | Für den anisotropen Fall jede Komponente eingeben: $U_{ij}$ in Å² oder in der B-Notation die dimensionslosen $\beta_{ij} = 2\pi^2 a^*_i a^*_j U_{ij}$ (wie B(i,j) in AMCSD-Dateien). |
 
 **Scattering factor**: Wählen Sie den für jedes Atom verwendeten Streufaktor.
 

@@ -223,9 +223,9 @@ Fai clic con il tasto destro su una riga di atomo e scegli **Mostra posizioni at
 
 | Voce | Descrizione |
 |------|------|
-| Notation | Usa la notazione U o B. |
+| Notation | Usa la notazione U o B. Cambiando notazione i valori mostrati vengono convertiti ($B = 8\pi^2 U$). |
 | Model | Isotropico o anisotropico. |
-| B##, U## | Per il caso anisotropico, immetti ciascuna componente (B11, …). |
+| U##, β## | Per il caso anisotropico, immetti ciascuna componente: $U_{ij}$ in Å², oppure nella notazione B i $\beta_{ij} = 2\pi^2 a^*_i a^*_j U_{ij}$ adimensionali (come B(i,j) nei file AMCSD). |
 
 **Scattering factor**: scegli il fattore di diffusione usato per ciascun atomo.
 

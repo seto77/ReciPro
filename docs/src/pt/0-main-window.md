@@ -223,9 +223,9 @@ Clique com o botão direito em uma linha de átomo e escolha **Mostrar posiçõe
 
 | Item | Descrição |
 |------|------|
-| Notation | Usar a notação U ou B. |
+| Notation | Usar a notação U ou B. Ao trocar, os valores exibidos são convertidos ($B = 8\pi^2 U$). |
 | Model | Isotrópico ou anisotrópico. |
-| B##, U## | Para o caso anisotrópico, inserir cada componente (B11, …). |
+| U##, β## | Para o caso anisotrópico, inserir cada componente: $U_{ij}$ em Å², ou na notação B os $\beta_{ij} = 2\pi^2 a^*_i a^*_j U_{ij}$ adimensionais (iguais a B(i,j) nos arquivos AMCSD). |
 
 **Scattering factor**: escolha o fator de espalhamento usado para cada átomo.
 

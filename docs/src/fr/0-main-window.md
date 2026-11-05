@@ -223,9 +223,9 @@ Faites un clic droit sur une ligne d'atome et choisissez **Afficher les position
 
 | Élément | Description |
 |------|------|
-| Notation | Utiliser la notation U ou B. |
+| Notation | Utiliser la notation U ou B. Changer de notation convertit les valeurs affichées ($B = 8\pi^2 U$). |
 | Model | Isotrope ou anisotrope. |
-| B##, U## | Pour le cas anisotrope, saisir chaque composante (B11, …). |
+| U##, β## | Pour le cas anisotrope, saisir chaque composante : $U_{ij}$ en Å², ou en notation B les $\beta_{ij} = 2\pi^2 a^*_i a^*_j U_{ij}$ sans dimension (identiques aux B(i,j) des fichiers AMCSD). |
 
 **Scattering factor** : choisissez le facteur de diffusion utilisé pour chaque atome.
 

@@ -223,9 +223,9 @@ Haga clic con el botón derecho en una fila de átomo y elija **Mostrar posicion
 
 | Elemento | Descripción |
 |------|------|
-| Notation | Usar la notación U o B. |
+| Notation | Usar la notación U o B. Al cambiar, los valores mostrados se convierten ($B = 8\pi^2 U$). |
 | Model | Isótropo o anisótropo. |
-| B##, U## | Para el caso anisótropo, introduzca cada componente (B11, …). |
+| U##, β## | Para el caso anisótropo, introduzca cada componente: $U_{ij}$ en Å², o en la notación B las $\beta_{ij} = 2\pi^2 a^*_i a^*_j U_{ij}$ adimensionales (igual que B(i,j) en los archivos de AMCSD). |
 
 **Scattering factor**: elija el factor de dispersión utilizado para cada átomo.
 

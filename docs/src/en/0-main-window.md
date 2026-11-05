@@ -223,9 +223,9 @@ Right-click an atom row and choose **Show equivalent atom positions** to open a 
 
 | Item | Description |
 |------|------|
-| Notation | Use the U or B notation. |
+| Notation | Use the U or B notation. Switching converts the displayed values ($B = 8\pi^2 U$). |
 | Model | Isotropic or anisotropic. |
-| B##, U## | For the anisotropic case, enter each component (B11, …). |
+| U##, β## | For the anisotropic case, enter each component: $U_{ij}$ in Å², or in the B notation the dimensionless $\beta_{ij} = 2\pi^2 a^*_i a^*_j U_{ij}$ (the same as B(i,j) in AMCSD files). |
 
 **Scattering factor**: choose the scattering factor used for each atom.
 
