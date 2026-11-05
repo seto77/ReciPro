@@ -1271,7 +1271,7 @@ public partial class FormEBSD : FormBase
         {
             SetCrystal(); // 下の SetVector・3D の軸・DrawGeometry・DrawMasterPattern2D もここで済む
             toolStripStatusLabelSummary.Text = "MasterPattern discarded";
-            toolStripStatusLabelDetail.Text = "The crystal was changed while this window was closed. Build the master pattern again.";
+            toolStripStatusLabelDetail.Text = "The crystal or the accelerating voltage was changed while this window was closed. Build the master pattern again.";
             return;
         }
         SetVector();
@@ -1296,6 +1296,17 @@ public partial class FormEBSD : FormBase
     //private void waveLengthControl_WavelengthChanged(object sender, EventArgs e) => SetVector(); //260725Ch 変更前
     private void waveLengthControl_WavelengthChanged(object sender, EventArgs e)
     {
+        // 261105Cl 追加 (監査 #16): MasterPattern は作成時の電圧で決めたエネルギー格子 (MC の損失分布) で解いてあるので、電圧を変えたら使えない。
+        //   以前は古い MasterPattern を残したまま菊池線だけ新しい波長で描き、損失依存のコントラスト A(E) も新しい E0 で損失 E0 − E を計算していた
+        //   (E0 を作成時のエネルギー格子より下げると損失が負になり、減衰が黙って効かなくなる)。ZNCC の合成キャッシュの鍵にも電圧は入っていない。
+        //   結晶の変更と同じく、構築中なら止めて破棄する (SetCrystal は SetVector・候補の失効・合成キャッシュの破棄・再描画も行う)
+        if (masterPatternEbsd.IsBuilding || monteCarloCts != null || (MasterPattern != null && !MasterPatternBasisIsCurrent))
+        {
+            SetCrystal();
+            toolStripStatusLabelSummary.Text = "MasterPattern discarded";
+            toolStripStatusLabelDetail.Text = $"The accelerating voltage was changed to {Voltage:g6} kV. Build the master pattern again.";
+            return;
+        }
         SetVector();
         InvalidateIndexingResults(); //260725Ch: 波長は反射カタログとpair-angle幅尤度を変えるため旧候補を失効
     }
