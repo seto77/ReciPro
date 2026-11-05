@@ -827,7 +827,9 @@ Gitter, das bei aktiviertem 'Show Subcell' erscheint.</value>
 symbole) ein/aus, die jedem Atom überlagert werden.</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>Blendet die Atomkugeln im 3D-Modell ein/aus.</value>
+    <value>Blendet die Atomkugeln im 3D-Modell ein/aus.
+Bindungen, Polyeder und Beschriftungen werden aus den Atomen
+erzeugt und daher ebenfalls ausgeblendet.</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>Setzt Atomradien, Farben und Bindungen auf die

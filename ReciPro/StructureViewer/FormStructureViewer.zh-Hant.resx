@@ -827,7 +827,8 @@ Per-Pixel Linked List，需要較新的 OpenGL）。</value>
 (元素符號) 的顯示/隱藏。</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>切換 3D 模型中原子球體的顯示/隱藏。</value>
+    <value>切換 3D 模型中原子球體的顯示/隱藏。
+鍵、多面體與標籤由原子產生，因此也會一併隱藏。</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>將原子半徑、顏色與鍵結重設為

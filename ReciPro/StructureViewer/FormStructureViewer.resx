@@ -5631,7 +5631,9 @@ crystal-structure visualization program).</value>
     <value>Atoms</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>Show/hide the atom spheres in the 3D model.</value>
+    <value>Show/hide the atom spheres in the 3D model.
+Bonds, polyhedra and labels are built on the atoms,
+so they are hidden as well.</value>
   </data>
   <data name="toolStripButtonAtomLabels.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

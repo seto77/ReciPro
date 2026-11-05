@@ -812,7 +812,9 @@ affichée lorsque « Show Subcell » est activé.</value>
 d'élément) superposées sur chaque atome.</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>Affiche/masque les sphères des atomes dans le modèle 3D.</value>
+    <value>Affiche/masque les sphères des atomes dans le modèle 3D.
+Les liaisons, polyèdres et étiquettes sont construits à partir des atomes
+et sont donc masqués eux aussi.</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>Rétablit les rayons, couleurs et liaisons des atomes selon

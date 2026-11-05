@@ -897,7 +897,8 @@ List、新しい OpenGL が必要）かを選びます。</value>
 (元素記号)の表示/非表示を切り替えます。</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>3D モデル中の原子(球)の表示/非表示を切り替えます。</value>
+    <value>3D モデル中の原子(球)の表示/非表示を切り替えます。
+結合・多面体・ラベルは原子から作るので、これらも消えます。</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>原子半径・色・結合を VESTA 風の既定値にリセットし

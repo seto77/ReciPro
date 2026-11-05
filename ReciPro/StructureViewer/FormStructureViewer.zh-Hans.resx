@@ -820,7 +820,8 @@ x 映射到 -x 的变换下与自身重合的
 标签（元素符号）的显示/隐藏。</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>切换三维模型中原子球的显示/隐藏。</value>
+    <value>切换三维模型中原子球的显示/隐藏。
+键、多面体和标签由原子生成，因此也会一并隐藏。</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>将原子半径、颜色和键重置为

@@ -827,7 +827,8 @@
 (원소 기호)의 표시/숨김을 전환합니다.</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>3D 모델의 원자 구 (球)의 표시/숨김을 전환합니다.</value>
+    <value>3D 모델의 원자 구 (球)의 표시/숨김을 전환합니다.
+결합·다면체·레이블은 원자에서 만들어지므로 함께 숨겨집니다.</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>원자 반지름, 색, 결합을 VESTA 스타일의

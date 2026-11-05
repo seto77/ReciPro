@@ -818,7 +818,9 @@ que se muestra cuando 'Show Subcell' está activado.</value>
 de elementos) superpuestas sobre cada átomo.</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>Muestra u oculta las esferas de los átomos en el modelo 3D.</value>
+    <value>Muestra u oculta las esferas de los átomos en el modelo 3D.
+Los enlaces, poliedros y etiquetas se construyen a partir de los átomos,
+por lo que también se ocultan.</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>Restablece los radios, colores y enlaces de los átomos a

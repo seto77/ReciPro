@@ -824,7 +824,9 @@ mostrata quando 'Show Subcell' è attivato.</value>
 degli elementi) sovrapposte a ciascun atomo.</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>Mostra/nasconde le sfere degli atomi nel modello 3D.</value>
+    <value>Mostra/nasconde le sfere degli atomi nel modello 3D.
+Legami, poliedri ed etichette sono costruiti dagli atomi,
+quindi vengono nascosti anch'essi.</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>Reimposta raggi, colori e legami degli atomi ai valori

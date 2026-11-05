@@ -827,7 +827,9 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
 элементов), наложенные на каждый атом.</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>Показать/скрыть сферы атомов в 3D-модели.</value>
+    <value>Показать/скрыть сферы атомов в 3D-модели.
+Связи, полиэдры и подписи строятся по атомам,
+поэтому они тоже скрываются.</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>Сбросить радиусы, цвета атомов и связи к
