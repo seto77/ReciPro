@@ -208,7 +208,18 @@ public partial class FormRotationMatrix : FormBase
 
     private void FormRotationMatrix_VisibleChanged(object sender, EventArgs e)
     {
-        FormMain.toolStripButtonRotation.Checked = true;
+        //FormMain.toolStripButtonRotation.Checked = true; // 261105Cl 変更前: × で閉じたとき (FormClosing → Visible=false) にも点灯させていた
+        FormMain.toolStripButtonRotation.Checked = Visible; // 261105Cl 変更 (監査 G-21)
+
+        // 261105Cl 追加 (監査 G-10): 閉じている間は主窓から更新されないので、開いたときに今の方位で描き直す。
+        //  Link は閉じている間は止まっている (Linked = Visible && Link) ので、ゴニオの角度はそのままに、今の方位を基準に結び直す
+        //  (Link を入れ直したときと同じ。ゴニオの制約・結晶の方位は変えない)
+        if (Visible && glControlReciProGonio != null && FormMain.Crystal != null)
+        {
+            if (checkBoxLink.Checked)
+                RotBase = RotExp.Inverse() * RotReciPro;
+            SetRotation(false);
+        }
     }
 
     /// <summary>
@@ -228,9 +239,14 @@ public partial class FormRotationMatrix : FormBase
     #region Excelのコピーペースト
     private void buttonCopy_Click(object sender, EventArgs e)
     {
+        //var str =
+        //    $"{numericBox11.Value}\t{numericBox12.Value}\t{numericBox13.Value}\n" +
+        //    $"{numericBox21.Value}\t{numericBox22.Value}\t{numericBox23.Value}\n" +
+        //    $"{numericBox31.Value}\t{numericBox32.Value}\t{numericBox33.Value}"; // 261105Cl 変更前: 行の区切りが \n だけで、下の Paste (\r\n で分割) が読めなかった
+        // 261105Cl 変更 (監査 G-14): Excel と同じ \r\n で行を区切る
         var str =
-            $"{numericBox11.Value}\t{numericBox12.Value}\t{numericBox13.Value}\n" +
-            $"{numericBox21.Value}\t{numericBox22.Value}\t{numericBox23.Value}\n" +
+            $"{numericBox11.Value}\t{numericBox12.Value}\t{numericBox13.Value}\r\n" +
+            $"{numericBox21.Value}\t{numericBox22.Value}\t{numericBox23.Value}\r\n" +
             $"{numericBox31.Value}\t{numericBox32.Value}\t{numericBox33.Value}";
         Clipboard.SetDataObject(str);
     }
@@ -242,7 +258,8 @@ public partial class FormRotationMatrix : FormBase
             var data = Clipboard.GetDataObject();
             var str = (string)data.GetData(typeof(string).ToString(), true);
 
-            var str1 = str.Split(separator, StringSplitOptions.None);
+            //var str1 = str.Split(separator, StringSplitOptions.None); // 261105Cl 変更前: \r\n でしか分割せず、Copy (\n 区切り) の内容を Paste できなかった
+            var str1 = str.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries); // 261105Cl 変更 (監査 G-14): \r\n・\n のどちらの改行でも読む
             if (str1.Length < 3) return;
 
             var row1 = str1[0].Split(new[] { '\t' }, StringSplitOptions.None);
@@ -261,6 +278,36 @@ public partial class FormRotationMatrix : FormBase
             if (!double.TryParse(row3[0], out var e31)) return;
             if (!double.TryParse(row3[1], out var e32)) return;
             if (!double.TryParse(row3[2], out var e33)) return;
+
+            // 261105Cl 追加 (監査 G-14): 回転行列 (直交・行列式 +1) でなければ方位に入れない (旧: 検査なしで結晶の方位になっていた)。
+            //  表計算の丸め程度のずれ (RᵀR − I が 1e-3 以下) は、最も近い回転行列 (SVD の U·Vᵀ) に直して使う
+            var m = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new[,] { { e11, e12, e13 }, { e21, e22, e23 }, { e31, e32, e33 } });
+            var deviation = (m.Transpose() * m - MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseIdentity(3)).Enumerate().Max(v => Math.Abs(v));
+            if (!(deviation <= 1e-3) || !(m.Determinant() > 0))
+            {
+                MessageBox.Show(this,
+                    Localization.Loc(
+                        en: "The pasted values are not a rotation matrix\n(rows and columns must be orthonormal and the determinant +1).",
+                        ja: "貼り付けた値は回転行列ではありません\n(行と列が正規直交で、行列式が +1 である必要があります)。",
+                        de: "Die eingefügten Werte bilden keine Rotationsmatrix\n(Zeilen und Spalten müssen orthonormal sein, Determinante +1).",
+                        fr: "Les valeurs collées ne forment pas une matrice de rotation\n(lignes et colonnes orthonormées, déterminant +1).",
+                        es: "Los valores pegados no forman una matriz de rotación\n(filas y columnas ortonormales, determinante +1).",
+                        pt: "Os valores colados não formam uma matriz de rotação\n(linhas e colunas ortonormais, determinante +1).",
+                        it: "I valori incollati non formano una matrice di rotazione\n(righe e colonne ortonormali, determinante +1).",
+                        ru: "Вставленные значения не образуют матрицу поворота\n(строки и столбцы должны быть ортонормированы, определитель +1).",
+                        zhHans: "粘贴的值不是旋转矩阵\n（行与列须正交归一，行列式为 +1）。",
+                        zhHant: "貼上的值不是旋轉矩陣\n（各列與各行須為正規正交，行列式為 +1）。",
+                        ko: "붙여 넣은 값은 회전 행렬이 아닙니다\n(행과 열이 정규 직교이고 행렬식이 +1이어야 합니다)."),
+                    Localization.Loc(en: "Rotation matrix", ja: "回転行列", de: "Rotationsmatrix", fr: "Matrice de rotation", es: "Matriz de rotación",
+                        pt: "Matriz de rotação", it: "Matrice di rotazione", ru: "Матрица поворота", zhHans: "旋转矩阵", zhHant: "旋轉矩陣", ko: "회전 행렬"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var svd = m.Svd();
+            var nearest = svd.U * svd.VT;
+            (e11, e12, e13) = (nearest[0, 0], nearest[0, 1], nearest[0, 2]);
+            (e21, e22, e23) = (nearest[1, 0], nearest[1, 1], nearest[1, 2]);
+            (e31, e32, e33) = (nearest[2, 0], nearest[2, 1], nearest[2, 2]);
 
             skip = true;
             numericBox11.Value = e11;
