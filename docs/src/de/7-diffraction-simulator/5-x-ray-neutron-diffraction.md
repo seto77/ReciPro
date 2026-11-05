@@ -29,9 +29,9 @@ Die Wahl eines **Elements** und eines **Übergangs** legt die charakteristische 
 | Element | Linie | Wellenlänge (Å) | Energie (keV) |
 |---------|------|-----------------|--------------|
 | Cu | Kα₁ | 1.5406 | 8.048 |
-| Mo | Kα₁ | 0.7107 | 17.479 |
+| Mo | Kα₁ | 0.7093 | 17.479 |
 | Co | Kα₁ | 1.7890 | 6.930 |
-| Cr | Kα₁ | 2.2910 | 5.415 |
+| Cr | Kα₁ | 2.2897 | 5.415 |
 
 ### Synchrotronstrahlung
 
@@ -55,7 +55,11 @@ Simuliert eine Röntgen-Präzessionskamera. Dies ist eine Präzessionsaufnahme, 
 
 ### Back-Laue (Rückstrahl-Laue)
 
-Simuliert ein Rückstrahl-Laue-Muster mit weißer (polychromatischer) Röntgenstrahlung. In dieser Rückstrahlgeometrie wird der Detektor auf der Quellenseite platziert und **Monochrome** wird ausgeschaltet. Die Reflexionsgeometrie wird durch **Tau / Phi** in **Detector geometry** vorgegeben (siehe [Detector geometry](index.md#detector-geometry)).
+Simuliert ein Rückstrahl-Laue-Muster mit weißer (polychromatischer) Röntgenstrahlung. In dieser Rückstrahlgeometrie wird der Detektor auf der Quellenseite platziert und **Monochrome** wird ausgeschaltet. Die Reflexe werden auf einen ebenen Detektor **senkrecht zum Strahl** im Abstand der Kameralänge auf der Quellenseite projiziert; die Detektorkippung **Tau / Phi** der [Detektorgeometrie](index.md#detector-geometry) wird bei dieser Projektion nicht verwendet.
+
+- Das weiße Spektrum wird bei **50 keV** abgeschnitten: Reflexe werden bis $d = \lambda(50\ \text{keV})/2$ gesammelt, und es wird keine spektrale Gewichtung angewendet.
+- Harmonische $n\mathbf{g}$, die auf derselben Geraden durch den Ursprung liegen, fallen auf denselben Spot; ihre $\lvert F\rvert^2$ werden auf den Reflex niedrigster Ordnung aufsummiert, und die Spot-Intensitäten werden auf den stärksten Spot normiert.
+- **Anomale Dispersion (f', f'')** ist deaktiviert (die Energie ist nicht eindeutig), und **Reflexradius** hat in diesem Modus keine Einheit.
 
 > **Hinweis**: Die Optionen für den einfallenden Strahl richten sich nach der Wellenlänge. **Precession (electron)** und **Convergence (CBED)** erscheinen nur, wenn Elektronenstrahlung gewählt ist, während die obigen Optionen **Precession (X-ray)** und **Back-Laue** nur erscheinen, wenn Röntgenstrahlung gewählt ist. Für Neutronen ist nur **Parallel** verfügbar. Je nach Zustand zum Zeitpunkt der Aufnahme zeigt der Screenshot die röntgenspezifischen Optionen möglicherweise nicht.
 
@@ -71,9 +75,16 @@ Wählt die Methode zur Berechnung der Spot-Intensitäten. Für Röntgenstrahlen 
 
 Die Intensität wird ausschließlich durch den geometrischen Abstand zwischen der Ewald-Kugel und dem Punkt des reziproken Gitters bestimmt (dem Anregungsfehler $S_g$). Sie ist bei $S_g = 0$ — genau auf der Kugel — am größten und nimmt mit wachsendem $\lvert S_g\rvert$ ab; sie fällt auf null, sobald $\lvert S_g\rvert$ den für den reziproken Gitterpunkt angegebenen **Radius** überschreitet. Der Strukturfaktor wird ignoriert.
 
+Nur in diesem Modus erscheinen die folgenden Optionen:
+
+- **Alle verbotenen Reflexe ausschließen** / **Durch Gitterzentrierung verbotene Reflexe ausschließen** (Standard: nur Gitterzentrierung) : blendet durch die Raumgruppe verbotene Reflexe aus. Nicht ausgeblendete Reflexe werden in den getrennten Farben gezeichnet, die unter **Reflexfarbe** festgelegt sind (durch Schrauben-/Gleitspiegelsymmetrie verboten bzw. durch die Gitterzentrierung verboten).
+- **Alle Reflexe mit gleichem Radius zeichnen** : zeichnet jeden Spot unabhängig von seinem Anregungsfehler in der Größe für $S_g = 0$.
+
 ### Kinematisch & Anr.-Fehler
 
 Zusätzlich zum Anregungsfehler wird der kinematische Strukturfaktor $\lvert F_{hkl} \rvert^2$ in die Intensität einbezogen. Auslöschungsregeln werden streng befolgt. Der Lorentz- und der Polarisationsfaktor werden nicht berücksichtigt (dies ist eine Simulation des geometrischen Musters).
+
+- **Anomale Dispersion (f', f'')** (nur Röntgen, standardmäßig an) : addiert die Terme der anomalen Dispersion f′, f″ bei der aktuellen Röntgenenergie zum Strukturfaktor (auch für die Debye-Ringe). In einer nicht zentrosymmetrischen Struktur mit chemisch verschiedenen anomalen Streuern gilt das Friedelsche Gesetz dann nicht mehr, und die Intensitäten von $hkl$ / $\bar h\bar k\bar l$ unterscheiden sich (Bijvoet-Paare); der Effekt ist nahe einer Absorptionskante am stärksten. Bei Back-Laue deaktiviert. Siehe [Strukturfaktor](../appendix/a2-beam-interaction/structure-factor.md).
 
 > **Hinweis**: Die **dynamische Theorie** ist für Röntgenstrahlen deaktiviert (nur verfügbar, wenn Elektronenstrahlung gewählt ist).
 
@@ -85,23 +96,23 @@ Zusätzlich zum Anregungsfehler wird der kinematische Strukturfaktor $\lvert F_{
 
 Steuert, wie jeder Beugungsspot gerendert wird.
 
-- **Solid sphere / Gaussian** : geometrisches Modell des Punktes im reziproken Gitter. **Solid sphere** verwendet den Querschnitt zwischen einer Kugel mit Radius *R* und der Ewald-Kugel (die Fläche des Kreises entspricht der Beugungsintensität); **Gaussian** verwendet den Querschnitt zwischen einer 3D-Gauß-Funktion mit σ = *R* und der Ewald-Kugel (das Integral der 2D-Gauß-Funktion entspricht der Beugungsintensität).
-- **Opacity** : Transparenz des Spots (0 = transparent, 1 = undurchsichtig).
-- **Radius (R)** : Radius des Punktes im reziproken Gitter. Die gerenderte Spot-Größe wird durch die Kombination aus **Appearance** und **Intensity calculation** bestimmt.
-- **Brightness** : nur im Modus **Gaussian** aktiv. Legt die integrierte Intensität der gerenderten Gauß-Funktion fest.
-- **Color scale** : Wahl zwischen den Farbskalen **Gray scale** und **Cold-warm**.
-- **Log scale** : Intensitäten auf einer logarithmischen Skala anzeigen.
-- **Reflexfarbe** : Standardfarbe des Spots, wenn die Farbskala nicht angewendet wird.
+- **Vollkugel / Gauß** : geometrisches Modell des Punktes im reziproken Gitter. **Vollkugel** zeichnet den Querschnitt zwischen einer Kugel und der Ewald-Kugel; bei **Kinematisch & Anr.-Fehler** ist der Kugelradius $R \times I_\text{rel}^{1/3}$ (sodass das *Volumen* der Kugel proportional zur relativen Intensität ist), bei **Nur Anregungsfehler** ist er *R* selbst. **Gauß** verwendet den Querschnitt zwischen einer 3D-Gauß-Funktion mit σ = *R* und der Ewald-Kugel (das Integral der 2D-Gauß-Funktion entspricht der Beugungsintensität); Spots mit $\lvert S_g\rvert \ge 3R$ werden nicht gezeichnet.
+- **Deckkraft** : Transparenz des Spots (0 = transparent, 1 = undurchsichtig).
+- **Reflexradius (R)** : Radius des Punktes im reziproken Gitter. Die gerenderte Spot-Größe wird durch die Kombination aus **Darstellung** und **Intensitätsberechnung** bestimmt.
+- **Helligkeit** : nur im Modus **Gauß** aktiv. Legt die integrierte Intensität der gerenderten Gauß-Funktion fest.
+- **Farbskala** (nur Gauß) : **Gray**, **Cold-Warm**, **Spectrum** oder **Fire**.
+- **Log-Skala** (nur Gauß) : Intensitäten auf einer logarithmischen Skala anzeigen.
+- **Reflexfarbe** : Spot-Farben, die mit der Farbskala **Gray** verwendet werden (bei den anderen Farbskalen ist diese Gruppe ausgeblendet).
 - **Farbe je Kristall** : zeichnet die Spots in der dem jeweiligen Kristall zugewiesenen Farbe, wenn aktiviert.
 
 ---
 
 ## Debye-Ringe (polykristallin)
 
-Debye-Ringe einer polykristallinen Probe können angezeigt werden. Aktivieren Sie **Debye rings** in der Symbolleiste (siehe [Symbolleiste](index.md#toolbar)).
+Debye-Ringe einer polykristallinen Probe können angezeigt werden. Aktivieren Sie **Debye-Ringe** in der Symbolleiste (siehe [Symbolleiste](index.md#toolbar)).
 
-- **Ignore diffraction intensity** : zeichnet alle Ringe in derselben Farbe und Intensität (verwendet für einen rein geometrischen Vergleich, der den Strukturfaktor ignoriert).
-- **Show index label** : zeigt den (*hkl*)-Index neben jedem Ring an.
+- **Beugungsintensität ignorieren** : zeichnet alle Ringe in derselben Farbe und Intensität (verwendet für einen rein geometrischen Vergleich, der den Strukturfaktor ignoriert).
+- **Index-Beschriftungen anzeigen** : zeigt den (*hkl*)-Index neben jedem Ring an.
 
 Detaillierte Einstellungen befinden sich auf der Registerkarte Debye rings des [Registerkartenmenüs](index.md#drawing-overlay-tabs).
 
@@ -109,7 +120,7 @@ Detaillierte Einstellungen befinden sich auf der Registerkarte Debye rings des [
 
 ## Neutronenbeugung
 
-Die Wahl von **Neutron** im Steuerelement Wave Length berechnet ein Neutronenbeugungsmuster. Geben Sie die Energie (meV) oder Wellenlänge (nm) ein. Der einfallende Strahl kann nur **Parallel** sein. Die Intensitätsberechnung kann **Only excitation error** oder **Kinematical** sein (Dynamical ist nicht verfügbar). Die kinematische Intensität verwendet die Neutronenstreulänge anstelle des atomaren Streufaktors.
+Die Wahl von **Neutron** im Steuerelement Wave Length berechnet ein Neutronenbeugungsmuster. Geben Sie die Energie (meV) oder Wellenlänge (Å oder nm, umschaltbar; Standard Å) ein. Der einfallende Strahl kann nur **Parallel** sein. Die Intensitätsberechnung kann **Nur Anregungsfehler** oder **Kinematisch & Anr.-Fehler** sein (**Dynamische Theorie** ist nicht verfügbar). Die kinematische Intensität verwendet die Neutronenstreulänge anstelle des atomaren Streufaktors.
 
 ---
 

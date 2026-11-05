@@ -8,12 +8,23 @@ ReciPro verknüpft viele Funktionen mit **Tastenkombinationen** und mit **Mausta
 
 ## Anwendungsweite Kurzbefehle
 
-Diese werden vom [Hauptfenster](0-main-window.md) eingerichtet, bleiben aber aktiv, während die Fenster Strukturansicht, Stereonetz, Beugungssimulator und Spot ID den Fokus haben.
+Diese werden vom [Hauptfenster](0-main-window.md) eingerichtet, bleiben aber aktiv, während die Fenster Strukturansicht, Stereonetz, Beugungssimulator und Spot ID v1 den Fokus haben.
 
 | Kurzbefehl | Aktion |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + Pfeiltasten | Den Kristall einen Schritt in diese Richtung drehen (zwei Pfeile gleichzeitig für eine Diagonale) |
-| <kbd>CTRL</kbd> beim Start von ReciPro gedrückt halten | Mit deaktiviertem OpenGL starten (Wiederherstellung bei Grafikproblemen) |
+| <kbd>CTRL</kbd> beim Start von ReciPro gedrückt halten | Mit deaktiviertem OpenGL starten (Wiederherstellung bei Grafikproblemen; nur für diesen Start, wird nicht gespeichert) |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> (beliebiges Fenster) | Das (experimentelle) GUI-Erfassungswerkzeug für das aktive Fenster öffnen |
+
+### Numerische Eingabefelder
+
+Die meisten Zahlenfelder verhalten sich in allen Fenstern gleich.
+
+| Kurzbefehl | Aktion |
+|----------|--------|
+| <kbd>↑</kbd> / <kbd>↓</kbd> (Feld fokussiert, Drehschaltflächen sichtbar) | Den Wert schrittweise erhöhen / verringern, genau wie mit den Drehschaltflächen |
+| <kbd>ENTER</kbd> | Den eingegebenen Wert übernehmen |
+| <kbd>SHIFT</kbd>+<kbd>ENTER</kbd> oder <kbd>CTRL</kbd>+<kbd>ENTER</kbd> | Den eingegebenen Rechenausdruck auswerten und durch das Ergebnis ersetzen |
 
 ---
 
@@ -47,7 +58,7 @@ Verwendet vom Muster des [Beugungssimulators](7-diffraction-simulator/index.md),
 | Rechtsziehen eines Rahmens | In den gewählten Bereich hineinzoomen |
 | Mittelziehen | Verschieben |
 
-Auf diesen Ansichten gibt es **kein** Zoomen per Mausrad.
+Nur das Muster des Beugungssimulators zoomt zusätzlich mit dem Mausrad (×2 / ×0.5, zentriert auf den Cursor); das Stereonetz und das EBSD-Kikuchi-Muster haben **kein** Zoomen per Mausrad. Ein Zoomen mit den Tasten <kbd>+</kbd> / <kbd>-</kbd> gibt es nicht.
 
 ### Bildansichten { #image }
 
@@ -72,9 +83,9 @@ Verwendet von den Ergebnisbereichen von [HRTEM/STEM](9-hrtem-stem-simulator/inde
 | Linksziehen des Orientierungs-Widgets (unten links) | Den Kristall drehen |
 | Rechts-Doppelklick auf das Orientierungs-Widget | Das Widget-Bild in die Zwischenablage kopieren |
 | Einfachklick / Doppelklick auf eine Funktionsschaltfläche | Dieses Fenster ein-/ausschalten / in den Vordergrund zwingen |
-| Rechtsklick auf einen Kristall in der Liste | Kontextmenü (Umbenennen / Duplizieren / Löschen / CIF exportieren…) |
-| Doppelklick auf die Beschriftung **Current Index** | Das Max-UVW-Feld ein-/ausblenden |
-| Eine Datei ablegen | Eine Kristallliste (`.xml`, `.cdb2`) oder einen Kristall (`.cif`, `.amc`) laden |
+| Rechtsklick auf einen Kristall in der Liste | Kontextmenü (Umbenennen / Als CIF exportieren / Duplizieren / Löschen) |
+| Doppelklick auf die Beschriftung des Zonenachsenindex (`[u v w]`) | Das Max-UVW-Feld ein-/ausblenden |
+| Eine Datei ablegen | Eine Kristallliste (`.xml`, `.out`, `.cdb2`) oder einen Kristall (`.cif`, `.amc`) laden |
 
 ### 1. Kristalldatenbank
 [Seite öffnen →](1-crystal-database.md)
@@ -111,10 +122,11 @@ Symmetrieinformationen haben keine besonderen Tasten-/Mauskombinationen. In der 
 | Maus über das Netz bewegen | Die (hkl)/[uvw] unter dem Cursor ablesen |
 
 ### 7. Beugungssimulator
-[Seite öffnen →](7-diffraction-simulator/index.md) — das Muster ist eine [Beugungsmuster-Ansicht](#pattern) (kein Mausrad-Zoom).
+[Seite öffnen →](7-diffraction-simulator/index.md) — das Muster ist eine [Beugungsmuster-Ansicht](#pattern), zusätzlich mit Mausrad-Zoom.
 
 | Kurzbefehl | Aktion |
 |----------|--------|
+| Mausrad auf / ab | Hineinzoomen (×2) / Herauszoomen (×0.5), wobei die Ansicht auf die Cursorposition zentriert wird (auf das feste Zentrum, wenn das Kontrollkästchen **Fest** des Zentrums aktiviert ist) |
 | Links-Doppelklick auf einen Reflex | Reflexdetails anzeigen (Index, *d*, Strukturfaktor, Anregungsfehler) |
 | <kbd>CTRL</kbd> + Mittelziehen | Das Detektorzentrum verschieben (wenn der Detektorbereich angezeigt wird) |
 | Rechts-Doppelklick auf die Statusleiste | Eine Textzusammenfassung der aktuellen Einstellungen kopieren |
@@ -160,6 +172,7 @@ Symmetrieinformationen haben keine besonderen Tasten-/Mauskombinationen. In der 
 | Kurzbefehl | Aktion |
 |----------|--------|
 | Doppelklick auf das Kikuchi-Muster | Die Detektor-Teilzelle unter dem Cursor auswählen und ihre Statistik anzeigen |
+| Bei eingeschalteter Auswahl **Zone axis**: linker Doppelklick / <kbd>CTRL</kbd> + linker Doppelklick / <kbd>SHIFT</kbd> + linker Doppelklick auf das Muster | Einen Zonenachsenpunkt hinzufügen / den Punkt im Umkreis von 5 Bildschirmpixeln entfernen / diesen Punkt auswählen |
 
 ### 20. Makro
 [Seite öffnen →](20-macro/index.md)

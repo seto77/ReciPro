@@ -105,6 +105,8 @@ Der Bereich unten links passt die Darstellung des Ergebnisses an — Helligkeit,
 
 - **Für jedes Bild** : wenn aktiviert, wird jedes Bild einzeln normiert (wenn deaktiviert, teilt sich die gesamte Serie eine gemeinsame Skala).
 - **Min** / **Max** : legt das untere / obere Ende der Normierung auf den rechts angegebenen Wert fest, statt auf das Minimum / Maximum des Bildes.
+- **EDX gemeinsam** : nur sichtbar, solange eine [EDX-Karte](2-stem-simulation.md#stem-edx) angezeigt wird und der Lauf mehr als einen Kanal erzeugt hat; legt alle Kanäle derselben Größe auf einen gemeinsamen Anzeigebereich. EDX-Karten werden nie durch **Min** / **Max** umskaliert: Ihr unteres Ende ist auf 0 festgelegt, und nur das obere Ende folgt **Für jedes Bild** / **EDX gemeinsam**.
+- Diese Gruppe ist im Potential-Modus ausgeblendet.
 
 ### STEM-Bild
 
@@ -118,8 +120,8 @@ Nur im STEM-Modus sichtbar. Wählt, welche Streukomponente des berechneten STEM-
 
 Legt fest, welche Elemente über das Bild gelegt werden.
 
-- **Zelle** : blendet den Umriss der projizierten Elementarzelle ein, sodass sich der Bildkontrast dem Kristallgitter zuordnen lässt.
-- **Text** : blendet Beschriftungen wie Dicke, Defokus und Indizes ein. **Größe** (Schriftgröße) und **Farbe** lassen sich festlegen.
+- **Zelle** : blendet den Umriss der projizierten Elementarzelle ein, sodass sich der Bildkontrast dem Kristallgitter zuordnen lässt. Die Kanten parallel zu **a**, **b** und **c** werden rot, grün und blau gezeichnet, zentriert auf die Bildmitte.
+- **Text** : blendet die Beschriftung jedes Bildfelds ein — Dicke `t=` und Defokus `f=` (nm) bei HRTEM / STEM bzw. den Namen des Bildfelds (z. B. *Ug magnitude*) im Potential-Modus. **Größe** (Schriftgröße) und **Farbe** lassen sich festlegen.
 - **Maßstab** : blendet einen Maßstabsbalken ein. **Länge** (nm) und **Farbe** lassen sich festlegen.
 
 ---
@@ -131,7 +133,19 @@ Legt fest, welche Elemente über das Bild gelegt werden.
 - **Simulieren** : führt die Berechnung mit dem aktuellen Kristall, den Mikroskopbedingungen, der Dicke, dem Defokus und den Anzeigeeinstellungen aus.
 - **Stopp** : bricht die laufende Berechnung ab (nur während der Berechnung sichtbar).
 - **Echtzeit-Simulation** : wenn aktiviert, wird beim Drehen des Kristalls sofort neu berechnet (im STEM-Modus ausgeblendet).
-- **Voreinstellungen** : blendet das Voreinstellungsfenster ein oder aus, in dem TEM-Abbildungsbedingungen gespeichert und wieder aufgerufen werden.
+- **Voreinstellungen** : blendet das Voreinstellungsfenster ein oder aus, in dem TEM-Abbildungsbedingungen gespeichert und wieder aufgerufen werden (siehe [Voreinstellungsliste](#preset-list) unten).
+
+### Voreinstellungsliste {#preset-list}
+
+<!-- screenshot: Preset list window (FormPresets) with a few entries -->
+
+Das Fenster **Preset list** bewahrt benannte Momentaufnahmen der Simulatoreinstellungen auf. Eine Momentaufnahme speichert Bildmodus, Beschleunigungsspannung, Cs, Cc, ΔV, Defokus, β, Objektivblende (Größe und Versatz), das HRTEM-Teilkohärenzmodell, die Dicke sowie die Dicken-/Defokuslisten der Serie, Bildgröße und Auflösung, die Anzahl der Bloch-Wellen und die STEM-Einstellungen (Konvergenzwinkel, Detektorwinkel, Quellgröße, Schichtdicke, Winkelauflösung, **EDX-Karten berechnen** und **Linienserien (Kα, Lα…)**). Die Liste wird mit den Einstellungen von ReciPro gespeichert und bleibt über einen Neustart hinweg erhalten.
+
+- Ein Klick auf einen Eintrag wendet ihn sofort an.
+- **OK** schließt das Fenster und behält die aktuellen Einstellungen; **Abbrechen** (oder <kbd>Esc</kbd>) schließt es und stellt die Einstellungen wieder her, die beim Öffnen des Fensters galten.
+- **Voreinstellungsliste verwalten** : wenn aktiviert, wählt ein Klick einen Eintrag nur aus (er wird nicht angewendet), und das Feld **Name** mit **Add** / **Ersetzen** / **Umbenennen** / **Löschen** erscheint. **Add** hängt die aktuellen Einstellungen unter dem angegebenen Namen an, **Ersetzen** überschreibt den ausgewählten Eintrag mit den aktuellen Einstellungen, **Umbenennen** ändert nur seinen Namen.
+
+Die Mikroskop-Voreinstellungen (ARM300F, 2100F, …) sind nicht in dieser Liste; sie befinden sich im Rechtsklickmenü von **TEM-Bedingungen** (siehe [HRTEM-Simulation](1-hrtem-simulation.md#tem-conditions)).
 
 ---
 
@@ -139,17 +153,17 @@ Legt fest, welche Elemente über das Bild gelegt werden.
 
 ![Menü Datei](../../assets/cap-de-auto/FormImageSimulator.menuStrip1.fileToolStripMenuItem.png)
 
-- **Bild speichern** : speichert **als Bild (PNG-Format)**, **als Bild (TIFF-Format)** oder **als Metadatei (EMF)**. **Einzeln speichern im Serienbildmodus** schreibt die Bilder eines Serienlaufs einzeln.
+- **Bild speichern** : speichert **als Bild (PNG-Format)**, **als Bild (TIFF-Format)** oder **als Metadatei (EMF)**. PNG und EMF speichern das Angezeigte (Anzeigebereich und Farbskala); **Einzeln speichern im Serienbildmodus** (standardmäßig an) schreibt jedes Bildfeld in eine eigene Datei statt in ein gekacheltes Gesamtbild. TIFF schreibt stets eine Gleitkommadatei pro Bildfeld, ohne Overlays. Es speichert die Pixelwerte nach der **Normierung** (und nach einer etwaigen **Gauß-Unschärfe (FWHM)**), nicht den Anzeigebereich von **Anpassen**; mit den Standardwerten (**Min** 0, **Max** 1, **Für jedes Bild**) wird jedes Bild auf 0–1 skaliert — deaktivieren Sie daher **Min** / **Max**, um die berechneten Intensitäten zu exportieren. EDX-Karten werden stets unskaliert geschrieben.
 - **Bild kopieren** : kopiert in die Zwischenablage **als Bild** oder **als Metadatei (EMF)**.
-- **Symbole überdrucken** : brennt Elementarzelle, Beschriftungen und Maßstabsbalken in das gespeicherte Bild ein.
-- **TEM-Parameter laden** / **TEM-Parameter speichern** : speichert die optischen Bedingungen (Beschleunigungsspannung, Aberrationen usw.) in einer Datei und stellt sie wieder her.
+- **Symbole überdrucken** (standardmäßig an) : brennt Elementarzelle, Beschriftungen und Maßstabsbalken in das gespeicherte oder kopierte PNG-/EMF-Bild ein.
+- **TEM-Parameter laden** / **TEM-Parameter speichern** : angezeigt, aber deaktiviert (nicht implementiert). Verwenden Sie die [Voreinstellungsliste](#preset-list), um Bedingungen zu speichern und wieder aufzurufen.
 
 ## Menü Hilfe
 
 ![Menü Hilfe](../../assets/cap-de-auto/FormImageSimulator.menuStrip1.helpToolStripMenuItem.png)
 
 - **Grundkonzept der HRTEM-Simulation** : öffnet die Erläuterung der HRTEM-Bildentstehung ([Anhang A3.2](../appendix/a3-bloch-wave/hrtem.md)).
-- **Berechnungsbibliothek** : wählt die Berechnungsbibliothek — **Native code** (schnelles C++/Eigen) oder **Managed code** (.NET). Native ist normalerweise schneller.
+- **Berechnungsbibliothek** : wählt die Berechnungsbibliothek — **Native code** (schnelles C++/Eigen) oder **Managed code** (.NET). Native ist normalerweise schneller. Die Auswahl wird nur für die HRTEM-Bildsynthese verwendet; STEM wählt seinen Löser automatisch (STEM-EDX benötigt stets die native Bibliothek), und die Auswahl wird bei jedem Start von ReciPro auf **Native code** zurückgesetzt.
 
 ---
 

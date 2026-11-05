@@ -32,7 +32,7 @@ circumference = 2 * math.pi * r
 ### C. Den aktuellen Kristall drehen
 
 ```python
-# Rotate the current crystal by 30 degrees around the a-axis (x-axis).
+# Rotate the current crystal by 30 degrees around its a-axis [100].
 ReciPro.Dir.RotateAroundAxisInDeg(1, 0, 0, 30)
 ```
 
@@ -148,7 +148,7 @@ ReciPro.File.SaveText(info, "spot_info.csv")
 
 - **Werte inspizieren**: `print()` funktioniert in dieser Umgebung nicht (keine Konsole). Verwenden Sie die Ausführung **Step by step** und beobachten Sie das Debug-Panel, das die lokalen Variablen in jeder Zeile auflistet.
 - **`math` ist vorab importiert**: `math.sqrt(x)`, `math.sin(x)`, `math.pi`, `math.radians(deg)` sind ohne `import math` verfügbar.
-- **Stapel-Beschleunigung**: Setzen Sie `ReciPro.DifSim.SkipRendering = True` während enger Schleifen und setzen Sie es danach auf `False` zurück.
+- **Stapel-Beschleunigung**: `ReciPro.DifSim.SkipRendering = True` überspringt das Zeichnen der Reflexe nur im **dynamischen** Modus (die Rechnung selbst läuft weiter, daher eignet es sich für `SpotInfo()`-Stapel; gespeicherte Bilder enthalten keine Reflexe). Setzen Sie es danach auf `False` zurück. Im kinematischen/Anregungsmodus hat es keine Wirkung.
 - **Auf das Rendering warten**: Rufen Sie `ReciPro.Sleep(ms)` auf, um die Ausführung anzuhalten, wenn die GUI nachkommen muss.
 - **Autovervollständigung**: Das Popup zeigt die vollständige Form `ReciPro.Class.Member`. Tippen Sie ein paar Buchstaben und bestätigen Sie mit `Enter` oder `Tab`.
 

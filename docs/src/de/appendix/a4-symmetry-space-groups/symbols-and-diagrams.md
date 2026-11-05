@@ -166,7 +166,7 @@ Das rechte Diagramm trägt die allgemeinen äquivalenten Lagen auf — die Bahn 
 - (Nur bei kubischen Raumgruppen) verbinden dünne Hilfslinien drei Kreise, die durch eine dreizählige Achse entlang der Raumdiagonale $\langle111\rangle$ verknüpft sind.
 - Im Allgemeinen entspricht ein Kreis (oder eine Hälfte eines geteilten Kreises) einer äquivalenten Lage, sodass die Zahl der Kreise mit der **Multiplizität** der allgemeinen Lage auf der Registerkarte [Wyckoff-Lagen](../../2-symmetry-information.md) übereinstimmt — eine schnelle Plausibilitätsprüfung beim Lesen beider Diagramme. Lässt die gewählte Projektionsachse mehrere Kopien gleicher Händigkeit exakt zusammenfallen, werden sie an einer Stelle übereinandergelegt (nur durch getrennte Höhenlabels unterschieden) statt als getrennte Kreise nebeneinander gezeichnet, sodass die sichtbare Kreiszahl dann kleiner als die Multiplizität sein kann.
 
-Die Felder $x$ / $y$ / $z$ unter **Richtung** erlauben es, den Testpunkt $(x,y,z)$ von der Standardposition der Raumgruppe für diese Punktgruppe wegzubewegen — gelegentlich nützlich, um ein Diagramm zu entzerren, in dem sonst mehrere Kreise zusammenfielen.
+Die drei mit **a** / **b** / **c** beschrifteten Felder neben der Schaltfläche **Kopieren** der allgemeinen Lage (fraktionelle $x$, $y$, $z$; Bereich −1 bis 1) erlauben es, den Testpunkt $(x,y,z)$ von der Standardposition der Raumgruppe für diese Punktgruppe wegzubewegen — gelegentlich nützlich, um ein Diagramm zu entzerren, in dem sonst mehrere Kreise zusammenfielen.
 
 ---
 

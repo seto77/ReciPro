@@ -60,17 +60,17 @@ Listet die erlaubten Kristallebenen (Reflexe) des Kristalls sowie den **Struktur
 
 **Options**
 
-- **Powder Diffraction Intensities (Bragg-Brentano Optics)** : berechnet die relative Intensität als Pulverbeugungs-Intensität (Bragg–Brentano), einschließlich Multiplizität und Lorentz–Polarisations-Faktor. Wenn deaktiviert, wird die Strukturfaktor-Intensität angezeigt. Das Aktivieren erzwingt zudem *Hide equivalent planes* und *Hide prohibited planes*.
-- **Hide equivalent planes** : fasst kristallographisch äquivalente Ebenen zu einem einzelnen Eintrag zusammen.
-- **Hide prohibited planes** : schließt Ebenen aus, deren Intensität durch die Auslöschungsregeln null ist.
-- **d-Spacing Cutoff >** : schließt Reflexe mit einem d-Abstand kleiner als dieser Wert aus (die Längeneinheit folgt der Auswahl unter **Unit**).
+- **Pulverbeugungsintensitäten (Bragg-Brentano-Optik)** : berechnet die relative Intensität als Pulverbeugungs-Intensität (Bragg–Brentano), $I \propto m\,\lvert F\rvert^2 / V^2 \times L$, wobei $m$ die Multiplizität, $V$ das Zellvolumen und $L = (1+\cos^2 2\theta)/(\sin 2\theta\,\sin\theta)$ (Lorentz–Polarisations-Faktor) für Röntgenstrahlen bzw. $L = 1/(\sin 2\theta\,\sin\theta)$ (nur Lorentz-Faktor, ohne Polarisationsterm) für Elektronen und Neutronen ist. Wenn deaktiviert, wird die Strukturfaktor-Intensität $\lvert F\rvert^2$ angezeigt. Das Aktivieren erzwingt zudem *Äquivalente Ebenen ausblenden* und *Verbotene Ebenen ausblenden* und graut beide aus.
+- **Äquivalente Ebenen ausblenden** (standardmäßig an) : fasst kristallographisch äquivalente Ebenen zu einem einzelnen Eintrag zusammen. Die Spalte **Mult.** wird nur angezeigt, solange diese Option aktiv ist.
+- **Verbotene Ebenen ausblenden** (standardmäßig an) : schließt Ebenen aus, die nach den Auslöschungsregeln systematisch ausgelöscht sind. Ist die Option deaktiviert, zeigt eine Spalte **Bedingung** die Reflexionsbedingung(en), die die jeweilige ausgelöschte Ebene verbieten.
+- **d-Wert-Untergrenze >** (Standard 1 Å) : schließt Reflexe mit einem d-Abstand kleiner als dieser Wert aus (die Längeneinheit folgt der Auswahl unter **Unit**).
 
 Jede Zeile ist ein Reflex (oder eine Gruppe symmetrieäquivalenter Ebenen):
 
 | Spalte | Bedeutung |
 |------|------|
 | **h, k, l** | Miller-Indizes |
-| **Multi.** | Multiplizität (Anzahl symmetrieäquivalenter Ebenen) |
+| **Mult.** | Multiplizität (Anzahl symmetrieäquivalenter Ebenen) |
 | **d (Å)** | Netzebenenabstand |
 | **q (2π/d)** | Betrag des Streuvektors |
 | **2θ (°)** | Beugungswinkel für die gewählte Wellenlänge |
@@ -79,6 +79,8 @@ Jede Zeile ist ein Reflex (oder eine Gruppe symmetrieäquivalenter Ebenen):
 | **\|F\|** | Strukturfaktor-Amplitude ($= \sqrt{F_\text{real}^2 + F_\text{inv}^2}$) |
 | **F^2** | Strukturfaktor-Intensität ($\lvert F\rvert^2$) |
 | **Rel. Int. (%)** | relative Intensität, wobei der stärkste Reflex auf 100 gesetzt ist |
+| **Bedingung** | von der Ebene verletzte Auslöschungsbedingung(en) (nur angezeigt, wenn *Verbotene Ebenen ausblenden* deaktiviert ist) |
+| **i** | der redundante Miller-Bravais-Index $i=-(h+k)$ (nur angezeigt, wenn im Hauptfenster **Optionen ▸ Miller-Bravais-Index (hkil) verwenden** aktiv ist und der Kristall hexagonale Achsen verwendet — hexagonal oder trigonal, nicht in rhomboedrischer Achsenaufstellung) |
 
 **Beugungspeak-Diagramm.** Unter der Tabelle werden dieselben Reflexe als Strichmuster gezeichnet, wobei die stärksten Peaks durch ihr *hkl* beschriftet sind.
 
@@ -103,24 +105,24 @@ Wie tief der Strahl in das Material eindringt und wie er Energie verliert. Der I
 
 ### X-ray
 
-Die Optionsfelder wählen den dargestellten Koeffizienten gegen die Photonenenergie (1–60 keV, logarithmische Achse):
+Die Optionsfelder wählen den dargestellten Koeffizienten gegen die Photonenenergie (berechnet über 1–60 keV auf einer linearen Energieachse; die vertikale Achse ist für µ/ρ und µ logarithmisch und für T % linear):
 
 - **µ/ρ** — der **Massen**-Schwächungskoeffizient (cm²/g): wie stark das Material Röntgenstrahlen pro Gramm entfernt, unabhängig davon, wie dicht es gepackt ist (dies ist der Wert, der sich in Referenztabellen findet). Das Diagramm zeigt den **total**-Wert zusammen mit seinen Komponenten **photo**, **Rayleigh** und **Compton**.
 - **µ** — der **lineare** Schwächungskoeffizient $\mu = (\mu/\rho)\cdot\rho$ (cm⁻¹): die Abschwächung pro Zentimeter des tatsächlichen Materials bei seiner realen Dichte. Die transmittierte Intensität folgt $I = I_0\,e^{-\mu t}$, und $1/\mu$ ist die Strecke, über die die Intensität auf etwa 37 % (1/e) abfällt.
-- **T %** — die **Transmission** $T = e^{-\mu t}$ in Prozent für die Probendicke **t**, die im Feld **Thickness t** (µm) eingestellt ist. 100 % = durchlässig, 0 % = vollständig blockiert; verwenden Sie dies, um eine sinnvolle Probendicke bei der aktuellen Energie zu beurteilen.
+- **T %** — die **Transmission** $T = e^{-\mu t}$ in Prozent für die Probendicke **t**, die im Feld **Dicke t** (µm, Standard 100 µm) eingestellt ist. 100 % = durchlässig, 0 % = vollständig blockiert; verwenden Sie dies, um eine sinnvolle Probendicke bei der aktuellen Energie zu beurteilen.
 
-Die vertikalen Linien markieren die aktuelle Energie und die **Absorptionskanten** jedes Elements. Die Skalartabelle links listet bei der aktuellen Energie auf: **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (Halbwertsschichtdicke, $\ln 2/\mu$), **Transmission** bei Dicke *t*, **µ_en/ρ** (Massen-Energieabsorptionskoeffizient), die Röntgenbrechungsindex-Dekremente **δ** und **β** ($n = 1-\delta+i\beta$), den **θc (critical)**-Winkel für Totalreflexion an der Außenfläche sowie die reelle **X-ray SLD** (Streulängendichte). Die untere Tabelle listet die Energien der Absorptions-**edge** **K** und **L3** sowie deren **Jump**-Verhältnisse für jedes Element auf.
+Die vertikale Linie markiert die aktuelle Energie. Die Skalartabelle links listet bei der aktuellen Energie auf: **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (Halbwertsschichtdicke, $\ln 2/\mu$), **Transmission** bei Dicke *t*, **µ_en/ρ** (Massen-Energieabsorptionskoeffizient), die Röntgenbrechungsindex-Dekremente **δ** und **β** ($n = 1-\delta+i\beta$), den **θc (critical)**-Winkel für Totalreflexion an der Außenfläche sowie die reelle **X-ray SLD** (Streulängendichte). Die untere Tabelle listet für jedes Element die Energien der Absorptionskanten (**Kante**) **K** und **L3** sowie deren Sprungverhältnisse (**Sprung**) auf.
 
 ### Electron
 
-Die Größenauswahl bestimmt, was gegen die Strahlenergie (1–30 keV) dargestellt wird:
+Die Größenauswahl bestimmt, was gegen die Strahlenergie dargestellt wird (berechnet über 1–50 keV; die Anfangsansicht zeigt 0–20 keV):
 
-- **All (normalized)** — überlagert die drei untenstehenden Kurven, jeweils auf ihr eigenes Maximum neu skaliert, sodass die Formen in einem Diagramm verglichen werden können (Absolutwerte aus der Tabelle ablesen).
-- **σ elastic (nm²)** — elastischer Streuquerschnitt: wie wahrscheinlich ein einzelnes Atom das Elektron ablenkt.
-- **Elastic MFP (nm)** — mittlere freie Weglänge: die durchschnittliche Strecke, die das Elektron zwischen elastischen Streuereignissen zurücklegt.
+- **Alle (normiert)** — überlagert die drei untenstehenden Kurven, jeweils auf ihr eigenes Maximum neu skaliert, sodass die Formen in einem Diagramm verglichen werden können (Absolutwerte aus der Tabelle ablesen).
+- **σ elastisch (nm²)** — elastischer Streuquerschnitt: wie wahrscheinlich ein einzelnes Atom das Elektron ablenkt.
+- **Elastische MFP (nm)** — mittlere freie Weglänge: die durchschnittliche Strecke, die das Elektron zwischen elastischen Streuereignissen zurücklegt.
 - **|dE/ds| (keV/nm)** — Betrag des Bremsvermögens: die Energie, die das Elektron pro Nanometer Weg verliert.
 - **IMFP (nm)** — inelastische mittlere freie Weglänge: die durchschnittliche Strecke zwischen energieverlierenden Stößen.
-- **Range CSDA (µm)** — die gesamte Weglänge, die das Elektron zurücklegt, bevor es zur Ruhe kommt.
+- **Reichweite CSDA (µm)** — die gesamte Weglänge, die das Elektron zurücklegt, bevor es zur Ruhe kommt.
 
 Die Skalartabelle listet die Elektronen-**wavelength**, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, die **Plasma E** und die mittlere Anregungsenergie **J**, zwei Elektronen-**ranges** (die Kanaya–Okayama-Eindringtiefe-Schätzung und die CSDA-integrierte Weglänge) sowie das mittlere **Z, A** auf. Die Tabelle pro Element gibt für jedes Element den Atomanteil und den elastischen Streuquerschnitt σ an. Die elastischen Streuquerschnitte verwenden die **NIST Mott**-Daten (50 eV–36 keV) und greifen oberhalb von 36 keV auf **screened Rutherford** zurück.
 
