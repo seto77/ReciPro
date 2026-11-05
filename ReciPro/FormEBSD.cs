@@ -171,6 +171,10 @@ public partial class FormEBSD : FormBase
     /// <summary>260921Cl 追加 (/simplify): <see cref="BSEs"/> を作ったときの試料傾斜 [rad]。BSE の射出方向 (lab 系) はこの傾斜で作られているので、
     /// 射出半球へビニングし直すときは UI の現在値ではなくこちらで試料系へ戻す (傾斜だけ変えて MC を回し直していないとき、両者は食い違う)。</summary>
     double bsesSampleTilt = double.NaN;
+    /// <summary>261105Cl 追加 (監査 F 追加 c): <see cref="BSEs"/> (と mcDistribution・極点図・ΔE/深さのグラフ) を作った結晶の指紋
+    /// (<see cref="MasterPatternFile.CrystalFingerprint"/>) と加速電圧 (kV)。窓を閉じている間の結晶の変更や電圧の変更のあとで、
+    /// 旧い MC の結果を表示し続けないように照合する (MasterPattern の <see cref="masterPatternBasis"/> と同じ考え方)</summary>
+    (string CrystalFingerprint, double VoltageKeV) bsesBasis = ("", double.NaN);
 
     public Crystal Crystal => FormMain.Crystal;
 
@@ -1050,6 +1054,18 @@ public partial class FormEBSD : FormBase
         //   MC の最中に結晶を替えると構築は止まらず、旧結晶の MC (エネルギー・深さ格子、BSE 分布) で新結晶の MasterPattern を作っていた
         monteCarloCts?.Cancel();
         masterPatternEbsd.ClearMasterPattern();
+        // 261105Cl 追加 (監査 F 追加 c): MC の結果 (Calc BSE・構築の前段) も旧結晶・旧電圧の組成・密度・E0 で計算したものなので捨てる。
+        //   以前は MasterPattern だけを破棄し、「BSE 分布」タブの極点図・ΔE・深さのグラフ (と保存用の電子) が旧結晶のまま残っていた
+        if (BSEs is { Length: > 0 })
+        {
+            BSEs = [];
+            bsesSampleTilt = double.NaN;
+            bsesBasis = ("", double.NaN);
+            mcDistribution = null;
+            poleFigureControl.Vectors = [];
+            graphControlEnergyProfile.ClearProfile();
+            graphControlDepthProfile.ClearProfile();
+        }
         masterPatternBWarning = ""; // 260919Cl 追加
         tabPageOutputParameter.Enabled = false;
         checkBoxShowDyanmicalEBSD.Enabled = false;
@@ -1270,11 +1286,19 @@ public partial class FormEBSD : FormBase
         // 261105Cl 追加 (監査 #15): 窓を閉じている間は FormMain が SetCrystal を呼ばないので、閉じている間に結晶を替えて開き直すと
         //   旧結晶の MasterPattern (構築中ならその構築) のまま表示・指数付けしていた。作成時の結晶・電圧と比べ、違えば SetCrystal と同じく止めて破棄する。
         //   名前・色・方位だけの違い (指紋が同じ) なら物理的に同じ MasterPattern なので残す
-        if (Visible && FormMain?.Crystal != null && (MasterPattern != null || masterPatternEbsd.IsBuilding) && !MasterPatternBasisIsCurrent)
+        // if (Visible && FormMain?.Crystal != null && (MasterPattern != null || masterPatternEbsd.IsBuilding) && !MasterPatternBasisIsCurrent) // 261105Cl 変更前
+        // 261105Cl 変更 (監査 F 追加 c): MasterPattern が無く Calc BSE の結果だけがあるときも、旧結晶・旧電圧のものなら捨てる
+        if (Visible && FormMain?.Crystal != null
+            && (((MasterPattern != null || masterPatternEbsd.IsBuilding) && !MasterPatternBasisIsCurrent)
+                || (BSEs is { Length: > 0 } && bsesBasis != (MasterPatternFile.CrystalFingerprint(Crystal), Voltage))))
         {
+            bool hadMasterPattern = MasterPattern != null || masterPatternEbsd.IsBuilding; // 261105Cl 追加
             SetCrystal(); // 下の SetVector・3D の軸・DrawGeometry・DrawMasterPattern2D もここで済む
-            toolStripStatusLabelSummary.Text = "MasterPattern discarded";
-            toolStripStatusLabelDetail.Text = "The crystal or the accelerating voltage was changed while this window was closed. Build the master pattern again.";
+            // toolStripStatusLabelSummary.Text = "MasterPattern discarded"; // 261105Cl 変更前
+            // toolStripStatusLabelDetail.Text = "The crystal or the accelerating voltage was changed while this window was closed. Build the master pattern again.";
+            toolStripStatusLabelSummary.Text = hadMasterPattern ? "MasterPattern discarded" : "Monte Carlo results discarded"; // 261105Cl 変更
+            toolStripStatusLabelDetail.Text = "The crystal or the accelerating voltage was changed while this window was closed. "
+                + (hadMasterPattern ? "Build the master pattern again." : "Run Simulate again."); // 261105Cl 変更
             return;
         }
         SetVector();
@@ -1303,11 +1327,18 @@ public partial class FormEBSD : FormBase
         //   以前は古い MasterPattern を残したまま菊池線だけ新しい波長で描き、損失依存のコントラスト A(E) も新しい E0 で損失 E0 − E を計算していた
         //   (E0 を作成時のエネルギー格子より下げると損失が負になり、減衰が黙って効かなくなる)。ZNCC の合成キャッシュの鍵にも電圧は入っていない。
         //   結晶の変更と同じく、構築中なら止めて破棄する (SetCrystal は SetVector・候補の失効・合成キャッシュの破棄・再描画も行う)
-        if (masterPatternEbsd.IsBuilding || monteCarloCts != null || (MasterPattern != null && !MasterPatternBasisIsCurrent))
+        // if (masterPatternEbsd.IsBuilding || monteCarloCts != null || (MasterPattern != null && !MasterPatternBasisIsCurrent)) // 261105Cl 変更前
+        // 261105Cl 変更 (監査 F 追加 c): Calc BSE の結果 (極点図・ΔE・深さ) だけのときも、旧電圧のものなら捨てる
+        if (masterPatternEbsd.IsBuilding || monteCarloCts != null || (MasterPattern != null && !MasterPatternBasisIsCurrent)
+            || (BSEs is { Length: > 0 } && bsesBasis.VoltageKeV != Voltage))
         {
+            bool hadMasterPattern = MasterPattern != null || masterPatternEbsd.IsBuilding; // 261105Cl 追加
             SetCrystal();
-            toolStripStatusLabelSummary.Text = "MasterPattern discarded";
-            toolStripStatusLabelDetail.Text = $"The accelerating voltage was changed to {Voltage:g6} kV. Build the master pattern again.";
+            // toolStripStatusLabelSummary.Text = "MasterPattern discarded"; // 261105Cl 変更前
+            // toolStripStatusLabelDetail.Text = $"The accelerating voltage was changed to {Voltage:g6} kV. Build the master pattern again.";
+            toolStripStatusLabelSummary.Text = hadMasterPattern ? "MasterPattern discarded" : "Monte Carlo results discarded"; // 261105Cl 変更
+            toolStripStatusLabelDetail.Text = $"The accelerating voltage was changed to {Voltage:g6} kV. "
+                + (hadMasterPattern ? "Build the master pattern again." : "Run Simulate again."); // 261105Cl 変更
             return;
         }
         SetVector();
@@ -3159,6 +3190,7 @@ public partial class FormEBSD : FormBase
 
             BSEs = result.Bses;
             bsesSampleTilt = sampleTilt; //260921Cl 追加 (/simplify): このワーカーが MC に使った傾斜
+            bsesBasis = (MasterPatternFile.CrystalFingerprint(cry), energy); // 261105Cl 追加 (監査 F 追加 c): この MC の結晶・電圧
             numericBoxEnergyStart.Value = result.energyStart;
             numericBoxEnergyEnd.Value = result.energyEnd;
             numericBoxEnergyStep.Value = result.energyStep;
@@ -3558,6 +3590,7 @@ public partial class FormEBSD : FormBase
         {
             BSEs = electrons;
             bsesSampleTilt = info.McSampleTiltRad;
+            bsesBasis = masterPatternBasis; // 261105Cl 追加 (監査 F 追加 c): 読み込んだパターンと同じ結晶・電圧 (互換を確かめて読み込んだもの)
             RebinMcDistribution(allowCreate: true); //読み込んだパターンの格子・今の源深さモード・非晶質層・蛍光体重みで分布を作る
             var poleFigureRotation = M3.CreateRotationX(bsesSampleTilt); //MC 完了時 (RunMonteCarloAndSetRangesAsync) と同じ後処理
             poleFigureControl.Vectors = [.. BSEs.Select(e => new V4(poleFigureRotation * e.Vec, e.Energy))];
