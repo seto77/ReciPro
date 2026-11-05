@@ -1729,9 +1729,14 @@ public partial class FormImageSimulator : FormBase
         BeamsInside = BetheMethod.ExtractInsideBeams(beams, AccVol, HRTEM_ObjAperRadius, HRTEM_ObjAperX, HRTEM_ObjAperY);
         textBoxNumOfSpots.Text = BeamsInside.Length.ToString();
 
-        if (FormDiffractionSpotInfo.Visible)
+        //if (FormDiffractionSpotInfo.Visible) // 261105Cl 変更前 (下の Beams の行も)
+        //{
+        //    Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]);
+        // 261105Cl 変更 (監査 E): シリーズの厚みリストが不正 (null) や空のとき、回転のたびに NullReferenceException / IndexOutOfRange になっていた。
+        //  そのときはスポット詳細の表を更新しない (リストが不正なことは ThicknessArray がメッセージで知らせる)
+        if (FormDiffractionSpotInfo.Visible && ThicknessArray is { Length: > 0 } thicknesses)
         {
-            Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]);
+            Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknesses[0]);
             BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, HRTEM_ObjAperRadius, HRTEM_ObjAperX, HRTEM_ObjAperY);
             FormDiffractionSpotInfo.SetTable(AccVol, BeamsInside);
         }
