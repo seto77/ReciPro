@@ -101,6 +101,8 @@ public partial class FormStructureViewer : FormBase
     private class latticeID { }
     private class boundsID { }
     private class symmetryID { } // (260506Ch) 対称要素 GLObject を既存の原子・結合・格子タグと分離する
+    /// <summary>261105Cl 追加: 配位多面体を面 (Polygon) に分解して描くとき、各面に分解前の Polyhedron を持たせる (3D モデル出力が閉じた立体として使う)</summary>
+    private class polyhedronID(Polyhedron source) { public readonly Polyhedron Source = source; }
     #endregion
 
     #region コンストラクタ
@@ -906,13 +908,23 @@ public partial class FormStructureViewer : FormBase
             glSnap[e.c.ObjIndex].Rendered = true;
             foreach (var v in e.vertices)
                 glSnap[v.ObjIndex].Rendered = true;
-            IEnumerable<GLObject> polys = e.vertices.Count switch
+            //IEnumerable<GLObject> polys = e.vertices.Count switch // 261105Cl 変更前: 分解後の面 (Polygon) しか残らず、3D モデル出力 (閉じた立体だけを拾う) に多面体が出なかった
+            //{
+            //    <= 2 => [],
+            //    3 => [new Polygon(e.vertices.Select(v => v.O), e.c.PolyMat, e.mode) { Rendered = true }],
+            //    _ => new Polyhedron(e.vertices.Select(v => v.O), e.c.PolyMat, e.mode)
+            //         { Rendered = true, ShowClippedSection = false }.ToPolygons()//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
+            //};
+            // 261105Cl 変更: 4 頂点以上は、各面の Tag に分解前の Polyhedron を持たせる (ToPolygons は Tag を各面へ写す)
+            IEnumerable<GLObject> polys = [];
+            if (e.vertices.Count == 3)
+                polys = [new Polygon(e.vertices.Select(v => v.O), e.c.PolyMat, e.mode) { Rendered = true }];
+            else if (e.vertices.Count > 3)
             {
-                <= 2 => [],
-                3 => [new Polygon(e.vertices.Select(v => v.O), e.c.PolyMat, e.mode) { Rendered = true }],
-                _ => new Polyhedron(e.vertices.Select(v => v.O), e.c.PolyMat, e.mode)
-                     { Rendered = true, ShowClippedSection = false }.ToPolygons()//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
-            };
+                var polyhedron = new Polyhedron(e.vertices.Select(v => v.O), e.c.PolyMat, e.mode) { Rendered = true, ShowClippedSection = false };
+                polyhedron.Tag = new polyhedronID(polyhedron);
+                polys = polyhedron.ToPolygons();//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
+            }
             lock (lockObj3)
             {
                 GLObjects.AddRange(e.bondObjs);
@@ -1523,11 +1535,12 @@ public partial class FormStructureViewer : FormBase
     //260804Cl 変更: オプション選択フォーム全面化 (要素選択/多面体スタイル/細結合の増径/形式選択)。旧実装は commit 811e8396 参照
     private void exportModelToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        GLObject[] objs;
-        lock (lockObj1)
-            objs = [.. GLObjects];
-        var snaps = ModelExporter.Collect(objs);
-        var lineSnaps = ModelExporter.CollectLines(objs);
+        //GLObject[] objs; // 261105Cl 変更前 (4 行): 分解後の多面体の面と対称要素も対象にしていた
+        //lock (lockObj1)
+        //    objs = [.. GLObjects];
+        //var snaps = ModelExporter.Collect(objs);
+        //var lineSnaps = ModelExporter.CollectLines(objs);
+        var (snaps, lineSnaps) = CollectExportSnapshots(); // 261105Cl 変更
         if (snaps.Count == 0 && lineSnaps.Count == 0)
         {
             //260805Cl 変更: メッセージを多言語化 (旧は英語直書き)
@@ -1655,12 +1668,28 @@ public partial class FormStructureViewer : FormBase
     /// </summary>
     internal FormExport3DModel PrepareCaptureExport3DModelDialog()
     {
+        //GLObject[] objs; // 261105Cl 変更前 (4 行)
+        //lock (lockObj1)
+        //    objs = [.. GLObjects];
+        //var snaps = ModelExporter.Collect(objs);
+        //var lineSnaps = ModelExporter.CollectLines(objs);
+        var (snaps, lineSnaps) = CollectExportSnapshots(); // 261105Cl 変更
+        return snaps.Count == 0 && lineSnaps.Count == 0 ? null : new FormExport3DModel(snaps, lineSnaps);
+    }
+
+    /// <summary>
+    /// 261105Cl 追加: 3D モデル出力の対象 (閉じた立体と単位胞の枠の線) を、表示中の GLObjects から集める (メニュー・マクロ・撮影ハーネスで共用)。
+    /// 配位多面体は描画用に面 (Polygon) へ分解してあるので、面の代わりに分解前の Polyhedron (polyhedronID.Source) を入れる (面のままだと閉じた立体でないため出力されなかった)。
+    /// 対称要素 (symmetryID) は印刷の対象外 (反転中心の球が原子として、対称軸の線が単位胞の枠として出ていた)。
+    /// </summary>
+    internal (List<MeshSnapshot> Solids, List<MeshSnapshot> Lines) CollectExportSnapshots()
+    {
         GLObject[] objs;
         lock (lockObj1)
             objs = [.. GLObjects];
-        var snaps = ModelExporter.Collect(objs);
-        var lineSnaps = ModelExporter.CollectLines(objs);
-        return snaps.Count == 0 && lineSnaps.Count == 0 ? null : new FormExport3DModel(snaps, lineSnaps);
+        GLObject[] targets = [.. objs.Where(o => o.Tag is not (symmetryID or polyhedronID)),
+            .. objs.Select(o => o.Tag).OfType<polyhedronID>().Select(t => t.Source).Distinct()];
+        return (ModelExporter.Collect(targets), ModelExporter.CollectLines(targets));
     }
 
     #endregion 3Dモデル (STL/3MF) エクスポート

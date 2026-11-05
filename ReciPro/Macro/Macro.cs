@@ -1339,11 +1339,12 @@ public class Macro : MacroBase
                 else if (filename.EndsWith(".stl", StringComparison.OrdinalIgnoreCase)) use3mf = false;
                 else throw new ArgumentException("Export3DModel: the filename must end with '.stl' or '.3mf'.");
 
-                GLObject[] objs;
-                lock (viewer.lockObj1)
-                    objs = [.. viewer.GLObjects];
-                var snaps = ModelExporter.Collect(objs);
-                var lineSnaps = ModelExporter.CollectLines(objs);
+                //GLObject[] objs; // 261105Cl 変更前 (4 行): 分解後の多面体の面と対称要素も対象にしていた (多面体が出ず、対称要素が原子・枠として出た)
+                //lock (viewer.lockObj1)
+                //    objs = [.. viewer.GLObjects];
+                //var snaps = ModelExporter.Collect(objs);
+                //var lineSnaps = ModelExporter.CollectLines(objs);
+                var (snaps, lineSnaps) = viewer.CollectExportSnapshots(); // 261105Cl 変更 (ダイアログ経由と同じ対象)
 
                 //表示中の種類だけを対象にする (ダイアログの has* と同じ)
                 static bool isAtom(MeshSnapshot s) => s.Kind is SnapshotKind.Sphere or SnapshotKind.Ellipsoid;
