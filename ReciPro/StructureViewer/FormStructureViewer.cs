@@ -1229,7 +1229,10 @@ public partial class FormStructureViewer : FormBase
 
         var latticePlanes = new List<((double X, double Y, double Z, double D), double t, Color color)>();
         foreach (var p in latticePlaneControl.GetAll().Where(p => p.Enabled && p.Index != (0, 0, 0)))
-            latticePlanes.Add((p.PlaneParam, p.Translation, p.Color));
+            //latticePlanes.Add((p.PlaneParam, p.Translation, p.Color)); // 261106Cl 変更前: 面が ĝ·r = −(m + T)d に来て、正の Translation (T) で −ĝ 側へ動いていた
+            // 261106Cl 変更 (作者決定 C5): 符号を反転し、正の T で +ĝ 側 (指定した (hkl) の法線の向き) へ動かす。下の t は −T なので、面は ĝ·r = −(m − T)d = (m' + T)d。
+            //   保存済みの結晶リストの値は逆側に描かれる (作者承知。T が 0 と ±0.5 なら見た目は同じ)
+            latticePlanes.Add((p.PlaneParam, -p.Translation, p.Color)); // 261106Cl
 
         var boundArray = bounds.Select(b => new[] { b.prm[0], b.prm[1], b.prm[2], b.prm[3] * 1.2 }).ToArray();
 

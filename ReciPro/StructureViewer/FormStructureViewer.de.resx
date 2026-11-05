@@ -395,13 +395,16 @@ der Grenzen liegen</value>
     <value>Anzeigebereich auf ±1 jeder Elementarzellenachse setzen</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value>Anzeigezentrum auf den Ursprung (0, 0, 0) setzen</value>
+    <value>Zentrum auf (0, 0, 0) setzen: der angezeigte Bereich
+ist um das Projektionszentrum zentriert.</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value>Anzeigezentrum auf (1/4, 1/4, 1/4) setzen</value>
+    <value>Zentrum auf (1/4, 1/4, 1/4) setzen: der angezeigte Bereich wird gegenüber
+dem Projektionszentrum um 1/4 in Richtung +a, +b, +c verschoben.</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
-    <value>Anzeigezentrum auf (1/2, 1/2, 1/2) setzen</value>
+    <value>Zentrum auf (1/2, 1/2, 1/2) setzen: der angezeigte Bereich wird gegenüber
+dem Projektionszentrum um 1/2 in Richtung +a, +b, +c verschoben.</value>
   </data>
   <data name="buttonSetRange0.ToolTip" xml:space="preserve">
     <value>Anzeigebereich auf ±1/4 jeder Elementarzellenachse setzen</value>
@@ -440,34 +443,40 @@ der a-Achse, in fraktionellen Koordinaten;
 Atome innerhalb von Zentrum ± Range werden gezeichnet.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>Zentrum des angezeigten Bereichs entlang der c-Achse, in
-fraktionellen Koordinaten; zusammen mit dem Bereich legt es
-die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
+    <value>Verschiebung der Mitte des angezeigten Bereichs gegenüber dem
+Projektionszentrum entlang der c-Achse, in fraktionellen Koordinaten
+(positiv: in Richtung +c). Zusammen mit dem Bereich legt sie die
+minimalen/maximalen Begrenzungsebenen fest: (Projektionszentrum + Zentrum) ± Bereich.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>Zentrum des angezeigten Bereichs entlang der c-Achse, in
-fraktionellen Koordinaten; zusammen mit Range legt es
-die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
+    <value>Verschiebung der Mitte des angezeigten Bereichs gegenüber dem
+Projektionszentrum entlang der c-Achse, in fraktionellen Koordinaten
+(positiv: in Richtung +c). Zusammen mit dem Bereich legt sie die
+minimalen/maximalen Begrenzungsebenen fest: (Projektionszentrum + Zentrum) ± Bereich.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>Zentrum des angezeigten Bereichs entlang der b-Achse, in
-fraktionellen Koordinaten; zusammen mit dem Bereich legt es
-die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
+    <value>Verschiebung der Mitte des angezeigten Bereichs gegenüber dem
+Projektionszentrum entlang der b-Achse, in fraktionellen Koordinaten
+(positiv: in Richtung +b). Zusammen mit dem Bereich legt sie die
+minimalen/maximalen Begrenzungsebenen fest: (Projektionszentrum + Zentrum) ± Bereich.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>Zentrum des angezeigten Bereichs entlang der b-Achse, in
-fraktionellen Koordinaten; zusammen mit Range legt es
-die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
+    <value>Verschiebung der Mitte des angezeigten Bereichs gegenüber dem
+Projektionszentrum entlang der b-Achse, in fraktionellen Koordinaten
+(positiv: in Richtung +b). Zusammen mit dem Bereich legt sie die
+minimalen/maximalen Begrenzungsebenen fest: (Projektionszentrum + Zentrum) ± Bereich.</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>Zentrum des angezeigten Bereichs entlang der a-Achse, in
-fraktionellen Koordinaten; zusammen mit dem Bereich legt es
-die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
+    <value>Verschiebung der Mitte des angezeigten Bereichs gegenüber dem
+Projektionszentrum entlang der a-Achse, in fraktionellen Koordinaten
+(positiv: in Richtung +a). Zusammen mit dem Bereich legt sie die
+minimalen/maximalen Begrenzungsebenen fest: (Projektionszentrum + Zentrum) ± Bereich.</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value>Zentrum des angezeigten Bereichs entlang der a-Achse, in
-fraktionellen Koordinaten; zusammen mit Range legt es
-die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
+    <value>Verschiebung der Mitte des angezeigten Bereichs gegenüber dem
+Projektionszentrum entlang der a-Achse, in fraktionellen Koordinaten
+(positiv: in Richtung +a). Zusammen mit dem Bereich legt sie die
+minimalen/maximalen Begrenzungsebenen fest: (Projektionszentrum + Zentrum) ± Bereich.</value>
   </data>
   <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
     <value>Begrenzungsebenen des Kristalls ein-/ausblenden</value>
@@ -852,8 +861,9 @@ verbreitetes Programm zur Visualisierung von Kristallstrukturen).</value>
 Inversionszentren) über die 3D-Ansicht.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>Zentrum des dargestellten Bereichs (fraktionelle
-Koordinaten) entlang jeder Elementarzellenachse.</value>
+    <value>Verschiebung der Mitte des dargestellten Bereichs gegenüber dem
+Projektionszentrum, in fraktionellen Koordinaten entlang jeder
+Elementarzellenachse (positiv: in Richtung +a, +b, +c).</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>Verschiebt den Rahmen der Elementarzelle entlang der
@@ -864,7 +874,8 @@ a-, b-, c-Achse (fraktionelle Koordinaten).</value>
 Koordinaten) entlang jeder Elementarzellenachse.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>Setzt das Anzeigezentrum auf eine voreingestellte fraktionelle Position.</value>
+    <value>Setzt das Zentrum (die Verschiebung gegenüber dem Projektionszentrum)
+auf einen voreingestellten fraktionellen Wert.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value>Setzt den Anzeigebereich auf einen voreingestellten

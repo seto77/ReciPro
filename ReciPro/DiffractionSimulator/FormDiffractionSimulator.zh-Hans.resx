@@ -788,11 +788,12 @@ mm（原点：晶体）。</value>
 mm（原点：晶体）。</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>对应鼠标指针位置的晶面间距 d（nm）。</value>
+    <value>对应鼠标指针位置的晶面间距 d。单位（Å 或 nm）
+随主窗口晶格常数的 Å/nm 切换而定。</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>对应鼠标指针位置的倒易
-间距 d⁻¹（nm⁻¹）。</value>
+    <value>对应鼠标指针位置的倒易间距 d⁻¹。单位（Å⁻¹ 或 nm⁻¹）
+随主窗口晶格常数的 Å/nm 切换而定。</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>对应鼠标指针位置的散射角 2θ，

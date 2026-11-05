@@ -785,11 +785,12 @@ Beam/Top/Right 方向導引箭頭。</value>
 單位 mm（原點：晶體）。</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>對應滑鼠指標位置的晶面間距 d (nm)。</value>
+    <value>對應滑鼠指標位置的晶面間距 d。單位 (Å 或 nm)
+依主視窗晶格常數的 Å/nm 切換而定。</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>對應滑鼠指標位置的
-倒晶格間距 d⁻¹ (nm⁻¹)。</value>
+    <value>對應滑鼠指標位置的倒晶格間距 d⁻¹。單位 (Å⁻¹ 或 nm⁻¹)
+依主視窗晶格常數的 Å/nm 切換而定。</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>對應滑鼠指標位置的

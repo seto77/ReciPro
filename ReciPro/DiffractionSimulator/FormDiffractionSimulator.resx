@@ -476,7 +476,7 @@ point is from the exact Bragg/Ewald-sphere condition.</value>
     <value>32, 22</value>
   </data>
   <data name="toolStripButtonFg.Text" xml:space="preserve">
-    <value>Intensity</value>
+    <value>Intens.</value>
   </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
     <value>When checked, the intensity of each spot is displayed
@@ -4426,7 +4426,8 @@ pointer in mm (origin: crystal).</value>
     <value>MiddleRight</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>d-spacing (nm) corresponding to the mouse pointer position.</value>
+    <value>d-spacing corresponding to the mouse pointer position, in Å or nm
+(follows the Å/nm switch of the cell constants in the main window).</value>
   </data>
   <data name="&gt;&gt;labelD.Name" xml:space="preserve">
     <value>labelD</value>
@@ -4468,8 +4469,8 @@ pointer in mm (origin: crystal).</value>
     <value>MiddleRight</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>Reciprocal spacing d⁻¹ (nm⁻¹) corresponding
-to the mouse pointer position.</value>
+    <value>Reciprocal spacing d⁻¹ corresponding to the mouse pointer position,
+in Å⁻¹ or nm⁻¹ (follows the Å/nm switch of the cell constants in the main window).</value>
   </data>
   <data name="&gt;&gt;labelDinv.Name" xml:space="preserve">
     <value>labelDinv</value>

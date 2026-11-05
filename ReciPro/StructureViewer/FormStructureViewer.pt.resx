@@ -395,13 +395,16 @@ dos limites</value>
     <value>Define o intervalo de exibição em ±1 de cada eixo da célula unitária</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value>Define o centro de exibição na origem (0, 0, 0)</value>
+    <value>Define o Centro como (0, 0, 0): a região exibida
+fica centrada no centro de projeção.</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value>Define o centro de exibição em (1/4, 1/4, 1/4)</value>
+    <value>Define o Centro como (1/4, 1/4, 1/4): a região exibida é deslocada
+em 1/4 no sentido +a, +b, +c em relação ao centro de projeção.</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
-    <value>Define o centro de exibição em (1/2, 1/2, 1/2)</value>
+    <value>Define o Centro como (1/2, 1/2, 1/2): a região exibida é deslocada
+em 1/2 no sentido +a, +b, +c em relação ao centro de projeção.</value>
   </data>
   <data name="buttonSetRange0.ToolTip" xml:space="preserve">
     <value>Define o intervalo de exibição em ±1/4 de cada eixo da célula unitária</value>
@@ -440,34 +443,40 @@ do eixo a, em coordenadas fracionárias;
 átomos dentro de Centro ± Intervalo são desenhados.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>Centro da região exibida ao longo do eixo c, em
-coordenadas fracionárias; combinado com Intervalo define
-os planos delimitadores mín/máx da estrutura desenhada.</value>
+    <value>Deslocamento do centro da região exibida em relação ao centro de
+projeção ao longo do eixo c, em coordenadas fracionárias (positivo:
+no sentido +c). Combinado com Intervalo define os planos delimitadores
+mín/máx: (centro de projeção + Centro) ± Intervalo.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>Centro da região exibida ao longo do eixo c, em
-coordenadas fracionárias; combinado com Intervalo define
-os planos limítrofes mín/máx da estrutura desenhada.</value>
+    <value>Deslocamento do centro da região exibida em relação ao centro de
+projeção ao longo do eixo c, em coordenadas fracionárias (positivo:
+no sentido +c). Combinado com Intervalo define os planos delimitadores
+mín/máx: (centro de projeção + Centro) ± Intervalo.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>Centro da região exibida ao longo do eixo b, em
-coordenadas fracionárias; combinado com Intervalo define
-os planos delimitadores mín/máx da estrutura desenhada.</value>
+    <value>Deslocamento do centro da região exibida em relação ao centro de
+projeção ao longo do eixo b, em coordenadas fracionárias (positivo:
+no sentido +b). Combinado com Intervalo define os planos delimitadores
+mín/máx: (centro de projeção + Centro) ± Intervalo.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>Centro da região exibida ao longo do eixo b, em
-coordenadas fracionárias; combinado com Intervalo define
-os planos limítrofes mín/máx da estrutura desenhada.</value>
+    <value>Deslocamento do centro da região exibida em relação ao centro de
+projeção ao longo do eixo b, em coordenadas fracionárias (positivo:
+no sentido +b). Combinado com Intervalo define os planos delimitadores
+mín/máx: (centro de projeção + Centro) ± Intervalo.</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>Centro da região exibida ao longo do eixo a, em
-coordenadas fracionárias; combinado com Intervalo define
-os planos delimitadores mín/máx da estrutura desenhada.</value>
+    <value>Deslocamento do centro da região exibida em relação ao centro de
+projeção ao longo do eixo a, em coordenadas fracionárias (positivo:
+no sentido +a). Combinado com Intervalo define os planos delimitadores
+mín/máx: (centro de projeção + Centro) ± Intervalo.</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value>Centro da região exibida ao longo do eixo a, em
-coordenadas fracionárias; combinado com Intervalo define
-os planos limítrofes mín/máx da estrutura desenhada.</value>
+    <value>Deslocamento do centro da região exibida em relação ao centro de
+projeção ao longo do eixo a, em coordenadas fracionárias (positivo:
+no sentido +a). Combinado com Intervalo define os planos delimitadores
+mín/máx: (centro de projeção + Centro) ± Intervalo.</value>
   </data>
   <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
     <value>Mostra/oculta os planos delimitadores do cristal</value>
@@ -852,8 +861,9 @@ visualização de estruturas cristalinas amplamente usado).</value>
 centros de inversão) na visualização 3D.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>Centro da região exibida (coordenadas fracionárias)
-ao longo de cada eixo da célula unitária.</value>
+    <value>Deslocamento do centro da região exibida em relação ao centro de
+projeção, em coordenadas fracionárias ao longo de cada eixo da
+célula unitária (positivo: no sentido +a, +b, +c).</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>Translada o contorno da célula unitária ao longo dos
@@ -864,7 +874,8 @@ eixos a, b, c (coordenadas fracionárias).</value>
 ao longo de cada eixo da célula unitária.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>Define o centro de exibição para uma posição fracionária predefinida.</value>
+    <value>Define o Centro (o deslocamento em relação ao centro de projeção)
+para um valor fracionário predefinido.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value>Define o intervalo de exibição para uma fração

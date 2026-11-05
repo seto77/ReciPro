@@ -789,11 +789,12 @@ in mm (Ursprung: Kristall).</value>
 in mm (Ursprung: Kristall).</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>d-Wert (nm) entsprechend der Position des Mauszeigers.</value>
+    <value>d-Wert entsprechend der Position des Mauszeigers, in Å oder nm
+(folgt der Å/nm-Umschaltung der Gitterkonstanten im Hauptfenster).</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>Reziproker Abstand d⁻¹ (nm⁻¹) entsprechend
-der Position des Mauszeigers.</value>
+    <value>Reziproker Abstand d⁻¹ entsprechend der Position des Mauszeigers,
+in Å⁻¹ oder nm⁻¹ (folgt der Å/nm-Umschaltung der Gitterkonstanten im Hauptfenster).</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>Streuwinkel 2θ in Grad entsprechend

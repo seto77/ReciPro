@@ -506,7 +506,8 @@
     <value>(0 0 0)</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value>Set display center to origin (0, 0, 0)</value>
+    <value>Set Center to (0, 0, 0): the displayed region
+is centered on the projection center.</value>
   </data>
   <data name="&gt;&gt;buttonSetCenter1.Name" xml:space="preserve">
     <value>buttonSetCenter1</value>
@@ -542,7 +543,8 @@
     <value>(¼ ¼ ¼)</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value>Set display center to (1/4, 1/4, 1/4)</value>
+    <value>Set Center to (1/4, 1/4, 1/4): the displayed region is shifted
+from the projection center by 1/4 toward +a, +b, +c.</value>
   </data>
   <data name="&gt;&gt;buttonCenter2.Name" xml:space="preserve">
     <value>buttonCenter2</value>
@@ -578,7 +580,8 @@
     <value>(½ ½ ½)</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
-    <value>Set display center to (1/2, 1/2, 1/2)</value>
+    <value>Set Center to (1/2, 1/2, 1/2): the displayed region is shifted
+from the projection center by 1/2 toward +a, +b, +c.</value>
   </data>
   <data name="&gt;&gt;buttonSetCenter3.Name" xml:space="preserve">
     <value>buttonSetCenter3</value>
@@ -836,9 +839,10 @@ atoms within Center ± Range are drawn.</value>
     <value>2</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>Center of the displayed region along the c-axis, in
-fractional coordinates; combined with Range it sets
-the min/max bounding planes of the drawn structure.</value>
+    <value>Offset of the displayed region's center from the projection
+center along the c-axis, in fractional coordinates (positive:
+toward +c). With Range it sets the min/max bounding planes:
+(projection center + Center) ± Range.</value>
   </data>
   <data name="&gt;&gt;numericBoxCCenter.Name" xml:space="preserve">
     <value>numericBoxCCenter</value>
@@ -883,9 +887,10 @@ the min/max bounding planes of the drawn structure.</value>
     <value>1</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>Center of the displayed region along the b-axis, in
-fractional coordinates; combined with Range it sets
-the min/max bounding planes of the drawn structure.</value>
+    <value>Offset of the displayed region's center from the projection
+center along the b-axis, in fractional coordinates (positive:
+toward +b). With Range it sets the min/max bounding planes:
+(projection center + Center) ± Range.</value>
   </data>
   <data name="&gt;&gt;numericBoxBCenter.Name" xml:space="preserve">
     <value>numericBoxBCenter</value>
@@ -930,9 +935,10 @@ the min/max bounding planes of the drawn structure.</value>
     <value>0</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>Center of the displayed region along the a-axis, in
-fractional coordinates; combined with Range it sets
-the min/max bounding planes of the drawn structure.</value>
+    <value>Offset of the displayed region's center from the projection
+center along the a-axis, in fractional coordinates (positive:
+toward +a). With Range it sets the min/max bounding planes:
+(projection center + Center) ± Range.</value>
   </data>
   <data name="&gt;&gt;numericBoxACenter.Name" xml:space="preserve">
     <value>numericBoxACenter</value>
@@ -1042,7 +1048,8 @@ fraction of each unit-cell axis.</value>
     <value>Set center to</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>Set the display center to a preset fractional position.</value>
+    <value>Set Center (the offset from the projection center)
+to a preset fractional value.</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -1078,8 +1085,9 @@ fraction of each unit-cell axis.</value>
     <value>Center</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>Center of the displayed region (fractional
-coordinates) along each unit-cell axis.</value>
+    <value>Offset of the center of the displayed region from the
+projection center, in fractional coordinates along each
+unit-cell axis (positive: toward +a, +b, +c).</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>

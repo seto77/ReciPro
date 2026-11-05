@@ -87,6 +87,8 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
         //crystalControl1.DefaultTabNumber = 4;
         setScale();
         diffractionPatternControlSimulation.ProgressChanged += dpc_ProgressChanged;
+        // 261106Cl 追加 (作者決定 C10): 開発用の「test」ボタン (無作為に選んだ結晶子 1 つの回折図形を出す) はデバッグ版だけに出す (主窓の Power Automate の処理と同じ扱い)
+        button1.Visible = AssemblyState.IsDebug; // 261106Cl
     }
 
     private void FormPolycrystallineDiffractionSimulator_Load(object sender, EventArgs e) =>

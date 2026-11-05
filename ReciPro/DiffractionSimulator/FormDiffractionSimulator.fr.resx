@@ -209,7 +209,7 @@ l'intensité relative</value>
     <value>Divers</value>
   </data>
   <data name="numericBoxCameraLength2.HeaderText" xml:space="preserve">
-    <value>Longueur de caméra 2</value>
+    <value>Long. caméra 2</value>
   </data>
   <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
     <value>Géométrie détecteur &amp;&amp; image superposée</value>
@@ -776,11 +776,12 @@ souris en mm (origine : cristal).</value>
 souris en mm (origine : cristal).</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>Distance interréticulaire d (nm) correspondant à la position du pointeur de la souris.</value>
+    <value>Distance interréticulaire d correspondant à la position du pointeur de la souris,
+en Å ou en nm (suit le choix Å/nm des paramètres de maille dans la fenêtre principale).</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>Distance réciproque d⁻¹ (nm⁻¹) correspondant
-à la position du pointeur de la souris.</value>
+    <value>Distance réciproque d⁻¹ correspondant à la position du pointeur de la souris,
+en Å⁻¹ ou en nm⁻¹ (suit le choix Å/nm des paramètres de maille dans la fenêtre principale).</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>Angle de diffusion 2θ en degrés

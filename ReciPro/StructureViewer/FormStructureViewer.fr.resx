@@ -380,13 +380,16 @@ des limites</value>
     <value>Régler la plage d'affichage à ±1 de chaque axe de la maille élémentaire</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value>Régler le centre d'affichage à l'origine (0, 0, 0)</value>
+    <value>Régler le Centre à (0, 0, 0) : la région affichée
+est centrée sur le centre de projection.</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value>Régler le centre d'affichage à (1/4, 1/4, 1/4)</value>
+    <value>Régler le Centre à (1/4, 1/4, 1/4) : la région affichée est décalée
+de 1/4 vers +a, +b, +c par rapport au centre de projection.</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
-    <value>Régler le centre d'affichage à (1/2, 1/2, 1/2)</value>
+    <value>Régler le Centre à (1/2, 1/2, 1/2) : la région affichée est décalée
+de 1/2 vers +a, +b, +c par rapport au centre de projection.</value>
   </data>
   <data name="buttonSetRange0.ToolTip" xml:space="preserve">
     <value>Régler la plage d'affichage à ±1/4 de chaque axe de la maille élémentaire</value>
@@ -425,34 +428,40 @@ de l'axe a, en coordonnées fractionnaires ;
 les atomes dans Centre ± Plage sont dessinés.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>Centre de la région affichée le long de l'axe c, en
-coordonnées fractionnaires ; combiné à la plage, il définit
-les plans limites min/max de la structure dessinée.</value>
+    <value>Décalage du centre de la région affichée par rapport au centre de
+projection selon l'axe c, en coordonnées fractionnaires (positif :
+vers +c). Combiné à la plage, il définit les plans limites min/max :
+(centre de projection + Centre) ± Plage.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>Centre de la région affichée le long de l'axe c, en
-coordonnées fractionnaires ; combiné à la plage, il définit
-les plans limites min/max de la structure dessinée.</value>
+    <value>Décalage du centre de la région affichée par rapport au centre de
+projection selon l'axe c, en coordonnées fractionnaires (positif :
+vers +c). Combiné à la plage, il définit les plans limites min/max :
+(centre de projection + Centre) ± Plage.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>Centre de la région affichée le long de l'axe b, en
-coordonnées fractionnaires ; combiné à la plage, il définit
-les plans limites min/max de la structure dessinée.</value>
+    <value>Décalage du centre de la région affichée par rapport au centre de
+projection selon l'axe b, en coordonnées fractionnaires (positif :
+vers +b). Combiné à la plage, il définit les plans limites min/max :
+(centre de projection + Centre) ± Plage.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>Centre de la région affichée le long de l'axe b, en
-coordonnées fractionnaires ; combiné à la plage, il définit
-les plans limites min/max de la structure dessinée.</value>
+    <value>Décalage du centre de la région affichée par rapport au centre de
+projection selon l'axe b, en coordonnées fractionnaires (positif :
+vers +b). Combiné à la plage, il définit les plans limites min/max :
+(centre de projection + Centre) ± Plage.</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>Centre de la région affichée le long de l'axe a, en
-coordonnées fractionnaires ; combiné à la plage, il définit
-les plans limites min/max de la structure dessinée.</value>
+    <value>Décalage du centre de la région affichée par rapport au centre de
+projection selon l'axe a, en coordonnées fractionnaires (positif :
+vers +a). Combiné à la plage, il définit les plans limites min/max :
+(centre de projection + Centre) ± Plage.</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value>Centre de la région affichée le long de l'axe a, en
-coordonnées fractionnaires ; combiné à la plage, il définit
-les plans limites min/max de la structure dessinée.</value>
+    <value>Décalage du centre de la région affichée par rapport au centre de
+projection selon l'axe a, en coordonnées fractionnaires (positif :
+vers +a). Combiné à la plage, il définit les plans limites min/max :
+(centre de projection + Centre) ± Plage.</value>
   </data>
   <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
     <value>Afficher/masquer les plans limites du cristal</value>
@@ -837,8 +846,9 @@ de visualisation de structures cristallines très répandu).</value>
 centres d'inversion) sur la vue 3D.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>Centre de la région affichée (coordonnées
-fractionnaires) le long de chaque axe de la maille.</value>
+    <value>Décalage du centre de la région affichée par rapport au centre
+de projection, en coordonnées fractionnaires le long de chaque
+axe de la maille (positif : vers +a, +b, +c).</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>Translate le cadre de la maille élémentaire le long
@@ -849,7 +859,8 @@ des axes a, b, c (coordonnées fractionnaires).</value>
 fractionnaires) le long de chaque axe de la maille.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>Définit le centre d'affichage à une position fractionnaire prédéfinie.</value>
+    <value>Définit le Centre (le décalage par rapport au centre de projection)
+à une valeur fractionnaire prédéfinie.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value>Définit la plage d'affichage à une fraction

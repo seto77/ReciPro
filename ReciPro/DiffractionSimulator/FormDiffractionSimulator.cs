@@ -529,7 +529,9 @@ public partial class FormDiffractionSimulator : FormBase
 
         // 261105Cl 追加 (作者決定 C20): スポットのラベルの d は主窓の Å/nm に従うので、切り替えたら描き直す (Load は一度しか来ないので購読も一度)
         if (formMain?.crystalControl != null) // 261105Cl
-            formMain.crystalControl.LengthUnitChanged += (s, ev) => { if (Visible && toolStripButtonDspacing.Checked) Draw(); }; // 261105Cl
+            //formMain.crystalControl.LengthUnitChanged += (s, ev) => { if (Visible && toolStripButtonDspacing.Checked) Draw(); }; // 261105Cl // 261106Cl 変更前: d のラベルだけ
+            // 261106Cl 変更 (作者決定 C2): 1/d・Sg のラベルとマウス位置の d・d⁻¹ も Å/nm に従う。ラベルは描き直し、マウス位置の欄は次にマウスを動かしたときに書き直す
+            formMain.crystalControl.LengthUnitChanged += (s, ev) => { if (Visible && (toolStripButtonDspacing.Checked || toolStripButtonDspacingInv.Checked || toolStripButtonExcitationError.Checked)) Draw(); }; // 261106Cl
     }
 
     //クローズ
@@ -1311,7 +1313,11 @@ public partial class FormDiffractionSimulator : FormBase
         // 261105Cl 変更 (作者決定 C20): d の単位は主窓の格子定数の欄の Å/nm の切り替えに従う (切り替えたら Load で購読した LengthUnitChanged で描き直す)
         if (toolStripButtonDspacing.Checked) // 261105Cl
             sb.AppendLine(formMain?.crystalControl?.LengthUnit == LengthUnitEnum.NanoMeter ? $"{g.d:0.####} nm" : $"{g.d * 10:#.###} Å"); // 261105Cl
-        if (toolStripButtonDspacingInv.Checked) sb.AppendLine($"{1 / g.d:#.###} /nm");
+        //if (toolStripButtonDspacingInv.Checked) sb.AppendLine($"{1 / g.d:#.###} /nm"); // 261106Cl 変更前: 1/d は nm⁻¹ 固定
+        // 261106Cl 変更 (作者決定 C2): 1/d と Sg も主窓の Å/nm に従う (Å なら Å⁻¹)。桁は d のラベルと同じ考え方で、値が 1/10 になる Å⁻¹ は小数を 1 桁多く
+        var nanometer = formMain?.crystalControl?.LengthUnit == LengthUnitEnum.NanoMeter; // 261106Cl
+        if (toolStripButtonDspacingInv.Checked) // 261106Cl
+            sb.AppendLine(nanometer ? $"{1 / g.d:#.###} nm⁻¹" : $"{0.1 / g.d:0.####} Å⁻¹"); // 261106Cl
         //if (toolStripButtonDistance.Checked) sb.AppendLine($"{CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2)):#.###} mm"); // 261105Cl 変更前 (監査 C15)
         // 261105Cl 変更: CL·tan2θ は傾けていない平板の検出器でしか画面上の距離と合わない (検出器の傾斜・X 線プリセッション CL·λ/d・Back Laue で違う)。
         //  ツールチップのとおり「透過スポットまでの検出器上の距離」を、描いた位置 pt と透過スポットの位置 (Back Laue は入射ビームの穴 = 原点) から求める
@@ -1337,7 +1343,8 @@ public partial class FormDiffractionSimulator : FormBase
             if (toolStripButtonAzimuth.Checked && real.X2Y2 > 1E-20)//260703Cl 既存プロパティX2Y2を利用。直接スポット(000)では方位角が定義できないので省略
                 sb.AppendLine($"χ {Math.Atan2(real.X, -real.Y) / Math.PI * 180:0.##}°");//画面上向きが0°、時計回りが正 (方位角スケール線と同じ定義)
         }
-        if (toolStripButtonExcitationError.Checked) sb.AppendLine($"{error:f3} /nm");
+        //if (toolStripButtonExcitationError.Checked) sb.AppendLine($"{error:f3} /nm"); // 261106Cl 変更前
+        if (toolStripButtonExcitationError.Checked) sb.AppendLine(nanometer ? $"{error:f3} nm⁻¹" : $"{error / 10:f4} Å⁻¹"); // 261106Cl 変更 (作者決定 C2): error は nm⁻¹
 
         if (toolStripButtonFg.Checked)
         {
@@ -2542,10 +2549,15 @@ public partial class FormDiffractionSimulator : FormBase
         labelMousePositionReciprocal.Text = radioButtonBeamBackLaue.Checked ? $"(-, -, -)" : $"({invPos.X:f3}, {invPos.Y:f3}, {invPos.Z:f3})";
 
         //labelDinv.Text = radioButtonBeamBackLaue.Checked ? "$d⁻¹: - nm⁻¹" : $"d⁻¹: {invPos.Length:f4} nm⁻¹"; // 261105Cl 変更前: Back Laue で "$" がそのまま出ていた
-        labelDinv.Text = radioButtonBeamBackLaue.Checked ? "d⁻¹: - nm⁻¹" : $"d⁻¹: {invPos.Length:f4} nm⁻¹"; // 261105Cl 修正
+        //labelDinv.Text = radioButtonBeamBackLaue.Checked ? "d⁻¹: - nm⁻¹" : $"d⁻¹: {invPos.Length:f4} nm⁻¹"; // 261105Cl 修正 // 261106Cl 変更前: nm⁻¹ 固定
+        // 261106Cl 変更 (作者決定 C2): マウス位置の d・d⁻¹ も主窓の Å/nm に従う (Å なら Å・Å⁻¹)。桁はスポットのラベルと同じく、値が 1/10 になる側を 1 桁多く
+        var nanometer = formMain?.crystalControl?.LengthUnit == LengthUnitEnum.NanoMeter; // 261106Cl
+        labelDinv.Text = radioButtonBeamBackLaue.Checked ? $"d⁻¹: - {(nanometer ? "nm⁻¹" : "Å⁻¹")}" // 261106Cl
+            : nanometer ? $"d⁻¹: {invPos.Length:f4} nm⁻¹" : $"d⁻¹: {invPos.Length / 10:f5} Å⁻¹"; // 261106Cl (invPos は nm⁻¹)
         var d = 1.0 / invPos.Length;
         //labelD.Text = radioButtonBeamBackLaue.Checked ? "$\"d: - nm\" " : $"d: {d:f4} nm"; // 261105Cl 変更前: Back Laue で $"d: - nm" (引用符と末尾の空白込み) と出ていた
-        labelD.Text = radioButtonBeamBackLaue.Checked ? "d: - nm" : $"d: {d:f4} nm"; // 261105Cl 修正
+        //labelD.Text = radioButtonBeamBackLaue.Checked ? "d: - nm" : $"d: {d:f4} nm"; // 261105Cl 修正 // 261106Cl 変更前: nm 固定
+        labelD.Text = radioButtonBeamBackLaue.Checked ? $"d: - {(nanometer ? "nm" : "Å")}" : nanometer ? $"d: {d:f4} nm" : $"d: {d * 10:f3} Å"; // 261106Cl 変更 (作者決定 C2)
         //var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d); // 261105Cl 変更前 (監査 C13): Back Laue では前方の写像の角 (= 180° − 2θ) が出ていた
         var twoThetaRad = radioButtonBeamBackLaue.Checked ? Math.PI - Math.Atan2(Math.Sqrt(realPos.X2Y2), realPos.Z) : 2 * Math.Asin(WaveLength / 2 / d); // 261105Cl 検出器は入射側
         var twoThetaDeg = twoThetaRad / Math.PI * 180;

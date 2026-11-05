@@ -163,8 +163,17 @@ public partial class FormEBSD : FormBase
     public int MonteCarloSourceDepthMode { get => comboBoxMonteCarloDepthMode.SelectedIndex; set { if ((uint)value < (uint)comboBoxMonteCarloDepthMode.Items.Count) comboBoxMonteCarloDepthMode.SelectedIndex = value; } } // 260919Cl 追加: 源の深さモード (層厚と同様に永続化)
     /// <summary>261105Cl 追加 (監査 F5・作者決定): Energy・Depth の範囲を MC の結果から自動で決めるか (既定 ON = 従来の動き)。
     /// ON の間は Simulate・構築・読み込み後の MC が欄を書き換え、欄は読み取り専用。OFF なら MC は欄を書き換えず、構築は手入力の範囲で行う
-    /// (<see cref="buttonCreateMasterPattern_Click"/> が範囲を検査する)。範囲の値そのものは保存しない</summary>
+    /// (<see cref="buttonCreateMasterPattern_Click"/> が範囲を検査する)。範囲の値そのものは保存しない
+    /// (261106Cl 変更 (作者決定 C11): 範囲の値も保存し、OFF で起動したときに戻す。下の EnergyRange*・DepthRange*)</summary>
     public bool RangesFromMonteCarlo { get => checkBoxRangesFromMonteCarlo.Checked; set => checkBoxRangesFromMonteCarlo.Checked = value; }
+    // 261106Cl 追加 (作者決定 C11): 手で入れた Energy・Depth の範囲欄の値も保存して次の起動で戻す (FormMain.Registry は「MC から自動」が OFF のときだけ読む)。
+    //   欄の値をそのまま出し入れする (Energy は keV、Depth は nm)。別の加速電圧で起動して合わない範囲が戻ったときは、構築の前の検査 (buttonCreateMasterPattern_Click) が知らせる
+    public double EnergyRangeStartKeV { get => numericBoxEnergyStart.Value; set => numericBoxEnergyStart.Value = value; } // 261106Cl 追加
+    public double EnergyRangeEndKeV { get => numericBoxEnergyEnd.Value; set => numericBoxEnergyEnd.Value = value; } // 261106Cl 追加
+    public double EnergyRangeStepKeV { get => numericBoxEnergyStep.Value; set => numericBoxEnergyStep.Value = value; } // 261106Cl 追加
+    public double DepthRangeStartNm { get => numericBoxThicknessStart.Value; set => numericBoxThicknessStart.Value = value; } // 261106Cl 追加
+    public double DepthRangeEndNm { get => numericBoxThicknessEnd.Value; set => numericBoxThicknessEnd.Value = value; } // 261106Cl 追加
+    public double DepthRangeStepNm { get => numericBoxThicknessStep.Value; set => numericBoxThicknessStep.Value = value; } // 261106Cl 追加
     #endregion
 
     public double SmpTilt => numericBoxSampleTilt.RadianValue;

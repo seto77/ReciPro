@@ -218,7 +218,7 @@ intensità relativa</value>
     <value>Varie</value>
   </data>
   <data name="numericBoxCameraLength2.HeaderText" xml:space="preserve">
-    <value>Lunghezza di camera 2</value>
+    <value>Lungh. camera 2</value>
   </data>
   <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
     <value>Geometria rivelatore &amp;&amp; immagine sovrapp.</value>
@@ -782,11 +782,12 @@ mouse in mm (origine: cristallo).</value>
 mouse in mm (origine: cristallo).</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>Distanza interplanare d (nm) corrispondente alla posizione del puntatore del mouse.</value>
+    <value>Distanza interplanare d corrispondente alla posizione del puntatore del mouse,
+in Å o nm (segue la scelta Å/nm dei parametri di cella nella finestra principale).</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>Spaziatura reciproca d⁻¹ (nm⁻¹) corrispondente
-alla posizione del puntatore del mouse.</value>
+    <value>Spaziatura reciproca d⁻¹ corrispondente alla posizione del puntatore del mouse,
+in Å⁻¹ o nm⁻¹ (segue la scelta Å/nm dei parametri di cella nella finestra principale).</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>Angolo di diffusione 2θ in gradi

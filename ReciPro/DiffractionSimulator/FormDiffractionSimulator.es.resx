@@ -215,7 +215,7 @@ intensidad relativa</value>
     <value>Varios</value>
   </data>
   <data name="numericBoxCameraLength2.HeaderText" xml:space="preserve">
-    <value>Longitud de cámara 2</value>
+    <value>Long. cámara 2</value>
   </data>
   <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
     <value>Geometría detector &amp;&amp; imagen superpuesta</value>
@@ -785,11 +785,12 @@ del ratón en mm (origen: cristal).</value>
 del ratón en mm (origen: cristal).</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>Distancia interplanar d (nm) correspondiente a la posición del puntero del ratón.</value>
+    <value>Distancia interplanar d correspondiente a la posición del puntero del ratón,
+en Å o nm (sigue la selección Å/nm de los parámetros de celda en la ventana principal).</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>Distancia recíproca d⁻¹ (nm⁻¹) correspondiente
-a la posición del puntero del ratón.</value>
+    <value>Distancia recíproca d⁻¹ correspondiente a la posición del puntero del ratón,
+en Å⁻¹ o nm⁻¹ (sigue la selección Å/nm de los parámetros de celda en la ventana principal).</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>Ángulo de dispersión 2θ en grados correspondiente

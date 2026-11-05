@@ -386,13 +386,16 @@ de los límites</value>
     <value>Definir el rango de visualización a +/-1 de cada eje de la celda unidad</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value>Definir el centro de visualización en el origen (0, 0, 0)</value>
+    <value>Fijar el Centro en (0, 0, 0): la región visualizada
+queda centrada en el centro de proyección.</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value>Definir el centro de visualización en (1/4, 1/4, 1/4)</value>
+    <value>Fijar el Centro en (1/4, 1/4, 1/4): la región visualizada se desplaza
+1/4 hacia +a, +b, +c respecto al centro de proyección.</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
-    <value>Definir el centro de visualización en (1/2, 1/2, 1/2)</value>
+    <value>Fijar el Centro en (1/2, 1/2, 1/2): la región visualizada se desplaza
+1/2 hacia +a, +b, +c respecto al centro de proyección.</value>
   </data>
   <data name="buttonSetRange0.ToolTip" xml:space="preserve">
     <value>Definir el rango de visualización a +/-1/4 de cada eje de la celda unidad</value>
@@ -431,34 +434,40 @@ del eje a, en coordenadas fraccionarias;
 se dibujan los átomos dentro de Centro ± Rango.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>Centro de la región visualizada a lo largo del eje c, en
-coordenadas fraccionarias; combinado con Rango define
-los planos límite mínimo/máximo de la estructura dibujada.</value>
+    <value>Desplazamiento del centro de la región visualizada respecto al centro
+de proyección a lo largo del eje c, en coordenadas fraccionarias
+(positivo: hacia +c). Combinado con Rango define los planos límite
+mínimo/máximo: (centro de proyección + Centro) ± Rango.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>Centro de la región visualizada a lo largo del eje c, en
-coordenadas fraccionarias; combinado con Rango define
-los planos límite mínimo/máximo de la estructura dibujada.</value>
+    <value>Desplazamiento del centro de la región visualizada respecto al centro
+de proyección a lo largo del eje c, en coordenadas fraccionarias
+(positivo: hacia +c). Combinado con Rango define los planos límite
+mínimo/máximo: (centro de proyección + Centro) ± Rango.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>Centro de la región visualizada a lo largo del eje b, en
-coordenadas fraccionarias; combinado con Rango define
-los planos límite mínimo/máximo de la estructura dibujada.</value>
+    <value>Desplazamiento del centro de la región visualizada respecto al centro
+de proyección a lo largo del eje b, en coordenadas fraccionarias
+(positivo: hacia +b). Combinado con Rango define los planos límite
+mínimo/máximo: (centro de proyección + Centro) ± Rango.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>Centro de la región visualizada a lo largo del eje b, en
-coordenadas fraccionarias; combinado con Rango define
-los planos límite mínimo/máximo de la estructura dibujada.</value>
+    <value>Desplazamiento del centro de la región visualizada respecto al centro
+de proyección a lo largo del eje b, en coordenadas fraccionarias
+(positivo: hacia +b). Combinado con Rango define los planos límite
+mínimo/máximo: (centro de proyección + Centro) ± Rango.</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>Centro de la región visualizada a lo largo del eje a, en
-coordenadas fraccionarias; combinado con Rango define
-los planos límite mínimo/máximo de la estructura dibujada.</value>
+    <value>Desplazamiento del centro de la región visualizada respecto al centro
+de proyección a lo largo del eje a, en coordenadas fraccionarias
+(positivo: hacia +a). Combinado con Rango define los planos límite
+mínimo/máximo: (centro de proyección + Centro) ± Rango.</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value>Centro de la región visualizada a lo largo del eje a, en
-coordenadas fraccionarias; combinado con Rango define
-los planos límite mínimo/máximo de la estructura dibujada.</value>
+    <value>Desplazamiento del centro de la región visualizada respecto al centro
+de proyección a lo largo del eje a, en coordenadas fraccionarias
+(positivo: hacia +a). Combinado con Rango define los planos límite
+mínimo/máximo: (centro de proyección + Centro) ± Rango.</value>
   </data>
   <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
     <value>Muestra/oculta los planos límite del cristal</value>
@@ -843,8 +852,9 @@ visualización de estructuras cristalinas ampliamente utilizado).</value>
 centros de inversión) sobre la vista 3D.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>Centro de la región mostrada (coordenadas
-fraccionarias) a lo largo de cada eje de la celda unidad.</value>
+    <value>Desplazamiento del centro de la región mostrada respecto al centro
+de proyección, en coordenadas fraccionarias a lo largo de cada eje
+de la celda unidad (positivo: hacia +a, +b, +c).</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>Traslada el armazón de la celda unidad a lo largo de los
@@ -855,7 +865,8 @@ ejes a, b, c (coordenadas fraccionarias).</value>
 fraccionarias) a lo largo de cada eje de la celda unidad.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>Establece el centro de visualización en una posición fraccionaria predefinida.</value>
+    <value>Establece el Centro (el desplazamiento respecto al centro de proyección)
+en un valor fraccionario predefinido.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value>Establece el rango de visualización en una fracción

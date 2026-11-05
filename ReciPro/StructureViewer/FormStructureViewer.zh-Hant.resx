@@ -395,13 +395,15 @@
     <value>將顯示範圍設為各晶胞軸的 ±1</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value>將顯示中心設為原點 (0, 0, 0)</value>
+    <value>將「中心」設為 (0, 0, 0)：顯示區域以投影中心為中心。</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value>將顯示中心設為 (1/4, 1/4, 1/4)</value>
+    <value>將「中心」設為 (1/4, 1/4, 1/4)：顯示區域從投影中心
+朝 +a, +b, +c 方向各偏移 1/4。</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
-    <value>將顯示中心設為 (1/2, 1/2, 1/2)</value>
+    <value>將「中心」設為 (1/2, 1/2, 1/2)：顯示區域從投影中心
+朝 +a, +b, +c 方向各偏移 1/2。</value>
   </data>
   <data name="buttonSetRange0.ToolTip" xml:space="preserve">
     <value>將顯示範圍設為各晶胞軸的 ±1/4</value>
@@ -440,34 +442,34 @@
 以內的原子。</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>顯示區域沿 c 軸方向的中心，以
-分數座標表示；與範圍搭配以設定
-所繪結構的最小／最大邊界面。</value>
+    <value>顯示區域中心相對於投影中心沿 c 軸方向的偏移，以分數座標表示
+（正值朝 +c 方向）。與範圍搭配設定所繪結構的最小／最大邊界面：
+(投影中心 + 中心) ± 範圍。</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>顯示區域沿 c 軸方向的中心，以
-分數座標表示；與範圍搭配以設定
-所繪結構的最小／最大邊界面。</value>
+    <value>顯示區域中心相對於投影中心沿 c 軸方向的偏移，以分數座標表示
+（正值朝 +c 方向）。與範圍搭配設定所繪結構的最小／最大邊界面：
+(投影中心 + 中心) ± 範圍。</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>顯示區域沿 b 軸方向的中心，以
-分數座標表示；與範圍搭配以設定
-所繪結構的最小／最大邊界面。</value>
+    <value>顯示區域中心相對於投影中心沿 b 軸方向的偏移，以分數座標表示
+（正值朝 +b 方向）。與範圍搭配設定所繪結構的最小／最大邊界面：
+(投影中心 + 中心) ± 範圍。</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>顯示區域沿 b 軸方向的中心，以
-分數座標表示；與範圍搭配以設定
-所繪結構的最小／最大邊界面。</value>
+    <value>顯示區域中心相對於投影中心沿 b 軸方向的偏移，以分數座標表示
+（正值朝 +b 方向）。與範圍搭配設定所繪結構的最小／最大邊界面：
+(投影中心 + 中心) ± 範圍。</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>顯示區域沿 a 軸方向的中心，以
-分數座標表示；與範圍搭配以設定
-所繪結構的最小／最大邊界面。</value>
+    <value>顯示區域中心相對於投影中心沿 a 軸方向的偏移，以分數座標表示
+（正值朝 +a 方向）。與範圍搭配設定所繪結構的最小／最大邊界面：
+(投影中心 + 中心) ± 範圍。</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value>顯示區域沿 a 軸方向的中心，以
-分數座標表示；與範圍搭配以設定
-所繪結構的最小／最大邊界面。</value>
+    <value>顯示區域中心相對於投影中心沿 a 軸方向的偏移，以分數座標表示
+（正值朝 +a 方向）。與範圍搭配設定所繪結構的最小／最大邊界面：
+(投影中心 + 中心) ± 範圍。</value>
   </data>
   <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
     <value>顯示／隱藏晶體的邊界面</value>
@@ -851,8 +853,8 @@ VESTA 風格的預設值 (VESTA 是廣泛使用的
 反演中心)。</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>顯示區域沿各晶胞軸方向的中心
-(分率座標)。</value>
+    <value>顯示區域中心相對於投影中心的偏移，以沿各晶胞軸方向的
+分數座標表示（正值朝 +a, +b, +c 方向）。</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>將晶胞框架沿 a、b、c 軸方向
@@ -863,7 +865,7 @@ VESTA 風格的預設值 (VESTA 是廣泛使用的
 (分率座標)。</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>將顯示中心設定為預設的分率座標位置。</value>
+    <value>將「中心」（相對於投影中心的偏移）設定為預設的分數座標值。</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value>將顯示範圍設定為各晶胞軸的

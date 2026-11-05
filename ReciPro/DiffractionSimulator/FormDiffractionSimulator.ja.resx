@@ -750,10 +750,12 @@ Beam/Top/Right の方向ガイド矢印を表示します。</value>
     <value>マウス位置の実空間座標(mm 単位、原点は結晶)を表示します。</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>マウス位置に対応する面間隔 d (nm) を表示します。</value>
+    <value>マウス位置に対応する面間隔 d を表示します。単位 (Å または nm) は
+主画面の格子定数の Å/nm の切り替えに従います。</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>マウス位置に対応する逆格子間隔 d⁻¹ (nm⁻¹) を表示します。</value>
+    <value>マウス位置に対応する逆格子間隔 d⁻¹ を表示します。単位 (Å⁻¹ または nm⁻¹) は
+主画面の格子定数の Å/nm の切り替えに従います。</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>マウス位置に対応する散乱角 2θ を度(°)で表示します。</value>

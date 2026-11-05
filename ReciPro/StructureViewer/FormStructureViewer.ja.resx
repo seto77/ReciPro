@@ -175,13 +175,15 @@
     <value>表示範囲を各単位胞軸の ±1 に設定</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value>表示中心を原点 (0, 0, 0) に設定</value>
+    <value>「中心」を (0, 0, 0) に設定: 表示領域の中心を投影中心に合わせます。</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value>表示中心を (1/4, 1/4, 1/4) に設定</value>
+    <value>「中心」を (1/4, 1/4, 1/4) に設定: 表示領域を投影中心から
++a, +b, +c の向きに 1/4 ずつずらします。</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
-    <value>表示中心を (1/2, 1/2, 1/2) に設定</value>
+    <value>「中心」を (1/2, 1/2, 1/2) に設定: 表示領域を投影中心から
++a, +b, +c の向きに 1/2 ずつずらします。</value>
   </data>
   <data name="buttonSetRange0.ToolTip" xml:space="preserve">
     <value>表示範囲を各単位胞軸の ±1/4 に設定</value>
@@ -203,16 +205,19 @@
 中心 ± この値 の範囲内の原子を描画します。</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>表示領域の中心の c 軸成分（分率座標）。Range と
-組み合わせて描画範囲の上限／下限面を決めます。</value>
+    <value>表示領域の中心の、投影中心からの c 軸方向のずれ (分率座標。
+正で +c の向き)。「範囲」と組み合わせて描画範囲の上限／下限面を
+決めます: (投影中心 + 中心) ± 範囲。</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>表示領域の中心の b 軸成分（分率座標）。Range と
-組み合わせて描画範囲の上限／下限面を決めます。</value>
+    <value>表示領域の中心の、投影中心からの b 軸方向のずれ (分率座標。
+正で +b の向き)。「範囲」と組み合わせて描画範囲の上限／下限面を
+決めます: (投影中心 + 中心) ± 範囲。</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>表示領域の中心の a 軸成分（分率座標）。Range と
-組み合わせて描画範囲の上限／下限面を決めます。</value>
+    <value>表示領域の中心の、投影中心からの a 軸方向のずれ (分率座標。
+正で +a の向き)。「範囲」と組み合わせて描画範囲の上限／下限面を
+決めます: (投影中心 + 中心) ± 範囲。</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>範囲</value>
@@ -230,13 +235,14 @@
     <value>中心を以下の値にセット</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>表示中心をプリセットの分率座標位置に設定します。</value>
+    <value>「中心」(投影中心からのずれ) をプリセットの分率座標の値に設定します。</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>中心</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>各単位胞軸方向の表示領域の中心(分率座標)。</value>
+    <value>表示領域の中心の、投影中心からのずれ (各単位胞軸方向の
+分率座標。正で +a, +b, +c の向き)。</value>
   </data>
   <data name="tabPageBoundPlane.ToolTip" xml:space="preserve">
     <value />
@@ -927,16 +933,19 @@ List、新しい OpenGL が必要）かを選びます。</value>
 中心 ± この値 の範囲内の原子を描画します。</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>表示領域の中心の c 軸成分（分率座標）。Range と
-組み合わせて描画範囲の上限／下限面を決めます。</value>
+    <value>表示領域の中心の、投影中心からの c 軸方向のずれ (分率座標。
+正で +c の向き)。「範囲」と組み合わせて描画範囲の上限／下限面を
+決めます: (投影中心 + 中心) ± 範囲。</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>表示領域の中心の b 軸成分（分率座標）。Range と
-組み合わせて描画範囲の上限／下限面を決めます。</value>
+    <value>表示領域の中心の、投影中心からの b 軸方向のずれ (分率座標。
+正で +b の向き)。「範囲」と組み合わせて描画範囲の上限／下限面を
+決めます: (投影中心 + 中心) ± 範囲。</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value>表示領域の中心の a 軸成分（分率座標）。Range と
-組み合わせて描画範囲の上限／下限面を決めます。</value>
+    <value>表示領域の中心の、投影中心からの a 軸方向のずれ (分率座標。
+正で +a の向き)。「範囲」と組み合わせて描画範囲の上限／下限面を
+決めます: (投影中心 + 中心) ± 範囲。</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.ToolTip1" xml:space="preserve">
     <value>境界面の不透明度（0=透明、1=不透明）</value>

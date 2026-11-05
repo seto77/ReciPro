@@ -838,6 +838,18 @@ public partial class FormMain : FormBase
                 rw(() => FormEBSD.ExpFlattenBackgroundFwhmPx); // 260920Cl 追加
                 rw(() => FormEBSD.CoherenceLossWeight); // 261105Cl 追加 (監査 F18・作者決定): 「損失でコントラストを減衰」のチェックだけ保存 (E_c は分布に合わせた既定値への追従を保つため保存しない)
                 rw(() => FormEBSD.RangesFromMonteCarlo); // 261105Cl 追加 (監査 F5・作者決定): 「範囲を MC から自動」のチェック (範囲の値そのものは保存しない)
+                // 261106Cl 追加 (作者決定 C11): 手で入れた範囲の値も保存する。書き込みは常に (閉じたときの欄の値)、読み込みはチェックが OFF (手入力) で戻ったときだけ
+                //   (ON なら範囲は MC が決めるので、前回の MC の値を戻しても次の MC で書き換わるだけ。既定値のまま始める)。チェックの後に読むので、欄は読み取り専用になっていない。
+                //   別の加速電圧で起動して合わない範囲 (上限 > E0 など) が戻ったときは、構築の前の検査が構築を止めて知らせる
+                if (mode == Reg.Mode.Write || !FormEBSD.RangesFromMonteCarlo) // 261106Cl
+                {
+                    rw(() => FormEBSD.EnergyRangeStartKeV); // 261106Cl
+                    rw(() => FormEBSD.EnergyRangeEndKeV); // 261106Cl
+                    rw(() => FormEBSD.EnergyRangeStepKeV); // 261106Cl
+                    rw(() => FormEBSD.DepthRangeStartNm); // 261106Cl
+                    rw(() => FormEBSD.DepthRangeEndNm); // 261106Cl
+                    rw(() => FormEBSD.DepthRangeStepNm); // 261106Cl
+                }
             }
             #endregion
 
