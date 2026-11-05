@@ -58,8 +58,8 @@ This GitHub Pages manual is the current source of truth. Use the left navigation
 
 ## Quick start
 1. Download and install from [Releases](https://github.com/seto77/ReciPro/releases/latest).
-2. <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: ReciPro/initial.xml (Crystal 66 件)) -->Select a crystal from the built-in list (66 crystals). You can also import CIF files or use [CSManager](https://github.com/seto77/CSManager).
-3. Call functions from the right-hand panel: Structure Viewer, Stereonet, Diffraction Simulator, HRTEM/STEM Simulator, etc. <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.resx toolStripButtonDiffractionSingle/ImageSimulator.Text) -->
+2. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: ReciPro/initial.xml (Crystal 66 件)) -->Select a crystal from the built-in list (66 crystals). You can also import CIF files or use [CSManager](https://github.com/seto77/CSManager).
+3. Call functions from the right-hand panel: Structure Viewer, Stereonet, Diffraction Simulator, HRTEM/STEM Simulator, etc. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.resx toolStripButtonDiffractionSingle/ImageSimulator.Text) -->
 4. Rotate the crystal by mouse drag or by entering zone-axis/plane indices.
 
 ## Reference

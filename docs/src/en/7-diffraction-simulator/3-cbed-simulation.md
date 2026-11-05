@@ -2,9 +2,9 @@
 
 **CBED (Convergent-Beam Electron Diffraction) simulation** computes and displays convergent-beam diffraction patterns using the Bloch wave (Bethe) method. CBED patterns show diffraction disks instead of spots and contain rich information about crystal symmetry, thickness, and structure.
 
-> This page lists all settings of the dedicated window that opens when you select **Wavelength = Electron** and **Incident beam = Convergence (CBED, electron only)** in the [Diffraction Simulator](index.md). Switching the incident beam to convergence automatically switches **Intensity calculation** to **Dynamical**, and this CBED settings window opens. <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulatorCBED.cs:FormDiffractionSimulatorCBED_VisibleChanged) -->The computed disks can be saved from **File > Save CBED disks** / **Copy CBED disks** of the main window. For drawing and saving diffraction patterns and other operations common to the diffraction simulator, see the [overview page](index.md).
+> This page lists all settings of the dedicated window that opens when you select **Wavelength = Electron** and **Incident beam = Convergence (electron)** in the [Diffraction Simulator](index.md). Switching the incident beam to convergence automatically switches **Intensity calculation** to **Dynamical**, and this CBED settings window opens. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulatorCBED.cs:FormDiffractionSimulatorCBED_VisibleChanged) -->The computed disks can be saved from **File > Save CBED disks** / **Copy CBED disks** of the main window. For drawing and saving diffraction patterns and other operations common to the diffraction simulator, see the [overview page](index.md).
 
-GUI conditions: Wave Length = Electron · Incident beam = Convergence (CBED, electron only) · Intensity calculation = Dynamical (automatic)
+GUI conditions: Wave Length = Electron · Incident beam = Convergence (electron) · Intensity calculation = Dynamical (automatic)
 
 ![CBED Simulation](../../assets/cap-en-auto/FormDiffractionSimulatorCBED.png)
 
@@ -14,7 +14,7 @@ GUI conditions: Wave Length = Electron · Incident beam = Convergence (CBED, ele
 
 ![Input parameters](../../assets/cap-en-auto/FormDiffractionSimulatorCBED.groupBoxInputParameters.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulatorCBED.Designer.cs; FormDiffractionSimulatorCBED.cs:コンストラクタ, ComboBoxSolver_SelectedIndexChanged, buttonSimulate_Click; BetheMethod.cs:cbed_DoWork; FormDiffractionSimulator.cs:radioButtonBeamParallel_CheckedChanged, DrawDiffractionSpots) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulatorCBED.Designer.cs; FormDiffractionSimulatorCBED.cs:コンストラクタ, ComboBoxSolver_SelectedIndexChanged, buttonSimulate_Click; BetheMethod.cs:cbed_DoWork; FormDiffractionSimulator.cs:radioButtonBeamParallel_CheckedChanged, DrawDiffractionSpots) -->
 While this window is open, the **Bloch Wave Settings** and **Appearance** panels of the main window are disabled; the number of waves and the thicknesses are taken from here.
 
 | Parameter | Description | Default / Typical |
@@ -32,7 +32,7 @@ While this window is open, the **Bloch Wave Settings** and **Appearance** panels
 
 ## Run / Stop
 
-- **Simulate** : starts the CBED simulation with the current input parameters. <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulatorCBED.resx:buttonSimulate.Text) -->
+- **Simulate** : starts the CBED simulation with the current input parameters. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulatorCBED.resx:buttonSimulate.Text) -->
 - **Stop** : cancels the running calculation.
 
 ---
@@ -43,7 +43,7 @@ While this window is open, the **Bloch Wave Settings** and **Appearance** panels
 
 Once the calculation completes, the output parameters become available. All of them change only the display without recomputing.
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulatorCBED.cs:generateImage, radioButtonAllDisks_CheckedChanged, TrackBarOutputThickness_Scroll) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulatorCBED.cs:generateImage, radioButtonAllDisks_CheckedChanged, TrackBarOutputThickness_Scroll) -->
 | Parameter | Description |
 |-----------|-------------|
 | **Thickness** | Selects the sample thickness to display, within the thickness range of the input parameters, using a slider (the [diffraction spot information](index.md#diffraction-spot-information) table follows it) |

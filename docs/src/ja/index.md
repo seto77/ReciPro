@@ -58,8 +58,8 @@
 
 ## クイックスタート
 1. [Releases](https://github.com/seto77/ReciPro/releases/latest) からダウンロード・インストール。
-2. <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: ReciPro/initial.xml (Crystal 66 件)) -->内蔵の結晶リスト（66 結晶）から結晶を選択。CIFファイルのインポートや [CSManager](https://github.com/seto77/CSManager) も利用可能。
-3. 右パネルの各機能（結晶構造、ステレオネット、回折シミュレータ、HR/STEMシミュレータ等）を呼び出す。 <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.ja.resx toolStripButton*.Text) -->
+2. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: ReciPro/initial.xml (Crystal 66 件)) -->内蔵の結晶リスト（66 結晶）から結晶を選択。CIFファイルのインポートや [CSManager](https://github.com/seto77/CSManager) も利用可能。
+3. 右パネルの各機能（結晶構造、ステレオネット、回折シミュレータ、HR/STEMシミュレータ等）を呼び出す。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.ja.resx toolStripButton*.Text) -->
 4. マウスドラッグや晶帯軸・面指数の入力で結晶を回転。
 
 ## 引用文献

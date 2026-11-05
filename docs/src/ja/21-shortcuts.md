@@ -8,13 +8,13 @@ ReciPro には、ボタンやメニューには現れない **キーの組み合
 
 ## アプリ全体のショートカット
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.cs:FormMain_Load (KeyDown += FormMain_KeyDown), FormCaptureGUI.cs:InstallShortcutFilter, NumericBox.cs:ProcessCmdKey/tryStepByArrowKey/textBox_KeyDown) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:FormMain_Load (KeyDown += FormMain_KeyDown), FormCaptureGUI.cs:InstallShortcutFilter, NumericBox.cs:ProcessCmdKey/tryStepByArrowKey/textBox_KeyDown) -->
 これらは [メインウィンドウ](0-main-window.md) が登録しますが、結晶構造ビューア・ステレオネット・回折シミュレータ・Spot ID v1 の各ウィンドウにフォーカスがある間も有効です。
 
 | ショートカット | 動作 |
 |----------------|------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> ＋ 矢印キー | 結晶をその方向へ1ステップ回転（2つ同時押しで斜め方向） |
-| 起動中に <kbd>CTRL</kbd> を押し続ける | OpenGL を無効にして起動（描画トラブルの回避。今回の起動限りで、設定には保存されない） |
+| 起動中に <kbd>CTRL</kbd> を押し続ける | OpenGL を無効にして起動（描画トラブルの回避）。このとき **オプション ▸ OpenGLによる全てのレンダリングを無効化 (要再起動)** にチェックが入り終了時に保存されるので、元に戻すにはこのチェックを外す |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd>（どのウィンドウでも） | アクティブなウィンドウの GUI キャプチャツール（実験的機能）を開く |
 
 ### 数値入力欄
@@ -59,8 +59,8 @@ ReciPro の操作対象ビューは、ほぼ3つの系統のいずれかに属�
 | 右ドラッグで矩形 | 選択範囲にズームイン |
 | 中ドラッグ | 平行移動 |
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:graphicsBox_MouseWheel (MouseWheelZoom=true は回折シミュレータのみ), GraphicsBox.cs:OnMouseWheel) -->
-回折シミュレータのパターンだけはホイールでもズームします（カーソル位置を中心に ×2 / ×0.5）。ステレオネットと EBSD の菊池パターンには**ホイールズームはありません**。<kbd>+</kbd> / <kbd>-</kbd> キーによるズームはありません。
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:graphicsBox_MouseWheel (MouseWheelZoom=true は回折シミュレータのみ), GraphicsBox.cs:OnMouseWheel) -->
+回折シミュレータのパターンだけはホイールでもズームします（×2 / ×0.5。カーソル位置が新しい表示中心になる）。ステレオネットと EBSD の菊池パターンには**ホイールズームはありません**。<kbd>+</kbd> / <kbd>-</kbd> キーによるズームはありません。
 
 ### 画像ビュー { #image }
 
@@ -87,7 +87,7 @@ ReciPro の操作対象ビューは、ほぼ3つの系統のいずれかに属�
 | 機能ボタンをシングル／ダブルクリック | そのウィンドウを開閉／前面へ |
 | 結晶リストを右クリック | コンテキストメニュー（名前の変更／CIFで出力／複製／削除） |
 | 晶帯軸指数のラベル（`[u v w]`）をダブルクリック | 最大UVWボックスの表示/非表示 |
-| ファイルをドロップ | 結晶リスト（`.xml`, `.out`, `.cdb2`）または結晶（`.cif`, `.amc`）を読込 <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.cs:FormMain_DragDrop, contextMenuStripListBox) --> |
+| ファイルをドロップ | 結晶リスト（`.xml`, `.out`, `.cdb2`）または結晶（`.cif`, `.amc`）を読込 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:FormMain_DragDrop, contextMenuStripListBox) --> |
 
 ### 1. 結晶データベース
 [ページを開く →](1-crystal-database.md)
@@ -128,7 +128,7 @@ ReciPro の操作対象ビューは、ほぼ3つの系統のいずれかに属�
 
 | ショートカット | 動作 |
 |----------------|------|
-| ホイール上／下 | カーソル位置を中心にズームイン（×2）／ズームアウト（×0.5）（**中心を固定** がオンなら固定した中心のまわり） <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:graphicsBox_MouseWheel) --> |
+| ホイール上／下 | ズームイン（×2）／ズームアウト（×0.5）。カーソル位置が新しい表示中心になる（**中心を固定** がオンなら固定した中心） <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:graphicsBox_MouseWheel) --> |
 | スポットを左ダブルクリック | 反射の詳細を表示（指数・*d*・構造因子・励起誤差） |
 | <kbd>CTRL</kbd> ＋ 中ドラッグ | 検出器中心を移動（検出器領域の表示時） |
 | ステータスバーを右ダブルクリック | 現在の設定のテキスト要約をコピー |
@@ -174,7 +174,7 @@ ReciPro の操作対象ビューは、ほぼ3つの系統のいずれかに属�
 | ショートカット | 動作 |
 |----------------|------|
 | 菊池パターンをダブルクリック | カーソル位置の検出器セルを選択し統計を表示 |
-| **晶帯軸** のピッキングがオンのとき: パターンを左ダブルクリック／<kbd>CTRL</kbd> ＋ 左ダブルクリック／<kbd>SHIFT</kbd> ＋ 左ダブルクリック | 晶帯軸の点を追加／画面上 5 ピクセル以内の点を削除／その点を選択 <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormEBSD.cs:HandleZoneAxisDoubleClick) --> |
+| **晶帯軸** のピッキングがオンのとき: パターンを左ダブルクリック／<kbd>CTRL</kbd> ＋ 左ダブルクリック／<kbd>SHIFT</kbd> ＋ 左ダブルクリック | 晶帯軸の点を追加／画面上 5 ピクセル以内の点を削除／その点を選択 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormEBSD.cs:HandleZoneAxisDoubleClick) --> |
 
 ### 20. マクロ
 [ページを開く →](20-macro/index.md)

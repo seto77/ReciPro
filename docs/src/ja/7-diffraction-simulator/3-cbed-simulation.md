@@ -2,7 +2,7 @@
 
 **CBED（収束電子回折）シミュレーション**は、ブロッホ波（Bethe）法で収束ビーム回折パターンを計算・表示します。CBEDパターンはスポットの代わりに回折ディスクを示し、結晶の対称性・厚さ・構造に関する豊富な情報を含みます。
 
-> このページは、[回折シミュレータ](index.md) で **波長 = 電子線**・**入射ビーム = 収束 (CBED, 電子線のみ)** を選んだときに開く専用ウィンドウの設定項目をすべて掲載します。入射ビームを収束にすると **強度計算** が自動的に **動力学的効果** へ切り替わり、この CBED 設定ウィンドウが開きます。<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulatorCBED.cs:FormDiffractionSimulatorCBED_VisibleChanged) -->計算したディスクは本体の **File > Save CBED disks** / **Copy CBED disks** で保存・コピーできます。回折パターンの描画・保存など回折シミュレータ共通の操作は [まとめページ](index.md) を参照してください。
+> このページは、[回折シミュレータ](index.md) で **波長 = 電子線**・**入射ビーム = 収束 (CBED, 電子線のみ)** を選んだときに開く専用ウィンドウの設定項目をすべて掲載します。入射ビームを収束にすると **強度計算** が自動的に **動力学的効果** へ切り替わり、この CBED 設定ウィンドウが開きます。<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulatorCBED.cs:FormDiffractionSimulatorCBED_VisibleChanged) -->計算したディスクは本体の **ファイル > Save CBED disks** / **Copy CBED disks** で保存・コピーできます。回折パターンの描画・保存など回折シミュレータ共通の操作は [まとめページ](index.md) を参照してください。
 
 GUI条件: 波長 = 電子線 ・ 入射ビーム = 収束 (CBED, 電子線のみ) ・ 強度計算 = 動力学的効果（自動）
 
@@ -14,7 +14,7 @@ GUI条件: 波長 = 電子線 ・ 入射ビーム = 収束 (CBED, 電子線の�
 
 ![入力パラメータ](../../assets/cap-ja-auto/FormDiffractionSimulatorCBED.groupBoxInputParameters.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulatorCBED.Designer.cs; FormDiffractionSimulatorCBED.cs:コンストラクタ, ComboBoxSolver_SelectedIndexChanged, buttonSimulate_Click; BetheMethod.cs:cbed_DoWork; FormDiffractionSimulator.cs:radioButtonBeamParallel_CheckedChanged, DrawDiffractionSpots) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulatorCBED.Designer.cs; FormDiffractionSimulatorCBED.cs:コンストラクタ, ComboBoxSolver_SelectedIndexChanged, buttonSimulate_Click; BetheMethod.cs:cbed_DoWork; FormDiffractionSimulator.cs:radioButtonBeamParallel_CheckedChanged, DrawDiffractionSpots) -->
 このウィンドウが開いている間、本体の **ブロッホ波設定** と **スポットの形状** パネルは無効になり、波の数と厚さはここで指定した値が使われます。
 
 | パラメータ | 説明 | 既定値 / 典型値 |
@@ -43,7 +43,7 @@ GUI条件: 波長 = 電子線 ・ 入射ビーム = 収束 (CBED, 電子線の�
 
 計算が完了すると出力パラメータが操作可能になります。いずれも計算をやり直さずに表示だけを切り替えます。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulatorCBED.cs:generateImage, radioButtonAllDisks_CheckedChanged, TrackBarOutputThickness_Scroll) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulatorCBED.cs:generateImage, radioButtonAllDisks_CheckedChanged, TrackBarOutputThickness_Scroll) -->
 | パラメータ | 説明 |
 |-----------|------|
 | **試料の厚さ** | 表示する試料厚さを、入力パラメータの厚さ範囲内でスライダーで選択します（[回折スポット情報](index.md#回折スポット情報) の表も追随） |

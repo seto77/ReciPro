@@ -56,7 +56,7 @@ See [Appendix A3.4 — STEM calculation](../appendix/a3-bloch-wave/stem.md) for 
 | **Cc** | Chromatic aberration coefficient (mm) | 1.0–2.0 mm |
 | **ΔV** | Full width at half maximum of the electron energy spread (eV) | 0.5–2.0 eV |
 
-> **β (illumination semi-angle) is disabled in STEM mode**, because the convergence angle α takes its role. <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: BetheMethod.cs:RunSTEM Lenz) -->Defocus and Cs enter the probe through the same aberration function $\chi$ as in HRTEM (negative Δf = underfocus; see [HRTEM simulation](1-hrtem-simulation.md#tem-conditions)). The right-click menu of **TEM conditions** (zero aberrations, Scherzer defocus, microscope presets) works here too.
+> **β (illumination semi-angle) is disabled in STEM mode**, because the convergence angle α takes its role. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:RunSTEM Lenz) -->Defocus and Cs enter the probe through the same aberration function $\chi$ as in HRTEM (negative Δf = underfocus; see [HRTEM simulation](1-hrtem-simulation.md#tem-conditions)). The right-click menu of **TEM conditions** (zero aberrations, Scherzer defocus, microscope presets) works here too.
 
 ---
 
@@ -68,8 +68,7 @@ Set the geometry of the convergent probe and the annular detector. Each angle is
 
 | Parameter | Description | Default / typical |
 |-----------|-------------|-------------------|
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.resx:numericBoxSTEM_*.HeaderText/FooterText/ToolTip, BetheMethod.cs:RunSTEM) -->
-| **α (convergence angle)** | Semi-angle of the convergent probe (mrad). Larger values give a finer probe and change the diffraction contrast | 25 mrad (default); 15–25 mrad |
+| **α (convergence angle)** | Semi-angle of the convergent probe (mrad). Larger values give a finer probe and change the diffraction contrast | 25 mrad (default); 15–25 mrad <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.resx:numericBoxSTEM_*.HeaderText/FooterText/ToolTip, BetheMethod.cs:RunSTEM) --> |
 | **Annular detector — Inner radius** | Inner collection semi-angle of the annular detector (mrad). Signal inside this angle is excluded | 0 (default); BF: 0, HAADF: 80 |
 | **Annular detector — Outer radius** | Outer collection semi-angle of the annular detector (mrad). Signal outside this angle is excluded | 20 (default); BF: 5, HAADF: 250 |
 | **Effective source size (σs, FWHM)** | Effective electron source size (pm). Applied after the calculation as a Gaussian convolution of every Elastic / TDS / EDX image. Larger values blur the image and reduce fine-detail contrast | 20 pm (default) |
@@ -82,9 +81,9 @@ The detector angles apply only to the STEM reference image (Elastic / TDS / Elas
 
 ![STEM options (simulation)](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.cs:StemProbeDivision / RenewProbeGridLabel, FormImageSimulator.resx:numericBoxSTEM_SliceThicknessForInelastic.HeaderText) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:StemProbeDivision / RenewProbeGridLabel, FormImageSimulator.resx:numericBoxSTEM_SliceThicknessForInelastic.HeaderText) -->
 - **Slice thickness (TDS)** : specimen slice thickness (nm, default 1, range 0.1–10) used when computing the TDS (thermal-diffuse, inelastic) intensity. Smaller values are more accurate but slower.
-- **Angular resolution** : angular sampling resolution of the incident probe directions (mrad, default 0.4). Smaller values sample the probe more finely but are slower. The probe directions form an $N\times N$ grid with $N=\lceil 2\times1.05\,\alpha/\Delta\alpha\rceil$, of which those inside the convergence disk are computed; the count therefore grows as the square of $\alpha/\Delta\alpha$, so it is the main lever on calculation time. The line under the box shows the grid (for example `Grid: 132²`); see [Angular sampling of the probe](../appendix/a3-bloch-wave/stem.md#angular-sampling) for measured convergence.
+- **Angular resolution** : angular sampling resolution of the incident probe directions (mrad, default 0.4). Smaller values sample the probe more finely but are slower. The probe directions form an $N\times N$ grid with $N=\lceil 2\times1.05\,\alpha/\Delta\alpha\rceil$, of which those inside a disk about 5 % larger than the convergence angle (a margin for interpolation) are computed; the count therefore grows as the square of $\alpha/\Delta\alpha$, so it is the main lever on calculation time. The line under the box shows the grid (for example `Grid: 132²`); see [Angular sampling of the probe](../appendix/a3-bloch-wave/stem.md#angular-sampling) for measured convergence.
 
 ---
 
@@ -101,7 +100,7 @@ The detector angles apply only to the STEM reference image (Elastic / TDS / Elas
 
 ![Image property](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: BetheMethod.cs:RunSTEM (imageSize は I(Q) 計算後の実空間合成でのみ使用)) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:RunSTEM (imageSize は I(Q) 計算後の実空間合成でのみ使用)) -->
 - **Size (W×H)** : number of pixels in the scanned image (default 512×512). The eigen-solution and the $I(Q)$ calculation (Stages 1–4 in the status bar) do not depend on it; it only enters the final synthesis of the real-space image from the $I(Q)$ coefficients, whose cost is proportional to pixels × number of $Q$ vectors.
 - **Resolution** : sampling resolution (pm/px).
 
@@ -109,14 +108,14 @@ The detector angles apply only to the STEM reference image (Elastic / TDS / Elas
 
 ## Diffracted waves
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.resx:groupBoxDiffractedWaves.Text) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.resx:groupBoxDiffractedWaves.Text) -->
 ![Diffracted waves](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** : maximum number of Bloch waves used in the Bethe method (default 80). The eigenvalue-problem cost scales as the cube of the number of waves.
 
 ---
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormCTF.cs:Renew / SetControl) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormCTF.cs:Renew / SetControl) -->
 ## Contrast Transfer Function (STEM) {#ctf-stem}
 
 The **Contrast Transfer Function (CTF)** checkbox in **TEM conditions** opens the same CTF window as in HRTEM mode. In STEM mode it has two choices:
@@ -154,7 +153,7 @@ Tick **Calculate EDX maps** to compute characteristic X-ray maps alongside the A
 
 There is no element selector. When the checkbox is on, **every element/shell channel that can be calculated for this crystal at this accelerating voltage** is computed, and the line under the checkbox lists them (for example `3 map(s): O-K, Mg-K, Al-K`). A channel is available when the accelerating voltage is within 30–400 kV (the range of the shipped table), the ionisation edge lies below it and the shell is covered by the shipped data — K: C–Sn (Z = 6–50), L1–L3: Ca–Rn (Z = 20–86), M1–M3: Zn–Rn (Z = 30–86), M4–M5: As–Rn (Z = 33–86); the L and M channels add up the subshells that are present. The shipped table stores fully relativistic ionisation form factors for every channel out to a scattering vector of 16 Å⁻¹, or less at low accelerating voltages. Nothing is extrapolated: where the calculation needs a larger scattering vector than a row covers, the form factor is set to zero and the channel is marked ⚠ in the EDX combo box. If nothing is available the run is refused with an explanatory message rather than producing an empty map.
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.Designer.cs:flowLayoutPanel11 (labelEdxProbeGrid), FormImageSimulator.cs:RenewProbeGridLabel) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.Designer.cs:flowLayoutPanel11 (labelEdxProbeGrid), FormImageSimulator.cs:RenewProbeGridLabel) -->
 The probe direction grid is reported under **Angular resolution** in *STEM options (simulation)*; while **Calculate EDX maps** is ticked it adds the recommended division, for example `Grid: 132² (recommended: ≥48²)`. This grid is set by **Angular resolution** and the convergence angle; see [Angular sampling of the probe](../appendix/a3-bloch-wave/stem.md#angular-sampling). Below the recommended division the ±q Hermitian residual can exceed the tolerance and abort the run, so the value turns orange and a confirmation dialog appears before the calculation starts.
 
 !!! warning "What the values are"
@@ -191,7 +190,7 @@ STEM simulation is computationally expensive, so set the following parameters ap
 | **Convergence angle** | Larger → more CBED disk overlap → higher cost |
 | **Bloch waves** | Eigenvalue-problem cost scales as N³ |
 | **Angular resolution** | Finer → more accurate but cost scales as N² |
-| **Image pixels (Size)** | <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: BetheMethod.cs:RunSTEM) -->Only the final real-space synthesis (pixels × number of $Q$ vectors); Stages 1–4 do not depend on it |
+| **Image pixels (Size)** | <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:RunSTEM) -->Only the final real-space synthesis (pixels × number of $Q$ vectors); Stages 1–4 do not depend on it |
 
 ---
 

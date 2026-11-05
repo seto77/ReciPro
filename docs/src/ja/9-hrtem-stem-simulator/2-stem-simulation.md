@@ -56,7 +56,7 @@ STEM像は、収束した電子ビームを試料上で走査し、各位置で�
 | **Cc** | 色収差係数 (mm) | 1.0–2.0 mm |
 | **ΔV** | 電子線のエネルギー幅の半値全幅 (eV) | 0.5–2.0 eV |
 
-> **β（照射半角）はSTEMモードでは無効**です（収束角 α が役割を担うため）。<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: BetheMethod.cs:RunSTEM Lenz) -->デフォーカスと Cs は HRTEM と同じ収差関数 $\chi$ でプローブに入ります（Δf が負 = アンダーフォーカス。[HRTEMシミュレーション](1-hrtem-simulation.md#tem-conditions) 参照）。**TEMの条件** の右クリックメニュー（収差を 0、シェルツァーデフォーカス、顕微鏡プリセット）もここで使えます。
+> **β（照射半角）はSTEMモードでは無効**です（収束角 α が役割を担うため）。<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:RunSTEM Lenz) -->デフォーカスと Cs は HRTEM と同じ収差関数 $\chi$ でプローブに入ります（Δf が負 = アンダーフォーカス。[HRTEMシミュレーション](1-hrtem-simulation.md#tem-conditions) 参照）。**TEMの条件** の右クリックメニュー（収差を 0、シェルツァーデフォーカス、顕微鏡プリセット）もここで使えます。
 
 ---
 
@@ -68,8 +68,7 @@ STEM像は、収束した電子ビームを試料上で走査し、各位置で�
 
 | パラメータ | 説明 | 既定値 / 典型値 |
 |-----------|------|-----------------|
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.ja.resx:numericBoxSTEM_*.HeaderText, BetheMethod.cs:RunSTEM) -->
-| **α (convergence angle)**（収束角） | 収束プローブの半角 (mrad)。大きいほどプローブが細くなり、回折コントラストも変わります | 25 mrad（既定）。15–25 mrad |
+| **α (convergence angle)**（収束角） | 収束プローブの半角 (mrad)。大きいほどプローブが細くなり、回折コントラストも変わります | 25 mrad（既定）。15–25 mrad <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.ja.resx:numericBoxSTEM_*.HeaderText, BetheMethod.cs:RunSTEM) --> |
 | **環状検出器 — 内径** | 環状検出器の内側取り込み半角 (mrad)。これより内側の信号は除外 | 0（既定）。BF: 0、HAADF: 80 |
 | **環状検出器 — 外径** | 環状検出器の外側取り込み半角 (mrad)。これより外側の信号は除外 | 20（既定）。BF: 5、HAADF: 250 |
 | **実効光源サイズ (σs) (FWHM)** | 有効電子源サイズ (pm)。計算後に、弾性・TDS・EDX の各像へガウス関数の畳み込みとして適用します。大きいほど像がぼけ、細部のコントラストが低下します | 20 pm（既定） |
@@ -82,9 +81,9 @@ STEM像は、収束した電子ビームを試料上で走査し、各位置で�
 
 ![STEMオプション（計算）](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.cs:StemProbeDivision / RenewProbeGridLabel, FormImageSimulator.ja.resx:numericBoxSTEM_SliceThicknessForInelastic.HeaderText) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:StemProbeDivision / RenewProbeGridLabel, FormImageSimulator.ja.resx:numericBoxSTEM_SliceThicknessForInelastic.HeaderText) -->
 - **スライス厚 (TDS)** : TDS（熱散漫散乱による非弾性）電子強度を計算する際の試料スライス厚さ (nm、既定 1、範囲 0.1–10)。小さいほど精度は上がりますが計算は遅くなります。
-- **角度分解能** : 入射プローブ方向の角度サンプリング分解能 (mrad、既定 0.4)。小さいほどプローブを細かくサンプリングしますが計算は遅くなります。プローブ方向は $N\times N$ の格子（$N=\lceil 2\times1.05\,\alpha/\Delta\alpha\rceil$）で、そのうち収束円盤内の方向を計算します。方向数は $\alpha/\Delta\alpha$ の 2 乗で増えるため、計算時間を左右する最大の要素です。欄の下にその格子（例 `グリッド: 132²`）が表示されます。収束の実測値は [プローブの角度サンプリング](../appendix/a3-bloch-wave/stem.md#angular-sampling) を参照してください。
+- **角度分解能** : 入射プローブ方向の角度サンプリング分解能 (mrad、既定 0.4)。小さいほどプローブを細かくサンプリングしますが計算は遅くなります。プローブ方向は $N\times N$ の格子（$N=\lceil 2\times1.05\,\alpha/\Delta\alpha\rceil$）で、そのうち収束角よりおよそ 5 % 大きい円（補間用の余白）内の方向を計算します。方向数は $\alpha/\Delta\alpha$ の 2 乗で増えるため、計算時間を左右する最大の要素です。欄の下にその格子（例 `グリッド: 132²`）が表示されます。収束の実測値は [プローブの角度サンプリング](../appendix/a3-bloch-wave/stem.md#angular-sampling) を参照してください。
 
 ---
 
@@ -101,7 +100,7 @@ STEM像は、収束した電子ビームを試料上で走査し、各位置で�
 
 ![生成画像](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: BetheMethod.cs:RunSTEM (imageSize は I(Q) 計算後の実空間合成でのみ使用)) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:RunSTEM (imageSize は I(Q) 計算後の実空間合成でのみ使用)) -->
 - **Size (W×H)** : 走査像のピクセル数（既定 512×512）。固有値計算と $I(Q)$ の計算（ステータスバーの Stage 1–4）はこれに依存しません。効くのは $I(Q)$ 係数から実空間像を合成する最後の段階だけで、その計算量は 画素数 × $Q$ ベクトル数 に比例します。
 - **解像度** : サンプリング分解能 (pm/px)。
 
@@ -115,7 +114,7 @@ STEM像は、収束した電子ビームを試料上で走査し、各位置で�
 
 ---
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormCTF.cs:Renew / SetControl) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormCTF.cs:Renew / SetControl) -->
 ## コントラスト伝達関数（STEM） {#ctf-stem}
 
 **TEMの条件** の **コントラスト伝達関数 (CTF)** にチェックを入れると、HRTEM モードと同じ CTF ウィンドウが開きます（UI は英語のみ）。STEM モードでは次の 2 つを選べます。
@@ -138,7 +137,7 @@ STEM像は、収束した電子ビームを試料上で走査し、各位置で�
 | **弾性** | 弾性散乱のみの像 |
 | **TDS** | 熱散漫散乱のみの像 |
 | **弾性 & TDS** | 弾性 + TDS の合計像 |
-| **EDX** | 特性 X 線マップ。表示する線（例 `O-K`）は下のコンボボックスで選びます。*正規化* の **EDX: 共通** を入れると、同じ量のチャネル (殻のチャネル = 空孔、線の系列 = X 線の光子) が 1 つの表示レンジを共有し、その中でチャネルを切り替えても倍率が変わりません |
+| **EDX** | 特性 X 線マップ。表示する線（例 `O-K`）は下のコンボボックスで選びます。*強度の規格化* の **EDX 共通** を入れると、同じ量のチャネル (殻のチャネル = 空孔、線の系列 = X 線の光子) が 1 つの表示レンジを共有し、その中でチャネルを切り替えても倍率が変わりません |
 
 !!! note
     3 つの像はいずれも Fourier 和の実部から再構成されるため、**弾性 & TDS** は他の 2 つの厳密な和になります。ver 4.944 までは絶対値をとっていたためこの一致が崩れ、暗い画素がわずかに明るくなっていました。詳細は [実数像への再構成](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction) を参照してください。
@@ -153,7 +152,7 @@ STEM像は、収束した電子ビームを試料上で走査し、各位置で�
 
 元素を選ぶ UI はありません。チェックが入っていれば、**この結晶・この加速電圧で計算できる元素・殻チャネルをすべて**計算し、チェックの下の行にそれらを並べます（例: `3 個のマップ: O-K, Mg-K, Al-K`）。チャネルが利用できるのは、加速電圧が 30〜400 kV (同梱データの範囲) にあり、イオン化端がそれより低く、かつ同梱データが収録している殻 — K: C–Sn (Z = 6–50)、L1–L3: Ca–Rn (Z = 20–86)、M1–M3: Zn–Rn (Z = 30–86)、M4–M5: As–Rn (Z = 33–86) — の場合です。L と M のチャネルは、収録されている副殻を足し合わせたものです。同梱テーブルは全チャネルの完全相対論的なイオン化形状因子を散乱ベクトル 16 Å⁻¹ まで (加速電圧が低いときはそれより手前まで) 収録しています。外挿はしません。収録範囲より大きい散乱ベクトルが必要な所では形状因子を 0 とし、そのチャネルには EDX 表示のコンボボックスで ⚠ が付きます。ひとつも無いときは空のマップを作らず、理由を示して実行を止めます。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.Designer.cs:flowLayoutPanel11 (labelEdxProbeGrid), FormImageSimulator.cs:RenewProbeGridLabel) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.Designer.cs:flowLayoutPanel11 (labelEdxProbeGrid), FormImageSimulator.cs:RenewProbeGridLabel) -->
 プローブの方向格子は *STEMオプション（計算）* の **角度分解能** の下に表示され、**EDX マップを計算** にチェックがある間は推奨分割数が添えられて、たとえば `グリッド: 132² (推奨: 48² 以上)` と出ます。この格子は **角度分解能** と収束角で決まります（[プローブの角度サンプリング](../appendix/a3-bloch-wave/stem.md#angular-sampling)）。推奨分割数を下回ると ±q のエルミート残差が許容値を超えて計算が中断され得るため、数値が橙色になり、計算開始前に確認ダイアログが出ます。
 
 !!! warning "この数値が表すもの"
@@ -190,7 +189,7 @@ STEMシミュレーションは計算コストが高いため、以下のパラ�
 | **収束角** | 大きいほどCBEDディスクの重なりが増え、計算コストが増大 |
 | **ブロッホ波の数** | 固有値問題のコストは波数の3乗に比例 |
 | **角度分解能** | 細かいほど正確だが計算時間は二乗で増大 |
-| **画素数（Size）** | <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: BetheMethod.cs:RunSTEM) -->最後の実空間合成（画素数 × $Q$ ベクトル数）にだけ効き、Stage 1–4 には依存しない |
+| **画素数（Size）** | <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:RunSTEM) -->最後の実空間合成（画素数 × $Q$ ベクトル数）にだけ効き、Stage 1–4 には依存しない |
 
 ---
 

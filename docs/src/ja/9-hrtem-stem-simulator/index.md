@@ -103,11 +103,10 @@ title: HRTEM/STEMシミュレータ
 
 ![強度の規格化](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxNormalization.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.ja.resx:checkBoxNormarizeIndividually.Text) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.ja.resx:checkBoxNormarizeIndividually.Text) -->
 - **画像ごとに規格化** : チェックすると、各画像を個別に正規化します（オフのときはシリーズ全体を共通スケールで規格化）。
 - **最小 / 最大** : 正規化の下限・上限を、画像の最小/最大値ではなく右の指定値に固定します。
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.cs:FillEdxGrid / RadioButtonHRTEM_CheckedChanged) -->
-- **EDX 共通** : [EDX マップ](2-stem-simulation.md#stem-edx) を表示していて、かつ計算結果に複数のチャネルがあるときだけ現れます。同じ量のチャネルどうしを 1 つの表示レンジに揃えます。EDX マップは **最小 / 最大** による変換を受けません。下端は 0 に固定で、上端だけが **画像ごとに規格化** / **EDX 共通** に従います。
+- **EDX 共通** : [EDX マップ](2-stem-simulation.md#stem-edx) を表示していて、かつ計算結果に複数のチャネルがあるときだけ現れます。同じ量のチャネルどうしを 1 つの表示レンジに揃えます。EDX マップは **最小 / 最大** による変換を受けません。下端は 0 に固定で、上端だけが **画像ごとに規格化** / **EDX 共通** に従います。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:FillEdxGrid / RadioButtonHRTEM_CheckedChanged) -->
 - ポテンシャルモードではこのグループは表示されません。
 
 ### STEM像の表示対象
@@ -122,9 +121,8 @@ STEMモードのときだけ表示されます。計算済みのSTEM像のうち
 
 像に重畳する要素を設定します。
 
-- **単位胞** : 投影単位胞の輪郭を重畳し、像コントラストと結晶格子の対応を確認します。<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.cs:drawSymbols) -->**a**・**b**・**c** に平行な辺をそれぞれ赤・緑・青で、画像中心を中心に描きます。
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.cs:BuildPseudoGrid / simulatePotential) -->
-- **ラベル** : 各ペインのラベルを重畳します。HRTEM / STEM では厚さ `t=` とデフォーカス `f=` (nm)、ポテンシャルモードではペイン名（例 *Ug magnitude*）です。**サイズ**（フォントサイズ）と **カラー** を指定できます。
+- **単位胞** : 投影単位胞の輪郭を重畳し、像コントラストと結晶格子の対応を確認します。<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:drawSymbols) -->**a**・**b**・**c** に平行な辺をそれぞれ赤・緑・青で、画像中心を中心に描きます。
+- **ラベル** : 各ペインのラベルを重畳します。HRTEM / STEM では厚さ `t=` とデフォーカス `f=` (nm)、ポテンシャルモードではペイン名（例 *Ug magnitude*）です。**サイズ**（フォントサイズ）と **カラー** を指定できます。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:BuildPseudoGrid / simulatePotential) -->
 - **スケール** : スケールバーを重畳します。**長さ** (nm) と **カラー** を指定できます。
 
 ---
@@ -138,12 +136,12 @@ STEMモードのときだけ表示されます。計算済みのSTEM像のうち
 - **リアルタイム計算** : チェックすると、結晶の回転に合わせて即座に再計算します（STEMモードでは非表示）。
 - **条件プリセット** : TEM撮影条件を保存・呼び出すプリセットウィンドウの表示を切り替えます（下の [プリセットリスト](#preset-list) 参照）。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormPresets.cs:buttonAdd_Click ほか / ImageSimulatorSetting) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormPresets.cs:buttonAdd_Click ほか / ImageSimulatorSetting) -->
 ### プリセットリスト {#preset-list}
 
 <!-- screenshot: Preset list ウィンドウ (FormPresets) に数件登録した状態 -->
 
-**Preset list** ウィンドウ（UI は英語のみ）は、シミュレータの設定に名前を付けて保存します。保存される項目は、イメージモード、加速電圧、Cs、Cc、ΔV、デフォーカス、β、対物絞り（サイズとシフト）、HRTEM の部分コヒーレンスモデル、厚みとシリーズの厚み/デフォーカスリスト、画像サイズと解像度、ブロッホ波数、STEM の設定（収束角、検出器角、光源サイズ、スライス厚、角度分解能、**EDX マップを計算**・**線の系列**）です。リストは ReciPro の設定とともに保存され、再起動後も残ります。
+**Preset list** ウィンドウ（UI は英語のみ）は、シミュレータの設定に名前を付けて保存します。保存される項目は、イメージモード、加速電圧、Cs、Cc、ΔV、デフォーカス、β、対物絞り（サイズとシフト）、HRTEM の部分コヒーレンスモデル、厚みとシリーズの厚み/デフォーカスリスト、画像サイズと解像度、ブロッホ波数、STEM の設定（収束角、検出器角、光源サイズ、スライス厚、角度分解能、**EDX マップを計算**・**線の系列 (Kα, Lα…)**）です。リストは ReciPro の設定とともに保存され、再起動後も残ります。
 
 - 項目をクリックすると、その設定がただちに適用されます。
 - **OK** は現在の設定のまま閉じ、**Cancel**（または <kbd>Esc</kbd>）はウィンドウを開いた時点の設定に戻して閉じます。
@@ -157,8 +155,8 @@ STEMモードのときだけ表示されます。計算済みのSTEM像のうち
 
 ![ファイルメニュー](../../assets/cap-ja-auto/FormImageSimulator.menuStrip1.fileToolStripMenuItem.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.cs:Save / FormImageSimulator.resx: loadTEMParameterToolStripMenuItem.Enabled=False) -->
-- **画像を保存** : **画像として (PNG形式)** / **画像として (TIFF形式)** / **メタファイルとして (EMF)** で保存。PNG と EMF は表示どおり（表示レンジ・カラースケール）に保存します。**シリーズ画像モードで個別に保存**（既定でオン）を入れると、タイル状の1枚ではなくペインごとに別ファイルへ保存します。TIFF は常にペインごとに1ファイルで、表示レンジではなく計算値そのものを、重畳記号なしで書き出します。
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:Save / FormImageSimulator.resx: loadTEMParameterToolStripMenuItem.Enabled=False) -->
+- **画像を保存** : **画像として (PNG形式)** / **画像として (TIFF形式)** / **メタファイルとして (EMF)** で保存。PNG と EMF は表示どおり（表示レンジ・カラースケール）に保存します。**シリーズ画像モードで個別に保存**（既定でオン）を入れると、タイル状の1枚ではなくペインごとに別ファイルへ保存します。TIFF は常にペインごとに浮動小数点の 1 ファイルで、重畳記号は入りません。値は **画像調整** の表示レンジではなく **強度の規格化** を通した後の値です（**ガウシアンぼかし(FWHM)** を適用中ならぼかし後）。既定（**最小** 0・**最大** 1・**画像ごとに規格化**）では各画像が 0〜1 に揃えられるので、計算値そのものが必要なら **最小** / **最大** を外してください。EDX マップは常に変換なしの値です。
 - **画像をコピー** : **画像として** または **メタファイルとして (EMF)** クリップボードへコピー。
 - **記号を重ね印刷**（既定でオン）: 保存・コピーする PNG / EMF 画像に単位胞・ラベル・スケールバーを焼き込みます。
 - **TEMパラメータを読み込み** / **TEMパラメータを保存** : 表示はされますが無効です（未実装）。条件の保存・呼び出しには [プリセットリスト](#preset-list) を使ってください。
@@ -168,7 +166,7 @@ STEMモードのときだけ表示されます。計算済みのSTEM像のうち
 ![ヘルプメニュー](../../assets/cap-ja-auto/FormImageSimulator.menuStrip1.helpToolStripMenuItem.png)
 
 - **HRTEMシミュレーションの基本概念** : HRTEM像形成の解説（[Appendix A3.2](../appendix/a3-bloch-wave/hrtem.md)）を開きます。
-- **計算ライブラリ** : 計算ライブラリを選択します。**Native code**（高速な C++/Eigen）または **Managed code**（.NET）。通常は Native が高速です。<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.cs:SimulateHRTEM / FormImageSimulator_Load) -->この選択が効くのは HRTEM 像の合成だけです。STEM はソルバを自動で選び（STEM-EDX は常にネイティブライブラリが必要）、また ReciPro を起動するたびに **Native code** に戻ります。
+- **計算ライブラリ** : 計算ライブラリを選択します。**Native code**（高速な C++/Eigen）または **Managed code**（.NET）。通常は Native が高速です。<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:SimulateHRTEM / FormImageSimulator_Load) -->この選択が効くのは HRTEM 像の合成だけです。STEM はソルバを自動で選び（STEM-EDX は常にネイティブライブラリが必要）、また ReciPro を起動するたびに **Native code** に戻ります。
 
 ---
 

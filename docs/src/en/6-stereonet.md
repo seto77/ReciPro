@@ -39,12 +39,12 @@ The stereonet projection of the selected crystal's crystal planes, direction ind
 
 ## File menu
 
-Save or copy in raster or vector format. Vector format allows editing font/line thickness in PowerPoint or other vector editors.
+Save as a raster image (PNG), or copy as a raster image or a vector metafile (EMF). A pasted metafile lets you edit fonts and line widths in PowerPoint or other vector editors.
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.Designer.cs:fileToolStripMenuItem; FormStereonet.cs:toolStripMenuItemSaveMovieStereonet_Click/toolStripMenuItemSaveMovie3D_Click) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.Designer.cs:fileToolStripMenuItem; FormStereonet.cs:toolStripMenuItemSaveMovieStereonet_Click/toolStripMenuItemSaveMovie3D_Click) -->
 | Menu item | Description |
 |-----------|-------------|
-| Save Image ▸ as Image (PNG format) / as Metafile (EMF) | Save the stereonet to a file |
+| Save Image ▸ as Image (PNG format) / as Metafile (EMF) | Save the stereonet as a PNG file (the *as Metafile (EMF)* item is currently disabled; for vector output use **Copy to clipboard ▸ as Metafile (EMF)**) |
 | Copy to clipboard ▸ As Image / as Metafile (EMF) | Copy the stereonet |
 | Save Movie ▸ Stereonet / 3D | Save a rotation movie (MP4) of the stereonet or of the 3-D view, using the same Movie setting dialog as the [Structure Viewer](5-structure-viewer.md#file-menu) (rotation only) |
 | Page Setup / Print Preview / Print | Print the stereonet |
@@ -73,14 +73,13 @@ Select what to project onto the net.
 ### Hemisphere
 
 Choose **Upper** or **Lower** hemisphere as the projection source — switches whether the visible face of the sphere is the one closest to or farthest from the observer.
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.cs:DrawStereoNet) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.cs:DrawStereoNet) -->
 Upper = the $+Z$ side (toward the viewer, see [Appendix A1.1](appendix/a1-coordinate-system/1-orientation.md)); with **Lower** the $Z$ component of every direction is inverted before projection, and the points are drawn as **open circles** instead of filled ones.
 
 ### Display options
 
 - **Draw index labels**: show index labels.
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.cs:setVector, DrawStereoNet) -->
-- **Apply structure factors to intensity**: when **Planes** or **Kikuchi line pairs** is selected, weight each item by its structure factor (set the wave source and wavelength in the [Wave tab](#wave)). The weight is $I_{\mathrm{rel}} = |F_{hkl}|^2 / \max|F|^2$ over the displayed set: in **Planes** mode the point radius is multiplied by $\sqrt{I_{\mathrm{rel}}}$ (i.e. $\propto |F_{hkl}|$); in **Kikuchi line pairs** mode the line opacity is $I_{\mathrm{rel}}$.
+- **Apply structure factors to intensity**: when **Planes** or **Kikuchi line pairs** is selected, weight each item by its structure factor (set the wave source and wavelength in the [Wave tab](#wave)). The weight is $I_{\mathrm{rel}} = |F_{hkl}|^2 / \max|F|^2$ over the displayed set: in **Planes** mode the point radius is multiplied by $\sqrt{I_{\mathrm{rel}}}$ (i.e. $\propto |F_{hkl}|$); in **Kikuchi line pairs** mode the line opacity is $I_{\mathrm{rel}}$. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.cs:setVector, DrawStereoNet) -->
 - **Anomalous dispersion**: include the X-ray anomalous-dispersion terms $f'$, $f''$ in the structure factors. Enabled only for X-rays and in **Planes** / **Kikuchi line pairs** mode.
 
 > For trigonal/hexagonal crystals, Miller–Bravais (4-index) notation can be enabled from **Option ▸ Use Miller-Bravais (hkil) index** in the main window.
@@ -97,12 +96,12 @@ Sets which crystal planes / axes are drawn.
 
 Specify a range of \([uvw]\) or \((hkl)\) indices. ReciPro enumerates every index within the limits and projects each one.
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.cs:setVector, radioButtonRange_CheckedChanged) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.cs:setVector, radioButtonRange_CheckedChanged) -->
 In Range mode the limits are $\pm$ the entered values; only irreducible indices are taken, grouped into sets of crystallographically equivalent indices (each set gets one colour).
 
 ### Structure factor mode
 
-Available only for **Planes** and **Kikuchi line pairs**. Projects the planes with the largest $|F_{hkl}|^2$ for the current wave source. **Top** sets the number of planes to draw (equivalent planes are counted individually; reflections that are higher orders of an already listed plane are skipped in **Planes** mode).
+Available only for **Planes** and **Kikuchi line pairs**. Projects the planes with the largest $|F_{hkl}|^2$ for the current wave source. **Top** sets the number of planes to draw (equivalent planes are counted individually; in **Planes** mode a reflection parallel to a stronger one — a higher or lower order of it, e.g. 222 when 111 is stronger — is skipped).
 
 ### Specified mode
 
@@ -110,7 +109,7 @@ Specifies particular axes or planes individually. Type an index, press **Add** t
 
 ### Colour / Size
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.resx:checkBoxRotateColor.Text) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.resx:checkBoxRotateColor.Text) -->
 Set the **colour** and **size** of the plotted points. Tick **Rotate color** to colour-code each set of equivalent axes/planes differently — useful for distinguishing families on a multi-index plot.
 
 ---
@@ -119,7 +118,7 @@ Set the **colour** and **size** of the plotted points. Tick **Rotate color** to 
 
 ![3D Options](../assets/cap-en-auto/FormStereonet.panel3.panel3DOptions.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.resx:checkBox3dOption*/button3D_reset/label29; FormStereonet.cs:button3D_reset_Click, Draw3D) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.resx:checkBox3dOption*/button3D_reset/label29; FormStereonet.cs:button3D_reset_Click, Draw3D) -->
 Shown when **3D View** is ticked; the 3-D sphere appears in a pane to the right of the net.
 
 - **Reset**: return the 3-D view to the default direction and zoom.
@@ -157,15 +156,15 @@ How the stereonet outline is drawn — the bounding circle and the optional grea
 
 ![Great Circle tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage2.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.cs:buttonAddCircle_Click, DrawCircles) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.cs:buttonAddCircle_Click, DrawCircles) -->
 Draw great circles (small circles are not supported). Specify either by **Zone axis index** \([uvw]\) (the great circle formed by the zone of that axis) or by **Zone defined by two planes** (the zone axis is their cross product). Use **Add** / **Remove** to edit the list; unticking an entry hides that circle. The colour and line width of the circles are also configurable.
 
 ### Wave {#wave}
 
 ![Wave tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage4.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.cs:setVector, DrawStereoNet) -->
-Used only when **Planes** or **Kikuchi line pairs** is selected as the projection target (in **Kikuchi line pairs** mode the wavelength also sets the Bragg angle, i.e. the separation of each line pair). Sets the wave source (X-ray / electron / neutron) and the wavelength or energy required to compute the crystal structure factors used for the **structure-factor weighting** option in [Mode](#mode).
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.cs:setVector, DrawStereoNet) -->
+Used only when **Planes** or **Kikuchi line pairs** is selected as the projection target (in **Kikuchi line pairs** mode the wavelength also sets the Bragg angle, i.e. the separation of each line pair). Sets the wave source (X-ray / electron / neutron) and the wavelength or energy required to compute the crystal structure factors used by **Apply structure factors to intensity** in [Mode](#mode).
 
 ---
 

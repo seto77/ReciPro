@@ -24,7 +24,7 @@ In PED the electron beam is precessed in a cone around the optic axis, and the d
 
 ![Wavelength](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Since PED is electron diffraction, select **Electron beam** as the source. Entering the electron energy (keV) or wavelength (nm) computes the relativistically corrected wavelength.
+Since PED is electron diffraction, select **Electron beam** as the source. Entering the electron energy (keV) or wavelength (Å or nm, switchable; default Å) computes the relativistically corrected wavelength.
 
 ---
 
@@ -44,7 +44,7 @@ For the incident-beam geometry, select **Precession (electron)** (available only
 
 Set the shape and sampling of the precession cone.
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:numericBoxPED_Semiangle, numericBoxPED_Step) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:numericBoxPED_Semiangle, numericBoxPED_Step) -->
 | Parameter | Description | Recommended |
 |-----------|-------------|-------------|
 | **Semi-angle** | Half-angle of the precession cone (mrad; 0.1–500, default 50) | 10–40 mrad |
@@ -58,7 +58,7 @@ The moment **Precession (electron)** is selected, **Intensity = Dynamical (autom
 
 ![Bloch-wave parameters](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:numericBoxNumOfBlochWave, numericBoxThickness) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:numericBoxNumOfBlochWave, numericBoxThickness) -->
 | Parameter | Description | Recommended |
 |-----------|-------------|-------------|
 | **Number of Diffracted Waves** | Number of Bloch waves included in the eigenvalue problem (8–1000, default 240). Larger values give more accurate intensities but the computation time grows as $O(N^3)$ | 50–200 |
@@ -77,8 +77,8 @@ Controls how each diffraction spot is drawn.
 - **Solid sphere / Gaussian** : Geometric model of the reciprocal lattice points. **Solid sphere** draws the cross-section of a sphere of radius $R$ with the Ewald sphere, and **Gaussian** draws the cross-section (a 2D Gaussian) of a 3D Gaussian with $\sigma = R$ and the Ewald sphere.
 - **Opacity** : Spot transparency (0 = transparent, 1 = opaque).
 - **Radius (R)** : Radius of the reciprocal lattice points. For dynamical intensities, the Gaussian integral $=$ Brightness $\times I_\text{dyn}$, and the Solid sphere uses radius $R \times I_\text{dyn}^{1/2}$ (so the area is proportional to the dynamical intensity).
-- **Brightness**, **Color scale**, **Log scale** : shown only in **Gaussian** mode. **Brightness** scales the integrated intensity of the drawn Gaussian; **Color scale** is **Gray** (spots in the spot colours below), **Cold-Warm**, **Spectrum** or **Fire**; **Log scale** displays intensity on a logarithmic scale. <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpots, comboBoxScaleColorScale_SelectedIndexChanged; FormDiffractionSimulator.Designer.cs:flowLayoutPanelGaussianOption, comboBoxScaleColorScale) -->
-- **Spot color** : shown when the colour scale is **Gray** (always in Solid-sphere mode): **General spots** / **Extinct spots (Screw or Glide)** / **Extinct spots (Lattice centring)**.
+- **Brightness**, **Color scale**, **Log scale** : shown only in **Gaussian** mode. **Brightness** scales the integrated intensity of the drawn Gaussian; **Color scale** is **Gray** (spots in the spot colours below), **Cold-Warm**, **Spectrum** or **Fire**; **Log scale** displays intensity on a logarithmic scale. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpots, comboBoxScaleColorScale_SelectedIndexChanged; FormDiffractionSimulator.Designer.cs:flowLayoutPanelGaussianOption, comboBoxScaleColorScale) -->
+- **Spot color** : shown while the **Color scale** is **Gray** (the initial setting): **General spots** / **Extinct spots (Screw or Glide)** / **Extinct spots (Lattice centring)**.
 - **Color per crystal** : Draw spots in the colour assigned to each crystal.
 
 ---

@@ -64,14 +64,14 @@
 
 ### 名前
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: SearchCrystalControl.cs:backgroundWorkerSearch_DoWork) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: SearchCrystalControl.cs:backgroundWorkerSearch_DoWork) -->
 結晶名のテキスト検索。部分一致可、大文字・小文字は区別しません。チェックを入れた条件だけが使われ、すべて AND で組み合わされます。
 
 ### 元素
 
 **周期表**ボタンで元素選択ウィンドウを開きます。各元素ボタンは押すたびに以下の3状態を切り替えます。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormPeriodicTable.cs: NeutralColor=LightYellow, IncludeColor=LightBlue, ExcludeColor=LightCoral, button_Click) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormPeriodicTable.cs: NeutralColor=LightYellow, IncludeColor=LightBlue, ExcludeColor=LightCoral, button_Click) -->
 - **含んでもよい**（デフォルト・黄）
 - **必ず含む**（青）
 - **必ず含まない**（赤）
@@ -92,13 +92,13 @@
 
 ![格子定数検索](../assets/cap-ja-auto/FormCrystalDatabase.panelSearch.searchCrystalControl.flowLayoutPanel1.groupBoxCellParameter.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: SearchCrystalControl.cs:buttonSearch_Click/backgroundWorkerSearch_DoWork, SearchCrystalControl.resx numericBoxCell*.ToolTip/FooterText) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: SearchCrystalControl.cs:buttonSearch_Click/backgroundWorkerSearch_DoWork, SearchCrystalControl.resx numericBoxCell*.ToolTip/FooterText) -->
 目標の格子定数 *a*, *b*, *c*（Å）、*α*, *β*, *γ*（°）と許容誤差を入力します。許容誤差は *a*, *b*, *c* に共通の相対値（±%）と、角度に共通の絶対値（±°）です。値が 0 のパラメータは無視されます。
 
 ### d値
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: SearchCrystalControl.cs:backgroundWorkerSearch_DoWork/calcDlist, CrystalMinimum.cs:d (強度上位 8 本の d 値)) -->
-最大 3 つの *d* 値（Å。使うものにチェック）と、それぞれの相対許容誤差（±%）を入力します。入力したすべての値が、その結晶の強度上位 8 本の反射のいずれかと一致すると該当します。**散乱因子を無視** をチェックすると、単位胞から計算した幾何学的に可能なすべての *d* 値（消滅則で消える反射も含む）と比較します。実験で回折ピーク位置のみが分かっている場合に有用。
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: SearchCrystalControl.cs:backgroundWorkerSearch_DoWork/calcDlist, CrystalMinimum.cs:d (強度上位 最大 16 本の d 値。Crystal.cs:GetDspacingList bestNum = 16)) -->
+最大 3 つの *d* 値（Å。使うものにチェック）と、それぞれの相対許容誤差（±%）を入力します。入力したすべての値が、データベースに保存されたその結晶の強い反射（λ = 1.54 Å の X線粉末強度で上位最大 16 本）のいずれかと一致すると該当します。**散乱因子を無視** をチェックすると、単位胞から計算した幾何学的に可能なすべての *d* 値（消滅則で消える反射も含む）と比較します。実験で回折ピーク位置のみが分かっている場合に有用。
 
 ### 密度
 

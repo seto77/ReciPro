@@ -60,10 +60,9 @@ Lists the allowed crystal planes (reflections) of the crystal and the **structur
 
 **Options**
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormBeamInteraction.cs:SetSortedPlanes, checkBoxBragBrentano_CheckedChanged) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormBeamInteraction.cs:SetSortedPlanes, checkBoxBragBrentano_CheckedChanged) -->
 - **Powder Diffraction Intensities (Bragg-Brentano Optics)** : computes the relative intensity as a powder-diffraction (Bragg–Brentano) intensity, $I \propto m\,\lvert F\rvert^2 / V^2 \times L$, where $m$ is the multiplicity, $V$ the cell volume, and $L = (1+\cos^2 2\theta)/(\sin 2\theta\,\sin\theta)$ (Lorentz–polarization factor) for X-rays or $L = 1/(\sin 2\theta\,\sin\theta)$ (Lorentz factor only, no polarization term) for electrons and neutrons. When off, it displays the structure-factor intensity $\lvert F\rvert^2$. Turning it on also forces *Hide equivalent planes* and *Hide prohibited planes* on and greys them out.
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormBeamInteraction.Designer.cs (Checked/Value), FormBeamInteraction.cs:SetSortedPlanes) -->
-- **Hide equivalent planes** (on by default) : collapses crystallographically equivalent planes into a single entry. The **Multi.** column is shown only while this is on.
+- **Hide equivalent planes** (on by default) : collapses crystallographically equivalent planes into a single entry. The **Multi.** column is shown only while this is on. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormBeamInteraction.Designer.cs (Checked/Value), FormBeamInteraction.cs:SetSortedPlanes) -->
 - **Hide prohibited planes** (on by default) : excludes planes that are systematically absent by the extinction rules. While it is off, a **Condition** column shows the reflection condition(s) that forbid each absent plane.
 - **d-Spacing Cutoff >** (default 1 Å) : excludes reflections with a d-spacing smaller than this value (length unit follows the **Unit** selection).
 
@@ -82,7 +81,7 @@ Each row is one reflection (or a group of symmetry-equivalent planes):
 | **F^2** | structure-factor intensity ($\lvert F\rvert^2$) |
 | **Rel. Int. (%)** | relative intensity, with the strongest reflection set to 100 |
 | **Condition** | extinction condition(s) violated by the plane (shown only when *Hide prohibited planes* is off) |
-| **i** | the redundant Miller–Bravais index $i=-(h+k)$ (shown only when the main window's **Option ▸ Use Miller-Bravais (hkil) index** is on and the crystal is hexagonal/trigonal) |
+| **i** | the redundant Miller–Bravais index $i=-(h+k)$ (shown only when the main window's **Options ▸ Use Miller-Bravais (hkil) index** is on and the crystal uses hexagonal axes — hexagonal, or trigonal not in a rhombohedral-axes setting) |
 
 **Diffraction-peak plot.** Below the table the same reflections are drawn as a stick pattern, with the strongest peaks labelled by their *hkl*.
 
@@ -107,18 +106,18 @@ How far the beam penetrates the material and how it loses energy. The content de
 
 ### X-ray
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormBeamInteraction.cs:DrawXrayAttenuationGraph (eMin=1, eMax=60, YLog), Designer: numericBoxAttenThickness.Value=100) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormBeamInteraction.cs:DrawXrayAttenuationGraph (eMin=1, eMax=60, YLog), Designer: numericBoxAttenThickness.Value=100) -->
 The radio buttons choose the plotted coefficient against photon energy (computed over 1–60 keV on a linear energy axis; the vertical axis is logarithmic for µ/ρ and µ and linear for T %):
 
 - **µ/ρ** — the **mass** attenuation coefficient (cm²/g): how strongly the material removes X-rays per gram, independent of how densely it is packed (this is the value found in reference tables). The graph shows the **total** together with its **photo**, **Rayleigh**, and **Compton** components.
 - **µ** — the **linear** attenuation coefficient $\mu = (\mu/\rho)\cdot\rho$ (cm⁻¹): the attenuation per centimetre of the actual material at its real density. The transmitted intensity follows $I = I_0\,e^{-\mu t}$, and $1/\mu$ is the distance over which the intensity falls to about 37 % (1/e).
 - **T %** — the **transmission** $T = e^{-\mu t}$ in percent for the sample thickness **t** set in the **Thickness t** box (µm, default 100 µm). 100 % = transparent, 0 % = fully blocked; use this to judge a sensible sample thickness at the current energy.
 
-The vertical lines mark the current energy and each element's **absorption edges**. The scalar table on the left lists, at the current energy: **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (half-value layer, $\ln 2/\mu$), **Transmission** at thickness *t*, **µ_en/ρ** (mass energy-absorption coefficient), the X-ray refractive-index decrements **δ** and **β** ($n = 1-\delta+i\beta$), the **θc (critical)** angle for total external reflection, and the real **X-ray SLD** (scattering-length density). The lower table lists the **K** and **L3** absorption **edge** energies and their **Jump** ratios for each element.
+The vertical line marks the current energy. The scalar table on the left lists, at the current energy: **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (half-value layer, $\ln 2/\mu$), **Transmission** at thickness *t*, **µ_en/ρ** (mass energy-absorption coefficient), the X-ray refractive-index decrements **δ** and **β** ($n = 1-\delta+i\beta$), the **θc (critical)** angle for total external reflection, and the real **X-ray SLD** (scattering-length density). The lower table lists the **K** and **L3** absorption **edge** energies and their **Jump** ratios for each element.
 
 ### Electron
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormBeamInteraction.cs:DrawElectronTransportGraph (kMin=1, kMax=50)) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormBeamInteraction.cs:DrawElectronTransportGraph (kMin=1, kMax=50)) -->
 The quantity selector chooses what is plotted against beam energy (computed over 1–50 keV; the initial view shows 0–20 keV):
 
 - **All (normalized)** — overlays the three curves below, each rescaled to its own maximum so the shapes can be compared on one plot (read absolute values from the table).

@@ -1,7 +1,7 @@
 # 電子飛程 (Electron Trajectory)
 
 **電子飛程シミュレータ (Monte Carlo Method)** は、試料内部の電子の軌跡を **モンテカルロ法** で計算します。入射電子は弾性・非弾性散乱を受け、後方散乱電子 (BSE) の分布 — 方位・脱出時のエネルギー・侵入深さ・表面平行方向の広がり — が集計されます。
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormTrajectory.cs (FormMain 以外から参照なし), FormEBSD.cs:new MonteCarlo(...) は独自に実行) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormTrajectory.cs (FormMain 以外から参照なし), FormEBSD.cs:new MonteCarlo(...) は独自に実行) -->
 [EBSDシミュレーション](12-ebsd-simulation.md) も方位・エネルギー・深さの重み付けに同じモンテカルロエンジンを使いますが、独自の設定で内部的に実行します。このウィンドウの結果が渡されるわけではありません。
 
 ![電子飛程](../assets/cap-ja-auto/FormTrajectory.png)
@@ -30,19 +30,18 @@
 ウィンドウ上部のコントロールで計算の条件を決めます。
 
 - **電子の軌跡を計算** : モンテカルロ計算を開始します。下部のステータスバーには、飛程計算・グラフ描画・3D描画それぞれの経過時間が別々に表示されます。
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormTrajectory.Designer.cs:numericBoxCalcNum/numericBoxSampleTilt, FormTrajectory.cs:EnergyThreshold, CalcMonteCarlo) -->
-- **計算する飛程の総数** (100〜1,000,000、既定 100,000) : 追跡する入射電子の本数。多いほど以下の各分布の統計ノイズは減りますが、計算時間は本数に比例して増えます。
+- **計算する飛程の総数** (100〜1,000,000、既定 100,000) : 追跡する入射電子の本数。多いほど以下の各分布の統計ノイズは減りますが、計算時間は本数に比例して増えます。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormTrajectory.Designer.cs:numericBoxCalcNum/numericBoxSampleTilt, FormTrajectory.cs:EnergyThreshold, CalcMonteCarlo) -->
 - **サンプルの傾き** (°、−90〜0、既定 0) : *X* 軸まわりの試料表面の傾き。垂直入射なら 0 のままにします。[EBSDシミュレータ](12-ebsd-simulation.md) と同じ配置を再現するときは **−70°** にします (大きく傾けると後方散乱電子の収率が上がるため)。
 - **Energy** (keV) / **Wavelength** / **Unit** : 入射電子線の加速電圧と、それに連動した相対論補正済みの電子波長。このエネルギーが、弾性散乱 (NIST Mott) と非弾性散乱 (阻止能・IMFP) の両方の運動エネルギーになります。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormTrajectory.cs:EnergyThreshold = 2, DrawStatistics / Crystallography/EBSD/MonteCarlo.cs:MonteCarlo(thresholdKev)) -->
-電子は試料から出るか、エネルギーが **2 keV**（固定のしきい値）まで下がるまで追跡されます。2 keV より大きいエネルギーで試料から出た電子を後方散乱電子として数え、以下の統計情報・ステレオネット・ヒストグラムはすべてこれだけを対象にします。
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormTrajectory.cs:EnergyThreshold = 2, DrawStatistics / Crystallography/EBSD/MonteCarlo.cs:MonteCarlo(thresholdKev)) -->
+電子は試料から出るか、エネルギーが **2 keV**（固定のしきい値）まで下がるまで追跡されます。2 keV より大きいエネルギーで試料から出た電子を後方散乱電子として数え、統計情報の η (全入射電子に対する割合)・平均エネルギー、ステレオネット、ヒストグラムはこれらの電子から求めます。統計情報の散乱断面積・平均自由行程・阻止能は、ビームエネルギーにおけるモデルの値です。
 
 散乱モデル自体はユーザーが選ぶものではありません。弾性散乱断面積は同梱の NIST Mott 表 (適用範囲外では遮蔽 Rutherford にフォールバック)、阻止能は Jablonski (2008) の修正形を使います。実際に使われたモデル名は **統計情報** の散乱断面積と阻止能の隣に表示されます。各モデルの中身は [減衰・輸送](appendix/a2-beam-interaction/attenuation-transport.md) を参照してください。
 
 ### 3D の飛程表示
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormTrajectory.cs:Draw3D (Material の Color4)) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormTrajectory.cs:Draw3D (Material の Color4)) -->
 後方散乱電子の軌跡は**赤**、試料内で吸収された電子の軌跡は**青**で描かれ、電子がエネルギーを失うにつれて16段階で白・透明へと薄くなります。脱出後の経路（下記）は、脱出エネルギーに比例した長さの**橙色**の短い線分です。同心のガイド円には nm (または µm) の目盛りが付き、**+X**・**+Y**・**+Z (=beam)** が座標軸を示します。
 
 - **From Z-axis (=beam direction)** / **From X-axis (rotation axis)** / **From the surface normal** : 視点を標準的な方向 (ビーム方向・回転軸方向・表面法線方向) へ切り替えます。この3つのボタンだけは日本語UIでも英語表示です。
@@ -57,7 +56,7 @@
 
 ![統計情報](../assets/cap-ja-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormTrajectory.cs:CalcMonteCarlo (labelCrossSection / labelStoppingPower)) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormTrajectory.cs:CalcMonteCarlo (labelCrossSection / labelStoppingPower)) -->
 現在のビームエネルギーにおける値です。散乱断面積と阻止能の隣には、それを与えたモデル名が括弧書きで表示されます。
 
 - **総散乱断面積 (σ_E)** (nm²) — 原子1個あたりの全弾性散乱断面積。
@@ -84,12 +83,12 @@
 
 ![ヒストグラム](../assets/cap-ja-auto/FormTrajectory.flowLayoutPanelProfiles.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormTrajectory.cs:DrawStatistics (hist[i].Count / count)) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormTrajectory.cs:DrawStatistics (hist[i].Count / count)) -->
 後方散乱電子についての3つの分布です。各ビンの値は、全後方散乱電子のうちそのビンに入る割合です（ビンの値の総和が1。ビン幅では割っていません）。
 
 ### 後方散乱電子の試料脱出時のエネルギー
 
-後方散乱電子が試料から出る時点で **まだ持っているエネルギー** (keV) のヒストグラムです。エネルギー損失ではないことに注意してください。EBSD シミュレータはこれをマスターパターンのエネルギー積分の重みに使います。
+後方散乱電子が試料から出る時点で **まだ持っているエネルギー** (keV) のヒストグラムです。エネルギー損失ではないことに注意してください。EBSD シミュレータは、自身のモンテカルロ計算で得たこの種の分布を、マスターパターンのエネルギー積分の重みに使います。
 
 ### 後方散乱電子の飛程における表面平行な方向の最大距離
 

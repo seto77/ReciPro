@@ -32,7 +32,7 @@ The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts from the [main w
 ## Main area
 
 The 3-D crystal structure, drawn together with the light-direction gizmo, the crystal-axes gizmo and the atom legend.
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:sizeControl1_ValueChanged) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.cs:sizeControl1_ValueChanged) -->
 > The **Size (W×H)** box at the top right of the window sets the pixel size of the 3-D view (the window is resized to match); saved and copied images have this size.
 > The **ProjWidth** box next to it shows the width of the projected view in nm. Edit the value to zoom numerically — it stays synchronized with right-drag / wheel zooming on the view.
 
@@ -45,7 +45,7 @@ The 3-D crystal structure, drawn together with the light-direction gizmo, the cr
 ### File menu
 
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.designer.cs:menuStrip1 / saveImageToolStripMenuItem_Click / initializeDdpDeveloperMenu) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.designer.cs:menuStrip1 / saveImageToolStripMenuItem_Click / initializeDdpDeveloperMenu) -->
 | Menu item | Description |
 |-----------|-------------|
 | Save Image ▸ Main Image / Legend / Crystal Axes / Light Direction | Save the main view, the atom legend or one of the gizmos as PNG |
@@ -84,8 +84,7 @@ The top of the dialog reports the number of objects and triangles involved, and 
 
 - **Atoms** / **Bonds** / **Polyhedra** : only the kinds currently displayed can be selected; unticking one keeps it on screen but leaves it out of the print.
 - **Polyhedra: solid faces** / **edges, dia.** : export coordination polyhedra either as solid bodies with faces, or as an edge frame (cylinders plus spheres at the vertices, 2.0 mm by default). The frame leaves the atoms inside visible.
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormExport3DModel.cs:PolyhedraAsMesh/PolyBarRadiusNm/PolyPitchNm; FormStructureViewer.cs:ExportModel) -->
-- **see-through mesh: bar dia. / pitch** : the edge frame plus a grid of thin bars on each face (bar diameter 0.8–5.0 mm, 1.2 mm by default; pitch 1.5–20 mm, 5.0 mm by default). The faces look filled from a distance but the inside stays visible.
+- **see-through mesh: bar dia. / pitch** : the edge frame plus a grid of thin bars on each face (bar diameter 0.8–5.0 mm, 1.2 mm by default; pitch 1.5–20 mm, 5.0 mm by default). The faces look filled from a distance but the inside stays visible. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormExport3DModel.cs:PolyhedraAsMesh/PolyBarRadiusNm/PolyPitchNm; FormStructureViewer.cs:ExportModel) -->
 - **Unit cell edges as cylinders, dia.** : include the unit cell frame, replaced by cylinders of the given diameter (2.4 mm by default). This box is ticked by default whenever the cell frame is displayed.
 
 **Printability** : print soundness
@@ -119,7 +118,7 @@ In this mode the *a*, *b*, *c* axes of the unit cell are the unit of the drawing
 
 ![Bounds by crystal planes](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:initBounds; BoundControl.resx:numericBoxMaximumDistanceFromOrigin) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.cs:initBounds; BoundControl.resx:numericBoxMaximumDistanceFromOrigin) -->
 In this mode the drawing area is bounded by a set of crystal planes. If the planes do not define a spatially closed region, ReciPro adds a near-spherical polyhedron of radius **Max Distance from Origin** (Å) to close it.
 
 #### Bound list
@@ -134,10 +133,10 @@ Set the bound plane by its Miller index. The checkbox includes crystallographica
 
 #### Distance from origin
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: BoundControl.resx:numericBoxDistanceD/numericBoxDistance/numericBoxTranslation/checkBoxImmediateUpdate) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BoundControl.resx:numericBoxDistanceD/numericBoxDistance/numericBoxTranslation/checkBoxImmediateUpdate) -->
 The distance from the origin to the bound plane, entered either as a multiple of the *d*-spacing of the selected (*hkl*) (**d×** box) or in Å (the box in parentheses). The two boxes are linked: changing one updates the other.
 
-- **Translation** (Å): shifts the bound plane along its normal; positive values move it away from the origin.
+- **Translation** (Å): takes effect only when **Equivalent Planes** is ticked and exactly two equivalent planes are generated (typically (*hkl*) and its opposite). The first plane is then moved away from the origin and the second toward it by this amount, i.e. the slab shifts along the normal. In all other cases the value is ignored.
 - **Max Distance from Origin** (Å): radius of the closing polyhedron used when the planes do not enclose a region (see above).
 - **Update Immediately**: apply edits of the selected plane without pressing **Replace**.
 
@@ -149,7 +148,7 @@ Show or hide the bound planes themselves. When shown, **Opacity** sets transpare
 
 If checked, only the inside region defined by the bounds is rendered; atoms, bonds, and polyhedra that intersect the bounds are clipped.
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:setAtoms, toolStripButtonAtomObjects_CheckedChanged (Bounds タブに該当チェックボックスは無い)) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.cs:setAtoms, toolStripButtonAtomObjects_CheckedChanged (Bounds タブに該当チェックボックスは無い)) -->
 #### Hiding atoms
 
 There is no check box for this in the Bounds tab. Turn off the **Atoms** toolbar button instead: no atoms are generated, so bonds and polyhedra disappear as well — useful when only the cell or lattice planes need to be visualised.
@@ -228,7 +227,7 @@ Sets the position of the drawn unit cell and whether its faces and edges are sho
 
 Every space group has a default origin. To move the centre of the drawn unit cell away from that origin, set the translation along *a*, *b*, *c*.
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:numericBoxProjectionCenterX_ValueChanged) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.cs:numericBoxProjectionCenterX_ValueChanged) -->
 The translation is tied to the [Projection center](#projection-center): setting the projection center to $(x, y, z)$ sets the translation to $(0.5-x,\ 0.5-y,\ 0.5-z)$.
 
 #### Show cell plane
@@ -239,7 +238,7 @@ Whether to draw the six faces that bound the unit cell. When enabled, you can se
 
 Whether to draw the unit-cell edges. The edge colour is configurable.
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:setUnitCellPlanes; FormStructureViewer.resx) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.cs:setUnitCellPlanes; FormStructureViewer.resx) -->
 The master check box **Show Unit Cell** (= the *Unit Cell* toolbar button) switches the whole cell on/off. Face and edge colours can be set for **All planes** / **All edges** at once or for **Each plane** / **Each edge** (*a*, *b*, *c* separately); **Edge width** sets the line width and **Opacity** the face transparency.
 
 ### Lattice Planes
@@ -289,7 +288,7 @@ Sets the projection mode (orthographic / perspective), depth fading, the project
 
 #### Depth fading out
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Crystallography.OpenGL/Shaders/fragZSORT.c, fragPPLL.c:applyDepthCueing; FormStructureViewer.cs:checkBoxDepthCueing_CheckedChanged) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Crystallography.OpenGL/Shaders/fragZSORT.c, fragPPLL.c:applyDepthCueing; FormStructureViewer.cs:checkBoxDepthCueing_CheckedChanged) -->
 Fades distant objects in the depth direction (**Depth Fade**). The colour is blended linearly toward the **background colour**: objects closer than **Near** keep their own colour, objects farther than **Far** take the background colour, and objects in between are interpolated. (Opacity itself is not changed.) **Near** and **Far** are given in Å.
 
 #### Projection center
@@ -304,16 +303,16 @@ Drawing quality (mesh subdivision, anti-aliasing). Higher quality is slower — 
 
 Algorithm used for translucent atoms and polyhedra.
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:rebuildTransparencyModeItems, comboBoxTransparency_SelectedIndexChanged; FormStructureViewer.resx:comboBoxTransparency.Items) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.cs:rebuildTransparencyModeItems, comboBoxTransparency_SelectedIndexChanged; FormStructureViewer.resx:comboBoxTransparency.Items) -->
 - **Approximate (Z depth sorting, OpenGL 4.1+)**: fast but can be inaccurate when many translucent objects overlap.
 - **High quality (Dual Depth Peeling, OpenGL 4.1+)**: order-independent transparency by depth peeling. Shown only when **Tools ▸ Enable DDP** is on (on by default when PPLL is not available). The number of peeling passes follows the [Rendering quality](#rendering-quality) setting.
 - **High quality (Per-Pixel Linked List, OpenGL 4.3+)**: exact order-independent transparency; shown only when the GPU supports OpenGL 4.3. Accurate but slow; effectively requires a discrete GPU.
 
 ### Symmetry Elements
 
-The **Symmetry Elements** tab draws the space-group symmetry operators directly onto the 3D model (toggle with the **Symmetry Elements** toolbar button). Each class of element can be shown/hidden independently:
+The **Symmetry Elements** tab draws the space-group symmetry operators directly onto the 3D model (toggle with the **Sym. Elems.** toolbar button). Each class of element can be shown/hidden independently:
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.resx:groupBoxAxes/groupBoxPlanes/groupBoxInversion) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.resx:groupBoxAxes/groupBoxPlanes/groupBoxInversion) -->
 - **Symmetry axes**: **Rotations**, **Screws**, **Rotinversions**
 - **Planes**: **Mirrors**, **Glides**
 - **Inversion centers**
@@ -326,8 +325,7 @@ The master switch is **Show Symmetry Elements**. For each group you can adjust t
 
 - **Accessory controls**: set the display sizes (light ball, axes, legend). **Group by element** toggles the legend display.
 - **Bonded atoms**: **Show bonded atoms even if they are outside the boundaries** keeps drawing atoms that are bonded to atoms inside the drawing range, even when they fall outside it.
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:legendControl_MouseClick; FormStructureViewer.resx:groupBoxLabel) -->
-- **Label**: **Show label**, **Font size**, **White edge**, and the label colour (**Use material color** or **Use fixed color**). Clicking an entry of the atom legend toggles the labels of that atom (or element, with **Group by element**) individually.
+- **Label**: **Show label**, **Font size**, **White edge**, and the label colour (**Use material color** or **Use fixed color**). Clicking an entry of the atom legend toggles the labels of that atom (or element, with **Group by element**) individually. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.cs:legendControl_MouseClick; FormStructureViewer.resx:groupBoxLabel) -->
 
 ---
 
@@ -335,7 +333,7 @@ The master switch is **Show Symmetry Elements**. For each group you can adjust t
 
 ![Toolbar](../assets/cap-en-auto/FormStructureViewer.toolStrip1.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:toolStripButtonLikeVesta_Click) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.cs:toolStripButtonLikeVesta_Click) -->
 | Button | Description |
 |--------|-------------|
 | Axes | Show axis orientation (size = lattice constant) |

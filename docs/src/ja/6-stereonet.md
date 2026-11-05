@@ -39,12 +39,12 @@
 
 ## ファイルメニュー
 
-表示中のステレオネットを保存またはコピーします。**ラスタ形式**または**ベクタ形式**で出力可能です。ベクタ形式でPowerPointに貼り付ければ、テキストのフォントや線の太さを自由に変更できます。
+表示中のステレオネットを保存またはコピーします。保存は**ラスタ形式** (PNG)、コピーは**ラスタ形式**または**ベクタ形式** (EMF) です。ベクタ形式でPowerPointに貼り付ければ、テキストのフォントや線の太さを自由に変更できます。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.Designer.cs:fileToolStripMenuItem; FormStereonet.cs:toolStripMenuItemSaveMovieStereonet_Click/toolStripMenuItemSaveMovie3D_Click) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.Designer.cs:fileToolStripMenuItem; FormStereonet.cs:toolStripMenuItemSaveMovieStereonet_Click/toolStripMenuItemSaveMovie3D_Click) -->
 | メニュー項目 | 説明 |
 |-------------|------|
-| 画像を保存 ▸ as Image (PNG format) / as Metafile (EMF) | ステレオネットをファイルに保存 |
+| 画像を保存 ▸ as Image (PNG format) / as Metafile (EMF) | ステレオネットを PNG ファイルに保存 (*as Metafile (EMF)* は現在無効。ベクタ形式が必要なときは **クリップボードにコピー ▸ メタファイルとして (EMF)** を使います) |
 | クリップボードにコピー ▸ 画像として / メタファイルとして (EMF) | ステレオネットをコピー |
 | Save Movie ▸ Stereonet / 3D | ステレオネットまたは 3D ビューの回転動画 (MP4) を保存。[結晶構造ビューア](5-structure-viewer.md#ファイルメニュー)と同じ動画設定ダイアログを使います (回転のみ) |
 | プリント設定 / プリントプレビュー / プリント | ステレオネットを印刷 |
@@ -73,14 +73,13 @@
 ### 描画半球
 
 **上半球**または**下半球**を選択します。観測者から見える球面の側を切り替えます。
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.cs:DrawStereoNet) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.cs:DrawStereoNet) -->
 上半球は $+Z$ 側 (観察者側、[付録 A1.1](appendix/a1-coordinate-system/1-orientation.md) 参照) です。**下半球** では各方向の $Z$ 成分を反転してから投影し、点は塗りつぶしではなく**白抜きの円**で描かれます。
 
 ### 表示オプション
 
 - **指数ラベルを表示**: 指数ラベルの表示
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.cs:setVector, DrawStereoNet) -->
-- **構造因子を描画対象に反映**: **結晶面**あるいは**菊池線**選択時、各点あるいは各線を構造因子で重み付け表示します (線源・波長は[線源タブ](#wave)で設定)。重みは表示中の集合内で規格化した $I_{\mathrm{rel}} = |F_{hkl}|^2 / \max|F|^2$ で、**結晶面** モードでは点の半径に $\sqrt{I_{\mathrm{rel}}}$ (すなわち $|F_{hkl}|$ に比例) を掛け、**菊池線** モードでは線の不透明度を $I_{\mathrm{rel}}$ にします。
+- **構造因子を描画対象に反映**: **結晶面**あるいは**菊池線**選択時、各点あるいは各線を構造因子で重み付け表示します (線源・波長は[線源タブ](#wave)で設定)。重みは表示中の集合内で規格化した $I_{\mathrm{rel}} = |F_{hkl}|^2 / \max|F|^2$ で、**結晶面** モードでは点の半径に $\sqrt{I_{\mathrm{rel}}}$ (すなわち $|F_{hkl}|$ に比例) を掛け、**菊池線** モードでは線の不透明度を $I_{\mathrm{rel}}$ にします。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.cs:setVector, DrawStereoNet) -->
 - **異常分散**: 構造因子に X 線の異常分散項 $f'$, $f''$ を含めます。X 線かつ **結晶面** / **菊池線** モードのときのみ有効です。
 
 > 三方晶・六方晶系では、メインウィンドウの **オプション ▸ Use Miller-Bravais (hkil) index** でミラー・ブラベー（4指数）表記に切り替えられます。
@@ -97,12 +96,12 @@
 
 \([uvw]\) または\((hkl)\) 指数の範囲を指定。範囲内の全指数を列挙して投影します。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.cs:setVector, radioButtonRange_CheckedChanged) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.cs:setVector, radioButtonRange_CheckedChanged) -->
 範囲モードでは入力値の $\pm$ が範囲になり、既約な指数だけが取られ、結晶学的に等価な指数の組ごとにまとめられます (組ごとに 1 色)。
 
 ### 構造因子の順モード
 
-**結晶面** と **菊池線** でのみ選べます。現在の線源で $|F_{hkl}|^2$ の大きい順に面を投影します。**トップ** で描画する面の数を指定します (等価な面も 1 枚ずつ数えます。**結晶面** モードでは、すでに含まれる面の高次反射は除かれます)。
+**結晶面** と **菊池線** でのみ選べます。現在の線源で $|F_{hkl}|^2$ の大きい順に面を投影します。**トップ** で描画する面の数を指定します (等価な面も 1 枚ずつ数えます。**結晶面** モードでは、より強い反射と平行な反射 (その高次・低次反射。例: 111 の方が強ければ 222) は除かれます)。
 
 ### 指定モード
 
@@ -118,7 +117,7 @@
 
 ![3Dオプション](../assets/cap-ja-auto/FormStereonet.panel3.panel3DOptions.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.ja.resx:checkBox3dOption*/button3D_reset/label29; FormStereonet.cs:button3D_reset_Click, Draw3D) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.ja.resx:checkBox3dOption*/button3D_reset/label29; FormStereonet.cs:button3D_reset_Click, Draw3D) -->
 **3D描画** をチェックすると表示され、ネットの右側に 3D の球が表示されます。
 
 - **方位リセット**: 3D ビューの向きとズームを既定に戻す
@@ -156,15 +155,15 @@
 
 ![大円タブ](../assets/cap-ja-auto/FormStereonet.tabControl.tabPage2.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.cs:buttonAddCircle_Click, DrawCircles) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.cs:buttonAddCircle_Click, DrawCircles) -->
 大円を描画します (小円には対応していません)。**晶帯軸の指数** \([uvw]\) (その軸を含む晶帯の作る大円) または **晶帯に属する2つの結晶面** (晶帯軸は両者の外積) で指定します。**追加** / **削除** でリストを編集し、チェックを外すとその円を非表示にできます。円の**色**と**線幅**も設定可能です。
 
 ### 線源 {#wave}
 
 ![線源タブ](../assets/cap-ja-auto/FormStereonet.tabControl.tabPage4.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStereonet.cs:setVector, DrawStereoNet) -->
-投影対象として**結晶面**あるいは**菊池線**を選択している場合にのみ使われます (**菊池線** モードでは波長がブラッグ角、すなわち各線対の間隔も決めます)。[モード](#mode)の**構造因子による重み付け**で用いる結晶構造因子の計算に必要な、線源 (X線 / 電子線 / 中性子線) と波長 (またはエネルギー) を設定します。
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.cs:setVector, DrawStereoNet) -->
+投影対象として**結晶面**あるいは**菊池線**を選択している場合にのみ使われます (**菊池線** モードでは波長がブラッグ角、すなわち各線対の間隔も決めます)。[モード](#mode)の**構造因子を描画対象に反映**で用いる結晶構造因子の計算に必要な、線源 (X線 / 電子線 / 中性子線) と波長 (またはエネルギー) を設定します。
 
 ---
 

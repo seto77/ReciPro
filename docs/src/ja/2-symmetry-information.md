@@ -25,8 +25,7 @@
 
 - **Number**（1〜230）と設定インデックス
 - **Crystal System**（結晶系）
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSymmetryInformation.cs:LocalizeLabels (groupBoxPointGroup=点群)) -->
-- **Point Group**（点群） : ヘルマン・モーガン (HM) 記号とシェーンフリース (SF) 記号
+- **Point Group**（点群） : ヘルマン・モーガン (HM) 記号とシェーンフリース (SF) 記号 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:LocalizeLabels (groupBoxPointGroup=点群)) -->
 - **Space Group**（空間群） : HM短縮記号・HM完全記号・SF記号・**Hall記号**
 
 ---
@@ -39,8 +38,7 @@
 
 - 各面の面間隔／各軸の長さ
 - 2面間（または2軸間）の角度
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSymmetryInformation.cs:numericBox_ValueChanged) -->
-- 面1と軸1、面2と軸2のなす角
+- 面1と軸1、面2と軸2のなす角 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:numericBox_ValueChanged) -->
 - **両面に垂直な方向指数** と **両軸に垂直な面指数**
 
 これらは現在の単位胞の計量に基づいて計算されます。長さは Å、角度は度で表示されます。
@@ -51,7 +49,7 @@
 
 ![ワイコフ位置](../assets/cap-ja-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSymmetryInformation.cs:SetupExtraTables/SetWyckoffPosition) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:SetupExtraTables/SetWyckoffPosition) -->
 すべてのワイコフ位置について、**多重度**・**記号**（ワイコフ記号）・**サイト対称性**・**座標**（1行に最大4個。それ以上は次の行に続く）を一覧表示します。最初のワイコフ位置（最大の多重度）が一般位置です。複合格子では 格子並進ベクトルがヘッダ行に示されます。
 
 ---
@@ -62,7 +60,7 @@
 
 複合格子、らせん・映進などの対称操作に由来する反射（出現則）条件を表示します。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSymmetryInformation.cs:SetupExtraTables/ChangeCrystal) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:SetupExtraTables/ChangeCrystal) -->
 各行は **指数**（反射の種類。例: $hkl$, $h0l$, $00l$）・**条件**（例: $h+k=2n$）・**要素**（その条件をもたらす格子心付け・対称要素）の3列です。条件が無い場合は *No Condition* と表示されます。
 
 ---
@@ -105,13 +103,13 @@
   - 立方晶系の\(F\)格子に関しては、投影した単位胞の左上1/4のみを表示します（[付録 A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram) 参照）。
   - このような対称要素は [Structure Viewer](5-structure-viewer.md) の3Dモデル上にも直接描画することができます。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: SymmetryDiagramPositions.cs:ComputeDepthLabel) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: SymmetryDiagramPositions.cs:ComputeDepthLabel) -->
 - **一般位置 (右)**: 一般等価位置を円（コンマ付きは鏡像）で表示し、投影軸方向の高さラベル（`+`、`−`、`½+`、…。[付録 A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md) 参照）を付記します。
   - 試験点 $(x,y,z)$ は、一般位置図の **コピー** ボタンの右にある **a** / **b** / **c** の欄（範囲 −1〜1、刻み 0.01）で設定します。点群が変わるとその点群の既定値に戻り、同じ点群のまま空間群だけが変わった場合は入力値が保持されます。
   - 立方晶系についてのみ、3回回転軸で結ばれる三つの円をつなぐ補助線が表示されます。
 
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSymmetryInformation.cs:ChangeCrystal, SymmetryDiagramCommon.cs:ResolveProjectionAxis) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:ChangeCrystal, SymmetryDiagramCommon.cs:ResolveProjectionAxis) -->
 コントロール（ウィンドウ下端の **オプション** パネルと、各模式図の上の **コピー** ボタン）:
 
 - **投影方向**（`a` / `b` / `c`） : 投影する結晶軸を選択します。選択できるのは直方晶（斜方晶）の空間群のみです（既定 `c`）。単斜晶ではユニーク軸、それ以外の晶系では `c` が自動的に使われます。

@@ -41,7 +41,7 @@ The crystal orientation is parametrised by three rotations. Described in the **b
 
 The same rotation seen in the **fixed laboratory** frame is the reverse sequence — Ψ about $Z$, then θ about $X$, then Φ about $Z$ — which is the description used in [Appendix A1.1](appendix/a1-coordinate-system/1-orientation.md). Both give the identical matrix $R$ below; Φ is simply the outermost (goniometer-like) axis and Ψ the innermost.
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormRotation.Designer.cs:numericBoxPhi/Theta/Psi, numericBox11–33 ReadOnly=true) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormRotation.Designer.cs:numericBoxPhi/Theta/Psi, numericBox11–33 ReadOnly=true) -->
 The Φ, θ, Ψ boxes and the nine matrix boxes are **read-only** displays. To change the orientation, rotate the crystal in the Main window, use **Paste from Excel**, or (with **Link** on) edit the experimental-axis angles below; every change is propagated to the Main window and all linked simulators.
 
 ### Rotation matrix
@@ -89,7 +89,7 @@ The 3D view shows the current rotation using three coloured tori (doughnut shape
 
 The **red**, **green**, and **blue** arrows represent the X, Y, Z axes in real-space Cartesian coordinates. These are *not* the same as the crystal axes shown in the Main window.
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormRotation.cs:createObject) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormRotation.cs:createObject) -->
 The grey sphere at the centre represents the sample. The small red / green / blue spheres (labelled **+a/−a**, **+b/−b**, **+c/−c**) mark the directions of the crystal's normalised *a*, *b*, *c* axes after the rotation (larger sphere = + end). At Φ = θ = Ψ = 0 they show the initial crystal orientation (*c* ∥ +Z, *b* in the YZ plane), so *a* and *b* coincide with +X and +Y only for orthogonal cells.
 
 > **Note**: Dragging in the OpenGL window changes only the *projection direction* of this view, not the crystal orientation itself. To rotate the crystal, use the Main window.
@@ -111,7 +111,7 @@ The lower half defines Euler angles on an arbitrary set of rotation axes and get
 
 ### 1st, 2nd, 3rd axes
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormRotation.cs:getExpDirections, RadioButton_CheckedChanged, checkBox1st_CheckedChanged, NumericBoxExp_ValueChanged, RotExp; FormRotation.Designer.cs) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormRotation.cs:getExpDirections, RadioButton_CheckedChanged, checkBox1st_CheckedChanged, NumericBoxExp_ValueChanged, RotExp; FormRotation.Designer.cs) -->
 Select the rotation axis of each goniometer level (1st = upper, 2nd = middle, 3rd = lower) from **X**, **Y** or **Z** (positive directions of the laboratory frame only). The 2nd axis cannot be the same as the 1st, nor the 3rd the same as the 2nd (the conflicting radio button is disabled). The default is **X – Z – Y**. The graphics update accordingly.
 
 The angle of each axis is shown in the corresponding coloured box (yellow, light blue, pink) and can be entered directly (degrees; values outside −180…180° are wrapped). The experimental rotation is composed in the same way as ReciPro's own matrix, with the 1st axis outermost:
@@ -135,11 +135,12 @@ $$
 
 When **Link** is checked, the ReciPro coordinate system and the Experimental coordinate system are coupled: their Euler angles are adjusted so that the object orientation is consistent between the two systems.
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormRotation.cs:CheckBoxLink_CheckedChanged, SetRotation(Matrix3D), NumericBoxExp_ValueChanged; FormMain.cs:Rotate) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormRotation.cs:CheckBoxLink_CheckedChanged, SetRotation(Matrix3D), NumericBoxExp_ValueChanged; FormMain.cs:Rotate) -->
 At the moment **Link** is checked, the offset $R_{\mathrm{base}} = R_{\mathrm{exp}}^{-1} R$ between the two systems is stored, and from then on $R = R_{\mathrm{exp}}\,R_{\mathrm{base}}$. While linked:
 
 - editing an experimental angle rotates the crystal in every window;
-- a rotation requested in the Main window (or by dragging in other windows) is decomposed numerically into the enabled, non-**Fix**ed goniometer angles, and the crystal is set to the **nearest orientation the goniometer can reach** — so with fixed or disabled axes the crystal follows the goniometer's constraints rather than the mouse exactly.
+- an incremental rotation (arrow buttons, CTRL+SHIFT+arrows, or dragging in the Main window or other windows) is decomposed numerically into the enabled, non-**Fix**ed goniometer angles, and the crystal is set to the **nearest orientation the goniometer can reach** — so with fixed or disabled axes the crystal follows the goniometer's constraints rather than the mouse exactly;
+- setting an absolute orientation (Euler-angle boxes, **Reset Rotation**, **View along** Axis/Plane, **Paste from Excel**) applies it exactly, re-enables the 2nd and 3rd axes, clears every **Fix**, and re-decomposes it into all three goniometer angles.
 
 ### Example workflow
 

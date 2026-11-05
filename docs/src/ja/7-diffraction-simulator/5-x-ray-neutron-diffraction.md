@@ -26,7 +26,7 @@ X線は電子線より波長が長く（Cu Kα: 0.15406 nm = 1.5406 Å）、エ�
 
 **元素** と **遷移** を選ぶと特性X線の波長が決まります。遷移は Siegbahn 記法（Kα₁ / Kα₂ / Kβ など）で指定します。代表的な元素の Kα₁ 波長:
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Crystallography/Atom/AtomStatic.cs:CharacteristicXrayWavelength (Mo Kα1 0.70931715 Å, Cr Kα1 2.2897260 Å)) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Crystallography/Atom/AtomStatic.cs:CharacteristicXrayWavelength (Mo Kα1 0.70931715 Å, Cr Kα1 2.2897260 Å)) -->
 | 元素 | 線種 | 波長 (Å) | エネルギー (keV) |
 |------|------|----------|-----------------|
 | Cu | Kα₁ | 1.5406 | 8.048 |
@@ -56,12 +56,12 @@ X線の歳差（プリセッション）カメラをシミュレートします�
 
 ### Back Laue（後方反射ラウエ）
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:radioButtonBeamParallel_CheckedChanged / SetVector / Draw (BackLaue region)) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:radioButtonBeamParallel_CheckedChanged / SetVector / Draw (BackLaue region)) -->
 白色X線による後方反射ラウエパターンをシミュレートします。検出器を線源側に置く後方反射のジオメトリで、Monochrome はオフになります。スポットは、線源側でカメラ長の位置に**ビームに垂直**に置いた平面検出器へ投影されます。[検出器ジオメトリ](index.md#検出器ジオメトリ) の検出器の傾き **Tau / Phi** はこの投影には使われません。
 
 - 白色X線のスペクトルは **50 keV** で打ち切られます（$d = \lambda(50\ \text{keV})/2$ までの反射を集める）。スペクトルによる重み付けはしません。
 - 原点を通る同一直線上の高次反射 $n\mathbf{g}$ は同じスポットに重なるので、その $\lvert F\rvert^2$ を最低次の反射に足し合わせ、最強スポットで規格化します。
-- **異常分散**は無効（エネルギーが一意でないため）で、このモードでは **半径** に単位がありません。
+- **Anomalous dispersion (f', f'')** は無効（エネルギーが一意でないため）で、このモードでは **半径** に単位がありません。
 
 > **注記**: 入射ビームの選択肢は波長に連動します。**歳差 (電子)**・**収束 (CBED)** は電子線選択時のみ、上記の **歳差X線**・**Back Laue** はX線選択時のみ表示されます。中性子線では **平行** のみです。スクリーンショットは撮影時の状態によりX線用の選択肢が写っていない場合があります。
 
@@ -77,7 +77,7 @@ X線の歳差（プリセッション）カメラをシミュレートします�
 
 エワルド球と逆格子点の幾何学的距離（励起誤差 $S_g$）だけで強度を決めます。$S_g = 0$（球面上）で最大となり、$\lvert S_g \rvert$ が大きくなるほど弱まって、逆格子点に与えた **半径** を超えると 0 になります。結晶構造因子は無視されます。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:radioButtonIntensityCalculationMethod_CheckedChanged / SetVector) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:radioButtonIntensityCalculationMethod_CheckedChanged / SetVector) -->
 このモードでのみ、次のオプションが現れます。
 
 - **すべての禁制反射を非表示** / **複合格子由来の禁制反射を非表示**（既定は複合格子由来のみ）: 空間群で禁制となる反射を隠します。隠さない禁制反射は **描画色** で設定した別の色（らせん・映進由来 / 複合格子由来）で描かれます。
@@ -87,8 +87,8 @@ X線の歳差（プリセッション）カメラをシミュレートします�
 
 励起誤差に加えて運動学的構造因子 $\lvert F_{hkl} \rvert^2$ を強度に反映します。消滅則が厳密に成立します。Lorentz因子・偏光因子は含みません（幾何学的パターンのシミュレーション）。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:WaveLengthControl_WaveSourceChanged / SetVector, Crystal.cs:SetVectorOfG) -->
-- **Anomalous dispersion (f', f'')**（X線のみ、既定オン。日本語UIでも英語表示）: 現在のX線エネルギーでのエネルギー依存の異常分散項を構造因子に加えます（デバイリングにも反映）。吸収端近傍では Friedel 則が破れ、$hkl$ と $\bar h\bar k\bar l$ の強度が異なります（Bijvoet 対）。Back Laue では無効です。[構造因子](../appendix/a2-beam-interaction/structure-factor.md) を参照。
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:WaveLengthControl_WaveSourceChanged / SetVector, Crystal.cs:SetVectorOfG) -->
+- **Anomalous dispersion (f', f'')**（X線のみ、既定オン。日本語UIでも英語表示）: 現在のX線エネルギーでの異常分散項 f′・f″ を構造因子に加えます（デバイリングにも反映）。化学的に異なる異常散乱体を含む非中心対称な構造では Friedel 則が破れ、$hkl$ と $\bar h\bar k\bar l$ の強度が異なります（Bijvoet 対）。差は吸収端近傍で最も大きくなります。Back Laue では無効です。[構造因子](../appendix/a2-beam-interaction/structure-factor.md) を参照。
 
 > **注記**: **動力学的効果** はX線では無効です（電子線選択時のみ有効）。
 
@@ -100,12 +100,11 @@ X線の歳差（プリセッション）カメラをシミュレートします�
 
 各回折スポットの描画方法を制御します。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:Draw (円で塗りつぶすとき / 点広がり関数で描画するとき), FormDiffractionSimulator.ja.resx) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:Draw (円で塗りつぶすとき / 点広がり関数で描画するとき), FormDiffractionSimulator.ja.resx) -->
 - **球の断面 / ガウス関数** : 逆格子点の幾何モデル。**球の断面** は球とエワルド球の断面を描きます。球の半径は **運動学的効果** では $R \times I_\text{rel}^{1/3}$（球の*体積*が相対強度に比例）、**励起誤差のみ考慮** では *R* そのものです。**ガウス関数** は σ = *R* の3Dガウス関数とエワルド球の断面（2Dガウスの積分が回折強度に対応）で、$\lvert S_g\rvert \ge 3R$ のスポットは描きません。
 - **不透明度 (Opacity)** : スポットの透過率（0 = 透過、1 = 不透過）。
-- **半径 (R)** : 逆格子点の半径。**外観**と**強度計算**の組み合わせで描画スポットサイズが決まります。
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:comboBoxScaleColorScale / FormDiffractionSimulator.cs:comboBoxScaleColorScale_SelectedIndexChanged, FormDiffractionSimulator.ja.resx) -->
-- **明るさ** : **ガウス関数** モードでのみ有効。描画ガウスの積分強度を設定します。
+- **半径 (R)** : 逆格子点の半径。**スポットの形状**と**強度計算**の組み合わせで描画スポットサイズが決まります。
+- **明るさ** : **ガウス関数** モードでのみ有効。描画ガウスの積分強度を設定します。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:comboBoxScaleColorScale / FormDiffractionSimulator.cs:comboBoxScaleColorScale_SelectedIndexChanged, FormDiffractionSimulator.ja.resx) -->
 - **カラー**（ガウス関数のみ）: **Gray**・**Cold-Warm**・**Spectrum**・**Fire** から選択。
 - **ログスケール**（ガウス関数のみ）: 強度を対数表示します。
 - **描画色** : カラーが **Gray** のときに使うスポットの色（他のカラーではこの欄は隠れます）。
@@ -117,7 +116,7 @@ X線の歳差（プリセッション）カメラをシミュレートします�
 
 多結晶試料のデバイリングを表示できます。ツールバーの **デバイリング** を有効にしてください（[ツールバー](index.md#ツールバー) 参照）。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.ja.resx:checkBoxDebyeRingIgnoreIntensity/checkBoxDebyeRingLabel) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.ja.resx:checkBoxDebyeRingIgnoreIntensity/checkBoxDebyeRingLabel) -->
 - **強度を無視する** : すべてのリングを同色・同強度で描画します（構造因子を無視した純粋に幾何的な比較に使用）。
 - **指数を表示する** : 各リングの近傍に (*hkl*) を表示します。
 
@@ -127,8 +126,8 @@ X線の歳差（プリセッション）カメラをシミュレートします�
 
 ## 中性子回折
 
-波長コントロールで **中性子線** を選ぶと中性子回折パターンを計算します。<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Crystallography.Controls/Wave/WaveLengthControl.cs:radioButtonWaveSource_CheckedChanged / LengthUnit) -->
-エネルギー (meV) または波長 (Å / nm 切替、既定 Å) を入力します。入射ビームは **平行** のみです。強度計算は **励起誤差のみ** / **運動学的** が使えます（動力学的は不可）。運動学的強度には原子散乱因子の代わりに中性子散乱長を用います。
+波長コントロールで **中性子線** を選ぶと中性子回折パターンを計算します。<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Crystallography.Controls/Wave/WaveLengthControl.cs:radioButtonWaveSource_CheckedChanged / LengthUnit) -->
+エネルギー (meV) または波長 (Å / nm 切替、既定 Å) を入力します。入射ビームは **平行** のみです。強度計算は **励起誤差のみ考慮** / **運動学的効果** が使えます（**動力学的効果** は不可）。運動学的強度には原子散乱因子の代わりに中性子散乱長を用います。
 
 ---
 

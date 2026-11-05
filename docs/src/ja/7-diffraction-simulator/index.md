@@ -46,14 +46,14 @@ title: 回折シミュレータ
 | X線 | Back Laue | 後方反射ラウエ | [X線回折シミュレーション](5-x-ray-neutron-diffraction.md) |
 | 中性子 | 平行 | 中性子回折 | [X線回折シミュレーションの中性子節](5-x-ray-neutron-diffraction.md) |
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:WaveLengthControl_WaveSourceChanged, radioButtonBeamParallel_CheckedChanged; FormDiffractionSimulator.ja.resx) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:WaveLengthControl_WaveSourceChanged, radioButtonBeamParallel_CheckedChanged; FormDiffractionSimulator.ja.resx) -->
 > **注記**: 入射ビームの選択肢は波長で変わります。電子線では **平行・歳差 (電子)・収束 (CBED, 電子線のみ)**、X線では **平行・歳差 (X線, ZOLZ)・バックラウエ (X線)**、中性子では **平行** のみです。線源を変えると入射ビームは常に **平行** に戻ります。**歳差 (電子)** または **収束** を選ぶと、強度計算は自動的に **動力学的効果** へ切り替わります。**動力学的効果** は電子線でのみ選べ、X線・中性子にすると **運動学的効果** に戻ります。バックラウエは白色（多色）ビームで計算します。
 
 ---
 
 ## キーボード・マウスショートカット
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:graphicsBox_MouseWheel / graphicsBox_MouseUp; GraphicsBox.cs:GetWheelZoomFactor) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:graphicsBox_MouseWheel / graphicsBox_MouseUp; GraphicsBox.cs:GetWheelZoomFactor) -->
 X線・SAED・PED のシミュレーションで共通の回折パターンウィンドウに適用されます。パターン上のドラッグは**結晶**を回転させます。ズームはマウスホイール、または右クリック／右ドラッグで行います。
 
 | ショートカット | 動作 |
@@ -64,7 +64,7 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 | スポットを左ダブルクリック | 反射の詳細を表示（指数・*d*・構造因子・励起誤差） |
 | 中ドラッグ | パターンを平行移動 |
 | <kbd>CTRL</kbd> ＋ 中ドラッグ | 検出器中心を移動（検出器領域の表示時） |
-| マウスホイール | 1 ノッチごとに ×2 でズームイン／アウト（カーソル位置中心。**中心を固定** 時は固定中心） |
+| マウスホイール | 1 ノッチごとに ×2 でズームイン／アウト。カーソル位置の点が表示の中心に移ります（**中心を固定** 時は固定中心のまま） |
 | 右クリック | ズームアウト（×1/1.2） |
 | 右ドラッグで矩形選択 | 選択範囲にズームイン |
 | ステータスバーを右ダブルクリック | 現在の設定のテキスト要約をコピー |
@@ -108,7 +108,7 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 
 ### マウス位置
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:graphicsBox_MouseMove, checkBoxMousePositionDetailes_CheckedChanged) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:graphicsBox_MouseMove, checkBoxMousePositionDetailes_CheckedChanged) -->
 パターン上部の **マウス位置:** 行に、カーソル位置の *d* (nm)・*d*⁻¹ (nm⁻¹)・2θ（度、および rad。0.1 rad 未満は mrad）が表示されます。**詳細** をチェックすると、検出器上の座標（mm、原点は試料から下ろした垂線の足）・実空間座標（mm、原点は結晶）・逆空間座標（nm⁻¹）の 3 つが追加表示されます。バックラウエでは *d* と逆空間座標は「-」表示になります。
 
 ---
@@ -117,7 +117,7 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 
 ![ファイルメニュー](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:fileToolStripMenuItem; FormDiffractionSimulator.cs:radioButtonIntensityCalculationMethod_CheckedChanged, FormDiffractionSimulatorCBED.cs:FormDiffractionSimulatorCBED_VisibleChanged) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:fileToolStripMenuItem; FormDiffractionSimulator.cs:radioButtonIntensityCalculationMethod_CheckedChanged, FormDiffractionSimulatorCBED.cs:FormDiffractionSimulatorCBED_VisibleChanged) -->
 （メニュー項目は日本語 UI でも英語表記です）
 
 | メニュー項目 | 説明 |
@@ -135,7 +135,7 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 
 ![プリセットメニュー](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:presetToolStripMenuItem_Click; FormDiffractionSimulator.Designer.cs:presetToolStripMenuItem) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:presetToolStripMenuItem_Click; FormDiffractionSimulator.Designer.cs:presetToolStripMenuItem) -->
 線源とエネルギーだけを設定する固定のプリセットです: **Electron 300 kV**、**Electron 200 kV**、**Electron 120 keV**、**X-ray 30 keV**、**X-ray 20 keV**、**X-ray 17.48 keV (MoKα₁)**、**X-ray 8.041 keV (CuKα₁)**（最後の 2 つは Mo / Cu の Kα₁ 特性線を選択）。検出器ジオメトリ・タブ・スポット特性などは保存も変更もされません。
 
 ### オプション・ヘルプメニュー
@@ -144,7 +144,7 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 |-------------|------|
 | **オプション > Dynamic Compression** | [動的圧縮](#動的圧縮) ウィンドウを開きます（検出器ジオメトリのウィンドウも同時に開きます） |
 | **オプション > ALCHEMI シミュレータ...** | [ALCHEMI シミュレータ](4-alchemi-simulation.md) を開きます |
-| **ヘルプ > Basic concept of Bethe's method** | オンラインマニュアルの [ブロッホ波法の付録](../appendix/a3-bloch-wave/calculation.md) をブラウザで開きます |
+| **ヘルプ > Basic concept of Bethe's method** | オンラインマニュアルの [ブロッホ波法の付録](../appendix/a3-bloch-wave/index.md) をブラウザで開きます |
 
 ---
 
@@ -168,7 +168,7 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 
 ![画面](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:numericBoxResolution, comboBoxCenter; FormDiffractionSimulator.cs:FixedCenter, radioButtonResoUnit_CheckedChanged) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:numericBoxResolution, comboBoxCenter; FormDiffractionSimulator.cs:FixedCenter, radioButtonResoUnit_CheckedChanged) -->
 | 項目 | 説明 |
 |------|------|
 | **解像度** | 画面 1 ピクセルあたりの大きさ。**mm/px**（検出器面上）または **nm⁻¹/px** を選べます（既定 0.08 mm/px）。実際の検出器ピクセルサイズである必要はなく、表示スケールとして扱われ、マウスズームで自動更新されます |
@@ -181,7 +181,7 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 
 ![検出器（カメラ長）](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
-- **カメラ長2** : 試料から検出器面へ下ろした垂線の足までの距離 (mm、既定 1000 mm)。検出器が傾いていない (τ = 0) ときは通常のカメラ長に一致します。 <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:CameraLength2, DetectorRotation; FormDiffractionSimulator.Designer.cs:numericBoxCameraLength2) -->
+- **カメラ長2** : 試料から検出器面へ下ろした垂線の足までの距離 (mm、既定 1000 mm)。検出器が傾いていない (τ = 0) ときは通常のカメラ長に一致します。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:CameraLength2, DetectorRotation; FormDiffractionSimulator.Designer.cs:numericBoxCameraLength2) -->
 - **詳細** : 検出器ジオメトリ設定ウィンドウ（後述の[検出器ジオメトリ](#検出器ジオメトリ)節）を開きます。
 
 ### その他
@@ -197,7 +197,7 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 
 ![TEMホルダーシミュレーション](../../assets/cap-ja-auto/FormDiffractionSimulatorHolder.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulatorHolder.cs:tiltByArrowKey, buttonLink_Click; FormDiffractionSimulatorHolder.Designer.cs) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulatorHolder.cs:tiltByArrowKey, buttonLink_Click; FormDiffractionSimulatorHolder.Designer.cs) -->
 回折図形をダブルティルトの **TEMホルダー**（**Tilt X** = 主軸、**Tilt Y** = 副軸）と連動させるウィンドウを開きます。ホルダーの傾斜角を設定するとパターンと結晶方位が更新され、到達可能な方位をステレオネット上に表示できます（ver4.914 で追加）。**現在の結晶方位にリンク** は、現在の結晶方位を指定した Tilt X / Tilt Y のときの方位として基準にします。**TEM 設定** では画面上での Tilt X 軸の向き（既定 −29°）と Tilt Y の極性を与え、**↻ 180° 回転** はビーム軸まわりに結晶を 180° 回します。ステレオネットを左ダブルクリックするとホルダー傾斜をその点に設定でき、**矢印キーを有効化** をチェックしておくと ←/→ で Tilt X、↑/↓ で Tilt Y をステップ送りできます（ステップ 0.1〜2°、既定 0.2°）。このウィンドウが開いている間は、ReciPro のどのウィンドウが前面にあっても矢印キーが有効です。
 
 ---
@@ -208,7 +208,7 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 
 ![一般タブ](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:tabPageGeneral (groupBoxStringSize, groupBoxColor)) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:tabPageGeneral (groupBoxStringSize, groupBoxColor)) -->
 ラベルの **文字のサイズ** と、**文字色**・**試料から検出器へ下ろした垂線の足** のマーカー・**ダイレクトスポット位置** のマーカー・**背景** の色を設定します（2 つのマーカーはそれぞれ非表示にできます）。スポットの色は **スポットの形状**（各モードページ参照）で、菊池線・デバイリング・目盛り線の色はそれぞれのタブで設定します。ここでの設定はすべての描画モードに反映されます。
 
 ### 菊池線 (Kikuchi lines)
@@ -219,7 +219,7 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 
 ツールバーで菊池線が有効のときにアクティブになります。
 
-- **反射の選択** : 描画する菊池線の元となる反射を選びます。**結晶構造因子**（$\lvert F_{hkl}\rvert$ の **トップ** *N* 本。1〜1000、既定 100）または **1/d の閾値**（1/d がしきい値以下のすべての反射。0〜100 nm⁻¹、既定 10）。 <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:numericBoxKikuchiThresholdOfStructureFactor/OfLength; FormDiffractionSimulator.cs:コンストラクタ (comboBoxKikuchiMode/Quality/Scale.SelectedIndex)) -->
+- **反射の選択** : 描画する菊池線の元となる反射を選びます。**結晶構造因子**（$\lvert F_{hkl}\rvert$ の **トップ** *N* 本。1〜1000、既定 100）または **1/d の閾値**（1/d がしきい値以下のすべての反射。0〜100 nm⁻¹、既定 10）。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:numericBoxKikuchiThresholdOfStructureFactor/OfLength; FormDiffractionSimulator.cs:コンストラクタ (comboBoxKikuchiMode/Quality/Scale.SelectedIndex)) -->
 - **モード (Mode)** : 菊池線の描画方法を選びます（既定は **運動学的**）。コンボボックスの下の設定はモードに応じて切り替わります。
     - **幾何学的 (Geometric)** : 選択した線をすべて同じ色で描画します。
     - **運動学的 (Kinematical)** : 反射の運動学的相対強度に従って線の濃さを変えます。
@@ -233,7 +233,7 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
     - **スケール (Scale)** : 明るさの圧縮カーブ（Linear / Log / Tanh。既定は Tanh）。いずれも表示用の変換で、実機カメラの応答ではありません。
     - **明るさを固定 (Lock brightness)** : 明るさの正規化を固定します（方位や厚みを変えて明るさを比較するときに）。
     - 下の灰色の注記には、源と吸収の非整合タグ・描画バンド数・診断（*B* = 0 の原子に既定値を代用した等）が表示されます。
-- （かつての独立した **しきい値** パラメータは現在はありません。反射は上記の選択だけで絞り込まれます。） <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:tabPageKikuchi (旧 Threshold コントロールは存在しない)) -->
+- （かつての独立した **しきい値** パラメータは現在はありません。反射は上記の選択だけで絞り込まれます。） <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:tabPageKikuchi (旧 Threshold コントロールは存在しない)) -->
 
 ### デバイリング (Debye rings)
 
@@ -241,8 +241,8 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 
 ツールバーでデバイリングが有効のときにアクティブになります。
 
-- **回折強度を無視** : チェック時はすべてのデバイリングを同じ色・強度で描画します（結晶構造因子を無視）。純粋に幾何的な比較をしたいときに使います。
-- **指数ラベルを表示** : チェック時、各リングの近傍に (*hkl*) を表示します。
+- **強度を無視する** : チェック時はすべてのデバイリングを同じ色・強度で描画します（結晶構造因子を無視）。純粋に幾何的な比較をしたいときに使います。
+- **指数を表示する** : チェック時、各リングの近傍に (*hkl*) を表示します。
 
 ### 目盛り線 (Scale)
 
@@ -252,17 +252,17 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 
 - **2θ / 方位角 目盛り線** : **2θ** は等散乱角（同心円）、**方位角** は等方位角（中心からの放射状直線）を表します。色はそれぞれ独立に設定できます。
 - **線の太さ** : 目盛り線の太さ。
-- **分割数** : 目盛り線の密度。**細かい** / **普通**（既定）/ **粗い**。 <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:radioButtonScaleDivisionFine/Medium/Coarse) -->
+- **分割数** : 目盛り線の密度。**細かい** / **普通**（既定）/ **粗い**。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:radioButtonScaleDivisionFine/Medium/Coarse) -->
 - **目盛りラベルを表示** : 目盛り線に数値ラベルを表示するか。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:tabControl (タブは 一般/菊池線/デバイリング/目盛り線 の 4 枚のみ)) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:tabControl (タブは 一般/菊池線/デバイリング/目盛り線 の 4 枚のみ)) -->
 （独立した「その他」タブはありません。マウスの **回転の感度** は右側パネルの **その他** グループにあります。上の [その他](#その他) を参照。）
 
 ---
 
 ## 回折スポット情報
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:ButtonDetailsOfSpots_Click; FormDiffractionSpotInfo.cs:SetTable(double, Crystal)) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:ButtonDetailsOfSpots_Click; FormDiffractionSpotInfo.cs:SetTable(double, Crystal)) -->
 ブロッホ波法（Dynamical 計算）で計算された各反射の詳細を一覧表示します。強度計算パネルの **スポットの詳細情報** ボタンで開きます。**励起誤差のみ考慮** / **運動学的効果** のときは、現在描画されている反射について電子線のポテンシャルと $P_g$・$Q_g$ を一覧します（動力学的振幅は無し）。CBED モードでは CBED ウィンドウで選んだ厚さに追随します。
 
 ![回折スポット情報](../../assets/cap-ja-auto/FormDiffractionSpotInfo.png)
@@ -313,8 +313,8 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 
 ![検出器ジオメトリ設定](../../assets/cap-ja-auto/FormDiffractionSimulatorGeometry.panelDetectorGeometry.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulatorGeometry.Designer.cs; FormDiffractionSimulatorGeometry.cs:FormDiffractionSimulatorGeometry_DragDrop) -->
-**Camera length 2**（mm、1〜10000、既定 1000）と、方位 **φ** の面内軸まわりの検出器の傾き **τ**（−200〜200°）を与えます（このウィンドウは日本語 UI でも英語表記）。Back Laue（後方反射ラウエ）では、ここで検出器を線源側に置く幾何を設定します。`.prm` ファイルをドロップすると、波長・カメラ長2・τ・φ・垂線の足の位置・ピクセルサイズを読み込みます。
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulatorGeometry.Designer.cs; FormDiffractionSimulatorGeometry.cs:FormDiffractionSimulatorGeometry_DragDrop) -->
+**Camera length 2**（mm、1〜10000、既定 1000）と、方位 **φ** の面内軸まわりの検出器の傾き **τ**（−200〜200°）を与えます（このウィンドウは日本語 UI でも英語表記）。Back Laue（後方反射ラウエ）では **Camera length 2** だけが使われます。パターンは常に線源側でビームに垂直な検出器へ投影され、τ / φ はこの投影に使われません。`.prm` ファイルをドロップすると、波長・カメラ長2・τ・φ・垂線の足の位置・ピクセルサイズを読み込みます（線源は X線（任意波長）に切り替わり、検出器領域の表示もオンになります）。
 
 ### 検出器領域と重畳画像
 
@@ -330,7 +330,7 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 
 ![動的圧縮](../../assets/cap-ja-auto/FormDiffractionSimulatorDynamicCompression.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulatorDynamicCompression.cs:FormDiffractionSimulatorDynamicCompression_DragDrop, buttonPaste_Click, graphControl1_LinePositionChanged) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulatorDynamicCompression.cs:FormDiffractionSimulatorDynamicCompression_DragDrop, buttonPaste_Click, graphControl1_LinePositionChanged) -->
 衝撃圧縮（動的圧縮）された試料からの回折をシミュレーションするウィンドウです（日本語 UI でも英語表記）。位置・時刻・圧力の 3 列をタブ区切りで並べた `.txt` をドロップすると時刻ごとの圧力プロファイルを読み込み、**Time** スライダー (ns) でグラフに表示するプロファイルを選びます。グラフ上の 2 本の縦線（**Front** / **Back**）はドラッグで圧縮の前端・後端を設定します。このほか圧縮モデル（**2018 / 2019 model**）、衝撃速度（**Us**、**Ur**、km/s）、**EOS**（K0、K'0）、**Shocked plane** / **Slip plane**、圧縮域・解放域の回転分布、質量吸収係数、Ω のステップ送り、**Save patterns**（`#.tif`）を設定し、**Simulate** で実行します。
 
 ---

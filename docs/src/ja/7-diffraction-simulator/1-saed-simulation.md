@@ -20,7 +20,7 @@ GUI条件: 波長 = 電子線 ・ 入射ビーム = 平行 ・ 強度計算 = �
 
 ![波長](../../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-線源を **電子線** にします。エネルギー (keV) または波長 (nm) を入力すると、相対論的補正付きの波長が計算されます。<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:waveLengthControl, presetToolStripMenuItem) -->初期値は 200 keV で、**プリセット** メニューから 300 / 200 / 120 kV をワンクリックで設定できます。X線・中性子線については [X線回折シミュレーション](5-x-ray-neutron-diffraction.md) を参照してください。
+線源を **電子線** にします。エネルギー (keV) または波長 (Å / nm 切替、既定 Å) を入力すると、相対論的補正付きの波長が計算されます。<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:waveLengthControl, presetToolStripMenuItem) -->初期値は 200 keV で、**プリセット** メニューから 300 / 200 / 120 kV をワンクリックで設定できます。X線・中性子線については [X線回折シミュレーション](5-x-ray-neutron-diffraction.md) を参照してください。
 
 ---
 
@@ -44,7 +44,7 @@ GUI条件: 波長 = 電子線 ・ 入射ビーム = 平行 ・ 強度計算 = �
 
 エワルド球と逆格子点の幾何学的距離（励起誤差 $S_g$）だけから強度を決定します。$S_g = 0$（球面上）で最大となり、$\lvert S_g \rvert$ が大きくなるほど弱まって、逆格子点に与えた **Radius** を超えると 0 になります。結晶構造因子は無視されるため、最も高速で、回折スポットの位置確認に適します。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:radioButtonIntensityCalculationMethod_CheckedChanged, CheckBoxExtinctionAll_CheckedChanged; FormDiffractionSimulator.Designer.cs:checkBoxExtinctionAll/Lattice, checkBoxDrawSameSize) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:radioButtonIntensityCalculationMethod_CheckedChanged, CheckBoxExtinctionAll_CheckedChanged; FormDiffractionSimulator.Designer.cs:checkBoxExtinctionAll/Lattice, checkBoxDrawSameSize) -->
 このモードでのみ、次のオプションが現れます。
 
 | オプション | 説明 |
@@ -73,7 +73,7 @@ GUI条件: 波長 = 電子線 ・ 入射ビーム = 平行 ・ 強度計算 = �
 
 **強度計算 = 動力学的** のときだけ有効です。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:numericBoxNumOfBlochWave, numericBoxThickness) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:numericBoxNumOfBlochWave, numericBoxThickness) -->
 | パラメータ | 説明 |
 |-----------|------|
 | **回折波の数** | 固有値問題に含めるブロッホ波の本数（8〜1000、既定 240）。大きくするほど強度は正確になりますが、計算時間が $O(N^3)$ で増加します |
@@ -87,13 +87,13 @@ GUI条件: 波長 = 電子線 ・ 入射ビーム = 平行 ・ 強度計算 = �
 
 各回折スポットの描画方法を制御します。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpots, radioButtonPointSpread_CheckedChanged, comboBoxScaleColorScale_SelectedIndexChanged; FormDiffractionSimulator.Designer.cs:flowLayoutPanelAppearance) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpots, radioButtonPointSpread_CheckedChanged, comboBoxScaleColorScale_SelectedIndexChanged; FormDiffractionSimulator.Designer.cs:flowLayoutPanelAppearance) -->
 
 - **球の断面 / ガウス関数** (Solid sphere / Gaussian) : 逆格子点の幾何モデル（既定は球の断面）。**球の断面** は球とエワルド球の断面（円）を描きます。球の半径は **運動学的効果** では $R\,I^{1/3}$（球の体積 ∝ 強度）、**励起誤差のみ考慮** では $R$ で、**動力学的効果** ではエワルド球で切らずに半径 $R\,I_\text{dyn}^{1/2}$（面積 ∝ 強度）の円を描きます。**ガウス関数** は $\sigma = R$ の3Dガウス関数の断面（2Dガウス）を描画し積分が回折強度に対応します。
 - **不透明度 (Opacity)** : スポットの透過率（0=透過、1=不透過）。
 - **半径 (R)** : 逆格子点の仮想半径（nm⁻¹。0.01〜1、既定 0.2）。**スポットの形状**と**強度計算**の組み合わせでスポットサイズが決まります（上記）。
 - **明るさ・カラー・ログスケール** : **ガウス関数** のときのみ表示。**明るさ** は描画ガウスの積分強度の倍率、**カラー** は **Gray**（下の描画色を使用）/ **Cold-Warm** / **Spectrum** / **Fire**、**ログスケール** は強度の対数表示（強度差の大きいパターンで有用）。
-- **描画色** : カラーが **Gray** のとき（球の断面では常に）表示。**一般反射**・**禁制反射 (らせん or 映進)**・**禁制反射 (複合格子)** の色を設定します。
+- **描画色** : **カラー** が **Gray**（初期設定）のときに表示。**一般反射**・**禁制反射 (らせん or 映進)**・**禁制反射 (複合格子)** の色を設定します。
 - **結晶毎の指定色** : チェックすると結晶ごとに割り当てた色でスポットを描きます（単結晶でも有効）。
 
 ---
@@ -102,13 +102,13 @@ GUI条件: 波長 = 電子線 ・ 入射ビーム = 平行 ・ 強度計算 = �
 
 スポットに重畳するラベルは [ツールバー](index.md#ツールバー) から選びます。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpotsLabel) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpotsLabel) -->
 | ラベル | 表示内容 |
 |--------|---------|
 | **面指数** | ミラー指数 $(hkl)$ |
 | **d値** | 面間隔 $d$（Å 単位で表示） |
 | **1/d** | 面間隔の逆数 $1/d$ (nm⁻¹) |
-| **距離** | 検出器上でのダイレクトスポットからの距離 $L_2 \tan 2\theta$ (mm。$L_2$ はカメラ長2) |
+| **距離** | 検出器上でのダイレクトスポットからの距離 $L_2 \tan 2\theta$ (mm。$L_2$ はカメラ長2。検出器が傾いていない τ = 0 のときの値) |
 | **2θ** | 散乱角 $2\theta$ (2θスケールの同心円と同じ定義) |
 | **χ** | 方位角 $\chi$。画面の上方向 (12時方向) を 0° として時計回りが正 (方位角スケールの放射線と同じ定義) |
 | **励起誤差** | 励起誤差 $S_g$ (nm⁻¹) |

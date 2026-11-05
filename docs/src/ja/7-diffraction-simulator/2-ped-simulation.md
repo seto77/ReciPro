@@ -24,7 +24,7 @@ PEDでは、電子ビームを光軸を中心に円錐状に歳差運動させ�
 
 ![波長](../../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-PEDは電子回折なので、線源は **電子線** を選びます。電子線のエネルギー (keV) または波長 (nm) を入力すると、相対論的補正付きの波長が計算されます。
+PEDは電子回折なので、線源は **電子線** を選びます。電子線のエネルギー (keV) または波長 (Å / nm 切替、既定 Å) を入力すると、相対論的補正付きの波長が計算されます。
 
 ---
 
@@ -44,7 +44,7 @@ PEDは電子回折なので、線源は **電子線** を選びます。電子�
 
 歳差コーンの形状とサンプリングを設定します。
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:numericBoxPED_Semiangle, numericBoxPED_Step) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:numericBoxPED_Semiangle, numericBoxPED_Step) -->
 | パラメータ | 説明 | 推奨値 |
 |-----------|------|-------|
 | **半頂角** | 歳差コーンの半角 (mrad。0.1〜500、既定 50) | 10–40 mrad |
@@ -58,7 +58,7 @@ PEDは電子回折なので、線源は **電子線** を選びます。電子�
 
 ![ブロッホ波パラメータ](../../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:numericBoxNumOfBlochWave, numericBoxThickness) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:numericBoxNumOfBlochWave, numericBoxThickness) -->
 | パラメータ | 説明 | 推奨値 |
 |-----------|------|-------|
 | **回折波の数** | 固有値問題に含めるブロッホ波の本数（8〜1000、既定 240）。大きいほど強度は正確になりますが、計算時間は $O(N^3)$ で増加します | 50–200 |
@@ -77,8 +77,8 @@ PEDは電子回折なので、線源は **電子線** を選びます。電子�
 - **Solid sphere / Gaussian** : 逆格子点の幾何モデル。**Solid sphere** は半径 $R$ の球とエワルド球の断面を描き、**Gaussian** は $\sigma = R$ の3Dガウスとエワルド球の断面（2Dガウス）を描きます。
 - **不透明度 (Opacity)** : スポットの透過率（0=透過、1=不透過）。
 - **Radius (R)** : 逆格子点の半径。動力学的強度では、Gaussian は積分 $=$ Brightness $\times I_\text{dyn}$、Solid sphere は半径 $R \times I_\text{dyn}^{1/2}$（面積が動力学的強度に比例）。
-- **明るさ・カラー・ログスケール** : **ガウス関数** のときのみ表示。**明るさ** は描画ガウスの積分強度の倍率、**カラー** は **Gray**（下の描画色を使用）/ **Cold-Warm** / **Spectrum** / **Fire**、**ログスケール** は強度の対数表示。<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpots, comboBoxScaleColorScale_SelectedIndexChanged; FormDiffractionSimulator.Designer.cs:flowLayoutPanelGaussianOption, comboBoxScaleColorScale) -->
-- **描画色** : カラーが **Gray** のとき（球の断面では常に）表示。**一般反射** / **禁制反射 (らせん or 映進)** / **禁制反射 (複合格子)** の色。
+- **明るさ・カラー・ログスケール** : **ガウス関数** のときのみ表示。**明るさ** は描画ガウスの積分強度の倍率、**カラー** は **Gray**（下の描画色を使用）/ **Cold-Warm** / **Spectrum** / **Fire**、**ログスケール** は強度の対数表示。<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpots, comboBoxScaleColorScale_SelectedIndexChanged; FormDiffractionSimulator.Designer.cs:flowLayoutPanelGaussianOption, comboBoxScaleColorScale) -->
+- **描画色** : **カラー** が **Gray**（初期設定）のときに表示。**一般反射** / **禁制反射 (らせん or 映進)** / **禁制反射 (複合格子)** の色。
 - **結晶毎の指定色** : 結晶ごとに設定した色でスポットを描画します。
 
 ---

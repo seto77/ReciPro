@@ -31,7 +31,7 @@ circumference = 2 * math.pi * r
 
 ### C. Rotate the current crystal
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Macro.cs:DirectionClass.RotateAroundAxis — 結晶の [uvw] 周り。回転後は実験室 x 軸と一致しない) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Macro.cs:DirectionClass.RotateAroundAxis — 結晶の [uvw] 周り。回転後は実験室 x 軸と一致しない) -->
 ```python
 # Rotate the current crystal by 30 degrees around its a-axis [100].
 ReciPro.Dir.RotateAroundAxisInDeg(1, 0, 0, 30)
@@ -149,8 +149,7 @@ ReciPro.File.SaveText(info, "spot_info.csv")
 
 - **Inspecting values**: `print()` does not work in this environment (no console). Use **Step by step** execution and watch the debug panel, which lists the local variables at each line.
 - **`math` is pre-imported**: `math.sqrt(x)`, `math.sin(x)`, `math.pi`, `math.radians(deg)` are available without `import math`.
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:Draw (SkipRendering && bethe)) -->
-- **Batch speedup**: `ReciPro.DifSim.SkipRendering = True` skips drawing the spots in **dynamical** mode only (the calculation itself still runs, so it suits `SpotInfo()` batches; saved images will have no spots). Reset it to `False` afterwards. It has no effect in kinematical/excitation mode.
+- **Batch speedup**: `ReciPro.DifSim.SkipRendering = True` skips drawing the spots in **dynamical** mode only (the calculation itself still runs, so it suits `SpotInfo()` batches; saved images will have no spots). Reset it to `False` afterwards. It has no effect in kinematical/excitation mode. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:Draw (SkipRendering && bethe)) -->
 - **Waiting for rendering**: call `ReciPro.Sleep(ms)` to pause execution when you need the GUI to catch up.
 - **Autocomplete**: the popup shows the full `ReciPro.Class.Member` form. Type a few letters and accept with `Enter` or `Tab`.
 

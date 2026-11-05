@@ -53,23 +53,23 @@ Enter the search criteria below and press the **Search** button or the **Enter**
 | Criterion | Description |
 |-----------|-------------|
 | **Name** | Crystal name |
-| **Elements** | Periodic table selector (may/must/must-not include) <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: SearchCrystalControl.resx checkBoxSearchElements/checkBoxSearchCellParameter.Text) --> |
+| **Elements** | Periodic table selector (may/must/must-not include) <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: SearchCrystalControl.resx checkBoxSearchElements/checkBoxSearchCellParameter.Text) --> |
 | **Reference** | Title, journal, author |
-| **Crystal system** | Select crystal system |
+| **Crystal System** | Select crystal system |
 | **Cell Params** | Lattice constants and error |
 | **d-spacing** | Strong-reflection d-values and error |
 | **Density** | Density and error |
 
 ### Name
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: SearchCrystalControl.cs:backgroundWorkerSearch_DoWork) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: SearchCrystalControl.cs:backgroundWorkerSearch_DoWork) -->
 Free-text match against the crystal name. Partial matches are allowed; case is ignored. Only the criteria whose check boxes are ticked are applied, and they are combined with AND.
 
 ### Element
 
 Press the **Periodic Table** button to open the element selector. Each element button cycles between three states:
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormPeriodicTable.cs: NeutralColor=LightYellow, IncludeColor=LightBlue, ExcludeColor=LightCoral, button_Click) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormPeriodicTable.cs: NeutralColor=LightYellow, IncludeColor=LightBlue, ExcludeColor=LightCoral, button_Click) -->
 - **May or may not include** (default — yellow)
 - **Must include** (blue)
 - **Must exclude** (red)
@@ -90,13 +90,13 @@ Restrict the search to a specific crystal system (cubic, tetragonal, orthorhombi
 
 ![Cell parameter search](../assets/cap-en-auto/FormCrystalDatabase.panelSearch.searchCrystalControl.flowLayoutPanel1.groupBoxCellParameter.png)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: SearchCrystalControl.cs:buttonSearch_Click/backgroundWorkerSearch_DoWork, SearchCrystalControl.resx numericBoxCell*.ToolTip/FooterText) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: SearchCrystalControl.cs:buttonSearch_Click/backgroundWorkerSearch_DoWork, SearchCrystalControl.resx numericBoxCell*.ToolTip/FooterText) -->
 Enter target lattice constants *a*, *b*, *c* (Å) and *α*, *β*, *γ* (°) and the acceptable errors: one relative tolerance (±%) common to *a*, *b*, *c*, and one absolute tolerance (±°) common to the angles. A value of 0 means that parameter is ignored.
 
 ### d-spacing
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: SearchCrystalControl.cs:backgroundWorkerSearch_DoWork/calcDlist, CrystalMinimum.cs:d (強度上位 8 本の d 値)) -->
-Enter up to three *d*-spacings (Å; tick each one to use it), each with a relative tolerance (±%). A crystal matches when every entered value agrees with one of its eight strongest reflections. With **Ignore scattering factor** checked, the values are instead compared with all geometrically possible *d*-spacings computed from the unit cell (including systematically absent reflections). Useful when only the diffraction peak positions are known from an experiment.
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: SearchCrystalControl.cs:backgroundWorkerSearch_DoWork/calcDlist, CrystalMinimum.cs:d (強度上位 最大 16 本の d 値。Crystal.cs:GetDspacingList bestNum = 16)) -->
+Enter up to three *d*-spacings (Å; tick each one to use it), each with a relative tolerance (±%). A crystal matches when every entered value agrees with one of its strongest reflections stored in the database (up to 16, ranked by X-ray powder intensity at λ = 1.54 Å). With **Ignore scattering factor** checked, the values are instead compared with all geometrically possible *d*-spacings computed from the unit cell (including systematically absent reflections). Useful when only the diffraction peak positions are known from an experiment.
 
 ### Density
 

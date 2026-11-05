@@ -56,7 +56,7 @@ While ReciPro is running, it can accept macros from other programs through the W
 
 The listener is **off by default**. Enable it from the main window:
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.resx:optionToolStripMenuItem.Text) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.resx:optionToolStripMenuItem.Text) -->
 **Options → Accept external macro commands (named pipe)**
 
 The setting is remembered across sessions.

@@ -26,7 +26,7 @@ Select **X-ray** as the radiation source. X-rays can be specified in two ways: c
 
 Choosing an **element** and a **transition** fixes the characteristic X-ray wavelength. The transition is specified in Siegbahn notation (Kα₁ / Kα₂ / Kβ, etc.). Kα₁ wavelengths of representative elements:
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Crystallography/Atom/AtomStatic.cs:CharacteristicXrayWavelength (Mo Kα1 0.70931715 Å, Cr Kα1 2.2897260 Å)) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Crystallography/Atom/AtomStatic.cs:CharacteristicXrayWavelength (Mo Kα1 0.70931715 Å, Cr Kα1 2.2897260 Å)) -->
 | Element | Line | Wavelength (Å) | Energy (keV) |
 |---------|------|-----------------|--------------|
 | Cu | Kα₁ | 1.5406 | 8.048 |
@@ -56,12 +56,12 @@ Simulates an X-ray precession camera. This is a precession photograph that captu
 
 ### Back-Laue (back-reflection Laue)
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:radioButtonBeamParallel_CheckedChanged / SetVector / Draw (BackLaue region)) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:radioButtonBeamParallel_CheckedChanged / SetVector / Draw (BackLaue region)) -->
 Simulates a back-reflection Laue pattern with white (polychromatic) X-rays. In this back-reflection geometry the detector is placed on the source side, and **Monochrome** is turned off. The spots are projected onto a flat detector **perpendicular to the beam** at the camera length on the source side; the detector tilt **Tau / Phi** of [Detector geometry](index.md#detector-geometry) is not used in this projection.
 
 - The white spectrum is cut at **50 keV**: reflections are collected down to $d = \lambda(50\ \text{keV})/2$, and no spectral weighting is applied.
 - Harmonics $n\mathbf{g}$ lying on the same line through the origin fall on the same spot; their $\lvert F\rvert^2$ are summed onto the lowest-order reflection and the spot intensities are normalised to the strongest spot.
-- **Anomalous dispersion** is disabled (the energy is not single-valued), and **Radius** has no unit in this mode.
+- **Anomalous dispersion (f', f'')** is disabled (the energy is not single-valued), and **Spot radius** has no unit in this mode.
 
 > **Note**: The incident-beam options follow the wavelength. **Precession (electron)** and **Convergence (CBED)** appear only when electron radiation is selected, whereas the **Precession (X-ray)** and **Back-Laue** options above appear only when X-ray radiation is selected. For neutrons, only **Parallel** is available. Depending on the state at capture time, the screenshot may not show the X-ray-specific options.
 
@@ -77,7 +77,7 @@ Selects the method used to compute spot intensities. Two modes are available for
 
 Intensity is determined solely by the geometric distance between the Ewald sphere and the reciprocal-lattice point (the excitation error $S_g$). It is largest at $S_g = 0$ — exactly on the sphere — and falls off as $\lvert S_g\rvert$ grows, reaching zero once $\lvert S_g\rvert$ exceeds the **Radius** given for the reciprocal-lattice point. The structure factor is ignored.
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:radioButtonIntensityCalculationMethod_CheckedChanged / SetVector) -->
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:radioButtonIntensityCalculationMethod_CheckedChanged / SetVector) -->
 Only in this mode, the following options appear:
 
 - **Exclude all prohibited reflections** / **Exclude reflections prohibited by lattice centring** (default: lattice-centring only) : hide reflections forbidden by the space group. Reflections that are not hidden are drawn in the separate colours set under **Spot color** (screw/glide-forbidden and lattice-forbidden).
@@ -87,8 +87,8 @@ Only in this mode, the following options appear:
 
 In addition to the excitation error, the Kinematical structure factor $\lvert F_{hkl} \rvert^2$ is folded into the intensity. Extinction rules are strictly obeyed. The Lorentz and polarization factors are not included (this is a simulation of the geometric pattern).
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:WaveLengthControl_WaveSourceChanged / SetVector, Crystal.cs:SetVectorOfG) -->
-- **Anomalous dispersion (f', f'')** (X-ray only, default on) : adds the energy-dependent anomalous-dispersion terms at the current X-ray energy to the structure factor (also to the Debye rings). Near an absorption edge Friedel's law breaks and $hkl$ / $\bar h\bar k\bar l$ intensities differ (Bijvoet pairs). Disabled for Back-Laue. See [Structure factor](../appendix/a2-beam-interaction/structure-factor.md).
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:WaveLengthControl_WaveSourceChanged / SetVector, Crystal.cs:SetVectorOfG) -->
+- **Anomalous dispersion (f', f'')** (X-ray only, default on) : adds the anomalous-dispersion terms f′, f″ at the current X-ray energy to the structure factor (also to the Debye rings). In a non-centrosymmetric structure containing chemically distinct anomalous scatterers, Friedel's law then breaks and $hkl$ / $\bar h\bar k\bar l$ intensities differ (Bijvoet pairs); the effect is strongest near an absorption edge. Disabled for Back-Laue. See [Structure factor](../appendix/a2-beam-interaction/structure-factor.md).
 
 > **Note**: **Dynamical theory** is disabled for X-rays (available only when electron radiation is selected).
 
@@ -100,12 +100,11 @@ In addition to the excitation error, the Kinematical structure factor $\lvert F_
 
 Controls how each diffraction spot is rendered.
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:Draw (円で塗りつぶすとき / 点広がり関数で描画するとき)) -->
-- **Solid sphere / Gaussian** : geometric model of the reciprocal-lattice point. **Solid sphere** draws the cross-section between a sphere and the Ewald sphere; with **Kinematical** the sphere radius is $R \times I_\text{rel}^{1/3}$ (so the sphere *volume* is proportional to the relative intensity), with **Only excitation error** it is *R* itself. **Gaussian** uses the cross-section between a 3-D Gaussian with σ = *R* and the Ewald sphere (the integral of the 2-D Gaussian corresponds to the diffraction intensity); spots with $\lvert S_g\rvert \ge 3R$ are not drawn.
+<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:Draw (円で塗りつぶすとき / 点広がり関数で描画するとき)) -->
+- **Solid sphere / Gaussian** : geometric model of the reciprocal-lattice point. **Solid sphere** draws the cross-section between a sphere and the Ewald sphere; with **Kinematical & exc. error** the sphere radius is $R \times I_\text{rel}^{1/3}$ (so the sphere *volume* is proportional to the relative intensity), with **Only excitation error** it is *R* itself. **Gaussian** uses the cross-section between a 3-D Gaussian with σ = *R* and the Ewald sphere (the integral of the 2-D Gaussian corresponds to the diffraction intensity); spots with $\lvert S_g\rvert \ge 3R$ are not drawn.
 - **Opacity** : transparency of the spot (0 = transparent, 1 = opaque).
-- **Radius (R)** : radius of the reciprocal-lattice point. The rendered spot size is determined by the combination of **Appearance** and **Intensity calculation**.
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:comboBoxScaleColorScale / FormDiffractionSimulator.cs:comboBoxScaleColorScale_SelectedIndexChanged, radioButtonPointSpread_CheckedChanged) -->
-- **Brightness** : active only in **Gaussian** mode. Sets the integrated intensity of the rendered Gaussian.
+- **Spot radius (R)** : radius of the reciprocal-lattice point. The rendered spot size is determined by the combination of **Appearance** and **Intensity calculation**.
+- **Brightness** : active only in **Gaussian** mode. Sets the integrated intensity of the rendered Gaussian. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:comboBoxScaleColorScale / FormDiffractionSimulator.cs:comboBoxScaleColorScale_SelectedIndexChanged, radioButtonPointSpread_CheckedChanged) -->
 - **Color scale** (Gaussian only) : **Gray**, **Cold-Warm**, **Spectrum** or **Fire**.
 - **Log scale** (Gaussian only) : display intensities on a logarithmic scale.
 - **Spot color** : spot colours used with the **Gray** colour scale (this group is hidden for the other colour scales).
@@ -118,7 +117,7 @@ Controls how each diffraction spot is rendered.
 Debye rings of a polycrystalline specimen can be displayed. Enable **Debye rings** on the toolbar (see [Toolbar](index.md#toolbar)).
 
 - **Ignore diffraction intensity** : draws all rings in the same colour and intensity (used for a purely geometric comparison that ignores the structure factor).
-- **Show index label** : displays the (*hkl*) index near each ring.
+- **Show Index Labels** : displays the (*hkl*) index near each ring.
 
 Detailed settings are on the Debye rings tab of the [tab menu](index.md#drawing-overlay-tabs).
 
@@ -126,8 +125,8 @@ Detailed settings are on the Debye rings tab of the [tab menu](index.md#drawing-
 
 ## Neutron diffraction
 
-Selecting **Neutron** in the Wave Length control computes a neutron diffraction pattern. <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Crystallography.Controls/Wave/WaveLengthControl.cs:radioButtonWaveSource_CheckedChanged / LengthUnit) -->
-Enter the energy (meV) or wavelength (Å or nm, switchable; default Å). The incident beam can only be **Parallel**. The intensity calculation can be **Only excitation error** or **Kinematical** (Dynamical is not available). The Kinematical intensity uses the neutron scattering length instead of the atomic scattering factor.
+Selecting **Neutron** in the Wave Length control computes a neutron diffraction pattern. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Crystallography.Controls/Wave/WaveLengthControl.cs:radioButtonWaveSource_CheckedChanged / LengthUnit) -->
+Enter the energy (meV) or wavelength (Å or nm, switchable; default Å). The incident beam can only be **Parallel**. The intensity calculation can be **Only excitation error** or **Kinematical & exc. error** (**Dynamical theory** is not available). The kinematical intensity uses the neutron scattering length instead of the atomic scattering factor.
 
 ---
 
