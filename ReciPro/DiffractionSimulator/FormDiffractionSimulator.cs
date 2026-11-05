@@ -1436,7 +1436,8 @@ public partial class FormDiffractionSimulator : FormBase
                             graphics.TranslateTransform(pts[^1].X, pts[^1].Y);
                             graphics.RotateTransform(θ + Math.PI);
                         }
-                        graphics.DrawString(g.Text, font, brush, new PointF(0, 0));
+                        //graphics.DrawString(g.Text, font, brush, new PointF(0, 0)); // 261105Cl 変更前 (監査 C23): 4 指数表記の設定でも 3 指数だった (スポットのラベルは 4 指数)
+                        graphics.DrawString(formMain.MillerBravaisActive ? FormMain.PlaneString(g.Index.h, g.Index.k, g.Index.l, true) : g.Text, font, brush, new PointF(0, 0)); // 261105Cl
                         graphics.Transform = original;
                     }
                 }
@@ -1717,7 +1718,12 @@ public partial class FormDiffractionSimulator : FormBase
             if (checkBoxDebyeRingLabel.Checked && !double.IsNaN(labelPosition.X))
             {
 
-                g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, colorControlString.Color, convertDetectorToScreen(labelPosition), true);
+                //g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, colorControlString.Color, convertDetectorToScreen(labelPosition), true); // 261105Cl 変更前 (監査 C23)
+                var hkl = formMain.Crystal.Plane[n].strHKL; // 261105Cl "h k l" または "h k l + h k l + …"
+                if (formMain.MillerBravaisActive) // 261105Cl 4 指数表記の設定なら各面を "h k i l" に
+                    hkl = string.Join(" + ", hkl.Split(" + ").Select(s => s.Split(' ', StringSplitOptions.RemoveEmptyEntries) is [var h, var k, var l] && int.TryParse(h, out var hi) && int.TryParse(k, out var ki) && int.TryParse(l, out var li)
+                        ? FormMain.PlaneString(hi, ki, li, true) : s)); // 261105Cl
+                g.DrawString("{" + hkl.Replace(" + ", "} + {") + "}", font, colorControlString.Color, convertDetectorToScreen(labelPosition), true); // 261105Cl
                 //g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, new SolidBrush(colorControlString.Color), labelPosition.ToPointF());
 
             }
@@ -3705,7 +3711,8 @@ public partial class FormDiffractionSimulator : FormBase
                 spotList.Add(new Sphere(vec.ToOpenTK() + shift, radius, new Material(col, trans), DrawingMode.Surfaces));
 
                 if (checkBox3D_ShowIndices.Checked && dev < spotRadius)
-                    textList.Add((g.Text, 9f, vec.ToOpenTK() + shift, radius + 0.1, false, matText));
+                    //textList.Add((g.Text, 9f, vec.ToOpenTK() + shift, radius + 0.1, false, matText)); // 261105Cl 変更前 (監査 C23)
+                    textList.Add((formMain.MillerBravaisActive ? FormMain.PlaneString(g.Index.h, g.Index.k, g.Index.l, true) : g.Text, 9f, vec.ToOpenTK() + shift, radius + 0.1, false, matText)); // 261105Cl
             }
             glObjects.AddRange(spotList);
             glObjects.AddRange(textList.Select(e => new TextObject(e.text, e.fontSize, e.position, e.popout, e.whiteEdge, e.mat, glControl)));
