@@ -125,13 +125,13 @@ Los ángulos de Euler no son únicos en las posiciones de bloqueo de cardán (θ
 
 | Propiedad | Tipo | Descripción |
 |----------|------|-------------|
-| `Energy` | double | Energía (keV) |
-| `Wavelength` | double | Longitud de onda (Å) |
+| `Energy` | double | Energía (keV para rayos X y electrones, meV para neutrones) |
+| `Wavelength` | double | Longitud de onda (nm) |
 | `Thickness` | double | Espesor de la muestra (nm) |
 | `NumberOfDiffractedWaves` | int | Número de ondas de Bloch |
 | `CameraLength2` | double | Longitud de cámara (mm) |
 | `ExcitationError` | double | Radio de las reflexiones (nm⁻¹): en modo cinemático/de error de excitación, `SpotInfo()` exporta las reflexiones con \|Sg\| dentro de este valor |
-| `SkipRendering` | bool | Omitir el renderizado para el procesamiento por lotes |
+| `SkipRendering` | bool | Solo tiene efecto en el modo dinámico (`Calc_Dynamical()`): el cálculo de ondas de Bloch se sigue ejecutando (por lo que `SpotInfo()` es válido), pero no se dibuja ninguna reflexión; las imágenes guardadas mientras tanto no contienen reflexiones. No tiene efecto en el modo cinemático/de error de excitación |
 
 ### Modo de haz
 
@@ -156,7 +156,7 @@ Los ángulos de Euler no son únicos en las posiciones de bloqueo de cardán (θ
 |----------|-------------|
 | `Tau` / `TauInDeg` | Ángulo de inclinación del detector τ (rad / grados) |
 | `Phi` / `PhiInDeg` | Eje de rotación del detector φ (rad / grados) |
-| `Foot(x, y)` | Posición de foot en píxeles |
+| `Foot(x, y)` | Posición (mm) del pie de la perpendicular trazada desde la muestra al detector, medida desde el centro de la imagen; el propio centro de la imagen está en las coordenadas del detector (−x, −y). `Foot(0, 0)` sitúa el pie en el centro de la imagen |
 
 ### Salida
 
@@ -220,7 +220,7 @@ Controla el visor de estructura desde una macro. `SaveImage()` y `Export3DModel(
 | `StructureViewer.Open()` | Abrir la ventana del visor de estructura |
 | `StructureViewer.Close()` | Cerrar la ventana del visor de estructura |
 | `StructureViewer.SaveImage(filename)` | Guardar la vista principal renderizada como PNG, con el tamaño en píxeles del cuadro **Size (W×H)**; omite `filename` para abrir un diálogo |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Exportar la estructura mostrada para impresión 3D, como **Export 3D Model (3MF/STL)** del menú File. La extensión decide el formato (`.stl` monocolor / `.3mf` coloreado por elemento); solo `filename` es obligatorio — los demás valores por defecto son los del diálogo (dimensión mayor 80 mm, aristas de la celda ⌀2,4 mm, enlaces engrosados a ⌀1,2 mm). Con `fixedScaleInMMperNm` > 0 se construyen varios modelos a la misma escala |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Exportar la estructura mostrada para impresión 3D, como **Export 3D Model (3MF/STL)** del menú File. La extensión decide el formato (`.stl` monocolor / `.3mf` coloreado por elemento); solo `filename` es obligatorio — los demás valores por defecto son los del diálogo (dimensión mayor 80 mm, aristas de la celda ⌀2,4 mm, enlaces engrosados a ⌀1,2 mm). Con `fixedScaleInMMperNm` > 0 se construyen varios modelos a la misma escala. `filename` debe terminar en `.stl` o `.3mf` (no se abre ningún diálogo); devuelve una cadena informativa con el número de triángulos y el tamaño impreso |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -317,7 +317,7 @@ Estas tres clases de simulación de imágenes comparten muchos miembros. Para ev
 
 | Función | Descripción |
 |----------|-------------|
-| `Sleep(ms)` | Esperar el número de milisegundos especificado |
+| `ReciPro.Sleep(ms)` | Esperar el número de milisegundos especificado. Se llama como `ReciPro.Sleep(ms)`; no aparece en la tabla de funciones integradas del editor |
 
 ---
 

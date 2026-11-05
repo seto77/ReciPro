@@ -8,14 +8,14 @@ El **Estereograma** muestra las direcciones de los planos cristalinos y de los e
 
 ## Atajos de teclado y ratón
 
-El estereograma en sí es una proyección 2-D; opcionalmente se puede mostrar una esfera 3-D con **3D display**.
+El estereograma en sí es una proyección 2-D; opcionalmente se puede mostrar una esfera 3-D con **Vista 3D**.
 
 | Atajo | Acción |
 |----------|--------|
 | <kbd>F1</kbd> | Abrir esta página del manual en línea |
 | Arrastrar con el botón izquierdo cerca del centro | Inclinar el cristal |
 | Arrastrar con el botón izquierdo en la zona exterior | Girar el cristal alrededor del eje de visión |
-| Doble clic izquierdo | Alternar entre la proyección **Plane** y **Axis** |
+| Doble clic izquierdo | Alternar entre la proyección de **Planos** y de **Ejes** |
 | Clic derecho | Alejar el zoom |
 | Arrastrar un recuadro con el botón derecho | Acercar el zoom a la región seleccionada |
 | Arrastrar con el botón central | Desplazar |
@@ -39,102 +39,125 @@ Aquí se muestra la proyección en estereograma de los planos cristalinos, los �
 
 ## Menú Archivo
 
-Guardar o copiar en formato ráster o vectorial. El formato vectorial permite editar la fuente y el grosor de las líneas en PowerPoint u otros editores vectoriales.
+Guardar como imagen ráster (PNG), o copiar como imagen ráster o como metarchivo vectorial (EMF). Un metarchivo pegado permite editar las fuentes y los grosores de línea en PowerPoint u otros editores vectoriales.
+
+| Elemento de menú | Descripción |
+|-----------|-------------|
+| Guardar imagen ▸ como imagen (formato PNG) / como metarchivo (EMF) | Guardar el estereograma como archivo PNG (el elemento *como metarchivo (EMF)* está desactivado actualmente; para una salida vectorial use **Copiar al portapapeles ▸ como metarchivo (EMF)**) |
+| Copiar al portapapeles ▸ Como imagen / como metarchivo (EMF) | Copiar el estereograma |
+| Guardar vídeo ▸ Estereograma / 3D | Guardar un vídeo de rotación (MP4) del estereograma o de la vista 3-D, con el mismo cuadro de diálogo de configuración de vídeo que el [Visor de estructura](5-structure-viewer.md#menú-archivo) (solo rotación) |
+| Configurar página / Vista previa de impresión / Imprimir | Imprimir el estereograma |
 
 ---
 
-## Mode
+## Modo {#mode}
 
 ![Modo](../assets/cap-es-auto/FormStereonet.panel3.groupBoxMode.png)
 
-### Objetivo de proyección
+### Objeto de proyección
 
 Seleccione qué se proyecta sobre la red.
 
-- **Axes** — proyecta los índices de dirección \([uvw]\).
-- **Planes** — proyecta las normales a los planos cristalinos \((hkl)\).
-- **Kikuchi line pairs** — proyecta los pares de líneas de Kikuchi.
+- **Ejes** — proyecta los índices de dirección \([uvw]\).
+- **Planos** — proyecta las normales a los planos cristalinos \((hkl)\).
+- **Pares de Kikuchi** — proyecta los pares de líneas de Kikuchi.
 
-### Método de proyección
+### Tipo de proyección
 
 | Método | Descripción |
 |--------|-------------|
-| **Wulff** (equiangular / estereográfica) | Conserva la relación angular entre los elementos proyectados, pero no el ángulo sólido. La emplean los cristalógrafos clásicos al leer ángulos entre ejes o entre planos. |
-| **Schmidt** (equiareal / Lambert) | Conserva el ángulo sólido (el área) de cada región, pero distorsiona los ángulos. Preferida para figuras de polos estadísticas en las que importa la densidad relativa. |
+| **Wulff** (**Equiangular** / estereográfica) | Conserva la relación angular entre los elementos proyectados, pero no el ángulo sólido. La emplean los cristalógrafos clásicos al leer ángulos entre ejes o entre planos. |
+| **Schmidt** (**Equiárea** / Lambert) | Conserva el ángulo sólido (el área) de cada región, pero distorsiona los ángulos. Preferida para figuras de polos estadísticas en las que importa la densidad relativa. |
 
 ### Hemisferio
 
-Elija el hemisferio **Upper** o **Lower** como fuente de proyección — esto alterna si la cara visible de la esfera es la más cercana o la más alejada del observador.
+Elija el hemisferio **Superior** o **Inferior** (cuadro **Esfera**) como fuente de proyección — esto alterna si la cara visible de la esfera es la más cercana o la más alejada del observador.
+Superior = el lado $+Z$ (hacia el observador, véase el [Apéndice A1.1](appendix/a1-coordinate-system/1-orientation.md)); con **Inferior** se invierte la componente $Z$ de cada dirección antes de la proyección, y los puntos se dibujan como **círculos vacíos** en lugar de rellenos.
 
 ### Opciones de visualización
 
-- Mostrar las etiquetas de índices.
-- Cuando se selecciona **Planes** o **Kikuchi line pairs**, cada punto o línea se pondera con el factor de estructura \(|F_{hkl}|\) (establezca la fuente de onda y la longitud de onda en la [pestaña Wave](#wave)).
+- **Etiquetas de índices**: muestra las etiquetas de índices.
+- **Factores de estructura en la intensidad**: cuando se selecciona **Planos** o **Pares de Kikuchi**, pondera cada elemento con su factor de estructura (establezca la fuente de onda y la longitud de onda en la [pestaña Onda](#wave)). El peso es $I_{\mathrm{rel}} = |F_{hkl}|^2 / \max|F|^2$ sobre el conjunto mostrado: en el modo **Planos**, el radio del punto se multiplica por $\sqrt{I_{\mathrm{rel}}}$ (es decir, $\propto |F_{hkl}|$); en el modo **Pares de Kikuchi**, la opacidad de la línea es $I_{\mathrm{rel}}$.
+- **Dispersión anómala**: incluye en los factores de estructura los términos de dispersión anómala de rayos X $f'$, $f''$. Solo está habilitada para rayos X y en los modos **Planos** / **Pares de Kikuchi**.
 
-> Para cristales trigonales/hexagonales, la notación de Miller–Bravais (4 índices) puede activarse desde **Option ▸ Use Miller-Bravais (hkil) index** en la ventana principal.
+> Para cristales trigonales/hexagonales, la notación de Miller–Bravais (4 índices) puede activarse desde **Opciones ▸ Usar índices de Miller-Bravais (hkil)** en la ventana principal.
 
 ---
 
-## Indices
+## Índices {#indices}
 
 ![Índices](../assets/cap-es-auto/FormStereonet.panel3.groupBoxIndices.png)
 
 Establece qué planos cristalinos / ejes se dibujan.
 
-### Modo de intervalo
+### Modo Intervalo
 
 Especifique un intervalo de índices \([uvw]\) o \((hkl)\). ReciPro enumera cada índice dentro de los límites y proyecta cada uno de ellos.
 
-### Modo especificado
+En el modo **Intervalo**, los límites son $\pm$ los valores introducidos; solo se toman índices irreducibles, agrupados en conjuntos de índices cristalográficamente equivalentes (cada conjunto recibe un color).
 
-Especifica ejes o planos concretos de forma individual. Escriba un índice, pulse **Add** para registrarlo o **Remove** para eliminarlo. Cuando **include equivalent indices** está marcado, también se dibujan todos los índices cristalográficamente equivalentes.
+### Modo Factor de estructura
 
-### Colour / Size
+Solo disponible para **Planos** y **Pares de Kikuchi**. Proyecta los planos con mayor $|F_{hkl}|^2$ para la fuente de onda actual. **Máx.** fija el número de planos que se dibujan (los planos equivalentes se cuentan individualmente; en el modo **Planos** se omite una reflexión paralela a otra más intensa —un orden superior o inferior de ella, p. ej. 222 cuando 111 es más intensa—).
 
-Establezca el **colour** y el **size** de los puntos representados. Marque **Change colour automatically** para codificar por color de forma diferente cada conjunto de ejes/planos equivalentes — útil para distinguir familias en una representación de múltiples índices.
+### Modo Especificado
+
+Especifica ejes o planos concretos de forma individual. Escriba un índice, pulse **Añadir** para registrarlo o **Quitar** para eliminarlo. Cuando **Incluir índices equivalentes** está marcado, también se dibujan todos los índices cristalográficamente equivalentes.
+
+### Color / Tamaño
+
+Establezca el **Color** y el **Tamaño** de los puntos representados. Marque **Rotar color** para codificar por color de forma diferente cada conjunto de ejes/planos equivalentes — útil para distinguir familias en una representación de múltiples índices.
 
 ---
 
-## 3D Options
+## Opciones 3D
 
 ![3D Options](../assets/cap-es-auto/FormStereonet.panel3.panel3DOptions.png)
 
-Controla la superposición de la red 3D (esfera) — opacidad de la esfera, indicadores de ejes, etc.
+Se muestran cuando **Vista 3D** está marcado; la esfera 3-D aparece en un panel a la derecha de la red.
+
+- **Restablecer**: devuelve la vista 3-D a la dirección y el zoom predeterminados.
+- **Etiqueta**: dibuja las etiquetas de índices en 3-D.
+- **Hemisferio**: dibuja solo los polos del hemisferio superior ($Z>0$).
+- **Estereograma**: dibuja en 3-D el plano de proyección (la red), con los puntos proyectados de los polos del hemisferio superior.
+- **Contorno de esfera**: dibuja la malla de latitud/longitud de la esfera.
+- **Líneas de proyección** (con **Estereograma** activado): dibuja las líneas auxiliares de proyección de cada polo del hemisferio superior — una recta desde el polo sur $(0,0,-1)$ hasta el polo para Wulff, un arco para Schmidt.
+- **Atenuación por profundidad**: intensidad de la atenuación por profundidad de la vista 3-D.
 
 ---
 
 ## Menú de pestañas
 
-### Appearance
+### Apariencia
 
 ![Pestaña Apariencia](../assets/cap-es-auto/FormStereonet.tabControl.tabPage1.png)
 
-#### Outline
+#### Contorno
 
-Cómo se dibuja el contorno del estereograma — el círculo delimitador y la malla opcional de círculos máximos de latitud/longitud. Elija **Equator** o **Pole**, active **1° Lines** y el relleno **Background**, establezca los colores de malla **90° / 10° / 1°** y ajuste el **Line width** con la barra deslizante.
+Cómo se dibuja el contorno del estereograma — el círculo delimitador y la malla opcional de círculos máximos de latitud/longitud. Elija **Ecuador** o **Polo**, active **Líneas de 1°** y el relleno **Fondo**, establezca los colores de malla **90° / 10° / 1°** y ajuste la **Anchura de línea** con la barra deslizante.
 
-#### Index labels
+#### Etiquetas de índices
 
-- **Size** — tamaño de las etiquetas de índices.
-- **Specify color** — utiliza un único color fijo para todas las etiquetas de índices en lugar del color de cada punto; útil cuando los puntos están codificados por color pero usted desea todas las etiquetas en un solo color para mejorar la legibilidad.
-- **Delimiter** — carácter que se coloca entre los índices de cada etiqueta: **None** (p. ej. 100), **Space** (1 0 0) o **Comma** (1,0,0).
+- **Tamaño** — tamaño de las etiquetas de índices.
+- **Color** — utiliza un único color fijo para todas las etiquetas de índices en lugar del color de cada punto; útil cuando los puntos están codificados por color pero usted desea todas las etiquetas en un solo color para mejorar la legibilidad.
+- **Separ.** — carácter que se coloca entre los índices de cada etiqueta: **Nada** (p. ej. 100), **Espacio** (1 0 0) o **Coma** (1,0,0).
 
-#### Kikuchi line mode
+#### Modo de líneas de Kikuchi
 
-- **Point size** — tamaño de los puntos representados.
-- **Point** / **Label** — colores de los puntos y de sus etiquetas.
+- **Tamaño de punto** — tamaño de los puntos representados.
+- **Punto** / **Etiqueta** — colores de los puntos y de sus etiquetas.
 
-### Great and Small Circle
+### Círculo máximo
 
 ![Pestaña Círculo máximo](../assets/cap-es-auto/FormStereonet.tabControl.tabPage2.png)
 
-Dibuje círculos máximos y círculos menores. Especifíquelos mediante el **zone-axis index** \([uvw]\) (el círculo máximo formado por la zona de ese eje) o mediante **two crystal-plane indices** que comparten el eje de zona. El grosor de línea de los círculos también se puede configurar con la barra deslizante.
+Dibuje círculos máximos (los círculos menores no están disponibles). Especifíquelos mediante el **Índice del eje de zona** \([uvw]\) (el círculo máximo formado por la zona de ese eje) o mediante **Zona definida por dos planos** (el eje de zona es su producto vectorial). Use **Añadir** / **Quitar** para editar la lista; al desmarcar una entrada se oculta ese círculo. El color y el grosor de línea de los círculos también se pueden configurar.
 
-### Wave {#wave}
+### Onda {#wave}
 
 ![Pestaña Onda](../assets/cap-es-auto/FormStereonet.tabControl.tabPage4.png)
 
-Disponible solo cuando se selecciona **Planes** o **Kikuchi line pairs** como objetivo de proyección. Establece la fuente de onda (X-ray / electron / neutron) y la longitud de onda o energía necesarias para calcular los factores de estructura cristalina que se usan en la opción **structure-factor weighting** de [Mode](#mode).
+Solo se usa cuando se selecciona **Planos** o **Pares de Kikuchi** como objeto de proyección (en el modo **Pares de Kikuchi** la longitud de onda fija además el ángulo de Bragg, es decir, la separación de cada par de líneas). Establece la fuente de onda (X-ray / electron / neutron) y la longitud de onda o energía necesarias para calcular los factores de estructura cristalina que usa **Factores de estructura en la intensidad** en [Modo](#mode).
 
 ---
 

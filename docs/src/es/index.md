@@ -58,8 +58,8 @@ Este manual de GitHub Pages es actualmente la fuente de referencia. Use la naveg
 
 ## Inicio rápido
 1. Descargue e instale desde [Releases](https://github.com/seto77/ReciPro/releases/latest).
-2. Seleccione un cristal de la lista integrada (~80 cristales). También puede importar archivos CIF o usar [CSManager](https://github.com/seto77/CSManager).
-3. Llame a las funciones desde el panel de la derecha: Visor de estructura, Estereograma, Simulador de difracción, Simulación HRTEM, etc.
+2. Seleccione un cristal de la lista integrada (66 cristales). También puede importar archivos CIF o usar [CSManager](https://github.com/seto77/CSManager).
+3. Llame a las funciones desde el panel de la derecha: Visor de estructura, Estereograma, Simulador de difracción, HRTEM/STEM Simulator, etc.
 4. Gire el cristal arrastrando el ratón o introduciendo índices de eje de zona/plano.
 
 ## Referencia

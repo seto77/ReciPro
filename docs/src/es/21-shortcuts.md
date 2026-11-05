@@ -8,12 +8,23 @@ ReciPro asocia muchas funciones a **combinaciones de teclas** y a **botones del 
 
 ## Atajos para toda la aplicación
 
-Estos se instalan desde la [ventana principal](0-main-window.md), pero permanecen activos mientras las ventanas Visor de estructura, Estereograma, Simulador de difracción y Spot ID tienen el foco.
+Estos se instalan desde la [ventana principal](0-main-window.md), pero permanecen activos mientras las ventanas Visor de estructura, Estereograma, Simulador de difracción y Spot ID v1 tienen el foco.
 
 | Atajo | Acción |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + teclas de flecha | Girar el cristal un paso en esa dirección (mantenga dos flechas para una diagonal) |
-| Mantener <kbd>CTRL</kbd> mientras se inicia ReciPro | Iniciar con OpenGL desactivado (recuperación ante problemas gráficos) |
+| Mantener <kbd>CTRL</kbd> mientras se inicia ReciPro | Iniciar con OpenGL desactivado (recuperación ante problemas gráficos; solo para ese inicio, no se guarda) |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> (en cualquier ventana) | Abrir la herramienta (experimental) de captura de la GUI para la ventana activa |
+
+### Cuadros de entrada numérica
+
+La mayoría de los campos numéricos de todas las ventanas se comportan del mismo modo.
+
+| Atajo | Acción |
+|----------|--------|
+| <kbd>↑</kbd> / <kbd>↓</kbd> (con el campo enfocado y los botones de giro visibles) | Aumentar / disminuir el valor un paso, exactamente igual que los botones de giro |
+| <kbd>ENTER</kbd> | Confirmar el valor escrito |
+| <kbd>SHIFT</kbd>+<kbd>ENTER</kbd> o <kbd>CTRL</kbd>+<kbd>ENTER</kbd> | Evaluar la expresión aritmética escrita y sustituirla por el resultado |
 
 ---
 
@@ -47,7 +58,7 @@ Usadas por el patrón del [Simulador de difracción](7-diffraction-simulator/ind
 | Arrastrar un recuadro con el botón derecho | Acercar el zoom a la región seleccionada |
 | Arrastrar con el botón central | Desplazar |
 
-En estas vistas **no** hay zoom con la rueda del ratón.
+Solo el patrón del Simulador de difracción hace además zoom con la rueda del ratón (×2 / ×0.5, recentrado en el cursor); el Estereograma y el patrón de Kikuchi de EBSD **no** tienen zoom con la rueda del ratón. No hay zoom con las teclas <kbd>+</kbd> / <kbd>-</kbd>.
 
 ### Vistas de imagen { #image }
 
@@ -72,9 +83,9 @@ Usadas por los paneles de resultados de [HRTEM/STEM](9-hrtem-stem-simulator/inde
 | Arrastrar con el botón izquierdo el widget de orientación (abajo a la izquierda) | Rotar el cristal |
 | Doble clic derecho en el widget de orientación | Copiar la imagen del widget al portapapeles |
 | Un clic / doble clic en un botón de función | Activar/desactivar esa ventana / forzarla al primer plano |
-| Clic derecho en un cristal de la lista | Menú contextual (Renombrar / Duplicar / Eliminar / Exportar CIF…) |
-| Doble clic en la etiqueta **Current Index** | Mostrar / ocultar el cuadro max-UVW |
-| Soltar un archivo | Cargar una lista de cristales (`.xml`, `.cdb2`) o un cristal (`.cif`, `.amc`) |
+| Clic derecho en un cristal de la lista | Menú contextual (Cambiar nombre / Exportar como CIF / Duplicar / Eliminar) |
+| Doble clic en la etiqueta del índice de eje de zona (`[u v w]`) | Mostrar / ocultar el cuadro max-UVW |
+| Soltar un archivo | Cargar una lista de cristales (`.xml`, `.out`, `.cdb2`) o un cristal (`.cif`, `.amc`) |
 
 ### 1. Base de datos de cristales
 [Abrir página →](1-crystal-database.md)
@@ -86,7 +97,7 @@ Usadas por los paneles de resultados de [HRTEM/STEM](9-hrtem-stem-simulator/inde
 | Clic en un elemento del popup de tabla periódica | Recorrer su filtro: ignorar → debe incluir → debe excluir |
 
 ### 2. Información de simetría · 3. Interacción del haz
-La Información de simetría no tiene combinaciones especiales de teclas/ratón. En la Interacción del haz, además de <kbd>F1</kbd> y los botones **Copy**, el cursor vertical del gráfico **Scattering factors** se puede arrastrar para leer el valor de cada elemento.
+La Información de simetría no tiene combinaciones especiales de teclas/ratón. En la Interacción del haz, además de <kbd>F1</kbd> y los botones **Copiar**, el cursor vertical del gráfico **Factores de dispersión** se puede arrastrar para leer el valor de cada elemento.
 [Simetría →](2-symmetry-information.md) · [Interacción del haz →](3-beam-interaction.md)
 
 ### 4. Geometría de rotación
@@ -107,18 +118,19 @@ La Información de simetría no tiene combinaciones especiales de teclas/ratón.
 
 | Atajo | Acción |
 |----------|--------|
-| Doble clic izquierdo en la red | Alternar entre proyección **Plane** y **Axis** |
+| Doble clic izquierdo en la red | Alternar entre proyección de **Planos** y de **Ejes** |
 | Mover el ratón sobre la red | Leer el (hkl)/[uvw] bajo el cursor |
 
 ### 7. Simulador de difracción
-[Abrir página →](7-diffraction-simulator/index.md) — el patrón es una [vista de patrón de difracción](#pattern) (sin zoom con rueda).
+[Abrir página →](7-diffraction-simulator/index.md) — el patrón es una [vista de patrón de difracción](#pattern), con zoom con la rueda además.
 
 | Atajo | Acción |
 |----------|--------|
+| Rueda del ratón arriba / abajo | Acercar (×2) / alejar (×0.5) el zoom, recentrando la vista en la posición del cursor (en el centro fijo cuando la casilla **Fijar** del centro está activada) |
 | Doble clic izquierdo en una reflexión | Mostrar los detalles de la reflexión (índice, *d*, factor de estructura, error de excitación) |
 | <kbd>CTRL</kbd> + arrastrar con el botón central | Mover el centro del detector (cuando se muestra el área del detector) |
 | Doble clic derecho en la barra de estado | Copiar un resumen de texto de los ajustes actuales |
-| Doble clic derecho en un botón de capa activa (Spots / Kikuchi / Debye / Scale) | Hacer parpadear esa capa |
+| Doble clic derecho en un botón de capa activa (Puntos / Líneas de Kikuchi / Anillos de Debye / Escala) | Hacer parpadear esa capa |
 | Doble clic izquierdo en el estereograma — ventana **TEM holder** | Fijar la inclinación del portamuestras en ese punto |
 | Teclas de flecha — ventana **TEM holder** | Avanzar la inclinación del portamuestras por pasos (marque primero **Activar teclas de flecha**; funciona con cualquier ventana de ReciPro en primer plano) |
 | Soltar `.prm` / imagen — **Detector geometry**, o `.txt` — **Dynamic compression** | Cargar esos datos |
@@ -160,6 +172,7 @@ La Información de simetría no tiene combinaciones especiales de teclas/ratón.
 | Atajo | Acción |
 |----------|--------|
 | Doble clic en el patrón de Kikuchi | Elegir la subcelda del detector bajo el cursor y mostrar sus estadísticas |
+| Con la selección **Zone axis** activada: doble clic izquierdo / <kbd>CTRL</kbd> + doble clic izquierdo / <kbd>SHIFT</kbd> + doble clic izquierdo sobre el patrón | Añadir un punto de eje de zona / eliminar el punto situado a menos de 5 píxeles de pantalla / seleccionar ese punto |
 
 ### 20. Macro
 [Abrir página →](20-macro/index.md)

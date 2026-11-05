@@ -32,7 +32,7 @@ Los atajos <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> de toda la aplicación de la [ventan
 ## Área principal
 
 La estructura cristalina en 3D, dibujada junto con el indicador de dirección de la luz, el indicador de ejes cristalinos y la leyenda de átomos.
-> La caja **Size (W×H)** en la parte superior derecha de la ventana establece el tamaño en píxeles utilizado al guardar o copiar la imagen renderizada.
+> La caja **Tamaño (An×Al)** en la parte superior derecha de la ventana establece el tamaño en píxeles de la vista 3D (la ventana se redimensiona en consecuencia); las imágenes guardadas y copiadas tienen ese tamaño.
 > La caja **ProjWidth** situada a su lado muestra el ancho de la vista proyectada en nm. Edite el valor para hacer zoom numéricamente — permanece sincronizado con el zoom por arrastre con el botón derecho / rueda del ratón sobre la vista.
 
 ---
@@ -46,13 +46,16 @@ La estructura cristalina en 3D, dibujada junto con el indicador de dirección de
 
 | Elemento de menú | Descripción |
 |------------------|-------------|
-| Guardar imagen | Guardar la imagen renderizada en un archivo |
-| Copiar imagen principal al portapapeles | Copiar la imagen (también con Ctrl+Shift+C) |
-| Guardar vídeo | Guardar un vídeo de rotación/traslación como MP4 (velocidad, duración, fps, calidad, etc.) |
+| Guardar imagen ▸ Imagen principal / Leyenda / Ejes cristalinos / Dirección de la luz | Guardar como PNG la vista principal, la leyenda de átomos o uno de los indicadores |
+| Copiar imagen principal al portapapeles ▸ Imagen principal / Leyenda / Ejes cristalinos / Dirección de la luz | Copiar la imagen (Ctrl+Shift+C copia la vista principal) |
+| Guardar vídeo ▸ Imagen principal / Ejes cristalinos | Guardar como MP4 un vídeo de rotación/traslación de la vista principal o del indicador de ejes cristalinos (velocidad, duración, fps, calidad, etc.) |
 | Export 3D Model (3MF/STL) | Exportar la estructura mostrada como modelo sólido para impresión 3D |
-| Atajos de teclado | Mostrar los atajos de teclado |
 
-**Guardar película** abre el cuadro de diálogo de configuración de película que se muestra a continuación. Una película puede rotar la vista, trasladar el centro de proyección o hacer ambas cosas a la vez — marque **Rotation** y/o **Translation**:
+Menú **Herramientas**: **Me gusta VESTA** (igual que el botón *Como Vesta* de la barra de herramientas) y **Enable DDP** (muestra/oculta la entrada *Dual Depth Peeling* del [Modo de transparencia](#modo-de-transparencia)).
+
+**Atajos de teclado** (un menú de nivel superior aparte) enumera los atajos de teclado.
+
+**Guardar vídeo** abre el cuadro de diálogo de configuración de película que se muestra a continuación. Una película puede rotar la vista, trasladar el centro de proyección o hacer ambas cosas a la vez — marque **Rotation** y/o **Translation**:
 
 - **Rotation**: rota la vista a la velocidad **Speed** (°/s; los valores negativos invierten el sentido) alrededor del eje elegido debajo — **Proyección actual** (dirección de inclinación elegida con los botones de flecha), un **Índice de dirección** [uvw], o la normal de un **Plano reticular** (hkl).
 - **Translation**: mueve el centro de proyección a lo largo del índice de dirección [uvw] a la velocidad **Speed** (periodos de red por segundo). Esta opción solo aparece cuando el cuadro de diálogo se abre desde el Visor de estructura y, mientras está habilitada, **Índice de dirección** es el único modo de dirección disponible.
@@ -69,28 +72,29 @@ Establezca la duración de la película (**Duration**), la frecuencia de fotogra
 
 En la parte superior del cuadro de diálogo se indican el número de objetos y triángulos implicados y el tamaño real del modelo (**Model size**, nm).
 
-**Scale** : cómo se decide el tamaño de salida
+**Escala** : cómo se decide el tamaño de salida
 
-- **Fit largest dimension** : escala el modelo automáticamente para que su arista más larga alcance la longitud indicada (5–500 mm, 80 mm de forma predeterminada).
-- **Fixed scale** : indica la escala (mm/nm) directamente. Sirve para construir varios cristales a la misma escala y poder colocarlos uno al lado del otro. Al cambiar a esta opción se parte de la escala que estaba en vigor justo antes.
+- **Dimensión máxima** : escala el modelo automáticamente para que su arista más larga alcance la longitud indicada (5–500 mm, 80 mm de forma predeterminada).
+- **Escala fija** : indica la escala (mm/nm) directamente. Sirve para construir varios cristales a la misma escala y poder colocarlos uno al lado del otro. Al cambiar a esta opción se parte de la escala que estaba en vigor justo antes.
 - La línea inferior muestra la escala resultante y las dimensiones impresas (**Output size**, mm).
 
-**Include** : qué elementos entran en la impresión
+**Incluir** : qué elementos entran en la impresión
 
-- **Atoms** / **Bonds** / **Polyhedra** : solo pueden seleccionarse los tipos que se muestran en ese momento; al desmarcar uno, permanece en pantalla pero queda fuera de la impresión.
-- **Polyhedra: solid faces** / **edges, dia.** : exporta los poliedros de coordinación como cuerpos macizos con caras o como un armazón de aristas (cilindros más esferas en los vértices, 2.0 mm de forma predeterminada). El armazón deja visibles los átomos del interior.
-- **Unit cell edges as cylinders, dia.** : incluye el armazón de la celda elemental, sustituido por cilindros del diámetro indicado (2.4 mm de forma predeterminada).
+- **Átomos** / **Enlaces** / **Poliedros** : solo pueden seleccionarse los tipos que se muestran en ese momento; al desmarcar uno, permanece en pantalla pero queda fuera de la impresión.
+- **Poliedros: caras** / **aristas, Ø** : exporta los poliedros de coordinación como cuerpos macizos con caras o como un armazón de aristas (cilindros más esferas en los vértices, 2.0 mm de forma predeterminada). El armazón deja visibles los átomos del interior.
+- **rejilla calada: Ø barra / paso** : el armazón de aristas más una rejilla de barras finas en cada cara (diámetro de barra 0.8–5.0 mm, 1.2 mm de forma predeterminada; paso 1.5–20 mm, 5.0 mm de forma predeterminada). Vistas de lejos, las caras parecen llenas, pero el interior sigue siendo visible.
+- **Aristas de celda (cil.), Ø** : incluye el armazón de la celda elemental, sustituido por cilindros del diámetro indicado (2.4 mm de forma predeterminada). Esta casilla está marcada por defecto siempre que se muestra el armazón de la celda.
 
-**Printability** : idoneidad para la impresión
+**Imprimibilidad** : idoneidad para la impresión
 
-- **Thicken bonds thinner than** : los enlaces cuyo diámetro impreso quedaría por debajo del valor indicado (1.2 mm de forma predeterminada) se reconstruyen con ese diámetro a partir de la primitiva original, de modo que los enlaces finos no se rompan. Si lo dejas desactivado y algún enlace es demasiado fino, aparece una advertencia en rojo.
+- **Engrosar enlaces bajo** : los enlaces cuyo diámetro impreso quedaría por debajo del valor indicado (1.2 mm de forma predeterminada) se reconstruyen con ese diámetro a partir de la primitiva original, de modo que los enlaces finos no se rompan. Si lo dejas desactivado y algún enlace es demasiado fino, aparece una advertencia en rojo.
 
-**Format** : formato de archivo
+**Formato** : formato de archivo
 
-- **STL (single color)** : un STL binario de un solo color.
-- **3MF (parts colored by element)** : 3MF con las piezas coloreadas por elemento; los nombres de color llevan los nombres de los elementos.
+- **STL (un color)** : un STL binario de un solo color.
+- **3MF (coloreado por elemento)** : 3MF con las piezas coloreadas por elemento; los nombres de color llevan los nombres de los elementos.
 
-**Save...** pide el nombre del archivo. Cuando termina la exportación, el número de triángulos, las dimensiones impresas y la escala se registran en el cuadro de información de la parte inferior izquierda.
+**Guardar...** pide el nombre del archivo. Cuando termina la exportación, el número de triángulos, las dimensiones impresas y la escala se registran en el cuadro de información de la parte inferior izquierda.
 
 ---
 
@@ -112,7 +116,7 @@ En este modo, los ejes *a*, *b*, *c* de la celda elemental son la unidad del int
 
 ![Límites por planos cristalinos](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
-En este modo, el área de dibujo está delimitada por un conjunto de planos cristalinos. Si los planos no definen una región espacialmente cerrada, ReciPro recurre automáticamente a un límite de una celda elemental.
+En este modo, el área de dibujo está delimitada por un conjunto de planos cristalinos. Si los planos no definen una región espacialmente cerrada, ReciPro añade un poliedro casi esférico de radio **Distancia máx. al origen** (Å) para cerrarla.
 
 #### Lista de límites
 
@@ -126,19 +130,23 @@ Establece el plano límite mediante su índice de Miller. La casilla incluye los
 
 #### Distancia desde el origen
 
-La distancia desde el centro del cristal hasta el plano límite. La unidad se puede elegir entre **d** y **Å**. Con **d**, la distancia es el valor introducido multiplicado por la distancia interplanar *d* del (*hkl*) seleccionado. Con **Å**, el valor es la distancia absoluta. Al cambiar uno se actualiza el otro automáticamente.
+La distancia desde el origen hasta el plano límite, introducida como múltiplo de la distancia interplanar *d* del (*hkl*) seleccionado (casilla **d×**) o en Å (la casilla entre paréntesis). Las dos casillas están vinculadas: al cambiar una se actualiza la otra.
+
+- **Translation** (Å): solo tiene efecto cuando **Planos equivalentes** está marcado y se generan exactamente dos planos equivalentes (normalmente (*hkl*) y su opuesto). En ese caso, el primer plano se aleja del origen y el segundo se acerca a él en esa cantidad, es decir, la lámina se desplaza a lo largo de la normal. En todos los demás casos el valor se ignora.
+- **Distancia máx. al origen** (Å): radio del poliedro de cierre usado cuando los planos no encierran una región (véase arriba).
+- **Actualizar inmediatamente**: aplica las modificaciones del plano seleccionado sin pulsar **Reemplazar**.
 
 #### Mostrar planos límite / Opacidad
 
-Muestra u oculta los propios planos límite. Cuando se muestran, **Opacity** establece la transparencia (0 = transparente, 1 = opaco).
+Muestra u oculta los propios planos límite. Cuando se muestran, **Opacidad** establece la transparencia (0 = transparente, 1 = opaco).
 
 #### Recortar objetos por los planos límite
 
 Si está marcado, solo se renderiza la región interior definida por los límites; los átomos, enlaces y poliedros que cortan los límites se recortan.
 
-#### Ocultar átomos
+#### Ocultación de los átomos
 
-Si está marcado, se ocultan todos los átomos, enlaces y poliedros — útil cuando solo es necesario visualizar la celda o los planos reticulares.
+La pestaña Límites no tiene ninguna casilla para esto. Desactive en su lugar el botón **Átomos** de la barra de herramientas: no se genera ningún átomo, de modo que también desaparecen los enlaces y los poliedros — útil cuando solo es necesario visualizar la celda o los planos reticulares.
 
 ### Átomos
 
@@ -214,6 +222,8 @@ Establece la posición de la celda unidad dibujada y si se muestran sus caras y 
 
 Cada grupo espacial tiene un origen predeterminado. Para alejar el centro de la celda elemental dibujada de ese origen, establezca la traslación a lo largo de *a*, *b*, *c*.
 
+La traslación está ligada al [Centro de proyección](#centro-de-proyección): fijar el centro de proyección en $(x, y, z)$ fija la traslación en $(0.5-x,\ 0.5-y,\ 0.5-z)$.
+
 #### Mostrar plano de la celda
 
 Si se dibujan o no las seis caras que delimitan la celda elemental. Cuando está habilitado, puede establecer el color de cara y la transparencia.
@@ -221,6 +231,8 @@ Si se dibujan o no las seis caras que delimitan la celda elemental. Cuando está
 #### Mostrar aristas
 
 Si se dibujan o no las aristas de la celda elemental. El color de las aristas es configurable.
+
+La casilla principal **Mostrar celda unidad** (= el botón *Celda unidad* de la barra de herramientas) activa o desactiva toda la celda. Los colores de caras y aristas pueden fijarse para **Todos los planos** / **Todas las aristas** a la vez o para **Cada plano** / **Cada arista** (*a*, *b*, *c* por separado); **Anchura de arista** fija el ancho de línea y **Opacidad**, la transparencia de las caras.
 
 ### Planos reticulares
 
@@ -269,7 +281,7 @@ Establece el modo de proyección (ortográfica / perspectiva), la atenuación po
 
 #### Atenuación por profundidad
 
-Atenúa los objetos lejanos en la dirección de profundidad. Los objetos más lejanos que **Far** son completamente transparentes; los objetos más cercanos que **Near** son completamente opacos; los objetos intermedios se interpolan linealmente.
+Atenúa los objetos lejanos en la dirección de profundidad (**Atenuación por profundidad**). El color se mezcla linealmente hacia el **color de fondo**: los objetos más cercanos que **Cerca** conservan su propio color, los más lejanos que **Lejos** toman el color de fondo y los intermedios se interpolan. (La opacidad en sí no cambia.) **Cerca** y **Lejos** se expresan en Å.
 
 #### Centro de proyección
 
@@ -283,26 +295,27 @@ Calidad de dibujo (subdivisión de malla, antialiasing). Una calidad mayor es m�
 
 Algoritmo usado para átomos y poliedros translúcidos.
 
-- **Approximate**: rápido, pero puede ser impreciso cuando se solapan muchos objetos translúcidos.
-- **Perfect**: transparencia independiente del orden — precisa pero muy lenta, requiere en la práctica una GPU dedicada.
+- **Approximate (Z depth sorting, OpenGL 4.1+)**: rápido, pero puede ser impreciso cuando se solapan muchos objetos translúcidos.
+- **High quality (Dual Depth Peeling, OpenGL 4.1+)**: transparencia independiente del orden mediante pelado de profundidad (depth peeling). Solo se muestra cuando **Herramientas ▸ Enable DDP** está activado (activado por defecto cuando PPLL no está disponible). El número de pasadas de pelado sigue el ajuste de [Calidad de renderizado](#calidad-de-renderizado).
+- **High quality (Per-Pixel Linked List, OpenGL 4.3+)**: transparencia exacta independiente del orden; solo se muestra cuando la GPU admite OpenGL 4.3. Precisa pero lenta; requiere en la práctica una GPU dedicada.
 
 ### Elementos de simetría
 
-La pestaña **Symmetry Elements** dibuja los operadores de simetría del grupo espacial directamente sobre el modelo 3D (se alterna con el botón **Symmetry Elements** de la barra de herramientas). Cada clase de elemento se puede mostrar/ocultar de forma independiente:
+La pestaña **Elem. sim.** dibuja los operadores de simetría del grupo espacial directamente sobre el modelo 3D (se alterna con el botón **Elem. sim.** de la barra de herramientas). Cada clase de elemento se puede mostrar/ocultar de forma independiente:
 
-- **Ejes de rotación** y **ejes helicoidales**
-- **Planos de espejo** y **planos de deslizamiento**
-- **Centros de inversión** y **ejes de rotoinversión**
+- **Ejes de simetría**: **Rotaciones**, **Helicoidales**, **Rotoinversiones**
+- **Planos**: **Espejos**, **Deslizamientos**
+- **Centros de inversión**
 
-Para cada clase puede ajustar el tamaño del símbolo, el ancho de línea y el color.
+El interruptor general es **Mostrar elementos de simetría**. Para cada grupo puede ajustar el tamaño del símbolo (%) y el color y, para los ejes y los planos, también el ancho de línea.
 
 ### Misceláneos
 
 ![Pestaña Varios](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageMisc.png)
 
-- **Accessory controls**: establece los tamaños de visualización (esfera de luz, ejes, leyenda). **Group by element** alterna la visualización de la leyenda.
-- **Bonded atoms**: **Show bonded atoms even if they are outside the boundaries** sigue dibujando los átomos enlazados a átomos dentro del intervalo de dibujo, incluso cuando quedan fuera de él.
-- **Label**: establece el tamaño de fuente, el color y otras propiedades de las etiquetas de los átomos.
+- **Controles accesorios**: establece los tamaños de visualización (esfera de luz, ejes, leyenda). **Agrupar por elemento** alterna la visualización de la leyenda.
+- **Átomos enlazados**: **Mostrar átomos enlazados aunque estén fuera de los límites** sigue dibujando los átomos enlazados a átomos dentro del intervalo de dibujo, incluso cuando quedan fuera de él.
+- **Etiqueta**: **Mostrar etiqueta**, **Tamaño de fuente**, **Borde blanco** y el color de las etiquetas (**Usar color del material** o **Usar color fijo**). Al hacer clic en una entrada de la leyenda de átomos se activan o desactivan individualmente las etiquetas de ese átomo (o de ese elemento, con **Agrupar por elemento**).
 
 ---
 
@@ -312,15 +325,15 @@ Para cada clase puede ajustar el tamaño del símbolo, el ancho de línea y el c
 
 | Botón | Descripción |
 |--------|-------------|
-| Axes | Mostrar la orientación de los ejes (tamaño = constante de red) |
-| Light | Establecer la dirección de la luz |
-| Legend | Leyenda de átomos |
-| Atoms | Alternar los objetos de átomos |
-| Labels | Alternar las etiquetas de los átomos |
-| Unit Cell | Alternar las aristas de la celda elemental |
-| Sym. Elems. | Alternar la superposición de elementos de simetría (ver arriba) |
-| Reset Rotation | Volver a la orientación inicial |
-| Like Vesta | Cambia a una apariencia al estilo de VESTA (colores y radios de los átomos) |
+| Ejes | Mostrar la orientación de los ejes (tamaño = constante de red) |
+| Luz | Establecer la dirección de la luz |
+| Leyenda | Leyenda de átomos |
+| Átomos | Alternar los objetos de átomos |
+| Etiquetas | Alternar las etiquetas de los átomos |
+| Celda unidad | Alternar las aristas de la celda elemental |
+| Elem. sim. | Alternar la superposición de elementos de simetría (ver arriba) |
+| Restablecer rotación | Volver a la orientación inicial |
+| Como Vesta | Cambia a una apariencia al estilo de VESTA: se restablecen los colores y radios de los átomos y la lista de enlaces se **sustituye** por los enlaces predeterminados |
 
 ---
 
