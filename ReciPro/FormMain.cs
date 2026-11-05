@@ -1087,7 +1087,10 @@ public partial class FormMain : FormBase
                 else if (h == 0 && k != 0 && l == 0) { u = 0; v = 0; w = 1; }
                 else { u = k; v = -h; w = 0; }
             }
-            yVector = u * aAxis + v * bAxis + w * cStar;
+            //yVector = u * aAxis + v * bAxis + w * cStar; // 261105Cl 変更前
+            // 261105Cl 修正: 上向きベクトルは面 (hkl) 内の実空間の方向 [uvw] = u a + v b + w c (晶帯則 hu+kv+lw=0 で面法線に直交)。
+            //  旧式は第 3 項だけ逆格子の c* で、w≠0 かつ c*∦c の格子 (単斜晶・三斜晶など) で面法線に直交せず、回転行列が直交行列でなくなっていた
+            yVector = u * aAxis + v * bAxis + w * cAxis; // 261105Cl
             yVector.NormarizeThis();
         }
         else
