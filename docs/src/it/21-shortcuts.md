@@ -8,12 +8,23 @@ ReciPro associa molte funzioni a **combinazioni di tasti** e a **pulsanti del mo
 
 ## Scorciatoie valide per l'intera applicazione
 
-Queste vengono installate dalla [finestra principale](0-main-window.md) ma restano attive mentre le finestre Visualizzatore struttura, Stereogramma, Simulatore di diffrazione e Spot ID hanno il fuoco.
+Queste vengono installate dalla [finestra principale](0-main-window.md) ma restano attive mentre le finestre Visualizzatore struttura, Stereogramma, Simulatore di diffrazione e Spot ID v1 hanno il fuoco.
 
 | Scorciatoia | Azione |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + tasti freccia | Ruota il cristallo di un passo in quella direzione (tieni premute due frecce per una diagonale) |
-| Tieni premuto <kbd>CTRL</kbd> all'avvio di ReciPro | Avvia con OpenGL disabilitato (ripristino in caso di problemi grafici) |
+| Tieni premuto <kbd>CTRL</kbd> all'avvio di ReciPro | Avvia con OpenGL disabilitato (ripristino in caso di problemi grafici; solo per questo avvio, non viene salvato) |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> (qualsiasi finestra) | Apre lo strumento (sperimentale) di cattura della GUI per la finestra attiva |
+
+### Caselle di immissione numerica
+
+La maggior parte dei campi numerici di tutte le finestre si comporta allo stesso modo.
+
+| Scorciatoia | Azione |
+|----------|--------|
+| <kbd>↑</kbd> / <kbd>↓</kbd> (campo con il fuoco, pulsanti di incremento visibili) | Aumenta / diminuisci il valore di un passo, esattamente come i pulsanti di incremento |
+| <kbd>ENTER</kbd> | Conferma il valore digitato |
+| <kbd>SHIFT</kbd>+<kbd>ENTER</kbd> oppure <kbd>CTRL</kbd>+<kbd>ENTER</kbd> | Valuta l'espressione aritmetica digitata e la sostituisce con il risultato |
 
 ---
 
@@ -47,7 +58,7 @@ Utilizzate dalla figura del [Simulatore di diffrazione](7-diffraction-simulator/
 | Trascinamento destro di un riquadro | Ingrandisci la regione selezionata |
 | Trascinamento centrale | Spostamento |
 
-Su queste viste **non** esiste lo zoom con la rotellina del mouse.
+Solo la figura del Simulatore di diffrazione si ingrandisce anche con la rotellina del mouse (×2 / ×0.5, ricentrando sul cursore); lo Stereogramma e la figura di Kikuchi di EBSD **non** hanno lo zoom con la rotellina del mouse. Non esiste lo zoom con i tasti <kbd>+</kbd> / <kbd>-</kbd>.
 
 ### Viste immagine { #image }
 
@@ -72,9 +83,9 @@ Utilizzate dai pannelli dei risultati di [HRTEM/STEM](9-hrtem-stem-simulator/ind
 | Trascinamento sinistro del widget di orientamento (in basso a sinistra) | Ruota il cristallo |
 | Doppio clic destro sul widget di orientamento | Copia l'immagine del widget negli appunti |
 | Clic singolo / doppio clic su un pulsante di funzione | Attiva/disattiva quella finestra / forzala in primo piano |
-| Clic destro su un cristallo nell'elenco | Menu contestuale (Rinomina / Duplica / Elimina / Esporta CIF…) |
-| Doppio clic sull'etichetta **Current Index** | Mostra / nascondi la casella max-UVW |
-| Rilascia un file | Carica un elenco di cristalli (`.xml`, `.cdb2`) o un cristallo (`.cif`, `.amc`) |
+| Clic destro su un cristallo nell'elenco | Menu contestuale (Rinomina / Esporta come CIF / Duplica / Elimina) |
+| Doppio clic sull'etichetta dell'indice dell'asse di zona (`[u v w]`) | Mostra / nascondi la casella max-UVW |
+| Rilascia un file | Carica un elenco di cristalli (`.xml`, `.out`, `.cdb2`) o un cristallo (`.cif`, `.amc`) |
 
 ### 1. Database dei cristalli
 [Apri pagina →](1-crystal-database.md)
@@ -86,7 +97,7 @@ Utilizzate dai pannelli dei risultati di [HRTEM/STEM](9-hrtem-stem-simulator/ind
 | Clic su un elemento nel popup della tavola periodica | Scorri il suo filtro: ignora → deve includere → deve escludere |
 
 ### 2. Informazioni di simmetria · 3. Interazione del fascio
-Le Informazioni di simmetria non hanno combinazioni speciali di tasti/mouse. Nell'Interazione del fascio, oltre a <kbd>F1</kbd> e ai pulsanti **Copy**, il cursore verticale sul grafico **Scattering factors** può essere trascinato per leggere il valore di ciascun elemento.
+Le Informazioni di simmetria non hanno combinazioni speciali di tasti/mouse. Nell'Interazione del fascio, oltre a <kbd>F1</kbd> e ai pulsanti **Copia**, il cursore verticale sul grafico **Fattori di diffusione** può essere trascinato per leggere il valore di ciascun elemento.
 [Simmetria →](2-symmetry-information.md) · [Interazione del fascio →](3-beam-interaction.md)
 
 ### 4. Geometria di rotazione
@@ -107,20 +118,21 @@ Le Informazioni di simmetria non hanno combinazioni speciali di tasti/mouse. Nel
 
 | Scorciatoia | Azione |
 |----------|--------|
-| Doppio clic sinistro sulla rete | Alterna tra proiezione **Plane** e **Axis** |
+| Doppio clic sinistro sulla rete | Alterna tra proiezione **Piani** e **Assi** |
 | Sposta il mouse sulla rete | Leggi il (hkl)/[uvw] sotto il cursore |
 
 ### 7. Simulatore di diffrazione
-[Apri pagina →](7-diffraction-simulator/index.md) — la figura è una [vista a figura di diffrazione](#pattern) (nessuno zoom con la rotellina).
+[Apri pagina →](7-diffraction-simulator/index.md) — la figura è una [vista a figura di diffrazione](#pattern), con in più lo zoom con la rotellina.
 
 | Scorciatoia | Azione |
 |----------|--------|
+| Rotellina del mouse su / giù | Ingrandisci (×2) / Riduci (×0.5), ricentrando la vista sulla posizione del cursore (sul centro fisso quando la casella **Fissa** del centro è attiva) |
 | Doppio clic sinistro su una riflessione | Mostra i dettagli della riflessione (indice, *d*, fattore di struttura, errore di eccitazione) |
 | <kbd>CTRL</kbd> + Trascinamento centrale | Sposta il centro del rivelatore (quando l'area del rivelatore è visualizzata) |
 | Doppio clic destro sulla barra di stato | Copia un riepilogo testuale delle impostazioni correnti |
 | Doppio clic destro su un pulsante di livello attivo (Spots / Kikuchi / Debye / Scale) | Fai lampeggiare quel livello |
-| Doppio clic sinistro sullo stereogramma — finestra **TEM holder** | Imposta l'inclinazione del portacampioni su quel punto |
-| Tasti freccia — finestra **TEM holder** | Modifica l'inclinazione del portacampioni a passi (seleziona prima **Abilita tasti freccia**; funziona con qualsiasi finestra di ReciPro in primo piano) |
+| Doppio clic sinistro sullo stereogramma — finestra **Simulazione portacampioni TEM** | Imposta l'inclinazione del portacampioni su quel punto |
+| Tasti freccia — finestra **Simulazione portacampioni TEM** | Modifica l'inclinazione del portacampioni a passi (seleziona prima **Abilita tasti freccia**; funziona con qualsiasi finestra di ReciPro in primo piano) |
 | Rilascia `.prm` / immagine — **Detector geometry**, oppure `.txt` — **Dynamic compression** | Carica quei dati |
 
 ### 8. Traiettorie elettroniche
@@ -160,6 +172,7 @@ Le Informazioni di simmetria non hanno combinazioni speciali di tasti/mouse. Nel
 | Scorciatoia | Azione |
 |----------|--------|
 | Doppio clic sulla figura di Kikuchi | Seleziona la sotto-cella del rivelatore sotto il cursore e mostra le sue statistiche |
+| Con la selezione **Zone axis** attiva: doppio clic sinistro / <kbd>CTRL</kbd> + doppio clic sinistro / <kbd>SHIFT</kbd> + doppio clic sinistro sulla figura | Aggiungi un punto di asse di zona / rimuovi il punto entro 5 pixel dello schermo / seleziona quel punto |
 
 ### 20. Macro
 [Apri pagina →](20-macro/index.md)

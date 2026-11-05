@@ -105,6 +105,8 @@ Il pannello in basso a sinistra regola l'aspetto del risultato — luminosità, 
 
 - **Per immagine** : se spuntata, normalizza ciascuna immagine separatamente (se non spuntata, l'intera serie condivide una scala comune).
 - **Min** / **Max** : fissa l'estremo inferiore / superiore della normalizzazione al valore indicato a destra, invece del minimo / massimo dell'immagine.
+- **EDX comune** : visibile solo mentre è visualizzata una [mappa EDX](2-stem-simulation.md#stem-edx) e il calcolo ha prodotto più di un canale; porta tutti i canali della stessa grandezza su un unico intervallo di visualizzazione. Le mappe EDX non vengono mai riscalate da **Min** / **Max**: il loro estremo inferiore è fissato a 0 e solo quello superiore segue **Per immagine** / **EDX comune**.
+- Questo gruppo è nascosto in modalità Potential.
 
 ### Immagine STEM
 
@@ -118,8 +120,8 @@ Visibile solo in modalità STEM. Seleziona quale componente di diffusione dell'i
 
 Imposta gli elementi sovrapposti all'immagine.
 
-- **Cella** : sovrappone il contorno della cella elementare proiettata, così da poter mettere in relazione il contrasto dell'immagine con il reticolo cristallino.
-- **Testo** : sovrappone etichette come spessore, defocus e indici. Si possono specificare **Dim.** (dimensione del carattere) e **Colore**.
+- **Cella** : sovrappone il contorno della cella elementare proiettata, così da poter mettere in relazione il contrasto dell'immagine con il reticolo cristallino. Gli spigoli paralleli ad **a**, **b** e **c** sono disegnati in rosso, verde e blu, centrati sul centro dell'immagine.
+- **Testo** : sovrappone l'etichetta di ciascun riquadro — lo spessore `t=` e il defocus `f=` (nm) in HRTEM / STEM, oppure il nome del riquadro (per esempio *Ug magnitude*) in modalità Potential. Si possono specificare **Dim.** (dimensione del carattere) e **Colore**.
 - **Scala** : sovrappone una barra di scala. Si possono specificare **Lungh.** (nm) e **Colore**.
 
 ---
@@ -131,7 +133,19 @@ Imposta gli elementi sovrapposti all'immagine.
 - **Simula** : esegue il calcolo con il cristallo, le condizioni del microscopio, lo spessore, il defocus e le impostazioni di visualizzazione correnti.
 - **Arresta** : interrompe il calcolo in corso (visibile solo durante il calcolo).
 - **Tempo reale** : se spuntata, ricalcola immediatamente quando il cristallo viene ruotato (nascosta in modalità STEM).
-- **Preimpostazioni** : mostra/nasconde la finestra delle preimpostazioni, che memorizza e richiama le condizioni di imaging TEM.
+- **Preimpostazioni** : mostra/nasconde la finestra delle preimpostazioni, che memorizza e richiama le condizioni di imaging TEM (vedere [Preset list](#preset-list) più sotto).
+
+### Preset list {#preset-list}
+
+<!-- screenshot: Preset list window (FormPresets) with a few entries -->
+
+La finestra **Preset list** conserva istantanee con nome delle impostazioni del simulatore. Un'istantanea memorizza la modalità immagine, la tensione di accelerazione, Cs, Cc, ΔV, il defocus, β, l'apertura obiettivo (dimensione e scostamento), il modello di coerenza parziale HRTEM, lo spessore e gli elenchi seriali di spessore / defocus, la dimensione e la risoluzione dell'immagine, il numero di onde di Bloch e le impostazioni STEM (angolo di convergenza, angoli del rivelatore, dimensione della sorgente, spessore della fetta, risoluzione angolare, **Calcola le mappe EDX** e **Serie di righe (Kα, Lα…)**). L'elenco viene salvato con le impostazioni di ReciPro e si conserva dopo un riavvio.
+
+- Un clic su una voce la applica immediatamente.
+- **OK** chiude la finestra mantenendo le impostazioni correnti; **Annulla** (o <kbd>Esc</kbd>) la chiude e ripristina le impostazioni in vigore al momento dell'apertura della finestra.
+- **Gestisci l'elenco dei preset** : se spuntata, un clic su una voce si limita a selezionarla (senza applicarla) e compaiono la casella **Nome** e i pulsanti **Add** / **Sostituisci** / **Rinomina** / **Elimina**. **Add** aggiunge le impostazioni correnti con il nome indicato, **Sostituisci** sovrascrive la voce selezionata con le impostazioni correnti, **Rinomina** ne cambia solo il nome.
+
+Le preimpostazioni dei microscopi (ARM300F, 2100F, …) non sono in questo elenco; si trovano nel menu contestuale di **Condizioni TEM** (vedere [Simulazione HRTEM](1-hrtem-simulation.md#tem-conditions)).
 
 ---
 
@@ -139,17 +153,17 @@ Imposta gli elementi sovrapposti all'immagine.
 
 ![Menu File](../../assets/cap-it-auto/FormImageSimulator.menuStrip1.fileToolStripMenuItem.png)
 
-- **Salva immagine** : salva **come immagine (formato PNG)**, **come immagine (formato TIFF)** oppure **come metafile (EMF)**. **Salva singolarmente in modalità immagine seriale** scrive una per una le immagini di un'esecuzione seriale.
+- **Salva immagine** : salva **come immagine (formato PNG)**, **come immagine (formato TIFF)** oppure **come metafile (EMF)**. PNG ed EMF salvano ciò che è visualizzato (intervallo di visualizzazione e scala di colori); **Salva singolarmente in modalità immagine seriale** (attiva per impostazione predefinita) scrive ciascun riquadro in un file separato invece di un'unica immagine affiancata. TIFF scrive sempre un file in virgola mobile per riquadro, senza sovrapposizioni. Memorizza i valori dei pixel dopo **Normalizz.** (e dopo **Sfocatura gaussiana (FWHM)**, se applicata), non l'intervallo di visualizzazione di **Regolazione**; con le impostazioni predefinite (**Min** 0, **Max** 1, **Per immagine**) ogni immagine è scalata a 0–1, quindi togliere la spunta a **Min** / **Max** per esportare le intensità calcolate. Le mappe EDX vengono sempre scritte senza riscalatura.
 - **Copia immagine** : copia negli appunti **come immagine** oppure **come metafile (EMF)**.
-- **Sovrastampa simboli** : incorpora nell'immagine salvata la cella elementare, le etichette e la barra di scala.
-- **Carica parametri TEM** / **Salva parametri TEM** : salvano in un file le condizioni ottiche (tensione di accelerazione, aberrazioni e così via) e le ripristinano.
+- **Sovrastampa simboli** (attiva per impostazione predefinita) : incorpora nell'immagine PNG / EMF salvata o copiata la cella elementare, le etichette e la barra di scala.
+- **Carica parametri TEM** / **Salva parametri TEM** : visibili ma disabilitati (non implementati). Usare la [Preset list](#preset-list) per memorizzare e richiamare le condizioni.
 
 ## Menu Guida
 
 ![Menu Guida](../../assets/cap-it-auto/FormImageSimulator.menuStrip1.helpToolStripMenuItem.png)
 
 - **Concetto base della simulazione HRTEM** : apre la spiegazione della formazione dell'immagine HRTEM ([Appendice A3.2](../appendix/a3-bloch-wave/hrtem.md)).
-- **Libreria di calcolo** : seleziona la libreria di calcolo — **Native code** (C++/Eigen, veloce) oppure **Managed code** (.NET). Native è normalmente più veloce.
+- **Libreria di calcolo** : seleziona la libreria di calcolo — **Native code** (C++/Eigen, veloce) oppure **Managed code** (.NET). Native è normalmente più veloce. La scelta vale solo per la sintesi dell'immagine HRTEM; lo STEM sceglie automaticamente il proprio risolutore (lo STEM-EDX richiede sempre la libreria nativa), e la scelta viene reimpostata su **Native code** a ogni avvio di ReciPro.
 
 ---
 
