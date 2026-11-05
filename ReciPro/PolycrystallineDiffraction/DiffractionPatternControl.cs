@@ -933,7 +933,10 @@ public partial class DiffractionPatternControl : UserControlBase
 
     public void setSimulatedPixels()
     {
-        if (SrcPixels == null)
+        //if (SrcPixels == null) // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I14): シミュレーションのタブ (参照画像なし) で Size を変えて計算し直すと、DiffractionPixels の大きさが前の SrcPixels と違い、
+        //  下の Length の一致の判定で何もせずに戻って画像が更新されなかった。参照画像でないときは大きさが変わったら作り直す
+        if (SrcPixels == null || (!IsReferrenceImage && SrcPixels.Length != DiffractionPixels.Length)) // 261105Cl
         {
             SrcPixels = new double[DiffractionPixels.Length];
             Filter = new bool[DiffractionPixels.Length];
