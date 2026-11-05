@@ -4863,7 +4863,9 @@ public partial class FormEBSD : FormBase
             //DetX/DetY/DetZ へ逆変換して書き戻し (DetTilt 固定)。numericBox の範囲へクランプ (260724Cl)
             //260920Cl: 傾斜も変数にしてみたが、単一パターンでは方位の X 回転と縮退して DD/PC が 1.5-2 mm 流れた (実測、作者判断で取り消し)。
             //  ZNCC は 0.361 → 0.358 と下がり、傾斜の広がりも ±3.4° だった。設計正本 §7.2 の「傾斜は較正しない」を維持する
-            var (detX, detY, detZ) = EbsdDetectorGeometry.FromPatternCenter(result.PatternCenterU, result.PatternCenterV, result.CameraLength, ctx.Geometry.DetTilt);
+            // var (detX, detY, detZ) = EbsdDetectorGeometry.FromPatternCenter(result.PatternCenterU, result.PatternCenterV, result.CameraLength, ctx.Geometry.DetTilt); // 261105Cl 変更前
+            // 261105Cl 変更 (監査 F13): 検出器を +Y 側 (標準と反対) に置いて較正すると、結果が −Y 側へ反転して書き戻されていた。元の幾何と同じ側へ戻す
+            var (detX, detY, detZ) = EbsdDetectorGeometry.FromPatternCenter(result.PatternCenterU, result.PatternCenterV, result.CameraLength, ctx.Geometry.DetTilt, ctx.Geometry.SignedCameraLength);
             skipDetectorGeometryEvent = true;
             try
             {
