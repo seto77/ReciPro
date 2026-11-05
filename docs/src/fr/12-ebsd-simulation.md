@@ -55,7 +55,7 @@ Les plages d'énergie et de profondeur sont déterminées automatiquement aux é
 
 ![Conditions SEM & échantillon](../assets/cap-fr-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
-- **Énergie** : tension d'accélération du faisceau incident (keV).
+- **Énergie** : tension d'accélération du faisceau incident (keV). La valeur est restaurée au prochain démarrage, avec les plages d'énergie et de profondeur saisies à la main. <!-- 261106Cl 仕上げ R3 D4: FormEBSD.AcceleratingVoltageKV をレジストリに保存 -->
 - **Long. d'onde** : longueur d'onde des électrons, liée à **Énergie**. **Unit** sélectionne Å ou nm.
 - **Inclinaison de l'échantillon** : angle d'inclinaison de l'échantillon (typiquement −70°). La forte inclinaison en EBSD augmente le rendement en électrons rétrodiffusés. Sa modification efface les résultats Monte-Carlo (les distributions BSE et leurs poids ; relancez **Simuler**) ; le master pattern ne dépend pas de l'inclinaison et est conservé. <!-- 261106Cl 作者の決定 F17 -->
 

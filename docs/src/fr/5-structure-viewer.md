@@ -66,7 +66,7 @@ Réglez la longueur du film (**Durée**), la fréquence d'images (**FPS**, 1–1
 
 #### Export 3D model (3MF/STL)
 
-**Export 3D model (3MF/STL)** exporte le modèle de structure actuellement dessiné à l'écran sous forme de modèle solide pour l'impression 3D. Seuls les solides fermés peuvent être exportés : atomes (sphères et ellipsoïdes), liaisons (cylindres) et polyèdres de coordination. Les étiquettes d'atomes, les plans de délimitation, les plans réticulaires et les symboles des éléments de symétrie ne sont pas exportés. <!-- 261105Cl 監査: 配位多面体を出力し、対称要素は出さない (6c31fc0d) --> Le cadre de la maille est constitué de segments : il n'est remplacé par des cylindres (avec des sphères aux sommets) que si vous cochez l'option correspondante. **Découper les objets** (découpe par les plans limites) n'est pas appliqué à la sortie : les objets qui traversent les plans limites sont exportés entiers (la boîte de dialogue le signale). <!-- 261106Cl 作者の決定 H10 -->
+**Export 3D model (3MF/STL)** exporte le modèle de structure actuellement dessiné à l'écran sous forme de modèle solide pour l'impression 3D. Seuls les solides fermés peuvent être exportés : atomes (sphères et ellipsoïdes), liaisons (cylindres) et polyèdres de coordination. Les étiquettes d'atomes, les plans de délimitation, les plans réticulaires et les symboles des éléments de symétrie ne sont pas exportés. <!-- 261105Cl 監査: 配位多面体を出力し、対称要素は出さない (6c31fc0d) --> Le cadre de la maille est constitué de segments : il n'est remplacé par des cylindres (avec des sphères aux sommets) que si vous cochez l'option correspondante. **Découper les objets aux plans limites** n'est pas appliqué à la sortie : les objets qui traversent les plans limites sont exportés entiers (la boîte de dialogue le signale). <!-- 261106Cl 作者の決定 H10 -->
 
 ![Boîte de dialogue Exporter le modèle 3D](../assets/cap-fr-auto/FormExport3DModel.png)
 
@@ -116,7 +116,7 @@ Dans ce mode, les axes *a*, *b*, *c* de la maille sont l'unité de la plage de d
 
 ![Limites par plans cristallins](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
-Dans ce mode, la zone de dessin est délimitée par un ensemble de plans cristallins. Si les plans ne définissent pas une région spatialement fermée, ReciPro ajoute, pour la fermer, un polyèdre quasi sphérique de rayon **Distance max. à l'origine** (Å, mesurée depuis le [centre de projection](#centre-de-projection)). <!-- 261106Cl 作者の決定 C4 -->
+Dans ce mode, la zone de dessin est délimitée par un ensemble de plans cristallins. Si les plans ne définissent pas une région spatialement fermée, ReciPro ajoute, pour la fermer, un polyèdre quasi sphérique de rayon **Dist. max (centre proj.)** (Å, mesurée depuis le [centre de projection](#centre-de-projection)). <!-- 261106Cl 作者の決定 C4 -->
 
 #### Liste des limites
 
@@ -130,17 +130,17 @@ Définit le plan limite par son indice de Miller. La case à cocher inclut les p
 
 #### Distance au centre de proj.
 
-La distance du [centre de projection](#centre-de-projection) (et non de l'origine de la maille) au plan limite, saisie soit <!-- 261106Cl 作者の決定 C4 --> comme multiple de la distance interréticulaire *d* du (*hkl*) sélectionné (champ **d×**), soit en Å (le champ entre parenthèses). Les deux champs sont liés : modifier l'un met l'autre à jour.
+La distance du [centre de projection](#centre-de-projection) (et non de l'origine de la maille) au plan limite, saisie soit <!-- 261106Cl 作者の決定 C4 --> comme multiple de la distance interréticulaire *d* du (*hkl*) sélectionné (champ **d×**), soit en Å (le champ entre parenthèses). Les deux champs sont liés : modifier l'un met l'autre à jour. Chaque plan est placé du côté +**g** du centre de projection (dans le sens de sa normale (*hkl*)), et c'est le côté contenant le centre qui est dessiné ; avec un seul plan, la région est le demi-espace situé du côté du centre. <!-- 261106Cl 仕上げ R3 D5: Boundary.cs Bound.Reset (面は nᵢ·r ≤ D) -->
 
 - **Translation** (Å) : déplace toute la région délimitée par les plans de cette valeur le long de la normale du (*hkl*) spécifié ; les valeurs positives la déplacent vers +**g**, c'est-à-dire dans le sens de la normale du (*hkl*). Fonctionne quel que soit le nombre de plans, y compris un plan unique sans **Plans équivalents**. <!-- 261106Cl 作者の決定 B11, C5 -->
-- **Distance max. à l'origine** (Å) : rayon du polyèdre de fermeture utilisé lorsque les plans n'enferment pas de région (voir ci-dessus).
+- **Dist. max (centre proj.)** (Å) : rayon du polyèdre de fermeture utilisé lorsque les plans n'enferment pas de région (voir ci-dessus).
 - **Mise à jour immédiate** : applique les modifications du plan sélectionné sans appuyer sur **Remplacer**.
 
-#### Afficher les plans limites / Opacité
+#### Afficher les plans / Opacité
 
 Affiche ou masque les plans limites eux-mêmes. Lorsqu'ils sont affichés, **Opacité** définit la transparence (0 = transparent, 1 = opaque).
 
-#### Découper les objets selon les plans limites
+#### Découper les objets aux plans limites
 
 Si cette option est cochée, seule la région intérieure définie par les limites est rendue ; les atomes, liaisons et polyèdres qui coupent les limites sont découpés.
 
@@ -167,9 +167,9 @@ La liste des atomes du cristal. Utilisez **Ajouter / Remplacer / Supprimer** pou
 - **X, Y, Z** : coordonnées fractionnaires. Nombres réels entre 0 et 1, ou fractions telles que `1/2` ou `2/3`.
 - **Occ** : taux d'occupation, un nombre réel entre 0 et 1.
 
-#### Décalage de l'origine
+#### Décalage d'origine
 
-![Décalage de l'origine](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.atomControl.tabControl.tabPageOriginShift.png)
+![Décalage d'origine](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.atomControl.tabControl.tabPageOriginShift.png)
 
 Décale chaque atome du même décalage fractionnaire. Appuyez sur un bouton prédéfini (par exemple, pour échanger le choix d'origine 1 / 2 pour le même groupe d'espace), ou saisissez un décalage personnalisé (Δx, Δy, Δz) et appuyez sur **Apply custom shift**.
 
@@ -225,11 +225,11 @@ Chaque groupe d'espace possède une origine par défaut. Pour éloigner le centr
 
 La translation est liée au [Centre de projection](#centre-de-projection) : régler le centre de projection sur $(x, y, z)$ règle la translation sur $(x-0.5,\ y-0.5,\ z-0.5)$. Une translation positive déplace la maille dessinée vers +*a*, +*b*, +*c*. <!-- 261106Cl 作者の決定 H3/H18 -->
 
-#### Afficher le plan de la maille
+#### Afficher le plan de maille
 
 Indique si les six faces qui délimitent la maille sont dessinées. Lorsque cette option est activée, vous pouvez régler la couleur des faces et leur transparence.
 
-#### Afficher les arêtes
+#### Afficher l'arête de maille
 
 Indique si les arêtes de la maille sont dessinées. La couleur des arêtes est configurable.
 

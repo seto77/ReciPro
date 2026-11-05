@@ -105,7 +105,7 @@ $$
 
 La diagonalisation de $\mathbf{A}$ fournit **tous** les vecteurs d'onde de Bloch et leurs amplitudes d'un seul coup. Les amplitudes des faisceaux diffractés — et donc les intensités — découlent alors des conditions aux limites aux surfaces d'entrée et de sortie ainsi que de l'épaisseur de l'échantillon. Ces étapes, le potentiel optique (complexe), le facteur de Debye–Waller et les coefficients de transmission $T_{\mathbf g}$ sont décrits dans [Calcul dynamique (cœur commun)](calculation.md).
 
-> **Note :** Les valeurs $V_{\mathbf g}$ affichées dans la table **Details** du simulateur de diffraction sont les valeurs brutes *avant* l'application du facteur de correction relativiste.
+> **Note :** Les valeurs $V_{\mathbf g}$ affichées dans la table **Détails des taches** du simulateur de diffraction sont les valeurs brutes *avant* l'application du facteur de correction relativiste.
 
 ---
 

@@ -73,12 +73,12 @@ Si vous débutez avec ReciPro, suivez les étapes ci-dessous :
 | Utiliser l'indice de Miller-Bravais (hkil) | Utiliser la notation à 4 indices pour les systèmes trigonaux/hexagonaux dans toute l'application |
 | Utiliser les facteurs de diffusion ioniques | Utiliser les facteurs de diffusion électronique ioniques (Peng) des ions attribués aux atomes dans les calculs électroniques dynamiques (ondes de Bloch), y compris les profils de Kikuchi ; le terme monopolaire à $g \neq 0$ n'est ajouté qu'aux coefficients élastiques $U_g$ (l'absorption TDS et la source TDS de Kikuchi utilisent la partie ionique finie). Option décochée, les facteurs des atomes neutres sont utilisés. Si la maille n'est pas électriquement neutre ($\Sigma q \neq 0$), le terme monopolaire est abandonné et seule la partie finie (ion écranté) est utilisée ; un avertissement s'affiche à l'activation de l'option |
 | Télécharger la bibliothèque MKL | Télécharger la bibliothèque native Intel MKL (~55 Mo) ; une fois installée, elle est utilisée automatiquement pour les gros calculs |
-| Accept external macro commands (named pipe) | Écouter sur le tube nommé `ReciPro.Macro.v1` et exécuter les macros envoyées par des programmes externes — voir [Contrôle externe](20-macro/3-external-control.md) |
+| Accepter les commandes de macro externes (canal nommé) | Écouter sur le tube nommé `ReciPro.Macro.v1` et exécuter les macros envoyées par des programmes externes — voir [Contrôle externe](20-macro/3-external-control.md) |
 | Réinitialiser les réglages du registre à la fermeture (effectif après redémarrage) | Réinitialiser les paramètres au prochain redémarrage |
 | Désactiver la bibliothèque Crystallography.Native (redémarrage requis) | Revenir au code managé si la bibliothèque native (C++) ne peut pas être chargée |
 | Désactiver tout le rendu OpenGL (redémarrage requis) | Pour les GPU plus anciens / le bureau à distance |
 | Désactiver le rendu de texte OpenGL (redémarrage requis) | Solution de contournement pour les problèmes de rendu de texte sur certains GPU |
-| Capturer les composants de l'interface... | Outil de développeur pour enregistrer des captures d'écran de l'interface |
+| (expérimental) Capturer les composants de l'interface... | Outil de développeur pour enregistrer des captures d'écran de l'interface |
 | Fonction de diffraction sur poudre (en développement) | Activer la fenêtre de diffraction polycristalline (sur poudre) |
 
 ### Aide {#help}

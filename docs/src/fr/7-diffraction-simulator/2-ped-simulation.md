@@ -46,7 +46,7 @@ Définissez la forme et l'échantillonnage du cône de précession.
 
 | Paramètre | Description | Recommandé |
 |-----------|-------------|-------------|
-| **Demi-angle** | Demi-angle du cône de précession (mrad ; 0.1–500, 50 par défaut) | 10–40 mrad |
+| **Angle préc.** | Angle de précession, c'est-à-dire le demi-angle au sommet du cône de précession (mrad ; 0.1–500, 50 par défaut) <!-- 261106Cl 仕上げ R3 D1: 欄名 Demi-angle → Angle préc. --> | 10–40 mrad |
 | **Pas** | Nombre de directions de faisceau parallèle échantillonnées sur le cône de précession (2–1080, 36 par défaut). Des valeurs plus grandes donnent une intégration plus lisse mais augmentent linéairement le temps de calcul | 36–72 |
 
 ---

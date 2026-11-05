@@ -93,7 +93,7 @@ Le contraste de site varie fortement — et peut même changer de signe — entr
 
 | Élément | Description | Défaut |
 |---------|-------------|--------|
-| **Faisceaux max.** | Borne supérieure du nombre d'ondes de Bloch par orientation (1–1600). L'union sur tout le balayage est plus grande | 120 |
+| **Ondes diffr. max.** | Borne supérieure du nombre d'ondes de Bloch par orientation (1–1600). L'union sur tout le balayage est plus grande | 120 |
 | **Solveur** | Moteur de calcul du problème aux valeurs propres : **Natif** (Eigen C++) ou **Managé** (.NET). Là où le solveur natif est indisponible, le choix est fixé à Managé | Natif |
 | **Inclure la composante déchenalisée** | Ajouter ou non $Y_\text{dech}$ ci-dessus | activé |
 | **Étalement angulaire** | Convolue la courbe avec l'étalement angulaire du faisceau incident : **Aucun** ou **Gaussian** avec une largeur à mi-hauteur en mrad. C'est un post-traitement sur l'axe des orientations, appliqué **avant** la normalisation d'affichage | Aucun |

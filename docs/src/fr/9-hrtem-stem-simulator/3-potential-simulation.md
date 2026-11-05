@@ -12,7 +12,7 @@ La **simulation du potentiel** calcule et affiche la distribution 2D du potentie
 
 Les électrons à l'intérieur d'un cristal sont diffusés par le potentiel cristallin. Sa distribution sous-tend tous les phénomènes de diffraction et d'imagerie et constitue une information clé pour comprendre la structure cristalline. Comme ce mode n'inclut ni aberrations de lentille ni effets dynamiques dépendant de l'épaisseur, il convient bien à l'examen de la structure elle-même.
 
-> **En mode potentiel, les panneaux d'épaisseur de l'échantillon, de normalisation de l'intensité et de mode d'image (single / serial) ne sont pas affichés.** Parmi les conditions MET, seule la tension d'accélération est active.
+> **En mode potentiel, les panneaux d'épaisseur de l'échantillon, de normalisation de l'intensité et « Mode unique/série » ne sont pas affichés.** Parmi les conditions MET, seule la tension d'accélération est active.
 
 ---
 

@@ -68,10 +68,10 @@ Définissez la géométrie de la sonde convergente et du détecteur annulaire. C
 
 | Paramètre | Description | Par défaut / typique |
 |-----------|-------------|-------------------|
-| **Conv. semi-angle α** | Demi-angle de la sonde convergente (mrad). Des valeurs plus grandes donnent une sonde plus fine et modifient le contraste de diffraction | 25 mrad (par défaut) ; 15–25 mrad |
+| **Demi-angle conv. α** | Demi-angle de la sonde convergente (mrad). Des valeurs plus grandes donnent une sonde plus fine et modifient le contraste de diffraction | 25 mrad (par défaut) ; 15–25 mrad |
 | **Détecteur annulaire — Interne** | Demi-angle de collection interne du détecteur annulaire (mrad). Le signal à l'intérieur de cet angle est exclu | 0 (par défaut) ; BF: 0, HAADF: 80 |
 | **Détecteur annulaire — Externe** | Demi-angle de collection externe du détecteur annulaire (mrad). Le signal à l'extérieur de cet angle est exclu | 20 (par défaut) ; BF: 5, HAADF: 250 |
-| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Taille effective de la source d'électrons (pm). Appliquée après le calcul sous forme de convolution gaussienne de chaque image Élast. / TDS / EDX. Des valeurs plus grandes brouillent l'image et réduisent le contraste des détails fins | 20 pm (par défaut) |
+| **Taille effective de la source (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Taille effective de la source d'électrons (pm). Appliquée après le calcul sous forme de convolution gaussienne de chaque image Élast. / TDS / EDX. Des valeurs plus grandes brouillent l'image et réduisent le contraste des détails fins | 20 pm (par défaut) |
 
 Les angles du détecteur ne s'appliquent qu'à l'image STEM de référence (Élast. / TDS / Élast. & TDS) ; les cartes STEM-EDX ne les utilisent pas. Les valeurs par défaut ne s'appliquent qu'au premier démarrage ; ensuite, les dernières valeurs utilisées sont restaurées.
 
