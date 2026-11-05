@@ -145,8 +145,10 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     private void FormDiffractionSimulatorMultislice_FormClosing(object sender, FormClosingEventArgs e)
     {
         e.Cancel = true;
-        if (this.Visible && sender == this)
-            FormDiffractionSimulator.radioButtonIntensityDynamical.Checked = true;
+        //if (this.Visible && sender == this) // 261105Cl 変更前
+        if (this.Visible && sender == this && e.CloseReason == CloseReason.UserClosing) // 261105Cl 変更: アプリの終了時には親のモードを切り替えない
+            //FormDiffractionSimulator.radioButtonIntensityDynamical.Checked = true; // 261105Cl 変更前: 収束モードでは Dynamical はすでにチェックされているので何も起きず、× で閉じられなかった
+            FormDiffractionSimulator.BeamMode = FormDiffractionSimulator.BeamModes.Parallel; // 261105Cl 変更 (監査 D20・C25): この窓は収束 (CBED) モードの操作パネルなので、× は平行ビームへ戻す (親のハンドラがこの窓を隠す)
     }
     #endregion
 
