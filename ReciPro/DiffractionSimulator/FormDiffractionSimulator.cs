@@ -2814,9 +2814,22 @@ public partial class FormDiffractionSimulator : FormBase
             sb.AppendLine($"Monitor resolution:\t{Resolution}");
             sb.AppendLine($"Camera Length2:  {CameraLength2}");
 
+            // 261105Cl 追加 (監査 C24): 線源・エネルギー・波長・光学系 (旧は無く、計算の条件を再現できなかった)
+            sb.AppendLine($"Source:\t{Source}"); // 261105Cl
+            sb.AppendLine($"Energy:\t{Energy} {(Source == WaveSource.Electron ? "kV" : Source == WaveSource.Xray ? "keV" : "meV")}"); // 261105Cl
+            sb.AppendLine($"Wavelength:\t{WaveLength} nm"); // 261105Cl
+            sb.AppendLine($"Optics:\t{(radioButtonBeamBackLaue.Checked ? "Back Laue" : BeamMode.ToString())}"); // 261105Cl BeamModes に Back Laue は無い
             sb.AppendLine($"Spot shape:\t{(radioButtonCircleArea.Checked ? "Solid sphere" : "Gaussian")}");
             sb.AppendLine($"Radius or Sigma:\t{numericBoxSpotRadius.Value}");
-            sb.AppendLine($"Intensity calculation:\t{(radioButtonIntensityExcitation.Checked ? "Excitation error only" : "Kinematical")}");
+            //sb.AppendLine($"Intensity calculation:\t{(radioButtonIntensityExcitation.Checked ? "Excitation error only" : "Kinematical")}"); // 261105Cl 変更前: 動力学でも "Kinematical" と書いていた
+            sb.AppendLine($"Intensity calculation:\t{CalcMode switch { CalcModes.Excitation => "Excitation error only", CalcModes.Kinematical => "Kinematical", _ => "Dynamical" }}"); // 261105Cl
+            if (CalcMode == CalcModes.Dynamical) // 261105Cl 追加: 動力学の計算条件
+            {
+                sb.AppendLine($"Thickness:\t{Thickness} nm"); // 261105Cl
+                sb.AppendLine($"Number of diffracted waves:\t{NumberOfDiffractedWaves}"); // 261105Cl
+                if (BeamMode == BeamModes.PrecessionElectron) // 261105Cl
+                    sb.AppendLine($"Precession semi-angle:\t{numericBoxPED_Semiangle.Value} mrad"); // 261105Cl
+            }
             sb.AppendLine($"Tau:\t{Tau / Math.PI * 180}");
             sb.AppendLine($"Image name:\t{fdsg.textBoxFileName.Text}");
             sb.AppendLine($"Detector width:\t{fdsg.DetectorWidth}");
