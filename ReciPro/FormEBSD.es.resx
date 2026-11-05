@@ -490,7 +490,7 @@ color (Gray, Cold-Warm, Spectrum o Fire).</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Introduzca los índices del eje de zona [u v w] usados por el
-botón 'View Along' para orientar el patrón maestro 3D.</value>
+botón 'View along' para orientar el patrón maestro 3D.</value>
   </data>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Muestra la profundidad (nm) de la sección del

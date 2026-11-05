@@ -374,7 +374,7 @@ fines, affichées uniquement lorsque « Lignes à 1° » est activé).</value>
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>Définit la couleur des lignes de grille à 1° (lignes
-fines, affichées uniquement lorsque « 1° Lines » est activé).</value>
+fines, affichées uniquement lorsque « 1° lines » est activé).</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
     <value>Projette les lignes de latitude et de

@@ -810,17 +810,17 @@ simetria, em porcentagem (20-500%)</value>
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
     <value>Número de subdivisões da célula unitária ao longo
 do eixo a (inteiro, 1-10) para a grade de subcélula
-mostrada quando 'Show Subcell' está ativado.</value>
+mostrada quando 'Show subcell' está ativado.</value>
   </data>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
     <value>Número de subdivisões da célula unitária ao longo
 do eixo b (inteiro, 1-10) para a grade de subcélula
-mostrada quando 'Show Subcell' está ativado.</value>
+mostrada quando 'Show subcell' está ativado.</value>
   </data>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
     <value>Número de subdivisões da célula unitária ao longo
 do eixo c (inteiro, 1-10) para a grade de subcélula
-mostrada quando 'Show Subcell' está ativado.</value>
+mostrada quando 'Show subcell' está ativado.</value>
   </data>
   <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
     <value>Mostra/oculta os rótulos dos átomos (símbolos de

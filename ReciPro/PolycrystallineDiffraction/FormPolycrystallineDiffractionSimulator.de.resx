@@ -71,7 +71,7 @@ Pendelbereich (±°) und Schritt (°) unten.</value>
   </data>
   <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
     <value>Stoppt den Fit automatisch, sobald die
-abgekühlte 'Num per Step' unter den rechts
+abgekühlte 'Num per step' unter den rechts
 eingestellten Schwellenwert (%) fällt.</value>
   </data>
   <data name="checkBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
@@ -150,7 +150,7 @@ Schritte; der Wert wird mit fortschreitender Konvergenz
 abgekühlt (×0,8).</value>
   </data>
   <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>Schwellenwert (%) für 'Num per Step': der Fit stoppt,
+    <value>Schwellenwert (%) für 'Num per step': der Fit stoppt,
 wenn der Parameter unter dieses Niveau abgekühlt ist.</value>
   </data>
   <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">

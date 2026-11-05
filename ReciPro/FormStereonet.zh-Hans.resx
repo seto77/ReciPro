@@ -389,7 +389,7 @@
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>设置 1° 网格线（细线，仅在启用
-“1° Lines”时显示）的颜色。</value>
+“1° lines”时显示）的颜色。</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
     <value>从赤道方向投影

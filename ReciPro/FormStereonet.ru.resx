@@ -389,7 +389,7 @@
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>Задать цвет линий сетки 1° (тонкие линии,
-отображаются только при включённом «1° Lines»).</value>
+отображаются только при включённом «1° lines»).</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
     <value>Проецировать линии широты и долготы

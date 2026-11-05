@@ -70,7 +70,7 @@
 범위(±°), 스텝(°)으로 설정합니다.</value>
   </data>
   <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>어닐링된 'Num per Step'이 오른쪽에서 설정한
+    <value>어닐링된 'Num per step'이 오른쪽에서 설정한
 임계값(%) 아래로 떨어지면 피팅을
 자동으로 정지합니다.</value>
   </data>
@@ -150,7 +150,7 @@ Negative는 반전하여 고강도를 어둡게 표시합니다.</value>
 됩니다.</value>
   </data>
   <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>'Num per Step'의 임계값(%)입니다. 매개변수가
+    <value>'Num per step'의 임계값(%)입니다. 매개변수가
 이 수준 아래로 어닐링되면 피팅이 정지합니다.</value>
   </data>
   <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">

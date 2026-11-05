@@ -464,7 +464,7 @@ Negative（反相）灰度。</value>
 （Gray、Cold-Warm、Spectrum 或 Fire）。</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
-    <value>输入 'View Along' 按钮用于定向三维主花样的
+    <value>输入 'View along' 按钮用于定向三维主花样的
 晶带轴指数 [u v w]。</value>
   </data>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">

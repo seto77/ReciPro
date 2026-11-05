@@ -71,7 +71,7 @@ sa plage d'oscillation (±°) et son pas (°) ci-dessous.</value>
   </data>
   <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
     <value>Arrête automatiquement l'ajustement une fois que
-la valeur recuite « Num per Step » passe sous le
+la valeur recuite « Num per step » passe sous le
 seuil (%) défini à droite.</value>
   </data>
   <data name="checkBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
@@ -150,7 +150,7 @@ Orientation). Plus grande = pas plus grands ; la valeur est
 recuite à la baisse (×0,8) à mesure que l'ajustement converge.</value>
   </data>
   <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>Valeur seuil (%) pour « Num per Step » : l'ajustement s'arrête
+    <value>Valeur seuil (%) pour « Num per step » : l'ajustement s'arrête
 quand le paramètre est recuit sous ce niveau.</value>
   </data>
   <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">

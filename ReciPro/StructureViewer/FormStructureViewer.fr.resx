@@ -795,17 +795,17 @@ de symétrie, en pourcentage (20-500 %)</value>
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
     <value>Nombre de subdivisions de la maille élémentaire le long
 de l'axe a (entier, 1-10) pour la grille de sous-maille
-affichée lorsque « Show Subcell » est activé.</value>
+affichée lorsque « Show subcell » est activé.</value>
   </data>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
     <value>Nombre de subdivisions de la maille élémentaire le long
 de l'axe b (entier, 1-10) pour la grille de sous-maille
-affichée lorsque « Show Subcell » est activé.</value>
+affichée lorsque « Show subcell » est activé.</value>
   </data>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
     <value>Nombre de subdivisions de la maille élémentaire le long
 de l'axe c (entier, 1-10) pour la grille de sous-maille
-affichée lorsque « Show Subcell » est activé.</value>
+affichée lorsque « Show subcell » est activé.</value>
   </data>
   <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
     <value>Affiche/masque les étiquettes des atomes (symboles

@@ -187,7 +187,7 @@
     <value>97</value>
   </data>
   <data name="buttonViewIsometric.Text" xml:space="preserve">
-    <value>View Isometric</value>
+    <value>View isometric</value>
   </data>
   <data name="buttonViewIsometric.ToolTip" xml:space="preserve">
     <value>Set the view direction isometrically</value>

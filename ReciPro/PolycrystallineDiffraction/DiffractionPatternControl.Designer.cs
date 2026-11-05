@@ -260,7 +260,8 @@
             toolTip.SetToolTip(checkBoxMaskDonut, resources.GetString("checkBoxMaskDonut.ToolTip")); // 260531Cl
             checkBoxMaskDonut.Size = new System.Drawing.Size(90, 18);
             checkBoxMaskDonut.TabIndex = 160;
-            checkBoxMaskDonut.Text = "Donut Mask";
+            //checkBoxMaskDonut.Text = "Donut Mask"; // 261105Cl 変更前
+            checkBoxMaskDonut.Text = "Donut mask"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             checkBoxMaskDonut.UseVisualStyleBackColor = true;
             checkBoxMaskDonut.CheckedChanged += checkBoxCircleMask_CheckedChanged;
             // 
@@ -274,7 +275,8 @@
             toolTip.SetToolTip(checkBoxMaskRectangle, resources.GetString("checkBoxMaskRectangle.ToolTip")); // 260531Cl
             checkBoxMaskRectangle.Size = new System.Drawing.Size(110, 18);
             checkBoxMaskRectangle.TabIndex = 161;
-            checkBoxMaskRectangle.Text = "Rectangle Mask";
+            //checkBoxMaskRectangle.Text = "Rectangle Mask"; // 261105Cl 変更前
+            checkBoxMaskRectangle.Text = "Rectangle mask"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             checkBoxMaskRectangle.UseVisualStyleBackColor = true;
             checkBoxMaskRectangle.CheckedChanged += checkBoxRectangleMask_CheckedChanged;
             // 
@@ -365,7 +367,8 @@
             toolTip.SetToolTip(buttonUnmaskAll, resources.GetString("buttonUnmaskAll.ToolTip")); // 260531Cl
             buttonUnmaskAll.Size = new System.Drawing.Size(74, 24);
             buttonUnmaskAll.TabIndex = 145;
-            buttonUnmaskAll.Text = "Unmask All";
+            //buttonUnmaskAll.Text = "Unmask All"; // 261105Cl 変更前
+            buttonUnmaskAll.Text = "Unmask all"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             buttonUnmaskAll.UseVisualStyleBackColor = true;
             buttonUnmaskAll.Click += buttonClearMask_Click;
             // 
@@ -438,7 +441,8 @@
             toolTip.SetToolTip(label23, resources.GetString("label23.ToolTip")); // 260531Cl
             label23.Size = new System.Drawing.Size(71, 14);
             label23.TabIndex = 15;
-            label23.Text = "Band Width";
+            //label23.Text = "Band Width"; // 261105Cl 変更前
+            label23.Text = "Band width"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             // 
             // numericBoxRectangleBand
             // 
@@ -475,7 +479,8 @@
             toolTip.SetToolTip(checkBoxRectangleIsBothSide, resources.GetString("checkBoxRectangleIsBothSide.ToolTip")); // 260531Cl
             checkBoxRectangleIsBothSide.Size = new System.Drawing.Size(79, 18);
             checkBoxRectangleIsBothSide.TabIndex = 13;
-            checkBoxRectangleIsBothSide.Text = "Both Side";
+            //checkBoxRectangleIsBothSide.Text = "Both Side"; // 261105Cl 変更前
+            checkBoxRectangleIsBothSide.Text = "Both side"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             checkBoxRectangleIsBothSide.UseVisualStyleBackColor = true;
             checkBoxRectangleIsBothSide.CheckedChanged += checkBoxRectangleIsBothSide_CheckedChanged;
             // 
@@ -954,7 +959,8 @@
             toolTip.SetToolTip(label19, resources.GetString("label19.ToolTip")); // 260531Cl
             label19.Size = new System.Drawing.Size(108, 14);
             label19.TabIndex = 67;
-            label19.Text = "Monitor Resolution";
+            //label19.Text = "Monitor Resolution"; // 261105Cl 変更前
+            label19.Text = "Monitor resolution"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             // 
             // label2
             // 
@@ -995,7 +1001,8 @@
             toolTip.SetToolTip(label31, resources.GetString("label31.ToolTip")); // 260531Cl
             label31.Size = new System.Drawing.Size(101, 14);
             label31.TabIndex = 67;
-            label31.Text = "Image Resolution";
+            //label31.Text = "Image Resolution"; // 261105Cl 変更前
+            label31.Text = "Image resolution"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             // 
             // label13
             // 
@@ -1091,7 +1098,8 @@
             toolTip.SetToolTip(checkBoxFilmBlur, resources.GetString("checkBoxFilmBlur.ToolTip")); // 260531Cl
             checkBoxFilmBlur.Size = new System.Drawing.Size(70, 18);
             checkBoxFilmBlur.TabIndex = 7;
-            checkBoxFilmBlur.Text = "Film Blur";
+            //checkBoxFilmBlur.Text = "Film Blur"; // 261105Cl 変更前
+            checkBoxFilmBlur.Text = "Film blur"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             checkBoxFilmBlur.UseVisualStyleBackColor = true;
             // 
             // label40
@@ -1167,7 +1175,8 @@
             toolTip.SetToolTip(checkBoxMaskManual, resources.GetString("checkBoxMaskManual.ToolTip")); // 260531Cl
             checkBoxMaskManual.Size = new System.Drawing.Size(93, 18);
             checkBoxMaskManual.TabIndex = 160;
-            checkBoxMaskManual.Text = "Manual Mask";
+            //checkBoxMaskManual.Text = "Manual Mask"; // 261105Cl 変更前
+            checkBoxMaskManual.Text = "Manual mask"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             checkBoxMaskManual.UseVisualStyleBackColor = true;
             checkBoxMaskManual.CheckedChanged += checkBoxManualMask_CheckedChanged;
             // 
@@ -1211,7 +1220,8 @@
             toolTip.SetToolTip(buttonCheckAllIndices, resources.GetString("buttonCheckAllIndices.ToolTip")); // 260531Cl
             buttonCheckAllIndices.Size = new System.Drawing.Size(78, 24);
             buttonCheckAllIndices.TabIndex = 144;
-            buttonCheckAllIndices.Text = "Check All";
+            //buttonCheckAllIndices.Text = "Check All"; // 261105Cl 変更前
+            buttonCheckAllIndices.Text = "Check all"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             buttonCheckAllIndices.UseVisualStyleBackColor = true;
             buttonCheckAllIndices.Click += buttonCheckAllIndices_Click;
             // 
@@ -1239,7 +1249,8 @@
             toolTip.SetToolTip(buttonUncheckAllIndices, resources.GetString("buttonUncheckAllIndices.ToolTip")); // 260531Cl
             buttonUncheckAllIndices.Size = new System.Drawing.Size(80, 24);
             buttonUncheckAllIndices.TabIndex = 144;
-            buttonUncheckAllIndices.Text = "Uncheck All";
+            //buttonUncheckAllIndices.Text = "Uncheck All"; // 261105Cl 変更前
+            buttonUncheckAllIndices.Text = "Uncheck all"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             buttonUncheckAllIndices.UseVisualStyleBackColor = true;
             buttonUncheckAllIndices.Click += buttonUncheckAllIndices_Click;
             // 
@@ -1363,7 +1374,8 @@
             toolTip.SetToolTip(buttonMaskAll, resources.GetString("buttonMaskAll.ToolTip")); // 260531Cl
             buttonMaskAll.Size = new System.Drawing.Size(77, 24);
             buttonMaskAll.TabIndex = 145;
-            buttonMaskAll.Text = "Mask All";
+            //buttonMaskAll.Text = "Mask All"; // 261105Cl 変更前
+            buttonMaskAll.Text = "Mask all"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             buttonMaskAll.UseVisualStyleBackColor = true;
             buttonMaskAll.Click += buttonMaskAll_Click;
             // 
@@ -1424,7 +1436,8 @@
             toolTip.SetToolTip(buttonSaveImage, resources.GetString("buttonSaveImage.ToolTip")); // 260531Cl
             buttonSaveImage.Size = new System.Drawing.Size(82, 25);
             buttonSaveImage.TabIndex = 187;
-            buttonSaveImage.Text = "Save Image";
+            //buttonSaveImage.Text = "Save Image"; // 261105Cl 変更前
+            buttonSaveImage.Text = "Save image"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             buttonSaveImage.UseVisualStyleBackColor = true;
             buttonSaveImage.Click += buttonSaveImage_Click;
             // 

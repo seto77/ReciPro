@@ -489,7 +489,7 @@ cor (Gray, Cold-Warm, Spectrum ou Fire).</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Insira os índices do eixo de zona [u v w] usados pelo
-botão 'View Along' para orientar o master pattern 3D.</value>
+botão 'View along' para orientar o master pattern 3D.</value>
   </data>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Mostra a profundidade (nm) da fatia do padrão

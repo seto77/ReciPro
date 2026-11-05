@@ -517,8 +517,8 @@ is fixed (Fix) in the main window.</value>
   </data>
   <data name="buttonLink.Text" xml:space="preserve">
     <value>Link to
-Current
-Direction</value>
+current
+direction</value>
   </data>
   <data name="buttonLink.ToolTip" xml:space="preserve">
     <value>Set the current holder tilt to the Link
@@ -595,7 +595,7 @@ orientation as the neutral direction.</value>
     <value>69</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
-    <value>Point Size</value>
+    <value>Point size</value>
   </data>
   <data name="label18.ToolTip" xml:space="preserve">
     <value>Radius of the zone-axis points drawn on the stereonet.</value>
@@ -691,7 +691,7 @@ orientation as the neutral direction.</value>
     <value>68</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
-    <value>Text Size</value>
+    <value>Text size</value>
   </data>
   <data name="label17.ToolTip" xml:space="preserve">
     <value>Font size of the zone-axis index labels.</value>
@@ -1057,7 +1057,7 @@ orientation as the neutral direction.</value>
     <value>0, 0, 3, 0</value>
   </data>
   <data name="colorControlGeneralAxis.FooterText" xml:space="preserve">
-    <value>General Axes</value>
+    <value>General axes</value>
   </data>
   <data name="colorControlGeneralAxis.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -1258,7 +1258,7 @@ orientation as the neutral direction.</value>
     <value>85</value>
   </data>
   <data name="checkBox1DegLine.Text" xml:space="preserve">
-    <value>Show 1° Lines</value>
+    <value>Show 1° lines</value>
   </data>
   <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
     <value>When checked, draws the 1° interval lines on the
@@ -1347,7 +1347,7 @@ showing the Tilt-X and Tilt-Y directions.</value>
     <value>84</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
-    <value>Show Index Labels</value>
+    <value>Show index labels</value>
   </data>
   <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
     <value>When checked, shows the [u v w] index
@@ -1661,7 +1661,7 @@ zone axes up to these values are drawn on the stereonet.</value>
     <value>82</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
-    <value>Tilt X (Primary rotation)</value>
+    <value>Tilt X (primary rotation)</value>
   </data>
   <data name="label19.ToolTip" xml:space="preserve">
     <value>Holder tilt angle about the
@@ -1734,7 +1734,7 @@ primary (Tilt X) axis, in degrees.</value>
     <value>82</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
-    <value>Tilt Y (Secondary rotation)</value>
+    <value>Tilt Y (secondary rotation)</value>
   </data>
   <data name="label20.ToolTip" xml:space="preserve">
     <value>Holder tilt angle about the
@@ -1945,7 +1945,7 @@ this window is active (in front).</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>TEM Holder Simulation</value>
+    <value>TEM holder simulation</value>
   </data>
   <data name="&gt;&gt;captureExtender.Name" xml:space="preserve">
     <value>captureExtender</value>
@@ -1981,7 +1981,7 @@ grid lines drawn on the stereonet.</value>
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
     <value>Color of 1-degree lines
-Active when "Show 1° Lines" is checked</value>
+Active when "Show 1° lines" is checked</value>
   </data>
   <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
     <value>Color of [100], [010], [001] axis labels</value>

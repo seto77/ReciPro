@@ -2245,7 +2245,8 @@ public partial class FormMain : FormBase
         var result = MessageBox.Show(
             repair ? "MKL files exist but failed to load. Re-download Intel MKL native library (~55 MB)?"
                    : "Download Intel MKL native library (~55 MB)?\r\nOnce downloaded, MKL will be used automatically for large computations (from the next launch).",
-            "Download MKL Library", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //"Download MKL Library", MessageBoxButtons.YesNo, MessageBoxIcon.Question); // 261105Cl 変更前
+            "Download MKL library", MessageBoxButtons.YesNo, MessageBoxIcon.Question); // 261105Cl 変更 (作者決定 K5: メニュー項目の名前 (sentence case) と揃える)
         if (result != DialogResult.Yes)
             return;
 
@@ -2260,7 +2261,8 @@ public partial class FormMain : FormBase
             //260712Cl: 即時有効化はしない (上記コメント参照)。次回起動時に Program.cs の Initialize が有効化する
             toolStripStatusLabel.Text = "MKL library downloaded. It will be used automatically from the next launch.";
             MessageBox.Show("MKL library was downloaded.\r\nIt will be used automatically for large computations from the next launch.",
-                "Download MKL Library", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //"Download MKL Library", MessageBoxButtons.OK, MessageBoxIcon.Information); // 261105Cl 変更前
+                "Download MKL library", MessageBoxButtons.OK, MessageBoxIcon.Information); // 261105Cl 変更 (作者決定 K5: メニュー項目の名前 (sentence case) と揃える)
             toolStripMenuItemUseMKL.Visible = false;
         }
         catch (Exception ex)

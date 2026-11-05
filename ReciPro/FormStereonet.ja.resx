@@ -209,7 +209,7 @@
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>1度刻みの細線の色を設定します
-（「1° Lines」有効時のみ描画）。</value>
+（「1° lines」有効時のみ描画）。</value>
   </data>
   <data name="radioButtonOutlineEquator.Text" xml:space="preserve">
     <value>極垂直</value>

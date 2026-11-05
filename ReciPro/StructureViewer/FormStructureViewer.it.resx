@@ -807,17 +807,17 @@ di simmetria, in percentuale (20-500%)</value>
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
     <value>Numero di suddivisioni della cella elementare lungo
 l'asse a (intero, 1-10) per la griglia di sotto-cella
-mostrata quando 'Show Subcell' è attivato.</value>
+mostrata quando 'Show subcell' è attivato.</value>
   </data>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
     <value>Numero di suddivisioni della cella elementare lungo
 l'asse b (intero, 1-10) per la griglia di sotto-cella
-mostrata quando 'Show Subcell' è attivato.</value>
+mostrata quando 'Show subcell' è attivato.</value>
   </data>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
     <value>Numero di suddivisioni della cella elementare lungo
 l'asse c (intero, 1-10) per la griglia di sotto-cella
-mostrata quando 'Show Subcell' è attivato.</value>
+mostrata quando 'Show subcell' è attivato.</value>
   </data>
   <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
     <value>Mostra/nasconde le etichette degli atomi (simboli

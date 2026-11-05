@@ -252,7 +252,7 @@ primary-electron energy for the EBSD simulation).</value>
     <value>98</value>
   </data>
   <data name="buttonViewQuarter.Text" xml:space="preserve">
-    <value>Bird's-Eye View</value>
+    <value>Bird's-eye view</value>
   </data>
   <data name="buttonViewQuarter.ToolTip" xml:space="preserve">
     <value>Set the 3D geometry view to an oblique bird's-eye viewpoint.</value>
@@ -294,7 +294,7 @@ primary-electron energy for the EBSD simulation).</value>
     <value>98</value>
   </data>
   <data name="buttonViewFromSurfaceNormal.Text" xml:space="preserve">
-    <value>Surface Normal</value>
+    <value>Surface normal</value>
   </data>
   <data name="buttonViewFromSurfaceNormal.ToolTip" xml:space="preserve">
     <value>Set the 3D geometry view to look
@@ -337,7 +337,7 @@ along the sample surface normal.</value>
     <value>98</value>
   </data>
   <data name="buttonFromX.Text" xml:space="preserve">
-    <value>X Axis (Rotation Axis)</value>
+    <value>X axis (rotation axis)</value>
   </data>
   <data name="buttonFromX.ToolTip" xml:space="preserve">
     <value>Set the 3D geometry view to look along
@@ -380,7 +380,7 @@ the X axis (the sample rotation axis).</value>
     <value>99</value>
   </data>
   <data name="buttonViewFromZ.Text" xml:space="preserve">
-    <value>Z Axis (Beam Direction)</value>
+    <value>Z axis (beam direction)</value>
   </data>
   <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
     <value>Set the 3D geometry view to look along
@@ -791,7 +791,7 @@ used to draw the Kikuchi lines.</value>
     <value>121</value>
   </data>
   <data name="labelLineWidth.Text" xml:space="preserve">
-    <value>Line Width</value>
+    <value>Line width</value>
   </data>
   <data name="labelLineWidth.ToolTip" xml:space="preserve">
     <value>Set the line width (pen thickness)
@@ -990,7 +990,7 @@ the full line color and weak ones fade out.</value>
     <value>128</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
-    <value>1/d Cutoff</value>
+    <value>1/d cutoff</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>Select reflections for Kikuchi lines
@@ -1134,7 +1134,7 @@ lower values keep only larger-d-spacing reflections.</value>
     <value>121</value>
   </data>
   <data name="labelTextSize.Text" xml:space="preserve">
-    <value>Text Size</value>
+    <value>Text size</value>
   </data>
   <data name="labelTextSize.ToolTip" xml:space="preserve">
     <value>Adjust the font size of the overlay index text.</value>
@@ -1344,7 +1344,7 @@ damps the wave, and the two are independent.</value>
     <value>152</value>
   </data>
   <data name="checkBoxRangesFromMonteCarlo.Text" xml:space="preserve">
-    <value>Energy and Depth ranges from MC (automatic)</value>
+    <value>Energy and depth ranges from MC (automatic)</value>
   </data>
   <data name="checkBoxRangesFromMonteCarlo.ToolTip" xml:space="preserve">
     <value>On (default): each Simulate and Build Master Pattern sets the
@@ -1840,7 +1840,7 @@ grayscale for the pattern intensity.</value>
     <value>Gray</value>
   </data>
   <data name="comboBoxScale.Items1" xml:space="preserve">
-    <value>Cold-Warm</value>
+    <value>Cold-warm</value>
   </data>
   <data name="comboBoxScale.Items2" xml:space="preserve">
     <value>Spectrum</value>
@@ -2939,7 +2939,7 @@ master pattern is shown in the 2D view.</value>
     <value>4</value>
   </data>
   <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
-    <value>Build Master Pattern</value>
+    <value>Build master pattern</value>
   </data>
   <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
     <value>Build the EBSD master pattern (the full-sphere
@@ -3060,7 +3060,7 @@ preview to the clipboard.</value>
     <value>145</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
-    <value>Axis Labels</value>
+    <value>Axis labels</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisLabel.ToolTip" xml:space="preserve">
     <value>Show the a, b, c axis-label text
@@ -3103,7 +3103,7 @@ on the 3D master-pattern view.</value>
     <value>150</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.Text" xml:space="preserve">
-    <value>View Along</value>
+    <value>View along</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
     <value>Rotate the 3D master pattern so the zone axis
@@ -3141,7 +3141,7 @@ on the 3D master-pattern view.</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Enter the zone-axis indices [u v w] used by the
-'View Along' button to orient the 3D master pattern.</value>
+'View along' button to orient the 3D master pattern.</value>
   </data>
   <data name="&gt;&gt;indexControl.Name" xml:space="preserve">
     <value>indexControl</value>
@@ -3916,7 +3916,7 @@ programs that cannot paste metafiles.</value>
     <value>0</value>
   </data>
   <data name="labelDetectorSizeTilt.Text" xml:space="preserve">
-    <value>Size and Tilt</value>
+    <value>Size and tilt</value>
   </data>
   <data name="labelDetectorSizeTilt.ToolTip" xml:space="preserve">
     <value>Geometry of the detector screen: its tilt angle in degrees
@@ -5715,7 +5715,7 @@ does the same. There is no undo.</value>
     <value>1</value>
   </data>
   <data name="tabPageBseDistribution.Text" xml:space="preserve">
-    <value>BSE Distribution</value>
+    <value>BSE distribution</value>
   </data>
   <data name="&gt;&gt;tabPageBseDistribution.Name" xml:space="preserve">
     <value>tabPageBseDistribution</value>

@@ -810,17 +810,17 @@ Symbole, in Prozent (20-500%)</value>
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
     <value>Anzahl der Unterteilungen der Elementarzelle entlang
 der a-Achse (ganzzahlig, 1-10) für das Subzellen-
-Gitter, das bei aktiviertem 'Show Subcell' erscheint.</value>
+Gitter, das bei aktiviertem 'Show subcell' erscheint.</value>
   </data>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
     <value>Anzahl der Unterteilungen der Elementarzelle entlang
 der b-Achse (ganzzahlig, 1-10) für das Subzellen-
-Gitter, das bei aktiviertem 'Show Subcell' erscheint.</value>
+Gitter, das bei aktiviertem 'Show subcell' erscheint.</value>
   </data>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
     <value>Anzahl der Unterteilungen der Elementarzelle entlang
 der c-Achse (ganzzahlig, 1-10) für das Subzellen-
-Gitter, das bei aktiviertem 'Show Subcell' erscheint.</value>
+Gitter, das bei aktiviertem 'Show subcell' erscheint.</value>
   </data>
   <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
     <value>Blendet die Atom-Beschriftungen (Element-

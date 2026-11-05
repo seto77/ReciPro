@@ -492,7 +492,7 @@ une couleur (Gray, Cold-Warm, Spectrum ou Fire).</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Saisit les indices d'axe de zone [u v w] utilisés par le
-bouton « View Along » pour orienter le master pattern 3D.</value>
+bouton « View along » pour orienter le master pattern 3D.</value>
   </data>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Affiche la profondeur (nm) de la tranche du diagramme

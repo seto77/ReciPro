@@ -1208,7 +1208,7 @@ coordinates) along each unit-cell axis.</value>
     <value>0</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Text" xml:space="preserve">
-    <value>Show Bounding Planes</value>
+    <value>Show bounding planes</value>
   </data>
   <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
     <value>Show/hide the bounding planes of the crystal</value>
@@ -1367,7 +1367,7 @@ coordinates) along each unit-cell axis.</value>
     <value>0</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
-    <value>Bounds Defined by Unit Cell</value>
+    <value>Bounds defined by unit cell</value>
   </data>
   <data name="radioButtonBoundUnitCell.ToolTip" xml:space="preserve">
     <value>If checked, drawing bounds are
@@ -1404,7 +1404,7 @@ defined based on unit cell as follows</value>
     <value>1</value>
   </data>
   <data name="radioButtonBoundPlane.Text" xml:space="preserve">
-    <value>Bounds Defined by Crystal Planes</value>
+    <value>Bounds defined by crystal planes</value>
   </data>
   <data name="radioButtonBoundPlane.ToolTip" xml:space="preserve">
     <value>If checked, drawing bounds are defined
@@ -1553,7 +1553,7 @@ based on crystal planes as follows</value>
     <value>9</value>
   </data>
   <data name="tabPageBond.Text" xml:space="preserve">
-    <value>Bonds &amp; Polyhedra</value>
+    <value>Bonds &amp; polyhedra</value>
   </data>
   <data name="&gt;&gt;tabPageBond.Name" xml:space="preserve">
     <value>tabPageBond</value>
@@ -1589,7 +1589,7 @@ based on crystal planes as follows</value>
     <value>0</value>
   </data>
   <data name="checkBoxUnitCell.Text" xml:space="preserve">
-    <value>Show Unit Cell</value>
+    <value>Show unit cell</value>
   </data>
   <data name="checkBoxUnitCell.ToolTip" xml:space="preserve">
     <value>Show the unit-cell edges overlaid on the 3-D structure.</value>
@@ -2465,7 +2465,7 @@ c-axis (used when 'Each edge' is selected).</value>
     <value>0</value>
   </data>
   <data name="checkBoxShowSubCell.Text" xml:space="preserve">
-    <value>Show Subcell</value>
+    <value>Show subcell</value>
   </data>
   <data name="checkBoxShowSubCell.ToolTip" xml:space="preserve">
     <value>Show subdivisions within the unit cell</value>
@@ -2554,7 +2554,7 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
     <value>Number of subdivisions of the unit cell along
 the b-axis (integer, 1-10) for the sub-cell
-grid shown when 'Show Subcell' is enabled.</value>
+grid shown when 'Show subcell' is enabled.</value>
   </data>
   <data name="&gt;&gt;numericBoxSubCellB.Name" xml:space="preserve">
     <value>numericBoxSubCellB</value>
@@ -2677,7 +2677,7 @@ a, b, c axes (fractional coordinates).</value>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
     <value>Number of subdivisions of the unit cell along
 the c-axis (integer, 1-10) for the sub-cell
-grid shown when 'Show Subcell' is enabled.</value>
+grid shown when 'Show subcell' is enabled.</value>
   </data>
   <data name="&gt;&gt;numericBoxSubCellC.Name" xml:space="preserve">
     <value>numericBoxSubCellC</value>
@@ -2724,7 +2724,7 @@ grid shown when 'Show Subcell' is enabled.</value>
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
     <value>Number of subdivisions of the unit cell along
 the a-axis (integer, 1-10) for the sub-cell
-grid shown when 'Show Subcell' is enabled.</value>
+grid shown when 'Show subcell' is enabled.</value>
   </data>
   <data name="&gt;&gt;numericBoxSubCellA.Name" xml:space="preserve">
     <value>numericBoxSubCellA</value>
@@ -2784,7 +2784,7 @@ grid shown when 'Show Subcell' is enabled.</value>
     <value>0</value>
   </data>
   <data name="tabPageUnitCell.Text" xml:space="preserve">
-    <value>Unit Cell</value>
+    <value>Unit cell</value>
   </data>
   <data name="&gt;&gt;tabPageUnitCell.Name" xml:space="preserve">
     <value>tabPageUnitCell</value>
@@ -2892,7 +2892,7 @@ grid shown when 'Show Subcell' is enabled.</value>
     <value>1</value>
   </data>
   <data name="tabPageLatticePlane.Text" xml:space="preserve">
-    <value>Lattice Planes</value>
+    <value>Lattice planes</value>
   </data>
   <data name="&gt;&gt;tabPageLatticePlane.Name" xml:space="preserve">
     <value>tabPageLatticePlane</value>
@@ -3584,10 +3584,10 @@ Active only when Projection is set to Perspective.</value>
     <value>Approximate (Z depth sorting, OpenGL 4.1+)</value>
   </data>
   <data name="comboBoxTransparency.Items1" xml:space="preserve">
-    <value>High quality (Dual Depth Peeling, OpenGL 4.1+)</value>
+    <value>High quality (dual depth peeling, OpenGL 4.1+)</value>
   </data>
   <data name="comboBoxTransparency.Items2" xml:space="preserve">
-    <value>High quality (Per-Pixel Linked List, OpenGL 4.3+)</value>
+    <value>High quality (per-pixel linked list, OpenGL 4.3+)</value>
   </data>
   <data name="comboBoxTransparency.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 21</value>
@@ -3656,7 +3656,7 @@ Per-Pixel Linked List, which require newer OpenGL).</value>
     <value>0</value>
   </data>
   <data name="checkBoxDepthFadingOut.Text" xml:space="preserve">
-    <value>Depth Fade</value>
+    <value>Depth fade</value>
   </data>
   <data name="checkBoxDepthFadingOut.ToolTip" xml:space="preserve">
     <value>Enable depth cueing (fog): objects
@@ -3948,7 +3948,7 @@ than this depth stay fully opaque (-30 to 30)</value>
     <value>6</value>
   </data>
   <data name="checkBoxSymElems_Inversions.Text" xml:space="preserve">
-    <value>Inversion Centers
+    <value>Inversion centers
 </value>
   </data>
   <data name="checkBoxSymElems_Inversions.ToolTip" xml:space="preserve">
@@ -4597,7 +4597,7 @@ with translation) of the space group</value>
     <value>7</value>
   </data>
   <data name="checkBoxShowSymmetryElements.Text" xml:space="preserve">
-    <value>Show Symmetry Elements</value>
+    <value>Show symmetry elements</value>
   </data>
   <data name="checkBoxShowSymmetryElements.ToolTip" xml:space="preserve">
     <value>Overlay the crystal's symmetry elements
@@ -4629,7 +4629,7 @@ inversion centers) on the 3-D view.</value>
     <value>13</value>
   </data>
   <data name="tabPageSymElems.Text" xml:space="preserve">
-    <value>Sym. Elems.</value>
+    <value>Sym. elems.</value>
   </data>
   <data name="&gt;&gt;tabPageSymElems.Name" xml:space="preserve">
     <value>tabPageSymElems</value>
@@ -5674,7 +5674,7 @@ symbols) overlaid on each atom.</value>
     <value>60, 22</value>
   </data>
   <data name="toolStripButtonUnitCell.Text" xml:space="preserve">
-    <value>Unit Cell</value>
+    <value>Unit cell</value>
   </data>
   <data name="toolStripButtonUnitCell.ToolTipText" xml:space="preserve">
     <value>Show/hide the unit-cell frame and faces.</value>
@@ -5697,7 +5697,7 @@ symbols) overlaid on each atom.</value>
     <value>80, 22</value>
   </data>
   <data name="toolStripButtonSymmetryElements.Text" xml:space="preserve">
-    <value>Sym. Elems.</value>
+    <value>Sym. elems.</value>
   </data>
   <data name="toolStripButtonSymmetryElements.ToolTipText" xml:space="preserve">
     <value>Show/hide the crystallographic symmetry elements
@@ -5740,7 +5740,7 @@ symbols) overlaid on each atom.</value>
     <value>160, 22</value>
   </data>
   <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
-    <value>Main Image</value>
+    <value>Main image</value>
   </data>
   <data name="saveLegendToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -5755,19 +5755,19 @@ symbols) overlaid on each atom.</value>
     <value>160, 22</value>
   </data>
   <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Crystal Axes</value>
+    <value>Crystal axes</value>
   </data>
   <data name="saveLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 22</value>
   </data>
   <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
-    <value>Light Direction</value>
+    <value>Light direction</value>
   </data>
   <data name="saveImageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 22</value>
   </data>
   <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Save Image</value>
+    <value>Save image</value>
   </data>
   <data name="saveImageToolStripMenuItem1.ToolTipText" xml:space="preserve">
     <value>Save the current image to a file</value>
@@ -5776,7 +5776,7 @@ symbols) overlaid on each atom.</value>
     <value>160, 22</value>
   </data>
   <data name="copyMainToolStripMenuItem.Text" xml:space="preserve">
-    <value>Main Image</value>
+    <value>Main image</value>
   </data>
   <data name="copyLegendToolStripMenuItem1.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -5791,40 +5791,40 @@ symbols) overlaid on each atom.</value>
     <value>160, 22</value>
   </data>
   <data name="copyAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Crystal Axes</value>
+    <value>Crystal axes</value>
   </data>
   <data name="copyLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 22</value>
   </data>
   <data name="copyLightToolStripMenuItem.Text" xml:space="preserve">
-    <value>Light Direction</value>
+    <value>Light direction</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 22</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copy Image to Clipboard</value>
+    <value>Copy image to clipboard</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 22</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Main Image</value>
+    <value>Main image</value>
   </data>
   <data name="SaveMovieCrystalAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 22</value>
   </data>
   <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Crystal Axes</value>
+    <value>Crystal axes</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 22</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save Movie</value>
+    <value>Save movie</value>
   </data>
   <data name="exportModelToolStripMenuItem.Text" xml:space="preserve">
-    <value>Export 3D Model (3MF/STL)...</value>
+    <value>Export 3D model (3MF/STL)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -5863,7 +5863,7 @@ symbols) overlaid on each atom.</value>
     <value>615, 22</value>
   </data>
   <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+ Mouse right double click:  Change perspective &lt;=&gt; orthogonal projection alternately</value>
+    <value>CTRL+ mouse right double click:  Change perspective &lt;=&gt; orthogonal projection alternately</value>
   </data>
   <data name="toolStripMenuItem2.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -5872,13 +5872,13 @@ symbols) overlaid on each atom.</value>
     <value>615, 22</value>
   </data>
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
-    <value>CTRL+ Mouse right up/down:  Change  degree of perspective</value>
+    <value>CTRL+ mouse right up/down:  Change  degree of perspective</value>
   </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 21</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Shortcut Hints</value>
+    <value>Shortcut hints</value>
   </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>

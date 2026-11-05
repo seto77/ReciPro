@@ -810,17 +810,17 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
     <value>Число делений элементарной ячейки вдоль
 оси a (целое, 1–10) для сетки подъячеек,
-отображаемой при включённой опции «Show Subcell».</value>
+отображаемой при включённой опции «Show subcell».</value>
   </data>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
     <value>Число делений элементарной ячейки вдоль
 оси b (целое, 1–10) для сетки подъячеек,
-отображаемой при включённой опции «Show Subcell».</value>
+отображаемой при включённой опции «Show subcell».</value>
   </data>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
     <value>Число делений элементарной ячейки вдоль
 оси c (целое, 1–10) для сетки подъячеек,
-отображаемой при включённой опции «Show Subcell».</value>
+отображаемой при включённой опции «Show subcell».</value>
   </data>
   <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
     <value>Показать/скрыть подписи атомов (символы

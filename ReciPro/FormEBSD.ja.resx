@@ -566,7 +566,7 @@ a/b/c の軸ラベル文字を表示します。</value>
 向くよう3Dマスターパターンを回転します。</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
-    <value>'View Along' ボタンで3Dマスターパターンを
+    <value>'View along' ボタンで3Dマスターパターンを
 向ける晶帯軸指数 [u v w] を入力します。</value>
   </data>
   <data name="checkBoxShowMesh.Text" xml:space="preserve">

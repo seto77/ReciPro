@@ -326,7 +326,8 @@
             toolTip.SetToolTip(buttonSearch, resources.GetString("buttonSearch.ToolTip")); // 260531Cl
             buttonSearch.Size = new System.Drawing.Size(146, 26);
             buttonSearch.TabIndex = 68;
-            buttonSearch.Text = "Search Orientations";
+            //buttonSearch.Text = "Search Orientations"; // 261105Cl 変更前
+            buttonSearch.Text = "Search orientations"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             buttonSearch.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
             buttonSearch.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
             buttonSearch.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
@@ -400,7 +401,8 @@
             numericBoxCrystalNumPerStep.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxCrystalNumPerStep.FooterText = "%";
             numericBoxCrystalNumPerStep.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            numericBoxCrystalNumPerStep.HeaderText = "Num per Step";
+            //numericBoxCrystalNumPerStep.HeaderText = "Num per Step"; // 261105Cl 変更前
+            numericBoxCrystalNumPerStep.HeaderText = "Num per step"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             numericBoxCrystalNumPerStep.Location = new System.Drawing.Point(18, 27);
             numericBoxCrystalNumPerStep.Margin = new System.Windows.Forms.Padding(0);
             numericBoxCrystalNumPerStep.Maximum = 10D;
@@ -838,7 +840,8 @@
             toolTip.SetToolTip(checkBoxYusaGonioScan, resources.GetString("checkBoxYusaGonioScan.ToolTip")); // 260531Cl
             checkBoxYusaGonioScan.Size = new System.Drawing.Size(142, 20);
             checkBoxYusaGonioScan.TabIndex = 101;
-            checkBoxYusaGonioScan.Text = "Use YusaGonio Scan";
+            //checkBoxYusaGonioScan.Text = "Use YusaGonio Scan"; // 261105Cl 変更前
+            checkBoxYusaGonioScan.Text = "Use YusaGonio scan"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             checkBoxYusaGonioScan.UseVisualStyleBackColor = true;
             // 
             // numericBoxRxSpeed
@@ -1223,9 +1226,13 @@
             comboBoxScale2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             comboBoxScale2.FormattingEnabled = true;
+            // 261105Cl 変更前 (3 行):
+            //comboBoxScale2.Items.AddRange(new object[] {
+            //"Gray scale",
+            //"Cold-Warm scale"});
             comboBoxScale2.Items.AddRange(new object[] {
             "Gray scale",
-            "Cold-Warm scale"});
+            "Cold-warm scale"}); // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             // comboBoxScale2.Location = new System.Drawing.Point(498, 22); // 260715Ch 旧
             comboBoxScale2.Location = new System.Drawing.Point(528, 22); // 260715Ch: Scale 1 ラベルの多言語幅を確保
             comboBoxScale2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
@@ -1281,12 +1288,19 @@
             comboBoxScale1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             comboBoxScale1.FormattingEnabled = true;
+            // 261105Cl 変更前 (6 行):
+            //comboBoxScale1.Items.AddRange(new object[] {
+            //"Log Scale",
+            //"Linear Scale"}); // 260521Cl Phase7: Liner→Linear typo
+            //// comboBoxScale1.Location = new System.Drawing.Point(289, 22); // 260715Ch 旧: 翻訳後の label28 と衝突
+            //comboBoxScale1.Location = new System.Drawing.Point(319, 22); // 260715Ch: Scale 1 ラベル右側に余白を確保
+            //comboBoxScale1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             comboBoxScale1.Items.AddRange(new object[] {
-            "Log Scale",
-            "Linear Scale"}); // 260521Cl Phase7: Liner→Linear typo
+            "Log scale",
+            "Linear scale"}); // 260521Cl Phase7: Liner→Linear typo
             // comboBoxScale1.Location = new System.Drawing.Point(289, 22); // 260715Ch 旧: 翻訳後の label28 と衝突
             comboBoxScale1.Location = new System.Drawing.Point(319, 22); // 260715Ch: Scale 1 ラベル右側に余白を確保
-            comboBoxScale1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            comboBoxScale1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6); // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             comboBoxScale1.Name = "comboBoxScale1";
             toolTip.SetToolTip(comboBoxScale1, resources.GetString("comboBoxScale1.ToolTip")); // 260531Cl
             comboBoxScale1.Size = new System.Drawing.Size(135, 22);
@@ -1369,7 +1383,8 @@
             tabPage1.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
             tabPage1.Size = new System.Drawing.Size(979, 776);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "Simulated Pattern";
+            //tabPage1.Text = "Simulated Pattern"; // 261105Cl 変更前
+            tabPage1.Text = "Simulated pattern"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // diffractionPatternControlSimulation

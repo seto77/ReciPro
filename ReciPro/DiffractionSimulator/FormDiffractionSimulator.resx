@@ -186,7 +186,7 @@
     <value>85, 22</value>
   </data>
   <data name="toolStripButtonKikuchiLines.Text" xml:space="preserve">
-    <value>Kikuchi Lines</value>
+    <value>Kikuchi lines</value>
   </data>
   <data name="toolStripButtonKikuchiLines.ToolTipText" xml:space="preserve">
     <value>When checked, Kikuchi lines (bands produced
@@ -447,7 +447,7 @@ definition as the radial azimuth scale lines)</value>
     <value>65, 22</value>
   </data>
   <data name="toolStripButtonExcitationError.Text" xml:space="preserve">
-    <value>Excit. Err.</value>
+    <value>Excit. err.</value>
   </data>
   <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
     <value>When checked, the excitation error s_g is displayed
@@ -700,8 +700,8 @@ Nothing is shown with 'Only excitation error'.</value>
     <value>3</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
-    <value>Foot of the Perpendicular
-from the Sample</value>
+    <value>Foot of the perpendicular
+from the sample</value>
   </data>
   <data name="label14.ToolTip" xml:space="preserve">
     <value>Set the color of the foot of a
@@ -1046,7 +1046,7 @@ Excess / Deficient colors instead.</value>
     <value>47</value>
   </data>
   <data name="labelKikuchiLineWidth.Text" xml:space="preserve">
-    <value>Line Width</value>
+    <value>Line width</value>
   </data>
   <data name="labelKikuchiLineWidth.ToolTip" xml:space="preserve">
     <value>Line width (pen thickness) of the geometric and kinematical
@@ -2005,7 +2005,7 @@ structure factor) used to draw Kikuchi lines.</value>
     <value>57</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
-    <value>1/d Cutoff</value>
+    <value>1/d cutoff</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>Select reflections for Kikuchi
@@ -2197,7 +2197,7 @@ lines by a 1/d (d-spacing) cutoff.</value>
     <value>3</value>
   </data>
   <data name="checkBoxDebyeRingLabel.Text" xml:space="preserve">
-    <value>Show Index Labels</value>
+    <value>Show index labels</value>
   </data>
   <data name="checkBoxDebyeRingLabel.ToolTip" xml:space="preserve">
     <value>When checked, index labels for Debye rings are displayed.</value>
@@ -2460,7 +2460,7 @@ displayed at the same intensity.</value>
     <value>49</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
-    <value>Line Width</value>
+    <value>Line width</value>
   </data>
   <data name="label16.ToolTip" xml:space="preserve">
     <value>Set a line width of scale lines</value>
@@ -3857,7 +3857,7 @@ above, or the rotation speed.</value>
   </data>
   <data name="label21.Text" xml:space="preserve">
     <value>Threshold of
-Relative Intensity</value>
+relative intensity</value>
   </data>
   <data name="label21.ToolTip" xml:space="preserve">
     <value>Set the relative-intensity threshold (%) below
@@ -4746,7 +4746,7 @@ pointer in mm (origin: crystal).</value>
     <value>29</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
-    <value>Real-Space Coordinates in mm (Origin: Crystal):</value>
+    <value>Real-space coordinates in mm (origin: crystal):</value>
   </data>
   <data name="label17.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -4789,7 +4789,7 @@ pointer in mm (origin: crystal).</value>
     <value>29</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
-    <value>Reciprocal-Space Coordinates in nm⁻¹:</value>
+    <value>Reciprocal-space coordinates in nm⁻¹:</value>
   </data>
   <data name="label20.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -4831,7 +4831,7 @@ pointer in mm (origin: crystal).</value>
     <value>29</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
-    <value>Detector Coord. in mm (origin: foot):</value>
+    <value>Detector coord. in mm (origin: foot):</value>
   </data>
   <data name="label9.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -6149,19 +6149,19 @@ from the sample to the detector (monitor).</value>
     <value>210, 22</value>
   </data>
   <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Image (PNG format)</value>
+    <value>as image (PNG format)</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Metafile (EMF)</value>
+    <value>as metafile (EMF)</value>
   </data>
   <data name="saveImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save Image</value>
+    <value>Save image</value>
   </data>
   <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>Save the current image to a file</value>
@@ -6170,13 +6170,13 @@ from the sample to the detector (monitor).</value>
     <value>214, 22</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Image (PNG format)</value>
+    <value>as image (PNG format)</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>214, 22</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Metafile (EMF)</value>
+    <value>as metafile (EMF)</value>
   </data>
   <data name="saveDetectorAreaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
@@ -6188,13 +6188,13 @@ from the sample to the detector (monitor).</value>
     <value>278, 22</value>
   </data>
   <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
-    <value>As Individual Images (PNG Format)</value>
+    <value>As individual images (PNG format)</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>278, 22</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
-    <value>As Individual Images (TIFF Format)</value>
+    <value>As individual images (TIFF format)</value>
   </data>
   <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>278, 22</value>
@@ -6221,13 +6221,13 @@ from the sample to the detector (monitor).</value>
     <value>177, 22</value>
   </data>
   <data name="copyAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Image</value>
+    <value>as image</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 22</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Metafile (EMF)</value>
+    <value>as metafile (EMF)</value>
   </data>
   <data name="copyImageToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
@@ -6242,13 +6242,13 @@ from the sample to the detector (monitor).</value>
     <value>177, 22</value>
   </data>
   <data name="copyDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Image</value>
+    <value>as image</value>
   </data>
   <data name="copyDetectorAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 22</value>
   </data>
   <data name="copyDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Metafile (EMF)</value>
+    <value>as metafile (EMF)</value>
   </data>
   <data name="copyDetectorAreaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
@@ -6293,7 +6293,7 @@ from the sample to the detector (monitor).</value>
     <value>189, 22</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>Save Movie</value>
+    <value>Save movie</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>186, 6</value>
@@ -6302,13 +6302,13 @@ from the sample to the detector (monitor).</value>
     <value>189, 22</value>
   </data>
   <data name="pageSetupToolStripMenuItem.Text" xml:space="preserve">
-    <value>Page Setup</value>
+    <value>Page setup</value>
   </data>
   <data name="printPreviewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
   </data>
   <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
-    <value>Print Preview</value>
+    <value>Print preview</value>
   </data>
   <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
@@ -6329,7 +6329,7 @@ from the sample to the detector (monitor).</value>
     <value>206, 22</value>
   </data>
   <data name="dynamicCompressionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Dynamic Compression</value>
+    <value>Dynamic compression</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 6</value>
@@ -6911,7 +6911,7 @@ the cone more smoothly but take longer.</value>
     <value>0</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Bloch Wave Settings</value>
+    <value>Bloch wave settings</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>Settings for the Bloch-wave
@@ -6936,7 +6936,7 @@ the cone more smoothly but take longer.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxNumOfBlochWave.HeaderText" xml:space="preserve">
-    <value>Number of Diffracted Waves</value>
+    <value>Number of diffracted waves</value>
   </data>
   <data name="numericBoxNumOfBlochWave.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 20</value>
@@ -7558,7 +7558,7 @@ spots are drawn at the same size.</value>
     <value>Gray</value>
   </data>
   <data name="comboBoxScaleColorScale.Items1" xml:space="preserve">
-    <value>Cold-Warm</value>
+    <value>Cold-warm</value>
   </data>
   <data name="comboBoxScaleColorScale.Items2" xml:space="preserve">
     <value>Spectrum</value>
@@ -7791,7 +7791,7 @@ for general and systematically-extinct
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlScrewGlide.FooterText" xml:space="preserve">
-    <value>Extinct spots (Screw or Glide)</value>
+    <value>Extinct spots (screw or glide)</value>
   </data>
   <data name="colorControlScrewGlide.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 42</value>
@@ -7833,7 +7833,7 @@ for general and systematically-extinct
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlForbiddenLattice.FooterText" xml:space="preserve">
-    <value>Extinct spots (Lattice centring)</value>
+    <value>Extinct spots (lattice centring)</value>
   </data>
   <data name="colorControlForbiddenLattice.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 63</value>
@@ -8107,7 +8107,7 @@ the structure factor and the excitation error.</value>
     <value>3</value>
   </data>
   <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
-    <value>Spot Details</value>
+    <value>Spot details</value>
   </data>
   <data name="buttonDetailsOfSpots.ToolTip" xml:space="preserve">
     <value>Open the spot details window.</value>

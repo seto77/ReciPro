@@ -1038,7 +1038,7 @@ inside the objective aperture (read-only).</value>
     <value>3, 0, 0, 0</value>
   </data>
   <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>as Image (PNG format)</value>
+    <value>as image (PNG format)</value>
   </data>
   <data name="checkBoxPotentialUg.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1317,7 +1317,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>15</value>
   </data>
   <data name="checkBoxGaussianBlur.Text" xml:space="preserve">
-    <value>Gaussian Blur (FWHM)</value>
+    <value>Gaussian blur (FWHM)</value>
   </data>
   <data name="label10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1360,7 +1360,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>Top</value>
   </data>
   <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>as Image (TIFF format)</value>
+    <value>as image (TIFF format)</value>
   </data>
   <data name="checkBoxRealTimeSimulation.ToolTip" xml:space="preserve">
     <value>When checked, the image is calculated
@@ -2030,7 +2030,7 @@ center, in mrad (for tilted/dark-field imaging).</value>
     <value>3</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>as Metafile (EMF)</value>
+    <value>as metafile (EMF)</value>
   </data>
   <data name="&gt;&gt;radioButtonPotentialShowImag.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -3169,7 +3169,7 @@ the file (e.g. from an older version) are set to their defaults.</value>
     <value>1, 18</value>
   </data>
   <data name="toolStripMenuItemSave.Text" xml:space="preserve">
-    <value>Save Image</value>
+    <value>Save image</value>
   </data>
   <data name="&gt;&gt;labelMousePositionY.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -4177,7 +4177,7 @@ inelastic) electrons in the STEM image.</value>
     <value>Resolution</value>
   </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
-    <value>EDX: Common</value>
+    <value>EDX: common</value>
   </data>
   <data name="flowLayoutPanelIntensityRange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 0, 0, 0</value>
@@ -4384,7 +4384,7 @@ transfer function) and Scherzer defocus.</value>
     <value>|</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
-    <value>Contrast Transfer Function (CTF)</value>
+    <value>Contrast transfer function (CTF)</value>
   </data>
   <data name="&gt;&gt;groupBoxDisplay.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -4597,7 +4597,7 @@ for the selected crystal, thickness, and defocus.</value>
     <value>3</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Text" xml:space="preserve">
-    <value>For Each Image</value>
+    <value>For each image</value>
   </data>
   <data name="checkBoxPotentialUg.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 19</value>
@@ -5154,7 +5154,7 @@ complex crystal potential (Ug).</value>
     <value>321, 22</value>
   </data>
   <data name="setoZeroDefocusToolStripMenuItem.Text" xml:space="preserve">
-    <value>Set Defocus to 0 nm</value>
+    <value>Set defocus to 0 nm</value>
   </data>
   <data name="checkBoxCTF.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -5421,7 +5421,7 @@ inelastic) electrons in the STEM image.</value>
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="toolStripMenuItemCopyImage.Text" xml:space="preserve">
-    <value>as Image</value>
+    <value>as image</value>
   </data>
   <data name="checkBoxShowScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>15, 3, 0, 0</value>
@@ -5857,7 +5857,7 @@ beams and smooths high-resolution image detail.</value>
     <value>label28</value>
   </data>
   <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
-    <value>as Metafile (EMF)</value>
+    <value>as metafile (EMF)</value>
   </data>
   <data name="checkBoxEdxSelfAbsorption.Text" xml:space="preserve">
     <value>Self-absorption</value>
@@ -6512,7 +6512,7 @@ code (fast C++/Eigen) or Managed code
     <value>False</value>
   </data>
   <data name="comboBoxScaleColorScale.Items1" xml:space="preserve">
-    <value>Cold-Warm</value>
+    <value>Cold-warm</value>
   </data>
   <data name="checkBoxEdxSelfAbsorption.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -6769,7 +6769,7 @@ stores and recalls TEM imaging conditions.</value>
     <value>comboBoxEdxDetectorWindow</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Text" xml:space="preserve">
-    <value>Real-Time Simulation</value>
+    <value>Real-time simulation</value>
   </data>
   <data name="&gt;&gt;numericBoxGaussianBlurRadius.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -7702,7 +7702,7 @@ potential (Ug), i.e. the absorptive component.</value>
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>Acc. Voltage</value>
+    <value>Acc. voltage</value>
   </data>
   <data name="radioButtonPotentialModeRealAndImag.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

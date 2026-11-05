@@ -148,7 +148,7 @@
     <value>103, 25</value>
   </data>
   <data name="toolStripStatusLabel.Text" xml:space="preserve">
-    <value>Calculation Time: </value>
+    <value>Calculation time: </value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -2507,7 +2507,7 @@ values test more candidate zone axes.</value>
     <value>86</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>Rotation Control</value>
+    <value>Rotation control</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
@@ -3400,13 +3400,13 @@ patterns from crystal orientation.</value>
     <value>304, 22</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Load Crystal List (Replace current list)</value>
+    <value>&amp;Load crystal list (replace current list)</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>304, 22</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
-    <value>Load Crystal List (&amp;Add to current list)</value>
+    <value>Load crystal list (&amp;add to current list)</value>
   </data>
   <data name="toolStripMenuItemReadInitialCrystalList.Size" type="System.Drawing.Size, System.Drawing">
     <value>304, 22</value>
@@ -3421,7 +3421,7 @@ patterns from crystal orientation.</value>
     <value>304, 22</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Import Crystal from a CIF or AMC File</value>
+    <value>&amp;Import crystal from a CIF or AMC file</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 6</value>
@@ -3436,7 +3436,7 @@ patterns from crystal orientation.</value>
     <value>304, 22</value>
   </data>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>&amp;Export the Selected Crystal as a CIF File</value>
+    <value>&amp;Export the selected crystal as a CIF file</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 6</value>
@@ -3466,7 +3466,7 @@ patterns from crystal orientation.</value>
     <value>397, 22</value>
   </data>
   <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
-    <value>Show Tooltips</value>
+    <value>Show tooltips</value>
   </data>
   <data name="toolStripMenuItemDarkMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>397, 22</value>
@@ -3501,7 +3501,7 @@ calculations instead of neutral atoms. Off = neutral-atom IAM (default).</value>
     <value>397, 22</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
-    <value>Download MKL Library</value>
+    <value>Download MKL library</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
     <value>Download the Intel MKL native library (~55MB).
@@ -3552,7 +3552,7 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>397, 22</value>
   </data>
   <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
-    <value>(experimental) Capture GUI Components</value>
+    <value>(experimental) Capture GUI components</value>
   </data>
   <data name="powderDiffractionFunctionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>397, 22</value>
@@ -3570,7 +3570,7 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>294, 22</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Check for Updates</value>
+    <value>&amp;Check for updates</value>
   </data>
   <data name="toolStripSeparator16.Size" type="System.Drawing.Size, System.Drawing">
     <value>291, 6</value>
@@ -3585,7 +3585,7 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>294, 22</value>
   </data>
   <data name="versionHistoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Version History</value>
+    <value>&amp;Version history</value>
   </data>
   <data name="licenseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>294, 22</value>
@@ -3600,13 +3600,13 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>294, 22</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;GitHub Repository</value>
+    <value>&amp;GitHub repository</value>
   </data>
   <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>294, 22</value>
   </data>
   <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Text" xml:space="preserve">
-    <value>&amp;Report Bugs, Requests, or Comments</value>
+    <value>&amp;Report bugs, requests, or comments</value>
   </data>
   <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
     <value>291, 6</value>
@@ -3615,7 +3615,7 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>294, 22</value>
   </data>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help (&amp;Web)</value>
+    <value>Help (&amp;web)</value>
   </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 21</value>

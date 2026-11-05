@@ -801,17 +801,17 @@ de simetría, en porcentaje (20-500%)</value>
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
     <value>Número de subdivisiones de la celda unidad a lo largo
 del eje a (entero, 1-10) para la rejilla de subceldas
-que se muestra cuando 'Show Subcell' está activado.</value>
+que se muestra cuando 'Show subcell' está activado.</value>
   </data>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
     <value>Número de subdivisiones de la celda unidad a lo largo
 del eje b (entero, 1-10) para la rejilla de subceldas
-que se muestra cuando 'Show Subcell' está activado.</value>
+que se muestra cuando 'Show subcell' está activado.</value>
   </data>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
     <value>Número de subdivisiones de la celda unidad a lo largo
 del eje c (entero, 1-10) para la rejilla de subceldas
-que se muestra cuando 'Show Subcell' está activado.</value>
+que se muestra cuando 'Show subcell' está activado.</value>
   </data>
   <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
     <value>Muestra u oculta las etiquetas de los átomos (símbolos

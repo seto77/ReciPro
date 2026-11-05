@@ -1669,7 +1669,8 @@ public partial class FormStructureViewer : FormBase
                 zhHans: "未显示可打印的实体 (原子、键或多面体)。",
                 zhHant: "未顯示可列印的實體 (原子、鍵或多面體)。",
                 ko: "출력 가능한 입체 (원자, 결합, 다면체) 가 표시되어 있지 않습니다."),
-                Localization.Loc(en: "Export 3D Model", ja: "3Dモデルの出力", de: "3D-Modell exportieren", fr: "Exporter le modèle 3D", es: "Exportar modelo 3D", pt: "Exportar modelo 3D", it: "Esporta modello 3D", ru: "Экспорт 3D-модели", zhHans: "导出 3D 模型", zhHant: "匯出 3D 模型", ko: "3D 모델 내보내기"),
+                //Localization.Loc(en: "Export 3D Model", ja: "3Dモデルの出力", de: "3D-Modell exportieren", fr: "Exporter le modèle 3D", es: "Exportar modelo 3D", pt: "Exportar modelo 3D", it: "Esporta modello 3D", ru: "Экспорт 3D-модели", zhHans: "导出 3D 模型", zhHant: "匯出 3D 模型", ko: "3D 모델 내보내기"), // 261105Cl 変更前
+                Localization.Loc(en: "Export 3D model", ja: "3Dモデルの出力", de: "3D-Modell exportieren", fr: "Exporter le modèle 3D", es: "Exportar modelo 3D", pt: "Exportar modelo 3D", it: "Esporta modello 3D", ru: "Экспорт 3D-модели", zhHans: "导出 3D 模型", zhHant: "匯出 3D 模型", ko: "3D 모델 내보내기"), // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }

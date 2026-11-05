@@ -92,7 +92,8 @@
             // 
             comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxGradient.FormattingEnabled = true;
-            comboBoxGradient.Items.AddRange(new object[] { "Positive Film", "Negative Film" });
+            //comboBoxGradient.Items.AddRange(new object[] { "Positive Film", "Negative Film" }); // 261105Cl 変更前
+            comboBoxGradient.Items.AddRange(new object[] { "Positive film", "Negative film" }); // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             comboBoxGradient.Location = new System.Drawing.Point(212, 0);
             comboBoxGradient.Margin = new System.Windows.Forms.Padding(0);
             comboBoxGradient.Name = "comboBoxGradient";
@@ -105,7 +106,8 @@
             // 
             comboBoxScale1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale1.FormattingEnabled = true;
-            comboBoxScale1.Items.AddRange(new object[] { "Log Scale", "Linear Scale" });
+            //comboBoxScale1.Items.AddRange(new object[] { "Log Scale", "Linear Scale" }); // 261105Cl 変更前
+            comboBoxScale1.Items.AddRange(new object[] { "Log scale", "Linear scale" }); // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             comboBoxScale1.Location = new System.Drawing.Point(369, 0);
             comboBoxScale1.Margin = new System.Windows.Forms.Padding(0);
             comboBoxScale1.Name = "comboBoxScale1";
@@ -118,7 +120,8 @@
             // 
             comboBoxScale2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale2.FormattingEnabled = true;
-            comboBoxScale2.Items.AddRange(new object[] { "Gray", "Cold-Warm", "Spectrum", "Fire" });
+            //comboBoxScale2.Items.AddRange(new object[] { "Gray", "Cold-Warm", "Spectrum", "Fire" }); // 261105Cl 変更前
+            comboBoxScale2.Items.AddRange(new object[] { "Gray", "Cold-warm", "Spectrum", "Fire" }); // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             comboBoxScale2.Location = new System.Drawing.Point(514, 0);
             comboBoxScale2.Margin = new System.Windows.Forms.Padding(0);
             comboBoxScale2.Name = "comboBoxScale2";

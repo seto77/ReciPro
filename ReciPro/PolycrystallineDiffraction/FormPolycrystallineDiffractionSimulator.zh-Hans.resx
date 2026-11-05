@@ -70,7 +70,7 @@
 摆动范围（±°）和步长（°）设定。</value>
   </data>
   <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>一旦退火后的 'Num per Step' 降至
+    <value>一旦退火后的 'Num per step' 降至
 右侧设定的阈值（%）以下，
 便自动停止拟合。</value>
   </data>
@@ -148,7 +148,7 @@ Negative 反转（高强度显示为暗）。</value>
 （×0.8）。</value>
   </data>
   <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>'Num per Step' 的阈值（%）：当该参数
+    <value>'Num per step' 的阈值（%）：当该参数
 退火低于此水平时，拟合停止。</value>
   </data>
   <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">

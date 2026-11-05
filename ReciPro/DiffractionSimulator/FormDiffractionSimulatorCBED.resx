@@ -1539,7 +1539,7 @@ inverts the scale so dark is strong.</value>
     <value>Gray</value>
   </data>
   <data name="comboBoxScale.Items1" xml:space="preserve">
-    <value>Cold-Warm</value>
+    <value>Cold-warm</value>
   </data>
   <data name="comboBoxScale.Items2" xml:space="preserve">
     <value>Spectrum</value>
@@ -1585,7 +1585,7 @@ display color (Gray, Cold-Warm, Spectrum, or Fire).</value>
     <value>30</value>
   </data>
   <data name="labelGamma.Text" xml:space="preserve">
-    <value>Gamma (Enhance Outer Disks)</value>
+    <value>Gamma (enhance outer disks)</value>
   </data>
   <data name="labelGamma.ToolTip" xml:space="preserve">
     <value>Set a gamma value. The larger this value is,
@@ -1808,7 +1808,7 @@ is displayed as the maximum value.</value>
     <value>30</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Adjust Brightness</value>
+    <value>Adjust brightness</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>The same brightness range (Min/Max) is applied to all disks.</value>

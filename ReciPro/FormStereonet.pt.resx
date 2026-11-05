@@ -389,7 +389,7 @@ finas, exibidas apenas quando 'Linhas de 1°' está ativado).</value>
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>Define a cor das linhas de grade de 1° (linhas
-finas, exibidas apenas quando '1° Lines' está ativado).</value>
+finas, exibidas apenas quando '1° lines' está ativado).</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
     <value>Projeta as linhas de latitude e longitude

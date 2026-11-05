@@ -154,7 +154,7 @@ a 10° disegnate sullo stereonet.</value>
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
     <value>Colore delle linee a 1 grado
-Attivo quando "Show 1° Lines" è selezionato</value>
+Attivo quando "Show 1° lines" è selezionato</value>
   </data>
   <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
     <value>Colore delle etichette degli assi [100], [010], [001]</value>

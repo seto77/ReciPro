@@ -489,7 +489,7 @@ Simulate, чтобы получить распределение.</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Введите индексы оси зоны [u v w], используемые кнопкой
-'View Along' для ориентации 3D мастер-картины.</value>
+'View along' для ориентации 3D мастер-картины.</value>
   </data>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Показывает глубину (nm) слоя картины EBSD,

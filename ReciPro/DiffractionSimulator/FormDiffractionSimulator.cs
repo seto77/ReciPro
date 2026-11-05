@@ -3268,7 +3268,8 @@ public partial class FormDiffractionSimulator : FormBase
 
     private void SaveCBEDasTiffToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var png = ((ToolStripItem)sender).Text.Contains("PNG");
+        //var png = ((ToolStripItem)sender).Text.Contains("PNG"); // 261105Cl 変更前
+        var png = sender == saveCBEDasPngToolStripMenuItem; // 261105Cl 変更 (作者決定 K5: 表示文字列で形式を判定しない (呼ばれるのは PNG と TIFF の 2 項目だけ))
 
         SaveFileDialog dlg = new() { Filter = png ? "*.png|*.png" : "*.tif|*.tif" };
 

@@ -138,8 +138,8 @@
     <value>66</value>
   </data>
   <data name="buttonSearchPhoto1.Text" xml:space="preserve">
-    <value>Find Zone
-Axis</value>
+    <value>Find zone
+axis</value>
   </data>
   <data name="buttonSearchPhoto1.ToolTip" xml:space="preserve">
     <value>Search the loaded crystal(s) for zone axes whose
@@ -190,7 +190,7 @@ tolerances; matches are listed in a results window.</value>
   <data name="numericBoxP1Theta.ToolTip" xml:space="preserve">
     <value>Angle θ (degrees) between the two reciprocal
 vectors L1 and L2 of Pattern 1. Editable in 'Two
-Sides and an Angle' mode; in 'Three Sides' mode
+Sides and an Angle' mode; in 'Three sides' mode
 it is computed from L1/L2/L3 and shown read-only.</value>
   </data>
   <data name="&gt;&gt;numericBoxP1Theta.Name" xml:space="preserve">
@@ -221,7 +221,7 @@ it is computed from L1/L2/L3 and shown read-only.</value>
     <value>1</value>
   </data>
   <data name="radioButtonPhoto1Mode2.Text" xml:space="preserve">
-    <value>Two Sides and an Angle</value>
+    <value>Two sides and an angle</value>
   </data>
   <data name="radioButtonPhoto1Mode2.ToolTip" xml:space="preserve">
     <value>Define Pattern 1 by two side lengths L1, L2
@@ -257,7 +257,7 @@ defines the pattern by three sides.)</value>
     <value>2</value>
   </data>
   <data name="radioButtonPhoto1Mode1.Text" xml:space="preserve">
-    <value>Three Sides</value>
+    <value>Three sides</value>
   </data>
   <data name="radioButtonPhoto1Mode1.ToolTip" xml:space="preserve">
     <value>Define Pattern 1 by the three side lengths L1,
@@ -526,7 +526,7 @@ percentage of its length (0-50%, default 5).</value>
   <data name="numericBoxPhoto1L3Err.ToolTip" xml:space="preserve">
     <value>Search tolerance for L3 of Pattern 1, as a
 percentage of its length (0-50%, default 5).
-Used only in 'Three Sides' mode; matches within
+Used only in 'Three sides' mode; matches within
 this fraction of the entered L3 are accepted.</value>
   </data>
   <data name="&gt;&gt;numericBoxPhoto1L3Err.Name" xml:space="preserve">
@@ -559,7 +559,7 @@ this fraction of the entered L3 are accepted.</value>
   <data name="labelPhoto1Mode2_6.ToolTip" xml:space="preserve">
     <value>Search tolerance for L3 of Pattern 1,
 as a percentage of its length (0-50%,
-default 5; used in 'Three Sides' mode).</value>
+default 5; used in 'Three sides' mode).</value>
   </data>
   <data name="&gt;&gt;labelPhoto1Mode2_6.Name" xml:space="preserve">
     <value>labelPhoto1Mode2_6</value>
@@ -696,7 +696,7 @@ reciprocal-lattice vector of Pattern 1.</value>
   <data name="label75.ToolTip" xml:space="preserve">
     <value>Plus/minus search tolerance applied to
 the angle θ of Pattern 1 (degrees;
-used in 'Two Sides and an Angle' mode).</value>
+used in 'Two sides and an angle' mode).</value>
   </data>
   <data name="&gt;&gt;label75.Name" xml:space="preserve">
     <value>label75</value>
@@ -730,7 +730,7 @@ used in 'Two Sides and an Angle' mode).</value>
   </data>
   <data name="label71.ToolTip" xml:space="preserve">
     <value>Plus/minus search tolerance applied to L3 of Pattern 1
-(percentage of its length; used in 'Three Sides' mode).</value>
+(percentage of its length; used in 'Three sides' mode).</value>
   </data>
   <data name="&gt;&gt;label71.Name" xml:space="preserve">
     <value>label71</value>
@@ -765,7 +765,7 @@ used in 'Two Sides and an Angle' mode).</value>
   <data name="label11.ToolTip" xml:space="preserve">
     <value>L3: length (mm on the photo) of the third
 reciprocal-lattice vector of Pattern 1, used to
-define the spot triangle in 'Three Sides' mode.</value>
+define the spot triangle in 'Three sides' mode.</value>
   </data>
   <data name="&gt;&gt;label11.Name" xml:space="preserve">
     <value>label11</value>
@@ -999,7 +999,7 @@ reciprocal-lattice spacings for indexing.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>Acc. Voltage</value>
+    <value>Acc. voltage</value>
   </data>
   <data name="numericBoxAccVol.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 16</value>
@@ -1381,8 +1381,8 @@ from their Tilt 1 / Tilt 2 values (read-only).</value>
     <value>66</value>
   </data>
   <data name="buttonSearchPhoto2.Text" xml:space="preserve">
-    <value>Find Zone
-Axis</value>
+    <value>Find zone
+axis</value>
   </data>
   <data name="buttonSearchPhoto2.ToolTip" xml:space="preserve">
     <value>Search the loaded crystal(s) for zone axes whose
@@ -1433,7 +1433,7 @@ tolerances; matches are listed in a results window.</value>
     <value>Angle θ (degrees) between the two reciprocal
 vectors L1 and L2 of Pattern 2. Editable in 'Two
 Sides and an Angle' mode; computed from L1/L2/L3
-and shown read-only in 'Three Sides' mode.</value>
+and shown read-only in 'Three sides' mode.</value>
   </data>
   <data name="&gt;&gt;numericBoxP2Theta.Name" xml:space="preserve">
     <value>numericBoxP2Theta</value>
@@ -1463,7 +1463,7 @@ and shown read-only in 'Three Sides' mode.</value>
     <value>1</value>
   </data>
   <data name="radioButtonPhoto2Mode2.Text" xml:space="preserve">
-    <value>Two Sides and an Angle</value>
+    <value>Two sides and an angle</value>
   </data>
   <data name="radioButtonPhoto2Mode2.ToolTip" xml:space="preserve">
     <value>Define Pattern 2 by two side lengths L1, L2 and
@@ -1498,7 +1498,7 @@ the angle θ between them; L3 is then computed.
     <value>2</value>
   </data>
   <data name="radioButtonPhoto2Mode1.Text" xml:space="preserve">
-    <value>Three Sides</value>
+    <value>Three sides</value>
   </data>
   <data name="radioButtonPhoto2Mode1.ToolTip" xml:space="preserve">
     <value>Define Pattern 2 by the three side lengths L1, L2 and
@@ -1631,7 +1631,7 @@ this fraction are still accepted as matches.</value>
   <data name="numericBoxPhoto2ThetaErr.ToolTip" xml:space="preserve">
     <value>Search tolerance for the angle θ of Pattern
 2, in degrees (0-30, default 3). Used only in
-'Two Sides and an Angle' mode; angles within
+'Two sides and an angle' mode; angles within
 this many degrees are accepted as matches.</value>
   </data>
   <data name="&gt;&gt;numericBoxPhoto2ThetaErr.Name" xml:space="preserve">
@@ -1766,7 +1766,7 @@ of Pattern 2 (0-50%, default 5).</value>
   <data name="numericBoxPhoto2L3Err.ToolTip" xml:space="preserve">
     <value>Search tolerance for L3 of Pattern 2, as a
 percentage of its length (0-50%, default 5).
-Used only in 'Three Sides' mode; matches
+Used only in 'Three sides' mode; matches
 within this fraction of L3 are accepted.</value>
   </data>
   <data name="&gt;&gt;numericBoxPhoto2L3Err.Name" xml:space="preserve">
@@ -1798,7 +1798,7 @@ within this fraction of L3 are accepted.</value>
   </data>
   <data name="label26.ToolTip" xml:space="preserve">
     <value>Percent: unit of the L3 search tolerance of Pattern
-2 (0-50%, default 5; used in 'Three Sides' mode).</value>
+2 (0-50%, default 5; used in 'Three sides' mode).</value>
   </data>
   <data name="&gt;&gt;label26.Name" xml:space="preserve">
     <value>label26</value>
@@ -1935,7 +1935,7 @@ vectors L1 and L2 of Pattern 2.</value>
   <data name="label30.ToolTip" xml:space="preserve">
     <value>L3: length (mm on the photo) of the
 third reciprocal-lattice vector of
-Pattern 2, used in 'Three Sides' mode.</value>
+Pattern 2, used in 'Three sides' mode.</value>
   </data>
   <data name="&gt;&gt;label30.Name" xml:space="preserve">
     <value>label30</value>
@@ -2003,7 +2003,7 @@ Pattern 2, used in 'Three Sides' mode.</value>
   <data name="label79.ToolTip" xml:space="preserve">
     <value>Plus/minus search tolerance applied to
 the angle θ of Pattern 2 (degrees;
-used in 'Two Sides and an Angle' mode).</value>
+used in 'Two sides and an angle' mode).</value>
   </data>
   <data name="&gt;&gt;label79.Name" xml:space="preserve">
     <value>label79</value>
@@ -2105,7 +2105,7 @@ of Pattern 2 (percentage of its length).</value>
   </data>
   <data name="label78.ToolTip" xml:space="preserve">
     <value>Plus/minus search tolerance applied to L3 of Pattern 2
-(percentage of its length; used in 'Three Sides' mode).</value>
+(percentage of its length; used in 'Three sides' mode).</value>
   </data>
   <data name="&gt;&gt;label78.Name" xml:space="preserve">
     <value>label78</value>
@@ -2382,8 +2382,8 @@ may differ when matching candidates.</value>
   <data name="numericBoxP3Theta.ToolTip" xml:space="preserve">
     <value>Angle theta (degrees) between the two diffraction
 vectors L1 and L2 of Photo 3. Read-only and
-computed from the three sides in 'Three Sides'
-mode; editable in 'Two Sides and an Angle' mode.</value>
+computed from the three sides in 'Three sides'
+mode; editable in 'Two sides and an angle' mode.</value>
   </data>
   <data name="&gt;&gt;numericBoxP3Theta.Name" xml:space="preserve">
     <value>numericBoxP3Theta</value>
@@ -2410,8 +2410,8 @@ mode; editable in 'Two Sides and an Angle' mode.</value>
     <value>66</value>
   </data>
   <data name="buttonSearchPhoto3.Text" xml:space="preserve">
-    <value>Find Zone
-Axis</value>
+    <value>Find zone
+axis</value>
   </data>
   <data name="buttonSearchPhoto3.ToolTip" xml:space="preserve">
     <value>Search for crystal zone axes that match Photo 3's
@@ -2446,7 +2446,7 @@ angle/third side), using all loaded crystals.</value>
     <value>1</value>
   </data>
   <data name="radioButtonPhoto3Mode2.Text" xml:space="preserve">
-    <value>Two Sides and an Angle</value>
+    <value>Two sides and an angle</value>
   </data>
   <data name="radioButtonPhoto3Mode2.ToolTip" xml:space="preserve">
     <value>Define Photo 3's pattern by two side lengths
@@ -2481,7 +2481,7 @@ third side L3 is then computed automatically.</value>
     <value>2</value>
   </data>
   <data name="radioButtonPhoto3Mode1.Text" xml:space="preserve">
-    <value>Three Sides</value>
+    <value>Three sides</value>
   </data>
   <data name="radioButtonPhoto3Mode1.ToolTip" xml:space="preserve">
     <value>Define Photo 3's pattern triangle by its
@@ -2613,7 +2613,7 @@ by up to this amount are accepted as matches.</value>
     <value>Search tolerance for Photo 3's angle theta, in
 degrees (0-30). Candidates whose computed angle
 differs by up to this amount are accepted. Used
-only in 'Two Sides and an Angle' mode.</value>
+only in 'Two sides and an angle' mode.</value>
   </data>
   <data name="&gt;&gt;numericBoxPhoto3ThetaErr.Name" xml:space="preserve">
     <value>numericBoxPhoto3ThetaErr</value>
@@ -2653,7 +2653,7 @@ only in 'Two Sides and an Angle' mode.</value>
   </data>
   <data name="numericBoxPhoto3L3Err.ToolTip" xml:space="preserve">
     <value>Search tolerance for Photo 3's third side L3 length,
-in percent (0-50). Used only in 'Three Sides' mode.</value>
+in percent (0-50). Used only in 'Three sides' mode.</value>
   </data>
   <data name="&gt;&gt;numericBoxPhoto3L3Err.Name" xml:space="preserve">
     <value>numericBoxPhoto3L3Err</value>
@@ -2788,7 +2788,7 @@ diffraction vector, in mm on the recording medium.</value>
   </data>
   <data name="label56.ToolTip" xml:space="preserve">
     <value>Length L3 of Photo 3's third triangle
-side, in mm (used in 'Three Sides' mode).</value>
+side, in mm (used in 'Three sides' mode).</value>
   </data>
   <data name="&gt;&gt;label56.Name" xml:space="preserve">
     <value>label56</value>
@@ -3240,7 +3240,7 @@ axis); locks Photo 3's L2 length to Photo 2's value.</value>
     <value>66</value>
   </data>
   <data name="buttonSearchAll.Text" xml:space="preserve">
-    <value>Find Zone Axes from Three Patterns</value>
+    <value>Find zone axes from three patterns</value>
   </data>
   <data name="buttonSearchAll.ToolTip" xml:space="preserve">
     <value>Search all registered crystals for zone-axis

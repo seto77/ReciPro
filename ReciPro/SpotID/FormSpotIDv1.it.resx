@@ -412,7 +412,7 @@ dalla tensione di accelerazione (sola lettura).</value>
   <data name="label11.ToolTip" xml:space="preserve">
     <value>L3: lunghezza (mm sulla foto) del terzo
 vettore del reticolo reciproco del Pattern 1, usata per
-definire il triangolo degli spot in modalità 'Three Sides'.</value>
+definire il triangolo degli spot in modalità 'Three sides'.</value>
   </data>
   <data name="label12.ToolTip" xml:space="preserve">
     <value>L2: lunghezza (mm sulla foto) del secondo

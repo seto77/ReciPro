@@ -420,7 +420,7 @@ Photo 3 的圖樣；第三邊 L3 隨即
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
     <value>L3：Pattern 1 第三個倒晶格向量的長度
-（照片上的 mm），用於在「Three Sides」模式
+（照片上的 mm），用於在「Three sides」模式
 定義斑點三角形。</value>
   </data>
   <data name="label12.ToolTip" xml:space="preserve">
@@ -469,7 +469,7 @@ L2 之間的夾角 θ（度）。</value>
   </data>
   <data name="label30.ToolTip" xml:space="preserve">
     <value>L3：Pattern 2 第 3 倒晶格向量的長度
-（照片上的 mm），於「Three Sides」
+（照片上的 mm），於「Three sides」
 模式下使用。</value>
   </data>
   <data name="label31.ToolTip" xml:space="preserve">

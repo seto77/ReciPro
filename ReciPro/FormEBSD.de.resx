@@ -494,7 +494,7 @@ Lambert-Master-Pattern-Gitters
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Geben Sie die Zonenachsenindizes [u v w] ein, die von der
-Schaltfläche 'View Along' zur Ausrichtung des 3D-Master-Patterns verwendet werden.</value>
+Schaltfläche 'View along' zur Ausrichtung des 3D-Master-Patterns verwendet werden.</value>
   </data>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Zeigt die Tiefe (nm) der aktuell dargestellten

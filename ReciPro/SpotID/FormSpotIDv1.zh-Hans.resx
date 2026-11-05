@@ -420,7 +420,7 @@ L1/L2/L3 计算并以只读形式显示。</value>
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
     <value>L3：Pattern 1 的第三个倒易点阵矢量的长度
-（照片上的 mm），在 'Three Sides' 模式下
+（照片上的 mm），在 'Three sides' 模式下
 用于定义斑点三角形。</value>
   </data>
   <data name="label12.ToolTip" xml:space="preserve">
@@ -453,7 +453,7 @@ L1/L2/L3 计算并以只读形式显示。</value>
   </data>
   <data name="label26.ToolTip" xml:space="preserve">
     <value>百分比：Pattern 2 的 L3 搜索容差的单位
-（0-50%，默认 5；在 'Three Sides' 模式下使用）。</value>
+（0-50%，默认 5；在 'Three sides' 模式下使用）。</value>
   </data>
   <data name="label27.ToolTip" xml:space="preserve">
     <value>L1：Pattern 2 第一个倒易点阵矢量的长度（照片上的 mm）。</value>
@@ -468,7 +468,7 @@ L2 之间的夹角 θ（度）。</value>
   <data name="label30.ToolTip" xml:space="preserve">
     <value>L3：Pattern 2 第三个倒易点阵矢量的
 长度（照片上的 mm），用于
-"Three Sides" 模式。</value>
+"Three sides" 模式。</value>
   </data>
   <data name="label31.ToolTip" xml:space="preserve">
     <value>度：Pattern 2 的 L1 与 L2 之间夹角 θ 的单位。</value>
@@ -490,7 +490,7 @@ L2，记录介质上的 mm。</value>
   </data>
   <data name="label56.ToolTip" xml:space="preserve">
     <value>Photo 3 图样三角形第三条边的长度 L3，
-单位 mm（用于 "Three Sides" 模式）。</value>
+单位 mm（用于 "Three sides" 模式）。</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>拍摄 Photo 2 时测角仪样品台的第一倾斜角
@@ -510,12 +510,12 @@ L2，记录介质上的 mm。</value>
   </data>
   <data name="label71.ToolTip" xml:space="preserve">
     <value>应用于 Pattern 1 的 L3 的正负搜索容差
-（以其长度的百分比表示；用于 "Three Sides" 模式）。</value>
+（以其长度的百分比表示；用于 "Three sides" 模式）。</value>
   </data>
   <data name="label75.ToolTip" xml:space="preserve">
     <value>应用于 Pattern 1 的夹角 θ 的正负搜索容差
 （度；用于
-"Two Sides and an Angle" 模式）。</value>
+"Two sides and an angle" 模式）。</value>
   </data>
   <data name="label76.ToolTip" xml:space="preserve">
     <value>应用于 Pattern 2 的 L1 的正负搜索容差
@@ -527,12 +527,12 @@ L2，记录介质上的 mm。</value>
   </data>
   <data name="label78.ToolTip" xml:space="preserve">
     <value>应用于 Pattern 2 的 L3 的正负搜索容差
-（以其长度的百分比表示；用于 "Three Sides" 模式）。</value>
+（以其长度的百分比表示；用于 "Three sides" 模式）。</value>
   </data>
   <data name="label79.ToolTip" xml:space="preserve">
     <value>应用于 Pattern 2 的夹角 θ 的正负搜索容差
 （度；用于
-"Two Sides and an Angle" 模式）。</value>
+"Two sides and an angle" 模式）。</value>
   </data>
   <data name="labelPhoto1Mode1_1.ToolTip" xml:space="preserve">
     <value>Pattern 1 的倒易矢量 L1 与

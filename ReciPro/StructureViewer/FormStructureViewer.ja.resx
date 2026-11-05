@@ -399,7 +399,7 @@
   </data>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
     <value>サブセル格子を描く際の b 軸方向の分割数(整数、
-1〜10)。'Show Subcell' 有効時に表示されます。</value>
+1〜10)。'Show subcell' 有効時に表示されます。</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>平行移動</value>
@@ -415,11 +415,11 @@
   </data>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
     <value>サブセル格子を描く際の c 軸方向の分割数(整数、
-1〜10)。'Show Subcell' 有効時に表示されます。</value>
+1〜10)。'Show subcell' 有効時に表示されます。</value>
   </data>
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
     <value>サブセル格子を描く際の a 軸方向の分割数(整数、
-1〜10)。'Show Subcell' 有効時に表示されます。</value>
+1〜10)。'Show subcell' 有効時に表示されます。</value>
   </data>
   <data name="tabPageLatticePlane.Text" xml:space="preserve">
     <value>格子面</value>
