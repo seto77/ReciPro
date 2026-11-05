@@ -1187,6 +1187,9 @@ public partial class FormImageSimulator : FormBase
                 result[r, c] = pseudo[r][c];
 
         SetPseudoBitamap(result);
+        //261105Cl 追加: ぼかしにチェックが入っていれば、作り直した像にも掛ける (HRTEM/STEM の GeneratePseudBitmap と同じ)
+        if (checkBoxGaussianBlur.Checked)
+            ApplyGaussianBlur();
         toolStripStatusLabel1.Text += $"Drawing: {sw1.ElapsedMilliseconds - temp} ms";
         TrackBarAdvancedMin_ValueChanged(new object(), 0);
         //260802Cl 追加: 位相像は LockIntensity なのでトラックバー経路が飛ばす。ここで全セルを描かないと
@@ -1240,6 +1243,10 @@ public partial class FormImageSimulator : FormBase
             var r = bethe.ResultHRTEM;
             FillReferenceGrid(r.Image, r.Size, r.Resolution, r.rot * FormMain.Crystal.MatrixReal, r.Thicknesses, r.Defocusses, "HRTEM");
         }
+
+        //261105Cl 追加: ぼかしにチェックが入っていれば、作り直した像にも掛ける (旧: 新しい像はぼけないまま表示・保存されていた)
+        if (checkBoxGaussianBlur.Checked)
+            ApplyGaussianBlur();
 
         //260802Cl 追加: **レイアウトが確定してから**描く。SetPseudoBitamap の中で描くと、新規生成直後のセルは
         //まだ 1x1 で ScalablePictureBox.drawPictureBox が何もせずに戻り、画像が出ないまま残る
@@ -2089,17 +2096,40 @@ public partial class FormImageSimulator : FormBase
 
         numericBoxGaussianBlurRadius.Enabled = checkBoxGaussianBlur.Checked;
 
+        //foreach (var box in Boxes)
+        //    if (box.PseudoBitmap.Tag is ImageInfo { LockIntensity: false })
+        //    {
+        //        if (checkBoxGaussianBlur.Checked)
+        //            //261105Cl 修正: SetBlurImage の引数は半値半幅 (HWHM)。UI は FWHM なので 1/2 にする (ScalablePictureBoxAdvanced と同じ)。
+        //            //旧: box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / numericBoxResolution.Value, PseudoBitmap.BlurModeEnum.Gaussian);
+        //            box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / numericBoxResolution.Value / 2, PseudoBitmap.BlurModeEnum.Gaussian);
+        //        else
+        //            box.PseudoBitmap.SetOriginalGray();
+        //
+        //        box.drawPictureBox();
+        //    }
+        //261105Cl 変更: ぼかしの適用を ApplyGaussianBlur へ (Simulate で作り直した像にも同じ処理を掛けるため)
+        ApplyGaussianBlur();
         foreach (var box in Boxes)
             if (box.PseudoBitmap.Tag is ImageInfo { LockIntensity: false })
+                box.drawPictureBox();
+    }
+
+    /// <summary>261105Cl 追加: 表示用の Gaussian ぼかしを、今のチェックの状態に合わせて全セルに掛ける (外す) 。描画はしない。
+    /// チェックの切替・FWHM の変更のほか、Simulate や表示の切替で PseudoBitmap を作り直した後にも呼ぶ
+    /// (旧: チェックの切替時にしか掛けず、チェックを入れたまま Simulate した新しい像はぼけないまま表示・保存されていた)。
+    /// 画素の大きさは**その像を計算したときの解像度** (ImageInfo.Resolution, nm/pix) を使う
+    /// (旧: 今の入力欄の値 numericBoxResolution。計算後に入力欄を変えるとぼかしの幅がずれた)。</summary>
+    private void ApplyGaussianBlur()
+    {
+        foreach (var box in Boxes)
+            if (box.PseudoBitmap.Tag is ImageInfo { LockIntensity: false } info)
             {
                 if (checkBoxGaussianBlur.Checked)
-                    //261105Cl 修正: SetBlurImage の引数は半値半幅 (HWHM)。UI は FWHM なので 1/2 にする (ScalablePictureBoxAdvanced と同じ)。
-                    //旧: box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / numericBoxResolution.Value, PseudoBitmap.BlurModeEnum.Gaussian);
-                    box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / numericBoxResolution.Value / 2, PseudoBitmap.BlurModeEnum.Gaussian);
+                    //SetBlurImage の引数は半値半幅 (HWHM, pix)。入力欄は FWHM (pm)、info.Resolution は nm/pix
+                    box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / (info.Resolution * 1000) / 2, PseudoBitmap.BlurModeEnum.Gaussian);
                 else
                     box.PseudoBitmap.SetOriginalGray();
-
-                box.drawPictureBox();
             }
     }
     #endregion 画像の輝度、カラースケール、ガウシアンぼかし
