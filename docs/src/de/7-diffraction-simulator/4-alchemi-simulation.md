@@ -93,7 +93,7 @@ Der Platzkontrast ändert sich zwischen dünnen und dicken Proben stark und kann
 
 | Eintrag | Beschreibung | Standard |
 |---------|--------------|----------|
-| **Max. Strahlen** | Obergrenze der Zahl der Bloch-Wellen pro Orientierung (1–1600). Die Vereinigung über den gesamten Scan ist größer | 120 |
+| **Gebeugte Wellen** | Obergrenze der Zahl der Bloch-Wellen pro Orientierung (1–1600). Die Vereinigung über den gesamten Scan ist größer | 120 |
 | **Löser** | Rechenkern für das Eigenwertproblem: **Nativ** (Eigen C++) oder **Verwaltet** (.NET). Wo der native Löser nicht verfügbar ist, wird die Auswahl auf Verwaltet festgelegt | Nativ |
 | **Dechannelling-Anteil einbeziehen** | Ob $Y_\text{dech}$ (oben) addiert wird | ein |
 | **Winkelverbreiterung** | Faltet die Kurve mit der Winkelverbreiterung des einfallenden Strahls: **Keine** oder **Gaussian** mit einer Halbwertsbreite in mrad. Ein Nachbearbeitungsschritt auf der Orientierungsachse, angewendet **vor** der Anzeigenormierung | Keine |

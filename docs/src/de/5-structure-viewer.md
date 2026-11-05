@@ -66,7 +66,7 @@ Legen Sie die Filmlänge (**Dauer**), die Bildrate (**FPS**, 1–120) und die En
 
 #### Export 3D model (3MF/STL)
 
-**Export 3D model (3MF/STL)** gibt das aktuell dargestellte Strukturmodell als Volumenmodell für den 3D-Druck aus. Exportiert werden können nur geschlossene Körper — Atome (Kugeln und Ellipsoide), Bindungen (Zylinder) und Koordinationspolyeder. Atombeschriftungen, Begrenzungsflächen, Gitterebenen und die Symbole der Symmetrieelemente werden nicht exportiert. <!-- 261105Cl 監査: 配位多面体を出力し、対称要素は出さない (6c31fc0d) --> Der Rahmen der Elementarzelle besteht aus Liniensegmenten und wird nur dann durch Zylinder (mit Kugeln an den Ecken) ersetzt, wenn Sie die entsprechende Option aktivieren. **Objekte abschneiden** (an den Begrenzungsebenen) wird auf die Ausgabe nicht angewandt: Objekte, die die Begrenzungsebenen schneiden, werden vollständig exportiert (der Dialog weist darauf hin). <!-- 261106Cl 作者の決定 H10 -->
+**Export 3D model (3MF/STL)** gibt das aktuell dargestellte Strukturmodell als Volumenmodell für den 3D-Druck aus. Exportiert werden können nur geschlossene Körper — Atome (Kugeln und Ellipsoide), Bindungen (Zylinder) und Koordinationspolyeder. Atombeschriftungen, Begrenzungsflächen, Gitterebenen und die Symbole der Symmetrieelemente werden nicht exportiert. <!-- 261105Cl 監査: 配位多面体を出力し、対称要素は出さない (6c31fc0d) --> Der Rahmen der Elementarzelle besteht aus Liniensegmenten und wird nur dann durch Zylinder (mit Kugeln an den Ecken) ersetzt, wenn Sie die entsprechende Option aktivieren. **Objekte an Begrenzungsebenen abschneiden** wird auf die Ausgabe nicht angewandt: Objekte, die die Begrenzungsebenen schneiden, werden vollständig exportiert (der Dialog weist darauf hin). <!-- 261106Cl 作者の決定 H10 -->
 
 ![Dialog „3D-Modell exportieren“](../assets/cap-de-auto/FormExport3DModel.png)
 
@@ -116,7 +116,7 @@ In diesem Modus sind die Achsen *a*, *b*, *c* der Elementarzelle die Einheit des
 
 ![Grenzen durch Kristallebenen](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
-In diesem Modus wird der Zeichenbereich durch eine Reihe von Kristallebenen begrenzt. Wenn die Ebenen keinen räumlich abgeschlossenen Bereich definieren, fügt ReciPro ein nahezu kugelförmiges Polyeder mit dem Radius **Max. Abstand vom Ursprung** (Å, gemessen vom [Projektionszentrum](#projektionszentrum)) hinzu, um ihn abzuschließen. <!-- 261106Cl 作者の決定 C4 -->
+In diesem Modus wird der Zeichenbereich durch eine Reihe von Kristallebenen begrenzt. Wenn die Ebenen keinen räumlich abgeschlossenen Bereich definieren, fügt ReciPro ein nahezu kugelförmiges Polyeder mit dem Radius **Max. Abst. (Proj.-Zentr.)** (Å, gemessen vom [Projektionszentrum](#projektionszentrum)) hinzu, um ihn abzuschließen. <!-- 261106Cl 作者の決定 C4 -->
 
 #### Grenzenliste
 
@@ -130,13 +130,13 @@ Legt die Begrenzungsebene über ihren Miller-Index fest. Das Kontrollkästchen s
 
 #### Abstand vom Proj.-Zentrum
 
-Der Abstand vom [Projektionszentrum](#projektionszentrum) (nicht vom Ursprung der Zelle) zur Begrenzungsebene, eingegeben entweder <!-- 261106Cl 作者の決定 C4 --> als Vielfaches des *d*-Werts (Netzebenenabstand) des ausgewählten (*hkl*) (Feld **d×**) oder in Å (das Feld in Klammern). Die beiden Felder sind gekoppelt: Eine Änderung des einen aktualisiert das andere.
+Der Abstand vom [Projektionszentrum](#projektionszentrum) (nicht vom Ursprung der Zelle) zur Begrenzungsebene, eingegeben entweder <!-- 261106Cl 作者の決定 C4 --> als Vielfaches des *d*-Werts (Netzebenenabstand) des ausgewählten (*hkl*) (Feld **d×**) oder in Å (das Feld in Klammern). Die beiden Felder sind gekoppelt: Eine Änderung des einen aktualisiert das andere. Jede Ebene liegt auf der +**g**-Seite des Projektionszentrums (in Richtung ihrer (*hkl*)-Normalen), und gezeichnet wird die Seite, die das Zentrum enthält; bei einer einzigen Ebene ist der Bereich der Halbraum auf der Zentrumsseite dieser Ebene. <!-- 261106Cl 仕上げ R3 D5: Boundary.cs Bound.Reset (面は nᵢ·r ≤ D) -->
 
-- **Translation** (Å): verschiebt den gesamten von den Ebenen begrenzten Bereich um diesen Betrag entlang der Normalen des angegebenen (*hkl*); positive Werte verschieben ihn in Richtung +**g**, d. h. in Richtung der (*hkl*)-Normalen. Dies funktioniert für jede Anzahl von Ebenen, auch für eine einzelne Ebene ohne **Äquivalente Ebenen**. <!-- 261106Cl 作者の決定 B11, C5 -->
-- **Max. Abstand vom Ursprung** (Å): Radius des abschließenden Polyeders, das verwendet wird, wenn die Ebenen keinen Bereich einschließen (siehe oben).
+- **Verschiebung** (Å): verschiebt den gesamten von den Ebenen begrenzten Bereich um diesen Betrag entlang der Normalen des angegebenen (*hkl*); positive Werte verschieben ihn in Richtung +**g**, d. h. in Richtung der (*hkl*)-Normalen. Dies funktioniert für jede Anzahl von Ebenen, auch für eine einzelne Ebene ohne **Äquivalente Ebenen**. <!-- 261106Cl 作者の決定 B11, C5 -->
+- **Max. Abst. (Proj.-Zentr.)** (Å): Radius des abschließenden Polyeders, das verwendet wird, wenn die Ebenen keinen Bereich einschließen (siehe oben).
 - **Sofort aktualisieren**: Änderungen an der ausgewählten Ebene übernehmen, ohne **Ersetzen** zu drücken.
 
-#### Begrenzungsebenen anzeigen / Deckkraft
+#### Ebenen anzeigen / Deckkraft
 
 Blendet die Begrenzungsebenen selbst ein oder aus. Wenn sie angezeigt werden, legt **Deckkraft** die Transparenz fest (0 = transparent, 1 = undurchsichtig).
 
@@ -160,7 +160,7 @@ Die Liste der Atome im Kristall. Verwenden Sie **Add / Replace / Delete**, um di
 
 > Um Änderungen dauerhaft zu speichern, klicken Sie ebenfalls im **Hauptfenster** auf **Add** oder **Replace**.
 
-#### Element & Position
+#### Element und Position
 
 - **Label**: Freitext-Beschriftung für das Atom (wird in Legenden und Tooltips verwendet).
 - **Element**: chemisches Element / Ionisierungszustand.
@@ -229,7 +229,7 @@ Die Translation ist an das [Projektionszentrum](#projektionszentrum) gekoppelt: 
 
 Ob die sechs Flächen gezeichnet werden, die die Elementarzelle begrenzen. Wenn aktiviert, können Sie die Flächenfarbe und Transparenz einstellen.
 
-#### Kanten anzeigen
+#### Zellkante anzeigen
 
 Ob die Kanten der Elementarzelle gezeichnet werden. Die Kantenfarbe ist konfigurierbar.
 
@@ -237,7 +237,7 @@ Das Hauptkontrollkästchen **Elementarzelle anzeigen** (= die Symbolleisten-Scha
 
 #### Subzelle anzeigen
 
-**Subzelle anzeigen** zeichnet Gitterlinien, die die Zelle in die in den Feldern **a**, **b**, **c** angegebene Anzahl von Teilen teilen (jeweils 1–10; die Felder sind nur bei aktiviertem Kontrollkästchen bedienbar), auf den Flächen und im Inneren der Zelle. Linien, die mit Zellkanten zusammenfallen, werden nicht gezeichnet. Die Linien übernehmen die Kantenfarbe (**Alle Kanten** / **Jede Kante**), die halbe Kantenbreite (mindestens 1 px) und die Deckkraft 0,5 und werden unabhängig von **Kanten anzeigen** dargestellt. Sie werden beim Export des 3D-Modells nicht berücksichtigt. <!-- 261106Cl 作者の決定 H5 -->
+**Subzelle anzeigen** zeichnet Gitterlinien, die die Zelle in die in den Feldern **a**, **b**, **c** angegebene Anzahl von Teilen teilen (jeweils 1–10; die Felder sind nur bei aktiviertem Kontrollkästchen bedienbar), auf den Flächen und im Inneren der Zelle. Linien, die mit Zellkanten zusammenfallen, werden nicht gezeichnet. Die Linien übernehmen die Kantenfarbe (**Alle Kanten** / **Jede Kante**), die halbe Kantenbreite (mindestens 1 px) und die Deckkraft 0,5 und werden unabhängig von **Zellkante anzeigen** dargestellt. Sie werden beim Export des 3D-Modells nicht berücksichtigt. <!-- 261106Cl 作者の決定 H5 -->
 
 ### Gitterebenen
 

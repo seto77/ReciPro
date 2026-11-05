@@ -68,10 +68,10 @@ Lege die Geometrie der konvergenten Sonde und des Ringdetektors fest. Jeder Wink
 
 | Parameter | Beschreibung | Standard / typisch |
 |-----------|-------------|-------------------|
-| **Conv. semi-angle α** | Halbwinkel der konvergenten Sonde (mrad). Größere Werte ergeben eine feinere Sonde und verändern den Beugungskontrast | 25 mrad (Standard); 15–25 mrad |
+| **Konv.-Halbwinkel α** | Halbwinkel der konvergenten Sonde (mrad). Größere Werte ergeben eine feinere Sonde und verändern den Beugungskontrast | 25 mrad (Standard); 15–25 mrad |
 | **Ringdetektor — Innen** | Innerer Erfassungs-Halbwinkel des Ringdetektors (mrad). Signal innerhalb dieses Winkels wird ausgeschlossen | 0 (Standard); BF: 0, HAADF: 80 |
 | **Ringdetektor — Außen** | Äußerer Erfassungs-Halbwinkel des Ringdetektors (mrad). Signal außerhalb dieses Winkels wird ausgeschlossen | 20 (Standard); BF: 5, HAADF: 250 |
-| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Effektive Größe der Elektronenquelle (pm). Wird nach der Berechnung als Gauß-Faltung auf jedes Elast.-/TDS-/EDX-Bild angewendet. Größere Werte verschmieren das Bild und verringern den Kontrast feiner Details | 20 pm (Standard) |
+| **Effektive Quellgröße (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Effektive Größe der Elektronenquelle (pm). Wird nach der Berechnung als Gauß-Faltung auf jedes Elast.-/TDS-/EDX-Bild angewendet. Größere Werte verschmieren das Bild und verringern den Kontrast feiner Details | 20 pm (Standard) |
 
 Die Detektorwinkel gelten nur für das STEM-Referenzbild (Elast. / TDS / Elast. & TDS); STEM-EDX-Karten verwenden sie nicht. Die Standardwerte gelten nur beim ersten Start; danach werden die zuletzt verwendeten Werte wiederhergestellt.
 

@@ -46,7 +46,7 @@ Legen Sie die Form und die Abtastung des Präzessionskegels fest.
 
 | Parameter | Beschreibung | Empfohlen |
 |-----------|-------------|-------------|
-| **Halbwinkel** | Halber Öffnungswinkel des Präzessionskegels (mrad; 0,1–500, Standard 50) | 10–40 mrad |
+| **Präz.-Winkel** | Präzessionswinkel, d. h. der halbe Öffnungswinkel des Präzessionskegels (mrad; 0,1–500, Standard 50) <!-- 261106Cl 仕上げ R3 D1: 欄名 Halbwinkel → Präz.-Winkel --> | 10–40 mrad |
 | **Schritt** | Anzahl der auf dem Präzessionskegel abgetasteten Parallelstrahl-Richtungen (2–1080, Standard 36). Größere Werte ergeben eine glattere Integration, erhöhen aber die Rechenzeit linear | 36–72 |
 
 ---

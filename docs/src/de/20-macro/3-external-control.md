@@ -56,7 +56,7 @@ Während ReciPro läuft, kann es über die Windows-Named-Pipe **`\\.\pipe\ReciPr
 
 Der Listener ist **standardmäßig aus**. Aktivieren Sie ihn im Hauptfenster:
 
-**Optionen → Accept external macro commands (named pipe)**
+**Optionen → Externe Makrobefehle annehmen (Named Pipe)**
 
 Die Einstellung bleibt über Sitzungen hinweg erhalten.
 

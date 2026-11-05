@@ -55,7 +55,7 @@ Die Energie- und Tiefenbereiche werden in den Schritten 1–2 automatisch festge
 
 ![SEM & Probenbedingungen](../assets/cap-de-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
-- **Energie** : Beschleunigungsspannung des einfallenden Strahls (keV).
+- **Energie** : Beschleunigungsspannung des einfallenden Strahls (keV). Der Wert wird beim nächsten Start wiederhergestellt, zusammen mit von Hand eingegebenen Energie- und Tiefenbereichen. <!-- 261106Cl 仕上げ R3 D4: FormEBSD.AcceleratingVoltageKV をレジストリに保存 -->
 - **Wellenlänge** : Elektronenwellenlänge, gekoppelt an **Energie**. **Unit** wählt Å oder nm.
 - **Probenkippung** : Probenkippwinkel (typisch −70°). Die starke Kippung bei EBSD erhöht die Ausbeute an rückgestreuten Elektronen. Eine Änderung verwirft die Monte-Carlo-Ergebnisse (die BSE-Verteilungen und ihre Gewichte; führen Sie **Simulieren** erneut aus); das Master-Muster hängt nicht von der Kippung ab und bleibt erhalten. <!-- 261106Cl 作者の決定 F17 -->
 

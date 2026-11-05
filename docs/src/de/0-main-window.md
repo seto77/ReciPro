@@ -59,7 +59,7 @@ Wenn Sie ReciPro zum ersten Mal verwenden, folgen Sie diesen Schritten:
 | Auf anfängliche Kristallliste zurücksetzen | Die mit ReciPro ausgelieferte Kristallliste neu laden |
 | Kristall aus CIF- oder AMC-Datei importieren | Einen einzelnen Kristall aus einer CIF- / AMC-Datei laden |
 | Kristallliste speichern | Die aktuelle Kristallliste speichern (in einem Dialog wählen Sie, welche Kristalle geschrieben werden) |
-| Ausgewähltes Kristall als CIF-Datei exportieren | Den ausgewählten Kristall im CIF-Format speichern |
+| Ausgewählten Kristall als CIF-Datei exportieren | Den ausgewählten Kristall im CIF-Format speichern |
 | Alle Kristalle leeren | Alle Kristalle aus der Liste entfernen |
 | Beenden | Die Anwendung schließen |
 
@@ -73,12 +73,12 @@ Wenn Sie ReciPro zum ersten Mal verwenden, folgen Sie diesen Schritten:
 | Miller-Bravais-Index (hkil) verwenden | In der gesamten Anwendung die 4-Index-Notation für trigonale/hexagonale Systeme verwenden |
 | Ionische Streufaktoren verwenden | In den dynamischen Elektronenrechnungen (Bloch-Wellen-Methode), einschließlich der Kikuchi-Profile, ionische Elektronen-Streufaktoren (Peng) für die den Atomen zugeordneten Ionen verwenden; der Monopolterm für $g \neq 0$ wird nur zu den elastischen Koeffizienten $U_g$ addiert (die TDS-Absorption und die Kikuchi-TDS-Quelle verwenden den endlichen ionischen Anteil). Ohne Häkchen werden Streufaktoren neutraler Atome verwendet. Ist die Elementarzelle nicht ladungsneutral ($\Sigma q \neq 0$), entfällt der Monopolterm und nur der endliche Anteil (abgeschirmtes Ion) wird verwendet; beim Einschalten der Option erscheint ein Hinweis |
 | MKL-Bibliothek herunterladen | Die native Intel-MKL-Bibliothek (~55 MB) herunterladen; nach der Installation wird sie automatisch für große Berechnungen verwendet |
-| Accept external macro commands (named pipe) | Auf der Named Pipe `ReciPro.Macro.v1` lauschen und von externen Programmen gesendete Makros ausführen — siehe [Externe Steuerung](20-macro/3-external-control.md) |
+| Externe Makrobefehle annehmen (Named Pipe) | Auf der Named Pipe `ReciPro.Macro.v1` lauschen und von externen Programmen gesendete Makros ausführen — siehe [Externe Steuerung](20-macro/3-external-control.md) |
 | Registrierungseinstellungen beim Beenden zurücksetzen (wirksam nach Neustart) | Einstellungen beim nächsten Neustart zurücksetzen |
 | Crystallography.Native-Bibliothek deaktivieren (Neustart erforderlich) | Auf verwalteten Code zurückfallen, falls die native (C++) Bibliothek nicht geladen werden kann |
 | Gesamtes OpenGL-Rendering deaktivieren (Neustart erforderlich) | Für ältere GPUs / Remotedesktop |
 | OpenGL-Textrendering deaktivieren (Neustart erforderlich) | Behelfslösung für Textdarstellungsprobleme auf manchen GPUs |
-| GUI-Komponenten erfassen... | Entwicklerwerkzeug zum Speichern von GUI-Screenshots |
+| (experimentell) GUI-Komponenten erfassen... | Entwicklerwerkzeug zum Speichern von GUI-Screenshots |
 | Pulverbeugungsfunktion (in Entwicklung) | Das Fenster für polykristalline (Pulver-) Beugung aktivieren |
 
 ### Hilfe
