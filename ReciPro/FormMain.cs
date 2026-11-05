@@ -119,6 +119,10 @@ public partial class FormMain : FormBase
         get => disableOpneGLToolStripMenuItem != null && disableOpneGLToolStripMenuItem.Checked;
         set => disableOpneGLToolStripMenuItem.Checked = value;
     }
+    // 261105Cl 追加: Ctrl 押下起動・環境変数 CRYSTALLOGRAPHY_DISABLE_OPENGL による「今回の起動だけ」の OpenGL 無効化。
+    //  メニューのチェック (DisableOpenGL = ユーザーが保存した設定、要再起動) には触らないので、終了時の Registry(Write) で
+    //  保存されることも、Load 末尾の再読込 Registry(Read) でチェックが戻されることもない
+    private bool disableOpenGLThisLaunch = false;
     public bool DisableTextRendering
     {
         get => toolStripMenuItemDisableTextRendering != null && toolStripMenuItemDisableTextRendering.Checked;
@@ -366,19 +370,25 @@ public partial class FormMain : FormBase
         //Option メニューの Disable OpenGL を手で外すまで復帰しなかった (この挙動はメニューにもマニュアルにも案内が無い)。
         //下の環境変数 CRYSTALLOGRAPHY_DISABLE_OPENGL も永続化しない方針なので、これで両者が揃う。
         //旧: if ((ModifierKeys & Keys.Control) == Keys.Control) { DisableOpenGL = true; Registry(Reg.Mode.Write); }
+        // 261105Cl 変更: 260801Cl の後もメニューのチェック (DisableOpenGL) を立てていたので、終了時の Registry(Write) がそれを保存していた
+        //  (レジストリに値が無い初回起動などで次回以降も無効のまま)。逆に値がある場合は Load 末尾の Registry(Read) がチェックを戻し、
+        //  3D 系ボタン (構造ビューア・回転) が無効化されなかった。メニューには触らず、今回の起動だけのフラグで扱う。
         if ((ModifierKeys & Keys.Control) == Keys.Control)//Controlキーが押されていた場合は強制的にOpenGLをDisableに。
-            DisableOpenGL = true;
+            //DisableOpenGL = true; // 261105Cl 変更前
+            disableOpenGLThisLaunch = true; // 261105Cl
         // 260612Cl 追加: CI の GUI 起動 smoke (attach-arm64-experimental.yml) 用に、環境変数でも 3D を無効化
         // できるようにする。GPU 無しの hosted runner では GL コンテキスト作成が WndProc 内で失敗して
         // ThreadExceptionDialog ("Microsoft .NET") がモーダル表示され、起動がブロックするため (run 27383602242)。
         // 変数名は GLControlAlpha の静的初期化スキップ (本丸のガード、同名変数を参照) と共通。
         // Ctrl キー強制と違い一時的な診断用なのでレジストリには保存しない
         if (Environment.GetEnvironmentVariable("CRYSTALLOGRAPHY_DISABLE_OPENGL") == "1")
-            DisableOpenGL = true;
+            //DisableOpenGL = true; // 261105Cl 変更前
+            disableOpenGLThisLaunch = true; // 261105Cl
         GLControlAlpha.DisableTextRendering = DisableTextRendering;
 
         #region ここでglControlコントロールを追加. Mac環境の対応のため。
-        if (!disableOpneGLToolStripMenuItem.Checked)
+        //if (!disableOpneGLToolStripMenuItem.Checked) // 261105Cl 変更前
+        if (!disableOpneGLToolStripMenuItem.Checked && !disableOpenGLThisLaunch) // 261105Cl
         {
             try
             {
@@ -545,7 +555,8 @@ public partial class FormMain : FormBase
 
         toolStripStatusLabel.Text = $"Startup time: {StatusBarHelper.FormatElapsed(sw.Elapsed)}";// 260520Cl 時間表記を StatusBarHelper.FormatElapsed で統一
 
-        if (disableOpneGLToolStripMenuItem.Checked)
+        //if (disableOpneGLToolStripMenuItem.Checked) // 261105Cl 変更前
+        if (disableOpneGLToolStripMenuItem.Checked || disableOpenGLThisLaunch) // 261105Cl
         {
             toolStripButtonStructureViewer.Enabled = false;
             toolStripButtonRotation.Enabled = false;

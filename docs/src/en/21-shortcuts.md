@@ -14,7 +14,7 @@ These are installed by the [main window](0-main-window.md) but stay active while
 | Shortcut | Action |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + arrow keys | Rotate the crystal one step in that direction (hold two arrows for a diagonal) |
-| Hold <kbd>CTRL</kbd> while ReciPro starts | Start with OpenGL disabled (recovery for graphics problems). This ticks **Options ▸ Disable all OpenGL rendering (requires restart)**, which is saved on exit — untick it to restore 3-D rendering |
+| Hold <kbd>CTRL</kbd> while ReciPro starts | Start with OpenGL disabled (recovery for graphics problems; this launch only, not saved) |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> (any window) | Open the (experimental) GUI-capture tool for the active window |
 
 ### Numeric input boxes
