@@ -1125,7 +1125,11 @@ public partial class FormSpotIDV2 : FormBase
                 c.GrainSize = 6;
                 c.Crystallites.SetGVector(Detector, false, checkBoxIgnoreMultipleDiffraction.Checked, false);
             }
-            else if (waveLengthControl1.Property.Source == WaveSource.Xray)
+            //else if (waveLengthControl1.Property.Source == WaveSource.Xray) // 261105Cl 変更前
+            // 261105Cl 変更 (監査 #31): 中性子の分岐が無く、SetGVector を呼ばないまま古い (別の波長・d の下限で作った) VectorOfG と未作成の Crystallites.G で探索して、
+            //   候補ができると GetSpotPosition で例外になっていた。中性子も X 線と同じく運動学的に扱い (多重回折による禁制反射は考えない)、消滅則で消える反射を除く。
+            //   ここでは強度を計算しない (Detector.WaveSource = None) ので、X 線の散乱因子と中性子の散乱長の違いは効かず、位置は波長だけで決まる
+            else if (waveLengthControl1.Property.Source is WaveSource.Xray or WaveSource.Neutron)
             {
                 c.GrainSize = 6;
                 c.Crystallites.SetGVector(Detector, false, true, false);
