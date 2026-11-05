@@ -536,12 +536,14 @@ annulaire (mrad) ; les signaux au-delà de cet angle sont exclus.
 S'applique uniquement à l'image STEM de référence (ADF / élastique / TDS), pas aux cartes STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>Taille effective de la source d'électrons (nm). Des valeurs plus grandes
-floutent la sonde STEM et réduisent le détail fin de l'image.</value>
+    <value>Taille effective de la source d'électrons : largeur à mi-hauteur (FWHM)
+de l'image gaussienne de la source sur l'échantillon (pm). Des valeurs plus
+grandes floutent la sonde STEM et réduisent le détail fin de l'image.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
-    <value>Taille effective de la source d'électrons (nm). Des valeurs plus grandes
-floutent la sonde STEM et réduisent le détail fin de l'image.</value>
+    <value>Taille effective de la source d'électrons : largeur à mi-hauteur (FWHM)
+de l'image gaussienne de la source sur l'échantillon (pm). Des valeurs plus
+grandes floutent la sonde STEM et réduisent le détail fin de l'image.</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
     <value>Demi-angle de convergence de la sonde STEM
@@ -914,7 +916,7 @@ le long de l'axe horizontal de la grille d'images en série.</value>
     <value>Calculer les cartes EDX</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>Calcule les cartes d'ionisation (EDX) pour les canaux élément/couche sélectionnés.&#xD;&#xA;L'image STEM de référence (ADF / élastique / TDS) est toujours calculée ;&#xD;&#xA;chaque canal EDX ajoute ensuite une passe d'ionisation supplémentaire.</value>
+    <value>Calcule aussi les cartes STEM-EDX de tous les canaux de rayons X caractéristiques (élément × couche)&#xD;&#xA;calculables pour ce cristal à cette tension d'accélération (liste ci-dessous).&#xD;&#xA;L'image STEM de référence (ADF / élastique / TDS) est toujours calculée ;&#xD;&#xA;chaque canal EDX ajoute ensuite une passe d'ionisation supplémentaire.</value>
   </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX commun</value>

@@ -532,12 +532,12 @@
 仅适用于 STEM 参考像 (ADF / 弹性 / TDS)，不用于 STEM-EDX 分布图。</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>有效电子源尺寸（nm）。数值越大，STEM 探针
-越模糊，图像细部越少。</value>
+    <value>有效电子源尺寸：试样上高斯光源像的半高全宽 (FWHM)，
+单位 pm。数值越大，STEM 探针越模糊，图像细部越少。</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
-    <value>有效电子源尺寸（nm）。数值越大，STEM 探针
-越模糊，图像细部越少。</value>
+    <value>有效电子源尺寸：试样上高斯光源像的半高全宽 (FWHM)，
+单位 pm。数值越大，STEM 探针越模糊，图像细部越少。</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
     <value>STEM 入射探针的会聚半角（mrad）；数值越大，
@@ -899,7 +899,7 @@ code（高速 C++/Eigen 原生代码）或 Managed code
     <value>计算 EDX 分布图</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>计算所选元素/壳层通道的电离 (EDX) 分布图。&#xD;&#xA;STEM 参考像 (ADF / 弹性 / TDS) 始终会计算；&#xD;&#xA;每个 EDX 通道会在其后额外增加一次电离计算。</value>
+    <value>计算该晶体在此加速电压下可计算的所有特征 X 射线通道（元素 × 壳层）的&#xD;&#xA;STEM-EDX 分布图（列表显示在下方）。&#xD;&#xA;STEM 参考像 (ADF / 弹性 / TDS) 始终会计算；&#xD;&#xA;每个 EDX 通道会在其后额外增加一次电离计算。</value>
   </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX 共用</value>

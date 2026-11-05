@@ -950,7 +950,8 @@ through-thickness シリーズ) を生成します。</value>
     <value>EDX マップを計算</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>選択した元素・殻チャネルのイオン化 (EDX) マップを計算します。
+    <value>この結晶・この加速電圧で計算できる特性 X 線のチャネル (元素 × 殻) の
+STEM-EDX マップをすべて計算します (一覧は下に表示)。
 STEM 参照像 (ADF / 弾性 / TDS) は常に計算され、
 EDX チャネル 1 本につきイオン化パスが 1 回追加されます。</value>
   </data>
@@ -1036,10 +1037,11 @@ STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マ�
     <value />
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
-    <value>実効光源サイズ (σs) (FWHM)</value>
+    <value>実効光源サイズ (FWHM)</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>有効電子源サイズ (nm) を設定します。大きいほど STEM
+    <value>実効的な電子源の大きさ。試料上の光源像 (Gaussian) の
+半値全幅 (FWHM) で指定します (pm)。大きいほど STEM
 プローブがぼけ、細部のコントラストが低下します。</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">

@@ -200,7 +200,8 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>Compute ionization (EDX) maps for the selected element/shell channels.
+    <value>Also compute STEM-EDX maps for every characteristic X-ray channel (element × shell)
+that can be calculated for this crystal at this accelerating voltage (listed below).
 The STEM reference image (ADF / elastic / TDS) is always computed;
 each EDX channel adds one extra ionization pass after it.</value>
   </data>
@@ -2002,8 +2003,9 @@ images in the serial through-focus series.</value>
     <value>52, 19</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>Effective electron source size (nm). Larger values
-blur the STEM probe and reduce fine image detail.</value>
+    <value>Effective electron source size: the FWHM of the Gaussian
+source image on the specimen (pm). Larger values blur the
+STEM probe and reduce fine image detail.</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.ToolTip" xml:space="preserve">
     <value>Vertical (Y) shift of the objective-aperture
@@ -8212,7 +8214,7 @@ crystal potential (Fourier coefficient Ug).</value>
     <value>nm⁻¹</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
-    <value>Effective source size (σs,  FWHM)</value>
+    <value>Effective source size (FWHM)</value>
   </data>
   <data name="checkBoxIntensityMin.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 1</value>

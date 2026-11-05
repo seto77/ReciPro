@@ -539,11 +539,13 @@ Aplica-se apenas à imagem STEM de referência (ADF / elástica / TDS); não é 
 Aplica-se apenas à imagem STEM de referência (ADF / elástica / TDS); não é usado nos mapas STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>Tamanho efetivo da fonte de elétrons (nm). Valores maiores
+    <value>Tamanho efetivo da fonte de elétrons: largura total a meia altura (FWHM)
+da imagem gaussiana da fonte sobre a amostra (pm). Valores maiores
 borram a sonda STEM e reduzem os detalhes finos da imagem.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
-    <value>Tamanho efetivo da fonte de elétrons (nm). Valores maiores
+    <value>Tamanho efetivo da fonte de elétrons: largura total a meia altura (FWHM)
+da imagem gaussiana da fonte sobre a amostra (pm). Valores maiores
 borram a sonda STEM e reduzem os detalhes finos da imagem.</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
@@ -917,7 +919,7 @@ ao longo do eixo horizontal da grade de imagens em série.</value>
     <value>Calcular mapas EDX</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>Calcula mapas de ionização (EDX) para os canais elemento/camada selecionados.&#xD;&#xA;A imagem STEM de referência (ADF / elástica / TDS) é sempre calculada;&#xD;&#xA;cada canal EDX acrescenta depois uma passagem de ionização adicional.</value>
+    <value>Calcula também mapas STEM-EDX para todos os canais de raios X característicos (elemento × camada)&#xD;&#xA;calculáveis para este cristal a esta tensão de aceleração (lista abaixo).&#xD;&#xA;A imagem STEM de referência (ADF / elástica / TDS) é sempre calculada;&#xD;&#xA;cada canal EDX acrescenta depois uma passagem de ionização adicional.</value>
   </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX comum</value>

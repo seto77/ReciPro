@@ -532,12 +532,12 @@ TDS（thermal diffuse scattering,
 僅適用於 STEM 參考影像 (ADF / 彈性 / TDS)，不用於 STEM-EDX 分布圖。</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>有效電子源尺寸 (nm)。數值越大會使 STEM
-探束模糊，並降低影像的細部。</value>
+    <value>有效電子源尺寸：試樣上高斯光源像的半高全寬 (FWHM)，
+單位 pm。數值越大會使 STEM 探束模糊，並降低影像的細部。</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
-    <value>有效電子源尺寸 (nm)。數值越大會使 STEM
-探束模糊，並降低影像的細部。</value>
+    <value>有效電子源尺寸：試樣上高斯光源像的半高全寬 (FWHM)，
+單位 pm。數值越大會使 STEM 探束模糊，並降低影像的細部。</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
     <value>STEM 入射探束的會聚半角 (mrad)；
@@ -909,7 +909,7 @@ sin(theta)/lambda (nm^-1) 表示；
     <value>計算 EDX 分布圖</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>計算所選元素/殼層通道的游離 (EDX) 分布圖。&#xD;&#xA;STEM 參考影像 (ADF / 彈性 / TDS) 一律會計算；&#xD;&#xA;每個 EDX 通道會在其後額外增加一次游離計算。</value>
+    <value>計算該晶體在此加速電壓下可計算的所有特徵 X 射線通道（元素 × 殼層）的&#xD;&#xA;STEM-EDX 分布圖（列表顯示於下方）。&#xD;&#xA;STEM 參考影像 (ADF / 彈性 / TDS) 一律會計算；&#xD;&#xA;每個 EDX 通道會在其後額外增加一次游離計算。</value>
   </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX 共用</value>

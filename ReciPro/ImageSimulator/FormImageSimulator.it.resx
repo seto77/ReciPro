@@ -521,11 +521,13 @@ anulare (mrad); i segnali oltre questo angolo sono esclusi.
 Si applica solo all'immagine STEM di riferimento (ADF / elastica / TDS), non alle mappe STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>Dimensione efficace della sorgente di elettroni (nm). Valori maggiori
+    <value>Dimensione efficace della sorgente di elettroni: larghezza a metà altezza (FWHM)
+dell'immagine gaussiana della sorgente sul campione (pm). Valori maggiori
 sfocano la sonda STEM e riducono il dettaglio fine dell'immagine.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
-    <value>Dimensione efficace della sorgente di elettroni (nm). Valori maggiori
+    <value>Dimensione efficace della sorgente di elettroni: larghezza a metà altezza (FWHM)
+dell'immagine gaussiana della sorgente sul campione (pm). Valori maggiori
 sfocano la sonda STEM e riducono il dettaglio fine dell'immagine.</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
@@ -899,7 +901,7 @@ lungo l'asse orizzontale della griglia di immagini seriali.</value>
     <value>Calcola le mappe EDX</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>Calcola le mappe di ionizzazione (EDX) per i canali elemento/guscio selezionati.&#xD;&#xA;L'immagine STEM di riferimento (ADF / elastica / TDS) viene sempre calcolata;&#xD;&#xA;ogni canale EDX aggiunge poi un ulteriore passaggio di ionizzazione.</value>
+    <value>Calcola anche le mappe STEM-EDX per tutti i canali di raggi X caratteristici (elemento × guscio)&#xD;&#xA;calcolabili per questo cristallo a questa tensione di accelerazione (elenco sotto).&#xD;&#xA;L'immagine STEM di riferimento (ADF / elastica / TDS) viene sempre calcolata;&#xD;&#xA;ogni canale EDX aggiunge poi un ulteriore passaggio di ionizzazione.</value>
   </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX comune</value>

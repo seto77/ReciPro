@@ -351,6 +351,15 @@ public partial class FormImageSimulator : FormBase
     {
         if (labelEdxSummary is null) return;
 
+        //261105Cl 追加: EDX を計算しないときは空にする (旧: 起動直後は廃止した選択 UI の文言「No channel selected」が残り、
+        //チェックを外した後は計算しないチャネルの一覧が残っていた)
+        if (checkBoxCalculateEdx is { Checked: false })
+        {
+            labelEdxSummary.Text = "";
+            RenewProbeGridLabel();
+            return;
+        }
+
         //260802Cl 変更 (作者指示): 「選択したチャネル」ではなく「これから計算する全チャネル」を並べる
         var names = AvailableEdxChannels.Select(spec => spec.ShortLabel).ToArray();
         labelEdxSummary.Text = names.Length == 0
@@ -741,6 +750,7 @@ public partial class FormImageSimulator : FormBase
         //260802Cl 追加: EDX はまだ計算結果が無いので選べない (run 完了時に RenewEdxDisplayList が有効化する)
         radioButtonSTEM_target_EDX.Enabled = false;
         checkBoxEdxCommonScale.Visible = false;
+        RenewEdxSummary();//261105Cl 追加: 要約の初期表示 (EDX を計算しないなら空、計算するならチャネルの一覧)
 
         //260802Cl 変更: 検出器角が STEM 参照像専用である旨 (§5.9.1-4) は、Load でツールチップへ実行時追記していたのをやめ、
         //11 言語 resx の numericBoxSTEM_Detector*Angle.ToolTip 本文へ直接書いた (Designer コントロールの静的な文は resx = 方式①。
