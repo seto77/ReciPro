@@ -435,7 +435,56 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
         //data = ImageProcess.GaussianBlurFast(data, width, sigma / fdsg.DetectorPixelSize / 2);//半値幅なので、ちゃんと計算しなければ // 261105Cl 変更前
         // 261105Cl 修正: GaussianBlurFast の第 3 引数は半値半幅 (HWHM, px)。sigma は Gaussian の σ なので HWHM = σ·√(2 ln 2) ≈ 1.1774σ。
         //  旧式 (σ/2) ではぼかしの σ が 0.42σ しかなく、スポットが 2.3 倍ほど細かった (σ ≥ 3 px で σ_eff ≈ 0.43σ + 打点幅)
-        data = ImageProcess.GaussianBlurFast(data, width, sigma / fdsg.DetectorPixelSize * Math.Sqrt(2 * Math.Log(2))); // 261105Cl
+        //data = ImageProcess.GaussianBlurFast(data, width, sigma / fdsg.DetectorPixelSize * Math.Sqrt(2 * Math.Log(2))); // 261105Cl // 261105Cl 変更前 (5a7a3ac)
+        // 261105Cl 変更 (作者承認): 上で置いた打点 (中心の画素から半径 range px の円内の Gaussian) 自身にも広がり σ_dot があり、ぼかしと分散が足されるので、
+        //   ぼかしの σ を σ のままにすると σ ≲ 2 px でスポットが 12〜37 % 太かった。ぼかしの分散を σ² − σ_dot² にする (σ ≤ σ_dot ならぼかさない)。
+        //   σ_dot² = 打点の、真の中心のまわりの 2 次モーメント (1 軸) を、中心の画素内の位置 16×16 点で平均した値。
+        //   ぼかしの幅は、GaussianBlurFast の離散カーネル (半幅 floor(3·hwhm) px で打ち切って正規化。hwhm < 1/3 px では 1 点 = ぼかし無し) の分散が
+        //   ちょうど σ² − σ_dot² になる hwhm を二分法で求める。名目の hwhm = σ_blur·√(2 ln2) では σ_blur ≲ 1 px でカーネルの分散が足りず、
+        //   σ = 0.75 px で 7 % 細く、大きい σ でも打ち切りで 0.2 % 細かった
+        double sigmaPx = sigma / fdsg.DetectorPixelSize, dotVar = 0;
+        const int sub = 16;
+        int subCount = 0;
+        for (int a = 0; a < sub; a++)
+            for (int b = 0; b < sub; b++)
+            {
+                double ox = (a + 0.5) / sub - 0.5, oy = (b + 0.5) / sub - 0.5, sw = 0, swx2 = 0;
+                for (int dy = -range; dy <= range; dy++)
+                    for (int dx = -range; dx <= range; dx++)
+                        if (dx * dx + dy * dy <= range2)
+                        {
+                            var w = Math.Exp(-((dx - ox) * (dx - ox) + (dy - oy) * (dy - oy)) / (2 * sigmaPx * sigmaPx));
+                            sw += w;
+                            swx2 += w * (dx - ox) * (dx - ox);
+                        }
+                if (sw > 0) { dotVar += swx2 / sw; subCount++; } // σ ≪ 1 px で打点が消える (exp が 0 になる) 位置は数えない
+            }
+        if (subCount > 0) dotVar /= subCount;
+        var blurVar = sigmaPx * sigmaPx - dotVar;
+        if (blurVar > 0)
+        {
+            // GaussianBlurFast (Crystallography/Images/ImageProcessor.cs) と同じ離散カーネルの分散 (px²)
+            static double kernelVar(double hwhm)
+            {
+                int limit = (int)(hwhm * 3) * 2 + 1, c = limit / 2;
+                double s = 0, s2 = 0;
+                for (int h = 0; h < limit; h++)
+                {
+                    var k = Math.Exp(-(h - c) * (h - c) / hwhm / hwhm * Math.Log(2));
+                    s += k;
+                    s2 += k * (h - c) * (h - c);
+                }
+                return s2 / s;
+            }
+            double lo = 0, hi = Math.Sqrt(2 * Math.Log(2) * blurVar) + 1;
+            while (kernelVar(hi) < blurVar) hi *= 2;
+            for (int it = 0; it < 50; it++)
+            {
+                var mid = (lo + hi) / 2;
+                if (kernelVar(mid) < blurVar) lo = mid; else hi = mid;
+            }
+            data = ImageProcess.GaussianBlurFast(data, width, hi);
+        }
 
         return data;
     }
