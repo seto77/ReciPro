@@ -915,4 +915,46 @@ Miller 指数 (h k l) としてラベル表示します。</value>
   <data name="toolStripMenuItemSaveMovieStereonet.Text" xml:space="preserve">
     <value>ステレオネット</value>
   </data>
+  <data name="buttonYusaModeStop.Text" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="buttonYusaModeStart.Text" xml:space="preserve">
+    <value>開始</value>
+  </data>
+  <data name="radioButtonRotationalScan.Text" xml:space="preserve">
+    <value>θ^2 + ω^2 = 一定 (回転スキャン)</value>
+  </data>
+  <data name="radioButtonZigzagScan.Text" xml:space="preserve">
+    <value>+θ &gt; +ω &gt; -θ &gt; +ω .... (ジグザグスキャン)</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>モータ速度</value>
+  </data>
+  <data name="numericBoxRySpeed.HeaderText" xml:space="preserve">
+    <value>モータ速度</value>
+  </data>
+  <data name="numericBoxRzSpeed.HeaderText" xml:space="preserve">
+    <value>モータ速度</value>
+  </data>
+  <data name="numericBoxTotalTime.HeaderText" xml:space="preserve">
+    <value>所要時間</value>
+  </data>
+  <data name="numericBoxAngularSpeed.HeaderText" xml:space="preserve">
+    <value>角速度 </value>
+  </data>
+  <data name="numericBoxRyStep.HeaderText" xml:space="preserve">
+    <value>刻み</value>
+  </data>
+  <data name="numericBoxRadialAngle.HeaderText" xml:space="preserve">
+    <value>開き角</value>
+  </data>
+  <data name="numericBoxRyOscillation.HeaderText" xml:space="preserve">
+    <value>振動 ±</value>
+  </data>
+  <data name="numericBoxRzOscillation.HeaderText" xml:space="preserve">
+    <value>振動 ±</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>傾斜 X/Y:</value>
+  </data>
 </root>

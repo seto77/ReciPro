@@ -97,7 +97,7 @@
   </data>
   <data name="labelMessage.Text" xml:space="preserve">
     <value>此控件现显示于
- "Structure Viewer" 窗口中。</value>
+ "结构查看器" 窗口中。</value>
   </data>
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>原子</value>
@@ -874,5 +874,8 @@ VESTA 风格的默认值（VESTA 是一款广泛使用的
     <value>主视图的投影宽度，单位为 nm。
 数值越小，放大倍率越大。与视图上的
 鼠标右键拖动/滚轮缩放保持同步。</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>结构查看器</value>
   </data>
 </root>

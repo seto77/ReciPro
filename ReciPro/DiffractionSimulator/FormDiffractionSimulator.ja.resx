@@ -970,7 +970,7 @@ Beam/Top/Right の方向ガイド矢印を表示します。</value>
     <value>チェックすると、回折スポットの描画色が結晶の色に設定されます</value>
   </data>
   <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
-    <value>Anomalous dispersion (f', f'')</value>
+    <value>異常分散 (f', f'')</value>
   </data>
   <data name="checkBoxAnomalousDispersion.ToolTip" xml:space="preserve">
     <value>構造因子にエネルギー依存の X 線異常分散項 (f', f'') を加える。吸収端近傍では Friedel 則が破れ、hkl と -h-k-l の間に Bijvoet 強度差が生じる。オフで従来の分散なしの結果に戻る。</value>
@@ -1726,5 +1726,116 @@ excess/deficient の微細構造が滑らかになりますが
   </data>
   <data name="colorControlKikuchiLine.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>回折シミュレータ</value>
+  </data>
+  <data name="sizeControl1.HeaderText" xml:space="preserve">
+    <value>サイズ (W×H)</value>
+  </data>
+  <data name="groupBoxOptions.Text" xml:space="preserve">
+    <value>オプション</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像を保存</value>
+  </data>
+  <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像として (PNG 形式)</value>
+  </data>
+  <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>メタファイルとして (EMF)</value>
+  </data>
+  <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>検出器領域を保存</value>
+  </data>
+  <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像として (PNG 形式)</value>
+  </data>
+  <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>メタファイルとして (EMF)</value>
+  </data>
+  <data name="saveCBEDPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>CBED ディスクを保存</value>
+  </data>
+  <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
+    <value>個別の画像として (PNG 形式)</value>
+  </data>
+  <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
+    <value>個別の画像として (TIFF 形式)</value>
+  </data>
+  <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>1 枚にまとめた画像として (PNG 形式)</value>
+  </data>
+  <data name="asCollectiveImageTiffFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>1 枚にまとめた画像として (TIFF 形式)</value>
+  </data>
+  <data name="copyImageToClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="copyAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像として</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>メタファイルとして (EMF)</value>
+  </data>
+  <data name="copyDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>検出器領域をコピー</value>
+  </data>
+  <data name="copyDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像として</value>
+  </data>
+  <data name="copyDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>メタファイルとして (EMF)</value>
+  </data>
+  <data name="copyCBEDPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>CBED ディスクをコピー</value>
+  </data>
+  <data name="copyCBEDasImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>1 枚にまとめた画像として</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>動画を保存</value>
+  </data>
+  <data name="toolStripMenuItemSaveMovieDiffractionPattern.Text" xml:space="preserve">
+    <value>回折パターン</value>
+  </data>
+  <data name="toolStripMenuItemSaveMovieReciprocalSpace.Text" xml:space="preserve">
+    <value>逆空間</value>
+  </data>
+  <data name="pageSetupToolStripMenuItem.Text" xml:space="preserve">
+    <value>プリント設定</value>
+  </data>
+  <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
+    <value>プリントプレビュー</value>
+  </data>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>プリント</value>
+  </data>
+  <data name="dynamicCompressionToolStripMenuItem.Text" xml:space="preserve">
+    <value>動的圧縮</value>
+  </data>
+  <data name="electron300KVToolStripMenuItem.Text" xml:space="preserve">
+    <value>電子線 300 kV</value>
+  </data>
+  <data name="electron200KVToolStripMenuItem.Text" xml:space="preserve">
+    <value>電子線 200 kV</value>
+  </data>
+  <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>電子線 120 keV</value>
+  </data>
+  <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>X線 30 keV</value>
+  </data>
+  <data name="xray20KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>X線 20 keV</value>
+  </data>
+  <data name="xrayMoKαToolStripMenuItem.Text" xml:space="preserve">
+    <value>X線 17.48 keV (MoKα₁)</value>
+  </data>
+  <data name="xrayCuKαToolStripMenuItem.Text" xml:space="preserve">
+    <value>X線 8.041 keV (CuKα₁)</value>
+  </data>
+  <data name="basicConceptOfBethesMethodToolStripMenuItem.Text" xml:space="preserve">
+    <value>Bethe法の基本概念</value>
   </data>
 </root>

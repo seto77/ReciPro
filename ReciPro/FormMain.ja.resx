@@ -120,10 +120,10 @@
 新規追加するには、下の″Crystal Information″パネルで結晶を新規設定し″リストへ追加″します。
 変更するには対象結晶を選択し、″Crystal Information″パネルで変更後、″選択結晶と入れ替え″します。
 削除するには対象結晶を選択し、″削除″します。
-リストに載っているすべての結晶を削除するには″全削除″します。</value>
+リストに載っているすべての結晶を削除するには″すべての結晶を削除″します。</value>
   </data>
   <data name="buttonClearAllCrystals.Text" xml:space="preserve">
-    <value>全削除</value>
+    <value>すべての結晶を削除</value>
   </data>
   <data name="buttonClearAllCrystals.ToolTip" xml:space="preserve">
     <value>リスト中のすべての結晶を削除します</value>
@@ -416,7 +416,7 @@ v2</value>
     <value>選択結晶をCIF形式で書き出し(&amp;E)</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>現在のリストを消去(&amp;C)</value>
+    <value>すべての結晶を削除(&amp;C)</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>閉じる(&amp;X)</value>
@@ -695,5 +695,24 @@ v2</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="toolStripStatusLabel.Text" xml:space="preserve">
+    <value>計算時間: </value>
+  </data>
+  <data name="toolStripButtonDiffractionPoly.Text" xml:space="preserve">
+    <value>粉末
+回折</value>
+  </data>
+  <data name="toolStripMenuItemUseMillerBravais.Text" xml:space="preserve">
+    <value>ミラー・ブラベー指数 (hkil) を使う</value>
+  </data>
+  <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
+    <value>(実験的) GUI 部品をキャプチャ</value>
+  </data>
+  <data name="powderDiffractionFunctionToolStripMenuItem.Text" xml:space="preserve">
+    <value>(実験的) 粉末回折機能</value>
+  </data>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>言語(&amp;L)</value>
   </data>
 </root>

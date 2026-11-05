@@ -97,7 +97,7 @@
   </data>
   <data name="labelMessage.Text" xml:space="preserve">
     <value>Dieses Steuerelement wird jetzt im
- Fenster "Structure Viewer" angezeigt.</value>
+ Fenster "Strukturansicht" angezeigt.</value>
   </data>
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>Atome</value>
@@ -883,5 +883,8 @@ Punkt wird in die Mitte der Ansicht gesetzt.</value>
 Kleinere Werte entsprechen einer stärkeren
 Vergrößerung. Synchronisiert mit dem Zoomen in
 der Ansicht (Ziehen mit rechter Maustaste/Mausrad).</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Strukturansicht</value>
   </data>
 </root>

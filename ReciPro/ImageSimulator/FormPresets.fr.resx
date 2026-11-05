@@ -89,7 +89,7 @@ d'image (sauf si le mode gestion est activé).</value>
     <value>Supprimer le préréglage sélectionné de la liste.</value>
   </data>
   <data name="buttonRename.ToolTip" xml:space="preserve">
-    <value>Renommer le préréglage sélectionné avec le texte de la zone Name.</value>
+    <value>Renommer le préréglage sélectionné avec le texte de la zone Nom.</value>
   </data>
   <data name="buttonReplace.ToolTip" xml:space="preserve">
     <value>Écraser le préréglage sélectionné avec le paramétrage actuel.</value>

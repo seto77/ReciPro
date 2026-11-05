@@ -1191,7 +1191,7 @@
             groupBoxPatterns.Size = new System.Drawing.Size(1001, 911);
             groupBoxPatterns.TabIndex = 129;
             groupBoxPatterns.TabStop = false;
-            groupBoxPatterns.Text = "Simulated / refference patterns";
+            groupBoxPatterns.Text = "Simulated / reference patterns"; // 261105Cl 誤字を修正 (旧 "Simulated / refference patterns")
             // 
             // groupBoxAppearance
             // 

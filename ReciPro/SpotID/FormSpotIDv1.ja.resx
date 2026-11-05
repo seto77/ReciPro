@@ -837,4 +837,16 @@ Sides and an Angle' モードでのみ有効です。</value>
   <data name="panel9.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="groupBoxTEMCondition.Text" xml:space="preserve">
+    <value>TEM 条件</value>
+  </data>
+  <data name="groupBoxPhoto1Pattern.Text" xml:space="preserve">
+    <value>パターン</value>
+  </data>
+  <data name="groupBoxPhoto2Pattern.Text" xml:space="preserve">
+    <value>パターン</value>
+  </data>
+  <data name="groupBoxPhoto3Pattern.Text" xml:space="preserve">
+    <value>パターン</value>
+  </data>
 </root>

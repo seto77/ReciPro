@@ -1193,4 +1193,62 @@ List、新しい OpenGL が必要）かを選びます。</value>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>結晶構造</value>
+  </data>
+  <data name="labelMessage.Text" xml:space="preserve">
+    <value>このコントロールは現在
+「結晶構造」ウィンドウに表示されています。</value>
+  </data>
+  <data name="labelGraphicsCard.Text" xml:space="preserve">
+    <value>グラフィックカード:  </value>
+  </data>
+  <data name="labelGraphicsDriver.Text" xml:space="preserve">
+    <value>グラフィックドライバ:  </value>
+  </data>
+  <data name="labelOpenGLversion.Text" xml:space="preserve">
+    <value>OpenGL バージョン:  </value>
+  </data>
+  <data name="toolStripButtonLikeVesta.Text" xml:space="preserve">
+    <value>VESTA 風</value>
+  </data>
+  <data name="iLikeVESTAToolStripMenuItem.Text" xml:space="preserve">
+    <value>VESTA 風にする</value>
+  </data>
+  <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
+    <value>メイン</value>
+  </data>
+  <data name="saveLegendToolStripMenuItem.Text" xml:space="preserve">
+    <value>凡例</value>
+  </data>
+  <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
+    <value>結晶軸</value>
+  </data>
+  <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
+    <value>光源方向</value>
+  </data>
+  <data name="copyMainToolStripMenuItem.Text" xml:space="preserve">
+    <value>メイン</value>
+  </data>
+  <data name="copyLegendToolStripMenuItem1.Text" xml:space="preserve">
+    <value>凡例</value>
+  </data>
+  <data name="copyAxesToolStripMenuItem.Text" xml:space="preserve">
+    <value>結晶軸</value>
+  </data>
+  <data name="copyLightToolStripMenuItem.Text" xml:space="preserve">
+    <value>光源方向</value>
+  </data>
+  <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
+    <value>CTRL+SHIFT+c:  メイン画像をクリップボードにコピー</value>
+  </data>
+  <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
+    <value>CTRL+ マウス右ダブルクリック:  透視投影 &lt;=&gt; 正射影 を交互に切り替え</value>
+  </data>
+  <data name="toolStripMenuItem2.Text" xml:space="preserve">
+    <value>CTRL+ マウス右ボタンで上下:  透視の度合いを変更</value>
+  </data>
+  <data name="sizeControl1.HeaderText" xml:space="preserve">
+    <value>サイズ (W×H)</value>
+  </data>
 </root>

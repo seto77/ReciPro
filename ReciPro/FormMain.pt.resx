@@ -481,4 +481,12 @@ acima pelo novo cristal abaixo.</value>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>Abrir o Spot ID v2</value>
   </data>
+  <data name="toolStripButtonEBSD.Text" xml:space="preserve">
+    <value>  Simulador
+  EBSD</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
+    <value>  Simulador
+  HRTEM/STEM</value>
+  </data>
 </root>

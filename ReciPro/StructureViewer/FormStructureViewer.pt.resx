@@ -97,7 +97,7 @@
   </data>
   <data name="labelMessage.Text" xml:space="preserve">
     <value>Este controle agora é exibido
- na janela "Structure Viewer".</value>
+ na janela "Visualizador de estrutura".</value>
   </data>
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>Átomos</value>
@@ -883,5 +883,8 @@ fracionária da célula unitária; o ponto escolhido
 Valores menores ampliam o zoom. Sincronizada
 com o zoom ao arrastar com o botão direito
 ou usar a roda do mouse na vista.</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Visualizador de estrutura</value>
   </data>
 </root>

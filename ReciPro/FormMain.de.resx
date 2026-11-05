@@ -385,7 +385,7 @@ fest; bei aktivierter Animation wird derselbe Wert
 als Rotationsgeschwindigkeit in Grad pro Sekunde verwendet.</value>
   </data>
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
-    <value>Öffnet den Structure Viewer (3-D-Kristallstruktur).</value>
+    <value>Öffnet die Strukturansicht (3-D-Kristallstruktur).</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
     <value>Euler-Winkel (Φ, Θ, Ψ), die die aktuelle
@@ -483,5 +483,13 @@ Kristall durch den neuen Kristall unten.</value>
   </data>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>"Spot-ID v2" öffnen</value>
+  </data>
+  <data name="toolStripButtonEBSD.Text" xml:space="preserve">
+    <value>  EBSD-
+  Simulator</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
+    <value>  HRTEM/STEM-
+  Simulator</value>
   </data>
 </root>

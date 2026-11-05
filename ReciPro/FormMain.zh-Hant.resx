@@ -479,4 +479,12 @@
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>開啟「Spot ID v2」功能</value>
   </data>
+  <data name="toolStripButtonEBSD.Text" xml:space="preserve">
+    <value>  EBSD
+  模擬器</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
+    <value>  HRTEM/STEM
+  模擬器</value>
+  </data>
 </root>

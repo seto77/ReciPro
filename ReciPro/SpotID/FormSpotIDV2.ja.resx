@@ -178,7 +178,7 @@
   </data>
   <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
     <value>現在選択しているスポットを 1 つだけリスト
-から削除します（全削除は Clear ボタン）。</value>
+から削除します（すべて消すには「全削除」ボタン）。</value>
   </data>
   <data name="buttonClearSpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -484,15 +484,51 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
     <value>ショートカットヒント</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
-    <value>Left double click : Add a spot </value>
+    <value>左ダブルクリック : スポットを追加</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>Ctrl + Left double click: Add a direct spot </value>
+    <value>Ctrl + 左ダブルクリック : 直接スポットを追加</value>
   </data>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Ctrl + Right click : Remove the spot </value>
+    <value>Ctrl + 右クリック : スポットを削除</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="Range.HeaderText" xml:space="preserve">
+    <value>範囲 (半径)</value>
+  </data>
+  <data name="A.HeaderText" xml:space="preserve">
+    <value>A (強度)</value>
+  </data>
+  <data name="Column2.HeaderText" xml:space="preserve">
+    <value>直接</value>
+  </data>
+  <data name="buttonGlobalFit.Text" xml:space="preserve">
+    <value>グローバルフィット</value>
+  </data>
+  <data name="groupBoxOptics.Text" xml:space="preserve">
+    <value>光学系</value>
+  </data>
+  <data name="AssignedSpots.HeaderText" xml:space="preserve">
+    <value>割当スポット</value>
+  </data>
+  <data name="assignedSpotsDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>割当スポット</value>
+  </data>
+  <data name="CrystalName.HeaderText" xml:space="preserve">
+    <value>結晶名</value>
+  </data>
+  <data name="doubleClickAddSpotToolStripMenuItem.Text" xml:space="preserve">
+    <value>左ドラッグ : 画像を移動</value>
+  </data>
+  <data name="toolStripMenuItem7.Text" xml:space="preserve">
+    <value>右ドラッグ : 拡大</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>右クリック : 縮小</value>
+  </data>
+  <data name="toolStripMenuItem6.Text" xml:space="preserve">
+    <value>左クリック : スポットを選択</value>
   </data>
 </root>

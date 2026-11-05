@@ -446,7 +446,7 @@
   </data>
   <data name="textBoxDefocusList.ToolTip" xml:space="preserve">
     <value>シミュレーションするデフォーカス値 (nm) のリスト。
-Start/Step/Numから自動生成され、手動編集も可能です。</value>
+「開始」「刻み」「個数」から自動生成され、手動編集も可能です。</value>
   </data>
   <data name="panelSerialDefocus.ToolTip" xml:space="preserve">
     <value />
@@ -460,15 +460,15 @@ Start/Step/Numから自動生成され、手動編集も可能です。</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>シリーズ画像モードで生成する厚さリストの開始値 (nm)。
-Step・Num と組み合わせて下の厚さリストを生成します。</value>
+「刻み」「個数」と組み合わせて下の厚さリストを生成します。</value>
   </data>
   <data name="textBoxThicknessList.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="textBoxThicknessList.ToolTip" xml:space="preserve">
     <value>シミュレートする厚さ (nm) の一覧。
-1行1値。Start/Step/Num から自動生成さ
-れますが直接編集もできます。</value>
+1行1値。「開始」「刻み」「個数」から自動
+生成されますが直接編集もできます。</value>
   </data>
   <data name="panelSerialThickness.ToolTip" xml:space="preserve">
     <value />
@@ -1484,5 +1484,29 @@ Managed code(.NET)。通常は Native が高速です。</value>
   </data>
   <data name="checkBoxEdxLineSeries.ToolTip" xml:space="preserve">
     <value>特性 X 線の線の系列 Kα・Kβ・Lα・Lβ・Mα のマップも計算します&#xD;&#xA;(入射電子 1 個あたりに発生する X 線の光子数。検出の前)。&#xD;&#xA;各系列は副殻のイオン化マップに、蛍光収率・Coster–Kronig と放射の連鎖・&#xD;&#xA;線の分岐比 (xraylib 4.2.1) を掛けて組みます。&#xD;&#xA;Auger の連鎖は含みません (Mα は約 5 % 小さめ)。&#xD;&#xA;系列 1 本につきイオン化パスが 1 回追加されます。</value>
+  </data>
+  <data name="sizeControl1.HeaderText" xml:space="preserve">
+    <value>サイズ (W×H)</value>
+  </data>
+  <data name="numericBoxHRTEM_ObjAperX.HeaderText" xml:space="preserve">
+    <value>シフト  X</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>開始</value>
+  </data>
+  <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
+    <value>刻み</value>
+  </data>
+  <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
+    <value>個数</value>
+  </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>開始</value>
+  </data>
+  <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
+    <value>刻み</value>
+  </data>
+  <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
+    <value>個数</value>
   </data>
 </root>

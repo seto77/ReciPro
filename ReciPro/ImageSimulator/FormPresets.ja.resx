@@ -137,7 +137,7 @@
     <value>リストで選択中のプリセットを削除します。</value>
   </data>
   <data name="buttonRename.ToolTip" xml:space="preserve">
-    <value>選択中のプリセットを Name 欄の文字列に名前変更します。</value>
+    <value>選択中のプリセットを「名前」欄の文字列に名前変更します。</value>
   </data>
   <data name="buttonReplace.ToolTip" xml:space="preserve">
     <value>選択中のプリセットを現在の設定で上書きします。</value>

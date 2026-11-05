@@ -484,4 +484,12 @@ STEM — сканирующая просвечивающая электронн�
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>Открыть «Spot ID v2»</value>
   </data>
+  <data name="toolStripButtonEBSD.Text" xml:space="preserve">
+    <value>  Симулятор
+  EBSD</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
+    <value>  Симулятор
+  HRTEM/STEM</value>
+  </data>
 </root>

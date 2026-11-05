@@ -97,7 +97,7 @@
   </data>
   <data name="labelMessage.Text" xml:space="preserve">
     <value>이 컨트롤은 이제
- "Structure Viewer" 창에 표시됩니다.</value>
+ "구조 뷰어" 창에 표시됩니다.</value>
   </data>
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>원자</value>
@@ -881,5 +881,8 @@
     <value>투영된 메인 뷰의 너비를 nm 단위로 설정합니다.
 값이 작을수록 확대됩니다. 뷰에서의 마우스
 오른쪽 드래그/휠 확대·축소와 동기화됩니다.</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>구조 뷰어</value>
   </data>
 </root>

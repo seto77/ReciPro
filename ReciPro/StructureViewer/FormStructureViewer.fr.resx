@@ -97,7 +97,7 @@
   </data>
   <data name="labelMessage.Text" xml:space="preserve">
     <value>Ce contrôle est maintenant affiché
- dans la fenêtre « Structure Viewer ».</value>
+ dans la fenêtre « Visualiseur de structure ».</value>
   </data>
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>Atomes</value>
@@ -868,5 +868,8 @@ choisi est placé au centre de la vue.</value>
 Des valeurs plus petites correspondent à un zoom avant.
 Synchronisée avec le zoom par glisser du bouton droit
 ou à la molette sur la vue.</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Visualiseur de structure</value>
   </data>
 </root>

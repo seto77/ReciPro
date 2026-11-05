@@ -484,4 +484,12 @@ EBSD(전자 후방산란 회절) 시뮬레이터를
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>Spot ID v2 열기</value>
   </data>
+  <data name="toolStripButtonEBSD.Text" xml:space="preserve">
+    <value>  EBSD
+  시뮬레이터</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
+    <value>  HRTEM/STEM
+  시뮬레이터</value>
+  </data>
 </root>

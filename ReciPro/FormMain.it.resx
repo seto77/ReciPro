@@ -475,4 +475,15 @@ sopra con il nuovo cristallo sottostante.</value>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>Apri Spot ID v2</value>
   </data>
+  <data name="toolStripButtonEBSD.Text" xml:space="preserve">
+    <value>  Simulatore
+  EBSD</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
+    <value>  Simulatore
+  HRTEM/STEM</value>
+  </data>
+  <data name="toolStripButtonStereonet.Text" xml:space="preserve">
+    <value>  Stereogramma</value>
+  </data>
 </root>
