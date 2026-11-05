@@ -266,7 +266,9 @@
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
     <value>운동학적으로는 금지되지만 다중(동역학) 회절로
 나타날 수 있는 반사를 계산 패턴에서
-제외합니다.</value>
+제외합니다.
+X선과 중성자에서는 항상 무시합니다
+(운동학적으로 취급).</value>
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
     <value>두께/방위 정밀화 시 입사빔 방향을

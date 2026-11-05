@@ -113,6 +113,9 @@ public partial class FormSpotIDV2 : FormBase
         base.OnVisibleChanged(e);
         if (!Visible && !Disposing && !IsDisposed && checkBoxDetailsOfSpot.Checked && FormSpotDetails is { IsDisposed: false })
             checkBoxDetailsOfSpot.Checked = false; // → checkBoxDetailsOfSpot_CheckedChanged が FormSpotDetails.Visible = false にする
+        // 261105Cl 追加 (監査 I10): 隠れている間は主窓の結晶の変更で SetCrystal が呼ばれないので、開いたときに Debye リングを今の結晶で置き直す
+        if (Visible && checkBoxShowDebyeRing.Checked)
+            SetCrystal();
     }
 
     #endregion ロード, クローズ関連
@@ -279,6 +282,8 @@ public partial class FormSpotIDV2 : FormBase
             dataSet.DataTableSpot.AreaDetector.Resolution = PixelSize; // 261105Cl 字下げ
         }// 261105Cl
         dataSet.DataTableSpot.ResetDspacing();
+        if (checkBoxShowDebyeRing.Checked) // 261105Cl 追加 (監査 I10): 校正が変わったら Debye リングの半径を計算し直す (面の一覧は作り直さない)
+            SetCrystal(); // 261105Cl 追加
     }
 
     //private void NumericBoxCameraLength_ValueChanged(object sender, EventArgs e) // 261105Cl 変更前
@@ -852,6 +857,7 @@ public partial class FormSpotIDV2 : FormBase
                     scalablePictureBoxAdvanced.Symbols.Add(new ScalablePictureBox.Symbol("", direct, 50 * i, Color.Yellow) { Tag = tagScale });
             }
         }
+        setDebyeRings(); // 261105Cl 追加 (監査 I10): 直接スポットの位置・校正 (ResetDspacing で d が書き換わる) が変わったら、Debye リングもガイド円と同じく置き直す
 
         scalablePictureBoxAdvanced.Refresh();
         if (FormSpotDetails != null && FormSpotDetails.Visible)
@@ -1753,23 +1759,112 @@ public partial class FormSpotIDV2 : FormBase
 
     private void radioButtonSingleGrain_CheckedChanged(object sender, EventArgs e) => numericBoxMaxGrainNum.Enabled = radioButtonMultiGrain.Checked;
 
+    /// <summary>261105Cl 追加 (監査 I4): 電子線のときの「禁制反射を無視」のチェックの状態。X 線・中性子では、同定は運動学的に扱うので
+    /// チェックによらず常に禁制反射を除く (identifySpotsCore)。そのときはチェックを付けて無効 (灰色) にし、ここに覚えた状態へ電子線で戻す</summary>
+    private bool ignoreProhibitedForElectron;
+
+    /// <summary>261105Cl 追加 (監査 I4): 「禁制反射を無視」を電子線以外のためにチェック済みの灰色に固定しているか
+    /// (Control.Enabled は親が無効のときも false を返すので、状態はこちらで持つ)</summary>
+    private bool ignoreProhibitedFixed;
+
+    /// <summary>261105Cl 追加 (監査 I4): 線源が替わったとき、「禁制反射を無視」を電子線以外ではチェック済みの灰色にし、電子線に戻したら元の状態に戻す</summary>
+    private void WaveLengthControl1_WaveSourceChanged(object sender, EventArgs e)
+    {
+        var fix = waveLengthControl1.WaveSource != WaveSource.Electron;
+        if (fix == ignoreProhibitedFixed) return; // 状態は変わらない (線源のラジオボタンの切り替えでは 2 回呼ばれる)
+        ignoreProhibitedFixed = fix;
+        if (fix)
+        {
+            ignoreProhibitedForElectron = checkBoxIgnoreMultipleDiffraction.Checked;
+            checkBoxIgnoreMultipleDiffraction.Checked = true;
+            checkBoxIgnoreMultipleDiffraction.Enabled = false;
+        }
+        else
+        {
+            checkBoxIgnoreMultipleDiffraction.Enabled = true;
+            checkBoxIgnoreMultipleDiffraction.Checked = ignoreProhibitedForElectron;
+        }
+    }
+
     private void checkBoxShowDebyeRing_CheckedChanged(object sender, EventArgs e)
     {
         SetCrystal();
-        for (int i = 0; i < scalablePictureBoxAdvanced.Symbols.Count; i++)
-            //if (scalablePictureBoxAdvanced.Symbols[i].Shape == ScalablePictureBox.SymbolShape.Circle) // 261105Cl 変更前
-            // 261105Cl 変更 (監査 I10): ガイド円 (Guide circles, tagScale) も同じ Circle の記号なので、このチェックを外すとガイド円まで消えていた。
-            //  Debye リングの描画 (SetCrystal の本体) は以前から無効なので、ガイド円以外の円 (= Debye リング) だけを対象にする
-            if (scalablePictureBoxAdvanced.Symbols[i].Shape == ScalablePictureBox.SymbolShape.Circle && scalablePictureBoxAdvanced.Symbols[i].Tag != tagScale) // 261105Cl
-                scalablePictureBoxAdvanced.Symbols[i].SymbolVisible = checkBoxShowDebyeRing.Checked;
-        scalablePictureBoxAdvanced.Refresh();
+        // 261105Cl 変更 (監査 I10 の決定: Debye リングの描画を戻す): リングは SetCrystal (setDebyeRings) がチェックに従って置き直すので、表示の切り替えは要らない
+        //for (int i = 0; i < scalablePictureBoxAdvanced.Symbols.Count; i++) // 261105Cl 変更前 (5 行)
+        //    //if (scalablePictureBoxAdvanced.Symbols[i].Shape == ScalablePictureBox.SymbolShape.Circle) // 261105Cl 変更前
+        //    // 261105Cl 変更 (監査 I10): ガイド円 (Guide circles, tagScale) も同じ Circle の記号なので、このチェックを外すとガイド円まで消えていた。
+        //    //  Debye リングの描画 (SetCrystal の本体) は以前から無効なので、ガイド円以外の円 (= Debye リング) だけを対象にする
+        //    if (scalablePictureBoxAdvanced.Symbols[i].Shape == ScalablePictureBox.SymbolShape.Circle && scalablePictureBoxAdvanced.Symbols[i].Tag != tagScale) // 261105Cl
+        //        scalablePictureBoxAdvanced.Symbols[i].SymbolVisible = checkBoxShowDebyeRing.Checked;
+        //scalablePictureBoxAdvanced.Refresh(); // 261105Cl 変更前 (SetCrystal の中へ)
     }
 
+    /// <summary>主窓の結晶 (選択) が替わったときに FormMain から呼ばれる。261105Cl 変更 (監査 I10): Debye リングを置き直して描き直す</summary>
     internal void SetCrystal()
     {
-        if (scalablePictureBoxAdvanced.PseudoBitmap == null || scalablePictureBoxAdvanced.PseudoBitmap.Width == 0)
-            return;
+        //if (scalablePictureBoxAdvanced.PseudoBitmap == null || scalablePictureBoxAdvanced.PseudoBitmap.Width == 0) // 261105Cl 変更前 (画像の有無は setDebyeRings の中で見る)
+        //    return;
         //260718Cl: 全体がコメントアウトされていた Debye リング描画の旧実装を削除 (履歴は git 参照)
+        setDebyeRings(); // 261105Cl 追加
+        scalablePictureBoxAdvanced.Refresh(); // 261105Cl 追加
+    }
+
+    /// <summary>261105Cl 追加 (監査 I10): Debye リングの記号の Tag</summary>
+    private readonly object tagDebyeRing = "DebyeRing";
+
+    /// <summary>261105Cl 追加 (監査 I10): Debye リングの色 (主窓で選んだ結晶の順)。ガイド円 (黄)・観測スポット (水色・桃)・計算スポット (緑) と区別できる色</summary>
+    private static readonly Color[] debyeRingColors = [Color.Orange, Color.Magenta, Color.Cyan, Color.Red, Color.White, Color.Lime];
+
+    /// <summary>261105Cl 追加 (監査 I10): 結晶ごとの面間隔の一覧 (Debye リングの元)。面の一覧の生成は重いので、格子定数・空間群 (Key) が変わらず、
+    /// 一覧を作った d の下限 (DMin) より小さい d が要らない限り作り直さない (校正や直接スポットが変わっても、半径の計算だけをやり直す)。
+    /// 鍵は主窓の結晶リストの結晶オブジェクト。Crystal の Equals・GetHashCode は格子定数などの内容で比べる (格子定数を変えるとハッシュが変わる) ので、
+    /// 参照の同一性で引く。D は d の大きい順</summary>
+    private readonly Dictionary<Crystal, (string Key, double DMin, double[] D)> debyeRingCache = new(ReferenceEqualityComparer.Instance);
+
+    /// <summary>261105Cl 追加 (監査 I10): 主窓の結晶リストで選んだ結晶 (複数なら各結晶) の Debye リングを、今の校正 (波長・カメラ長・ピクセルサイズ) と
+    /// 直接スポットの位置で記号として置く (描画 = Refresh は呼び出し側)。チェックが無い・画像や直接スポットが無いときはリングを消すだけ。
+    /// 結晶オブジェクトは書き換えない: 旧実装 (コメントアウトの後 260718Cl に削除) は FormMain.Crystal.SetPlanes で主窓の結晶の面の一覧 (Plane) を
+    /// 書き換えていたので、ここでは格子定数と空間群だけを写した一時的な結晶で面の一覧を作る</summary>
+    private void setDebyeRings()
+    {
+        scalablePictureBoxAdvanced.Symbols?.RemoveAll(s => s.Tag == tagDebyeRing);
+        var p = scalablePictureBoxAdvanced.PseudoBitmap;
+        if (!checkBoxShowDebyeRing.Checked || FormMain == null || scalablePictureBoxAdvanced.Symbols == null || p == null || p.Width <= 0 || p.Height <= 0)
+            return;
+        var direct = DirectSpot;
+        double waveLength = WaveLength, cameraLength = CameraLength, pixelSize = PixelSize;
+        if (direct.IsNaN || !(waveLength > 0) || !(cameraLength > 0) || !(pixelSize > 0))
+            return;
+
+        // 直接スポットから画像の四隅のうち最も遠い所までのリングを置く (それより小さい d のリングは画像に入らない。旧実装と同じ下限)
+        var maxR = new[] { new PointD(0, 0), new PointD(p.Width, 0), new PointD(0, p.Height), new PointD(p.Width, p.Height) }.Max(corner => (corner - direct).Length);
+        var dMin = waveLength / 2 / Math.Sin(Math.Atan(maxR * pixelSize / cameraLength) / 2);
+
+        var crystals = FormMain.listBox.SelectedItems.Cast<Crystal>().ToList();
+        foreach (var c in debyeRingCache.Keys.Where(c => !crystals.Any(s => ReferenceEquals(s, c))).ToList())
+            debyeRingCache.Remove(c); // 選択から外れた結晶の一覧は捨てる
+        for (int j = 0; j < crystals.Count; j++)
+        {
+            var c = crystals[j];
+            var key = $"{c.A} {c.B} {c.C} {c.Alpha} {c.Beta} {c.Gamma} {c.SymmetrySeriesNumber}";
+            if (!debyeRingCache.TryGetValue(c, out var cache) || cache.Key != key || cache.DMin > dMin)
+            {
+                var temp = new Crystal((c.A, c.B, c.C, c.Alpha, c.Beta, c.Gamma), c.SymmetrySeriesNumber, c.Name, Color.Black);
+                // 旧実装と同じ条件: 等価な面・消滅則で消える面・面間隔のまったく同じ面を除き、d の差が 0.0001 nm 以下の面をまとめる
+                temp.SetPlanes(double.MaxValue, dMin, true, true, true, true, HorizontalAxis.d, 0.0001, 0);
+                debyeRingCache[c] = cache = (key, dMin, temp.Plane.Select(plane => plane.d).ToArray());
+            }
+            var color = debyeRingColors[j % debyeRingColors.Length];
+            var lastRadius = double.NegativeInfinity;
+            foreach (var d in cache.D) // d の大きい順 = 半径の小さい順
+            {
+                if (d < dMin) break;
+                var radius = cameraLength * Math.Tan(2 * Math.Asin(waveLength / 2 / d)) / pixelSize; // 旧実装と同じ式 (ピクセル単位)
+                if (radius - lastRadius < 1) continue; // 1 ピクセル未満で隣り合うリングは描き分けられないので間引く (描画の負担を抑える)
+                scalablePictureBoxAdvanced.Symbols.Add(new ScalablePictureBox.Symbol(c.Name, direct, radius, color) { Tag = tagDebyeRing });
+                lastRadius = radius;
+            }
+        }
     }
 
     private void checkBoxDetailsOfSpot_CheckedChanged(object sender, EventArgs e) => FormSpotDetails.Visible = checkBoxDetailsOfSpot.Checked;
@@ -2098,8 +2193,14 @@ public partial class FormSpotIDV2 : FormBase
     /// <summary>検出するスポットの最大個数。</summary>
     public int MaxNumberOfSpots { get => numericBoxNumberOfSpots.ValueInteger; set => numericBoxNumberOfSpots.Value = value; }
 
-    /// <summary>多重回折で現れる消滅則違反の反射を無視するかどうか。</summary>
-    public bool IgnoreProhibitedReflections { get => checkBoxIgnoreMultipleDiffraction.Checked; set => checkBoxIgnoreMultipleDiffraction.Checked = value; }
+    /// <summary>多重回折で現れる消滅則違反の反射を無視するかどうか。
+    /// 261105Cl 追記 (監査 I4): X 線・中性子では常に無視するので true を返し、そのときに設定した値は電子線に戻したときの状態として覚える。</summary>
+    //public bool IgnoreProhibitedReflections { get => checkBoxIgnoreMultipleDiffraction.Checked; set => checkBoxIgnoreMultipleDiffraction.Checked = value; } // 261105Cl 変更前
+    public bool IgnoreProhibitedReflections // 261105Cl 変更 (監査 I4)
+    {
+        get => checkBoxIgnoreMultipleDiffraction.Checked;
+        set { if (ignoreProhibitedFixed) ignoreProhibitedForElectron = value; else checkBoxIgnoreMultipleDiffraction.Checked = value; }
+    }
 
     /// <summary>複数グレインを探索するかどうか。false なら単一グレイン。</summary>
     public bool MultiGrain

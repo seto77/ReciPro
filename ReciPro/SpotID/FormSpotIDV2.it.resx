@@ -260,7 +260,9 @@ e l'intervallo di adattamento nella casella a destra.</value>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
     <value>Ignora le riflessioni cinematicamente proibite che
 possono comparire per diffrazione multipla (dinamica),
-escludendole dal pattern calcolato.</value>
+escludendole dal pattern calcolato.
+Con raggi X e neutroni vengono sempre ignorate
+(trattamento cinematico).</value>
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
     <value>Semi-intervallo angolare (il semi-angolo di convergenza,

@@ -263,7 +263,9 @@ y el intervalo de ajuste en la casilla de la derecha.</value>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
     <value>Ignora las reflexiones cinemáticamente prohibidas que
 pueden aparecer por difracción múltiple (dinámica),
-excluyéndolas del patrón calculado.</value>
+excluyéndolas del patrón calculado.
+Con rayos X y neutrones se ignoran siempre
+(tratamiento cinemático).</value>
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
     <value>Semirango angular (el semiángulo de convergencia,

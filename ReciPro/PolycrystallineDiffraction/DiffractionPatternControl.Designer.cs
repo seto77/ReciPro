@@ -1078,6 +1078,10 @@
             // checkBoxFilmBlur
             // 
             checkBoxFilmBlur.AutoSize = true;
+            // 261105Cl 追加 (監査 I13): このチェックはどこからも読まれず、ぼかしは右の数値の欄 (FilmBlur) だけで常に掛かるので、チェック済みの灰色に
+            checkBoxFilmBlur.Checked = true; // 261105Cl 追加
+            checkBoxFilmBlur.CheckState = System.Windows.Forms.CheckState.Checked; // 261105Cl 追加
+            checkBoxFilmBlur.Enabled = false; // 261105Cl 追加
             checkBoxFilmBlur.Font = new System.Drawing.Font("Tahoma", 9F);
             checkBoxFilmBlur.Location = new System.Drawing.Point(17, 190);
             checkBoxFilmBlur.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -1139,6 +1143,7 @@
             // checkBoxMaskDiffractionPeaks
             // 
             checkBoxMaskDiffractionPeaks.AutoSize = true;
+            checkBoxMaskDiffractionPeaks.Enabled = false; // 261105Cl 追加 (監査 I17): 回折ピークでのマスクは作られず (面指数の一覧は空、Select area around the peaks は何もしない)、入れても他のマスクを外すだけなので灰色に
             checkBoxMaskDiffractionPeaks.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             checkBoxMaskDiffractionPeaks.Location = new System.Drawing.Point(9, 208);
             checkBoxMaskDiffractionPeaks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1183,6 +1188,7 @@
             // checkedListBoxPlaneList
             // 
             checkedListBoxPlaneList.ColumnWidth = 70;
+            checkedListBoxPlaneList.Enabled = false; // 261105Cl 追加 (監査 I17): 中身を入れる処理 (SetPlaneIndex の本体) がコメントアウトされていて常に空なので灰色に
             checkedListBoxPlaneList.FormattingEnabled = true;
             checkedListBoxPlaneList.HorizontalExtent = 40;
             checkedListBoxPlaneList.HorizontalScrollbar = true;
@@ -1195,6 +1201,7 @@
             // 
             // buttonCheckAllIndices
             // 
+            buttonCheckAllIndices.Enabled = false; // 261105Cl 追加 (監査 I17): 対象の面指数の一覧が常に空なので灰色に
             buttonCheckAllIndices.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             buttonCheckAllIndices.Location = new System.Drawing.Point(63, 23);
             buttonCheckAllIndices.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
@@ -1208,6 +1215,7 @@
             // 
             // buttonUnmaskSelectedPeaks
             // 
+            buttonUnmaskSelectedPeaks.Enabled = false; // 261105Cl 追加 (監査 I17): 押しても何もしない (buttonUnmaskSelectedPeaks_Click が空) ので灰色に
             buttonUnmaskSelectedPeaks.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             buttonUnmaskSelectedPeaks.Location = new System.Drawing.Point(11, 154);
             buttonUnmaskSelectedPeaks.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
@@ -1221,6 +1229,7 @@
             // 
             // buttonUncheckAllIndices
             // 
+            buttonUncheckAllIndices.Enabled = false; // 261105Cl 追加 (監査 I17): 対象の面指数の一覧が常に空なので灰色に
             buttonUncheckAllIndices.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             buttonUncheckAllIndices.Location = new System.Drawing.Point(141, 23);
             buttonUncheckAllIndices.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
@@ -1382,6 +1391,7 @@
             // 
             // textBoxDiffractionInformation
             // 
+            textBoxDiffractionInformation.Enabled = false; // 261105Cl 追加 (監査 I17): 書き込む処理 (DiffractionInformation) の本体が空で、常に空欄なので灰色に
             textBoxDiffractionInformation.Location = new System.Drawing.Point(0, 0);
             textBoxDiffractionInformation.Multiline = true;
             textBoxDiffractionInformation.Name = "textBoxDiffractionInformation";

@@ -263,7 +263,9 @@ e o intervalo de ajuste na caixa à direita.</value>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
     <value>Ignora reflexões cinematicamente proibidas que
 podem surgir por difração múltipla (dinâmica),
-excluindo-as do padrão calculado.</value>
+excluindo-as do padrão calculado.
+Com raios X e nêutrons, são sempre ignoradas
+(tratamento cinemático).</value>
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
     <value>Semi-amplitude angular (o semiângulo de convergência,

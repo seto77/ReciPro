@@ -266,7 +266,9 @@
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
     <value>排除那些在運動學上禁制、但可經由多重
 （動力學）繞射出現的反射，使其不計入
-計算圖樣中。</value>
+計算圖樣中。
+X 射線與中子一律忽略這些反射
+（以運動學處理）。</value>
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
     <value>在厚度／方位精修期間搜尋入射束方向時所用的

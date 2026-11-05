@@ -266,7 +266,9 @@ und den Anpassungsbereich im Feld rechts an.</value>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
     <value>Ignoriert kinematisch verbotene Reflexe, die durch
 Mehrfach- (dynamische) Beugung auftreten können,
-und schließt sie aus dem berechneten Bild aus.</value>
+und schließt sie aus dem berechneten Bild aus.
+Bei Röntgenstrahlen und Neutronen werden sie immer
+ignoriert (kinematische Behandlung).</value>
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
     <value>Winkel-Halbbereich (der Halbkonvergenzwinkel,

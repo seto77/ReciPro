@@ -1730,7 +1730,10 @@ public partial class DiffractionPatternControl : UserControlBase
 
     #endregion
 
-    public void ContolEnabled(bool flag) => groupBoxBackground.Enabled = groupBoxGeometry.Enabled = checkBoxInitialBackground.Enabled = flag;
+    //public void ContolEnabled(bool flag) => groupBoxBackground.Enabled = groupBoxGeometry.Enabled = checkBoxInitialBackground.Enabled = flag; // 261105Cl 変更前
+    // 261105Cl 変更 (監査 I13): 検出器の傾き (groupBoxGeometry の φ・τ) は計算のどこにも使われない (Rotation を読む所が無い) ので、Designer の Enabled = false のまま灰色にしておく。
+    //  旧は方位探索の後 (ContolEnabled(true)) に有効になっていた
+    public void ContolEnabled(bool flag) => groupBoxBackground.Enabled = checkBoxInitialBackground.Enabled = flag;
 
     private void numericBoxCenterX_ValueChanged(object sender, EventArgs e) => center = new PointD(numericBoxCenterX.Value, numericBoxCenterY.Value);
 

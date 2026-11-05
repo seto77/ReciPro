@@ -288,6 +288,7 @@
             // 
             buttonLoadSetting.AutoSize = true;
             buttonLoadSetting.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonLoadSetting.Enabled = false; // 261105Cl 追加 (監査 I17): 押しても何もしない (buttonLoadSetting_Click が空) ので灰色に
             buttonLoadSetting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             buttonLoadSetting.Location = new System.Drawing.Point(291, 21);
             buttonLoadSetting.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
@@ -600,6 +601,7 @@
             // checkBoxRefineConvergence
             // 
             checkBoxRefineConvergence.AutoSize = true;
+            checkBoxRefineConvergence.Enabled = false; // 261105Cl 追加 (監査 I17): どこからも読まれず、収束角はフィットに含まれないので灰色に
             checkBoxRefineConvergence.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             checkBoxRefineConvergence.Location = new System.Drawing.Point(8, 62);
             checkBoxRefineConvergence.Margin = new System.Windows.Forms.Padding(4);
@@ -613,6 +615,7 @@
             // checkBoxRefineStress
             // 
             checkBoxRefineStress.AutoSize = true;
+            checkBoxRefineStress.Enabled = false; // 261105Cl 追加 (監査 I17): 読む行 (setting.RefineStress = ...) がコメントアウトされていて、応力はフィットに含まれないので灰色に
             checkBoxRefineStress.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             checkBoxRefineStress.Location = new System.Drawing.Point(8, 161);
             checkBoxRefineStress.Margin = new System.Windows.Forms.Padding(4);
@@ -773,6 +776,7 @@
             // 
             // buttonSearchUnrelatedOrientations
             // 
+            buttonSearchUnrelatedOrientations.Enabled = false; // 261105Cl 追加 (監査 I17): 押しても何もしない (buttonSearchUnrelatedOrientations_Click が空) ので灰色に
             buttonSearchUnrelatedOrientations.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             buttonSearchUnrelatedOrientations.Location = new System.Drawing.Point(5, 32);
             buttonSearchUnrelatedOrientations.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
@@ -813,6 +817,7 @@
             groupBoxGonioScan.Controls.Add(checkBox2);
             groupBoxGonioScan.Controls.Add(checkBox3);
             groupBoxGonioScan.Controls.Add(label58);
+            groupBoxGonioScan.Enabled = false; // 261105Cl 追加 (監査 I17): 画面外 (y = 1026) にあり、走査の設定 (YusaGonio) は DiffractionPatternControl.Simulate が受け取っても使わないので灰色に
             groupBoxGonioScan.Location = new System.Drawing.Point(6, 1026);
             groupBoxGonioScan.Margin = new System.Windows.Forms.Padding(4);
             groupBoxGonioScan.Name = "groupBoxGonioScan";
@@ -1436,7 +1441,8 @@
             Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             Name = "FormPolycrystallineDiffractionSimulator";
-            Text = "Powder Diffraction Simulator";
+            //Text = "Powder Diffraction Simulator"; // 261105Cl 変更前
+            Text = "Powder Diffraction Simulator (experimental)"; // 261105Cl 変更 (監査 I13・I17・I25): 実験的な機能と明記。他の 10 言語は LocalizationData.cs の "this"
             FormClosing += new System.Windows.Forms.FormClosingEventHandler(FormPolycrystallineDiffractionSimulator_FormClosing);
             Load += new System.EventHandler(FormPolycrystallineDiffractionSimulator_Load);
             VisibleChanged += new System.EventHandler(FormPolycrystallineDiffractionSimulator_VisibleChanged);

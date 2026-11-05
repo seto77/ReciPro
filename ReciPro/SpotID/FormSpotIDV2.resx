@@ -2300,7 +2300,9 @@ candidate reflections (0.1–10%).</value>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
     <value>Ignore kinematically forbidden reflections that
 can appear via multiple (dynamical) diffraction,
-excluding them from the calculated pattern.</value>
+excluding them from the calculated pattern.
+With X-rays and neutrons they are always ignored
+(kinematical treatment).</value>
   </data>
   <data name="&gt;&gt;checkBoxIgnoreMultipleDiffraction.Name" xml:space="preserve">
     <value>checkBoxIgnoreMultipleDiffraction</value>

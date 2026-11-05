@@ -339,7 +339,7 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.Text" xml:space="preserve">
-    <value>試料厚みと方位の最適化 (電子回折のみ)</value>
+    <value>試料厚みと方位の最適化 (制限視野電子回折のみ)</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
     <value>選択した結晶粒について、観測スポット強度を
@@ -382,13 +382,14 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
     <value>運動学的には禁制だが多重（動力学）回折で出現し
-うる反射を、計算パターンから除外します。</value>
+うる反射を、計算パターンから除外します。
+X 線・中性子では常に無視します（運動学的に扱うため）。</value>
   </data>
   <data name="radioButtonSingleGrain.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
-    <value>単一粒子として</value>
+    <value>単一の結晶粒として</value>
   </data>
   <data name="radioButtonSingleGrain.ToolTip" xml:space="preserve">
     <value>単一結晶粒の方位を探索</value>
@@ -397,13 +398,13 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="radioButtonMultiGrain.Text" xml:space="preserve">
-    <value>複数粒子として</value>
+    <value>複数の結晶粒として</value>
   </data>
   <data name="radioButtonMultiGrain.ToolTip" xml:space="preserve">
     <value>複数結晶粒の方位を探索</value>
   </data>
   <data name="numericBoxMaxGrainNum.HeaderText" xml:space="preserve">
-    <value>最大粒子数</value>
+    <value>最大結晶粒数</value>
   </data>
   <data name="numericBoxMaxGrainNum.ToolTip" xml:space="preserve">
     <value>探索する結晶粒方位の最大数</value>
