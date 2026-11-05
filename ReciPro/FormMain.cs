@@ -1647,8 +1647,31 @@ public partial class FormMain : FormBase
         }
 
         var list = ConvertCrystalData.ConvertToCrystalList(fileName);
-        if (list == null)
+        //if (list == null) // 261105Cl 変更前 (2 行)
+        //    return;
+        // 261105Cl 変更 (監査 A21): 1 つも読めなければ、選ぶダイアログ (空の一覧) を出さずに知らせる (ダイアログを出す呼び出し = メニューとドロップのときだけ。
+        // 起動時の default.xml・マクロは黙って戻る。以前も結晶が 0 個なら何もしなかった)
+        if (list == null || list.Length == 0)
+        {
+            if (showSelectionDialog)
+            {
+                var name = Path.GetFileName(fileName);
+                MessageBox.Show(this, Crystallography.Localization.Loc(
+                    en: $"No crystals could be read from {name}.",
+                    ja: $"{name} から結晶を読み込めませんでした。",
+                    de: $"Aus {name} konnten keine Kristalle gelesen werden.",
+                    fr: $"Aucun cristal n'a pu être lu dans {name}.",
+                    es: $"No se pudo leer ningún cristal de {name}.",
+                    pt: $"Não foi possível ler nenhum cristal de {name}.",
+                    it: $"Impossibile leggere cristalli da {name}.",
+                    ru: $"Не удалось прочитать кристаллы из {name}.",
+                    zhHans: $"无法从 {name} 读取晶体。",
+                    zhHant: $"無法從 {name} 讀取晶體。",
+                    ko: $"{name}에서 결정을 읽을 수 없습니다."),
+                    Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             return;
+        }
         var cry = new List<Crystal>(list);//260717Cl 変更: 空 List+AddRange の二段構築を集約
         if (showSelectionDialog)
         {
@@ -1685,15 +1708,36 @@ public partial class FormMain : FormBase
         if (formCrystalSelection.ShowDialog() == DialogResult.OK)
         {
             using var Dlg = new SaveFileDialog { Filter = "xml|*.xml" };//260717Cl using 化
+            var saved = true; // 261105Cl 追加
             try
             {
                 if (Dlg.ShowDialog() == DialogResult.OK)
-                    ConvertCrystalData.SaveCrystalListXml(formCrystalSelection.CheckedCrystalList, Dlg.FileName);
+                    //ConvertCrystalData.SaveCrystalListXml(formCrystalSelection.CheckedCrystalList, Dlg.FileName); // 261105Cl 変更前
+                    // 261105Cl 変更 (監査 A21): 戻り値を見る。SaveCrystalListXml は書けなくても例外を出さず false を返すので、以前は失敗しても黙っていた
+                    saved = ConvertCrystalData.SaveCrystalListXml(formCrystalSelection.CheckedCrystalList, Dlg.FileName);
             }
             catch
             {
                 // 260617Cl 変更: 日本語固定リテラルは英語(neutral)UIで未翻訳に見えるため英語化 (Phase 0)。本格 localize は Phase 4。
-                MessageBox.Show("Failed to write the file."); // 旧: "ファイルが書き込みません"
+                //MessageBox.Show("Failed to write the file."); // 旧: "ファイルが書き込みません" // 261105Cl 変更前
+                saved = false; // 261105Cl 変更: 下で 11 言語の文で知らせる
+            }
+            if (!saved) // 261105Cl 追加 (監査 A21・A25)
+            {
+                var name = Path.GetFileName(Dlg.FileName);
+                MessageBox.Show(this, Crystallography.Localization.Loc(
+                    en: $"Could not write the crystal list to {name}.",
+                    ja: $"結晶リストを {name} に書き込めませんでした。",
+                    de: $"Die Kristallliste konnte nicht in {name} geschrieben werden.",
+                    fr: $"Impossible d'écrire la liste de cristaux dans {name}.",
+                    es: $"No se pudo escribir la lista de cristales en {name}.",
+                    pt: $"Não foi possível gravar a lista de cristais em {name}.",
+                    it: $"Impossibile scrivere l'elenco dei cristalli in {name}.",
+                    ru: $"Не удалось записать список кристаллов в {name}.",
+                    zhHans: $"无法将晶体列表写入 {name}。",
+                    zhHant: $"無法將晶體清單寫入 {name}。",
+                    ko: $"결정 목록을 {name}에 쓸 수 없습니다."),
+                    Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
@@ -2057,10 +2101,30 @@ public partial class FormMain : FormBase
         {
             //260718Cl 変更: ToLower().EndsWith を拡張子の OrdinalIgnoreCase 判定に (CurrentCulture 非依存・一時文字列削減)
             var ext = Path.GetExtension(fileName[0]);
-            if (ext.Equals(".xml", StringComparison.OrdinalIgnoreCase) || ext.Equals(".out", StringComparison.OrdinalIgnoreCase) || ext.Equals(".cdb2", StringComparison.OrdinalIgnoreCase))
+            //if (ext.Equals(".xml", StringComparison.OrdinalIgnoreCase) || ext.Equals(".out", StringComparison.OrdinalIgnoreCase) || ext.Equals(".cdb2", StringComparison.OrdinalIgnoreCase)) // 261105Cl 変更前
+            // 261105Cl 変更 (監査 A21): .cdb2 (旧形式の結晶データベース) は結晶リストとして読めない (ConvertToCrystalList が扱うのは .xml と SMAP の .out だけ) ので受け付けない。
+            // 以前は確認を出した後、空の選択ダイアログになっていた
+            if (ext.Equals(".xml", StringComparison.OrdinalIgnoreCase) || ext.Equals(".out", StringComparison.OrdinalIgnoreCase))
             {
-                var dr = MessageBox.Show(this, "Read the list as a new list (if select 'No', add the list to the end of the present one",
-                    "Option", MessageBoxButtons.YesNoCancel);
+                //var dr = MessageBox.Show(this, "Read the list as a new list (if select 'No', add the list to the end of the present one", // 261105Cl 変更前 (2 行)
+                //    "Option", MessageBoxButtons.YesNoCancel);
+                // 261105Cl 変更 (監査 A25): 英語だけで括弧も閉じていなかった文を 11 言語に
+                var dr = MessageBox.Show(this, Crystallography.Localization.Loc(
+                    en: "Replace the present crystal list with the dropped list?\nYes: replace the list.  No: add its crystals to the end of the present list.",
+                    ja: "ドロップした結晶リストで今のリストを置き換えますか？\nはい: 置き換えます。  いいえ: 今のリストの末尾に追加します。",
+                    de: "Die aktuelle Kristallliste durch die abgelegte Liste ersetzen?\nJa: Liste ersetzen.  Nein: Kristalle am Ende der aktuellen Liste anfügen.",
+                    fr: "Remplacer la liste de cristaux actuelle par la liste déposée ?\nOui : remplacer la liste.  Non : ajouter ses cristaux à la fin de la liste actuelle.",
+                    es: "¿Reemplazar la lista de cristales actual por la lista soltada?\nSí: reemplazar la lista.  No: añadir sus cristales al final de la lista actual.",
+                    pt: "Substituir a lista de cristais atual pela lista solta?\nSim: substituir a lista.  Não: adicionar os cristais ao fim da lista atual.",
+                    it: "Sostituire l'elenco dei cristalli attuale con l'elenco trascinato?\nSì: sostituisce l'elenco.  No: aggiunge i cristalli alla fine dell'elenco attuale.",
+                    ru: "Заменить текущий список кристаллов перетащенным списком?\nДа: заменить список.  Нет: добавить его кристаллы в конец текущего списка.",
+                    zhHans: "用拖入的晶体列表替换当前列表吗？\n是：替换列表。  否：将其中的晶体添加到当前列表末尾。",
+                    zhHant: "要以拖放的晶體清單取代目前的清單嗎？\n是：取代清單。  否：將其中的晶體加到目前清單的末尾。",
+                    ko: "현재 결정 목록을 끌어 놓은 목록으로 바꾸시겠습니까?\n예: 목록을 바꿉니다.  아니요: 그 결정들을 현재 목록의 끝에 추가합니다."),
+                    Crystallography.Localization.Loc(en: "Read crystal list", ja: "結晶リストの読み込み", de: "Kristallliste lesen", fr: "Lire la liste de cristaux",
+                        es: "Leer lista de cristales", pt: "Ler lista de cristais", it: "Leggi elenco cristalli", ru: "Чтение списка кристаллов",
+                        zhHans: "读取晶体列表", zhHant: "讀取晶體清單", ko: "결정 목록 읽기"),
+                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (dr == DialogResult.Cancel)
                     return;
                 else if (dr == DialogResult.Yes)
