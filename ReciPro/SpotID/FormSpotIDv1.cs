@@ -77,7 +77,9 @@ public partial class FormSpotIDv1 : FormBase
         else
             inputBoxP2L3.Length = photo2.Paintable ? photo2.L3 : 0;
 
-        photo3 = new PhotoInformation(inputBoxP3L1.Length, inputBoxP3L2.Length, inputBoxP2L3.Length, numericBoxP3Theta.RadianValue,
+        //261105Cl 修正: 写真3の L3 に写真2の値 (inputBoxP2L3) を渡していた。三辺モードで写真3の θ が誤る。
+        //旧: photo3 = new PhotoInformation(inputBoxP3L1.Length, inputBoxP3L2.Length, inputBoxP2L3.Length, numericBoxP3Theta.RadianValue,
+        photo3 = new PhotoInformation(inputBoxP3L1.Length, inputBoxP3L2.Length, inputBoxP3L3.Length, numericBoxP3Theta.RadianValue,
             (double)numericBoxPhoto3L1Err.Value / 100, (double)numericBoxPhoto3L2Err.Value / 100, (double)numericBoxPhoto3L3Err.Value / 100, (double)numericBoxPhoto3ThetaErr.Value / 180 * Math.PI,
             numericBoxP3Tilt1.RadianValue, numericBoxP3Tilt2.RadianValue, (double)(numericBoxPhoto3Tilt1Err.Value) / 180 * Math.PI, (double)(numericBoxPhoto3Tilt2Err.Value) / 180 * Math.PI,
             radioButtonPhoto3Mode1.Checked, waveLength, cameraLength);

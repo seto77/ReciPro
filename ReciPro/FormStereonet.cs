@@ -208,7 +208,9 @@ public partial class FormStereonet : FormBase
 
     private void Draw3D()
     {
-        if (glControl == null || checkBoxDisplay3D.Checked) return;
+        //261105Cl 修正: 条件が逆で、3D View 表示中だけ描画を飛ばしていた (表示中は 3D が更新されなかった)。
+        //旧: if (glControl == null || checkBoxDisplay3D.Checked) return;
+        if (glControl == null || !checkBoxDisplay3D.Checked) return;
 
         var sq2 = Math.Sqrt(2);
 
@@ -1511,6 +1513,7 @@ public partial class FormStereonet : FormBase
     {
         splitContainer1.Panel2Collapsed = !checkBoxDisplay3D.Checked;
         groupBox3DOptions.Visible = checkBoxDisplay3D.Checked;
+        Draw3D();//261105Cl 追加: 非表示中は Draw3D を飛ばすようにしたので、表示した時点で最新の状態を描く
     }
 
     private void button3D_reset_Click(object sender, EventArgs e)
