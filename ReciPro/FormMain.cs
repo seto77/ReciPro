@@ -904,30 +904,45 @@ public partial class FormMain : FormBase
 
         axis = axis.Normarize();
 
+        // 261105Cl 追加 (監査 G-12): 「軸を固定」「面を固定」のときは、その結晶の固定した軸 (面法線) のまわりに回す。Link 中も同じ回転を FormRotation に渡すため、下のループから切り出した
+        Matrix3D rotationFor(Crystal cry)
+        {
+            if (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked)
+                return Matrix3D.Rot(axis, angle);
+            var (u, v, w) = indexControlAxis.Values;
+            var (h, k, l) = indexControlPlane.Values;
+            var newAxis = checkBoxFixAxis.Checked ?
+                 cry.RotationMatrix * (u * Crystal.A_Axis + v * Crystal.B_Axis + w * Crystal.C_Axis) :
+                 cry.RotationMatrix * (h * Crystal.A_Star + k * Crystal.B_Star + l * Crystal.C_Star);                // 260422Cl HKLControl revert
+            return Matrix3D.Rot(newAxis, Vector3DBase.AngleBetVectors(newAxis, axis) < Math.PI / 2 ? angle : -angle);
+        }
+
         if (FormRotation.Linked)//FormRotationのリンクが有効な場合は、FormRotation側で回転状況を制御する
         {
-            FormRotation.SetRotation(Matrix3D.Rot(axis, angle) * Crystal.RotationMatrix);
+            //FormRotation.SetRotation(Matrix3D.Rot(axis, angle) * Crystal.RotationMatrix); // 261105Cl 変更前: Link 中は「軸/面を固定」を無視していた
+            FormRotation.SetRotation(rotationFor(Crystal) * Crystal.RotationMatrix); // 261105Cl 変更 (監査 G-12)
             return;
         }
 
         var crystals = Crystals;//260717Cl 追加: Crystals getter は呼ぶたびに listBox から配列を再構築するため一次受け (旧コードはループ内で毎回呼んでいた)
         for (int i = 0; i < crystals.Length; i++)
         {
-            Matrix3D rot;
-            if (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked && !FormRotation.Linked)
-                rot = Matrix3D.Rot(axis, angle);
-            else
-            {
-                var (u, v, w) = indexControlAxis.Values;
-                var (h, k, l) = indexControlPlane.Values;
-                var newAxis = checkBoxFixAxis.Checked ?
-                     crystals[i].RotationMatrix * (u * Crystal.A_Axis + v * Crystal.B_Axis + w * Crystal.C_Axis) :
-                     crystals[i].RotationMatrix * (h * Crystal.A_Star + k * Crystal.B_Star + l * Crystal.C_Star);                // 260422Cl HKLControl revert
-                if (Vector3DBase.AngleBetVectors(newAxis, axis) < Math.PI / 2)
-                    rot = Matrix3D.Rot(newAxis, angle);
-                else
-                    rot = Matrix3D.Rot(newAxis, -angle);
-            }
+            //Matrix3D rot; // 261105Cl 変更前 (ここから): 中身を rotationFor へ移した。条件の !FormRotation.Linked は上の return で常に真だった
+            //if (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked && !FormRotation.Linked)
+            //    rot = Matrix3D.Rot(axis, angle);
+            //else
+            //{
+            //    var (u, v, w) = indexControlAxis.Values;
+            //    var (h, k, l) = indexControlPlane.Values;
+            //    var newAxis = checkBoxFixAxis.Checked ?
+            //         crystals[i].RotationMatrix * (u * Crystal.A_Axis + v * Crystal.B_Axis + w * Crystal.C_Axis) :
+            //         crystals[i].RotationMatrix * (h * Crystal.A_Star + k * Crystal.B_Star + l * Crystal.C_Star);                // 260422Cl HKLControl revert
+            //    if (Vector3DBase.AngleBetVectors(newAxis, axis) < Math.PI / 2)
+            //        rot = Matrix3D.Rot(newAxis, angle);
+            //    else
+            //        rot = Matrix3D.Rot(newAxis, -angle);
+            //} // 261105Cl 変更前 (ここまで)
+            var rot = rotationFor(crystals[i]); // 261105Cl 変更
             crystals[i].RotationMatrix = rot * crystals[i].RotationMatrix;
         }
         SetRotation(crystals[0].RotationMatrix);
