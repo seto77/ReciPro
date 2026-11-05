@@ -371,6 +371,15 @@ public partial class FormDiffractionSimulator : FormBase
     public bool DynamicCompressionMode { get; set; } = false;
     public List<double[]> DynamicCompression_SpotInformation = [];
 
+    /// <summary>261105Cl 追加 (監査 C8): この画面の SetVector が作った各結晶の VectorOfG (配列の参照で比べる)。
+    /// EBSD・ステレオ投影なども同じ結晶の VectorOfG を自分の条件で作り直す (Crystal.SetVectorOfG は毎回新しい配列) ので、
+    /// Draw で違う配列になっていたら、この画面の条件 (d の範囲・禁制反射・色) で作り直してから描く</summary>
+    private readonly System.Runtime.CompilerServices.ConditionalWeakTable<Crystal, Vector3D[]> ownVectorOfG = new();
+
+    /// <summary>261105Cl 追加 (監査 C8): この画面の菊池線の候補。旧は formMain.Crystal.VectorOfG_KikuchiLine で、EBSD (表示・指数付け) と
+    /// 同じリストを上書きし合っていた</summary>
+    private List<Vector3D> kikuchiLines = [];
+
     public double MouseSpeedFactor
     {
         get
@@ -703,6 +712,11 @@ public partial class FormDiffractionSimulator : FormBase
 
         if (!SetProjection(g))
             return;
+
+        // 261105Cl 追加 (監査 C8): EBSD・ステレオ投影などが同じ結晶の VectorOfG を自分の条件 (d の範囲・Flag1・色なし) で作り直した後は、
+        //  黒いスポット・禁制反射の設定の無視などになっていた。この画面の SetVector が作った配列でなければ作り直してから描く
+        if (toolStripButtonDiffractionSpots.Checked && formMain.Crystals.Any(c => !ownVectorOfG.TryGetValue(c, out var own) || !ReferenceEquals(own, c.VectorOfG))) // 261105Cl
+            SetVector(); // 261105Cl
 
         //背景を描画
         if (drawOverlappedImage)
@@ -1310,7 +1324,9 @@ public partial class FormDiffractionSimulator : FormBase
     {
         //260805Cl 追加: Dynamical band モード。プロファイルが揃っていればバンドを描き、
         //ラベル不要ならここで終了。未完成 (worker 計算中) は従来の幾何線で fallback する。
-        bool dynamicalDrawn = KikuchiModeSelected == KikuchiMode.DynamicalBand && DrawKikuchiDynamicalBands(graphics); //260806Cl enum 化
+        //bool dynamicalDrawn = KikuchiModeSelected == KikuchiMode.DynamicalBand && DrawKikuchiDynamicalBands(graphics); //260806Cl enum 化 // 261105Cl 変更前 (監査 C9)
+        // 261105Cl 変更: 動力学バンドは電子線の計算 (Energy を kV とみなす)。X 線 (keV)・中性子 (meV) では計算せず幾何の線で描く (注記は UpdateKikuchiNotice)
+        bool dynamicalDrawn = KikuchiModeSelected == KikuchiMode.DynamicalBand && Source == WaveSource.Electron && DrawKikuchiDynamicalBands(graphics); // 261105Cl
         if (dynamicalDrawn && !toolStripButtonIndexLabels.Checked)
             return;
 
@@ -1327,7 +1343,8 @@ public partial class FormDiffractionSimulator : FormBase
         //var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替 // (260611Ch) 旧: 未解放
         using var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替 // (260611Ch)
         using var brush = new SolidBrush(colorControlString.Color); // (260611Ch)
-        foreach (var g in formMain.Crystal.VectorOfG_KikuchiLine)
+        //foreach (var g in formMain.Crystal.VectorOfG_KikuchiLine) // 261105Cl 変更前 (監査 C8)
+        foreach (var g in kikuchiLines) // 261105Cl
         {
             double sinTheta = WaveLength * g.Length / 2, sin2Theta = sinTheta * sinTheta;
 
@@ -1459,7 +1476,8 @@ public partial class FormDiffractionSimulator : FormBase
         double Thickness, int BandNum, int Samples, double KV, List<Vector3D> GList);
 
     private KikuchiRequestKey KikuchiCurrentKey(Crystal crystal) => new(
-        crystal.RotationMatrix.Tuple, Thickness, numericBoxKikuchiBandNumber.ValueInteger, KikuchiSampleCount, Energy, crystal.VectorOfG_KikuchiLine);
+        //crystal.RotationMatrix.Tuple, Thickness, numericBoxKikuchiBandNumber.ValueInteger, KikuchiSampleCount, Energy, crystal.VectorOfG_KikuchiLine); // 261105Cl 変更前 (監査 C8)
+        crystal.RotationMatrix.Tuple, Thickness, numericBoxKikuchiBandNumber.ValueInteger, KikuchiSampleCount, Energy, kikuchiLines); // 261105Cl SetVector は毎回新しい List を作る
 
     /// <summary>
     /// 動力学バンドを描画できたら true。プロファイル未完成のときは false (呼び出し側が幾何線 fallback)。
@@ -1527,7 +1545,8 @@ public partial class FormDiffractionSimulator : FormBase
     private void ScheduleKikuchiComputeIfStale()
     {
         var crystal = formMain?.Crystal;
-        if (crystal?.VectorOfG_KikuchiLine == null || crystal.VectorOfG_KikuchiLine.Count == 0)
+        //if (crystal?.VectorOfG_KikuchiLine == null || crystal.VectorOfG_KikuchiLine.Count == 0) // 261105Cl 変更前 (監査 C8)
+        if (crystal == null || kikuchiLines == null || kikuchiLines.Count == 0) // 261105Cl
             return;
         var key = KikuchiCurrentKey(crystal);
         if (kikuchiProfiles != null && key == kikuchiProfilesKey && kikuchiSnapshot?.Matches(crystal, Energy) == true)
@@ -1549,7 +1568,8 @@ public partial class FormDiffractionSimulator : FormBase
     private void StartKikuchiCompute()
     {
         var crystal = formMain?.Crystal;
-        if (IsDisposed || crystal?.VectorOfG_KikuchiLine == null || KikuchiModeSelected != KikuchiMode.DynamicalBand) //260806Cl /simplify2 (H1): 破棄後の timer 発火を無害化。enum 化
+        //if (IsDisposed || crystal?.VectorOfG_KikuchiLine == null || KikuchiModeSelected != KikuchiMode.DynamicalBand) //260806Cl /simplify2 (H1): 破棄後の timer 発火を無害化。enum 化 // 261105Cl 変更前 (監査 C8)
+        if (IsDisposed || crystal == null || kikuchiLines == null || KikuchiModeSelected != KikuchiMode.DynamicalBand || Source != WaveSource.Electron) // 261105Cl 電子線のみ (監査 C9。予約の後に線源を変えた場合)
             return;
         var key = KikuchiCurrentKey(crystal); //260806Cl /simplify: 取込条件は key と同一値から取る (4 箇所列挙のドリフト防止)
         var kV = key.KV;
@@ -1954,6 +1974,13 @@ public partial class FormDiffractionSimulator : FormBase
         //(UpdateKikuchiModeVisibility) ので、Text を空にする必要はない
         if (KikuchiModeSelected != KikuchiMode.DynamicalBand) //260806Cl enum 化
             return;
+        if (Source != WaveSource.Electron) // 261105Cl 追加 (監査 C9): X 線・中性子では動力学バンドを計算せず線で描く (DrawKikuchiLine)
+        {
+            labelKikuchiNotice.Text = Crystallography.Localization.Loc(en: "Electron beam only: drawn as lines", ja: "電子線のみ: 線で表示", // 261105Cl
+                de: "Nur Elektronen: als Linien", fr: "Électrons seulement : lignes", es: "Solo electrones: como líneas", pt: "Só elétrons: como linhas", // 261105Cl
+                it: "Solo elettroni: come linee", ru: "Только электроны: линии", zhHans: "仅限电子束：以线显示", zhHant: "僅限電子束：以線顯示", ko: "전자선 전용: 선으로 표시"); // 261105Cl
+            return; // 261105Cl
+        }
         //260806Cl i18n: 組み立て部を Loc 化 (EN/JA。他言語は EN フォールバック)。
         //⚠表示するのは KikuchiProfileCalculator.DisplayNormalizedTag ("source-loss not balanced") と
         //同義の短縮形 "source-loss unbalanced"。定数そのものは幅に収まらないので参照していない
@@ -2010,7 +2037,8 @@ public partial class FormDiffractionSimulator : FormBase
         //260606Cl X線異常分散 f'/f'' を構造因子へ反映するか。上で設定した Enabled(単色X線=平行/X線歳差のみ。Back Laue 等で無効)に集約済みの条件を再利用し二重管理を避ける。
         bool useAnomalousDispersion = checkBoxAnomalousDispersion.Checked && checkBoxAnomalousDispersion.Enabled;
 
-        if (toolStripButtonDiffractionSpots.Checked)
+        //if (toolStripButtonDiffractionSpots.Checked) // 261105Cl 変更前 (監査 C12): Spots を外して菊池線だけのとき、菊池線の候補の元 (VectorOfG) が作り直されず、波長などを変えても古いまま (未作成なら何も出ない)
+        if (toolStripButtonDiffractionSpots.Checked || toolStripButtonKikuchiLines.Checked) // 261105Cl
         {
             if (radioButtonBeamBackLaue.Checked)//Back Laueのとき
             {
@@ -2021,6 +2049,7 @@ public partial class FormDiffractionSimulator : FormBase
             foreach (var crystal in formMain.Crystals)
             {
                 crystal.SetVectorOfG(minD, maxD, Source, xrayEnergyKeV: Energy, anomalousDispersion: useAnomalousDispersion);//260606Cl X線異常分散(f'/f'')を反映(既定ON, チェックOFF/非X線/Back Laue で無効)
+                ownVectorOfG.AddOrUpdate(crystal, crystal.VectorOfG); // 261105Cl 追加 (監査 C8)
 
                 var latticeType = crystal.Symmetry.LatticeTypeStr;
 
@@ -2060,9 +2089,11 @@ public partial class FormDiffractionSimulator : FormBase
 
         if (toolStripButtonKikuchiLines.Checked)
         {
+            // 261105Cl 変更 (監査 C8): formMain.Crystal.VectorOfG_KikuchiLine (EBSD と共有) でなく、この画面の kikuchiLines に入れる
             if (radioButtonKikuchiThresholdOfLength.Checked)
             {
-                formMain.Crystal.VectorOfG_KikuchiLine =
+                //formMain.Crystal.VectorOfG_KikuchiLine = // 261105Cl 変更前
+                kikuchiLines = // 261105Cl
                 [.. formMain.Crystal.VectorOfG.Where(g => g.Length < numericBoxKikuchiThresholdOfLength.Value).OrderByDescending(g => g.Length)];
             }
             else
@@ -2076,8 +2107,10 @@ public partial class FormDiffractionSimulator : FormBase
                     else
                         break;
                 }
-                formMain.Crystal.VectorOfG_KikuchiLine = list[0..max];
-                formMain.Crystal.VectorOfG_KikuchiLine.Reverse();
+                //formMain.Crystal.VectorOfG_KikuchiLine = list[0..max]; // 261105Cl 変更前
+                //formMain.Crystal.VectorOfG_KikuchiLine.Reverse();
+                kikuchiLines = list[0..max]; // 261105Cl
+                kikuchiLines.Reverse(); // 261105Cl
             }
         }
         toolStripStatusLabelTimeForSearchingG.Text = $"Time for searching g-vectors: {StatusBarHelper.FormatElapsed(sw.Elapsed)}.  ";// 260520Cl 時間表記を統一
@@ -2864,6 +2897,7 @@ public partial class FormDiffractionSimulator : FormBase
             checkBoxAnomalousDispersion.Visible = false;//異常分散は非表示
 
         }
+        UpdateKikuchiNotice(); // 261105Cl 追加 (監査 C9): 動力学バンドは電子線のみ。線源に合わせて注記を替える
     }
     #endregion
 
