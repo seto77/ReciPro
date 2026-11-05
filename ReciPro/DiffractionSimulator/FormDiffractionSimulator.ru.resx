@@ -320,7 +320,7 @@
     <value>Электроны 200 kV</value>
   </data>
   <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
-    <value>Электроны 120 keV</value>
+    <value>Электроны 120 kV</value>
   </data>
   <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
     <value>Рентгеновское 30 keV</value>

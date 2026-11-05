@@ -642,7 +642,7 @@ namespace ReciPro
             // numericBoxMassAbsorption
             // 
                        numericBoxMassAbsorption.BackColor = System.Drawing.SystemColors.Control;
-                        numericBoxMassAbsorption.FooterText = "cm^2/g";
+                        numericBoxMassAbsorption.FooterText = "cm²/g"; // 261105Cl 変更 (監査 K21): 旧 "cm^2/g"
             numericBoxMassAbsorption.Location = new System.Drawing.Point(76, 187);
             numericBoxMassAbsorption.Margin = new System.Windows.Forms.Padding(0);
             numericBoxMassAbsorption.Maximum = 10000D;

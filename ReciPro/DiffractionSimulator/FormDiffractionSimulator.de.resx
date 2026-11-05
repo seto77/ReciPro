@@ -320,7 +320,7 @@ simulation</value>
     <value>Elektron 200 kV</value>
   </data>
   <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
-    <value>Elektron 120 keV</value>
+    <value>Elektron 120 kV</value>
   </data>
   <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
     <value>Röntgen 30 keV</value>

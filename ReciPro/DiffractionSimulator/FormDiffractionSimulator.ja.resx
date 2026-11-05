@@ -1821,7 +1821,7 @@ excess/deficient の微細構造が滑らかになりますが
     <value>電子線 200 kV</value>
   </data>
   <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
-    <value>電子線 120 keV</value>
+    <value>電子線 120 kV</value>
   </data>
   <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
     <value>X線 30 keV</value>

@@ -320,7 +320,7 @@
     <value>電子 200 kV</value>
   </data>
   <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
-    <value>電子 120 keV</value>
+    <value>電子 120 kV</value>
   </data>
   <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
     <value>X射線 30 keV</value>

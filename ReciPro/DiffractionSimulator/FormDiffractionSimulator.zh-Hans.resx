@@ -320,7 +320,7 @@
     <value>电子 200 kV</value>
   </data>
   <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
-    <value>电子 120 keV</value>
+    <value>电子 120 kV</value>
   </data>
   <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
     <value>X射线 30 keV</value>

@@ -219,7 +219,8 @@ public partial class FormALCHEMI : FormBase
         //260810Cl: dataset v5 で表が s ≤ 16 Å⁻¹ になり、この上限 1600 と対になった。
         //実測の最大要求は 1600 波でも 10.54 Å⁻¹ (加速電圧に依らない) なので収録範囲は使い切れない
         toolTip.SetToolTip(numericBoxMaxNumOfBloch, Localization.Loc(
-            en: "Upper bound on the number of Bloch waves per orientation. The union over the whole scan is larger. The ionization form factor is tabulated to s = 16 A^-1, and this cap of 1600 is its counterpart: even at 1600 beams the basis only reaches about 10.5 A^-1. The diagnostic line below the graph reports how far it actually reached.",
+            //en: "Upper bound on the number of Bloch waves per orientation. The union over the whole scan is larger. The ionization form factor is tabulated to s = 16 A^-1, and this cap of 1600 is its counterpart: even at 1600 beams the basis only reaches about 10.5 A^-1. The diagnostic line below the graph reports how far it actually reached.", // 261105Cl 変更前
+            en: "Upper bound on the number of Bloch waves per orientation. The union over the whole scan is larger. The ionization form factor is tabulated to s = 16 Å⁻¹, and this cap of 1600 is its counterpart: even at 1600 beams the basis only reaches about 10.5 Å⁻¹. The diagnostic line below the graph reports how far it actually reached.", // 261105Cl 変更 (監査 K21): A^-1 → Å⁻¹ (ja と同じ表記)
             ja: "1 方位あたりのブロッホ波数の上限です。走査全体の union はこれより大きくなります。イオン化形状因子は s = 16 Å⁻¹ まで収録されており、この上限 1600 はその対です (1600 波でも基底が要求する s は約 10.5 Å⁻¹ に留まります)。実際の到達値はグラフ下の診断行に出ます。"));
         toolTip.SetToolTip(checkBoxDechannelling, Localization.Loc(
             en: "Electrons removed from the coherent Bloch field by thermal-diffuse absorption are re-emitted as randomly directed electrons over the remaining thickness. Omitting this dilutes the site contrast by tens of percent at typical thicknesses.",
@@ -842,18 +843,18 @@ public partial class FormALCHEMI : FormBase
     /// s の要求が s_kin(E0) に収まる限り計算そのものは正しいので、電圧で弾くのは過剰。
     /// 「16 Å⁻¹ を保証できる下限が 80 kV」という事実だけを伝える。</summary>
     //private string LowVoltageNotice() => Voltage >= 80 ? "" : Localization.Loc( //260820Cl 変更 (/simplify): 旧 "   ⚠ " + … // 261105Cl 変更前: 今の電圧 (run の後に電圧を変えると、表示中の結果と合わない告知)
-    private string LowVoltageNotice() => result.IncidentEnergyKeV >= 80 ? "" : Localization.Loc( // 261105Cl 変更 (監査 D10): 結果を計算した電圧で判定する
-        en: "below 80 kV: the form factor table cannot guarantee s up to 16 A^-1 at this voltage",
+    private string LowVoltageNotice() => result.IncidentEnergyKeV >= 80 ? "" : Localization.Loc( // 261105Cl 変更 (監査 D10): 結果を計算した電圧で判定する / 261105Cl 変更 (監査 K21): 各言語の A^-1 → Å⁻¹ (ja・診断行の 1 行目と同じ表記)
+        en: "below 80 kV: the form factor table cannot guarantee s up to 16 Å⁻¹ at this voltage",
         ja: "80 kV 未満: この電圧では形状因子テーブルが s = 16 Å⁻¹ までを保証できません",
-        de: "unter 80 kV: die Formfaktortabelle kann s bis 16 A^-1 bei dieser Spannung nicht garantieren",
-        fr: "sous 80 kV : la table de facteurs de forme ne garantit pas s jusqu'à 16 A^-1 à cette tension",
-        es: "por debajo de 80 kV: la tabla de factores de forma no garantiza s hasta 16 A^-1 a esta tensión",
-        pt: "abaixo de 80 kV: a tabela de fatores de forma não garante s até 16 A^-1 nesta tensão",
-        it: "sotto 80 kV: la tabella dei fattori di forma non garantisce s fino a 16 A^-1 a questa tensione",
-        ru: "ниже 80 кВ: таблица форм-факторов не гарантирует s до 16 A^-1 при этом напряжении",
-        zhHans: "低于 80 kV：该电压下形状因子表无法保证 s 至 16 A^-1",
-        zhHant: "低於 80 kV：該電壓下形狀因子表無法保證 s 至 16 A^-1",
-        ko: "80 kV 미만: 이 전압에서는 형상 인자 표가 s = 16 A^-1 까지를 보장하지 못합니다");
+        de: "unter 80 kV: die Formfaktortabelle kann s bis 16 Å⁻¹ bei dieser Spannung nicht garantieren",
+        fr: "sous 80 kV : la table de facteurs de forme ne garantit pas s jusqu'à 16 Å⁻¹ à cette tension",
+        es: "por debajo de 80 kV: la tabla de factores de forma no garantiza s hasta 16 Å⁻¹ a esta tensión",
+        pt: "abaixo de 80 kV: a tabela de fatores de forma não garante s até 16 Å⁻¹ nesta tensão",
+        it: "sotto 80 kV: la tabella dei fattori di forma non garantisce s fino a 16 Å⁻¹ a questa tensione",
+        ru: "ниже 80 кВ: таблица форм-факторов не гарантирует s до 16 Å⁻¹ при этом напряжении",
+        zhHans: "低于 80 kV：该电压下形状因子表无法保证 s 至 16 Å⁻¹",
+        zhHant: "低於 80 kV：該電壓下形狀因子表無法保證 s 至 16 Å⁻¹",
+        ko: "80 kV 미만: 이 전압에서는 형상 인자 표가 s = 16 Å⁻¹ 까지를 보장하지 못합니다");
 
     /// <summary>260810Cl 追加: s &gt; s_cert を 0 で打ち切った場合の告知 (dataset v5)。
     /// **外挿と違って誤差の大きさが宣言される**ので、上界 ε を必ず数値で見せる。

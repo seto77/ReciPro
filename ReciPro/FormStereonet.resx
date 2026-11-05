@@ -3288,7 +3288,7 @@ motor, in degrees per second (°/s).</value>
     <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxAngularSpeed.FooterText" xml:space="preserve">
-    <value>°/sec</value>
+    <value>°/s</value>
   </data>
   <data name="numericBoxAngularSpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 8pt</value>

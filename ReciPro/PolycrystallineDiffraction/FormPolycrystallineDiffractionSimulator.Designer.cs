@@ -945,7 +945,7 @@
             toolTip.SetToolTip(label53, resources.GetString("label53.ToolTip")); // 260531Cl
             label53.Size = new System.Drawing.Size(29, 13);
             label53.TabIndex = 15;
-            label53.Text = "deg.";
+            label53.Text = "°"; // 261105Cl 変更 (監査 K21): 旧 "deg."。角度の単位は ° に統一
             // 
             // label50
             // 
@@ -1027,7 +1027,7 @@
             toolTip.SetToolTip(label55, resources.GetString("label55.ToolTip")); // 260531Cl
             label55.Size = new System.Drawing.Size(29, 13);
             label55.TabIndex = 23;
-            label55.Text = "deg.";
+            label55.Text = "°"; // 261105Cl 変更 (監査 K21): 旧 "deg."。角度の単位は ° に統一
             // 
             // label48
             // 

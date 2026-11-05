@@ -320,7 +320,7 @@ intensidade relativa</value>
     <value>Elétrons 200 kV</value>
   </data>
   <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
-    <value>Elétrons 120 keV</value>
+    <value>Elétrons 120 kV</value>
   </data>
   <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
     <value>Raios X 30 keV</value>

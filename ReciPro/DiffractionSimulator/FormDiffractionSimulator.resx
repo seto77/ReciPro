@@ -5949,7 +5949,7 @@ from the sample to the detector (monitor).</value>
     <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxAcc.FooterText" xml:space="preserve">
-    <value>kev</value>
+    <value>keV</value>
   </data>
   <data name="numericBoxAcc.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -6354,7 +6354,7 @@ from the sample to the detector (monitor).</value>
     <value>220, 22</value>
   </data>
   <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
-    <value>Electron 120 keV</value>
+    <value>Electron 120 kV</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
     <value>217, 6</value>
