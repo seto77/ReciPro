@@ -158,7 +158,7 @@ proiezione</value>
     <value>Dissolvenza profondità</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>Reimposta</value>
+    <value>Azzera vista</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Aspetto</value>

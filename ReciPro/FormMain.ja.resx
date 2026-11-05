@@ -284,7 +284,7 @@
 Θ, Ψ)。値を編集すると方位を直接設定できます。</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
-    <value>方向リセット</value>
+    <value>回転をリセット</value>
   </data>
   <data name="buttonReset.ToolTip" xml:space="preserve">
     <value>回転を初期状態にリセットします。</value>

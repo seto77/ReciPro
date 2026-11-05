@@ -499,7 +499,7 @@ Miller 指数 (h k l) としてラベル表示します。</value>
     <value>画像を保存</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>クリップボードにコピー</value>
+    <value>コピー</value>
   </data>
   <data name="asBitmapToolStripMenuItem.Text" xml:space="preserve">
     <value>画像として</value>
@@ -597,7 +597,7 @@ Miller 指数 (h k l) としてラベル表示します。</value>
 表示します。OFFでは2Dステレオ投影のみになります</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>視点リセット</value>
+    <value>視点をリセット</value>
   </data>
   <data name="button3D_reset.ToolTip" xml:space="preserve">
     <value>3D表示の視点(向き・倍率)を初期状態に戻します。</value>

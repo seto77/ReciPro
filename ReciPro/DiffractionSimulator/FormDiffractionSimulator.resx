@@ -3784,7 +3784,7 @@ above, or the rotation speed.</value>
     <value>5</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>Reset</value>
+    <value>Reset view</value>
   </data>
   <data name="buttonResetAngle.ToolTip" xml:space="preserve">
     <value>Reset the 3D view orientation to the default direction.</value>
@@ -6170,7 +6170,7 @@ from the sample to the detector (monitor).</value>
     <value>214, 22</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Image  (PNG format)</value>
+    <value>as Image (PNG format)</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>214, 22</value>

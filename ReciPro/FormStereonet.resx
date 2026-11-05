@@ -4348,7 +4348,7 @@ unchecked shows the 2D stereonet only</value>
     <value>1</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>Reset</value>
+    <value>Reset view</value>
   </data>
   <data name="button3D_reset.ToolTip" xml:space="preserve">
     <value>Reset the 3-D view to its default orientation and zoom.</value>

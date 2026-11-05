@@ -1230,7 +1230,7 @@ rotation is applied about it).</value>
   </data>
   <data name="buttonResetExpEuler.Text" xml:space="preserve">
     <value>Reset
-Angles</value>
+angles</value>
   </data>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>Reset all angles to zero</value>

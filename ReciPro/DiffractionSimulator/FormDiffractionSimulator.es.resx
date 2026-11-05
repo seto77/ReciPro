@@ -147,7 +147,7 @@ lejos de la esfera de Ewald</value>
     <value>Paso</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>Restablecer</value>
+    <value>Restab. vista</value>
   </data>
   <data name="groupBoxViewDirection.Text" xml:space="preserve">
     <value>Dirección de vista</value>
@@ -233,7 +233,7 @@ intensidad relativa</value>
     <value>Guardar imagen</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>como imagen  (formato PNG)</value>
+    <value>como imagen (formato PNG)</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>como metarchivo (EMF)</value>

@@ -153,7 +153,7 @@
     <value>간격</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>초기화</value>
+    <value>시점 초기화</value>
   </data>
   <data name="groupBoxViewDirection.Text" xml:space="preserve">
     <value>시선 방향</value>

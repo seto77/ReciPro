@@ -799,7 +799,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>凡例の表示/非表示</value>
   </data>
   <data name="toolStripButtonResetRotation.Text" xml:space="preserve">
-    <value>角度をリセット</value>
+    <value>回転をリセット</value>
   </data>
   <data name="toolStripButtonAtomObjects.Text" xml:space="preserve">
     <value>原子</value>
@@ -826,7 +826,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>画像を保存</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>画像をクリップボードにコピー</value>
+    <value>コピー</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
     <value>動画を保存</value>

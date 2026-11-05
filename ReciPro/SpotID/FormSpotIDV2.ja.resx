@@ -461,19 +461,19 @@ X 線・中性子では常に無視します（運動学的に扱うため）。
     <value>保存</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>メタファイル (emf) として</value>
+    <value>メタファイルとして (EMF)</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>イメージファイル (png) として</value>
+    <value>画像として (PNG 形式)</value>
   </data>
   <data name="copyToolStripMenuItem.Text" xml:space="preserve">
     <value>コピー</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>メタファイル (emf) として</value>
+    <value>メタファイルとして (EMF)</value>
   </data>
   <data name="copyAsBitmapToolStripMenuItem.Text" xml:space="preserve">
-    <value>イメージファイル (png) として</value>
+    <value>画像として</value>
   </data>
   <data name="saveCandidateListToolStripMenuItem.Text" xml:space="preserve">
     <value>候補方位リスト (CSV)...</value>

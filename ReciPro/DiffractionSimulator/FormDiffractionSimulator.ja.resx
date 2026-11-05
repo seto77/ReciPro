@@ -674,7 +674,7 @@ excess/deficient の符号までです。 「B→0.5」: B = 0
     <value>上のボタンの角度ステップ、または回転速度を設定</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>リセット</value>
+    <value>視点をリセット</value>
   </data>
   <data name="buttonResetAngle.ToolTip" xml:space="preserve">
     <value>3Dビューの視線方向を初期状態に戻します</value>

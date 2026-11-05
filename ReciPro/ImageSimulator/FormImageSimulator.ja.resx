@@ -1381,10 +1381,10 @@ microscopy, 走査透過電子顕微鏡）像を、収束半角と
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>画像として (PNG形式)</value>
+    <value>画像として (PNG 形式)</value>
   </data>
   <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>画像として (TIFF形式)</value>
+    <value>画像として (TIFF 形式)</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
     <value>メタファイルとして (EMF)</value>
@@ -1406,7 +1406,7 @@ microscopy, 走査透過電子顕微鏡）像を、収束半角と
     <value>メタファイルとして (EMF)</value>
   </data>
   <data name="copyImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>画像をコピー</value>
+    <value>コピー</value>
   </data>
   <data name="toolStripMenuItemOverprintSymbols.Text" xml:space="preserve">
     <value>     記号を重ね印刷</value>

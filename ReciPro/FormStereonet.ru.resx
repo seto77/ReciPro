@@ -161,7 +161,7 @@
     <value>Глубинное затухание</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>Сброс</value>
+    <value>Сброс вида</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Вид</value>

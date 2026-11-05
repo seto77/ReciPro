@@ -144,7 +144,7 @@ de l'échantillon</value>
     <value>Pas</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>Réinitialiser</value>
+    <value>Réinit. la vue</value>
   </data>
   <data name="groupBoxViewDirection.Text" xml:space="preserve">
     <value>Direction de vue</value>

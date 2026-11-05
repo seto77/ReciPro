@@ -155,7 +155,7 @@ projection</value>
     <value>Fondu en profondeur</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>Réinitialiser</value>
+    <value>Réinit. la vue</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Apparence</value>

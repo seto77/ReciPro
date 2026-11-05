@@ -5602,7 +5602,7 @@ crystal-structure visualization program).</value>
     <value>97, 22</value>
   </data>
   <data name="toolStripButtonResetRotation.Text" xml:space="preserve">
-    <value>Reset Rotation</value>
+    <value>Reset rotation</value>
   </data>
   <data name="toolStripButtonResetRotation.ToolTipText" xml:space="preserve">
     <value>Reset the model orientation to the default (no rotation).</value>

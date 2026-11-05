@@ -2303,7 +2303,7 @@ edit to set the orientation directly.</value>
     <value>2</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
-    <value>Reset Rotation</value>
+    <value>Reset rotation</value>
   </data>
   <data name="buttonReset.ToolTip" xml:space="preserve">
     <value>Reset rotation state to initial orientation</value>

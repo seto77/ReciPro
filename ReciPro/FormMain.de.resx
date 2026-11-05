@@ -147,7 +147,7 @@
     <value>&amp;Als CIF exportieren</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
-    <value>Zurücksetzen</value>
+    <value>Rotation rücksetzen</value>
   </data>
   <data name="groupBoxProjectAlong.Text" xml:space="preserve">
     <value>Blick entlang</value>

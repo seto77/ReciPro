@@ -150,7 +150,7 @@ dalla sfera di Ewald</value>
     <value>Passo</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>Reimposta</value>
+    <value>Azzera vista</value>
   </data>
   <data name="groupBoxViewDirection.Text" xml:space="preserve">
     <value>Direzione di vista</value>

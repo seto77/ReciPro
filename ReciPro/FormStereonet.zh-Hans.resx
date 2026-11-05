@@ -161,7 +161,7 @@
     <value>深度淡化</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>重置</value>
+    <value>重置视角</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>外观</value>

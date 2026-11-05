@@ -73,7 +73,7 @@
     <value>実験室座標系</value>
   </data>
   <data name="buttonResetExpEuler.Text" xml:space="preserve">
-    <value>角度
+    <value>角度を
 リセット</value>
   </data>
   <data name="checkBoxFix3rd.Text" xml:space="preserve">

@@ -161,7 +161,7 @@ projeção</value>
     <value>Atenuação de profundidade</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>Redefinir</value>
+    <value>Redefinir vista</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Aparência</value>

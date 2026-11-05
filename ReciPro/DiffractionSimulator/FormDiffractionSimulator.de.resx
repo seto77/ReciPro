@@ -153,7 +153,7 @@ Ewald-Kugel transparent machen</value>
     <value>Schritt</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>Zurücksetzen</value>
+    <value>Startansicht</value>
   </data>
   <data name="groupBoxViewDirection.Text" xml:space="preserve">
     <value>Blickrichtung</value>

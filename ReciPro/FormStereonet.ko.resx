@@ -161,7 +161,7 @@
     <value>깊이 페이드</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>초기화</value>
+    <value>시점 초기화</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>외관</value>
