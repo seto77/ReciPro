@@ -95,14 +95,23 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
         skipEvent = false;
     }
 
+    /// <summary>261105Cl 追加: P1 に展開した原子の、変形前 (OriginalCrystal の格子) の温度因子。execute で格子を変えるたびに、ここから Deform する</summary>
+    private readonly List<DiffuseScatteringFactor> unstrainedDsf = [];
+
     public void SetCrystal()
     {
         CrystalControl.GenerateFromInterface();
         OriginalCrystal = Deep.Copy(CrystalControl.Crystal);
         OriginalCrystal.SetAxis();
+        // 261105Cl 追加: Deep.Copy (XML) は等価位置 (Atoms.Atom、XmlIgnore) を持たないので作り直す。以前は下の P1 展開の原子が 0 個で、
+        // 動的圧縮の計算に原子が無かった (tools/AdpCheck deepcopy で 8 → 0 を確認)
+        foreach (var a in OriginalCrystal.Atoms)
+            a.ResetSymmetry(OriginalCrystal.SymmetrySeriesNumber);
+        var cell = OriginalCrystal.CellValue;
 
         CrystalControl.SymmetrySeriesNumber = 1;
         CrystalControl.Crystal.Atoms = Array.Empty<Atoms>();
+        unstrainedDsf.Clear();
         for (int i = 0; i < OriginalCrystal.Atoms.Length; i++)
             for (int j = 0; j < OriginalCrystal.Atoms[i].Atom.Length; j++)
             {
@@ -110,6 +119,14 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
                 atom.X = OriginalCrystal.Atoms[i].Atom[j].X;
                 atom.Y = OriginalCrystal.Atoms[i].Atom[j].Y;
                 atom.Z = OriginalCrystal.Atoms[i].Atom[j].Z;
+                // 261105Cl 追加: 異方性の温度因子も、この等価位置を作った対称操作の回転部分 R で回す (β' = R β Rᵀ。CrystalControl.toSuperStructure と同じ)
+                var op = OriginalCrystal.Atoms[i].Atom[j].Operation;
+                (double X, double Y, double Z)[] cols = [op.ApplyMatrix(1, 0, 0), op.ApplyMatrix(0, 1, 0), op.ApplyMatrix(0, 0, 1)];
+                var m = new double[3, 3];
+                for (int k = 0; k < 3; k++)
+                    (m[0, k], m[1, k], m[2, k]) = cols[k];
+                atom.Dsf = OriginalCrystal.Atoms[i].Dsf?.Transform(m, cell, cell);
+                unstrainedDsf.Add(atom.Dsf);
                 CrystalControl.Crystal.AddAtoms(atom);
             }
         CrystalControl.SetToInterface();
@@ -298,7 +315,20 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
             var b = new Vector3DBase(newAxes.E12, newAxes.E22, newAxes.E32);
             var c = new Vector3DBase(newAxes.E13, newAxes.E23, newAxes.E33);
             FormDiffractionSimulator.SkipDrawing = FormDiffractionSimulator.formMain.SkipDrawing = true;
-            CrystalControl.CellConstants = (a.Length, b.Length, c.Length, Vector3DBase.AngleBetVectors(b, c), Vector3DBase.AngleBetVectors(c, a), Vector3DBase.AngleBetVectors(a, b));
+            //CrystalControl.CellConstants = (a.Length, b.Length, c.Length, Vector3DBase.AngleBetVectors(b, c), Vector3DBase.AngleBetVectors(c, a), Vector3DBase.AngleBetVectors(a, b)); // 261105Cl 変更前
+            // 261105Cl 変更: (1) newAxes は Å なので nm にして渡す (CellConstants は nm)。
+            // (2) CellConstants の setter はイベントを出さず結晶を作り直さないので、GenerateFromInterface で作り直す。以前は結晶が元の格子のままで、
+            //     下の corrRot (= newAxes·旧軸⁻¹ = 実空間の変形 F) を逆格子ベクトルに掛けていた (正しくは F⁻ᵀ。圧縮で d が縮むはずが逆に伸びる)。
+            //     作り直すと corrRot は新しい格子の標準の向きを newAxes の向きに合わせる回転だけになり、g は新しい格子から計算される。
+            // (3) 温度因子は揺れの大きさ (Å²) を保つ (DiffuseScatteringFactor.Deform、作者の方針 2026-11-05)。原子表の原子 (= 今の結晶の原子) に先に入れておくと、
+            //     GenerateFromInterface がそれを複製して新しい結晶を作る
+            var newCell = (a.Length / 10, b.Length / 10, c.Length / 10, Vector3DBase.AngleBetVectors(b, c), Vector3DBase.AngleBetVectors(c, a), Vector3DBase.AngleBetVectors(a, b));
+            var tableAtoms = CrystalControl.Crystal.Atoms;
+            if (tableAtoms.Length == unstrainedDsf.Count)
+                for (int k = 0; k < tableAtoms.Length; k++)
+                    tableAtoms[k].Dsf = unstrainedDsf[k]?.Deform(OriginalCrystal.CellValue, newCell);
+            CrystalControl.CellConstants = newCell;
+            CrystalControl.GenerateFromInterface();
 
             var corrRot = newAxes * new Matrix3D(CrystalControl.Crystal.A_Axis * 10, CrystalControl.Crystal.B_Axis * 10, CrystalControl.Crystal.C_Axis * 10).Inverse();
 
