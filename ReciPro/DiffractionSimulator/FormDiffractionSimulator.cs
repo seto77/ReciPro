@@ -3861,6 +3861,8 @@ public partial class FormDiffractionSimulator : FormBase
         colorControlBackGround.Inversion = colorControlNoCondition.Inversion = colorControlString.Inversion = colorControlExcessLine.Inversion =
             colorControlDeficientLine.Inversion = //260805Cl 追加: Deficient 色も反転連鎖に含める
             colorControlKikuchiLine.Inversion = //260806Cl 追加: 幾何線/運動学線の色も反転連鎖に含める (色コントロール分離に伴う)
+            colorControlForbiddenLattice.Inversion = colorControlScrewGlide.Inversion = colorControlOrigin.Inversion = colorControlFoot.Inversion = // 261105Cl 追加 (監査 C21): 禁制反射 2 色・ダイレクトスポット・垂線の足・
+            colorControlDebyeRing.Inversion = colorControlScale2Theta.Inversion = colorControlScaleAzimuth.Inversion = // 261105Cl デバイリング・目盛 2 色が反転せず、背景とともに反転した画面で他の色と食い違っていた
             checkBoxNegativeImage.Checked;
         SetVector();
         Draw();
