@@ -4,7 +4,7 @@ La **Interacción del haz** describe cómo el cristal seleccionado interactúa c
 
 ![Interacción del haz](../assets/cap-es-auto/FormBeamInteraction.png)
 
-El haz incidente se selecciona en la banda situada en la parte superior de la ventana; las cuatro pestañas inferiores — **Reflexiones**, **Atenuación & Transporte**, **Factores de dispersión** y **Fluorescencia** — muestran los distintos aspectos de la interacción. Cada sección de pestaña a continuación muestra la pestaña bajo los haces **Rayos X / Electrones / Neutrón** (use las pestañas de cada figura); el contenido cambia notablemente según el haz.
+El haz incidente se selecciona en la banda situada en la parte superior de la ventana; las cuatro pestañas inferiores — **Reflexiones**, **Atenuación & Transporte**, **Factores de dispersión** y **Fluorescencia** — muestran los distintos aspectos de la interacción. Cada sección de pestaña a continuación muestra la pestaña bajo los haces **Rayos X / Electrones / Neutrones** (use las pestañas de cada figura); el contenido cambia notablemente según el haz.
 
 !!! tip "Fundamentos de estado sólido (Apéndice A2)"
     La dispersión y la física del estado sólido detrás de estas cuatro pestañas — los factores de dispersión atómica, el factor de estructura, la atenuación y el transporte del haz, y la fluorescencia — se explican en **[Apéndice A2. Interacción del haz (fundamentos de estado sólido)](appendix/a2-beam-interaction/index.md)**.
@@ -28,7 +28,7 @@ La banda superior es un **Wave Length Control** compartido con los demás simula
 
 ![Wave Length Control](../assets/cap-es-auto/FormBeamInteraction.waveLengthControl.png)
 
-- **Rayos X / Electrones / Neutrón** : los factores de dispersión atómica y la física de la interacción difieren según el tipo de haz incidente, por lo que se conmutan aquí.
+- **Rayos X / Electrones / Neutrones** : los factores de dispersión atómica y la física de la interacción difieren según el tipo de haz incidente, por lo que se conmutan aquí.
 - Para **Rayos X**, elegir el **Element** (material del ánodo) y la línea característica (Kα, etc.) fija automáticamente la longitud de onda de ese rayo X característico.
 - **Energía (keV)** y **Long. de onda (Å)** están enlazados; al fijar uno se actualiza el otro, y ambos determinan el 2θ usado en la tabla **Reflexiones**.
 - **Unit (Å / nm)** cambia la unidad de longitud usada para los espaciados d y magnitudes similares.
@@ -40,7 +40,7 @@ El haz elegido también decide qué pestañas y curvas tienen sentido:
 |------|------|------|------|------|
 | **Rayos X** | factores de estructura incl. dispersión anómala | µ/ρ, µ, transmisión + bordes de absorción (frente a energía) | $f(s)$ (Waasmaier–Kirfel o Temari) o $F(q)+S(q)$ | líneas características + barras EDX |
 | **Electrones** | factores de estructura electrónicos | σ, MFP, \|dE/ds\|, IMFP, alcance (frente a energía) | Peng / Kirkland / 8-Gaussians / Temari | — (oculta) |
-| **Neutrón** | factores de estructura nucleares | longitudes de dispersión y secciones eficaces (sin curva de energía) | longitudes de dispersión (sin dependencia de *s*) | — (oculta) |
+| **Neutrones** | factores de estructura nucleares | longitudes de dispersión y secciones eficaces (sin curva de energía) | longitudes de dispersión (sin dependencia de *s*) | — (oculta) |
 
 La pestaña **Fluorescencia** es exclusiva de rayos X y desaparece para los haces de electrones y neutrones. Para neutrones, las gráficas dependientes de la energía en **Atenuación & Transporte** y **Factores de dispersión** se sustituyen por tablas de elementos, porque la longitud de dispersión nuclear no depende del ángulo de dispersión ni de la energía.
 
@@ -148,7 +148,7 @@ El factor de dispersión atómica de cada elemento constituyente, representado f
 
 - **Rayos X** ofrece dos modos de **Modelo**: **f(s)** representa el factor de dispersión atómica de rayos X convencional (en unidades de electrón); **F(q)+S(q)** representa el factor de forma **coherente** de Rayleigh $F(q)$ junto con la función de dispersión **incoherente** de Compton $S(q)$ (de xraylib). La tabla también enumera los términos de dispersión anómala **f'(E)** y **f''(E)** a la energía actual, y una columna **modelo** que indica de qué fuente procede la columna f(s). Cuando se selecciona **f(s)**, una segunda fila de botones de opción elige **de dónde procede la curva**: **Waasmaier–Kirfel** (el ajuste predeterminado, que también cubre iones en Z = 1–98) o **Temari**. Queda atenuada mientras se muestra **F(q)+S(q)**, porque esas dos curvas provienen de xraylib y no admiten elección de fuente.
 - **Electrones** ofrece cuatro fuentes para el factor de dispersión electrónico: **Peng**, **Kirkland**, **8-Gaussians** y **Temari**. La tabla muestra $f_e(s)$ (nm) y qué **modelo** lo produjo. **Kirkland** y **8-Gaussians** no tienen parámetros para iones, así que para los iones se omiten sus curvas y sus celdas quedan en blanco (**Peng** da valores de iones). <!-- 261106Cl 作者の決定 J12 -->
-- Las longitudes de dispersión de **Neutrón** no dependen de $s$, por lo que no se dibuja ninguna curva; la tabla enumera, para cada elemento, la longitud de dispersión coherente **b_coh** y sus secciones eficaces coherente / incoherente.
+- Las longitudes de dispersión de **Neutrones** no dependen de $s$, por lo que no se dibuja ninguna curva; la tabla enumera, para cada elemento, la longitud de dispersión coherente **b_coh** y sus secciones eficaces coherente / incoherente.
 - **Temari** no es un ajuste sino una tabla calculada (Temari dataset-factors v2.0.0, CC-BY-4.0, a partir de un cálculo de campo autoconsistente de Dirac completo). Cubre **solo átomos neutros Z = 1–86**: los iones y Z = 87–98 no tienen entrada, así que se omiten sus curvas y sus celdas quedan en blanco en lugar de rellenarse con valores de átomo neutro.
 - **Desplazamiento (B)** multiplica cada factor por la amortiguación térmica $e^{-B s^2}$ usando el parámetro de desplazamiento isótropo de cada átomo.
 

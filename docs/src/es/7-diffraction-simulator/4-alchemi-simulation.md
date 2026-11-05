@@ -93,7 +93,7 @@ El contraste de sitio cambia mucho —e incluso puede invertir su signo— entre
 
 | Elemento | Descripción | Predeterminado |
 |----------|-------------|----------------|
-| **Haces máx.** | Cota superior del número de ondas de Bloch por orientación (1–1600). La unión sobre todo el barrido es mayor | 120 |
+| **Ondas difr. máx.** | Cota superior del número de ondas de Bloch por orientación (1–1600). La unión sobre todo el barrido es mayor | 120 |
 | **Solucionador** | Motor de cálculo del problema de autovalores: **Nativo** (Eigen C++) o **Gestionado** (.NET). Donde el solucionador nativo no está disponible, la elección queda fijada en Gestionado | Nativo |
 | **Incluir la componente descanalizada** | Si se suma $Y_\text{dech}$ anterior | activado |
 | **Dispersión angular** | Convoluciona la curva con la dispersión angular del haz incidente: **Ninguno** o **Gaussian** con una anchura a media altura en mrad. Es un posprocesado sobre el eje de orientaciones, aplicado **antes** de la normalización de visualización | Ninguno |

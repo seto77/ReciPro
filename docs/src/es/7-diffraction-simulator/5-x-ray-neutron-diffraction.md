@@ -2,9 +2,9 @@
 
 La **simulación de difracción de rayos X / neutrones** calcula patrones de difracción de monocristal para rayos X y neutrones. Es uno de los modos principales del [simulador de difracción](index.md).
 
-> Esta página enumera cada ajuste que aparece en el lado derecho cuando selecciona **Fuente de ondas** = **Rayos X** (o **Neutrón**). Para operaciones que afectan a toda la ventana, como dibujar y guardar, consulte la [página de descripción general](index.md).
+> Esta página enumera cada ajuste que aparece en el lado derecho cuando selecciona **Fuente de ondas** = **Rayos X** (o **Neutrones**). Para operaciones que afectan a toda la ventana, como dibujar y guardar, consulte la [página de descripción general](index.md).
 
-Condiciones de la GUI: Fuente de ondas = Rayos X / Neutrón · Óptica = Haz paralelo / Precesión (rayos X, ZOLZ) / Laue posterior (rayos X) · Cálculo de intensidad = Solo error de exc. / Cinemática & err. exc.
+Condiciones de la GUI: Fuente de ondas = Rayos X / Neutrones · Óptica = Haz paralelo / Precesión (rayos X, ZOLZ) / Laue posterior (rayos X) · Cálculo de intensidad = Solo error de exc. / Cinemática & err. exc.
 
 ![Simulador de difracción en modo rayos X / neutrones](../../assets/cap-es-auto/FormDiffractionSimulator-xray.png)
 
@@ -122,7 +122,7 @@ Los ajustes detallados se encuentran en la pestaña Anillos de Debye del [menú 
 
 ## Difracción de neutrones
 
-Seleccionar **Neutrón** en **Fuente de ondas** calcula un patrón de difracción de neutrones. Introduzca la energía (meV) o la longitud de onda (Å o nm, conmutable; por defecto Å). **Óptica** solo puede ser **Haz paralelo**. El cálculo de la intensidad puede ser **Solo error de exc.** o **Cinemática & err. exc.** (**Teoría dinámica** no está disponible). La intensidad cinemática utiliza la longitud de dispersión de neutrones en lugar del factor de dispersión atómico.
+Seleccionar **Neutrones** en **Fuente de ondas** calcula un patrón de difracción de neutrones. Introduzca la energía (meV) o la longitud de onda (Å o nm, conmutable; por defecto Å). **Óptica** solo puede ser **Haz paralelo**. El cálculo de la intensidad puede ser **Solo error de exc.** o **Cinemática & err. exc.** (**Teoría dinámica** no está disponible). La intensidad cinemática utiliza la longitud de dispersión de neutrones en lugar del factor de dispersión atómico.
 
 ---
 

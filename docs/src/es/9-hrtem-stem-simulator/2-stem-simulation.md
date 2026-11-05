@@ -68,10 +68,10 @@ Define la geometría de la sonda convergente y del detector anular. Cada ángulo
 
 | Parámetro | Descripción | Predeterminado / típico |
 |-----------|-------------|-------------------|
-| **Conv. semi-angle α** | Semiángulo de la sonda convergente (mrad). Valores mayores dan una sonda más fina y cambian el contraste de difracción | 25 mrad (por defecto); 15–25 mrad |
+| **Semiáng. conv. α** | Semiángulo de la sonda convergente (mrad). Valores mayores dan una sonda más fina y cambian el contraste de difracción | 25 mrad (por defecto); 15–25 mrad |
 | **Detector anular — Interior** | Semiángulo interior de captación del detector anular (mrad). La señal dentro de este ángulo se excluye | 0 (por defecto); BF: 0, HAADF: 80 |
 | **Detector anular — Exterior** | Semiángulo exterior de captación del detector anular (mrad). La señal fuera de este ángulo se excluye | 20 (por defecto); BF: 5, HAADF: 250 |
-| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Tamaño efectivo de la fuente de electrones (pm). Se aplica tras el cálculo como una convolución gaussiana de cada imagen Elástica / TDS / EDX. Valores mayores difuminan la imagen y reducen el contraste de los detalles finos | 20 pm (por defecto) |
+| **Tamaño efectivo de la fuente (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Tamaño efectivo de la fuente de electrones (pm). Se aplica tras el cálculo como una convolución gaussiana de cada imagen Elástica / TDS / EDX. Valores mayores difuminan la imagen y reducen el contraste de los detalles finos | 20 pm (por defecto) |
 
 Los ángulos del detector solo se aplican a la imagen STEM de referencia (Elástico / TDS / Elástico & TDS); los mapas STEM-EDX no los usan. Los valores por defecto se aplican solo en el primer inicio; después se restauran los últimos valores utilizados.
 

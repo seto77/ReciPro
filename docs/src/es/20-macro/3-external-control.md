@@ -56,7 +56,7 @@ Mientras ReciPro está en ejecución, puede aceptar macros de otros programas a 
 
 La escucha está **desactivada de forma predeterminada**. Actívela desde la ventana principal:
 
-**Opciones → Accept external macro commands (named pipe)**
+**Opciones → Aceptar comandos de macro externos (canalización con nombre)**
 
 El ajuste se conserva entre sesiones.
 

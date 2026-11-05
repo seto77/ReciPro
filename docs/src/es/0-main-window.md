@@ -73,12 +73,12 @@ Si utiliza ReciPro por primera vez, siga estos pasos:
 | Usar índices de Miller-Bravais (hkil) | Usar la notación de 4 índices para los sistemas trigonal/hexagonal en toda la aplicación |
 | Usar factores de dispersión iónicos | Usar factores de dispersión de electrones iónicos (Peng) para los iones asignados a los átomos en los cálculos dinámicos de electrones (ondas de Bloch), incluidos los perfiles de Kikuchi; el término monopolar de $g \neq 0$ se añade solo a los coeficientes elásticos $U_g$ (la absorción TDS y la fuente TDS de Kikuchi usan la parte iónica finita). Si no está marcada, se usan factores de átomos neutros. Si la celda elemental no es eléctricamente neutra ($\Sigma q \neq 0$), se omite el término monopolar y solo se usa la parte finita (ion apantallado); al activar la opción se muestra un aviso |
 | Descargar biblioteca MKL | Descargar la biblioteca nativa Intel MKL (~55 MB); una vez instalada se usa automáticamente en cálculos grandes |
-| Accept external macro commands (named pipe) | Escuchar en la canalización con nombre `ReciPro.Macro.v1` y ejecutar macros enviadas por programas externos — véase [Control externo](20-macro/3-external-control.md) |
+| Aceptar comandos de macro externos (canalización con nombre) | Escuchar en la canalización con nombre `ReciPro.Macro.v1` y ejecutar macros enviadas por programas externos — véase [Control externo](20-macro/3-external-control.md) |
 | Restablecer configuración del registro al salir (efectivo tras reiniciar) | Restablecer los ajustes en el próximo reinicio |
 | Desactivar biblioteca Crystallography.Native (requiere reinicio) | Recurrir al código administrado si la biblioteca nativa (C++) no se puede cargar |
 | Desactivar todo el renderizado OpenGL (requiere reinicio) | Para GPU antiguas / escritorio remoto |
 | Desactivar renderizado de texto OpenGL (requiere reinicio) | Solución alternativa para problemas de representación de texto en algunas GPU |
-| Capturar componentes de la GUI... | Herramienta de desarrollador para guardar capturas de pantalla de la GUI |
+| (experimental) Capturar componentes de la GUI... | Herramienta de desarrollador para guardar capturas de pantalla de la GUI |
 | Función de difracción de polvo (en desarrollo) | Habilitar la ventana de difracción policristalina (de polvo) |
 
 ### Ayuda

@@ -66,7 +66,7 @@ Establezca la duración de la película (**Duración**), la frecuencia de fotogr
 
 #### Export 3D model (3MF/STL)
 
-**Export 3D model (3MF/STL)** exporta el modelo de estructura dibujado en pantalla como un modelo sólido para impresión 3D. Solo pueden exportarse sólidos cerrados: átomos (esferas y elipsoides), enlaces (cilindros) y poliedros de coordinación. Las etiquetas de los átomos, los planos de límite, los planos reticulares y los símbolos de los elementos de simetría no se exportan. <!-- 261105Cl 監査: 配位多面体を出力し、対称要素は出さない (6c31fc0d) --> El armazón de la celda elemental está formado por segmentos, así que solo se sustituye por cilindros (con esferas en los vértices) si activas la opción correspondiente. **Recortar objetos** (por los planos límite) no se aplica a la salida: los objetos que cruzan los planos límite se exportan enteros (el cuadro de diálogo lo indica). <!-- 261106Cl 作者の決定 H10 -->
+**Export 3D model (3MF/STL)** exporta el modelo de estructura dibujado en pantalla como un modelo sólido para impresión 3D. Solo pueden exportarse sólidos cerrados: átomos (esferas y elipsoides), enlaces (cilindros) y poliedros de coordinación. Las etiquetas de los átomos, los planos de límite, los planos reticulares y los símbolos de los elementos de simetría no se exportan. <!-- 261105Cl 監査: 配位多面体を出力し、対称要素は出さない (6c31fc0d) --> El armazón de la celda elemental está formado por segmentos, así que solo se sustituye por cilindros (con esferas en los vértices) si activas la opción correspondiente. **Recortar objetos en los planos límite** no se aplica a la salida: los objetos que cruzan los planos límite se exportan enteros (el cuadro de diálogo lo indica). <!-- 261106Cl 作者の決定 H10 -->
 
 ![Cuadro de diálogo Exportar modelo 3D](../assets/cap-es-auto/FormExport3DModel.png)
 
@@ -116,7 +116,7 @@ En este modo, los ejes *a*, *b*, *c* de la celda elemental son la unidad del int
 
 ![Límites por planos cristalinos](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
-En este modo, el área de dibujo está delimitada por un conjunto de planos cristalinos. Si los planos no definen una región espacialmente cerrada, ReciPro añade un poliedro casi esférico de radio **Distancia máx. al origen** (Å, medida desde el [centro de proyección](#centro-de-proyección)) para cerrarla. <!-- 261106Cl 作者の決定 C4 -->
+En este modo, el área de dibujo está delimitada por un conjunto de planos cristalinos. Si los planos no definen una región espacialmente cerrada, ReciPro añade un poliedro casi esférico de radio **Dist. máx. (centro proy.)** (Å, medida desde el [centro de proyección](#centro-de-proyección)) para cerrarla. <!-- 261106Cl 作者の決定 C4 -->
 
 #### Lista de límites
 
@@ -130,17 +130,17 @@ Establece el plano límite mediante su índice de Miller. La casilla incluye los
 
 #### Distancia al centro de proy.
 
-La distancia desde el [centro de proyección](#centro-de-proyección) (no desde el origen de la celda) hasta el plano límite, introducida <!-- 261106Cl 作者の決定 C4 --> como múltiplo de la distancia interplanar *d* del (*hkl*) seleccionado (casilla **d×**) o en Å (la casilla entre paréntesis). Las dos casillas están vinculadas: al cambiar una se actualiza la otra.
+La distancia desde el [centro de proyección](#centro-de-proyección) (no desde el origen de la celda) hasta el plano límite, introducida <!-- 261106Cl 作者の決定 C4 --> como múltiplo de la distancia interplanar *d* del (*hkl*) seleccionado (casilla **d×**) o en Å (la casilla entre paréntesis). Las dos casillas están vinculadas: al cambiar una se actualiza la otra. Cada plano se sitúa en el lado +**g** del centro de proyección (en el sentido de su normal (*hkl*)), y se dibuja el lado que contiene el centro; con un solo plano, la región es el semiespacio del lado del centro. <!-- 261106Cl 仕上げ R3 D5: Boundary.cs Bound.Reset (面は nᵢ·r ≤ D) -->
 
-- **Translation** (Å): desplaza toda la región delimitada por los planos en esa cantidad a lo largo de la normal del (*hkl*) especificado; los valores positivos la mueven hacia +**g**, es decir, en el sentido de la normal de (*hkl*). Funciona con cualquier número de planos, incluido un único plano sin **Planos equivalentes**. <!-- 261106Cl 作者の決定 B11, C5 -->
-- **Distancia máx. al origen** (Å): radio del poliedro de cierre usado cuando los planos no encierran una región (véase arriba).
+- **Traslación** (Å): desplaza toda la región delimitada por los planos en esa cantidad a lo largo de la normal del (*hkl*) especificado; los valores positivos la mueven hacia +**g**, es decir, en el sentido de la normal de (*hkl*). Funciona con cualquier número de planos, incluido un único plano sin **Planos equivalentes**. <!-- 261106Cl 作者の決定 B11, C5 -->
+- **Dist. máx. (centro proy.)** (Å): radio del poliedro de cierre usado cuando los planos no encierran una región (véase arriba).
 - **Actualizar inmediatamente**: aplica las modificaciones del plano seleccionado sin pulsar **Reemplazar**.
 
 #### Mostrar planos límite / Opacidad
 
 Muestra u oculta los propios planos límite. Cuando se muestran, **Opacidad** establece la transparencia (0 = transparente, 1 = opaco).
 
-#### Recortar objetos por los planos límite
+#### Recortar objetos en los planos límite
 
 Si está marcado, solo se renderiza la región interior definida por los límites; los átomos, enlaces y poliedros que cortan los límites se recortan.
 
@@ -167,9 +167,9 @@ La lista de átomos del cristal. Use **Añadir / Reemplazar / Eliminar** para ma
 - **X, Y, Z**: coordenadas fraccionarias. Números reales entre 0 y 1, o fracciones como `1/2` o `2/3`.
 - **Occ**: ocupación, un número real entre 0 y 1.
 
-#### Desplazamiento del origen
+#### Desplazamiento de origen
 
-![Desplazamiento del origen](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.atomControl.tabControl.tabPageOriginShift.png)
+![Desplazamiento de origen](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.atomControl.tabControl.tabPageOriginShift.png)
 
 Desplaza cada átomo en el mismo desplazamiento fraccionario. Pulse un botón de preajuste (por ejemplo, para alternar entre la elección de origen 1 / 2 del mismo grupo espacial), o introduzca un (Δx, Δy, Δz) personalizado y pulse **Apply custom shift**.
 
@@ -225,11 +225,11 @@ Cada grupo espacial tiene un origen predeterminado. Para alejar el centro de la 
 
 La traslación está ligada al [Centro de proyección](#centro-de-proyección): fijar el centro de proyección en $(x, y, z)$ fija la traslación en $(x-0.5,\ y-0.5,\ z-0.5)$. Una traslación positiva mueve la celda dibujada hacia +*a*, +*b*, +*c*. <!-- 261106Cl 作者の決定 H3/H18 -->
 
-#### Mostrar plano de la celda
+#### Mostrar plano de celda
 
 Si se dibujan o no las seis caras que delimitan la celda elemental. Cuando está habilitado, puede establecer el color de cara y la transparencia.
 
-#### Mostrar aristas
+#### Mostrar arista de celda
 
 Si se dibujan o no las aristas de la celda elemental. El color de las aristas es configurable.
 

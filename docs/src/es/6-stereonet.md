@@ -157,7 +157,7 @@ Dibuje círculos máximos (los círculos menores no están disponibles). Especif
 
 ![Pestaña Onda](../assets/cap-es-auto/FormStereonet.tabControl.tabPage4.png)
 
-Solo se usa cuando se selecciona **Planos** o **Pares de Kikuchi** como objeto de proyección (en el modo **Pares de Kikuchi** la longitud de onda fija además el ángulo de Bragg, es decir, la separación de cada par de líneas). Establece la fuente de onda (Rayos X / Electrones / Neutrón) y la longitud de onda o energía necesarias para calcular los factores de estructura cristalina que usa **Factores de estructura en la intensidad** en [Modo](#mode).
+Solo se usa cuando se selecciona **Planos** o **Pares de Kikuchi** como objeto de proyección (en el modo **Pares de Kikuchi** la longitud de onda fija además el ángulo de Bragg, es decir, la separación de cada par de líneas). Establece la fuente de onda (Rayos X / Electrones / Neutrones) y la longitud de onda o energía necesarias para calcular los factores de estructura cristalina que usa **Factores de estructura en la intensidad** en [Modo](#mode).
 
 ---
 

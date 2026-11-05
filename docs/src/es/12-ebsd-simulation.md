@@ -55,7 +55,7 @@ Los rangos de energía y profundidad se fijan automáticamente en los pasos 1–
 
 ![Condiciones de SEM & muestra](../assets/cap-es-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
-- **Energía** : voltaje de aceleración del haz incidente (keV).
+- **Energía** : voltaje de aceleración del haz incidente (keV). El valor se restaura en el siguiente arranque, junto con los rangos de energía y profundidad introducidos a mano. <!-- 261106Cl 仕上げ R3 D4: FormEBSD.AcceleratingVoltageKV をレジストリに保存 -->
 - **Long. de onda** : longitud de onda del electrón, vinculada a Energía. **Unit** selecciona Å o nm.
 - **Inclinación de muestra** : ángulo de inclinación de la muestra (típicamente −70°). La gran inclinación en EBSD aumenta el rendimiento de electrones retrodispersados. Al cambiarla se descartan los resultados de Monte-Carlo (las distribuciones BSE y sus pesos; vuelva a pulsar **Simular**); el master pattern no depende de la inclinación y se conserva. <!-- 261106Cl 作者の決定 F17 -->
 

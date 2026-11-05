@@ -46,7 +46,7 @@ Defina la forma y el muestreo del cono de precesión.
 
 | Parámetro | Descripción | Recomendado |
 |-----------|-------------|-------------|
-| **Semiángulo** | Semiángulo del cono de precesión (mrad; 0.1–500, por defecto 50) | 10–40 mrad |
+| **Áng. prec.** | Ángulo de precesión, es decir, el semiángulo del vértice del cono de precesión (mrad; 0.1–500, por defecto 50) <!-- 261106Cl 仕上げ R3 D1: 欄名 Semiángulo → Áng. prec. --> | 10–40 mrad |
 | **Paso** | Número de direcciones de haz paralelo muestreadas sobre el cono de precesión (2–1080, por defecto 36). Los valores mayores producen una integración más suave, pero aumentan el tiempo de cálculo linealmente | 36–72 |
 
 ---

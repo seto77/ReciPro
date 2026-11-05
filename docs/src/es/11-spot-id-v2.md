@@ -30,7 +30,7 @@ La lista de reflexiones se construye directamente sobre la imagen cargada. El pa
 
 ## Menú Archivo
 
-Abrir una imagen de difracción; **Guardar** / **Copiar** escriben la imagen mostrada como Metafile (EMF) o como imagen (PNG). Las imágenes también pueden cargarse arrastrando y soltando. En el caso de un archivo DM3/DM4 de Gatan calibrado en nm⁻¹, la radiación se establece en electrones y el voltaje de aceleración y el tamaño de píxel (nm⁻¹) se leen del archivo (en ese caso no se necesita la longitud de cámara).
+Abrir una imagen de difracción; **Guardar** / **Copiar** escriben la imagen mostrada como metarchivo (EMF) o como imagen (PNG). Las imágenes también pueden cargarse arrastrando y soltando. En el caso de un archivo DM3/DM4 de Gatan calibrado en nm⁻¹, la radiación se establece en electrones y el voltaje de aceleración y el tamaño de píxel (nm⁻¹) se leen del archivo (en ese caso no se necesita la longitud de cámara).
 
 **Guardar ▸ Candidate list (CSV)...** exporta los candidatos de orientación hallados por la indexación y **Copiar ▸ Candidate list (TSV)** coloca la misma tabla en el portapapeles: una fila por candidato × grano, con el rango, el índice del grano, el nombre del cristal, los ángulos de Euler ZXZ (°), los nueve elementos de la matriz de rotación, el residuo cuadrático medio (nm⁻²), el número de puntos asignados y las asignaciones punto → (hkl). El CSV usa siempre el punto como separador decimal; el TSV se pega directamente en una hoja de cálculo.
 
