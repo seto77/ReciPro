@@ -1658,6 +1658,7 @@ public partial class FormMain : FormBase
 
     public void ReadCrystal(string fileName = "")
     {
+        var interactive = fileName == ""; // 261105Cl 追加: ダイアログで選んだときだけ、読めなかったことを画面に出す (マクロは止めない)
         if (fileName == "")
         {
             using var dlg = new OpenFileDialog { Filter = "cif, amc|*.cif;*.amc" };//260717Cl using 化
@@ -1667,7 +1668,8 @@ public partial class FormMain : FormBase
                 return;
         }
 
-        crystalControl.ReadCrystal(fileName);
+        //crystalControl.ReadCrystal(fileName); // 261105Cl 変更前
+        crystalControl.ReadCrystal(fileName, showError: interactive); // 261105Cl 変更
     }
 
     private void readCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
