@@ -1144,12 +1144,18 @@ public partial class FormStructureViewer : FormBase
             int n = 0;
             var flag = true;
             var prm = new[] { prms.X, prms.Y, prms.Z, 0 };
+            // 261105Cl 追加: 面は ĝ·r' + W = 0 (r' は投影中心からの座標 = 原子と同じ r − shift)。格子面は結晶に固定する: ĝ·r = −(m + t)d → W = (m + t)d + ĝ·shift。
+            // 旧コードは ĝ·shift を落としていたので、面が投影中心に固定され (投影中心を変えると面だけ画面に残る)、既定の投影中心 (½ ½ ½) では h+k+l が奇数の面が d/2 ずれていた。
+            // 数え始め (m0) は投影中心に最も近い面
+            var gShift = prms.X * shift.X + prms.Y * shift.Y + prms.Z * shift.Z;
+            var m0 = -Math.Round(t + gShift / prms.D);
             while (flag)
             {
                 var verticesList = new List<double[][]>();
                 for (int i = 0; i < (n == 0 ? 1 : 2); i++)
                 {
-                    var vertices = Geometry.GetClippedPolygon([prms.X, prms.Y, prms.Z, ((i == 0 ? n : -n) + t) * prms.D], boundArray);
+                    //var vertices = Geometry.GetClippedPolygon([prms.X, prms.Y, prms.Z, ((i == 0 ? n : -n) + t) * prms.D], boundArray); // 261105Cl 変更前
+                    var vertices = Geometry.GetClippedPolygon([prms.X, prms.Y, prms.Z, (m0 + (i == 0 ? n : -n) + t) * prms.D + gShift], boundArray); // 261105Cl 変更
                     if (vertices != null)
                         verticesList.Add(vertices);
                 }
