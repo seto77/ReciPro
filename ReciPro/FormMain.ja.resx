@@ -332,8 +332,7 @@
     <value>「回転ジオメトリ」機能を開きます。</value>
   </data>
   <data name="toolStripButtonStructureViewer.Text" xml:space="preserve">
-    <value>結晶構造
-(V)</value>
+    <value>結晶構造</value>
   </data>
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
     <value>ストラクチャビューア（結晶の三次元構造
@@ -341,7 +340,7 @@
   </data>
   <data name="toolStripButtonStereonet.Text" xml:space="preserve">
     <value>ステレオ
-ネット(S)</value>
+ネット</value>
   </data>
   <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
     <value>ステレオネット（ステレオ投影／ウルフ網）を開きます。</value>
