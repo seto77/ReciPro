@@ -35,21 +35,36 @@ public partial class FormDiffractionSpotInfo : FormBase
 
     public void SetTable(double acc, Crystal crystal)
     {
+        // 261105Cl 変更 (監査 #7・C1): Sg・Pg・Qg (と R) を回転前の g で計算していた (同じ行の g は回転後)。また共有の crystal.Bethe.Beams を
+        //  運動学の一覧で上書きしていた。回転後の g で計算し、この表だけの配列にする。
+        // 261105Cl 変更 (監査 C5): X 線・中性子でも電子線として (keV を kV とみなした電子の波数と U0 で) 計算していた。
+        //  X 線・中性子は実際の波長 (屈折なし) で Sg・Pg・Qg を求め、電子線の結晶ポテンシャルは計算しない (列は SetTable で隠す)。
+        var electron = (FormDiffractionSimulator?.Source ?? WaveSource.Electron) == WaveSource.Electron; // 261105Cl
         //波数を計算
-        var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(acc);
+        //var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(acc); // 261105Cl 変更前
+        var kvac = electron ? UniversalConstants.Convert.EnergyToElectronWaveNumber(acc) : 1 / FormDiffractionSimulator.WaveLength; // 261105Cl
         //U0を計算
-        var u0 = crystal.Bethe.getU(acc).Real.Real;
+        //var u0 = crystal.Bethe.getU(acc).Real.Real; // 261105Cl 変更前
+        var u0 = electron ? crystal.Bethe.getU(acc).Real.Real : 0; // 261105Cl
 
-        crystal.Bethe.Beams = crystal.VectorOfG.Where(g => g.Flag2).Select(g =>
+        //crystal.Bethe.Beams = crystal.VectorOfG.Where(g => g.Flag2).Select(g => // 261105Cl 変更前 (以下 SetTable の呼び出しまで)
+        //{
+        //    return new BetheMethod.Beam(
+        //        g.Index,
+        //        crystal.RotationMatrix * g,
+        //        crystal.Bethe.getU(acc, new BetheMethod.Beam(g)),
+        //        crystal.Bethe.getQP(g, kvac, u0));
+        //}).ToArray();
+        //
+        //SetTable(acc, crystal.Bethe.Beams);
+        var beams = crystal.VectorOfG.Where(g => g.Flag2).Select(g => // 261105Cl
         {
-            return new BetheMethod.Beam(
-                g.Index,
-                crystal.RotationMatrix * g,
-                crystal.Bethe.getU(acc, new BetheMethod.Beam(g)),
-                crystal.Bethe.getQP(g, kvac, u0));
+            var vec = crystal.RotationMatrix * g; // 261105Cl
+            return new BetheMethod.Beam(g.Index, vec,
+                electron ? crystal.Bethe.getU(acc, new BetheMethod.Beam(g)) : default, // 261105Cl
+                crystal.Bethe.getQP(vec, kvac, u0)); // 261105Cl
         }).ToArray();
-
-        SetTable(acc, crystal.Bethe.Beams);
+        SetTable(acc, beams); // 261105Cl
     }
 
 
@@ -64,11 +79,18 @@ public partial class FormDiffractionSpotInfo : FormBase
             Beams = beams;
         if (Beams == null)
             return;
-        textBoxAccVoltage.Text = AccVol.ToString();
-        textBoxWaveLength.Text = UniversalConstants.Convert.EnergyToElectronWaveLength(AccVol).ToString("f10");
+        var electron = (FormDiffractionSimulator?.Source ?? WaveSource.Electron) == WaveSource.Electron; // 261105Cl 追加 (監査 C5)
+        //textBoxAccVoltage.Text = AccVol.ToString(); // 261105Cl 変更前: X 線 (keV)・中性子 (meV) のエネルギーも kV の加速電圧として電子線の波長・γ・β を出していた
+        //textBoxWaveLength.Text = UniversalConstants.Convert.EnergyToElectronWaveLength(AccVol).ToString("f10");
+        textBoxAccVoltage.Text = electron ? AccVol.ToString() : "-"; // 261105Cl
+        textBoxWaveLength.Text = (electron ? UniversalConstants.Convert.EnergyToElectronWaveLength(AccVol) : FormDiffractionSimulator.WaveLength).ToString("f10"); // 261105Cl
         var gamma = 1 + UniversalConstants.e0 * AccVol * 1000 / UniversalConstants.m0 / UniversalConstants.c2;
-        textBoxGamma.Text = gamma.ToString("f8");
-        textBoxBeta.Text = (Math.Sqrt(gamma * gamma - 1) / gamma).ToString("f8");
+        //textBoxGamma.Text = gamma.ToString("f8"); // 261105Cl 変更前
+        //textBoxBeta.Text = (Math.Sqrt(gamma * gamma - 1) / gamma).ToString("f8");
+        textBoxGamma.Text = electron ? gamma.ToString("f8") : "-"; // 261105Cl
+        textBoxBeta.Text = electron ? (Math.Sqrt(gamma * gamma - 1) / gamma).ToString("f8") : "-"; // 261105Cl
+        for (int c = 10; c <= 13; c++) // 261105Cl 追加: Ug/U'g (Vg/V'g) は電子線の結晶ポテンシャルなので X 線・中性子では隠す (Copy/CSV も表示中の列だけ)
+            dataGridView.Columns[c].Visible = electron; // 261105Cl
 
         var crystal = FormDiffractionSimulator != null ?
             FormDiffractionSimulator.formMain.Crystal :
@@ -76,6 +98,9 @@ public partial class FormDiffractionSpotInfo : FormBase
 
         textBoxLatticeVolume.Text = crystal.Volume.ToString("f8");
 
+        // 261105Cl 追加 (監査 C22): 厚さ・収束半角は使うとき (動力学・CBED) だけ書き込んでいたので、運動学などに切り替えても前の値が残っていた
+        textBoxThickness.Text = "-"; // 261105Cl
+        textBoxSemiangle.Text = "-"; // 261105Cl
         if (FormDiffractionSimulator != null)
         {
             if (FormDiffractionSimulator.CalcMode == FormDiffractionSimulator.CalcModes.Dynamical)
@@ -200,7 +225,8 @@ public partial class FormDiffractionSpotInfo : FormBase
 
     private void buttonCopyToClipboard_Click(object sender, EventArgs e)
     {
-        if (dataSet.DataTableBethe.Rows.Count > 1)
+        //if (dataSet.DataTableBethe.Rows.Count > 1) // 261105Cl 変更前 (監査 C22): 1 行 (透過波 000 だけ) の表では Copy も CSV も何もしなかった
+        if (dataSet.DataTableBethe.Rows.Count > 0) // 261105Cl
         {
             var sb = new StringBuilder();
             //260421Cl h, k に加えて i もスペース区切りに含める (l が h k l グループの最後のためタブで閉じる)
