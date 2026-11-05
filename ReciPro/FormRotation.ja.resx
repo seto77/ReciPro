@@ -64,7 +64,7 @@
   </data>
   <data name="buttonPaste.Text" xml:space="preserve">
     <value>エクセル形式を
-張り付け</value>
+貼り付け</value>
   </data>
   <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
     <value>ReciProの座標系 (ZXZ)</value>
@@ -102,15 +102,18 @@
   </data>
   <data name="numericBoxPsi.ToolTip" xml:space="preserve">
     <value>ReciPro 座標系（ZXZ 規約）の第3オイラー角 Ψ（度、
-最後の Z 軸まわりの回転）。結晶方位を決めます。</value>
+最後の Z 軸まわりの回転）。今の結晶方位を表示します
+（読み取り専用）。</value>
   </data>
   <data name="numericBoxTheta.ToolTip" xml:space="preserve">
     <value>ReciPro 座標系（ZXZ 規約）の第2オイラー角 Θ（度、
-中間の X 軸まわりの回転）。結晶方位を決めます。</value>
+中間の X 軸まわりの回転）。今の結晶方位を表示します
+（読み取り専用）。</value>
   </data>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
     <value>ReciPro 座標系（ZXZ 規約）の第1オイラー角 Φ（度）。
-Θ・Ψ とともに結晶方位（回転行列）を決めます。</value>
+Θ・Ψ とともに今の結晶方位（回転行列）を表示します
+（読み取り専用）。</value>
   </data>
   <data name="numericBoxExp1.ToolTip" xml:space="preserve">
     <value>実験座標系の第1ゴニオメータ軸まわりの回転角（度、
@@ -155,33 +158,33 @@
   </data>
   <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
     <value>実験座標系の第2ゴニオメータ回転軸を
-直交座標の Z 軸に設定します（第2回転
-Exp2 がこの軸まわりに適用されます）。</value>
+直交座標の Z 軸に設定します（第2回転が
+この軸まわりに適用されます）。</value>
   </data>
   <data name="radioButton2ndY.ToolTip" xml:space="preserve">
     <value>実験座標系の第2ゴニオメータ回転軸を
-直交座標の Y 軸に設定します（第2回転
-Exp2 がこの軸まわりに適用されます）。</value>
+直交座標の Y 軸に設定します（第2回転が
+この軸まわりに適用されます）。</value>
   </data>
   <data name="radioButton2ndX.ToolTip" xml:space="preserve">
     <value>実験座標系の第2ゴニオメータ回転軸を
-直交座標の X 軸に設定します（第2回転
-Exp2 がこの軸まわりに適用されます）。</value>
+直交座標の X 軸に設定します（第2回転が
+この軸まわりに適用されます）。</value>
   </data>
   <data name="radioButton1stZ.ToolTip" xml:space="preserve">
     <value>実験座標系の第1ゴニオメータ回転軸を
-直交座標の Z 軸に設定します（第1回転
-Exp1 がこの軸まわりに適用されます）。</value>
+直交座標の Z 軸に設定します（第1回転が
+この軸まわりに適用されます）。</value>
   </data>
   <data name="radioButton1stY.ToolTip" xml:space="preserve">
     <value>実験座標系の第1ゴニオメータ回転軸を
-直交座標の Y 軸に設定します（第1回転
-Exp1 がこの軸まわりに適用されます）。</value>
+直交座標の Y 軸に設定します（第1回転が
+この軸まわりに適用されます）。</value>
   </data>
   <data name="radioButton1stX.ToolTip" xml:space="preserve">
     <value>実験座標系の第1ゴニオメータ回転軸を
-直交座標の X 軸に設定します（第1回転
-Exp1 がこの軸まわりに適用されます）。</value>
+直交座標の X 軸に設定します（第1回転が
+この軸まわりに適用されます）。</value>
   </data>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>すべての角度をゼロにリセット</value>

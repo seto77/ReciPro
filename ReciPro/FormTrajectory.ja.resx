@@ -366,4 +366,13 @@
   <data name="numericBoxCalcNum.HeaderText" xml:space="preserve">
     <value>計算する飛程の総数</value>
   </data>
+  <data name="buttonViewFromX.Text" xml:space="preserve">
+    <value>X 軸から見る (回転軸)</value>
+  </data>
+  <data name="buttonViewFromZ.Text" xml:space="preserve">
+    <value>Z 軸から見る (=ビーム方向)</value>
+  </data>
+  <data name="buttonSurfaceNormal.Text" xml:space="preserve">
+    <value>表面法線から見る</value>
+  </data>
 </root>

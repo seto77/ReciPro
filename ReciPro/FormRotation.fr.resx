@@ -127,7 +127,8 @@ depuis le presse-papiers au format Excel.</value>
   <data name="numericBoxPsi.ToolTip" xml:space="preserve">
     <value>Troisième angle d'Euler Ψ (degrés) du système de
 coordonnées ReciPro selon la convention ZXZ (la dernière
-rotation autour de Z) ; définit l'orientation du cristal.</value>
+rotation autour de Z) ; en lecture seule, affiche
+l'orientation actuelle du cristal.</value>
   </data>
   <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
     <value>Troisième angle d'Euler Ψ (degrés) du système de
@@ -137,8 +138,8 @@ rotation autour de Z) ; définit l'orientation du cristal.</value>
   <data name="numericBoxTheta.ToolTip" xml:space="preserve">
     <value>Deuxième angle d'Euler Θ (degrés) du système
 de coordonnées ReciPro selon la convention ZXZ
-(la rotation intermédiaire autour de X) ; définit
-l'orientation du cristal.</value>
+(la rotation intermédiaire autour de X) ; en lecture
+seule, affiche l'orientation actuelle du cristal.</value>
   </data>
   <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
     <value>Deuxième angle d'Euler Θ (degrés) du système
@@ -149,8 +150,8 @@ l'orientation du cristal.</value>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
     <value>Premier angle d'Euler Φ (degrés) du système
 de coordonnées ReciPro selon la convention ZXZ ;
-conjointement avec Θ et Ψ, il définit l'orientation
-du cristal (matrice de rotation).</value>
+en lecture seule, il affiche avec Θ et Ψ l'orientation
+actuelle du cristal (matrice de rotation).</value>
   </data>
   <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
     <value>Premier angle d'Euler Φ (degrés) du système
@@ -224,33 +225,33 @@ est appliquée autour de lui).</value>
   </data>
   <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
     <value>Définit le 2e axe de rotation du goniomètre comme l'axe
-Z cartésien (la 2e rotation expérimentale,
-numericBoxExp2, est appliquée autour de lui).</value>
+Z cartésien (la 2e rotation expérimentale
+est appliquée autour de lui).</value>
   </data>
   <data name="radioButton2ndY.ToolTip" xml:space="preserve">
     <value>Définit le 2e axe de rotation du goniomètre comme l'axe
-Y cartésien (la 2e rotation expérimentale,
-numericBoxExp2, est appliquée autour de lui).</value>
+Y cartésien (la 2e rotation expérimentale
+est appliquée autour de lui).</value>
   </data>
   <data name="radioButton2ndX.ToolTip" xml:space="preserve">
     <value>Définit le 2e axe de rotation du goniomètre comme l'axe
-X cartésien (la 2e rotation expérimentale,
-numericBoxExp2, est appliquée autour de lui).</value>
+X cartésien (la 2e rotation expérimentale
+est appliquée autour de lui).</value>
   </data>
   <data name="radioButton1stZ.ToolTip" xml:space="preserve">
     <value>Définit le 1er axe de rotation du goniomètre comme l'axe
-Z cartésien (la 1re rotation expérimentale,
-numericBoxExp1, est appliquée autour de lui).</value>
+Z cartésien (la 1re rotation expérimentale
+est appliquée autour de lui).</value>
   </data>
   <data name="radioButton1stY.ToolTip" xml:space="preserve">
     <value>Définit le 1er axe de rotation du goniomètre comme l'axe
-Y cartésien (la 1re rotation expérimentale,
-numericBoxExp1, est appliquée autour de lui).</value>
+Y cartésien (la 1re rotation expérimentale
+est appliquée autour de lui).</value>
   </data>
   <data name="radioButton1stX.ToolTip" xml:space="preserve">
     <value>Définit le 1er axe de rotation du goniomètre comme l'axe
-X cartésien (la 1re rotation expérimentale,
-numericBoxExp1, est appliquée autour de lui).</value>
+X cartésien (la 1re rotation expérimentale
+est appliquée autour de lui).</value>
   </data>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>Réinitialise tous les angles à zéro</value>

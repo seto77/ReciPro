@@ -349,7 +349,7 @@ planos); o valor mínimo oculta os rótulos.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
     <value>Define a cor fixa usada para os rótulos de
-índice quando 'Especificar cor' está ativado.</value>
+índice quando 'Cor' está ativado.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
     <value>Define a cor fixa usada para os rótulos de

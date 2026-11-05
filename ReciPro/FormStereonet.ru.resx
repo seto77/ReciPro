@@ -349,7 +349,7 @@
   </data>
   <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
     <value>Задать фиксированный цвет, используемый для меток
-индексов, когда включён режим «Задать цвет».</value>
+индексов, когда включён флажок «Цвет».</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
     <value>Задать фиксированный цвет, используемый для меток
@@ -665,7 +665,7 @@
   </data>
   <data name="colorControlIndex.ToolTip" xml:space="preserve">
     <value>Задаёт цвет построения для добавляемого или текущего
-выбранного индекса (используется, когда «Rotate color» выключен).</value>
+выбранного индекса (используется, когда «Менять цвет» выключен).</value>
   </data>
   <data name="colorControlIndex.ToolTip1" xml:space="preserve">
     <value>Задаёт цвет построения для добавляемого или текущего
@@ -686,7 +686,7 @@
   </data>
   <data name="indexControlDrawing.ToolTip" xml:space="preserve">
     <value>Введите индекс для построения — один [uvw]/(hkl) в режиме
-«Specified» или максимальные h,k,l в режиме «Range».</value>
+«Заданные» или максимальные h,k,l в режиме «Диапазон».</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
     <value>Также строит все симметрично эквивалентные индексы (полное

@@ -127,7 +127,7 @@
   <data name="numericBoxPsi.ToolTip" xml:space="preserve">
     <value>Третий угол Эйлера Ψ (в градусах) системы координат
 ReciPro в соглашении ZXZ (последний поворот вокруг Z);
-задаёт ориентацию кристалла.</value>
+только для чтения, показывает текущую ориентацию кристалла.</value>
   </data>
   <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
     <value>Третий угол Эйлера Ψ (в градусах) системы координат
@@ -137,8 +137,8 @@ ReciPro в соглашении ZXZ (последний поворот вокр�
   <data name="numericBoxTheta.ToolTip" xml:space="preserve">
     <value>Второй угол Эйлера Θ (в градусах) системы
 координат ReciPro в соглашении ZXZ
-(промежуточный поворот вокруг X); задаёт
-ориентацию кристалла.</value>
+(промежуточный поворот вокруг X); только для
+чтения, показывает текущую ориентацию кристалла.</value>
   </data>
   <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
     <value>Второй угол Эйлера Θ (в градусах) системы
@@ -148,8 +148,9 @@ ReciPro в соглашении ZXZ (последний поворот вокр�
   </data>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
     <value>Первый угол Эйлера Φ (в градусах) системы
-координат ReciPro в соглашении ZXZ; вместе
-с Θ и Ψ задаёт ориентацию кристалла (матрицу поворота).</value>
+координат ReciPro в соглашении ZXZ; только для
+чтения, вместе с Θ и Ψ показывает текущую ориентацию
+кристалла (матрицу поворота).</value>
   </data>
   <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
     <value>Первый угол Эйлера Φ (в градусах) системы
@@ -222,33 +223,33 @@ ReciPro в соглашении ZXZ (последний поворот вокр�
   </data>
   <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
     <value>Задать 2-ю ось вращения гониометра как декартову
-ось Z (2-й экспериментальный поворот,
-numericBoxExp2, применяется вокруг неё).</value>
+ось Z (2-й экспериментальный поворот
+применяется вокруг неё).</value>
   </data>
   <data name="radioButton2ndY.ToolTip" xml:space="preserve">
     <value>Задать 2-ю ось вращения гониометра как декартову
-ось Y (2-й экспериментальный поворот,
-numericBoxExp2, применяется вокруг неё).</value>
+ось Y (2-й экспериментальный поворот
+применяется вокруг неё).</value>
   </data>
   <data name="radioButton2ndX.ToolTip" xml:space="preserve">
     <value>Задать 2-ю ось вращения гониометра как декартову
-ось X (2-й экспериментальный поворот,
-numericBoxExp2, применяется вокруг неё).</value>
+ось X (2-й экспериментальный поворот
+применяется вокруг неё).</value>
   </data>
   <data name="radioButton1stZ.ToolTip" xml:space="preserve">
     <value>Задать 1-ю ось вращения гониометра как декартову
-ось Z (1-й экспериментальный поворот,
-numericBoxExp1, применяется вокруг неё).</value>
+ось Z (1-й экспериментальный поворот
+применяется вокруг неё).</value>
   </data>
   <data name="radioButton1stY.ToolTip" xml:space="preserve">
     <value>Задать 1-ю ось вращения гониометра как декартову
-ось Y (1-й экспериментальный поворот,
-numericBoxExp1, применяется вокруг неё).</value>
+ось Y (1-й экспериментальный поворот
+применяется вокруг неё).</value>
   </data>
   <data name="radioButton1stX.ToolTip" xml:space="preserve">
     <value>Задать 1-ю ось вращения гониометра как декартову
-ось X (1-й экспериментальный поворот,
-numericBoxExp1, применяется вокруг неё).</value>
+ось X (1-й экспериментальный поворот
+применяется вокруг неё).</value>
   </data>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>Сбросить все углы в ноль</value>

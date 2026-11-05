@@ -367,7 +367,8 @@ the clipboard in Excel format.</value>
   <data name="numericBoxPsi.ToolTip" xml:space="preserve">
     <value>Third Euler angle Ψ (degrees) of the ReciPro
 coordinate system in the ZXZ convention (the final
-rotation about Z); sets the crystal orientation.</value>
+rotation about Z); read-only, shows the current
+crystal orientation.</value>
   </data>
   <data name="&gt;&gt;numericBoxPsi.Name" xml:space="preserve">
     <value>numericBoxPsi</value>
@@ -421,7 +422,8 @@ rotation about Z); sets the crystal orientation.</value>
     <value>Second Euler angle Θ (degrees) of the
 ReciPro coordinate system in the ZXZ
 convention (the intermediate rotation
-about X); sets the crystal orientation.</value>
+about X); read-only, shows the current
+crystal orientation.</value>
   </data>
   <data name="&gt;&gt;numericBoxTheta.Name" xml:space="preserve">
     <value>numericBoxTheta</value>
@@ -474,8 +476,9 @@ about X); sets the crystal orientation.</value>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
     <value>First Euler angle Φ (degrees) of the
 ReciPro coordinate system in the ZXZ
-convention; together with Θ and Ψ it sets
-the crystal orientation (rotation matrix).</value>
+convention; read-only, together with Θ and Ψ
+it shows the current crystal orientation
+(rotation matrix).</value>
   </data>
   <data name="&gt;&gt;numericBoxPhi.Name" xml:space="preserve">
     <value>numericBoxPhi</value>
@@ -982,7 +985,7 @@ rotation is applied about it).</value>
   <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
     <value>Set the 2nd goniometer rotation axis to the
 Cartesian Z axis (the 2nd experimental
-rotation, numericBoxExp2, is applied about it).</value>
+rotation is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton2ndZ.Name" xml:space="preserve">
     <value>radioButton2ndZ</value>
@@ -1023,7 +1026,7 @@ rotation, numericBoxExp2, is applied about it).</value>
   <data name="radioButton2ndY.ToolTip" xml:space="preserve">
     <value>Set the 2nd goniometer rotation axis to the
 Cartesian Y axis (the 2nd experimental
-rotation, numericBoxExp2, is applied about it).</value>
+rotation is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton2ndY.Name" xml:space="preserve">
     <value>radioButton2ndY</value>
@@ -1067,7 +1070,7 @@ rotation, numericBoxExp2, is applied about it).</value>
   <data name="radioButton2ndX.ToolTip" xml:space="preserve">
     <value>Set the 2nd goniometer rotation axis to the
 Cartesian X axis (the 2nd experimental
-rotation, numericBoxExp2, is applied about it).</value>
+rotation is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton2ndX.Name" xml:space="preserve">
     <value>radioButton2ndX</value>
@@ -1108,7 +1111,7 @@ rotation, numericBoxExp2, is applied about it).</value>
   <data name="radioButton1stZ.ToolTip" xml:space="preserve">
     <value>Set the 1st goniometer rotation axis to the
 Cartesian Z axis (the 1st experimental
-rotation, numericBoxExp1, is applied about it).</value>
+rotation is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton1stZ.Name" xml:space="preserve">
     <value>radioButton1stZ</value>
@@ -1149,7 +1152,7 @@ rotation, numericBoxExp1, is applied about it).</value>
   <data name="radioButton1stY.ToolTip" xml:space="preserve">
     <value>Set the 1st goniometer rotation axis to the
 Cartesian Y axis (the 1st experimental
-rotation, numericBoxExp1, is applied about it).</value>
+rotation is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton1stY.Name" xml:space="preserve">
     <value>radioButton1stY</value>
@@ -1190,7 +1193,7 @@ rotation, numericBoxExp1, is applied about it).</value>
   <data name="radioButton1stX.ToolTip" xml:space="preserve">
     <value>Set the 1st goniometer rotation axis to the
 Cartesian X axis (the 1st experimental
-rotation, numericBoxExp1, is applied about it).</value>
+rotation is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton1stX.Name" xml:space="preserve">
     <value>radioButton1stX</value>

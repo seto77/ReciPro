@@ -126,8 +126,8 @@
   </data>
   <data name="numericBoxPsi.ToolTip" xml:space="preserve">
     <value>ZXZ 규약에서 ReciPro 좌표계의 세 번째 오일러 각
-Ψ(도, 마지막 Z축 둘레의 회전). 결정 방위를
-결정합니다.</value>
+Ψ(도, 마지막 Z축 둘레의 회전). 현재 결정 방위를
+표시합니다(읽기 전용).</value>
   </data>
   <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
     <value>ZXZ 규약에서 ReciPro 좌표계의 세 번째 오일러 각
@@ -137,7 +137,7 @@
   <data name="numericBoxTheta.ToolTip" xml:space="preserve">
     <value>ZXZ 규약에서 ReciPro 좌표계의 두
 번째 오일러 각 Θ(도, 중간 X축 둘레의
-회전). 결정 방위를 결정합니다.</value>
+회전). 현재 결정 방위를 표시합니다(읽기 전용).</value>
   </data>
   <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
     <value>ZXZ 규약에서 ReciPro 좌표계의 두
@@ -146,8 +146,8 @@
   </data>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
     <value>ZXZ 규약에서 ReciPro 좌표계의 첫 번째
-오일러 각 Φ(도). Θ·Ψ와 함께 결정
-방위(회전 행렬)를 결정합니다.</value>
+오일러 각 Φ(도). Θ·Ψ와 함께 현재 결정
+방위(회전 행렬)를 표시합니다(읽기 전용).</value>
   </data>
   <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
     <value>ZXZ 규약에서 ReciPro 좌표계의 첫 번째
@@ -220,33 +220,33 @@
   </data>
   <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
     <value>실험 좌표계의 두 번째 고니오미터 회전축을 직교
-좌표의 Z 축으로 설정합니다 (두 번째 회전
-numericBoxExp2가 이 축을 중심으로 적용됩니다).</value>
+좌표의 Z 축으로 설정합니다 (두 번째 회전이
+이 축을 중심으로 적용됩니다).</value>
   </data>
   <data name="radioButton2ndY.ToolTip" xml:space="preserve">
     <value>실험 좌표계의 두 번째 고니오미터 회전축을 직교
-좌표의 Y 축으로 설정합니다 (두 번째 회전
-numericBoxExp2가 이 축을 중심으로 적용됩니다).</value>
+좌표의 Y 축으로 설정합니다 (두 번째 회전이
+이 축을 중심으로 적용됩니다).</value>
   </data>
   <data name="radioButton2ndX.ToolTip" xml:space="preserve">
     <value>실험 좌표계의 두 번째 고니오미터 회전축을 직교
-좌표의 X 축으로 설정합니다 (두 번째 회전
-numericBoxExp2가 이 축을 중심으로 적용됩니다).</value>
+좌표의 X 축으로 설정합니다 (두 번째 회전이
+이 축을 중심으로 적용됩니다).</value>
   </data>
   <data name="radioButton1stZ.ToolTip" xml:space="preserve">
     <value>실험 좌표계의 첫 번째 고니오미터 회전축을 직교
-좌표의 Z 축으로 설정합니다 (첫 번째 회전
-numericBoxExp1이 이 축을 중심으로 적용됩니다).</value>
+좌표의 Z 축으로 설정합니다 (첫 번째 회전이
+이 축을 중심으로 적용됩니다).</value>
   </data>
   <data name="radioButton1stY.ToolTip" xml:space="preserve">
     <value>실험 좌표계의 첫 번째 고니오미터 회전축을 직교
-좌표의 Y 축으로 설정합니다 (첫 번째 회전
-numericBoxExp1이 이 축을 중심으로 적용됩니다).</value>
+좌표의 Y 축으로 설정합니다 (첫 번째 회전이
+이 축을 중심으로 적용됩니다).</value>
   </data>
   <data name="radioButton1stX.ToolTip" xml:space="preserve">
     <value>실험 좌표계의 첫 번째 고니오미터 회전축을 직교
-좌표의 X 축으로 설정합니다 (첫 번째 회전
-numericBoxExp1이 이 축을 중심으로 적용됩니다).</value>
+좌표의 X 축으로 설정합니다 (첫 번째 회전이
+이 축을 중심으로 적용됩니다).</value>
   </data>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>모든 각도를 0으로 초기화합니다.</value>
