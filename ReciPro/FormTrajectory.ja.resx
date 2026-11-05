@@ -275,7 +275,7 @@
 割合。モンテカルロ計算による値です。</value>
   </data>
   <data name="checkBoxDrawPathAfterEscape.Text" xml:space="preserve">
-    <value>試料から脱出した電子(後方散乱電子)を描画</value>
+    <value>脱出後の経路を描画</value>
   </data>
   <data name="checkBoxDrawPathAfterEscape.ToolTip" xml:space="preserve">
     <value>3D 表示で、後方散乱電子が表面から脱出した後の進行方向を

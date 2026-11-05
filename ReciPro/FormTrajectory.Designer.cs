@@ -380,8 +380,10 @@
             graphControlDepthProfile.MousePositionXDigit = 3;
             graphControlDepthProfile.MousePositionYDigit = 3;
             graphControlDepthProfile.Name = "graphControlDepthProfile";
-            graphControlDepthProfile.UnitX = " µm";
-            graphControlDepthProfile.UnitY = " %";
+            //graphControlDepthProfile.UnitX = " µm"; // 261105Cl 変更前: 軌跡の座標は nm
+            //graphControlDepthProfile.UnitY = " %"; // 261105Cl 変更前: 値は割合 (合計 1) で % ではない
+            graphControlDepthProfile.UnitX = " nm"; // 261105Cl 変更 (監査 G-5)
+            graphControlDepthProfile.UnitY = ""; // 261105Cl 変更 (監査 G-5)
             // 
             // statusStrip1
             // 
@@ -409,7 +411,8 @@
             graphControlDistance.MousePositionYDigit = 3;
             graphControlDistance.Name = "graphControlDistance";
             graphControlDistance.UnitX = " nm";
-            graphControlDistance.UnitY = " %";
+            //graphControlDistance.UnitY = " %"; // 261105Cl 変更前: 値は割合 (合計 1) で % ではない
+            graphControlDistance.UnitY = ""; // 261105Cl 変更 (監査 G-5)
             // 
             // flowLayoutPanelViewAlong
             // 

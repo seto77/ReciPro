@@ -736,7 +736,7 @@ the backscattered-electron exit directions.</value>
     <value>0</value>
   </data>
   <data name="labelBSEenergy.Text" xml:space="preserve">
-    <value>##.## kev</value>
+    <value>##.## keV</value>
   </data>
   <data name="labelBSEenergy.ToolTip" xml:space="preserve">
     <value>Average exit energy of the backscattered electrons
@@ -773,7 +773,7 @@ the backscattered-electron exit directions.</value>
     <value>0</value>
   </data>
   <data name="labelStoppingPower.Text" xml:space="preserve">
-    <value>##.## ev/nm @ ## kev</value>
+    <value>##.## eV/nm @ ## keV</value>
   </data>
   <data name="labelStoppingPower.ToolTip" xml:space="preserve">
     <value>Stopping power dE/ds: energy the electron
@@ -811,7 +811,7 @@ collisions, at the incident energy (eV/nm).</value>
     <value>0</value>
   </data>
   <data name="labelCrossSection.Text" xml:space="preserve">
-    <value>##.## nm² @ ## kev</value>
+    <value>##.## nm² @ ## keV</value>
   </data>
   <data name="labelCrossSection.ToolTip" xml:space="preserve">
     <value>Scattering cross-section σ_E: effective target area
@@ -849,7 +849,7 @@ larger values mean more frequent scattering (nm²).</value>
     <value>0</value>
   </data>
   <data name="labelMeanFreePath.Text" xml:space="preserve">
-    <value>##.## nm @ ## kev</value>
+    <value>##.## nm @ ## keV</value>
   </data>
   <data name="labelMeanFreePath.ToolTip" xml:space="preserve">
     <value>Elastic mean free path λ: average distance the

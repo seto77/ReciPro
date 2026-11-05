@@ -27,6 +27,7 @@ public partial class FormTrajectory : FormBase
     private readonly Lock lockObj = new();
 
     List<(V3 p, double e)>[] Trajectories = [];
+    private double calcTilt = 0, calcEnergy = 0; // 261105Cl 追加 (監査 G-11): Trajectories を計算したときの試料傾斜 (rad) と入射エネルギー (keV)。描き直しは画面の現在値でなくこの値で行う
     private double EnergyThreshold = 2;
     private readonly Stopwatch sw = new();
     #endregion
@@ -98,7 +99,8 @@ public partial class FormTrajectory : FormBase
         => glControlTrajectory.WorldMatrix = Matrix4d.Identity;
 
     private void buttonViewFromSurfaceNormal_Click(object sender, EventArgs e)
-        => glControlTrajectory.WorldMatrix = Matrix4d.CreateRotationX(-numericBoxSampleTilt.RadianValue);
+        //=> glControlTrajectory.WorldMatrix = Matrix4d.CreateRotationX(-numericBoxSampleTilt.RadianValue); // 261105Cl 変更前
+        => glControlTrajectory.WorldMatrix = Matrix4d.CreateRotationX(-(Trajectories.Length > 0 ? calcTilt : numericBoxSampleTilt.RadianValue)); // 261105Cl 変更 (監査 G-11): 表示中の軌跡を計算したときの傾斜の表面法線から見る
 
     #endregion
 
@@ -136,9 +138,13 @@ public partial class FormTrajectory : FormBase
             meanIonizationPotentialEv: meanJEv); // (260331Ch) 元素組成込みの Mott/NIST sampler を試せるようにする // 260921Cl J を明示
 
         var (_, CrossSection, MeanFreePath, StoppingPower) = monte.GetParameters(energy);
-        labelCrossSection.Text = $"{CrossSection:g3} nm² @ {energy} kev ({monte.ElasticScatteringModel})"; // (260331Ch)
-        labelMeanFreePath.Text = $"{MeanFreePath:f2} nm @ {energy} kev";
-        labelStoppingPower.Text = $"{StoppingPower * 1000:f2} ev/nm @ {energy} kev ({monte.StoppingPowerModel}, {monte.InelasticScatteringModel})"; // (260331Ch) 現在の阻止能/非弾性モデルが分かるように表示
+        //labelCrossSection.Text = $"{CrossSection:g3} nm² @ {energy} kev ({monte.ElasticScatteringModel})"; // (260331Ch) // 261105Cl 変更前
+        //labelMeanFreePath.Text = $"{MeanFreePath:f2} nm @ {energy} kev"; // 261105Cl 変更前
+        //labelStoppingPower.Text = $"{StoppingPower * 1000:f2} ev/nm @ {energy} kev ({monte.StoppingPowerModel}, {monte.InelasticScatteringModel})"; // (260331Ch) 現在の阻止能/非弾性モデルが分かるように表示 // 261105Cl 変更前
+        // 261105Cl 変更 (監査 G-23): 単位の表記を keV・eV/nm に。エネルギーは波長から換算された値だと桁が長くなるので有効 6 桁で表示
+        labelCrossSection.Text = $"{CrossSection:g3} nm² @ {energy:g6} keV ({monte.ElasticScatteringModel})"; // (260331Ch) // 261105Cl
+        labelMeanFreePath.Text = $"{MeanFreePath:f2} nm @ {energy:g6} keV"; // 261105Cl
+        labelStoppingPower.Text = $"{StoppingPower * 1000:f2} eV/nm @ {energy:g6} keV ({monte.StoppingPowerModel}, {monte.InelasticScatteringModel})"; // (260331Ch) 現在の阻止能/非弾性モデルが分かるように表示 // 261105Cl
 
         //飛程計算ループ
         sw.Restart();
@@ -146,6 +152,7 @@ public partial class FormTrajectory : FormBase
         
         Parallel.For(0, Trajectories.Length, i => Trajectories[i] = monte.GetTrajectories());
         //Parallel.For(0, Trajectories.Length, i => Trajectories[i] = monte.GetTrajectoriesNative());
+        (calcTilt, calcEnergy) = (tilt, energy); // 261105Cl 追加 (監査 G-11)
 
         toolStripStatusLabel1.Text = $"{StatusBarHelper.FormatElapsed(sw.Elapsed)} elapsed for {numericBoxCalcNum.ValueInteger} trajectories."; // 260520Cl: typo fix (ellapsed → elapsed)
     }
@@ -154,9 +161,12 @@ public partial class FormTrajectory : FormBase
     #region 統計情報を計算
     private void DrawStatistics()
     {
+        if (Trajectories.Length == 0) return; // 261105Cl 追加 (監査 #35): Simulate 前 (軌跡なし) に表示の設定を変えても何もしない (旧: Average/Max が空列で例外ダイアログ)
         sw.Restart();
-        double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
-        double energy = waveLengthControl.Energy;
+        //double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt); // 261105Cl 変更前: 計算後に傾斜を変えると「新しい傾斜 × 古い軌跡」で描き直していた
+        //double energy = waveLengthControl.Energy; // 261105Cl 変更前
+        double tilt = calcTilt, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt); // 261105Cl 変更 (監査 G-11): 軌跡を計算したときの傾斜
+        double energy = calcEnergy; // 261105Cl 変更 (監査 G-11): 軌跡を計算したときの入射エネルギー
 
         //260317Cl 変更: .Count()による再列挙を回避、ToArrayで具体化
         //var BSEs = Trajectories.AsParallel().Where(e => e[^1].e > EnergyThreshold);
@@ -165,9 +175,18 @@ public partial class FormTrajectory : FormBase
         var count = (double)BSEs.Length;
 
         labelBSEratio.Text = $"{100.0 * count / Trajectories.Length:f2} %";
-        labelBSEenergy.Text = $"{BSEs.Average(e => e[^1].e):f2} kev";
+        //labelBSEenergy.Text = $"{BSEs.Average(e => e[^1].e):f2} kev"; // 261105Cl 変更前
+        labelBSEenergy.Text = count > 0 ? $"{BSEs.Average(e => e[^1].e):f2} keV" : "-"; // 261105Cl 変更 (監査 #35, G-23): BSE が 0 個なら平均は無い (旧: 例外)。単位は keV
+
+        if (count == 0) // 261105Cl 追加 (監査 #35): BSE が 0 個なら下の 3 つの分布は描けないので空にする (方位分布は空のまま下で描く)
+        {
+            graphControlEnergyProfile.ClearProfile();
+            graphControlDepthProfile.ClearProfile();
+            graphControlDistance.ClearProfile();
+        }
 
         //エネルギー分布を描画 ここから
+        if (count > 0) // 261105Cl 追加 (監査 #35)
         {
             //var energies = BSEs.Select(e => energy - e[^1].e); // 261105Cl 変更前: 失ったエネルギー (E0 - E_escape) を数えていた
             var energies = BSEs.Select(e => e[^1].e); // 261105Cl 変更: 見出し・マニュアルどおり、脱出時にまだ持っているエネルギー (keV) を数える
@@ -197,10 +216,12 @@ public partial class FormTrajectory : FormBase
         //エネルギー分布を描画 ここまで
 
         //最大深さ分布　ここから
+        if (count > 0) // 261105Cl 追加 (監査 #35)
         {
             var depths = BSEs.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
             double lower = 0, upper = depths.Max();
-            double step = (int)(upper * 100.0) / 400.0 / 50.0;//µm単位
+            //double step = (int)(upper * 100.0) / 400.0 / 50.0;//µm単位 // 261105Cl 変更前 (コメントの単位が誤り)
+            double step = (int)(upper * 100.0) / 400.0 / 50.0;//nm単位 (軌跡の座標は nm) // 261105Cl 変更: コメントのみ
             int nBuckets = (int)((upper - lower) / step + 1);
             var hist = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
 
@@ -235,6 +256,7 @@ public partial class FormTrajectory : FormBase
         //ここまで
 
         //表面に沿った方向の距離分布
+        if (count > 0) // 261105Cl 追加 (監査 #35)
         {
             var distances = BSEs.Select(e1 => e1.Max(e2 =>
             {
@@ -243,7 +265,8 @@ public partial class FormTrajectory : FormBase
             }));
 
             double lower = 0, upper = distances.Max();
-            double step = (int)(upper * 100.0) / 100.0 / 50.0;//µm単位
+            //double step = (int)(upper * 100.0) / 100.0 / 50.0;//µm単位 // 261105Cl 変更前 (コメントの単位が誤り)
+            double step = (int)(upper * 100.0) / 100.0 / 50.0;//nm単位 (軌跡の座標は nm) // 261105Cl 変更: コメントのみ
             int nBuckets = (int)((upper - lower) / step + 1);
             var hist = new MathNet.Numerics.Statistics.Histogram(distances, nBuckets, lower, lower + nBuckets * step);
 
@@ -297,14 +320,23 @@ public partial class FormTrajectory : FormBase
     {
         sw.Restart();
 
-        double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
-        double energy = waveLengthControl.Energy;
+        //double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt); // 261105Cl 変更前
+        //double energy = waveLengthControl.Energy; // 261105Cl 変更前
+        double tilt = calcTilt, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt); // 261105Cl 変更 (監査 G-11): 軌跡を計算したときの傾斜
+        double energy = calcEnergy; // 261105Cl 変更 (監査 G-11): 軌跡を計算したときの入射エネルギー
 
         var list = new List<List<(V3 p, double e)>>();
         for (int i = 0; i < Trajectories.Length && list.Count < numericBoxDrawNum.ValueInteger; i++)
         {
             if (checkBoxDrawAbsorved.Checked || Trajectories[i][^1].e > EnergyThreshold)
                 list.Add(Trajectories[i]);
+        }
+
+        if (list.Count == 0) // 261105Cl 追加 (監査 #35): Simulate 前、または BSE が 0 個で吸収電子を描かない設定のときは何も描かない (旧: 下の Max() が空列で例外)
+        {
+            glControlTrajectory.DeleteAllObjects();
+            glControlTrajectory.Refresh();
+            return;
         }
 
         double maxLength = list.Max(e1 => e1.Max(e2 =>
@@ -337,7 +369,8 @@ public partial class FormTrajectory : FormBase
 
             if (checkBoxDrawPathAfterEscape.Checked && trajectory[^1].e > EnergyThreshold && trajectory.Count> 1)
             {
-                var r = trajectory[^2].e / waveLengthControl.Energy;
+                //var r = trajectory[^2].e / waveLengthControl.Energy; // 261105Cl 変更前
+                var r = trajectory[^2].e / energy; // 261105Cl 変更 (監査 G-11): 計算したときの入射エネルギーで割る
                 var v = (trajectory[^1].p - trajectory[^2].p).Normalized() * r * maxLength / 2;
                 var matBackScattered = new Material(new Color4(255, (byte)(128 * (1 - r) + 127), (byte)(255 * (1 - r)), (byte)(200 * r)));
                 glObjects.Add(new Lines([trajectory[^2].p, trajectory[^2].p + v], 1f, matBackScattered));
