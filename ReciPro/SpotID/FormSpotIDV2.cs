@@ -916,7 +916,8 @@ public partial class FormSpotIDV2 : FormBase
 
     private void buttonCopyToClipboard_Click(object sender, EventArgs e)
     {
-        if (dataSet.DataTableSpot.Rows.Count > 1)
+        //if (dataSet.DataTableSpot.Rows.Count > 1) // 261105Cl 変更前
+        if (dataSet.DataTableSpot.Rows.Count > 0) // 261105Cl 変更 (監査 I9): スポットが 1 個 (ダイレクトだけ) のときも Copy/Save する (旧は 1 個だと何もしなかった)
         {
             // 260801Cl 変更: テキスト生成を GetSpotListText() に移し、マクロ SpotID.SpotList() と同一内容にした。
             // 旧: ここで StringBuilder に組み立て、CSV 保存時は sb.ToString().Replace('\t', ',') していた。
@@ -934,9 +935,12 @@ public partial class FormSpotIDV2 : FormBase
 
     /// <summary>260801Cl 追加: 観測スポット表のテキストを生成して返す (delimiter が '\t' なら TSV, ',' なら CSV)。
     /// 出力される列は dataGridViewSpots の表示列に従い、CSV は File &gt; Load / マクロ SpotID.LoadFile() で読み戻せる。
-    /// 数値の書式は GUI の表示 (現在のカルチャ) に従う点に注意 (読み戻し側 readCSV も同じ規約)。</summary>
+    /// 数値の書式は GUI の表示 (現在のカルチャ) に従う点に注意 (読み戻し側 readCSV も同じ規約)。
+    /// 261105Cl 変更 (監査 I9): CSV (delimiter が ',') の数値は InvariantCulture (小数点 '.') で書く。小数点が ',' の地域 (de, fr ほか) では
+    /// 区切りの ',' と小数点が混ざって列がずれ、自分で保存した CSV を読み戻せなかった。TSV (クリップボード) は従来どおり現在のカルチャ</summary>
     public string GetSpotListText(char delimiter = ',')
     {
+        var culture = delimiter == ',' ? System.Globalization.CultureInfo.InvariantCulture : System.Globalization.CultureInfo.CurrentCulture; // 261105Cl 追加
         var sb = new StringBuilder();
         sb.Append("Direct" + delimiter);
         for (int i = 1; i < dataGridViewSpots.Columns.Count - 1; i++)
@@ -952,7 +956,8 @@ public partial class FormSpotIDV2 : FormBase
             sb.Append(((bool)dataGridViewSpots[0, j].Value ? "*" : "") + delimiter);
             for (int i = 1; i < dataGridViewSpots.ColumnCount - 1; i++)
                 if (dataGridViewSpots.Columns[i].Visible)
-                    sb.Append(dataGridViewSpots[i, j].Value.ToString() + delimiter);
+                    //sb.Append(dataGridViewSpots[i, j].Value.ToString() + delimiter); // 261105Cl 変更前
+                    sb.Append(Convert.ToString(dataGridViewSpots[i, j].Value, culture) + delimiter); // 261105Cl
             sb.Append("\r\n");
         }
         return sb.ToString();
@@ -1020,7 +1025,8 @@ public partial class FormSpotIDV2 : FormBase
         try
         {
             bindingSourceObsSpots.DataMember = "";
-            var f = new Func<string, double>(x => Convert.ToDouble(x));
+            //var f = new Func<string, double>(x => Convert.ToDouble(x)); // 261105Cl 変更前
+            var f = new Func<string, double>(x => Convert.ToDouble(x, System.Globalization.CultureInfo.InvariantCulture)); // 261105Cl 変更 (監査 I9): GetSpotListText の CSV と同じ InvariantCulture で読む
 
             var dataList = new List<string[]>();
             using (var sr = new StreamReader(filename))
@@ -1029,7 +1035,21 @@ public partial class FormSpotIDV2 : FormBase
                     while (sr.Peek() > -1)
                         dataList.Add(sr.ReadLine().Split(new[] { ',' }));
                 else
-                    return;
+                {// 261105Cl
+                    // 261105Cl 追加 (監査 I9): スポット一覧でない CSV は知らせる (旧は黙って戻り、下の DataMember を戻さないので表が空のままだった。戻すのは finally で)
+                    MessageBox.Show(this, Localization.Loc(en: "This CSV file is not a spot list saved by Spot ID v2 (its first line must start with \"Direct,\").", // 261105Cl 追加
+                        ja: "この CSV ファイルは Spot ID v2 で保存したスポット一覧ではありません (1 行目が \"Direct,\" で始まる必要があります)。",
+                        de: "Diese CSV-Datei ist keine mit Spot ID v2 gespeicherte Reflexliste (die erste Zeile muss mit \"Direct,\" beginnen).",
+                        fr: "Ce fichier CSV n'est pas une liste de taches enregistrée par Spot ID v2 (sa première ligne doit commencer par \"Direct,\").",
+                        es: "Este archivo CSV no es una lista de manchas guardada por Spot ID v2 (su primera línea debe empezar por \"Direct,\").",
+                        pt: "Este arquivo CSV não é uma lista de pontos salva pelo Spot ID v2 (a primeira linha deve começar com \"Direct,\").",
+                        it: "Questo file CSV non è un elenco di spot salvato da Spot ID v2 (la prima riga deve iniziare con \"Direct,\").",
+                        ru: "Этот CSV-файл не является списком рефлексов, сохранённым Spot ID v2 (первая строка должна начинаться с \"Direct,\").",
+                        zhHans: "此 CSV 文件不是由 Spot ID v2 保存的斑点列表 (第一行必须以 \"Direct,\" 开头)。",
+                        zhHant: "此 CSV 檔案不是由 Spot ID v2 儲存的斑點清單 (第一行必須以 \"Direct,\" 開頭)。",
+                        ko: "이 CSV 파일은 Spot ID v2에서 저장한 스폿 목록이 아닙니다 (첫 줄이 \"Direct,\"로 시작해야 합니다)."));
+                    return; // 261105Cl 字下げ
+                }// 261105Cl
             }
 
             dataList.Sort((a, b) =>
@@ -1038,6 +1058,7 @@ public partial class FormSpotIDV2 : FormBase
                 return (c > 0) ? 1 : (c < 0) ? -1 : 0;
             });
 
+            var offset = dataSet.DataTableSpot.Rows.Count; // 261105Cl 追加 (監査 I9): 既にスポットがあるときは後ろに足されるので、hkl を書く行をずらす (旧は先頭の行に書いていた)
             for (int i = 0; i < dataList.Count; i++)
             {
                 var d = dataList[i];
@@ -1046,14 +1067,22 @@ public partial class FormSpotIDV2 : FormBase
 
                 dataSet.DataTableSpot.Add(d[0] == "*", Range, X0, Y0, H1, H2, Theta, Eta, A, B0, Bx, By, R);
                 if (d.Length == 17 && d[15] != "")
-                    dataSet.DataTableSpot.SetHKL(i, d[15]);
+                    //dataSet.DataTableSpot.SetHKL(i, d[15]); // 261105Cl 変更前
+                    dataSet.DataTableSpot.SetHKL(offset + i, d[15]); // 261105Cl
 
             }
 
-            bindingSourceObsSpots.DataMember = "DataTableSpot";
+            //bindingSourceObsSpots.DataMember = "DataTableSpot"; // 261105Cl 変更前 (下の finally へ。例外・途中の return でも戻す)
             scalablePictureBoxAdvanced.Refresh();
         }
-        catch { MessageBox.Show("File open error"); }
+        //catch { MessageBox.Show("File open error"); } // 261105Cl 変更前
+        catch (Exception ex) // 261105Cl 変更: 11 言語に
+        {
+            MessageBox.Show(this, Localization.Loc(en: "Could not read the file:", ja: "ファイルを読み込めませんでした:", de: "Die Datei konnte nicht gelesen werden:", // 261105Cl
+                fr: "Impossible de lire le fichier :", es: "No se pudo leer el archivo:", pt: "Não foi possível ler o arquivo:", it: "Impossibile leggere il file:",
+                ru: "Не удалось прочитать файл:", zhHans: "无法读取文件:", zhHant: "無法讀取檔案:", ko: "파일을 읽을 수 없습니다:") + "\r\n" + filename + "\r\n" + ex.Message);
+        }
+        finally { bindingSourceObsSpots.DataMember = "DataTableSpot"; } // 261105Cl 追加 (監査 I9): 旧は例外・スポット一覧でない CSV のとき "" のまま残り、表が空になった
     }
 
     #endregion
