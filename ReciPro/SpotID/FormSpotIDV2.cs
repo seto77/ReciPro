@@ -853,7 +853,10 @@ public partial class FormSpotIDV2 : FormBase
                     bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemChanged, pos));
                 }
                 //Fitボタンを押したとき
-                else if (dataGridViewSpots.Columns[e.ColumnIndex].HeaderText.Contains("Fit"))
+                //else if (dataGridViewSpots.Columns[e.ColumnIndex].HeaderText.Contains("Fit")) // 261105Cl 変更前
+                // 261105Cl 変更 (監査 #37): 見出しの文字列でなく列そのもので判定する。見出しは resx で訳される (de "Anp."、fr "Ajust."、zh "拟合" など) ので、
+                //  英語と ja (訳なし) 以外の 9 言語ではボタンを押しても何も起きなかった
+                else if (dataGridViewSpots.Columns[e.ColumnIndex] == Column1) // 261105Cl
                 {
                     sw.Restart();
                     skipEvent = true;
