@@ -53,7 +53,9 @@ public partial class FormMain : FormBase
                 if (Clipboard.GetDataObject() is { } dataObj && dataObj.GetDataPresent(typeof(byte[])))
                 {
                     var bytes = (byte[])dataObj.GetData(typeof(byte[]));
-                    if (bytes[0] == Crystal2.ID)
+                    //if (bytes[0] == Crystal2.ID) // 261105Cl 変更前
+                    // 261105Cl 変更 (監査 #23): 自分が「他のソフトへ送る」で置いた内容は受け取らない (以前は編集中の結晶を、送信用に削った複製で置き換えていた)。空の配列も無視
+                    if (bytes is { Length: > 0 } && bytes[0] == Crystal2.ID && !(CrystalControl.LastSentToClipboard is { } sent && bytes.AsSpan().SequenceEqual(sent)))
                     {
                         var c2 = Crystal2.Deserialize(bytes[1..]);
                         crystalControl.Crystal = Crystal2.GetCrystal(c2);
@@ -882,7 +884,9 @@ public partial class FormMain : FormBase
     /// <param name="angle"></param>
     public void Rotate(Vector3DBase axis, double angle)
     {
-        if (angle == 0) return;
+        //if (angle == 0) return; // 261105Cl 変更前
+        // 261105Cl 変更 (監査 #29): 結晶リストが空 (または結晶が無い) なら何もしない。以前は下の crystals[0] で例外になり、アニメーション中は Timer のたびに出続けた
+        if (angle == 0 || Crystal == null || listBox.Items.Count == 0) return;
 
         axis = axis.Normarize();
 
@@ -924,6 +928,7 @@ public partial class FormMain : FormBase
             Invoke(new Action(() => SetRotation(mat)), null);
             return;
         }
+        if (Crystal == null) return; // 261105Cl 追加 (監査 #29): 結晶が無いとき (角度のリセットなど) に例外にしない
         Crystal.RotationMatrix = mat;
         if (FormStructureViewer.Visible)
             FormStructureViewer.Draw();
