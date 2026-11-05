@@ -140,8 +140,12 @@ public partial class FormSpotIDV2 : FormBase
         //scalablePictureBoxAdvanced.ReadImage(fileName); // 261105Cl 変更前
         var before = scalablePictureBoxAdvanced.PseudoBitmap; // 261105Cl 追加
         try { scalablePictureBoxAdvanced.ReadImage(fileName); } catch { } // 261105Cl 追加 (形式によっては読込中に例外になる。読めなかったとして扱う)
-        if (scalablePictureBoxAdvanced.PseudoBitmap == null || ReferenceEquals(scalablePictureBoxAdvanced.PseudoBitmap, before)) // 261105Cl 追加
+        // 261105Cl 追加: 壊れたファイルでは ImageIO が中身の無い (0×0) 画像を作ることがあるので、それも読めなかったとして扱い、前の画像に戻す
+        if (scalablePictureBoxAdvanced.PseudoBitmap == null || ReferenceEquals(scalablePictureBoxAdvanced.PseudoBitmap, before) // 261105Cl 追加
+            || scalablePictureBoxAdvanced.PseudoBitmap.Width <= 0 || scalablePictureBoxAdvanced.PseudoBitmap.Height <= 0) // 261105Cl 追加
         {
+            if (!ReferenceEquals(scalablePictureBoxAdvanced.PseudoBitmap, before)) // 261105Cl 追加 (最初の 1 枚なら null に戻す。null の Initialize が例外でも中の画像は null になる)
+                try { scalablePictureBoxAdvanced.PseudoBitmap = before; } catch { } // 261105Cl 追加
             MessageBox.Show(this, Localization.Loc(en: "Could not read the file:", ja: "ファイルを読み込めませんでした:", de: "Die Datei konnte nicht gelesen werden:", // 261105Cl 追加
                 fr: "Impossible de lire le fichier :", es: "No se pudo leer el archivo:", pt: "Não foi possível ler o arquivo:", it: "Impossibile leggere il file:",
                 ru: "Не удалось прочитать файл:", zhHans: "无法读取文件:", zhHant: "無法讀取檔案:", ko: "파일을 읽을 수 없습니다:") + "\r\n" + fileName);
