@@ -84,8 +84,12 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
 
     private void numericBoxCameraLength2_ValueChanged(object sender, EventArgs e)
     {
-        if (this.Visible || !FormDiffractionSimulator.Visible)//このフォームがvisibleの時か、親フォームがvisible出ない時(つまり、最初のロード時)
-            FormDiffractionSimulator.CameraLength2 = CameraLength2;
+        //if (this.Visible || !FormDiffractionSimulator.Visible)//このフォームがvisibleの時か、親フォームがvisible出ない時(つまり、最初のロード時) // 261105Cl 変更前
+        //    FormDiffractionSimulator.CameraLength2 = CameraLength2;
+        // 261105Cl 変更 (監査 D15): この窓が隠れているときの変更 (.prm・.ipa のドロップ、マクロ) も親の「カメラ長 2」の欄へ返す。
+        //   以前は返さず、計算はこの窓の値 (親の CameraLength2 の getter) なのに、親の欄は古い値のまま見え、次に親の欄を触るとドロップした値が消えていた。
+        //   親の欄から来た変更は同じ値なので、親の欄は動かない (NumericBox は同じ値では ValueChanged を出さない)
+        FormDiffractionSimulator.CameraLength2 = CameraLength2;
 
         FormDiffractionSimulator.SetVector();
 
