@@ -156,7 +156,7 @@
             buttonReplace.Text = "Replace";
             // toolTip.SetToolTip(buttonReplace, "Overwrite the selected preset with the current setting."); // 260726Cl 変更前: VS が resx から英語を焼き込んだリテラル。上の resources.GetString 版へ戻した
             buttonReplace.UseVisualStyleBackColor = false;
-            buttonReplace.Click += buttonAdd_Click;
+            buttonReplace.Click += buttonReplace_Click; // 261105Cl 修正: 旧 buttonAdd_Click (Replace を押すと置き換えずに追加していた)
             // 
             // buttonRename
             // 
