@@ -15,11 +15,11 @@ Das Stereonetz selbst ist eine 2-D-Projektion; eine optionale 3-D-Kugel kann mit
 | <kbd>F1</kbd> | Diese Seite des Online-Handbuchs öffnen |
 | Linksziehen nahe der Mitte | Den Kristall kippen |
 | Linksziehen im äußeren Bereich | Den Kristall um die Blickachse drehen |
-| Linksdoppelklick | Zwischen der Projektion **Plane** und **Axis** umschalten |
+| Linksdoppelklick | Zwischen der Projektion **Ebenen** und **Achsen** umschalten |
 | Rechtsklick | Herauszoomen |
 | Rechtsziehen eines Rahmens | In den ausgewählten Bereich hineinzoomen |
 | Mittelziehen | Verschieben |
-| Maus bewegen (ohne Taste) | Die (hkl)/[uvw] unter dem Cursor ablesen — nützlich zum Indizieren eines gemessenen Reflexes |
+| Maus bewegen (ohne Taste) | Die (hkl)/[uvw] unter dem Cursor ablesen — nützlich zum Indizieren eines gemessenen Reflexes (auch auf der unteren Halbkugel) <!-- 261105Cl 監査: 下半球の読み取り (268779a1) --> |
 
 Das Ziehen auf dem Netz dreht den **Kristall**; der Rotationszustand wird über alle Fenster hinweg geteilt.
 
@@ -39,11 +39,11 @@ Hier wird die Stereonetz-Projektion der Kristallebenen, Richtungsindizes und Kik
 
 ## Datei-Menü
 
-Speichern als Rasterbild (PNG) oder Kopieren als Rasterbild bzw. als Vektor-Metadatei (EMF). Eine eingefügte Metadatei erlaubt das Bearbeiten von Schriftarten und Linienstärken in PowerPoint oder anderen Vektoreditoren.
+Speichern oder Kopieren als Rasterbild (PNG) oder als Vektor-Metadatei (EMF). Eine eingefügte Metadatei erlaubt das Bearbeiten von Schriftarten und Linienstärken in PowerPoint oder anderen Vektoreditoren.
 
 | Menüeintrag | Beschreibung |
 |-------------|--------------|
-| Bild speichern ▸ als Bild (PNG-Format) / als Metadatei (EMF) | Das Stereonetz als PNG-Datei speichern (der Eintrag *als Metadatei (EMF)* ist derzeit deaktiviert; für Vektorausgabe **In Zwischenablage kopieren ▸ als Metadatei (EMF)** verwenden) |
+| Bild speichern ▸ als Bild (PNG-Format) / als Metadatei (EMF) | Das Stereonetz als PNG-Datei oder als Vektor-EMF-Datei speichern <!-- 261105Cl 監査: as Metafile (EMF) の保存を配線 (FormStereonet.cs, 268779a1) --> |
 | In Zwischenablage kopieren ▸ Als Bild / als Metadatei (EMF) | Das Stereonetz kopieren |
 | Video speichern ▸ Stereonetz / 3D | Ein Rotationsvideo (MP4) des Stereonetzes oder der 3-D-Ansicht speichern, mit demselben Dialog zur Filmeinstellung wie in der [Strukturansicht](5-structure-viewer.md#menü-datei) (nur Rotation) |
 | Seite einrichten / Druckvorschau / Drucken | Das Stereonetz drucken |
@@ -66,8 +66,8 @@ Wählen Sie aus, was auf das Netz projiziert werden soll.
 
 | Methode | Beschreibung |
 |--------|-------------|
-| **Wulff** (winkeltreu / stereografisch) | Erhält die Winkelbeziehung zwischen den projizierten Merkmalen, aber nicht den Raumwinkel. Wird von klassischen Kristallographen beim Ablesen von Winkeln zwischen Achsen oder Ebenen verwendet. |
-| **Schmidt** (flächentreu / Lambert) | Erhält den Raumwinkel (die Fläche) jeder Region, verzerrt aber die Winkel. Bevorzugt für statistische Polfiguren, bei denen die relative Dichte von Bedeutung ist. |
+| **Winkeltreu** (Wulff / stereografisch) | Erhält die Winkelbeziehung zwischen den projizierten Merkmalen, aber nicht den Raumwinkel. Wird von klassischen Kristallographen beim Ablesen von Winkeln zwischen Achsen oder Ebenen verwendet. |
+| **Flächentreu** (Schmidt / flächentreu / Lambert) | Erhält den Raumwinkel (die Fläche) jeder Region, verzerrt aber die Winkel. Bevorzugt für statistische Polfiguren, bei denen die relative Dichte von Bedeutung ist. |
 
 ### Hemisphäre
 
@@ -116,8 +116,8 @@ Legen Sie **Farbe** und **Größe** der eingezeichneten Punkte fest. Aktivieren 
 
 Wird angezeigt, wenn **3D-Ansicht** aktiviert ist; die 3-D-Kugel erscheint in einem Bereich rechts neben dem Netz.
 
-- **Zurücksetzen**: setzt die 3-D-Ansicht auf die Standardrichtung und den Standardzoom zurück.
-- **Beschriftung**: zeichnet Indexbeschriftungen in 3-D.
+- **Startansicht**: setzt die 3-D-Ansicht auf die Standardrichtung und den Standardzoom zurück.
+- **Beschriftung**: zeichnet Indexbeschriftungen in 3-D. Richtungen werden als [uvw] beschriftet; die Vier-Index-Form (bei aktiviertem **Miller-Bravais-Index (hkil) verwenden**) wird nur für Ebenen und Kikuchi-Linien verwendet. <!-- 261105Cl 監査: 3D のラベル (FormStereonet.cs, 268779a1) -->
 - **Halbkugel**: zeichnet nur die Pole auf der oberen ($Z>0$) Halbkugel.
 - **Stereonetz**: zeichnet die Projektionsebene (das Netz) in 3-D, mit den projizierten Punkten der Pole der oberen Halbkugel.
 - **Kugel-Umriss**: zeichnet das Breiten-/Längengradgitter der Kugel.
@@ -151,7 +151,7 @@ Wie der Umriss des Stereonetzes gezeichnet wird — der Begrenzungskreis und das
 
 ![Registerkarte Großkreis](../assets/cap-de-auto/FormStereonet.tabControl.tabPage2.png)
 
-Zeichnen Sie Großkreise (Kleinkreise werden nicht unterstützt). Geben Sie diese entweder über den **Zonenachsenindex** \([uvw]\) an (der Großkreis, der von der Zone dieser Achse gebildet wird) oder über **Zone aus zwei Ebenen** (die Zonenachse ist ihr Kreuzprodukt). Verwenden Sie **Hinzufügen** / **Entfernen**, um die Liste zu bearbeiten; das Abwählen eines Eintrags blendet diesen Kreis aus. Farbe und Linienstärke der Kreise sind ebenfalls konfigurierbar.
+Zeichnen Sie Großkreise (Kleinkreise werden nicht unterstützt). Geben Sie diese entweder über den **Zonenachsenindex** \([uvw]\) an (der Großkreis, der von der Zone dieser Achse gebildet wird) oder über **Zone aus zwei Ebenen** (die Zonenachse ist ihr Kreuzprodukt). Verwenden Sie **Hinzufügen** / **Entfernen**, um die Liste zu bearbeiten; das Abwählen eines Eintrags blendet diesen Kreis aus. Farbe und Linienstärke der Kreise sind ebenfalls konfigurierbar. Die Kreise folgen der unter [Mode](#mode) gewählten Projektionsmethode und Halbkugel (Wulff oder Schmidt, obere oder untere). <!-- 261105Cl 監査: Schmidt・下半球の大円 (268779a1) -->
 
 ### Wave {#wave}
 

@@ -6,7 +6,7 @@
 
 Öffnen über das Menü **Optionen** des [Beugungssimulators](index.md) → **ALCHEMI-Simulator...**
 
-GUI-Bedingungen: Wave Length = Electron (Kristall, Beschleunigungsspannung und Orientierung werden vom übergeordneten Beugungssimulator übernommen)
+GUI-Bedingungen: Wellenquelle = Elektron (Kristall, Beschleunigungsspannung und Orientierung werden vom übergeordneten Beugungssimulator übernommen). Bei einer anderen Quelle öffnet sich das Fenster zwar, aber die Anzeige θ_B und **Simulieren** zeigen nur den Hinweis *ALCHEMI ist nur für Elektronen. Stellen Sie die Strahlungsquelle des Beugungssimulators auf Elektronen.* <!-- 261105Cl 監査: FormALCHEMI.cs NotElectronNotice (6ae7a85) -->
 
 ![ALCHEMI-Simulator](../../assets/cap-de-auto/FormALCHEMI.png)
 
@@ -115,13 +115,13 @@ Die Liste der Atomplätze, deren Ausbeute getrennt berechnet wird, dargestellt a
 
 ### Simulieren / Stopp
 
-**Simulieren** startet den Scan. Der Fortschritt wird in der Statusleiste in fünf Stufen gemeldet (Ionisationsdaten werden aufgelöst → Vereinigungsbasis wird aufgebaut → Ionisationsmatrizen werden aufgebaut → Orientierungen werden gelöst → erweiterte Basis wird geprüft); **Stopp** bricht jederzeit ab.
+**Simulieren** startet den Scan. Der Fortschritt wird in der Statusleiste in fünf Stufen gemeldet (Ionisationsdaten werden aufgelöst → Vereinigungsbasis wird aufgebaut → Ionisationsmatrizen werden aufgebaut → Orientierungen werden gelöst → erweiterte Basis wird geprüft); **Stopp** bricht jederzeit ab. Ist die Reihe **g** parallel zum Strahl, kann der Scan sie nicht durch ihre Bragg-Bedingungen kippen; **Simulieren** meldet dann nur diesen Grund in der Statusleiste. <!-- 261105Cl 監査: FormALCHEMI.cs BuildRequest (732813e) -->
 
 ---
 
 ## Rechter Bereich: Registerkarte Kurve
 
-Nach Abschluss der Rechnung wird pro Paar aus Platz × Kanal eine Kurve gezeichnet. Die Legende lautet `Platzbezeichnung / Kanal`.
+Nach Abschluss der Rechnung wird pro Paar aus Platz × Kanal eine Kurve gezeichnet. Die Legende lautet `Platzbezeichnung / Kanal`. Werden danach der Kristall oder die Beschleunigungsspannung geändert (auch bei geschlossenem Fenster), werden die Kurven, die Diagnose und die Dickenauswahl gelöscht, und die Statuszeile nennt den Grund. <!-- 261106Cl 作者の決定 ALCHEMI -->
 
 | Eintrag | Beschreibung |
 |---------|--------------|
@@ -166,7 +166,7 @@ In den folgenden Situationen werden weitere Warnungen als eigene Zeilen (jeweils
 
 ## CSV-Export {#csv-export}
 
-**CSV exportieren** schreibt eine Tabelle im Long-Format, der ein Kopf im Format `# key: value` vorangestellt ist (unten gekürzt). Der Kopf ist so gestaltet, dass die Datei allein die zur Reproduktion nötigen Bedingungen nennt.
+**CSV exportieren** schreibt eine Tabelle im Long-Format, der ein Kopf im Format `# key: value` vorangestellt ist (unten gekürzt). Der Kopf ist so gestaltet, dass die Datei allein die zur Reproduktion nötigen Bedingungen nennt; `scan_origin_rotation_matrix` hält die Kristallorientierung am Scan-Ursprung (Kippung 0) als zeilenweise geschriebene Rotationsmatrix fest. <!-- 261105Cl 監査: FormALCHEMI.cs buttonExport_Click の Key("scan_origin_rotation_matrix", ...) -->
 
 ```text
 # generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
@@ -175,6 +175,7 @@ In den folgenden Situationen werden weitere Warnungen als eigene Zeilen (jeweils
 # crystal: MgAl2O4 (spinel) / F d -3 m
 # cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
 # accelerating_voltage_kV: 200.000
+# scan_origin_rotation_matrix: 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 (row-major; the crystal orientation of the parent diffraction simulator at the run, mapping the crystal's Cartesian frame to the laboratory frame, in which the beam travels along -z)
 # scan_row_hkl: 1 0 0
 # theta_B_mrad: 1.552030
 # thicknesses_nm: 10.0000 20.0000 ... 100.0000

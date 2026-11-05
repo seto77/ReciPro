@@ -2,9 +2,9 @@
 
 Die **Simulation der Röntgen-/Neutronenbeugung** berechnet Einkristall-Beugungsmuster für Röntgenstrahlung und Neutronen. Sie ist einer der Hauptmodi des [Beugungssimulators](index.md).
 
-> Diese Seite listet jede Einstellung auf, die auf der rechten Seite erscheint, wenn Sie **Wave Length = X-ray** (oder Neutron) wählen. Fensterweite Vorgänge wie Zeichnen und Speichern finden Sie auf der [Übersichtsseite](index.md).
+> Diese Seite listet jede Einstellung auf, die auf der rechten Seite erscheint, wenn Sie **Wellenquelle** = **Röntgen** (oder **Neutron**) wählen. Fensterweite Vorgänge wie Zeichnen und Speichern finden Sie auf der [Übersichtsseite](index.md).
 
-GUI-Bedingungen: Wave Length = X-ray / Neutron · Incident beam = Parallel / Precession (X-ray) / Back-Laue · Intensity calculation = Only excitation error / Kinematical
+GUI-Bedingungen: Wellenquelle = Röntgen / Neutron · Optik = Paralleler Strahl / Präzession (Röntgen, ZOLZ) / Rück-Laue (Röntgen) · Intensitätsberechnung = Nur Anregungsfehler / Kinematisch & Anr.-Fehler
 
 ![Beugungssimulator im Röntgen-/Neutronenmodus](../../assets/cap-de-auto/FormDiffractionSimulator-xray.png)
 
@@ -16,11 +16,11 @@ Röntgenstrahlen haben eine größere Wellenlänge als Elektronen (Cu Kα: 0.154
 
 ---
 
-## Wave Length
+## Wellenquelle {#wave-length}
 
-![Wave Length](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Wellenquelle](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Wählen Sie **X-ray** als Strahlungsquelle. Röntgenstrahlen können auf zwei Arten angegeben werden: charakteristische Röntgenstrahlung und Synchrotronstrahlung.
+Wählen Sie **Röntgen** als **Wellenquelle**. Röntgenstrahlen können auf zwei Arten angegeben werden: charakteristische Röntgenstrahlung und Synchrotronstrahlung.
 
 ### Charakteristische Röntgenstrahlung
 
@@ -39,29 +39,31 @@ Setzen Sie **Element** auf **0: Custom** und geben Sie die Energie (keV) oder We
 
 ---
 
-## Modus des einfallenden Strahls
+## Optik {#incident-beam-mode}
 
-![Beam mode](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Optik](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
 Wählt die Geometrie des einfallenden Strahls. Für Röntgenstrahlen sind drei Modi verfügbar.
 
-### Parallel
+### Paralleler Strahl {#parallel}
 
 Die normale ebene Welle. Ein paralleler einfallender Strahl, der für SAED und Einkristall-Röntgenbeugung verwendet wird.
 
-### Precession (X-ray) — Präzessionskamera
+### Präzession (Röntgen, ZOLZ) — Präzessionskamera {#precession-x-ray--precession-camera}
 
-Simuliert eine Röntgen-Präzessionskamera. Dies ist eine Präzessionsaufnahme, die eine einzelne Schicht des reziproken Gitters erfasst.
+Simuliert eine Röntgen-Präzessionskamera. Dies ist eine Präzessionsaufnahme, die eine einzelne Schicht des reziproken Gitters erfasst. Debye-Ringe werden als Kreise mit dem Radius $2L_2\sin\theta$ gezeichnet ($L_2$ = Kameralänge 2), wie die 2θ-Skalenkreise. <!-- 261105Cl 監査: DrawDebyeRing (C6) -->
 
-### Back-Laue (Rückstrahl-Laue)
+### Rück-Laue (Röntgen) — Rückstrahl-Laue {#back-laue-back-reflection-laue}
 
-Simuliert ein Rückstrahl-Laue-Muster mit weißer (polychromatischer) Röntgenstrahlung. In dieser Rückstrahlgeometrie wird der Detektor auf der Quellenseite platziert und **Monochrome** wird ausgeschaltet. Die Reflexe werden auf einen ebenen Detektor **senkrecht zum Strahl** im Abstand der Kameralänge auf der Quellenseite projiziert; die Detektorkippung **Tau / Phi** der [Detektorgeometrie](index.md#detector-geometry) wird bei dieser Projektion nicht verwendet.
+Simuliert ein Rückstrahl-Laue-Muster mit weißer (polychromatischer) Röntgenstrahlung. In dieser Rückstrahlgeometrie wird der Detektor auf der Quellenseite platziert; die Energie-/Wellenlängenfelder und die Elementauswahl des Steuerelements **Wellenquelle** werden ausgeblendet, und stattdessen wird **Flat white** angezeigt. Die Reflexe werden auf einen ebenen Detektor **senkrecht zum Strahl** im Abstand der Kameralänge auf der Quellenseite projiziert; die Detektorkippung **Tau / Phi** der [Detektorgeometrie](index.md#detector-geometry) wird bei dieser Projektion nicht verwendet.
 
 - Das weiße Spektrum wird bei **50 keV** abgeschnitten: Reflexe werden bis $d = \lambda(50\ \text{keV})/2$ gesammelt, und es wird keine spektrale Gewichtung angewendet.
 - Harmonische $n\mathbf{g}$, die auf derselben Geraden durch den Ursprung liegen, fallen auf denselben Spot; ihre $\lvert F\rvert^2$ werden auf den Reflex niedrigster Ordnung aufsummiert, und die Spot-Intensitäten werden auf den stärksten Spot normiert.
 - **Anomale Dispersion (f', f'')** ist deaktiviert (die Energie ist nicht eindeutig), und **Reflexradius** hat in diesem Modus keine Einheit.
+- 2θ (Mausposition, Reflexbeschriftungen und 2θ-Skala) ist der Streuwinkel: 180° am Strahlloch in der Mitte, nach außen abnehmend. <!-- 261105Cl 監査: Back Laue の 2θ (C13) -->
+- Jeder ausgewählte Kristall wird gezeichnet; bei mehr als einem Kristall (oder mit aktivierter **Farbe je Kristall**) erhalten die Reflexe jedes Kristalls dessen Farbe. <!-- 261105Cl 監査: Back Laue の複数結晶 -->
 
-> **Hinweis**: Die Optionen für den einfallenden Strahl richten sich nach der Wellenlänge. **Precession (electron)** und **Convergence (CBED)** erscheinen nur, wenn Elektronenstrahlung gewählt ist, während die obigen Optionen **Precession (X-ray)** und **Back-Laue** nur erscheinen, wenn Röntgenstrahlung gewählt ist. Für Neutronen ist nur **Parallel** verfügbar. Je nach Zustand zum Zeitpunkt der Aufnahme zeigt der Screenshot die röntgenspezifischen Optionen möglicherweise nicht.
+> **Hinweis**: Die Optionen unter **Optik** richten sich nach der Wellenquelle. **Präzession (Elektron)** und **Konvergenz (Elektron)** erscheinen nur, wenn **Elektron** gewählt ist, während die obigen Optionen **Präzession (Röntgen, ZOLZ)** und **Rück-Laue (Röntgen)** nur erscheinen, wenn **Röntgen** gewählt ist. Für Neutronen ist nur **Paralleler Strahl** verfügbar. Je nach Zustand zum Zeitpunkt der Aufnahme zeigt der Screenshot die röntgenspezifischen Optionen möglicherweise nicht.
 
 ---
 
@@ -73,7 +75,7 @@ Wählt die Methode zur Berechnung der Spot-Intensitäten. Für Röntgenstrahlen 
 
 ### Nur Anregungsfehler
 
-Die Intensität wird ausschließlich durch den geometrischen Abstand zwischen der Ewald-Kugel und dem Punkt des reziproken Gitters bestimmt (dem Anregungsfehler $S_g$). Sie ist bei $S_g = 0$ — genau auf der Kugel — am größten und nimmt mit wachsendem $\lvert S_g\rvert$ ab; sie fällt auf null, sobald $\lvert S_g\rvert$ den für den reziproken Gitterpunkt angegebenen **Radius** überschreitet. Der Strukturfaktor wird ignoriert.
+Die Intensität wird ausschließlich durch den geometrischen Abstand zwischen der Ewald-Kugel und dem Punkt des reziproken Gitters bestimmt (dem Anregungsfehler $S_g$). Sie ist bei $S_g = 0$ — genau auf der Kugel — am größten und nimmt mit wachsendem $\lvert S_g\rvert$ ab; sie fällt auf null, sobald $\lvert S_g\rvert$ den für den reziproken Gitterpunkt angegebenen **Reflexradius** überschreitet. Der Strukturfaktor wird ignoriert.
 
 Nur in diesem Modus erscheinen die folgenden Optionen:
 
@@ -100,7 +102,7 @@ Steuert, wie jeder Beugungsspot gerendert wird.
 - **Deckkraft** : Transparenz des Spots (0 = transparent, 1 = undurchsichtig).
 - **Reflexradius (R)** : Radius des Punktes im reziproken Gitter. Die gerenderte Spot-Größe wird durch die Kombination aus **Darstellung** und **Intensitätsberechnung** bestimmt.
 - **Helligkeit** : nur im Modus **Gauß** aktiv. Legt die integrierte Intensität der gerenderten Gauß-Funktion fest.
-- **Farbskala** (nur Gauß) : **Gray**, **Cold-Warm**, **Spectrum** oder **Fire**.
+- **Farbskala** (nur Gauß) : **Gray**, **Cold-warm**, **Spectrum** oder **Fire**.
 - **Log-Skala** (nur Gauß) : Intensitäten auf einer logarithmischen Skala anzeigen.
 - **Reflexfarbe** : Spot-Farben, die mit der Farbskala **Gray** verwendet werden (bei den anderen Farbskalen ist diese Gruppe ausgeblendet).
 - **Farbe je Kristall** : zeichnet die Spots in der dem jeweiligen Kristall zugewiesenen Farbe, wenn aktiviert.
@@ -112,7 +114,7 @@ Steuert, wie jeder Beugungsspot gerendert wird.
 Debye-Ringe einer polykristallinen Probe können angezeigt werden. Aktivieren Sie **Debye-Ringe** in der Symbolleiste (siehe [Symbolleiste](index.md#toolbar)).
 
 - **Beugungsintensität ignorieren** : zeichnet alle Ringe in derselben Farbe und Intensität (verwendet für einen rein geometrischen Vergleich, der den Strukturfaktor ignoriert).
-- **Index-Beschriftungen anzeigen** : zeigt den (*hkl*)-Index neben jedem Ring an.
+- **Index-Beschriftungen anzeigen** : zeigt die Indizes {*hkl*} neben jedem Ring an (vier Indizes {*hkil*}, wenn **Optionen ▸ Miller-Bravais-Index (hkil) verwenden** aktiv ist, bei hexagonalen Achsen). <!-- 261105Cl 監査: DrawDebyeRing (C23) -->
 
 Detaillierte Einstellungen befinden sich auf der Registerkarte Debye rings des [Registerkartenmenüs](index.md#drawing-overlay-tabs).
 
@@ -120,7 +122,7 @@ Detaillierte Einstellungen befinden sich auf der Registerkarte Debye rings des [
 
 ## Neutronenbeugung
 
-Die Wahl von **Neutron** im Steuerelement Wave Length berechnet ein Neutronenbeugungsmuster. Geben Sie die Energie (meV) oder Wellenlänge (Å oder nm, umschaltbar; Standard Å) ein. Der einfallende Strahl kann nur **Parallel** sein. Die Intensitätsberechnung kann **Nur Anregungsfehler** oder **Kinematisch & Anr.-Fehler** sein (**Dynamische Theorie** ist nicht verfügbar). Die kinematische Intensität verwendet die Neutronenstreulänge anstelle des atomaren Streufaktors.
+Die Wahl von **Neutron** unter **Wellenquelle** berechnet ein Neutronenbeugungsmuster. Geben Sie die Energie (meV) oder Wellenlänge (Å oder nm, umschaltbar; Standard Å) ein. **Optik** kann nur **Paralleler Strahl** sein. Die Intensitätsberechnung kann **Nur Anregungsfehler** oder **Kinematisch & Anr.-Fehler** sein (**Dynamische Theorie** ist nicht verfügbar). Die kinematische Intensität verwendet die Neutronenstreulänge anstelle des atomaren Streufaktors.
 
 ---
 

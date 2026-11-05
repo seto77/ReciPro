@@ -31,7 +31,9 @@ Die Bedienelemente am oberen Fensterrand legen den Lauf fest:
 - **Trajektorien simulieren** : startet den Monte-Carlo-Lauf. Die Statusleiste am unteren Rand meldet die verstrichene Zeit für die Trajektorienberechnung, das Zeichnen der Diagramme und das 3-D-Rendering getrennt.
 - **Number of trajectories** (100–1.000.000, Standard 100.000) : wie viele einfallende Elektronen verfolgt werden. Mehr Elektronen verringern das statistische Rauschen aller unten beschriebenen Verteilungen; die Laufzeit wächst dabei linear.
 - **Probenkippung** (°, −90 bis 0, Standard 0) : Kippung der Probenoberfläche um die *X*-Achse. Für senkrechten Einfall bei 0 belassen; mit **−70°** lässt sich die Geometrie des [EBSD-Simulators](12-ebsd-simulation.md) nachbilden, bei der die starke Kippung die Rückstreuausbeute erhöht.
-- **Energy** (keV) / **Wavelength** / **Unit** : die Beschleunigungsspannung des einfallenden Strahls und die damit verknüpfte, relativistisch korrigierte Elektronenwellenlänge. Die Energie legt die kinetische Energie fest, die sowohl vom elastischen (NIST-Mott) als auch vom inelastischen (Bremsvermögen / IMFP) Modell verwendet wird.
+- **Energie** (keV) / **Wellenlänge** / **Unit** : die Beschleunigungsspannung des einfallenden Strahls und die damit verknüpfte, relativistisch korrigierte Elektronenwellenlänge. Die Energie legt die kinetische Energie fest, die sowohl vom elastischen (NIST-Mott) als auch vom inelastischen (Bremsvermögen / IMFP) Modell verwendet wird.
+
+Eine Änderung von **Probenkippung** oder **Energie** nach einem Lauf ändert das angezeigte Ergebnis nicht: Bis **Trajektorien simulieren** erneut gedrückt wird, verwendet jedes Neuzeichnen (3-D-Ansicht, Stereonetz, Histogramme) die Kippung und Energie, mit denen die Trajektorien berechnet wurden. <!-- 261105Cl 監査: FormTrajectory.cs calcTilt/calcEnergy (9890ced0) -->
 
 Ein Elektron wird verfolgt, bis es die Probe verlässt oder seine Energie auf **2 keV** fällt (fester Schwellenwert). Elektronen, die mit mehr als 2 keV austreten, werden als rückgestreute Elektronen gezählt; η (ihr Anteil an allen einfallenden Elektronen), die mittlere BSE-Energie, das Stereonetz und die Histogramme unten werden aus diesen Elektronen berechnet. Wirkungsquerschnitt, mittlere freie Weglänge und Bremsvermögen in der **Statistik** sind Modellwerte bei der Strahlenergie.
 
@@ -59,7 +61,7 @@ Werte für die aktuelle Strahlenergie. Beim Wirkungsquerschnitt und beim Bremsve
 - **Elastische mittlere freie Weglänge (λ)** (nm) — mittlere Strecke zwischen elastischen Streuereignissen.
 - **Bremsvermögen (dE/ds)** (eV/nm, negativ) — Energieverlust pro Weglängeneinheit.
 - **Rückstreukoeffizient, η** (%) — der Anteil der einfallenden Elektronen, die die Probe wieder durch die Eintrittsfläche verlassen. Auf dieser Größe beruht der BSE-Bildkontrast.
-- **Mittlere BSE-Energie** (keV) — mittlere Energie der rückgestreuten Elektronen im Moment ihres Austritts.
+- **Mittlere BSE-Energie** (keV) — mittlere Energie der rückgestreuten Elektronen im Moment ihres Austritts. Wird als „-“ angezeigt, wenn kein Elektron rückgestreut wird (die Histogramme sind dann leer). <!-- 261105Cl 監査: FormTrajectory.cs DrawStatistics (count == 0) -->
 
 ---
 

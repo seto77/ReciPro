@@ -44,7 +44,7 @@ und ein kleines $\omega$ bedeutet, dass die meisten Leerstellen durch Auger-Emis
 
 $$p_{\ell\mid X} = \frac{\Gamma_\ell}{\sum_{\ell'\in X}\Gamma_{\ell'}},$$
 
-die relative radiative Rate innerhalb der Schale $X$. ReciPro listet $\omega_K$ für jedes Element und die stärkste Linie im Spektrum auf.
+die relative radiative Rate innerhalb der Schale $X$. ReciPro listet $\omega_K$ für jedes Element und die stärkste Linie im Spektrum auf. Dies ist eine Referenzliste, die nicht berücksichtigt, wie stark jede Schale angeregt wird (kein Ionisationsquerschnitt); diese Linie muss daher in einem gemessenen Spektrum nicht die stärkste sein. <!-- 261106Cl 作者の決定 J6 -->
 
 ---
 

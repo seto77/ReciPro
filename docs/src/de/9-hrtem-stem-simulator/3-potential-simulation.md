@@ -12,7 +12,7 @@ Die **Potentialsimulation** berechnet und zeigt die 2D-Verteilung des Kristallpo
 
 Elektronen innerhalb eines Kristalls werden am Kristallpotential gestreut. Seine Verteilung liegt allen Beugungs- und Abbildungsphänomenen zugrunde und ist eine Schlüsselinformation zum Verständnis der Kristallstruktur. Da dieser Modus weder Linsenfehler noch dickenabhängige dynamische Effekte enthält, eignet er sich gut zur Untersuchung der Struktur selbst.
 
-> **Im Potentialmodus werden die Panels für Probendicke, Intensitätsnormierung und Bildmodus (single / serial) nicht angezeigt.** Von den TEM-Bedingungen ist nur die Beschleunigungsspannung aktiv.
+> **Im Potentialmodus werden die Panels für Probendicke, Intensitätsnormierung und **Einzel-/Serienmodus** nicht angezeigt.** Von den TEM-Bedingungen ist nur die Beschleunigungsspannung aktiv.
 
 ---
 
@@ -20,7 +20,7 @@ Elektronen innerhalb eines Kristalls werden am Kristallpotential gestreut. Seine
 
 ![TEM-Bedingungen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **Beschl.-Spannung (kV)** — Beschleunigungsspannung. Sie legt die Elektronenwellenlänge fest und wird zur Berechnung der Fourier-Koeffizienten $U_g$ des Potentials verwendet.
+- **Beschl.-Spannung** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> — Beschleunigungsspannung (kV). Sie legt die Elektronenwellenlänge fest und wird zur Berechnung der Fourier-Koeffizienten $U_g$ des Potentials verwendet.
 
 > **Defokus, Cs, Cc, β, ΔV und die PCTF sind im Potentialmodus inaktiv** (es wird keine bildgebende Optik angewendet) und erscheinen ausgegraut.
 
@@ -63,7 +63,7 @@ $U_g$ und $U'_g$ können gleichzeitig angezeigt werden (für jedes angekreuzte w
 
 ![Wellen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** — maximale Anzahl der Bloch-Wellen (Fourier-Koeffizienten), die in die Fourier-Synthese des Potentials einbezogen werden (Standard 80). Größere Werte beziehen höhere Raumfrequenzen ein und geben feinere Details des Potentials wieder.
+- Maximale Anzahl der Bloch-Wellen (Fourier-Koeffizienten), die in die Fourier-Synthese des Potentials einbezogen werden (Standard 80). Größere Werte beziehen höhere Raumfrequenzen ein und geben feinere Details des Potentials wieder.
 
 ---
 

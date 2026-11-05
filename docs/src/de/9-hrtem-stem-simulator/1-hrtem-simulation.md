@@ -39,7 +39,7 @@ Legt die Abbildungsbedingungen der Objektivlinse fest.
 
 | Parameter | Beschreibung | Standard / typisch |
 |-----------|-------------|-------------------|
-| **Beschl.-Spannung (kV)** | Beschleunigungsspannung. Die relativistisch korrigierte Elektronenwellenlänge wird rechts daneben angezeigt | 200 kV |
+| **Beschl.-Spannung** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Beschleunigungsspannung (kV). Die relativistisch korrigierte Elektronenwellenlänge wird rechts daneben angezeigt | 200 kV |
 | **Defokus Δf** | Defokus der Objektivlinse (nm). Der Referenzwert des **Scherzer-Defokus** wird darunter angezeigt | −57.8 nm |
 | **Cs** | Sphärischer Aberrationskoeffizient (mm). Beeinflusst die CTF und den Scherzer-Defokus. Negative Werte (−20 bis 20 mm) sind zulässig | 1.0 mm (Standard); 0.5–1.0 (konventionell), < 0.01 (Cs-korrigiert) |
 | **Cc** | Chromatischer Aberrationskoeffizient (mm). Bestimmt die durch die Energiebreite verursachte Bildunschärfe | 1.4 mm (Standard); 1.0–2.0 mm |
@@ -52,7 +52,7 @@ $$\chi(u) = \pi\lambda\,\Delta f\,u^2 + \tfrac{\pi}{2}\,C_s\lambda^3 u^4 ,$$
 
 und jede gebeugte Welle wird mit $\exp[-i\chi(u)]$ multipliziert, sodass **negatives Δf Unterfokus** bedeutet (die Konvention, in der der Scherzer-Defokus negativ ist).
 
-> **Kontextmenü (Rechtsklick)**: Im Bereich TEM-Bedingungen lassen sich **Defokus auf 0 nm setzen** / **Defokus auf Scherzer-Wert setzen** / **Alle Aberrationen auf Null setzen** mit einem Klick anwenden (Letzteres setzt Cs, Cc, β, ΔV **und den Defokus** auf 0). Dasselbe Menü enthält vier Mikroskop-Voreinstellungen — *300kV Cold-FEG Cs-frei (Cs 0, Cc 2.8, ΔE 0.3) ARM300F*, *200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔE 0.8) 2100F*, *200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔE 0.8) 2100F* und *200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔE 2.0) 2100* —, die Beschleunigungsspannung, Cs, Cc und ΔV wie im Eintrag angegeben setzen und anschließend den Defokus auf den Scherzer-Wert setzen (β bleibt unverändert). Das Kontrollkästchen **Voreinstellungen** unten rechts öffnet das Fenster, in dem Sie eigene Bedingungen speichern (siehe [Voreinstellungsliste](index.md#preset-list)).
+> **Kontextmenü (Rechtsklick)**: Im Bereich TEM-Bedingungen lassen sich **Defokus auf 0 nm setzen** / **Defokus auf Scherzer-Wert setzen** / **Ideale Bedingungen (Cs, Cc, β, ΔV, Δf = 0)** mit einem Klick anwenden (Letzteres setzt Cs, Cc, β, ΔV **und den Defokus** auf 0). <!-- 261106Cl 作者の決定 E19: 表示名を理想条件に --> Dasselbe Menü enthält vier Mikroskop-Voreinstellungen — *300kV Cold-FEG Cs-frei (Cs 0, Cc 2.8, ΔV 0.3) ARM300F*, *200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F*, *200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F* und *200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100* —, die Beschleunigungsspannung, Cs, Cc und ΔV wie im Eintrag angegeben setzen und anschließend den Defokus auf den Scherzer-Wert setzen (β bleibt unverändert). Das Kontrollkästchen **Voreinstellungen** unten rechts öffnet das Fenster, in dem Sie eigene Bedingungen speichern (siehe [Voreinstellungsliste](index.md#preset-list)). <!-- 261105Cl 監査: プリセット名は ΔV (FormImageSimulator.resx presets1〜4ToolStripMenuItem.Text) -->
 
 ### Scherzer-Defokus
 
@@ -104,7 +104,7 @@ Beschränkt die gebeugten Wellen, die die Objektivblende passieren. Die Bloch-We
 
 Wählt, wie die Teilkohärenz (β und die Fokusstreuung δ) berücksichtigt wird. Die Austrittswelle wird für eine einzige Einfallsrichtung (die Strahlachse) berechnet; Beleuchtungs- und Energiebreite gehen nur über die unten genannten Einhüllenden ein.
 
-- **Lineares Bild** (quasikohärentes Modell) : rechnerisch günstig. Jede gebeugte Welle $\psi_g$ der dynamischen Austrittswelle wird mit $\exp[-i\chi(g)]\,E_\text{s}(g)\,E_\text{c}(g)$ multipliziert, und das Bild ist $\left|\sum_g\right|^2$. Genau, wenn das Bild von der Interferenz mit dem durchgehenden Strahl dominiert wird (dünne Proben).
+- **Lineares Bild** (quasikohärentes Modell) : rechnerisch günstig. Jede gebeugte Welle $\psi_g$ der dynamischen Austrittswelle wird mit $\exp[-i\chi(g)]\,E_\text{s}(g)\,E_\text{c}(g)$ multipliziert, und die Wellen werden kohärent summiert: $I(\mathbf{r}) = \left|\sum_g \psi_g\,e^{-i\chi(g)}\,E_\text{s}(g)\,E_\text{c}(g)\,e^{2\pi i\,\mathbf{g}\cdot\mathbf{r}}\right|^2$. Genau, wenn das Bild von der Interferenz mit dem durchgehenden Strahl dominiert wird (dünne Proben).
 - **Transmissions-Kreuzkoeffizient** : rechnerisch aufwendig, aber genauer. Jedes Strahlpaar $(g,h)$ wird mit der gemeinsamen Einhüllenden (dem vollständigen Transmissions-Kreuzkoeffizienten) summiert; dies ist das Modell der Wahl für stark streuende Proben, in denen viele starke gebeugte Wellen angeregt werden. Der Aufwand wächst quadratisch mit der Anzahl der Strahlen innerhalb der Blende.
 
 Einzelheiten siehe [Anhang A3.2 — HRTEM-Bildentstehung](../appendix/a3-bloch-wave/hrtem.md).

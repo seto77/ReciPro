@@ -38,8 +38,8 @@ Geben Sie zwei Kristallebenen \((h_1, k_1, l_1)\), \((h_2, k_2, l_2)\) oder zwei
 
 - den Netzebenenabstand jeder Ebene / die Länge jeder Achse,
 - den Winkel zwischen den beiden Ebenen (oder den beiden Achsen),
-- den Winkel zwischen Ebene 1 und Achse 1 sowie zwischen Ebene 2 und Achse 2,
-- **den zu beiden Ebenen senkrechten Richtungsindex** und **den zu beiden Achsen senkrechten Ebenenindex**.
+- den Winkel zwischen der Normalen von Ebene 1 und Achse 1 sowie zwischen der Normalen von Ebene 2 und Achse 2 (90°, wenn die Achse in der Ebene liegt),
+- **Achse parallel zu beiden Ebenen** (die Zonenachse [*uvw*] der beiden Ebenen) und **Ebene, die beide Achsen enthält** (die Ebene (*hkl*), die die beiden Achsen enthält). Die Vorzeichen folgen [*uvw*] = (*h*₁*k*₁*l*₁) × (*h*₂*k*₂*l*₂) und (*hkl*) = [*u*₁*v*₁*w*₁] × [*u*₂*v*₂*w*₂]. <!-- 261106Cl 作者の決定 B16 --> <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップ (numericBoxAnglePlaneAxis1/2.ToolTip) に合わせた。以前の「normal to」は逆 -->
 
 Diese Berechnungen berücksichtigen die Metrik der aktuellen Elementarzelle. Längen werden in Å und Winkel in Grad angezeigt.
 
@@ -49,7 +49,7 @@ Diese Berechnungen berücksichtigen die Metrik der aktuellen Elementarzelle. Lä
 
 ![Wyckoff-Lagen](../assets/cap-de-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-Listet jede Wyckoff-Lage mit ihrer Multiplizität (**Mult.**), ihrem Wyckoff-Buchstaben (**Wyck.-Buchst.**), ihrer Lagesymmetrie (**Lagesym.**) und den **Koordinaten** (bis zu vier je Zeile; längere Listen werden in den folgenden Zeilen fortgesetzt). Der erste Wyckoff-Eintrag (höchste Multiplizität) ist die allgemeine Lage. Bei zentrierten Gittern werden die Gittertranslationsvektoren in der Kopfzeile angezeigt.
+Listet jede Wyckoff-Lage mit ihrer Multiplizität (**Mult.**), ihrem Wyckoff-Buchstaben (**Wyck.-Buchst.**), ihrer Lagesymmetrie (**Lagesym.**) und den **Koordinaten** (bis zu vier je Zeile; längere Listen werden in den folgenden Zeilen fortgesetzt). Der erste Wyckoff-Eintrag (höchste Multiplizität) ist die allgemeine Lage. Bei zentrierten Gittern werden die Gittertranslationsvektoren in der Kopfzeile angezeigt; bei R-Gruppen in hexagonalen Achsen sind dies die drei Zentrierungstranslationen der obversen Aufstellung, (0,0,0)+, (2/3,1/3,1/3)+ und (1/3,2/3,2/3)+. <!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
 
 ---
 

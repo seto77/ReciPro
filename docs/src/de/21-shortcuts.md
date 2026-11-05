@@ -85,7 +85,7 @@ Verwendet von den Ergebnisbereichen von [HRTEM/STEM](9-hrtem-stem-simulator/inde
 | Einfachklick / Doppelklick auf eine Funktionsschaltfläche | Dieses Fenster ein-/ausschalten / in den Vordergrund zwingen |
 | Rechtsklick auf einen Kristall in der Liste | Kontextmenü (Umbenennen / Als CIF exportieren / Duplizieren / Löschen) |
 | Doppelklick auf die Beschriftung des Zonenachsenindex (`[u v w]`) | Das Max-UVW-Feld ein-/ausblenden |
-| Eine Datei ablegen | Eine Kristallliste (`.xml`, `.out`, `.cdb2`) oder einen Kristall (`.cif`, `.amc`) laden |
+| Eine Datei ablegen | Eine Kristallliste (`.xml`, `.out`) oder einen Kristall (`.cif`, `.amc`) laden <!-- 261105Cl 監査: .cdb2 を外した (ドロップを受け付けない) --> |
 
 ### 1. Kristalldatenbank
 [Seite öffnen →](1-crystal-database.md)
@@ -94,7 +94,7 @@ Verwendet von den Ergebnisbereichen von [HRTEM/STEM](9-hrtem-stem-simulator/inde
 |----------|--------|
 | <kbd>ENTER</kbd> in einem Suchfeld | Die Suche ausführen |
 | Klick auf eine Ergebniszeile | Diesen Kristall laden |
-| Klick auf ein Element im Periodensystem-Popup | Seinen Filter durchschalten: ignorieren → muss enthalten → muss ausschließen |
+| Klick auf ein Element im Popup **Periodensystem** | Seinen Filter durchschalten: *kann enthalten oder nicht* → *muss enthalten* → *muss ausschließen* |
 
 ### 2. Symmetrieinformationen · 3. Strahl-Wechselwirkung
 Symmetrieinformationen haben keine besonderen Tasten-/Mauskombinationen. In der Strahl-Wechselwirkung lässt sich neben <kbd>F1</kbd> und den **Copy**-Schaltflächen der vertikale Cursor im Diagramm **Scattering factors** ziehen, um den Wert jedes Elements abzulesen.
@@ -118,7 +118,7 @@ Symmetrieinformationen haben keine besonderen Tasten-/Mauskombinationen. In der 
 
 | Kurzbefehl | Aktion |
 |----------|--------|
-| Links-Doppelklick auf das Netz | Zwischen **Plane**- und **Axis**-Projektion umschalten |
+| Links-Doppelklick auf das Netz | Zwischen der Projektion **Ebenen** und **Achsen** umschalten |
 | Maus über das Netz bewegen | Die (hkl)/[uvw] unter dem Cursor ablesen |
 
 ### 7. Beugungssimulator
@@ -132,7 +132,7 @@ Symmetrieinformationen haben keine besonderen Tasten-/Mauskombinationen. In der 
 | Rechts-Doppelklick auf die Statusleiste | Eine Textzusammenfassung der aktuellen Einstellungen kopieren |
 | Rechts-Doppelklick auf eine aktive Ebenen-Schaltfläche (Spots / Kikuchi / Debye / Scale) | Diese Ebene blinken lassen |
 | Links-Doppelklick auf das Stereonetz — Fenster **TEM-Halter** | Die Halterkippung auf diesen Punkt setzen |
-| Pfeiltasten — Fenster **TEM-Halter** | Die Halterkippung schrittweise ändern (zuvor **Pfeiltasten aktivieren** anhaken; wirkt bei jedem ReciPro-Fenster im Vordergrund) |
+| Pfeiltasten — Fenster **TEM-Halter** | Die Halterkippung schrittweise ändern (zuvor **Pfeiltasten aktivieren** anhaken; nur solange das Halterfenster aktiv ist) <!-- 261106Cl 作者の決定 D25 --> |
 | `.prm`/Bild ablegen — **Detektorgeometrie**, oder `.txt` — **Dynamische Kompression** | Diese Daten laden |
 
 ### 8. Elektronenbahnen
@@ -148,7 +148,7 @@ Symmetrieinformationen haben keine besonderen Tasten-/Mauskombinationen. In der 
 | Links-Doppelklick auf einen Bereich | Diesen Bereich maximieren / das Raster wiederherstellen (Mehrbereich-Layouts) |
 
 ### 10. Spot ID v1
-[Seite öffnen →](10-spot-id.md) — das Bild dient nur als Referenz (nicht interaktiv).
+[Seite öffnen →](10-spot-id.md) — es gibt keine Bildansicht (die Reflexgeometrie wird als Zahlen eingegeben).
 
 | Kurzbefehl | Aktion |
 |----------|--------|
@@ -182,4 +182,4 @@ Symmetrieinformationen haben keine besonderen Tasten-/Mauskombinationen. In der 
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Den Editortext zurück in den gewählten Makrolisten-Eintrag speichern |
 | <kbd>F10</kbd> | Einen Schritt weiter (während der schrittweisen Ausführung) |
 | Doppelklick auf eine Zeile in der Funktionshilfe-Liste | Die Signatur dieser Funktion an der Einfügemarke einfügen |
-| Eine `.mcr`-Datei ablegen | Sie in den Editor laden |
+| Eine `.mcr`-Datei auf das Fenster ablegen | Sie in den Editor laden und zur Makroliste hinzufügen (der Dateiname wird zum Makronamen) |

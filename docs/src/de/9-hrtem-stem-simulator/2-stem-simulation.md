@@ -50,7 +50,7 @@ Siehe [Anhang A3.4 — STEM-Berechnung](../appendix/a3-bloch-wave/stem.md) für 
 
 | Parameter | Beschreibung | Standard / typisch |
 |-----------|-------------|-------------------|
-| **Beschl.-Spannung (kV)** | Beschleunigungsspannung. Die relativistisch korrigierte Elektronenwellenlänge wird daneben angezeigt | 200 kV |
+| **Beschl.-Spannung** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Beschleunigungsspannung (kV). Die relativistisch korrigierte Elektronenwellenlänge wird daneben angezeigt | 200 kV |
 | **Defokus Δf** | Defokus der Objektivlinse (sondenformenden Linse) (nm) | −57.8 nm |
 | **Cs** | Sphärischer Aberrationskoeffizient (mm). Beeinflusst die Sondengröße | 0.5–1.0 mm |
 | **Cc** | Chromatischer Aberrationskoeffizient (mm) | 1.0–2.0 mm |
@@ -68,10 +68,10 @@ Lege die Geometrie der konvergenten Sonde und des Ringdetektors fest. Jeder Wink
 
 | Parameter | Beschreibung | Standard / typisch |
 |-----------|-------------|-------------------|
-| **α (convergence angle)** | Halbwinkel der konvergenten Sonde (mrad). Größere Werte ergeben eine feinere Sonde und verändern den Beugungskontrast | 25 mrad (Standard); 15–25 mrad |
+| **Conv. semi-angle α** | Halbwinkel der konvergenten Sonde (mrad). Größere Werte ergeben eine feinere Sonde und verändern den Beugungskontrast | 25 mrad (Standard); 15–25 mrad |
 | **Ringdetektor — Innen** | Innerer Erfassungs-Halbwinkel des Ringdetektors (mrad). Signal innerhalb dieses Winkels wird ausgeschlossen | 0 (Standard); BF: 0, HAADF: 80 |
 | **Ringdetektor — Außen** | Äußerer Erfassungs-Halbwinkel des Ringdetektors (mrad). Signal außerhalb dieses Winkels wird ausgeschlossen | 20 (Standard); BF: 5, HAADF: 250 |
-| **Effective source size (σs, FWHM)** | Effektive Größe der Elektronenquelle (pm). Wird nach der Berechnung als Gauß-Faltung auf jedes Elast.-/TDS-/EDX-Bild angewendet. Größere Werte verschmieren das Bild und verringern den Kontrast feiner Details | 20 pm (Standard) |
+| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Effektive Größe der Elektronenquelle (pm). Wird nach der Berechnung als Gauß-Faltung auf jedes Elast.-/TDS-/EDX-Bild angewendet. Größere Werte verschmieren das Bild und verringern den Kontrast feiner Details | 20 pm (Standard) |
 
 Die Detektorwinkel gelten nur für das STEM-Referenzbild (Elast. / TDS / Elast. & TDS); STEM-EDX-Karten verwenden sie nicht. Die Standardwerte gelten nur beim ersten Start; danach werden die zuletzt verwendeten Werte wiederhergestellt.
 
@@ -86,12 +86,13 @@ Die Detektorwinkel gelten nur für das STEM-Referenzbild (Elast. / TDS / Elast. 
 
 ---
 
-## Bildmodus (single / serial)
+## Einzel-/Serienmodus
 
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text) と HRTEM のページに合わせた -->
 ![Einzel-/Serienmodus](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 - **Einzelbild** : berechnet ein STEM-Bild bei der aktuellen Dicke.
-- **Serienbild** : erzeugt eine Bildserie mit schrittweise variierter Dicke / Defokus (festgelegt über **Start / Step / Num**; die Liste darunter kann auch direkt bearbeitet werden).
+- **Serienbild** : erzeugt eine Bildserie mit schrittweise variierter Dicke / Defokus (festgelegt über **Start / Schritt / Anz**; die Liste darunter kann auch direkt bearbeitet werden).
 
 ---
 
@@ -108,7 +109,7 @@ Die Detektorwinkel gelten nur für das STEM-Referenzbild (Elast. / TDS / Elast. 
 
 ![Wellen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** : maximale Anzahl der in der Bethe-Methode verwendeten Bloch-Wellen (Standard 80). Der Aufwand des Eigenwertproblems skaliert mit der dritten Potenz der Wellenanzahl.
+- Maximale Anzahl der in der Bethe-Methode verwendeten Bloch-Wellen (Standard 80). Der Aufwand des Eigenwertproblems skaliert mit der dritten Potenz der Wellenanzahl.
 
 ---
 

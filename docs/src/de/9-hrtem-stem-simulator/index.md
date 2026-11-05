@@ -96,8 +96,8 @@ Der Bereich unten links passt die Darstellung des Ergebnisses an — Helligkeit,
 ![Anpassen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
 
 - **Min** / **Max** : unteres (schwarzes) und oberes (weißes) Ende des angezeigten Intensitätsbereichs. Mit den Schiebereglern wird der Kontrast eingestellt.
-- **Farbe** : Farbskala des Bildes — **Gray scale** (Graustufen) oder **Cold-Warm** (blau bis rot).
-- **Gauß-Unschärfe (FWHM)** : wenn aktiviert, wird eine Gaußsche Unschärfe mit der rechts angegebenen Halbwertsbreite (pm) angewendet, die eine endliche Auflösung (Punktspreizfunktion) nachbildet.
+- **Farbe** : Farbskala des Bildes — **Gray scale** (Graustufen) oder **Cold-warm** (blau bis rot).
+- **Gauß-Unschärfe (FWHM)** : wenn aktiviert, wird eine Gaußsche Unschärfe mit der rechts angegebenen Halbwertsbreite (pm) angewendet, die eine endliche Auflösung (Punktspreizfunktion) nachbildet. Solange es aktiviert ist, werden auch neu berechnete Bilder verwischt. Die Halbwertsbreite wird mit der **Auflösung** (pm/px), mit der das jeweilige Bild berechnet wurde, in Pixel umgerechnet. <!-- 261105Cl 監査: FormImageSimulator.cs:ApplyGaussianBlur -->
 
 ### Normierung
 
@@ -139,11 +139,11 @@ Legt fest, welche Elemente über das Bild gelegt werden.
 
 <!-- screenshot: Preset list window (FormPresets) with a few entries -->
 
-Das Fenster **Preset list** bewahrt benannte Momentaufnahmen der Simulatoreinstellungen auf. Eine Momentaufnahme speichert Bildmodus, Beschleunigungsspannung, Cs, Cc, ΔV, Defokus, β, Objektivblende (Größe und Versatz), das HRTEM-Teilkohärenzmodell, die Dicke sowie die Dicken-/Defokuslisten der Serie, Bildgröße und Auflösung, die Anzahl der Bloch-Wellen und die STEM-Einstellungen (Konvergenzwinkel, Detektorwinkel, Quellgröße, Schichtdicke, Winkelauflösung, **EDX-Karten berechnen** und **Linienserien (Kα, Lα…)**). Die Liste wird mit den Einstellungen von ReciPro gespeichert und bleibt über einen Neustart hinweg erhalten.
+Das Fenster **Voreinstellungsliste** bewahrt benannte Momentaufnahmen der Simulatoreinstellungen auf. Eine Momentaufnahme speichert Bildmodus, Beschleunigungsspannung, Cs, Cc, ΔV, Defokus, β, Objektivblende (Größe und Versatz), das HRTEM-Teilkohärenzmodell, die Dicke, den Einzel-/Serienmodus, welche Größen eine Serie variiert (Dicke / Defokus) mit ihren Werten **Start / Schritt / Anz**, die Dicken-/Defokuslisten der Serie, Bildgröße und Auflösung, die Anzahl der Bloch-Wellen und die STEM-Einstellungen (Konvergenzwinkel, Detektorwinkel, Quellgröße, Schichtdicke, Winkelauflösung, **EDX-Karten berechnen** und **Linienserien (Kα, Lα…)**). Die Liste wird mit den Einstellungen von ReciPro gespeichert und bleibt über einen Neustart hinweg erhalten. Von früheren Versionen gespeicherte Voreinstellungen enthalten die Einzel-/Serien-Einstellungen nicht; ihre Anwendung lässt diese Einstellungen unverändert. <!-- 261105Cl 監査: FormPresets.cs ImageSimulatorSetting (SerialImageMode ほか) -->
 
 - Ein Klick auf einen Eintrag wendet ihn sofort an.
 - **OK** schließt das Fenster und behält die aktuellen Einstellungen; **Abbrechen** (oder <kbd>Esc</kbd>) schließt es und stellt die Einstellungen wieder her, die beim Öffnen des Fensters galten.
-- **Voreinstellungsliste verwalten** : wenn aktiviert, wählt ein Klick einen Eintrag nur aus (er wird nicht angewendet), und das Feld **Name** mit **Add** / **Ersetzen** / **Umbenennen** / **Löschen** erscheint. **Add** hängt die aktuellen Einstellungen unter dem angegebenen Namen an, **Ersetzen** überschreibt den ausgewählten Eintrag mit den aktuellen Einstellungen, **Umbenennen** ändert nur seinen Namen.
+- **Voreinstellungsliste verwalten** : wenn aktiviert, wählt ein Klick einen Eintrag nur aus (er wird nicht angewendet), und das Feld **Name** mit **Hinzufügen** / **Ersetzen** / **Umbenennen** / **Löschen** erscheint. **Hinzufügen** hängt die aktuellen Einstellungen unter dem angegebenen Namen an, **Ersetzen** überschreibt den ausgewählten Eintrag an Ort und Stelle mit den aktuellen Einstellungen und dem Namen im Feld **Name**, **Umbenennen** ändert nur seinen Namen.
 
 Die Mikroskop-Voreinstellungen (ARM300F, 2100F, …) sind nicht in dieser Liste; sie befinden sich im Rechtsklickmenü von **TEM-Bedingungen** (siehe [HRTEM-Simulation](1-hrtem-simulation.md#tem-conditions)).
 
@@ -156,14 +156,14 @@ Die Mikroskop-Voreinstellungen (ARM300F, 2100F, …) sind nicht in dieser Liste;
 - **Bild speichern** : speichert **als Bild (PNG-Format)**, **als Bild (TIFF-Format)** oder **als Metadatei (EMF)**. PNG und EMF speichern das Angezeigte (Anzeigebereich und Farbskala); **Einzeln speichern im Serienbildmodus** (standardmäßig an) schreibt jedes Bildfeld in eine eigene Datei statt in ein gekacheltes Gesamtbild. TIFF schreibt stets eine Gleitkommadatei pro Bildfeld, ohne Overlays. Es speichert die Pixelwerte nach der **Normierung** (und nach einer etwaigen **Gauß-Unschärfe (FWHM)**), nicht den Anzeigebereich von **Anpassen**; mit den Standardwerten (**Min** 0, **Max** 1, **Für jedes Bild**) wird jedes Bild auf 0–1 skaliert — deaktivieren Sie daher **Min** / **Max**, um die berechneten Intensitäten zu exportieren. EDX-Karten werden stets unskaliert geschrieben.
 - **Bild kopieren** : kopiert in die Zwischenablage **als Bild** oder **als Metadatei (EMF)**.
 - **Symbole überdrucken** (standardmäßig an) : brennt Elementarzelle, Beschriftungen und Maßstabsbalken in das gespeicherte oder kopierte PNG-/EMF-Bild ein.
-- **TEM-Parameter laden** / **TEM-Parameter speichern** : angezeigt, aber deaktiviert (nicht implementiert). Verwenden Sie die [Voreinstellungsliste](#preset-list), um Bedingungen zu speichern und wieder aufzurufen.
+- **TEM-Parameter laden** / **TEM-Parameter speichern** : lesen oder schreiben die Simulatoreinstellungen als XML-Datei (`*.rpis`). Die Datei enthält dieselben Einträge wie eine [Voreinstellung](#preset-list) — Bildmodus, Beschleunigungsspannung, Aberrationen, Defokus, Objektivblende, Dicke und die Einzel-/Serien-Einstellungen, Bildgröße und Auflösung, STEM-Einstellungen usw. —, sodass Bedingungen aufbewahrt oder zwischen Rechnern ausgetauscht werden können. In einer Datei fehlende Einträge (z. B. bei einer von einer älteren Version geschriebenen Datei) werden auf die Anfangswerte des Fensters gesetzt, unbekannte Einträge werden ignoriert; eine nicht lesbare Datei wird mit einer Meldung gemeldet. Das Laden berechnet das Bild nicht neu. <!-- 261106Cl 作者の決定 E7: FormPresets.cs ImageSimulatorSetting.SaveXml/LoadXml -->
 
 ## Menü Hilfe
 
 ![Menü Hilfe](../../assets/cap-de-auto/FormImageSimulator.menuStrip1.helpToolStripMenuItem.png)
 
 - **Grundkonzept der HRTEM-Simulation** : öffnet die Erläuterung der HRTEM-Bildentstehung ([Anhang A3.2](../appendix/a3-bloch-wave/hrtem.md)).
-- **Berechnungsbibliothek** : wählt die Berechnungsbibliothek — **Native code** (schnelles C++/Eigen) oder **Managed code** (.NET). Native ist normalerweise schneller. Die Auswahl wird nur für die HRTEM-Bildsynthese verwendet; STEM wählt seinen Löser automatisch (STEM-EDX benötigt stets die native Bibliothek), und die Auswahl wird bei jedem Start von ReciPro auf **Native code** zurückgesetzt.
+Die Berechnungsbibliothek wird in diesem Fenster nicht mehr gewählt: Die HRTEM-Bildsynthese verwendet automatisch die native Bibliothek (C++/Eigen), sofern sie verfügbar ist. Um sie nicht zu verwenden, aktivieren Sie im [Hauptfenster](../0-main-window.md) **Optionen ▸ Crystallography.Native-Bibliothek deaktivieren (Neustart erforderlich)**. <!-- 261106Cl 作者の決定 E12: 計算ライブラリの切替を廃止 -->
 
 ---
 

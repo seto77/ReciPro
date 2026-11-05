@@ -45,7 +45,7 @@ Das Drücken von **Master-Pattern erstellen** führt die folgenden Schritte der 
 3. **Master-Muster-Erstellung** : Für jede Energie und Tiefe wird das dynamische Beugungsproblem (Bloch-Wellen) gelöst und über die Kugel der Richtungen integriert, gewichtet mit der Monte-Carlo-Verteilung, um die Rückstreubeugungsintensität in jeder Richtung zu liefern. Das Ergebnis wird auf einem flächentreuen (Roşca–Lambert-)Gitter gespeichert.
 4. **Projektion auf den Detektor, mit Gewichtung** : Für die aktuelle Kristallorientierung wird die Intensität für die von jedem Detektorpixel aufgespannte Richtung im Master-Muster nachgeschlagen und als Kikuchi-Muster gezeichnet, optional gewichtet mit der BSE-Winkel-/Energieverteilung.
 
-Die Energie- und Tiefenbereiche werden in den Schritten 1–2 automatisch festgelegt, können aber vor der Erstellung manuell angepasst werden.
+Die Energie- und Tiefenbereiche werden in den Schritten 1–2 automatisch festgelegt, solange **Energie- und Tiefenbereich automatisch aus MC** aktiviert ist (Standard; die Bereichsfelder sind dann schreibgeschützt). Deaktivieren Sie es, um mit von Hand eingegebenen Bereichen zu erstellen: Die Monte-Carlo-Rechnung lässt die Felder dann unverändert, und die von Hand eingegebenen Bereiche werden gespeichert und beim nächsten Start wiederhergestellt. <!-- 261106Cl 作者の決定 C11 --> Unbrauchbare Bereiche — eine untere Grenze, die nicht unter der oberen liegt, eine Energie über der Beschleunigungsspannung (geprüft, bevor die Monte-Carlo-Rechnung startet) oder ein Bereich vollständig außerhalb der Monte-Carlo-Verteilung — werden nicht erstellt; eine Meldung nennt den Grund und die Werte. <!-- 261106Cl 作者の決定 F5/F15 -->
 
 ---
 
@@ -55,9 +55,9 @@ Die Energie- und Tiefenbereiche werden in den Schritten 1–2 automatisch festge
 
 ![SEM & Probenbedingungen](../assets/cap-de-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
-- **Energy** : Beschleunigungsspannung des einfallenden Strahls (keV).
-- **Wavelength** : Elektronenwellenlänge, gekoppelt an Energy. **Unit** wählt Å oder nm.
-- **Sample tilt** : Probenkippwinkel (typisch −70°). Die starke Kippung bei EBSD erhöht die Ausbeute an rückgestreuten Elektronen.
+- **Energie** : Beschleunigungsspannung des einfallenden Strahls (keV).
+- **Wellenlänge** : Elektronenwellenlänge, gekoppelt an **Energie**. **Unit** wählt Å oder nm.
+- **Probenkippung** : Probenkippwinkel (typisch −70°). Die starke Kippung bei EBSD erhöht die Ausbeute an rückgestreuten Elektronen. Eine Änderung verwirft die Monte-Carlo-Ergebnisse (die BSE-Verteilungen und ihre Gewichte; führen Sie **Simulieren** erneut aus); das Master-Muster hängt nicht von der Kippung ab und bleibt erhalten. <!-- 261106Cl 作者の決定 F17 -->
 
 ### EBSD-Geometrie
 
@@ -65,11 +65,11 @@ Die Energie- und Tiefenbereiche werden in den Schritten 1–2 automatisch festge
 
 Der Detektor (Leuchtschirm) ist ein Rechteck, das durch eine Pixelzahl und eine Pixelgröße definiert ist.
 
-- **Größe und Neigung** : **Tilt** ist die Neigung der Detektorebene (°); **Width** und **Height** sind die Anzahl der Detektorpixel.
-- **Auflösung** : die physikalische Größe eines Detektorpixels (mm/px). Die physikalische Detektorgröße beträgt somit Width × Auflösung mal Height × Auflösung.
-- **Koordinaten des Detektorzentrums** : Position **X**, **Y**, **Z** der Detektormitte relativ zum Strahlauftreffpunkt (mm). Y und Z bestimmen zusammen mit der Neigung die Kameralänge; X ist der Links-rechts-Versatz.
+- **Größe und Neigung** : **Neigung** ist die Neigung des Detektorschirms (°), gemessen von der horizontalen Ebene (senkrecht zum Strahl): 0° = waagerechter Schirm, 90° = senkrechter Schirm (Standard). **Breite** und **Höhe** sind die Anzahl der Detektorpixel. <!-- 261105Cl 監査: numericBoxDetTilt.ToolTip (EbsdDetectorGeometry の法線 (0, sin d, −cos d)) -->
+- **Auflösung** : die physikalische Größe eines Detektorpixels (mm/px). Die physikalische Detektorgröße beträgt somit Breite × Auflösung mal Höhe × Auflösung.
+- **Koordinaten des Detektorzentrums** : Position **X**, **Y**, **Z** der Detektormitte relativ zum Strahlauftreffpunkt (mm), im Bezugssystem des Mikroskops (Laborsystem). **Y** ist der horizontale Versatz senkrecht sowohl zum Strahl (Z) als auch zur Kippachse der Probe (X), keine Richtung innerhalb der gekippten Probenoberfläche. <!-- 261105Cl 監査: numericBoxDetY.ToolTip --> Y und Z bestimmen zusammen mit der Neigung die Kameralänge; X ist der Links-rechts-Versatz.
 
-Beim Laden eines experimentellen Bildes werden **Width** und **Height** auf die Bildgröße gesetzt, sodass ein Detektorpixel einem Bildpixel entspricht (**Auflösung** bleibt unverändert).
+Beim Laden eines experimentellen Bildes werden **Breite** und **Höhe** auf die Bildgröße gesetzt, sodass ein Detektorpixel einem Bildpixel entspricht (**Auflösung** bleibt unverändert).
 
 Die Geometrie lässt sich in der 3D-Ansicht auf der Registerkarte **Geometrie** inspizieren.
 
@@ -83,13 +83,13 @@ Die graue Platte ist die Probe, die grüne rechteckige Platte ist der Detektor, 
 
 ![BSE-Verteilung](../assets/cap-de-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageBseDistribution.png)
 
-Die Registerkarte **BSE-Verteilung** zeigt die Monte-Carlo-Verteilungen der rückgestreuten Elektronen. Verwenden Sie **Simulieren**, um sie neu zu berechnen.
+Die Registerkarte **BSE-Verteilung** zeigt die Monte-Carlo-Verteilungen der rückgestreuten Elektronen. Verwenden Sie **Simulieren**, um sie neu zu berechnen. Es läuft immer nur eine Monte-Carlo-Rechnung: Solange eine läuft (gestartet mit **Simulieren** oder durch den ersten Schritt von **Master-Pattern erstellen**), startet **Simulieren** keine weitere, und die Statusleiste bittet Sie zu warten oder **Stopp** zu drücken. <!-- 261105Cl 監査: FormEBSD.cs buttonBSE_Click (monteCarloCts) -->
 
 - **Stereonet** : Winkelverteilung (Histogramm der Austrittsrichtungen) der rückgestreuten Elektronen. Die Mitte ist die Oberflächennormalenrichtung, und die gelbe Umrandung markiert den vom Detektor aufgespannten rechteckigen Bereich. **Achsen zeichnen** überlagert die Kristallachsen, und die Farbskala (**Min** / **Max**, **Resolution**, **Farbe**) ist einstellbar.
 - **ΔE (keV)** : Energieverlustverteilung der rückgestreuten Elektronen.
 - **Tiefe (nm)** : Verteilung der Quelltiefe der nachgewiesenen rückgestreuten Elektronen, wie sie durch **Quelltiefe (MC)** definiert ist (Standard: das letzte inelastische Streuereignis) — dieselbe Tiefendefinition, die das Master-Muster gewichtet.
 
-Diese Verteilungen werden von derselben Monte-Carlo-Engine wie bei [Elektronenbahnen](8-electron-trajectory.md) berechnet und dienen der Gewichtung des Master-Musters.
+Diese Verteilungen werden von derselben Monte-Carlo-Engine wie bei [Elektronenbahnen](8-electron-trajectory.md) berechnet und dienen der Gewichtung des Master-Musters. Ein Wechsel des Kristalls oder der Beschleunigungsspannung verwirft diese Ergebnisse zusammen mit dem Master-Muster (eine Änderung bei geschlossenem Fenster wird beim erneuten Öffnen wirksam); die Statusleiste meldet, was verworfen wurde. Ein Doppelklick auf das Diagramm **ΔE** oder **Tiefe** kopiert seine Werte als Text (x und y, tabulatorgetrennt) in die Zwischenablage. <!-- 261106Cl 作者の決定 F23 --> <!-- 261105Cl 監査: FormEBSD.cs SetCrystal / 電圧の変更 / 開き直し (4bc81f06) -->
 
 ---
 
@@ -99,10 +99,10 @@ Diese Verteilungen werden von derselben Monte-Carlo-Engine wie bei [Elektronenba
 
 Die Registerkarte **Overlays** konfiguriert die auf dem EBSD-Muster gezeichneten Beschriftungen.
 
-- **Background color** : Hintergrundfarbe.
+- **Hintergrundfarbe** : Hintergrundfarbe.
 - **Detektorumriss** : die Detektorumrandung. **Rahmen anzeigen** (das gelbe Rechteck am Detektorrand) / **Raster anzeigen** (Teilungsgitter).
 - **Kikuchi-Linien anzeigen** : Kikuchi-Linien zeichnen. **Linienbreite** / **Farbe** sowie **Strukturfaktoren auf Kikuchi-Linien-Intensität anwenden** (jede Linie verblasst proportional zu ihrem Strukturfaktor in Richtung Hintergrund).
-- **Kikuchi-Linien-Kriterien** : welche Kikuchi-Linien gezeichnet werden: **Strukturfaktor** (**Top** *N* nach Strukturfaktor) oder **1/d-Grenzwert** (jene mit 1/d unterhalb eines Schwellenwerts, nm⁻¹).
+- **Kikuchi-Linien-Kriterien** : welche Kikuchi-Linien gezeichnet werden: **Strukturfaktor** (**Max.** *N* nach Strukturfaktor) oder **1/d-Grenzwert** (jene mit 1/d unterhalb eines Schwellenwerts, nm⁻¹). Ein Umschalten zwischen beiden zeichnet die Linien sofort neu. <!-- 261105Cl 監査: 1/d Cutoff 側にもハンドラを配線 (d88da429) -->
 - **Kikuchi-Linien-Indizes anzeigen** : Indizes der Kikuchi-Linien (Bänder) anzeigen.
 - **Zonenachsen-Indizes anzeigen** : Zonenachsenindizes anzeigen.
 - **Texteinstellungen** : **Textgröße** / **Farbe** der Indexbeschriftungen.
@@ -119,7 +119,7 @@ Hat ein Atomplatz keinen Auslenkungsparameter (B = 0), erscheint beim Klick auf 
 
 - Registerkarte **2D** : flächentreue (Lambert-)Projektion einer Halbkugel. **Halbkugel** wählt die projizierte Halbkugel (+Z / −Z).
 - Registerkarte **3D** : eine Kugel mit darauf abgebildeter Intensität. Sie kann mit der Maus gedreht werden, und ein Einschub oben links zeigt die synchronisierten Kristallachsen (a/b/c). **Achsenbeschriftungen** / **Achsenpfeile** schalten die Beschriftungen/Pfeile um, und **Blick entlang** blickt entlang der daneben eingegebenen Zonenachse [u v w].
-- **Energy / Depth**-Schieberegler : wählen die als Vorschau angezeigte Energie-/Tiefenscheibe.
+- **Energie** / **Tiefe**-Schieberegler : wählen die als Vorschau angezeigte Energie-/Tiefenscheibe.
 - Jede Ansicht kann mit **Kopieren** in die Zwischenablage übertragen werden.
 - **Video speichern** (Registerkarte **3D**) : speichert ein Video (MP4) des rotierenden sphärischen Master-Musters. Drehrichtung, Geschwindigkeit, Dauer, fps und Qualität werden im selben Dialog „Movie setting“ wie in der [Strukturansicht](5-structure-viewer.md) eingestellt. Es dreht sich nur diese 3D-Ansicht; die Kristallorientierung (die Euler-Winkel im Hauptfenster) bleibt unverändert.
 
@@ -129,14 +129,15 @@ Hat ein Atomplatz keinen Auslenkungsparameter (B = 0), erscheint beim Klick auf 
 
 ![Dynamische Simulationsparameter](../assets/cap-de-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.groupBoxSimulationParameters.png)
 
-- **Number of diffracted waves** : Anzahl der in die Bloch-Wellen-Berechnung einbezogenen gebeugten Strahlen (Wellen). Mehr Wellen sind genauer, aber langsamer.
+- **Anzahl gebeugter Wellen** : Anzahl der in die Bloch-Wellen-Berechnung einbezogenen gebeugten Strahlen (Wellen). Mehr Wellen sind genauer, aber langsamer.
 - **Raster** : Auflösung des Master-Muster-Gitters (Pixel pro Seite, 64–8192; Standard 256). 4096 und 8192 benötigen für die Zwischendaten enorm viel Speicher (bei den voreingestellten 16 Energien × 40 Tiefen etwa 344 GB bei 4096 und 1374 GB bei 8192; bereits etwa 86 GB bei 2048), sodass die Anzahl der Energie- und Tiefenschritte drastisch verringert werden muss, bevor sie nutzbar sind. Reicht der Speicher nicht aus, endet die Berechnung mit „MasterPattern failed“ (ReciPro selbst läuft weiter).
-- **Energy from … to … with step of …** : integrierter Energiebereich und Schrittweite (keV); aus dem Monte-Carlo-Ergebnis automatisch festgelegt.
-- **Thickness from … to … with step of …** : integrierter Tiefenbereich und Schrittweite (nm); ebenfalls automatisch festgelegt. Die automatisch gesetzten Tiefen sind ungleichmäßig verteilt; die Felder zeigen daher den flachsten Punkt, das obere Ende und das erste Intervall als Richtwerte. Wird ein Feld von Hand geändert, wird auf gleichmäßig verteilte Tiefen mit diesen Werten umgeschaltet.
+- **Energie- und Tiefenbereich automatisch aus MC** (Standard an) : solange aktiviert, legt die Monte-Carlo-Rechnung die beiden folgenden Bereiche fest, und ihre Felder sind schreibgeschützt; deaktiviert wird das Master-Muster mit den in die Felder eingegebenen Bereichen erstellt (siehe [Arbeitsablauf](#arbeitsablauf)), und diese Bereiche bleiben für den nächsten Start erhalten. Die Einstellung bleibt für den nächsten Start erhalten. <!-- 261106Cl 作者の決定 F5/F15 -->
+- **Energie** … **bis** … **Schritt** … : integrierter Energiebereich und Schrittweite (keV); aus dem Monte-Carlo-Ergebnis automatisch festgelegt, solange das obige Kontrollkästchen aktiviert ist.
+- **Tiefe** … **bis** … **Schritt** … : integrierter Tiefenbereich und Schrittweite (nm), gemessen als Weglänge entlang der Austrittsrichtung; ebenfalls automatisch festgelegt. Die automatisch gesetzten Tiefen sind ungleichmäßig verteilt; die Felder zeigen daher den flachsten Punkt, das obere Ende und das erste Intervall als Richtwerte. Wird ein Feld von Hand geändert, wird auf gleichmäßig verteilte Tiefen mit diesen Werten umgeschaltet.
 - **Nicht-lokale Absorption** : die nicht-lokale Absorptionsform verwenden.
 - **Nichtlokale Quelle** (Standard an) : ersetzt die am Atomort lokalisierte Rückstreuquelle durch die nichtlokale Form des absorptiven Potentials (U'_back, über die rückwärtige Hemisphäre integriert). Beide verwenden denselben physikalischen Wirkungsquerschnitt; es ist ein Modellwechsel, kein additiver Untergrund.
 - **Quelltiefe (MC)** : welches Monte-Carlo-Ereignis die Tiefe der kohärenten Rückstreuquelle für die (Energie × Tiefe)-Gewichtung festlegt: das letzte inelastische Ereignis (Standard), das letzte Transportereignis beliebiger Art oder der letzte Kohärenzverlust. Im letzten Fall setzt ein Ereignis die Quelle nur zurück, wenn es lokalisiert genug ist, um Welches-Atom-Information in der Probe zu hinterlassen: elastische Ereignisse mit der thermisch-diffusen Wahrscheinlichkeit 1 − exp(−2B s²) aus dem Debye-Waller-Faktor (kohärente Bragg-Streuung nicht), inelastische Ereignisse bei Rumpf-/Hochverlust-Anregungen immer und bei Valenzanregungen nur mit dem Anteil, dessen Impulsübertrag den Plasmon-Cutoff q_c = ω_p/v_F übersteigt (Plasmonen und delokalisierte Elektron-Loch-Paare erhalten den Bloch-Zustand). Flachere Quellen tragen schwächere Kikuchi-Modulation, sodass die letzte Option den diffusen Untergrund allein aus dem Transport festlegt, ohne freien Parameter. Ein Wechsel bindet die gespeicherten Elektronen nur neu, ohne die Monte-Carlo-Rechnung zu wiederholen.
-- **Kontrast fällt mit Energieverlust** (Standard an; E_c = 0,8 keV mit asymmetrischer Gaußverteilung und 0,9 keV mit Histogramm + A je Elektron) : skaliert den Kikuchi-Kontrast jeder Energiescheibe mit A(E) = exp(−(E0 − E)/E_c), wobei E0 die Strahlenergie und E die Austrittsenergie ist, und verschiebt den verlorenen Anteil in einen flachen, richtungsgemittelten Sockel, sodass die Helligkeit ohne Bandkontrast unverändert bleibt. Die Monte-Carlo-Gewichte zählen jedes rückgestreute Elektron, doch Elektronen mit großem Energieverlust tragen kaum scharfen Kikuchi-Kontrast; ohne diese Korrektur trägt jede Scheibe vollen Kontrast, und die Bänder werden etwa 12 % breiter als für monochromatische Elektronen bei E0 (Si, 20 kV). E_c ist ein effektiver Parameter und keine Materialkonstante; kleinere Werte bedeuten stärkere Dämpfung. Der Standardwert 0,8 keV der asymmetrischen Gaußverteilung beruht auf einer Kalibrierung unter den ursprünglichen Rechenbedingungen an die Bandbreiten eines gemessenen Si-Musters bei 20 kV (Datensatz Si004; effektives Wellenlängenverhältnis α ≈ 1.017). Kalibrierte Werte hängen vom Material und von den verwendeten Reflexen ab; für Botallackit ergaben sich je nach Reflexauswahl etwa 0.43–0.71 keV. Für quantitative Vergleiche der Bandbreiten sollte E_c neu kalibriert werden, wenn sich das Energie-/Tiefengitter, das Syntheseverfahren oder das Bewertungsmaß ändert. Eine Änderung gewichtet nur die vorhandenen Scheiben neu, ohne Master-Muster oder Monte-Carlo-Rechnung zu wiederholen.
+- **Kontrast fällt mit Energieverlust** (Standard an; bleibt für den nächsten Start erhalten, E_c nicht; E_c = 0,8 keV mit asymmetrischer Gaußverteilung und 0,9 keV mit Histogramm + A je Elektron) : skaliert den Kikuchi-Kontrast jeder Energiescheibe mit A(E) = exp(−(E0 − E)/E_c), wobei E0 die Strahlenergie und E die Austrittsenergie ist, und verschiebt den verlorenen Anteil in einen flachen, richtungsgemittelten Sockel, sodass die Helligkeit ohne Bandkontrast unverändert bleibt. Die Monte-Carlo-Gewichte zählen jedes rückgestreute Elektron, doch Elektronen mit großem Energieverlust tragen kaum scharfen Kikuchi-Kontrast; ohne diese Korrektur trägt jede Scheibe vollen Kontrast, und die Bänder werden etwa 12 % breiter als für monochromatische Elektronen bei E0 (Si, 20 kV). E_c ist ein effektiver Parameter und keine Materialkonstante; kleinere Werte bedeuten stärkere Dämpfung. Der Standardwert 0,8 keV der asymmetrischen Gaußverteilung beruht auf einer Kalibrierung unter den ursprünglichen Rechenbedingungen an die Bandbreiten eines gemessenen Si-Musters bei 20 kV (Datensatz Si004; effektives Wellenlängenverhältnis α ≈ 1.017). Kalibrierte Werte hängen vom Material und von den verwendeten Reflexen ab; für Botallackit ergaben sich je nach Reflexauswahl etwa 0.43–0.71 keV. Für quantitative Vergleiche der Bandbreiten sollte E_c neu kalibriert werden, wenn sich das Energie-/Tiefengitter, das Syntheseverfahren oder das Bewertungsmaß ändert. Eine Änderung gewichtet nur die vorhandenen Scheiben neu, ohne Master-Muster oder Monte-Carlo-Rechnung zu wiederholen.
 - **Amorphe Oberflächenschicht** : Dicke (nm) einer nichtkristallinen Oberflächenschicht (natives Oxid, Kontamination, Polier- oder Ionenätzschäden). Elektronen, deren kohärente Rückstreuquelle in der Schicht liegt, tragen keine Kikuchi-Modulation und werden als richtungsgemittelter, gleichförmiger Beitrag mit derselben Intensität pro Elektron addiert; Quellen unterhalb der Schicht werden von der Kristalloberfläche aus gemessen. Der Transport wird mit Zusammensetzung und Dichte des Kristalls berechnet, was für wenige nm ausreicht. 0 deaktiviert; eine Änderung bindet die gespeicherten Elektronen nur neu, ohne die Monte-Carlo-Rechnung zu wiederholen.
 - **Nach Phosphorantwort gewichten** (Standard ein, E_dead = 2 keV) : gewichtet jedes Monte-Carlo-Elektron mit der Lichtausbeute eines Leuchtschirms, φ(E) = max(0, E − E_dead), statt jedes Elektron einmal zu zählen. Elektronen höherer Energie verlassen die gekippte Probe stärker nach vorn; die Gewichtung macht daher den Intensitätsgradienten von oben nach unten flacher (Si, 20 kV: von etwa 2,5 auf 1,7 über den Detektor) und die Zonenachsen etwas dunkler. Sie wirkt auf das Binning in der Detektorebene und auf die Energieverteilung je Bin; eine Änderung binnt die gespeicherten Elektronen neu, ohne die Monte-Carlo-Rechnung zu wiederholen. Für einen direkt zählenden Elektronendetektor ausschalten. E_dead ist die Totschicht- (Schwellen-) Energie des Leuchtstoffs; typisch 0–3 keV für einen P43-Schirm mit Aluminiumbeschichtung.
 - **Energy filter E >** (keV; Standard 0 = aus) : ein idealer Hochpass-Energiefilter vor dem Detektor. Elektronen, deren Austrittsenergie diesen Wert nicht übersteigt, tragen nicht zum Muster bei. Eine Änderung bindet die gespeicherten Elektronen neu, ohne die Monte-Carlo-Rechnung zu wiederholen oder das Master-Muster neu zu erstellen.
@@ -154,10 +155,10 @@ Das zentrale Feld zeigt das EBSD-(Kikuchi-Band-)Muster für die aktuelle Kristal
 - **Overlays** : zeichnet die auf der Registerkarte **Overlays** konfigurierten Kikuchi-Linien, Indizes und den Detektorumriss.
 - **Experimentelles Bild** : überlagert das geladene experimentelle Bild (siehe unten).
 - **L-R spiegeln** : spiegelt das Muster und alle Overlays links-rechts. Deaktiviert (Standard) ist die Ansicht vom Detektor zur Probe, also das Muster so, wie es eine EBSD-Kamera aufzeichnet; aktivieren Sie es nur, wenn Ihr experimentelles Bild die entgegengesetzte Händigkeit besitzt.
-- **Resolution** (mm/px) und **Size (W×H)** (px) : Auflösung und Größe der angezeigten Ansicht.
+- **Auflösung** (mm/px) und **Größe (B×H)** (px) : Auflösung und Größe der angezeigten Ansicht.
 - **Speichern** : speichert das Muster mit dem daneben gewählten Bereich und der gewählten Auflösung in eine Datei. Das Format (PNG / TIFF / EMF) wird im Speichern-Dialog gewählt.
-  - **Pattern values (\*.csv)** schreibt statt eines Bildes die rohen Intensitäten auf dem Pixelraster des Detektors.
-  - Ein TIFF wird als 16-Bit-Graustufenbild geschrieben (nicht auf 256 Stufen quantisiert), wenn der Bereich **Detektor** ist, **Dynamisches EBSD** angezeigt wird und **Experimentelles Bild** nicht. In diesem Fall werden die **Overlays** unabhängig von ihrem Kontrollkästchen weggelassen, und die Pixelwerte sind das Muster, linear von seinem eigenen Minimum–Maximum auf 0–65535 abgebildet (das verwendete Minimum und Maximum werden in der Statusleiste angezeigt; für absolute Werte den csv-Export verwenden).
+  - **Pattern values (\*.csv)** schreibt statt eines Bildes die rohen Intensitäten auf dem Pixelraster des Detektors. Ihre `#`-Kopfzeilen halten die Bedingungen fest (Kristall, Detektorraster und Pixelgröße, Spannung, Detektor- und Probenkippung in Grad, Detektor-X/Y/Z, …) sowie Minimum und Maximum. <!-- 261105Cl 監査: 傾斜角は度で書く (FormEBSD.cs, 5f7484d1) -->
+  - Ein TIFF wird als 16-Bit-Graustufenbild geschrieben (nicht auf 256 Stufen quantisiert), wenn der Bereich **Detektor** ist, **Dynamisches EBSD** angezeigt wird und kein experimentelles Bild überlagert ist (keines geladen oder **Experimentelles Bild** deaktiviert). <!-- 261105Cl 監査: 16 bit の条件 (FormEBSD.cs, 5f7484d1) --> In diesem Fall werden die **Overlays** unabhängig von ihrem Kontrollkästchen weggelassen, und die Pixelwerte sind das Muster, linear von seinem eigenen Minimum–Maximum auf 0–65535 abgebildet (das verwendete Minimum und Maximum werden in der Statusleiste angezeigt; für absolute Werte den csv-Export verwenden).
 - **Kopieren** : kopiert das Muster mit dem daneben gewählten Bereich und Format in die Zwischenablage.
   - **Aktuelle Ansicht** kopiert den derzeit angezeigten Bereich (mit Verschiebung und Zoom); **Detektor** kopiert nur den Detektorbereich, wobei der gelbe Rahmen entfällt, sodass das Bild genau am Detektorrand endet.
   - **emf** kopiert eine Enhanced Metafile und behält Kikuchi-Linien und Indexbeschriftungen als Vektoren bei; **bmp** rastert alles.
@@ -165,8 +166,10 @@ Das zentrale Feld zeigt das EBSD-(Kikuchi-Band-)Muster für die aktuelle Kristal
 
 ### Simuliertes Bild
 
+Bevor das erste Master-Muster erstellt ist, sind nur die folgenden Anzeigezeilen (BSE-Verteilungen und Scheibe, Helligkeit und Kontrast, Farbe) gesperrt; die Monte-Carlo-Einstellungen (**Quelltiefe (MC)**, **Kontrast fällt mit Energieverlust**, **Amorphe Oberflächenschicht**, **Nach Phosphorantwort gewichten**, **Energy filter E >**, **Energieverteilung aus MC-Histogramm**) lassen sich von Anfang an ändern. <!-- 261106Cl 作者の決定 F16 -->
+
 - **Mit BSE-Winkel-/Energieverteilungen** (Standard an) : ist diese Option aktiviert, wird das Muster durch Gewichtung mit der BSE-Verteilung (Energie, Tiefe, Richtung) statt einer einzelnen Scheibe zusammengesetzt.
-- **Energy / Depth** : ist das Obige deaktiviert, wählt dies die anzuzeigende Energie-/Tiefenscheibe.
+- **Energie** / **Tiefe** : ist das Obige deaktiviert, wählt dies die anzuzeigende Energie-/Tiefenscheibe.
 - **Helligkeit** (**Min** / **Max**), **Kontrast**, **Polarität**, **Farbe** : Schwarz- und Weißpunkt des simulierten Musters in Prozent des Anzeigebereichs (lineare Schieberegler), die Breite dieses Bereichs, seine Polarität und die Farbskala. Kontrast 0 setzt den Anzeigebereich gleich dem Intensitätsbereich des Musters selbst; -1 verbreitert ihn auf das Zehnfache (zehnmal schwächerer Kontrast) und +1 verengt ihn auf ein Zehntel, jeweils bei festgehaltener Mitte.
 - **Untergrund glätten** (**FWHM**, px; Standard aus, 100 px) : zieht vom simulierten Muster eine gaußsch verwischte Kopie ab und entfernt so die langsam veränderliche Helligkeitsverteilung, damit Bänder und Zonenachsen mit einem untergrundkorrigierten Messmuster verglichen werden können. Die Halbwertsbreite ist in Detektorpixeln angegeben und hängt nicht vom Zoom ab. Wirkt auf die Anzeige und den PNG/TIFF-Export; der CSV-Export behält die Rohwerte.
 
@@ -174,7 +177,7 @@ Das zentrale Feld zeigt das EBSD-(Kikuchi-Band-)Muster für die aktuelle Kristal
 
 ![Experimentelles Bild](../assets/cap-de-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
 
-Ziehen Sie eine EBSD-Bilddatei (TIFF, PNG, BMP oder JPEG; 16-Bit-TIFF wird mit voller Tiefe gelesen) an eine beliebige Stelle des Fensters, um sie als experimentelles Muster zu laden. Sie wird über dem Detektorbereich gezeichnet — über dem simulierten Muster und unter den Kikuchi-Linien-Overlays — sodass sich Simulation und Messung direkt vergleichen lassen. Beim Laden werden außerdem **Width** und **Height** des Detektors auf die Bildgröße gesetzt.
+Ziehen Sie eine EBSD-Bilddatei (TIFF, PNG, BMP oder JPEG; 16-Bit-TIFF wird mit voller Tiefe gelesen) an eine beliebige Stelle des Fensters, um sie als experimentelles Muster zu laden. Sie wird über dem Detektorbereich gezeichnet — über dem simulierten Muster und unter den Kikuchi-Linien-Overlays — sodass sich Simulation und Messung direkt vergleichen lassen. Beim Laden werden außerdem **Breite** und **Höhe** des Detektors auf die Bildgröße gesetzt.
 
 - **Helligkeit** (**Min** / **Max**), **Kontrast** : Schwarz- und Weißpunkt des überlagerten Bildes in Prozent seines Anzeigebereichs sowie die Breite dieses Bereichs (lineare Schieberegler, gleiche Konvention wie beim simulierten Muster). Sie wirken nur auf das experimentelle Bild.
 - **Untergrund glätten** (**FWHM**, px; Standard aus, 100 px) : zieht vom experimentellen Bild eine gaußsch verwischte Kopie ab und entfernt so seine langsam veränderliche Helligkeitsverteilung. Die Intensitätsregler wirken dann auf die geglätteten Werte.
@@ -200,7 +203,7 @@ Für die Suche nach der Orientierung, die das Bild erklärt, stehen zwei Verfahr
 
 ### Zonenachsen-Auswahl {#zone-axis-picking}
 
-<!-- screenshot: FormEBSD の実測画像タブ、晶帯軸ピッキング欄 (Zone axis / [u v w] / + geometry / Find / Clear) と拾った点の表示 -->
+<!-- screenshot: FormEBSD, measured-pattern tab: the zone-axis picking controls (Zone axis / [u v w] / + geometry / Find / Clear) and the picked points -->
 
 Statt das ganze Bild abzugleichen, lässt sich die Orientierung auch aus Bandschnittpunkten (Zonenachsen) bestimmen, die von Hand auf dem experimentellen Bild ausgewählt werden.
 
@@ -210,7 +213,7 @@ Statt das ganze Bild abzugleichen, lässt sich die Orientierung auch aus Bandsch
 - **Find** : sucht die Orientierungen, die die ausgewählten Zonenachsen erklären (mindestens 2 Punkte; drei genügen meist, zwei sind mehrdeutig). Die Winkeltoleranz beträgt 2°; wird nichts gefunden, wird mit 5° erneut gesucht. Bis zu 10 Kandidaten werden in dieselbe Kandidatentabelle geschrieben, und ein Klick auf eine Zeile wendet sie wie oben an.
 - **Clear** : entfernt alle ausgewählten Punkte, die eingegebenen Indizes und die Kandidaten der letzten Zonenachsensuche (kein Rückgängigmachen). Das Laden eines neuen experimentellen Bildes bewirkt dasselbe.
 
-**Geometrie kalibrieren** verfeinert die Detektorgeometrie — Musterzentrum (PC) und Detektorabstand (DD) — abwechselnd mit der Orientierung, indem die ZNCC zwischen simuliertem und experimentellem Muster maximiert wird. Es erfordert das Master-Muster, hält die Detektorneigung fest und schreibt das Ergebnis in die Felder **Koordinaten des Detektorzentrums** X/Y/Z zurück. Da der Strahlrastervorgang eines REM das Musterzentrum nur um Bruchteile eines Millimeters verschiebt, genügt in der Regel eine Kalibrierung zu Beginn eines Experiments für eine ganze Bildserie.
+**Geometrie kalibrieren** verfeinert die Detektorgeometrie — Musterzentrum (PC) und Detektorabstand (DD) — abwechselnd mit der Orientierung, indem die ZNCC zwischen simuliertem und experimentellem Muster maximiert wird. Es erfordert das Master-Muster, hält die Detektorneigung fest und schreibt das Ergebnis in die Felder **Koordinaten des Detektorzentrums** X/Y/Z zurück, wobei der Detektor auf der Seite (+Y oder −Y) bleibt, auf der er platziert war. <!-- 261105Cl 監査: +Y 側の検出器も側を保つ (e1d645d5) --> Da der Strahlrastervorgang eines REM das Musterzentrum nur um Bruchteile eines Millimeters verschiebt, genügt in der Regel eine Kalibrierung zu Beginn eines Experiments für eine ganze Bildserie.
 
 ---
 

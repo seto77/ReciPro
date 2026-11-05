@@ -64,7 +64,7 @@ Geben Sie unten die Suchkriterien ein und drücken Sie die Schaltfläche **Suche
 
 Freitext-Abgleich gegen den Kristallnamen. Teilübereinstimmungen sind zulässig; Groß-/Kleinschreibung wird ignoriert. Nur die Kriterien, deren Kontrollkästchen aktiviert sind, werden angewendet, und sie werden mit UND verknüpft.
 
-### Element
+### Elemente {#element}
 
 Drücken Sie die Schaltfläche **Periodensystem**, um die Elementauswahl zu öffnen. Jede Element-Schaltfläche durchläuft drei Zustände:
 
