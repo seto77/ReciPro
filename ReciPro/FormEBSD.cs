@@ -2811,7 +2811,10 @@ public partial class FormEBSD : FormBase
     /// (この経路ではオーバーレイを一切描かず、パターンの値だけを出す)。
     /// </summary>
     private bool IsDynamicalPatternOnlyDetectorView
-        => radioButtonDetector.Checked && checkBoxShowDyanmicalEBSD.Checked && !checkBoxShowExperimentalImage.Checked;
+        // => radioButtonDetector.Checked && checkBoxShowDyanmicalEBSD.Checked && !checkBoxShowExperimentalImage.Checked; // 261105Cl 変更前
+        // 261105Cl 変更 (監査 F7): 「実測画像」のチェックは既定 ON なので、画像を読み込んでいない (= 何も重ねて描いていない) ときも 8bit 相当の経路へ回っていた。
+        //   実測画像を描く条件 (DrawOverlays: Checked && expImage != null) と同じく、画像があって表示しているときだけ 16bit の経路から外す
+        => radioButtonDetector.Checked && checkBoxShowDyanmicalEBSD.Checked && !(checkBoxShowExperimentalImage.Checked && expPbmp != null);
 
     /// <summary>
     /// 260907Cl 追加 (作者指示): 動力学 EBSD パターンを 16bit グレースケール TIFF で書き出す。
@@ -2928,7 +2931,8 @@ public partial class FormEBSD : FormBase
         sw.WriteLine(FormattableString.Invariant($"# ReciPro EBSD pattern values, {DateTime.Now:yyyy-MM-dd HH:mm:ss}"));
         sw.WriteLine($"# crystal = {FormMain?.Crystal?.Name}");
         sw.WriteLine(FormattableString.Invariant($"# raster = {width} x {height} (detector pixel grid), detector pixel size = {DetPixelSize} mm"));
-        sw.WriteLine(FormattableString.Invariant($"# voltage = {Voltage} kV, detector tilt = {DetTilt} deg, sample tilt = {SmpTilt} deg"));
+        // sw.WriteLine(FormattableString.Invariant($"# voltage = {Voltage} kV, detector tilt = {DetTilt} deg, sample tilt = {SmpTilt} deg")); // 261105Cl 変更前
+        sw.WriteLine(FormattableString.Invariant($"# voltage = {Voltage} kV, detector tilt = {DetectorTiltDegree} deg, sample tilt = {SampleTiltDegree} deg")); // 261105Cl 変更 (監査 F10): DetTilt・SmpTilt はラジアン (RadianValue) なのに "deg" と書いていた。欄の値 (度) を書く
         sw.WriteLine(FormattableString.Invariant($"# detector X/Y/Z = {DetX} / {DetY} / {DetZ} mm"));
         sw.WriteLine(FormattableString.Invariant($"# model = {masterPatternCombinationModel}, with BSE distribution = {checkBoxWithBSEDistribution.Checked}"));
         sw.WriteLine(FormattableString.Invariant($"# energy index = {trackBarOutputEnergy.Value}, depth index = {trackBarOutputThickness.Value}"));
