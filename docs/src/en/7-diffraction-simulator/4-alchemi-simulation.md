@@ -6,7 +6,7 @@
 
 Open it from the **Options** menu of the [Diffraction Simulator](index.md) → **ALCHEMI simulator...**
 
-GUI conditions: Wave Length = Electron (the crystal, accelerating voltage and orientation are taken from the parent diffraction simulator). With another source the window still opens, but the θ_B read-out and **Simulate** only show the notice *ALCHEMI is for electrons. Set the wave source of the diffraction simulator to Electron.* <!-- 261105Cl 監査: FormALCHEMI.cs NotElectronNotice (6ae7a85) -->
+GUI conditions: Wave source = Electron (the crystal, accelerating voltage and orientation are taken from the parent diffraction simulator). With another source the window still opens, but the θ_B read-out and **Simulate** only show the notice *ALCHEMI is for electrons. Set the wave source of the diffraction simulator to Electron.* <!-- 261105Cl 監査: FormALCHEMI.cs NotElectronNotice (6ae7a85) -->
 
 ![ALCHEMI simulator](../../assets/cap-en-auto/FormALCHEMI.png)
 

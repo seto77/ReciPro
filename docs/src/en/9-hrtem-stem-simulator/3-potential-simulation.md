@@ -12,7 +12,7 @@
 
 Electrons inside a crystal are scattered by the crystal potential. Its distribution underlies all diffraction and imaging phenomena and is key information for understanding crystal structure. Because this mode includes neither lens aberrations nor thickness-dependent dynamical effects, it is well suited to inspecting the structure itself.
 
-> **In potential mode the specimen-thickness, intensity-normalisation and image-mode (single / serial) panels are not shown.** Of the TEM conditions, only the accelerating voltage is active.
+> **In potential mode the specimen-thickness, intensity-normalisation and Single/serial mode panels are not shown.** Of the TEM conditions, only the accelerating voltage is active.
 
 ---
 

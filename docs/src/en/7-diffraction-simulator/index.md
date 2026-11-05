@@ -69,7 +69,7 @@ These apply to the diffraction-pattern window shared by the X-ray, SAED, and PED
 | Mouse wheel | Zoom in / out by ×2 per notch; the point under the cursor is brought to the centre of the view (with **Fix** ticked, the fixed centre is kept instead) |
 | Right-click | Zoom out (×1/1.2) |
 | Right-drag a box | Zoom in to the selected region |
-| Right double-click the status bar | Copy a text summary of the current settings: crystal and Euler angles, source, energy, wavelength, optics, spot shape, intensity calculation (for **Dynamical** also the thickness, the number of diffracted waves and, for PED, the precession semi-angle) and the detector geometry <!-- 261105Cl 監査: statusStrip1_MouseDown (C24) --> |
+| Right double-click the status bar | Copy a text summary of the current settings: crystal and Euler angles, source, energy, wavelength, optics, spot shape, intensity calculation (for **Dynamical** also the thickness, the number of diffracted waves and, for PED, the precession angle) and the detector geometry <!-- 261105Cl 監査: statusStrip1_MouseDown (C24) --> |
 | Right double-click a lit layer button (Spots / Kikuchi / Debye / Scale) | Blink that layer on and off |
 
 The auxiliary windows opened from here add a few more:
@@ -93,7 +93,7 @@ The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts of the main wind
 |------|------------|-----------|
 | Produce parallel-beam electron diffraction (SAED) | Set **Optics** to **Parallel beam** and **Wave source** to **Electron** | [SAED Simulation](1-saed-simulation.md), [parallel-beam SAED calculation](../appendix/a3-bloch-wave/calculation.md) |
 | Produce single-crystal X-ray diffraction | Switch **Wave source** to **X-ray** (for synchrotron radiation, set **Element** to **0: Custom**) | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
-| Produce precession electron diffraction (PED) | Set **Optics** to **Precession (electron)**, then set the semi-angle and step | [PED Simulation](2-ped-simulation.md) |
+| Produce precession electron diffraction (PED) | Set **Optics** to **Precession (electron)**, then set the precession angle and step | [PED Simulation](2-ped-simulation.md) |
 | Produce convergent-beam electron diffraction (CBED) | Set **Optics** to **Convergence (electron)** and set the conditions in the CBED window | [CBED Simulation](3-cbed-simulation.md), [CBED calculation](../appendix/a3-bloch-wave/cbed.md) |
 | Inspect the reflection list from the dynamical calculation | Select **Dynamical theory** and press **Spot details** | [Dynamical calculation (shared core)](../appendix/a3-bloch-wave/calculation.md) |
 | Match detector geometry against an experimental image | Open the detector-geometry settings from **Details** in **Detector geometry & overlay image** and use the overlay image | [Detector coordinate system](../appendix/a1-coordinate-system/2-diffraction.md) |

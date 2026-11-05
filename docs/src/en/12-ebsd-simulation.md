@@ -56,7 +56,7 @@ The energy and depth ranges are set automatically in steps 1–2 while **Energy 
 
 ![SEM & sample conditions](../assets/cap-en-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
-- **Energy** : accelerating voltage of the incident beam (keV).
+- **Energy** : accelerating voltage of the incident beam (keV). It is kept for the next start, together with hand-entered energy and depth ranges. <!-- 261106Cl 仕上げ R3 D4: FormEBSD.AcceleratingVoltageKV をレジストリに保存 -->
 - **Wavelength** : electron wavelength, linked to Energy. **Unit** selects Å or nm.
 - **Sample tilt** : sample tilt angle (typically −70°). The large tilt in EBSD increases the backscattered-electron yield. Changing it discards the Monte-Carlo results (the BSE distributions and their weights; run **Simulate** again); the master pattern does not depend on the tilt and is kept. <!-- 261106Cl 作者の決定 F17 -->
 

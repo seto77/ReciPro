@@ -119,7 +119,7 @@ In this mode the *a*, *b*, *c* axes of the unit cell are the unit of the drawing
 ![Bounds by crystal planes](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.cs:initBounds; BoundControl.resx:numericBoxMaximumDistanceFromOrigin) -->
-In this mode the drawing area is bounded by a set of crystal planes. If the planes do not define a spatially closed region, ReciPro adds a near-spherical polyhedron of radius **Max distance from origin** (Å, measured from the [projection center](#projection-center)) to close it. <!-- 261106Cl 作者の決定 C4 -->
+In this mode the drawing area is bounded by a set of crystal planes. If the planes do not define a spatially closed region, ReciPro adds a near-spherical polyhedron of radius **Max dist. (proj. center)** (Å, measured from the [projection center](#projection-center)) to close it. <!-- 261106Cl 作者の決定 C4 -->
 
 #### Bound list
 
@@ -134,13 +134,13 @@ Set the bound plane by its Miller index. The checkbox includes crystallographica
 #### Distance from proj. center
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BoundControl.resx:numericBoxDistanceD/numericBoxDistance/numericBoxTranslation/checkBoxImmediateUpdate) -->
-The distance from the [projection center](#projection-center) (not from the origin of the cell) to the bound plane, entered either <!-- 261106Cl 作者の決定 C4 --> as a multiple of the *d*-spacing of the selected (*hkl*) (**d×** box) or in Å (the box in parentheses). The two boxes are linked: changing one updates the other.
+The distance from the [projection center](#projection-center) (not from the origin of the cell) to the bound plane, entered either <!-- 261106Cl 作者の決定 C4 --> as a multiple of the *d*-spacing of the selected (*hkl*) (**d×** box) or in Å (the box in parentheses). The two boxes are linked: changing one updates the other. Each plane lies on the +**g** side of the projection center (along its (*hkl*) normal), and the side containing the center is drawn; with a single plane, the region is the half-space on the center side of that plane. <!-- 261106Cl 仕上げ R3 D5: Boundary.cs Bound.Reset (面は nᵢ·r ≤ D) -->
 
 - **Translation** (Å): moves the whole region bounded by the planes by this amount along the normal of the specified (*hkl*); positive values move it toward +**g**, i.e. in the direction of the (*hkl*) normal. It works for any number of planes, including a single plane without **Equivalent planes**. <!-- 261106Cl 作者の決定 B11, C5 -->
-- **Max distance from origin** (Å): radius of the closing polyhedron used when the planes do not enclose a region (see above).
+- **Max dist. (proj. center)** (Å): radius of the closing polyhedron used when the planes do not enclose a region (see above).
 - **Update immediately**: apply edits of the selected plane without pressing **Replace**.
 
-#### Show bound planes / Opacity
+#### Show bounding planes / Opacity
 
 Show or hide the bound planes themselves. When shown, **Opacity** sets transparency (0 = transparent, 1 = opaque).
 
@@ -165,7 +165,7 @@ The list of atoms in the crystal. Use **Add / Replace / Delete** to manipulate t
 
 > To save changes permanently, click **Add** or **Replace** in the **Main Window** as well.
 
-#### Element & Position
+#### Element & position
 
 - **Label**: free-text label for the atom (used in legends and tooltips).
 - **Element**: chemical element / ionisation state.
@@ -235,7 +235,7 @@ The translation is tied to the [Projection center](#projection-center): setting 
 
 Whether to draw the six faces that bound the unit cell. When enabled, you can set the face colour and transparency.
 
-#### Show edges
+#### Show cell edge
 
 Whether to draw the unit-cell edges. The edge colour is configurable.
 
@@ -244,7 +244,7 @@ The master check box **Show unit cell** (= the *Unit cell* toolbar button) switc
 
 #### Show subcell
 
-**Show subcell** draws grid lines that divide the cell into the numbers of parts given in the **a**, **b**, **c** boxes (1–10 each; the boxes are usable only while it is ticked), on the faces and inside the cell. Lines that coincide with cell edges are not drawn. The lines take the edge colour (**All edges** / **Each edge**), half the edge width (at least 1 px) and opacity 0.5, and are shown independently of **Show edges**. They are not included in the 3D-model export. <!-- 261106Cl 作者の決定 H5 -->
+**Show subcell** draws grid lines that divide the cell into the numbers of parts given in the **a**, **b**, **c** boxes (1–10 each; the boxes are usable only while it is ticked), on the faces and inside the cell. Lines that coincide with cell edges are not drawn. The lines take the edge colour (**All edges** / **Each edge**), half the edge width (at least 1 px) and opacity 0.5, and are shown independently of **Show cell edge**. They are not included in the 3D-model export. <!-- 261106Cl 作者の決定 H5 -->
 
 ### Lattice planes
 

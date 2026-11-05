@@ -47,7 +47,7 @@ Set the shape and sampling of the precession cone.
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:numericBoxPED_Semiangle, numericBoxPED_Step) -->
 | Parameter | Description | Recommended |
 |-----------|-------------|-------------|
-| **Semi-angle** | Half-angle of the precession cone (mrad; 0.1–500, default 50) | 10–40 mrad |
+| **Prec. angle** | Precession angle, i.e. the half-apex angle of the precession cone (mrad; 0.1–500, default 50) <!-- 261106Cl 仕上げ R3 D1: 欄名 Semi-angle → Prec. angle --> | 10–40 mrad |
 | **Step** | Number of parallel-beam directions sampled on the precession cone (2–1080, default 36). Larger values give smoother integration but increase the computation time linearly | 36–72 |
 
 ---
