@@ -1295,6 +1295,8 @@ public partial class FormDiffractionSimulator : FormBase
             if (toolStripButton2Theta.Checked)//260703Cl X線プリセッション時はスケール同心円(get2ThetaRangeと同じ) 2θ=2·asin(r/2/CL2) の定義に合わせる
             {
                 var twoTheta = radioButtonBeamPrecessionXray.Checked ? 2 * Math.Asin(Math.Sqrt(real.X2Y2) / CameraLength2 / 2) : Math.Acos(real.Z / real.Length);
+                if (radioButtonBeamBackLaue.Checked) // 261105Cl 追加 (監査 C13): Back Laue の検出器は入射側にあり、軸からの角は 180° − 2θ (DrawDiffractionSpots の後方散乱の写像)
+                    twoTheta = Math.PI - twoTheta; // 261105Cl
                 if (!double.IsNaN(twoTheta))//260703Cl プリセッション時、r > 2·CL2 の定義域外スポット(スケール円が届かない領域)では NaN になるので省略
                     sb.AppendLine($"2θ {twoTheta / Math.PI * 180:0.###}°");
             }
@@ -1840,7 +1842,8 @@ public partial class FormDiffractionSimulator : FormBase
             var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 20)), originSrc, -135);
             if (checkBoxScaleLabel.Checked && !double.IsNaN(labelPosition.X))
             {
-                g.DrawString($"{twoTheta:g12}°", font, colorControlScale2Theta.Color, convertDetectorToScreen(labelPosition), true);
+                //g.DrawString($"{twoTheta:g12}°", font, colorControlScale2Theta.Color, convertDetectorToScreen(labelPosition), true); // 261105Cl 変更前 (監査 C13): Back Laue では軸からの角 (= 180° − 2θ) を 2θ として書いていた
+                g.DrawString($"{(radioButtonBeamBackLaue.Checked ? 180 - twoTheta : twoTheta):g12}°", font, colorControlScale2Theta.Color, convertDetectorToScreen(labelPosition), true); // 261105Cl
                 //g.DrawString(twoTheta.ToString("g12") + "°", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
             }
 
@@ -2499,7 +2502,8 @@ public partial class FormDiffractionSimulator : FormBase
         var d = 1.0 / invPos.Length;
         //labelD.Text = radioButtonBeamBackLaue.Checked ? "$\"d: - nm\" " : $"d: {d:f4} nm"; // 261105Cl 変更前: Back Laue で $"d: - nm" (引用符と末尾の空白込み) と出ていた
         labelD.Text = radioButtonBeamBackLaue.Checked ? "d: - nm" : $"d: {d:f4} nm"; // 261105Cl 修正
-        var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d);
+        //var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d); // 261105Cl 変更前 (監査 C13): Back Laue では前方の写像の角 (= 180° − 2θ) が出ていた
+        var twoThetaRad = radioButtonBeamBackLaue.Checked ? Math.PI - Math.Atan2(Math.Sqrt(realPos.X2Y2), realPos.Z) : 2 * Math.Asin(WaveLength / 2 / d); // 261105Cl 検出器は入射側
         var twoThetaDeg = twoThetaRad / Math.PI * 180;
         labelTwoThetaDeg.Text = $"2θ: {twoThetaDeg:g4}°";
         labelTwoThetaRad.Text = $"2θ: {(twoThetaRad < 0.1 ? $"{twoThetaRad * 1000:g4} mrad" : $"{twoThetaRad:g4} rad")}";
