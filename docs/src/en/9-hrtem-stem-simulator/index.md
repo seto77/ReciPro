@@ -96,16 +96,16 @@ The panel at the lower left adjusts how the result looks — brightness, color, 
 ![Adjust](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
 
 - **Min** / **Max** : lower (black) and upper (white) ends of the displayed intensity range. Use the trackbars to adjust the contrast.
-- **Color** : color scale of the image — **Gray scale** or **Cold-Warm** (blue to red).
-- **Gaussian Blur (FWHM)** : when checked, applies a Gaussian blur with the full width at half maximum (pm) given on the right, approximating a finite resolution (point-spread function). While it is checked, newly calculated images are blurred as well. The FWHM is converted to pixels with the **Resolution** (pm/px) each image was calculated with. <!-- 261105Cl 監査: FormImageSimulator.cs:ApplyGaussianBlur -->
+- **Color** : color scale of the image — **Gray scale** or **Cold-warm** (blue to red).
+- **Gaussian blur (FWHM)** : when checked, applies a Gaussian blur with the full width at half maximum (pm) given on the right, approximating a finite resolution (point-spread function). While it is checked, newly calculated images are blurred as well. The FWHM is converted to pixels with the **Resolution** (pm/px) each image was calculated with. <!-- 261105Cl 監査: FormImageSimulator.cs:ApplyGaussianBlur -->
 
 ### Normalization
 
 ![Normalization](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxNormalization.png)
 
-- **For Each Image** : when checked, normalizes each image separately (when unchecked, the whole series shares a common scale).
+- **For each image** : when checked, normalizes each image separately (when unchecked, the whole series shares a common scale).
 - **Min** / **Max** : fixes the lower / upper end of the normalization to the value given on the right instead of the minimum / maximum of the image.
-- **EDX: Common** : shown only while an [EDX map](2-stem-simulation.md#stem-edx) is displayed and the run produced more than one channel; puts all channels of the same quantity on one display range. EDX maps are never rescaled by **Min** / **Max**: their lower end is fixed at 0 and only the upper end follows **For Each Image** / **EDX: Common**. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:FillEdxGrid / RadioButtonHRTEM_CheckedChanged) -->
+- **EDX: common** : shown only while an [EDX map](2-stem-simulation.md#stem-edx) is displayed and the run produced more than one channel; puts all channels of the same quantity on one display range. EDX maps are never rescaled by **Min** / **Max**: their lower end is fixed at 0 and only the upper end follows **For each image** / **EDX: common**. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:FillEdxGrid / RadioButtonHRTEM_CheckedChanged) -->
 - This group is hidden in Potential mode.
 
 ### STEM image
@@ -132,7 +132,7 @@ Sets the items overlaid on the image.
 
 - **Simulate** : runs the calculation with the current crystal, microscope conditions, thickness, defocus, and display settings.
 - **Stop** : aborts the running calculation (shown only while calculating).
-- **Real-Time Simulation** : when checked, recalculates immediately as the crystal is rotated (hidden in STEM mode).
+- **Real-time simulation** : when checked, recalculates immediately as the crystal is rotated (hidden in STEM mode).
 - **Preset settings** : toggles the preset window, which stores and recalls TEM imaging conditions (see [Preset list](#preset-list) below).
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormPresets.cs:buttonAdd_Click ほか / ImageSimulatorSetting) -->
@@ -155,17 +155,18 @@ The microscope presets (ARM300F, 2100F, …) are not in this list; they are in t
 ![File menu](../../assets/cap-en-auto/FormImageSimulator.menuStrip1.fileToolStripMenuItem.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:Save / FormImageSimulator.resx: loadTEMParameterToolStripMenuItem.Enabled=False) -->
-- **Save Image** : save as **as Image (PNG format)**, **as Image (TIFF format)**, or **as Metafile (EMF)**. PNG and EMF save what is displayed (display range and color scale); **Save individually for serial image mode** (on by default) writes each pane to its own file instead of one tiled image. TIFF always writes one floating-point file per pane, without overlays. It stores the pixel values after **Normalization** (and after **Gaussian Blur (FWHM)** if applied), not the **Adjust** display range; with the defaults (**Min** 0, **Max** 1, **For Each Image**) each image is scaled to 0–1, so uncheck **Min** / **Max** to export the computed intensities. EDX maps are always written unscaled.
-- **Copy image** : copy to the clipboard **as Image** or **as Metafile (EMF)**.
+- **Save image** : save as **as image (PNG format)**, **as image (TIFF format)**, or **as metafile (EMF)**. PNG and EMF save what is displayed (display range and color scale); **Save individually for serial image mode** (on by default) writes each pane to its own file instead of one tiled image. TIFF always writes one floating-point file per pane, without overlays. It stores the pixel values after **Normalization** (and after **Gaussian blur (FWHM)** if applied), not the **Adjust** display range; with the defaults (**Min** 0, **Max** 1, **For each image**) each image is scaled to 0–1, so uncheck **Min** / **Max** to export the computed intensities. EDX maps are always written unscaled.
+- **Copy image** : copy to the clipboard **as image** or **as metafile (EMF)**.
 - **Overprint symbols** (on by default) : burns the unit cell, labels, and scale bar into the saved or copied PNG / EMF image.
-- **Load TEM parameters** / **Save TEM parameters** : shown but disabled (not implemented). Use the [Preset list](#preset-list) to store and recall conditions.
+- **Load TEM parameters** / **Save TEM parameters** : read or write the simulator settings as an XML file (`*.rpis`). The file holds the same items as a [preset](#preset-list) — image mode, accelerating voltage, aberrations, defocus, objective aperture, thickness and the single/serial settings, image size and resolution, STEM settings and so on — so conditions can be kept or shared between computers. Items missing from a file (for example one written by an older version) are set to the window's initial values and unknown items are ignored; a file that cannot be read is reported with a message. Loading does not recalculate the image. <!-- 261106Cl 作者の決定 E7: FormPresets.cs ImageSimulatorSetting.SaveXml/LoadXml -->
 
 ## Help menu
 
 ![Help menu](../../assets/cap-en-auto/FormImageSimulator.menuStrip1.helpToolStripMenuItem.png)
 
 - **Basic concept of HRTEM simulation** : opens the explanation of HRTEM image formation ([Appendix A3.2](../appendix/a3-bloch-wave/hrtem.md)).
-- **Calculation library** : selects the calculation library — **Native code** (fast C++/Eigen) or **Managed code** (.NET). Native is normally faster. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:SimulateHRTEM / FormImageSimulator_Load) --> The choice is used only for the HRTEM image synthesis; STEM selects its solver automatically (STEM-EDX always needs the native library), and the choice is reset to **Native code** each time ReciPro starts.
+
+The calculation library is no longer chosen in this window: the HRTEM image synthesis uses the native library (C++/Eigen) automatically when it is available. To stop using it, turn on **Options ▸ Disable Crystallography.Native library (requires restart)** in the [main window](../0-main-window.md). <!-- 261106Cl 作者の決定 E12: 計算ライブラリの切替を廃止 -->
 
 ---
 

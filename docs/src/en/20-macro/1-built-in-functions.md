@@ -184,8 +184,8 @@ Drives [Spot ID v2](../11-spot-id-v2.md) from a macro: load an image or a spot l
 | Function | Description |
 |----------|-------------|
 | `SpotID.LoadFile(filename)` | Load a file as **File > Load** does: `.csv` is read as a spot list (an image must be loaded first), any other extension as a diffraction pattern image (dm3, dm4, mrc, ipa, tif and other supported formats). Omit `filename` to open a file dialog |
-| `SpotID.FindSpots()` | Detect the spots in the loaded image and fit them, as the **Detect & Fit Spots** button does <!-- 261105Cl 監査: ボタン名を FormSpotIDV2.resx に合わせた --> |
-| `SpotID.Identify()` | Search for orientations that explain the detected spots, as the **Identify Spots** button does, and return the number of candidates. The crystals tested are those selected in the crystal list of the main window. Returns 0 without searching when no image is loaded, fewer than two spots are registered or no crystal is selected |
+| `SpotID.FindSpots()` | Detect the spots in the loaded image and fit them, as the **Detect & fit spots** button does <!-- 261105Cl 監査: ボタン名を FormSpotIDV2.resx に合わせた --> |
+| `SpotID.Identify()` | Search for orientations that explain the detected spots, as the **Identify spots** button does, and return the number of candidates. The crystals tested are those selected in the crystal list of the main window. Returns 0 without searching when no image is loaded, fewer than two spots are registered or no crystal is selected |
 | `SpotID.CandidateList()` | Return the candidate orientation list as CSV text |
 | `SpotID.SpotList()` | Return the observed spots as CSV text, with the same columns as the **Save** button of **Spot information**. Pair it with `File.SaveText()` to write a file that `LoadFile()` can read back |
 
@@ -203,7 +203,7 @@ Drives [Spot ID v2](../11-spot-id-v2.md) from a macro: load an image or a spot l
 | `NearestNeighbor` | int | Minimum separation allowed between detected spots (pixels) |
 | `FittingRange` | double | Radius of the region around each spot used for peak fitting (pixels) |
 | `AcceptableError` | double | Tolerance of the relative *d*-spacing difference when matching spots to reflections (%) |
-| `IgnoreProhibitedReflections` | bool | Ignore kinematically forbidden reflections, which can still appear via multiple diffraction |
+| `IgnoreProhibitedReflections` | bool | Ignore kinematically forbidden reflections, which can still appear via multiple diffraction. Always `true` for X-rays and neutrons; a value set then takes effect when the source is set back to electrons <!-- 261106Cl 作者の決定 I4 --> |
 | `MultiGrain` | bool | Search for several grains; `False` means a single grain |
 | `MaxNumberOfGrains` | int | Maximum number of grain orientations searched when `MultiGrain` is `True` |
 | `NumberOfDetectedSpots` | int | Number of detected spots (read-only) |
@@ -220,7 +220,7 @@ Drives the Structure Viewer window from a macro. `SaveImage()` and `Export3DMode
 | `StructureViewer.Open()` | Open the Structure Viewer window |
 | `StructureViewer.Close()` | Close the Structure Viewer window |
 | `StructureViewer.SaveImage(filename)` | Save the rendered main view as a PNG file, at the pixel size given by the **Size (W×H)** box; omit `filename` to open a dialog |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Export the displayed structure for 3D printing, like **Export 3D Model (3MF/STL)** in the File menu. The extension picks the format (`.stl` single color / `.3mf` colored by element); only `filename` is required — the other defaults equal the dialog defaults (largest dimension 80 mm, unit-cell edges ⌀2.4 mm, bonds thickened to ⌀1.2 mm). Pass `fixedScaleInMMperNm` > 0 to build several models at the same scale. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Macro.cs:StructureViewerClass.Export3DModel) --> `filename` must end with `.stl` or `.3mf` (no dialog is opened); returns an information string with the triangle count and the printed size |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Export the displayed structure for 3D printing, like **Export 3D model (3MF/STL)** in the File menu. The extension picks the format (`.stl` single color / `.3mf` colored by element); only `filename` is required — the other defaults equal the dialog defaults (largest dimension 80 mm, unit-cell edges ⌀2.4 mm, bonds thickened to ⌀1.2 mm). Pass `fixedScaleInMMperNm` > 0 to build several models at the same scale. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Macro.cs:StructureViewerClass.Export3DModel) --> `filename` must end with `.stl` or `.3mf` (no dialog is opened); returns an information string with the triangle count and the printed size |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)

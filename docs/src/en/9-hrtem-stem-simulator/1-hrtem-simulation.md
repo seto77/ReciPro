@@ -39,7 +39,7 @@ Sets the imaging conditions of the objective lens.
 
 | Parameter | Description | Default / typical |
 |-----------|-------------|-------------------|
-| **Acc. Voltage** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Accelerating voltage (kV). The relativistically corrected electron wavelength is shown to the right | 200 kV |
+| **Acc. voltage** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Accelerating voltage (kV). The relativistically corrected electron wavelength is shown to the right | 200 kV |
 | **Defocus Δf** | Defocus of the objective lens (nm). The reference **Scherzer defocus** value is shown below it | −57.8 nm |
 | **Cs** | Spherical aberration coefficient (mm). Affects the CTF and the Scherzer defocus. Negative values (−20 to 20 mm) are accepted | 1.0 mm (default); 0.5–1.0 (conventional), < 0.01 (Cs-corrected) |
 | **Cc** | Chromatic aberration coefficient (mm). Determines the image blur caused by the energy spread | 1.4 mm (default); 1.0–2.0 mm |
@@ -54,7 +54,7 @@ $$\chi(u) = \pi\lambda\,\Delta f\,u^2 + \tfrac{\pi}{2}\,C_s\lambda^3 u^4 ,$$
 and each diffracted wave is multiplied by $\exp[-i\chi(u)]$, so **negative Δf is underfocus** (the convention in which the Scherzer defocus is negative).
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:zeroAllToolStripMenuItem_Click / presets1ToolStripMenuItem_Click〜presets4) -->
-> **Right-click menu**: on the TEM conditions panel you can apply **Set Defocus to 0 nm** / **Set defocus to Scherzer value** / **Set all aberrations to zero** with a single click (the last one sets Cs, Cc, β, ΔV **and the defocus** to 0). The same menu holds four microscope presets — *300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔV 0.3) ARM300F*, *200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F*, *200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F* and *200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100* — which set the accelerating voltage, Cs, Cc and ΔV as written in the item and then set the defocus to the Scherzer value (β is left unchanged). The **Preset settings** checkbox at the lower right opens the window that stores your own conditions (see [Preset list](index.md#preset-list)). <!-- 261105Cl 監査: プリセット名は ΔV (FormImageSimulator.resx presets1〜4ToolStripMenuItem.Text) -->
+> **Right-click menu**: on the TEM conditions panel you can apply **Set defocus to 0 nm** / **Set defocus to Scherzer value** / **Ideal conditions (Cs, Cc, β, ΔV, Δf = 0)** with a single click (the last one sets Cs, Cc, β, ΔV **and the defocus** to 0). <!-- 261106Cl 作者の決定 E19: 表示名を理想条件に --> The same menu holds four microscope presets — *300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔV 0.3) ARM300F*, *200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F*, *200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F* and *200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100* — which set the accelerating voltage, Cs, Cc and ΔV as written in the item and then set the defocus to the Scherzer value (β is left unchanged). The **Preset settings** checkbox at the lower right opens the window that stores your own conditions (see [Preset list](index.md#preset-list)). <!-- 261105Cl 監査: プリセット名は ΔV (FormImageSimulator.resx presets1〜4ToolStripMenuItem.Text) -->
 
 ### Scherzer defocus
 
@@ -66,11 +66,11 @@ Under this condition the PCTF is negative over a wide range of spatial frequenci
 
 ---
 
-## Lens function / Contrast Transfer Function (CTF)
+## Lens function / Contrast transfer function (CTF)
 
-Checking **Contrast Transfer Function (CTF)** opens a window that plots how the lens aberrations and defocus transfer the image contrast at each spatial frequency.
+Checking **Contrast transfer function (CTF)** opens a window that plots how the lens aberrations and defocus transfer the image contrast at each spatial frequency.
 
-![Contrast Transfer Function (CTF)](../../assets/cap-en-auto/FormCTF.png)
+![Contrast transfer function (CTF)](../../assets/cap-en-auto/FormCTF.png)
 
 - $\sin\chi(u)$ : phase-contrast transfer function ($\chi(u)$ is the aberration function of the lens)
 - $E_\text{s}(u)$ : spatial-coherence envelope function; the damping due to the finite source size ($\beta$)

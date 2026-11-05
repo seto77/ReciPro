@@ -96,7 +96,7 @@ non-zero only when the normal and anomalous parts have different phases — that
 
 ## From structure factor to powder intensity
 
-Switching on **Powder Diffraction Intensities (Bragg–Brentano)** converts $\lvert F\rvert^2$ into a relative powder intensity by folding in the geometry of a randomly oriented polycrystal:
+Switching on **Powder diffraction intensities (Bragg-Brentano optics)** converts $\lvert F\rvert^2$ into a relative powder intensity by folding in the geometry of a randomly oriented polycrystal:
 
 $$I_{hkl} \;\propto\; m_{hkl}\, \lvert F_{hkl}\rvert^2\, L p(\theta),$$
 

@@ -50,7 +50,7 @@ See [Appendix A3.4 — STEM calculation](../appendix/a3-bloch-wave/stem.md) for 
 
 | Parameter | Description | Default / typical |
 |-----------|-------------|-------------------|
-| **Acc. Voltage** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Accelerating voltage (kV). The relativistically corrected electron wavelength is shown alongside | 200 kV |
+| **Acc. voltage** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Accelerating voltage (kV). The relativistically corrected electron wavelength is shown alongside | 200 kV |
 | **Defocus Δf** | Defocus of the objective (probe-forming) lens (nm) | −57.8 nm |
 | **Cs** | Spherical aberration coefficient (mm). Affects the probe size | 0.5–1.0 mm |
 | **Cc** | Chromatic aberration coefficient (mm) | 1.0–2.0 mm |
@@ -68,7 +68,7 @@ Set the geometry of the convergent probe and the annular detector. Each angle is
 
 | Parameter | Description | Default / typical |
 |-----------|-------------|-------------------|
-| **α (convergence angle)** | Semi-angle of the convergent probe (mrad). Larger values give a finer probe and change the diffraction contrast | 25 mrad (default); 15–25 mrad <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.resx:numericBoxSTEM_*.HeaderText/FooterText/ToolTip, BetheMethod.cs:RunSTEM) --> |
+| **Conv. semi-angle α** | Semi-angle of the convergent probe (mrad). Larger values give a finer probe and change the diffraction contrast | 25 mrad (default); 15–25 mrad <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.resx:numericBoxSTEM_*.HeaderText/FooterText/ToolTip, BetheMethod.cs:RunSTEM) --> |
 | **Annular detector — Inner radius** | Inner collection semi-angle of the annular detector (mrad). Signal inside this angle is excluded | 0 (default); BF: 0, HAADF: 80 |
 | **Annular detector — Outer radius** | Outer collection semi-angle of the annular detector (mrad). Signal outside this angle is excluded | 20 (default); BF: 5, HAADF: 250 |
 | **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Effective electron source size (pm). Applied after the calculation as a Gaussian convolution of every Elastic / TDS / EDX image. Larger values blur the image and reduce fine-detail contrast | 20 pm (default) |
@@ -119,7 +119,7 @@ The detector angles apply only to the STEM reference image (Elastic / TDS / Elas
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormCTF.cs:Renew / SetControl) -->
 ## Contrast Transfer Function (STEM) {#ctf-stem}
 
-The **Contrast Transfer Function (CTF)** checkbox in **TEM conditions** opens the same CTF window as in HRTEM mode. In STEM mode it has two choices:
+The **Contrast transfer function (CTF)** checkbox in **TEM conditions** opens the same CTF window as in HRTEM mode. In STEM mode it has two choices:
 
 - **Coherent imaging** : plots $\sin\chi$, $\cos\chi$, $E_\text{s}$, $E_\text{c}$, PCTF and ACTF as in HRTEM, but $E_\text{s}(u)=\exp(-2\pi^2\sigma_s^2u^2)$ is taken from the effective source size ($\sigma_s$ = FWHM / $2\sqrt{2\ln2}$), and PCTF / ACTF are cut at the convergence angle.
 - **Incoherent imaging** : plots the incoherent transfer function, computed by integrating the lens function over the overlap of two probe-forming apertures (192 × 192 sampling of the aperture) and multiplying by $\exp(-2\pi^2\sigma_s^2u^2)$.
@@ -139,7 +139,7 @@ The display switch at the bottom-left of the window selects which scattering com
 | **Elastic** | Elastic-scattering only image |
 | **TDS** | Thermal-diffuse-scattering only image |
 | **Elastic & TDS** | Sum of elastic + TDS |
-| **EDX** | Characteristic X-ray map. The line to show (for example `O-K`) is chosen in the combo box below, and **EDX: Common** in *Normalization* puts the channels of the same quantity (shell channels: vacancies; line series: X-ray photons) on one shared display range, so switching between them does not rescale the image |
+| **EDX** | Characteristic X-ray map. The line to show (for example `O-K`) is chosen in the combo box below, and **EDX: common** in *Normalization* puts the channels of the same quantity (shell channels: vacancies; line series: X-ray photons) on one shared display range, so switching between them does not rescale the image |
 
 !!! note
     All three images are reconstructed from the real part of the Fourier sum, so **Elastic & TDS** is exactly the sum of the other two. Versions up to 4.944 took the magnitude instead, which broke that identity and slightly brightened the dark pixels. See [Reconstructing a real image](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction).

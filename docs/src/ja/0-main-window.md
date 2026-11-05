@@ -71,7 +71,7 @@ ReciProを起動すると、メインウィンドウが表示されます。こ�
 
 | メニュー項目 | 説明 |
 |-------------|------|
-| ツールチップを表示 | ツールチップの表示/非表示を切り替え |
+| ツールチップを表示 | すべてのウィンドウのツールチップの表示/非表示を切り替えます。次の起動でも残ります <!-- 261106Cl 作者の決定 A20 --> |
 | ダークモード | ライト／ダークのカラーテーマを切り替え |
 | ミラー・ブラベー指数 (hkil) を使う <!-- 261105Cl 監査 (組 K): FormMain.ja.resx toolStripMenuItemUseMillerBravais ほかを訳した --> | 三方晶・六方晶系で面指数をプログラム全体で4指数  \((hkil)\) 表記にする |
 | イオン散乱因子を使用 | 動力学（Bloch 波）電子線計算（菊池プロファイルを含む）で、各原子に割り当てたイオンの電子線散乱因子（Peng）を使う。$g \neq 0$ の単極子項は弾性の $U_g$ にだけ加え、TDS 吸収と菊池の TDS 源は有限部分を使う。オフのときは中性原子の散乱因子。単位胞が電荷中性でない（$\Sigma q \neq 0$）場合は単極子項を落とし、有限部分（遮蔽イオン形）だけを使う（オンにした時点でその旨を通知） <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:toolStripMenuItemIonicScattering_CheckedChanged, BetheMethod.cs:ElasticIonModel) --> |
@@ -126,7 +126,7 @@ UI 言語を切り替えます。English・日本語・Deutsch・Français・Esp
 - **緑**: *b*軸
 - **青**: *c*軸
 
-### 方向リセット
+### 回転をリセット
 結晶方位を**初期状態**にリセットします。初期状態とは、*c*軸がスクリーンに垂直、*b*軸が画面上方向を向く状態です。
 
 ### 晶帯軸
@@ -156,8 +156,8 @@ UI 言語を切り替えます。English・日本語・Deutsch・Français・Esp
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:buttonSetVector_Click, Rotate(Vector3DBase,double), checkBoxFixAxis_CheckedChanged/checkBoxFixPlane_CheckedChanged) -->
 - **固定**: チェックすると、以後の回転（矢印・マウスドラッグ）はすべて指定した晶帯軸または面法線のまわりの回転になり、その方向が固定されます。2 つの **固定** は同時にはオンにできず、指数が 0 0 0 のときはチェックできません。
-- **軸方向**: 指定した晶帯軸 \([uvw]\) をスクリーン垂直方向に設定します。**面方向**も設定されていて軸がその面内にある（$uh+vk+wl=0$）ときは、その面法線が画面上向きになります。そうでなければ上向きの方向は自動で決まります。
-- **面方向**: 指定した結晶面 \((hkl)\) の法線をスクリーン垂直方向に設定します。**軸方向**も設定されていて面内にある（$uh+vk+wl=0$）ときは、その軸が画面上向きになります。そうでなければ上向きの方向は自動で決まります。
+- **方向指数**: 指定した晶帯軸 \([uvw]\) をスクリーン垂直方向に設定します。**面指数**も設定されていて軸がその面内にある（$uh+vk+wl=0$）ときは、その面法線が画面上向きになります。そうでなければ上向きの方向は自動で決まります。
+- **面指数**: 指定した結晶面 \((hkl)\) の法線をスクリーン垂直方向に設定します。**方向指数**も設定されていて面内にある（$uh+vk+wl=0$）ときは、その軸が画面上向きになります。そうでなければ上向きの方向は自動で決まります。
 
 ### 結晶方位を設定する基本的な方法
 
@@ -200,7 +200,7 @@ UI 言語を切り替えます。English・日本語・Deutsch・Français・Esp
 ![結晶コントロール](../assets/cap-ja-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: CrystalControl.ja.resx colorControl.HeaderText/ToolTip) -->
-上部には**結晶名**・**化学組成**（原子情報から自動算出）・**Z数**（単位胞中の化学式単位数）・**描画色**（3D 構造表示と回折プロファイル曲線で使うこの結晶の表示色）が常に表示されます。**対称性詳細**・**ビーム相互作用** ボタンは、対応する詳細ウィンドウ（[対称性情報](2-symmetry-information.md)・[ビーム相互作用](3-beam-interaction.md)）を開きます。 重量%・原子% や酸化物への換算は、右クリックの [化学組成の詳細](#chemical-composition) で表示できます。
+上部には**結晶名**・**化学組成**（原子情報から自動算出）・**Z数**（単位胞中の化学式単位数）・**描画色**（3D 構造表示と回折プロファイル曲線で使うこの結晶の表示色）が常に表示されます。**対称性情報**・**ビーム相互作用** ボタンは、対応する詳細ウィンドウ（[対称性情報](2-symmetry-information.md)・[ビーム相互作用](3-beam-interaction.md)）を開きます。 重量%・原子% や酸化物への換算は、右クリックの [化学組成の詳細](#chemical-composition) で表示できます。
 
 ### 格子/対称性 タブ
 
@@ -210,7 +210,7 @@ UI 言語を切り替えます。English・日本語・Deutsch・Français・Esp
 
 | 項目 | 説明 |
 |------|------|
-| 格子定数 | 格子定数 a, b, c（**長さの単位**で Å = 10⁻¹⁰ m / nm を選択）と α, β, γ。対称性を指定すると拘束条件（例: 立方晶では a=b=c, α=β=γ=90°）に従って自動調整されます。 |
+| 格子定数 | 格子定数 a, b, c（**長さの単位**で Å = 10⁻¹⁰ m / nm を選択。選んだ単位は次の起動でも残ります）と α, β, γ。対称性を指定すると拘束条件（例: 立方晶では a=b=c, α=β=γ=90°）に従って自動調整されます。 |
 | 対称性 | **結晶系**・**点群**・**空間群**を選択します。**検索**ボックスに文字列を入力すると候補が一覧表示されます（大文字・小文字を区別）。 |
 | 単位胞体積 / 単位胞質量 | 単位胞の体積・質量。体積は**長さの単位**に応じて Å³ / nm³ で、質量は 10⁻²⁴ g 単位で表示されます。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: CrystalControl.resx numericBox*.FooterText/HeaderText, SymmetryControl.ja.resx checkBoxShowError, CrystalControl.cs:buttonChangeAxesOriginSetting_Click) --> |
 | モル体積 / モル質量 / 密度 | モル体積（cm³/mol、化学式単位あたり）・モル質量（g/mol）・密度（g/cm³）。これらは**原子情報が入力されているときのみ**表示されます。 |
@@ -224,7 +224,7 @@ UI 言語を切り替えます。English・日本語・Deutsch・Français・Esp
 ![原子情報](../assets/cap-ja-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: AtomControl.resx multi/wyckLet/siteSymDataGridViewTextBoxColumn.HeaderText) -->
-原子の種類・位置・温度因子・散乱因子を設定します。原子リストは **追加**・**更新**（選択行を置換）・**上へ移動/下へ移動**（並べ替え）・**削除** で編集します。原子リストには各サイトの**多重度**・**ワイコフ文字**・**サイト対称性**も表示されます。各原子の項目は次の通りです。
+原子の種類・位置・原子変位パラメータ・散乱因子を設定します。原子リストは **追加**・**更新**（選択行を置換）・**上へ移動/下へ移動**（並べ替え）・**削除** で編集します。原子リストには各サイトの**多重度**・**ワイコフ記号**・**サイト対称性**も表示されます。各原子の項目は次の通りです。
 
 | 項目 | 説明 |
 |------|------|
@@ -239,7 +239,7 @@ UI 言語を切り替えます。English・日本語・Deutsch・Français・Esp
 **原点シフト**: 全原子座標の原点を移動します。**+** / **−** で符号を選び、プリセットのベクトル — (⅛ ⅛ ⅛)、(¼ ¼ ¼)、(0 ¼ ⅛)、(¼ 0 ¼)、(0 ¼ ¼)、(¼ ¼ 0)、(¼ −¼ 0)、(¼ −¼ ¼)、(0 ¼ −⅛) — のボタンを押すか、**Apply custom shift** で任意量を指定します。
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: AtomControl.ja.resx buttonAddAtom/buttonChange/buttonAtomUp/buttonAtomDown/buttonDeleteAtom, tabPageDebyeWaller, label3, label13, radioButtonIsotoropy/Anisotropy, tabPageScatteringFactor, label4-6) -->
-**デバイワラー因子（温度因子）**:
+**原子変位 (B)**（原子変位パラメータ。デバイ–ワラー因子・温度因子とも呼ぶ）:
 
 | 項目 | 説明 |
 |------|------|
@@ -270,7 +270,7 @@ UI 言語を切り替えます。English・日本語・Deutsch・Français・Esp
 |--------------|------|
 | 化学組成の詳細 | [化学組成の詳細](#chemical-composition) ウィンドウを開く (重量%・原子%・規格化した原子数・酸化物などへの換算)。 |
 | ビーム相互作用 | [ビーム相互作用](3-beam-interaction.md) ウィンドウを開く。 |
-| 対称性詳細 | [対称性情報](2-symmetry-information.md) ウィンドウを開く。 |
+| 対称性情報 | [対称性情報](2-symmetry-information.md) ウィンドウを開く。 |
 | CIFファイル又はAMCファイルから読み込み | CIF / AMC ファイルから結晶を読み込む。 |
 | CIFファイルとして出力 | 現在の結晶を CIF 形式で書き出す。 |
 | 読み込み時の格子定数に戻す | 格子定数を最初に読み込んだ値に戻す。 <!-- 261105Cl 監査: メニュー名を CrystalControl.ja.resx revertCellConstantsToolStripMenuItem.Text に合わせた --> |
@@ -299,10 +299,10 @@ UI 言語を切り替えます。English・日本語・Deutsch・Français・Esp
 | ボタン | 説明 | 詳細 |
 |--------|------|------|
 | 結晶データベース | 内蔵／オンラインデータベースからの結晶検索・取込 | [結晶データベース](1-crystal-database.md) |
-| 対称性詳細 | 空間群の対称性情報・*International Tables* Vol. A 様式の対称要素図 | [対称性情報](2-symmetry-information.md) |
+| 対称性情報 | 空間群の対称性情報・*International Tables* Vol. A 様式の対称要素図 | [対称性情報](2-symmetry-information.md) |
 | ビーム相互作用 | ビームと結晶の相互作用: 反射・減衰・散乱因子・蛍光 | [ビーム相互作用](3-beam-interaction.md) |
-| ゴニオメーター | 回転行列の3D表示・オイラー角変換 | [回転ジオメトリ](4-rotation-geometry.md) |
-| 結晶構造 | OpenGLによる結晶構造の3D描画 | [結晶構造ビューア](5-structure-viewer.md) |
+| 回転ジオメトリ | 回転行列の3D表示・オイラー角変換 | [回転ジオメトリ](4-rotation-geometry.md) |
+| 結晶構造ビューア | OpenGLによる結晶構造の3D描画 | [結晶構造ビューア](5-structure-viewer.md) |
 | ステレオネット | ステレオネット投影 | [ステレオネット](6-stereonet.md) |
 | 回折シミュレータ | 電子線・X線の単結晶回折シミュレーション | [回折シミュレータ](7-diffraction-simulator/index.md) |
 | 電子飛程シミュレータ | モンテカルロ法による電子飛程（電子軌道）シミュレーション | [電子飛程](8-electron-trajectory.md) |

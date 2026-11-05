@@ -12,7 +12,7 @@
 
 結晶内の電子は結晶ポテンシャルの影響を受けて散乱されます。ポテンシャルの分布は回折・結像現象の基礎であり、結晶構造を理解するための重要な情報です。本モードはレンズ収差や厚さ依存の動力学効果を含まないため、構造そのものの確認に適します。
 
-> **ポテンシャルモードでは、試料厚み・強度の規格化・**単一/シリーズ画像** のパネルは表示されません。** TEMの条件のうち有効なのは加速電圧のみです。
+> **ポテンシャルモードでは、試料厚さ・強度の規格化・**単一/シリーズ画像** のパネルは表示されません。** TEMの条件のうち有効なのは加速電圧のみです。
 
 ---
 
@@ -59,9 +59,9 @@ $U_g$ と $U'_g$ は同時に表示できます（チェックした分だけペ
 
 ---
 
-## 波の数
+## 回折波の数
 
-![波の数](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![回折波の数](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - ポテンシャルのフーリエ合成に含めるブロッホ波（フーリエ係数）の最大数（既定 80）。多くするほど高い空間周波数まで含まれ、ポテンシャルの細部が再現されます。
 

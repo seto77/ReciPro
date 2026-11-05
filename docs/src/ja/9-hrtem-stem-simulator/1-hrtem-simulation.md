@@ -27,7 +27,7 @@ HRTEM像は、試料を透過した電子波が対物レンズの収差の影響
 
 ![試料情報](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
 
-- **厚み** : 試料の厚さ (nm)。HRTEM像は厚さに強く依存します。**シリーズ画像** モードのときはこの値は無視され、後述の厚さリストが使われます。
+- **厚さ** : 試料厚さ (nm)。HRTEM像は厚さに強く依存します。**シリーズ画像** モードのときはこの値は無視され、後述の厚さリストが使われます。
 
 ---
 
@@ -54,7 +54,7 @@ $$\chi(u) = \pi\lambda\,\Delta f\,u^2 + \tfrac{\pi}{2}\,C_s\lambda^3 u^4$$
 で、各回折波に $\exp[-i\chi(u)]$ を掛けます。したがって **Δf が負のときがアンダーフォーカス** です（シェルツァーデフォーカスが負になる流儀）。
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:zeroAllToolStripMenuItem_Click / presets1ToolStripMenuItem_Click〜presets4) -->
-> **右クリックメニュー**: TEMの条件パネルでは、**デフォーカスを0 nmに設定** / **デフォーカスをシェルツァー値に設定** / **収差をすべて0に設定** をワンクリックで行えます（最後のものは Cs・Cc・β・ΔV に加えて **デフォーカスも** 0 にします）。同じメニューに顕微鏡プリセットが 4 つあります — *300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔV 0.3) ARM300F*、*200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F*、*200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F*、*200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100*（項目名は英語のみ）。項目名に書かれた加速電圧・Cs・Cc・ΔV を設定し、デフォーカスをシェルツァー値にします（β は変更しません）。右下の **条件プリセット** で開くウィンドウは、利用者が自分の条件を保存するためのものです（[プリセットリスト](index.md#preset-list) 参照）。 <!-- 261105Cl 監査: プリセット名は ΔV (FormImageSimulator.resx presets1〜4ToolStripMenuItem.Text) -->
+> **右クリックメニュー**: TEMの条件パネルでは、**デフォーカスを0 nmに設定** / **デフォーカスをシェルツァー値に設定** / **理想条件 (Cs, Cc, β, ΔV, Δf = 0)** をワンクリックで行えます（最後のものは Cs・Cc・β・ΔV に加えて **デフォーカスも** 0 にします）。同じメニューに顕微鏡プリセットが 4 つあります — *300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔV 0.3) ARM300F*、*200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F*、*200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F*、*200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100*（項目名は英語のみ）。項目名に書かれた加速電圧・Cs・Cc・ΔV を設定し、デフォーカスをシェルツァー値にします（β は変更しません）。右下の **条件プリセット** で開くウィンドウは、利用者が自分の条件を保存するためのものです（[プリセットリスト](index.md#preset-list) 参照）。 <!-- 261105Cl 監査: プリセット名は ΔV (FormImageSimulator.resx presets1〜4ToolStripMenuItem.Text) -->
 
 ### シェルツァーデフォーカス
 
@@ -81,7 +81,7 @@ $$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\appr
 
 $$E_\text{s}(u)=\exp\!\left[-\pi^2\beta^2u^2\left(\Delta f+C_s\lambda^2u^2\right)^2\right],\qquad E_\text{c}(u)=\exp\!\left[-\tfrac{1}{2}\pi^2\lambda^2\delta^2u^4\right]$$
 
-です。**Max u**（nm⁻¹、既定 6）で横軸の上限を設定します。**Copy** は描画中の曲線をタブ区切りテキストでクリップボードへコピーします（ウィンドウの UI は英語のみ）。このウィンドウは STEM モードでも使えます（[STEMシミュレーション](2-stem-simulation.md#ctf-stem) 参照）。ポテンシャルモードでは無効です。
+です。**Max u**（nm⁻¹、既定 6）で横軸の上限を設定します。**クリップボードにコピー** は描画中の曲線をタブ区切りテキストでクリップボードへコピーします（ウィンドウの UI は英語のみ）。このウィンドウは STEM モードでも使えます（[STEMシミュレーション](2-stem-simulation.md#ctf-stem) 参照）。ポテンシャルモードでは無効です。
 
 ---
 
@@ -90,7 +90,7 @@ $$E_\text{s}(u)=\exp\!\left[-\pi^2\beta^2u^2\left(\Delta f+C_s\lambda^2u^2\right
 ![対物絞り (HRTEM オプション)](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:SimulateHRTEM, BetheMethod.cs:GetHRTEMImage / ExtractInsideBeams) -->
-対物絞りを通過させる回折波を制限します。ブロッホ波計算そのものは常に **波の数** で設定した波数で行い、そのうちどのビームを結像に使うかを絞りで選びます（絞り中心を $\mathbf{c}$ として $|\mathbf{g}-\mathbf{c}| < 2\sin(\alpha_\text{obj}/2)/\lambda$ のビームが通過）。通過するビームが 2 本未満のときは、絞りを大きくするよう促すメッセージを出して計算を止めます。
+対物絞りを通過させる回折波を制限します。ブロッホ波計算そのものは常に **回折波の数** で設定した波数で行い、そのうちどのビームを結像に使うかを絞りで選びます（絞り中心を $\mathbf{c}$ として $|\mathbf{g}-\mathbf{c}| < 2\sin(\alpha_\text{obj}/2)/\lambda$ のビームが通過）。通過するビームが 2 本未満のときは、絞りを大きくするよう促すメッセージを出して計算を止めます。
 
 - **サイズ** : 対物絞りの半角 (mrad、既定 12)。小さいほど高角度の回折波を切り、高分解能の細部がなだらかになります。逆空間半径 $\sin\theta/\lambda$ への換算値 (nm⁻¹) が表示されます。
 - **シフト X** / **Y** : 対物絞り中心のシフト量 (mrad)。絞りをずらした暗視野結像に使います。照射そのものは傾けません。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:SimulateHRTEM, BetheMethod.cs:GetHRTEMImage (入射ベクトル k=(0,0) 固定)) -->
@@ -130,7 +130,7 @@ $$E_\text{s}(u)=\exp\!\left[-\pi^2\beta^2u^2\left(\Delta f+C_s\lambda^2u^2\right
 
 | 項目 | 説明 |
 |------|------|
-| **試料厚み (nm)** / **デフォーカス (nm)** | どちらをスイープするか（両方可） |
+| **試料厚さ (nm)** / **デフォーカス (nm)** | どちらをスイープするか（両方可） |
 | **開始 / 刻み / 個数** <!-- 261105Cl 監査 (組 K): numericBoxThickness/DefocusStart・Step・Num.HeaderText を訳した --> | 開始値・刻み幅・枚数。下のリスト欄に展開され、直接編集も可能 |
 | **横軸の方向** | 厚さとデフォーカスの両方をスイープしたとき、グリッドの横方向に並べる量（厚さ / デフォーカス） |
 
@@ -143,13 +143,13 @@ $$E_\text{s}(u)=\exp\!\left[-\pi^2\beta^2u^2\left(\Delta f+C_s\lambda^2u^2\right
 ![生成画像](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 - **サイズ (W×H)** : シミュレートする画像のピクセル数（既定 512×512）。
-- **解像度** : サンプリング分解能 (pm/px、既定 2)。視野は Size × 解像度 なので、値を小さくすると狭い範囲を細かくサンプリングします。像は各画素でビームについての直接のフーリエ和で合成する（FFT は使わない）ため、計算時間は画素数とビーム数で決まり、この値には依存しません。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:GetHRTEMImage) -->
+- **解像度** : サンプリング分解能 (pm/px、既定 2)。視野は Size × 解像度 なので、値を小さくすると狭い範囲を細かくサンプリングします。像は各ピクセルでビームについての直接のフーリエ和で合成する（FFT は使わない）ため、計算時間はピクセル数とビーム数で決まり、この値には依存しません。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:GetHRTEMImage) -->
 
 ---
 
-## 波の数
+## 回折波の数
 
-![波の数](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![回折波の数](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **最大ブロッホ波数** : ベーテ法（Dynamical 計算）で使用するブロッホ波の最大数（既定 80）。多くするほど精度が上がりますが、固有値問題の解法時間が $O(N^3)$ で増加します。
 

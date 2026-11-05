@@ -77,7 +77,7 @@ The auxiliary windows opened from here add a few more:
 | Shortcut | Action |
 |----------|--------|
 | Left double-click the stereonet — **TEM holder** | Set the holder tilt to that point |
-| Arrow keys — **TEM holder** | Step the holder tilt (tick **Enable arrow keys** first; works with any ReciPro window in front) |
+| Arrow keys — **TEM holder** | Step the holder tilt (tick **Enable arrow keys** first; only while the holder window is active) <!-- 261106Cl 作者の決定 D25 --> |
 | Drop a `.prm` file or an image — **Detector geometry** | Load detector geometry / overlay image |
 | Drop a `.txt` profile — **Dynamic compression** | Load position/time/pressure profiles (choose the time with the **Time** slider; drag the vertical lines in the graph to set front/back) |
 
@@ -95,7 +95,7 @@ The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts of the main wind
 | Produce single-crystal X-ray diffraction | Switch **Wave source** to **X-ray** (for synchrotron radiation, set **Element** to **0: Custom**) | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
 | Produce precession electron diffraction (PED) | Set **Optics** to **Precession (electron)**, then set the semi-angle and step | [PED Simulation](2-ped-simulation.md) |
 | Produce convergent-beam electron diffraction (CBED) | Set **Optics** to **Convergence (electron)** and set the conditions in the CBED window | [CBED Simulation](3-cbed-simulation.md), [CBED calculation](../appendix/a3-bloch-wave/cbed.md) |
-| Inspect the reflection list from the dynamical calculation | Select **Dynamical theory** and press **Spot Details** | [Dynamical calculation (shared core)](../appendix/a3-bloch-wave/calculation.md) |
+| Inspect the reflection list from the dynamical calculation | Select **Dynamical theory** and press **Spot details** | [Dynamical calculation (shared core)](../appendix/a3-bloch-wave/calculation.md) |
 | Match detector geometry against an experimental image | Open the detector-geometry settings from **Details** in **Detector geometry & overlay image** and use the overlay image | [Detector coordinate system](../appendix/a1-coordinate-system/2-diffraction.md) |
 
 ---
@@ -122,27 +122,27 @@ The **Mouse position:** line above the pattern shows, for the cursor position, *
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:fileToolStripMenuItem; FormDiffractionSimulator.cs:radioButtonIntensityCalculationMethod_CheckedChanged, FormDiffractionSimulatorCBED.cs:FormDiffractionSimulatorCBED_VisibleChanged) -->
 | Menu item | Description |
 |-----------|-------------|
-| **Save Image** | Save the displayed diffraction pattern, **as Image (PNG format)** or **as Metafile (EMF)**. |
+| **Save image** | Save the displayed diffraction pattern, **as image (PNG format)** or **as metafile (EMF)**. |
 | **Save detector area** | Save only the detector-area crop (PNG / EMF) on the detector's pixel grid. Shown only while the detector area is displayed. You are asked whether to include the overlapped image only when one is loaded. <!-- 261105Cl 監査: SaveOrCopyDetector (C18) --> |
-| **Save CBED disks** | CBED mode only: save the computed disks **As Individual Images (PNG / TIFF Format)** or **as collective image (PNG / Tiff format)**. Always the CBED disks, also while the detector area is displayed. |
-| **Copy** | Copy the displayed image to the clipboard (**as Image** / **as Metafile (EMF)**). |
+| **Save CBED disks** | CBED mode only: save the computed disks **As individual images (PNG / TIFF format)** or **as collective image (PNG / Tiff format)**. Always the CBED disks, also while the detector area is displayed. |
+| **Copy** | Copy the displayed image to the clipboard (**as image** / **as metafile (EMF)**). |
 | **Copy detector area** | Copy only the detector-area crop on the detector's pixel grid. Shown only while the detector area is displayed. You are asked whether to include the overlapped image only when one is loaded. |
 | **Copy CBED disks** | CBED mode only: copy the disks **as collective image** (always the CBED disks, also while the detector area is displayed). |
-| **Save Movie** | Record a movie of the **Diffraction pattern** or of the **Reciprocal space** view. |
-| **Page Setup / Print Preview / Print** | Print the displayed pattern. |
+| **Save movie** | Record a movie of the **Diffraction pattern** or of the **Reciprocal space** view. |
+| **Page setup / Print preview / Print** | Print the displayed pattern. |
 
 ### Preset
 
 ![Preset menu](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:presetToolStripMenuItem_Click; FormDiffractionSimulator.Designer.cs:presetToolStripMenuItem) -->
-Fixed wave-source presets that only set the radiation and its energy: **Electron 300 kV**, **Electron 200 kV**, **Electron 120 keV**, **X-ray 30 keV**, **X-ray 20 keV**, **X-ray 17.48 keV (MoKα₁)** and **X-ray 8.041 keV (CuKα₁)** (the last two select the Mo / Cu Kα₁ characteristic line). Other settings (detector geometry, tabs, spot properties) are not stored or changed.
+Fixed wave-source presets that only set the radiation and its energy: **Electron 300 kV**, **Electron 200 kV**, **Electron 120 kV**, **X-ray 30 keV**, **X-ray 20 keV**, **X-ray 17.48 keV (MoKα₁)** and **X-ray 8.041 keV (CuKα₁)** (the last two select the Mo / Cu Kα₁ characteristic line). Other settings (detector geometry, tabs, spot properties) are not stored or changed.
 
 ### Options and Help menus
 
 | Menu item | Description |
 |-----------|-------------|
-| **Options > Dynamic Compression** | Opens the [Dynamic compression](#dynamic-compression) window (together with the detector-geometry window). |
+| **Options > Dynamic compression** | Opens the [Dynamic compression](#dynamic-compression) window (together with the detector-geometry window). |
 | **Options > ALCHEMI simulator...** | Opens the [ALCHEMI simulator](4-alchemi-simulation.md). |
 | **Help > Basic concept of Bethe's method** | Opens the [Bloch-wave appendix](../appendix/a3-bloch-wave/index.md) of the online manual in the browser. |
 
@@ -158,7 +158,7 @@ Fixed wave-source presets that only set the radiation and its energy: **Electron
 | Kikuchi | Show / hide the Kikuchi-line layer |
 | Debye | Show / hide the Debye-ring layer |
 | Scale | Show / hide the scale-line layer |
-| Index / d / 1/d / Distance / 2θ / χ / Excitation error / Structure factor | Choice of label attached to each spot |
+| Index / d / 1/d / Distance / 2θ / χ / Excitation error / Intensity <!-- 261106Cl 作者の決定 C11 --> | Choice of label attached to each spot |
 
 ---
 
@@ -175,13 +175,13 @@ Fixed wave-source presets that only set the radiation and its energy: **Electron
 | **Size (W×H)** | Pixel width and height of the drawing area. Depending on your display resolution, very large values may not be settable. |
 | **Set the center to / Fix** | Puts the centre of the drawing area on the **perpendicular foot**, the **direct spot**, or the **detector** centre (the last only when a detector area is defined). With **Fix** ticked (default) the centre stays there: mouse panning is disabled and zooming keeps that centre. |
 | **Horizontal flip / Vertical flip / Negative image** | Geometric flips (horizontal / vertical) and colour inversion of the pattern: **Negative image** inverts the background, spots, labels, Kikuchi lines, forbidden reflections, direct spot, perpendicular foot, Debye rings and scale lines (crystal colours, the colour scales of the Gaussian display, the 3-D view and an overlapped image are not inverted). <!-- 261105Cl 監査: checkBoxNegativeImage_CheckedChanged (C21) --> Use these to match the orientation or contrast of an experimental image. |
-| **Reciprocal space** | Opens a 3-D view of the Ewald sphere and the reciprocal-lattice points beside the pattern, visualizing which reflections are excited. Its **Options** panel sets the colours (spots near / away from the Ewald sphere, Ewald sphere, origin, direction guide), the 3-D spot radius (nm⁻¹), the relative-intensity threshold (%), transparency of spots away from the Ewald sphere, labels, and the view direction (arrow buttons with an angular **Step**, **Reset**). |
+| **Reciprocal space** | Opens a 3-D view of the Ewald sphere and the reciprocal-lattice points beside the pattern, visualizing which reflections are excited. Its **Options** panel sets the colours (spots near / away from the Ewald sphere, Ewald sphere, origin, direction guide), the 3-D spot radius (nm⁻¹), the relative-intensity threshold (%), transparency of spots away from the Ewald sphere, labels, and the view direction (arrow buttons with an angular **Step**, **Reset view**). |
 
 ### Detector (camera length)
 
 ![Detector (camera length)](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
-- **Camera Length 2** : Distance (mm) from the sample to the foot of the perpendicular dropped on the detector plane (default 1000 mm). It equals the usual camera length when the detector is not tilted (τ = 0). <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:CameraLength2, DetectorRotation; FormDiffractionSimulator.Designer.cs:numericBoxCameraLength2) -->
+- **Camera length 2** : Distance (mm) from the sample to the foot of the perpendicular dropped on the detector plane (default 1000 mm). It equals the usual camera length when the detector is not tilted (τ = 0). <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:CameraLength2, DetectorRotation; FormDiffractionSimulator.Designer.cs:numericBoxCameraLength2) -->
 - **Details** : Opens the detector-geometry settings window (see [Detector geometry](#detector-geometry) below).
 
 ### Misc
@@ -198,7 +198,7 @@ Fixed wave-source presets that only set the radiation and its energy: **Electron
 ![TEM holder simulation](../../assets/cap-en-auto/FormDiffractionSimulatorHolder.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulatorHolder.cs:tiltByArrowKey, buttonLink_Click; FormDiffractionSimulatorHolder.Designer.cs) -->
-Opens a window that links the diffraction pattern to a double-tilt **TEM holder** (**Tilt X** = primary, **Tilt Y** = secondary rotation). Setting the holder tilt angles updates the pattern and the crystal orientation, and the reachable orientations can be shown on a stereonet (added in v4.914). **Link to Current Direction** takes the current crystal orientation as the holder's reference (at the given Tilt X / Tilt Y); **TEM-specific settings** give the direction of the Tilt X axis on the screen (default −29°) and the polarity of Tilt Y, and **↻ rotate 180°** turns the crystal by 180° about the beam. Left double-click on the stereonet sets the holder tilt to that point, and ticking **Enable arrow keys** lets ←/→ step Tilt X and ↑/↓ step Tilt Y (step 0.1–2°, default 0.2°). While this window is open, the arrow keys work no matter which ReciPro window is in front. When the window is shown again after being hidden (with the simulator), or when Tilt X / Tilt Y is changed, a rotation or a change of crystal made in the meantime is taken as the new reference: the current orientation is treated as the orientation at the present tilt, and the zone-axis list is rebuilt for the current crystal. <!-- 261105Cl 監査: FormDiffractionSimulatorHolder.cs OnVisibleChanged / numericBoxTilt_ValueChanged (54e23f0) -->
+Opens a window that links the diffraction pattern to a double-tilt **TEM holder** (**Tilt X** = primary, **Tilt Y** = secondary rotation). Setting the holder tilt angles updates the pattern and the crystal orientation, and the reachable orientations can be shown on a stereonet (added in v4.914). **Link to current direction** takes the current crystal orientation as the holder's reference (at the given Tilt X / Tilt Y); **TEM-specific settings** give the direction of the Tilt X axis on the screen (default −29°) and the polarity of Tilt Y, and **↻ rotate 180°** turns the crystal by 180° about the beam (always about the beam axis, even when an axis or plane is fixed in the main window). Left double-click on the stereonet sets the holder tilt to that point, and ticking **Enable arrow keys** lets ←/→ step Tilt X and ↑/↓ step Tilt Y (step 0.1–2°, default 0.2°). The arrow keys tilt the holder only while this window is active. <!-- 261106Cl 作者の決定 D25 --> When the window is shown again after being hidden (with the simulator), or when Tilt X / Tilt Y is changed, a rotation or a change of crystal made in the meantime is taken as the new reference: the current orientation is treated as the orientation at the present tilt, and the zone-axis list is rebuilt for the current crystal. <!-- 261105Cl 監査: FormDiffractionSimulatorHolder.cs OnVisibleChanged / numericBoxTilt_ValueChanged (54e23f0) -->
 
 ---
 
@@ -209,7 +209,7 @@ Opens a window that links the diffraction pattern to a double-tilt **TEM holder*
 ![General tab](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:tabPageGeneral (groupBoxStringSize, groupBoxColor)) -->
-Sets the label **Text size**, and the colours of the label **Text**, the **Foot of the Perpendicular from the Sample** marker, the **Direct position** marker and the **Background** (the two markers can each be switched off). Spot colours are set in **Appearance** (see the mode pages); Kikuchi-line, Debye-ring and scale-line colours in their own tabs. The settings here apply to all rendering modes.
+Sets the label **Text size**, and the colours of the label **Text**, the **Foot of the perpendicular from the sample** marker, the **Direct position** marker and the **Background** (the two markers can each be switched off). Spot colours are set in **Appearance** (see the mode pages); Kikuchi-line, Debye-ring and scale-line colours in their own tabs. The settings here apply to all rendering modes.
 
 ### Kikuchi lines
 
@@ -219,12 +219,12 @@ Sets the label **Text size**, and the colours of the label **Text**, the **Foot 
 
 Active when Kikuchi lines are enabled on the toolbar.
 
-- **Reflection selection** : Choose which reflections generate the Kikuchi lines. Either **Structure factor** (the **Top** *N* reflections by $\lvert F_{hkl}\rvert$; 1–1000, default 100) or **1/d Cutoff** (all reflections whose 1/d is below the threshold; 0–100 nm⁻¹, default 10). <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:numericBoxKikuchiThresholdOfStructureFactor/OfLength; FormDiffractionSimulator.cs:コンストラクタ (comboBoxKikuchiMode/Quality/Scale.SelectedIndex)) -->
+- **Reflection selection** : Choose which reflections generate the Kikuchi lines. Either **Structure factor** (the **Top** *N* reflections by $\lvert F_{hkl}\rvert$; 1–1000, default 100) or **1/d cutoff** (all reflections whose 1/d is below the threshold; 0–100 nm⁻¹, default 10). <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:numericBoxKikuchiThresholdOfStructureFactor/OfLength; FormDiffractionSimulator.cs:コンストラクタ (comboBoxKikuchiMode/Quality/Scale.SelectedIndex)) -->
 - **Mode** : How the Kikuchi lines are drawn (default **Kinematical**). The settings below the combo box change with the mode.
     - **Geometric** : all selected lines in a single fixed colour.
     - **Kinematical** : line darkness follows the kinematical relative intensity of each reflection.
     - **Dynamical** : two-beam dynamical excess/deficient band profiles fed by a thermal-diffuse-scattering source, computed in a background thread. Excess bands appear on the high-angle side and deficient features toward the direct beam; the specimen thickness is shared with the intensity settings. Geometric lines are drawn as a fallback while the computation runs. Dynamical bands are computed for an **Electron** beam only; for X-rays and neutrons the lines are drawn as geometric lines and the notice reads *Electron beam only: drawn as lines*. <!-- 261105Cl 監査: DrawKikuchiLine / UpdateKikuchiNotice -->
-- **Geometric / Kinematical settings** : **Kikuchi line color** and **Line Width**.
+- **Geometric / Kinematical settings** : **Kikuchi line color** and **Line width**.
 - **Dynamical settings** :
     - **Excess** / **Deficient** : Colours of the bright (positive contrast) and dark (negative contrast) sides of the bands.
     - **Bands** : Number of bands drawn with dynamical profiles (the top *N* by dynamical contrast; 1–50, default 30).
@@ -242,7 +242,7 @@ Active when Kikuchi lines are enabled on the toolbar.
 Active when Debye rings are enabled on the toolbar.
 
 - **Ignore diffraction intensity** : If checked, all Debye rings are drawn with the same colour and intensity (ignoring the crystal structure factor). Use it for a purely geometric comparison.
-- **Show Index Labels** : If checked, the indices {*hkl*} appear near each ring (four indices {*hkil*} when the main window's **Options ▸ Use Miller-Bravais (hkil) index** is on and the crystal uses hexagonal axes). <!-- 261105Cl 監査: DrawDebyeRing (C23)。ラベルは波かっこ -->
+- **Show index labels** : If checked, the indices {*hkl*} appear near each ring (four indices {*hkil*} when the main window's **Options ▸ Use Miller-Bravais (hkil) index** is on and the crystal uses hexagonal axes). <!-- 261105Cl 監査: DrawDebyeRing (C23)。ラベルは波かっこ -->
 
 ### Scale
 
@@ -263,7 +263,7 @@ Active when the scale lines are enabled on the toolbar.
 ## Diffraction spot information {#diffraction-spot-information}
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:ButtonDetailsOfSpots_Click; FormDiffractionSpotInfo.cs:SetTable(double, Crystal)) -->
-Lists the per-reflection details computed by the Bloch-wave method (Dynamical calculation). Open it with the **Spot Details** button in the intensity-calculation panel. In **Only excitation error** / **Kinematical** mode the button lists the currently drawn reflections with their electron potentials and $P_g$, $Q_g$ (no dynamical amplitudes); in CBED mode the table follows the thickness selected in the CBED window. For X-rays and neutrons, $S_g$, $P_g$ and $Q_g$ are computed with the actual wavelength (no refraction correction), the potential columns are hidden, and the accelerating voltage, $m/m_0$ and $v/c$ are shown as "-". <!-- 261105Cl 監査: FormDiffractionSpotInfo.cs SetTable (C 組) -->
+Lists the per-reflection details computed by the Bloch-wave method (Dynamical calculation). Open it with the **Spot details** button in the intensity-calculation panel. In **Only excitation error** / **Kinematical** mode the button lists the currently drawn reflections with their electron potentials and $P_g$, $Q_g$ (no dynamical amplitudes); in CBED mode the table follows the thickness selected in the CBED window. For X-rays and neutrons, $S_g$, $P_g$ and $Q_g$ are computed with the actual wavelength (no refraction correction), the potential columns and the potential-unit selector are hidden, and the accelerating voltage, $m/m_0$ and $v/c$ are shown as "-". <!-- 261105Cl 監査: FormDiffractionSpotInfo.cs SetTable (C 組) -->
 
 ![Diffraction spot information](../../assets/cap-en-auto/FormDiffractionSpotInfo.png)
 
@@ -296,10 +296,10 @@ The schematic (top left) shows the vectors on the Ewald sphere and defines the q
 
 ### Potential units and other controls
 
-- **Unit of potential** : Switches the displayed potential between **Vg [eV]** (electrostatic potential, eV) and **Ug [nm⁻²]** (the scaled quantity $U_g = (2 m_0/h^2)\, V_g$ that enters the Bloch-wave equations). The column headers change accordingly between *Vg / V'g* and *Ug / U'g*.
-- Above the table, the accelerating voltage, wavelength ($\lambda = 1/k_\text{vac}$), relativistic mass ratio $m/m_0$, speed ratio $v/c$, lattice volume, sample thickness, and (in CBED mode) the maximum semi-angle of the electron beam are shown. The thickness appears only for a **Dynamical** calculation (in CBED mode, the thickness of the CBED window) and the semi-angle only in CBED mode; otherwise they read "-".
+- **Unit of potential** : Switches the displayed potential between **Vg [eV]** (electrostatic potential, eV) and **Ug [nm⁻²]** (the scaled quantity $U_g = (2 m_0/h^2)\, V_g$ that enters the Bloch-wave equations). The column headers change accordingly between *Vg / V'g* and *Ug / U'g*. Shown for electrons only. <!-- 261106Cl 作者の決定 C5 -->
+- Above the table, the accelerating voltage, wavelength ($\lambda = 1/k_\text{vac}$), relativistic mass ratio $m/m_0$, speed ratio $v/c$, lattice volume, sample thickness, and (in CBED mode) the convergence semi-angle α are shown. The thickness appears only for a **Dynamical** calculation (in CBED mode, the thickness of the CBED window) and the semi-angle only in CBED mode; otherwise they read "-".
 - **Note 1:** the unit of length is **nm**, not Å. **Note 2:** the unit of wavenumber is **1/nm**, not 2π/nm.
-- **Effective digit** : number of significant digits shown in the table (1–16, default 4). **Auto resize row width** : auto-fit column widths. **Copy to clipboard** : exports the table as text that can be pasted into a spreadsheet. **Save as CSV** : writes the same table (the visible columns) to a CSV file; the decimal separator is always a period, so the file stays valid in comma-decimal locales. **Copy to clipboard** and **Save as CSV** work even when the table has a single row.
+- **Effective digit** : number of significant digits shown in the table (1–16, default 4). **Auto resize row width** : auto-fit column widths. **Copy to clipboard** : exports the table as text that can be pasted into a spreadsheet. **Save as CSV** : writes the same table (the visible columns) to a CSV file; the decimal separator is always a period, so the file stays valid in comma-decimal locales. **Copy to clipboard** and **Save as CSV** work even when the table has a single row. Both start with `# key: value` lines giving the conditions (source, accelerating voltage or energy, wavelength, thickness, convergence semi-angle in CBED, crystal, Euler angles, calculation mode), and the column headers carry units, e.g. `d (nm)`, `Sg (nm⁻¹)`, `Qg (nm⁻²)`. <!-- 261106Cl 作者の決定 C22 -->
 
 ---
 
@@ -320,7 +320,7 @@ Specify the reflection geometry: **Camera length 2** (mm, 1–10000, default 100
 
 ![Detector area and overlapped image](../../assets/cap-en-auto/FormDiffractionSimulatorGeometry.panelDetectorAreaAndOverlappedImage.png)
 
-Tick **Set detector area & overlapped image.** to specify the detector: size in pixels (default 1024 × 1024), **pix. size** (mm, default 0.1) and the **Foot** position **fx, fy** (px, default 512, 512) — the foot of the perpendicular from the sample to the detector plane, which coincides with the direct-beam position only when the detector is not tilted (τ = 0). <!-- 261105Cl 監査: numericBoxFootX/Y.ToolTip, convertDetectorToReal --> An experimental image can be loaded (**Load** or drop) and overlaid with **Opacity**, **Gradient** (positive/negative film), **Scale 1** (log/linear), **Scale 2** (Gray / Cold-Warm / Spectrum / Fire), **Max/Min int.**, **Rot 90°** and **Clear**. Loading an `.ipa` image sets τ = 0 (the file carries no tilt), puts the foot at the image centre and sets camera length 2 to the film distance. A file that cannot be read as a `.prm` file or an image is reported with a message. <!-- 261105Cl 監査: ReadImage / showCannotRead (4dc847a) --> **Schematic diagram** shows a sketch of the geometry. Use this to overlay the simulated pattern and an experimental image and fine-tune the detector geometry.
+Tick **Set detector area & overlapped image.** to specify the detector: size in pixels (default 1024 × 1024), **Pixel size** (mm, default 0.1) and the **Foot** position **fx, fy** (px, default 512, 512) — the foot of the perpendicular from the sample to the detector plane, which coincides with the direct-beam position only when the detector is not tilted (τ = 0). <!-- 261105Cl 監査: numericBoxFootX/Y.ToolTip, convertDetectorToReal --> An experimental image can be loaded (**Load** or drop) and overlaid with **Opacity**, **Gradient** (positive/negative film), **Scale 1** (log/linear), **Scale 2** (Gray / Cold-warm / Spectrum / Fire), **Max/Min int.**, **Rot 90°** and **Clear**. Loading an `.ipa` image sets τ = 0 (the file carries no tilt), puts the foot at the image centre and sets camera length 2 to the film distance. A file that cannot be read as a `.prm` file or an image is reported with a message. <!-- 261105Cl 監査: ReadImage / showCannotRead (4dc847a) --> **Schematic diagram** shows a sketch of the geometry. Use this to overlay the simulated pattern and an experimental image and fine-tune the detector geometry.
 
 See also [Detector coordinate system](../appendix/a1-coordinate-system/2-diffraction.md) for the coordinate-system definitions.
 

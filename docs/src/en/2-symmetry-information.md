@@ -7,7 +7,7 @@
 The window is divided into a space-group identity area (top left), a calculation/table area with tabs (top right), and two schematic diagrams (bottom).
 
 !!! tip "Symmetry theory (Appendix A4)"
-    What a Hermann–Mauguin/Hall/Schoenflies symbol actually encodes, the group-theoretical classifications on the **Properties** tab (centrosymmetric, Sohncke, symmorphic, polar, …), the meaning of the symmetry-element/general-position diagrams below, and the group–subgroup relations shown by **Group Relations…** are all explained in **[Appendix A4. Symmetry and Space Groups](appendix/a4-symmetry-space-groups/index.md)**.
+    What a Hermann–Mauguin/Hall/Schoenflies symbol actually encodes, the group-theoretical classifications on the **Properties** tab (centrosymmetric, Sohncke, symmorphic, polar, …), the meaning of the symmetry-element/general-position diagrams below, and the group–subgroup relations shown by **Group relations…** are all explained in **[Appendix A4. Symmetry and Space Groups](appendix/a4-symmetry-space-groups/index.md)**.
 
 ---
 
@@ -24,33 +24,33 @@ This window has no special key or mouse combinations. <kbd>F1</kbd> opens this m
 The top-left panel lists, for the current space group:
 
 - **Number** (1–230) and the setting index
-- **Crystal System**
-- **Point Group** : Hermann–Mauguin (HM) and Schoenflies (SF) symbols
-- **Space Group** : HM short symbol, HM full symbol, SF symbol, and **Hall symbol**
+- **Crystal system**
+- **Point group** : Hermann–Mauguin (HM) and Schoenflies (SF) symbols
+- **Space group** : HM short symbol, HM full symbol, SF symbol, and **Hall symbol**
 
 ---
 
-## Geometrics Calculation
+## Geometrics calculation
 
-![Geometrics Calculation](../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageGeometrics.png)
+![Geometrics calculation](../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageGeometrics.png)
 
 Enter two crystal planes \((h_1, k_1, l_1)\), \((h_2, k_2, l_2)\) or two direction indices \([u_1, v_1, w_1]\), \([u_2, v_2, w_2]\) to obtain:
 
 - the d-spacing of each plane / the length of each axis,
 - the angle between the two planes (or two axes),
 - the angle between the normal of plane 1 and axis 1, and between the normal of plane 2 and axis 2 (90° when the axis lies in the plane), <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:numericBox_ValueChanged) -->
-- **The axis parallel to both planes** (the zone axis [*uvw*] of the two planes) and **The plane containing both axes** (the plane (*hkl*) that contains the two axes). <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップ (numericBoxAnglePlaneAxis1/2.ToolTip) に合わせた。以前の「normal to」は逆 -->
+- **The axis parallel to both planes** (the zone axis [*uvw*] of the two planes) and **The plane containing both axes** (the plane (*hkl*) that contains the two axes). The signs follow [*uvw*] = (*h*₁*k*₁*l*₁) × (*h*₂*k*₂*l*₂) and (*hkl*) = [*u*₁*v*₁*w*₁] × [*u*₂*v*₂*w*₂]. <!-- 261106Cl 作者の決定 B16 --> <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップ (numericBoxAnglePlaneAxis1/2.ToolTip) に合わせた。以前の「normal to」は逆 -->
 
 These calculations respect the metric of the current unit cell. Lengths are shown in Å and angles in degrees.
 
 ---
 
-## Wyckoff Positions
+## Wyckoff positions
 
-![Wyckoff Positions](../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
+![Wyckoff positions](../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:SetupExtraTables/SetWyckoffPosition) -->
-Lists every Wyckoff position with its multiplicity (**Mult.**), Wyckoff letter (**Wyck. Let.**), site symmetry (**Site Sym.**), and **Coordinates** (up to four per row; longer lists continue on the following rows). The first Wyckoff entry (highest multiplicity) is the general position. For centred lattices, the lattice translation vectors are shown in the header row; for R groups in hexagonal axes these are the three centring translations of the obverse setting, (0,0,0)+, (2/3,1/3,1/3)+ and (1/3,2/3,2/3)+. <!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
+Lists every Wyckoff position with its multiplicity (**Mult.**), Wyckoff letter (**Wyck. Let.**), site symmetry (**Site sym.**), and **Coordinates** (up to four per row; longer lists continue on the following rows). The first Wyckoff entry (highest multiplicity) is the general position. For centred lattices, the lattice translation vectors are shown in the header row; for R groups in hexagonal axes these are the three centring translations of the obverse setting, (0,0,0)+, (2/3,1/3,1/3)+ and (1/3,2/3,2/3)+. <!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
 
 ---
 
@@ -111,7 +111,7 @@ Controls (the **Options** panel at the bottom of the window, and the **Copy** bu
 
 - **Direction** (`a` / `b` / `c`) : choose the crystal axis to project along. It is selectable only for orthorhombic space groups (default `c`); for monoclinic groups the unique axis is used automatically, and for all other crystal systems `c`.
 - **Copy** : copies each diagram to the clipboard in the format selected with **Copy format** (vector **emf** / raster **bmp**); emf can be ungrouped and edited in PowerPoint.
-- **Group Relations…** opens a browser for the maximal-subgroup/minimal-supergroup relations of the current space group. See [Appendix A4.2](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) for how to read it.
+- **Group relations…** opens a browser for the maximal-subgroup/minimal-supergroup relations of the current space group. See [Appendix A4.2](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) for how to read it.
 
 ---
 

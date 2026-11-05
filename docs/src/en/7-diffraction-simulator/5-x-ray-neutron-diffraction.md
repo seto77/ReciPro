@@ -107,7 +107,7 @@ Controls how each diffraction spot is rendered.
 - **Opacity** : transparency of the spot (0 = transparent, 1 = opaque).
 - **Spot radius (R)** : radius of the reciprocal-lattice point. The rendered spot size is determined by the combination of **Appearance** and **Intensity calculation**.
 - **Brightness** : active only in **Gaussian** mode. Sets the integrated intensity of the rendered Gaussian. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:comboBoxScaleColorScale / FormDiffractionSimulator.cs:comboBoxScaleColorScale_SelectedIndexChanged, radioButtonPointSpread_CheckedChanged) -->
-- **Color scale** (Gaussian only) : **Gray**, **Cold-Warm**, **Spectrum** or **Fire**.
+- **Color scale** (Gaussian only) : **Gray**, **Cold-warm**, **Spectrum** or **Fire**.
 - **Log scale** (Gaussian only) : display intensities on a logarithmic scale.
 - **Spot color** : spot colours used with the **Gray** colour scale (this group is hidden for the other colour scales).
 - **Color per crystal** : when checked, draws spots in the colour assigned to each crystal.
@@ -119,7 +119,7 @@ Controls how each diffraction spot is rendered.
 Debye rings of a polycrystalline specimen can be displayed. Enable **Debye rings** on the toolbar (see [Toolbar](index.md#toolbar)).
 
 - **Ignore diffraction intensity** : draws all rings in the same colour and intensity (used for a purely geometric comparison that ignores the structure factor).
-- **Show Index Labels** : displays the indices {*hkl*} near each ring (four indices {*hkil*} with **Options ▸ Use Miller-Bravais (hkil) index** on for hexagonal axes). <!-- 261105Cl 監査: DrawDebyeRing (C23) -->
+- **Show index labels** : displays the indices {*hkl*} near each ring (four indices {*hkil*} with **Options ▸ Use Miller-Bravais (hkil) index** on for hexagonal axes). <!-- 261105Cl 監査: DrawDebyeRing (C23) -->
 
 Detailed settings are on the Debye rings tab of the [tab menu](index.md#drawing-overlay-tabs).
 

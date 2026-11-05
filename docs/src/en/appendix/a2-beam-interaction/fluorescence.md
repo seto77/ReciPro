@@ -44,7 +44,7 @@ and a small $\omega$ means most vacancies decay by Auger emission. Within the ra
 
 $$p_{\ell\mid X} = \frac{\Gamma_\ell}{\sum_{\ell'\in X}\Gamma_{\ell'}},$$
 
-the relative radiative rate within shell $X$. ReciPro lists $\omega_K$ for each element and the strongest line in the spectrum.
+the relative radiative rate within shell $X$. ReciPro lists $\omega_K$ for each element and the strongest line in the spectrum. This is a reference list that does not consider how strongly each shell is excited (no ionization cross section), so that line need not be the strongest in a measured spectrum. <!-- 261106Cl 作者の決定 J6 -->
 
 ---
 

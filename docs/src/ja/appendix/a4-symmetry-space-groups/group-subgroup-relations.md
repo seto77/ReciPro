@@ -49,7 +49,7 @@
 親設定と子設定の間の基底変換・原点シフトを、ITAの規約——新しい基底ベクトルは $(\mathbf a',\mathbf b',\mathbf c')=(\mathbf a,\mathbf b,\mathbf c)\cdot P$、ある点の親設定での座標は $\mathbf x_{\text{parent}} = P\,\mathbf x_{\text{child}} + \mathbf p$——で表示します。$3\times3$ 行列 $P$ と原点シフト $\mathbf p$ は分数で表示されます。
 
 - **極大部分群** からこの関係にたどり着いた場合、$P$ と $\mathbf p$ はそのまま表示されます（親→子の向き。見出しは「Transformation to subgroup basis (a',b',c')=(a,b,c)P」で、行列とシフトは $P=$・$p=$ と示されます）。
-- 代わりに **極小超群** からたどり着いた場合は、逆向きの変換が表示されます。見出しは「Transformation to supergroup basis (a',b',c')=(a,b,c)P⁻¹」で、行列とシフトは $P^{-1}=$・$-P^{-1}p=$ と示されます（この見出しは日本語 UI でも英語） <!-- 261105Cl 監査: FormGroupRelations.cs BuildTransformationLatex / BuildMatrixLatex(inverse) -->——ブラウザは常により大きな群の視点から関係を保持しており、必要に応じてそれを逆算します（2つの独立したコピーを保持するのではありません）。
+- 代わりに **極小超群** からたどり着いた場合は、逆向きの変換が表示されます。見出しは「Transformation to supergroup basis (a',b',c')=(a,b,c)P⁻¹」で、行列とシフトは $P^{-1}=$・$-P^{-1}p=$ と示されます。値は標準の設定ではなく、閲覧中の設定 (例えば $P2_1/n$) の軸で表します <!-- 261106Cl 作者の決定 B14 -->（この見出しは日本語 UI でも英語） <!-- 261105Cl 監査: FormGroupRelations.cs BuildTransformationLatex / BuildMatrixLatex(inverse) -->——ブラウザは常により大きな群の視点から関係を保持しており、必要に応じてそれを逆算します（2つの独立したコピーを保持するのではありません）。
 - **この類の共役部分群数: $n$** は、前節で説明した共役類のサイズを報告します。
 - 生成元の表には、すべてのコセット代表元が **保持**（$H$ に残っている）または **消失**（$G$ には存在するが $H$ には無い——対称性が破れる原因そのものとなる操作）のいずれかとしてタグ付けされ、それぞれ [A4.1](symbols-and-diagrams.md#対称操作対称操作タブ) で導入したSeitz記号・幾何学的種類の記述が添えられます。
 - ある候補の関係について、その目的の空間群タイプがReciProのカタログと照合して同定できなかった場合、タブは推測で埋めることなくその旨を明示し、点群記号のみを表示します。

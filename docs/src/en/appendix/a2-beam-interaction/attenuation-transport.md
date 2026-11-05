@@ -1,15 +1,15 @@
 # Attenuation & Transport
 
-Scattering factors describe a single scattering event; this page is about what happens to the beam **as a whole** as it travels through the solid — how fast it is removed, how deeply it penetrates, and (for electrons) how it slows down. The relevant physics is entirely different for the three beams, which is why the **Attenuations & Transport** tab changes its plots and tables so drastically with the radiation.
+Scattering factors describe a single scattering event; this page is about what happens to the beam **as a whole** as it travels through the solid — how fast it is removed, how deeply it penetrates, and (for electrons) how it slows down. The relevant physics is entirely different for the three beams, which is why the **Attenuations & transport** tab changes its plots and tables so drastically with the radiation.
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../../../assets/cap-en-auto/FormBeamInteraction-xray-attenuations.png)
+    ![Attenuations & transport — X-ray](../../../assets/cap-en-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../../../assets/cap-en-auto/FormBeamInteraction-electron-attenuations.png)
+    ![Attenuations & transport — electron](../../../assets/cap-en-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../../../assets/cap-en-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![Attenuations & transport — neutron](../../../assets/cap-en-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ---
 
@@ -143,5 +143,5 @@ The same length scales explain why electrons demand ultrathin specimens and dyna
 
 - [Atomic scattering factors](scattering-factor.md) — the $F(q)$/$S(q)$ split behind Rayleigh/Compton, and the Mott–Bethe relation (a different model from the NIST Mott cross sections used above).
 - [Fluorescence](fluorescence.md) — the relaxation that follows X-ray photoabsorption.
-- [3. Beam interaction](../../3-beam-interaction.md) — the *Attenuations & Transport* tab.
+- [3. Beam interaction](../../3-beam-interaction.md) — the *Attenuations & transport* tab.
 - [8. Electron trajectory](../../8-electron-trajectory.md) · [12. EBSD simulation](../../12-ebsd-simulation.md) — where the electron ranges are used.

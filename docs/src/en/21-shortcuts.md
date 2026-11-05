@@ -96,7 +96,7 @@ Used by the [HRTEM/STEM](9-hrtem-stem-simulator/index.md) result panes, the [Spo
 |----------|--------|
 | <kbd>ENTER</kbd> in a search field | Run the search |
 | Click a result row | Load that crystal |
-| Click an element in the **Periodic Table** popup | Cycle its filter: *may or not include* → *must include* → *must exclude* |
+| Click an element in the **Periodic table** popup | Cycle its filter: *may or not include* → *must include* → *must exclude* |
 
 ### 2. Symmetry information · 3. Beam interaction
 Symmetry information has no special key/mouse combinations. In Beam Interaction, besides <kbd>F1</kbd> and the **Copy** buttons, the vertical cursor on the **Scattering factors** graph can be dragged to read off each element's value.
@@ -134,7 +134,7 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 | Right double-click the status bar | Copy a text summary of the current settings |
 | Right double-click a lit layer button (Spots / Kikuchi / Debye / Scale) | Blink that layer on and off |
 | Left double-click the stereonet — **TEM holder** window | Set the holder tilt to that point |
-| Arrow keys — **TEM holder** window | Step the holder tilt (tick **Enable arrow keys** first; works with any ReciPro window in front) |
+| Arrow keys — **TEM holder** window | Step the holder tilt (tick **Enable arrow keys** first; only while the holder window is active) <!-- 261106Cl 作者の決定 D25 --> |
 | Drop `.prm` / image — **Detector geometry**, or `.txt` — **Dynamic compression** | Load that data |
 
 ### 8. Electron trajectory

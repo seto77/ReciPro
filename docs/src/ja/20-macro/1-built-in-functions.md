@@ -227,7 +227,7 @@ for k in range(-2, 3):
 | `NearestNeighbor` | int | 検出するスポット同士に許す最小間隔（ピクセル） |
 | `FittingRange` | double | ピークフィッティングに使う、各スポット周囲の領域の半径（ピクセル） |
 | `AcceptableError` | double | 観測スポットを候補反射に対応づけるときに許す面間隔の相対差（%） |
-| `IgnoreProhibitedReflections` | bool | 多重回折で現れうる消滅則禁制反射を無視するか |
+| `IgnoreProhibitedReflections` | bool | 多重回折で現れうる消滅則禁制反射を無視するか。X 線・中性子線では常に `true`。そのとき設定した値は、線源を電子線に戻したときに効く <!-- 261106Cl 作者の決定 I4 --> |
 | `MultiGrain` | bool | 複数の結晶粒を探索するか。`False` なら単結晶 |
 | `MaxNumberOfGrains` | int | `MultiGrain` が `True` のときに探索する粒方位の最大数 |
 | `NumberOfDetectedSpots` | int | 検出されたスポット数（読み取り専用） |
@@ -329,8 +329,8 @@ ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60,
 
 | プロパティ/関数 | 説明 |
 |----------------|------|
-| `#.SaveImageAsPng(filename)` | PNG形式で保存（filename 省略時はダイアログ） |
-| `#.SaveImageAsTif(filename)` | TIFF形式で保存（filename 省略時はダイアログ） |
+| `#.SaveImageAsPng(filename)` | PNG 形式で保存（filename 省略時はダイアログ） |
+| `#.SaveImageAsTif(filename)` | TIFF 形式で保存（filename 省略時はダイアログ） |
 | `#.SaveImageAsEmf(filename)` | EMFメタファイルで保存（filename 省略時はダイアログ） |
 | `#.SaveIndividually` | シリーズモード時に各画像を個別保存 (true/false) |
 | `#.OverprintSymbols` | 保存画像に単位胞・ラベル・スケールバーを焼き込む (true/false) |

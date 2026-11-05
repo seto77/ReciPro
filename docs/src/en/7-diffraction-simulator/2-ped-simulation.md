@@ -61,7 +61,7 @@ The moment **Precession (electron)** is selected, **Intensity calculation** is f
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:numericBoxNumOfBlochWave, numericBoxThickness) -->
 | Parameter | Description | Recommended |
 |-----------|-------------|-------------|
-| **Number of Diffracted Waves** | Number of Bloch waves included in the eigenvalue problem (8–1000, default 240). Larger values give more accurate intensities but the computation time grows as $O(N^3)$ | 50–200 |
+| **Number of diffracted waves** | Number of Bloch waves included in the eigenvalue problem (8–1000, default 240). Larger values give more accurate intensities but the computation time grows as $O(N^3)$ | 50–200 |
 | **Thickness** | Specimen thickness used in the dynamical calculation (nm; 0.01–10000, default 50) | — |
 
 The computational cost is roughly "number of steps × Bloch-wave calculation per direction". For details of the dynamical calculation, see [Dynamical calculation (Bloch-wave method)](../appendix/a3-bloch-wave/calculation.md).
@@ -77,8 +77,8 @@ Controls how each diffraction spot is drawn.
 - **Solid sphere / Gaussian** : Geometric model of the reciprocal lattice points. **Solid sphere** draws the cross-section of a sphere of radius $R$ with the Ewald sphere, and **Gaussian** draws the cross-section (a 2D Gaussian) of a 3D Gaussian with $\sigma = R$ and the Ewald sphere.
 - **Opacity** : Spot transparency (0 = transparent, 1 = opaque).
 - **Spot radius (R)** : Radius of the reciprocal lattice points. For dynamical intensities, the Gaussian integral $=$ Brightness $\times I_\text{dyn}$, and the Solid sphere uses radius $R \times I_\text{dyn}^{1/2}$ (so the area is proportional to the dynamical intensity).
-- **Brightness**, **Color scale**, **Log scale** : shown only in **Gaussian** mode. **Brightness** scales the integrated intensity of the drawn Gaussian; **Color scale** is **Gray** (spots in the spot colours below), **Cold-Warm**, **Spectrum** or **Fire**; **Log scale** displays intensity on a logarithmic scale. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpots, comboBoxScaleColorScale_SelectedIndexChanged; FormDiffractionSimulator.Designer.cs:flowLayoutPanelGaussianOption, comboBoxScaleColorScale) -->
-- **Spot color** : shown while the **Color scale** is **Gray** (the initial setting): **General spots** / **Extinct spots (Screw or Glide)** / **Extinct spots (Lattice centring)**.
+- **Brightness**, **Color scale**, **Log scale** : shown only in **Gaussian** mode. **Brightness** scales the integrated intensity of the drawn Gaussian; **Color scale** is **Gray** (spots in the spot colours below), **Cold-warm**, **Spectrum** or **Fire**; **Log scale** displays intensity on a logarithmic scale. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpots, comboBoxScaleColorScale_SelectedIndexChanged; FormDiffractionSimulator.Designer.cs:flowLayoutPanelGaussianOption, comboBoxScaleColorScale) -->
+- **Spot color** : shown while the **Color scale** is **Gray** (the initial setting): **General spots** / **Extinct spots (screw or glide)** / **Extinct spots (lattice centring)**.
 - **Color per crystal** : Draw spots in the colour assigned to each crystal.
 
 ---

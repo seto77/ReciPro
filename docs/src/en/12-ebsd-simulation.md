@@ -6,7 +6,7 @@
 
 The window has three columns.
 
-- **Left** : simulation conditions. The tabs select **Geometry** (sample/detector geometry and a 3D view), **BSE Distribution** (backscattered-electron distributions), and **Overlays** (Kikuchi lines and other annotations).
+- **Left** : simulation conditions. The tabs select **Geometry** (sample/detector geometry and a 3D view), **BSE distribution** (backscattered-electron distributions), and **Overlays** (Kikuchi lines and other annotations).
 - **Centre** : the EBSD (Kikuchi) pattern for the current crystal orientation. Below it, the tabs select **Simulated pattern** and **Experimental image**. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormEBSD.resx: tabPageOutputParameter.Text) -->
 - **Right** : the orientation-independent master pattern, in the **2D** and **3D** tabs.
 
@@ -38,7 +38,7 @@ The 3-D views use ReciPro's standard [view navigation](21-shortcuts.md) (panning
 
 ## Workflow
 
-Pressing **Build Master Pattern** runs the following steps in order.
+Pressing **Build master pattern** runs the following steps in order.
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormEBSD.cs: BackscatterMonteCarloLoopCount = 10_000_000) -->
 1. **Monte-Carlo BSE simulation** : using the current crystal composition, density, accelerating voltage and sample tilt, 10 million incident electrons are tracked inside the sample (elastic scattering: Mott/NIST cross-sections; inelastic scattering: dielectric-response model). This yields the joint distribution of *penetration depth × exit direction × exit energy* of the backscattered electrons.
@@ -46,7 +46,7 @@ Pressing **Build Master Pattern** runs the following steps in order.
 3. **Master-pattern build** : for each energy and depth, the dynamical diffraction (Bloch-wave) problem is solved and integrated over the sphere of directions, weighted by the Monte-Carlo distribution, to give the backscatter diffraction intensity in every direction. The result is stored on an equal-area (Roşca–Lambert) grid.
 4. **Projection onto the detector, with weighting** : for the current crystal orientation, the intensity for the direction subtended by each detector pixel is looked up in the master pattern and drawn as the Kikuchi pattern, optionally weighted by the BSE angular/energy distribution.
 
-The energy and depth ranges are set automatically in steps 1–2, but can be adjusted manually before building.
+The energy and depth ranges are set automatically in steps 1–2 while **Energy and depth ranges from MC (automatic)** is checked (the default; the range boxes are then read-only). Uncheck it to build with ranges typed by hand: the Monte Carlo then leaves the boxes alone. Ranges that cannot be used — a lower limit that is not below the upper limit, an energy above the accelerating voltage, or a range entirely outside the Monte-Carlo distribution — are not built; a message gives the reason and the values. <!-- 261106Cl 作者の決定 F5/F15 -->
 
 ---
 
@@ -58,7 +58,7 @@ The energy and depth ranges are set automatically in steps 1–2, but can be adj
 
 - **Energy** : accelerating voltage of the incident beam (keV).
 - **Wavelength** : electron wavelength, linked to Energy. **Unit** selects Å or nm.
-- **Sample tilt** : sample tilt angle (typically −70°). The large tilt in EBSD increases the backscattered-electron yield.
+- **Sample tilt** : sample tilt angle (typically −70°). The large tilt in EBSD increases the backscattered-electron yield. Changing it discards the Monte-Carlo results (the BSE distributions and their weights; run **Simulate** again); the master pattern does not depend on the tilt and is kept. <!-- 261106Cl 作者の決定 F17 -->
 
 ### EBSD geometry
 
@@ -66,7 +66,7 @@ The energy and depth ranges are set automatically in steps 1–2, but can be adj
 
 The detector (phosphor screen) is a rectangle defined by a pixel count and a pixel size.
 
-- **Size and Tilt** : **Tilt** is the tilt of the detector screen (°), measured from the horizontal plane (perpendicular to the beam): 0° = horizontal screen, 90° = vertical screen (the default). **Width** and **Height** are the number of detector pixels. <!-- 261105Cl 監査: numericBoxDetTilt.ToolTip (EbsdDetectorGeometry の法線 (0, sin d, −cos d)) -->
+- **Size and tilt** : **Tilt** is the tilt of the detector screen (°), measured from the horizontal plane (perpendicular to the beam): 0° = horizontal screen, 90° = vertical screen (the default). **Width** and **Height** are the number of detector pixels. <!-- 261105Cl 監査: numericBoxDetTilt.ToolTip (EbsdDetectorGeometry の法線 (0, sin d, −cos d)) -->
 - **Resolution** : the physical size of one detector pixel (mm/px). The physical detector size is therefore Width × Resolution by Height × Resolution.
 - **Coordinates of detector center** : position **X**, **Y**, **Z** of the detector centre relative to the beam-impact point (mm), in the microscope (laboratory) frame. **Y** is the horizontal offset perpendicular to both the beam (Z) and the sample tilt axis (X), not a direction within the tilted sample surface. <!-- 261105Cl 監査: numericBoxDetY.ToolTip --> Y and Z, together with the tilt, determine the camera length; X is the left–right offset.
 
@@ -76,21 +76,21 @@ The geometry can be inspected in the 3D view on the **Geometry** tab.
 
 ![3D geometry](../assets/cap-en-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.panelGeometry.png)
 
-The grey plate is the sample, the green rectangular slab is the detector, and the purple **+Z (=beam)** is the incident beam. The crystal **a / b / c** axes (fixed to the sample) are also shown. The buttons **Bird's-Eye View**, **Surface Normal**, **X Axis (Rotation Axis)** and **Z Axis (Beam Direction)** snap the view to standard directions. See [Appendix A1. Coordinate Systems](appendix/a1-coordinate-system/2-diffraction.md) for the coordinate-system definitions.
+The grey plate is the sample, the green rectangular slab is the detector, and the purple **+Z (=beam)** is the incident beam. The crystal **a / b / c** axes (fixed to the sample) are also shown. The buttons **Bird's-eye view**, **Surface normal**, **X axis (rotation axis)** and **Z axis (beam direction)** snap the view to standard directions. See [Appendix A1. Coordinate Systems](appendix/a1-coordinate-system/2-diffraction.md) for the coordinate-system definitions.
 
 ---
 
-## BSE Distribution
+## BSE distribution
 
-![BSE Distribution](../assets/cap-en-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageBseDistribution.png)
+![BSE distribution](../assets/cap-en-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageBseDistribution.png)
 
-The **BSE Distribution** tab shows the Monte-Carlo backscattered-electron distributions. Use **Simulate** to recompute them. Only one Monte Carlo runs at a time: while one is running (started by **Simulate** or by the first step of **Build Master Pattern**), **Simulate** does not start another, and the status bar asks you to wait or press **Stop**. <!-- 261105Cl 監査: FormEBSD.cs buttonBSE_Click (monteCarloCts) -->
+The **BSE distribution** tab shows the Monte-Carlo backscattered-electron distributions. Use **Simulate** to recompute them. Only one Monte Carlo runs at a time: while one is running (started by **Simulate** or by the first step of **Build master pattern**), **Simulate** does not start another, and the status bar asks you to wait or press **Stop**. <!-- 261105Cl 監査: FormEBSD.cs buttonBSE_Click (monteCarloCts) -->
 
 - **Stereonet** : angular distribution (histogram of exit directions) of the backscattered electrons. The centre is the surface-normal direction, and the yellow outline marks the rectangular region subtended by the detector. **Draw axes** overlays the crystal axes, and the colour scale (**Min** / **Max**, **Resolution**, **Color**) is adjustable.
 - **ΔE (keV)** : energy-loss distribution of the backscattered electrons.
 - **Depth (nm)** : distribution of the source depth of the detected backscattered electrons, as defined by **Source depth (MC)** (default: the last inelastic scattering event) — the same depth definition that weights the master pattern. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormEBSD.cs: BSE 深さ分布で GetMonteCarloSourceDepth を使用) -->
 
-These distributions are computed by the same Monte-Carlo engine as [Electron trajectory](8-electron-trajectory.md) and are used to weight the master pattern. Changing the crystal or the accelerating voltage discards these results together with the master pattern (a change made while the window is closed takes effect when it is reopened); the status bar says what was discarded. <!-- 261105Cl 監査: FormEBSD.cs SetCrystal / 電圧の変更 / 開き直し (4bc81f06) -->
+These distributions are computed by the same Monte-Carlo engine as [Electron trajectory](8-electron-trajectory.md) and are used to weight the master pattern. Changing the crystal or the accelerating voltage discards these results together with the master pattern (a change made while the window is closed takes effect when it is reopened); the status bar says what was discarded. Double-click the **ΔE** or **Depth** graph to copy its values to the clipboard as text (x and y, tab-separated). <!-- 261106Cl 作者の決定 F23 --> <!-- 261105Cl 監査: FormEBSD.cs SetCrystal / 電圧の変更 / 開き直し (4bc81f06) -->
 
 ---
 
@@ -102,11 +102,11 @@ The **Overlays** tab configures the annotations drawn on the EBSD pattern.
 
 - **Background color** : background colour.
 - **Detector outline** : the detector outline. **Show frame** (the yellow rectangle at the detector edge) / **Show mesh** (division grid).
-- **Show Kikuchi lines** : draw Kikuchi lines. **Line Width** / **Color**, and **Apply structure factors to Kikuchi line intensity** (each line fades toward the background in proportion to its structure factor).
-- **Kikuchi line criteria** : which Kikuchi lines to draw: **Structure factor** (**Top** *N* by structure factor) or **1/d Cutoff** (those with 1/d below a threshold, nm⁻¹). Switching between the two redraws the lines at once. <!-- 261105Cl 監査: 1/d Cutoff 側にもハンドラを配線 (d88da429) -->
+- **Show Kikuchi lines** : draw Kikuchi lines. **Line width** / **Color**, and **Apply structure factors to Kikuchi line intensity** (each line fades toward the background in proportion to its structure factor).
+- **Kikuchi line criteria** : which Kikuchi lines to draw: **Structure factor** (**Top** *N* by structure factor) or **1/d cutoff** (those with 1/d below a threshold, nm⁻¹). Switching between the two redraws the lines at once. <!-- 261105Cl 監査: 1/d Cutoff 側にもハンドラを配線 (d88da429) -->
 - **Show Kikuchi line indices** : show indices of the Kikuchi lines (bands).
 - **Show zone axis indices** : show zone-axis indices.
-- **Text settings** : **Text Size** / **Color** of the index labels.
+- **Text settings** : **Text size** / **Color** of the index labels.
 
 ---
 
@@ -114,12 +114,12 @@ The **Overlays** tab configures the annotations drawn on the EBSD pattern.
 
 ![Master pattern](../assets/cap-en-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.png)
 
-The master pattern is the backscatter diffraction intensity over all directions, computed in advance by the dynamical theory with **Build Master Pattern** (**Stop** interrupts the running calculation).
+The master pattern is the backscatter diffraction intensity over all directions, computed in advance by the dynamical theory with **Build master pattern** (**Stop** interrupts the running calculation).
 
-If any atom site has no atomic displacement parameter (B = 0), a dialog appears when **Build Master Pattern** is pressed. Sites with B = 0 cause no absorption, and if every site has B = 0 the master pattern with **Non-local source** is blank. **OK** sets an isotropic B = 0.5 Å² for those sites and builds (the value can be changed later in the main window); **Cancel** stops without building. Sites with anisotropic parameters (Bij) are left as they are.
+If any atom site has no atomic displacement parameter (B = 0), a dialog appears when **Build master pattern** is pressed. Sites with B = 0 cause no absorption, and if every site has B = 0 the master pattern with **Non-local source** is blank. **OK** sets an isotropic B = 0.5 Å² for those sites and builds (the value can be changed later in the main window); **Cancel** stops without building. Sites with anisotropic parameters (Bij) are left as they are.
 
 - **2D** tab : equal-area (Lambert) projection of a hemisphere. **Hemisphere** selects the projected hemisphere (+Z / −Z).
-- **3D** tab : a sphere with the intensity mapped onto it. It can be rotated with the mouse, and an inset at the top-left shows the synchronised crystal axes (a/b/c). **Axis Labels** / **Axis arrows** toggle the labels/arrows, and **View Along** looks down the zone axis [u v w] entered next to it.
+- **3D** tab : a sphere with the intensity mapped onto it. It can be rotated with the mouse, and an inset at the top-left shows the synchronised crystal axes (a/b/c). **Axis labels** / **Axis arrows** toggle the labels/arrows, and **View along** looks down the zone axis [u v w] entered next to it.
 - **Energy / Depth** sliders : select the energy/depth slice to preview.
 - Either view can be sent to the clipboard with **Copy**.
 - **Save movie** (**3D** tab) : saves a movie (MP4) of the spherical master pattern rotating. The rotation direction, speed, duration, fps and quality are set in the same "Movie setting" dialog as in the [Structure Viewer](5-structure-viewer.md). Only this 3D view rotates; the crystal orientation (the Euler angles in the main window) is not changed.
@@ -132,12 +132,13 @@ If any atom site has no atomic displacement parameter (B = 0), a dialog appears 
 
 - **Number of diffracted waves** : number of diffracted beams (waves) included in the Bloch-wave calculation. More waves are more accurate but slower.
 - **Grid** : resolution of the master-pattern grid (pixels per side, 64–8192; default 256). 4096 and 8192 need an enormous amount of memory for the intermediate data (with the default 16 energies × 40 depths, about 344 GB at 4096 and 1374 GB at 8192; already about 86 GB at 2048), so the numbers of energy and depth steps must be reduced drastically before they become usable. If memory runs out, the build ends with "MasterPattern failed" (ReciPro itself keeps running).
-- **Energy from … to … with step of …** : energy range and step integrated over (keV); set automatically from the Monte-Carlo result.
-- **Thickness from … to … with step of …** : depth range and step integrated over (nm); likewise set automatically. The automatic depths are unequally spaced, so the boxes show the shallowest point, the upper end and the first interval as a guide; editing a box by hand switches to equally spaced depths with those values.
+- **Energy and depth ranges from MC (automatic)** (default on) : while checked, the Monte Carlo sets the two ranges below and their boxes are read-only; when unchecked, the master pattern is built with the ranges typed in the boxes (see [Workflow](#workflow)). The setting is kept for the next start. <!-- 261106Cl 作者の決定 F5/F15 -->
+- **Energy from … to … with step of …** : energy range and step integrated over (keV); set automatically from the Monte-Carlo result while the box above is checked.
+- **Depth from … to … with step of …** : depth range and step integrated over (nm), measured as the path length along the exit direction; likewise set automatically. The automatic depths are unequally spaced, so the boxes show the shallowest point, the upper end and the first interval as a guide; editing a box by hand switches to equally spaced depths with those values.
 - **Use non-local absorption model** : use the non-local absorption form.
 - **Non-local source** (default on) : replace the local (atom-site) backscatter source with the non-local absorptive-potential form (U'_back integrated over the backward hemisphere). Both use the same physical cross-section, so this is a model switch rather than an additive background. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormEBSD.Designer.cs: checkBoxTDSBackground.Checked = true / Version.cs ver4.949) -->
 - **Source depth (MC)** : which Monte Carlo event defines the depth of the coherent backscatter source used for the (energy × depth) weighting: the last inelastic event (default), the last transport event of any kind, or the last decoherence event. In the last case an event resets the source only when it is localized enough to leave which-atom information in the sample: elastic events with the thermal-diffuse probability 1 − exp(−2B s²) from the Debye–Waller factor (coherent Bragg scattering, already in the Bloch waves, does not), inelastic events always for core/high-loss excitations and, for valence excitations, only with the fraction whose momentum transfer exceeds the plasmon cutoff q_c = ω_p/v_F (plasmons and delocalized electron–hole pairs preserve the Bloch state). Shallower sources carry weaker Kikuchi modulation, so the last option sets the diffuse background from transport alone, without a free parameter. Changing it re-bins the stored electrons without re-running the Monte Carlo.
-- **Contrast falls with energy loss** (default on; E_c = 0.8 keV in asymmetric-Gaussian mode and 0.9 keV in histogram + per-electron A mode) : scales the Kikuchi contrast of each energy slice by A(E) = exp(−(E0 − E)/E_c), where E0 is the beam energy and E the exit energy, and moves the lost part into a flat, direction-averaged pedestal, so the brightness without band contrast is unchanged. The Monte Carlo weights count every backscattered electron, but electrons that have lost much energy carry little sharp Kikuchi contrast; without this correction every slice carries full contrast and the bands come out about 12 % wider than for monochromatic electrons at E0 (Si, 20 kV). E_c is an effective parameter, not a material constant; smaller values give stronger attenuation. The asymmetric-Gaussian default of 0.8 keV is based on a calibration, under the original calculation settings, to the band widths of a measured Si pattern at 20 kV (the Si004 dataset; effective-wavelength ratio α ≈ 1.017). Calibrated values depend on the material and on the reflections used; for Botallackite, about 0.43–0.71 keV was obtained with different reflection selections. For quantitative band-width comparisons, recalibrate E_c whenever the energy/depth grid, the synthesis method or the evaluation measure changes. Changing it only re-weights the existing slices, without recomputing the master pattern or the Monte Carlo.
+- **Contrast falls with energy loss** (default on; kept for the next start, E_c is not; E_c = 0.8 keV in asymmetric-Gaussian mode and 0.9 keV in histogram + per-electron A mode) : scales the Kikuchi contrast of each energy slice by A(E) = exp(−(E0 − E)/E_c), where E0 is the beam energy and E the exit energy, and moves the lost part into a flat, direction-averaged pedestal, so the brightness without band contrast is unchanged. The Monte Carlo weights count every backscattered electron, but electrons that have lost much energy carry little sharp Kikuchi contrast; without this correction every slice carries full contrast and the bands come out about 12 % wider than for monochromatic electrons at E0 (Si, 20 kV). E_c is an effective parameter, not a material constant; smaller values give stronger attenuation. The asymmetric-Gaussian default of 0.8 keV is based on a calibration, under the original calculation settings, to the band widths of a measured Si pattern at 20 kV (the Si004 dataset; effective-wavelength ratio α ≈ 1.017). Calibrated values depend on the material and on the reflections used; for Botallackite, about 0.43–0.71 keV was obtained with different reflection selections. For quantitative band-width comparisons, recalibrate E_c whenever the energy/depth grid, the synthesis method or the evaluation measure changes. Changing it only re-weights the existing slices, without recomputing the master pattern or the Monte Carlo.
 - **Surface amorphous layer** : thickness (nm) of a non-crystalline surface layer (native oxide, contamination, polishing or ion-milling damage). Electrons whose coherent backscatter source lies inside the layer carry no Kikuchi modulation and are added as a direction-averaged, uniform contribution with the same intensity per electron; sources below the layer are measured from the crystal surface. Transport is computed with the crystal's composition and density, which is adequate for a few nm. 0 disables it; changing it re-bins the stored electrons without re-running the Monte Carlo.
 - **Weight by phosphor response** (default on, E_dead = 2 keV) : weight each Monte Carlo electron by the light yield of a phosphor screen, φ(E) = max(0, E − E_dead), instead of counting every electron once. Higher-energy electrons leave the tilted sample more in the forward direction, so the weighting lowers the top-to-bottom intensity gradient of the pattern (for Si at 20 kV from about 2.5 to 1.7 across the detector) and slightly reduces the zone-axis brightness. It applies to the detector-plane binning and to the per-bin energy distribution; changing it re-bins the stored electrons without re-running the Monte Carlo. Turn it off for a direct electron detector that counts electrons. E_dead is the dead-layer (threshold) energy of the phosphor; typical values are 0–3 keV for a P43 screen with an aluminium coating.
 - **Energy filter E >** (keV; default 0 = off) : an ideal high-pass energy filter in front of the detector. Electrons whose exit energy is at or below this value do not contribute to the pattern. Changing it re-bins the stored electrons without re-running the Monte Carlo or rebuilding the master pattern. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormEBSD.resx: numericBoxEnergyFilter.ToolTip / FormEBSD.cs: McEnergyFilterMinKeV) -->
@@ -166,6 +167,8 @@ The centre panel shows the EBSD (Kikuchi-band) pattern for the current crystal o
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormEBSD.resx: tabPageOutputParameter.Text / checkBoxWithBSEDistribution.Text) -->
 ### Simulated pattern
+
+Before the first master pattern is built, only the display rows below (BSE distributions and slice, brightness and contrast, colour) are disabled; the Monte-Carlo settings (**Source depth (MC)**, **Contrast falls with energy loss**, **Surface amorphous layer**, **Weight by phosphor response**, **Energy filter E >**, **Energy distribution from MC histogram**) can be changed from the start. <!-- 261106Cl 作者の決定 F16 -->
 
 - **With BSE angular/energy distributions** (default on) : when checked, the pattern is composited by weighting with the BSE distribution (energy, depth, direction) rather than a single slice.
 - **Energy / Depth** : when the above is off, select the energy/depth slice to display.

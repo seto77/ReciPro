@@ -30,7 +30,7 @@ This window has no modifier-key combinations; it is driven by ordinary clicks. T
 | <kbd>F1</kbd> | Open this page of the online manual |
 | <kbd>ENTER</kbd> in any search field | Run the database search (same as the **Search** button) |
 | Click a row in the result table | Load that crystal into the main window |
-| Click an element in the **Periodic Table** popup | Cycle its filter: *may or not include* → *must include* → *must exclude* |
+| Click an element in the **Periodic table** popup | Cycle its filter: *may or not include* → *must include* → *must exclude* |
 
 → See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
 
@@ -55,8 +55,8 @@ Enter the search criteria below and press the **Search** button or the **Enter**
 | **Name** | Crystal name |
 | **Elements** | Periodic table selector (may/must/must-not include) <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: SearchCrystalControl.resx checkBoxSearchElements/checkBoxSearchCellParameter.Text) --> |
 | **Reference** | Title, journal, author |
-| **Crystal System** | Select crystal system |
-| **Cell Params** | Lattice constants and error |
+| **Crystal system** | Select crystal system |
+| **Cell params** | Lattice constants and error |
 | **d-spacing** | Strong-reflection d-values and error |
 | **Density** | Density and error |
 
@@ -67,7 +67,7 @@ Free-text match against the crystal name. Partial matches are allowed; case is i
 
 ### Elements {#element}
 
-Press the **Periodic Table** button to open the element selector. Each element button cycles between three states:
+Press the **Periodic table** button to open the element selector. Each element button cycles between three states:
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormPeriodicTable.cs: NeutralColor=LightYellow, IncludeColor=LightBlue, ExcludeColor=LightCoral, button_Click) -->
 - **may or not include** (default — yellow)

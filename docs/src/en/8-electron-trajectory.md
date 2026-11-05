@@ -1,6 +1,6 @@
 # Electron Trajectory
 
-**Trajectory Simulator (Monte Carlo Method)** computes electron trajectories inside a sample by the **Monte-Carlo method**: incident electrons undergo elastic and inelastic scattering, and the resulting distributions of backscattered electrons (BSE) — direction, energy at escape, penetration depth and lateral spread — are accumulated.
+**Trajectory Simulator (Monte Carlo method)** computes electron trajectories inside a sample by the **Monte-Carlo method**: incident electrons undergo elastic and inelastic scattering, and the resulting distributions of backscattered electrons (BSE) — direction, energy at escape, penetration depth and lateral spread — are accumulated.
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormTrajectory.cs (FormMain 以外から参照なし), FormEBSD.cs:new MonteCarlo(...) は独自に実行) -->
 The [12. EBSD simulation](12-ebsd-simulation.md) uses the same Monte-Carlo engine for its angular/energy/depth weighting, but runs it internally with its own settings; the results of this window are not passed to it.
 
@@ -31,10 +31,10 @@ The controls along the top of the window set the run:
 
 - **Simulate trajectories** : starts the Monte-Carlo run. The status bar at the bottom reports the elapsed time of the trajectory calculation, the graph drawing and the 3-D rendering separately.
 - **Number of trajectories** (100–1,000,000, default 100,000) : how many incident electrons to track. More electrons reduce the statistical noise of every distribution below, at a run time that grows linearly. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormTrajectory.Designer.cs:numericBoxCalcNum/numericBoxSampleTilt, FormTrajectory.cs:EnergyThreshold, CalcMonteCarlo) -->
-- **Sample Tilt** (°, −90 to 0, default 0) : tilt of the sample surface about the *X* axis. Leave it at 0 for normal incidence; use **−70°** to reproduce the geometry of the [EBSD simulator](12-ebsd-simulation.md), where the large tilt raises the backscatter yield.
+- **Sample tilt** (°, −90 to 0, default 0) : tilt of the sample surface about the *X* axis. Leave it at 0 for normal incidence; use **−70°** to reproduce the geometry of the [EBSD simulator](12-ebsd-simulation.md), where the large tilt raises the backscatter yield.
 - **Energy** (keV) / **Wavelength** / **Unit** : the accelerating voltage of the incident beam, and the relativistically corrected electron wavelength linked to it. The energy sets the kinetic energy used by both the elastic (NIST Mott) and the inelastic (stopping power / IMFP) models.
 
-Changing **Sample Tilt** or **Energy** after a run does not change the result shown: until **Simulate trajectories** is pressed again, every redraw (3-D view, stereonet, histograms) uses the tilt and energy the trajectories were computed with. <!-- 261105Cl 監査: FormTrajectory.cs calcTilt/calcEnergy (9890ced0) -->
+Changing **Sample tilt** or **Energy** after a run does not change the result shown: until **Simulate trajectories** is pressed again, every redraw (3-D view, stereonet, histograms) uses the tilt and energy the trajectories were computed with. <!-- 261105Cl 監査: FormTrajectory.cs calcTilt/calcEnergy (9890ced0) -->
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormTrajectory.cs:EnergyThreshold = 2, DrawStatistics / Crystallography/EBSD/MonteCarlo.cs:MonteCarlo(thresholdKev)) -->
 An electron is tracked until it leaves the sample or its energy falls to **2 keV** (fixed threshold). Electrons that leave with more than 2 keV are counted as backscattered electrons; η (their fraction of all incident electrons), the average BSE energy, the stereonet and the histograms below are computed from these electrons. The cross section, mean free path and stopping power in **Statistics** are model values at the beam energy.
@@ -63,9 +63,9 @@ Values for the current beam energy. The cross section and the stopping power car
 
 - **Scattering cross-section (σ_E)** (nm²) — total elastic cross section per atom.
 - **Elastic mean free path (λ)** (nm) — average distance between elastic scattering events.
-- **Stopping Power (dE/ds)** (eV/nm, negative) — energy lost per unit path length.
+- **Stopping power (dE/ds)** (eV/nm, negative) — energy lost per unit path length.
 - **Backscattered electron coefficient, η** (%) — the fraction of incident electrons that leave again through the entrance surface. This is the quantity that BSE imaging contrast is built on.
-- **Average BSE Energy** (keV) — mean energy of the backscattered electrons at the moment they escape. Shown as “-” when no electron is backscattered (the histograms are then empty). <!-- 261105Cl 監査: FormTrajectory.cs DrawStatistics (count == 0) -->
+- **Average BSE energy** (keV) — mean energy of the backscattered electrons at the moment they escape. Shown as “-” when no electron is backscattered (the histograms are then empty). <!-- 261105Cl 監査: FormTrajectory.cs DrawStatistics (count == 0) -->
 
 ---
 
@@ -75,7 +75,7 @@ Values for the current beam energy. The cross section and the stopping power car
 
 Angular distribution of the backscattered electrons, drawn on a stereonet whose centre is the surface-normal direction.
 
-- **Frequency** / **Average energy** / **Energy Standard Deviation** : the quantity mapped to colour — how many electrons leave in each direction, their mean energy, or the spread of that energy.
+- **Frequency** / **Average energy** / **Energy standard deviation** : the quantity mapped to colour — how many electrons leave in each direction, their mean energy, or the spread of that energy.
 - **Draw axes** : overlay the +X / ±Y / ±Z directions.
 - **Min** / **Max**, **Resolution**, **Color** : the colour-scale limits, the angular bin size of the histogram, and the colour map.
 

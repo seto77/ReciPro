@@ -101,7 +101,7 @@ The grey sphere at the centre represents the sample. The small red / green / blu
 | Copy to Excel | Copy the 3×3 rotation matrix as tab-separated text, one row per line; it can be pasted back with **Paste from Excel** |
 | Paste from Excel | Set the rotation matrix from the clipboard (3×3, tab-separated). Values that are not a rotation matrix (orthonormal rows and columns, determinant +1) are rejected with a message; small deviations such as spreadsheet rounding (up to 10⁻³) are corrected to the nearest rotation matrix <!-- 261105Cl 監査: FormRotation.cs の Paste の検査 (RᵀR − I ≤ 1e-3, det > 0) と Copy の改行 (\r\n) --> |
 | View along beam | Match the Main window projection (Z-axis perpendicular to screen) |
-| View Isometric | Switch to isometric projection |
+| View isometric | Switch to isometric projection |
 
 ---
 
@@ -126,7 +126,7 @@ $$
 |---------|--------|
 | **2nd axis** / **3rd axis** | Enable or disable that level (a goniometer with only one or two axes). Disabling sets its angle to 0. Disabling the 2nd axis also disables the 3rd. |
 | **Fix** | Keep that angle at its current value while Link decomposes a new orientation into goniometer angles (see below). |
-| **Reset Angles** | Set all three experimental angles to 0. |
+| **Reset angles** | Set all three experimental angles to 0. |
 
 
 ---
@@ -141,7 +141,7 @@ At the moment **Link** is checked, the offset $R_{\mathrm{base}} = R_{\mathrm{ex
 - editing an experimental angle rotates the crystal in every window;
 - an incremental rotation (arrow buttons, CTRL+SHIFT+arrows, or dragging in the Main window or other windows) is decomposed numerically into the enabled, non-**Fix**ed goniometer angles, and the crystal is set to the **nearest orientation the goniometer can reach** — so with fixed or disabled axes the crystal follows the goniometer's constraints rather than the mouse exactly;
 - the Main window's **Fix** check boxes still apply: with one of them on, the incremental rotation is made about that zone axis or plane normal before it is decomposed; <!-- 261105Cl 監査: Link 中も主窓の Fix が効く (FormMain.cs, bc75fdc4) -->
-- setting an absolute orientation — typing into the Main window's **Euler angles** boxes (the Φ, Θ, Ψ boxes of this window are read-only), **Reset Rotation**, **View along** ▸ **Axis** / **Plane**, or **Paste from Excel** in this window — applies it exactly, re-enables the 2nd and 3rd axes, clears every **Fix**, and re-decomposes it into all three goniometer angles.
+- setting an absolute orientation — typing into the Main window's **Euler angles** boxes (the Φ, Θ, Ψ boxes of this window are read-only), **Reset rotation**, **View along** ▸ **Axis** / **Plane**, **Paste from Excel** in this window, selecting a crystal with a different orientation in the crystal list, or setting the orientation from another window (for example applying an indexing result) or from a macro — applies it exactly and **turns Link off**; the status bar of the Main window says so. The goniometer angles, the **Fix** settings and the enabled axes are kept. Tick **Link** again to link at the new orientation. Operations that leave the orientation unchanged (for example editing the crystal) keep Link on. <!-- 261106Cl 作者の決定 G-13: FormRotation.cs SetRotation(bool) -->
 
 If the crystal is rotated while this window is closed with **Link** on, reopening the window re-bases the link on the current orientation (as if **Link** were ticked again), so neither the crystal orientation nor the goniometer angles jump. <!-- 261105Cl 監査: 開き直したときの Link の扱い (FormRotation.cs, ecdcec9a) -->
 

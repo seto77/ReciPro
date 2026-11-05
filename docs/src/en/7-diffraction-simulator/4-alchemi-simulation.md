@@ -93,7 +93,7 @@ The site contrast changes strongly — and can even reverse sign — between thi
 
 | Item | Description | Default |
 |------|-------------|---------|
-| **Max. beams** | Upper bound on the number of Bloch waves per orientation (1–1600). The union over the whole scan is larger | 120 |
+| **Max. diffr. waves** | Upper bound on the number of Bloch waves per orientation (1–1600). The union over the whole scan is larger | 120 |
 | **Solver** | Calculation engine for the eigenvalue problem: **Native** (Eigen C++) or **Managed** (.NET). Where the native solver is unavailable the choice is fixed to Managed | Native |
 | **Include the dechannelled component** | Whether to add $Y_\text{dech}$ above | on |
 | **Angular spread** | Convolves the curve with the angular spread of the incident beam: **None** or **Gaussian** with a FWHM in mrad. It is a post-process on the orientation axis, applied **before** the display normalization | None |
@@ -121,7 +121,7 @@ The list of atomic sites whose yield is computed separately, shown as `label ele
 
 ## Right pane: Curve tab
 
-When the calculation finishes, one curve is drawn per site × channel pair. The legend reads `site label / channel`.
+When the calculation finishes, one curve is drawn per site × channel pair. The legend reads `site label / channel`. If the crystal or the accelerating voltage is changed afterwards (also while the window is closed), the curves, the diagnostics and the thickness choice are cleared and the status line says why. <!-- 261106Cl 作者の決定 ALCHEMI -->
 
 | Item | Description |
 |------|-------------|
