@@ -292,15 +292,53 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
 
     #endregion リファレンス画像追加/削除関連
 
+    /// <summary>261105Cl 追加 (監査 I16): 探索ボタンの元の表記 (CodeLocalizer が各言語へ訳したもの)。探索の後に戻す</summary>
+    private string buttonSearchText;
+
     private void buttonSearch_Click(object sender, EventArgs e)
     {
-        if (buttonSearch.Text != "Stop!" && backgroundWorkerMain.IsBusy == false)
+        //if (buttonSearch.Text != "Stop!" && backgroundWorkerMain.IsBusy == false) // 261105Cl 変更前
+        if (!backgroundWorkerMain.IsBusy) // 261105Cl 変更 (監査 I16): 状態は表記 (英語の "Stop!") でなく、探索中かどうかで見る
         {
+            // 261105Cl 追加 (監査 I16): 参照パターンが無いと残差の初期値が 0 で、残差が NaN のまま探索が止まらずに回っていた。
+            //  結晶が無いと Crystals[0] で例外になり、完了ハンドラが e.Error を見ないので黙って止まっていた
+            if (diffractionPatternControl.Count == 0) // 261105Cl 追加
+            {
+                MessageBox.Show(this, Localization.Loc(en: "Add at least one reference pattern (*.ipa) before searching orientations.", // 261105Cl 追加
+                    ja: "方位を探索する前に、参照パターン (*.ipa) を 1 つ以上追加してください。",
+                    de: "Fügen Sie vor der Orientierungssuche mindestens ein Referenzmuster (*.ipa) hinzu.",
+                    fr: "Ajoutez au moins un cliché de référence (*.ipa) avant de rechercher les orientations.",
+                    es: "Añada al menos un patrón de referencia (*.ipa) antes de buscar orientaciones.",
+                    pt: "Adicione pelo menos um padrão de referência (*.ipa) antes de buscar orientações.",
+                    it: "Aggiungere almeno un pattern di riferimento (*.ipa) prima di cercare le orientazioni.",
+                    ru: "Перед поиском ориентаций добавьте хотя бы одну опорную картину (*.ipa).",
+                    zhHans: "搜索取向前请添加至少一个参考图样 (*.ipa)。", zhHant: "搜尋取向前請加入至少一個參考圖樣 (*.ipa)。",
+                    ko: "방위를 탐색하기 전에 참조 패턴(*.ipa)을 하나 이상 추가하세요."));
+                return; // 261105Cl 追加
+            }
+            if (Crystals == null || Crystals.Count == 0) // 261105Cl 追加
+            {
+                MessageBox.Show(this, Localization.Loc(en: "Select at least one crystal in the crystal list of the main window.", // 261105Cl 追加
+                    ja: "メインウィンドウの結晶リストで結晶を 1 つ以上選んでください。",
+                    de: "Wählen Sie in der Kristallliste des Hauptfensters mindestens einen Kristall aus.",
+                    fr: "Sélectionnez au moins un cristal dans la liste des cristaux de la fenêtre principale.",
+                    es: "Seleccione al menos un cristal en la lista de cristales de la ventana principal.",
+                    pt: "Selecione pelo menos um cristal na lista de cristais da janela principal.",
+                    it: "Selezionare almeno un cristallo nell'elenco dei cristalli della finestra principale.",
+                    ru: "Выберите хотя бы один кристалл в списке кристаллов главного окна.",
+                    zhHans: "请在主窗口的晶体列表中选择至少一个晶体。", zhHant: "請在主視窗的晶體清單中選擇至少一個晶體。",
+                    ko: "메인 창의 결정 목록에서 결정을 하나 이상 선택하세요."));
+                return; // 261105Cl 追加
+            }
+            buttonSearchText ??= buttonSearch.Text; // 261105Cl 追加
+
             sw.Restart();//260718Cl 変更: new Stopwatch()+Start() の再代入を Restart に (readonly 化に伴う)
 
             if (setting == null || graphControlResidual.Profile == null || graphControlResidual.Profile.Pt.Count == 0)
                 graphControlResidual.Profile = new Profile();
-            buttonSearch.Text = "Stop!";
+            //buttonSearch.Text = "Stop!"; // 261105Cl 変更前
+            buttonSearch.Text = Localization.Loc(en: "Stop", ja: "停止", de: "Stopp", fr: "Arrêter", es: "Detener", pt: "Parar", it: "Ferma", // 261105Cl 変更: 11 言語に
+                ru: "Стоп", zhHans: "停止", zhHant: "停止", ko: "중지");
             backgroundWorkerMain.RunWorkerAsync();
 
             for (int i = 0; i < diffractionPatternControl.Count; i++)
@@ -309,7 +347,8 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
         else
         {
             backgroundWorkerMain.CancelAsync();
-            buttonSearch.Text = "Search!";
+            //buttonSearch.Text = "Search!"; // 261105Cl 変更前
+            buttonSearch.Text = buttonSearchText ?? buttonSearch.Text; // 261105Cl 変更 (監査 I16): 英語の "Search!" でなく元の表記 (各言語の "Search Orientations") に戻す
             for (int i = 0; i < diffractionPatternControl.Count; i++)
                 diffractionPatternControl[i].ContolEnabled(true);
         }
@@ -597,7 +636,14 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
 
     private void backgroundWorkerMain_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
-        buttonSearch.Text = "Search!";
+        //buttonSearch.Text = "Search!"; // 261105Cl 変更前
+        buttonSearch.Text = buttonSearchText ?? buttonSearch.Text; // 261105Cl 変更 (監査 I16)
+        if (e.Error != null) // 261105Cl 追加 (監査 I16): 旧は例外を捨てて黙って止まっていた
+            MessageBox.Show(this, Localization.Loc(en: "The orientation search stopped because of an error: ", ja: "エラーのため方位の探索を中止しました: ", // 261105Cl 追加
+                de: "Die Orientierungssuche wurde wegen eines Fehlers abgebrochen: ", fr: "La recherche d'orientations s'est arrêtée à cause d'une erreur : ",
+                es: "La búsqueda de orientaciones se detuvo por un error: ", pt: "A busca de orientações parou devido a um erro: ",
+                it: "La ricerca delle orientazioni si è interrotta per un errore: ", ru: "Поиск ориентаций остановлен из-за ошибки: ",
+                zhHans: "因出错，取向搜索已停止: ", zhHant: "因發生錯誤，取向搜尋已停止: ", ko: "오류로 인해 방위 탐색이 중지되었습니다: ") + e.Error.Message);
         for (int i = 0; i < diffractionPatternControl.Count; i++)
             diffractionPatternControl[i].ContolEnabled(true);
     }
