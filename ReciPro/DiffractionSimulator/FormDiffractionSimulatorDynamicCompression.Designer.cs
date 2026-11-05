@@ -934,7 +934,8 @@ namespace ReciPro
             graphControl.Smoothing = false;
             graphControl.TabIndex = 0;
             graphControl.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            graphControl.UnitX = " nm";
+            //graphControl.UnitX = " nm"; // 261105Cl 変更前
+            graphControl.UnitX = " µm"; // 261105Cl 変更 (監査 D17): 深さは µm (時間 = 深さ / Us で km/s = µm/ns、吸収は /10000 で cm にしている)
             graphControl.UnitY = " MBar";
             graphControl.MousePositionVisible = false;
             graphControl.LinePositionChanged += new Crystallography.Controls.GraphControl.LinePositionChengedEventHandler(graphControl1_LinePositionChanged);
