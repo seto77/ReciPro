@@ -623,7 +623,17 @@ public partial class FormMain : FormBase
         // 最小化/最大化時は WindowState を一旦 Normal に戻し、RestoreBounds 相当を保存する。
         if (WindowState != FormWindowState.Normal)
             WindowState = FormWindowState.Normal;
-        Registry(Reg.Mode.Write);
+        //261105Cl 修正: Options ▸ "Reset registry settings on exit" を処理するコードが無く、チェックしても何も起きなかった。
+        //  チェック時は書き込まずにレジストリキーごと削除し、次回起動を初期設定にする。
+        //  (このクラスには Registry(Reg.Mode) メソッドがあるので Microsoft.Win32.Registry は完全修飾で書く)
+        //旧: Registry(Reg.Mode.Write);
+        if (resetRegistryToolStripMenuItem.Checked)
+        {
+            try { Microsoft.Win32.Registry.CurrentUser.DeleteSubKeyTree(@"Software\Crystallography\ReciPro", false); }
+            catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"Reset registry failed: {ex.Message}"); }
+        }
+        else
+            Registry(Reg.Mode.Write);
 
         Properties.Settings.Default.Save();
 

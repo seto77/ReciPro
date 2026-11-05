@@ -190,7 +190,9 @@ public partial class FormImageSimulator : FormBase
                 checkBoxOpenAperture.Checked = true;
             else
             {
-                checkBoxOpenAperture.Checked = true;
+                //261105Cl 修正: 有限値でも絞り開放をオンにしていたため、プリセット適用やマクロ (HRTEM.ApertureSemiangle) で絞りが開放になっていた。
+                //旧: checkBoxOpenAperture.Checked = true;
+                checkBoxOpenAperture.Checked = false;
                 numericBoxObjAperRadius.Value = value * 1000;
             }
         }
@@ -2090,7 +2092,9 @@ public partial class FormImageSimulator : FormBase
             if (box.PseudoBitmap.Tag is ImageInfo { LockIntensity: false })
             {
                 if (checkBoxGaussianBlur.Checked)
-                    box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / numericBoxResolution.Value, PseudoBitmap.BlurModeEnum.Gaussian);
+                    //261105Cl 修正: SetBlurImage の引数は半値半幅 (HWHM)。UI は FWHM なので 1/2 にする (ScalablePictureBoxAdvanced と同じ)。
+                    //旧: box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / numericBoxResolution.Value, PseudoBitmap.BlurModeEnum.Gaussian);
+                    box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / numericBoxResolution.Value / 2, PseudoBitmap.BlurModeEnum.Gaussian);
                 else
                     box.PseudoBitmap.SetOriginalGray();
 
