@@ -32,7 +32,23 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
     private readonly Timer timer = new();
     private Crystal crystal => FormDiffractionSimulator.formMain.Crystal;
 
-    private Matrix3D NeutralDirection { get; set; } = Matrix3D.IdentityMatrix;
+    //private Matrix3D NeutralDirection { get; set; } = Matrix3D.IdentityMatrix; // 261105Cl 変更前
+    /// <summary>ホルダーを傾けていないときの結晶の方位 (今の方位 = HolderRotation⁻¹ · NeutralDirection)。
+    /// 261105Cl 変更: 設定のたびに、今の傾斜で結晶があるはずの方位と、その結晶を控える (<see cref="numericBoxTilt_ValueChanged"/> で、ほかの窓で回されたかを見る)</summary>
+    private Matrix3D NeutralDirection
+    {
+        get => neutralDirection;
+        set
+        {
+            neutralDirection = value;
+            expectedRotation = HolderRotation.Inverse() * value;
+            expectedCrystal = FormDiffractionSimulator?.formMain?.Crystal;
+        }
+    }
+    private Matrix3D neutralDirection = Matrix3D.IdentityMatrix; // 261105Cl 追加
+    /// <summary>261105Cl 追加: この窓が最後に結晶の方位を控えた (または置いた) ときの方位 (写し) と結晶</summary>
+    private Matrix3D expectedRotation = Matrix3D.IdentityMatrix;
+    private Crystal expectedCrystal;
 
     private Matrix3D HolderRotation =>
         Matrix3D.RotZ(numericBoxTiltXDirection.RadianValue) *
@@ -366,9 +382,24 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
     {
         if (skipEventFromThis) return;
 
+        // 261105Cl 追加: 親 (回折シミュレータ) が隠れていると、主窓での回転・結晶の切り替えがこの窓に届かない (FormMain.SetRotation・SetCrystal は
+        //   親が見えているときしか中継しない。この窓は親を閉じても開いたまま残る)。そのまま Tilt を動かすと結晶が昔の方位・前の結晶の方位へ飛んでいた。
+        //   控えた方位・結晶と今のものが違えば、ほかの窓で回した (替えた) ので、変更前の傾斜 H_old = N · R_expected⁻¹ のもとでの今の方位として N を取り直す
+        static bool same(Matrix3D a, Matrix3D b) =>
+            Math.Abs(a.E11 - b.E11) < 1e-9 && Math.Abs(a.E12 - b.E12) < 1e-9 && Math.Abs(a.E13 - b.E13) < 1e-9 &&
+            Math.Abs(a.E21 - b.E21) < 1e-9 && Math.Abs(a.E22 - b.E22) < 1e-9 && Math.Abs(a.E23 - b.E23) < 1e-9 &&
+            Math.Abs(a.E31 - b.E31) < 1e-9 && Math.Abs(a.E32 - b.E32) < 1e-9 && Math.Abs(a.E33 - b.E33) < 1e-9;
+        var crystalChanged = !ReferenceEquals(expectedCrystal, crystal);
+        if (crystalChanged || !same(expectedRotation, crystal.RotationMatrix))
+        {
+            NeutralDirection = NeutralDirection * expectedRotation.Inverse() * crystal.RotationMatrix;
+            if (crystalChanged) setVector();
+        }
+
         skipEventFromParent = true;
         FormDiffractionSimulator.formMain.SetRotation(HolderRotation.Inverse() * NeutralDirection);
         skipEventFromParent = false;
+        expectedRotation = HolderRotation.Inverse() * NeutralDirection; // 261105Cl 追加: いま置いた方位 (写し)
         Draw();
     }
 
