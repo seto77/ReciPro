@@ -51,7 +51,7 @@ $$
 
 Deselezionare **Includi la componente decanalizzata** nel riquadro **Calcolo** elimina questo termine. Agli spessori tipici vale decine di punti percentuali della resa totale, quindi ometterlo fa apparire il contrasto di sito più forte di quanto sia.
 
-### Grandezza in uscita
+### Grandezza in uscita {#output-quantity}
 
 Per un canale di guscio la grandezza primaria è il **numero di lacune di guscio interno generate per elettrone incidente**; la conversione in fotoni X (resa di fluorescenza e ramificazione delle righe) non è applicata. Per una serie di righe X (Kα, Kβ, Lα, Lβ, Mα), elencata dopo i gusci in **Canali di ionizzazione** e non spuntata per impostazione predefinita, è il **numero di fotoni X generati per elettrone incidente** (in tutte le direzioni): le rese di fluorescenza, le cascate Coster–Kronig e radiative e la ramificazione delle righe di xraylib 4.2.1 sono applicate, e la cascata Auger non è inclusa. **L'autoassorbimento dei raggi X nel campione e l'efficienza e l'angolo solido del rivelatore NON sono applicati in NESSUNO dei due casi.**
 
@@ -250,7 +250,7 @@ Ciò che quel valore segnala è il punto in cui la riduzione a un **unico** vett
 
 L'energia della riga da sola non può certificare un risultato: entrano l'estensione spaziale del guscio, l'orientazione, lo spessore e i vettori reciproci effettivamente richiesti dalla base. Trattate 3–4 keV come un invito a guardare più da vicino, non come un esito di prova. Dove potete scegliere, confrontare righe di **energia simile** tende a rendere più confrontabile la distorsione da delocalizzazione delle due; Jones (2002) raccomanda esattamente questo come primo passo pratico e, come secondo, di preferire una fila sistematica a un asse di zona — la geometria che la v1 calcola (un asse di zona canalizza più fortemente, ma richiede una correzione di delocalizzazione maggiore).
 
-⚠ Le basse energie di emissione risentono anche di più dell'**autoassorbimento dei raggi X**, benché quanto dipenda dalla composizione del campione e dalle sue soglie di assorbimento, dal cammino e dall'angolo di uscita, non dalla sola energia emessa. È una sorgente d'errore **distinta**, per nulla modellata (vedere [Grandezza in uscita](#grandezza-in-uscita) sopra), e falsa il confronto con un esperimento indipendentemente da quanto fa l'approssimazione locale.
+⚠ Le basse energie di emissione risentono anche di più dell'**autoassorbimento dei raggi X**, benché quanto dipenda dalla composizione del campione e dalle sue soglie di assorbimento, dal cammino e dall'angolo di uscita, non dalla sola energia emessa. È una sorgente d'errore **distinta**, per nulla modellata (vedere [Grandezza in uscita](#output-quantity) sopra), e falsa il confronto con un esperimento indipendentemente da quanto fa l'approssimazione locale.
 
 ### Ipotesi del modello
 

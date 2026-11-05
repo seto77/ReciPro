@@ -51,7 +51,7 @@ $$
 
 Décocher **Inclure la composante déchenalisée** dans le cadre **Calcul** supprime ce terme. Il représente plusieurs dizaines de pour cent du rendement total aux épaisseurs usuelles ; l'omettre fait paraître le contraste de site plus fort qu'il ne l'est.
 
-### Grandeur de sortie
+### Grandeur de sortie {#output-quantity}
 
 Pour un canal de couche, la grandeur primaire est le **nombre de lacunes de couche interne créées par électron incident** ; la conversion en photons X (rendement de fluorescence et branchement des raies) n'est pas appliquée. Pour une série de raies X (Kα, Kβ, Lα, Lβ, Mα), listée après les couches sous **Canaux d'ionisation** et décochée par défaut, c'est le **nombre de photons X générés par électron incident** (dans toutes les directions) : les rendements de fluorescence, les cascades Coster–Kronig et radiatives et le branchement des raies de xraylib 4.2.1 sont appliqués, et la cascade Auger n'est pas incluse. **L'auto-absorption des rayons X dans l'échantillon, ainsi que l'efficacité et l'angle solide du détecteur, NE sont appliqués dans AUCUN des deux cas.**
 
@@ -250,7 +250,7 @@ Ce que ce chiffre repère, c'est l'endroit où la réduction à un **seul** vect
 
 L'énergie de la raie ne suffit pas à certifier un résultat : l'extension spatiale de la couche, l'orientation, l'épaisseur et les vecteurs réciproques réellement exigés par la base interviennent tous. Traitez 3–4 keV comme une invitation à regarder de plus près, non comme une note de réussite. Lorsque le choix existe, comparer des raies d'**énergies voisines** rend les biais de délocalisation des deux plus comparables ; Jones (2002) recommande précisément cela comme première mesure pratique, et comme seconde de préférer une rangée systématique à un axe de zone — c'est la géométrie que calcule la v1 (un axe de zone canalise plus fortement, mais demande une correction de délocalisation plus grande).
 
-⚠ Les basses énergies d'émission souffrent aussi le plus de l'**auto-absorption des rayons X** — l'ampleur dépendant toutefois de la composition de l'échantillon et de ses seuils d'absorption, de la longueur de trajet et de l'angle de sortie, et non de la seule énergie émise. C'est une source d'erreur **distincte**, absolument pas modélisée (voir [Grandeur de sortie](#grandeur-de-sortie) plus haut), et elle fausse la comparaison avec une expérience indépendamment de ce que fait l'approximation locale.
+⚠ Les basses énergies d'émission souffrent aussi le plus de l'**auto-absorption des rayons X** — l'ampleur dépendant toutefois de la composition de l'échantillon et de ses seuils d'absorption, de la longueur de trajet et de l'angle de sortie, et non de la seule énergie émise. C'est une source d'erreur **distincte**, absolument pas modélisée (voir [Grandeur de sortie](#output-quantity) plus haut), et elle fausse la comparaison avec une expérience indépendamment de ce que fait l'approximation locale.
 
 ### Hypothèses du modèle
 

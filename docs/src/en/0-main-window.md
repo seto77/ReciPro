@@ -23,7 +23,7 @@ The main window installs several **application-wide** shortcuts. They keep worki
 |----------|--------|
 | <kbd>F1</kbd> | Open this page of the online manual |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + arrow keys | Rotate the crystal one step in that direction (hold two arrows for a diagonal) |
-| Hold <kbd>CTRL</kbd> while ReciPro starts | Start with OpenGL disabled (recovery for graphics problems) |
+| Hold <kbd>CTRL</kbd> while ReciPro starts | Start with OpenGL disabled (recovery for graphics problems; this launch only, not saved) |
 | Left-drag the orientation widget (bottom-left, under *Current orientation*) | Rotate the crystal |
 | Right double-click the orientation widget | Copy the widget image to the clipboard |
 | Single-click a function button | Open / close that window (a minimised window is restored instead of closed) |
@@ -186,7 +186,7 @@ See [Rotation Geometry](4-rotation-geometry.md) and [Appendix A1. Coordinate sys
 
 ## Crystal Information
 
-Edit lattice parameters, symmetry, and atoms; drag & drop CIF/AMC files to load a structure. This control is shared by ReciPro, PDIndexer, and CSManager, but the tabs and features shown differ per application. ReciPro shows the Basic Info, Atom, and Reference tabs (the EOS, Elasticity, and other tabs are for the other applications and are not shown in ReciPro).
+Edit lattice parameters, symmetry, and atoms; drag & drop CIF/AMC files to load a structure. This control is shared by ReciPro, PDIndexer, and CSManager, but the tabs and features shown differ per application. ReciPro shows the **Basic Info.**, **Atom Info.**, and **Ref.** tabs (the EOS, Elasticity, and other tabs are for the other applications and are not shown in ReciPro).
 
 > **Important**: Press **Add** or **Replace** to save changes.
 
@@ -195,9 +195,9 @@ Edit lattice parameters, symmetry, and atoms; drag & drop CIF/AMC files to load 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: CrystalControl.resx colorControl.HeaderText/ToolTip) -->
 The top of the panel always shows **Name** (crystal name), **Formula** (chemical formula, computed from the atom list), **Z** (number of formula units per unit cell), and **Color** (the crystal's display colour, used in the 3D structure view and in diffraction-profile curves). The **Symmetry info.** and **Beam interaction** buttons open the [Symmetry Information](2-symmetry-information.md) and [Beam Interaction](3-beam-interaction.md) windows. Right-click the panel and choose [Details of the chemical composition](#chemical-composition) for wt%, at% and conversion to oxides.
 
-### Basic Info tab
+### Basic Info. tab {#basic-info-tab}
 
-![Basic Info](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
+![Basic Info.](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
 
 Lattice parameters, symmetry, and quantities derived from them.
 
@@ -212,9 +212,9 @@ Lattice parameters, symmetry, and quantities derived from them.
 | Change axes/origin setting | Same as the context-menu item **Change the axes/origin setting**: convert to another axis/origin setting of the same space group. |
 | Atom density / Electron density | Numbers of atoms and electrons per unit-cell volume, shown in Å⁻³ / nm⁻³ following the **Unit** selection. |
 
-### Atom tab
+### Atom Info. tab {#atom-tab}
 
-![Atom](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
+![Atom Info.](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: AtomControl.resx multi/wyckLet/siteSymDataGridViewTextBoxColumn.HeaderText) -->
 Set the species, position, temperature factor, and scattering factor of each atom. Edit the atom list with **Add**, **Replace** (replace the selected row), **Up/Down** (reorder), and **Delete**. The atom list also shows, for each site, its multiplicity (**Multi.**), Wyckoff letter (**Wyck. Let.**) and site symmetry (**Site Sym.**). Each atom has:
@@ -247,9 +247,9 @@ Right-click an atom row and choose **Show equivalent atom positions** to open a 
 | Electron | Electron scattering factors — neutral atoms from Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276; ions from Peng (1998), *Acta Cryst.* **A54**, 481–485. |
 | Neutron | Neutron scattering lengths. Choose **Natural isotope abundance** or **Custom isotope abundance** (an arbitrary isotope composition). |
 
-### Reference tab
+### Ref. tab {#reference-tab}
 
-![Reference](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
+![Ref.](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
 
 Record the source of the structure: **Note**, **Authors**, **Journal**, and **Title**.
 

@@ -51,7 +51,7 @@ $$
 
 Desmarcar **Incluir la componente descanalizada** en el cuadro **Cálculo** elimina este término. Supone decenas de por ciento del rendimiento total a espesores típicos, así que omitirlo hace que el contraste de sitio parezca más fuerte de lo que es.
 
-### Magnitud de salida
+### Magnitud de salida {#output-quantity}
 
 Para un canal de capa, la magnitud primaria es el **número de vacantes de capa interna generadas por electrón incidente**; no se aplica la conversión a fotones de rayos X (rendimiento de fluorescencia y ramificación de líneas). Para una serie de líneas de rayos X (Kα, Kβ, Lα, Lβ, Mα), que aparece tras las capas en **Canales de ionización** y está desmarcada de forma predeterminada, es el **número de fotones de rayos X generados por electrón incidente** (en todas las direcciones): se aplican los rendimientos de fluorescencia, las cascadas Coster–Kronig y radiativas y la ramificación de líneas de xraylib 4.2.1, y no se incluye la cascada Auger. **En NINGUNO de los dos casos se aplican la autoabsorción de rayos X en la muestra ni la eficiencia y el ángulo sólido del detector.**
 
@@ -250,7 +250,7 @@ Lo que marca esa cifra es dónde la reducción a un **único** vector $G$ empiez
 
 La energía de la línea por sí sola no puede certificar un resultado: influyen la extensión espacial de la capa, la orientación, el espesor y los vectores recíprocos que la base realmente requiere. Trate 3–4 keV como una señal para mirar con más cuidado, no como una marca de aprobado. Cuando pueda elegir, comparar líneas de **energía parecida** tiende a hacer más comparable el sesgo de deslocalización de ambas; Jones (2002) recomienda exactamente eso como primer paso práctico, y como segundo, preferir una fila sistemática a un eje de zona, que es la geometría que calcula la v1 (un eje de zona canaliza con más fuerza, pero necesita una corrección de deslocalización mayor).
 
-⚠ Las energías de emisión bajas son además las más afectadas por la **autoabsorción de rayos X**, aunque cuánto depende de la composición de la muestra y de sus bordes de absorción, del recorrido y del ángulo de salida, no solo de la energía emitida. Es una fuente de error **distinta**, no modelada en absoluto (véase [Magnitud de salida](#magnitud-de-salida) más arriba), y distorsiona la comparación con un experimento con independencia de lo que haga la aproximación local.
+⚠ Las energías de emisión bajas son además las más afectadas por la **autoabsorción de rayos X**, aunque cuánto depende de la composición de la muestra y de sus bordes de absorción, del recorrido y del ángulo de salida, no solo de la energía emitida. Es una fuente de error **distinta**, no modelada en absoluto (véase [Magnitud de salida](#output-quantity) más arriba), y distorsiona la comparación con un experimento con independencia de lo que haga la aproximación local.
 
 ### Supuestos del modelo
 

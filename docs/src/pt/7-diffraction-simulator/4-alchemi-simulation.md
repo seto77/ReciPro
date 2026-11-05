@@ -51,7 +51,7 @@ $$
 
 Desmarcar **Incluir a componente descanalizada** na caixa **Cálculo** elimina esse termo. Em espessuras típicas ele responde por dezenas de por cento do rendimento total, de modo que omiti-lo faz o contraste de sítio parecer mais forte do que é.
 
-### Grandeza de saída
+### Grandeza de saída {#output-quantity}
 
 Para um canal de camada, a grandeza primária é o **número de lacunas de camada interna geradas por elétron incidente**; a conversão em fótons de raios X (rendimento de fluorescência e ramificação de linhas) não é aplicada. Para uma série de linhas de raios X (Kα, Kβ, Lα, Lβ, Mα), listada depois das camadas em **Canais de ionização** e desmarcada por padrão, é o **número de fótons de raios X gerados por elétron incidente** (em todas as direções): aplicam-se os rendimentos de fluorescência, as cascatas Coster–Kronig e radiativas e a ramificação de linhas do xraylib 4.2.1, e a cascata Auger não é incluída. **A autoabsorção de raios X na amostra e a eficiência e o ângulo sólido do detector NÃO são aplicados em NENHUM dos dois casos.**
 
@@ -250,7 +250,7 @@ O que esse valor assinala é onde a redução a um **único** vetor $G$ começa 
 
 A energia da linha, por si só, não certifica um resultado: entram a extensão espacial da camada, a orientação, a espessura e os vetores recíprocos que a base realmente exige. Trate 3–4 keV como um sinal para olhar com mais cuidado, não como uma marca de aprovação. Quando houver escolha, comparar linhas de **energia semelhante** tende a tornar mais comparável o viés de deslocalização das duas; Jones (2002) recomenda exatamente isso como primeiro passo prático e, como segundo, preferir uma fila sistemática a um eixo de zona — que é a geometria calculada pela v1 (um eixo de zona canaliza mais fortemente, mas exige uma correção de deslocalização maior).
 
-⚠ Energias de emissão baixas também sofrem mais fortemente com a **autoabsorção de raios X** — embora o quanto dependa da composição da amostra e de suas bordas de absorção, do caminho percorrido e do ângulo de saída, não apenas da energia emitida. É uma fonte de erro **separada**, não modelada de forma alguma (veja [Grandeza de saída](#grandeza-de-saída) acima), e afeta a comparação com um experimento independentemente do que faça a aproximação local.
+⚠ Energias de emissão baixas também sofrem mais fortemente com a **autoabsorção de raios X** — embora o quanto dependa da composição da amostra e de suas bordas de absorção, do caminho percorrido e do ângulo de saída, não apenas da energia emitida. É uma fonte de erro **separada**, não modelada de forma alguma (veja [Grandeza de saída](#output-quantity) acima), e afeta a comparação com um experimento independentemente do que faça a aproximação local.
 
 ### Premissas do modelo
 

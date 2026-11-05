@@ -2,9 +2,9 @@
 
 **CBED (Convergent-Beam Electron Diffraction) simulation** computes and displays convergent-beam diffraction patterns using the Bloch wave (Bethe) method. CBED patterns show diffraction disks instead of spots and contain rich information about crystal symmetry, thickness, and structure.
 
-> This page lists all settings of the dedicated window that opens when you select **Wavelength = Electron** and **Incident beam = Convergence (electron)** in the [Diffraction Simulator](index.md). Switching the incident beam to convergence automatically switches **Intensity calculation** to **Dynamical**, and this CBED settings window opens. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulatorCBED.cs:FormDiffractionSimulatorCBED_VisibleChanged) -->The computed disks can be saved from **File > Save CBED disks** / **Copy CBED disks** of the main window. For drawing and saving diffraction patterns and other operations common to the diffraction simulator, see the [overview page](index.md).
+> This page lists all settings of the dedicated window that opens when you select **Wave source** = **Electron** and **Optics** = **Convergence (electron)** in the [Diffraction Simulator](index.md). Selecting **Convergence (electron)** automatically switches **Intensity calculation** to **Dynamical theory**, and this CBED settings window opens. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulatorCBED.cs:FormDiffractionSimulatorCBED_VisibleChanged) --> The computed disks can be saved from **File > Save CBED disks** / **Copy CBED disks** of the main window. For drawing and saving diffraction patterns and other operations common to the diffraction simulator, see the [overview page](index.md).
 
-GUI conditions: Wave Length = Electron · Incident beam = Convergence (electron) · Intensity calculation = Dynamical (automatic)
+GUI conditions: Wave source = Electron · Optics = Convergence (electron) · Intensity calculation = Dynamical theory (automatic)
 
 ![CBED Simulation](../../assets/cap-en-auto/FormDiffractionSimulatorCBED.png)
 
@@ -19,7 +19,7 @@ While this window is open, the **Bloch Wave Settings** and **Appearance** panels
 
 | Parameter | Description | Default / Typical |
 |-----------|-------------|-------------------|
-| **Mode** | **CBED**: standard convergent-beam pattern where each disk corresponds to one reflection, with the transmitted disk (000) at the center. **LACBED** (Large-Angle CBED): large-angle convergent-beam pattern where disks from different reflections overlap. Useful for observing higher-order Laue zone (HOLZ) lines and symmetry | CBED |
+| **CBED** / **LACBED** | **CBED**: standard convergent-beam pattern where each disk corresponds to one reflection, with the transmitted disk (000) at the center. **LACBED** (Large-Angle CBED): large-angle convergent-beam pattern where disks from different reflections overlap. Useful for observing higher-order Laue zone (HOLZ) lines and symmetry | CBED |
 | **Semiangle (mrad)** | Half-angle of the convergent beam cone (0–2000 mrad). Determines the size of each diffraction disk (the disk diameter in reciprocal space corresponds to $2\alpha$) | default 6 mrad; typically 5–30 mrad |
 | **Disk resolution (mrad/px)** | Angular resolution within each disk. The disk is sampled on an $N\times N$ grid with $N = \lceil 2\alpha / \text{resolution} \rceil$, and only the points inside the circle are computed. Smaller values give higher resolution, but the number of beam directions grows as the square, so the computation time also increases quadratically. The resulting count (= total number of beam directions) is shown as **Total pixels** | default 0.1 mrad/px |
 | **Number of diffracted waves** | Maximum number of beams included in the Bloch wave calculation at each incident beam direction (1–2048). More beams give higher accuracy, but the cost of the eigenvalue problem grows as $O(N^3)$ | default 64; typically 100–500 |

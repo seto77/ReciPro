@@ -56,7 +56,7 @@ See [Appendix A3.4 — STEM calculation](../appendix/a3-bloch-wave/stem.md) for 
 | **Cc** | Chromatic aberration coefficient (mm) | 1.0–2.0 mm |
 | **ΔV** | Full width at half maximum of the electron energy spread (eV) | 0.5–2.0 eV |
 
-> **β (illumination semi-angle) is disabled in STEM mode**, because the convergence angle α takes its role. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:RunSTEM Lenz) -->Defocus and Cs enter the probe through the same aberration function $\chi$ as in HRTEM (negative Δf = underfocus; see [HRTEM simulation](1-hrtem-simulation.md#tem-conditions)). The right-click menu of **TEM conditions** (zero aberrations, Scherzer defocus, microscope presets) works here too.
+> **β (illumination semi-angle) is disabled in STEM mode**, because the convergence angle α takes its role. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:RunSTEM Lenz) --> Defocus and Cs enter the probe through the same aberration function $\chi$ as in HRTEM (negative Δf = underfocus; see [HRTEM simulation](1-hrtem-simulation.md#tem-conditions)). The right-click menu of **TEM conditions** (zero aberrations, Scherzer defocus, microscope presets) works here too.
 
 ---
 
@@ -111,7 +111,7 @@ The detector angles apply only to the STEM reference image (Elastic / TDS / Elas
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.resx:groupBoxDiffractedWaves.Text) -->
 ![Diffracted waves](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** : maximum number of Bloch waves used in the Bethe method (default 80). The eigenvalue-problem cost scales as the cube of the number of waves.
+- Maximum number of Bloch waves used in the Bethe method (default 80). The eigenvalue-problem cost scales as the cube of the number of waves.
 
 ---
 
@@ -190,7 +190,7 @@ STEM simulation is computationally expensive, so set the following parameters ap
 | **Convergence angle** | Larger → more CBED disk overlap → higher cost |
 | **Bloch waves** | Eigenvalue-problem cost scales as N³ |
 | **Angular resolution** | Finer → more accurate but cost scales as N² |
-| **Image pixels (Size)** | <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:RunSTEM) -->Only the final real-space synthesis (pixels × number of $Q$ vectors); Stages 1–4 do not depend on it |
+| **Image pixels (Size)** | <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:RunSTEM) --> Only the final real-space synthesis (pixels × number of $Q$ vectors); Stages 1–4 do not depend on it |
 
 ---
 

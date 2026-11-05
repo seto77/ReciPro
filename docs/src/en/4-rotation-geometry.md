@@ -140,7 +140,7 @@ At the moment **Link** is checked, the offset $R_{\mathrm{base}} = R_{\mathrm{ex
 
 - editing an experimental angle rotates the crystal in every window;
 - an incremental rotation (arrow buttons, CTRL+SHIFT+arrows, or dragging in the Main window or other windows) is decomposed numerically into the enabled, non-**Fix**ed goniometer angles, and the crystal is set to the **nearest orientation the goniometer can reach** — so with fixed or disabled axes the crystal follows the goniometer's constraints rather than the mouse exactly;
-- setting an absolute orientation (Euler-angle boxes, **Reset Rotation**, **View along** Axis/Plane, **Paste from Excel**) applies it exactly, re-enables the 2nd and 3rd axes, clears every **Fix**, and re-decomposes it into all three goniometer angles.
+- setting an absolute orientation — typing into the Main window's **Euler angles** boxes (the Φ, θ, Ψ boxes of this window are read-only), **Reset Rotation**, **View along** ▸ **Axis** / **Plane**, or **Paste from Excel** in this window — applies it exactly, re-enables the 2nd and 3rd axes, clears every **Fix**, and re-decomposes it into all three goniometer angles.
 
 ### Example workflow
 

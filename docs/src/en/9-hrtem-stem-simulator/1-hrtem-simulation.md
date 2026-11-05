@@ -58,7 +58,7 @@ and each diffracted wave is multiplied by $\exp[-i\chi(u)]$, so **negative Δf i
 
 ### Scherzer defocus
 
-The defocus value near which the phase contrast is optimal, calculated from the current wavelength and spherical aberration $C_s$ (shown for reference). <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:Scherzer) -->For negative $C_s$ the displayed value is $+\sqrt{\tfrac{4}{3}|C_s|\lambda}$.
+The defocus value near which the phase contrast is optimal, calculated from the current wavelength and spherical aberration $C_s$ (shown for reference). <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:Scherzer) --> For negative $C_s$ the displayed value is $+\sqrt{\tfrac{4}{3}|C_s|\lambda}$.
 
 $$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\approx -1.155\,\sqrt{C_s \lambda}\right)$$
 
@@ -110,7 +110,7 @@ Restricts the diffracted waves that pass through the objective aperture. The Blo
 Selects how partial coherence (β and the focus spread δ) is included. The exit wave is computed for a single incident direction (the beam axis); the illumination spread and energy spread enter only through the envelope functions below.
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:GetHRTEMImage (quasiMode)) -->
-- **Linear image** (quasi-coherent model) : computationally cheap. Each diffracted wave $\psi_g$ of the dynamical exit wave is multiplied by $\exp[-i\chi(g)]\,E_\text{s}(g)\,E_\text{c}(g)$ and the image is $\left|\sum_g\right|^2$. Accurate when the image is dominated by interference with the transmitted beam (thin specimens).
+- **Linear image** (quasi-coherent model) : computationally cheap. Each diffracted wave $\psi_g$ of the dynamical exit wave is multiplied by $\exp[-i\chi(g)]\,E_\text{s}(g)\,E_\text{c}(g)$ and the waves are summed coherently: $I(\mathbf{r}) = \left|\sum_g \psi_g\,e^{-i\chi(g)}\,E_\text{s}(g)\,E_\text{c}(g)\,e^{2\pi i\,\mathbf{g}\cdot\mathbf{r}}\right|^2$. Accurate when the image is dominated by interference with the transmitted beam (thin specimens).
 - **Transmission cross coefficient** : computationally expensive but more accurate. Every beam pair $(g,h)$ is summed with the mutual envelope (the full transmission cross coefficient), and is the model to use for strong scatterers that excite many strong diffracted waves. The cost grows as the square of the number of beams inside the aperture.
 
 For details, see [Appendix A3.2 — HRTEM image formation](../appendix/a3-bloch-wave/hrtem.md).

@@ -120,7 +120,7 @@ Shown in STEM mode only. Selects which scattering component of the calculated ST
 
 Sets the items overlaid on the image.
 
-- **Unit cell** : overlays the outline of the projected unit cell, so you can relate the image contrast to the crystal lattice. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:drawSymbols) -->The edges parallel to **a**, **b** and **c** are drawn in red, green and blue, centred on the image centre.
+- **Unit cell** : overlays the outline of the projected unit cell, so you can relate the image contrast to the crystal lattice. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:drawSymbols) --> The edges parallel to **a**, **b** and **c** are drawn in red, green and blue, centred on the image centre.
 - **Label** : overlays the label of each pane — the thickness `t=` and defocus `f=` (nm) in HRTEM / STEM, or the pane name (for example *Ug magnitude*) in Potential mode. **Size** (font size) and **Color** can be specified. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:BuildPseudoGrid / simulatePotential) -->
 - **Scale bar** : overlays a scale bar. **Length** (nm) and **Color** can be specified.
 
@@ -165,7 +165,7 @@ The microscope presets (ARM300F, 2100F, …) are not in this list; they are in t
 ![Help menu](../../assets/cap-en-auto/FormImageSimulator.menuStrip1.helpToolStripMenuItem.png)
 
 - **Basic concept of HRTEM simulation** : opens the explanation of HRTEM image formation ([Appendix A3.2](../appendix/a3-bloch-wave/hrtem.md)).
-- **Calculation library** : selects the calculation library — **Native code** (fast C++/Eigen) or **Managed code** (.NET). Native is normally faster. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:SimulateHRTEM / FormImageSimulator_Load) -->The choice is used only for the HRTEM image synthesis; STEM selects its solver automatically (STEM-EDX always needs the native library), and the choice is reset to **Native code** each time ReciPro starts.
+- **Calculation library** : selects the calculation library — **Native code** (fast C++/Eigen) or **Managed code** (.NET). Native is normally faster. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:SimulateHRTEM / FormImageSimulator_Load) --> The choice is used only for the HRTEM image synthesis; STEM selects its solver automatically (STEM-EDX always needs the native library), and the choice is reset to **Native code** each time ReciPro starts.
 
 ---
 

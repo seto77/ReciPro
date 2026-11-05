@@ -30,7 +30,7 @@ This window has no modifier-key combinations; it is driven by ordinary clicks. T
 | <kbd>F1</kbd> | Open this page of the online manual |
 | <kbd>ENTER</kbd> in any search field | Run the database search (same as the **Search** button) |
 | Click a row in the result table | Load that crystal into the main window |
-| Click an element in the **Periodic table** popup | Cycle its filter: *ignore* → *must include* → *must exclude* |
+| Click an element in the **Periodic Table** popup | Cycle its filter: *may or not include* → *must include* → *must exclude* |
 
 → See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
 
@@ -65,14 +65,14 @@ Enter the search criteria below and press the **Search** button or the **Enter**
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: SearchCrystalControl.cs:backgroundWorkerSearch_DoWork) -->
 Free-text match against the crystal name. Partial matches are allowed; case is ignored. Only the criteria whose check boxes are ticked are applied, and they are combined with AND.
 
-### Element
+### Elements {#element}
 
 Press the **Periodic Table** button to open the element selector. Each element button cycles between three states:
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormPeriodicTable.cs: NeutralColor=LightYellow, IncludeColor=LightBlue, ExcludeColor=LightCoral, button_Click) -->
-- **May or may not include** (default — yellow)
-- **Must include** (blue)
-- **Must exclude** (red)
+- **may or not include** (default — yellow)
+- **must include** (blue)
+- **must exclude** (red)
 
 A crystal must contain every *must include* element and none of the *must exclude* elements; entries without atom data are excluded while the **Elements** criterion is on.
 

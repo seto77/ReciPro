@@ -15,7 +15,7 @@ The stereonet itself is a 2-D projection; an optional 3-D sphere can be shown wi
 | <kbd>F1</kbd> | Open this page of the online manual |
 | Left-drag near the centre | Tilt the crystal |
 | Left-drag the outer area | Spin the crystal about the view axis |
-| Left double-click | Switch between **Plane** and **Axis** projection |
+| Left double-click | Switch between **Planes** and **Axes** projection |
 | Right-click | Zoom out |
 | Right-drag a box | Zoom in to the selected region |
 | Middle-drag | Pan |
@@ -67,8 +67,8 @@ Select what to project onto the net.
 
 | Method | Description |
 |--------|-------------|
-| **Wulff** (equal-angle / stereographic) | Preserves the angle relation between projected features but not solid angle. Used by classical crystallographers when reading inter-axis or inter-plane angles. |
-| **Schmidt** (equal-area / Lambert) | Preserves the solid-angle (area) of each region but distorts angles. Preferred for statistical pole figures where relative density matters. |
+| **Equal-Angle** (Wulff / stereographic) | Preserves the angle relation between projected features but not solid angle. Used by classical crystallographers when reading inter-axis or inter-plane angles. |
+| **Equiarea** (Schmidt / equal-area / Lambert) | Preserves the solid-angle (area) of each region but distorts angles. Preferred for statistical pole figures where relative density matters. |
 
 ### Hemisphere
 
@@ -82,7 +82,7 @@ Upper = the $+Z$ side (toward the viewer, see [Appendix A1.1](appendix/a1-coordi
 - **Apply structure factors to intensity**: when **Planes** or **Kikuchi line pairs** is selected, weight each item by its structure factor (set the wave source and wavelength in the [Wave tab](#wave)). The weight is $I_{\mathrm{rel}} = |F_{hkl}|^2 / \max|F|^2$ over the displayed set: in **Planes** mode the point radius is multiplied by $\sqrt{I_{\mathrm{rel}}}$ (i.e. $\propto |F_{hkl}|$); in **Kikuchi line pairs** mode the line opacity is $I_{\mathrm{rel}}$. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.cs:setVector, DrawStereoNet) -->
 - **Anomalous dispersion**: include the X-ray anomalous-dispersion terms $f'$, $f''$ in the structure factors. Enabled only for X-rays and in **Planes** / **Kikuchi line pairs** mode.
 
-> For trigonal/hexagonal crystals, Miller–Bravais (4-index) notation can be enabled from **Option ▸ Use Miller-Bravais (hkil) index** in the main window.
+> For trigonal/hexagonal crystals, Miller–Bravais (4-index) notation can be enabled from **Options ▸ Use Miller-Bravais (hkil) index** in the main window.
 
 ---
 

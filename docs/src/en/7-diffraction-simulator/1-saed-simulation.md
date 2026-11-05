@@ -2,9 +2,9 @@
 
 **SAED (Selected Area Electron Diffraction)** simulation calculates single-crystal electron diffraction patterns produced by a parallel electron beam. This is the default mode of the [diffraction simulator](index.md).
 
-> This page lists every setting that appears in the **Spot property** panel on the right when you choose **Wave Length = Electron** and **Incident beam mode = Parallel**. For window-wide operations such as drawing and saving, see the [overview page](index.md).
+> This page lists every setting that appears in the **Simulation settings** panel on the right when you choose **Wave source** = **Electron** and **Optics** = **Parallel beam**. For window-wide operations such as drawing and saving, see the [overview page](index.md).
 
-GUI conditions: Wave Length = Electron, Incident beam mode = Parallel, Intensity calculation = Only excitation error / Kinematical / Dynamical.
+GUI conditions: Wave source = Electron, Optics = Parallel beam, Intensity calculation = Only excitation error / Kinematical & exc. error / Dynamical theory.
 
 ![Diffraction simulator in SAED mode](../../assets/cap-en-auto/FormDiffractionSimulator-saed.png)
 
@@ -16,21 +16,21 @@ Simulates the diffraction pattern produced when a parallel electron beam passes 
 
 ---
 
-## Wave Length
+## Wave source {#wave-length}
 
-![Wave Length](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Wave source](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Set the radiation source to **Electron**. Enter the energy (keV) or wavelength (Å or nm, switchable; default Å) and the relativistically corrected wavelength is computed. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:waveLengthControl, presetToolStripMenuItem) -->The initial value is 200 keV; the **Presets** menu sets 300 / 200 / 120 kV in one click. For X-ray and neutron sources, see [X-ray diffraction simulation](5-x-ray-neutron-diffraction.md).
+Set the radiation source to **Electron**. Enter the energy (keV) or wavelength (Å or nm, switchable; default Å) and the relativistically corrected wavelength is computed. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:waveLengthControl, presetToolStripMenuItem) --> The initial value is 200 keV; the **Presets** menu sets 300 / 200 / 120 kV in one click. For X-ray and neutron sources, see [X-ray diffraction simulation](5-x-ray-neutron-diffraction.md).
 
 ---
 
-## Incident beam mode
+## Optics {#incident-beam-mode}
 
-![Incident beam mode](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Optics](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-Set the incident-beam geometry to **Parallel**. This is the standard plane-wave geometry used for SAED and X-ray diffraction.
+Set **Optics** (the incident-beam geometry) to **Parallel beam**. This is the standard plane-wave geometry used for SAED and X-ray diffraction.
 
-> **Note**: For electrons you can choose **Parallel / Precession (electron = PED) / Convergence (CBED)**. Choosing **Precession** gives a [PED simulation](2-ped-simulation.md) and choosing **Convergence** gives a [CBED simulation](3-cbed-simulation.md); in both cases the intensity calculation automatically switches to Dynamical.
+> **Note**: For electrons you can choose **Parallel beam** / **Precession (electron)** / **Convergence (electron)**. Choosing **Precession (electron)** gives a [PED simulation](2-ped-simulation.md) and choosing **Convergence (electron)** gives a [CBED simulation](3-cbed-simulation.md); in both cases the intensity calculation automatically switches to **Dynamical theory**.
 
 ---
 
@@ -42,7 +42,7 @@ Selects how spot intensities are computed.
 
 ### Only excitation error
 
-Intensity is determined solely from the geometric distance between the Ewald sphere and the reciprocal-lattice point (the excitation error $S_g$). It is largest at $S_g = 0$ — exactly on the sphere — and falls off as $\lvert S_g\rvert$ grows, reaching zero once $\lvert S_g\rvert$ exceeds the **Radius** given for the reciprocal-lattice point. Because the crystal structure factor is ignored, this is the fastest mode and is suited to checking diffraction-spot positions.
+Intensity is determined solely from the geometric distance between the Ewald sphere and the reciprocal-lattice point (the excitation error $S_g$). It is largest at $S_g = 0$ — exactly on the sphere — and falls off as $\lvert S_g\rvert$ grows, reaching zero once $\lvert S_g\rvert$ exceeds the **Spot radius** given for the reciprocal-lattice point. Because the crystal structure factor is ignored, this is the fastest mode and is suited to checking diffraction-spot positions.
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:radioButtonIntensityCalculationMethod_CheckedChanged, CheckBoxExtinctionAll_CheckedChanged; FormDiffractionSimulator.Designer.cs:checkBoxExtinctionAll/Lattice, checkBoxDrawSameSize) -->
 Only in this mode, the following options appear:

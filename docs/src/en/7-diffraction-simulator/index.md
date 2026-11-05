@@ -8,7 +8,7 @@ title: Diffraction Simulator
 
 ![Diffraction Simulator](../../assets/cap-en-auto/FormDiffractionSimulator.png)
 
-The window has a diffraction-pattern drawing area on the **left** and, on the **right**, the setting panels for the spot properties (wavelength, incident beam, intensity calculation, appearance, and so on). The combination of wavelength and incident beam determines the acquisition mode (X-ray diffraction, SAED, PED, CBED), and the right-hand panels reconfigure accordingly.
+The window has a diffraction-pattern drawing area on the **left** and, on the **right**, the **Simulation settings** panel (wave source, optics, intensity calculation, appearance, and so on). The combination of wave source and optics determines the acquisition mode (X-ray diffraction, SAED, PED, CBED), and the right-hand panels reconfigure accordingly.
 
 ---
 
@@ -34,17 +34,17 @@ The window has a diffraction-pattern drawing area on the **left** and, on the **
 
 ## Mode quick reference
 
-Look up the page you need from the combination of **wavelength (source)** and **incident beam**.
+Look up the page you need from the combination of **Wave source** and **Optics** (incident beam).
 
-| Wavelength | Incident beam | Mode | Page |
+| Wave source | Optics | Mode | Page |
 |------------|--------------------|------|------|
-| Electron | Parallel | SAED | [SAED Simulation](1-saed-simulation.md) |
-| Electron | Precession (electron = PED) | PED | [PED Simulation](2-ped-simulation.md) |
-| Electron | Convergence (CBED) | CBED | [CBED Simulation](3-cbed-simulation.md) |
-| X-ray | Parallel | X-ray diffraction | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
-| X-ray | Precession (X-ray) | Precession X-ray (precession camera) | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
-| X-ray | Back Laue | Back-reflection Laue | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
-| Neutron | Parallel | Neutron diffraction | [neutron section of X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
+| Electron | Parallel beam | SAED | [SAED Simulation](1-saed-simulation.md) |
+| Electron | Precession (electron) | PED | [PED Simulation](2-ped-simulation.md) |
+| Electron | Convergence (electron) | CBED | [CBED Simulation](3-cbed-simulation.md) |
+| X-ray | Parallel beam | X-ray diffraction | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
+| X-ray | Precession (X-ray, ZOLZ) | Precession X-ray (precession camera) | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
+| X-ray | Back Laue (X-ray) | Back-reflection Laue | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
+| Neutron | Parallel beam | Neutron diffraction | [neutron section of X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:WaveLengthControl_WaveSourceChanged, radioButtonBeamParallel_CheckedChanged; FormDiffractionSimulator.resx) -->
 > **Note**: The incident-beam (**Optics**) choices change with the wavelength. For electrons: **Parallel beam, Precession (electron), Convergence (electron)**; for X-rays: **Parallel beam, Precession (X-ray, ZOLZ), Back Laue (X-ray)**; for neutrons: **Parallel beam** only. Changing the wave source always resets the optics to **Parallel beam**. Selecting **Precession (electron)** or **Convergence (electron)** automatically switches the intensity calculation to **Dynamical theory**; **Dynamical theory** is offered only for electrons (selecting X-ray or neutron falls back to **Kinematical & exc. error**). Back Laue uses a white (polychromatic) beam.
@@ -89,10 +89,10 @@ The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts of the main wind
 
 | Goal | Start from | Reference |
 |------|------------|-----------|
-| Produce parallel-beam electron diffraction (SAED) | Set **Incident beam** to **Parallel** and **Wavelength** to electron | [SAED Simulation](1-saed-simulation.md), [parallel-beam SAED calculation](../appendix/a3-bloch-wave/calculation.md) |
-| Produce single-crystal X-ray diffraction | Switch **Wavelength** to X-ray / Synchrotron | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
-| Produce precession electron diffraction (PED) | Set **Incident beam** to **Precession (electron)**, then set the semi-angle and step | [PED Simulation](2-ped-simulation.md) |
-| Produce convergent-beam electron diffraction (CBED) | Set **Incident beam** to **Convergence (electron)** and set the conditions in the CBED window | [CBED Simulation](3-cbed-simulation.md), [CBED calculation](../appendix/a3-bloch-wave/cbed.md) |
+| Produce parallel-beam electron diffraction (SAED) | Set **Optics** to **Parallel beam** and **Wave source** to **Electron** | [SAED Simulation](1-saed-simulation.md), [parallel-beam SAED calculation](../appendix/a3-bloch-wave/calculation.md) |
+| Produce single-crystal X-ray diffraction | Switch **Wave source** to **X-ray** (for synchrotron radiation, set **Element** to **0: Custom**) | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
+| Produce precession electron diffraction (PED) | Set **Optics** to **Precession (electron)**, then set the semi-angle and step | [PED Simulation](2-ped-simulation.md) |
+| Produce convergent-beam electron diffraction (CBED) | Set **Optics** to **Convergence (electron)** and set the conditions in the CBED window | [CBED Simulation](3-cbed-simulation.md), [CBED calculation](../appendix/a3-bloch-wave/cbed.md) |
 | Inspect the reflection list from the dynamical calculation | Select **Dynamical theory** and press **Spot Details** | [Dynamical calculation (shared core)](../appendix/a3-bloch-wave/calculation.md) |
 | Match detector geometry against an experimental image | Open the detector-geometry settings from **Details** in **Detector geometry & overlay image** and use the overlay image | [Detector coordinate system](../appendix/a1-coordinate-system/2-diffraction.md) |
 
@@ -297,13 +297,13 @@ The schematic (top left) shows the vectors on the Ewald sphere and defines the q
 - **Unit of potential** : Switches the displayed potential between **Vg [eV]** (electrostatic potential, eV) and **Ug [nm⁻²]** (the scaled quantity $U_g = (2 m_0/h^2)\, V_g$ that enters the Bloch-wave equations). The column headers change accordingly between *Vg / V'g* and *Ug / U'g*.
 - Above the table, the accelerating voltage, wavelength ($\lambda = 1/k_\text{vac}$), relativistic mass ratio $m/m_0$, speed ratio $v/c$, lattice volume, sample thickness, and (in CBED mode) the maximum semi-angle of the electron beam are shown.
 - **Note 1:** the unit of length is **nm**, not Å. **Note 2:** the unit of wavenumber is **1/nm**, not 2π/nm.
-- **Effective digit** : number of significant digits shown in the table (1–16, default 4). **Auto resize row width** : auto-fit column widths. **Copy to clipboard** : exports the table as text that can be pasted into a spreadsheet. **Save as CSV** : writes the same table (the visible columns) to a CSV file; the decimal separator is always a period, so the file stays valid in comma-decimal locales. (This form is shown in English even under a Japanese UI.)
+- **Effective digit** : number of significant digits shown in the table (1–16, default 4). **Auto resize row width** : auto-fit column widths. **Copy to clipboard** : exports the table as text that can be pasted into a spreadsheet. **Save as CSV** : writes the same table (the visible columns) to a CSV file; the decimal separator is always a period, so the file stays valid in comma-decimal locales.
 
 ---
 
 ## Detector geometry {#detector-geometry}
 
-A window for the detailed setup of the detector geometry (camera length, tilt, rotation) and overlay of an experimental image. Open it from **Details** in the **Detector geometry** panel.
+A window for the detailed setup of the detector geometry (camera length, tilt, rotation) and overlay of an experimental image. Open it from **Details** in the **Detector geometry & overlay image** panel.
 
 ![Detector geometry](../../assets/cap-en-auto/FormDiffractionSimulatorGeometry.png)
 

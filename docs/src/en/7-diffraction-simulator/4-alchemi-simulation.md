@@ -51,7 +51,7 @@ $$
 
 Clearing **Include the dechannelled component** in the **Calculation** box drops this term. It accounts for tens of percent of the total yield at typical thicknesses, so omitting it makes the site contrast look stronger than it is.
 
-### Output quantity
+### Output quantity {#output-quantity}
 
 For a shell channel the primary quantity is the **number of core-shell vacancies generated per incident electron**; conversion to X-ray photons (fluorescence yield and line branching) is not applied. For an X-ray line series (Kα, Kβ, Lα, Lβ, Mα), listed after the shells under **Ionization channels** and unchecked by default, it is the **number of X-ray photons generated per incident electron** (in all directions): fluorescence yields, Coster–Kronig and radiative cascades and line branching from xraylib 4.2.1 are applied, and the Auger cascade is not included. **X-ray self-absorption in the specimen, and detector efficiency and solid angle, are NOT applied to either.**
 

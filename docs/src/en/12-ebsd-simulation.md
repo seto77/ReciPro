@@ -203,7 +203,7 @@ The orientation that explains the image is then searched for with one of two eng
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormEBSD.cs: HandleZoneAxisDoubleClick / buttonFindZoneAxis_Click、FormEBSD.resx の各 ToolTip) -->
 ### Zone-axis picking
 
-<!-- screenshot: FormEBSD の実測画像タブ、晶帯軸ピッキング欄 (Zone axis / [u v w] / + geometry / Find / Clear) と拾った点の表示 -->
+<!-- screenshot: FormEBSD, measured-pattern tab: the zone-axis picking controls (Zone axis / [u v w] / + geometry / Find / Clear) and the picked points -->
 
 Instead of matching the whole image, the orientation can also be found from band intersections (zone axes) picked by hand on the experimental image.
 

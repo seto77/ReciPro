@@ -51,7 +51,7 @@ $$
 
 Das Abwählen von **Dechannelling-Anteil einbeziehen** im Feld **Berechnung** lässt diesen Term entfallen. Er macht bei typischen Dicken mehrere zehn Prozent der Gesamtausbeute aus; wird er weggelassen, erscheint der Platzkontrast stärker, als er ist.
 
-### Ausgabegröße
+### Ausgabegröße {#output-quantity}
 
 Für einen Schalenkanal ist die primäre Größe die **Anzahl der pro einfallendem Elektron erzeugten Innerschalen-Löcher**; die Umrechnung in Röntgenphotonen (Fluoreszenzausbeute und Linienverzweigung) wird nicht angewandt. Für eine Röntgen-Linienserie (Kα, Kβ, Lα, Lβ, Mα), die unter **Ionisationskanäle** nach den Schalen aufgeführt und standardmäßig nicht angehakt ist, ist es die **Anzahl der pro einfallendem Elektron erzeugten Röntgenphotonen** (in alle Richtungen): Fluoreszenzausbeuten, Coster-Kronig- und Strahlungskaskaden und Linienverzweigung aus xraylib 4.2.1 sind berücksichtigt, die Auger-Kaskade ist nicht enthalten. **Die Röntgen-Selbstabsorption in der Probe sowie Detektoreffizienz und Raumwinkel sind in KEINEM der beiden Fälle berücksichtigt.**
 
@@ -250,7 +250,7 @@ Was der Wert markiert, ist die Stelle, an der die Reduktion auf einen **einzigen
 
 Die Energie der Linie allein kann ein Ergebnis nicht absichern: Die räumliche Ausdehnung der Schale, die Orientierung, die Dicke und die vom Basissystem tatsächlich benötigten reziproken Vektoren gehen alle ein. Behandeln Sie 3–4 keV als Hinweis auf genaueres Hinsehen, nicht als Bestehensmarke. Wo Sie die Wahl haben, macht der Vergleich von Linien **ähnlicher Energie** die Delokalisierungsverzerrung beider eher vergleichbar; Jones (2002) empfiehlt genau das als ersten praktischen Schritt und als zweiten, eine systematische Reihe einer Zonenachse vorzuziehen — die systematische Reihe ist die Geometrie, die v1 rechnet (eine Zonenachse kanalisiert stärker, benötigt aber eine größere Delokalisierungskorrektur).
 
-⚠ Niedrige Emissionsenergien leiden zudem am stärksten unter der **Röntgen-Selbstabsorption** — wie stark, hängt allerdings von der Zusammensetzung der Probe und ihren Absorptionskanten, der Weglänge und dem Abnahmewinkel ab, nicht allein von der Emissionsenergie. Das ist eine **eigenständige** Fehlerquelle, die überhaupt nicht modelliert ist (siehe [Ausgabegröße](#ausgabegröße) oben), und sie verfälscht den Vergleich mit einem Experiment unabhängig von allem, was die lokale Näherung tut.
+⚠ Niedrige Emissionsenergien leiden zudem am stärksten unter der **Röntgen-Selbstabsorption** — wie stark, hängt allerdings von der Zusammensetzung der Probe und ihren Absorptionskanten, der Weglänge und dem Abnahmewinkel ab, nicht allein von der Emissionsenergie. Das ist eine **eigenständige** Fehlerquelle, die überhaupt nicht modelliert ist (siehe [Ausgabegröße](#output-quantity) oben), und sie verfälscht den Vergleich mit einem Experiment unabhängig von allem, was die lokale Näherung tut.
 
 ### Modellannahmen
 

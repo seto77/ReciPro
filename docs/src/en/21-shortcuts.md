@@ -96,7 +96,7 @@ Used by the [HRTEM/STEM](9-hrtem-stem-simulator/index.md) result panes, the [Spo
 |----------|--------|
 | <kbd>ENTER</kbd> in a search field | Run the search |
 | Click a result row | Load that crystal |
-| Click an element in the periodic-table popup | Cycle its filter: ignore → must include → must exclude |
+| Click an element in the **Periodic Table** popup | Cycle its filter: *may or not include* → *must include* → *must exclude* |
 
 ### 2. Symmetry information · 3. Beam interaction
 Symmetry information has no special key/mouse combinations. In Beam Interaction, besides <kbd>F1</kbd> and the **Copy** buttons, the vertical cursor on the **Scattering factors** graph can be dragged to read off each element's value.
@@ -120,7 +120,7 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 
 | Shortcut | Action |
 |----------|--------|
-| Left double-click the net | Switch between **Plane** and **Axis** projection |
+| Left double-click the net | Switch between **Planes** and **Axes** projection |
 | Move the mouse over the net | Read off the (hkl)/[uvw] under the cursor |
 
 ### 7. Diffraction simulator
@@ -150,7 +150,7 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 | Left double-click a pane | Maximise that pane / restore the grid (multi-pane layouts) |
 
 ### 10. Spot ID v1
-[Open page →](10-spot-id.md) — the image is reference-only (not interactive).
+[Open page →](10-spot-id.md) — there is no image view (the spot geometry is entered as numbers).
 
 | Shortcut | Action |
 |----------|--------|
@@ -184,4 +184,4 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Save the editor text back into the selected macro-list entry |
 | <kbd>F10</kbd> | Advance one step (during step-by-step execution) |
 | Double-click a row in the function-help list | Insert that function's signature at the caret |
-| Drop a `.mcr` file | Load it into the editor |
+| Drop a `.mcr` file on the window | Load it into the editor and add it to the macro list (the file name becomes the macro name) |

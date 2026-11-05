@@ -201,21 +201,22 @@ All bond/polyhedron rules registered for the crystal. Use **Add / Replace / Dele
 
 #### Bond property
 
-- **Bonding Atom (center)**: element species used as the centre atom of the bond / polyhedron.
-- **Bonding Atom (vertex)**: element species used as the vertex (the other end).
-- **Length between … and …**: lower and upper distance thresholds. Atom pairs outside this range are not drawn.
-- **Bond Radius**: drawn bond thickness (cylinder radius).
-- **Alpha**: bond transparency (0 = transparent, 1 = opaque).
+- **Show Bonds**: draw the bonds of this rule (the check box above the bond settings).
+- **Bonding Atoms** **(center)** - **(vertex)**: element species used as the centre atom of the bond / polyhedron and as the vertex (the other end).
+- **Length between** … **-** … (Å): lower and upper distance thresholds. Atom pairs outside this range are not drawn.
+- **Radius** (Å): drawn bond thickness (cylinder radius).
+- **Opacity**: bond opacity (0 = transparent, 1 = opaque).
 
 #### Polyhedron property
 
 - **Show Polyhedron**: when checked, the polyhedron defined by the current bond is drawn (only if the centre/vertex set is geometrically valid).
-- **Inner Bonds**: show/hide the bonds inside the polyhedron.
-- **Center Atom**: show/hide the centre atom.
-- **Vertex Atoms**: show/hide the vertex atoms.
-- **Color** / **Alpha**: face colour and transparency.
+- **Show Inner Bonds**: show/hide the bonds inside the polyhedron.
+- **Show Center Atom**: show/hide the centre atom.
+- **Show Vertex Atoms**: show/hide the vertex atoms.
+- **Opacity**: face opacity (0 = transparent, 1 = opaque).
 - **Show Edges**: draw the edges connecting the vertices.
-- **Edge Color** / **Width**: colour and line width of the edges.
+- **Width**: line width of the edges.
+- The three **Color** boxes next to **Add / Replace / Delete** set the colours of the polyhedron faces, the bond cylinders and the polyhedron edges.
 
 ### Unit Cell
 
@@ -310,7 +311,7 @@ Algorithm used for translucent atoms and polyhedra.
 
 ### Symmetry Elements
 
-The **Symmetry Elements** tab draws the space-group symmetry operators directly onto the 3D model (toggle with the **Sym. Elems.** toolbar button). Each class of element can be shown/hidden independently:
+The **Sym. Elems.** tab draws the space-group symmetry operators directly onto the 3D model (toggle with the **Sym. Elems.** toolbar button). Each class of element can be shown/hidden independently:
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.resx:groupBoxAxes/groupBoxPlanes/groupBoxInversion) -->
 - **Symmetry axes**: **Rotations**, **Screws**, **Rotinversions**
