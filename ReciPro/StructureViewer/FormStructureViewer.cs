@@ -1500,12 +1500,16 @@ public partial class FormStructureViewer : FormBase
     {
         Bitmap bmp = null;
         var name = (sender as ToolStripMenuItem).Name.ToLower();
+        // 261105Cl 変更: GenerateBitmap(true) で描き直してから読む (旧: GenerateBitmap() は SwapBuffers 後の back buffer をそのまま読むので、内容が保証されない)
         if (name.Contains("main"))
-            bmp = glControlMain.GenerateBitmap();
+            //bmp = glControlMain.GenerateBitmap(); // 261105Cl 変更前
+            bmp = glControlMain.GenerateBitmap(true); // 261105Cl 変更
         else if (name.Contains("axes"))
-            bmp = glControlAxes.GenerateBitmap();
+            //bmp = glControlAxes.GenerateBitmap(); // 261105Cl 変更前
+            bmp = glControlAxes.GenerateBitmap(true); // 261105Cl 変更
         else if (name.Contains("light"))
-            bmp = glControlLight.GenerateBitmap();
+            //bmp = glControlLight.GenerateBitmap(); // 261105Cl 変更前
+            bmp = glControlLight.GenerateBitmap(true); // 261105Cl 変更
         else if (name.Contains("legend") && flowLayoutPanelLegend.Controls.Count > 0 && flowLayoutPanelLegend.ClientSize is { Width: > 0, Height: > 0 } size)
         {
             // 261105Cl 追加: 凡例 (原子ごとの GL の球 + ラベル) を 1 枚に合成する。
@@ -1660,7 +1664,8 @@ public partial class FormStructureViewer : FormBase
     /// <summary>260805Cl 追加: メインビューの描画画像を PNG 保存する (マクロ StructureViewer.SaveImage 用。filename が空ならダイアログ)。</summary>
     internal void SaveMainImage(string filename)
     {
-        using var bmp = glControlMain.GenerateBitmap();
+        //using var bmp = glControlMain.GenerateBitmap(); // 261105Cl 変更前
+        using var bmp = glControlMain.GenerateBitmap(true); // 261105Cl 変更: 描き直してから読む (保存・コピーのメニューと同じ)
         if (bmp == null)
             throw new InvalidOperationException("SaveImage: the 3D view is not ready.");
         if (string.IsNullOrEmpty(filename))
@@ -2259,7 +2264,8 @@ public partial class FormStructureViewer : FormBase
     private void FormStructureViewer_KeyDown(object sender, KeyEventArgs e)
     {
         if (e.Control && e.Shift && e.KeyCode == Keys.C)
-            Clipboard.SetDataObject(glControlMain.GenerateBitmap());
+            //Clipboard.SetDataObject(glControlMain.GenerateBitmap()); // 261105Cl 変更前
+            Clipboard.SetDataObject(glControlMain.GenerateBitmap(true)); // 261105Cl 変更: 描き直してから読む
     }
 
     /// <summary>角度をリセットする</summary>
