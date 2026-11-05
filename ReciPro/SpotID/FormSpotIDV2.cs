@@ -1171,7 +1171,27 @@ public partial class FormSpotIDV2 : FormBase
         skipProgressChangedEvent = false;
     }
 
+    /// <summary>261105Cl 追加 (監査 I7): 同定 (identifySpotsCore) は主窓の結晶リストの結晶オブジェクトそのものの AngleResolution (180°)・GrainSize (6 nm)・
+    /// Crystallites (方位 1 つ)・VectorOfG (強度なし・消滅則で間引いたもの) を書き換える。旧はそのまま戻さなかったので、以後の多結晶回折は
+    /// AngleResolution = 180° (SquareDiv = 0) の結晶子で空の図形になり、書き換えた値は結晶リストの保存にも残り、回折シミュレーターは
+    /// 強度のない VectorOfG を使うことがあった。同定の間だけ書き換え、終わったら (例外でも) 元に戻す。
+    /// 候補のスポット位置 (Grain.Spots) は同定の中で計算し終えているので、戻した後も表示に使える</summary>
     private List<List<Grain>> identifySpots(List<Crystal> crystals)
+    {
+        var saved = crystals.Select(c => (c.AngleResolution, c.GrainSize, c.Crystallites, c.VectorOfG, c.VectorOfG_P)).ToList();
+        try
+        {
+            return identifySpotsCore(crystals);
+        }
+        finally
+        {
+            for (int j = 0; j < crystals.Count; j++)
+                (crystals[j].AngleResolution, crystals[j].GrainSize, crystals[j].Crystallites, crystals[j].VectorOfG, crystals[j].VectorOfG_P) = saved[j];
+        }
+    }
+
+    //private List<List<Grain>> identifySpots(List<Crystal> crystals) // 261105Cl 変更前
+    private List<List<Grain>> identifySpotsCore(List<Crystal> crystals) // 261105Cl 変更: 本体はそのまま。上の identifySpots から呼ぶ
     {
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
         var Detector = new AreaDetector(p.Width, p.Height, PixelSize, dataSet.DataTableSpot.DirectSpotPosition, waveLengthControl1.Property, CameraLength);
