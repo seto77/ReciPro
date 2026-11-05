@@ -301,6 +301,9 @@ uniti, così uno stesso spot non viene conteggiato due volte.</value>
   <data name="buttonStop.ToolTip" xml:space="preserve">
     <value>Arresta il calcolo in corso</value>
   </data>
+  <data name="buttonStop.Text" xml:space="preserve">
+    <value>Arresta</value>
+  </data>
   <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
     <value>Tabella degli spot osservati; spunta 'Diretto' per impostare lo
 spot del fascio diretto, fai clic su 'Adatta' di una riga per eseguire

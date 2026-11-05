@@ -364,6 +364,9 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
   <data name="buttonStop.ToolTip" xml:space="preserve">
     <value>現在の計算を中止</value>
   </data>
+  <data name="buttonStop.Text" xml:space="preserve">
+    <value>中止</value>
+  </data>
   <data name="numericBoxAcceptableError.HeaderText" xml:space="preserve">
     <value>許容範囲</value>
   </data>

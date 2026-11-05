@@ -94,7 +94,7 @@ de l'échantillon</value>
     <value>Seuil 1/d</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
-    <value>Haut</value>
+    <value>Max.</value>
   </data>
   <data name="labelKikuchiLineWidth.Text" xml:space="preserve">
     <value>Largeur de ligne</value>

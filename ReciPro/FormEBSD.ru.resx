@@ -97,7 +97,7 @@
     <value>Порог 1/d</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
-    <value>Верх</value>
+    <value>Макс.</value>
   </data>
   <data name="labelTextSize.Text" xml:space="preserve">
     <value>Размер текста</value>
