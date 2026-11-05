@@ -38,9 +38,11 @@ Enter two crystal planes \((h_1, k_1, l_1)\), \((h_2, k_2, l_2)\) or two directi
 
 - the d-spacing of each plane / the length of each axis,
 - the angle between the two planes (or two axes),
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSymmetryInformation.cs:numericBox_ValueChanged) -->
+- the angle between plane 1 and axis 1, and between plane 2 and axis 2,
 - **the direction index normal to both planes** and **the plane index normal to both axes**.
 
-These calculations respect the metric of the current unit cell.
+These calculations respect the metric of the current unit cell. Lengths are shown in Å and angles in degrees.
 
 ---
 
@@ -48,7 +50,8 @@ These calculations respect the metric of the current unit cell.
 
 ![Wyckoff Positions](../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-Lists every Wyckoff position with its multiplicity, Wyckoff letter, site symmetry, and whether it is a general or special position. For centred lattices, the lattice translation vectors are shown in the header row.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSymmetryInformation.cs:SetupExtraTables/SetWyckoffPosition) -->
+Lists every Wyckoff position with its multiplicity (**Mult.**), Wyckoff letter (**Wyck. Let.**), site symmetry (**Site Sym.**), and **Coordinates** (up to four per row; longer lists continue on the following rows). The first Wyckoff entry (highest multiplicity) is the general position. For centred lattices, the lattice translation vectors are shown in the header row.
 
 ---
 
@@ -57,6 +60,9 @@ Lists every Wyckoff position with its multiplicity, Wyckoff letter, site symmetr
 ![Conditions](../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageConditions.png)
 
 The reflection conditions arising from the lattice centring and from the glide/screw symmetry operators.
+
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSymmetryInformation.cs:SetupExtraTables/ChangeCrystal) -->
+Each row has three columns: **Indices** (the reflection class, e.g. $hkl$, $h0l$, $00l$), **Condition** (e.g. $h+k=2n$), and **Element** (the lattice centring or symmetry element responsible). *No Condition* is shown when there is none.
 
 ---
 
@@ -97,12 +103,15 @@ The two panels at the bottom reproduce the schematic symmetry diagrams of the sp
 - **Symmetry elements (left)**: rotation/screw axes, mirror/glide planes, and inversion centres/rotoinversion points are drawn with the conventional graphical symbols.
   - For the \(F\) lattice of the cubic system, only the upper-left quarter of the projected cell is shown (see [Appendix A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram)).
   - These symmetry elements can also be drawn directly onto the 3D model in the [Structure Viewer](5-structure-viewer.md).
-- **General positions (right)**: the general equivalent positions are plotted as circles (a comma denotes a mirror image), annotated with their fractional coordinates.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: SymmetryDiagramPositions.cs:ComputeDepthLabel) -->
+- **General positions (right)**: the general equivalent positions are plotted as circles (a comma denotes a mirror image), each annotated with its height along the projection axis (`+`, `−`, `½+`, …; see [Appendix A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md)).
+  - The test point $(x,y,z)$ is set with the **a** / **b** / **c** boxes next to the general-position **Copy** button (range −1 to 1, step 0.01). It is reset to a default for the point group whenever the point group changes, and kept when only the space group changes within the same point group.
   - For the cubic system only, auxiliary lines connect the three circles related by a three-fold rotation axis.
 
-Controls below the diagrams:
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSymmetryInformation.cs:ChangeCrystal, SymmetryDiagramCommon.cs:ResolveProjectionAxis) -->
+Controls (the **Options** panel at the bottom of the window, and the **Copy** button above each diagram):
 
-- **Direction** (`a` / `b` / `c`) : choose the crystal axis to project along.
+- **Direction** (`a` / `b` / `c`) : choose the crystal axis to project along. It is selectable only for orthorhombic space groups (default `c`); for monoclinic groups the unique axis is used automatically, and for all other crystal systems `c`.
 - **Copy** : copies each diagram to the clipboard in the format selected with **Copy format** (vector **emf** / raster **bmp**); emf can be ungrouped and edited in PowerPoint.
 - **Group Relations…** opens a browser for the maximal-subgroup/minimal-supergroup relations of the current space group. See [Appendix A4.2](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) for how to read it.
 
