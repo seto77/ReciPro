@@ -6,7 +6,7 @@
 
 開啟方式：[繞射模擬器](index.md) 的 **選項** 功能表 → **ALCHEMI 模擬器...**
 
-GUI 條件：Wave Length = Electron（晶體、加速電壓與取向取自上層繞射模擬器）
+GUI 條件：波源 = 電子（晶體、加速電壓與取向取自上層繞射模擬器）。使用其他入射源時視窗仍會開啟，但 θ_B 讀數與 **計算** 只會顯示提示 *ALCHEMI 僅適用於電子。請將繞射模擬器的線源設為電子。* <!-- 261105Cl 監査: FormALCHEMI.cs NotElectronNotice (6ae7a85) -->
 
 ![ALCHEMI 模擬器](../../assets/cap-zh-Hant-auto/FormALCHEMI.png)
 
@@ -93,7 +93,7 @@ $$
 
 | 項目 | 說明 | 預設值 |
 |------|------|--------|
-| **最大波數** | 每個取向的布洛赫波數上限（1–1600）。整個掃描的聯集會更大 | 120 |
+| **最大繞射波數** | 每個取向的布洛赫波數上限（1–1600）。整個掃描的聯集會更大 | 120 |
 | **求解器** | 特徵值問題的計算引擎：**原生**（Eigen C++）或**託管**（.NET）。在原生求解器不可用的環境中，選擇會固定為託管 | 原生 |
 | **包含非通道成分** | 是否加上上述 $Y_\text{dech}$ | 開 |
 | **角展寬** | 將曲線與入射束的角展寬做摺積：**無** 或 **Gaussian**（半高全寬，mrad）。這是取向軸上的後處理，於顯示歸一化**之前**套用 | 無 |
@@ -115,13 +115,13 @@ $$
 
 ### 計算 / 停止
 
-**計算**開始掃描。進度在狀態列分五個階段顯示（正在解析游離資料 → 正在建構聯集基組 → 正在建構游離矩陣 → 正在計算取向 → 正在檢驗擴展基組），**停止**可隨時中斷。
+**計算**開始掃描。進度在狀態列分五個階段顯示（正在解析游離資料 → 正在建構聯集基組 → 正在建構游離矩陣 → 正在計算取向 → 正在檢驗擴展基組），**停止**可隨時中斷。若反射列 **g** 與電子束平行，掃描無法使其通過布拉格條件；此時 **計算** 只會在狀態列報告此原因。 <!-- 261105Cl 監査: FormALCHEMI.cs BuildRequest (732813e) -->
 
 ---
 
 ## 右側面板：曲線頁籤
 
-計算完成後，每個「位點 × 通道」組合各繪製一條曲線。圖例為 `位點標籤 / 通道`。
+計算完成後，每個「位點 × 通道」組合各繪製一條曲線。圖例為 `位點標籤 / 通道`。之後若變更晶體或加速電壓（視窗關閉期間亦然），曲線、診斷與厚度選擇都會被清除，狀態列會說明原因。 <!-- 261106Cl 作者の決定 ALCHEMI -->
 
 | 項目 | 說明 |
 |------|------|
@@ -165,7 +165,7 @@ basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3
 
 ## CSV 匯出 {#csv-匯出}
 
-**匯出 CSV** 會寫出長格式表格，並在其前加上 `# key: value` 形式的表頭（以下為節錄）。表頭的設計使得僅憑該檔即可說明重現所需的條件。
+**匯出 CSV** 會寫出長格式表格，並在其前加上 `# key: value` 形式的表頭（以下為節錄）。表頭的設計使得僅憑該檔即可說明重現所需的條件；`scan_origin_rotation_matrix` 以列優先的旋轉矩陣記錄掃描原點（傾斜 0）處的晶體取向。 <!-- 261105Cl 監査: FormALCHEMI.cs buttonExport_Click の Key("scan_origin_rotation_matrix", ...) -->
 
 ```text
 # generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
@@ -174,6 +174,7 @@ basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3
 # crystal: MgAl2O4 (spinel) / F d -3 m
 # cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
 # accelerating_voltage_kV: 200.000
+# scan_origin_rotation_matrix: 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 (row-major; the crystal orientation of the parent diffraction simulator at the run, mapping the crystal's Cartesian frame to the laboratory frame, in which the beam travels along -z)
 # scan_row_hkl: 1 0 0
 # theta_B_mrad: 1.552030
 # thicknesses_nm: 10.0000 20.0000 ... 100.0000

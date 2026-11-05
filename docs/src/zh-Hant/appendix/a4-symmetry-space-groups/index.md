@@ -6,7 +6,7 @@
 
 本附錄涵蓋兩個視窗，理論最好依下列順序閱讀：
 
-1. **[A4.1. 空間群符號與對稱性示意圖](symbols-and-diagrams.md)** — Hermann–Mauguin、Schoenflies 與 Hall 符號；**群性質** 索引標籤上顯示的群論分類（中心對稱、Sohncke、簡單型、極性、算術晶類、Patterson 對稱、…）；**對稱操作** 索引標籤上以座標三元組／Seitz 符號／幾何類型描述的每一個對稱操作；以及 [對稱性資訊](../../2-symmetry-information.md) 視窗下方對稱元素與一般位置示意圖的繪圖慣例。
+1. **[A4.1. 空間群符號與對稱性示意圖](symbols-and-diagrams.md)** — Hermann–Mauguin、Schoenflies 與 Hall 符號；**群性質** 索引標籤上顯示的群論分類（中心對稱、Sohncke、點式、極性、算術晶類、Patterson 對稱、…）；**對稱操作** 索引標籤上以座標三元組／Seitz 符號／幾何類型描述的每一個對稱操作；以及 [對稱性資訊](../../2-symmetry-information.md) 視窗下方對稱元素與一般位置示意圖的繪圖慣例。
 2. **[A4.2. 群與子群的關係](group-subgroup-relations.md)** — 什麼是*極大子群*／*極小超群*、Hermann 的 *t*-／*k*- 之分，以及如何閱讀從對稱性資訊的 **選項** 面板開啟的 **群關係...** 瀏覽器的每個索引標籤（系統圖、變換矩陣、軌道分裂、疇與雙晶、新反射）。
 
 A4.1 之所以排在前面，是因為 A4.2 會不斷回頭引用它：每一個子群／超群關係本身，都是以那裡介紹的同一套 Hermann–Mauguin 符號、Seitz 符號與幾何類型措辭（*「3-fold rotation」*、*「c-glide plane」*、*「screw axis」*、…）來標示的。

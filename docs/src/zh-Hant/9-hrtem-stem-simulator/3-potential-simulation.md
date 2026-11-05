@@ -12,7 +12,7 @@
 
 晶體內部的電子會被晶體位能散射。其分布是所有繞射與成像現象的基礎，也是理解晶體結構的關鍵資訊。由於此模式既不包含透鏡像差，也不包含與厚度相關的動力學效應，因此非常適合用來檢視結構本身。
 
-> **在位能模式下，試樣厚度、強度正規化以及影像模式（single / serial）面板不會顯示。** 在 TEM 條件中，只有加速電壓是作用中的。
+> **在位能模式下，試樣厚度、強度正規化以及**單張/序列模式** 面板不會顯示。** 在 TEM 條件中，只有加速電壓是作用中的。
 
 ---
 
@@ -20,7 +20,7 @@
 
 ![TEM 條件](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **加速電壓 (kV)** — 加速電壓。它決定電子波長，並用於計算位能的傅立葉係數 $U_g$。
+- **加速電壓** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> — 加速電壓 (kV)。它決定電子波長，並用於計算位能的傅立葉係數 $U_g$。
 
 > **Defocus、Cs、Cc、β、ΔV 與 PCTF 在位能模式下為非作用狀態**（不套用任何成像光學），並顯示為灰色。
 
@@ -63,7 +63,7 @@ $U_g$ 與 $U'_g$ 可同時顯示（每勾選一個就會增加一個顯示窗格
 
 ![繞射波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** — 納入位能傅立葉合成中的布洛赫波（傅立葉係數）的最大數目（預設 80）。數值越大，納入的空間頻率越高，並能重現位能更細緻的細節。
+- 納入位能傅立葉合成中的布洛赫波（傅立葉係數）的最大數目（預設 80）。數值越大，納入的空間頻率越高，並能重現位能更細緻的細節。
 
 ---
 

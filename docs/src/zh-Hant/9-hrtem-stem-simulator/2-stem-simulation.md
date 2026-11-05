@@ -40,7 +40,7 @@
 
 ![試樣參數](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
 
-- **Thickness** : 試樣厚度 (nm)。在 **Serial image** 模式下此值會被忽略。
+- **厚度** : 試樣厚度 (nm)。在 **序列影像** 模式下此值會被忽略。
 
 ---
 
@@ -50,7 +50,7 @@
 
 | 參數 | 說明 | 預設 / 典型 |
 |-----------|-------------|-------------------|
-| **加速電壓 (kV)** | 加速電壓。經相對論修正的電子波長會顯示於旁邊 | 200 kV |
+| **加速電壓** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | 加速電壓 (kV)。經相對論修正的電子波長會顯示於旁邊 | 200 kV |
 | **散焦 Δf** | 物鏡（探針成形透鏡）的欠焦 (nm) | −57.8 nm |
 | **Cs** | 球面像差係數 (mm)。影響探針尺寸 | 0.5–1.0 mm |
 | **Cc** | 色像差係數 (mm) | 1.0–2.0 mm |
@@ -68,10 +68,10 @@
 
 | 參數 | 說明 | 預設 / 典型 |
 |-----------|-------------|-------------------|
-| **α (convergence angle)** | 會聚探針的半角 (mrad)。較大的值會產生較細的探針並改變繞射對比 | 25 mrad（預設）；15–25 mrad |
+| **Conv. semi-angle α** | 會聚探針的半角 (mrad)。較大的值會產生較細的探針並改變繞射對比 | 25 mrad（預設）；15–25 mrad |
 | **環形偵測器 — 內** | 環形偵測器的內側收集半角 (mrad)。此角度以內的訊號會被排除 | 0（預設）；BF: 0, HAADF: 80 |
 | **環形偵測器 — 外** | 環形偵測器的外側收集半角 (mrad)。此角度以外的訊號會被排除 | 20（預設）；BF: 5, HAADF: 250 |
-| **Effective source size (σs, FWHM)** | 有效電子源尺寸 (pm)。在計算之後，以高斯摺積套用到每一張 彈性 / TDS / EDX 影像。較大的值會使影像模糊並降低細節對比 | 20 pm（預設） |
+| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | 有效電子源尺寸 (pm)。在計算之後，以高斯摺積套用到每一張 彈性 / TDS / EDX 影像。較大的值會使影像模糊並降低細節對比 | 20 pm（預設） |
 
 偵測器角度只適用於 STEM 參考影像（彈性 / TDS / 彈性 & TDS）；STEM-EDX 分布圖不使用它們。上述預設值僅適用於首次啟動；之後會還原上次使用的值。
 
@@ -86,12 +86,13 @@
 
 ---
 
-## 影像模式（single / serial）
+## 單張/序列模式
 
-![影像模式](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text) と HRTEM のページに合わせた -->
+![單張/序列模式](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
-- **Single image** : 在目前厚度計算一張 STEM 影像。
-- **Serial image** : 產生一系列影像，厚度 / 欠焦會分階段遞變（以 **Start / Step / Num** 設定；下方的清單也可直接編輯）。
+- **單張影像** : 在目前厚度計算一張 STEM 影像。
+- **序列影像** : 產生一系列影像，厚度 / 欠焦會分階段遞變（以 **起始 / 步進 / 數量** 設定；下方的清單也可直接編輯）。
 
 ---
 
@@ -108,7 +109,7 @@
 
 ![繞射波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** : Bethe 法所用布洛赫波的最大數目（預設 80）。本徵值問題的計算成本隨波數的立方增加。
+- Bethe 法所用布洛赫波的最大數目（預設 80）。本徵值問題的計算成本隨波數的立方增加。
 
 ---
 

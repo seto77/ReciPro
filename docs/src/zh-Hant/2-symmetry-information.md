@@ -7,7 +7,7 @@
 視窗分為空間群識別區（左上）、附索引標籤的計算／表格區（右上），以及兩個示意圖（下方）。
 
 !!! tip "對稱性理論（附錄 A4）"
-    Hermann–Mauguin／Hall／Schoenflies 符號實際上編碼了什麼、**群性質** 索引標籤上的群論分類（中心對稱、Sohncke、簡單型、極性、…）、下方對稱元素／一般位置示意圖的意義，以及 **群關係...** 所顯示的群與子群關係，皆在 **[附錄 A4. 對稱性與空間群](appendix/a4-symmetry-space-groups/index.md)** 中說明。
+    Hermann–Mauguin／Hall／Schoenflies 符號實際上編碼了什麼、**群性質** 索引標籤上的群論分類（中心對稱、Sohncke、點式、極性、…）、下方對稱元素／一般位置示意圖的意義，以及 **群關係...** 所顯示的群與子群關係，皆在 **[附錄 A4. 對稱性與空間群](appendix/a4-symmetry-space-groups/index.md)** 中說明。
 
 ---
 
@@ -38,8 +38,8 @@
 
 - 每個晶面的面間距／每個軸的長度，
 - 兩個晶面（或兩個軸）之間的夾角，
-- 晶面 1 與軸 1 之間、以及晶面 2 與軸 2 之間的夾角，
-- **垂直於兩晶面的方向指數** 與 **垂直於兩晶軸的晶面指數**。
+- 晶面 1 的法線與軸 1 之間、以及晶面 2 的法線與軸 2 之間的夾角（軸位於晶面內時為 90°），
+- **平行於兩晶面的晶軸**（兩晶面的晶帶軸 [*uvw*]）與 **包含兩晶軸的晶面**（包含兩軸的晶面 (*hkl*)）。正負號依循 [*uvw*] = (*h*₁*k*₁*l*₁) × (*h*₂*k*₂*l*₂) 與 (*hkl*) = [*u*₁*v*₁*w*₁] × [*u*₂*v*₂*w*₂]。 <!-- 261106Cl 作者の決定 B16 --> <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップ (numericBoxAnglePlaneAxis1/2.ToolTip) に合わせた。以前の「normal to」は逆 -->
 
 這些計算會遵循目前晶胞的度量。長度以 Å、角度以度顯示。
 
@@ -49,7 +49,7 @@
 
 ![Wyckoff 位置](../assets/cap-zh-Hant-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-列出每個 Wyckoff 位置及其多重度（**重數**）、Wyckoff 字母（**Wyck. 字母**）、位置對稱性（**位置對稱**）與 **座標**（每列最多四個；較長的清單會延續到後續各列）。第一個 Wyckoff 項目（多重度最高者）即為一般位置。對於有心點陣，點陣平移向量會顯示於標題列中。
+列出每個 Wyckoff 位置及其多重度（**重數**）、Wyckoff 字母（**Wyck. 字母**）、位置對稱性（**位置對稱**）與 **座標**（每列最多四個；較長的清單會延續到後續各列）。第一個 Wyckoff 項目（多重度最高者）即為一般位置。對於有心點陣，點陣平移向量會顯示於標題列中；對於採用六方軸的 R 群，則為 obverse 設定的三個心化平移 (0,0,0)+、(2/3,1/3,1/3)+ 與 (1/3,2/3,2/3)+。 <!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
 
 ---
 
@@ -77,7 +77,7 @@
 
 ![群性質](../assets/cap-zh-Hant-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageProperties.png)
 
-報告目前空間群的群論分類（一般位置多重度、點群階數、中心對稱、Sohncke、簡單型、極性方向、對映體夥伴、晶族／格子系／布拉維型、算術晶類、Patterson 對稱），以及該對稱性允許哪些巨觀物理性質（熱電／鐵電、壓電、二次諧波產生、旋光性）。
+報告目前空間群的群論分類（一般位置多重度、點群階數、中心對稱、Sohncke、點式、極性方向、對映體夥伴、晶族／格子系／布拉維型、算術晶類、Patterson 對稱），以及該對稱性允許哪些巨觀物理性質（熱電／鐵電、壓電、二次諧波產生、旋光性）。
 
 → 各項術語的意義請參閱 **[附錄 A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#群論分類群性質索引標籤)**。
 
