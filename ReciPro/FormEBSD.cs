@@ -1289,16 +1289,13 @@ public partial class FormEBSD : FormBase
         // 261105Cl 追加 (監査 #15): 窓を閉じている間は FormMain が SetCrystal を呼ばないので、閉じている間に結晶を替えて開き直すと
         //   旧結晶の MasterPattern (構築中ならその構築) のまま表示・指数付けしていた。作成時の結晶・電圧と比べ、違えば SetCrystal と同じく止めて破棄する。
         //   名前・色・方位だけの違い (指紋が同じ) なら物理的に同じ MasterPattern なので残す
-        // if (Visible && FormMain?.Crystal != null && (MasterPattern != null || masterPatternEbsd.IsBuilding) && !MasterPatternBasisIsCurrent) // 261105Cl 変更前
-        // 261105Cl 変更 (監査 F 追加 c): MasterPattern が無く Calc BSE の結果だけがあるときも、旧結晶・旧電圧のものなら捨てる
+        // 261105Cl 変更 (監査 F 追加 c): MasterPattern が無く Calc BSE の結果だけがあるときも、旧結晶・旧電圧のものなら捨てる (1 時間以内に書かれた行なので旧行は残さない)
         if (Visible && FormMain?.Crystal != null
             && (((MasterPattern != null || masterPatternEbsd.IsBuilding) && !MasterPatternBasisIsCurrent)
                 || (BSEs is { Length: > 0 } && bsesBasis != (MasterPatternFile.CrystalFingerprint(Crystal), Voltage))))
         {
             bool hadMasterPattern = MasterPattern != null || masterPatternEbsd.IsBuilding; // 261105Cl 追加
             SetCrystal(); // 下の SetVector・3D の軸・DrawGeometry・DrawMasterPattern2D もここで済む
-            // toolStripStatusLabelSummary.Text = "MasterPattern discarded"; // 261105Cl 変更前
-            // toolStripStatusLabelDetail.Text = "The crystal or the accelerating voltage was changed while this window was closed. Build the master pattern again.";
             toolStripStatusLabelSummary.Text = hadMasterPattern ? "MasterPattern discarded" : "Monte Carlo results discarded"; // 261105Cl 変更
             toolStripStatusLabelDetail.Text = "The crystal or the accelerating voltage was changed while this window was closed. "
                 + (hadMasterPattern ? "Build the master pattern again." : "Run Simulate again."); // 261105Cl 変更
@@ -1330,15 +1327,12 @@ public partial class FormEBSD : FormBase
         //   以前は古い MasterPattern を残したまま菊池線だけ新しい波長で描き、損失依存のコントラスト A(E) も新しい E0 で損失 E0 − E を計算していた
         //   (E0 を作成時のエネルギー格子より下げると損失が負になり、減衰が黙って効かなくなる)。ZNCC の合成キャッシュの鍵にも電圧は入っていない。
         //   結晶の変更と同じく、構築中なら止めて破棄する (SetCrystal は SetVector・候補の失効・合成キャッシュの破棄・再描画も行う)
-        // if (masterPatternEbsd.IsBuilding || monteCarloCts != null || (MasterPattern != null && !MasterPatternBasisIsCurrent)) // 261105Cl 変更前
-        // 261105Cl 変更 (監査 F 追加 c): Calc BSE の結果 (極点図・ΔE・深さ) だけのときも、旧電圧のものなら捨てる
+        // 261105Cl 変更 (監査 F 追加 c): Calc BSE の結果 (極点図・ΔE・深さ) だけのときも、旧電圧のものなら捨てる (1 時間以内に書かれた行なので旧行は残さない)
         if (masterPatternEbsd.IsBuilding || monteCarloCts != null || (MasterPattern != null && !MasterPatternBasisIsCurrent)
             || (BSEs is { Length: > 0 } && bsesBasis.VoltageKeV != Voltage))
         {
             bool hadMasterPattern = MasterPattern != null || masterPatternEbsd.IsBuilding; // 261105Cl 追加
             SetCrystal();
-            // toolStripStatusLabelSummary.Text = "MasterPattern discarded"; // 261105Cl 変更前
-            // toolStripStatusLabelDetail.Text = $"The accelerating voltage was changed to {Voltage:g6} kV. Build the master pattern again.";
             toolStripStatusLabelSummary.Text = hadMasterPattern ? "MasterPattern discarded" : "Monte Carlo results discarded"; // 261105Cl 変更
             toolStripStatusLabelDetail.Text = $"The accelerating voltage was changed to {Voltage:g6} kV. "
                 + (hadMasterPattern ? "Build the master pattern again." : "Run Simulate again."); // 261105Cl 変更
