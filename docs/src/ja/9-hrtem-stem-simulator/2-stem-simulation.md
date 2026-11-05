@@ -93,7 +93,7 @@ STEM像は、収束した電子ビームを試料上で走査し、各位置で�
 ![単一/シリーズ画像](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 - **単一画像** : 現在の厚さで1枚のSTEM像を計算します。
-- **シリーズ画像** : 厚さ・デフォーカスを段階的に変えた一連の像を生成します（**Start / Step / Num** で指定、下のリスト欄で直接編集も可能）。
+- **シリーズ画像** : 厚さ・デフォーカスを段階的に変えた一連の像を生成します（**開始 / 刻み / 個数** で指定、下のリスト欄で直接編集も可能）。
 
 ---
 
@@ -102,7 +102,7 @@ STEM像は、収束した電子ビームを試料上で走査し、各位置で�
 ![生成画像](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:RunSTEM (imageSize は I(Q) 計算後の実空間合成でのみ使用)) -->
-- **Size (W×H)** : 走査像のピクセル数（既定 512×512）。固有値計算と $I(Q)$ の計算（ステータスバーの Stage 1–4）はこれに依存しません。効くのは $I(Q)$ 係数から実空間像を合成する最後の段階だけで、その計算量は 画素数 × $Q$ ベクトル数 に比例します。
+- **サイズ (W×H)** : 走査像のピクセル数（既定 512×512）。固有値計算と $I(Q)$ の計算（ステータスバーの Stage 1–4）はこれに依存しません。効くのは $I(Q)$ 係数から実空間像を合成する最後の段階だけで、その計算量は 画素数 × $Q$ ベクトル数 に比例します。
 - **解像度** : サンプリング分解能 (pm/px)。
 
 ---

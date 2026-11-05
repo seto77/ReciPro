@@ -54,7 +54,7 @@ $U_g$ と $U'_g$ は同時に表示できます（チェックした分だけペ
 
 ![生成画像](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-- **Size (W×H)** : 生成する画像のピクセル数（既定 512×512）。
+- **サイズ (W×H)** : 生成する画像のピクセル数（既定 512×512）。
 - **解像度** : サンプリング分解能 (pm/px)。
 
 ---

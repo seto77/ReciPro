@@ -243,7 +243,7 @@ for k in range(-2, 3):
 |---|---|
 | `StructureViewer.Open()` | 結晶構造ビューアのウィンドウを開く |
 | `StructureViewer.Close()` | 結晶構造ビューアのウィンドウを閉じる |
-| `StructureViewer.SaveImage(filename)` | メインビューの描画画像を PNG 保存（ピクセルサイズはウィンドウの **Size (W×H)** ボックス）。`filename` 省略で保存ダイアログ |
+| `StructureViewer.SaveImage(filename)` | メインビューの描画画像を PNG 保存（ピクセルサイズはウィンドウの **サイズ (W×H)** ボックス）。`filename` 省略で保存ダイアログ |
 | `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 表示中の構造を 3D プリント用に出力（ファイルメニューの **3Dモデルを出力 (3MF/STL)** と同じ）。形式は拡張子で決まる（`.stl` = 単色 / `.3mf` = 元素色分け）。必須は `filename` のみで、他の既定値はダイアログの既定と同じ（最長辺 80 mm・単位胞枠 ⌀2.4 mm・結合の増径 ⌀1.2 mm）。`fixedScaleInMMperNm` > 0 を渡すと複数の模型を同縮尺で作れる。<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Macro.cs:StructureViewerClass.Export3DModel) --> `filename` は `.stl` か `.3mf` で終わる必要がある（ダイアログは開かない）。戻り値は三角形数と出力サイズを含む情報文字列 |
 
 ```python

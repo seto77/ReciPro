@@ -93,7 +93,7 @@ $$E_\text{s}(u)=\exp\!\left[-\pi^2\beta^2u^2\left(\Delta f+C_s\lambda^2u^2\right
 対物絞りを通過させる回折波を制限します。ブロッホ波計算そのものは常に **波の数** で設定した波数で行い、そのうちどのビームを結像に使うかを絞りで選びます（絞り中心を $\mathbf{c}$ として $|\mathbf{g}-\mathbf{c}| < 2\sin(\alpha_\text{obj}/2)/\lambda$ のビームが通過）。通過するビームが 2 本未満のときは、絞りを大きくするよう促すメッセージを出して計算を止めます。
 
 - **サイズ** : 対物絞りの半角 (mrad、既定 12)。小さいほど高角度の回折波を切り、高分解能の細部がなだらかになります。逆空間半径 $\sin\theta/\lambda$ への換算値 (nm⁻¹) が表示されます。
-- **Shift X / Y** : 対物絞り中心のシフト量 (mrad)。絞りをずらした暗視野結像に使います。照射そのものは傾けません。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:SimulateHRTEM, BetheMethod.cs:GetHRTEMImage (入射ベクトル k=(0,0) 固定)) -->
+- **シフト X** / **Y** : 対物絞り中心のシフト量 (mrad)。絞りをずらした暗視野結像に使います。照射そのものは傾けません。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:SimulateHRTEM, BetheMethod.cs:GetHRTEMImage (入射ベクトル k=(0,0) 固定)) -->
 - **絞り開放** : 対物絞りを開放（無限大）にし、すべての回折波を結像に使います。
 - **スポット数** : 絞り内に入る回折ビーム（スポット）の本数（読み取り専用）。
 - **スポット情報** : 絞り内に入る回折ビームの一覧テーブル（強度・複素振幅など）を開きます。
@@ -131,7 +131,7 @@ $$E_\text{s}(u)=\exp\!\left[-\pi^2\beta^2u^2\left(\Delta f+C_s\lambda^2u^2\right
 | 項目 | 説明 |
 |------|------|
 | **試料厚み (nm)** / **デフォーカス (nm)** | どちらをスイープするか（両方可） |
-| **Start / Step / Num** | 開始値・刻み幅・枚数。下のリスト欄に展開され、直接編集も可能 |
+| **開始 / 刻み / 個数** <!-- 261105Cl 監査 (組 K): numericBoxThickness/DefocusStart・Step・Num.HeaderText を訳した --> | 開始値・刻み幅・枚数。下のリスト欄に展開され、直接編集も可能 |
 | **横軸の方向** | 厚さとデフォーカスの両方をスイープしたとき、グリッドの横方向に並べる量（厚さ / デフォーカス） |
 
 厚さとデフォーカスの両方をスイープすると、行 × 列のマトリクス画像が生成されます。<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.Designer.cs:numericBoxThicknessNum / BuildPseudoGrid) -->**Num** はそれぞれ最大 20 です。一方だけをスイープして 3 枚以上になるときは、1 列ではなく正方形に近いグリッドに折り返して並べます。
@@ -142,7 +142,7 @@ $$E_\text{s}(u)=\exp\!\left[-\pi^2\beta^2u^2\left(\Delta f+C_s\lambda^2u^2\right
 
 ![生成画像](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-- **Size (W×H)** : シミュレートする画像のピクセル数（既定 512×512）。
+- **サイズ (W×H)** : シミュレートする画像のピクセル数（既定 512×512）。
 - **解像度** : サンプリング分解能 (pm/px、既定 2)。視野は Size × 解像度 なので、値を小さくすると狭い範囲を細かくサンプリングします。像は各画素でビームについての直接のフーリエ和で合成する（FFT は使わない）ため、計算時間は画素数とビーム数で決まり、この値には依存しません。 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:GetHRTEMImage) -->
 
 ---
