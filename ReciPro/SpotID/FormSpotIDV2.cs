@@ -73,13 +73,17 @@ public partial class FormSpotIDV2 : FormBase
 
         waveLengthControl1.WaveSource = WaveSource.Electron;
         waveLengthControl1.Energy = 200;
+
+        // 261105Cl 移動 (監査 I15): FormSpotID_Load から。このフォームは起動時に Visible = false で作られ、一度も開かないと Load が走らないので、
+        //  マクロ SpotID.LoadFile() などで開く前に画像を読むと FormSpotDetails が null のまま参照されて例外になっていた
+        FormSpotDetails = new FormSpotIDv2Details { FormSpotID = this }; // 261105Cl 移動
     }
 
 
 
     private void FormSpotID_Load(object sender, EventArgs e)
     {
-        FormSpotDetails = new FormSpotIDv2Details { FormSpotID = this };
+        //FormSpotDetails = new FormSpotIDv2Details { FormSpotID = this }; // 261105Cl 変更前 (コンストラクタへ移動)
         checkBoxDetailsOfFunction.Checked = false;
     }
 
@@ -105,14 +109,31 @@ public partial class FormSpotIDV2 : FormBase
     /// <param name="fileName"></param>
     private void readImage(string fileName)
     {
-        dataSet.DataTableSpot.Clear();
+        // 261105Cl 変更 (監査 I15): 先に画像を読み、読めたときだけ表を消して続ける。旧は表を消してから読み、読めないと
+        //  PseudoBitmap が null (最初の 1 枚) のまま下の p.Width で例外、前の画像があればその画像のまま表だけ消えて、
+        //  拡張子の分岐では前のファイルのメタデータ (Ring.*) を取り込むことがあった。読めたかどうかは PseudoBitmap が作り直されたかで見る
+        //dataSet.DataTableSpot.Clear(); // 261105Cl 変更前 (読めた後へ移動)
+        //
+        //dataSet.DataTableCandidate.Clear(); // 261105Cl 変更前 (同上)
+        //scalablePictureBoxAdvanced.Symbols.RemoveAll(s => s.Tag == tagCalcSpot); // 261105Cl 変更前 (同上)
+        //
+        //scalablePictureBoxAdvanced.ReadImage(fileName); // 261105Cl 変更前
+        var before = scalablePictureBoxAdvanced.PseudoBitmap; // 261105Cl 追加
+        try { scalablePictureBoxAdvanced.ReadImage(fileName); } catch { } // 261105Cl 追加 (形式によっては読込中に例外になる。読めなかったとして扱う)
+        if (scalablePictureBoxAdvanced.PseudoBitmap == null || ReferenceEquals(scalablePictureBoxAdvanced.PseudoBitmap, before)) // 261105Cl 追加
+        {
+            MessageBox.Show(this, Localization.Loc(en: "Could not read the file:", ja: "ファイルを読み込めませんでした:", de: "Die Datei konnte nicht gelesen werden:", // 261105Cl 追加
+                fr: "Impossible de lire le fichier :", es: "No se pudo leer el archivo:", pt: "Não foi possível ler o arquivo:", it: "Impossibile leggere il file:",
+                ru: "Не удалось прочитать файл:", zhHans: "无法读取文件:", zhHant: "無法讀取檔案:", ko: "파일을 읽을 수 없습니다:") + "\r\n" + fileName);
+            return; // 261105Cl 追加
+        }
+        dataSet.DataTableSpot.Clear(); // 261105Cl 移動
+        dataSet.DataTableCandidate.Clear(); // 261105Cl 移動
+        scalablePictureBoxAdvanced.Symbols.RemoveAll(s => s.Tag == tagCalcSpot); // 261105Cl 移動
 
-        dataSet.DataTableCandidate.Clear();
-        scalablePictureBoxAdvanced.Symbols.RemoveAll(s => s.Tag == tagCalcSpot);
-
-        scalablePictureBoxAdvanced.ReadImage(fileName);
-
-        if (fileName.EndsWith("dm3") || fileName.EndsWith("dm4"))
+        // 261105Cl 変更 (監査 I15): 拡張子は大文字小文字を区別しない (ImageIO.ReadImage と同じ)。旧は "X.DM3" などで画像は読めても、ピクセルサイズ・加速電圧などを取り込まなかった
+        //if (fileName.EndsWith("dm3") || fileName.EndsWith("dm4")) // 261105Cl 変更前
+        if (fileName.EndsWith("dm3", StringComparison.OrdinalIgnoreCase) || fileName.EndsWith("dm4", StringComparison.OrdinalIgnoreCase)) // 261105Cl
         {//DigitalMicroGraphデータであればスケールの情報などを取得
             if (Ring.DigitalMicrographProperty.PixelUnit == LengthUnitEnum.NanoMeterInverse)
             {
@@ -128,7 +149,8 @@ public partial class FormSpotIDV2 : FormBase
                 numericBoxPixelSize.Value = Ring.DigitalMicrographProperty.PixelScale;
             }
         }
-        else if (fileName.EndsWith("mrc"))
+        //else if (fileName.EndsWith("mrc")) // 261105Cl 変更前
+        else if (fileName.EndsWith("mrc", StringComparison.OrdinalIgnoreCase)) // 261105Cl
         {
             if (Ring.MRC.Pixel_size_X > 1)
             {
@@ -139,7 +161,8 @@ public partial class FormSpotIDV2 : FormBase
                 PixelSize = CameraLength * Math.Tan(2 * Math.Asin(waveLengthControl1.WaveLength * Ring.MRC.Pixel_size_X * 1E-9 / 2));
             }
         }
-        else if (fileName.EndsWith("ipa"))
+        //else if (fileName.EndsWith("ipa")) // 261105Cl 変更前
+        else if (fileName.EndsWith("ipa", StringComparison.OrdinalIgnoreCase)) // 261105Cl
         {
             radioButtonPixelSizeUnitReal.Checked = true;
             waveLengthControl1.WaveSource = Ring.IP.WaveProperty.Source;
@@ -151,7 +174,8 @@ public partial class FormSpotIDV2 : FormBase
             var r = fit(direct);
             dataSet.DataTableSpot.Add(true, area, r.PrmsPv, r.PrmsBg, r.R);
         }
-        else if (fileName.EndsWith("tif") && Ring.TIA_PixelSize != 0)
+        //else if (fileName.EndsWith("tif") && Ring.TIA_PixelSize != 0) // 261105Cl 変更前
+        else if (fileName.EndsWith("tif", StringComparison.OrdinalIgnoreCase) && Ring.TIA_PixelSize != 0) // 261105Cl
             PixelSize = WaveLength * CameraLength / Ring.TIA_PixelSize * 1E-11;
 
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
