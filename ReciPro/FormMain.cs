@@ -1349,10 +1349,17 @@ public partial class FormMain : FormBase
     private void ButtonAdd_Click(object sender, EventArgs e)
     {
 
-        IntPtr calcWindow = FindWindow(null, "Power Automate");
-
-        if (SetForegroundWindow(calcWindow))
-            SendKeys.Send("{ENTER}");
+        //IntPtr calcWindow = FindWindow(null, "Power Automate"); // 261105Cl 変更前 (3 行)
+        //if (SetForegroundWindow(calcWindow))
+        //    SendKeys.Send("{ENTER}");
+        // 261105Cl 変更 (監査 A15): 作者の自動化 (Power Automate) 用の処理をデバッグビルドだけに限る。配布版では、利用者が「Power Automate」の
+        // 窓を開いていると、Add を押すたびにその窓が前面に出て Enter が送られていた (フローの実行などの操作になりうる)
+        if (AssemblyState.IsDebug)
+        {
+            IntPtr calcWindow = FindWindow(null, "Power Automate");
+            if (SetForegroundWindow(calcWindow))
+                SendKeys.Send("{ENTER}");
+        }
 
         AddCrystal();
     }
