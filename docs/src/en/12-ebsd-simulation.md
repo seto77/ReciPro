@@ -7,7 +7,8 @@
 The window has three columns.
 
 - **Left** : simulation conditions. The tabs select **Geometry** (sample/detector geometry and a 3D view), **BSE Distribution** (backscattered-electron distributions), and **Overlays** (Kikuchi lines and other annotations).
-- **Centre** : the EBSD (Kikuchi) pattern for the current crystal orientation. Below it, the tabs select **Output parameters of dynamical EBSD pattern** and **Experimental image**.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormEBSD.resx: tabPageOutputParameter.Text) -->
+- **Centre** : the EBSD (Kikuchi) pattern for the current crystal orientation. Below it, the tabs select **Simulated pattern** and **Experimental image**.
 - **Right** : the orientation-independent master pattern, in the **2D** and **3D** tabs.
 
 The status bar at the bottom shows the progress of the running calculation and a summary of its result. If the window is narrow, a long message is cut off at the right edge; hover over it to see the whole message.
@@ -23,7 +24,7 @@ The centre EBSD (Kikuchi) pattern and the right-hand master-pattern views respon
 | <kbd>F1</kbd> | Open this page of the online manual |
 | Left-drag the pattern near the centre | Tilt the crystal |
 | Left-drag the pattern's outer area | Spin the crystal |
-| Double-click the pattern | Pick the detector sub-cell under the cursor and show its statistics |
+| Double-click the pattern | Pick the detector sub-cell under the cursor and show its statistics (while **Zone axis** picking is on: add a zone axis; see [Zone-axis picking](#zone-axis-picking)) |
 | Drop an image file on the window | Load it as the experimental EBSD image |
 | Left-drag a 3-D view (geometry / master sphere) | Rotate it |
 | Right-drag, or Mouse wheel, on a 3-D view | Zoom |
@@ -40,7 +41,8 @@ The 3-D views use ReciPro's standard [view navigation](21-shortcuts.md) (panning
 
 Pressing **Build Master Pattern** runs the following steps in order.
 
-1. **Monte-Carlo BSE simulation** : using the current crystal composition, density, accelerating voltage and sample tilt, about 2.5 million electrons are tracked inside the sample (elastic scattering: Mott/NIST cross-sections; inelastic scattering: dielectric-response model). This yields the joint distribution of *penetration depth × exit direction × exit energy* of the backscattered electrons.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormEBSD.cs: BackscatterMonteCarloLoopCount = 10_000_000) -->
+1. **Monte-Carlo BSE simulation** : using the current crystal composition, density, accelerating voltage and sample tilt, 10 million incident electrons are tracked inside the sample (elastic scattering: Mott/NIST cross-sections; inelastic scattering: dielectric-response model). This yields the joint distribution of *penetration depth × exit direction × exit energy* of the backscattered electrons.
 2. **Automatic range selection** : from that distribution, the energy range (from the incident energy down to about the 95th percentile of energy loss) and the depth range used in the dynamical calculation are set automatically. The depth here is the master-pattern thickness, i.e. the path length measured along the exit direction (source depth ÷ cos χ, where χ is the angle between the exit direction and the specimen-surface normal). The depth range extends to the 99.9th percentile of that path length for the electrons that reach the detector (rounded up to two significant digits) and is divided into 40 unequal steps that are finer near the surface.
 3. **Master-pattern build** : for each energy and depth, the dynamical diffraction (Bloch-wave) problem is solved and integrated over the sphere of directions, weighted by the Monte-Carlo distribution, to give the backscatter diffraction intensity in every direction. The result is stored on an equal-area (Roşca–Lambert) grid.
 4. **Projection onto the detector, with weighting** : for the current crystal orientation, the intensity for the direction subtended by each detector pixel is looked up in the master pattern and drawn as the Kikuchi pattern, optionally weighted by the BSE angular/energy distribution.
@@ -87,7 +89,8 @@ The **BSE Distribution** tab shows the Monte-Carlo backscattered-electron distri
 
 - **Stereonet** : angular distribution (histogram of exit directions) of the backscattered electrons. The centre is the surface-normal direction, and the yellow outline marks the rectangular region subtended by the detector. **Draw axes** overlays the crystal axes, and the colour scale (**Min** / **Max**, **Resolution**, **Color**) is adjustable.
 - **ΔE (keV)** : energy-loss distribution of the backscattered electrons.
-- **Depth (nm)** : distribution of the depth at which the detected backscattered electrons had their last inelastic scattering event — the same depth definition that weights the master pattern.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormEBSD.cs: BSE 深さ分布で GetMonteCarloSourceDepth を使用) -->
+- **Depth (nm)** : distribution of the source depth of the detected backscattered electrons, as defined by **Source depth (MC)** (default: the last inelastic scattering event) — the same depth definition that weights the master pattern.
 
 These distributions are computed by the same Monte-Carlo engine as [Electron trajectory](8-electron-trajectory.md) and are used to weight the master pattern.
 
@@ -134,11 +137,14 @@ If any atom site has no atomic displacement parameter (B = 0), a dialog appears 
 - **Energy from … to … with step of …** : energy range and step integrated over (keV); set automatically from the Monte-Carlo result.
 - **Thickness from … to … with step of …** : depth range and step integrated over (nm); likewise set automatically. The automatic depths are unequally spaced, so the boxes show the shallowest point, the upper end and the first interval as a guide; editing a box by hand switches to equally spaced depths with those values.
 - **Use non-local absorption model** : use the non-local absorption form.
-- **Non-local source** : replace the local (atom-site) backscatter source with the non-local absorptive-potential form (U'_back integrated over the backward hemisphere). Both use the same physical cross-section, so this is a model switch rather than an additive background.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormEBSD.Designer.cs: checkBoxTDSBackground.Checked = true / Version.cs ver4.949) -->
+- **Non-local source** (default on) : replace the local (atom-site) backscatter source with the non-local absorptive-potential form (U'_back integrated over the backward hemisphere). Both use the same physical cross-section, so this is a model switch rather than an additive background.
 - **Source depth (MC)** : which Monte Carlo event defines the depth of the coherent backscatter source used for the (energy × depth) weighting: the last inelastic event (default), the last transport event of any kind, or the last decoherence event. In the last case an event resets the source only when it is localized enough to leave which-atom information in the sample: elastic events with the thermal-diffuse probability 1 − exp(−2B s²) from the Debye–Waller factor (coherent Bragg scattering, already in the Bloch waves, does not), inelastic events always for core/high-loss excitations and, for valence excitations, only with the fraction whose momentum transfer exceeds the plasmon cutoff q_c = ω_p/v_F (plasmons and delocalized electron–hole pairs preserve the Bloch state). Shallower sources carry weaker Kikuchi modulation, so the last option sets the diffuse background from transport alone, without a free parameter. Changing it re-bins the stored electrons without re-running the Monte Carlo.
 - **Contrast falls with energy loss** (default on; E_c = 0.8 keV in asymmetric-Gaussian mode and 0.9 keV in histogram + per-electron A mode) : scales the Kikuchi contrast of each energy slice by A(E) = exp(−(E0 − E)/E_c), where E0 is the beam energy and E the exit energy, and moves the lost part into a flat, direction-averaged pedestal, so the brightness without band contrast is unchanged. The Monte Carlo weights count every backscattered electron, but electrons that have lost much energy carry little sharp Kikuchi contrast; without this correction every slice carries full contrast and the bands come out about 12 % wider than for monochromatic electrons at E0 (Si, 20 kV). E_c is an effective parameter, not a material constant; smaller values give stronger attenuation. The asymmetric-Gaussian default of 0.8 keV is based on a calibration, under the original calculation settings, to the band widths of a measured Si pattern at 20 kV (the Si004 dataset; effective-wavelength ratio α ≈ 1.017). Calibrated values depend on the material and on the reflections used; for Botallackite, about 0.43–0.71 keV was obtained with different reflection selections. For quantitative band-width comparisons, recalibrate E_c whenever the energy/depth grid, the synthesis method or the evaluation measure changes. Changing it only re-weights the existing slices, without recomputing the master pattern or the Monte Carlo.
 - **Surface amorphous layer** : thickness (nm) of a non-crystalline surface layer (native oxide, contamination, polishing or ion-milling damage). Electrons whose coherent backscatter source lies inside the layer carry no Kikuchi modulation and are added as a direction-averaged, uniform contribution with the same intensity per electron; sources below the layer are measured from the crystal surface. Transport is computed with the crystal's composition and density, which is adequate for a few nm. 0 disables it; changing it re-bins the stored electrons without re-running the Monte Carlo.
 - **Weight by phosphor response** (default on, E_dead = 2 keV) : weight each Monte Carlo electron by the light yield of a phosphor screen, φ(E) = max(0, E − E_dead), instead of counting every electron once. Higher-energy electrons leave the tilted sample more in the forward direction, so the weighting lowers the top-to-bottom intensity gradient of the pattern (for Si at 20 kV from about 2.5 to 1.7 across the detector) and slightly reduces the zone-axis brightness. It applies to the detector-plane binning and to the per-bin energy distribution; changing it re-bins the stored electrons without re-running the Monte Carlo. Turn it off for a direct electron detector that counts electrons. E_dead is the dead-layer (threshold) energy of the phosphor; typical values are 0–3 keV for a P43 screen with an aluminium coating.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormEBSD.resx: numericBoxEnergyFilter.ToolTip / FormEBSD.cs: McEnergyFilterMinKeV) -->
+- **Energy filter E >** (keV; default 0 = off) : an ideal high-pass energy filter in front of the detector. Electrons whose exit energy is at or below this value do not contribute to the pattern. Changing it re-bins the stored electrons without re-running the Monte Carlo or rebuilding the master pattern.
 - **Energy distribution from MC histogram** (default off) : builds each direction bin's exit-energy distribution from the raw Monte Carlo histogram (φ-weighted, split linearly between the two neighbouring energy slices of the master pattern) instead of an asymmetric Gaussian fitted to the mean and the one-sided spreads. The Gaussian underestimates the peak near the beam energy by a factor of 2–3, which makes the bands look wider. When this is on, the A(E) of **Contrast falls with energy loss** is also applied to each electron at its own exit energy before it is split between the energy slices, instead of being evaluated at the slice energies. In histogram + per-electron A(E) mode, an unedited E_c switches to the provisional 0.9 keV value from the median widths of 18 fixed Si004 bands at 20 kV; other measures (for example whole-image correlation) give different values. After you edit E_c, switching distributions keeps your value. Changing it re-bins the stored electrons without re-running the Monte Carlo.
 
 ---
@@ -162,9 +168,10 @@ The centre panel shows the EBSD (Kikuchi-band) pattern for the current crystal o
   - **emf** copies an Enhanced Metafile, keeping the Kikuchi lines and index labels as vectors; **bmp** rasterizes everything.
   - **Match detector resolution** copies at one image pixel per detector pixel (the longer side is clamped to 4096 px). Unchecked, the on-screen resolution is used.
 
-### Output parameters of dynamical EBSD pattern
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormEBSD.resx: tabPageOutputParameter.Text / checkBoxWithBSEDistribution.Text) -->
+### Simulated pattern
 
-- **Show image with BSE angular/energy distributions** : when checked, the pattern is composited by weighting with the BSE distribution (energy, depth, direction) rather than a single slice.
+- **With BSE angular/energy distributions** (default on) : when checked, the pattern is composited by weighting with the BSE distribution (energy, depth, direction) rather than a single slice.
 - **Energy / Depth** : when the above is off, select the energy/depth slice to display.
 - **Brightness** (**Min** / **Max**), **Contrast**, **Polarity**, **Color** : the black and white points of the simulated pattern as a percentage of the display range (linear sliders), the width of that range, its polarity and the colour scale. Contrast 0 makes the display range equal to the intensity range of the pattern itself; -1 widens it tenfold (contrast ten times weaker) and +1 narrows it to a tenth, with the centre held fixed.
 - **Flatten background** (**FWHM**, px; default off, 100 px) : subtracts a Gaussian-blurred copy of the simulated pattern from itself, removing the slowly varying brightness distribution so that bands and zone axes can be compared with a background-corrected experimental pattern. The FWHM is given in detector pixels and does not depend on the zoom. It affects the displayed image and the PNG/TIFF export; the CSV export keeps the raw values.
@@ -196,6 +203,19 @@ The orientation that explains the image is then searched for with one of two eng
 | **Strong bands (hkl)** | Indices of the matched bands (Radon search only) |
 
 **Clicking a row applies that orientation to the whole program**, so the simulated pattern is redrawn on top of the experimental one and the crystal orientation of every other window follows.
+
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormEBSD.cs: HandleZoneAxisDoubleClick / buttonFindZoneAxis_Click、FormEBSD.resx の各 ToolTip) -->
+### Zone-axis picking
+
+<!-- screenshot: FormEBSD の実測画像タブ、晶帯軸ピッキング欄 (Zone axis / [u v w] / + geometry / Find / Clear) と拾った点の表示 -->
+
+Instead of matching the whole image, the orientation can also be found from band intersections (zone axes) picked by hand on the experimental image.
+
+- **Zone axis** : turns picking on. While it is on, a left double-click on the pattern adds a point, <kbd>CTRL</kbd> + left double-click removes the point within 5 screen pixels, and <kbd>SHIFT</kbd> + left double-click selects a point (drawn in yellow; the others are cyan, numbered). While it is off, double-click selects a detector cell as usual.
+- **[u v w]** : the zone-axis index of the selected point. Leave 0 0 0 to let the search assign it; typing an index constrains the search (useful for low-symmetry crystals and high-index axes).
+- **+ geometry** : also optimizes the detector centre (X, Y, Z, mm) together with the orientation by minimizing the pixel residual between the predicted and picked zone-axis positions. It needs at least 4 assigned points; selecting a candidate then applies the refined geometry as well.
+- **Find** : searches the orientations that explain the picked zone axes (at least 2 points; three are usually enough, two are ambiguous). The angular tolerance is 2°, retried at 5° if nothing is found. Up to 10 candidates are written to the same candidate table, and clicking a row applies them as above.
+- **Clear** : removes all picked points, the typed indices and the candidates of the last zone-axis search (no undo). Loading a new experimental image does the same.
 
 **Calibrate geometry** refines the detector geometry — pattern centre (PC) and detector distance (DD) — alternately with the orientation, by maximizing the ZNCC between the simulated and experimental patterns. It requires the master pattern, keeps the detector tilt fixed, and writes the result back to the **Coordinates of detector center** X/Y/Z boxes. Since the beam scan of an SEM moves the pattern centre by only a fraction of a millimetre, one calibration at the beginning of an experiment is usually enough for a whole series of images.
 

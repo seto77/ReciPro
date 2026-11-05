@@ -105,6 +105,9 @@ The panel at the lower left adjusts how the result looks — brightness, color, 
 
 - **For Each Image** : when checked, normalizes each image separately (when unchecked, the whole series shares a common scale).
 - **Min** / **Max** : fixes the lower / upper end of the normalization to the value given on the right instead of the minimum / maximum of the image.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.cs:FillEdxGrid / RadioButtonHRTEM_CheckedChanged) -->
+- **EDX: Common** : shown only while an [EDX map](2-stem-simulation.md#stem-edx) is displayed and the run produced more than one channel; puts all channels of the same quantity on one display range. EDX maps are never rescaled by **Min** / **Max**: their lower end is fixed at 0 and only the upper end follows **For Each Image** / **EDX: Common**.
+- This group is hidden in Potential mode.
 
 ### STEM image
 
@@ -118,8 +121,9 @@ Shown in STEM mode only. Selects which scattering component of the calculated ST
 
 Sets the items overlaid on the image.
 
-- **Unit cell** : overlays the outline of the projected unit cell, so you can relate the image contrast to the crystal lattice.
-- **Label** : overlays labels such as thickness, defocus, and indices. **Size** (font size) and **Color** can be specified.
+- **Unit cell** : overlays the outline of the projected unit cell, so you can relate the image contrast to the crystal lattice. <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.cs:drawSymbols) -->The edges parallel to **a**, **b** and **c** are drawn in red, green and blue, centred on the image centre.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.cs:BuildPseudoGrid / simulatePotential) -->
+- **Label** : overlays the label of each pane — the thickness `t=` and defocus `f=` (nm) in HRTEM / STEM, or the pane name (for example *Ug magnitude*) in Potential mode. **Size** (font size) and **Color** can be specified.
 - **Scale bar** : overlays a scale bar. **Length** (nm) and **Color** can be specified.
 
 ---
@@ -131,7 +135,20 @@ Sets the items overlaid on the image.
 - **Simulate** : runs the calculation with the current crystal, microscope conditions, thickness, defocus, and display settings.
 - **Stop** : aborts the running calculation (shown only while calculating).
 - **Real-Time Simulation** : when checked, recalculates immediately as the crystal is rotated (hidden in STEM mode).
-- **Preset settings** : toggles the preset window, which stores and recalls TEM imaging conditions.
+- **Preset settings** : toggles the preset window, which stores and recalls TEM imaging conditions (see [Preset list](#preset-list) below).
+
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormPresets.cs:buttonAdd_Click ほか / ImageSimulatorSetting) -->
+### Preset list {#preset-list}
+
+<!-- screenshot: Preset list window (FormPresets) with a few entries -->
+
+The **Preset list** window keeps named snapshots of the simulator settings. A snapshot stores the image mode, accelerating voltage, Cs, Cc, ΔV, defocus, β, objective aperture (size and shift), HRTEM partial-coherence model, thickness and the serial thickness / defocus lists, image size and resolution, number of Bloch waves, and the STEM settings (convergence angle, detector angles, source size, slice thickness, angular resolution, **Calculate EDX maps** and **Line series**). The list is saved with ReciPro's settings and survives a restart.
+
+- Clicking an entry applies it immediately.
+- **OK** closes the window and keeps the current settings; **Cancel** (or <kbd>Esc</kbd>) closes it and restores the settings that were in effect when the window was opened.
+- **Manage the preset list** : when checked, clicking an entry only selects it (it is not applied) and the **Name** box with **Add** / **Replace** / **Rename** / **Delete** appears. **Add** appends the current settings under the given name, **Replace** overwrites the selected entry with the current settings, **Rename** changes only its name.
+
+The microscope presets (ARM300F, 2100F, …) are not in this list; they are in the right-click menu of **TEM conditions** (see [HRTEM simulation](1-hrtem-simulation.md#tem-conditions)).
 
 ---
 
@@ -139,17 +156,18 @@ Sets the items overlaid on the image.
 
 ![File menu](../../assets/cap-en-auto/FormImageSimulator.menuStrip1.fileToolStripMenuItem.png)
 
-- **Save Image** : save as **as Image (PNG format)**, **as Image (TIFF format)**, or **as Metafile (EMF)**. **Save individually for serial image mode** writes the images of a serial run one by one.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.cs:Save / FormImageSimulator.resx: loadTEMParameterToolStripMenuItem.Enabled=False) -->
+- **Save Image** : save as **as Image (PNG format)**, **as Image (TIFF format)**, or **as Metafile (EMF)**. PNG and EMF save what is displayed (display range and color scale); **Save individually for serial image mode** (on by default) writes each pane to its own file instead of one tiled image. TIFF always writes one file per pane and stores the computed pixel values themselves, not the display range, without overlays.
 - **Copy image** : copy to the clipboard **as Image** or **as Metafile (EMF)**.
-- **Overprint symbols** : burns the unit cell, labels, and scale bar into the saved image.
-- **Load TEM parameters** / **Save TEM parameters** : save the optical conditions (accelerating voltage, aberrations, and so on) to a file and restore them.
+- **Overprint symbols** (on by default) : burns the unit cell, labels, and scale bar into the saved or copied PNG / EMF image.
+- **Load TEM parameters** / **Save TEM parameters** : shown but disabled (not implemented). Use the [Preset list](#preset-list) to store and recall conditions.
 
 ## Help menu
 
 ![Help menu](../../assets/cap-en-auto/FormImageSimulator.menuStrip1.helpToolStripMenuItem.png)
 
 - **Basic concept of HRTEM simulation** : opens the explanation of HRTEM image formation ([Appendix A3.2](../appendix/a3-bloch-wave/hrtem.md)).
-- **Calculation library** : selects the calculation library — **Native code** (fast C++/Eigen) or **Managed code** (.NET). Native is normally faster.
+- **Calculation library** : selects the calculation library — **Native code** (fast C++/Eigen) or **Managed code** (.NET). Native is normally faster. <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormImageSimulator.cs:SimulateHRTEM / FormImageSimulator_Load) -->The choice is used only for the HRTEM image synthesis; STEM selects its solver automatically (STEM-EDX always needs the native library), and the choice is reset to **Native code** each time ReciPro starts.
 
 ---
 

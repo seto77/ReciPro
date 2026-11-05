@@ -20,7 +20,7 @@ Simulates the diffraction pattern produced when a parallel electron beam passes 
 
 ![Wave Length](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Set the radiation source to **Electron**. Enter the energy (keV) or wavelength (nm) and the relativistically corrected wavelength is computed. For X-ray and neutron sources, see [X-ray diffraction simulation](5-x-ray-neutron-diffraction.md).
+Set the radiation source to **Electron**. Enter the energy (keV) or wavelength (nm) and the relativistically corrected wavelength is computed. <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:waveLengthControl, presetToolStripMenuItem) -->The initial value is 200 keV; the **Presets** menu sets 300 / 200 / 120 kV in one click. For X-ray and neutron sources, see [X-ray diffraction simulation](5-x-ray-neutron-diffraction.md).
 
 ---
 
@@ -44,6 +44,17 @@ Selects how spot intensities are computed.
 
 Intensity is determined solely from the geometric distance between the Ewald sphere and the reciprocal-lattice point (the excitation error $S_g$). It is largest at $S_g = 0$ — exactly on the sphere — and falls off as $\lvert S_g\rvert$ grows, reaching zero once $\lvert S_g\rvert$ exceeds the **Radius** given for the reciprocal-lattice point. Because the crystal structure factor is ignored, this is the fastest mode and is suited to checking diffraction-spot positions.
 
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:radioButtonIntensityCalculationMethod_CheckedChanged, CheckBoxExtinctionAll_CheckedChanged; FormDiffractionSimulator.Designer.cs:checkBoxExtinctionAll/Lattice, checkBoxDrawSameSize) -->
+Only in this mode, the following options appear:
+
+| Option | Description |
+|--------|-------------|
+| **Exclude all prohibited reflections** | Hide every reflection forbidden by the space group (lattice centring, screw axes and glide planes). Ticking it also ticks and locks the next option. |
+| **Exclude reflections prohibited by lattice centring** | Hide only reflections forbidden by lattice centring (default on). |
+| **Draw all spots with the same radius** | Draw every excited spot with the full radius *R*, regardless of $S_g$. |
+
+Forbidden reflections that remain visible are drawn in the **Extinct spots** colours (see [Spot appearance](#spot-appearance)).
+
 ### Kinematical
 
 In addition to the excitation error, the kinematical structure factor $\lvert F_{hkl} \rvert^2$ is folded into the intensity. Extinction rules are correctly reflected, making this mode suited to thin specimens or weak diffraction.
@@ -62,10 +73,11 @@ A rigorous dynamical calculation by the Bloch-wave method (Bethe method). It rep
 
 Active only when **Intensity calculation = Dynamical**.
 
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:numericBoxNumOfBlochWave, numericBoxThickness) -->
 | Parameter | Description |
 |-----------|-------------|
-| **Number of diffracted waves** | Number of Bloch waves included in the eigenvalue problem. Larger values give more accurate intensities but increase computation time as $O(N^3)$ |
-| **Thickness** | Specimen thickness (nm) used in the dynamical calculation |
+| **Number of Diffracted Waves** | Number of Bloch waves included in the eigenvalue problem (8–1000, default 240). Larger values give more accurate intensities but increase computation time as $O(N^3)$ |
+| **Thickness** | Specimen thickness (nm) used in the dynamical calculation (0.01–10000 nm, default 50 nm) |
 
 ---
 
@@ -75,14 +87,14 @@ Active only when **Intensity calculation = Dynamical**.
 
 Controls how each diffraction spot is rendered.
 
-- **Solid sphere / Gaussian** : the geometric model of the reciprocal-lattice point. **Solid sphere** draws the cross-section (a circle) between a sphere of radius $R$ and the Ewald sphere, with the circle area corresponding to the diffraction intensity; **Gaussian** draws the cross-section (a 2-D Gaussian) of a 3-D Gaussian with $\sigma = R$, with its integral corresponding to the diffraction intensity.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpots, radioButtonPointSpread_CheckedChanged, comboBoxScaleColorScale_SelectedIndexChanged; FormDiffractionSimulator.Designer.cs:flowLayoutPanelAppearance) -->
+
+- **Solid sphere / Gaussian** : the geometric model of the reciprocal-lattice point (default **Solid sphere**). **Solid sphere** draws the cross-section (a circle) between a sphere and the Ewald sphere: the sphere radius is $R\,I^{1/3}$ for **Kinematical** (sphere volume ∝ intensity) and $R$ for **Only excitation error**; for **Dynamical** a disc of radius $R\,I_\text{dyn}^{1/2}$ (area ∝ intensity) is drawn without the Ewald-sphere cut. **Gaussian** draws the cross-section (a 2-D Gaussian) of a 3-D Gaussian with $\sigma = R$, with its integral corresponding to the diffraction intensity.
 - **Opacity** : transparency of the spot (0 = transparent, 1 = opaque).
-- **Radius (R)** : virtual radius of the reciprocal-lattice point. The spot size is fixed by the combination of **Appearance** mode and **Intensity calculation** (e.g. Solid sphere + Dynamical gives a radius proportional to $I_\text{dyn}^{1/2}$).
-- **Brightness** : active only in **Gaussian** mode. Integrated intensity of the rendered Gaussian.
-- **Color scale** : **Gray scale** or **Cold-warm**.
-- **Log scale** : display intensities on a logarithmic scale. Useful for patterns with large intensity contrast.
-- **Spot color** : spot colour used when the colour scale is not in use.
-- **Color per crystal** : when checked, spots are drawn in the colour assigned to each crystal.
+- **Spot radius (R)** : virtual radius of the reciprocal-lattice point (nm⁻¹; 0.01–1, default 0.2). The spot size is fixed by the combination of **Appearance** mode and **Intensity calculation** (see above).
+- **Brightness**, **Color scale**, **Log scale** : shown only in **Gaussian** mode. **Brightness** scales the integrated intensity of the rendered Gaussian; **Color scale** is **Gray** (spots in the spot colours below), **Cold-Warm**, **Spectrum** or **Fire**; **Log scale** displays intensities on a logarithmic scale (useful for patterns with large intensity contrast).
+- **Spot color** : shown when the colour scale is **Gray** (always in Solid-sphere mode). **General spots**, **Extinct spots (Screw or Glide)** and **Extinct spots (Lattice centring)** set the colours of allowed and forbidden reflections.
+- **Color per crystal** : when checked, spots are drawn in the colour assigned to each crystal (also for a single crystal).
 
 ---
 
@@ -90,16 +102,17 @@ Controls how each diffraction spot is rendered.
 
 The labels overlaid on the spots are selected from the [toolbar](index.md#toolbar).
 
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpotsLabel) -->
 | Label | Content |
 |-------|---------|
 | **Index** | Miller indices $(hkl)$ |
-| **d** | interplanar spacing $d$ |
-| **1/d** | reciprocal of the interplanar spacing $1/d$ |
-| **Distance** | spot-to-spot distance on the detector |
+| **d** | interplanar spacing $d$ (shown in Å) |
+| **1/d** | reciprocal of the interplanar spacing $1/d$ (nm⁻¹) |
+| **Distance** | distance of the spot from the direct spot on the detector, $L_2 \tan 2\theta$ (mm; $L_2$ = camera length 2) |
 | **2θ** | scattering angle $2\theta$ (same definition as the concentric 2θ scale circles) |
 | **χ** | azimuth angle $\chi$, measured from the upward (12 o'clock) direction, positive clockwise (same definition as the radial azimuth scale lines) |
-| **Excit. Err.** | excitation error $S_g$ |
-| **\|Fg\|** | absolute value of the structure factor $\lvert F_{hkl} \rvert$ |
+| **Excit. Err.** | excitation error $S_g$ (nm⁻¹) |
+| **\|Fg\|** | relative intensity (%) in **Kinematical** mode; in **Dynamical** mode the relative intensity (% of the strongest diffracted beam, 000 excluded) and the complex exit-surface amplitude. Nothing is shown for **Only excitation error** |
 
 ---
 

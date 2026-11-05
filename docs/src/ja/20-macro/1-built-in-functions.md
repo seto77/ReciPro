@@ -140,13 +140,13 @@ for k in range(-2, 3):
 
 | プロパティ | 型 | 説明 |
 |-----------|-----|------|
-| `DifSim.Energy` | double | エネルギー (keV) |
-| `DifSim.Wavelength` | double | 波長 (Å) |
+| `DifSim.Energy` | double | <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Macro.cs:DifSimClass.Energy) --> エネルギー（X線・電子線は keV、中性子線は meV） |
+| `DifSim.Wavelength` | double | <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Macro.cs:DifSimClass.Wavelength / WaveLengthControl.cs:WaveLength) --> 波長 (nm) |
 | `DifSim.Thickness` | double | 試料厚さ (nm) |
 | `DifSim.NumberOfDiffractedWaves` | int | ブロッホ波の数 |
 | `DifSim.CameraLength2` | double | カメラ長 (mm) |
 | `DifSim.ExcitationError` | double | スポット半径 (nm⁻¹)。運動学/励起誤差モードの `SpotInfo()` は \|Sg\| がこの値以内の反射を出力する |
-| `DifSim.SkipRendering` | bool | 描画のスキップ（バッチ処理で高速化） |
+| `DifSim.SkipRendering` | bool | <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:Draw (SkipRendering && bethe)) --> 動力学モード (`Calc_Dynamical()`) でのみ有効: ブロッホ波計算は実行される（`SpotInfo()` は有効）が、スポットは描画されない（この間に保存した画像にはスポットが写らない）。運動学/励起誤差モードでは効果なし |
 
 ### 入射ビームモード
 
@@ -180,7 +180,7 @@ for k in range(-2, 3):
 |-----------|------|
 | `DifSim.Tau` / `TauInDeg` | 検出器傾斜角 τ（ラジアン/度） |
 | `DifSim.Phi` / `PhiInDeg` | 検出器回転軸方向 φ（ラジアン/度） |
-| `DifSim.Foot(x, y)` | Foot位置のピクセル座標 |
+| `DifSim.Foot(x, y)` | <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Macro.cs:DifSimClass.Foot / FormDiffractionSimulator.cs:Foot) --> 画像中心の検出器座標 (mm)。(0, 0) は試料から検出器に下ろした垂線の足 (Foot) |
 
 ### 出力
 
@@ -244,7 +244,7 @@ for k in range(-2, 3):
 | `StructureViewer.Open()` | 結晶構造ビューアのウィンドウを開く |
 | `StructureViewer.Close()` | 結晶構造ビューアのウィンドウを閉じる |
 | `StructureViewer.SaveImage(filename)` | メインビューの描画画像を PNG 保存（ピクセルサイズはウィンドウの **Size (W×H)** ボックス）。`filename` 省略で保存ダイアログ |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 表示中の構造を 3D プリント用に出力（ファイルメニューの **3Dモデルを出力 (3MF/STL)** と同じ）。形式は拡張子で決まる（`.stl` = 単色 / `.3mf` = 元素色分け）。必須は `filename` のみで、他の既定値はダイアログの既定と同じ（最長辺 80 mm・単位胞枠 ⌀2.4 mm・結合の増径 ⌀1.2 mm）。`fixedScaleInMMperNm` > 0 を渡すと複数の模型を同縮尺で作れる |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 表示中の構造を 3D プリント用に出力（ファイルメニューの **3Dモデルを出力 (3MF/STL)** と同じ）。形式は拡張子で決まる（`.stl` = 単色 / `.3mf` = 元素色分け）。必須は `filename` のみで、他の既定値はダイアログの既定と同じ（最長辺 80 mm・単位胞枠 ⌀2.4 mm・結合の増径 ⌀1.2 mm）。`fixedScaleInMMperNm` > 0 を渡すと複数の模型を同縮尺で作れる。<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Macro.cs:StructureViewerClass.Export3DModel) --> `filename` は `.stl` か `.3mf` で終わる必要がある（ダイアログは開かない）。戻り値は三角形数と出力サイズを含む情報文字列 |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -341,7 +341,7 @@ ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60,
 
 | 関数 | 説明 |
 |------|------|
-| `Sleep(ms)` | 指定ミリ秒だけ待機 |
+| `ReciPro.Sleep(ms)` | <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Macro.cs:Macro.Sleep / Macro ctor (addHelp は子クラスのみ)) --> 指定ミリ秒だけ待機。`ReciPro.Sleep(ms)` の形で呼ぶ。エディタの組み込み関数表には表示されない |
 
 ---
 
