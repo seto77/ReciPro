@@ -28,7 +28,7 @@ Impostare la sorgente di radiazione su **Elettroni**. Inserire l'**Energia** (ke
 
 ![Ottica](../../assets/cap-it-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-Impostare la geometria del fascio incidente su **Fascio parallelo**. Questa è la geometria standard a onda piana usata per SAED e per la diffrazione a raggi X.
+Impostare **Ottica** (la geometria del fascio incidente) su **Fascio parallelo**. Questa è la geometria standard a onda piana usata per SAED e per la diffrazione a raggi X.
 
 > **Nota**: Per gli elettroni è possibile scegliere **Fascio parallelo / Precessione (elettroni) / Convergenza (elettroni)**. La scelta di **Precessione (elettroni)** dà una [simulazione PED](2-ped-simulation.md) e la scelta di **Convergenza (elettroni)** dà una [simulazione CBED](3-cbed-simulation.md); in entrambi i casi il calcolo dell'intensità passa automaticamente a **Teoria dinamica**.
 
@@ -88,7 +88,7 @@ Controlla come viene rappresentato ciascuno spot di diffrazione (gruppo **Aspett
 - **Sfera piena / Gaussiana** : il modello geometrico del punto del reticolo reciproco (predefinito **Sfera piena**). **Sfera piena** disegna la sezione (un cerchio) tra una sfera e la sfera di Ewald: il raggio della sfera è $R\,I^{1/3}$ per **Cinematica & err. ecc.** (volume della sfera ∝ intensità) ed $R$ per **Solo errore di ecc.**; per **Teoria dinamica** viene disegnato un disco di raggio $R\,I_\text{dyn}^{1/2}$ (area ∝ intensità) senza il taglio con la sfera di Ewald. **Gaussiana** disegna la sezione (una gaussiana 2-D) di una gaussiana 3-D con $\sigma = R$, il cui integrale corrisponde all'intensità di diffrazione.
 - **Opacità** : trasparenza dello spot (0 = trasparente, 1 = opaco).
 - **Raggio riflesso (R)** : raggio virtuale del punto del reticolo reciproco (nm⁻¹; 0.01–1, predefinito 0.2). La dimensione dello spot è fissata dalla combinazione tra la modalità di **Aspetto** e il **Calcolo intensità** (vedere sopra).
-- **Luminosità**, **Scala colori**, **Scala log** : mostrati solo in modalità **Gaussiana**. **Luminosità** scala l'intensità integrata della gaussiana disegnata; **Scala colori** è **Gray** (spot nei colori degli spot indicati sotto), **Cold-Warm**, **Spectrum** o **Fire**; **Scala log** visualizza le intensità su scala logaritmica (utile per pattern con grande contrasto di intensità).
+- **Luminosità**, **Scala colori**, **Scala log** : mostrati solo in modalità **Gaussiana**. **Luminosità** scala l'intensità integrata della gaussiana disegnata; **Scala colori** è **Gray** (spot nei colori degli spot indicati sotto), **Cold-warm**, **Spectrum** o **Fire**; **Scala log** visualizza le intensità su scala logaritmica (utile per pattern con grande contrasto di intensità).
 - **Colore riflesso** : mostrato finché la **Scala colori** è **Gray** (impostazione iniziale). **Spot generali**, **Spot estinti (vite/slitt.)** e **Spot estinti (centratura)** impostano i colori delle riflessioni permesse e proibite.
 - **Colore per cristallo** : se selezionato, gli spot vengono disegnati nel colore assegnato a ciascun cristallo (anche con un solo cristallo).
 
@@ -100,14 +100,14 @@ Le etichette sovrapposte agli spot vengono selezionate dalla [barra degli strume
 
 | Etichetta | Contenuto |
 |-------|---------|
-| **Index** | indici di Miller $(hkl)$ |
-| **d** | distanza interplanare $d$ (mostrata in Å) |
-| **1/d** | reciproco della distanza interplanare $1/d$ (nm⁻¹) |
-| **Distanza** | distanza dello spot dal fascio diretto sul rivelatore, $L_2 \tan 2\theta$ (mm; $L_2$ = lunghezza di camera 2; esatta per un rivelatore non inclinato, τ = 0) |
+| **Index** | indici di Miller $(hkl)$; quattro indici $(hkil)$ quando nella finestra principale è attiva **Opzioni ▸ Usa indici di Miller-Bravais (hkil)** e il cristallo usa assi esagonali (le etichette delle linee di Kikuchi, degli anelli di Debye e della vista 3D seguono la stessa impostazione) <!-- 261105Cl 監査: C23 --> |
+| **d** | distanza interplanare $d$, in Å o nm secondo l'unità di lunghezza della finestra principale <!-- 261106Cl 作者の決定 C20 --> |
+| **1/d** | reciproco della distanza interplanare $1/d$, in nm⁻¹ o Å⁻¹ secondo l'unità di lunghezza della finestra principale <!-- 261106Cl 作者の決定 C2 --> |
+| **Distanza** | distanza sul rivelatore tra lo spot e lo spot trasmesso (diretto) (mm), misurata tra le posizioni disegnate, quindi valida anche per un rivelatore inclinato, per la camera di precessione a raggi X e per Back Laue (misurata dal foro del fascio); non viene mostrata quando il fascio trasmesso non cade sul rivelatore <!-- 261105Cl 監査: DrawDiffractionSpotsLabel (C15)。L2 tan2θ は傾けない平板の検出器だけ --> |
 | **2θ** | angolo di diffusione $2\theta$ (stessa definizione dei cerchi concentrici della scala 2θ) |
 | **χ** | angolo azimutale $\chi$, misurato dalla direzione verso l'alto (ore 12), positivo in senso orario (stessa definizione delle linee radiali della scala azimutale) |
-| **Err. eccit.** | errore di eccitazione $S_g$ (nm⁻¹) |
-| **\|Fg\|** | intensità relativa (%) in modalità **Cinematica & err. ecc.**; in modalità **Teoria dinamica** l'intensità relativa (% del fascio diffratto più intenso, escluso 000) e l'ampiezza complessa sulla superficie di uscita. Con **Solo errore di ecc.** non viene mostrato nulla |
+| **Err. eccit.** | errore di eccitazione $S_g$, in nm⁻¹ o Å⁻¹ secondo l'unità di lunghezza della finestra principale |
+| **Intensità** | intensità relativa (%) in modalità **Cinematica & err. ecc.**; in modalità **Teoria dinamica** l'intensità relativa (% del fascio diffratto più intenso, escluso 000) e l'ampiezza complessa sulla superficie di uscita. Con **Solo errore di ecc.** non viene mostrato nulla |
 
 ---
 

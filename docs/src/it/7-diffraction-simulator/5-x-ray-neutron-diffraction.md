@@ -2,9 +2,9 @@
 
 La **simulazione della diffrazione di raggi X / neutroni** calcola i pattern di diffrazione di raggi X e neutroni da monocristallo. È una delle modalità principali del [simulatore di diffrazione](index.md).
 
-> Questa pagina elenca tutte le impostazioni che compaiono sul lato destro quando si seleziona **Wave Length = Raggi X** (o Neutroni). Per le operazioni a livello di finestra, come il disegno e il salvataggio, consultare la [pagina panoramica](index.md).
+> Questa pagina elenca tutte le impostazioni che compaiono sul lato destro quando si seleziona **Sorgente d'onda** = **Raggi X** (o **Neutroni**). Per le operazioni a livello di finestra, come il disegno e il salvataggio, consultare la [pagina panoramica](index.md).
 
-Condizioni della GUI: Wave Length = Raggi X / Neutroni · Fascio incidente = Fascio parallelo / Precessione (raggi X, ZOLZ) / Back Laue (raggi X) · Calcolo intensità = Solo errore di ecc. / Cinematica & err. ecc.
+Condizioni della GUI: Sorgente d'onda = Raggi X / Neutroni · Ottica = Fascio parallelo / Precessione (raggi X, ZOLZ) / Back Laue (raggi X) · Calcolo intensità = Solo errore di ecc. / Cinematica & err. ecc.
 
 ![Simulatore di diffrazione in modalità raggi X / neutroni](../../assets/cap-it-auto/FormDiffractionSimulator-xray.png)
 
@@ -16,11 +16,11 @@ I raggi X hanno una lunghezza d'onda maggiore degli elettroni (Cu Kα: 0.15406 n
 
 ---
 
-## Wave Length
+## Sorgente d'onda {#wave-length}
 
-![Wave Length](../../assets/cap-it-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Sorgente d'onda](../../assets/cap-it-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Selezionare **Raggi X** come sorgente di radiazione. I raggi X possono essere specificati in due modi: raggi X caratteristici e radiazione di sincrotrone.
+Selezionare **Raggi X** come **Sorgente d'onda**. I raggi X possono essere specificati in due modi: raggi X caratteristici e radiazione di sincrotrone.
 
 ### Raggi X caratteristici
 
@@ -39,29 +39,31 @@ Impostare **Element** su **0: Custom** e inserire direttamente l'energia (keV) o
 
 ---
 
-## Modalità del fascio incidente
+## Ottica {#incident-beam-mode}
 
-![Beam mode](../../assets/cap-it-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Ottica](../../assets/cap-it-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
 Seleziona la geometria del fascio incidente. Per i raggi X sono disponibili tre modalità.
 
-### Fascio parallelo
+### Fascio parallelo {#parallel}
 
 L'onda piana standard. Un fascio incidente parallelo utilizzato per SAED e per la diffrazione di raggi X da monocristallo.
 
-### Precessione (raggi X, ZOLZ) — camera di precessione
+### Precessione (raggi X, ZOLZ) — camera di precessione {#precession-x-ray--precession-camera}
 
-Simula una camera di precessione a raggi X. Si tratta di una fotografia di precessione che cattura un singolo strato del reticolo reciproco.
+Simula una camera di precessione a raggi X. Si tratta di una fotografia di precessione che cattura un singolo strato del reticolo reciproco. Gli anelli di Debye sono disegnati come cerchi di raggio $2L_2\sin\theta$ ($L_2$ = lunghezza di camera 2), come i cerchi della scala 2θ. <!-- 261105Cl 監査: DrawDebyeRing (C6) -->
 
-### Back Laue (raggi X) — Laue in retroriflessione
+### Back Laue (raggi X) — Laue in retroriflessione {#back-laue-back-reflection-laue}
 
-Simula un pattern di Laue in retroriflessione con raggi X bianchi (policromatici). In questa geometria di retroriflessione il rivelatore è collocato sul lato della sorgente e **Monochrome** viene disattivato. Gli spot sono proiettati su un rivelatore piano **perpendicolare al fascio**, posto alla lunghezza di camera sul lato della sorgente; l'inclinazione del rivelatore **Tau / Phi** della [geometria del rivelatore](index.md#detector-geometry) non viene usata in questa proiezione.
+Simula un pattern di Laue in retroriflessione con raggi X bianchi (policromatici). In questa geometria di retroriflessione il rivelatore è collocato sul lato della sorgente; le caselle di energia / lunghezza d'onda e il selettore dell'elemento del controllo **Sorgente d'onda** vengono nascosti e al loro posto compare **Flat white**. Gli spot sono proiettati su un rivelatore piano **perpendicolare al fascio**, posto alla lunghezza di camera sul lato della sorgente; l'inclinazione del rivelatore **Tau / Phi** della [geometria del rivelatore](index.md#detector-geometry) non viene usata in questa proiezione.
 
 - Lo spettro bianco è troncato a **50 keV**: le riflessioni vengono raccolte fino a $d = \lambda(50\ \text{keV})/2$ e non si applica alcuna pesatura spettrale.
 - Le armoniche $n\mathbf{g}$ che giacciono sulla stessa retta passante per l'origine cadono sullo stesso spot; i loro $\lvert F\rvert^2$ vengono sommati sulla riflessione di ordine più basso e le intensità degli spot sono normalizzate allo spot più intenso.
 - **Dispersione anomala (f', f'')** è disabilitata (l'energia non ha un valore unico) e **Raggio riflesso** non ha unità in questa modalità.
+- 2θ (posizione del mouse, etichette degli spot e scala 2θ) è l'angolo di diffusione: 180° in corrispondenza del foro del fascio al centro, decrescente verso l'esterno. <!-- 261105Cl 監査: Back Laue の 2θ (C13) -->
+- Vengono disegnati tutti i cristalli selezionati; con più di un cristallo (o con **Colore per cristallo** attivo) gli spot di ciascun cristallo assumono il colore di quel cristallo. <!-- 261105Cl 監査: Back Laue の複数結晶 -->
 
-> **Nota**: Le opzioni del fascio incidente seguono la lunghezza d'onda. **Precessione (elettroni)** e **Convergenza (elettroni)** compaiono solo quando è selezionata la radiazione elettronica, mentre le opzioni **Precessione (raggi X, ZOLZ)** e **Back Laue (raggi X)** sopra indicate compaiono solo quando è selezionata la radiazione a raggi X. Per i neutroni è disponibile solo **Fascio parallelo**. A seconda dello stato al momento dell'acquisizione, lo screenshot potrebbe non mostrare le opzioni specifiche dei raggi X.
+> **Nota**: Le opzioni di **Ottica** seguono la sorgente d'onda. **Precessione (elettroni)** e **Convergenza (elettroni)** compaiono solo quando è selezionato **Elettroni**, mentre le opzioni **Precessione (raggi X, ZOLZ)** e **Back Laue (raggi X)** sopra indicate compaiono solo quando è selezionato **Raggi X**. Per i neutroni è disponibile solo **Fascio parallelo**. A seconda dello stato al momento dell'acquisizione, lo screenshot potrebbe non mostrare le opzioni specifiche dei raggi X.
 
 ---
 
@@ -100,7 +102,7 @@ Controlla come viene reso ciascuno spot di diffrazione.
 - **Opacità** : trasparenza dello spot (0 = trasparente, 1 = opaco).
 - **Raggio riflesso (R)** : raggio del punto del reticolo reciproco. La dimensione dello spot reso è determinata dalla combinazione di **Aspetto** e **Calcolo intensità**.
 - **Luminosità** : attivo solo nella modalità **Gaussiana**. Imposta l'intensità integrata della gaussiana resa.
-- **Scala colori** (solo Gaussiana) : **Gray**, **Cold-Warm**, **Spectrum** o **Fire**.
+- **Scala colori** (solo Gaussiana) : **Gray**, **Cold-warm**, **Spectrum** o **Fire**.
 - **Scala log** (solo Gaussiana) : visualizza le intensità su scala logaritmica.
 - **Colore riflesso** : colori degli spot usati con la scala colori **Gray** (questo gruppo è nascosto per le altre scale colori).
 - **Colore per cristallo** : se selezionato, disegna gli spot nel colore assegnato a ciascun cristallo.
@@ -112,7 +114,7 @@ Controlla come viene reso ciascuno spot di diffrazione.
 È possibile visualizzare gli anelli di Debye di un campione policristallino. Abilitare **Anelli di Debye** sulla barra degli strumenti (vedere [Barra degli strumenti](index.md#toolbar)).
 
 - **Ignora intensità di diffrazione** : disegna tutti gli anelli con lo stesso colore e la stessa intensità (utilizzato per un confronto puramente geometrico che ignora il fattore di struttura).
-- **Mostra etichette indici** : visualizza l'indice (*hkl*) accanto a ciascun anello.
+- **Mostra etichette indici** : visualizza gli indici {*hkl*} accanto a ciascun anello (quattro indici {*hkil*} con **Opzioni ▸ Usa indici di Miller-Bravais (hkil)** attivo per gli assi esagonali). <!-- 261105Cl 監査: DrawDebyeRing (C23) -->
 
 Le impostazioni dettagliate si trovano nella scheda Anelli di Debye del [menu a schede](index.md#drawing-overlay-tabs).
 
@@ -120,7 +122,7 @@ Le impostazioni dettagliate si trovano nella scheda Anelli di Debye del [menu a 
 
 ## Diffrazione di neutroni
 
-La selezione di **Neutroni** nel controllo Wave Length calcola un pattern di diffrazione di neutroni. Inserire l'energia (meV) o la lunghezza d'onda (Å o nm, commutabile; predefinito Å). Il fascio incidente può essere solo **Fascio parallelo**. Il calcolo dell'intensità può essere **Solo errore di ecc.** o **Cinematica & err. ecc.** (la **Teoria dinamica** non è disponibile). L'intensità cinematica utilizza la lunghezza di diffusione del neutrone al posto del fattore di diffusione atomico.
+La selezione di **Neutroni** in **Sorgente d'onda** calcola un pattern di diffrazione di neutroni. Inserire l'energia (meV) o la lunghezza d'onda (Å o nm, commutabile; predefinito Å). L'**Ottica** può essere solo **Fascio parallelo**. Il calcolo dell'intensità può essere **Solo errore di ecc.** o **Cinematica & err. ecc.** (la **Teoria dinamica** non è disponibile). L'intensità cinematica utilizza la lunghezza di diffusione del neutrone al posto del fattore di diffusione atomico.
 
 ---
 

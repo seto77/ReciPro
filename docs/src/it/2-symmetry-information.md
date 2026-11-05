@@ -38,8 +38,8 @@ Inserisci due piani cristallini \((h_1, k_1, l_1)\), \((h_2, k_2, l_2)\) oppure 
 
 - la distanza interplanare di ciascun piano / la lunghezza di ciascun asse,
 - l'angolo tra i due piani (o i due assi),
-- l'angolo tra il piano 1 e l'asse 1, e tra il piano 2 e l'asse 2,
-- **l'indice di direzione normale a entrambi i piani** e **l'indice di piano normale a entrambi gli assi**.
+- l'angolo tra la normale del piano 1 e l'asse 1, e tra la normale del piano 2 e l'asse 2 (90° quando l'asse giace nel piano),
+- **L'asse parallelo a entrambi i piani** (l'asse di zona [*uvw*] dei due piani) e **Il piano contenente entrambi gli assi** (il piano (*hkl*) che contiene i due assi). I segni seguono [*uvw*] = (*h*₁*k*₁*l*₁) × (*h*₂*k*₂*l*₂) e (*hkl*) = [*u*₁*v*₁*w*₁] × [*u*₂*v*₂*w*₂]. <!-- 261106Cl 作者の決定 B16 --> <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップ (numericBoxAnglePlaneAxis1/2.ToolTip) に合わせた。以前の「normal to」は逆 -->
 
 Questi calcoli rispettano la metrica della cella elementare corrente. Le lunghezze sono mostrate in Å e gli angoli in gradi.
 
@@ -49,7 +49,7 @@ Questi calcoli rispettano la metrica della cella elementare corrente. Le lunghez
 
 ![Posizioni di Wyckoff](../assets/cap-it-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-Elenca ogni posizione di Wyckoff con la sua molteplicità (**Mult.**), la lettera di Wyckoff (**Let. Wyck.**), la simmetria del sito (**Simm. sito**) e le **Coordinate** (fino a quattro per riga; gli elenchi più lunghi proseguono nelle righe successive). La prima voce di Wyckoff (molteplicità massima) è la posizione generale. Per i reticoli centrati, i vettori di traslazione reticolare sono mostrati nella riga di intestazione.
+Elenca ogni posizione di Wyckoff con la sua molteplicità (**Mult.**), la lettera di Wyckoff (**Let. Wyck.**), la simmetria del sito (**Simm. sito**) e le **Coordinate** (fino a quattro per riga; gli elenchi più lunghi proseguono nelle righe successive). La prima voce di Wyckoff (molteplicità massima) è la posizione generale. Per i reticoli centrati, i vettori di traslazione reticolare sono mostrati nella riga di intestazione; per i gruppi R in assi esagonali si tratta delle tre traslazioni di centratura dell'impostazione diretta (obverse), (0,0,0)+, (2/3,1/3,1/3)+ e (1/3,2/3,2/3)+. <!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
 
 ---
 

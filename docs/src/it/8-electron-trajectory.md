@@ -33,6 +33,8 @@ I controlli nella parte superiore della finestra impostano l'esecuzione:
 - **Inclinazione campione** (°, da −90 a 0, predefinito 0) : inclinazione della superficie del campione attorno all'asse *X*. Lasciarla a 0 per l'incidenza normale; usare **−70°** per riprodurre la geometria del [simulatore EBSD](12-ebsd-simulation.md), dove la forte inclinazione aumenta la resa di retrodiffusione.
 - **Energia** (keV) / **Lungh. d'onda** / **Unit** : la tensione di accelerazione del fascio incidente e la lunghezza d'onda elettronica corretta relativisticamente a essa associata. L'energia imposta l'energia cinetica utilizzata sia dal modello elastico (NIST Mott) sia da quello anelastico (potere frenante / IMFP).
 
+Modificare **Inclinazione campione** o **Energia** dopo un'esecuzione non cambia il risultato mostrato: finché non si preme di nuovo **Simula traiettorie**, ogni ridisegno (vista 3-D, stereogramma, istogrammi) usa l'inclinazione e l'energia con cui le traiettorie sono state calcolate. <!-- 261105Cl 監査: FormTrajectory.cs calcTilt/calcEnergy (9890ced0) -->
+
 Un elettrone viene seguito finché non lascia il campione o finché la sua energia non scende a **2 keV** (soglia fissa). Gli elettroni che escono con più di 2 keV sono contati come elettroni retrodiffusi; η (la loro frazione sul totale degli elettroni incidenti), l'energia media BSE, lo stereogramma e gli istogrammi descritti di seguito sono calcolati da questi elettroni. La sezione d'urto, il libero cammino medio e il potere frenante in **Statistiche** sono valori del modello all'energia del fascio.
 
 I modelli di diffusione non sono selezionabili dall'utente: le sezioni d'urto elastiche provengono dalla tabella NIST Mott inclusa nel programma (con ricorso a Rutherford schermato al di fuori del suo intervallo), e il potere frenante dalla forma di Jablonski modificata (2008). Il modello effettivamente utilizzato è indicato accanto alla sezione d'urto e al potere frenante in **Statistiche**. Vedere [Attenuazione e trasporto](appendix/a2-beam-interaction/attenuation-transport.md) per una descrizione di questi modelli.
@@ -59,7 +61,7 @@ Valori per l'energia del fascio attuale. La sezione d'urto e il potere frenante 
 - **Libero cammino medio elastico (λ)** (nm) — distanza media tra eventi di diffusione elastica.
 - **Potere frenante (dE/ds)** (eV/nm, negativo) — energia persa per unità di lunghezza di percorso.
 - **Coefficiente di elettroni retrodiffusi, η** (%) — la frazione di elettroni incidenti che escono di nuovo attraverso la superficie di ingresso. È la grandezza su cui si basa il contrasto delle immagini BSE.
-- **Energia media BSE** (keV) — energia media degli elettroni retrodiffusi nel momento in cui escono.
+- **Energia media BSE** (keV) — energia media degli elettroni retrodiffusi nel momento in cui escono. Viene mostrato «-» quando nessun elettrone è retrodiffuso (gli istogrammi sono allora vuoti). <!-- 261105Cl 監査: FormTrajectory.cs DrawStatistics (count == 0) -->
 
 ---
 

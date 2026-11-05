@@ -39,7 +39,7 @@ Imposta le condizioni di imaging della lente obiettivo.
 
 | Parametro | Descrizione | Predefinito / tipico |
 |-----------|-------------|-------------------|
-| **Tensione di accel. (kV)** | Tensione di accelerazione. La lunghezza d'onda elettronica corretta relativisticamente è mostrata a destra | 200 kV |
+| **Tensione di accel.** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Tensione di accelerazione (kV). La lunghezza d'onda elettronica corretta relativisticamente è mostrata a destra | 200 kV |
 | **Defocus Δf** | Defocus della lente obiettivo (nm). Il valore di riferimento del **Defocus di Scherzer** è mostrato sotto | −57.8 nm |
 | **Cs** | Coefficiente di aberrazione sferica (mm). Influisce sulla CTF e sul defocus di Scherzer. Sono ammessi valori negativi (da −20 a 20 mm) | 1.0 mm (predefinito); 0.5–1.0 (convenzionale), < 0.01 (corretto in Cs) |
 | **Cc** | Coefficiente di aberrazione cromatica (mm). Determina la sfocatura dell'immagine dovuta alla dispersione in energia | 1.4 mm (predefinito); 1.0–2.0 mm |
@@ -52,7 +52,7 @@ $$\chi(u) = \pi\lambda\,\Delta f\,u^2 + \tfrac{\pi}{2}\,C_s\lambda^3 u^4 ,$$
 
 e ciascuna onda diffratta viene moltiplicata per $\exp[-i\chi(u)]$, quindi **un Δf negativo corrisponde a sottofocalizzazione** (la convenzione in cui il defocus di Scherzer è negativo).
 
-> **Menu contestuale**: sul pannello Condizioni TEM si possono applicare con un solo clic **Imposta defocus a 0 nm** / **Imposta defocus al valore di Scherzer** / **Azzera tutte le aberrazioni** (quest'ultima porta a 0 Cs, Cc, β, ΔV **e anche il defocus**). Lo stesso menu contiene quattro preimpostazioni di microscopio — *300kV Cold-FEG senza Cs (Cs 0, Cc 2.8, ΔE 0.3) ARM300F*, *200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔE 0.8) 2100F*, *200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔE 0.8) 2100F* e *200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔE 2.0) 2100* — che impostano la tensione di accelerazione, Cs, Cc e ΔV come indicato nella voce e poi portano il defocus al valore di Scherzer (β resta invariato). La casella **Preimpostazioni** in basso a destra apre la finestra che memorizza le proprie condizioni (vedere [Preset list](index.md#preset-list)).
+> **Menu contestuale**: sul pannello Condizioni TEM si possono applicare con un solo clic **Imposta defocus a 0 nm** / **Imposta defocus al valore di Scherzer** / **Condizioni ideali (Cs, Cc, β, ΔV, Δf = 0)** (quest'ultima porta a 0 Cs, Cc, β, ΔV **e anche il defocus**). <!-- 261106Cl 作者の決定 E19: 表示名を理想条件に --> Lo stesso menu contiene quattro preimpostazioni di microscopio — *300kV Cold-FEG senza Cs (Cs 0, Cc 2.8, ΔV 0.3) ARM300F*, *200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F*, *200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F* e *200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100* — che impostano la tensione di accelerazione, Cs, Cc e ΔV come indicato nella voce e poi portano il defocus al valore di Scherzer (β resta invariato). La casella **Preimpostazioni** in basso a destra apre la finestra che memorizza le proprie condizioni (vedere [Elenco dei preset](index.md#preset-list)). <!-- 261105Cl 監査: プリセット名は ΔV (FormImageSimulator.resx presets1〜4ToolStripMenuItem.Text) -->
 
 ### Defocus di Scherzer
 
@@ -104,7 +104,7 @@ Limita le onde diffratte che attraversano l'apertura obiettivo. Il calcolo delle
 
 Seleziona come viene inclusa la coerenza parziale (β e la dispersione del fuoco δ). L'onda uscente è calcolata per un'unica direzione di incidenza (l'asse del fascio); la divergenza dell'illuminazione e la dispersione in energia intervengono solo attraverso le funzioni di inviluppo indicate sotto.
 
-- **Immagine lineare** (modello quasi coerente) : calcolo poco costoso. Ciascuna onda diffratta $\psi_g$ dell'onda uscente dinamica viene moltiplicata per $\exp[-i\chi(g)]\,E_\text{s}(g)\,E_\text{c}(g)$ e l'immagine è $\left|\sum_g\right|^2$. È accurato quando l'immagine è dominata dall'interferenza con il fascio trasmesso (campioni sottili).
+- **Immagine lineare** (modello quasi coerente) : calcolo poco costoso. Ciascuna onda diffratta $\psi_g$ dell'onda uscente dinamica viene moltiplicata per $\exp[-i\chi(g)]\,E_\text{s}(g)\,E_\text{c}(g)$ e le onde vengono sommate in modo coerente: $I(\mathbf{r}) = \left|\sum_g \psi_g\,e^{-i\chi(g)}\,E_\text{s}(g)\,E_\text{c}(g)\,e^{2\pi i\,\mathbf{g}\cdot\mathbf{r}}\right|^2$. È accurato quando l'immagine è dominata dall'interferenza con il fascio trasmesso (campioni sottili).
 - **Coef. trasmiss. incr.** (coefficiente di trasmissione incrociato) : calcolo costoso ma più accurato. Ogni coppia di fasci $(g,h)$ viene sommata con l'inviluppo mutuo (il coefficiente di trasmissione incrociato completo); è il modello da usare per diffusori forti che eccitano molte onde diffratte intense. Il costo cresce come il quadrato del numero di fasci all'interno dell'apertura.
 
 Per i dettagli, vedere [Appendice A3.2 — Formazione dell'immagine HRTEM](../appendix/a3-bloch-wave/hrtem.md).
@@ -123,7 +123,7 @@ Per un'immagine seriale, impostare quanto segue.
 | Voce | Descrizione |
 |------|-------------|
 | **Spessore (nm)** / **Defocus (nm)** | Quale grandezza far variare (sono ammesse entrambe) |
-| **Start / Passo / Num** | Valore iniziale, ampiezza del passo e numero di immagini. Vengono espansi nella casella di elenco sottostante, che può anche essere modificata direttamente |
+| **Inizio / Passo / Num** | Valore iniziale, ampiezza del passo e numero di immagini. Vengono espansi nella casella di elenco sottostante, che può anche essere modificata direttamente |
 | **Direzione orizzontale:** | Quando si fanno variare sia lo spessore sia il defocus, la grandezza disposta lungo la direzione orizzontale della griglia (**Defocus** o **Spessore**) |
 
 Facendo variare sia lo spessore sia il defocus si ottiene una matrice di immagini righe × colonne. **Num** è limitato a 20 per ciascuna grandezza. Quando si fa variare una sola grandezza e le immagini sono più di due, la riga viene disposta su una griglia quasi quadrata.

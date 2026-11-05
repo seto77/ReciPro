@@ -28,10 +28,11 @@ La banda superiore è un **Wave Length Control** condiviso con gli altri simulat
 
 ![Wave Length Control](../assets/cap-it-auto/FormBeamInteraction.waveLengthControl.png)
 
-- **X-ray / Electron / Neutron** : i fattori di diffusione atomici e la fisica dell'interazione differiscono a seconda del tipo di fascio incidente, quindi vengono commutati qui.
-- Per **X-ray**, la scelta dell'**Element** (materiale dell'anodo) e della riga caratteristica (Kα, ecc.) imposta automaticamente la lunghezza d'onda di quel raggio X caratteristico.
-- **Energy (keV)** e **Wavelength (Å)** sono collegati; impostando l'uno si aggiorna l'altro, ed entrambi determinano il 2θ usato nella tabella **Riflessioni**.
+- **Raggi X / Elettroni / Neutroni** : i fattori di diffusione atomici e la fisica dell'interazione differiscono a seconda del tipo di fascio incidente, quindi vengono commutati qui.
+- Per i **Raggi X**, la scelta dell'**Element** (materiale dell'anodo) e della riga caratteristica (Kα, ecc.) imposta automaticamente la lunghezza d'onda di quel raggio X caratteristico.
+- **Energia (keV)** e **Lungh. d'onda (Å)** sono collegati; impostando l'uno si aggiorna l'altro, ed entrambi determinano il 2θ usato nella tabella **Riflessioni**.
 - **Unit (Å / nm)** cambia l'unità di lunghezza usata per le distanze interplanari e per grandezze simili.
+- Cambiando la sorgente si ripristina l'energia usata l'ultima volta con quella sorgente (per i raggi X anche l'elemento e la riga). Una sorgente non ancora usata parte da Cu Kα per i raggi X, 200 kV per gli elettroni e 25,3 meV (neutroni termici). Questi valori non vengono mantenuti dopo la chiusura di ReciPro. <!-- 261106Cl 作者の決定 J18 -->
 
 Il fascio scelto decide anche quali schede e curve sono significative:
 
@@ -60,10 +61,10 @@ Elenca i piani cristallini permessi (riflessioni) del cristallo e il **fattore d
 
 **Options**
 
-- **Intensità di diffrazione da polveri (ottica Bragg-Brentano)** : calcola l'intensità relativa come intensità di diffrazione da polveri (Bragg–Brentano), $I \propto m\,\lvert F\rvert^2 / V^2 \times L$, dove $m$ è la molteplicità, $V$ il volume della cella e $L = (1+\cos^2 2\theta)/(\sin 2\theta\,\sin\theta)$ (fattore di Lorentz–polarizzazione) per i raggi X oppure $L = 1/(\sin 2\theta\,\sin\theta)$ (solo fattore di Lorentz, senza termine di polarizzazione) per elettroni e neutroni. Quando è disattivata, mostra l'intensità del fattore di struttura $\lvert F\rvert^2$. Attivandola si attivano forzatamente anche *Nascondi piani equivalenti* e *Nascondi piani proibiti*, che diventano non modificabili (in grigio).
+- **Intensità di diffrazione da polveri (ottica Bragg-Brentano)** : calcola l'intensità relativa come intensità di diffrazione da polveri (Bragg–Brentano), $I \propto m\,\lvert F\rvert^2 / V^2 \times L$, dove $m$ è la molteplicità, $V$ il volume della cella e $L = (1+\cos^2 2\theta)/(\sin 2\theta\,\sin\theta)$ (fattore di Lorentz–polarizzazione) per i raggi X oppure $L = 1/(\sin 2\theta\,\sin\theta)$ (solo fattore di Lorentz, senza termine di polarizzazione) per elettroni e neutroni. Le riflessioni che il fascio non può raggiungere (d < λ/2, 2θ mostrato come ∞) hanno intensità 0. <!-- 261105Cl 監査: J25 届かない反射の BB 強度は 0 --> Quando è disattivata, mostra l'intensità del fattore di struttura $\lvert F\rvert^2$. Attivandola si attivano forzatamente anche *Nascondi piani equivalenti* e *Nascondi piani proibiti*, che diventano non modificabili (in grigio).
 - **Nascondi piani equivalenti** (attiva per impostazione predefinita) : raggruppa i piani cristallograficamente equivalenti in un'unica voce. La colonna **Molt.** è mostrata solo mentre questa opzione è attiva.
 - **Nascondi piani proibiti** (attiva per impostazione predefinita) : esclude i piani sistematicamente estinti per le regole di estinzione. Quando è disattivata, una colonna **Condizione** mostra la condizione (o le condizioni) di riflessione che proibisce ciascun piano estinto.
-- **Soglia distanza interplanare >** (predefinito 1 Å) : esclude le riflessioni con una distanza interplanare minore di questo valore (l'unità di lunghezza segue la selezione di **Unit**).
+- **Soglia distanza interplanare >** (predefinito 1 Å) : esclude le riflessioni con una distanza interplanare minore di questo valore (l'unità di lunghezza segue la selezione di **Unit**). Il valore minimo accettato è (a + b + c)/20 della cella corrente, nella stessa unità. <!-- 261105Cl 監査: J8 numericBoxCutoffD.Minimum を表示単位に合わせた -->
 
 Ogni riga è una riflessione (o un gruppo di piani simmetricamente equivalenti):
 
@@ -80,7 +81,7 @@ Ogni riga è una riflessione (o un gruppo di piani simmetricamente equivalenti):
 | **F^2** | intensità del fattore di struttura ($\lvert F\rvert^2$) |
 | **Rel. Int. (%)** | intensità relativa, con la riflessione più forte posta a 100 |
 | **Condizione** | condizione (o condizioni) di estinzione violate dal piano (mostrata solo quando *Nascondi piani proibiti* è disattivata) |
-| **i** | l'indice di Miller–Bravais ridondante $i=-(h+k)$ (mostrato solo quando nella finestra principale è attiva **Opzioni ▸ Usa indici di Miller-Bravais (hkil)** e il cristallo usa assi esagonali — esagonale, oppure trigonale non in un setting ad assi romboedrici) |
+| **i** | l'indice di Miller–Bravais ridondante $i=-(h+k)$ (mostrato solo quando nella finestra principale è attiva **Opzioni ▸ Usa indici di Miller-Bravais (hkil)** e il cristallo usa assi esagonali — esagonale, oppure trigonale non in un setting ad assi romboedrici); **Copia** lo scrive così come è visualizzato <!-- 261105Cl 監査: J9 i 列は表示している値をコピー --> |
 
 **Grafico dei picchi di diffrazione.** Sotto la tabella le stesse riflessioni sono disegnate come pattern a barre, con i picchi più forti etichettati dai loro *hkl*.
 
@@ -105,7 +106,7 @@ Quanto a fondo il fascio penetra nel materiale e come perde energia. Il contenut
 
 ### X-ray
 
-I pulsanti di opzione scelgono il coefficiente rappresentato in funzione dell'energia dei fotoni (calcolato su 1–60 keV con asse dell'energia lineare; l'asse verticale è logaritmico per µ/ρ e µ e lineare per T %):
+I pulsanti di opzione scelgono il coefficiente rappresentato in funzione dell'energia dei fotoni (calcolato su 1–60 keV con asse dell'energia lineare; l'asse verticale è logaritmico per µ/ρ e µ e lineare per T %; se l'energia corrente è fuori da questo intervallo, il titolo del grafico lo indica, ad es. *(0,5 keV attuali fuori intervallo)*): <!-- 261106Cl 作者の決定 J5 -->
 
 - **µ/ρ** — il coefficiente di attenuazione **massico** (cm²/g): quanto fortemente il materiale rimuove i raggi X per grammo, indipendentemente da quanto è densamente impacchettato (è il valore che si trova nelle tabelle di riferimento). Il grafico mostra il valore **total** insieme alle sue componenti **photo**, **Rayleigh** e **Compton**.
 - **µ** — il coefficiente di attenuazione **lineare** $\mu = (\mu/\rho)\cdot\rho$ (cm⁻¹): l'attenuazione per centimetro del materiale reale alla sua densità effettiva. L'intensità trasmessa segue $I = I_0\,e^{-\mu t}$, e $1/\mu$ è la distanza su cui l'intensità scende a circa il 37 % (1/e).
@@ -115,7 +116,7 @@ La linea verticale indica l'energia corrente. La tabella scalare a sinistra elen
 
 ### Electron
 
-Il selettore di grandezza sceglie cosa viene rappresentato in funzione dell'energia del fascio (calcolato su 1–50 keV; la vista iniziale mostra 0–20 keV):
+Il selettore di grandezza sceglie cosa viene rappresentato in funzione dell'energia del fascio (calcolato su 1–50 keV; la vista iniziale mostra 0–20 keV; un'energia fuori da questo intervallo è segnalata nel titolo del grafico, ad es. *(200 keV attuali fuori intervallo)*): <!-- 261106Cl 作者の決定 J5 -->
 
 - **Tutti (normalizzati)** — sovrappone le tre curve sottostanti, ciascuna riscalata al proprio massimo così che le forme possano essere confrontate in un unico grafico (leggi i valori assoluti dalla tabella).
 - **σ elastica (nm²)** — sezione d'urto di diffusione elastica: quanto è probabile che un singolo atomo devii l'elettrone.
@@ -146,10 +147,10 @@ Il fattore di diffusione atomico di ciascun elemento costituente, rappresentato 
     ![Fattori di diffusione — neutron](../assets/cap-it-auto/FormBeamInteraction-neutron-scattering.png)
 
 - **X-ray** offre due modalità di **Modello**: **f(s)** rappresenta il fattore di diffusione atomico convenzionale per raggi X (in unità elettroniche); **F(q)+S(q)** rappresenta il fattore di forma **coerente** di Rayleigh $F(q)$ insieme alla funzione di diffusione **incoerente** di Compton $S(q)$ (da xraylib). La tabella elenca inoltre i termini di dispersione anomala **f'(E)** e **f''(E)** all'energia corrente e una colonna **modello** che indica da quale sorgente proviene la colonna f(s). Quando è selezionato **f(s)**, una seconda riga di pulsanti di opzione sceglie **da dove proviene la curva**: **Waasmaier–Kirfel** (l'adattamento predefinito, che copre anche gli ioni su Z = 1–98) oppure **Temari**. È disattivata mentre è mostrato **F(q)+S(q)**, perché quelle due curve provengono da xraylib e non ammettono scelta della sorgente.
-- **Electron** offre quattro sorgenti per il fattore di diffusione elettronico: **Peng**, **Kirkland**, **8-Gaussians** e **Temari**. La tabella mostra $f_e(s)$ (nm) e quale **modello** lo ha prodotto.
+- **Electron** offre quattro sorgenti per il fattore di diffusione elettronico: **Peng**, **Kirkland**, **8-Gaussians** e **Temari**. La tabella mostra $f_e(s)$ (nm) e quale **modello** lo ha prodotto. **Kirkland** e **8-Gaussians** non hanno parametri per gli ioni, quindi per gli ioni le loro curve sono omesse e le celle della tabella restano vuote (**Peng** fornisce valori per gli ioni). <!-- 261106Cl 作者の決定 J12 -->
 - Le lunghezze di diffusione **Neutron** non dipendono da $s$, quindi non viene disegnata alcuna curva; la tabella elenca per ciascun elemento la lunghezza di diffusione coerente **b_coh** e le sue sezioni d'urto coerente / incoerente.
 - **Temari** non è un adattamento ma una tabella calcolata (Temari dataset-factors v2.0.0, CC-BY-4.0, da un calcolo di campo autoconsistente di Dirac completo). Copre **solo atomi neutri Z = 1–86**: ioni e Z = 87–98 non hanno voce, quindi le loro curve sono omesse e le celle restano vuote invece di essere riempite con valori di atomo neutro.
-- **Debye-Waller** moltiplica ciascun fattore per lo smorzamento termico $e^{-B s^2}$ usando il parametro di spostamento isotropo di ciascun atomo.
+- **Spostamento (B)** moltiplica ciascun fattore per lo smorzamento termico $e^{-B s^2}$ usando il parametro di spostamento isotropo di ciascun atomo.
 
 ---
 
@@ -159,7 +160,7 @@ Per un fascio di raggi X, l'emissione di **fluorescenza** caratteristica del cam
 
 ![Fluorescenza (X-ray)](../assets/cap-it-auto/FormBeamInteraction-xray-fluorescence.png)
 
-Il grafico **EDX emission lines** disegna le righe caratteristiche (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) di ogni elemento come barre alle loro energie fotoniche, con l'altezza proporzionale a frazione atomica × tasso radiativo × resa di fluorescenza (un'anteprima qualitativa in stile EDX; la sezione d'urto di eccitazione e l'efficienza del rivelatore non sono modellate). La tabella inferiore elenca, per riga, l'elemento, il nome della riga, l'energia **E keV**, l'intensità relativa **Rel.I** e la resa di fluorescenza **ω**. La tabella scalare riporta la resa di guscio K **ω_K** di ciascun elemento e la **strongest line** nello spettro.
+Il grafico **Righe di emissione EDX (elenco di riferimento; eccitazione non considerata)** disegna le righe caratteristiche (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) di ogni elemento come barre alle loro energie fotoniche, con l'altezza proporzionale a frazione atomica × tasso radiativo × resa di fluorescenza (un'anteprima qualitativa in stile EDX e un elenco di riferimento: la sezione d'urto di eccitazione e l'efficienza del rivelatore non sono modellate, quindi la «riga più intensa» non è necessariamente la più intensa in uno spettro misurato). <!-- 261106Cl 作者の決定 J6 --> La tabella inferiore elenca, per riga, l'elemento, il nome della riga, l'energia **E keV**, l'intensità relativa **Rel.I** (la quota di questa riga tra le transizioni radiative che riempiono una lacuna nel suo guscio, %) e la resa di fluorescenza **ω**. La tabella scalare riporta la resa di guscio K **ω_K** di ciascun elemento, la **riga più intensa (eccit. ignorata)** nello spettro e la **fonte** dei valori: *xraylib (E, I, ω)* quando xraylib è disponibile (energie delle righe, intensità relative e rese provengono tutte da xraylib), altrimenti *internal (E only)*. <!-- 261105Cl 監査: FormBeamInteraction.cs (Rel.I = LineRadRate × 100、出典の行, Controls c6d62ed) -->
 
 ---
 

@@ -22,14 +22,14 @@ La finestra principale installa diverse scorciatoie **valide per l'intera applic
 |----------|--------|
 | <kbd>F1</kbd> | Apre questa pagina del manuale online |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + tasti freccia | Ruota il cristallo di un passo in quella direzione (tieni premute due frecce per una diagonale) |
-| Tieni premuto <kbd>CTRL</kbd> all'avvio di ReciPro | Avvia con OpenGL disabilitato (ripristino in caso di problemi grafici) |
+| Tieni premuto <kbd>CTRL</kbd> all'avvio di ReciPro | Avvia con OpenGL disabilitato (ripristino in caso di problemi grafici; solo per questo avvio, non viene salvato) |
 | Trascina con il tasto sinistro il widget di orientazione (in basso a sinistra, sotto *Orientazione attuale*) | Ruota il cristallo |
 | Doppio clic destro sul widget di orientazione | Copia l'immagine del widget negli appunti |
 | Clic singolo su un pulsante di funzione | Apre / chiude quella finestra (una finestra ridotta a icona viene ripristinata invece di essere chiusa) |
 | Doppio clic su un pulsante di funzione | Forza la visibilità della finestra e la porta in primo piano |
 | Clic destro su un cristallo nell'elenco | Menu contestuale (Rinomina / Esporta come CIF / Duplica / Elimina) |
 | Doppio clic sull'etichetta dell'indice dell'asse di zona (`[u v w]`, sotto *Orientazione attuale*) | Mostra / nasconde il riquadro max-UVW |
-| Trascina un file sulla finestra | Carica un elenco cristalli (`.xml`, `.out`, `.cdb2`; chiede se sostituire l'elenco o aggiungere) o un cristallo (`.cif`, `.amc`) |
+| Trascina un file sulla finestra | Carica un elenco cristalli (`.xml`, `.out`; chiede se sostituire l'elenco o aggiungere) o un cristallo (`.cif`, `.amc`) <!-- 261105Cl 監査: .cdb2 はドロップで読めないので外した (FormMain.cs:FormMain_DragDrop) --> |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> | Apre lo strumento (sperimentale) di cattura della GUI per la finestra attiva |
 
 → Vedi **[21. Scorciatoie da tastiera e mouse](21-shortcuts.md)** per uno sguardo d'insieme su ogni finestra.
@@ -68,7 +68,7 @@ Se è la prima volta che usi ReciPro, segui questi passaggi:
 
 | Voce di menu | Descrizione |
 |-----------|-------------|
-| Mostra suggerimenti | Commuta la visualizzazione dei tooltip |
+| Mostra suggerimenti | Mostra o nasconde i suggerimenti in tutte le finestre — quelli dei controlli, delle voci della barra degli strumenti e dei menu, delle celle delle tabelle e delle schede; l'impostazione viene mantenuta al prossimo avvio <!-- 261106Cl 作者の決定 C9 --> <!-- 261106Cl 作者の決定 A20 --> |
 | Modalità scura | Alterna tra tema chiaro e scuro |
 | Usa indici di Miller-Bravais (hkil) | Usa la notazione a 4 indici per i sistemi trigonale/esagonale in tutta l'applicazione |
 | Usa fattori di diffusione ionici | Usa i fattori di diffusione elettronica ionici (Peng) per gli ioni assegnati agli atomi nei calcoli elettronici dinamici (onde di Bloch), inclusi i profili di Kikuchi; il termine di monopolo per $g \neq 0$ viene aggiunto solo ai coefficienti elastici $U_g$ (l'assorbimento TDS e la sorgente TDS di Kikuchi usano la parte ionica finita). Se non è spuntata, si usano i fattori degli atomi neutri. Se la cella elementare non è elettricamente neutra ($\Sigma q \neq 0$), il termine di monopolo viene omesso e si usa solo la parte finita (ione schermato); all'attivazione dell'opzione viene mostrato un avviso |
@@ -180,7 +180,7 @@ Vedi [Geometria di rotazione](4-rotation-geometry.md) e [Appendice A1. Sistemi d
 
 ## Informazioni sul cristallo
 
-Modifica i parametri reticolari, la simmetria e gli atomi; trascina e rilascia file CIF/AMC per caricare una struttura. Questo controllo è condiviso da ReciPro, PDIndexer e CSManager, ma le schede e le funzioni mostrate differiscono per ciascuna applicazione. ReciPro mostra le schede Info base, Info atomi e Rif. (le schede EOS, Elasticità e altre sono per le altre applicazioni e non vengono mostrate in ReciPro).
+Modifica i parametri reticolari, la simmetria e gli atomi; trascina e rilascia file CIF/AMC per caricare una struttura. Questo controllo è condiviso da ReciPro, PDIndexer e CSManager, ma le schede e le funzioni mostrate differiscono per ciascuna applicazione. ReciPro mostra le schede **Info base**, **Info atomi** e **Rif.** (le schede EOS, Elasticità e altre sono per le altre applicazioni e non vengono mostrate in ReciPro).
 
 > **Importante**: Premi **Aggiungi** o **Sostituisci** per salvare le modifiche.
 
@@ -188,7 +188,7 @@ Modifica i parametri reticolari, la simmetria e gli atomi; trascina e rilascia f
 
 La parte superiore del pannello mostra sempre **Name** (nome del cristallo), **Formula** (formula chimica, calcolata dall'elenco degli atomi), **Z** (numero di unità di formula per cella elementare) e **Colore** (il colore di visualizzazione del cristallo, usato nella vista 3D della struttura e nelle curve dei profili di diffrazione). I pulsanti **Info simmetria** e **Interazione del fascio** aprono le finestre [Informazioni di simmetria](2-symmetry-information.md) e [Interazione del fascio](3-beam-interaction.md). Per % in peso, % atomica e conversione in ossidi, fare clic con il tasto destro e scegliere [Dettagli della composizione chimica](#chemical-composition).
 
-### Scheda Info base {#scheda-basic-info}
+### Scheda Info base {#basic-info-tab}
 
 ![Info base](../assets/cap-it-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
 
@@ -196,7 +196,7 @@ Parametri reticolari, simmetria e grandezze da essi derivate.
 
 | Voce | Descrizione |
 |------|------|
-| Costanti di cella | Parametri reticolari a, b, c (**Unità**: Å = 10⁻¹⁰ m o nm) e α, β, γ. La scelta di una simmetria li vincola automaticamente (ad es. a=b=c, α=β=γ=90° per il sistema cubico). |
+| Costanti di cella | Parametri reticolari a, b, c (**Unità**: Å = 10⁻¹⁰ m o nm; l'unità viene mantenuta al prossimo avvio) e α, β, γ. La scelta di una simmetria li vincola automaticamente (ad es. a=b=c, α=β=γ=90° per il sistema cubico). |
 | Simmetria | Scegli il **Sistema cristallino**, il **Gruppo puntuale** e il **Gruppo spaziale**. Digita nel campo **Cerca** per elencare i candidati corrispondenti (sensibile a maiuscole/minuscole). |
 | Volume di cella / Massa di cella | Volume e massa della cella elementare. Il volume è mostrato in Å³ / nm³ secondo la selezione **Unità**; la massa è in 10⁻²⁴ g. |
 | Volume molare / Massa molare / Densità | Volume molare (cm³/mol, per unità di formula), massa molare (g/mol) e densità (g/cm³). Mostrati **solo quando sono stati immessi degli atomi**. |
@@ -205,7 +205,7 @@ Parametri reticolari, simmetria e grandezze da essi derivate.
 | Change axes/origin setting | Equivale alla voce del menu contestuale **Cambia impostazione assi/origine**: converte in un'altra impostazione degli assi/dell'origine dello stesso gruppo spaziale. |
 | Densità atomica / Densità elettronica | Numero di atomi e di elettroni per volume di cella, mostrati in Å⁻³ / nm⁻³ secondo la selezione **Unità**. |
 
-### Scheda Info atomi {#scheda-atom}
+### Scheda Info atomi {#atom-tab}
 
 ![Info atomi](../assets/cap-it-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
@@ -222,7 +222,7 @@ Fai clic con il tasto destro su una riga di atomo e scegli **Mostra posizioni at
 
 **Traslazione origine**: sposta l'origine di tutte le coordinate atomiche. Scegli il segno con **+** / **−**, poi premi uno dei vettori preimpostati — (⅛ ⅛ ⅛), (¼ ¼ ¼), (0 ¼ ⅛), (¼ 0 ¼), (0 ¼ ¼), (¼ ¼ 0), (¼ −¼ 0), (¼ −¼ ¼), (0 ¼ −⅛) — oppure usa **Apply custom shift** per un valore arbitrario.
 
-**Fattore di Debye–Waller (fattore di temperatura)**:
+**Spostamento (B)** (fattore di Debye–Waller / fattore di temperatura):
 
 | Voce | Descrizione |
 |------|------|
@@ -238,7 +238,7 @@ Fai clic con il tasto destro su una riga di atomo e scegli **Mostra posizioni at
 | Elettroni | Fattori di diffusione elettronica — atomi neutri da Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276; ioni da Peng (1998), *Acta Cryst.* **A54**, 481–485. |
 | Neutroni | Lunghezze di diffusione neutronica. Scegli **Natural isotope abundance** o **Custom isotope abundance** (una composizione isotopica arbitraria). |
 
-### Scheda Rif. {#scheda-reference}
+### Scheda Rif. {#reference-tab}
 
 ![Rif.](../assets/cap-it-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
 
@@ -252,7 +252,7 @@ Clic destro su un'area vuota del controllo per queste azioni principali:
 |-----------|------|
 | Dettagli della composizione chimica | Apre la finestra [Dettagli della composizione chimica](#chemical-composition) (% in peso, % atomica, numero di atomi normalizzato, conversione in ossidi). |
 | Interazione del fascio | Apre la finestra [Interazione del fascio](3-beam-interaction.md). |
-| Informazioni sulla simmetria | Apre la finestra [Informazioni di simmetria](2-symmetry-information.md). |
+| Informazioni di simmetria | Apre la finestra [Informazioni di simmetria](2-symmetry-information.md). |
 | Importa da CIF o AMC... | Carica un cristallo da un file CIF / AMC. |
 | Esporta in CIF | Esporta il cristallo corrente come CIF. |
 | Ripristina le costanti di cella | Ripristina le costanti di cella ai valori caricati inizialmente. |
@@ -285,13 +285,13 @@ La barra verticale di pulsanti a destra avvia le finestre di analisi e simulazio
 | Interazione del fascio | Interazione fascio–cristallo: riflessioni, attenuazione, fattori di diffusione, fluorescenza | [3. Interazione del fascio](3-beam-interaction.md) |
 | Geometria di rotazione | Matrice di rotazione 3D / angoli del goniometro | [4. Geometria di rotazione](4-rotation-geometry.md) |
 | Visualizzatore struttura | Struttura cristallina 3D | [5. Visualizzatore struttura](5-structure-viewer.md) |
-| Stereonet | Proiezione stereografica | [6. Stereogramma](6-stereonet.md) |
+| Stereogramma | Proiezione stereografica | [6. Stereogramma](6-stereonet.md) |
 | Simulatore di diffrazione | Diffrazione di raggi X / elettroni su singolo cristallo | [7. Simulatore di diffrazione](7-diffraction-simulator/index.md) |
 | Simulatore di traiettoria | Simulazione Monte Carlo delle traiettorie elettroniche | [8. Traiettorie elettroniche](8-electron-trajectory.md) |
-| HRTEM/STEM Simulator | Simulazione di immagini HRTEM / STEM | [9. Simulatore HRTEM/STEM](9-hrtem-stem-simulator/index.md) |
+| Simulatore HRTEM/STEM | Simulazione di immagini HRTEM / STEM | [9. Simulatore HRTEM/STEM](9-hrtem-stem-simulator/index.md) |
 | Spot ID v1 | Indicizzazione di pattern SAED (precedentemente "TEM ID") | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | Rilevamento e indicizzazione degli spot | [11. Spot ID v2](11-spot-id-v2.md) |
-| EBSD Simulator | Simulazione di pattern EBSD | [12. Simulazione EBSD](12-ebsd-simulation.md) |
+| Simulatore EBSD | Simulazione di pattern EBSD | [12. Simulazione EBSD](12-ebsd-simulation.md) |
 | Diffrazione da polveri | Diffrazione policristallina (polveri) — abilitala tramite **Opzioni ▸ Funzione di diffrazione da polveri (in sviluppo)** | - |
 
 ---

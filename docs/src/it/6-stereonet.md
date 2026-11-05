@@ -19,7 +19,7 @@ Lo stereogramma in sé è una proiezione 2-D; una sfera 3-D opzionale può esser
 | Clic destro | Riduci lo zoom |
 | Trascinamento destro di un riquadro | Ingrandisci la regione selezionata |
 | Trascinamento centrale | Sposta la vista |
-| Muovi il mouse (senza pulsante) | Leggi i valori (hkl)/[uvw] sotto il cursore — utile per indicizzare un riflesso misurato |
+| Muovi il mouse (senza pulsante) | Leggi i valori (hkl)/[uvw] sotto il cursore — utile per indicizzare un riflesso misurato (anche nell'emisfero inferiore) <!-- 261105Cl 監査: 下半球の読み取り (268779a1) --> |
 
 Il trascinamento sulla rete ruota il **cristallo**; lo stato di rotazione è condiviso tra tutte le finestre.
 
@@ -39,11 +39,11 @@ Viene visualizzata la proiezione stereografica dei piani cristallini, degli indi
 
 ## Menu File
 
-Salva come immagine raster (PNG), oppure copia come immagine raster o come metafile vettoriale (EMF). Un metafile incollato consente di modificare i caratteri e lo spessore delle linee in PowerPoint o in altri editor vettoriali.
+Salva o copia come immagine raster (PNG) o come metafile vettoriale (EMF). Un metafile incollato consente di modificare i caratteri e lo spessore delle linee in PowerPoint o in altri editor vettoriali.
 
 | Voce di menu | Descrizione |
 |--------------|-------------|
-| Salva immagine ▸ come immagine (formato PNG) / come metafile (EMF) | Salva lo stereogramma come file PNG (la voce *come metafile (EMF)* è al momento disabilitata; per un output vettoriale usa **Copia negli appunti ▸ come metafile (EMF)**) |
+| Salva immagine ▸ come immagine (formato PNG) / come metafile (EMF) | Salva lo stereogramma come file PNG o come file vettoriale EMF <!-- 261105Cl 監査: as Metafile (EMF) の保存を配線 (FormStereonet.cs, 268779a1) --> |
 | Copia negli appunti ▸ Come immagine / come metafile (EMF) | Copia lo stereogramma |
 | Salva video ▸ Stereogramma / 3D | Salva un filmato di rotazione (MP4) dello stereogramma o della vista 3-D, con la stessa finestra di dialogo delle impostazioni del filmato del [Visualizzatore struttura](5-structure-viewer.md#menu-file) (solo rotazione) |
 | Imposta pagina / Anteprima di stampa / Stampa | Stampa lo stereogramma |
@@ -66,8 +66,8 @@ Seleziona ciò che deve essere proiettato sulla rete.
 
 | Metodo | Descrizione |
 |--------|-------------|
-| **Wulff** (equiangolare / stereografico) | Preserva la relazione angolare tra gli elementi proiettati, ma non l'angolo solido. Utilizzato dai cristallografi classici per leggere gli angoli tra assi o tra piani. |
-| **Schmidt** (equiareale / Lambert) | Preserva l'angolo solido (l'area) di ciascuna regione, ma distorce gli angoli. Preferito per le figure polari statistiche, in cui conta la densità relativa. |
+| **Equiangolare** (Wulff / stereografico) | Preserva la relazione angolare tra gli elementi proiettati, ma non l'angolo solido. Utilizzato dai cristallografi classici per leggere gli angoli tra assi o tra piani. |
+| **Equiareale** (Schmidt / equiareale / Lambert) | Preserva l'angolo solido (l'area) di ciascuna regione, ma distorce gli angoli. Preferito per le figure polari statistiche, in cui conta la densità relativa. |
 
 ### Emisfero
 
@@ -116,8 +116,8 @@ Imposta il **colore** e la **dimensione** dei punti tracciati. Spunta **Ruota co
 
 Visibili quando **Vista 3D** è selezionata; la sfera 3-D compare in un riquadro a destra della rete.
 
-- **Reimposta**: riporta la vista 3-D alla direzione e allo zoom predefiniti.
-- **Etichetta**: disegna le etichette degli indici in 3-D.
+- **Azzera vista**: riporta la vista 3-D alla direzione e allo zoom predefiniti.
+- **Etichetta**: disegna le etichette degli indici in 3-D. Le direzioni sono etichettate [uvw]; la forma a quattro indici (con **Usa indici di Miller-Bravais (hkil)** attivo) è usata solo per i piani e le linee di Kikuchi. <!-- 261105Cl 監査: 3D のラベル (FormStereonet.cs, 268779a1) -->
 - **Emisfero**: disegna solo i poli dell'emisfero superiore ($Z>0$).
 - **Stereogramma**: disegna in 3-D il piano di proiezione (la rete), con i punti proiettati dei poli dell'emisfero superiore.
 - **Contorno sfera**: disegna la griglia di latitudine/longitudine della sfera.
@@ -151,7 +151,7 @@ Come viene disegnato il contorno dello stereogramma — il cerchio di delimitazi
 
 ![Cerchio massimo](../assets/cap-it-auto/FormStereonet.tabControl.tabPage2.png)
 
-Disegna cerchi massimi (i cerchi minori non sono supportati). Specificali tramite l'**Indice asse di zona** \([uvw]\) (il cerchio massimo formato dalla zona di quell'asse) oppure tramite **Zona definita da due piani** (l'asse di zona è il loro prodotto vettoriale). Usa **Aggiungi** / **Rimuovi** per modificare l'elenco; togliendo la spunta a una voce, il relativo cerchio viene nascosto. Anche il colore e lo spessore delle linee dei cerchi sono configurabili.
+Disegna cerchi massimi (i cerchi minori non sono supportati). Specificali tramite l'**Indice asse di zona** \([uvw]\) (il cerchio massimo formato dalla zona di quell'asse) oppure tramite **Zona definita da due piani** (l'asse di zona è il loro prodotto vettoriale). Usa **Aggiungi** / **Rimuovi** per modificare l'elenco; togliendo la spunta a una voce, il relativo cerchio viene nascosto. Anche il colore e lo spessore delle linee dei cerchi sono configurabili. I cerchi seguono il metodo di proiezione e l'emisfero scelti in [Modalità](#mode) (Wulff o Schmidt, superiore o inferiore). <!-- 261105Cl 監査: Schmidt・下半球の大円 (268779a1) -->
 
 ### Onda {#wave}
 

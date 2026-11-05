@@ -20,7 +20,7 @@ Gli elettroni all'interno di un cristallo vengono diffusi dal potenziale del cri
 
 ![Condizioni TEM](../../assets/cap-it-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **Tensione di accel. (kV)** — tensione di accelerazione. Determina la lunghezza d'onda dell'elettrone ed è usata per calcolare i coefficienti di Fourier $U_g$ del potenziale.
+- **Tensione di accel.** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> — tensione di accelerazione (kV). Determina la lunghezza d'onda dell'elettrone ed è usata per calcolare i coefficienti di Fourier $U_g$ del potenziale.
 
 > **Defocus, Cs, Cc, β, ΔV e la PCTF sono inattivi in modalità potenziale** (non viene applicata alcuna ottica di formazione dell'immagine) e appaiono in grigio.
 
@@ -63,7 +63,7 @@ $U_g$ e $U'_g$ possono essere mostrati contemporaneamente (per ciascuno selezion
 
 ![Onde](../../assets/cap-it-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** — numero massimo di onde di Bloch (coefficienti di Fourier) incluse nella sintesi di Fourier del potenziale (predefinito 80). Valori più grandi includono frequenze spaziali più elevate e riproducono dettagli più fini del potenziale.
+- Numero massimo di onde di Bloch (coefficienti di Fourier) incluse nella sintesi di Fourier del potenziale (predefinito 80). Valori più grandi includono frequenze spaziali più elevate e riproducono dettagli più fini del potenziale.
 
 ---
 

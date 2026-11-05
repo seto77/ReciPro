@@ -6,7 +6,7 @@
 
 Si apre dal menu **Opzioni** del [Simulatore di diffrazione](index.md) → **Simulatore ALCHEMI...**
 
-Condizioni GUI: Wave Length = Electron (cristallo, tensione di accelerazione e orientazione provengono dal simulatore di diffrazione padre)
+Condizioni GUI: Sorgente d'onda = Elettroni (cristallo, tensione di accelerazione e orientazione provengono dal simulatore di diffrazione padre). Con un'altra sorgente la finestra si apre comunque, ma la lettura di θ_B e **Simula** mostrano solo l'avviso *ALCHEMI è solo per elettroni. Impostare la sorgente del simulatore di diffrazione su Elettroni.* <!-- 261105Cl 監査: FormALCHEMI.cs NotElectronNotice (6ae7a85) -->
 
 ![Simulatore ALCHEMI](../../assets/cap-it-auto/FormALCHEMI.png)
 
@@ -115,13 +115,13 @@ Elenco dei siti atomici la cui resa è calcolata separatamente, mostrati come `e
 
 ### Simula / Ferma
 
-**Simula** avvia la scansione. L'avanzamento è riportato nella barra di stato in cinque fasi (risoluzione dei dati di ionizzazione → costruzione della base unione → costruzione delle matrici di ionizzazione → risoluzione delle orientazioni → verifica della base ampliata), e **Ferma** interrompe in qualsiasi momento.
+**Simula** avvia la scansione. L'avanzamento è riportato nella barra di stato in cinque fasi (risoluzione dei dati di ionizzazione → costruzione della base unione → costruzione delle matrici di ionizzazione → risoluzione delle orientazioni → verifica della base ampliata), e **Ferma** interrompe in qualsiasi momento. Se la fila **g** è parallela al fascio, la scansione non può inclinarla attraverso le sue condizioni di Bragg; **Simula** allora riporta solo questo motivo nella barra di stato. <!-- 261105Cl 監査: FormALCHEMI.cs BuildRequest (732813e) -->
 
 ---
 
 ## Riquadro destro: scheda Curva
 
-Al termine del calcolo viene tracciata una curva per ogni coppia sito × canale. La legenda si legge `etichetta di sito / canale`.
+Al termine del calcolo viene tracciata una curva per ogni coppia sito × canale. La legenda si legge `etichetta di sito / canale`. Se in seguito si cambia il cristallo o la tensione di accelerazione (anche a finestra chiusa), le curve, la diagnostica e la scelta dello spessore vengono cancellate e la riga di stato ne indica il motivo. <!-- 261106Cl 作者の決定 ALCHEMI -->
 
 | Voce | Descrizione |
 |------|-------------|
@@ -166,7 +166,7 @@ Nelle situazioni seguenti vengono aggiunti ulteriori avvisi come righe separate 
 
 ## Esportazione CSV {#esportazione-csv}
 
-**Esporta CSV** scrive una tabella in formato lungo preceduta da un'intestazione nel formato `# key: value` (qui abbreviata). L'intestazione è pensata perché il solo file dichiari le condizioni necessarie a riprodurlo.
+**Esporta CSV** scrive una tabella in formato lungo preceduta da un'intestazione nel formato `# key: value` (qui abbreviata). L'intestazione è pensata perché il solo file dichiari le condizioni necessarie a riprodurlo; `scan_origin_rotation_matrix` registra l'orientazione del cristallo all'origine della scansione (inclinazione 0) come matrice di rotazione per righe (row-major). <!-- 261105Cl 監査: FormALCHEMI.cs buttonExport_Click の Key("scan_origin_rotation_matrix", ...) -->
 
 ```text
 # generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
@@ -175,6 +175,7 @@ Nelle situazioni seguenti vengono aggiunti ulteriori avvisi come righe separate 
 # crystal: MgAl2O4 (spinel) / F d -3 m
 # cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
 # accelerating_voltage_kV: 200.000
+# scan_origin_rotation_matrix: 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 (row-major; the crystal orientation of the parent diffraction simulator at the run, mapping the crystal's Cartesian frame to the laboratory frame, in which the beam travels along -z)
 # scan_row_hkl: 1 0 0
 # theta_B_mrad: 1.552030
 # thicknesses_nm: 10.0000 20.0000 ... 100.0000

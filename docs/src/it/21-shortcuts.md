@@ -85,7 +85,7 @@ Utilizzate dai pannelli dei risultati di [HRTEM/STEM](9-hrtem-stem-simulator/ind
 | Clic singolo / doppio clic su un pulsante di funzione | Attiva/disattiva quella finestra / forzala in primo piano |
 | Clic destro su un cristallo nell'elenco | Menu contestuale (Rinomina / Esporta come CIF / Duplica / Elimina) |
 | Doppio clic sull'etichetta dell'indice dell'asse di zona (`[u v w]`) | Mostra / nascondi la casella max-UVW |
-| Rilascia un file | Carica un elenco di cristalli (`.xml`, `.out`, `.cdb2`) o un cristallo (`.cif`, `.amc`) |
+| Rilascia un file | Carica un elenco di cristalli (`.xml`, `.out`) o un cristallo (`.cif`, `.amc`) <!-- 261105Cl 監査: .cdb2 を外した (ドロップを受け付けない) --> |
 
 ### 1. Database dei cristalli
 [Apri pagina →](1-crystal-database.md)
@@ -94,7 +94,7 @@ Utilizzate dai pannelli dei risultati di [HRTEM/STEM](9-hrtem-stem-simulator/ind
 |----------|--------|
 | <kbd>ENTER</kbd> in un campo di ricerca | Esegui la ricerca |
 | Clic su una riga di risultato | Carica quel cristallo |
-| Clic su un elemento nel popup della tavola periodica | Scorri il suo filtro: ignora → deve includere → deve escludere |
+| Clic su un elemento nel popup **Tavola periodica** | Scorri il suo filtro: *può includere o meno* → *deve includere* → *deve escludere* |
 
 ### 2. Informazioni di simmetria · 3. Interazione del fascio
 Le Informazioni di simmetria non hanno combinazioni speciali di tasti/mouse. Nell'Interazione del fascio, oltre a <kbd>F1</kbd> e ai pulsanti **Copia**, il cursore verticale sul grafico **Fattori di diffusione** può essere trascinato per leggere il valore di ciascun elemento.
@@ -132,8 +132,8 @@ Le Informazioni di simmetria non hanno combinazioni speciali di tasti/mouse. Nel
 | Doppio clic destro sulla barra di stato | Copia un riepilogo testuale delle impostazioni correnti |
 | Doppio clic destro su un pulsante di livello attivo (Spots / Kikuchi / Debye / Scale) | Fai lampeggiare quel livello |
 | Doppio clic sinistro sullo stereogramma — finestra **Simulazione portacampioni TEM** | Imposta l'inclinazione del portacampioni su quel punto |
-| Tasti freccia — finestra **Simulazione portacampioni TEM** | Modifica l'inclinazione del portacampioni a passi (seleziona prima **Abilita tasti freccia**; funziona con qualsiasi finestra di ReciPro in primo piano) |
-| Rilascia `.prm` / immagine — **Detector geometry**, oppure `.txt` — **Dynamic compression** | Carica quei dati |
+| Tasti freccia — finestra **Simulazione portacampioni TEM** | Modifica l'inclinazione del portacampioni a passi (seleziona prima **Abilita tasti freccia**; solo mentre la finestra del portacampioni è attiva) <!-- 261106Cl 作者の決定 D25 --> |
+| Rilascia `.prm` / immagine — **Geometria del rivelatore**, oppure `.txt` — **Compressione dinamica** | Carica quei dati |
 
 ### 8. Traiettorie elettroniche
 [Apri pagina →](8-electron-trajectory.md) — una [vista 3-D](#3d) con lo spostamento disabilitato.
@@ -148,7 +148,7 @@ Le Informazioni di simmetria non hanno combinazioni speciali di tasti/mouse. Nel
 | Doppio clic sinistro su un pannello | Ingrandisci quel pannello / ripristina la griglia (layout a più pannelli) |
 
 ### 10. Spot ID v1
-[Apri pagina →](10-spot-id.md) — l'immagine è solo di riferimento (non interattiva).
+[Apri pagina →](10-spot-id.md) — non c'è una vista dell'immagine (la geometria degli spot si inserisce come numeri).
 
 | Scorciatoia | Azione |
 |----------|--------|
@@ -182,4 +182,4 @@ Le Informazioni di simmetria non hanno combinazioni speciali di tasti/mouse. Nel
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Salva il testo dell'editor nella voce selezionata dell'elenco macro |
 | <kbd>F10</kbd> | Avanza di un passo (durante l'esecuzione passo-passo) |
 | Doppio clic su una riga nell'elenco della guida alle funzioni | Inserisci la firma di quella funzione in corrispondenza del cursore |
-| Rilascia un file `.mcr` | Caricalo nell'editor |
+| Rilascia un file `.mcr` sulla finestra | Caricalo nell'editor e aggiungilo all'elenco delle macro (il nome del file diventa il nome della macro) |

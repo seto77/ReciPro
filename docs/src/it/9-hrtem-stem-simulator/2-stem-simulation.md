@@ -50,7 +50,7 @@ Vedere [Appendice A3.4 — Calcolo STEM](../appendix/a3-bloch-wave/stem.md) per 
 
 | Parametro | Descrizione | Predefinito / tipico |
 |-----------|-------------|-------------------|
-| **Tensione di accel. (kV)** | Tensione di accelerazione. La lunghezza d'onda dell'elettrone corretta relativisticamente è mostrata accanto | 200 kV |
+| **Tensione di accel.** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Tensione di accelerazione (kV). La lunghezza d'onda dell'elettrone corretta relativisticamente è mostrata accanto | 200 kV |
 | **Defocus Δf** | Defocalizzazione della lente obiettivo (che forma la sonda) (nm) | −57.8 nm |
 | **Cs** | Coefficiente di aberrazione sferica (mm). Influenza la dimensione della sonda | 0.5–1.0 mm |
 | **Cc** | Coefficiente di aberrazione cromatica (mm) | 1.0–2.0 mm |
@@ -68,10 +68,10 @@ Imposta la geometria della sonda convergente e del rivelatore anulare. Ogni ango
 
 | Parametro | Descrizione | Predefinito / tipico |
 |-----------|-------------|-------------------|
-| **α (convergence angle)** | Semiangolo della sonda convergente (mrad). Valori maggiori danno una sonda più fine e modificano il contrasto di diffrazione | 25 mrad (predefinito); 15–25 mrad |
+| **Conv. semi-angle α** | Semiangolo della sonda convergente (mrad). Valori maggiori danno una sonda più fine e modificano il contrasto di diffrazione | 25 mrad (predefinito); 15–25 mrad |
 | **Rivelatore anulare — Interno** | Semiangolo di raccolta interno del rivelatore anulare (mrad). Il segnale all'interno di questo angolo è escluso | 0 (predefinito); BF: 0, HAADF: 80 |
 | **Rivelatore anulare — Esterno** | Semiangolo di raccolta esterno del rivelatore anulare (mrad). Il segnale all'esterno di questo angolo è escluso | 20 (predefinito); BF: 5, HAADF: 250 |
-| **Effective source size (σs, FWHM)** | Dimensione effettiva della sorgente di elettroni (pm). Viene applicata dopo il calcolo come convoluzione gaussiana di ogni immagine Elastico / TDS / EDX. Valori maggiori sfocano l'immagine e riducono il contrasto dei dettagli fini | 20 pm (predefinito) |
+| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Dimensione effettiva della sorgente di elettroni (pm). Viene applicata dopo il calcolo come convoluzione gaussiana di ogni immagine Elastico / TDS / EDX. Valori maggiori sfocano l'immagine e riducono il contrasto dei dettagli fini | 20 pm (predefinito) |
 
 Gli angoli del rivelatore si applicano solo all'immagine STEM di riferimento (Elastico / TDS / Elastico & TDS); le mappe STEM-EDX non li utilizzano. I valori predefiniti valgono solo al primo avvio; successivamente vengono ripristinati gli ultimi valori utilizzati.
 
@@ -86,12 +86,13 @@ Gli angoli del rivelatore si applicano solo all'immagine STEM di riferimento (El
 
 ---
 
-## Modalità immagine (single / serial)
+## Modalità singola/seriale
 
-![Modalità immagine](../../assets/cap-it-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text) と HRTEM のページに合わせた -->
+![Modalità singola/seriale](../../assets/cap-it-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 - **Immagine singola** : calcola una sola immagine STEM allo spessore corrente.
-- **Immagine seriale** : genera una serie di immagini con spessore / defocalizzazione variati a passi (impostati con **Start / Passo / Num**; l'elenco sottostante può anche essere modificato direttamente).
+- **Immagine seriale** : genera una serie di immagini con spessore / defocalizzazione variati a passi (impostati con **Inizio / Passo / Num**; l'elenco sottostante può anche essere modificato direttamente).
 
 ---
 
@@ -108,7 +109,7 @@ Gli angoli del rivelatore si applicano solo all'immagine STEM di riferimento (El
 
 ![Onde](../../assets/cap-it-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** : numero massimo di onde di Bloch utilizzate nel metodo di Bethe (predefinito 80). Il costo del problema agli autovalori scala con il cubo del numero di onde.
+- Numero massimo di onde di Bloch utilizzate nel metodo di Bethe (predefinito 80). Il costo del problema agli autovalori scala con il cubo del numero di onde.
 
 ---
 
