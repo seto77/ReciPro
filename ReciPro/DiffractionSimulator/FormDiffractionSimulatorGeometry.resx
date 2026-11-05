@@ -189,12 +189,16 @@ white point (Max int.).</value>
     <value>Sets the camera length to the detector plane in millimeters.</value>
   </data>
   <data name="numericBoxFootX.ToolTip" xml:space="preserve">
-    <value>Sets the X pixel coordinate of the foot
-point (direct-beam center) on the detector.</value>
+    <value>Sets the X pixel coordinate of the foot point on the
+detector: the foot of the perpendicular from the sample
+to the detector plane. It is the direct-beam position
+only when the detector is not tilted (tau = 0).</value>
   </data>
   <data name="numericBoxFootY.ToolTip" xml:space="preserve">
-    <value>Sets the Y pixel coordinate of the foot
-point (direct-beam center) on the detector.</value>
+    <value>Sets the Y pixel coordinate of the foot point on the
+detector: the foot of the perpendicular from the sample
+to the detector plane. It is the direct-beam position
+only when the detector is not tilted (tau = 0).</value>
   </data>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
     <value>Sets the azimuthal angle phi of

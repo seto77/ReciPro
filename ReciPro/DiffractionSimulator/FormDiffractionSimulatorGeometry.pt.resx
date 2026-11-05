@@ -94,12 +94,16 @@ imagem sobreposta no padrão de difração.</value>
 imagem sobreposta no padrão de difração.</value>
   </data>
   <data name="numericBoxFootX.ToolTip" xml:space="preserve">
-    <value>Define a coordenada X em pixels do ponto base
-(centro do feixe direto) no detector.</value>
+    <value>Define a coordenada X em pixels do ponto base no detector:
+o pé da perpendicular traçada da amostra ao plano do
+detector. Só coincide com a posição do feixe direto quando o
+detector não está inclinado (tau = 0).</value>
   </data>
   <data name="numericBoxFootY.ToolTip" xml:space="preserve">
-    <value>Define a coordenada Y em pixels do ponto base
-(centro do feixe direto) no detector.</value>
+    <value>Define a coordenada Y em pixels do ponto base no detector:
+o pé da perpendicular traçada da amostra ao plano do
+detector. Só coincide com a posição do feixe direto quando o
+detector não está inclinado (tau = 0).</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
     <value>Define o tamanho físico de um pixel do detector em milímetros.</value>
@@ -130,8 +134,9 @@ exibir a imagem sobreposta.</value>
 exibir a imagem sobreposta.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Define o limite superior de intensidade para
-exibir a imagem sobreposta.</value>
+    <value>Ajusta o brilho exibido da imagem sobreposta por
+meio do ponto preto (Min int.) e do ponto branco
+(Max int.).</value>
   </data>
   <data name="trackBarMinInt.ToolTip" xml:space="preserve">
     <value>Define o limite inferior de intensidade para

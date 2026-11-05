@@ -94,12 +94,16 @@
 불투명도(0-100%)를 조정합니다.</value>
   </data>
   <data name="numericBoxFootX.ToolTip" xml:space="preserve">
-    <value>검출기 상의 풋포인트(직접 빔 중심)의
-X 픽셀 좌표를 설정합니다.</value>
+    <value>검출기 위 풋포인트(시료에서 검출기면에 내린
+수선의 발)의 X 픽셀 좌표를 설정합니다. 검출기가
+기울어지지 않았을 때(tau = 0)만 직접 빔 위치와
+일치합니다.</value>
   </data>
   <data name="numericBoxFootY.ToolTip" xml:space="preserve">
-    <value>검출기 상의 풋포인트(직접 빔 중심)의
-Y 픽셀 좌표를 설정합니다.</value>
+    <value>검출기 위 풋포인트(시료에서 검출기면에 내린
+수선의 발)의 Y 픽셀 좌표를 설정합니다. 검출기가
+기울어지지 않았을 때(tau = 0)만 직접 빔 위치와
+일치합니다.</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
     <value>검출기 픽셀 하나의 물리적 크기를 밀리미터 단위로 설정합니다.</value>
@@ -130,8 +134,9 @@ Y 픽셀 좌표를 설정합니다.</value>
 강도의 상한을 설정합니다.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>겹쳐진 이미지를 표시하는
-강도의 상한을 설정합니다.</value>
+    <value>겹쳐진 이미지의 표시 밝기를 검은색으로 표시할
+강도(Min int.)와 흰색으로 표시할 강도(Max int.)로
+조정합니다.</value>
   </data>
   <data name="trackBarMinInt.ToolTip" xml:space="preserve">
     <value>겹쳐진 이미지를 표시하는

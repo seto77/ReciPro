@@ -43,12 +43,14 @@
 (Gray、Cold-Warm、Spectrum、Fire)を選びます。</value>
   </data>
   <data name="numericBoxFootX.ToolTip" xml:space="preserve">
-    <value>検出器上のフットポイント(直接ビーム
-中心)の X ピクセル座標を設定します。</value>
+    <value>検出器上のフットポイント (試料から検出器面へ下ろした
+垂線の足) の X ピクセル座標を設定します。検出器を傾けて
+いないとき (tau = 0) だけ直接ビームの位置と一致します。</value>
   </data>
   <data name="numericBoxFootY.ToolTip" xml:space="preserve">
-    <value>検出器上のフットポイント(直接ビーム
-中心)の Y ピクセル座標を設定します。</value>
+    <value>検出器上のフットポイント (試料から検出器面へ下ろした
+垂線の足) の Y ピクセル座標を設定します。検出器を傾けて
+いないとき (tau = 0) だけ直接ビームの位置と一致します。</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
     <value>1検出器ピクセルの物理サイズを mm 単位で設定します。</value>
@@ -94,7 +96,8 @@
     <value>傾斜軸まわりの検出器傾斜角 tau を度単位で設定します。</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>重ね合わせ画像を表示する強度の上限を設定します。</value>
+    <value>重ね合わせ画像の表示の明るさを、黒にする強度 (Min int.)
+と白にする強度 (Max int.) で調整します。</value>
   </data>
   <data name="checkBoxDetectorSizePosition.ToolTip" xml:space="preserve">
     <value>オンにすると、回折パターン上に検出器範囲を

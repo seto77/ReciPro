@@ -94,12 +94,18 @@ superposée sur le motif de diffraction.</value>
 superposée sur le motif de diffraction.</value>
   </data>
   <data name="numericBoxFootX.ToolTip" xml:space="preserve">
-    <value>Définit la coordonnée pixel X du point de
-pied (centre du faisceau direct) sur le détecteur.</value>
+    <value>Définit la coordonnée pixel X du point de pied sur le
+détecteur : le pied de la perpendiculaire menée de
+l'échantillon au plan du détecteur. Il ne coïncide avec la
+position du faisceau direct que si le détecteur n'est pas
+incliné (tau = 0).</value>
   </data>
   <data name="numericBoxFootY.ToolTip" xml:space="preserve">
-    <value>Définit la coordonnée pixel Y du point de
-pied (centre du faisceau direct) sur le détecteur.</value>
+    <value>Définit la coordonnée pixel Y du point de pied sur le
+détecteur : le pied de la perpendiculaire menée de
+l'échantillon au plan du détecteur. Il ne coïncide avec la
+position du faisceau direct que si le détecteur n'est pas
+incliné (tau = 0).</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
     <value>Définit la taille physique d'un pixel du détecteur en millimètres.</value>
@@ -130,8 +136,9 @@ pour l'affichage de l'image superposée.</value>
 pour l'affichage de l'image superposée.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Définit la limite supérieure d'intensité
-pour l'affichage de l'image superposée.</value>
+    <value>Règle la luminosité affichée de l'image superposée
+par son point noir (Min int.) et son point blanc
+(Max int.).</value>
   </data>
   <data name="trackBarMinInt.ToolTip" xml:space="preserve">
     <value>Définit la limite inférieure d'intensité
