@@ -1397,7 +1397,9 @@ public partial class FormStructureViewer : FormBase
                 result.Add($"Selected Atom: {label} ({atom.Origin.X * 10:f3}, {atom.Origin.Y * 10:f3}, {atom.Origin.Z * 10:f3}) \t・・・0\r\n\r\n");
 
                 //最近接原子を探索
-                var tmp = Crystal.Search(enabledAtoms[(atom.Tag as atomID).Index], 1);
+                //var tmp = Crystal.Search(enabledAtoms[(atom.Tag as atomID).Index], 1); // 261105Cl 変更前: 常にそのサイトの第 1 等価位置の周りを探していたので、別の等価位置の原子をダブルクリックすると相対座標が画面の原子の周りと合わなかった (距離・角度は同じ)
+                var clicked = atom.Origin + shift; // 261105Cl 追加: ダブルクリックした原子の位置 (Origin は投影中心からの座標)
+                var tmp = Crystal.Search(enabledAtoms[(atom.Tag as atomID).Index], 1, Crystal.MatrixInverse * new Vector3DBase(clicked.X, clicked.Y, clicked.Z)); // 261105Cl 変更: その原子の周り
                 for (int i = 0; i < tmp.Count - 1; i++)
                     if (tmp[i].X == tmp[i + 1].X && tmp[i].Y == tmp[i + 1].Y && tmp[i].Z == tmp[i + 1].Z)
                         tmp.RemoveAt(i--);
@@ -1408,14 +1410,16 @@ public partial class FormStructureViewer : FormBase
 
                 int n = 1;//0番目は自分自身なので、1からはじめる
                 int count = 0;//結合角を求める上限数
-                for (int i = 1; n < 9 || i < 3; i++)
+                //for (int i = 1; n < 9 || i < 3; i++) // 261105Cl 変更前: 1 nm 以内の原子が少ないと tmp[n] が範囲外で例外
+                for (int i = 1; (n < 9 || i < 3) && n < tmp.Count; i++) // 261105Cl 変更
                 {
                     result.Add($"{Miscellaneous.Ordinal(i)} nearest: {tmp[n].Distance:f3} Å");
                     do
                     {
                         result.Add($"\t{tmp[n].Label} ({tmp[n].X:f3}, {tmp[n].Y:f3}, {tmp[n].Z:f3}) \t・・・{n} \r\n");
                         n++;
-                    } while (tmp[n].Distance - tmp[n - 1].Distance < 1E-4);
+                    //} while (tmp[n].Distance - tmp[n - 1].Distance < 1E-4); // 261105Cl 変更前
+                    } while (n < tmp.Count && tmp[n].Distance - tmp[n - 1].Distance < 1E-4); // 261105Cl 変更
 
                     if (count == 0 || tmp[n - 1].Distance / tmp[1].Distance < 1.2)
                         count = n;
@@ -1427,9 +1431,12 @@ public partial class FormStructureViewer : FormBase
 
                 result.Add($"\r\n");
                 result.Add($"Bond angles");
-                for (int i = 1; i < Math.Max(count, 3); i++)
+                var angleMax = Math.Min(Math.Max(count, 3), tmp.Count); // 261105Cl 追加: 近接原子が 3 個未満のときの範囲外を防ぐ
+                //for (int i = 1; i < Math.Max(count, 3); i++) // 261105Cl 変更前
+                for (int i = 1; i < angleMax; i++) // 261105Cl 変更
                 {
-                    for (int j = i + 1; j < Math.Max(count, 3); j++)
+                    //for (int j = i + 1; j < Math.Max(count, 3); j++) // 261105Cl 変更前
+                    for (int j = i + 1; j < angleMax; j++) // 261105Cl 変更
                     {
                         var angle = Vector3DBase.AngleBetVectors(new Vector3DBase(tmp[i].X, tmp[i].Y, tmp[i].Z), new Vector3DBase(tmp[j].X, tmp[j].Y, tmp[j].Z));
                         result.Add(i == 1 && j == 2 ? "\t\t" : "\t\t\t");
