@@ -1,6 +1,8 @@
 # Electron Trajectory
 
-**Trajectory Simulator (Monte Carlo Method)** computes electron trajectories inside a sample by the **Monte-Carlo method**: incident electrons undergo elastic and inelastic scattering, and the resulting distributions of backscattered electrons (BSE) — direction, energy at escape, penetration depth and lateral spread — are accumulated. These distributions also feed the angular/energy/depth weighting used by the [12. EBSD simulation](12-ebsd-simulation.md).
+**Trajectory Simulator (Monte Carlo Method)** computes electron trajectories inside a sample by the **Monte-Carlo method**: incident electrons undergo elastic and inelastic scattering, and the resulting distributions of backscattered electrons (BSE) — direction, energy at escape, penetration depth and lateral spread — are accumulated.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormTrajectory.cs (FormMain 以外から参照なし), FormEBSD.cs:new MonteCarlo(...) は独自に実行) -->
+The [12. EBSD simulation](12-ebsd-simulation.md) uses the same Monte-Carlo engine for its angular/energy/depth weighting, but runs it internally with its own settings; the results of this window are not passed to it.
 
 ![Electron Trajectory](../assets/cap-en-auto/FormTrajectory.png)
 
@@ -28,18 +30,23 @@ The trajectories are shown in a 3-D OpenGL view. It uses ReciPro's standard [vie
 The controls along the top of the window set the run:
 
 - **Simulate trajectories** : starts the Monte-Carlo run. The status bar at the bottom reports the elapsed time of the trajectory calculation, the graph drawing and the 3-D rendering separately.
-- **Number of trajectories** : how many incident electrons to track. More electrons reduce the statistical noise of every distribution below, at a run time that grows linearly.
-- **Sample Tilt** (°) : tilt of the sample surface about the *X* axis. Leave it at 0 for normal incidence; use **−70°** to reproduce the geometry of the [EBSD simulator](12-ebsd-simulation.md), where the large tilt raises the backscatter yield.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormTrajectory.Designer.cs:numericBoxCalcNum/numericBoxSampleTilt, FormTrajectory.cs:EnergyThreshold, CalcMonteCarlo) -->
+- **Number of trajectories** (100–1,000,000, default 100,000) : how many incident electrons to track. More electrons reduce the statistical noise of every distribution below, at a run time that grows linearly.
+- **Sample Tilt** (°, −90 to 0, default 0) : tilt of the sample surface about the *X* axis. Leave it at 0 for normal incidence; use **−70°** to reproduce the geometry of the [EBSD simulator](12-ebsd-simulation.md), where the large tilt raises the backscatter yield.
 - **Energy** (keV) / **Wavelength** / **Unit** : the accelerating voltage of the incident beam, and the relativistically corrected electron wavelength linked to it. The energy sets the kinetic energy used by both the elastic (NIST Mott) and the inelastic (stopping power / IMFP) models.
 
-The scattering models themselves are not user-selectable: the elastic cross sections come from the bundled NIST Mott table (falling back to screened Rutherford outside its range), and the stopping power from the modified Jablonski (2008) form. The model actually used is printed next to each value in **Statistics**. See [Attenuation & transport](appendix/a2-beam-interaction/attenuation-transport.md) for what these models are.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormTrajectory.cs:EnergyThreshold = 2, DrawStatistics / Crystallography/EBSD/MonteCarlo.cs:MonteCarlo(thresholdKev)) -->
+An electron is tracked until it leaves the sample or its energy falls to **2 keV** (fixed threshold). Electrons that leave with more than 2 keV are counted as backscattered electrons; all the statistics, the stereonet and the histograms below are taken over these only.
+
+The scattering models themselves are not user-selectable: the elastic cross sections come from the bundled NIST Mott table (falling back to screened Rutherford outside its range), and the stopping power from the modified Jablonski (2008) form. The model actually used is printed next to the cross section and the stopping power in **Statistics**. See [Attenuation & transport](appendix/a2-beam-interaction/attenuation-transport.md) for what these models are.
 
 ### 3-D trajectory view
 
-Red trajectories are electrons absorbed in the sample, orange ones are those that escape as backscattered electrons. The concentric guide circles are labelled in nm (or µm), and **+X**, **+Y**, **+Z (=beam)** mark the axes.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormTrajectory.cs:Draw3D (Material の Color4)) -->
+Trajectories of backscattered electrons are drawn in **red**, those of electrons absorbed in the sample in **blue**; along each path the colour fades toward white/transparent in 16 steps as the electron loses energy. The path after escaping (below) is drawn as a short **orange** segment whose length is proportional to the escape energy. The concentric guide circles are labelled in nm (or µm), and **+X**, **+Y**, **+Z (=beam)** mark the axes.
 
 - **From Z-axis (=beam direction)** / **From X-axis (rotation axis)** / **From the surface normal** : snap the view to the standard directions.
-- **Number of trajectories to draw** : how many of the calculated trajectories to render (drawing every one of 100,000 would be unreadable and slow).
+- **Number of trajectories to draw** (1–100,000, default 500) : how many of the calculated trajectories to render (drawing every one of 100,000 would be unreadable and slow). The first ones in calculation order are taken, skipping absorbed electrons when they are not drawn.
 - **Draw axes** / **Draw guide circles** : the axis arrows and the distance scale.
 - **Draw trajectories absorbed in the sample** : include the electrons that never escape.
 - **Draw the path after escaping** : continue drawing a backscattered electron's path after it has left the surface.
@@ -50,7 +57,8 @@ Red trajectories are electrons absorbed in the sample, orange ones are those tha
 
 ![Statistics](../assets/cap-en-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
-Values for the current beam energy, with the model that produced each one named in brackets.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormTrajectory.cs:CalcMonteCarlo (labelCrossSection / labelStoppingPower)) -->
+Values for the current beam energy. The cross section and the stopping power carry the name of the model that produced them in brackets.
 
 - **Scattering cross-section (σ_E)** (nm²) — total elastic cross section per atom.
 - **Elastic mean free path (λ)** (nm) — average distance between elastic scattering events.
@@ -76,11 +84,13 @@ Angular distribution of the backscattered electrons, drawn on a stereonet whose 
 
 ![Histograms](../assets/cap-en-auto/FormTrajectory.flowLayoutPanelProfiles.png)
 
-Three distributions of the backscattered electrons, all normalised to unit area.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormTrajectory.cs:DrawStatistics (hist[i].Count / count)) -->
+Three distributions of the backscattered electrons. Each bin holds the fraction of all backscattered electrons that fall into it (the bin values sum to 1; they are not divided by the bin width).
 
 ### BSE energy distribution at escape
 
-Histogram of the **energy the backscattered electrons still carry when they leave the sample** (keV) — not their energy loss. The EBSD simulator uses it to weight the energy integration of the master pattern.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormTrajectory.cs:DrawStatistics (energies = energy - e[^1].e)) -->
+Histogram of the energy of the backscattered electrons at escape (keV), in 0.1 keV bins. ⚠ In the current implementation the quantity binned is $E_0 - E_\text{escape}$, i.e. the **energy lost**, although the group title reads "at escape" (to be confirmed with the author).
 
 ### Maximum BSE surface-parallel distance
 
@@ -88,7 +98,7 @@ Histogram of how far each backscattered electron travelled **laterally** (parall
 
 ### Maximum BSE penetration depth
 
-Histogram of the greatest depth **perpendicular to the surface** (nm) each backscattered electron reached before escaping. The EBSD simulator uses it to weight the depth integration of the master pattern.
+Histogram of the greatest depth **perpendicular to the surface** (nm) each backscattered electron reached before escaping.
 
 ---
 

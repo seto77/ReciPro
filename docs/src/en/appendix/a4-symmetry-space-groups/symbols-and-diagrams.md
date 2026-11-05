@@ -166,7 +166,8 @@ The right-hand diagram plots the general equivalent positions — the orbit of o
 - (Cubic space groups only) thin auxiliary lines connect three circles that are related by a body-diagonal $\langle111\rangle$ 3-fold axis.
 - In general, one circle (or one half of a split circle) corresponds to one equivalent position, so the number of circles matches the general-position **multiplicity** shown on the [Wyckoff Positions](../../2-symmetry-information.md) tab — a quick sanity check when reading either diagram. If the chosen projection axis happens to make several same-handedness copies coincide exactly, they are superimposed at one spot (distinguished only by separate height labels) rather than drawn as separate side-by-side circles, so the visible circle count can then be lower than the multiplicity.
 
-The $x$ / $y$ / $z$ boxes below **Direction** let you move the test point $(x,y,z)$ away from the space group's default position for that point group, which is occasionally useful to un-clutter a diagram where several circles would otherwise coincide.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSymmetryInformation.Designer.cs:flowLayoutPanel3 (labelLaTex1-3 / numericBoxPositionA-C)) -->
+The three boxes labelled **a** / **b** / **c** next to the general-position **Copy** button (fractional $x$, $y$, $z$; range −1 to 1) let you move the test point $(x,y,z)$ away from the space group's default position for that point group, which is occasionally useful to un-clutter a diagram where several circles would otherwise coincide.
 
 ---
 

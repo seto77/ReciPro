@@ -20,7 +20,7 @@ The screenshot above has **Show samples** turned on, displaying the built-in sam
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Save the editor text back into the selected macro-list entry |
 | <kbd>F10</kbd> | Advance one step (during step-by-step execution) |
 | Double-click a row in the function-help list | Insert that function's signature at the caret |
-| Drop a `.mcr` file on the window | Load it into the editor |
+| Drop a `.mcr` file on the window | <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMacro.cs:ReadMacroFile) --> Load it into the editor and add it to the macro list (the file name becomes the macro name) |
 
 **Run**, **Step**, and **Stop** are buttons (no key accelerator).
 
@@ -34,7 +34,8 @@ Macros are written in Python syntax. Using ReciPro's built-in classes and functi
 
 - **Language**: Python 3 (IronPython 3.4)
 - **Storage**: Compressed binary in Windows Registry (persists across sessions)
-- **Access**: Click the Macro button on the main window to open the macro editor
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.cs:editorToolStripMenuItem_Click/SetMacroToMenu) -->
+- **Access**: **Macro > Editor** in the main-window menu opens the macro editor. Every macro in the list is also added as an item of the **Macro** menu; choosing it runs that macro directly
 
 ---
 
@@ -46,6 +47,7 @@ The macro editor is made up of the following areas:
 |------|---------|
 | **Macro list** (left) | Stored macros. `Add` appends a new macro, `Replace` overwrites the selected one, `Delete` removes it. Up/Down reorder. |
 | **Name field** (top) | Identifier of the macro being edited. |
+| **File menu** | <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMacro.cs:loadToolStripMenuItem_Click/saveToolStripMenuItem_Click) --> **Load file** reads a `.mcr` file (UTF-8) and adds it to the list; **Save file** writes the editor text to a `.mcr` file. |
 | **Code area** (right) | Python code editor with line-number gutter, auto-indent, syntax help popup. |
 | **Built-in function table** (bottom) | List of the built-in functions/properties provided by ReciPro, with a Help description for each. A reference while writing code. |
 | **Status bar** (very bottom) | Shows the current caret position as `Line N, Col M`. |

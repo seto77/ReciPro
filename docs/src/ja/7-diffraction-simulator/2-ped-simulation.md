@@ -44,10 +44,11 @@ PEDは電子回折なので、線源は **電子線** を選びます。電子�
 
 歳差コーンの形状とサンプリングを設定します。
 
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:numericBoxPED_Semiangle, numericBoxPED_Step) -->
 | パラメータ | 説明 | 推奨値 |
 |-----------|------|-------|
-| **半頂角** | 歳差コーンの半角 (mrad) | 10–40 mrad |
-| **ステップ** | 歳差コーン上でサンプリングする平行ビーム方向の数。多いほど積分が滑らかになりますが、計算時間は線形に増加します | 36–72 |
+| **半頂角** | 歳差コーンの半角 (mrad。0.1〜500、既定 50) | 10–40 mrad |
+| **ステップ** | 歳差コーン上でサンプリングする平行ビーム方向の数（2〜1080、既定 36）。多いほど積分が滑らかになりますが、計算時間は線形に増加します | 36–72 |
 
 ---
 
@@ -57,10 +58,11 @@ PEDは電子回折なので、線源は **電子線** を選びます。電子�
 
 ![ブロッホ波パラメータ](../../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.Designer.cs:numericBoxNumOfBlochWave, numericBoxThickness) -->
 | パラメータ | 説明 | 推奨値 |
 |-----------|------|-------|
-| **回折波の数** | 固有値問題に含めるブロッホ波の本数。大きいほど強度は正確になりますが、計算時間は $O(N^3)$ で増加します | 50–200 |
-| **試料厚み** | 動力学計算で用いる試料厚さ (nm) | — |
+| **回折波の数** | 固有値問題に含めるブロッホ波の本数（8〜1000、既定 240）。大きいほど強度は正確になりますが、計算時間は $O(N^3)$ で増加します | 50–200 |
+| **試料厚み** | 動力学計算で用いる試料厚さ (nm。0.01〜10000、既定 50) | — |
 
 計算コストは概ね「ステップ数 × 1方向あたりのブロッホ波計算」で決まります。動力学計算の詳細は [動力学計算（Bloch波法）](../appendix/a3-bloch-wave/calculation.md) を参照してください。
 
@@ -75,11 +77,9 @@ PEDは電子回折なので、線源は **電子線** を選びます。電子�
 - **Solid sphere / Gaussian** : 逆格子点の幾何モデル。**Solid sphere** は半径 $R$ の球とエワルド球の断面を描き、**Gaussian** は $\sigma = R$ の3Dガウスとエワルド球の断面（2Dガウス）を描きます。
 - **不透明度 (Opacity)** : スポットの透過率（0=透過、1=不透過）。
 - **Radius (R)** : 逆格子点の半径。動力学的強度では、Gaussian は積分 $=$ Brightness $\times I_\text{dyn}$、Solid sphere は半径 $R \times I_\text{dyn}^{1/2}$（面積が動力学的強度に比例）。
-- **Brightness** : **Gaussian** モードでのみ有効。描画ガウスの積分強度。
-- **カラースケール** : **Gray scale** または **Cold-warm** カラーマップ。
-- **Log スケール** : 強度を対数表示。
-- **スポットの色** : カラースケールが適用されない場合のスポット色。
-- **結晶の色を使う** : 結晶ごとに設定した色でスポットを描画します。
+- **明るさ・カラー・ログスケール** : **ガウス関数** のときのみ表示。**明るさ** は描画ガウスの積分強度の倍率、**カラー** は **Gray**（下の描画色を使用）/ **Cold-Warm** / **Spectrum** / **Fire**、**ログスケール** は強度の対数表示。<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpots, comboBoxScaleColorScale_SelectedIndexChanged; FormDiffractionSimulator.Designer.cs:flowLayoutPanelGaussianOption, comboBoxScaleColorScale) -->
+- **描画色** : カラーが **Gray** のとき（球の断面では常に）表示。**一般反射** / **禁制反射 (らせん or 映進)** / **禁制反射 (複合格子)** の色。
+- **結晶毎の指定色** : 結晶ごとに設定した色でスポットを描画します。
 
 ---
 

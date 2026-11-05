@@ -53,48 +53,54 @@ Enter the search criteria below and press the **Search** button or the **Enter**
 | Criterion | Description |
 |-----------|-------------|
 | **Name** | Crystal name |
-| **Element** | Periodic table selector (may/must/must-not include) |
+| **Elements** | Periodic table selector (may/must/must-not include) <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: SearchCrystalControl.resx checkBoxSearchElements/checkBoxSearchCellParameter.Text) --> |
 | **Reference** | Title, journal, author |
 | **Crystal system** | Select crystal system |
-| **Cell Param** | Lattice constants and error |
-| **d-spacing** | Strongest reflection d-values and error |
+| **Cell Params** | Lattice constants and error |
+| **d-spacing** | Strong-reflection d-values and error |
 | **Density** | Density and error |
 
 ### Name
 
-Free-text match against the crystal name. Partial matches are allowed.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: SearchCrystalControl.cs:backgroundWorkerSearch_DoWork) -->
+Free-text match against the crystal name. Partial matches are allowed; case is ignored. Only the criteria whose check boxes are ticked are applied, and they are combined with AND.
 
 ### Element
 
 Press the **Periodic Table** button to open the element selector. Each element button cycles between three states:
 
-- **May or may not include** (default — grey)
-- **Must include** (green)
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormPeriodicTable.cs: NeutralColor=LightYellow, IncludeColor=LightBlue, ExcludeColor=LightCoral, button_Click) -->
+- **May or may not include** (default — yellow)
+- **Must include** (blue)
 - **Must exclude** (red)
+
+A crystal must contain every *must include* element and none of the *must exclude* elements; entries without atom data are excluded while the **Elements** criterion is on.
 
 The three buttons at the top of the window reset every element to one of the three states in one click.
 
 ### Reference
 
-Free-text match against the publication metadata: paper title, journal name, and author list.
+Free-text match (partial, case-insensitive) against the publication metadata: paper title, journal name, and author list.
 
 ### Crystal system
 
-Restrict the search to a specific crystal system (Cubic, Tetragonal, Orthorhombic, Hexagonal, Trigonal, Monoclinic, Triclinic).
+Restrict the search to a specific crystal system (cubic, tetragonal, orthorhombic, hexagonal, trigonal, monoclinic, triclinic). The first item, *Unknown*, applies no restriction.
 
 ### Cell parameter search
 
 ![Cell parameter search](../assets/cap-en-auto/FormCrystalDatabase.panelSearch.searchCrystalControl.flowLayoutPanel1.groupBoxCellParameter.png)
 
-Enter target lattice constants *a*, *b*, *c*, *α*, *β*, *γ* and acceptable errors. Empty fields are treated as wildcards.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: SearchCrystalControl.cs:buttonSearch_Click/backgroundWorkerSearch_DoWork, SearchCrystalControl.resx numericBoxCell*.ToolTip/FooterText) -->
+Enter target lattice constants *a*, *b*, *c* (Å) and *α*, *β*, *γ* (°) and the acceptable errors: one relative tolerance (±%) common to *a*, *b*, *c*, and one absolute tolerance (±°) common to the angles. A value of 0 means that parameter is ignored.
 
 ### d-spacing
 
-Enter the *d*-spacing of the strongest reflection (or several strong reflections) and an acceptable error. Useful when only the diffraction peak positions are known from an experiment.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: SearchCrystalControl.cs:backgroundWorkerSearch_DoWork/calcDlist, CrystalMinimum.cs:d (強度上位 8 本の d 値)) -->
+Enter up to three *d*-spacings (Å; tick each one to use it), each with a relative tolerance (±%). A crystal matches when every entered value agrees with one of its eight strongest reflections. With **Ignore scattering factor** checked, the values are instead compared with all geometrically possible *d*-spacings computed from the unit cell (including systematically absent reflections). Useful when only the diffraction peak positions are known from an experiment.
 
 ### Density
 
-Filter by mass density (g/cm³) within an acceptable error band.
+Filter by mass density (g/cm³) within a relative tolerance (±%).
 
 ---
 

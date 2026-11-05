@@ -1,6 +1,7 @@
 # Spot ID v2
 
-**Spot ID v2** is the enhanced version of [Spot ID](10-spot-id.md) with improved spot detection, fitting algorithms, and a more powerful indexing engine.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSpotIDv1.Designer.cs / FormSpotIDV2.Designer.cs) -->
+**Spot ID v2** detects, fits and indexes diffraction spots on an experimental diffraction image. [Spot ID v1](10-spot-id.md) (the former TEM ID) instead takes the spot geometry as numeric input.
 
 ![Spot ID v2](../assets/cap-en-auto/FormSpotIDV2.png)
 
@@ -30,7 +31,8 @@ You build the spot list directly on the loaded image. The image pane uses ReciPr
 
 ## File menu
 
-Open / save a diffraction image. The same drag-and-drop loading as [Spot ID v1](10-spot-id.md) is supported, and Gatan DM3/DM4 metadata (camera length, wavelength, pixel size) is honoured automatically.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSpotIDv1.Designer.cs (画像読み込み無し) / FormSpotIDV2.Designer.cs: saveToolStripMenuItem, copyToolStripMenuItem) -->
+Open a diffraction image; **Save** / **Copy** write the displayed image as a Metafile (EMF) or an image (PNG). Images can also be loaded by drag and drop, and Gatan DM3/DM4 metadata (camera length, wavelength, pixel size) is honoured automatically.
 
 **Save ▸ Candidate list (CSV)...** exports the orientation candidates found by the indexing, and **Copy ▸ Candidate list (TSV)** puts the same table on the clipboard: one row per candidate × grain, with the rank, the grain index, the crystal name, the ZXZ Euler angles (°), the nine rotation-matrix elements, the mean-squared residual (nm⁻²), the number of assigned spots and the spot → (hkl) assignments. The CSV always uses a period as the decimal separator; the TSV can be pasted straight into a spreadsheet.
 
@@ -48,6 +50,9 @@ Select the radiation type (X-ray / electron / neutron) and set the energy or wav
 
 The camera length (mm) and detector pixel size (mm or nm⁻¹). When a Gatan DM file is loaded, these values are populated from the file header.
 
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSpotIDV2.Designer.cs: panel1 の checkBoxShowDebyeRing / checkBoxGuideCircles) -->
+**Show Debye rings** and **Show guide circles** (default on) draw the Debye rings of the crystal and guide circles on the pattern.
+
 ---
 
 ## Spot information
@@ -60,10 +65,14 @@ The camera length (mm) and detector pixel size (mm or nm⁻¹). When a Gatan DM 
 - **Fitting range (radius)**: The radius (px) of the circular region used to fit each spot's peak. Pixels inside this circle are fitted with a pseudo-Voigt function.
 - **Apply to All**: Sets the fitting radius of every spot to the current **Fitting range (radius)** value.
 - **Delete / Clear all spots**: Remove the selected spot, or all detected spots.
-- **Copy**: Copy spot positions and intensities to the clipboard.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSpotIDV2.Designer.cs / FormSpotIDV2.resx の ToolTip) -->
+- **Save** / **Copy**: Save the spot table to a file, or copy it to the clipboard.
+- **Re-fit all**: Re-fit the positions and intensities of all detected spots.
+- **Show symbols** / **Show numbers**: Show marker symbols / numbers on the observed spots (both on by default).
 - **Global fit**: Perform a global fit of all spot positions at once (experimental).
 - **Donut**: Apply donut-shaped background subtraction (experimental); the adjacent box sets the width (px) of the annular ring around each spot whose average is subtracted as the local background.
 - **Details of the spot**: When checked, opens a window showing detailed information about the currently selected spot.
+- **Details of the fitting function** (off when the window opens): Show a figure of the two-dimensional pseudo-Voigt function and its parameters (x_0, y_0, H1, H2, θ, η, A, B_0, B_x, B_y) used in the spot table.
 
 ![Details of the spot](../assets/cap-en-auto/FormSpotIDv2Details.png)
 
@@ -74,13 +83,19 @@ The camera length (mm) and detector pixel size (mm or nm⁻¹). When a Gatan DM 
 ![Index](../assets/cap-en-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
 
 - **Identify Spots**: Run the indexing algorithm to find the best-matching crystal and zone axis.
-- **Acceptable error**: Set the acceptable deviation in d-spacing and angle for a match.
-- **Ignore prohibited reflections**: When checked, reflections forbidden by screw axes and glide planes are treated as not necessarily satisfied while searching for the zone axis.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSpotIDV2.cs: ToleranceLength / ToleranceAngle) -->
+- **Acceptable error**: Relative d-spacing tolerance in % (0.1–10, default 2). The angle tolerance between spots is derived from it as asin(tolerance)/2.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSpotIDV2.cs: SetGVector(..., checkBoxIgnoreMultipleDiffraction.Checked, ...) / PolyCrystal.cs: SetGVector) -->
+- **Ignore prohibited reflections** (default off; electron diffraction only): When checked, all systematically absent reflections, including those forbidden by screw axes and glide planes, are excluded from the candidate reflections. When unchecked, only the absences due to lattice centring (I, F, A, B, C, R) are excluded, so screw/glide-forbidden reflections that can appear through multiple diffraction remain candidates. For X-rays all absent reflections are always excluded.
 - **Single Grain / Multiple Grains**: Search for a single orientation (single crystal), or for several orientations (a polycrystalline / multi-grain region). For multiple grains, **Max. num. of grains** sets the upper limit on the number of grains to search for.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormSpotIDV2.Designer.cs / FormSpotIDV2.resx の ToolTip) -->
+- **Show zone axis** / **Show symbol** / **Show label**: Overlay the zone axis and the symbols / index labels of the calculated spots.
+- **Refine thickness & direction (only for SAED)**: Refine the specimen thickness (nm) and the beam direction of the selected grain by matching the observed spot intensities to dynamical (Bloch-wave) calculations. **Diffracted waves** (1–2048, default 400) is the number of beams, and **Search angle range** (mrad, 1–10, default 2) is the angular half-range of incident directions searched. **Stop** interrupts the computation.
 - **Results**: The best matches are displayed with crystal name, zone axis [uvw], and individual spot indices (hkl).
 
 ---
 
+<!-- 261105Cl 要確認: FormSpotIDv1 はスポット検出・フィッティングを持たない (旧 TEM ID の数値入力のみ) ので、以下の「v1 からの改善点」はコードと対応しない。複数プロファイル形状・サテライト反射対応の実装も見当たらない (FormSpotIDV2.cs)。削除を検討 -->
 ## Improvements over v1
 
 - Better noise handling in spot detection.

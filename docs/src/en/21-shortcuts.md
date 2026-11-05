@@ -8,12 +8,24 @@ ReciPro wires many functions to **key combinations** and to **mouse buttons comb
 
 ## Application-wide shortcuts
 
-These are installed by the [main window](0-main-window.md) but stay active while the Structure Viewer, Stereonet, Diffraction Simulator, and Spot ID windows are focused.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.cs:FormMain_Load (KeyDown += FormMain_KeyDown), FormCaptureGUI.cs:InstallShortcutFilter, NumericBox.cs:ProcessCmdKey/tryStepByArrowKey/textBox_KeyDown) -->
+These are installed by the [main window](0-main-window.md) but stay active while the Structure Viewer, Stereonet, Diffraction Simulator, and Spot ID v1 windows are focused.
 
 | Shortcut | Action |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + arrow keys | Rotate the crystal one step in that direction (hold two arrows for a diagonal) |
-| Hold <kbd>CTRL</kbd> while ReciPro starts | Start with OpenGL disabled (recovery for graphics problems) |
+| Hold <kbd>CTRL</kbd> while ReciPro starts | Start with OpenGL disabled (recovery for graphics problems; this launch only, not saved) |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> (any window) | Open the (experimental) GUI-capture tool for the active window |
+
+### Numeric input boxes
+
+Most numeric fields in every window behave the same way.
+
+| Shortcut | Action |
+|----------|--------|
+| <kbd>↑</kbd> / <kbd>↓</kbd> (field focused, spin buttons shown) | Step the value up / down, exactly like the spin buttons |
+| <kbd>ENTER</kbd> | Commit the typed value |
+| <kbd>SHIFT</kbd>+<kbd>ENTER</kbd> or <kbd>CTRL</kbd>+<kbd>ENTER</kbd> | Evaluate the typed arithmetic expression and replace it with the result |
 
 ---
 
@@ -47,7 +59,8 @@ Used by the [Diffraction Simulator](7-diffraction-simulator/index.md) pattern, t
 | Right-drag a box | Zoom in to the selected region |
 | Middle-drag | Pan |
 
-There is **no** mouse-wheel zoom on these views.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:graphicsBox_MouseWheel (MouseWheelZoom=true は回折シミュレータのみ), GraphicsBox.cs:OnMouseWheel) -->
+Only the Diffraction Simulator pattern also zooms with the mouse wheel (×2 / ×0.5 about the cursor); the Stereonet and the EBSD Kikuchi pattern have **no** mouse-wheel zoom. There is no <kbd>+</kbd> / <kbd>-</kbd> key zoom.
 
 ### Image views { #image }
 
@@ -72,9 +85,9 @@ Used by the [HRTEM/STEM](9-hrtem-stem-simulator/index.md) result panes, the [Spo
 | Left-drag the orientation widget (bottom-left) | Rotate the crystal |
 | Right double-click the orientation widget | Copy the widget image to the clipboard |
 | Single-click / double-click a function button | Toggle that window / force it to the front |
-| Right-click a crystal in the list | Context menu (Rename / Duplicate / Delete / Export CIF…) |
-| Double-click the **Current Index** label | Show / hide the max-UVW box |
-| Drop a file | Load a crystal list (`.xml`, `.cdb2`) or a crystal (`.cif`, `.amc`) |
+| Right-click a crystal in the list | Context menu (Rename / Export as CIF / Duplicate / Delete) |
+| Double-click the zone-axis index label (`[u v w]`) | Show / hide the max-UVW box |
+| Drop a file | Load a crystal list (`.xml`, `.out`, `.cdb2`) or a crystal (`.cif`, `.amc`) <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.cs:FormMain_DragDrop, contextMenuStripListBox) --> |
 
 ### 1. Crystal database
 [Open page →](1-crystal-database.md)
@@ -111,10 +124,11 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 | Move the mouse over the net | Read off the (hkl)/[uvw] under the cursor |
 
 ### 7. Diffraction simulator
-[Open page →](7-diffraction-simulator/index.md) — the pattern is a [diffraction-pattern view](#pattern) (no wheel zoom).
+[Open page →](7-diffraction-simulator/index.md) — the pattern is a [diffraction-pattern view](#pattern), plus wheel zoom.
 
 | Shortcut | Action |
 |----------|--------|
+| Mouse wheel up / down | Zoom in (×2) / out (×0.5) about the cursor (about the fixed centre when the centre **Fix** box is on) <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:graphicsBox_MouseWheel) --> |
 | Left double-click a spot | Show reflection details (index, *d*, structure factor, excitation error) |
 | <kbd>CTRL</kbd> + Middle-drag | Move the detector centre (when the detector area is shown) |
 | Right double-click the status bar | Copy a text summary of the current settings |
@@ -160,6 +174,7 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 | Shortcut | Action |
 |----------|--------|
 | Double-click the Kikuchi pattern | Pick the detector sub-cell under the cursor and show its statistics |
+| With **Zone axis** picking on: left double-click / <kbd>CTRL</kbd> + left double-click / <kbd>SHIFT</kbd> + left double-click the pattern | Add a zone-axis point / remove the point within 5 screen pixels / select that point <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormEBSD.cs:HandleZoneAxisDoubleClick) --> |
 
 ### 20. Macro
 [Open page →](20-macro/index.md)

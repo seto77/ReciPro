@@ -31,8 +31,9 @@ circumference = 2 * math.pi * r
 
 ### C. 現在の結晶を回転する
 
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Macro.cs:DirectionClass.RotateAroundAxis — 結晶の [uvw] 周り。回転後は実験室 x 軸と一致しない) -->
 ```python
-# a 軸 (x 軸) 周りに 30 度回転
+# 結晶の a 軸 [100] 周りに 30 度回転
 ReciPro.Dir.RotateAroundAxisInDeg(1, 0, 0, 30)
 ```
 
@@ -154,7 +155,8 @@ ReciPro.File.SaveText(info, "spot_info.csv")
 
 - **値の確認方法**: この環境では `print()` は使えません (コンソールウィンドウが無い)。**Step by step** で実行し、デバッグパネルで各行におけるローカル変数の値を確認してください。
 - **`math` は事前 import 済み**: `math.sqrt(x)`、`math.sin(x)`、`math.pi`、`math.radians(deg)` が `import math` なしで使えます。
-- **バッチ処理の高速化**: `ReciPro.DifSim.SkipRendering = True` を設定するとループ中の描画をスキップします。処理後は `False` に戻してください。
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormDiffractionSimulator.cs:Draw (SkipRendering && bethe)) -->
+- **バッチ処理の高速化**: `ReciPro.DifSim.SkipRendering = True` は**動力学**モードでのみスポットの描画を省略します (計算自体は行われるので `SpotInfo()` の一括取得向き。保存画像にはスポットが写りません)。処理後は `False` に戻してください。運動学/励起誤差モードでは効果がありません。
 - **描画待ち**: `ReciPro.Sleep(ms)` でスクリプトを一時停止できます。GUI の描画が間に合わない場合に有用です。
 - **入力候補**: ポップアップは `ReciPro.クラス.メンバ` の完全形を表示します。数文字打って `Enter` か `Tab` で確定。
 
