@@ -44,7 +44,7 @@ y un $\omega$ pequeño significa que la mayoría de las vacantes decaen por emis
 
 $$p_{\ell\mid X} = \frac{\Gamma_\ell}{\sum_{\ell'\in X}\Gamma_{\ell'}},$$
 
-la tasa radiativa relativa dentro de la capa $X$. ReciPro lista $\omega_K$ para cada elemento y la línea más intensa del espectro.
+la tasa radiativa relativa dentro de la capa $X$. ReciPro lista $\omega_K$ para cada elemento y la línea más intensa del espectro. Se trata de una lista de referencia que no tiene en cuenta con qué intensidad se excita cada capa (sin sección eficaz de ionización), así que esa línea no tiene por qué ser la más intensa en un espectro medido. <!-- 261106Cl 作者の決定 J6 -->
 
 ---
 

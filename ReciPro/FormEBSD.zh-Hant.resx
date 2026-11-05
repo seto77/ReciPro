@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
-    <value>試片傾角</value>
+    <value>試樣傾角</value>
   </data>
   <data name="buttonViewQuarter.Text" xml:space="preserve">
     <value>鳥瞰視角</value>
@@ -115,7 +115,7 @@
     <value>非局域背向散射源</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>厚度自</value>
+    <value>深度自</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>至</value>
@@ -178,7 +178,7 @@
     <value>EBSD 幾何</value>
   </data>
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
-    <value>SEM &amp;&amp; 試片條件</value>
+    <value>SEM &amp;&amp; 試樣條件</value>
   </data>
   <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>幾何</value>
@@ -277,9 +277,9 @@ structure factors」時，弱菊池線會融入此顏色。</value>
 晶面間距較大的反射。</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>試片厚度掃描的步階大小，單位為
-nm；自 Start 到 End 的範圍以
-此增量進行計算。</value>
+    <value>主圖樣深度切片的間隔，單位為 nm。自動設定的深度
+為不等間距（靠近表面處較密），此時各欄顯示第一個點、
+最後一個點與第一個間隔。編輯任一欄後變為等間距。</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>布洛赫波動力學計算中所含的繞射波（g 向量）
@@ -287,13 +287,14 @@ nm；自 Start 到 End 的範圍以
 但計算越慢。</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>試片厚度掃描範圍的起始值，
-單位為 nm；Start、End 與 Step
-決定要計算的厚度切片。</value>
+    <value>主圖樣深度切片的第一個（最淺）值，單位為 nm。
+深度為沿出射方向的路徑長度（源深度 ÷ cos χ）。
+Start、End 與 Step 決定深度切片。
+勾選「由 MC 自動設定能量與深度範圍」時自動設定。</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>試片厚度掃描範圍的終止值，單位為 nm；Start、
-End 與 Step 決定要計算的厚度切片。</value>
+    <value>主圖樣深度切片的最後一個（最深）值，單位為 nm；
+Start、End 與 Step 決定深度切片。</value>
   </data>
   <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
     <value>EBSD（電子背向散射繞射）掃描中所用
@@ -303,7 +304,8 @@ End 與 Step 決定要計算的厚度切片。</value>
   <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
     <value>EBSD（電子背向散射繞射）掃描中所用
 背向散射電子的起始（上限）能量，
-單位為 keV。</value>
+單位為 keV。
+勾選「由 MC 自動設定能量與深度範圍」時自動設定。</value>
   </data>
   <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
     <value>背向散射電子能量掃描的步階大小，單位為
@@ -467,8 +469,9 @@ Negative（反轉）灰階。</value>
 深度 (nm)（單一切片模式）。</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>以度設定偵測器平面相對於電子束 (Z) 軸的傾斜
-角。此會影響相機長度與菊池帶的投影形狀。</value>
+    <value>以度設定偵測器螢幕相對於水平面（垂直於電子束 Z 軸）的
+傾斜角：0° = 水平，90° = 垂直的螢幕（預設）。此會影響
+相機長度與菊池帶的投影形狀。</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
     <value>顯示目前繪製的 EBSD 圖樣切片的
@@ -493,9 +496,10 @@ Negative（反轉）灰階。</value>
 背向散射投影的幾何。</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>以 mm 為單位設定偵測器中心的 Y 座標（在試片表面內、
-與旋轉軸 X 垂直、由試片指向螢幕的方向）。與 Z
-及偵測器傾角共同決定相機長度。左右方向的偏移由 X 設定。</value>
+    <value>以 mm 為單位設定偵測器中心的 Y 座標（在顯微鏡座標系中，
+與電子束 Z 及試片傾轉軸 X 皆垂直的水平方向，而非傾斜後
+試片表面內的方向）。與 Z 及偵測器傾角共同決定相機長度。
+左右方向的偏移由 X 設定。</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>以 mm 設定偵測器中心的 Z 座標
@@ -547,11 +551,15 @@ Depth 欄。</value>
   <data name="labelBseDepth.ToolTip" xml:space="preserve">
     <value>被偵測到的背向散射電子最後一次發生非彈性散射
 的深度 (nm) 分佈（若無非彈性散射則取最大侵入
-深度）。與用於為主圖樣加權的深度定義相同。</value>
+深度）。與用於為主圖樣加權的深度定義相同。
+雙擊圖表可將其數值以文字（x 與 y，以定位字元分隔）
+複製到剪貼簿。</value>
   </data>
   <data name="labelBseDeltaE.ToolTip" xml:space="preserve">
     <value>模擬的背向散射電子能量損失 ΔE (keV)
-的分佈。</value>
+的分佈。
+雙擊圖表可將其數值以文字（x 與 y，以定位字元分隔）
+複製到剪貼簿。</value>
   </data>
   <data name="labelBseStereonetNote.ToolTip" xml:space="preserve">
     <value>在此立體網中，中心
@@ -915,5 +923,15 @@ A(E) = exp(-(E0 - E) / E_c)，損失的部分轉為平坦基座，
 編輯前的預設值：非對稱高斯為 0.8 keV；直方圖 + 逐電子 A 為 0.9 keV（20 kV Si004 固定 18 條帶寬中位數的暫定值）。
 編輯 E_c 後，切換分布時保留輸入值。
 數值隨材料和反射而變；Botallackite 範例約為 0.43–0.71 keV。能量/深度網格、合成方法或評價指標變更時請重新校準。</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.Text" xml:space="preserve">
+    <value>由 MC 自動設定能量與深度範圍</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.ToolTip" xml:space="preserve">
+    <value>開啟（預設）：每次「模擬」與「建立主圖樣」時，由 MC 結果設定下方的
+能量與深度範圍（能量：從 E0 到能量損失約 95 % 處；深度：到出射路徑
+長度的 99.9 % 處，40 個不等間距點）。此時範圍欄為唯讀。
+關閉：範圍欄保留您輸入的值，並依此範圍建立主圖樣。若下限不小於上限、
+能量高於 E0 或範圍與 MC 分佈不重疊，則不建立並以訊息提示。</value>
   </data>
 </root>

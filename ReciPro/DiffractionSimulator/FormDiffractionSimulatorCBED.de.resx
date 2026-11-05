@@ -66,10 +66,10 @@
     <value>Löser</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
-    <value>Anzahl gebeugter Wellen</value>
+    <value>Gebeugte Wellen</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
-    <value>Halbwinkel</value>
+    <value>Konv.-Halbwinkel α</value>
   </data>
   <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
     <value>Scheibenauflösung</value>
@@ -153,9 +153,11 @@ jeder Bragg-Reflex wird zu einer Scheibe, deren
 innere Intensität sich mit der Neigung des einfallenden Strahls ändert.</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
-    <value>LACBED- (Large-Angle Convergent-Beam Electron
-Diffraction) Modus: verwendet einen größeren Konvergenzwinkel, sodass
-ein Reflex über einen größeren Winkelbereich aufgezeichnet wird.</value>
+    <value>LACBED- (Large-Angle CBED) Modus: Nur die durchgehende
+(000) Scheibe wird ausgegeben und gezeichnet, ohne die
+überlappenden Nachbarscheiben zu addieren; daher ist ein
+Halbwinkel größer als die Bragg-Winkel möglich (Hellfeld-
+LACBED). Der Halbwinkel selbst wird dadurch nicht größer.</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Anzahl der gebeugten Strahlen (Bloch-Wellen),
@@ -171,15 +173,16 @@ die Genauigkeit, verlangsamen aber die Berechnung.</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
     <value>Winkel-Abtastschritt pro Pixel über jede
-Scheibe (mrad/pixel). Kleinere Werte ergeben mehr
-Durchmesser-Unterteilungen, rechts angezeigt, für
-feinere Scheiben, aber längere Berechnung.</value>
+Scheibe (mrad/pixel). Kleinere Werte ergeben
+feinere Scheiben mit mehr Pixeln; die Pixelzahl
+einer Scheibe steht rechts (Pixel gesamt).
+Die Rechenzeit wächst mit dieser Zahl.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>Winkel-Abtastschritt pro Pixel über jede
-Scheibe (mrad/pixel). Kleinere Werte ergeben mehr
-Durchmesser-Unterteilungen, rechts angezeigt, für
-feinere Scheiben, aber längere Berechnung.</value>
+    <value>Anzahl der Pixel jeder Scheibe, d. h. der Einfalls-
+richtungen innerhalb des Konvergenzkreises. Pro Pixel
+wird eine Bloch-Wellen-Rechnung ausgeführt, daher ist
+die Rechenzeit proportional zu dieser Zahl.</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
     <value>Bereich und Schritt der Probendicken festlegen</value>
@@ -261,10 +264,10 @@ angezeigten Scheibenmusters.</value>
 angezeigten Scheibenmusters.</value>
   </data>
   <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
-    <value>Winkel-Abtastschritt pro Pixel über
-jede Scheibe (mrad/pixel). Kleinere Werte
-ergeben mehr Durchmesser-Unterteilungen, hier angezeigt,
-für feinere Scheiben, aber längere Berechnung.</value>
+    <value>Anzahl der Pixel jeder Scheibe, d. h. der Einfalls-
+richtungen innerhalb des Konvergenzkreises. Pro Pixel
+wird eine Bloch-Wellen-Rechnung ausgeführt, daher ist
+die Rechenzeit proportional zu dieser Zahl.</value>
   </data>
   <data name="labelGamma.ToolTip" xml:space="preserve">
     <value>Einen Gamma-Wert festlegen. Je größer dieser Wert ist,

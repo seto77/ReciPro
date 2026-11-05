@@ -127,7 +127,7 @@
 分布グラフ・3D 軌跡表示を更新します。</value>
   </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
-    <value>サンプルの傾き</value>
+    <value>試料傾斜</value>
   </data>
   <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
     <value>入射ビームに対する試料表面の傾斜角
@@ -275,7 +275,7 @@
 割合。モンテカルロ計算による値です。</value>
   </data>
   <data name="checkBoxDrawPathAfterEscape.Text" xml:space="preserve">
-    <value>試料から脱出した電子(後方散乱電子)を描画</value>
+    <value>脱出後の経路を描画</value>
   </data>
   <data name="checkBoxDrawPathAfterEscape.ToolTip" xml:space="preserve">
     <value>3D 表示で、後方散乱電子が表面から脱出した後の進行方向を
@@ -365,5 +365,14 @@
   </data>
   <data name="numericBoxCalcNum.HeaderText" xml:space="preserve">
     <value>計算する飛程の総数</value>
+  </data>
+  <data name="buttonViewFromX.Text" xml:space="preserve">
+    <value>X 軸から見る (回転軸)</value>
+  </data>
+  <data name="buttonViewFromZ.Text" xml:space="preserve">
+    <value>Z 軸から見る (=ビーム方向)</value>
+  </data>
+  <data name="buttonSurfaceNormal.Text" xml:space="preserve">
+    <value>表面法線から見る</value>
   </data>
 </root>

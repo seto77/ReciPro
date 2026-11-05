@@ -65,19 +65,19 @@
   </data>
   <data name="numericUpDownHeight.ToolTip" xml:space="preserve">
     <value>Высота изображения в пикселях (0–4096, шаг 256);
-ширина следует за ней, если включён Keep Aspect Ratio.</value>
+ширина следует за ней, если включён Keep aspect ratio.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Высота изображения в пикселях (0–4096, шаг 256);
-ширина следует за ней, если включён Keep Aspect Ratio.</value>
+ширина следует за ней, если включён Keep aspect ratio.</value>
   </data>
   <data name="numericUpDownWidth.ToolTip" xml:space="preserve">
     <value>Ширина изображения в пикселях (0–4096, шаг 256);
-высота следует за ней, если включён Keep Aspect Ratio.</value>
+высота следует за ней, если включён Keep aspect ratio.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>Ширина изображения в пикселях (0–4096, шаг 256);
-высота следует за ней, если включён Keep Aspect Ratio.</value>
+высота следует за ней, если включён Keep aspect ratio.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>Задать ширину выходного изображения в пикселях (1–4096).</value>

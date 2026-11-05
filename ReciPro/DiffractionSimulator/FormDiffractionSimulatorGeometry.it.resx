@@ -94,12 +94,16 @@ sovrapposta sulla figura di diffrazione.</value>
 sovrapposta sulla figura di diffrazione.</value>
   </data>
   <data name="numericBoxFootX.ToolTip" xml:space="preserve">
-    <value>Imposta la coordinata X in pixel del punto di base
-(centro del fascio diretto) sul rivelatore.</value>
+    <value>Imposta la coordinata X in pixel del punto di base sul
+rivelatore: il piede della perpendicolare condotta dal
+campione al piano del rivelatore. Coincide con la posizione
+del fascio diretto solo se il rivelatore non è inclinato (tau = 0).</value>
   </data>
   <data name="numericBoxFootY.ToolTip" xml:space="preserve">
-    <value>Imposta la coordinata Y in pixel del punto di base
-(centro del fascio diretto) sul rivelatore.</value>
+    <value>Imposta la coordinata Y in pixel del punto di base sul
+rivelatore: il piede della perpendicolare condotta dal
+campione al piano del rivelatore. Coincide con la posizione
+del fascio diretto solo se il rivelatore non è inclinato (tau = 0).</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
     <value>Imposta la dimensione fisica di un pixel del rivelatore in millimetri.</value>
@@ -130,8 +134,9 @@ visualizzare l'immagine sovrapposta.</value>
 visualizzare l'immagine sovrapposta.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Imposta il limite superiore di intensità per
-visualizzare l'immagine sovrapposta.</value>
+    <value>Regola la luminosità visualizzata dell'immagine
+sovrapposta tramite il punto del nero (Min int.)
+e il punto del bianco (Max int.).</value>
   </data>
   <data name="trackBarMinInt.ToolTip" xml:space="preserve">
     <value>Imposta il limite inferiore di intensità per

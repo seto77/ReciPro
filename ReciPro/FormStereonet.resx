@@ -878,7 +878,7 @@ circle and principal axes, the thickest lines).</value>
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
     <value>Set the color of the 1° grid lines (fine
-lines, shown only when '1° Lines' is enabled).</value>
+lines, shown only when '1° lines' is enabled).</value>
   </data>
   <data name="&gt;&gt;colorControl1DegLine.Name" xml:space="preserve">
     <value>colorControl1DegLine</value>
@@ -1024,7 +1024,7 @@ lines from the polar direction.</value>
     <value>48</value>
   </data>
   <data name="checkBox1DegLine.Text" xml:space="preserve">
-    <value>1° Lines</value>
+    <value>1° lines</value>
   </data>
   <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
     <value>When checked, adds fine 1° grid lines
@@ -1308,7 +1308,7 @@ on the lower hemisphere of the stereonet.</value>
     <value>0</value>
   </data>
   <data name="radioButtonWulff.Text" xml:space="preserve">
-    <value>Equal-Angle</value>
+    <value>Equal-angle</value>
   </data>
   <data name="radioButtonWulff.ToolTip" xml:space="preserve">
     <value>Project directions by the Wulff net (equal-angle method)</value>
@@ -2718,7 +2718,7 @@ the zone-axis great circle on the stereonet</value>
     <value>1</value>
   </data>
   <data name="tabPage2.Text" xml:space="preserve">
-    <value>Great Circle</value>
+    <value>Great circle</value>
   </data>
   <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
     <value>tabPage2</value>
@@ -2832,7 +2832,7 @@ their stereographic trajectories.</value>
     <value>13</value>
   </data>
   <data name="radioButtonRotationalScan.Text" xml:space="preserve">
-    <value>θ^2 + ω^2 = constant (Rotational scan)</value>
+    <value>θ^2 + ω^2 = constant (rotational scan)</value>
   </data>
   <data name="radioButtonRotationalScan.ToolTip" xml:space="preserve">
     <value>Rotational scan mode: sweeps the tilt
@@ -3288,7 +3288,7 @@ motor, in degrees per second (°/s).</value>
     <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxAngularSpeed.FooterText" xml:space="preserve">
-    <value>°/sec</value>
+    <value>°/s</value>
   </data>
   <data name="numericBoxAngularSpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 8pt</value>
@@ -3688,34 +3688,34 @@ Ewald-sphere reflection list shown on the stereonet</value>
     <value>210, 22</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Image (PNG format)</value>
+    <value>as image (PNG format)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+    <value>True</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>as Metafile (EMF)</value>
+    <value>as metafile (EMF)</value>
   </data>
   <data name="saveImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 22</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save Image</value>
+    <value>Save image</value>
   </data>
   <data name="asBitmapToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 22</value>
   </data>
   <data name="asBitmapToolStripMenuItem.Text" xml:space="preserve">
-    <value>As Image</value>
+    <value>As image</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 22</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Metafile (EMF)</value>
+    <value>as metafile (EMF)</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 22</value>
@@ -3748,7 +3748,7 @@ Ewald-sphere reflection list shown on the stereonet</value>
     <value>182, 22</value>
   </data>
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
-    <value>Save Movie</value>
+    <value>Save movie</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 6</value>
@@ -3757,13 +3757,13 @@ Ewald-sphere reflection list shown on the stereonet</value>
     <value>182, 22</value>
   </data>
   <data name="pageSetupToolStripMenuItem.Text" xml:space="preserve">
-    <value>Page Setup</value>
+    <value>Page setup</value>
   </data>
   <data name="printPreviewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 22</value>
   </data>
   <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
-    <value>Print Preview</value>
+    <value>Print preview</value>
   </data>
   <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 22</value>
@@ -4310,7 +4310,7 @@ top of the structure-factor ranking (1–1000).</value>
     <value>0</value>
   </data>
   <data name="checkBoxDisplay3D.Text" xml:space="preserve">
-    <value>3D View</value>
+    <value>3D view</value>
   </data>
   <data name="checkBoxDisplay3D.ToolTip" xml:space="preserve">
     <value>Show the 3D (OpenGL) view of the crystal
@@ -4348,7 +4348,7 @@ unchecked shows the 2D stereonet only</value>
     <value>1</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>Reset</value>
+    <value>Reset view</value>
   </data>
   <data name="button3D_reset.ToolTip" xml:space="preserve">
     <value>Reset the 3-D view to its default orientation and zoom.</value>
@@ -4563,7 +4563,7 @@ plotted point on the stereonet disk.</value>
     <value>3</value>
   </data>
   <data name="label29.Text" xml:space="preserve">
-    <value>Depth Fade</value>
+    <value>Depth fade</value>
   </data>
   <data name="label29.ToolTip" xml:space="preserve">
     <value>Adjust depth cueing: how strongly objects
@@ -4656,7 +4656,7 @@ nearest the cursor position on the stereonet.</value>
     <value>60</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Zone axis / Lattice plane: </value>
+    <value>Zone axis / lattice plane: </value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Zone axis [uvw] and lattice plane (hkl)

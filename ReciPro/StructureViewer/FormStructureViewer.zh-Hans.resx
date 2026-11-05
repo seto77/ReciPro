@@ -97,7 +97,7 @@
   </data>
   <data name="labelMessage.Text" xml:space="preserve">
     <value>此控件现显示于
- "Structure Viewer" 窗口中。</value>
+ "结构查看器" 窗口中。</value>
   </data>
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>原子</value>
@@ -347,7 +347,7 @@
     <value>光照方向</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>复制主图像到剪贴板</value>
+    <value>复制图像到剪贴板</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
     <value>主图像</value>
@@ -395,13 +395,15 @@
     <value>将显示范围设为各晶胞轴的 ±1</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value>将显示中心设为原点 (0, 0, 0)</value>
+    <value>将“中心”设为 (0, 0, 0)：显示区域以投影中心为中心。</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value>将显示中心设为 (1/4, 1/4, 1/4)</value>
+    <value>将“中心”设为 (1/4, 1/4, 1/4)：显示区域从投影中心
+朝 +a, +b, +c 方向各偏移 1/4。</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
-    <value>将显示中心设为 (1/2, 1/2, 1/2)</value>
+    <value>将“中心”设为 (1/2, 1/2, 1/2)：显示区域从投影中心
+朝 +a, +b, +c 方向各偏移 1/2。</value>
   </data>
   <data name="buttonSetRange0.ToolTip" xml:space="preserve">
     <value>将显示范围设为各晶胞轴的 ±1/4</value>
@@ -440,34 +442,34 @@
 中心 ± Range 范围内的原子。</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>沿 c 轴显示区域的中心，以分数坐标表示；
-结合范围可设定所绘结构的
-最小/最大边界面。</value>
+    <value>显示区域中心相对于投影中心沿 c 轴的偏移，以分数坐标表示
+（正值朝 +c 方向）。结合范围设定所绘结构的最小/最大边界面：
+(投影中心 + 中心) ± 范围。</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>沿 c 轴显示区域的中心，以分数坐标表示；
-结合 Range 可设定所绘结构的
-最小/最大边界面。</value>
+    <value>显示区域中心相对于投影中心沿 c 轴的偏移，以分数坐标表示
+（正值朝 +c 方向）。结合范围设定所绘结构的最小/最大边界面：
+(投影中心 + 中心) ± 范围。</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>沿 b 轴显示区域的中心，以分数坐标表示；
-结合范围可设定所绘结构的
-最小/最大边界面。</value>
+    <value>显示区域中心相对于投影中心沿 b 轴的偏移，以分数坐标表示
+（正值朝 +b 方向）。结合范围设定所绘结构的最小/最大边界面：
+(投影中心 + 中心) ± 范围。</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>沿 b 轴显示区域的中心，以分数坐标表示；
-结合 Range 可设定所绘结构的
-最小/最大边界面。</value>
+    <value>显示区域中心相对于投影中心沿 b 轴的偏移，以分数坐标表示
+（正值朝 +b 方向）。结合范围设定所绘结构的最小/最大边界面：
+(投影中心 + 中心) ± 范围。</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>沿 a 轴显示区域的中心，以分数坐标表示；
-结合范围可设定所绘结构的
-最小/最大边界面。</value>
+    <value>显示区域中心相对于投影中心沿 a 轴的偏移，以分数坐标表示
+（正值朝 +a 方向）。结合范围设定所绘结构的最小/最大边界面：
+(投影中心 + 中心) ± 范围。</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value>沿 a 轴显示区域的中心，以分数坐标表示；
-结合 Range 可设定所绘结构的
-最小/最大边界面。</value>
+    <value>显示区域中心相对于投影中心沿 a 轴的偏移，以分数坐标表示
+（正值朝 +a 方向）。结合范围设定所绘结构的最小/最大边界面：
+(投影中心 + 中心) ± 范围。</value>
   </data>
   <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
     <value>显示/隐藏晶体的边界面</value>
@@ -696,7 +698,7 @@ Per-Pixel Linked List，需要较新的 OpenGL）。</value>
 和旋转反演轴）的显示颜色。</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>在图例中显示标签</value>
+    <value>在 3D 视图中显示原子标签</value>
   </data>
   <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
     <value>使用材质颜色作为标签颜色 </value>
@@ -711,7 +713,7 @@ Per-Pixel Linked List，需要较新的 OpenGL）。</value>
     <value>原子标签的字号（0–200）。</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>勾选后，图例标签将带有白色描边。</value>
+    <value>勾选后，3D 视图中的原子标签将带有白色描边。</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
     <value>即使成键原子位于边界外也予以显示</value>
@@ -820,7 +822,8 @@ x 映射到 -x 的变换下与自身重合的
 标签（元素符号）的显示/隐藏。</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>切换三维模型中原子球的显示/隐藏。</value>
+    <value>切换三维模型中原子球的显示/隐藏。
+键、多面体和标签由原子生成，因此也会一并隐藏。</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>将原子半径、颜色和键重置为
@@ -843,8 +846,8 @@ VESTA 风格的默认值（VESTA 是一款广泛使用的
 反演中心）。</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>显示区域沿各晶胞轴的中心
-（分数坐标）。</value>
+    <value>显示区域中心相对于投影中心的偏移，以沿各晶胞轴的
+分数坐标表示（正值朝 +a, +b, +c 方向）。</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>沿 a、b、c 轴平移晶胞框架
@@ -855,7 +858,7 @@ VESTA 风格的默认值（VESTA 是一款广泛使用的
 （分数坐标）。</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>将显示中心设为预设的分数坐标位置。</value>
+    <value>将“中心”（相对于投影中心的偏移）设为预设的分数坐标值。</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value>将显示范围设为各晶胞轴的
@@ -873,5 +876,8 @@ VESTA 风格的默认值（VESTA 是一款广泛使用的
     <value>主视图的投影宽度，单位为 nm。
 数值越小，放大倍率越大。与视图上的
 鼠标右键拖动/滚轮缩放保持同步。</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>结构查看器</value>
   </data>
 </root>

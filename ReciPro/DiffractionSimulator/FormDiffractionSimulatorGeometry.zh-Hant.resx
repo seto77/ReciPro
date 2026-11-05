@@ -92,12 +92,14 @@
 不透明度（0-100%）。</value>
   </data>
   <data name="numericBoxFootX.ToolTip" xml:space="preserve">
-    <value>設定偵測器上落點（直接光束
-中心）的 X 像素座標。</value>
+    <value>設定偵測器上落點（從樣品向偵測器平面所作垂線的
+垂足）的 X 像素座標。僅當偵測器未傾斜（tau = 0）時，
+它才與直接光束的位置一致。</value>
   </data>
   <data name="numericBoxFootY.ToolTip" xml:space="preserve">
-    <value>設定偵測器上落點（直接光束
-中心）的 Y 像素座標。</value>
+    <value>設定偵測器上落點（從樣品向偵測器平面所作垂線的
+垂足）的 Y 像素座標。僅當偵測器未傾斜（tau = 0）時，
+它才與直接光束的位置一致。</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
     <value>以公釐為單位設定單一偵測器像素的物理尺寸。</value>
@@ -128,8 +130,8 @@
 強度上限。</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>設定顯示疊合影像的
-強度上限。</value>
+    <value>透過黑點（Min int.）與白點（Max int.）
+調整疊合影像的顯示亮度。</value>
   </data>
   <data name="trackBarMinInt.ToolTip" xml:space="preserve">
     <value>設定顯示疊合影像的

@@ -87,7 +87,7 @@ Used by the [HRTEM/STEM](9-hrtem-stem-simulator/index.md) result panes, the [Spo
 | Single-click / double-click a function button | Toggle that window / force it to the front |
 | Right-click a crystal in the list | Context menu (Rename / Export as CIF / Duplicate / Delete) |
 | Double-click the zone-axis index label (`[u v w]`) | Show / hide the max-UVW box |
-| Drop a file | Load a crystal list (`.xml`, `.out`, `.cdb2`) or a crystal (`.cif`, `.amc`) <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:FormMain_DragDrop, contextMenuStripListBox) --> |
+| Drop a file | Load a crystal list (`.xml`, `.out`) or a crystal (`.cif`, `.amc`) <!-- 261105Cl 監査: .cdb2 を外した (ドロップを受け付けない) --> <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:FormMain_DragDrop, contextMenuStripListBox) --> |
 
 ### 1. Crystal database
 [Open page →](1-crystal-database.md)
@@ -96,7 +96,7 @@ Used by the [HRTEM/STEM](9-hrtem-stem-simulator/index.md) result panes, the [Spo
 |----------|--------|
 | <kbd>ENTER</kbd> in a search field | Run the search |
 | Click a result row | Load that crystal |
-| Click an element in the periodic-table popup | Cycle its filter: ignore → must include → must exclude |
+| Click an element in the **Periodic table** popup | Cycle its filter: *may or not include* → *must include* → *must exclude* |
 
 ### 2. Symmetry information · 3. Beam interaction
 Symmetry information has no special key/mouse combinations. In Beam Interaction, besides <kbd>F1</kbd> and the **Copy** buttons, the vertical cursor on the **Scattering factors** graph can be dragged to read off each element's value.
@@ -120,7 +120,7 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 
 | Shortcut | Action |
 |----------|--------|
-| Left double-click the net | Switch between **Plane** and **Axis** projection |
+| Left double-click the net | Switch between **Planes** and **Axes** projection |
 | Move the mouse over the net | Read off the (hkl)/[uvw] under the cursor |
 
 ### 7. Diffraction simulator
@@ -134,7 +134,7 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 | Right double-click the status bar | Copy a text summary of the current settings |
 | Right double-click a lit layer button (Spots / Kikuchi / Debye / Scale) | Blink that layer on and off |
 | Left double-click the stereonet — **TEM holder** window | Set the holder tilt to that point |
-| Arrow keys — **TEM holder** window | Step the holder tilt (tick **Enable arrow keys** first; works with any ReciPro window in front) |
+| Arrow keys — **TEM holder** window | Step the holder tilt (tick **Enable arrow keys** first; only while the holder window is active) <!-- 261106Cl 作者の決定 D25 --> |
 | Drop `.prm` / image — **Detector geometry**, or `.txt` — **Dynamic compression** | Load that data |
 
 ### 8. Electron trajectory
@@ -150,7 +150,7 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 | Left double-click a pane | Maximise that pane / restore the grid (multi-pane layouts) |
 
 ### 10. Spot ID v1
-[Open page →](10-spot-id.md) — the image is reference-only (not interactive).
+[Open page →](10-spot-id.md) — there is no image view (the spot geometry is entered as numbers).
 
 | Shortcut | Action |
 |----------|--------|
@@ -184,4 +184,4 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Save the editor text back into the selected macro-list entry |
 | <kbd>F10</kbd> | Advance one step (during step-by-step execution) |
 | Double-click a row in the function-help list | Insert that function's signature at the caret |
-| Drop a `.mcr` file | Load it into the editor |
+| Drop a `.mcr` file on the window | Load it into the editor and add it to the macro list (the file name becomes the macro name) |

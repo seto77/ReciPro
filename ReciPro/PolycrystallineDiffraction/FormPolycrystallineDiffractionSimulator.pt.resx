@@ -71,7 +71,7 @@ faixa de oscilação (±°) e passo (°) abaixo.</value>
   </data>
   <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
     <value>Para o ajuste automaticamente quando o
-'Num per Step' recozido cair abaixo do
+'Num per step' recozido cair abaixo do
 valor limite (%) definido à direita.</value>
   </data>
   <data name="checkBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
@@ -150,7 +150,7 @@ de Rede). Maior = passos maiores; o valor
 é recozido para baixo (×0,8) à medida que o ajuste converge.</value>
   </data>
   <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>Valor limite (%) para 'Num per Step': o ajuste para
+    <value>Valor limite (%) para 'Num per step': o ajuste para
 quando o parâmetro é recozido abaixo deste nível.</value>
   </data>
   <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">

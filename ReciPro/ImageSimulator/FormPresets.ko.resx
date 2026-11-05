@@ -89,7 +89,7 @@
     <value>목록에서 선택한 프리셋을 삭제합니다.</value>
   </data>
   <data name="buttonRename.ToolTip" xml:space="preserve">
-    <value>선택한 프리셋을 Name 란의 문자열로 이름 변경합니다.</value>
+    <value>선택한 프리셋을 '이름' 란의 문자열로 이름 변경합니다.</value>
   </data>
   <data name="buttonReplace.ToolTip" xml:space="preserve">
     <value>선택한 프리셋을 현재 설정으로 덮어씁니다.</value>

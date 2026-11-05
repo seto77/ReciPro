@@ -71,7 +71,7 @@ dall'intervallo di oscillazione (±°) e dal passo (°) sotto.</value>
   </data>
   <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
     <value>Arresta automaticamente il fit quando
-il 'Num per Step' ricotto scende sotto il valore
+il 'Num per step' ricotto scende sotto il valore
 di soglia (%) impostato a destra.</value>
   </data>
   <data name="checkBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
@@ -150,7 +150,7 @@ Orientation). Maggiore = passi più grandi; il valore
 viene ricotto verso il basso (×0,8) man mano che il fit converge.</value>
   </data>
   <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>Valore di soglia (%) per 'Num per Step': il fit si arresta
+    <value>Valore di soglia (%) per 'Num per step': il fit si arresta
 quando il parametro viene ricotto sotto questo livello.</value>
   </data>
   <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">

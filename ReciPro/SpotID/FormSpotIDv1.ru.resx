@@ -198,7 +198,7 @@
   <data name="numericBoxP1Theta.ToolTip" xml:space="preserve">
     <value>Угол θ (градусы) между двумя векторами обратной решётки L1 и L2
 картины Pattern 1. Редактируется в режиме 'Two Sides and an
-Angle'; в режиме 'Three Sides' вычисляется из L1/L2/L3
+Angle'; в режиме 'Three sides' вычисляется из L1/L2/L3
 и отображается только для чтения.</value>
   </data>
   <data name="numericBoxP1Tilt1.ToolTip" xml:space="preserve">
@@ -215,7 +215,7 @@ Angle'; в режиме 'Three Sides' вычисляется из L1/L2/L3
     <value>Угол θ (градусы) между двумя векторами обратной решётки L1 и L2
 картины Pattern 2. Редактируется в режиме 'Two Sides and an
 Angle'; вычисляется из L1/L2/L3 и отображается только
-для чтения в режиме 'Three Sides'.</value>
+для чтения в режиме 'Three sides'.</value>
   </data>
   <data name="numericBoxP2Tilt1.ToolTip" xml:space="preserve">
     <value>Первый угол наклона держателя гониометра (Tilt 1, в градусах),
@@ -230,7 +230,7 @@ Angle'; вычисляется из L1/L2/L3 и отображается тол�
   <data name="numericBoxP3Theta.ToolTip" xml:space="preserve">
     <value>Угол θ (градусы) между двумя дифракционными векторами L1 и L2
 картины Photo 3. Только для чтения и вычисляется из трёх сторон
-в режиме 'Three Sides'; редактируется в режиме 'Two Sides and an
+в режиме 'Three sides'; редактируется в режиме 'Two Sides and an
 Angle'.</value>
   </data>
   <data name="numericBoxP3Tilt1.ToolTip" xml:space="preserve">
@@ -330,7 +330,7 @@ and an Angle'; углы в пределах этого числа градусо
   </data>
   <data name="numericBoxPhoto3L3Err.ToolTip" xml:space="preserve">
     <value>Допуск поиска для длины третьей стороны L3 на Photo 3,
-в процентах (0-50). Используется только в режиме 'Three Sides'.</value>
+в процентах (0-50). Используется только в режиме 'Three sides'.</value>
   </data>
   <data name="numericBoxPhoto3ThetaErr.ToolTip" xml:space="preserve">
     <value>Допуск поиска для угла θ на Photo 3, в градусах
@@ -410,7 +410,7 @@ Sides and an Angle'.</value>
   <data name="label11.ToolTip" xml:space="preserve">
     <value>L3: длина (мм на фото) третьего вектора обратной решётки
 картины Pattern 1, используемая для определения треугольника
-рефлексов в режиме 'Three Sides'.</value>
+рефлексов в режиме 'Three sides'.</value>
   </data>
   <data name="label12.ToolTip" xml:space="preserve">
     <value>L2: длина (мм на фото) второго вектора обратной
@@ -442,7 +442,7 @@ Sides and an Angle'.</value>
   </data>
   <data name="label26.ToolTip" xml:space="preserve">
     <value>Процент: единица допуска поиска для L3 картины Pattern 2
-(0-50%, по умолчанию 5; используется в режиме 'Three Sides').</value>
+(0-50%, по умолчанию 5; используется в режиме 'Three sides').</value>
   </data>
   <data name="label27.ToolTip" xml:space="preserve">
     <value>L1: длина (мм на фотографии) первого
@@ -459,7 +459,7 @@ Sides and an Angle'.</value>
   <data name="label30.ToolTip" xml:space="preserve">
     <value>L3: длина (мм на фотографии) третьего
 вектора обратной решётки Pattern 2,
-используется в режиме «Three Sides».</value>
+используется в режиме «Three sides».</value>
   </data>
   <data name="label31.ToolTip" xml:space="preserve">
     <value>Градусы: единица измерения угла θ между L1 и L2 Pattern 2.</value>
@@ -481,7 +481,7 @@ Photo 3, в мм на регистрирующем носителе.</value>
   </data>
   <data name="label56.ToolTip" xml:space="preserve">
     <value>Длина L3 третьей стороны треугольника Photo 3,
-в мм (используется в режиме «Three Sides»).</value>
+в мм (используется в режиме «Three sides»).</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Первый угол наклона держателя гониометра (Tilt 1,
@@ -501,12 +501,12 @@ Pattern 1 (в процентах от её длины).</value>
   </data>
   <data name="label71.ToolTip" xml:space="preserve">
     <value>Допуск поиска плюс/минус, применяемый к L3 Pattern 1
-(в процентах от её длины; используется в режиме «Three Sides»).</value>
+(в процентах от её длины; используется в режиме «Three sides»).</value>
   </data>
   <data name="label75.ToolTip" xml:space="preserve">
     <value>Допуск поиска плюс/минус, применяемый к
 углу θ Pattern 1 (градусы; используется
-в режиме «Two Sides and an Angle»).</value>
+в режиме «Two sides and an angle»).</value>
   </data>
   <data name="label76.ToolTip" xml:space="preserve">
     <value>Допуск поиска плюс/минус, применяемый к L1
@@ -518,12 +518,12 @@ Pattern 2 (в процентах от её длины).</value>
   </data>
   <data name="label78.ToolTip" xml:space="preserve">
     <value>Допуск поиска плюс/минус, применяемый к L3 Pattern 2
-(в процентах от её длины; используется в режиме «Three Sides»).</value>
+(в процентах от её длины; используется в режиме «Three sides»).</value>
   </data>
   <data name="label79.ToolTip" xml:space="preserve">
     <value>Допуск поиска плюс/минус, применяемый к
 углу θ Pattern 2 (градусы; используется
-в режиме «Two Sides and an Angle»).</value>
+в режиме «Two sides and an angle»).</value>
   </data>
   <data name="labelPhoto1Mode1_1.ToolTip" xml:space="preserve">
     <value>Угол θ (градусы) между векторами
@@ -539,7 +539,7 @@ Pattern 2 (в процентах от её длины).</value>
   <data name="labelPhoto1Mode2_6.ToolTip" xml:space="preserve">
     <value>Допуск поиска для L3 Pattern 1,
 в процентах от её длины (0–50%,
-по умолчанию 5; используется в режиме «Three Sides»).</value>
+по умолчанию 5; используется в режиме «Three sides»).</value>
   </data>
   <data name="numericBoxCamaraLength.HeaderText" xml:space="preserve">
     <value>Длина камеры</value>

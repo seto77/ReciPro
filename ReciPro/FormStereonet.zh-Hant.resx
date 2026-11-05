@@ -66,16 +66,16 @@
     <value>檔案</value>
   </data>
   <data name="asBitmapToolStripMenuItem.Text" xml:space="preserve">
-    <value>影像</value>
+    <value>複製為影像</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
     <value>另存為影像 (PNG 格式)</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>中繼檔 (EMF)</value>
+    <value>複製為中繼檔 (EMF)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>中繼檔 (EMF)</value>
+    <value>另存為中繼檔 (EMF)</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>儲存影像</value>
@@ -161,7 +161,7 @@
     <value>深度淡化</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>重設</value>
+    <value>重設視角</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>外觀</value>
@@ -389,7 +389,7 @@
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>設定 1° 格線（細線，僅在啟用
-「1° Lines」時顯示）的顏色。</value>
+「1° lines」時顯示）的顏色。</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
     <value>從赤道方向投影

@@ -89,7 +89,7 @@
     <value>从列表中删除选中的预设。</value>
   </data>
   <data name="buttonRename.ToolTip" xml:space="preserve">
-    <value>将选中的预设重命名为 Name 框中的文字。</value>
+    <value>将选中的预设重命名为“名称”框中的文字。</value>
   </data>
   <data name="buttonReplace.ToolTip" xml:space="preserve">
     <value>用当前设置覆盖选中的预设。</value>

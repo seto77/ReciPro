@@ -68,7 +68,7 @@
 揺動範囲 (±°)・ステップ (°) で設定します。</value>
   </data>
   <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>焼きなまされた 'Num per Step' が右の閾値
+    <value>焼きなまされた 'Num per step' が右の閾値
 (%) を下回ったら、フィットを自動停止します。</value>
   </data>
   <data name="checkBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
@@ -84,7 +84,7 @@
 回折パターンの中心位置を参照像に合うよう精密化します。</value>
   </data>
   <data name="checkBoxRefineConvergence.ToolTip" xml:space="preserve">
-    <value>ビームの収束角をフィットの自由パラメータに含め
+    <value>ビームの収束半角をフィットの自由パラメータに含め
 ます(入射ビームの収束度を精密化)。要確認。</value>
   </data>
   <data name="checkBoxRefineFilmBlur.ToolTip" xml:space="preserve">
@@ -128,7 +128,7 @@ Cold-Warm(寒色〜暖色)カラースケールを選びます。</value>
 く、収束に従い自動で縮小(×0.8)されます。</value>
   </data>
   <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>'Num per Step' の停止閾値 (%) です。パラメータ
+    <value>'Num per step' の停止閾値 (%) です。パラメータ
 がこの値まで縮小したらフィットを停止します。</value>
   </data>
   <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">

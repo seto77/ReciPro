@@ -4,7 +4,7 @@ Die **Strahl-Wechselwirkung** beschreibt, wie der ausgewählte Kristall mit eine
 
 ![Strahl-Wechselwirkung](../assets/cap-de-auto/FormBeamInteraction.png)
 
-Der einfallende Strahl wird im Band am oberen Rand des Fensters ausgewählt; die vier Registerkarten darunter — **Reflexe**, **Schwächung & Transport**, **Streufaktoren** und **Fluoreszenz** — zeigen die verschiedenen Aspekte der Wechselwirkung. Jeder Registerkarten-Abschnitt unten zeigt die Registerkarte unter den Strahlen **X-ray / Electron / Neutron** (verwenden Sie die Registerkarten in jeder Abbildung); der Inhalt ändert sich deutlich mit dem Strahl.
+Der einfallende Strahl wird im Band am oberen Rand des Fensters ausgewählt; die vier Registerkarten darunter — **Reflexe**, **Schwächung & Transport**, **Streufaktoren** und **Fluoreszenz** — zeigen die verschiedenen Aspekte der Wechselwirkung. Jeder Registerkarten-Abschnitt unten zeigt die Registerkarte unter den Strahlen **Röntgen / Elektron / Neutron** (verwenden Sie die Registerkarten in jeder Abbildung); der Inhalt ändert sich deutlich mit dem Strahl.
 
 !!! tip "Festkörperphysikalischer Hintergrund (Anhang A2)"
     Die Streuung und Festkörperphysik hinter diesen vier Registerkarten — Atomformfaktoren, der Strukturfaktor, die Strahlabschwächung und der Transport sowie die Fluoreszenz — werden in **[Anhang A2. Strahl-Wechselwirkung (festkörperphysikalischer Hintergrund)](appendix/a2-beam-interaction/index.md)** erläutert.
@@ -28,17 +28,18 @@ Das obere Band ist ein **Wave Length Control**, das mit den anderen Simulatoren 
 
 ![Wave Length Control](../assets/cap-de-auto/FormBeamInteraction.waveLengthControl.png)
 
-- **X-ray / Electron / Neutron** : Die Atomformfaktoren und die Wechselwirkungsphysik unterscheiden sich je nach Typ des einfallenden Strahls, daher werden sie hier umgeschaltet.
-- Bei **X-ray** legt die Wahl des **Element** (Anodenmaterial) und der charakteristischen Linie (Kα usw.) automatisch die Wellenlänge dieser charakteristischen Röntgenstrahlung fest.
-- **Energy (keV)** und **Wavelength (Å)** sind verknüpft; das Setzen des einen aktualisiert das andere, und beide bestimmen das 2θ, das in der Tabelle **Reflexe** verwendet wird.
+- **Röntgen / Elektron / Neutron** : Die Atomformfaktoren und die Wechselwirkungsphysik unterscheiden sich je nach Typ des einfallenden Strahls, daher werden sie hier umgeschaltet.
+- Bei **Röntgen** legt die Wahl des **Element** (Anodenmaterial) und der charakteristischen Linie (Kα usw.) automatisch die Wellenlänge dieser charakteristischen Röntgenstrahlung fest.
+- **Energie (keV)** und **Wellenlänge (Å)** sind verknüpft; das Setzen des einen aktualisiert das andere, und beide bestimmen das 2θ, das in der Tabelle **Reflexe** verwendet wird.
 - **Unit (Å / nm)** schaltet die Längeneinheit um, die für d-Abstände und ähnliche Größen verwendet wird.
+- Beim Umschalten der Quelle wird die zuletzt mit dieser Quelle verwendete Energie wiederhergestellt (bei Röntgenstrahlen auch Element und Linie). Eine noch nicht verwendete Quelle beginnt bei Cu Kα für Röntgenstrahlen, 200 kV für Elektronen und 25,3 meV (thermische Neutronen). Diese Werte werden nach dem Beenden von ReciPro nicht beibehalten. <!-- 261106Cl 作者の決定 J18 -->
 
 Der gewählte Strahl entscheidet auch, welche Registerkarten und Kurven sinnvoll sind:
 
 | Strahl | Reflexe | Schwächung & Transport | Streufaktoren | Fluoreszenz |
 |------|------|------|------|------|
-| **X-ray** | Strukturfaktoren inkl. anomaler Dispersion | µ/ρ, µ, Transmission + Absorptionskanten (gegen Energie) | $f(s)$ (Waasmaier–Kirfel oder Temari) oder $F(q)+S(q)$ | charakteristische Linien + EDX-Striche |
-| **Electron** | Elektronen-Strukturfaktoren | σ, MFP, \|dE/ds\|, IMFP, Reichweite (gegen Energie) | Peng / Kirkland / 8-Gaussians / Temari | — (ausgeblendet) |
+| **Röntgen** | Strukturfaktoren inkl. anomaler Dispersion | µ/ρ, µ, Transmission + Absorptionskanten (gegen Energie) | $f(s)$ (Waasmaier–Kirfel oder Temari) oder $F(q)+S(q)$ | charakteristische Linien + EDX-Striche |
+| **Elektron** | Elektronen-Strukturfaktoren | σ, MFP, \|dE/ds\|, IMFP, Reichweite (gegen Energie) | Peng / Kirkland / 8-Gaussians / Temari | — (ausgeblendet) |
 | **Neutron** | nukleare Strukturfaktoren | Streulängen & Wirkungsquerschnitte (keine Energiekurve) | Streulängen (keine *s*-Abhängigkeit) | — (ausgeblendet) |
 
 Die Registerkarte **Fluoreszenz** gilt nur für Röntgenstrahlen und verschwindet bei Elektronen- und Neutronenstrahlen. Bei Neutronen werden die energieabhängigen Diagramme in **Schwächung & Transport** und **Streufaktoren** durch Elementtabellen ersetzt, da die nukleare Streulänge nicht vom Streuwinkel oder der Energie abhängt.
@@ -60,17 +61,17 @@ Listet die erlaubten Kristallebenen (Reflexe) des Kristalls sowie den **Struktur
 
 **Options**
 
-- **Powder Diffraction Intensities (Bragg-Brentano Optics)** : berechnet die relative Intensität als Pulverbeugungs-Intensität (Bragg–Brentano), einschließlich Multiplizität und Lorentz–Polarisations-Faktor. Wenn deaktiviert, wird die Strukturfaktor-Intensität angezeigt. Das Aktivieren erzwingt zudem *Hide equivalent planes* und *Hide prohibited planes*.
-- **Hide equivalent planes** : fasst kristallographisch äquivalente Ebenen zu einem einzelnen Eintrag zusammen.
-- **Hide prohibited planes** : schließt Ebenen aus, deren Intensität durch die Auslöschungsregeln null ist.
-- **d-Spacing Cutoff >** : schließt Reflexe mit einem d-Abstand kleiner als dieser Wert aus (die Längeneinheit folgt der Auswahl unter **Unit**).
+- **Pulverbeugungsintensitäten (Bragg-Brentano-Optik)** : berechnet die relative Intensität als Pulverbeugungs-Intensität (Bragg–Brentano), $I \propto m\,\lvert F\rvert^2 / V^2 \times L$, wobei $m$ die Multiplizität, $V$ das Zellvolumen und $L = (1+\cos^2 2\theta)/(\sin 2\theta\,\sin\theta)$ (Lorentz–Polarisations-Faktor) für Röntgenstrahlen bzw. $L = 1/(\sin 2\theta\,\sin\theta)$ (nur Lorentz-Faktor, ohne Polarisationsterm) für Elektronen und Neutronen ist. Reflexe, die der Strahl nicht erreichen kann (d < λ/2, 2θ als ∞ angezeigt), erhalten die Intensität 0. <!-- 261105Cl 監査: J25 届かない反射の BB 強度は 0 --> Wenn deaktiviert, wird die Strukturfaktor-Intensität $\lvert F\rvert^2$ angezeigt. Das Aktivieren erzwingt zudem *Äquivalente Ebenen ausblenden* und *Verbotene Ebenen ausblenden* und graut beide aus.
+- **Äquivalente Ebenen ausblenden** (standardmäßig an) : fasst kristallographisch äquivalente Ebenen zu einem einzelnen Eintrag zusammen. Die Spalte **Mult.** wird nur angezeigt, solange diese Option aktiv ist.
+- **Verbotene Ebenen ausblenden** (standardmäßig an) : schließt Ebenen aus, die nach den Auslöschungsregeln systematisch ausgelöscht sind. Ist die Option deaktiviert, zeigt eine Spalte **Bedingung** die Reflexionsbedingung(en), die die jeweilige ausgelöschte Ebene verbieten.
+- **d-Wert-Untergrenze >** (Standard 1 Å) : schließt Reflexe mit einem d-Abstand kleiner als dieser Wert aus (die Längeneinheit folgt der Auswahl unter **Unit**). Der kleinste zulässige Wert ist (a + b + c)/20 der aktuellen Zelle, in derselben Einheit. <!-- 261105Cl 監査: J8 numericBoxCutoffD.Minimum を表示単位に合わせた -->
 
 Jede Zeile ist ein Reflex (oder eine Gruppe symmetrieäquivalenter Ebenen):
 
 | Spalte | Bedeutung |
 |------|------|
 | **h, k, l** | Miller-Indizes |
-| **Multi.** | Multiplizität (Anzahl symmetrieäquivalenter Ebenen) |
+| **Mult.** | Multiplizität (Anzahl symmetrieäquivalenter Ebenen) |
 | **d (Å)** | Netzebenenabstand |
 | **q (2π/d)** | Betrag des Streuvektors |
 | **2θ (°)** | Beugungswinkel für die gewählte Wellenlänge |
@@ -79,6 +80,8 @@ Jede Zeile ist ein Reflex (oder eine Gruppe symmetrieäquivalenter Ebenen):
 | **\|F\|** | Strukturfaktor-Amplitude ($= \sqrt{F_\text{real}^2 + F_\text{inv}^2}$) |
 | **F^2** | Strukturfaktor-Intensität ($\lvert F\rvert^2$) |
 | **Rel. Int. (%)** | relative Intensität, wobei der stärkste Reflex auf 100 gesetzt ist |
+| **Bedingung** | von der Ebene verletzte Auslöschungsbedingung(en) (nur angezeigt, wenn *Verbotene Ebenen ausblenden* deaktiviert ist) |
+| **i** | der redundante Miller-Bravais-Index $i=-(h+k)$ (nur angezeigt, wenn im Hauptfenster **Optionen ▸ Miller-Bravais-Index (hkil) verwenden** aktiv ist und der Kristall hexagonale Achsen verwendet — hexagonal oder trigonal, nicht in rhomboedrischer Achsenaufstellung); **Kopieren** schreibt ihn so, wie er angezeigt wird <!-- 261105Cl 監査: J9 i 列は表示している値をコピー --> |
 
 **Beugungspeak-Diagramm.** Unter der Tabelle werden dieselben Reflexe als Strichmuster gezeichnet, wobei die stärksten Peaks durch ihr *hkl* beschriftet sind.
 
@@ -103,24 +106,24 @@ Wie tief der Strahl in das Material eindringt und wie er Energie verliert. Der I
 
 ### X-ray
 
-Die Optionsfelder wählen den dargestellten Koeffizienten gegen die Photonenenergie (1–60 keV, logarithmische Achse):
+Die Optionsfelder wählen den dargestellten Koeffizienten gegen die Photonenenergie (berechnet über 1–60 keV auf einer linearen Energieachse; die vertikale Achse ist für µ/ρ und µ logarithmisch und für T % linear; liegt die aktuelle Energie außerhalb dieses Bereichs, vermerkt dies der Diagrammtitel, z. B. *(aktuelle 0.5 keV außerhalb des Bereichs)*): <!-- 261106Cl 作者の決定 J5 -->
 
 - **µ/ρ** — der **Massen**-Schwächungskoeffizient (cm²/g): wie stark das Material Röntgenstrahlen pro Gramm entfernt, unabhängig davon, wie dicht es gepackt ist (dies ist der Wert, der sich in Referenztabellen findet). Das Diagramm zeigt den **total**-Wert zusammen mit seinen Komponenten **photo**, **Rayleigh** und **Compton**.
 - **µ** — der **lineare** Schwächungskoeffizient $\mu = (\mu/\rho)\cdot\rho$ (cm⁻¹): die Abschwächung pro Zentimeter des tatsächlichen Materials bei seiner realen Dichte. Die transmittierte Intensität folgt $I = I_0\,e^{-\mu t}$, und $1/\mu$ ist die Strecke, über die die Intensität auf etwa 37 % (1/e) abfällt.
-- **T %** — die **Transmission** $T = e^{-\mu t}$ in Prozent für die Probendicke **t**, die im Feld **Thickness t** (µm) eingestellt ist. 100 % = durchlässig, 0 % = vollständig blockiert; verwenden Sie dies, um eine sinnvolle Probendicke bei der aktuellen Energie zu beurteilen.
+- **T %** — die **Transmission** $T = e^{-\mu t}$ in Prozent für die Probendicke **t**, die im Feld **Dicke t** (µm, Standard 100 µm) eingestellt ist. 100 % = durchlässig, 0 % = vollständig blockiert; verwenden Sie dies, um eine sinnvolle Probendicke bei der aktuellen Energie zu beurteilen.
 
-Die vertikalen Linien markieren die aktuelle Energie und die **Absorptionskanten** jedes Elements. Die Skalartabelle links listet bei der aktuellen Energie auf: **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (Halbwertsschichtdicke, $\ln 2/\mu$), **Transmission** bei Dicke *t*, **µ_en/ρ** (Massen-Energieabsorptionskoeffizient), die Röntgenbrechungsindex-Dekremente **δ** und **β** ($n = 1-\delta+i\beta$), den **θc (critical)**-Winkel für Totalreflexion an der Außenfläche sowie die reelle **X-ray SLD** (Streulängendichte). Die untere Tabelle listet die Energien der Absorptions-**edge** **K** und **L3** sowie deren **Jump**-Verhältnisse für jedes Element auf.
+Die vertikale Linie markiert die aktuelle Energie. Die Skalartabelle links listet bei der aktuellen Energie auf: **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (Halbwertsschichtdicke, $\ln 2/\mu$), **Transmission** bei Dicke *t*, **µ_en/ρ** (Massen-Energieabsorptionskoeffizient), die Röntgenbrechungsindex-Dekremente **δ** und **β** ($n = 1-\delta+i\beta$), den **θc (critical)**-Winkel für Totalreflexion an der Außenfläche sowie die reelle **X-ray SLD** (Streulängendichte). Die untere Tabelle listet für jedes Element die Energien der Absorptionskanten (**Kante**) **K** und **L3** sowie deren Sprungverhältnisse (**Sprung**) auf.
 
 ### Electron
 
-Die Größenauswahl bestimmt, was gegen die Strahlenergie (1–30 keV) dargestellt wird:
+Die Größenauswahl bestimmt, was gegen die Strahlenergie dargestellt wird (berechnet über 1–50 keV; die Anfangsansicht zeigt 0–20 keV; eine Energie außerhalb dieses Bereichs wird im Diagrammtitel vermerkt, z. B. *(aktuelle 200 keV außerhalb des Bereichs)*): <!-- 261106Cl 作者の決定 J5 -->
 
-- **All (normalized)** — überlagert die drei untenstehenden Kurven, jeweils auf ihr eigenes Maximum neu skaliert, sodass die Formen in einem Diagramm verglichen werden können (Absolutwerte aus der Tabelle ablesen).
-- **σ elastic (nm²)** — elastischer Streuquerschnitt: wie wahrscheinlich ein einzelnes Atom das Elektron ablenkt.
-- **Elastic MFP (nm)** — mittlere freie Weglänge: die durchschnittliche Strecke, die das Elektron zwischen elastischen Streuereignissen zurücklegt.
+- **Alle (normiert)** — überlagert die drei untenstehenden Kurven, jeweils auf ihr eigenes Maximum neu skaliert, sodass die Formen in einem Diagramm verglichen werden können (Absolutwerte aus der Tabelle ablesen).
+- **σ elastisch (nm²)** — elastischer Streuquerschnitt: wie wahrscheinlich ein einzelnes Atom das Elektron ablenkt.
+- **Elastische MFP (nm)** — mittlere freie Weglänge: die durchschnittliche Strecke, die das Elektron zwischen elastischen Streuereignissen zurücklegt.
 - **|dE/ds| (keV/nm)** — Betrag des Bremsvermögens: die Energie, die das Elektron pro Nanometer Weg verliert.
 - **IMFP (nm)** — inelastische mittlere freie Weglänge: die durchschnittliche Strecke zwischen energieverlierenden Stößen.
-- **Range CSDA (µm)** — die gesamte Weglänge, die das Elektron zurücklegt, bevor es zur Ruhe kommt.
+- **Reichweite CSDA (µm)** — die gesamte Weglänge, die das Elektron zurücklegt, bevor es zur Ruhe kommt.
 
 Die Skalartabelle listet die Elektronen-**wavelength**, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, die **Plasma E** und die mittlere Anregungsenergie **J**, zwei Elektronen-**ranges** (die Kanaya–Okayama-Eindringtiefe-Schätzung und die CSDA-integrierte Weglänge) sowie das mittlere **Z, A** auf. Die Tabelle pro Element gibt für jedes Element den Atomanteil und den elastischen Streuquerschnitt σ an. Die elastischen Streuquerschnitte verwenden die **NIST Mott**-Daten (50 eV–36 keV) und greifen oberhalb von 36 keV auf **screened Rutherford** zurück.
 
@@ -143,11 +146,11 @@ Der Atomformfaktor jedes beteiligten Elements, dargestellt gegen $s = \sin\theta
 === "Neutron"
     ![Streufaktoren — neutron](../assets/cap-de-auto/FormBeamInteraction-neutron-scattering.png)
 
-- **X-ray** bietet zwei **Model**-Modi: **f(s)** stellt den konventionellen Röntgen-Atomformfaktor dar (in Elektroneneinheiten); **F(q)+S(q)** stellt den Rayleigh-**kohärenten** Formfaktor $F(q)$ zusammen mit der Compton-**inkohärenten** Streufunktion $S(q)$ dar (aus xraylib). Die Tabelle listet außerdem die anomalen Dispersionsterme **f'(E)** und **f''(E)** bei der aktuellen Energie auf sowie eine Spalte **Modell**, die angibt, aus welcher Quelle die Spalte f(s) stammt. Ist **f(s)** gewählt, erscheint eine zweite Reihe von Optionsfeldern, die bestimmt, **woher die Kurve stammt** — **Waasmaier–Kirfel** (die voreingestellte Anpassung, die auch Ionen über Z = 1–98 abdeckt) oder **Temari**. Während **F(q)+S(q)** angezeigt wird, ist sie ausgegraut, da diese beiden Kurven aus xraylib stammen und keine Quellenwahl haben.
-- **Electron** bietet vier Quellen für den Elektronen-Streufaktor: **Peng**, **Kirkland**, **8-Gaussians** und **Temari**. Die Tabelle zeigt $f_e(s)$ (nm) und welches **model** ihn erzeugt hat.
+- **Röntgen** bietet zwei **Modell**-Modi: **f(s)** stellt den konventionellen Röntgen-Atomformfaktor dar (in Elektroneneinheiten); **F(q)+S(q)** stellt den Rayleigh-**kohärenten** Formfaktor $F(q)$ zusammen mit der Compton-**inkohärenten** Streufunktion $S(q)$ dar (aus xraylib). Die Tabelle listet außerdem die anomalen Dispersionsterme **f'(E)** und **f''(E)** bei der aktuellen Energie auf sowie eine Spalte **Modell**, die angibt, aus welcher Quelle die Spalte f(s) stammt. Ist **f(s)** gewählt, erscheint eine zweite Reihe von Optionsfeldern, die bestimmt, **woher die Kurve stammt** — **Waasmaier–Kirfel** (die voreingestellte Anpassung, die auch Ionen über Z = 1–98 abdeckt) oder **Temari**. Während **F(q)+S(q)** angezeigt wird, ist sie ausgegraut, da diese beiden Kurven aus xraylib stammen und keine Quellenwahl haben.
+- **Elektron** bietet vier Quellen für den Elektronen-Streufaktor: **Peng**, **Kirkland**, **8-Gaussians** und **Temari**. Die Tabelle zeigt $f_e(s)$ (nm) und welches **Modell** ihn erzeugt hat. **Kirkland** und **8-Gaussians** haben keine Parameter für Ionen; für Ionen entfallen daher ihre Kurven, und ihre Tabellenzellen bleiben leer (**Peng** liefert Werte für Ionen). <!-- 261106Cl 作者の決定 J12 -->
 - **Neutron**-Streulängen hängen nicht von $s$ ab, daher wird keine Kurve gezeichnet; die Tabelle listet für jedes Element die kohärente Streulänge **b_coh** und dessen kohärente / inkohärente Wirkungsquerschnitte auf.
 - **Temari** ist keine Anpassung, sondern eine berechnete Tabelle (Temari dataset-factors v2.0.0, CC-BY-4.0, aus einer vollständigen Dirac-SCF-Rechnung). Sie deckt **nur neutrale Atome Z = 1–86** ab: Ionen und Z = 87–98 haben keinen Eintrag, ihre Kurven entfallen und ihre Tabellenzellen bleiben leer, statt mit Werten neutraler Atome gefüllt zu werden.
-- **Debye-Waller** multipliziert jeden Faktor mit der thermischen Dämpfung $e^{-B s^2}$ unter Verwendung des isotropen Auslenkungsparameters jedes Atoms.
+- **Auslenkung (B)** multipliziert jeden Faktor mit der thermischen Dämpfung $e^{-B s^2}$ unter Verwendung des isotropen Auslenkungsparameters jedes Atoms.
 
 ---
 
@@ -157,13 +160,13 @@ Für einen Röntgenstrahl die charakteristische **Fluoreszenz**-Emission der Pro
 
 ![Fluoreszenz (X-ray)](../assets/cap-de-auto/FormBeamInteraction-xray-fluorescence.png)
 
-Das Diagramm **EDX emission lines** zeichnet die charakteristischen Linien (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) jedes Elements als Striche bei ihren Photonenenergien, wobei die Höhe proportional zu Atomanteil × Strahlungsrate × Fluoreszenzausbeute ist (eine qualitative Vorschau im EDX-Stil; Anregungsquerschnitt und Detektoreffizienz werden nicht modelliert). Die untere Tabelle listet pro Linie das Element, den Liniennamen, die Energie **E keV**, die relative Intensität **Rel.I** und die Fluoreszenzausbeute **ω** auf. Die Skalartabelle gibt die K-Schalen-Ausbeute **ω_K** jedes Elements und die **strongest line** im Spektrum an.
+Das Diagramm **EDX-Emissionslinien (Referenzliste; Anregung nicht berücksichtigt)** zeichnet die charakteristischen Linien (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) jedes Elements als Striche bei ihren Photonenenergien, wobei die Höhe proportional zu Atomanteil × Strahlungsrate × Fluoreszenzausbeute ist (eine qualitative Vorschau im EDX-Stil und eine Referenzliste: Anregungsquerschnitt und Detektoreffizienz werden nicht modelliert, daher muss die „stärkste Linie“ in einem gemessenen Spektrum nicht die stärkste sein). <!-- 261106Cl 作者の決定 J6 --> Die untere Tabelle listet pro Linie das Element, den Liniennamen, die Energie **E keV**, die relative Intensität **Rel.I** (der Anteil dieser Linie an den Strahlungsübergängen, die eine Leerstelle in ihrer Schale füllen, in %) und die Fluoreszenzausbeute **ω** auf. Die Skalartabelle gibt die K-Schalen-Ausbeute **ω_K** jedes Elements, die **stärkste Linie (Anregung ignoriert)** im Spektrum und die **Quelle** der Werte an: *xraylib (E, I, ω)*, wenn xraylib verfügbar ist (Linienenergien, relative Intensitäten und Ausbeuten stammen dann alle aus xraylib), andernfalls *internal (E only)*. <!-- 261105Cl 監査: FormBeamInteraction.cs (Rel.I = LineRadRate × 100、出典の行, Controls c6d62ed) -->
 
 ---
 
 ## In die Zwischenablage kopieren
 
-Jede Registerkarte besitzt eine **Copy**-Schaltfläche, die ihre Tabelle als Text in die Zwischenablage kopiert, der in eine Tabellenkalkulation wie Excel eingefügt werden kann.
+Jede Registerkarte besitzt eine Schaltfläche **Kopieren**, die ihre Tabelle als Text in die Zwischenablage kopiert, der in eine Tabellenkalkulation wie Excel eingefügt werden kann.
 
 ---
 

@@ -96,7 +96,7 @@ $$\lvert F_{\mathbf g}\rvert^2 - \lvert F_{-\mathbf g}\rvert^2 = -4\,\operatorna
 
 ## 从结构因子到粉末强度
 
-开启 **Powder Diffraction Intensities (Bragg–Brentano)** 会通过纳入随机取向多晶的几何关系,把 $\lvert F\rvert^2$ 转换为相对粉末强度:
+开启 **粉末衍射强度（Bragg-Brentano 光路）** 会通过纳入随机取向多晶的几何关系,把 $\lvert F\rvert^2$ 转换为相对粉末强度:
 
 $$I_{hkl} \;\propto\; m_{hkl}\, \lvert F_{hkl}\rvert^2\, L p(\theta),$$
 

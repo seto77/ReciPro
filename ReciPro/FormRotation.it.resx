@@ -127,7 +127,8 @@ dagli appunti in formato Excel.</value>
   <data name="numericBoxPsi.ToolTip" xml:space="preserve">
     <value>Terzo angolo di Eulero Ψ (gradi) del sistema di coordinate
 di ReciPro nella convenzione ZXZ (la rotazione finale
-attorno a Z); imposta l'orientazione del cristallo.</value>
+attorno a Z); di sola lettura, mostra l'orientazione
+attuale del cristallo.</value>
   </data>
   <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
     <value>Terzo angolo di Eulero Ψ (gradi) del sistema di coordinate
@@ -137,8 +138,8 @@ attorno a Z); imposta l'orientazione del cristallo.</value>
   <data name="numericBoxTheta.ToolTip" xml:space="preserve">
     <value>Secondo angolo di Eulero Θ (gradi) del sistema
 di coordinate di ReciPro nella convenzione ZXZ
-(la rotazione intermedia attorno a X); imposta
-l'orientazione del cristallo.</value>
+(la rotazione intermedia attorno a X); di sola lettura,
+mostra l'orientazione attuale del cristallo.</value>
   </data>
   <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
     <value>Secondo angolo di Eulero Θ (gradi) del sistema
@@ -149,8 +150,8 @@ l'orientazione del cristallo.</value>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
     <value>Primo angolo di Eulero Φ (gradi) del sistema
 di coordinate di ReciPro nella convenzione ZXZ;
-insieme a Θ e Ψ imposta l'orientazione del
-cristallo (matrice di rotazione).</value>
+di sola lettura, insieme a Θ e Ψ mostra l'orientazione
+attuale del cristallo (matrice di rotazione).</value>
   </data>
   <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
     <value>Primo angolo di Eulero Φ (gradi) del sistema
@@ -224,33 +225,33 @@ applicata attorno ad esso).</value>
   </data>
   <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
     <value>Imposta il 2° asse di rotazione del goniometro sull'asse
-Z cartesiano (la 2ª rotazione sperimentale,
-numericBoxExp2, viene applicata attorno ad esso).</value>
+Z cartesiano (la 2ª rotazione sperimentale
+viene applicata attorno ad esso).</value>
   </data>
   <data name="radioButton2ndY.ToolTip" xml:space="preserve">
     <value>Imposta il 2° asse di rotazione del goniometro sull'asse
-Y cartesiano (la 2ª rotazione sperimentale,
-numericBoxExp2, viene applicata attorno ad esso).</value>
+Y cartesiano (la 2ª rotazione sperimentale
+viene applicata attorno ad esso).</value>
   </data>
   <data name="radioButton2ndX.ToolTip" xml:space="preserve">
     <value>Imposta il 2° asse di rotazione del goniometro sull'asse
-X cartesiano (la 2ª rotazione sperimentale,
-numericBoxExp2, viene applicata attorno ad esso).</value>
+X cartesiano (la 2ª rotazione sperimentale
+viene applicata attorno ad esso).</value>
   </data>
   <data name="radioButton1stZ.ToolTip" xml:space="preserve">
     <value>Imposta il 1° asse di rotazione del goniometro sull'asse
-Z cartesiano (la 1ª rotazione sperimentale,
-numericBoxExp1, viene applicata attorno ad esso).</value>
+Z cartesiano (la 1ª rotazione sperimentale
+viene applicata attorno ad esso).</value>
   </data>
   <data name="radioButton1stY.ToolTip" xml:space="preserve">
     <value>Imposta il 1° asse di rotazione del goniometro sull'asse
-Y cartesiano (la 1ª rotazione sperimentale,
-numericBoxExp1, viene applicata attorno ad esso).</value>
+Y cartesiano (la 1ª rotazione sperimentale
+viene applicata attorno ad esso).</value>
   </data>
   <data name="radioButton1stX.ToolTip" xml:space="preserve">
     <value>Imposta il 1° asse di rotazione del goniometro sull'asse
-X cartesiano (la 1ª rotazione sperimentale,
-numericBoxExp1, viene applicata attorno ad esso).</value>
+X cartesiano (la 1ª rotazione sperimentale
+viene applicata attorno ad esso).</value>
   </data>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>Reimposta tutti gli angoli a zero</value>

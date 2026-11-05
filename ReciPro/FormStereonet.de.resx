@@ -161,7 +161,7 @@ linien</value>
     <value>Tiefenabblendung</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>Zurücksetzen</value>
+    <value>Startansicht</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Darstellung</value>
@@ -349,7 +349,7 @@ feste Farbe anstelle der Spotfarbe.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
     <value>Legt die feste Farbe fest, die für die Indexbeschriftungen
-verwendet wird, wenn „Farbe wählen“ aktiviert ist.</value>
+verwendet wird, wenn „Farbe“ aktiviert ist.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
     <value>Legt die feste Farbe fest, die für die Indexbeschriftungen
@@ -385,11 +385,11 @@ und Hauptachsen, die dicksten Linien).</value>
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
     <value>Legt die Farbe der 1°-Gitterlinien (feine Linien,
-nur angezeigt, wenn „1° Lines“ aktiviert ist) fest.</value>
+nur angezeigt, wenn „1°-Linien“ aktiviert ist) fest.</value>
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>Legt die Farbe der 1°-Gitterlinien (feine Linien,
-nur angezeigt, wenn „1° Lines“ aktiviert ist) fest.</value>
+nur angezeigt, wenn „1° lines“ aktiviert ist) fest.</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
     <value>Projiziert die Breiten- und Längen-

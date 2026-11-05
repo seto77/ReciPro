@@ -89,7 +89,7 @@
     <value>Удалить выбранную предустановку из списка.</value>
   </data>
   <data name="buttonRename.ToolTip" xml:space="preserve">
-    <value>Переименовать выбранную предустановку согласно тексту из поля Name.</value>
+    <value>Переименовать выбранную предустановку согласно тексту из поля «Имя».</value>
   </data>
   <data name="buttonReplace.ToolTip" xml:space="preserve">
     <value>Перезаписать выбранную предустановку текущими настройками.</value>

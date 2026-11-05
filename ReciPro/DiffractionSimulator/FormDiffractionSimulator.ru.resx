@@ -97,7 +97,7 @@
     <value>Порог 1/d</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
-    <value>Верх</value>
+    <value>Макс.</value>
   </data>
   <data name="labelKikuchiLineWidth.Text" xml:space="preserve">
     <value>Толщина линии</value>
@@ -153,7 +153,7 @@
     <value>Шаг</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>Сброс</value>
+    <value>Сброс вида</value>
   </data>
   <data name="groupBoxViewDirection.Text" xml:space="preserve">
     <value>Направление взгляда</value>
@@ -239,7 +239,7 @@
     <value>Сохранить изображение</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>как изображение  (формат PNG)</value>
+    <value>как изображение (формат PNG)</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>как метафайл (EMF)</value>
@@ -320,7 +320,7 @@
     <value>Электроны 200 kV</value>
   </data>
   <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
-    <value>Электроны 120 keV</value>
+    <value>Электроны 120 kV</value>
   </data>
   <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
     <value>Рентгеновское 30 keV</value>
@@ -363,7 +363,7 @@
     <value>Свойства прецессии</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>Полуугол</value>
+    <value>Угол прец.</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>Шаг</value>
@@ -494,10 +494,15 @@
 s_g, показывающая, насколько узел обратной решётки отклоняется
 от точного условия Брэгга / сферы Эвальда.</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>Интенс.</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>Если отмечено, для каждого рефлекса отображается величина
-структурного фактора |Fg|; большее |Fg| обычно
-означает более сильный рефлекс.</value>
+    <value>Если отмечено, для каждого рефлекса отображается
+интенсивность в % от самого сильного рефлекса: |Fg|²
+(кинематика, без ошибки возбуждения) или |Φg|² и затем
+комплексная амплитуда Φg = Re + Im i (динамическая теория).
+При «Только ошибка возб.» ничего не отображается.</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>Задать размер строк</value>
@@ -782,11 +787,12 @@ s_g, показывающая, насколько узел обратной ре
 пространстве в мм (начало: кристалл).</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>Межплоскостное расстояние d (nm), соответствующее положению указателя мыши.</value>
+    <value>Межплоскостное расстояние d, соответствующее положению указателя мыши,
+в Å или nm (по переключателю Å/nm постоянных решётки в главном окне).</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>Обратное расстояние d⁻¹ (nm⁻¹), соответствующее
-положению указателя мыши.</value>
+    <value>Обратное расстояние d⁻¹, соответствующее положению указателя мыши,
+в Å⁻¹ или nm⁻¹ (по переключателю Å/nm постоянных решётки в главном окне).</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>Угол рассеяния 2θ в градусах,
@@ -870,6 +876,9 @@ s_g, показывающая, насколько узел обратной ре
     <value>Задать длину камеры 2, т. е. расстояние
 от образца до детектора (монитора).</value>
   </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>Детали</value>
+  </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>Открыть окно подробных настроек оптической системы.</value>
   </data>
@@ -911,12 +920,12 @@ s_g, показывающая, насколько узел обратной ре
 электронной дифракции (PED)</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>Полуугол прецессии (mrad) для моделирования PED (прецессионной
+    <value>Угол прецессии (mrad) для моделирования PED (прецессионной
 электронной дифракции); половинный угол конуса,
 используемый для наклона и интегрирования падающего пучка.</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>Полуугол прецессии (mrad) для моделирования PED (прецессионной
+    <value>Угол прецессии (mrad) для моделирования PED (прецессионной
 электронной дифракции); половинный угол конуса,
 используемый для наклона и интегрирования падающего пучка.</value>
   </data>

@@ -8,7 +8,7 @@ ReciPro incluye un sistema de macros basado en **IronPython** para automatizar o
 
 ![Editor de macros](../../assets/cap-es-auto/FormMacro.png)
 
-En la captura de pantalla anterior, **Show samples** está activado, por lo que se muestran las macros de ejemplo integradas. La lista de macros está a la izquierda, el editor de código a la derecha y una tabla de ayuda de las funciones integradas en la parte inferior.
+En la captura de pantalla anterior, **Mostrar ejemplos** está activado, por lo que se muestran las macros de ejemplo integradas. La lista de macros está a la izquierda, el editor de código a la derecha y una tabla de ayuda de las funciones integradas en la parte inferior.
 
 ---
 
@@ -20,7 +20,7 @@ En la captura de pantalla anterior, **Show samples** está activado, por lo que 
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Guardar el texto del editor de vuelta en la entrada seleccionada de la lista de macros |
 | <kbd>F10</kbd> | Avanzar un paso (durante la ejecución paso a paso) |
 | Doble clic en una fila de la lista de ayuda de funciones | Insertar la firma de esa función en el cursor |
-| Soltar un archivo `.mcr` sobre la ventana | Cargarlo en el editor |
+| Soltar un archivo `.mcr` sobre la ventana | Cargarlo en el editor y añadirlo a la lista de macros (el nombre del archivo pasa a ser el nombre de la macro) |
 
 **Run**, **Step** y **Stop** son botones (sin acelerador de teclado).
 
@@ -34,7 +34,7 @@ Las macros se escriben con sintaxis de Python. Utilizando las clases y funciones
 
 - **Lenguaje**: Python 3 (IronPython 3.4)
 - **Almacenamiento**: Binario comprimido en el Registro de Windows (persiste entre sesiones)
-- **Acceso**: Haga clic en el botón Macro de la ventana principal para abrir el editor de macros
+- **Acceso**: **Macro > Editor** en el menú de la ventana principal abre el editor de macros. Cada macro de la lista se añade también como elemento del menú **Macro**; al elegirla, esa macro se ejecuta directamente
 
 ---
 
@@ -46,6 +46,7 @@ El editor de macros consta de las siguientes áreas:
 |------|---------|
 | **Lista de macros** (izquierda) | Macros almacenadas. `Add` añade una nueva macro, `Replace` sobrescribe la seleccionada, `Delete` la elimina. Up/Down reordenan. |
 | **Campo de nombre** (arriba) | Identificador de la macro que se está editando. |
+| **Menú File** | **Load file** lee un archivo `.mcr` (UTF-8) y lo añade a la lista; **Save file** escribe el texto del editor en un archivo `.mcr`. |
 | **Área de código** (derecha) | Editor de código Python con margen de números de línea, sangría automática y ventana emergente de ayuda de sintaxis. |
 | **Tabla de funciones integradas** (abajo) | Lista de las funciones/propiedades integradas que proporciona ReciPro, cada una con una descripción de ayuda. Una referencia mientras se escribe código. |
 | **Barra de estado** (parte inferior) | Muestra la posición actual del cursor como `Line N, Col M`. |
@@ -55,7 +56,7 @@ La barra de título muestra **`Macro*`** (con un asterisco) mientras haya cambio
 
 ### Macros de ejemplo
 
-Al activar **Show samples** (arriba a la izquierda), su lista de macros se reemplaza temporalmente por las macros de ejemplo integradas (bucles y condicionales básicos, funciones matemáticas, rotación/alineación, recorrido de la lista de cristales, simulación de difracción/imagen, series de inclinación/energía, información de reflexiones y más). Los ejemplos son de solo lectura y se muestran en el idioma actual de la interfaz; utilícelos para aprender o como punto de partida para copiar. Al desactivarlo se restauran sus propias macros.
+Al activar **Mostrar ejemplos** (arriba a la izquierda), su lista de macros se reemplaza temporalmente por las macros de ejemplo integradas (bucles y condicionales básicos, funciones matemáticas, rotación/alineación, recorrido de la lista de cristales, simulación de difracción/imagen, series de inclinación/energía, información de reflexiones y más). Los ejemplos son de solo lectura y se muestran en el idioma actual de la interfaz; utilícelos para aprender o como punto de partida para copiar. Al desactivarlo se restauran sus propias macros.
 
 ---
 

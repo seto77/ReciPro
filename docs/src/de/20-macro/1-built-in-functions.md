@@ -125,13 +125,13 @@ Eulerwinkel sind an Gimbal-Positionen (θ = 0 oder 180°) nicht eindeutig: `GetE
 
 | Eigenschaft | Typ | Beschreibung |
 |----------|------|-------------|
-| `Energy` | double | Energie (keV) |
-| `Wavelength` | double | Wellenlänge (Å) |
+| `Energy` | double | Energie (keV für Röntgen und Elektronen, meV für Neutronen) |
+| `Wavelength` | double | Wellenlänge (nm) |
 | `Thickness` | double | Probendicke (nm) |
 | `NumberOfDiffractedWaves` | int | Anzahl der Bloch-Wellen |
 | `CameraLength2` | double | Kameralänge (mm) |
 | `ExcitationError` | double | Reflexradius (nm⁻¹): im kinematischen/Anregungsmodus exportiert `SpotInfo()` die Reflexe mit \|Sg\| innerhalb dieses Wertes |
-| `SkipRendering` | bool | Rendering für Stapelverarbeitung überspringen |
+| `SkipRendering` | bool | Wirkt nur im dynamischen Modus (`Calc_Dynamical()`): Die Bloch-Wellen-Rechnung läuft weiterhin (sodass `SpotInfo()` gültig ist), aber es werden keine Reflexe gezeichnet — in der Zwischenzeit gespeicherte Bilder enthalten keine Reflexe. Im kinematischen/Anregungsmodus ohne Wirkung |
 
 ### Strahlmodus
 
@@ -156,7 +156,7 @@ Eulerwinkel sind an Gimbal-Positionen (θ = 0 oder 180°) nicht eindeutig: `GetE
 |----------|-------------|
 | `Tau` / `TauInDeg` | Detektor-Kippwinkel τ (rad / Grad) |
 | `Phi` / `PhiInDeg` | Detektor-Rotationsachse φ (rad / Grad) |
-| `Foot(x, y)` | Foot-Position in Pixeln |
+| `Foot(x, y)` | Position (mm) des Fußpunkts des Lots von der Probe auf den Detektor, gemessen von der Bildmitte; die Bildmitte selbst liegt bei den Detektorkoordinaten (−x, −y). `Foot(0, 0)` legt den Fußpunkt in die Bildmitte |
 
 ### Ausgabe
 
@@ -184,10 +184,10 @@ Steuert [Spot ID v2](../11-spot-id-v2.md) aus einem Makro heraus: ein Bild oder 
 | Funktion | Beschreibung |
 |----------|--------------|
 | `SpotID.LoadFile(filename)` | Eine Datei laden, wie es **File > Load** tut: `.csv` wird als Reflexliste gelesen (ein Bild muss zuvor geladen sein), jede andere Endung als Beugungsbild (dm3, dm4, mrc, ipa, tif und weitere unterstützte Formate). Ohne `filename` öffnet sich ein Dateidialog |
-| `SpotID.FindSpots()` | Die Reflexe im geladenen Bild detektieren und anpassen, wie es die Schaltfläche **Find spots** tut |
-| `SpotID.Identify()` | Nach Orientierungen suchen, die die detektierten Reflexe erklären, wie es die Schaltfläche **Identify spots** tut, und die Anzahl der Kandidaten zurückgeben. Geprüft werden die in der Kristallliste des Hauptfensters ausgewählten Kristalle |
+| `SpotID.FindSpots()` | Die Reflexe im geladenen Bild detektieren und anpassen, wie es die Schaltfläche **Reflexe finden & anpassen** tut <!-- 261105Cl 監査: ボタン名を FormSpotIDV2.resx に合わせた --> |
+| `SpotID.Identify()` | Nach Orientierungen suchen, die die detektierten Reflexe erklären, wie es die Schaltfläche **Reflexe identifizieren** tut, und die Anzahl der Kandidaten zurückgeben. Geprüft werden die in der Kristallliste des Hauptfensters ausgewählten Kristalle. Gibt ohne Suche 0 zurück, wenn kein Bild geladen ist, weniger als zwei Reflexe registriert sind oder kein Kristall ausgewählt ist |
 | `SpotID.CandidateList()` | Die Liste der Orientierungskandidaten als CSV-Text zurückgeben |
-| `SpotID.SpotList()` | Die beobachteten Reflexe als CSV-Text zurückgeben, mit denselben Spalten wie **File > Save**. Zusammen mit `File.SaveText()` entsteht eine Datei, die `LoadFile()` wieder einlesen kann |
+| `SpotID.SpotList()` | Die beobachteten Reflexe als CSV-Text zurückgeben, mit denselben Spalten wie die Schaltfläche **Speichern** der **Reflexinformation**. Zusammen mit `File.SaveText()` entsteht eine Datei, die `LoadFile()` wieder einlesen kann |
 
 `CandidateList()` liefert je Kandidat: Kristallname, die Z-X-Z-Eulerwinkel (Grad), die neun Elemente R11–R33 der Rotationsmatrix (Kristall- zu Laborsystem, auf Spaltenvektoren angewandt), das mittlere Residuenquadrat (nm⁻²) und die Zuordnung der beobachteten Reflexe zu *hkl*-Indizes. Die Kandidaten sind nach der Anzahl zugeordneter Reflexe (absteigend) und danach nach dem Residuum (aufsteigend) sortiert. Zahlen werden in der Invariant Culture geschrieben, das Dezimaltrennzeichen ist also immer ein Punkt.
 
@@ -197,13 +197,13 @@ Steuert [Spot ID v2](../11-spot-id-v2.md) aus einem Makro heraus: ein Bild oder 
 |-------------|-----|--------------|
 | `Energy` | double | Strahlenergie (keV für Röntgen und Elektronen, meV für Neutronen) |
 | `CameraLength` | double | Kameralänge (mm) |
-| `PixelSizeInMM` | double | Pixelgröße (mm); Lesen oder Schreiben stellt die Einheit der Pixelgröße zugleich auf mm |
-| `PixelSizeInNMinv` | double | Pixelgröße (nm⁻¹); Lesen oder Schreiben stellt die Einheit zugleich auf nm⁻¹ |
+| `PixelSizeInMM` | double | Pixelgröße (mm). Schreiben stellt die Einheit der Pixelgröße auf mm um; Lesen liefert den in mm umgerechneten Wert, ohne die Einheit zu ändern <!-- 261105Cl 監査: Macro.cs の Help 文 (I6) --> |
+| `PixelSizeInNMinv` | double | Pixelgröße (nm⁻¹). Schreiben stellt die Einheit auf nm⁻¹ um; Lesen liefert den in nm⁻¹ umgerechneten Wert, ohne die Einheit zu ändern |
 | `MaxNumberOfSpots` | int | Höchstzahl der Reflexe, die `FindSpots()` detektieren darf |
 | `NearestNeighbor` | int | Kleinster zwischen detektierten Reflexen erlaubter Abstand (Pixel) |
 | `FittingRange` | double | Radius des Bereichs um jeden Reflex, der zur Peak-Anpassung dient (Pixel) |
 | `AcceptableError` | double | Toleranz der relativen Netzebenenabstandsdifferenz beim Zuordnen von Reflexen (%) |
-| `IgnoreProhibitedReflections` | bool | Kinematisch verbotene Reflexe ignorieren, die über Mehrfachbeugung dennoch auftreten können |
+| `IgnoreProhibitedReflections` | bool | Kinematisch verbotene Reflexe ignorieren, die über Mehrfachbeugung dennoch auftreten können. Für Röntgenstrahlen und Neutronen immer `true`; ein gesetzter Wert wird wirksam, wenn die Quelle wieder auf Elektronen gestellt wird <!-- 261106Cl 作者の決定 I4 --> |
 | `MultiGrain` | bool | Nach mehreren Körnern suchen; `False` bedeutet ein einzelnes Korn |
 | `MaxNumberOfGrains` | int | Höchstzahl der gesuchten Kornorientierungen, wenn `MultiGrain` `True` ist |
 | `NumberOfDetectedSpots` | int | Anzahl der detektierten Reflexe (nur lesend) |
@@ -220,7 +220,7 @@ Steuert die Strukturansicht aus einem Makro. `SaveImage()` und `Export3DModel()`
 | `StructureViewer.Open()` | Das Strukturansicht-Fenster öffnen |
 | `StructureViewer.Close()` | Das Strukturansicht-Fenster schließen |
 | `StructureViewer.SaveImage(filename)` | Die gerenderte Hauptansicht als PNG speichern, in der Pixelgröße des Felds **Size (W×H)**; ohne `filename` öffnet sich ein Dialog |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Die dargestellte Struktur für den 3D-Druck exportieren, wie **Export 3D Model (3MF/STL)** im Datei-Menü. Die Endung bestimmt das Format (`.stl` einfarbig / `.3mf` nach Element gefärbt); nur `filename` ist erforderlich — die übrigen Standardwerte entsprechen dem Dialog (größte Abmessung 80 mm, Zellkanten ⌀2,4 mm, Bindungen auf ⌀1,2 mm verdickt). Mit `fixedScaleInMMperNm` > 0 entstehen mehrere Modelle im selben Maßstab |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Die dargestellte Struktur für den 3D-Druck exportieren, wie **Export 3D model (3MF/STL)** im Datei-Menü. Die Endung bestimmt das Format (`.stl` einfarbig / `.3mf` nach Element gefärbt); nur `filename` ist erforderlich — die übrigen Standardwerte entsprechen dem Dialog (größte Abmessung 80 mm, Zellkanten ⌀2,4 mm, Bindungen auf ⌀1,2 mm verdickt). Mit `fixedScaleInMMperNm` > 0 entstehen mehrere Modelle im selben Maßstab. `filename` muss auf `.stl` oder `.3mf` enden (es wird kein Dialog geöffnet); gibt eine Informationszeichenkette mit der Anzahl der Dreiecke und der gedruckten Größe zurück |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -317,7 +317,7 @@ Diese drei Bildsimulationsklassen teilen sich viele Mitglieder. Um Wiederholunge
 
 | Funktion | Beschreibung |
 |----------|-------------|
-| `Sleep(ms)` | Die angegebene Anzahl Millisekunden warten |
+| `ReciPro.Sleep(ms)` | Die angegebene Anzahl Millisekunden warten. Aufruf als `ReciPro.Sleep(ms)` <!-- 261105Cl 監査: エディタの関数表にも出るようになった (41cb5a7b) --> |
 
 ---
 

@@ -1320,7 +1320,7 @@
             inputBoxP3L1.Name = "inputBoxP3L1";
             inputBoxP3L1.WaveLength = 0D;
             inputBoxP3L1.ValueChanged += textBox_TextChanged;
-            inputBoxP3L1.Click2 += inputBoxP3L1_Click2;
+            //inputBoxP3L1.Click2 += inputBoxP3L1_Click2; // 261105Cl 変更前 (監査 I20): 写真 3 の l1 をクリックすると 3 辺モードになっていた。3 辺モードへの切替は L3 (上の inputBoxP3L3) だけ (写真 1・2 と同じ)
             // 
             // pictureBoxPhoto3
             // 

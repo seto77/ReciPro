@@ -84,7 +84,7 @@
     <value>Непрозрачность</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
-    <value>Обрезать объекты</value>
+    <value>Обрезать объекты по граничным плоскостям</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>Границы по элементарной ячейке</value>
@@ -97,7 +97,7 @@
   </data>
   <data name="labelMessage.Text" xml:space="preserve">
     <value>Этот элемент теперь отображается
- в окне "Structure Viewer".</value>
+ в окне "Просмотр структуры".</value>
   </data>
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>Атомы</value>
@@ -347,7 +347,7 @@
     <value>Направление света</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Копировать основное изображение в буфер обмена</value>
+    <value>Копировать изображение в буфер обмена</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Основное изображение</value>
@@ -395,13 +395,16 @@
     <value>Задать диапазон отображения ±1 каждой оси элементарной ячейки</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value>Задать центр отображения в начало координат (0, 0, 0)</value>
+    <value>Задать Центр (0, 0, 0): отображаемая область
+центрирована на центре проекции.</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value>Задать центр отображения в (1/4, 1/4, 1/4)</value>
+    <value>Задать Центр (1/4, 1/4, 1/4): отображаемая область сдвигается
+от центра проекции на 1/4 в сторону +a, +b, +c.</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
-    <value>Задать центр отображения в (1/2, 1/2, 1/2)</value>
+    <value>Задать Центр (1/2, 1/2, 1/2): отображаемая область сдвигается
+от центра проекции на 1/2 в сторону +a, +b, +c.</value>
   </data>
   <data name="buttonSetRange0.ToolTip" xml:space="preserve">
     <value>Задать диапазон отображения ±1/4 каждой оси элементарной ячейки</value>
@@ -440,34 +443,40 @@
 рисуются атомы в пределах Центр ± Диапазон.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>Центр отображаемой области вдоль оси c, в
-дробных координатах; вместе с Диапазоном задаёт
-минимальную/максимальную граничные плоскости рисуемой структуры.</value>
+    <value>Смещение центра отображаемой области относительно центра проекции
+вдоль оси c, в дробных координатах (положительное: в сторону +c).
+Вместе с Диапазоном задаёт минимальную/максимальную граничные плоскости:
+(центр проекции + Центр) ± Диапазон.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>Центр отображаемой области вдоль оси c, в
-дробных координатах; вместе с Диапазоном задаёт
-минимальную/максимальную граничные плоскости рисуемой структуры.</value>
+    <value>Смещение центра отображаемой области относительно центра проекции
+вдоль оси c, в дробных координатах (положительное: в сторону +c).
+Вместе с Диапазоном задаёт минимальную/максимальную граничные плоскости:
+(центр проекции + Центр) ± Диапазон.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>Центр отображаемой области вдоль оси b, в
-дробных координатах; вместе с Диапазоном задаёт
-минимальную/максимальную граничные плоскости рисуемой структуры.</value>
+    <value>Смещение центра отображаемой области относительно центра проекции
+вдоль оси b, в дробных координатах (положительное: в сторону +b).
+Вместе с Диапазоном задаёт минимальную/максимальную граничные плоскости:
+(центр проекции + Центр) ± Диапазон.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>Центр отображаемой области вдоль оси b, в
-дробных координатах; вместе с Диапазоном задаёт
-минимальную/максимальную граничные плоскости рисуемой структуры.</value>
+    <value>Смещение центра отображаемой области относительно центра проекции
+вдоль оси b, в дробных координатах (положительное: в сторону +b).
+Вместе с Диапазоном задаёт минимальную/максимальную граничные плоскости:
+(центр проекции + Центр) ± Диапазон.</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>Центр отображаемой области вдоль оси a, в
-дробных координатах; вместе с Диапазоном задаёт
-минимальную/максимальную граничные плоскости рисуемой структуры.</value>
+    <value>Смещение центра отображаемой области относительно центра проекции
+вдоль оси a, в дробных координатах (положительное: в сторону +a).
+Вместе с Диапазоном задаёт минимальную/максимальную граничные плоскости:
+(центр проекции + Центр) ± Диапазон.</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value>Центр отображаемой области вдоль оси a, в
-дробных координатах; вместе с Диапазоном задаёт
-минимальную/максимальную граничные плоскости рисуемой структуры.</value>
+    <value>Смещение центра отображаемой области относительно центра проекции
+вдоль оси a, в дробных координатах (положительное: в сторону +a).
+Вместе с Диапазоном задаёт минимальную/максимальную граничные плоскости:
+(центр проекции + Центр) ± Диапазон.</value>
   </data>
   <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
     <value>Показать/скрыть граничные плоскости кристалла</value>
@@ -703,7 +712,7 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
 симметрии (поворотные, винтовые и инверсионно-поворотные оси).</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>Показывать подписи в легендах</value>
+    <value>Показывать подписи атомов в 3D-виде</value>
   </data>
   <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
     <value>Использовать цвет материала как цвет подписи </value>
@@ -718,7 +727,7 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
     <value>Размер шрифта подписей атомов (0–200).</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>Если отмечено, подписи легенды обводятся белым контуром.</value>
+    <value>Если отмечено, подписи атомов в 3D-виде обводятся белым контуром.</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
     <value>Показывать связанные атомы, даже если они за пределами границ</value>
@@ -810,24 +819,26 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
     <value>Число делений элементарной ячейки вдоль
 оси a (целое, 1–10) для сетки подъячеек,
-отображаемой при включённой опции «Show Subcell».</value>
+отображаемой при включённой опции «Show subcell».</value>
   </data>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
     <value>Число делений элементарной ячейки вдоль
 оси b (целое, 1–10) для сетки подъячеек,
-отображаемой при включённой опции «Show Subcell».</value>
+отображаемой при включённой опции «Show subcell».</value>
   </data>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
     <value>Число делений элементарной ячейки вдоль
 оси c (целое, 1–10) для сетки подъячеек,
-отображаемой при включённой опции «Show Subcell».</value>
+отображаемой при включённой опции «Show subcell».</value>
   </data>
   <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
     <value>Показать/скрыть подписи атомов (символы
 элементов), наложенные на каждый атом.</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>Показать/скрыть сферы атомов в 3D-модели.</value>
+    <value>Показать/скрыть сферы атомов в 3D-модели.
+Связи, полиэдры и подписи строятся по атомам,
+поэтому они тоже скрываются.</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>Сбросить радиусы, цвета атомов и связи к
@@ -850,8 +861,9 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
 центры инверсии) на 3D-вид.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>Центр отображаемой области (дробные
-координаты) вдоль каждой оси элементарной ячейки.</value>
+    <value>Смещение центра отображаемой области относительно центра проекции,
+в дробных координатах вдоль каждой оси элементарной ячейки
+(положительное: в сторону +a, +b, +c).</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>Сместить каркас элементарной ячейки вдоль
@@ -862,7 +874,8 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
 координаты) вдоль каждой оси элементарной ячейки.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>Установить центр отображения в заданную дробную позицию.</value>
+    <value>Установить Центр (смещение относительно центра проекции)
+в заданное дробное значение.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value>Установить диапазон отображения в заданную
@@ -881,5 +894,8 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
 Меньшие значения увеличивают изображение.
 Синхронизируется с масштабированием на виде
 перетаскиванием правой кнопкой мыши и колесом.</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Просмотр структуры</value>
   </data>
 </root>

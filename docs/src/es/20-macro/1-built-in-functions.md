@@ -125,13 +125,13 @@ Los ángulos de Euler no son únicos en las posiciones de bloqueo de cardán (θ
 
 | Propiedad | Tipo | Descripción |
 |----------|------|-------------|
-| `Energy` | double | Energía (keV) |
-| `Wavelength` | double | Longitud de onda (Å) |
+| `Energy` | double | Energía (keV para rayos X y electrones, meV para neutrones) |
+| `Wavelength` | double | Longitud de onda (nm) |
 | `Thickness` | double | Espesor de la muestra (nm) |
 | `NumberOfDiffractedWaves` | int | Número de ondas de Bloch |
 | `CameraLength2` | double | Longitud de cámara (mm) |
 | `ExcitationError` | double | Radio de las reflexiones (nm⁻¹): en modo cinemático/de error de excitación, `SpotInfo()` exporta las reflexiones con \|Sg\| dentro de este valor |
-| `SkipRendering` | bool | Omitir el renderizado para el procesamiento por lotes |
+| `SkipRendering` | bool | Solo tiene efecto en el modo dinámico (`Calc_Dynamical()`): el cálculo de ondas de Bloch se sigue ejecutando (por lo que `SpotInfo()` es válido), pero no se dibuja ninguna reflexión; las imágenes guardadas mientras tanto no contienen reflexiones. No tiene efecto en el modo cinemático/de error de excitación |
 
 ### Modo de haz
 
@@ -156,7 +156,7 @@ Los ángulos de Euler no son únicos en las posiciones de bloqueo de cardán (θ
 |----------|-------------|
 | `Tau` / `TauInDeg` | Ángulo de inclinación del detector τ (rad / grados) |
 | `Phi` / `PhiInDeg` | Eje de rotación del detector φ (rad / grados) |
-| `Foot(x, y)` | Posición de foot en píxeles |
+| `Foot(x, y)` | Posición (mm) del pie de la perpendicular trazada desde la muestra al detector, medida desde el centro de la imagen; el propio centro de la imagen está en las coordenadas del detector (−x, −y). `Foot(0, 0)` sitúa el pie en el centro de la imagen |
 
 ### Salida
 
@@ -183,11 +183,11 @@ Controla [Spot ID v2](../11-spot-id-v2.md) desde una macro: cargar una imagen o 
 
 | Función | Descripción |
 |---------|-------------|
-| `SpotID.LoadFile(filename)` | Cargar un archivo igual que **File > Load**: `.csv` se lee como lista de puntos (antes debe haberse cargado una imagen) y cualquier otra extensión como imagen de patrón de difracción (dm3, dm4, mrc, ipa, tif y otros formatos admitidos). Omite `filename` para abrir un diálogo de archivo |
-| `SpotID.FindSpots()` | Detectar los puntos de la imagen cargada y ajustarlos, como hace el botón **Find spots** |
-| `SpotID.Identify()` | Buscar orientaciones que expliquen los puntos detectados, como hace el botón **Identify spots**, y devolver el número de candidatos. Se prueban los cristales seleccionados en la lista de cristales de la ventana principal |
+| `SpotID.LoadFile(filename)` | Cargar un archivo igual que **Archivo > Cargar**: `.csv` se lee como lista de puntos (antes debe haberse cargado una imagen) y cualquier otra extensión como imagen de patrón de difracción (dm3, dm4, mrc, ipa, tif y otros formatos admitidos). Omite `filename` para abrir un diálogo de archivo |
+| `SpotID.FindSpots()` | Detectar los puntos de la imagen cargada y ajustarlos, como hace el botón **Detectar & ajustar puntos** <!-- 261105Cl 監査: ボタン名を FormSpotIDV2.resx に合わせた --> |
+| `SpotID.Identify()` | Buscar orientaciones que expliquen los puntos detectados, como hace el botón **Identificar reflexiones**, y devolver el número de candidatos. Se prueban los cristales seleccionados en la lista de cristales de la ventana principal. Devuelve 0 sin buscar cuando no hay ninguna imagen cargada, hay menos de dos puntos registrados o no hay ningún cristal seleccionado |
 | `SpotID.CandidateList()` | Devolver la lista de orientaciones candidatas como texto CSV |
-| `SpotID.SpotList()` | Devolver los puntos observados como texto CSV, con las mismas columnas que **File > Save**. Combínalo con `File.SaveText()` para escribir un archivo que `LoadFile()` pueda volver a leer |
+| `SpotID.SpotList()` | Devolver los puntos observados como texto CSV, con las mismas columnas que el botón **Guardar** de **Información del punto**. Combínalo con `File.SaveText()` para escribir un archivo que `LoadFile()` pueda volver a leer |
 
 `CandidateList()` da, por cada candidato: nombre del cristal, los ángulos de Euler Z-X-Z (grados), los nueve elementos R11–R33 de la matriz de rotación (del sistema del cristal al del laboratorio, aplicada a vectores columna), el residuo cuadrático medio (nm⁻²) y la asignación de los puntos observados a índices *hkl*. Los candidatos vienen ordenados por número de puntos asignados (descendente) y luego por el residuo (ascendente). Los números se escriben en la cultura invariante, así que el separador decimal es siempre un punto.
 
@@ -197,13 +197,13 @@ Controla [Spot ID v2](../11-spot-id-v2.md) desde una macro: cargar una imagen o 
 |-----------|------|-------------|
 | `Energy` | double | Energía del haz (keV para rayos X y electrones, meV para neutrones) |
 | `CameraLength` | double | Longitud de cámara (mm) |
-| `PixelSizeInMM` | double | Tamaño de píxel (mm); leerlo o escribirlo cambia también la unidad del tamaño de píxel a mm |
-| `PixelSizeInNMinv` | double | Tamaño de píxel (nm⁻¹); leerlo o escribirlo cambia también la unidad a nm⁻¹ |
+| `PixelSizeInMM` | double | Tamaño de píxel (mm). Escribirlo cambia la unidad del tamaño de píxel a mm; leerlo devuelve el valor convertido a mm sin cambiar la unidad <!-- 261105Cl 監査: Macro.cs の Help 文 (I6) --> |
+| `PixelSizeInNMinv` | double | Tamaño de píxel (nm⁻¹). Escribirlo cambia la unidad a nm⁻¹; leerlo devuelve el valor convertido a nm⁻¹ sin cambiar la unidad |
 | `MaxNumberOfSpots` | int | Número máximo de puntos que `FindSpots()` puede detectar |
 | `NearestNeighbor` | int | Separación mínima permitida entre puntos detectados (píxeles) |
 | `FittingRange` | double | Radio de la región alrededor de cada punto empleada en el ajuste del pico (píxeles) |
 | `AcceptableError` | double | Tolerancia de la diferencia relativa de espaciado *d* al emparejar puntos con reflexiones (%) |
-| `IgnoreProhibitedReflections` | bool | Ignorar las reflexiones prohibidas cinemáticamente, que aun así pueden aparecer por difracción múltiple |
+| `IgnoreProhibitedReflections` | bool | Ignorar las reflexiones prohibidas cinemáticamente, que aun así pueden aparecer por difracción múltiple. Siempre `true` para rayos X y neutrones; un valor asignado entonces surte efecto cuando la fuente vuelve a ser de electrones <!-- 261106Cl 作者の決定 I4 --> |
 | `MultiGrain` | bool | Buscar varios granos; `False` significa un solo grano |
 | `MaxNumberOfGrains` | int | Número máximo de orientaciones de grano buscadas cuando `MultiGrain` es `True` |
 | `NumberOfDetectedSpots` | int | Número de puntos detectados (solo lectura) |
@@ -219,8 +219,8 @@ Controla el visor de estructura desde una macro. `SaveImage()` y `Export3DModel(
 |---|---|
 | `StructureViewer.Open()` | Abrir la ventana del visor de estructura |
 | `StructureViewer.Close()` | Cerrar la ventana del visor de estructura |
-| `StructureViewer.SaveImage(filename)` | Guardar la vista principal renderizada como PNG, con el tamaño en píxeles del cuadro **Size (W×H)**; omite `filename` para abrir un diálogo |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Exportar la estructura mostrada para impresión 3D, como **Export 3D Model (3MF/STL)** del menú File. La extensión decide el formato (`.stl` monocolor / `.3mf` coloreado por elemento); solo `filename` es obligatorio — los demás valores por defecto son los del diálogo (dimensión mayor 80 mm, aristas de la celda ⌀2,4 mm, enlaces engrosados a ⌀1,2 mm). Con `fixedScaleInMMperNm` > 0 se construyen varios modelos a la misma escala |
+| `StructureViewer.SaveImage(filename)` | Guardar la vista principal renderizada como PNG, con el tamaño en píxeles del cuadro **Tamaño (An×Al)**; omite `filename` para abrir un diálogo |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Exportar la estructura mostrada para impresión 3D, como **Export 3D model (3MF/STL)...** del menú **Archivo**. La extensión decide el formato (`.stl` monocolor / `.3mf` coloreado por elemento); solo `filename` es obligatorio — los demás valores por defecto son los del diálogo (dimensión mayor 80 mm, aristas de la celda ⌀2,4 mm, enlaces engrosados a ⌀1,2 mm). Con `fixedScaleInMMperNm` > 0 se construyen varios modelos a la misma escala. `filename` debe terminar en `.stl` o `.3mf` (no se abre ningún diálogo); devuelve una cadena informativa con el número de triángulos y el tamaño impreso |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -317,7 +317,7 @@ Estas tres clases de simulación de imágenes comparten muchos miembros. Para ev
 
 | Función | Descripción |
 |----------|-------------|
-| `Sleep(ms)` | Esperar el número de milisegundos especificado |
+| `ReciPro.Sleep(ms)` | Esperar el número de milisegundos especificado. Se llama como `ReciPro.Sleep(ms)` <!-- 261105Cl 監査: エディタの関数表にも出るようになった (41cb5a7b) --> |
 
 ---
 

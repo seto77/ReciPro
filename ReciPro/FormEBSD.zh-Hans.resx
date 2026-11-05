@@ -115,7 +115,7 @@
     <value>非局域背散射源</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>厚度自</value>
+    <value>深度自</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>至</value>
@@ -277,9 +277,9 @@ structure factors”时，弱菊池线会融入该颜色。</value>
 晶面间距 d 较大的衍射。</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>试样厚度扫描的步长，单位为 nm；
-从 Start 到 End 的范围将
-以该增量进行计算。</value>
+    <value>主花样深度切片的间隔，单位为 nm。自动设定的深度
+为不等间距（靠近表面处较密），此时各栏显示第一个点、
+最后一个点和第一个间隔。编辑任一栏后变为等间距。</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>布洛赫波动力学计算中包含的衍射波（g 矢量）
@@ -287,13 +287,14 @@ structure factors”时，弱菊池线会融入该颜色。</value>
 但计算越慢。</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>试样厚度扫描范围的起始值，
-单位为 nm；Start、End 和 Step
-共同定义要计算的厚度切片。</value>
+    <value>主花样深度切片的第一个（最浅）值，单位为 nm。
+深度为沿出射方向的路径长度（源深度 ÷ cos χ）。
+Start、End 和 Step 共同定义深度切片。
+勾选“由 MC 自动设定能量与深度范围”时自动设定。</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>试样厚度扫描范围的终止值，单位为 nm；Start、
-End 和 Step 共同定义要计算的厚度切片。</value>
+    <value>主花样深度切片的最后一个（最深）值，单位为 nm；
+Start、End 和 Step 共同定义深度切片。</value>
   </data>
   <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
     <value>EBSD（电子背散射衍射）扫描中使用的
@@ -303,7 +304,8 @@ End 和 Step 共同定义要计算的厚度切片。</value>
   <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
     <value>EBSD（电子背散射衍射）扫描中使用的
 背散射电子能量范围的起始（上限）
-值，单位为 keV。</value>
+值，单位为 keV。
+勾选“由 MC 自动设定能量与深度范围”时自动设定。</value>
   </data>
   <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
     <value>背散射电子能量扫描的步长，单位为 keV；
@@ -462,7 +464,7 @@ Negative（反相）灰度。</value>
 （Gray、Cold-Warm、Spectrum 或 Fire）。</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
-    <value>输入 'View Along' 按钮用于定向三维主花样的
+    <value>输入 'View along' 按钮用于定向三维主花样的
 晶带轴指数 [u v w]。</value>
   </data>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
@@ -470,9 +472,9 @@ Negative（反相）灰度。</value>
 深度切片 (nm)（单切片模式）。</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>以度为单位设置探测器平面相对于电子束 (Z) 轴的
-倾斜角。它会影响相机长度以及菊池带的
-投影形状。</value>
+    <value>以度为单位设置探测器屏相对于水平面（垂直于电子束 Z 轴）
+的倾斜角：0° = 水平，90° = 竖直的屏（默认）。它会影响
+相机长度以及菊池带的投影形状。</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
     <value>显示当前渲染的 EBSD 花样
@@ -498,9 +500,10 @@ Negative（反相）灰度。</value>
 决定背散射投影的几何。</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>以 mm 为单位设定探测器中心的 Y 坐标（在试样表面内、
-与旋转轴 X 垂直、由试样指向屏幕的方向）。与 Z
-及探测器倾角共同决定相机长度。左右方向的偏移由 X 设定。</value>
+    <value>以 mm 为单位设定探测器中心的 Y 坐标（在显微镜坐标系中，
+与电子束 Z 和试样倾转轴 X 都垂直的水平方向，而不是倾斜后
+试样表面内的方向）。与 Z 及探测器倾角共同决定相机长度。
+左右方向的偏移由 X 设定。</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>以 mm 为单位设置探测器中心的 Z 坐标
@@ -555,11 +558,15 @@ EBSD 图案能量切片 (keV)；
   <data name="labelBseDepth.ToolTip" xml:space="preserve">
     <value>被检出的背散射电子最后一次发生非弹性散射的
 深度 (nm) 分布（若无非弹性散射则取最大侵入
-深度）。与用于给主花样加权的深度定义相同。</value>
+深度）。与用于给主花样加权的深度定义相同。
+双击图表可将其数值以文本（x 与 y，以制表符分隔）
+复制到剪贴板。</value>
   </data>
   <data name="labelBseDeltaE.ToolTip" xml:space="preserve">
     <value>模拟的背散射电子
-能量损失 ΔE (keV) 的分布。</value>
+能量损失 ΔE (keV) 的分布。
+双击图表可将其数值以文本（x 与 y，以制表符分隔）
+复制到剪贴板。</value>
   </data>
   <data name="labelBseStereonetNote.ToolTip" xml:space="preserve">
     <value>在此立体网中，中心
@@ -923,5 +930,15 @@ A(E) = exp(-(E0 - E) / E_c)，损失的部分转为平坦基座，
 编辑前的默认值：非对称高斯为 0.8 keV；直方图 + 逐电子 A 为 0.9 keV（20 kV Si004 固定 18 条带宽中位数的暂定值）。
 编辑 E_c 后，切换分布时保留输入值。
 数值随材料和反射而变；Botallackite 示例约为 0.43–0.71 keV。能量/深度网格、合成方法或评价指标变化时请重新标定。</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.Text" xml:space="preserve">
+    <value>由 MC 自动设定能量与深度范围</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.ToolTip" xml:space="preserve">
+    <value>开启（默认）：每次“模拟”和“构建主花样”时，由 MC 结果设定下方的
+能量与深度范围（能量：从 E0 到能量损失约 95 % 处；深度：到出射路径
+长度的 99.9 % 处，40 个不等间距点）。此时范围栏为只读。
+关闭：范围栏保留您输入的值，并按此范围构建主花样。若下限不小于上限、
+能量高于 E0 或范围与 MC 分布不重叠，则不构建并以消息提示。</value>
   </data>
 </root>

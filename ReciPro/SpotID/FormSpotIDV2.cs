@@ -45,6 +45,16 @@ public partial class FormSpotIDV2 : FormBase
     }
     public double CameraLength { set => numericBoxCameraLength.Value = value; get => numericBoxCameraLength.Value; }
 
+    /// <summary>261105Cl 追加 (監査 I23): ピクセルサイズ欄の単位が nm⁻¹ か (false なら mm)。レジストリに保存するため (PixelSize は取得と設定で単位が違うので使えない)</summary>
+    public bool PixelSizeUnitInverse
+    {
+        get => radioButtonPixelSizeUnitInverse.Checked;
+        set { if (value) radioButtonPixelSizeUnitInverse.Checked = true; else radioButtonPixelSizeUnitReal.Checked = true; }
+    }
+
+    /// <summary>261105Cl 追加 (監査 I23): ピクセルサイズ欄の数値そのもの (単位は PixelSizeUnitInverse)。レジストリに保存するため</summary>
+    public double PixelSizeValue { get => numericBoxPixelSize.Value; set => numericBoxPixelSize.Value = value; }
+
     public double WaveLength => waveLengthControl1.WaveLength;
 
     public double ToleranceLength { get => numericBoxAcceptableError.Value * 0.01; set => numericBoxAcceptableError.Value = value * 100; }
@@ -73,13 +83,17 @@ public partial class FormSpotIDV2 : FormBase
 
         waveLengthControl1.WaveSource = WaveSource.Electron;
         waveLengthControl1.Energy = 200;
+
+        // 261105Cl 移動 (監査 I15): FormSpotID_Load から。このフォームは起動時に Visible = false で作られ、一度も開かないと Load が走らないので、
+        //  マクロ SpotID.LoadFile() などで開く前に画像を読むと FormSpotDetails が null のまま参照されて例外になっていた
+        FormSpotDetails = new FormSpotIDv2Details { FormSpotID = this }; // 261105Cl 移動
     }
 
 
 
     private void FormSpotID_Load(object sender, EventArgs e)
     {
-        FormSpotDetails = new FormSpotIDv2Details { FormSpotID = this };
+        //FormSpotDetails = new FormSpotIDv2Details { FormSpotID = this }; // 261105Cl 変更前 (コンストラクタへ移動)
         checkBoxDetailsOfFunction.Checked = false;
     }
 
@@ -89,6 +103,19 @@ public partial class FormSpotIDV2 : FormBase
         FormMain.toolStripButtonSpotIDv2.Checked = false;
         this.Visible = false;
         FormSpotDetails.Visible = false;
+    }
+
+    /// <summary>261105Cl 追加 (監査 I24): この窓を隠すと (× ボタンでも主窓のツールバーでも)、「詳細」の窓も閉じてチェックを外す。
+    /// 旧は × ボタンで詳細の窓だけ隠してチェックを残し (次に開くとチェックが付いているのに窓は無く、1 回目のクリックは外すだけ)、
+    /// ツールバーで隠したときは詳細の窓が出たまま残った</summary>
+    protected override void OnVisibleChanged(EventArgs e)
+    {
+        base.OnVisibleChanged(e);
+        if (!Visible && !Disposing && !IsDisposed && checkBoxDetailsOfSpot.Checked && FormSpotDetails is { IsDisposed: false })
+            checkBoxDetailsOfSpot.Checked = false; // → checkBoxDetailsOfSpot_CheckedChanged が FormSpotDetails.Visible = false にする
+        // 261105Cl 追加 (監査 I10): 隠れている間は主窓の結晶の変更で SetCrystal が呼ばれないので、開いたときに Debye リングを今の結晶で置き直す
+        if (Visible && checkBoxShowDebyeRing.Checked)
+            SetCrystal();
     }
 
     #endregion ロード, クローズ関連
@@ -105,14 +132,35 @@ public partial class FormSpotIDV2 : FormBase
     /// <param name="fileName"></param>
     private void readImage(string fileName)
     {
-        dataSet.DataTableSpot.Clear();
+        // 261105Cl 変更 (監査 I15): 先に画像を読み、読めたときだけ表を消して続ける。旧は表を消してから読み、読めないと
+        //  PseudoBitmap が null (最初の 1 枚) のまま下の p.Width で例外、前の画像があればその画像のまま表だけ消えて、
+        //  拡張子の分岐では前のファイルのメタデータ (Ring.*) を取り込むことがあった。読めたかどうかは PseudoBitmap が作り直されたかで見る
+        //dataSet.DataTableSpot.Clear(); // 261105Cl 変更前 (読めた後へ移動)
+        //
+        //dataSet.DataTableCandidate.Clear(); // 261105Cl 変更前 (同上)
+        //scalablePictureBoxAdvanced.Symbols.RemoveAll(s => s.Tag == tagCalcSpot); // 261105Cl 変更前 (同上)
+        //
+        //scalablePictureBoxAdvanced.ReadImage(fileName); // 261105Cl 変更前
+        var before = scalablePictureBoxAdvanced.PseudoBitmap; // 261105Cl 追加
+        try { scalablePictureBoxAdvanced.ReadImage(fileName); } catch { } // 261105Cl 追加 (形式によっては読込中に例外になる。読めなかったとして扱う)
+        // 261105Cl 追加: 壊れたファイルでは ImageIO が中身の無い (0×0) 画像を作ることがあるので、それも読めなかったとして扱い、前の画像に戻す
+        if (scalablePictureBoxAdvanced.PseudoBitmap == null || ReferenceEquals(scalablePictureBoxAdvanced.PseudoBitmap, before) // 261105Cl 追加
+            || scalablePictureBoxAdvanced.PseudoBitmap.Width <= 0 || scalablePictureBoxAdvanced.PseudoBitmap.Height <= 0) // 261105Cl 追加
+        {
+            if (!ReferenceEquals(scalablePictureBoxAdvanced.PseudoBitmap, before)) // 261105Cl 追加 (最初の 1 枚なら null に戻す。null の Initialize が例外でも中の画像は null になる)
+                try { scalablePictureBoxAdvanced.PseudoBitmap = before; } catch { } // 261105Cl 追加
+            MessageBox.Show(this, Localization.Loc(en: "Could not read the file:", ja: "ファイルを読み込めませんでした:", de: "Die Datei konnte nicht gelesen werden:", // 261105Cl 追加
+                fr: "Impossible de lire le fichier :", es: "No se pudo leer el archivo:", pt: "Não foi possível ler o arquivo:", it: "Impossibile leggere il file:",
+                ru: "Не удалось прочитать файл:", zhHans: "无法读取文件:", zhHant: "無法讀取檔案:", ko: "파일을 읽을 수 없습니다:") + "\r\n" + fileName);
+            return; // 261105Cl 追加
+        }
+        dataSet.DataTableSpot.Clear(); // 261105Cl 移動
+        dataSet.DataTableCandidate.Clear(); // 261105Cl 移動
+        scalablePictureBoxAdvanced.Symbols.RemoveAll(s => s.Tag == tagCalcSpot); // 261105Cl 移動
 
-        dataSet.DataTableCandidate.Clear();
-        scalablePictureBoxAdvanced.Symbols.RemoveAll(s => s.Tag == tagCalcSpot);
-
-        scalablePictureBoxAdvanced.ReadImage(fileName);
-
-        if (fileName.EndsWith("dm3") || fileName.EndsWith("dm4"))
+        // 261105Cl 変更 (監査 I15): 拡張子は大文字小文字を区別しない (ImageIO.ReadImage と同じ)。旧は "X.DM3" などで画像は読めても、ピクセルサイズ・加速電圧などを取り込まなかった
+        //if (fileName.EndsWith("dm3") || fileName.EndsWith("dm4")) // 261105Cl 変更前
+        if (fileName.EndsWith("dm3", StringComparison.OrdinalIgnoreCase) || fileName.EndsWith("dm4", StringComparison.OrdinalIgnoreCase)) // 261105Cl
         {//DigitalMicroGraphデータであればスケールの情報などを取得
             if (Ring.DigitalMicrographProperty.PixelUnit == LengthUnitEnum.NanoMeterInverse)
             {
@@ -128,7 +176,8 @@ public partial class FormSpotIDV2 : FormBase
                 numericBoxPixelSize.Value = Ring.DigitalMicrographProperty.PixelScale;
             }
         }
-        else if (fileName.EndsWith("mrc"))
+        //else if (fileName.EndsWith("mrc")) // 261105Cl 変更前
+        else if (fileName.EndsWith("mrc", StringComparison.OrdinalIgnoreCase)) // 261105Cl
         {
             if (Ring.MRC.Pixel_size_X > 1)
             {
@@ -139,7 +188,8 @@ public partial class FormSpotIDV2 : FormBase
                 PixelSize = CameraLength * Math.Tan(2 * Math.Asin(waveLengthControl1.WaveLength * Ring.MRC.Pixel_size_X * 1E-9 / 2));
             }
         }
-        else if (fileName.EndsWith("ipa"))
+        //else if (fileName.EndsWith("ipa")) // 261105Cl 変更前
+        else if (fileName.EndsWith("ipa", StringComparison.OrdinalIgnoreCase)) // 261105Cl
         {
             radioButtonPixelSizeUnitReal.Checked = true;
             waveLengthControl1.WaveSource = Ring.IP.WaveProperty.Source;
@@ -151,7 +201,8 @@ public partial class FormSpotIDV2 : FormBase
             var r = fit(direct);
             dataSet.DataTableSpot.Add(true, area, r.PrmsPv, r.PrmsBg, r.R);
         }
-        else if (fileName.EndsWith("tif") && Ring.TIA_PixelSize != 0)
+        //else if (fileName.EndsWith("tif") && Ring.TIA_PixelSize != 0) // 261105Cl 変更前
+        else if (fileName.EndsWith("tif", StringComparison.OrdinalIgnoreCase) && Ring.TIA_PixelSize != 0) // 261105Cl
             PixelSize = WaveLength * CameraLength / Ring.TIA_PixelSize * 1E-11;
 
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
@@ -209,27 +260,39 @@ public partial class FormSpotIDV2 : FormBase
 
     #endregion 画像読み込み関連
 
-    #region カメラ長、波長、ピクセルサイズが変更されたとき 
-    private void WaveLengthControl1_WavelengthChanged(object sender, EventArgs e)
-    {
-        if (dataSet.DataTableSpot.AreaDetector != null)
-            dataSet.DataTableSpot.AreaDetector.WaveLength = waveLengthControl1.WaveLength;
-        dataSet.DataTableSpot.ResetDspacing();
-    }
+    #region カメラ長、波長、ピクセルサイズが変更されたとき
+    // 261105Cl 変更 (監査 I6): 波長・カメラ長・ピクセルサイズ (値と単位) のどれが変わっても、検出器の 3 つの値をまとめて設定し直す。
+    //  ピクセルサイズを nm⁻¹ で入れているとき、mm に直した値 (PixelSize) は波長とカメラ長にもよるが、旧は波長・カメラ長の変更で Resolution を
+    //  直さず、単位の切り替え (radioButtonPixelSizeUnitReal_CheckedChanged) では何も直さなかったので、表の d と同定に使う観測ベクトル
+    //  (ReciprocalVectors) が古い分解能のままだった
+    //private void WaveLengthControl1_WavelengthChanged(object sender, EventArgs e) // 261105Cl 変更前
+    //{
+    //    if (dataSet.DataTableSpot.AreaDetector != null)
+    //        dataSet.DataTableSpot.AreaDetector.WaveLength = waveLengthControl1.WaveLength;
+    //    dataSet.DataTableSpot.ResetDspacing();
+    //}
+    private void WaveLengthControl1_WavelengthChanged(object sender, EventArgs e) => NumericBoxPixelSize_ValueChanged(sender, e); // 261105Cl 変更
 
     private void NumericBoxPixelSize_ValueChanged(object sender, EventArgs e)
     {
         if (dataSet.DataTableSpot.AreaDetector != null)
-            dataSet.DataTableSpot.AreaDetector.Resolution = PixelSize;
+        {// 261105Cl
+            dataSet.DataTableSpot.AreaDetector.WaveLength = waveLengthControl1.WaveLength; // 261105Cl 追加
+            dataSet.DataTableSpot.AreaDetector.CameraLength = numericBoxCameraLength.Value; // 261105Cl 追加
+            dataSet.DataTableSpot.AreaDetector.Resolution = PixelSize; // 261105Cl 字下げ
+        }// 261105Cl
         dataSet.DataTableSpot.ResetDspacing();
+        if (checkBoxShowDebyeRing.Checked) // 261105Cl 追加 (監査 I10): 校正が変わったら Debye リングの半径を計算し直す (面の一覧は作り直さない)
+            SetCrystal(); // 261105Cl 追加
     }
 
-    private void NumericBoxCameraLength_ValueChanged(object sender, EventArgs e)
-    {
-        if (dataSet.DataTableSpot.AreaDetector != null)
-            dataSet.DataTableSpot.AreaDetector.CameraLength = numericBoxCameraLength.Value;
-        dataSet.DataTableSpot.ResetDspacing();
-    }
+    //private void NumericBoxCameraLength_ValueChanged(object sender, EventArgs e) // 261105Cl 変更前
+    //{
+    //    if (dataSet.DataTableSpot.AreaDetector != null)
+    //        dataSet.DataTableSpot.AreaDetector.CameraLength = numericBoxCameraLength.Value;
+    //    dataSet.DataTableSpot.ResetDspacing();
+    //}
+    private void NumericBoxCameraLength_ValueChanged(object sender, EventArgs e) => NumericBoxPixelSize_ValueChanged(sender, e); // 261105Cl 変更
     #endregion
 
     #region マウスイベント
@@ -794,6 +857,7 @@ public partial class FormSpotIDV2 : FormBase
                     scalablePictureBoxAdvanced.Symbols.Add(new ScalablePictureBox.Symbol("", direct, 50 * i, Color.Yellow) { Tag = tagScale });
             }
         }
+        setDebyeRings(); // 261105Cl 追加 (監査 I10): 直接スポットの位置・校正 (ResetDspacing で d が書き換わる) が変わったら、Debye リングもガイド円と同じく置き直す
 
         scalablePictureBoxAdvanced.Refresh();
         if (FormSpotDetails != null && FormSpotDetails.Visible)
@@ -853,7 +917,10 @@ public partial class FormSpotIDV2 : FormBase
                     bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemChanged, pos));
                 }
                 //Fitボタンを押したとき
-                else if (dataGridViewSpots.Columns[e.ColumnIndex].HeaderText.Contains("Fit"))
+                //else if (dataGridViewSpots.Columns[e.ColumnIndex].HeaderText.Contains("Fit")) // 261105Cl 変更前
+                // 261105Cl 変更 (監査 #37): 見出しの文字列でなく列そのもので判定する。見出しは resx で訳される (de "Anp."、fr "Ajust."、zh "拟合" など) ので、
+                //  英語と ja (訳なし) 以外の 9 言語ではボタンを押しても何も起きなかった
+                else if (dataGridViewSpots.Columns[e.ColumnIndex] == Column1) // 261105Cl
                 {
                     sw.Restart();
                     skipEvent = true;
@@ -903,7 +970,8 @@ public partial class FormSpotIDV2 : FormBase
 
     private void buttonCopyToClipboard_Click(object sender, EventArgs e)
     {
-        if (dataSet.DataTableSpot.Rows.Count > 1)
+        //if (dataSet.DataTableSpot.Rows.Count > 1) // 261105Cl 変更前
+        if (dataSet.DataTableSpot.Rows.Count > 0) // 261105Cl 変更 (監査 I9): スポットが 1 個 (ダイレクトだけ) のときも Copy/Save する (旧は 1 個だと何もしなかった)
         {
             // 260801Cl 変更: テキスト生成を GetSpotListText() に移し、マクロ SpotID.SpotList() と同一内容にした。
             // 旧: ここで StringBuilder に組み立て、CSV 保存時は sb.ToString().Replace('\t', ',') していた。
@@ -921,9 +989,12 @@ public partial class FormSpotIDV2 : FormBase
 
     /// <summary>260801Cl 追加: 観測スポット表のテキストを生成して返す (delimiter が '\t' なら TSV, ',' なら CSV)。
     /// 出力される列は dataGridViewSpots の表示列に従い、CSV は File &gt; Load / マクロ SpotID.LoadFile() で読み戻せる。
-    /// 数値の書式は GUI の表示 (現在のカルチャ) に従う点に注意 (読み戻し側 readCSV も同じ規約)。</summary>
+    /// 数値の書式は GUI の表示 (現在のカルチャ) に従う点に注意 (読み戻し側 readCSV も同じ規約)。
+    /// 261105Cl 変更 (監査 I9): CSV (delimiter が ',') の数値は InvariantCulture (小数点 '.') で書く。小数点が ',' の地域 (de, fr ほか) では
+    /// 区切りの ',' と小数点が混ざって列がずれ、自分で保存した CSV を読み戻せなかった。TSV (クリップボード) は従来どおり現在のカルチャ</summary>
     public string GetSpotListText(char delimiter = ',')
     {
+        var culture = delimiter == ',' ? System.Globalization.CultureInfo.InvariantCulture : System.Globalization.CultureInfo.CurrentCulture; // 261105Cl 追加
         var sb = new StringBuilder();
         sb.Append("Direct" + delimiter);
         for (int i = 1; i < dataGridViewSpots.Columns.Count - 1; i++)
@@ -939,7 +1010,8 @@ public partial class FormSpotIDV2 : FormBase
             sb.Append(((bool)dataGridViewSpots[0, j].Value ? "*" : "") + delimiter);
             for (int i = 1; i < dataGridViewSpots.ColumnCount - 1; i++)
                 if (dataGridViewSpots.Columns[i].Visible)
-                    sb.Append(dataGridViewSpots[i, j].Value.ToString() + delimiter);
+                    //sb.Append(dataGridViewSpots[i, j].Value.ToString() + delimiter); // 261105Cl 変更前
+                    sb.Append(Convert.ToString(dataGridViewSpots[i, j].Value, culture) + delimiter); // 261105Cl
             sb.Append("\r\n");
         }
         return sb.ToString();
@@ -1007,7 +1079,8 @@ public partial class FormSpotIDV2 : FormBase
         try
         {
             bindingSourceObsSpots.DataMember = "";
-            var f = new Func<string, double>(x => Convert.ToDouble(x));
+            //var f = new Func<string, double>(x => Convert.ToDouble(x)); // 261105Cl 変更前
+            var f = new Func<string, double>(x => Convert.ToDouble(x, System.Globalization.CultureInfo.InvariantCulture)); // 261105Cl 変更 (監査 I9): GetSpotListText の CSV と同じ InvariantCulture で読む
 
             var dataList = new List<string[]>();
             using (var sr = new StreamReader(filename))
@@ -1016,7 +1089,21 @@ public partial class FormSpotIDV2 : FormBase
                     while (sr.Peek() > -1)
                         dataList.Add(sr.ReadLine().Split(new[] { ',' }));
                 else
-                    return;
+                {// 261105Cl
+                    // 261105Cl 追加 (監査 I9): スポット一覧でない CSV は知らせる (旧は黙って戻り、下の DataMember を戻さないので表が空のままだった。戻すのは finally で)
+                    MessageBox.Show(this, Localization.Loc(en: "This CSV file is not a spot list saved by Spot ID v2 (its first line must start with \"Direct,\").", // 261105Cl 追加
+                        ja: "この CSV ファイルは Spot ID v2 で保存したスポット一覧ではありません (1 行目が \"Direct,\" で始まる必要があります)。",
+                        de: "Diese CSV-Datei ist keine mit Spot ID v2 gespeicherte Reflexliste (die erste Zeile muss mit \"Direct,\" beginnen).",
+                        fr: "Ce fichier CSV n'est pas une liste de taches enregistrée par Spot ID v2 (sa première ligne doit commencer par \"Direct,\").",
+                        es: "Este archivo CSV no es una lista de manchas guardada por Spot ID v2 (su primera línea debe empezar por \"Direct,\").",
+                        pt: "Este arquivo CSV não é uma lista de pontos salva pelo Spot ID v2 (a primeira linha deve começar com \"Direct,\").",
+                        it: "Questo file CSV non è un elenco di spot salvato da Spot ID v2 (la prima riga deve iniziare con \"Direct,\").",
+                        ru: "Этот CSV-файл не является списком рефлексов, сохранённым Spot ID v2 (первая строка должна начинаться с \"Direct,\").",
+                        zhHans: "此 CSV 文件不是由 Spot ID v2 保存的斑点列表 (第一行必须以 \"Direct,\" 开头)。",
+                        zhHant: "此 CSV 檔案不是由 Spot ID v2 儲存的斑點清單 (第一行必須以 \"Direct,\" 開頭)。",
+                        ko: "이 CSV 파일은 Spot ID v2에서 저장한 스폿 목록이 아닙니다 (첫 줄이 \"Direct,\"로 시작해야 합니다)."));
+                    return; // 261105Cl 字下げ
+                }// 261105Cl
             }
 
             dataList.Sort((a, b) =>
@@ -1025,6 +1112,7 @@ public partial class FormSpotIDV2 : FormBase
                 return (c > 0) ? 1 : (c < 0) ? -1 : 0;
             });
 
+            var offset = dataSet.DataTableSpot.Rows.Count; // 261105Cl 追加 (監査 I9): 既にスポットがあるときは後ろに足されるので、hkl を書く行をずらす (旧は先頭の行に書いていた)
             for (int i = 0; i < dataList.Count; i++)
             {
                 var d = dataList[i];
@@ -1033,14 +1121,22 @@ public partial class FormSpotIDV2 : FormBase
 
                 dataSet.DataTableSpot.Add(d[0] == "*", Range, X0, Y0, H1, H2, Theta, Eta, A, B0, Bx, By, R);
                 if (d.Length == 17 && d[15] != "")
-                    dataSet.DataTableSpot.SetHKL(i, d[15]);
+                    //dataSet.DataTableSpot.SetHKL(i, d[15]); // 261105Cl 変更前
+                    dataSet.DataTableSpot.SetHKL(offset + i, d[15]); // 261105Cl
 
             }
 
-            bindingSourceObsSpots.DataMember = "DataTableSpot";
+            //bindingSourceObsSpots.DataMember = "DataTableSpot"; // 261105Cl 変更前 (下の finally へ。例外・途中の return でも戻す)
             scalablePictureBoxAdvanced.Refresh();
         }
-        catch { MessageBox.Show("File open error"); }
+        //catch { MessageBox.Show("File open error"); } // 261105Cl 変更前
+        catch (Exception ex) // 261105Cl 変更: 11 言語に
+        {
+            MessageBox.Show(this, Localization.Loc(en: "Could not read the file:", ja: "ファイルを読み込めませんでした:", de: "Die Datei konnte nicht gelesen werden:", // 261105Cl
+                fr: "Impossible de lire le fichier :", es: "No se pudo leer el archivo:", pt: "Não foi possível ler o arquivo:", it: "Impossibile leggere il file:",
+                ru: "Не удалось прочитать файл:", zhHans: "无法读取文件:", zhHant: "無法讀取檔案:", ko: "파일을 읽을 수 없습니다:") + "\r\n" + filename + "\r\n" + ex.Message);
+        }
+        finally { bindingSourceObsSpots.DataMember = "DataTableSpot"; } // 261105Cl 追加 (監査 I9): 旧は例外・スポット一覧でない CSV のとき "" のまま残り、表が空になった
     }
 
     #endregion
@@ -1048,13 +1144,47 @@ public partial class FormSpotIDV2 : FormBase
     #region スポット同定
     private void buttonIdentifySpots_Click(object sender, EventArgs e)
     {
+        // 261105Cl 追加 (監査 #30): 画像が無い・スポットが 2 個未満・結晶が未選択のときは始めない (マクロの Identify() と同じ条件)。
+        //  旧は画像の読込前に押すと identifySpots の p.Width で、スポット 0 個だと ReciprocalVectors が null で例外になり、
+        //  完了ハンドラの e.Result の参照でさらに例外になって、主窓が無効 (FormMain.Enabled = false) のまま戻らなかった
+        if (scalablePictureBoxAdvanced.PseudoBitmap == null || dataSet.DataTableSpot.Rows.Count < 2) // 261105Cl 追加
+        {
+            MessageBox.Show(this, Localization.Loc(en: "Load a diffraction pattern and register at least two spots before identifying.", // 261105Cl 追加
+                ja: "同定の前に回折図形を読み込み、スポットを 2 個以上登録してください。",
+                de: "Laden Sie vor der Identifizierung ein Beugungsbild und registrieren Sie mindestens zwei Reflexe.",
+                fr: "Chargez un cliché de diffraction et enregistrez au moins deux taches avant l'identification.",
+                es: "Cargue un patrón de difracción y registre al menos dos manchas antes de identificar.",
+                pt: "Carregue um padrão de difração e registre pelo menos dois pontos antes de identificar.",
+                it: "Caricare un pattern di diffrazione e registrare almeno due spot prima dell'identificazione.",
+                ru: "Перед идентификацией загрузите дифракционную картину и отметьте не менее двух рефлексов.",
+                zhHans: "识别前请先读入衍射图样并登记至少两个斑点。", zhHant: "識別前請先讀入繞射圖樣並登錄至少兩個斑點。",
+                ko: "식별하기 전에 회절 패턴을 불러오고 스폿을 두 개 이상 등록하세요."));
+            return; // 261105Cl 追加
+        }
+        var crystals = FormMain.listBox.SelectedItems.Cast<Crystal>().ToList(); // 261105Cl 追加 (旧は RunWorkerAsync の引数で直接作っていた)
+        if (crystals.Count == 0) // 261105Cl 追加
+        {
+            MessageBox.Show(this, Localization.Loc(en: "Select at least one crystal in the crystal list of the main window.", // 261105Cl 追加
+                ja: "メインウィンドウの結晶リストで結晶を 1 つ以上選んでください。",
+                de: "Wählen Sie in der Kristallliste des Hauptfensters mindestens einen Kristall aus.",
+                fr: "Sélectionnez au moins un cristal dans la liste des cristaux de la fenêtre principale.",
+                es: "Seleccione al menos un cristal en la lista de cristales de la ventana principal.",
+                pt: "Selecione pelo menos um cristal na lista de cristais da janela principal.",
+                it: "Selezionare almeno un cristallo nell'elenco dei cristalli della finestra principale.",
+                ru: "Выберите хотя бы один кристалл в списке кристаллов главного окна.",
+                zhHans: "请在主窗口的晶体列表中选择至少一个晶体。", zhHant: "請在主視窗的晶體清單中選擇至少一個晶體。",
+                ko: "메인 창의 결정 목록에서 결정을 하나 이상 선택하세요."));
+            return; // 261105Cl 追加
+        }
+
         sw.Restart();
         clearStatusLabel();
         FormMain.Enabled = false;
         buttonIdentifySpots.Visible = false;
         buttonStop.Visible = true;
         //260801Cl 変更: 選択結晶の収集を Cast<Crystal>() に (旧: for ループで 1 件ずつ Add。Identify() と同じ処理が二重にあった)
-        backgroundWorkerSpotID.RunWorkerAsync(FormMain.listBox.SelectedItems.Cast<Crystal>().ToList());
+        //backgroundWorkerSpotID.RunWorkerAsync(FormMain.listBox.SelectedItems.Cast<Crystal>().ToList()); // 261105Cl 変更前
+        backgroundWorkerSpotID.RunWorkerAsync(crystals); // 261105Cl 変更 (上で集めた一覧を渡す)
     }
 
     private void buttonStop_Click(object sender, EventArgs e)
@@ -1065,15 +1195,35 @@ public partial class FormSpotIDV2 : FormBase
 
     private void backgroundWorkerSpotID_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
-        if (e.Result != null && e.Result is List<List<Grain>> candidates)
+        // 261105Cl 変更 (監査 #30): e.Error があるときに e.Result を読むと TargetInvocationException になり、下のボタン・主窓の復帰まで届かなかった。
+        //  先に e.Error を見て知らせ、復帰は finally で必ず行う
+        //if (e.Result != null && e.Result is List<List<Grain>> candidates) // 261105Cl 変更前
+        //{
+        //    setCandidates(candidates); // 260801Cl 変更: 表への反映を setCandidates() へ (マクロの同期実行と共通化)
+        //    MessageBox.Show(candidates.Count.ToString() + " candidates found.");
+        //}
+        //
+        //buttonIdentifySpots.Visible = true;
+        //buttonStop.Visible = false;
+        //FormMain.Enabled = true;
+        try // 261105Cl
         {
-            setCandidates(candidates); // 260801Cl 変更: 表への反映を setCandidates() へ (マクロの同期実行と共通化)
-            MessageBox.Show(candidates.Count.ToString() + " candidates found.");
+            if (e.Error != null) // 261105Cl 追加
+                MessageBox.Show(this, Localization.Loc(en: "Identification failed: ", ja: "同定に失敗しました: ", de: "Identifizierung fehlgeschlagen: ", // 261105Cl 追加
+                    fr: "Échec de l'identification : ", es: "La identificación falló: ", pt: "A identificação falhou: ", it: "Identificazione non riuscita: ",
+                    ru: "Ошибка идентификации: ", zhHans: "识别失败: ", zhHant: "識別失敗: ", ko: "식별 실패: ") + e.Error.Message);
+            else if (e.Result is List<List<Grain>> candidates) // 261105Cl
+            {
+                setCandidates(candidates); // 260801Cl 変更: 表への反映を setCandidates() へ (マクロの同期実行と共通化) // 261105Cl 字下げ
+                MessageBox.Show(candidates.Count.ToString() + " candidates found."); // 261105Cl 字下げ
+            }
         }
-
-        buttonIdentifySpots.Visible = true;
-        buttonStop.Visible = false;
-        FormMain.Enabled = true;
+        finally // 261105Cl
+        {
+            buttonIdentifySpots.Visible = true; // 261105Cl 字下げ
+            buttonStop.Visible = false; // 261105Cl 字下げ
+            FormMain.Enabled = true; // 261105Cl 字下げ
+        }
     }
 
     /// <summary>260801Cl 追加: 同定結果を候補テーブルへ反映する (GUI 実行とマクロ実行の共通処理)。
@@ -1104,7 +1254,27 @@ public partial class FormSpotIDV2 : FormBase
         skipProgressChangedEvent = false;
     }
 
+    /// <summary>261105Cl 追加 (監査 I7): 同定 (identifySpotsCore) は主窓の結晶リストの結晶オブジェクトそのものの AngleResolution (180°)・GrainSize (6 nm)・
+    /// Crystallites (方位 1 つ)・VectorOfG (強度なし・消滅則で間引いたもの) を書き換える。旧はそのまま戻さなかったので、以後の多結晶回折は
+    /// AngleResolution = 180° (SquareDiv = 0) の結晶子で空の図形になり、書き換えた値は結晶リストの保存にも残り、回折シミュレーターは
+    /// 強度のない VectorOfG を使うことがあった。同定の間だけ書き換え、終わったら (例外でも) 元に戻す。
+    /// 候補のスポット位置 (Grain.Spots) は同定の中で計算し終えているので、戻した後も表示に使える</summary>
     private List<List<Grain>> identifySpots(List<Crystal> crystals)
+    {
+        var saved = crystals.Select(c => (c.AngleResolution, c.GrainSize, c.Crystallites, c.VectorOfG, c.VectorOfG_P)).ToList();
+        try
+        {
+            return identifySpotsCore(crystals);
+        }
+        finally
+        {
+            for (int j = 0; j < crystals.Count; j++)
+                (crystals[j].AngleResolution, crystals[j].GrainSize, crystals[j].Crystallites, crystals[j].VectorOfG, crystals[j].VectorOfG_P) = saved[j];
+        }
+    }
+
+    //private List<List<Grain>> identifySpots(List<Crystal> crystals) // 261105Cl 変更前
+    private List<List<Grain>> identifySpotsCore(List<Crystal> crystals) // 261105Cl 変更: 本体はそのまま。上の identifySpots から呼ぶ
     {
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
         var Detector = new AreaDetector(p.Width, p.Height, PixelSize, dataSet.DataTableSpot.DirectSpotPosition, waveLengthControl1.Property, CameraLength);
@@ -1125,7 +1295,11 @@ public partial class FormSpotIDV2 : FormBase
                 c.GrainSize = 6;
                 c.Crystallites.SetGVector(Detector, false, checkBoxIgnoreMultipleDiffraction.Checked, false);
             }
-            else if (waveLengthControl1.Property.Source == WaveSource.Xray)
+            //else if (waveLengthControl1.Property.Source == WaveSource.Xray) // 261105Cl 変更前
+            // 261105Cl 変更 (監査 #31): 中性子の分岐が無く、SetGVector を呼ばないまま古い (別の波長・d の下限で作った) VectorOfG と未作成の Crystallites.G で探索して、
+            //   候補ができると GetSpotPosition で例外になっていた。中性子も X 線と同じく運動学的に扱い (多重回折による禁制反射は考えない)、消滅則で消える反射を除く。
+            //   ここでは強度を計算しない (Detector.WaveSource = None) ので、X 線の散乱因子と中性子の散乱長の違いは効かず、位置は波長だけで決まる
+            else if (waveLengthControl1.Property.Source is WaveSource.Xray or WaveSource.Neutron)
             {
                 c.GrainSize = 6;
                 c.Crystallites.SetGVector(Detector, false, true, false);
@@ -1146,7 +1320,8 @@ public partial class FormSpotIDV2 : FormBase
                 // 同数の候補の順序、ひいては直後の近接方位の間引きでどの代表が残るかまで揺らいでいた。
                 // 完全同点まで解決する全順序 (compareGrain) で並べ替えて再現性を確保する。
                 // 旧: var cand = getRotationCandidatesFrom2Spots2(...).OrderByDescending(c => c.Indices.Length).ToList();
-                var cand = getRotationCandidatesFrom2Spots2(vec[id].ToArray(), v2.ToArray(), exceptedIndices);
+                //var cand = getRotationCandidatesFrom2Spots2(vec[id].ToArray(), v2.ToArray(), exceptedIndices); // 261105Cl 変更前
+                var cand = getRotationCandidatesFrom2Spots2(vec[id].ToArray(), v2.ToArray(), exceptedIndices, crystals[id].Symmetry); // 261105Cl 変更 (監査 I8): その結晶の対称性で代表指数を選ぶ
                 if (cand == null)//260801Cl 追加: Stop 押下時は null が返る (旧実装はここで NullReferenceException になっていた)
                     return [];
                 cand.Sort(compareGrain);
@@ -1156,8 +1331,13 @@ public partial class FormSpotIDV2 : FormBase
                         if (Math.Cos(ToleranceAngle) < Math.Abs(((cand[k].Rotation * cand[j].Rotation.Inverse()).SumOfDiagonalCompenent() - 1) / 2))
                             cand.RemoveAt(k--);
                     cand[j].ID = id;
-                    cand[j].CrystalName = ((Crystal)FormMain.listBox.SelectedItems[id]).Name;
-                    cand[j].Spots = ((Crystal)FormMain.listBox.SelectedItems[id]).Crystallites.GetSpotPosition(Detector, cand[j].Rotation);
+                    // 261105Cl 変更 (監査 I8): 主窓のリストの「今の」選択 (FormMain.listBox.SelectedItems、別スレッドから読んでいた) でなく、同定を始めたときに集めた crystals[id] を使う。
+                    //  同定中に選択を変えると、別の結晶の名前・スポット位置が付いていた
+                    //cand[j].CrystalName = ((Crystal)FormMain.listBox.SelectedItems[id]).Name; // 261105Cl 変更前
+                    //cand[j].Spots = ((Crystal)FormMain.listBox.SelectedItems[id]).Crystallites.GetSpotPosition(Detector, cand[j].Rotation); // 261105Cl 変更前
+                    cand[j].Crystal = crystals[id]; // 261105Cl 追加 (Grain.Crystal。精密化・粒の選択で、主窓の結晶と照合する)
+                    cand[j].CrystalName = crystals[id].Name; // 261105Cl
+                    cand[j].Spots = crystals[id].Crystallites.GetSpotPosition(Detector, cand[j].Rotation); // 261105Cl
                 }
                 return cand;
             });
@@ -1263,8 +1443,12 @@ public partial class FormSpotIDV2 : FormBase
     /// <param name="gVectors"></param>
     /// <param name="obsSpotsReciprocal"></param>
     /// <returns></returns>
-    private List<Grain> getRotationCandidatesFrom2Spots2(Vector3D[] vectorOfG, Vector3DBase[] obsSpotsReciprocal, int[] exceptedIndices = null)
+    //private List<Grain> getRotationCandidatesFrom2Spots2(Vector3D[] vectorOfG, Vector3DBase[] obsSpotsReciprocal, int[] exceptedIndices = null) // 261105Cl 変更前
+    // 261105Cl 変更 (監査 I8): symmetry (vectorOfG の結晶の対称性) を追加。旧は下の代表指数の判定に常に主窓の結晶 (FormMain.Crystal) の対称性を使っていたので、
+    //  複数の結晶で同定すると 2 番目以降の結晶も 1 番目 (主窓) の点群で代表指数を選び、点群が違うと探索する組み合わせが欠けたり余ったりした
+    private List<Grain> getRotationCandidatesFrom2Spots2(Vector3D[] vectorOfG, Vector3DBase[] obsSpotsReciprocal, int[] exceptedIndices = null, Symmetry? symmetry = null)
     {
+        var sym = symmetry ?? FormMain.Crystal.Symmetry; // 261105Cl 追加 (省略時は従来どおり主窓の結晶。Symmetry は構造体)
         //maxNum個数のobsSpotに対する候補となるgVectorsを定義しておく
         var gVectors = new List<List<Vector3D>>();
         for (int i = 0; i < obsSpotsReciprocal.Length; i++)
@@ -1290,7 +1474,8 @@ public partial class FormSpotIDV2 : FormBase
         {
             for (int i = 0; i < max; i++)
             {
-                foreach (var vec1 in gVectors2[i].Where(g => FormMain.Crystal.Symmetry.IsPlaneRootIndex(g.Index)))
+                //foreach (var vec1 in gVectors2[i].Where(g => FormMain.Crystal.Symmetry.IsPlaneRootIndex(g.Index))) // 261105Cl 変更前
+                foreach (var vec1 in gVectors2[i].Where(g => sym.IsPlaneRootIndex(g.Index))) // 261105Cl
                 {
                     var angle = Vector3DBase.AngleBetVectors(obsSpotsReciprocal2[i], obsSpotsReciprocal2[max]);//i番目のスポットと、j番目のスポットのなす角度
                     if (angle > 30.0 / 180.0 * Math.PI && angle < 150.0 / 180.0 * Math.PI)
@@ -1423,6 +1608,9 @@ public partial class FormSpotIDV2 : FormBase
         public int ID;
         public string CrystalName;
 
+        /// <summary>261105Cl 追加: この粒を同定した結晶 (主窓の結晶リストの結晶オブジェクト)。粒の選択・精密化で、主窓の結晶と同じものかを確かめるのに使う</summary>
+        public Crystal Crystal;
+
         // 260801Cl 削除: 呼び出し箇所ゼロで、かつ新しい compareGrain (割当スポット数優先) と矛盾する順序だったため。
         // 残しておくと引数なしの Sort()/OrderBy() が意図と違う順序を黙って返す罠になる。
         // 旧: public int CompareTo(object obj) => Residual.CompareTo(((Grain)obj).Residual);
@@ -1513,7 +1701,18 @@ public partial class FormSpotIDV2 : FormBase
                     calcSpots.Add(s);
                 }
 
-                FormMain.SetRotation(g.Rotation);
+                // 261105Cl 追加 (監査 I11): 複数の結晶で同定したとき、粒の結晶が主窓の結晶と違えば、主窓のリストでその結晶を選んでから方位を設定する
+                //  (FormSpotIDv1Results のダブルクリックと同じ選び方)。旧は別の結晶の粒の方位を主窓の結晶に設定し、晶帯軸の表示・精密化もその結晶で行っていた
+                if (g.Crystal != null && g.Crystal != FormMain.Crystal && FormMain.listBox.Items.IndexOf(g.Crystal) is int listIndex && listIndex >= 0) // 261105Cl 追加
+                {
+                    var mode = FormMain.listBox.SelectionMode; // 261105Cl 追加
+                    FormMain.listBox.SelectionMode = SelectionMode.One; // 261105Cl 追加
+                    FormMain.listBox.SelectedIndex = listIndex; // 261105Cl 追加
+                    FormMain.listBox.SelectionMode = mode; // 261105Cl 追加
+                }
+                //FormMain.SetRotation(g.Rotation); // 261105Cl 変更前
+                if (g.Crystal == null || g.Crystal == FormMain.Crystal) // 261105Cl 追加: 結晶がリストから消えているなど、主窓で選べなかったときは別の結晶へ方位を設定しない
+                    FormMain.SetRotation(g.Rotation); // 261105Cl 字下げ
             }
 
             scalablePictureBoxAdvanced.Symbols.AddRange(calcSpots);
@@ -1560,20 +1759,112 @@ public partial class FormSpotIDV2 : FormBase
 
     private void radioButtonSingleGrain_CheckedChanged(object sender, EventArgs e) => numericBoxMaxGrainNum.Enabled = radioButtonMultiGrain.Checked;
 
+    /// <summary>261105Cl 追加 (監査 I4): 電子線のときの「禁制反射を無視」のチェックの状態。X 線・中性子では、同定は運動学的に扱うので
+    /// チェックによらず常に禁制反射を除く (identifySpotsCore)。そのときはチェックを付けて無効 (灰色) にし、ここに覚えた状態へ電子線で戻す</summary>
+    private bool ignoreProhibitedForElectron;
+
+    /// <summary>261105Cl 追加 (監査 I4): 「禁制反射を無視」を電子線以外のためにチェック済みの灰色に固定しているか
+    /// (Control.Enabled は親が無効のときも false を返すので、状態はこちらで持つ)</summary>
+    private bool ignoreProhibitedFixed;
+
+    /// <summary>261105Cl 追加 (監査 I4): 線源が替わったとき、「禁制反射を無視」を電子線以外ではチェック済みの灰色にし、電子線に戻したら元の状態に戻す</summary>
+    private void WaveLengthControl1_WaveSourceChanged(object sender, EventArgs e)
+    {
+        var fix = waveLengthControl1.WaveSource != WaveSource.Electron;
+        if (fix == ignoreProhibitedFixed) return; // 状態は変わらない (線源のラジオボタンの切り替えでは 2 回呼ばれる)
+        ignoreProhibitedFixed = fix;
+        if (fix)
+        {
+            ignoreProhibitedForElectron = checkBoxIgnoreMultipleDiffraction.Checked;
+            checkBoxIgnoreMultipleDiffraction.Checked = true;
+            checkBoxIgnoreMultipleDiffraction.Enabled = false;
+        }
+        else
+        {
+            checkBoxIgnoreMultipleDiffraction.Enabled = true;
+            checkBoxIgnoreMultipleDiffraction.Checked = ignoreProhibitedForElectron;
+        }
+    }
+
     private void checkBoxShowDebyeRing_CheckedChanged(object sender, EventArgs e)
     {
         SetCrystal();
-        for (int i = 0; i < scalablePictureBoxAdvanced.Symbols.Count; i++)
-            if (scalablePictureBoxAdvanced.Symbols[i].Shape == ScalablePictureBox.SymbolShape.Circle)
-                scalablePictureBoxAdvanced.Symbols[i].SymbolVisible = checkBoxShowDebyeRing.Checked;
-        scalablePictureBoxAdvanced.Refresh();
+        // 261105Cl 変更 (監査 I10 の決定: Debye リングの描画を戻す): リングは SetCrystal (setDebyeRings) がチェックに従って置き直すので、表示の切り替えは要らない
+        //for (int i = 0; i < scalablePictureBoxAdvanced.Symbols.Count; i++) // 261105Cl 変更前 (5 行)
+        //    //if (scalablePictureBoxAdvanced.Symbols[i].Shape == ScalablePictureBox.SymbolShape.Circle) // 261105Cl 変更前
+        //    // 261105Cl 変更 (監査 I10): ガイド円 (Guide circles, tagScale) も同じ Circle の記号なので、このチェックを外すとガイド円まで消えていた。
+        //    //  Debye リングの描画 (SetCrystal の本体) は以前から無効なので、ガイド円以外の円 (= Debye リング) だけを対象にする
+        //    if (scalablePictureBoxAdvanced.Symbols[i].Shape == ScalablePictureBox.SymbolShape.Circle && scalablePictureBoxAdvanced.Symbols[i].Tag != tagScale) // 261105Cl
+        //        scalablePictureBoxAdvanced.Symbols[i].SymbolVisible = checkBoxShowDebyeRing.Checked;
+        //scalablePictureBoxAdvanced.Refresh(); // 261105Cl 変更前 (SetCrystal の中へ)
     }
 
+    /// <summary>主窓の結晶 (選択) が替わったときに FormMain から呼ばれる。261105Cl 変更 (監査 I10): Debye リングを置き直して描き直す</summary>
     internal void SetCrystal()
     {
-        if (scalablePictureBoxAdvanced.PseudoBitmap == null || scalablePictureBoxAdvanced.PseudoBitmap.Width == 0)
-            return;
+        //if (scalablePictureBoxAdvanced.PseudoBitmap == null || scalablePictureBoxAdvanced.PseudoBitmap.Width == 0) // 261105Cl 変更前 (画像の有無は setDebyeRings の中で見る)
+        //    return;
         //260718Cl: 全体がコメントアウトされていた Debye リング描画の旧実装を削除 (履歴は git 参照)
+        setDebyeRings(); // 261105Cl 追加
+        scalablePictureBoxAdvanced.Refresh(); // 261105Cl 追加
+    }
+
+    /// <summary>261105Cl 追加 (監査 I10): Debye リングの記号の Tag</summary>
+    private readonly object tagDebyeRing = "DebyeRing";
+
+    /// <summary>261105Cl 追加 (監査 I10): Debye リングの色 (主窓で選んだ結晶の順)。ガイド円 (黄)・観測スポット (水色・桃)・計算スポット (緑) と区別できる色</summary>
+    private static readonly Color[] debyeRingColors = [Color.Orange, Color.Magenta, Color.Cyan, Color.Red, Color.White, Color.Lime];
+
+    /// <summary>261105Cl 追加 (監査 I10): 結晶ごとの面間隔の一覧 (Debye リングの元)。面の一覧の生成は重いので、格子定数・空間群 (Key) が変わらず、
+    /// 一覧を作った d の下限 (DMin) より小さい d が要らない限り作り直さない (校正や直接スポットが変わっても、半径の計算だけをやり直す)。
+    /// 鍵は主窓の結晶リストの結晶オブジェクト。Crystal の Equals・GetHashCode は格子定数などの内容で比べる (格子定数を変えるとハッシュが変わる) ので、
+    /// 参照の同一性で引く。D は d の大きい順</summary>
+    private readonly Dictionary<Crystal, (string Key, double DMin, double[] D)> debyeRingCache = new(ReferenceEqualityComparer.Instance);
+
+    /// <summary>261105Cl 追加 (監査 I10): 主窓の結晶リストで選んだ結晶 (複数なら各結晶) の Debye リングを、今の校正 (波長・カメラ長・ピクセルサイズ) と
+    /// 直接スポットの位置で記号として置く (描画 = Refresh は呼び出し側)。チェックが無い・画像や直接スポットが無いときはリングを消すだけ。
+    /// 結晶オブジェクトは書き換えない: 旧実装 (コメントアウトの後 260718Cl に削除) は FormMain.Crystal.SetPlanes で主窓の結晶の面の一覧 (Plane) を
+    /// 書き換えていたので、ここでは格子定数と空間群だけを写した一時的な結晶で面の一覧を作る</summary>
+    private void setDebyeRings()
+    {
+        scalablePictureBoxAdvanced.Symbols?.RemoveAll(s => s.Tag == tagDebyeRing);
+        var p = scalablePictureBoxAdvanced.PseudoBitmap;
+        if (!checkBoxShowDebyeRing.Checked || FormMain == null || scalablePictureBoxAdvanced.Symbols == null || p == null || p.Width <= 0 || p.Height <= 0)
+            return;
+        var direct = DirectSpot;
+        double waveLength = WaveLength, cameraLength = CameraLength, pixelSize = PixelSize;
+        if (direct.IsNaN || !(waveLength > 0) || !(cameraLength > 0) || !(pixelSize > 0))
+            return;
+
+        // 直接スポットから画像の四隅のうち最も遠い所までのリングを置く (それより小さい d のリングは画像に入らない。旧実装と同じ下限)
+        var maxR = new[] { new PointD(0, 0), new PointD(p.Width, 0), new PointD(0, p.Height), new PointD(p.Width, p.Height) }.Max(corner => (corner - direct).Length);
+        var dMin = waveLength / 2 / Math.Sin(Math.Atan(maxR * pixelSize / cameraLength) / 2);
+
+        var crystals = FormMain.listBox.SelectedItems.Cast<Crystal>().ToList();
+        foreach (var c in debyeRingCache.Keys.Where(c => !crystals.Any(s => ReferenceEquals(s, c))).ToList())
+            debyeRingCache.Remove(c); // 選択から外れた結晶の一覧は捨てる
+        for (int j = 0; j < crystals.Count; j++)
+        {
+            var c = crystals[j];
+            var key = $"{c.A} {c.B} {c.C} {c.Alpha} {c.Beta} {c.Gamma} {c.SymmetrySeriesNumber}";
+            if (!debyeRingCache.TryGetValue(c, out var cache) || cache.Key != key || cache.DMin > dMin)
+            {
+                var temp = new Crystal((c.A, c.B, c.C, c.Alpha, c.Beta, c.Gamma), c.SymmetrySeriesNumber, c.Name, Color.Black);
+                // 旧実装と同じ条件: 等価な面・消滅則で消える面・面間隔のまったく同じ面を除き、d の差が 0.0001 nm 以下の面をまとめる
+                temp.SetPlanes(double.MaxValue, dMin, true, true, true, true, HorizontalAxis.d, 0.0001, 0);
+                debyeRingCache[c] = cache = (key, dMin, temp.Plane.Select(plane => plane.d).ToArray());
+            }
+            var color = debyeRingColors[j % debyeRingColors.Length];
+            var lastRadius = double.NegativeInfinity;
+            foreach (var d in cache.D) // d の大きい順 = 半径の小さい順
+            {
+                if (d < dMin) break;
+                var radius = cameraLength * Math.Tan(2 * Math.Asin(waveLength / 2 / d)) / pixelSize; // 旧実装と同じ式 (ピクセル単位)
+                if (radius - lastRadius < 1) continue; // 1 ピクセル未満で隣り合うリングは描き分けられないので間引く (描画の負担を抑える)
+                scalablePictureBoxAdvanced.Symbols.Add(new ScalablePictureBox.Symbol(c.Name, direct, radius, color) { Tag = tagDebyeRing });
+                lastRadius = radius;
+            }
+        }
     }
 
     private void checkBoxDetailsOfSpot_CheckedChanged(object sender, EventArgs e) => FormSpotDetails.Visible = checkBoxDetailsOfSpot.Checked;
@@ -1583,19 +1874,38 @@ public partial class FormSpotIDV2 : FormBase
     #endregion
 
     #region Refine thickness and direction機能
+    /// <summary>261105Cl 追加 (監査 I11): 精密化を計算している結晶。完了ハンドラは、その間に主窓の結晶が替わっても、この結晶の Bethe から結果を読む</summary>
+    private Crystal refineCrystal;
+
     private void ButtonRefineThicknessAndDirection_Click(object sender, EventArgs e)
     {
         if (FormMain.Crystal.Bethe.IsCBED_Busy) return;
         // 261105Cl 追加: 粒が選ばれていないときは何もしない (旧は下の bindingSourceGrains.Current で例外になり、splitContainer1 が無効のまま残った)
         if (bindingSourceGrains.Current is not DataRowView) return;
+        // 261105Cl 追加 (監査 I11): この精密化は電子線の動力学回折 (Bethe 法) と比べるので、電子線のときだけ行う (旧は X 線・中性子でも 200 kV の電子線で計算していた)
+        if (waveLengthControl1.WaveSource != WaveSource.Electron)
+        {
+            toolStripStatusLabelRefine.Text = "Refinement compares the spots with dynamical electron diffraction; set the source in Optics to electrons."; // 261105Cl 追加
+            return; // 261105Cl 追加
+        }
+        // 261105Cl 追加 (監査 I11): 粒を同定した結晶が主窓の結晶と違うときは計算しない (旧は主窓の結晶で計算していた)。粒を選ぶと主窓でもその結晶が選ばれるので、通常は一致する
+        var selectedGrain = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"]; // 261105Cl 追加
+        if (selectedGrain.Crystal != null && selectedGrain.Crystal != FormMain.Crystal)
+        {
+            toolStripStatusLabelRefine.Text = $"The selected grain belongs to {selectedGrain.CrystalName}, not to the crystal in the main window. Select the grain again (this selects its crystal) and retry."; // 261105Cl 追加
+            return; // 261105Cl 追加
+        }
+        refineCrystal = FormMain.Crystal; // 261105Cl 追加
         clearStatusLabel();
         sw.Restart(); // 261105Cl 追加: 進捗表示の経過時間をこの計算の開始から数える (旧はスポット検出・同定のときの時刻からの経過を表示していた)
 
         splitContainer1.Enabled = false;
 
         //イベント追加
-        FormMain.Crystal.Bethe.CBED_Completed += Bethe_CbedCompleted;
-        FormMain.Crystal.Bethe.CBED_ProgressChanged += Bethe_CbedProgressChanged;
+        //FormMain.Crystal.Bethe.CBED_Completed += Bethe_CbedCompleted; // 261105Cl 変更前
+        //FormMain.Crystal.Bethe.CBED_ProgressChanged += Bethe_CbedProgressChanged; // 261105Cl 変更前
+        refineCrystal.Bethe.CBED_Completed += Bethe_CbedCompleted; // 261105Cl
+        refineCrystal.Bethe.CBED_ProgressChanged += Bethe_CbedProgressChanged; // 261105Cl
 
         //ローテーション配列を作る //半径1の円の中に一辺1/Nの長さの正方形を詰め込み、一つの正方形の中心は、円の中心と一致するような問題を考える
         var directions = new List<Vector3DBase>();
@@ -1620,19 +1930,26 @@ public partial class FormSpotIDV2 : FormBase
         var rotArray = directions.ToArray();
         var thicknessArray = ValueEnumerable.Range(50, 500).Select(v => (double)v).ToArray();
 
-        var g = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"];
+        //var g = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"]; // 261105Cl 変更前 (上で selectedGrain として取得済み)
+        var g = selectedGrain; // 261105Cl
         //FormMain.Crystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, 200, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto); // 261105Cl 変更前
         // 261105Cl 修正: 加速電圧を 200 kV 固定でなく Optics 欄の値 (電子線のとき waveLengthControl1.Energy = kV) にする。
         //  電子線以外の線源ではこの動力学計算は意味を持たないので、従来どおり 200 kV のままにしておく
         var accVoltage = waveLengthControl1.WaveSource == WaveSource.Electron ? waveLengthControl1.Energy : 200; // 261105Cl
-        FormMain.Crystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, accVoltage, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto); // 261105Cl
+        //FormMain.Crystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, accVoltage, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto); // 261105Cl 変更前 (1 時間以上前の別セッションの変更なので残す)
+        refineCrystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, accVoltage, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto); // 261105Cl
     }
 
     private void Bethe_CbedCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
         //イベント削除
-        FormMain.Crystal.Bethe.CBED_Completed -= Bethe_CbedCompleted;
-        FormMain.Crystal.Bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
+        //FormMain.Crystal.Bethe.CBED_Completed -= Bethe_CbedCompleted; // 261105Cl 変更前
+        //FormMain.Crystal.Bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged; // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I11): 計算を始めた結晶 (refineCrystal) の Bethe から外し、結果も読む。旧は完了時の主窓の結晶を見たので、
+        //  計算中に主窓の結晶を替えると購読が外れず、別の結晶の Disks を読んでいた
+        var bethe = refineCrystal.Bethe; // 261105Cl 追加
+        bethe.CBED_Completed -= Bethe_CbedCompleted; // 261105Cl
+        bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged; // 261105Cl
 
         // 261105Cl 追加: 計算が失敗・中断したときは結果を使わずに戻る (旧は不完全な Disks のまま下へ進んだ)
         if (e.Error != null || e.Cancelled)
@@ -1650,7 +1967,8 @@ public partial class FormSpotIDV2 : FormBase
 
         //Bethe.Disk中のインデックスと、g.Indicesの対応付け
         //260718Cl 変更: index ごとの disk 全走査 + spots.Max の反復を、(H,K,L)→index 辞書 (重複キーは旧挙動どおり不採用) と maxA の一次計算に
-        var disks = FormMain.Crystal.Bethe.Disks;
+        //var disks = FormMain.Crystal.Bethe.Disks; // 261105Cl 変更前
+        var disks = bethe.Disks; // 261105Cl
         var maxA = spots.Count > 0 ? spots.Max(s => s.A) : 1.0;//260718Cl (codex 指摘): 旧は foreach 内で呼ぶため空 spots で Max が走らなかった。ループ前 hoist に伴い空ガード
         var diskIndex = new Dictionary<(int H, int K, int L), int>();
         for (int i = 0; i < disks[0].Length; i++)
@@ -1667,9 +1985,11 @@ public partial class FormSpotIDV2 : FormBase
 
         // R = (oI_1 - a * cI_1)^2 + (oI_2 - a * cI_2)^2 + .... + (oI_n - a * cI_n)^2 の最小化問題
         //この時 a = (oI_1 * cI_1 + oI_2 * cI_2 + ... oI_n * cI_n) / (cI_1^2 + cI_2^2 + ... cI_n^2)
-        for (int t = 0; t < FormMain.Crystal.Bethe.Thicknesses.Length; t++)
+        //for (int t = 0; t < FormMain.Crystal.Bethe.Thicknesses.Length; t++) // 261105Cl 変更前
+        for (int t = 0; t < bethe.Thicknesses.Length; t++) // 261105Cl
         {
-            for (int r = 0; r < FormMain.Crystal.Bethe.BeamDirections.Length; r++)
+            //for (int r = 0; r < FormMain.Crystal.Bethe.BeamDirections.Length; r++) // 261105Cl 変更前
+            for (int r = 0; r < bethe.BeamDirections.Length; r++) // 261105Cl
             {
                 //var numer = corrTable.Sum(c => c.intensity * disks[t][c.index].Amplitudes[r].MagnitudeSquared()); // 261105Cl 変更前
                 //var denom = corrTable.Sum(c => Math.Pow(disks[t][c.index].Amplitudes[r].MagnitudeSquared(), 2)); // 261105Cl 変更前
@@ -1685,8 +2005,10 @@ public partial class FormSpotIDV2 : FormBase
                     if (bestResidual > residual)
                     {
                         bestResidual = residual;
-                        bestThickness = FormMain.Crystal.Bethe.Thicknesses[t];
-                        bestDirection = FormMain.Crystal.Bethe.BeamDirections[r];
+                        //bestThickness = FormMain.Crystal.Bethe.Thicknesses[t]; // 261105Cl 変更前
+                        //bestDirection = FormMain.Crystal.Bethe.BeamDirections[r]; // 261105Cl 変更前
+                        bestThickness = bethe.Thicknesses[t]; // 261105Cl
+                        bestDirection = bethe.BeamDirections[r]; // 261105Cl
                     }
                 }
             }
@@ -1709,15 +2031,23 @@ public partial class FormSpotIDV2 : FormBase
         //  (FormMain の回転ボタンと同じく、画面座標系の回転を左から掛ける流儀)。軸が面内なので、面内の回転 (スポットの位置) は 1 次では変わらない
         var tilt = Math.Asin(Math.Min(1, Math.Sqrt(bestDirection.X * bestDirection.X + bestDirection.Y * bestDirection.Y))); // 261105Cl 追加
         grain.Rotation = Matrix3D.Rot(Vector3DBase.VectorProduct(bestDirection, new Vector3DBase(0, 0, -1)), tilt) * grain.Rotation; // 261105Cl 追加
-        FormMain.SetRotation(grain.Rotation); // 261105Cl 追加
-        scalablePictureBoxAdvanced.Title = (FormMain.CurrentZoneAxis, new Font(WineCompat.Resolve("Arial"), 20f), Color.White, Color.Red); // 261105Cl 追加: 晶帯軸の表示を更新
-        scalablePictureBoxAdvanced.Refresh(); // 261105Cl 追加
+        // 261105Cl 変更 (監査 I11): 主窓の結晶が計算した結晶のままのときだけ方位を主窓へ設定する (計算中に替えられたときは粒の方位だけ更新する)
+        var applied = FormMain.Crystal == refineCrystal; // 261105Cl 追加
+        if (applied) // 261105Cl 追加
+        {
+            FormMain.SetRotation(grain.Rotation); // 261105Cl 追加 // 261105Cl 字下げ
+            scalablePictureBoxAdvanced.Title = (FormMain.CurrentZoneAxis, new Font(WineCompat.Resolve("Arial"), 20f), Color.White, Color.Red); // 261105Cl 追加: 晶帯軸の表示を更新 // 261105Cl 字下げ
+            scalablePictureBoxAdvanced.Refresh(); // 261105Cl 追加 // 261105Cl 字下げ
+        }
 
         FormMain.FormDiffractionSimulator.Thickness = bestThickness;
 
         // 261105Cl 追加: 結果をステータスバーへ。最良の方向が探索範囲の外周 (傾きが Search angle range 以上。外周の点はすべてこれに入る) にあるときは、
         //  真の最適が範囲の外にあり得ることを知らせる。粒の方位は更新済みなので、もう一度押せば新しい方位のまわりを探す
-        toolStripStatusLabelRefine.Text = $"Refined: thickness {bestThickness:f0} nm, beam tilt {tilt * 1000:f2} mrad, zone axis {FormMain.CurrentZoneAxis}, residual {bestResidual:g3}"; // 261105Cl 追加
+        //toolStripStatusLabelRefine.Text = $"Refined: thickness {bestThickness:f0} nm, beam tilt {tilt * 1000:f2} mrad, zone axis {FormMain.CurrentZoneAxis}, residual {bestResidual:g3}"; // 261105Cl 変更前 (別セッションの 1 時間以上前の追加なので残す)
+        toolStripStatusLabelRefine.Text = applied // 261105Cl 変更 (監査 I11)
+            ? $"Refined: thickness {bestThickness:f0} nm, beam tilt {tilt * 1000:f2} mrad, zone axis {FormMain.CurrentZoneAxis}, residual {bestResidual:g3}" // 261105Cl
+            : $"Refined: thickness {bestThickness:f0} nm, beam tilt {tilt * 1000:f2} mrad, residual {bestResidual:g3}. The crystal in the main window changed during the calculation, so the orientation was only stored in the grain."; // 261105Cl 追加
         if (tilt >= numericBoxSemiangle.Value / 1000 * (1 - 1e-9)) // 261105Cl 追加
             toolStripStatusLabelRefine.Text += $". The best direction is at the edge of the search range ({numericBoxSemiangle.Value:f1} mrad); the optimum may lie outside. Refine again or widen the range."; // 261105Cl 追加
     }
@@ -1730,7 +2060,8 @@ public partial class FormSpotIDV2 : FormBase
         skipProgressChangedEvent = true;
         var current = e.ProgressPercentage;
         var solver = (string)e.UserState; var sec = sw.ElapsedMilliseconds / 1000.0;
-        var divisionNumber = FormMain.Crystal.Bethe.RotationArrayValidLength;
+        //var divisionNumber = FormMain.Crystal.Bethe.RotationArrayValidLength; // 261105Cl 変更前
+        var divisionNumber = refineCrystal.Bethe.RotationArrayValidLength; // 261105Cl (監査 I11: 計算している結晶の Bethe)
         var progress = (int)(100.0 * current / divisionNumber);
         if (progress <= 100)
             toolStripProgressBar.Value = toolStripProgressBar.Maximum * current / divisionNumber;
@@ -1758,6 +2089,7 @@ public partial class FormSpotIDV2 : FormBase
     private void radioButtonPixelSizeUnitReal_CheckedChanged(object sender, EventArgs e)
     {
         numericBoxCameraLength.Enabled = radioButtonPixelSizeUnitReal.Checked;
+        NumericBoxPixelSize_ValueChanged(sender, e); // 261105Cl 追加 (監査 I6): 単位を替えると同じ数値でも mm での値が変わるので、検出器と d を直す
     }
 
     private void FormSpotIDV2_KeyDown(object sender, KeyEventArgs e)
@@ -1839,25 +2171,36 @@ public partial class FormSpotIDV2 : FormBase
     // (AreaDetector が mm を要求するため)、外部から読み書きすると値が往復しない。単位ごとに対称な入口を用意する。
     // DifSim の ImageResolutionInMM / ImageResolutionInNMinv と同じ形。
 
-    /// <summary>ピクセルサイズを mm 単位で取得/設定する (単位表示も mm へ切り替わる)。</summary>
+    /// <summary>ピクセルサイズを mm 単位で取得/設定する (設定すると単位表示も mm へ切り替わる。取得では切り替えない)。</summary>
     public double PixelSizeInMM
     {
-        get { radioButtonPixelSizeUnitReal.Checked = true; return numericBoxPixelSize.Value; }
+        //get { radioButtonPixelSizeUnitReal.Checked = true; return numericBoxPixelSize.Value; } // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I6): 取得するだけで単位を mm に切り替えると、欄の数値 (nm⁻¹ の値) がそのまま mm と読み替えられて校正が変わっていた。
+        //  単位は替えずに mm へ換算した値を返す (PixelSize の getter と同じ換算)
+        get => PixelSize; // 261105Cl
         set { radioButtonPixelSizeUnitReal.Checked = true; numericBoxPixelSize.Value = value; }
     }
 
-    /// <summary>ピクセルサイズを nm^-1 単位で取得/設定する (単位表示も nm^-1 へ切り替わる)。</summary>
+    /// <summary>ピクセルサイズを nm^-1 単位で取得/設定する (設定すると単位表示も nm^-1 へ切り替わる。取得では切り替えない)。</summary>
     public double PixelSizeInNMinv
     {
-        get { radioButtonPixelSizeUnitInverse.Checked = true; return numericBoxPixelSize.Value; }
+        //get { radioButtonPixelSizeUnitInverse.Checked = true; return numericBoxPixelSize.Value; } // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I6): 同上。mm で入れているときは PixelSize の換算 (mm = L tan(2 asin(λ p / 2))) の逆 p = 2 sin(atan(mm / L) / 2) / λ で返す
+        get => radioButtonPixelSizeUnitInverse.Checked ? numericBoxPixelSize.Value : 2 * Math.Sin(Math.Atan(numericBoxPixelSize.Value / CameraLength) / 2) / WaveLength; // 261105Cl
         set { radioButtonPixelSizeUnitInverse.Checked = true; numericBoxPixelSize.Value = value; }
     }
 
     /// <summary>検出するスポットの最大個数。</summary>
     public int MaxNumberOfSpots { get => numericBoxNumberOfSpots.ValueInteger; set => numericBoxNumberOfSpots.Value = value; }
 
-    /// <summary>多重回折で現れる消滅則違反の反射を無視するかどうか。</summary>
-    public bool IgnoreProhibitedReflections { get => checkBoxIgnoreMultipleDiffraction.Checked; set => checkBoxIgnoreMultipleDiffraction.Checked = value; }
+    /// <summary>多重回折で現れる消滅則違反の反射を無視するかどうか。
+    /// 261105Cl 追記 (監査 I4): X 線・中性子では常に無視するので true を返し、そのときに設定した値は電子線に戻したときの状態として覚える。</summary>
+    //public bool IgnoreProhibitedReflections { get => checkBoxIgnoreMultipleDiffraction.Checked; set => checkBoxIgnoreMultipleDiffraction.Checked = value; } // 261105Cl 変更前
+    public bool IgnoreProhibitedReflections // 261105Cl 変更 (監査 I4)
+    {
+        get => checkBoxIgnoreMultipleDiffraction.Checked;
+        set { if (ignoreProhibitedFixed) ignoreProhibitedForElectron = value; else checkBoxIgnoreMultipleDiffraction.Checked = value; }
+    }
 
     /// <summary>複数グレインを探索するかどうか。false なら単一グレイン。</summary>
     public bool MultiGrain

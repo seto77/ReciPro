@@ -94,12 +94,16 @@ imagen superpuesta sobre el patrón de difracción.</value>
 imagen superpuesta sobre el patrón de difracción.</value>
   </data>
   <data name="numericBoxFootX.ToolTip" xml:space="preserve">
-    <value>Establece la coordenada de píxel X del punto de
-apoyo (centro del haz directo) en el detector.</value>
+    <value>Establece la coordenada de píxel X del punto de apoyo en el
+detector: el pie de la perpendicular trazada desde la muestra
+al plano del detector. Solo coincide con la posición del haz
+directo cuando el detector no está inclinado (tau = 0).</value>
   </data>
   <data name="numericBoxFootY.ToolTip" xml:space="preserve">
-    <value>Establece la coordenada de píxel Y del punto de
-apoyo (centro del haz directo) en el detector.</value>
+    <value>Establece la coordenada de píxel Y del punto de apoyo en el
+detector: el pie de la perpendicular trazada desde la muestra
+al plano del detector. Solo coincide con la posición del haz
+directo cuando el detector no está inclinado (tau = 0).</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
     <value>Establece el tamaño físico de un píxel del detector en milímetros.</value>
@@ -130,8 +134,9 @@ mostrar la imagen superpuesta.</value>
 mostrar la imagen superpuesta.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Establece el límite superior de intensidad para
-mostrar la imagen superpuesta.</value>
+    <value>Ajusta el brillo mostrado de la imagen superpuesta
+mediante su punto negro (Min int.) y su punto
+blanco (Max int.).</value>
   </data>
   <data name="trackBarMinInt.ToolTip" xml:space="preserve">
     <value>Establece el límite inferior de intensidad para

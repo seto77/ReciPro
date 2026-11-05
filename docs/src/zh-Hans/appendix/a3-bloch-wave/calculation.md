@@ -49,7 +49,7 @@ $\mathbf g$ 的笛卡尔分量由倒易基矢和米勒指数得到：
 $$\begin{pmatrix} g_x\\ g_y\\ g_z\end{pmatrix} = \begin{pmatrix} a_x^{*} & b_x^{*} & c_x^{*}\\ a_y^{*} & b_y^{*} & c_y^{*}\\ a_z^{*} & b_z^{*} & c_z^{*}\end{pmatrix}\begin{pmatrix} h\\ k\\ l\end{pmatrix} = \begin{pmatrix} h\,a_x^{*} + k\,b_x^{*} + l\,c_x^{*}\\ h\,a_y^{*} + k\,b_y^{*} + l\,c_y^{*}\\ h\,a_z^{*} + k\,b_z^{*} + l\,c_z^{*}\end{pmatrix}$$
 
 !!! note
-    衍射模拟器的 **Details** 表中显示的 $U_{\mathbf g}$ 值是在应用相对论因子 $\gamma$ *之前*的原始值。
+    衍射模拟器的 **斑点详情** 表中显示的 $U_{\mathbf g}$ 值是在应用相对论因子 $\gamma$ *之前*的原始值。
 
 ---
 

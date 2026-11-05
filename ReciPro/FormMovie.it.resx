@@ -175,7 +175,7 @@ di indice (scalata secondo i valori degli indici).
 I valori negativi invertono la direzione.</value>
   </data>
   <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
-    <value>Aggiunge un fotogramma extra a t = Duration,
+    <value>Aggiunge un fotogramma extra a t = Durata,
 in modo che il filmato termini esattamente
 nell'orientazione/posizione finale.</value>
   </data>

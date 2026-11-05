@@ -2,9 +2,9 @@
 
 La **simulation de diffraction des rayons X / des neutrons** calcule les figures de diffraction des rayons X et des neutrons sur monocristal. C'est l'un des principaux modes du [simulateur de diffraction](index.md).
 
-> Cette page répertorie chaque réglage qui apparaît à droite lorsque vous sélectionnez **Wave Length = X-ray** (ou neutron). Pour les opérations à l'échelle de la fenêtre, telles que le tracé et l'enregistrement, voir la [page de présentation](index.md).
+> Cette page répertorie chaque réglage qui apparaît à droite lorsque vous sélectionnez **Source d'onde** = **Rayons X** (ou **Neutrons**). Pour les opérations à l'échelle de la fenêtre, telles que le tracé et l'enregistrement, voir la [page de présentation](index.md).
 
-Conditions GUI : Wave Length = X-ray / Neutron · Incident beam = Parallel / Precession (X-ray) / Back-Laue · Intensity calculation = Only excitation error / Kinematical
+Conditions GUI : Source d'onde = Rayons X / Neutrons · Optique = Faisceau parallèle / Précession (rayons X, ZOLZ) / Laue en retour (rayons X) · Calcul d'intensité = Erreur d'excitation / Cinématique & err. exc.
 
 ![Simulateur de diffraction en mode rayons X / neutrons](../../assets/cap-fr-auto/FormDiffractionSimulator-xray.png)
 
@@ -16,11 +16,11 @@ Les rayons X ont une longueur d'onde plus grande que les électrons (Cu Kα : 0.
 
 ---
 
-## Wave Length
+## Source d'onde {#wave-length}
 
-![Wave Length](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Source d'onde](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Sélectionnez **X-ray** comme source de rayonnement. Les rayons X peuvent être spécifiés de deux manières : rayons X caractéristiques et rayonnement synchrotron.
+Sélectionnez **Rayons X** comme **Source d'onde**. Les rayons X peuvent être spécifiés de deux manières : rayons X caractéristiques et rayonnement synchrotron.
 
 ### Rayons X caractéristiques
 
@@ -29,9 +29,9 @@ Le choix d'un **élément** et d'une **transition** fixe la longueur d'onde des 
 | Élément | Raie | Longueur d'onde (Å) | Énergie (keV) |
 |---------|------|-----------------|--------------|
 | Cu | Kα₁ | 1.5406 | 8.048 |
-| Mo | Kα₁ | 0.7107 | 17.479 |
+| Mo | Kα₁ | 0.7093 | 17.479 |
 | Co | Kα₁ | 1.7890 | 6.930 |
-| Cr | Kα₁ | 2.2910 | 5.415 |
+| Cr | Kα₁ | 2.2897 | 5.415 |
 
 ### Rayonnement synchrotron
 
@@ -39,25 +39,31 @@ Réglez **Element** sur **0: Custom** et entrez directement l'énergie (keV) ou 
 
 ---
 
-## Mode du faisceau incident
+## Optique {#incident-beam-mode}
 
-![Beam mode](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Optique](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
 Sélectionne la géométrie du faisceau incident. Trois modes sont disponibles pour les rayons X.
 
-### Parallel
+### Faisceau parallèle {#parallel}
 
 L'onde plane standard. Un faisceau incident parallèle utilisé pour la SAED et la diffraction des rayons X sur monocristal.
 
-### Precession (X-ray) — chambre de précession
+### Précession (rayons X, ZOLZ) — chambre de précession {#precession-x-ray--precession-camera}
 
-Simule une chambre de précession de rayons X. Il s'agit d'un cliché de précession qui capture une seule couche du réseau réciproque.
+Simule une chambre de précession de rayons X. Il s'agit d'un cliché de précession qui capture une seule couche du réseau réciproque. Les anneaux de Debye sont dessinés comme des cercles de rayon $2L_2\sin\theta$ ($L_2$ = longueur de caméra 2), comme les cercles de l'échelle 2θ. <!-- 261105Cl 監査: DrawDebyeRing (C6) -->
 
-### Back-Laue (Laue en réflexion)
+### Laue en retour (rayons X) — Laue en réflexion {#back-laue-back-reflection-laue}
 
-Simule une figure de Laue en réflexion avec des rayons X blancs (polychromatiques). Dans cette géométrie en réflexion, le détecteur est placé du côté de la source et **Monochrome** est désactivé. La géométrie de réflexion est donnée par **Tau / Phi** dans **Detector geometry** (voir [Detector geometry](index.md#detector-geometry)).
+Simule une figure de Laue en réflexion avec des rayons X blancs (polychromatiques). Dans cette géométrie en réflexion, le détecteur est placé du côté de la source ; les champs d'énergie / de longueur d'onde et le sélecteur d'élément du contrôle **Source d'onde** sont masqués et **Flat white** est affiché à la place. Les taches sont projetées sur un détecteur plan **perpendiculaire au faisceau**, à la longueur de caméra, du côté de la source ; l'inclinaison du détecteur **Tau / Phi** de la [géométrie du détecteur](index.md#detector-geometry) n'est pas utilisée dans cette projection.
 
-> **Note** : Les options du faisceau incident suivent la longueur d'onde. **Precession (electron)** et **Convergence (CBED)** n'apparaissent que lorsque le rayonnement électronique est sélectionné, tandis que les options **Precession (X-ray)** et **Back-Laue** ci-dessus n'apparaissent que lorsque le rayonnement X est sélectionné. Pour les neutrons, seul **Parallel** est disponible. Selon l'état au moment de la capture, la capture d'écran peut ne pas afficher les options spécifiques aux rayons X.
+- Le spectre blanc est coupé à **50 keV** : les réflexions sont collectées jusqu'à $d = \lambda(50\ \text{keV})/2$, et aucune pondération spectrale n'est appliquée.
+- Les harmoniques $n\mathbf{g}$ situées sur une même droite passant par l'origine tombent sur la même tache ; leurs $\lvert F\rvert^2$ sont additionnés sur la réflexion d'ordre le plus bas et les intensités des taches sont normalisées à la tache la plus intense.
+- **Dispersion anomale (f', f'')** est désactivée (l'énergie n'est pas unique), et le **Rayon de tache** n'a pas d'unité dans ce mode.
+- 2θ (position de la souris, étiquettes des taches et échelle 2θ) est l'angle de diffusion : 180° au trou du faisceau au centre, décroissant vers l'extérieur. <!-- 261105Cl 監査: Back Laue の 2θ (C13) -->
+- Tous les cristaux sélectionnés sont dessinés ; avec plusieurs cristaux (ou avec **Couleur par cristal** activé), les taches de chaque cristal prennent la couleur de ce cristal. <!-- 261105Cl 監査: Back Laue の複数結晶 -->
+
+> **Note** : Les options d'**Optique** suivent la source d'onde. **Précession (électrons)** et **Convergence (électrons)** n'apparaissent que lorsque **Électrons** est sélectionné, tandis que les options **Précession (rayons X, ZOLZ)** et **Laue en retour (rayons X)** ci-dessus n'apparaissent que lorsque **Rayons X** est sélectionné. Pour les neutrons, seul **Faisceau parallèle** est disponible. Selon l'état au moment de la capture, la capture d'écran peut ne pas afficher les options spécifiques aux rayons X.
 
 ---
 
@@ -69,11 +75,18 @@ Sélectionne la méthode utilisée pour calculer les intensités des taches. Deu
 
 ### Only excitation error
 
-L'intensité est déterminée uniquement par la distance géométrique entre la sphère d'Ewald et le point du réseau réciproque (l'erreur d'excitation $S_g$). Elle est maximale à $S_g = 0$ — exactement sur la sphère — et décroît lorsque $\lvert S_g\rvert$ augmente, jusqu'à s'annuler dès que $\lvert S_g\rvert$ dépasse le **Radius** indiqué pour le point du réseau réciproque. Le facteur de structure est ignoré.
+L'intensité est déterminée uniquement par la distance géométrique entre la sphère d'Ewald et le point du réseau réciproque (l'erreur d'excitation $S_g$). Elle est maximale à $S_g = 0$ — exactement sur la sphère — et décroît lorsque $\lvert S_g\rvert$ augmente, jusqu'à s'annuler dès que $\lvert S_g\rvert$ dépasse le **Rayon de tache** indiqué pour le point du réseau réciproque. Le facteur de structure est ignoré.
+
+Dans ce mode uniquement, les options suivantes apparaissent :
+
+- **Exclure toutes les réflexions interdites** / **Exclure les réflexions interdites par le centrage du réseau** (par défaut : centrage du réseau uniquement) : masquer les réflexions interdites par le groupe d'espace. Les réflexions qui ne sont pas masquées sont dessinées dans les couleurs distinctes définies sous **Couleur de tache** (interdites par hélice/glissement et interdites par le réseau).
+- **Dessiner toutes les taches avec le même rayon** : dessiner chaque tache à la taille correspondant à $S_g = 0$, quelle que soit son erreur d'excitation.
 
 ### Kinematical & excitation error
 
 En plus de l'erreur d'excitation, le facteur de structure cinématique $\lvert F_{hkl} \rvert^2$ est intégré à l'intensité. Les règles d'extinction sont strictement respectées. Les facteurs de Lorentz et de polarisation ne sont pas inclus (il s'agit d'une simulation de la figure géométrique).
+
+- **Dispersion anomale (f', f'')** (rayons X uniquement, activée par défaut) : ajoute au facteur de structure les termes de dispersion anomale f′, f″ à l'énergie X actuelle (aussi pour les anneaux de Debye). Dans une structure non centrosymétrique contenant des diffuseurs anomaux chimiquement distincts, la loi de Friedel est alors rompue et les intensités $hkl$ / $\bar h\bar k\bar l$ diffèrent (paires de Bijvoet) ; l'effet est le plus fort près d'un seuil d'absorption. Désactivée en Back-Laue. Voir [Facteur de structure](../appendix/a2-beam-interaction/structure-factor.md).
 
 > **Note** : La **théorie dynamique** est désactivée pour les rayons X (disponible uniquement lorsque le rayonnement électronique est sélectionné).
 
@@ -85,31 +98,31 @@ En plus de l'erreur d'excitation, le facteur de structure cinématique $\lvert F
 
 Contrôle la manière dont chaque tache de diffraction est rendue.
 
-- **Solid sphere / Gaussian** : modèle géométrique du point du réseau réciproque. **Solid sphere** utilise la section transversale entre une sphère de rayon *R* et la sphère d'Ewald (l'aire du cercle correspond à l'intensité de diffraction) ; **Gaussian** utilise la section transversale entre une gaussienne 3D avec σ = *R* et la sphère d'Ewald (l'intégrale de la gaussienne 2D correspond à l'intensité de diffraction).
-- **Opacity** : transparence de la tache (0 = transparent, 1 = opaque).
-- **Radius (R)** : rayon du point du réseau réciproque. La taille de la tache rendue est déterminée par la combinaison de **Appearance** et de **Intensity calculation**.
-- **Brightness** : actif uniquement en mode **Gaussian**. Définit l'intensité intégrée de la gaussienne rendue.
-- **Color scale** : choix entre les cartes de couleurs **Gray scale** et **Cold-warm**.
-- **Log scale** : afficher les intensités sur une échelle logarithmique.
-- **Spot color** : couleur par défaut de la tache lorsque l'échelle de couleurs ne s'applique pas.
-- **Color per crystal** : lorsque cette case est cochée, dessine les taches dans la couleur attribuée à chaque cristal.
+- **Sphère pleine / Gaussienne** : modèle géométrique du point du réseau réciproque. **Sphère pleine** dessine la section transversale entre une sphère et la sphère d'Ewald ; avec **Cinématique & err. exc.**, le rayon de la sphère vaut $R \times I_\text{rel}^{1/3}$ (de sorte que le *volume* de la sphère est proportionnel à l'intensité relative), avec **Erreur d'excitation**, il vaut *R* lui-même. **Gaussienne** utilise la section transversale entre une gaussienne 3D avec σ = *R* et la sphère d'Ewald (l'intégrale de la gaussienne 2D correspond à l'intensité de diffraction) ; les taches avec $\lvert S_g\rvert \ge 3R$ ne sont pas dessinées.
+- **Opacité** : transparence de la tache (0 = transparent, 1 = opaque).
+- **Rayon de tache (R)** : rayon du point du réseau réciproque. La taille de la tache rendue est déterminée par la combinaison de **Apparence** et de **Calcul d'intensité**.
+- **Luminosité** : actif uniquement en mode **Gaussienne**. Définit l'intensité intégrée de la gaussienne rendue.
+- **Échelle de couleurs** (Gaussienne uniquement) : **Gray**, **Cold-warm**, **Spectrum** ou **Fire**.
+- **Échelle log** (Gaussienne uniquement) : afficher les intensités sur une échelle logarithmique.
+- **Couleur de tache** : couleurs des taches utilisées avec l'échelle de couleurs **Gray** (ce groupe est masqué pour les autres échelles de couleurs).
+- **Couleur par cristal** : lorsque cette case est cochée, dessine les taches dans la couleur attribuée à chaque cristal.
 
 ---
 
 ## Anneaux de Debye (polycristallin)
 
-Les anneaux de Debye d'un échantillon polycristallin peuvent être affichés. Activez **Debye rings** dans la barre d'outils (voir [Barre d'outils](index.md#toolbar)).
+Les anneaux de Debye d'un échantillon polycristallin peuvent être affichés. Activez **Anneaux de Debye** dans la barre d'outils (voir [Barre d'outils](index.md#toolbar)).
 
-- **Ignore diffraction intensity** : dessine tous les anneaux avec la même couleur et la même intensité (utilisé pour une comparaison purement géométrique qui ignore le facteur de structure).
-- **Show index label** : affiche l'indice (*hkl*) près de chaque anneau.
+- **Ignorer l'intensité de diffraction** : dessine tous les anneaux avec la même couleur et la même intensité (utilisé pour une comparaison purement géométrique qui ignore le facteur de structure).
+- **Afficher les étiquettes d'indices** : affiche les indices {*hkl*} près de chaque anneau (quatre indices {*hkil*} avec **Options ▸ Utiliser l'indice de Miller-Bravais (hkil)** activé, pour les axes hexagonaux). <!-- 261105Cl 監査: DrawDebyeRing (C23) -->
 
-Les réglages détaillés se trouvent dans l'onglet Debye rings du [menu à onglets](index.md#drawing-overlay-tabs).
+Les réglages détaillés se trouvent dans l'onglet Anneaux de Debye du [menu à onglets](index.md#drawing-overlay-tabs).
 
 ---
 
 ## Diffraction des neutrons
 
-Sélectionner **Neutron** dans le contrôle Wave Length calcule une figure de diffraction des neutrons. Entrez l'énergie (meV) ou la longueur d'onde (nm). Le faisceau incident ne peut être que **Parallel**. Le calcul de l'intensité peut être **Only excitation error** ou **Kinematical** (Dynamical n'est pas disponible). L'intensité cinématique utilise la longueur de diffusion des neutrons au lieu du facteur de diffusion atomique.
+Sélectionner **Neutrons** dans **Source d'onde** calcule une figure de diffraction des neutrons. Entrez l'énergie (meV) ou la longueur d'onde (Å ou nm, au choix ; Å par défaut). **Optique** ne peut être que **Faisceau parallèle**. Le calcul de l'intensité peut être **Erreur d'excitation** ou **Cinématique & err. exc.** (**Théorie dynamique** n'est pas disponible). L'intensité cinématique utilise la longueur de diffusion des neutrons au lieu du facteur de diffusion atomique.
 
 ---
 

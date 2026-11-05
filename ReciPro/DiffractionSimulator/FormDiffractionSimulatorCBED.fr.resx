@@ -66,10 +66,10 @@
     <value>Solveur</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
-    <value>Nombre d'ondes diffractées</value>
+    <value>Ondes diffractées</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
-    <value>Demi-angle</value>
+    <value>Demi-angle conv. α</value>
   </data>
   <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
     <value>Résolution des disques</value>
@@ -156,9 +156,11 @@ chaque réflexion de Bragg devient un disque dont l'intensité
 interne varie avec l'inclinaison du faisceau incident.</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
-    <value>Mode LACBED (diffraction électronique en faisceau convergent
-à grand angle) : utilise un angle de convergence plus large afin
-qu'une réflexion soit enregistrée sur une plus grande plage angulaire.</value>
+    <value>Mode LACBED (CBED à grand angle) : seul le disque transmis
+(000) est conservé et dessiné, sans ajouter les disques voisins
+qui se chevauchent ; un demi-angle supérieur aux angles de
+Bragg peut donc être utilisé (LACBED en champ clair). Ce mode
+n'élargit pas le demi-angle lui-même.</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Nombre d'ondes diffractées (ondes de Bloch) incluses
@@ -174,15 +176,16 @@ mais ralentit le calcul.</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
     <value>Pas d'échantillonnage angulaire par pixel à travers chaque
-disque (mrad/pixel). Des valeurs plus petites donnent plus de
-divisions en diamètre, indiquées à droite, pour des disques
-plus fins mais un calcul plus long.</value>
+disque (mrad/pixel). Des valeurs plus petites donnent des
+disques plus fins avec plus de pixels ; le nombre de pixels
+d'un disque est affiché à droite (Pixels totaux). Le temps
+de calcul croît avec ce nombre.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>Pas d'échantillonnage angulaire par pixel à travers chaque
-disque (mrad/pixel). Des valeurs plus petites donnent plus de
-divisions en diamètre, indiquées à droite, pour des disques
-plus fins mais un calcul plus long.</value>
+    <value>Nombre de pixels de chaque disque, c.-à-d. les directions
+du faisceau incident à l'intérieur du cercle de convergence.
+Un calcul d'ondes de Bloch est effectué par pixel ; le temps
+de calcul est donc proportionnel à ce nombre.</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
     <value>Définir une plage et un pas pour les épaisseurs de l'échantillon</value>
@@ -264,10 +267,10 @@ motif de disques actuellement affiché.</value>
 motif de disques actuellement affiché.</value>
   </data>
   <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
-    <value>Pas d'échantillonnage angulaire par pixel à travers
-chaque disque (mrad/pixel). Des valeurs plus petites
-donnent plus de divisions en diamètre, indiquées ici,
-pour des disques plus fins mais un calcul plus long.</value>
+    <value>Nombre de pixels de chaque disque, c.-à-d. les directions
+du faisceau incident à l'intérieur du cercle de convergence.
+Un calcul d'ondes de Bloch est effectué par pixel ; le temps
+de calcul est donc proportionnel à ce nombre.</value>
   </data>
   <data name="labelGamma.ToolTip" xml:space="preserve">
     <value>Définir une valeur gamma. Plus cette valeur est élevée,

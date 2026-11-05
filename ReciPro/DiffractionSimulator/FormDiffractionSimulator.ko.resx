@@ -119,7 +119,7 @@
     <value>디바이 링</value>
   </data>
   <data name="checkBoxScaleLabel.Text" xml:space="preserve">
-    <value>축척 라벨 표시</value>
+    <value>축척 레이블 표시</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
     <value>분할</value>
@@ -153,7 +153,7 @@
     <value>간격</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>초기화</value>
+    <value>시점 초기화</value>
   </data>
   <data name="groupBoxViewDirection.Text" xml:space="preserve">
     <value>시선 방향</value>
@@ -239,7 +239,7 @@
     <value>이미지 저장</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>이미지로  (PNG 형식)</value>
+    <value>이미지로 (PNG 형식)</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>메타파일로 (EMF)</value>
@@ -320,7 +320,7 @@
     <value>전자 200 kV</value>
   </data>
   <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
-    <value>전자 120 keV</value>
+    <value>전자 120 kV</value>
   </data>
   <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
     <value>X선 30 keV</value>
@@ -363,7 +363,7 @@
     <value>세차 특성</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>반각</value>
+    <value>세차각</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>간격</value>
@@ -491,10 +491,14 @@ g 벡터의 길이)가 표시됩니다</value>
 역격자점이 정확한 브래그 조건/에발트 구 조건에서
 얼마나 벗어나 있는지를 나타냅니다.</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>강도</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>체크하면 각 점에 대해 구조 인자의 크기
-|Fg|가 표시됩니다. |Fg|가 클수록
-일반적으로 더 강한 반사를 의미합니다.</value>
+    <value>체크하면 각 점의 강도를 가장 강한 반사를 100%로 한
+비율로 표시합니다. 운동학에서는 |Fg|²(여기 오차 미포함),
+동역학 이론에서는 |Φg|²와 회절파의 복소 진폭
+Φg = Re + Im i입니다. '여기 오차만'에서는 표시하지 않습니다.</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>문자 크기를 설정합니다</value>
@@ -777,11 +781,12 @@ mm 단위로 표시합니다(원점: 결정).</value>
 mm 단위로 표시합니다(원점: 결정).</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>마우스 포인터 위치에 해당하는 면간 거리 d(nm).</value>
+    <value>마우스 포인터 위치에 해당하는 면간 거리 d. 단위(Å 또는 nm)는
+메인 창 격자 상수의 Å/nm 전환을 따릅니다.</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>마우스 포인터 위치에 해당하는
-역격자 간격 d⁻¹(nm⁻¹).</value>
+    <value>마우스 포인터 위치에 해당하는 역격자 간격 d⁻¹. 단위(Å⁻¹ 또는 nm⁻¹)는
+메인 창 격자 상수의 Å/nm 전환을 따릅니다.</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>마우스 포인터 위치에 해당하는
@@ -865,6 +870,9 @@ mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
     <value>카메라 길이 2, 즉 시료에서 검출기(모니터)
 까지의 거리를 설정합니다.</value>
   </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>상세</value>
+  </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>상세 광학계 설정 창을 엽니다.</value>
   </data>
@@ -906,12 +914,12 @@ mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
 관한 설정</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>PED(세차 전자 회절) 시뮬레이션의 세차 반각(mrad)
+    <value>PED(세차 전자 회절) 시뮬레이션의 세차각(mrad)
 입니다. 입사 빔을 기울여 적분하는 원뿔의
 반정각(half-angle)입니다.</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>PED(세차 전자 회절) 시뮬레이션의 세차 반각(mrad)
+    <value>PED(세차 전자 회절) 시뮬레이션의 세차각(mrad)
 입니다. 입사 빔을 기울여 적분하는 원뿔의
 반정각(half-angle)입니다.</value>
   </data>

@@ -17,7 +17,7 @@
 - <span class="rp-brown">**検出器座標** ($X'$, $Y'$)</span> : 検出器平面上のmm単位の2次元座標。<span class="rp-brown">**foot**</span> を原点とする。<span class="rp-brown">$X'$ / $Y'$</span> は検出器平面上で右 / 下を向き、<span class="rp-cyan">$X''$ / $Y''$</span> に平行。
 - <span class="rp-cyan">**ピクセル座標** ($X''$, $Y''$)</span> : ピクセル単位の2次元座標。検出器の<span class="rp-cyan">**左上隅**</span>を原点とし、検出器のピクセル配列に沿う。
 
-検出器がビームに垂直なとき、<span class="rp-brown">**foot**</span> と<span class="rp-red">**透過スポット**</span>は一致し、<span class="rp-red">**Camera length 1**</span> と <span class="rp-brown">**Camera length 2**</span> は等しくなります。
+検出器がビームに垂直なとき、<span class="rp-brown">**foot**</span> と<span class="rp-red">**直接スポット**</span>は一致し、<span class="rp-red">**Camera length 1**</span> と <span class="rp-brown">**Camera length 2**</span> は等しくなります。
 
 ## 回転後（検出器が傾いた場合）
 
@@ -32,8 +32,8 @@
 
 検出器が傾くと：
 
-- <span class="rp-red">**透過スポット**</span>と <span class="rp-brown">**foot**</span> は一致しなくなる。
-- <span class="rp-red">**Camera length 1** ($C_1$)</span> = <span class="rp-steel">試料</span>から<span class="rp-red">透過スポット</span>までの距離。
+- <span class="rp-red">**直接スポット**</span>と <span class="rp-brown">**foot**</span> は一致しなくなる。
+- <span class="rp-red">**Camera length 1** ($C_1$)</span> = <span class="rp-steel">試料</span>から<span class="rp-red">直接スポット</span>までの距離。
 - <span class="rp-brown">**Camera length 2** ($C_2$)</span> = <span class="rp-steel">試料</span>から <span class="rp-brown">foot</span> までの距離。
 - <span class="rp-brown">**検出器座標**</span>の原点は常に <span class="rp-brown">**foot**</span>、<span class="rp-cyan">**ピクセル座標**</span>の原点は常に<span class="rp-cyan">**左上隅**</span>。
 - <span class="rp-steel">$X$ / $Y$</span> 方向は <span class="rp-brown">$X'$ / $Y'$</span> 方向と一致しなくなる。
@@ -44,11 +44,11 @@
 |------|------|
 | <span class="rp-steel">**Sample（試料）**</span> | 入射ビームを散乱する物質。実座標の原点 |
 | <span class="rp-steel">**実座標** ($X$, $Y$, $Z$)</span> | 実験系のmm単位の3次元座標。原点は試料、<span class="rp-steel">$Z$</span>軸は常にビーム方向に平行 |
-| <span class="rp-red">**透過スポット (Direct spot)**</span> | 入射ビームと検出器の交点 |
-| <span class="rp-brown">**Foot**</span> | 試料から検出器平面に下ろした垂線の足。検出器座標の原点。検出器がビームに垂直なときのみ透過スポットと一致する。重ね合わせ画像モードでは foot の位置をピクセル座標で設定する |
+| <span class="rp-red">**直接スポット (Direct spot)**</span> | 入射ビームと検出器の交点 |
+| <span class="rp-brown">**Foot**</span> | 試料から検出器平面に下ろした垂線の足。検出器座標の原点。検出器がビームに垂直なときのみ直接スポットと一致する。重ね合わせ画像モードでは foot の位置をピクセル座標で設定する |
 | <span class="rp-brown">**検出器座標** ($X'$, $Y'$)</span> | 検出器平面上のmm単位の2次元座標。原点は foot |
 | <span class="rp-cyan">**ピクセル座標** ($X''$, $Y''$)</span> | 検出器平面上のピクセル単位の2次元座標。原点は左上隅 |
-| <span class="rp-red">**Camera length 1** ($C_1$)</span> | 試料から透過スポットまでの距離 (mm) |
+| <span class="rp-red">**Camera length 1** ($C_1$)</span> | 試料から直接スポットまでの距離 (mm) |
 | <span class="rp-brown">**Camera length 2** ($C_2$)</span> | 試料から foot までの距離 (mm) |
 | **Pixel size** | 1ピクセルの一辺の長さ (mm)。正方ピクセルのみ対応 |
 | **Detector width / height** | 水平 / 垂直方向のピクセル数 |

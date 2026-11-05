@@ -49,7 +49,7 @@ Las componentes cartesianas de $\mathbf g$ se obtienen a partir de los vectores 
 $$\begin{pmatrix} g_x\\ g_y\\ g_z\end{pmatrix} = \begin{pmatrix} a_x^{*} & b_x^{*} & c_x^{*}\\ a_y^{*} & b_y^{*} & c_y^{*}\\ a_z^{*} & b_z^{*} & c_z^{*}\end{pmatrix}\begin{pmatrix} h\\ k\\ l\end{pmatrix} = \begin{pmatrix} h\,a_x^{*} + k\,b_x^{*} + l\,c_x^{*}\\ h\,a_y^{*} + k\,b_y^{*} + l\,c_y^{*}\\ h\,a_z^{*} + k\,b_z^{*} + l\,c_z^{*}\end{pmatrix}$$
 
 !!! note
-    Los valores de $U_{\mathbf g}$ mostrados en la tabla **Details** del simulador de difracción son los valores en bruto *antes* de aplicar el factor relativista $\gamma$.
+    Los valores de $U_{\mathbf g}$ mostrados en la tabla **Detalles del punto** del simulador de difracción son los valores en bruto *antes* de aplicar el factor relativista $\gamma$.
 
 ---
 

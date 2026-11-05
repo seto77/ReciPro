@@ -147,7 +147,7 @@ lejos de la esfera de Ewald</value>
     <value>Paso</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>Restablecer</value>
+    <value>Restab. vista</value>
   </data>
   <data name="groupBoxViewDirection.Text" xml:space="preserve">
     <value>Dirección de vista</value>
@@ -215,7 +215,7 @@ intensidad relativa</value>
     <value>Varios</value>
   </data>
   <data name="numericBoxCameraLength2.HeaderText" xml:space="preserve">
-    <value>Longitud de cámara 2</value>
+    <value>Long. cámara 2</value>
   </data>
   <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
     <value>Geometría detector &amp;&amp; imagen superpuesta</value>
@@ -233,7 +233,7 @@ intensidad relativa</value>
     <value>Guardar imagen</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>como imagen  (formato PNG)</value>
+    <value>como imagen (formato PNG)</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>como metarchivo (EMF)</value>
@@ -314,7 +314,7 @@ intensidad relativa</value>
     <value>Electrones 200 kV</value>
   </data>
   <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
-    <value>Electrones 120 keV</value>
+    <value>Electrones 120 kV</value>
   </data>
   <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
     <value>Rayos X 30 keV</value>
@@ -357,7 +357,7 @@ intensidad relativa</value>
     <value>Propiedad de precesión</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>Semiángulo</value>
+    <value>Áng. prec.</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>Paso</value>
@@ -489,10 +489,15 @@ las líneas radiales de la escala azimutal)</value>
 punto, indicando cuánto se aleja el punto de la red recíproca de
 la condición exacta de Bragg/esfera de Ewald.</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>Intensidad</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>Cuando está marcado, se muestra la magnitud del factor de
-estructura |Fg| de cada punto; un |Fg| mayor implica
-generalmente una reflexión más intensa.</value>
+    <value>Cuando está marcado, se muestra la intensidad de cada punto
+en % de la reflexión más intensa: |Fg|² (cinemática, sin el
+error de excitación) o |Φg|² seguido de la amplitud compleja
+Φg = Re + Im i (teoría dinámica). No se muestra nada con
+«Solo error de exc.».</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>Establece el tamaño de las cadenas de texto</value>
@@ -780,11 +785,12 @@ del ratón en mm (origen: cristal).</value>
 del ratón en mm (origen: cristal).</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>Distancia interplanar d (nm) correspondiente a la posición del puntero del ratón.</value>
+    <value>Distancia interplanar d correspondiente a la posición del puntero del ratón,
+en Å o nm (sigue la selección Å/nm de los parámetros de celda en la ventana principal).</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>Distancia recíproca d⁻¹ (nm⁻¹) correspondiente
-a la posición del puntero del ratón.</value>
+    <value>Distancia recíproca d⁻¹ correspondiente a la posición del puntero del ratón,
+en Å⁻¹ o nm⁻¹ (sigue la selección Å/nm de los parámetros de celda en la ventana principal).</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>Ángulo de dispersión 2θ en grados correspondiente
@@ -868,6 +874,9 @@ desde la muestra hasta el detector (monitor).</value>
     <value>Establece la longitud de cámara 2, es decir, la distancia
 desde la muestra hasta el detector (monitor).</value>
   </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>Abre la ventana de configuración detallada de la óptica.</value>
   </data>
@@ -909,12 +918,12 @@ prohibidas por el centrado de la red.</value>
 de electrones por precesión (PED)</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>Semiángulo de precesión (mrad) para la simulación PED (difracción
+    <value>Ángulo de precesión (mrad) para la simulación PED (difracción
 de electrones por precesión); el semiángulo del cono
 usado para inclinar e integrar el haz incidente.</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>Semiángulo de precesión (mrad) para la simulación PED (difracción
+    <value>Ángulo de precesión (mrad) para la simulación PED (difracción
 de electrones por precesión); el semiángulo del cono
 usado para inclinar e integrar el haz incidente.</value>
   </data>

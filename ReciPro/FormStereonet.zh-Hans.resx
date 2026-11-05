@@ -161,7 +161,7 @@
     <value>深度淡化</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>重置</value>
+    <value>重置视角</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>外观</value>
@@ -389,7 +389,7 @@
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>设置 1° 网格线（细线，仅在启用
-“1° Lines”时显示）的颜色。</value>
+“1° lines”时显示）的颜色。</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
     <value>从赤道方向投影
@@ -660,7 +660,7 @@
   </data>
   <data name="colorControlIndex.ToolTip" xml:space="preserve">
     <value>设置正在添加或当前所选指数的绘制颜色
-（当“Rotate color”关闭时使用）。</value>
+（当“轮换颜色”关闭时使用）。</value>
   </data>
   <data name="colorControlIndex.ToolTip1" xml:space="preserve">
     <value>设置正在添加或当前所选指数的绘制颜色
@@ -680,8 +680,8 @@
 排名的前列（1–1000）。</value>
   </data>
   <data name="indexControlDrawing.ToolTip" xml:space="preserve">
-    <value>输入要绘制的指数——在“Specified”模式下为单个
-[uvw]/(hkl)，在“Range”模式下为最大的 h,k,l。</value>
+    <value>输入要绘制的指数——在“指定”模式下为单个
+[uvw]/(hkl)，在“范围”模式下为最大的 h,k,l。</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
     <value>同时绘制所有对称等效的指数（完整的

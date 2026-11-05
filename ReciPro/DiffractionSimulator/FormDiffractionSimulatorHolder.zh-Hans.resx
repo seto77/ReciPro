@@ -175,8 +175,8 @@
     <value>勾选后，方向键可倾斜夹持器：
 左/右按箭头步长改变倾转 X，
 上/下按箭头步长改变倾转 Y。
-只要本窗口保持打开，即使其他
-ReciPro 窗口在前也有效。</value>
+仅在本窗口处于活动状态（最前）
+时有效。</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>每次按方向键所施加的
@@ -234,7 +234,8 @@ ReciPro 窗口在前也有效。</value>
 取向用作中立方向。</value>
   </data>
   <data name="buttonRotate180.ToolTip" xml:space="preserve">
-    <value>使晶体绕电子束（[001]）轴旋转 180°。</value>
+    <value>使晶体绕入射束轴（垂直于屏幕的轴）旋转 180°。
+即使在主窗口中“固定”了轴或面，也绕入射束轴旋转。</value>
   </data>
   <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
     <value>按下“链接”按钮时施加于倾转 X 的

@@ -221,7 +221,7 @@ distribution graphs and 3-D trajectory view.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
-    <value>Sample Tilt</value>
+    <value>Sample tilt</value>
   </data>
   <data name="numericBoxSampleTilt.Location" type="System.Drawing.Point, System.Drawing">
     <value>370, 0</value>
@@ -596,7 +596,7 @@ not just the backscattered ones, in the 3-D view.</value>
     <value>106</value>
   </data>
   <data name="radioButtonStandardDeviation.Text" xml:space="preserve">
-    <value>Energy Standard Deviation</value>
+    <value>Energy standard deviation</value>
   </data>
   <data name="radioButtonStandardDeviation.ToolTip" xml:space="preserve">
     <value>Colour the stereographic projection by the
@@ -736,7 +736,7 @@ the backscattered-electron exit directions.</value>
     <value>0</value>
   </data>
   <data name="labelBSEenergy.Text" xml:space="preserve">
-    <value>##.## kev</value>
+    <value>##.## keV</value>
   </data>
   <data name="labelBSEenergy.ToolTip" xml:space="preserve">
     <value>Average exit energy of the backscattered electrons
@@ -773,7 +773,7 @@ the backscattered-electron exit directions.</value>
     <value>0</value>
   </data>
   <data name="labelStoppingPower.Text" xml:space="preserve">
-    <value>##.## ev/nm @ ## kev</value>
+    <value>##.## eV/nm @ ## keV</value>
   </data>
   <data name="labelStoppingPower.ToolTip" xml:space="preserve">
     <value>Stopping power dE/ds: energy the electron
@@ -811,7 +811,7 @@ collisions, at the incident energy (eV/nm).</value>
     <value>0</value>
   </data>
   <data name="labelCrossSection.Text" xml:space="preserve">
-    <value>##.## nm² @ ## kev</value>
+    <value>##.## nm² @ ## keV</value>
   </data>
   <data name="labelCrossSection.ToolTip" xml:space="preserve">
     <value>Scattering cross-section σ_E: effective target area
@@ -849,7 +849,7 @@ larger values mean more frequent scattering (nm²).</value>
     <value>0</value>
   </data>
   <data name="labelMeanFreePath.Text" xml:space="preserve">
-    <value>##.## nm @ ## kev</value>
+    <value>##.## nm @ ## keV</value>
   </data>
   <data name="labelMeanFreePath.ToolTip" xml:space="preserve">
     <value>Elastic mean free path λ: average distance the
@@ -922,7 +922,7 @@ electrons (BSE), from the Monte-Carlo simulation.</value>
     <value>0</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Average BSE Energy</value>
+    <value>Average BSE energy</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>Average exit energy of the backscattered electrons
@@ -991,7 +991,7 @@ larger values mean more frequent scattering (nm²).</value>
     <value>0</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Stopping Power (dE/ds)</value>
+    <value>Stopping power (dE/ds)</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>Stopping power dE/ds: energy the electron
@@ -1818,7 +1818,7 @@ and 3-D rendering of the last simulation.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Trajectory Simulator (Monte Carlo Method)</value>
+    <value>Trajectory Simulator (Monte Carlo method)</value>
   </data>
   <data name="&gt;&gt;captureExtender.Name" xml:space="preserve">
     <value>captureExtender</value>

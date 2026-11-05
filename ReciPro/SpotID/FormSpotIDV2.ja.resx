@@ -128,7 +128,7 @@
     <value>Yu Gothic UI, 7pt</value>
   </data>
   <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
-    <value>観測スポットの一覧表です。'Direct'で直接ビーム
+    <value>観測スポットの一覧表です。'Direct'で直接スポット
 を指定、行の'Fit'でピークをフィット、行選択で
 パターン上の該当スポットを強調します</value>
   </data>
@@ -178,7 +178,7 @@
   </data>
   <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
     <value>現在選択しているスポットを 1 つだけリスト
-から削除します（全削除は Clear ボタン）。</value>
+から削除します（すべて消すには「全削除」ボタン）。</value>
   </data>
   <data name="buttonClearSpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -339,7 +339,7 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.Text" xml:space="preserve">
-    <value>試料厚みと方位の最適化 (電子回折のみ)</value>
+    <value>試料厚さと方位の最適化 (制限視野電子回折のみ)</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
     <value>選択した結晶粒について、観測スポット強度を
@@ -359,10 +359,13 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
     <value>厚さ・方位の精密化で入射ビーム方向を
-探索する角度半径（半収束角、mrad）。</value>
+探索する角度半径（収束半角、mrad）。</value>
   </data>
   <data name="buttonStop.ToolTip" xml:space="preserve">
     <value>現在の計算を中止</value>
+  </data>
+  <data name="buttonStop.Text" xml:space="preserve">
+    <value>中止</value>
   </data>
   <data name="numericBoxAcceptableError.HeaderText" xml:space="preserve">
     <value>許容範囲</value>
@@ -379,13 +382,14 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
     <value>運動学的には禁制だが多重（動力学）回折で出現し
-うる反射を、計算パターンから除外します。</value>
+うる反射を、計算パターンから除外します。
+X 線・中性子では常に無視します（運動学的に扱うため）。</value>
   </data>
   <data name="radioButtonSingleGrain.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
-    <value>単一粒子として</value>
+    <value>単一の結晶粒として</value>
   </data>
   <data name="radioButtonSingleGrain.ToolTip" xml:space="preserve">
     <value>単一結晶粒の方位を探索</value>
@@ -394,13 +398,13 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="radioButtonMultiGrain.Text" xml:space="preserve">
-    <value>複数粒子として</value>
+    <value>複数の結晶粒として</value>
   </data>
   <data name="radioButtonMultiGrain.ToolTip" xml:space="preserve">
     <value>複数結晶粒の方位を探索</value>
   </data>
   <data name="numericBoxMaxGrainNum.HeaderText" xml:space="preserve">
-    <value>最大粒子数</value>
+    <value>最大結晶粒数</value>
   </data>
   <data name="numericBoxMaxGrainNum.ToolTip" xml:space="preserve">
     <value>探索する結晶粒方位の最大数</value>
@@ -457,19 +461,19 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
     <value>保存</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>メタファイル (emf) として</value>
+    <value>メタファイルとして (EMF)</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>イメージファイル (png) として</value>
+    <value>画像として (PNG 形式)</value>
   </data>
   <data name="copyToolStripMenuItem.Text" xml:space="preserve">
     <value>コピー</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>メタファイル (emf) として</value>
+    <value>メタファイルとして (EMF)</value>
   </data>
   <data name="copyAsBitmapToolStripMenuItem.Text" xml:space="preserve">
-    <value>イメージファイル (png) として</value>
+    <value>画像として</value>
   </data>
   <data name="saveCandidateListToolStripMenuItem.Text" xml:space="preserve">
     <value>候補方位リスト (CSV)...</value>
@@ -481,15 +485,51 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
     <value>ショートカットヒント</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
-    <value>Left double click : Add a spot </value>
+    <value>左ダブルクリック : スポットを追加</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>Ctrl + Left double click: Add a direct spot </value>
+    <value>Ctrl + 左ダブルクリック : 直接スポットを追加</value>
   </data>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Ctrl + Right click : Remove the spot </value>
+    <value>Ctrl + 右クリック : スポットを削除</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="Range.HeaderText" xml:space="preserve">
+    <value>範囲 (半径)</value>
+  </data>
+  <data name="A.HeaderText" xml:space="preserve">
+    <value>A (強度)</value>
+  </data>
+  <data name="Column2.HeaderText" xml:space="preserve">
+    <value>直接</value>
+  </data>
+  <data name="buttonGlobalFit.Text" xml:space="preserve">
+    <value>グローバルフィット</value>
+  </data>
+  <data name="groupBoxOptics.Text" xml:space="preserve">
+    <value>光学系</value>
+  </data>
+  <data name="AssignedSpots.HeaderText" xml:space="preserve">
+    <value>割当スポット</value>
+  </data>
+  <data name="assignedSpotsDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>割当スポット</value>
+  </data>
+  <data name="CrystalName.HeaderText" xml:space="preserve">
+    <value>結晶名</value>
+  </data>
+  <data name="doubleClickAddSpotToolStripMenuItem.Text" xml:space="preserve">
+    <value>左ドラッグ : 画像を移動</value>
+  </data>
+  <data name="toolStripMenuItem7.Text" xml:space="preserve">
+    <value>右ドラッグ : 拡大</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>右クリック : 縮小</value>
+  </data>
+  <data name="toolStripMenuItem6.Text" xml:space="preserve">
+    <value>左クリック : スポットを選択</value>
   </data>
 </root>

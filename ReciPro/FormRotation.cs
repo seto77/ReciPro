@@ -208,7 +208,18 @@ public partial class FormRotationMatrix : FormBase
 
     private void FormRotationMatrix_VisibleChanged(object sender, EventArgs e)
     {
-        FormMain.toolStripButtonRotation.Checked = true;
+        //FormMain.toolStripButtonRotation.Checked = true; // 261105Cl 変更前: × で閉じたとき (FormClosing → Visible=false) にも点灯させていた
+        FormMain.toolStripButtonRotation.Checked = Visible; // 261105Cl 変更 (監査 G-21)
+
+        // 261105Cl 追加 (監査 G-10): 閉じている間は主窓から更新されないので、開いたときに今の方位で描き直す。
+        //  Link は閉じている間は止まっている (Linked = Visible && Link) ので、ゴニオの角度はそのままに、今の方位を基準に結び直す
+        //  (Link を入れ直したときと同じ。ゴニオの制約・結晶の方位は変えない)
+        if (Visible && glControlReciProGonio != null && FormMain.Crystal != null)
+        {
+            if (checkBoxLink.Checked)
+                RotBase = RotExp.Inverse() * RotReciPro;
+            SetRotation(false);
+        }
     }
 
     /// <summary>
@@ -228,9 +239,14 @@ public partial class FormRotationMatrix : FormBase
     #region Excelのコピーペースト
     private void buttonCopy_Click(object sender, EventArgs e)
     {
+        //var str =
+        //    $"{numericBox11.Value}\t{numericBox12.Value}\t{numericBox13.Value}\n" +
+        //    $"{numericBox21.Value}\t{numericBox22.Value}\t{numericBox23.Value}\n" +
+        //    $"{numericBox31.Value}\t{numericBox32.Value}\t{numericBox33.Value}"; // 261105Cl 変更前: 行の区切りが \n だけで、下の Paste (\r\n で分割) が読めなかった
+        // 261105Cl 変更 (監査 G-14): Excel と同じ \r\n で行を区切る
         var str =
-            $"{numericBox11.Value}\t{numericBox12.Value}\t{numericBox13.Value}\n" +
-            $"{numericBox21.Value}\t{numericBox22.Value}\t{numericBox23.Value}\n" +
+            $"{numericBox11.Value}\t{numericBox12.Value}\t{numericBox13.Value}\r\n" +
+            $"{numericBox21.Value}\t{numericBox22.Value}\t{numericBox23.Value}\r\n" +
             $"{numericBox31.Value}\t{numericBox32.Value}\t{numericBox33.Value}";
         Clipboard.SetDataObject(str);
     }
@@ -242,7 +258,8 @@ public partial class FormRotationMatrix : FormBase
             var data = Clipboard.GetDataObject();
             var str = (string)data.GetData(typeof(string).ToString(), true);
 
-            var str1 = str.Split(separator, StringSplitOptions.None);
+            //var str1 = str.Split(separator, StringSplitOptions.None); // 261105Cl 変更前: \r\n でしか分割せず、Copy (\n 区切り) の内容を Paste できなかった
+            var str1 = str.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries); // 261105Cl 変更 (監査 G-14): \r\n・\n のどちらの改行でも読む
             if (str1.Length < 3) return;
 
             var row1 = str1[0].Split(new[] { '\t' }, StringSplitOptions.None);
@@ -261,6 +278,36 @@ public partial class FormRotationMatrix : FormBase
             if (!double.TryParse(row3[0], out var e31)) return;
             if (!double.TryParse(row3[1], out var e32)) return;
             if (!double.TryParse(row3[2], out var e33)) return;
+
+            // 261105Cl 追加 (監査 G-14): 回転行列 (直交・行列式 +1) でなければ方位に入れない (旧: 検査なしで結晶の方位になっていた)。
+            //  表計算の丸め程度のずれ (RᵀR − I が 1e-3 以下) は、最も近い回転行列 (SVD の U·Vᵀ) に直して使う
+            var m = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new[,] { { e11, e12, e13 }, { e21, e22, e23 }, { e31, e32, e33 } });
+            var deviation = (m.Transpose() * m - MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseIdentity(3)).Enumerate().Max(v => Math.Abs(v));
+            if (!(deviation <= 1e-3) || !(m.Determinant() > 0))
+            {
+                MessageBox.Show(this,
+                    Localization.Loc(
+                        en: "The pasted values are not a rotation matrix\n(rows and columns must be orthonormal and the determinant +1).",
+                        ja: "貼り付けた値は回転行列ではありません\n(行と列が正規直交で、行列式が +1 である必要があります)。",
+                        de: "Die eingefügten Werte bilden keine Rotationsmatrix\n(Zeilen und Spalten müssen orthonormal sein, Determinante +1).",
+                        fr: "Les valeurs collées ne forment pas une matrice de rotation\n(lignes et colonnes orthonormées, déterminant +1).",
+                        es: "Los valores pegados no forman una matriz de rotación\n(filas y columnas ortonormales, determinante +1).",
+                        pt: "Os valores colados não formam uma matriz de rotação\n(linhas e colunas ortonormais, determinante +1).",
+                        it: "I valori incollati non formano una matrice di rotazione\n(righe e colonne ortonormali, determinante +1).",
+                        ru: "Вставленные значения не образуют матрицу поворота\n(строки и столбцы должны быть ортонормированы, определитель +1).",
+                        zhHans: "粘贴的值不是旋转矩阵\n（行与列须正交归一，行列式为 +1）。",
+                        zhHant: "貼上的值不是旋轉矩陣\n（各列與各行須為正規正交，行列式為 +1）。",
+                        ko: "붙여 넣은 값은 회전 행렬이 아닙니다\n(행과 열이 정규 직교이고 행렬식이 +1이어야 합니다)."),
+                    Localization.Loc(en: "Rotation matrix", ja: "回転行列", de: "Rotationsmatrix", fr: "Matrice de rotation", es: "Matriz de rotación",
+                        pt: "Matriz de rotação", it: "Matrice di rotazione", ru: "Матрица поворота", zhHans: "旋转矩阵", zhHant: "旋轉矩陣", ko: "회전 행렬"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var svd = m.Svd();
+            var nearest = svd.U * svd.VT;
+            (e11, e12, e13) = (nearest[0, 0], nearest[0, 1], nearest[0, 2]);
+            (e21, e22, e23) = (nearest[1, 0], nearest[1, 1], nearest[1, 2]);
+            (e31, e32, e33) = (nearest[2, 0], nearest[2, 1], nearest[2, 2]);
 
             skip = true;
             numericBox11.Value = e11;
@@ -350,25 +397,46 @@ public partial class FormRotationMatrix : FormBase
         numericBox33.Value = RotReciPro.E33;
         skip = false;
 
-        if (renewExpEuler && Linked)
+        //if (renewExpEuler && Linked)
+        //{
+        //    skip = true;
+        //    checkBoxEnable2nd.Checked = checkBoxEnable3rd.Checked = true;
+        //    checkBoxFix1st.Checked = checkBoxFix2nd.Checked = checkBoxFix3rd.Checked = false;
+        //    var settings = new List<(V3 Vec, double Angle, bool Variable)>();
+        //    var dir = getExpDirections();
+        //    settings.Add((dir[0], numericBoxExp1.RadianValue, !checkBoxFix1st.Checked));
+        //    settings.Add((dir[1], numericBoxExp2.RadianValue, !checkBoxFix2nd.Checked));
+        //    settings.Add((dir[2], numericBoxExp3.RadianValue, !checkBoxFix3rd.Checked));
+        //
+        //    var angles = Euler.DecomposeMatrix2(RotReciPro * RotBase.Inverse(), [.. settings]);
+        //    numericBoxExp1.RadianValue = angles[0];
+        //    numericBoxExp2.RadianValue = angles[1];
+        //    numericBoxExp3.RadianValue = angles[2];
+        //    skip = false;
+        //} // 261105Cl 変更前: Link 中に方位を外から決められると、ゴニオの制約 (Fix・第 2/第 3 軸の有効) を黙って全部外して 3 軸に分解し直していた
+
+        // 261105Cl 変更 (作者の決定 G-13): Link 中に方位を外から絶対値で決められたとき (主窓の Euler 角の入力・Reset・View along、この窓の Paste、
+        //  結晶の切り替え、他の窓やマクロからの方位の設定) は、Link を外して主窓のステータスバーで知らせる。
+        //  方位は入力どおり正確に入り、ゴニオの角度と制約の設定はそのまま残る (Link を入れ直せば、その時点の方位で結び直す)。
+        //  矢印ボタン・ドラッグなどの相対回転は FormMain.Rotate → SetRotation(Matrix3D) で制約を保ったまま回すので、ここには来ない。
+        //  方位が Link の関係 (R = R_exp R_base) から変わっていないとき (結晶の編集など) は Link を保つ
+        if (renewExpEuler && Linked && (RotExp * RotBase - RotReciPro).ToArrayRight().Max(v => Math.Abs(v)) > 1e-6)
         {
-            skip = true;
-            checkBoxEnable2nd.Checked = checkBoxEnable3rd.Checked = true;
-            checkBoxFix1st.Checked = checkBoxFix2nd.Checked = checkBoxFix3rd.Checked = false;
-            var settings = new List<(V3 Vec, double Angle, bool Variable)>();
-            var dir = getExpDirections();
-            settings.Add((dir[0], numericBoxExp1.RadianValue, !checkBoxFix1st.Checked));
-            settings.Add((dir[1], numericBoxExp2.RadianValue, !checkBoxFix2nd.Checked));
-            settings.Add((dir[2], numericBoxExp3.RadianValue, !checkBoxFix3rd.Checked));
-
-            var angles = Euler.DecomposeMatrix2(RotReciPro * RotBase.Inverse(), [.. settings]);
-            numericBoxExp1.RadianValue = angles[0];
-            numericBoxExp2.RadianValue = angles[1];
-            numericBoxExp3.RadianValue = angles[2];
+            skip = true; // CheckBoxLink_CheckedChanged の描き直しは飛ばし、下でまとめて描く
+            checkBoxLink.Checked = false;
             skip = false;
-
-
-
+            FormMain.toolStripStatusLabel.Text = Localization.Loc(
+                en: "Rotation Geometry: Link was turned off to set the orientation exactly (goniometer settings are kept).",
+                ja: "回転ジオメトリ: 方位を入力どおりに設定するため、リンクを外しました (ゴニオメーターの設定は保たれます)。",
+                de: "Rotationsgeometrie: „Verknüpfen“ wurde ausgeschaltet, um die Orientierung genau zu setzen (Goniometer-Einstellungen bleiben erhalten).",
+                fr: "Géométrie de rotation : « Lier » a été désactivé pour appliquer l'orientation exacte (réglages du goniomètre conservés).",
+                es: "Geometría de rotación: se desactivó «Enlazar» para fijar la orientación exacta (se conservan los ajustes del goniómetro).",
+                pt: "Geometria de rotação: \"Vincular\" foi desativado para definir a orientação exata (as configurações do goniômetro são mantidas).",
+                it: "Geometria di rotazione: «Collega» è stato disattivato per impostare l'orientazione esatta (le impostazioni del goniometro restano).",
+                ru: "Геометрия вращения: «Связать» отключено, чтобы задать ориентацию точно (настройки гониометра сохранены).",
+                zhHans: "旋转几何：为精确设置取向，已取消“联动”（测角仪设置保持不变）。",
+                zhHant: "旋轉幾何：為精確設定方位，已取消「連結」（測角儀設定保持不變）。",
+                ko: "회전 기하학: 방위를 정확히 설정하기 위해 '연동'을 해제했습니다 (고니오미터 설정은 유지됩니다)."); // 261105Cl
         }
         //ReciPro coordinatesの描画
         var dirReciPro = new[] { new V3(0, 0, 1), new V3(1, 0, 0), new V3(0, 0, 1) };

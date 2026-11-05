@@ -58,8 +58,8 @@
 
 ## 快速開始
 1. 從 [Releases](https://github.com/seto77/ReciPro/releases/latest) 下載並安裝。
-2. 從內建清單（約 80 個晶體）中選擇一個晶體。你也可以匯入 CIF 檔案或使用 [CSManager](https://github.com/seto77/CSManager)。
-3. 從右側面板呼叫各項功能：結構檢視器、極網、繞射模擬器、HRTEM 模擬等。
+2. 從內建清單（66 個晶體）中選擇一個晶體。你也可以匯入 CIF 檔案或使用 [CSManager](https://github.com/seto77/CSManager)。
+3. 從右側面板呼叫各項功能：結構檢視器、極網、繞射模擬器、HRTEM/STEM 模擬器等。
 4. 透過滑鼠拖動或輸入晶帶軸/晶面指數來旋轉晶體。
 
 ## 引用

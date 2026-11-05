@@ -94,7 +94,7 @@ de l'échantillon</value>
     <value>Seuil 1/d</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
-    <value>Haut</value>
+    <value>Max.</value>
   </data>
   <data name="labelKikuchiLineWidth.Text" xml:space="preserve">
     <value>Largeur de ligne</value>
@@ -144,7 +144,7 @@ de l'échantillon</value>
     <value>Pas</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>Réinitialiser</value>
+    <value>Réinit. la vue</value>
   </data>
   <data name="groupBoxViewDirection.Text" xml:space="preserve">
     <value>Direction de vue</value>
@@ -209,7 +209,7 @@ l'intensité relative</value>
     <value>Divers</value>
   </data>
   <data name="numericBoxCameraLength2.HeaderText" xml:space="preserve">
-    <value>Longueur de caméra 2</value>
+    <value>Long. caméra 2</value>
   </data>
   <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
     <value>Géométrie détecteur &amp;&amp; image superposée</value>
@@ -227,7 +227,7 @@ l'intensité relative</value>
     <value>Enregistrer l'image</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>comme image  (format PNG)</value>
+    <value>comme image (format PNG)</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>comme métafichier (EMF)</value>
@@ -305,7 +305,7 @@ l'intensité relative</value>
     <value>Électron 200 kV</value>
   </data>
   <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
-    <value>Électron 120 keV</value>
+    <value>Électron 120 kV</value>
   </data>
   <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
     <value>Rayons X 30 keV</value>
@@ -348,7 +348,7 @@ l'intensité relative</value>
     <value>Propriété de précession</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>Demi-angle</value>
+    <value>Angle préc.</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>Pas</value>
@@ -480,10 +480,15 @@ lignes radiales de l'échelle azimutale)</value>
 pour chaque tache, indiquant l'écart entre le nœud du
 réseau réciproque et la condition exacte de Bragg/sphère d'Ewald.</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>Intensité</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>Lorsque cette case est cochée, le module du facteur de structure
-|Fg| est affiché pour chaque tache ; un |Fg| plus grand
-indique généralement une réflexion plus intense.</value>
+    <value>Lorsque cette case est cochée, l'intensité de chaque tache
+est affichée en % de la réflexion la plus intense : |Fg|²
+(cinématique, sans l'erreur d'excitation) ou |Φg|² suivi de
+l'amplitude complexe Φg = Re + Im i (théorie dynamique).
+Rien n'est affiché avec « Erreur d'excitation ».</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>Définir une taille de caractères</value>
@@ -771,11 +776,12 @@ souris en mm (origine : cristal).</value>
 souris en mm (origine : cristal).</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>Distance interréticulaire d (nm) correspondant à la position du pointeur de la souris.</value>
+    <value>Distance interréticulaire d correspondant à la position du pointeur de la souris,
+en Å ou en nm (suit le choix Å/nm des paramètres de maille dans la fenêtre principale).</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>Distance réciproque d⁻¹ (nm⁻¹) correspondant
-à la position du pointeur de la souris.</value>
+    <value>Distance réciproque d⁻¹ correspondant à la position du pointeur de la souris,
+en Å⁻¹ ou en nm⁻¹ (suit le choix Å/nm des paramètres de maille dans la fenêtre principale).</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>Angle de diffusion 2θ en degrés
@@ -859,6 +865,9 @@ entre l'échantillon et le détecteur (moniteur).</value>
     <value>Définir la longueur de caméra 2, c'est-à-dire la distance
 entre l'échantillon et le détecteur (moniteur).</value>
   </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>Détails</value>
+  </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>Ouvrir la fenêtre de réglages détaillés de l'optique.</value>
   </data>
@@ -900,12 +909,12 @@ par le mode de centrage du réseau sont masquées.</value>
 électronique en précession (PED)</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>Demi-angle de précession (mrad) pour la simulation PED (diffraction
+    <value>Angle de précession (mrad) pour la simulation PED (diffraction
 électronique en précession) ; demi-angle au sommet du cône
 utilisé pour incliner et intégrer le faisceau incident.</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>Demi-angle de précession (mrad) pour la simulation PED (diffraction
+    <value>Angle de précession (mrad) pour la simulation PED (diffraction
 électronique en précession) ; demi-angle au sommet du cône
 utilisé pour incliner et intégrer le faisceau incident.</value>
   </data>

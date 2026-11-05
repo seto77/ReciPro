@@ -211,7 +211,10 @@ public partial class FormMain : FormBase
             {
                 var crystals = listBox.SelectedItems.Cast<Crystal>().ToArray();
                 for (int i = 0; i < crystals.Length; i++)
-                    if (crystals[i] == (Crystal)listBox.SelectedItem)
+                    //if (crystals[i] == (Crystal)listBox.SelectedItem) // 261105Cl 変更前
+                    // 261105Cl 変更 (監査 A17): 同じオブジェクトだけを編集中の結晶に置き換える。== は Crystal.Equals (内容の比較) なので、
+                    // 内容が同じ結晶を複数選ぶと全部が編集中の結晶 (同じオブジェクト) に置き換わっていた
+                    if (ReferenceEquals(crystals[i], listBox.SelectedItem))
                         crystals[i] = Crystal;
                 return crystals;
             }
@@ -413,9 +416,23 @@ public partial class FormMain : FormBase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error during initializing GLControl");
+                //MessageBox.Show("Error during initializing GLControl"); // 261105Cl 変更前
+                // 261105Cl 変更 (作者決定「今回の起動だけ」): 今回だけ 3D を無効にしたことと、常に無効にする方法 (メニューの文言は FormMain.*.resx と同じ) を案内する
+                MessageBox.Show("Error during initializing GLControl\r\n\r\n" + Crystallography.Localization.Loc(
+                    en: "3D rendering (OpenGL) is turned off for this launch only. To turn it off permanently, tick Options › \"Disable all OpenGL rendering (requires restart)\".",
+                    ja: "今回の起動に限り 3D 描画 (OpenGL) を無効にしました。常に無効にするには、オプション › 「OpenGLによる全てのレンダリングを無効化 (要再起動)」にチェックを入れてください。",
+                    de: "Die 3D-Darstellung (OpenGL) ist nur für diesen Start deaktiviert. Um sie dauerhaft zu deaktivieren, aktivieren Sie Optionen › „Gesamtes OpenGL-Rendering deaktivieren (Neustart erforderlich)“.",
+                    fr: "Le rendu 3D (OpenGL) est désactivé pour ce lancement uniquement. Pour le désactiver définitivement, cochez Options › « Désactiver tout le rendu OpenGL (redémarrage requis) ».",
+                    es: "El renderizado 3D (OpenGL) está desactivado solo para este inicio. Para desactivarlo de forma permanente, marque Opciones › «Desactivar todo el renderizado OpenGL (requiere reinicio)».",
+                    pt: "A renderização 3D (OpenGL) está desativada apenas nesta execução. Para desativá-la permanentemente, marque Opções › \"Desativar toda a renderização OpenGL (requer reinício)\".",
+                    it: "Il rendering 3D (OpenGL) è disattivato solo per questo avvio. Per disattivarlo in modo permanente, seleziona Opzioni › \"Disabilita tutto il rendering OpenGL (richiede il riavvio)\".",
+                    ru: "3D-отрисовка (OpenGL) отключена только для этого запуска. Чтобы отключить её навсегда, отметьте Параметры › «Отключить весь рендеринг OpenGL (требуется перезапуск)».",
+                    zhHans: "仅本次启动禁用 3D 渲染 (OpenGL)。若要始终禁用，请勾选 选项 › “禁用全部 OpenGL 渲染（需要重启）”。",
+                    zhHant: "僅本次啟動停用 3D 算繪 (OpenGL)。若要永久停用，請勾選 選項 › 「停用所有 OpenGL 算繪（需重新啟動）」。",
+                    ko: "이번 실행에서만 3D 렌더링(OpenGL)을 사용하지 않습니다. 항상 사용하지 않으려면 옵션 › '모든 OpenGL 렌더링 사용 안 함 (재시작 필요)'에 체크하세요."));
                 MessageBox.Show(ex.Message);
-                disableOpneGLToolStripMenuItem.Checked = true;
+                //disableOpneGLToolStripMenuItem.Checked = true; // 261105Cl 変更前: 保存値が無ければ終了時に保存されて以後ずっと無効、保存値があれば Load 末尾の Registry(Read) で戻されて 3D ボタンが無効にならなかった
+                disableOpenGLThisLaunch = true; // 261105Cl 変更 (作者決定): 今回の起動だけ。メニューのチェック (保存される設定) には触らない
             }
         }
 
@@ -482,6 +499,7 @@ public partial class FormMain : FormBase
 
         commonDialog.Progress = ("Now Loading...Initializing 'Spot ID' form.", 0.65);
         FormSpotIDv2 = new FormSpotIDV2 { FormMain = this, Visible = false };
+        FormSpotIDv2.VisibleChanged += multiSelectionForms_VisibleChanged; // 261105Cl 追加 (監査 I18): v2 も選択した複数の結晶で同定するので、開いている間は複数選択にする
 
         //260801Cl 削除: 電卓 (FormCalculator) を ReciPro から廃止 (作者判断)。開く手段は Ctrl 二度押しだけで、
         //その二度押し自体を廃止したため到達不能になっていた。FormCalculator 自体は共有ライブラリ側に残す
@@ -714,6 +732,10 @@ public partial class FormMain : FormBase
             //260723Cl 外部マクロ命令の Named Pipe リスナーを有効にするか (commonDialog 生成後 = メニュー構築後のみ到達)
             rw(() => MacroPipeListenerEnabled);
 
+            // 261105Cl 追加 (作者の決定 A20): Options ▸ Show Tooltips と、結晶の欄の格子定数の単位 (Å/nm) を次の起動でも残す
+            rw(() => toolTipToolStripMenuItem.Checked); // 261105Cl 追加
+            rw(() => crystalControl.symmetryControl.LengthUnit); // 261105Cl 追加
+
             //260415Cl Reg.RW(key, mode, commonDialog, nameof(commonDialog.AutomaticallyClose), commonDialog.AutomaticallyClose);
             rw(() => commonDialog.AutomaticallyClose);
 
@@ -724,6 +746,10 @@ public partial class FormMain : FormBase
             rw(() => FormStereonet.Bounds);
             #endregion
 
+            #region StructureViewer 261105Cl 追加 (監査 H6): 窓の位置と大きさだけ保存する (FormStructureViewer は FormStereonet より先に作られるので、ここでは必ずある)
+            rw(() => FormStructureViewer.Bounds);
+            #endregion
+
             #region SpotIDv1
             rw(() => FormSpotIDv1.Bounds);
             #endregion
@@ -732,8 +758,10 @@ public partial class FormMain : FormBase
             FormDiffractionSimulator.CancelSetVector = true;
 
             rw(() => FormDiffractionSimulator.Bounds);
-            rw(() => FormDiffractionSimulator.Resolution);
-            rw(() => FormDiffractionSimulator.ResolutionUnit);
+            // 261105Cl 変更 (監査 C7): 解像度は下の波長・カメラ長の後に読む (下へ移した)。先に読むと、単位 nm⁻¹/pix の換算 (radioButtonResoUnit_CheckedChanged) が
+            //  既定の波長・カメラ長で行われ、その後で実際の値を戻すので、次の起動で倍率 (mm/pix) が変わっていた
+            //rw(() => FormDiffractionSimulator.Resolution); // 261105Cl 変更前 (2 行)
+            //rw(() => FormDiffractionSimulator.ResolutionUnit);
             rw(() => FormDiffractionSimulator.FlipHorizontally);
             rw(() => FormDiffractionSimulator.FlipVertically);
             //rw(() => FormDiffractionSimulator.NegativeImage); //260731Cl 変更前
@@ -756,6 +784,12 @@ public partial class FormMain : FormBase
             rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorHeight);
             rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Tau);
             rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Phi);
+            // 261105Cl 追加 (監査 C18): 検出器の画素寸法と「検出器の範囲を表示」が保存されず、画素単位で保存している Foot・検出器の大きさと食い違っていた
+            rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorPixelSize); // 261105Cl
+            rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.ShowDetectorArea); // 261105Cl
+            // 261105Cl (監査 C7): 解像度は波長・カメラ長を戻した後に、単位 → 値の順で読む (Resolution の値は常に mm/pix で保存され、setter が今の単位へ換算する)
+            rw(() => FormDiffractionSimulator.ResolutionUnit); // 261105Cl
+            rw(() => FormDiffractionSimulator.Resolution); // 261105Cl
             FormDiffractionSimulator.CancelSetVector = false;
             #endregion
 
@@ -770,6 +804,14 @@ public partial class FormMain : FormBase
             rw(() => FormSpotIDv2.NearestNeighbor);
             rw(() => FormSpotIDv2.FittingRange);
             rw(() => FormSpotIDv2.ToleranceLength);
+            // 261105Cl 追加 (監査 I23): 窓の位置と校正値 (線源・エネルギー・カメラ長・ピクセルサイズの単位と値) も保存する。旧は毎回 200 kV・1000 mm・0.05 mm に戻った。
+            //  単位は値より先に戻す (値は単位の欄で読み替えるため)。エネルギーは線源ごとの単位 (X 線・電子線 keV、中性子 meV)
+            rw(() => FormSpotIDv2.Bounds); // 261105Cl 追加
+            rw(() => FormSpotIDv2.Source); // 261105Cl 追加
+            rw(() => FormSpotIDv2.Energy); // 261105Cl 追加
+            rw(() => FormSpotIDv2.CameraLength); // 261105Cl 追加
+            rw(() => FormSpotIDv2.PixelSizeUnitInverse); // 261105Cl 追加
+            rw(() => FormSpotIDv2.PixelSizeValue); // 261105Cl 追加
             #endregion
 
             #region EBSD 260724Cl 追加: 検出器幾何 (中心座標・傾き・ピクセル定義)・試料傾斜・Flip L-R の永続化
@@ -794,6 +836,21 @@ public partial class FormMain : FormBase
                 rw(() => FormEBSD.FlattenBackgroundFwhmPx); // 260920Cl 追加
                 rw(() => FormEBSD.ExpFlattenBackground); // 260920Cl 追加
                 rw(() => FormEBSD.ExpFlattenBackgroundFwhmPx); // 260920Cl 追加
+                rw(() => FormEBSD.CoherenceLossWeight); // 261105Cl 追加 (監査 F18・作者決定): 「損失でコントラストを減衰」のチェックだけ保存 (E_c は分布に合わせた既定値への追従を保つため保存しない)
+                rw(() => FormEBSD.AcceleratingVoltageKV); // 261106Cl 追加 (作者決定 D4): 加速電圧も保存して次の起動で戻す (範囲の値より先に戻す。下の範囲は前回の電圧で決めたものなので、電圧も一緒に戻れば合う)
+                rw(() => FormEBSD.RangesFromMonteCarlo); // 261105Cl 追加 (監査 F5・作者決定): 「範囲を MC から自動」のチェック (範囲の値そのものは保存しない)
+                // 261106Cl 追加 (作者決定 C11): 手で入れた範囲の値も保存する。書き込みは常に (閉じたときの欄の値)、読み込みはチェックが OFF (手入力) で戻ったときだけ
+                //   (ON なら範囲は MC が決めるので、前回の MC の値を戻しても次の MC で書き換わるだけ。既定値のまま始める)。チェックの後に読むので、欄は読み取り専用になっていない。
+                //   別の加速電圧で起動して合わない範囲 (上限 > E0 など) が戻ったときは、構築の前の検査が構築を止めて知らせる
+                if (mode == Reg.Mode.Write || !FormEBSD.RangesFromMonteCarlo) // 261106Cl
+                {
+                    rw(() => FormEBSD.EnergyRangeStartKeV); // 261106Cl
+                    rw(() => FormEBSD.EnergyRangeEndKeV); // 261106Cl
+                    rw(() => FormEBSD.EnergyRangeStepKeV); // 261106Cl
+                    rw(() => FormEBSD.DepthRangeStartNm); // 261106Cl
+                    rw(() => FormEBSD.DepthRangeEndNm); // 261106Cl
+                    rw(() => FormEBSD.DepthRangeStepNm); // 261106Cl
+                }
             }
             #endregion
 
@@ -877,12 +934,16 @@ public partial class FormMain : FormBase
     /// <summary>回転量と回転角度を指定して、全フォームに回転命令を出す</summary>
     /// <param name="axis"></param>
     /// <param name="angle"></param>
-    public void Rotate((double X, double Y, double Z) axis, double angle) => Rotate(new Vector3DBase(axis.X, axis.Y, axis.Z), angle);
+    /// <param name="ignoreFixedAxis">261105Cl 追加: true なら「軸/面を固定」を無視して axis のまわりに回す (試料ホルダーの「180° 回転」)</param>
+    //public void Rotate((double X, double Y, double Z) axis, double angle) => Rotate(new Vector3DBase(axis.X, axis.Y, axis.Z), angle); // 261105Cl 変更前
+    public void Rotate((double X, double Y, double Z) axis, double angle, bool ignoreFixedAxis = false) => Rotate(new Vector3DBase(axis.X, axis.Y, axis.Z), angle, ignoreFixedAxis); // 261105Cl
 
     /// <summary>回転量と回転角度を指定して、全フォームに回転命令を出す</summary>
     /// <param name="axis"></param>
     /// <param name="angle"></param>
-    public void Rotate(Vector3DBase axis, double angle)
+    /// <param name="ignoreFixedAxis">261105Cl 追加: true なら「軸/面を固定」を無視して axis のまわりに回す (試料ホルダーの「180° 回転」)</param>
+    //public void Rotate(Vector3DBase axis, double angle) // 261105Cl 変更前
+    public void Rotate(Vector3DBase axis, double angle, bool ignoreFixedAxis = false) // 261105Cl
     {
         //if (angle == 0) return; // 261105Cl 変更前
         // 261105Cl 変更 (監査 #29): 結晶リストが空 (または結晶が無い) なら何もしない。以前は下の crystals[0] で例外になり、アニメーション中は Timer のたびに出続けた
@@ -890,30 +951,46 @@ public partial class FormMain : FormBase
 
         axis = axis.Normarize();
 
+        // 261105Cl 追加 (監査 G-12): 「軸を固定」「面を固定」のときは、その結晶の固定した軸 (面法線) のまわりに回す。Link 中も同じ回転を FormRotation に渡すため、下のループから切り出した
+        Matrix3D rotationFor(Crystal cry)
+        {
+            //if (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked) // 261105Cl 変更前
+            if (ignoreFixedAxis || (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked)) // 261105Cl
+                return Matrix3D.Rot(axis, angle);
+            var (u, v, w) = indexControlAxis.Values;
+            var (h, k, l) = indexControlPlane.Values;
+            var newAxis = checkBoxFixAxis.Checked ?
+                 cry.RotationMatrix * (u * Crystal.A_Axis + v * Crystal.B_Axis + w * Crystal.C_Axis) :
+                 cry.RotationMatrix * (h * Crystal.A_Star + k * Crystal.B_Star + l * Crystal.C_Star);                // 260422Cl HKLControl revert
+            return Matrix3D.Rot(newAxis, Vector3DBase.AngleBetVectors(newAxis, axis) < Math.PI / 2 ? angle : -angle);
+        }
+
         if (FormRotation.Linked)//FormRotationのリンクが有効な場合は、FormRotation側で回転状況を制御する
         {
-            FormRotation.SetRotation(Matrix3D.Rot(axis, angle) * Crystal.RotationMatrix);
+            //FormRotation.SetRotation(Matrix3D.Rot(axis, angle) * Crystal.RotationMatrix); // 261105Cl 変更前: Link 中は「軸/面を固定」を無視していた
+            FormRotation.SetRotation(rotationFor(Crystal) * Crystal.RotationMatrix); // 261105Cl 変更 (監査 G-12)
             return;
         }
 
         var crystals = Crystals;//260717Cl 追加: Crystals getter は呼ぶたびに listBox から配列を再構築するため一次受け (旧コードはループ内で毎回呼んでいた)
         for (int i = 0; i < crystals.Length; i++)
         {
-            Matrix3D rot;
-            if (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked && !FormRotation.Linked)
-                rot = Matrix3D.Rot(axis, angle);
-            else
-            {
-                var (u, v, w) = indexControlAxis.Values;
-                var (h, k, l) = indexControlPlane.Values;
-                var newAxis = checkBoxFixAxis.Checked ?
-                     crystals[i].RotationMatrix * (u * Crystal.A_Axis + v * Crystal.B_Axis + w * Crystal.C_Axis) :
-                     crystals[i].RotationMatrix * (h * Crystal.A_Star + k * Crystal.B_Star + l * Crystal.C_Star);                // 260422Cl HKLControl revert
-                if (Vector3DBase.AngleBetVectors(newAxis, axis) < Math.PI / 2)
-                    rot = Matrix3D.Rot(newAxis, angle);
-                else
-                    rot = Matrix3D.Rot(newAxis, -angle);
-            }
+            //Matrix3D rot; // 261105Cl 変更前 (ここから): 中身を rotationFor へ移した。条件の !FormRotation.Linked は上の return で常に真だった
+            //if (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked && !FormRotation.Linked)
+            //    rot = Matrix3D.Rot(axis, angle);
+            //else
+            //{
+            //    var (u, v, w) = indexControlAxis.Values;
+            //    var (h, k, l) = indexControlPlane.Values;
+            //    var newAxis = checkBoxFixAxis.Checked ?
+            //         crystals[i].RotationMatrix * (u * Crystal.A_Axis + v * Crystal.B_Axis + w * Crystal.C_Axis) :
+            //         crystals[i].RotationMatrix * (h * Crystal.A_Star + k * Crystal.B_Star + l * Crystal.C_Star);                // 260422Cl HKLControl revert
+            //    if (Vector3DBase.AngleBetVectors(newAxis, axis) < Math.PI / 2)
+            //        rot = Matrix3D.Rot(newAxis, angle);
+            //    else
+            //        rot = Matrix3D.Rot(newAxis, -angle);
+            //} // 261105Cl 変更前 (ここまで)
+            var rot = rotationFor(crystals[i]); // 261105Cl 変更
             crystals[i].RotationMatrix = rot * crystals[i].RotationMatrix;
         }
         SetRotation(crystals[0].RotationMatrix);
@@ -1173,8 +1250,12 @@ public partial class FormMain : FormBase
     //260717Cl 統合: FormTEMID_VisibleChanged / FormElectronDiffraction_VisibleChanged / formPolycrystallineDiffractionSimulator_VisibleChanged の 3 ハンドラが同一本体だったため 1 つに
     private void multiSelectionForms_VisibleChanged(object sender, EventArgs e)
     {
-        listBox.SelectionMode = FormSpotIDv1.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
-            SelectionMode.MultiExtended : SelectionMode.One;
+        //listBox.SelectionMode = FormSpotIDv1.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ? // 261105Cl 変更前
+        //    SelectionMode.MultiExtended : SelectionMode.One;
+        // 261105Cl 変更 (監査 I18): Spot ID v2 も加える (旧は v2 だけを開いていると単一選択で、複数の結晶での同定・多粒の探索ができなかった)。
+        //  FormSpotIDv2 は FormSpotIDv1 より後に作るので、v1 の表示変更が先に来ても落ちないよう null を許す
+        listBox.SelectionMode = FormSpotIDv1.Visible || (FormSpotIDv2?.Visible ?? false) || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ? // 261105Cl
+            SelectionMode.MultiExtended : SelectionMode.One; // 261105Cl
     }
 
     private void crystalControl_BeamInteraction_VisibleChanged(object sender, EventArgs e) => toolStripButtonBeamInteraction.Checked = crystalControl.FormBeamInteraction.Visible;
@@ -1294,7 +1375,10 @@ public partial class FormMain : FormBase
         var n = listBox.SelectedIndex;
         if (n <= 0) return;
         object o = listBox.SelectedItem;
-        listBox.Items.Remove(listBox.SelectedItem);
+        //listBox.Items.Remove(listBox.SelectedItem); // 261105Cl 変更前
+        // 261105Cl 変更 (監査 A17): 行番号で消す。Remove(object) は Crystal.Equals (内容の比較) で最初に一致した行を消すので、
+        // 内容が同じ結晶が上にあると、その結晶が消えて選択した結晶が 2 回入っていた
+        listBox.Items.RemoveAt(n);
         listBox.Items.Insert(n - 1, o);
         listBox.SelectedIndex = n - 1;
         // 260428Cl Application.DoEvents() を削除 (リスト更新は WinForms 標準で十分)
@@ -1304,9 +1388,11 @@ public partial class FormMain : FormBase
     public void MoveDown()
     {
         int n = listBox.SelectedIndex;
-        if (n >= listBox.Items.Count - 1) return;
+        //if (n >= listBox.Items.Count - 1) return; // 261105Cl 変更前
+        if (n < 0 || n >= listBox.Items.Count - 1) return; // 261105Cl 変更: 選択なし (-1) で下の RemoveAt が例外にならないように
         object o = listBox.SelectedItem;
-        listBox.Items.Remove(listBox.SelectedItem);
+        //listBox.Items.Remove(listBox.SelectedItem); // 261105Cl 変更前
+        listBox.Items.RemoveAt(n); // 261105Cl 変更 (監査 A17): 行番号で消す (MoveUp と同じ理由)
         listBox.Items.Insert(n + 1, o);
         listBox.SelectedIndex = n + 1;
         // 260428Cl Application.DoEvents() を削除
@@ -1320,10 +1406,17 @@ public partial class FormMain : FormBase
     private void ButtonAdd_Click(object sender, EventArgs e)
     {
 
-        IntPtr calcWindow = FindWindow(null, "Power Automate");
-
-        if (SetForegroundWindow(calcWindow))
-            SendKeys.Send("{ENTER}");
+        //IntPtr calcWindow = FindWindow(null, "Power Automate"); // 261105Cl 変更前 (3 行)
+        //if (SetForegroundWindow(calcWindow))
+        //    SendKeys.Send("{ENTER}");
+        // 261105Cl 変更 (監査 A15): 作者の自動化 (Power Automate) 用の処理をデバッグビルドだけに限る。配布版では、利用者が「Power Automate」の
+        // 窓を開いていると、Add を押すたびにその窓が前面に出て Enter が送られていた (フローの実行などの操作になりうる)
+        if (AssemblyState.IsDebug)
+        {
+            IntPtr calcWindow = FindWindow(null, "Power Automate");
+            if (SetForegroundWindow(calcWindow))
+                SendKeys.Send("{ENTER}");
+        }
 
         AddCrystal();
     }
@@ -1603,8 +1696,31 @@ public partial class FormMain : FormBase
         }
 
         var list = ConvertCrystalData.ConvertToCrystalList(fileName);
-        if (list == null)
+        //if (list == null) // 261105Cl 変更前 (2 行)
+        //    return;
+        // 261105Cl 変更 (監査 A21): 1 つも読めなければ、選ぶダイアログ (空の一覧) を出さずに知らせる (ダイアログを出す呼び出し = メニューとドロップのときだけ。
+        // 起動時の default.xml・マクロは黙って戻る。以前も結晶が 0 個なら何もしなかった)
+        if (list == null || list.Length == 0)
+        {
+            if (showSelectionDialog)
+            {
+                var name = Path.GetFileName(fileName);
+                MessageBox.Show(this, Crystallography.Localization.Loc(
+                    en: $"No crystals could be read from {name}.",
+                    ja: $"{name} から結晶を読み込めませんでした。",
+                    de: $"Aus {name} konnten keine Kristalle gelesen werden.",
+                    fr: $"Aucun cristal n'a pu être lu dans {name}.",
+                    es: $"No se pudo leer ningún cristal de {name}.",
+                    pt: $"Não foi possível ler nenhum cristal de {name}.",
+                    it: $"Impossibile leggere cristalli da {name}.",
+                    ru: $"Не удалось прочитать кристаллы из {name}.",
+                    zhHans: $"无法从 {name} 读取晶体。",
+                    zhHant: $"無法從 {name} 讀取晶體。",
+                    ko: $"{name}에서 결정을 읽을 수 없습니다."),
+                    Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             return;
+        }
         var cry = new List<Crystal>(list);//260717Cl 変更: 空 List+AddRange の二段構築を集約
         if (showSelectionDialog)
         {
@@ -1641,15 +1757,36 @@ public partial class FormMain : FormBase
         if (formCrystalSelection.ShowDialog() == DialogResult.OK)
         {
             using var Dlg = new SaveFileDialog { Filter = "xml|*.xml" };//260717Cl using 化
+            var saved = true; // 261105Cl 追加
             try
             {
                 if (Dlg.ShowDialog() == DialogResult.OK)
-                    ConvertCrystalData.SaveCrystalListXml(formCrystalSelection.CheckedCrystalList, Dlg.FileName);
+                    //ConvertCrystalData.SaveCrystalListXml(formCrystalSelection.CheckedCrystalList, Dlg.FileName); // 261105Cl 変更前
+                    // 261105Cl 変更 (監査 A21): 戻り値を見る。SaveCrystalListXml は書けなくても例外を出さず false を返すので、以前は失敗しても黙っていた
+                    saved = ConvertCrystalData.SaveCrystalListXml(formCrystalSelection.CheckedCrystalList, Dlg.FileName);
             }
             catch
             {
                 // 260617Cl 変更: 日本語固定リテラルは英語(neutral)UIで未翻訳に見えるため英語化 (Phase 0)。本格 localize は Phase 4。
-                MessageBox.Show("Failed to write the file."); // 旧: "ファイルが書き込みません"
+                //MessageBox.Show("Failed to write the file."); // 旧: "ファイルが書き込みません" // 261105Cl 変更前
+                saved = false; // 261105Cl 変更: 下で 11 言語の文で知らせる
+            }
+            if (!saved) // 261105Cl 追加 (監査 A21・A25)
+            {
+                var name = Path.GetFileName(Dlg.FileName);
+                MessageBox.Show(this, Crystallography.Localization.Loc(
+                    en: $"Could not write the crystal list to {name}.",
+                    ja: $"結晶リストを {name} に書き込めませんでした。",
+                    de: $"Die Kristallliste konnte nicht in {name} geschrieben werden.",
+                    fr: $"Impossible d'écrire la liste de cristaux dans {name}.",
+                    es: $"No se pudo escribir la lista de cristales en {name}.",
+                    pt: $"Não foi possível gravar a lista de cristais em {name}.",
+                    it: $"Impossibile scrivere l'elenco dei cristalli in {name}.",
+                    ru: $"Не удалось записать список кристаллов в {name}.",
+                    zhHans: $"无法将晶体列表写入 {name}。",
+                    zhHant: $"無法將晶體清單寫入 {name}。",
+                    ko: $"결정 목록을 {name}에 쓸 수 없습니다."),
+                    Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
@@ -1730,7 +1867,8 @@ public partial class FormMain : FormBase
 
     private void exitToolStripMenuItem_Click(object sender, EventArgs e) => Close();
 
-    private void toolTipToolStripMenuItem_CheckedChanged(object sender, EventArgs e) => toolTip.Active = toolTipToolStripMenuItem.Checked;
+    //private void toolTipToolStripMenuItem_CheckedChanged(object sender, EventArgs e) => toolTip.Active = toolTipToolStripMenuItem.Checked; // 261105Cl 変更前: 主窓の toolTip だけに効いていた
+    private void toolTipToolStripMenuItem_CheckedChanged(object sender, EventArgs e) => FormBase.ShowToolTips = toolTipToolStripMenuItem.Checked; // 261105Cl 変更 (作者の決定 A20): 全フォーム・部品のツールチップに効かせる
     private void toolStripMenuItem1_Click(object sender, EventArgs e) => listBox.Items.Clear();
     private void toolStripMenuItemExportCIF_Click(object sender, EventArgs e) => ExportCIF();
 
@@ -2013,10 +2151,30 @@ public partial class FormMain : FormBase
         {
             //260718Cl 変更: ToLower().EndsWith を拡張子の OrdinalIgnoreCase 判定に (CurrentCulture 非依存・一時文字列削減)
             var ext = Path.GetExtension(fileName[0]);
-            if (ext.Equals(".xml", StringComparison.OrdinalIgnoreCase) || ext.Equals(".out", StringComparison.OrdinalIgnoreCase) || ext.Equals(".cdb2", StringComparison.OrdinalIgnoreCase))
+            //if (ext.Equals(".xml", StringComparison.OrdinalIgnoreCase) || ext.Equals(".out", StringComparison.OrdinalIgnoreCase) || ext.Equals(".cdb2", StringComparison.OrdinalIgnoreCase)) // 261105Cl 変更前
+            // 261105Cl 変更 (監査 A21): .cdb2 (旧形式の結晶データベース) は結晶リストとして読めない (ConvertToCrystalList が扱うのは .xml と SMAP の .out だけ) ので受け付けない。
+            // 以前は確認を出した後、空の選択ダイアログになっていた
+            if (ext.Equals(".xml", StringComparison.OrdinalIgnoreCase) || ext.Equals(".out", StringComparison.OrdinalIgnoreCase))
             {
-                var dr = MessageBox.Show(this, "Read the list as a new list (if select 'No', add the list to the end of the present one",
-                    "Option", MessageBoxButtons.YesNoCancel);
+                //var dr = MessageBox.Show(this, "Read the list as a new list (if select 'No', add the list to the end of the present one", // 261105Cl 変更前 (2 行)
+                //    "Option", MessageBoxButtons.YesNoCancel);
+                // 261105Cl 変更 (監査 A25): 英語だけで括弧も閉じていなかった文を 11 言語に
+                var dr = MessageBox.Show(this, Crystallography.Localization.Loc(
+                    en: "Replace the present crystal list with the dropped list?\nYes: replace the list.  No: add its crystals to the end of the present list.",
+                    ja: "ドロップした結晶リストで今のリストを置き換えますか？\nはい: 置き換えます。  いいえ: 今のリストの末尾に追加します。",
+                    de: "Die aktuelle Kristallliste durch die abgelegte Liste ersetzen?\nJa: Liste ersetzen.  Nein: Kristalle am Ende der aktuellen Liste anfügen.",
+                    fr: "Remplacer la liste de cristaux actuelle par la liste déposée ?\nOui : remplacer la liste.  Non : ajouter ses cristaux à la fin de la liste actuelle.",
+                    es: "¿Reemplazar la lista de cristales actual por la lista soltada?\nSí: reemplazar la lista.  No: añadir sus cristales al final de la lista actual.",
+                    pt: "Substituir a lista de cristais atual pela lista solta?\nSim: substituir a lista.  Não: adicionar os cristais ao fim da lista atual.",
+                    it: "Sostituire l'elenco dei cristalli attuale con l'elenco trascinato?\nSì: sostituisce l'elenco.  No: aggiunge i cristalli alla fine dell'elenco attuale.",
+                    ru: "Заменить текущий список кристаллов перетащенным списком?\nДа: заменить список.  Нет: добавить его кристаллы в конец текущего списка.",
+                    zhHans: "用拖入的晶体列表替换当前列表吗？\n是：替换列表。  否：将其中的晶体添加到当前列表末尾。",
+                    zhHant: "要以拖放的晶體清單取代目前的清單嗎？\n是：取代清單。  否：將其中的晶體加到目前清單的末尾。",
+                    ko: "현재 결정 목록을 끌어 놓은 목록으로 바꾸시겠습니까?\n예: 목록을 바꿉니다.  아니요: 그 결정들을 현재 목록의 끝에 추가합니다."),
+                    Crystallography.Localization.Loc(en: "Read crystal list", ja: "結晶リストの読み込み", de: "Kristallliste lesen", fr: "Lire la liste de cristaux",
+                        es: "Leer lista de cristales", pt: "Ler lista de cristais", it: "Leggi elenco cristalli", ru: "Чтение списка кристаллов",
+                        zhHans: "读取晶体列表", zhHant: "讀取晶體清單", ko: "결정 목록 읽기"),
+                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (dr == DialogResult.Cancel)
                     return;
                 else if (dr == DialogResult.Yes)
@@ -2100,7 +2258,8 @@ public partial class FormMain : FormBase
         var result = MessageBox.Show(
             repair ? "MKL files exist but failed to load. Re-download Intel MKL native library (~55 MB)?"
                    : "Download Intel MKL native library (~55 MB)?\r\nOnce downloaded, MKL will be used automatically for large computations (from the next launch).",
-            "Download MKL Library", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //"Download MKL Library", MessageBoxButtons.YesNo, MessageBoxIcon.Question); // 261105Cl 変更前
+            "Download MKL library", MessageBoxButtons.YesNo, MessageBoxIcon.Question); // 261105Cl 変更 (作者決定 K5: メニュー項目の名前 (sentence case) と揃える)
         if (result != DialogResult.Yes)
             return;
 
@@ -2115,7 +2274,8 @@ public partial class FormMain : FormBase
             //260712Cl: 即時有効化はしない (上記コメント参照)。次回起動時に Program.cs の Initialize が有効化する
             toolStripStatusLabel.Text = "MKL library downloaded. It will be used automatically from the next launch.";
             MessageBox.Show("MKL library was downloaded.\r\nIt will be used automatically for large computations from the next launch.",
-                "Download MKL Library", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //"Download MKL Library", MessageBoxButtons.OK, MessageBoxIcon.Information); // 261105Cl 変更前
+                "Download MKL library", MessageBoxButtons.OK, MessageBoxIcon.Information); // 261105Cl 変更 (作者決定 K5: メニュー項目の名前 (sentence case) と揃える)
             toolStripMenuItemUseMKL.Visible = false;
         }
         catch (Exception ex)

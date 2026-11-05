@@ -65,21 +65,21 @@
   </data>
   <data name="numericUpDownHeight.ToolTip" xml:space="preserve">
     <value>图像高度，单位像素（0–4096，步长 256）；
-若开启 Keep Aspect Ratio，宽度将随之联动。</value>
+若开启 Keep aspect ratio，宽度将随之联动。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>图像高度，单位像素（0–4096，步长 256）；
-若开启 Keep Aspect Ratio，宽度将随之联动。</value>
+若开启 Keep aspect ratio，宽度将随之联动。</value>
   </data>
   <data name="numericUpDownWidth.ToolTip" xml:space="preserve">
     <value>图像宽度，单位像素（0–4096，步长 256）；
-若开启 Keep Aspect
-Ratio，高度将随之联动。</value>
+若开启 Keep aspect
+ratio，高度将随之联动。</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>图像宽度，单位像素（0–4096，步长 256）；
-若开启 Keep Aspect
-Ratio，高度将随之联动。</value>
+若开启 Keep aspect
+ratio，高度将随之联动。</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>设置输出图像的宽度，单位像素（1–4096）。</value>

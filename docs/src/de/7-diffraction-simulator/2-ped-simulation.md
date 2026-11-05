@@ -2,9 +2,9 @@
 
 Die Simulation der **PED (Precession Electron Diffraction)** berechnet Elektronenbeugungsbilder, die durch Präzession des einfallenden Strahls auf einem Kegel um die optische Achse erhalten werden.
 
-> Diese Seite listet alle Einstellungen auf, die auf der rechten Seite erscheinen, wenn Sie **Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)** auswählen. Beachten Sie, dass **die Auswahl von Precession (electron) für den einfallenden Strahl die Intensitätsberechnung automatisch auf Dynamical umschaltet**. Fensterweite Operationen wie Zeichnen und Speichern finden Sie auf der [Übersichtsseite](index.md).
+> Diese Seite listet alle Einstellungen auf, die auf der rechten Seite erscheinen, wenn Sie **Wellenquelle = Elektron, Optik = Präzession (Elektron), Intensitätsberechnung = Dynamische Theorie (automatisch)** auswählen. Beachten Sie, dass **die Auswahl von Präzession (Elektron) unter Optik die Intensitätsberechnung automatisch auf Dynamische Theorie umschaltet**. Fensterweite Operationen wie Zeichnen und Speichern finden Sie auf der [Übersichtsseite](index.md).
 
-GUI-Bedingungen: **Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)**
+GUI-Bedingungen: **Wellenquelle = Elektron, Optik = Präzession (Elektron), Intensitätsberechnung = Dynamische Theorie (automatisch)**
 
 ![Beugungssimulator im PED-Modus](../../assets/cap-de-auto/FormDiffractionSimulator-ped.png)
 
@@ -20,21 +20,21 @@ Bei der PED wird der Elektronenstrahl auf einem Kegel um die optische Achse in P
 
 ---
 
-## Wellenlängen-Einstellung
+## Wellenquelle {#wavelength-setup}
 
-![Wellenlänge](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Wellenquelle](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Da es sich bei PED um Elektronenbeugung handelt, wählen Sie als Quelle **Electron beam**. Durch Eingabe der Elektronenenergie (keV) oder der Wellenlänge (nm) wird die relativistisch korrigierte Wellenlänge berechnet.
+Da es sich bei PED um Elektronenbeugung handelt, wählen Sie **Elektron** als **Wellenquelle**. Durch Eingabe der Elektronenenergie (keV) oder der Wellenlänge (Å oder nm, umschaltbar; Standard Å) wird die relativistisch korrigierte Wellenlänge berechnet.
 
 ---
 
-## Einfallender Strahl
+## Optik {#incident-beam}
 
-![Modus des einfallenden Strahls](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Optik](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-Wählen Sie für die Geometrie des einfallenden Strahls **Precession (electron)** (nur verfügbar, wenn der Elektronenstrahl ausgewählt ist).
+Wählen Sie unter **Optik** (der Geometrie des einfallenden Strahls) **Präzession (Elektron)** (nur verfügbar, wenn **Elektron** ausgewählt ist).
 
-> **Hinweis** : Die Auswahl von **Precession (electron)** **schaltet die Intensitätsberechnung automatisch auf Dynamical um**, und das Einstellungsfeld der Bloch-Wellen-Methode sowie das Einstellungsfeld der Präzession erscheinen. **Only excitation error** / **Kinematical** können nicht mehr ausgewählt werden.
+> **Hinweis** : Die Auswahl von **Präzession (Elektron)** **schaltet die Intensitätsberechnung automatisch auf Dynamische Theorie um**, und das Einstellungsfeld der Bloch-Wellen-Methode sowie das Einstellungsfeld der Präzession erscheinen. **Nur Anregungsfehler** / **Kinematisch & Anr.-Fehler** können nicht mehr ausgewählt werden.
 
 ---
 
@@ -46,21 +46,21 @@ Legen Sie die Form und die Abtastung des Präzessionskegels fest.
 
 | Parameter | Beschreibung | Empfohlen |
 |-----------|-------------|-------------|
-| **Semi-angle** | Halber Öffnungswinkel des Präzessionskegels (mrad) | 10–40 mrad |
-| **Step** | Anzahl der auf dem Präzessionskegel abgetasteten Parallelstrahl-Richtungen. Größere Werte ergeben eine glattere Integration, erhöhen aber die Rechenzeit linear | 36–72 |
+| **Präz.-Winkel** | Präzessionswinkel, d. h. der halbe Öffnungswinkel des Präzessionskegels (mrad; 0,1–500, Standard 50) <!-- 261106Cl 仕上げ R3 D1: 欄名 Halbwinkel → Präz.-Winkel --> | 10–40 mrad |
+| **Schritt** | Anzahl der auf dem Präzessionskegel abgetasteten Parallelstrahl-Richtungen (2–1080, Standard 36). Größere Werte ergeben eine glattere Integration, erhöhen aber die Rechenzeit linear | 36–72 |
 
 ---
 
 ## Intensitätsberechnung und Bloch-Wellen-Einstellungen
 
-Sobald **Precession (electron)** ausgewählt ist, wird **Intensity = Dynamical (automatic)** fest eingestellt. Für den Parallelstrahl in jeder Präzessionsrichtung wird die Beugungsintensität mit der Bloch-Wellen-Methode (dynamische Berechnung) berechnet, und die Integration über alle Richtungen ergibt das PED-Bild.
+Sobald **Präzession (Elektron)** ausgewählt ist, wird **Intensitätsberechnung** fest auf **Dynamische Theorie** (automatisch) eingestellt. Für den Parallelstrahl in jeder Präzessionsrichtung wird die Beugungsintensität mit der Bloch-Wellen-Methode (dynamische Berechnung) berechnet, und die Integration über alle Richtungen ergibt das PED-Bild.
 
 ![Bloch-Wellen-Parameter](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
 | Parameter | Beschreibung | Empfohlen |
 |-----------|-------------|-------------|
-| **No. of diffracted waves** | Anzahl der im Eigenwertproblem berücksichtigten Bloch-Wellen. Größere Werte ergeben genauere Intensitäten, aber die Rechenzeit wächst wie $O(N^3)$ | 50–200 |
-| **Thickness** | In der dynamischen Berechnung verwendete Probendicke (nm) | — |
+| **Anzahl gebeugter Wellen** | Anzahl der im Eigenwertproblem berücksichtigten Bloch-Wellen (8–1000, Standard 240). Größere Werte ergeben genauere Intensitäten, aber die Rechenzeit wächst wie $O(N^3)$ | 50–200 |
+| **Dicke** | In der dynamischen Berechnung verwendete Probendicke (nm; 0,01–10000, Standard 50) | — |
 
 Der Rechenaufwand entspricht ungefähr „Anzahl der Schritte × Bloch-Wellen-Berechnung pro Richtung“. Einzelheiten zur dynamischen Berechnung finden Sie unter [Dynamische Berechnung (Bloch-Wellen-Methode)](../appendix/a3-bloch-wave/calculation.md).
 
@@ -72,13 +72,11 @@ Der Rechenaufwand entspricht ungefähr „Anzahl der Schritte × Bloch-Wellen-Be
 
 Steuert, wie jeder Beugungsreflex gezeichnet wird.
 
-- **Solid sphere / Gaussian** : Geometrisches Modell der reziproken Gitterpunkte. **Solid sphere** zeichnet den Querschnitt einer Kugel mit Radius $R$ mit der Ewald-Kugel, und **Gaussian** zeichnet den Querschnitt (eine 2D-Gauß-Funktion) einer 3D-Gauß-Funktion mit $\sigma = R$ mit der Ewald-Kugel.
-- **Opacity** : Transparenz des Reflexes (0 = transparent, 1 = undurchsichtig).
-- **Radius (R)** : Radius der reziproken Gitterpunkte. Für dynamische Intensitäten gilt: Gauß-Integral $=$ Brightness $\times I_\text{dyn}$, und Solid sphere verwendet den Radius $R \times I_\text{dyn}^{1/2}$ (sodass die Fläche proportional zur dynamischen Intensität ist).
-- **Brightness** : Nur im Modus **Gaussian** verfügbar. Integrierte Intensität der gezeichneten Gauß-Funktion.
-- **Farbskala** : Farbskala **Gray scale** oder **Cold-warm**.
-- **Log scale** : Anzeige der Intensität auf einer logarithmischen Skala.
-- **Reflexfarbe** : Farbe des Reflexes, wenn keine Farbskala angewendet wird.
+- **Vollkugel / Gauß** : Geometrisches Modell der reziproken Gitterpunkte. **Vollkugel** zeichnet den Querschnitt einer Kugel mit Radius $R$ mit der Ewald-Kugel, und **Gauß** zeichnet den Querschnitt (eine 2D-Gauß-Funktion) einer 3D-Gauß-Funktion mit $\sigma = R$ mit der Ewald-Kugel.
+- **Deckkraft** : Transparenz des Reflexes (0 = transparent, 1 = undurchsichtig).
+- **Reflexradius (R)** : Radius der reziproken Gitterpunkte. Für dynamische Intensitäten gilt: Gauß-Integral $=$ Helligkeit $\times I_\text{dyn}$, und Vollkugel verwendet den Radius $R \times I_\text{dyn}^{1/2}$ (sodass die Fläche proportional zur dynamischen Intensität ist).
+- **Helligkeit**, **Farbskala**, **Log-Skala** : nur im Modus **Gauß** angezeigt. **Helligkeit** skaliert die integrierte Intensität der gezeichneten Gauß-Funktion; **Farbskala** ist **Gray** (Reflexe in den unten festgelegten Reflexfarben), **Cold-warm**, **Spectrum** oder **Fire**; **Log-Skala** zeigt die Intensität auf einer logarithmischen Skala an.
+- **Reflexfarbe** : angezeigt, solange die **Farbskala** **Gray** ist (die Anfangseinstellung): **Allgemeine Reflexe** / **Ausgelöscht (Schraube/Gleit.)** / **Ausgelöscht (Zentrierung)**.
 - **Farbe je Kristall** : Zeichnet die Reflexe in der jedem Kristall zugewiesenen Farbe.
 
 ---

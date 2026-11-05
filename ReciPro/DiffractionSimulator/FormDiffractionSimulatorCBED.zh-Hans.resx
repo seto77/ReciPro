@@ -72,7 +72,7 @@
     <value>衍射波数目</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
-    <value>会聚半角</value>
+    <value>会聚半角 α</value>
   </data>
   <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
     <value>衍射盘分辨率</value>
@@ -159,9 +159,10 @@ Auto 时此项不可用。</value>
 强度随入射束倾斜而变化。</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
-    <value>LACBED（大角度会聚束电子衍射）模式：
-使用更大的会聚角，使一个反射在更大的
-角度范围内被记录。</value>
+    <value>LACBED（大角度会聚束电子衍射）模式：只输出并绘制
+透射盘 (000)，不叠加相互重叠的相邻盘，因此可以使用
+大于布拉格角的半角（明场 LACBED）。
+此模式不会增大半角本身。</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>纳入动力学多重散射计算的
@@ -177,15 +178,14 @@ Auto 时此项不可用。</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
     <value>横穿每个盘时每像素的角度采样步长
-（mrad/像素）。值越小，直径方向的
-分割数越多（显示在右侧），盘越精细
-但计算时间越长。</value>
+（mrad/像素）。值越小，盘越精细、像素越多；
+每个盘的像素数显示在右侧（总像素），
+计算时间随该数目增加。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>横穿每个盘时每像素的角度采样步长
-（mrad/像素）。值越小，直径方向的
-分割数越多（显示在右侧），盘越精细
-但计算时间越长。</value>
+    <value>每个盘的像素数，即会聚圆内入射束方向的数目。
+每个像素进行一次布洛赫波计算，
+因此计算时间与该数目成正比。</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
     <value>设置试样厚度的范围和步长</value>
@@ -267,10 +267,9 @@ Positive 表示越亮越强；Negative
 试样厚度（nm）。</value>
   </data>
   <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
-    <value>横穿每个盘时每像素的角度采样
-步长（mrad/像素）。值越小，直径
-方向的分割数越多（显示在此处），
-盘越精细但计算时间越长。</value>
+    <value>每个盘的像素数，即会聚圆内入射束方向的数目。
+每个像素进行一次布洛赫波计算，
+因此计算时间与该数目成正比。</value>
   </data>
   <data name="labelGamma.ToolTip" xml:space="preserve">
     <value>设置 gamma 值。该值越大，

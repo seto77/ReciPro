@@ -181,9 +181,6 @@
   <data name="&gt;&gt;label17.Parent" xml:space="preserve">
     <value>panelPhaseScale</value>
   </data>
-  <data name="saveTEMParametersToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="groupBoxSimulation.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 0, 6, 6</value>
   </data>
@@ -200,7 +197,8 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>Compute ionization (EDX) maps for the selected element/shell channels.
+    <value>Also compute STEM-EDX maps for every characteristic X-ray channel (element × shell)
+that can be calculated for this crystal at this accelerating voltage (listed below).
 The STEM reference image (ADF / elastic / TDS) is always computed;
 each EDX channel adds one extra ionization pass after it.</value>
   </data>
@@ -295,7 +293,7 @@ each EDX channel adds one extra ionization pass after it.</value>
     <value>groupBoxPotentialOption</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>Set all aberrations to zero</value>
+    <value>Ideal conditions (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="flowLayoutPanelConvergenceRadius.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -365,9 +363,6 @@ each EDX channel adds one extra ionization pass after it.</value>
   </data>
   <data name="label37.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
-  </data>
-  <data name="loadTEMParameterToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="checkBoxPreset.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -747,6 +742,9 @@ beams pass the HRTEM objective aperture.</value>
   <data name="toolStripComboBoxCaclulationLibrary.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 23</value>
   </data>
+  <data name="toolStripComboBoxCaclulationLibrary.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;numericBoxSTEM_ConvergenceAngle.Parent" xml:space="preserve">
     <value>flowLayoutPanelConvergenceRadius</value>
   </data>
@@ -766,7 +764,7 @@ beams pass the HRTEM objective aperture.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="checkBoxCTF.ToolTip" xml:space="preserve">
-    <value>Show the Contrast Transfer Function (CTF) graph
+    <value>Show the contrast transfer function (CTF) graph
 window, which plots how lens aberrations and defocus
 transfer image contrast versus spatial frequency.</value>
   </data>
@@ -1040,7 +1038,7 @@ inside the objective aperture (read-only).</value>
     <value>3, 0, 0, 0</value>
   </data>
   <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>as Image (PNG format)</value>
+    <value>as image (PNG format)</value>
   </data>
   <data name="checkBoxPotentialUg.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1319,7 +1317,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>15</value>
   </data>
   <data name="checkBoxGaussianBlur.Text" xml:space="preserve">
-    <value>Gaussian Blur (FWHM)</value>
+    <value>Gaussian blur (FWHM)</value>
   </data>
   <data name="label10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1335,6 +1333,9 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   </data>
   <data name="calculationLibraryToolStripMenuItem.Text" xml:space="preserve">
     <value>Calculation library</value>
+  </data>
+  <data name="calculationLibraryToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="radioButtonSingleMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 4</value>
@@ -1359,7 +1360,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>Top</value>
   </data>
   <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>as Image (TIFF format)</value>
+    <value>as image (TIFF format)</value>
   </data>
   <data name="checkBoxRealTimeSimulation.ToolTip" xml:space="preserve">
     <value>When checked, the image is calculated
@@ -2002,8 +2003,9 @@ images in the serial through-focus series.</value>
     <value>52, 19</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>Effective electron source size (nm). Larger values
-blur the STEM probe and reduce fine image detail.</value>
+    <value>Effective electron source size: the FWHM of the Gaussian
+source image on the specimen (pm). Larger values blur the
+STEM probe and reduce fine image detail.</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.ToolTip" xml:space="preserve">
     <value>Vertical (Y) shift of the objective-aperture
@@ -2028,7 +2030,7 @@ center, in mrad (for tilted/dark-field imaging).</value>
     <value>3</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>as Metafile (EMF)</value>
+    <value>as metafile (EMF)</value>
   </data>
   <data name="&gt;&gt;radioButtonPotentialShowImag.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -2688,7 +2690,7 @@ Applies to the STEM reference image (ADF / elastic / TDS) only - not used for ST
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls /&gt;&lt;Columns Styles="Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5" /&gt;&lt;Rows Styles="Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="presets2ToolStripMenuItem.Text" xml:space="preserve">
-    <value>200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔE 0.8) 2100F</value>
+    <value>200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F</value>
   </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3038,6 +3040,11 @@ in serial (through-focus) mode.</value>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>Load TEM parameters</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Load simulation conditions from a file saved with
+"Save TEM parameters" (*.rpis). Items that are not in
+the file (e.g. from an older version) are set to their defaults.</value>
+  </data>
   <data name="numericBoxAccVol.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
@@ -3072,7 +3079,7 @@ in serial (through-focus) mode.</value>
     <value>0</value>
   </data>
   <data name="presets1ToolStripMenuItem.Text" xml:space="preserve">
-    <value>300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔE 0.3) ARM300F</value>
+    <value>300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔV 0.3) ARM300F</value>
   </data>
   <data name="&gt;&gt;labelMousePositionValue.Name" xml:space="preserve">
     <value>labelMousePositionValue</value>
@@ -3162,7 +3169,7 @@ in serial (through-focus) mode.</value>
     <value>1, 18</value>
   </data>
   <data name="toolStripMenuItemSave.Text" xml:space="preserve">
-    <value>Save Image</value>
+    <value>Save image</value>
   </data>
   <data name="&gt;&gt;labelMousePositionY.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -4170,7 +4177,7 @@ inelastic) electrons in the STEM image.</value>
     <value>Resolution</value>
   </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
-    <value>EDX: Common</value>
+    <value>EDX: common</value>
   </data>
   <data name="flowLayoutPanelIntensityRange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 0, 0, 0</value>
@@ -4377,7 +4384,7 @@ transfer function) and Scherzer defocus.</value>
     <value>|</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
-    <value>Contrast Transfer Function (CTF)</value>
+    <value>Contrast transfer function (CTF)</value>
   </data>
   <data name="&gt;&gt;groupBoxDisplay.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -4590,7 +4597,7 @@ for the selected crystal, thickness, and defocus.</value>
     <value>3</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Text" xml:space="preserve">
-    <value>For Each Image</value>
+    <value>For each image</value>
   </data>
   <data name="checkBoxPotentialUg.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 19</value>
@@ -5147,7 +5154,7 @@ complex crystal potential (Ug).</value>
     <value>321, 22</value>
   </data>
   <data name="setoZeroDefocusToolStripMenuItem.Text" xml:space="preserve">
-    <value>Set Defocus to 0 nm</value>
+    <value>Set defocus to 0 nm</value>
   </data>
   <data name="checkBoxCTF.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -5414,7 +5421,7 @@ inelastic) electrons in the STEM image.</value>
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="toolStripMenuItemCopyImage.Text" xml:space="preserve">
-    <value>as Image</value>
+    <value>as image</value>
   </data>
   <data name="checkBoxShowScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>15, 3, 0, 0</value>
@@ -5537,7 +5544,7 @@ set by the adjacent scale controls.</value>
     <value>0</value>
   </data>
   <data name="presets3ToolStripMenuItem.Text" xml:space="preserve">
-    <value>200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔE 0.8) 2100F</value>
+    <value>200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
     <value>0°</value>
@@ -5850,7 +5857,7 @@ beams and smooths high-resolution image detail.</value>
     <value>label28</value>
   </data>
   <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
-    <value>as Metafile (EMF)</value>
+    <value>as metafile (EMF)</value>
   </data>
   <data name="checkBoxEdxSelfAbsorption.Text" xml:space="preserve">
     <value>Self-absorption</value>
@@ -6505,7 +6512,7 @@ code (fast C++/Eigen) or Managed code
     <value>False</value>
   </data>
   <data name="comboBoxScaleColorScale.Items1" xml:space="preserve">
-    <value>Cold-Warm</value>
+    <value>Cold-warm</value>
   </data>
   <data name="checkBoxEdxSelfAbsorption.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -6762,7 +6769,7 @@ stores and recalls TEM imaging conditions.</value>
     <value>comboBoxEdxDetectorWindow</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Text" xml:space="preserve">
-    <value>Real-Time Simulation</value>
+    <value>Real-time simulation</value>
   </data>
   <data name="&gt;&gt;numericBoxGaussianBlurRadius.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -6805,6 +6812,11 @@ stores and recalls TEM imaging conditions.</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>Save TEM parameters</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Save the current simulation conditions (the same items
+as a preset) to an XML file (*.rpis), which can be loaded
+on another PC or shared with collaborators.</value>
   </data>
   <data name="comboBoxEdxDetectorWindow.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -7047,7 +7059,7 @@ stores and recalls TEM imaging conditions.</value>
     <value>    </value>
   </data>
   <data name="presets4ToolStripMenuItem.Text" xml:space="preserve">
-    <value>200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔE 2.0) 2100</value>
+    <value>200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100</value>
   </data>
   <data name="groupBoxPotentialOption.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 0, 4, 4</value>
@@ -7690,7 +7702,7 @@ potential (Ug), i.e. the absorptive component.</value>
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>Acc. Voltage (kV)</value>
+    <value>Acc. voltage</value>
   </data>
   <data name="radioButtonPotentialModeRealAndImag.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8164,7 +8176,7 @@ crystal potential (Fourier coefficient Ug).</value>
     <value>$this</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.HeaderText" xml:space="preserve">
-    <value>α (convergence angle)</value>
+    <value>Conv. semi-angle α</value>
   </data>
   <data name="&gt;&gt;label11.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -8212,7 +8224,7 @@ crystal potential (Fourier coefficient Ug).</value>
     <value>nm⁻¹</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
-    <value>Effective source size (σs,  FWHM)</value>
+    <value>Effective source size (FWHM)</value>
   </data>
   <data name="checkBoxIntensityMin.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 1</value>
@@ -8258,6 +8270,9 @@ crystal potential (Fourier coefficient Ug).</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>277, 6</value>
+  </data>
+  <data name="toolStripSeparator2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;groupBoxSampleProperty.Name" xml:space="preserve">
     <value>groupBoxSampleProperty</value>

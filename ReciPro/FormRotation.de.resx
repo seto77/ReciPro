@@ -128,7 +128,8 @@ im Excel-Format aus der Zwischenablage ein.</value>
   <data name="numericBoxPsi.ToolTip" xml:space="preserve">
     <value>Dritter Euler-Winkel Ψ (Grad) des ReciPro-
 Koordinatensystems in der ZXZ-Konvention (die letzte
-Rotation um Z); legt die Kristallorientierung fest.</value>
+Rotation um Z); schreibgeschützt, zeigt die aktuelle
+Kristallorientierung.</value>
   </data>
   <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
     <value>Dritter Euler-Winkel Ψ (Grad) des ReciPro-
@@ -139,7 +140,8 @@ Rotation um Z); legt die Kristallorientierung fest.</value>
     <value>Zweiter Euler-Winkel Θ (Grad) des
 ReciPro-Koordinatensystems in der ZXZ-
 Konvention (die mittlere Rotation um X);
-legt die Kristallorientierung fest.</value>
+schreibgeschützt, zeigt die aktuelle
+Kristallorientierung.</value>
   </data>
   <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
     <value>Zweiter Euler-Winkel Θ (Grad) des
@@ -150,8 +152,8 @@ legt die Kristallorientierung fest.</value>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
     <value>Erster Euler-Winkel Φ (Grad) des ReciPro-
 Koordinatensystems in der ZXZ-Konvention;
-zusammen mit Θ und Ψ legt er die Kristall-
-orientierung (Rotationsmatrix) fest.</value>
+schreibgeschützt, zeigt zusammen mit Θ und Ψ die
+aktuelle Kristallorientierung (Rotationsmatrix).</value>
   </data>
   <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
     <value>Erster Euler-Winkel Φ (Grad) des ReciPro-
@@ -226,32 +228,32 @@ Rotation wird um sie angewendet).</value>
   <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
     <value>Setzt die 2. Goniometer-Rotationsachse auf die
 kartesische Z-Achse (die 2. experimentelle
-Rotation, numericBoxExp2, wird um sie angewendet).</value>
+Rotation wird um sie angewendet).</value>
   </data>
   <data name="radioButton2ndY.ToolTip" xml:space="preserve">
     <value>Setzt die 2. Goniometer-Rotationsachse auf die
 kartesische Y-Achse (die 2. experimentelle
-Rotation, numericBoxExp2, wird um sie angewendet).</value>
+Rotation wird um sie angewendet).</value>
   </data>
   <data name="radioButton2ndX.ToolTip" xml:space="preserve">
     <value>Setzt die 2. Goniometer-Rotationsachse auf die
 kartesische X-Achse (die 2. experimentelle
-Rotation, numericBoxExp2, wird um sie angewendet).</value>
+Rotation wird um sie angewendet).</value>
   </data>
   <data name="radioButton1stZ.ToolTip" xml:space="preserve">
     <value>Setzt die 1. Goniometer-Rotationsachse auf die
 kartesische Z-Achse (die 1. experimentelle
-Rotation, numericBoxExp1, wird um sie angewendet).</value>
+Rotation wird um sie angewendet).</value>
   </data>
   <data name="radioButton1stY.ToolTip" xml:space="preserve">
     <value>Setzt die 1. Goniometer-Rotationsachse auf die
 kartesische Y-Achse (die 1. experimentelle
-Rotation, numericBoxExp1, wird um sie angewendet).</value>
+Rotation wird um sie angewendet).</value>
   </data>
   <data name="radioButton1stX.ToolTip" xml:space="preserve">
     <value>Setzt die 1. Goniometer-Rotationsachse auf die
 kartesische X-Achse (die 1. experimentelle
-Rotation, numericBoxExp1, wird um sie angewendet).</value>
+Rotation wird um sie angewendet).</value>
   </data>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>Setzt alle Winkel auf null zurück</value>

@@ -94,12 +94,16 @@ oder Fire) aus, mit der das überlagerte Bild dargestellt wird.</value>
 überlagerten Bildes auf dem Beugungsmuster ein.</value>
   </data>
   <data name="numericBoxFootX.ToolTip" xml:space="preserve">
-    <value>Stellt die X-Pixelkoordinate des Fußpunkts
-(Zentrum des Direktstrahls) auf dem Detektor ein.</value>
+    <value>Stellt die X-Pixelkoordinate des Fußpunkts auf dem
+Detektor ein: des Lotfußpunkts von der Probe auf die
+Detektorebene. Nur bei ungekipptem Detektor (tau = 0)
+ist er die Position des Direktstrahls.</value>
   </data>
   <data name="numericBoxFootY.ToolTip" xml:space="preserve">
-    <value>Stellt die Y-Pixelkoordinate des Fußpunkts
-(Zentrum des Direktstrahls) auf dem Detektor ein.</value>
+    <value>Stellt die Y-Pixelkoordinate des Fußpunkts auf dem
+Detektor ein: des Lotfußpunkts von der Probe auf die
+Detektorebene. Nur bei ungekipptem Detektor (tau = 0)
+ist er die Position des Direktstrahls.</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
     <value>Stellt die physische Größe eines Detektorpixels in Millimetern ein.</value>
@@ -130,8 +134,9 @@ die Anzeige des überlagerten Bildes ein.</value>
 die Anzeige des überlagerten Bildes ein.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Stellt die obere Intensitätsgrenze für
-die Anzeige des überlagerten Bildes ein.</value>
+    <value>Passt die angezeigte Helligkeit des überlagerten Bildes
+über den Schwarzpunkt (Min int.) und den Weißpunkt
+(Max int.) an.</value>
   </data>
   <data name="trackBarMinInt.ToolTip" xml:space="preserve">
     <value>Stellt die untere Intensitätsgrenze für

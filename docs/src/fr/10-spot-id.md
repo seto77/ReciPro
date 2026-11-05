@@ -1,6 +1,6 @@
 # Spot ID v1
 
-**Spot ID v1** détecte, ajuste et indexe les taches de diffraction à partir d'images expérimentales de diffraction électronique. Il prend également en charge la recherche manuelle d'axe de zone à partir d'une géométrie de taches saisie numériquement (l'ancien **TEM ID**).
+**Spot ID v1** (l'ancien **TEM ID**) recherche des axes de zone candidats à partir d'une géométrie de taches saisie numériquement, pour un à trois clichés de diffraction. La détection, l'ajustement et l'indexation des taches sur une image s'effectuent dans [Spot ID v2](11-spot-id-v2.md).
 
 ![Spot ID v1](../assets/cap-fr-auto/FormSpotIDv1.png)
 
@@ -8,7 +8,7 @@
 
 ## Raccourcis clavier et souris
 
-Spot ID v1 prend la géométrie des taches comme **entrée numérique** (l'ancien flux de travail *TEM ID*), et la détection/l'ajustement des taches s'effectuent à l'aide de boutons ; l'image de diffraction est affichée à titre de référence et n'est pas cliquable (le zoom à la souris et la sélection manuelle des taches relèvent de [Spot ID v2](11-spot-id-v2.md)). Le seul raccourci se trouve dans la fenêtre des résultats :
+Spot ID v1 prend la géométrie des taches comme **entrée numérique** (l'ancien flux de travail *TEM ID*) ; il n'a pas de vue d'image (le chargement d'images, le zoom à la souris, la détection des taches et la sélection manuelle des taches relèvent de [Spot ID v2](11-spot-id-v2.md)). Le seul raccourci se trouve dans la fenêtre des résultats :
 
 | Raccourci | Action |
 |----------|--------|
@@ -19,79 +19,13 @@ Spot ID v1 prend la géométrie des taches comme **entrée numérique** (l'ancie
 
 ---
 
-## Zone principale
-
-Affiche l'image de diffraction à titre de référence. Chargez les images par glisser-déposer ou via le menu **File**.
-
-### Ajustements de l'image
-
-| Réglage | Description |
-|---------|-------------|
-| Min / Max | Plage de luminosité (réglable aussi via le curseur) |
-| Gradient | Positif ou Négatif |
-| Scale | Linéaire ou Log |
-| Colour | Niveaux de gris ou Cold-Warm |
-| Dust & Scratch | Supprimer les pixels exceptionnellement clairs/sombres (définir la plage et le seuil) |
-| Gaussian blur | Appliquer un flou (plage en pixels) |
-
----
-
-## Optics
-
-Saisissez la source incidente, l'énergie/longueur d'onde, la longueur de caméra et la taille de pixel du détecteur.
-
-> Si un fichier dm3/dm4 (Gatan Digital Micrograph) est chargé, ces valeurs sont définies automatiquement.
-
----
-
-## Détection et ajustement des taches
-
-Appuyez sur **Detect & fit spots** pour détecter automatiquement les taches de diffraction et les ajuster avec une fonction Pseudo-Voigt 2D. Les résultats apparaissent dans le tableau.
-
-### Options de détection
-
-| Paramètre | Description |
-|-----------|-------------|
-| Number | Nombre maximal de taches à détecter |
-| Nearest neighbour | Distance minimale entre les taches détectées |
-| Fitting range | Rayon (pixels) autour de chaque tache pour l'ajustement |
-
-### Commandes du tableau
-
-| Bouton | Action |
-|--------|--------|
-| Reset range | Réinitialiser la plage d'ajustement pour toutes les taches |
-| Show label/symbol | Superposer des étiquettes/symboles sur l'image |
-| Clear all spots | Supprimer toutes les taches |
-| Save / Copy | Exporter le tableau au format séparé par des tabulations (Excel) |
-| Re-fit all | Réajuster toutes les taches |
-
-### Fenêtre de détail de la tache
-
-Cochez la case pour ouvrir une fenêtre de détail affichant la tache sélectionnée (à gauche) et les profils dans quatre directions (à droite). Bleu = données observées, rouge = ajustement.
-
----
-
-## Index
-
-Appuyez sur **Identify spots** pour indexer les taches détectées par rapport au cristal sélectionné dans la fenêtre principale.
-
-| Réglage | Description |
-|---------|-------------|
-| Acceptable error | Tolérance pour l'indexation |
-| Single grain / Multi grains | Indexer comme cristal unique ou comme plusieurs grains (définir le nombre maximal de grains) |
-| Show label/symbol | Superposer les étiquettes indexées sur l'image |
-| Refine thickness and direction | Appliquer la théorie dynamique (méthode de Bethe) pour affiner l'épaisseur de l'échantillon et l'orientation du cristal qui correspondent le mieux aux intensités détectées |
-
----
-
 ## Recherche d'axe de zone à partir de la géométrie des taches (ancien TEM ID)
 
-Lorsque vous n'avez pas d'image à charger, vous pouvez tout de même rechercher des axes de zone candidats en saisissant à la main la géométrie d'un cliché de diffraction électronique en aire sélectionnée (SAED). Saisissez les conditions d'observation MET et la géométrie des taches, puis appuyez sur **Search zone axes** pour trouver des orientations cristallines candidates.
+Lorsque vous n'avez pas d'image à charger, vous pouvez tout de même rechercher des axes de zone candidats en saisissant à la main la géométrie d'un cliché de diffraction électronique en aire sélectionnée (SAED). Saisissez les conditions d'observation MET et la géométrie des taches, puis appuyez sur **Trouver l'axe de zone** d'une photo (ou sur **Trouver les axes de zone à partir de deux/trois clichés** pour utiliser plusieurs photos ensemble) afin de trouver des orientations cristallines candidates.
 
-### TEM condition
+### Conditions du MET
 
-Saisissez les conditions d'observation MET (tension d'accélération, longueur de caméra, etc.).
+Saisissez **Tension accél.** (kV, 200 par défaut) et **Longueur de caméra** (mm, 1000 par défaut). La **Longueur d'onde** (nm) est calculée à partir de la tension et affichée en lecture seule.
 
 ### Photo 1, 2, 3
 
@@ -100,9 +34,14 @@ Saisissez la géométrie des taches de diffraction.
 - Pour saisir la distance entre deux taches sur le détecteur, utilisez le champ **mm**.
 - Si vous connaissez la valeur *d*, saisissez-la dans les unités **Å** ou **nm⁻¹**.
 
-**Three sides mode** : Saisissez les longueurs des trois côtés d'un triangle dont l'un des sommets est le direct spot.
+**Mode Trois côtés** : Saisissez les longueurs des trois côtés d'un triangle dont l'un des sommets est le direct spot.
 
-**Two sides and an angle mode** : Saisissez les longueurs de deux côtés (y compris le direct spot) ainsi que l'angle entre eux.
+**Mode Deux côtés et un angle** : Saisissez les longueurs de deux côtés (y compris le direct spot) ainsi que l'angle entre eux.
+
+- Tolérances (les champs **±**) : chaque longueur a une tolérance en % (0–50, 5 par défaut) et θ une tolérance en degrés (0–30, 3 par défaut). La valeur non saisie (θ en mode trois côtés, l3 en mode deux côtés) est calculée et affichée, et un croquis du cliché obtenu est dessiné à côté des champs de saisie.
+- **Conditions du porte-objet** : **Tilt 1** / **Tilt 2** (°) du porte-objet goniométrique auxquels la photo a été prise, chacun avec une tolérance (0–10°, 3° par défaut). Les angles entre les réglages du porte-objet des différentes photos sont calculés et affichés.
+- **Photo 2** / **Photo 3** : activent la deuxième et la troisième photo. Les cases à cocher placées entre les photos traitent l1 (ou l2) de deux photos comme la même réflexion et en recopient la longueur.
+- **Trouver l'axe de zone** recherche pour une seule photo ; **Trouver les axes de zone à partir de deux clichés** / **de trois clichés** recherche les combinaisons compatibles avec les photos et avec les angles d'inclinaison du porte-objet entre elles ; la photo 3 n'est utilisée que si **Photo 3** est cochée et que toutes ses valeurs sont saisies, sinon deux photos sont utilisées. Dans le tableau de résultats d'une seule photo (**Trouver l'axe de zone**), g1, d1, g2 et d2 sont toujours affichés, ainsi que g3 et d3 en mode trois côtés ou θ en mode deux côtés et un angle. <!-- 261105Cl 監査: buttonSearchAll_Click (afd65e0)、FormSpotIDv1Results.SetDataSet (46d91db) --> La recherche porte sur tous les cristaux sélectionnés dans la liste de la fenêtre principale (la sélection multiple est activée tant que Spot ID v1 est ouvert). Si plus de 1000 candidats sont trouvés, rien n'est listé et il vous est demandé de restreindre les conditions ; sinon, la fenêtre des résultats s'ouvre. Double-cliquez sur une ligne pour sélectionner le cristal et le faire pivoter vers cette orientation. Le signe de chaque axe de zone candidat suit la convention des manuels **g**₁ × **g**₂ ; il est donc inversé par rapport aux versions antérieures à 2026-11 (l'orientation est la même). <!-- 261106Cl 作者の決定 B16 -->
 
 ---
 

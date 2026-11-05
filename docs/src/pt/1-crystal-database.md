@@ -28,9 +28,9 @@ Esta janela não possui combinações com teclas modificadoras; ela é operada p
 | Atalho | Ação |
 |----------|--------|
 | <kbd>F1</kbd> | Abrir esta página do manual online |
-| <kbd>ENTER</kbd> em qualquer campo de pesquisa | Executar a pesquisa no banco de dados (equivale ao botão **Search**) |
+| <kbd>ENTER</kbd> em qualquer campo de pesquisa | Executar a pesquisa no banco de dados (equivale ao botão **Pesquisar**) |
 | Clicar em uma linha da tabela de resultados | Carregar esse cristal na janela principal |
-| Clicar em um elemento no pop-up **Periodic table** | Alternar seu filtro: *ignore* → *must include* → *must exclude* |
+| Clicar em um elemento no pop-up **Tabela periódica** | Alternar seu filtro: *pode ou não incluir* → *deve incluir* → *deve excluir* |
 
 → Consulte **[21. Atalhos de teclado e mouse](21-shortcuts.md)** para uma visão geral de cada janela.
 
@@ -40,7 +40,7 @@ Esta janela não possui combinações com teclas modificadoras; ela é operada p
 
 ![Tabela do banco de dados de cristais](../assets/cap-pt-auto/FormCrystalDatabase.crystalDatabaseControl.png)
 
-Exibe os cristais que correspondem aos critérios de pesquisa. Selecione um cristal para transferi-lo para a Informação do cristal da janela principal. Pressione **Add** ou **Replace** para adicioná-lo à Lista de cristais.
+Exibe os cristais que correspondem aos critérios de pesquisa. Selecione um cristal para transferi-lo para a Informação do cristal da janela principal. Pressione **Adicionar** ou **Substituir** para adicioná-lo à Lista de cristais.
 
 ---
 
@@ -48,53 +48,55 @@ Exibe os cristais que correspondem aos critérios de pesquisa. Selecione um cris
 
 ![Opções de pesquisa](../assets/cap-pt-auto/FormCrystalDatabase.panelSearch.searchCrystalControl.png)
 
-Insira abaixo os critérios de pesquisa e pressione o botão **Search** ou a tecla **Enter**.
+Insira abaixo os critérios de pesquisa e pressione o botão **Pesquisar** ou a tecla **Enter**.
 
 | Critério | Descrição |
 |-----------|-------------|
 | **Name** | Nome do cristal |
-| **Element** | Seletor da tabela periódica (pode/deve/não deve conter) |
-| **Reference** | Título, periódico, autor |
-| **Crystal system** | Selecionar o sistema cristalino |
-| **Cell Param** | Constantes de rede e erro |
-| **d-spacing** | Valores de d das reflexões mais intensas e erro |
-| **Density** | Densidade e erro |
+| **Elementos** | Seletor da tabela periódica (pode/deve/não deve conter) |
+| **Referência** | Título, periódico, autor |
+| **Sistema cristalino** | Selecionar o sistema cristalino |
+| **Parâm. célula** | Constantes de rede e erro |
+| **Distância d** | Valores de d das reflexões intensas e erro |
+| **Densidade** | Densidade e erro |
 
 ### Name
 
-Correspondência de texto livre com o nome do cristal. Correspondências parciais são permitidas.
+Correspondência de texto livre com o nome do cristal. Correspondências parciais são permitidas; maiúsculas e minúsculas não são diferenciadas. Apenas os critérios cujas caixas de seleção estão marcadas são aplicados, e eles são combinados com E lógico (AND).
 
-### Element
+### Elementos {#element}
 
-Pressione o botão **Periodic Table** para abrir o seletor de elementos. Cada botão de elemento alterna entre três estados:
+Pressione o botão **Tabela periódica** para abrir o seletor de elementos. Cada botão de elemento alterna entre três estados:
 
-- **May or may not include** (padrão — cinza)
-- **Must include** (verde)
-- **Must exclude** (vermelho)
+- **pode ou não incluir** (padrão — amarelo)
+- **deve incluir** (azul)
+- **deve excluir** (vermelho)
+
+Um cristal deve conter todos os elementos marcados como *deve incluir* e nenhum dos marcados como *deve excluir*; as entradas sem dados de átomos são excluídas enquanto o critério **Elementos** estiver ativo.
 
 Os três botões na parte superior da janela redefinem todos os elementos para um dos três estados com um único clique.
 
-### Reference
+### Referência
 
-Correspondência de texto livre com os metadados da publicação: título do artigo, nome do periódico e lista de autores.
+Correspondência de texto livre (parcial, sem diferenciar maiúsculas de minúsculas) com os metadados da publicação: título do artigo, nome do periódico e lista de autores.
 
-### Crystal system
+### Sistema cristalino
 
-Restringe a pesquisa a um sistema cristalino específico (Cubic, Tetragonal, Orthorhombic, Hexagonal, Trigonal, Monoclinic, Triclinic).
+Restringe a pesquisa a um sistema cristalino específico (cubic, tetragonal, orthorhombic, hexagonal, trigonal, monoclinic, triclinic). O primeiro item, *Unknown*, não aplica nenhuma restrição.
 
 ### Pesquisa por parâmetros de célula
 
 ![Pesquisa por parâmetros de célula](../assets/cap-pt-auto/FormCrystalDatabase.panelSearch.searchCrystalControl.flowLayoutPanel1.groupBoxCellParameter.png)
 
-Insira as constantes de rede desejadas *a*, *b*, *c*, *α*, *β*, *γ* e os erros aceitáveis. Campos vazios são tratados como curingas.
+Insira as constantes de rede desejadas *a*, *b*, *c* (Å) e *α*, *β*, *γ* (°) e os erros aceitáveis: uma tolerância relativa (±%) comum a *a*, *b*, *c* e uma tolerância absoluta (±°) comum aos ângulos. Um valor 0 significa que o parâmetro é ignorado.
 
-### d-spacing
+### Distância d
 
-Insira o *d*-spacing da reflexão mais intensa (ou de várias reflexões intensas) e um erro aceitável. Útil quando, a partir de um experimento, somente as posições dos picos de difração são conhecidas.
+Insira até três distâncias *d* (Å; marque cada uma para usá-la), cada uma com uma tolerância relativa (±%). Um cristal corresponde quando todos os valores inseridos coincidem com alguma das suas reflexões mais intensas armazenadas no banco de dados (até 16, ordenadas pela intensidade de difração de pó de raios X em λ = 1,54 Å). Com **Ignorar fator de dispersão** marcado, os valores são comparados com todas as distâncias *d* geometricamente possíveis calculadas a partir da célula unitária (incluindo as reflexões sistematicamente ausentes). Útil quando, a partir de um experimento, somente as posições dos picos de difração são conhecidas.
 
-### Density
+### Densidade
 
-Filtrar pela densidade de massa (g/cm³) dentro de uma faixa de erro aceitável.
+Filtrar pela densidade de massa (g/cm³) dentro de uma tolerância relativa (±%).
 
 ---
 

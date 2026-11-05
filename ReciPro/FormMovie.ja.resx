@@ -161,7 +161,7 @@ MP4 ファイルに保存します。</value>
     <value>回転軸を定める指数を入力します。方向指数モード
 では方向 [uvw]、格子面モードでは格子面 (hkl)
 (その法線まわりに回転) として解釈されます。
-Translation が ON のときは [uvw] が平行移動の
+「平行移動」が ON のときは [uvw] が平行移動の
 方向も定めます。</value>
   </data>
   <data name="numericBoxDuration.ToolTip" xml:space="preserve">
@@ -173,7 +173,7 @@ Translation が ON のときは [uvw] が平行移動の
   </data>
   <data name="radioButtonAxis.ToolTip" xml:space="preserve">
     <value>回転軸を結晶の方向指数 [uvw] で指定します。
-Translation が ON のときは [uvw] が平行移動の
+「平行移動」が ON のときは [uvw] が平行移動の
 方向も定めます (唯一選べるモード)。</value>
   </data>
   <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
@@ -212,14 +212,14 @@ Translation が ON のときは [uvw] が平行移動の
 逆方向に動きます。</value>
   </data>
   <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
-    <value>t = Duration の最終姿勢を末尾フレームとして
+    <value>t = 継続時間 の最終姿勢を末尾フレームとして
 1 枚追加し、動画が終了姿勢・位置で終わる
 ようにします。</value>
   </data>
   <data name="checkBoxRotation.ToolTip" xml:space="preserve">
     <value>動画中に視点を回転させます。オフにすると
-平行移動のみの動画になります (Rotation と
-Translation の少なくとも一方が必要)。</value>
+平行移動のみの動画になります (「回転」と
+「平行移動」の少なくとも一方が必要)。</value>
   </data>
   <data name="checkBoxTranslation.ToolTip" xml:space="preserve">
     <value>動画中に投影中心を平行移動させます。移動方向は

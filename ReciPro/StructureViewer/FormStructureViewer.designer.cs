@@ -534,7 +534,8 @@
             numericBoxCCenter.DecimalPlaces = 2;
             resources.ApplyResources(numericBoxCCenter, "numericBoxCCenter");
             numericBoxCCenter.Maximum = 10D;
-            numericBoxCCenter.Minimum = 0D;
+            //numericBoxCCenter.Minimum = 0D; // 261105Cl 変更前
+            numericBoxCCenter.Minimum = -10D; // 261105Cl 変更 (監査 H3): Center の符号を反転したので (正で +c の向き)、旧版で Center = v だった範囲を −v で再現できるよう負も許す
             numericBoxCCenter.Name = "numericBoxCCenter";
             numericBoxCCenter.ShowFraction = true;
             numericBoxCCenter.ShowUpDown = true;
@@ -549,7 +550,8 @@
             numericBoxBCenter.DecimalPlaces = 2;
             resources.ApplyResources(numericBoxBCenter, "numericBoxBCenter");
             numericBoxBCenter.Maximum = 10D;
-            numericBoxBCenter.Minimum = 0D;
+            //numericBoxBCenter.Minimum = 0D; // 261105Cl 変更前
+            numericBoxBCenter.Minimum = -10D; // 261105Cl 変更 (監査 H3): Center の符号を反転したので (正で +b の向き)、旧版で Center = v だった範囲を −v で再現できるよう負も許す
             numericBoxBCenter.Name = "numericBoxBCenter";
             numericBoxBCenter.ShowFraction = true;
             numericBoxBCenter.ShowUpDown = true;
@@ -564,7 +566,8 @@
             numericBoxACenter.DecimalPlaces = 2;
             resources.ApplyResources(numericBoxACenter, "numericBoxACenter");
             numericBoxACenter.Maximum = 10D;
-            numericBoxACenter.Minimum = 0D;
+            //numericBoxACenter.Minimum = 0D; // 261105Cl 変更前
+            numericBoxACenter.Minimum = -10D; // 261105Cl 変更 (監査 H3): Center の符号を反転したので (正で +a の向き)、旧版で Center = v だった範囲を −v で再現できるよう負も許す
             numericBoxACenter.Name = "numericBoxACenter";
             numericBoxACenter.ShowFraction = true;
             numericBoxACenter.ShowUpDown = true;

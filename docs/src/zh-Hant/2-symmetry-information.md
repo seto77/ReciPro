@@ -7,7 +7,7 @@
 視窗分為空間群識別區（左上）、附索引標籤的計算／表格區（右上），以及兩個示意圖（下方）。
 
 !!! tip "對稱性理論（附錄 A4）"
-    Hermann–Mauguin／Hall／Schoenflies 符號實際上編碼了什麼、**群性質** 索引標籤上的群論分類（中心對稱、Sohncke、簡單型、極性、…）、下方對稱元素／一般位置示意圖的意義，以及 **群關係...** 所顯示的群與子群關係，皆在 **[附錄 A4. 對稱性與空間群](appendix/a4-symmetry-space-groups/index.md)** 中說明。
+    Hermann–Mauguin／Hall／Schoenflies 符號實際上編碼了什麼、**群性質** 索引標籤上的群論分類（中心對稱、Sohncke、點式、極性、…）、下方對稱元素／一般位置示意圖的意義，以及 **群關係...** 所顯示的群與子群關係，皆在 **[附錄 A4. 對稱性與空間群](appendix/a4-symmetry-space-groups/index.md)** 中說明。
 
 ---
 
@@ -38,9 +38,10 @@
 
 - 每個晶面的面間距／每個軸的長度，
 - 兩個晶面（或兩個軸）之間的夾角，
-- **垂直於兩晶面的方向指數** 與 **垂直於兩晶軸的晶面指數**。
+- 晶面 1 的法線與軸 1 之間、以及晶面 2 的法線與軸 2 之間的夾角（軸位於晶面內時為 90°），
+- **平行於兩晶面的晶軸**（兩晶面的晶帶軸 [*uvw*]）與 **包含兩晶軸的晶面**（包含兩軸的晶面 (*hkl*)）。正負號依循 [*uvw*] = (*h*₁*k*₁*l*₁) × (*h*₂*k*₂*l*₂) 與 (*hkl*) = [*u*₁*v*₁*w*₁] × [*u*₂*v*₂*w*₂]。 <!-- 261106Cl 作者の決定 B16 --> <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップ (numericBoxAnglePlaneAxis1/2.ToolTip) に合わせた。以前の「normal to」は逆 -->
 
-這些計算會遵循目前晶胞的度量。
+這些計算會遵循目前晶胞的度量。長度以 Å、角度以度顯示。
 
 ---
 
@@ -48,7 +49,7 @@
 
 ![Wyckoff 位置](../assets/cap-zh-Hant-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-列出每個 Wyckoff 位置及其多重度、Wyckoff 字母、位置對稱性，以及其為一般位置或特殊位置。對於有心點陣，點陣平移向量會顯示於標題列中。
+列出每個 Wyckoff 位置及其多重度（**重數**）、Wyckoff 字母（**Wyck. 字母**）、位置對稱性（**位置對稱**）與 **座標**（每列最多四個；較長的清單會延續到後續各列）。第一個 Wyckoff 項目（多重度最高者）即為一般位置。對於有心點陣，點陣平移向量會顯示於標題列中；對於採用六方軸的 R 群，則為 obverse 設定的三個心化平移 (0,0,0)+、(2/3,1/3,1/3)+ 與 (1/3,2/3,2/3)+。 <!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
 
 ---
 
@@ -57,6 +58,8 @@
 ![條件](../assets/cap-zh-Hant-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageConditions.png)
 
 由點陣心化以及滑移／螺旋對稱操作所產生的反射條件。
+
+每一列有三欄：**指數**（反射的類別，例如 $hkl$、$h0l$、$00l$）、**條件**（例如 $h+k=2n$）與 **要素**（造成該條件的點陣心化或對稱元素）。沒有任何條件時顯示 *No Condition*。
 
 ---
 
@@ -74,7 +77,7 @@
 
 ![群性質](../assets/cap-zh-Hant-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageProperties.png)
 
-報告目前空間群的群論分類（一般位置多重度、點群階數、中心對稱、Sohncke、簡單型、極性方向、對映體夥伴、晶族／格子系／布拉維型、算術晶類、Patterson 對稱），以及該對稱性允許哪些巨觀物理性質（熱電／鐵電、壓電、二次諧波產生、旋光性）。
+報告目前空間群的群論分類（一般位置多重度、點群階數、中心對稱、Sohncke、點式、極性方向、對映體夥伴、晶族／格子系／布拉維型、算術晶類、Patterson 對稱），以及該對稱性允許哪些巨觀物理性質（熱電／鐵電、壓電、二次諧波產生、旋光性）。
 
 → 各項術語的意義請參閱 **[附錄 A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#群論分類群性質索引標籤)**。
 
@@ -97,12 +100,13 @@
 - **對稱元素（左）**：旋轉／螺旋軸、鏡面／滑移面，以及反演中心／旋轉反演點皆以慣用的圖形符號繪製。
   - 對於立方晶系的 \(F\) 點陣，僅顯示投影晶胞左上方的四分之一（請參閱[附錄 A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram)）。
   - 這些對稱元素也可以直接繪製到 [結構檢視器](5-structure-viewer.md) 中的 3D 模型上。
-- **一般位置（右）**：一般等價位置以圓圈繪製（逗號表示鏡像），並標註其分數座標。
+- **一般位置（右）**：一般等價位置以圓圈繪製（逗號表示鏡像），每個圓圈都標註其沿投影軸的高度（`+`、`−`、`½+`、…；請參閱[附錄 A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md)）。
+  - 測試點 $(x,y,z)$ 以一般位置圖 **複製** 按鈕旁的 **a** / **b** / **c** 欄位設定（範圍 −1 至 1，步進 0.01）。每當點群改變時，它會重設為該點群的預設值；若只是在同一點群內變更空間群，則維持不變。
   - 僅對於立方晶系，輔助線會連接由三重旋轉軸所關聯的三個圓圈。
 
-圖下方的控制項：
+控制項（視窗下方的 **選項** 面板，以及各圖上方的 **複製** 按鈕）：
 
-- **方向**（`a` / `b` / `c`） : 選擇要沿其投影的晶軸。
+- **方向**（`a` / `b` / `c`） : 選擇要沿其投影的晶軸。僅斜方晶系的空間群可選擇（預設 `c`）；單斜晶系的空間群會自動使用唯一軸，其他所有晶系則使用 `c`。
 - **複製** : 將每個圖以 **複製格式** 所選的形式（向量 **emf**／點陣 **bmp**）複製到剪貼簿；emf 可在 PowerPoint 中取消群組後編輯。
 - **群關係...** 會開啟瀏覽目前空間群之極大子群／極小超群關係的瀏覽器。讀法請參閱 [附錄 A4.2](appendix/a4-symmetry-space-groups/group-subgroup-relations.md)。
 

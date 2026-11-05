@@ -252,7 +252,7 @@ primary-electron energy for the EBSD simulation).</value>
     <value>98</value>
   </data>
   <data name="buttonViewQuarter.Text" xml:space="preserve">
-    <value>Bird's-Eye View</value>
+    <value>Bird's-eye view</value>
   </data>
   <data name="buttonViewQuarter.ToolTip" xml:space="preserve">
     <value>Set the 3D geometry view to an oblique bird's-eye viewpoint.</value>
@@ -294,7 +294,7 @@ primary-electron energy for the EBSD simulation).</value>
     <value>98</value>
   </data>
   <data name="buttonViewFromSurfaceNormal.Text" xml:space="preserve">
-    <value>Surface Normal</value>
+    <value>Surface normal</value>
   </data>
   <data name="buttonViewFromSurfaceNormal.ToolTip" xml:space="preserve">
     <value>Set the 3D geometry view to look
@@ -337,7 +337,7 @@ along the sample surface normal.</value>
     <value>98</value>
   </data>
   <data name="buttonFromX.Text" xml:space="preserve">
-    <value>X Axis (Rotation Axis)</value>
+    <value>X axis (rotation axis)</value>
   </data>
   <data name="buttonFromX.ToolTip" xml:space="preserve">
     <value>Set the 3D geometry view to look along
@@ -380,7 +380,7 @@ the X axis (the sample rotation axis).</value>
     <value>99</value>
   </data>
   <data name="buttonViewFromZ.Text" xml:space="preserve">
-    <value>Z Axis (Beam Direction)</value>
+    <value>Z axis (beam direction)</value>
   </data>
   <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
     <value>Set the 3D geometry view to look along
@@ -548,9 +548,11 @@ stereonet centre is the sample surface normal.</value>
     <value>3</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>Set the tilt angle of the detector plane in degrees
-relative to the beam (Z) axis. This affects the camera
-length and the projected shape of the Kikuchi bands.</value>
+    <value>Set the tilt angle of the detector screen in degrees,
+measured from the horizontal plane (perpendicular to
+the beam, Z): 0° = horizontal, 90° = vertical screen
+(default). This affects the camera length and the
+projected shape of the Kikuchi bands.</value>
   </data>
   <data name="&gt;&gt;numericBoxDetTilt.Name" xml:space="preserve">
     <value>numericBoxDetTilt</value>
@@ -643,10 +645,11 @@ it determines the camera length.</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
     <value>Set the Y coordinate of the detector center, in mm -
-the sample-to-screen offset within the sample-surface
-plane, perpendicular to the X rotation axis. Together
-with Z and the detector tilt it determines the camera
-length. (Left-right offset is set by X.)</value>
+the horizontal offset perpendicular to both the beam (Z)
+and the sample tilt axis (X), in the microscope frame
+(not within the tilted sample surface). Together with Z
+and the detector tilt it determines the camera length.
+(Left-right offset is set by X.)</value>
   </data>
   <data name="&gt;&gt;numericBoxYofDet.Name" xml:space="preserve">
     <value>numericBoxYofDet</value>
@@ -788,7 +791,7 @@ used to draw the Kikuchi lines.</value>
     <value>121</value>
   </data>
   <data name="labelLineWidth.Text" xml:space="preserve">
-    <value>Line Width</value>
+    <value>Line width</value>
   </data>
   <data name="labelLineWidth.ToolTip" xml:space="preserve">
     <value>Set the line width (pen thickness)
@@ -987,7 +990,7 @@ the full line color and weak ones fade out.</value>
     <value>128</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
-    <value>1/d Cutoff</value>
+    <value>1/d cutoff</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>Select reflections for Kikuchi lines
@@ -1131,7 +1134,7 @@ lower values keep only larger-d-spacing reflections.</value>
     <value>121</value>
   </data>
   <data name="labelTextSize.Text" xml:space="preserve">
-    <value>Text Size</value>
+    <value>Text size</value>
   </data>
   <data name="labelTextSize.ToolTip" xml:space="preserve">
     <value>Adjust the font size of the overlay index text.</value>
@@ -1182,9 +1185,10 @@ lower values keep only larger-d-spacing reflections.</value>
     <value>135</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>Step size of the sample-thickness
-scan, in nm; the range from Start to
-End is calculated at this increment.</value>
+    <value>Step between the depth slices of the master pattern, in nm.
+The automatic depths are unequally spaced (finer near the
+surface); the boxes then show the first point, the last point
+and the first interval. Editing a box makes the steps equal.</value>
   </data>
   <data name="&gt;&gt;numericBoxThicknessStep.Name" xml:space="preserve">
     <value>numericBoxThicknessStep</value>
@@ -1321,6 +1325,50 @@ damps the wave, and the two are independent.</value>
   <data name="&gt;&gt;checkBoxTDSBackground.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="checkBoxRangesFromMonteCarlo.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 30</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 21</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.TabIndex" type="System.Int32, mscorlib">
+    <value>152</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.Text" xml:space="preserve">
+    <value>Energy and depth ranges from MC (automatic)</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.ToolTip" xml:space="preserve">
+    <value>On (default): each Simulate and 'Build master pattern' sets the
+Energy and Depth ranges below from the Monte Carlo result
+(energy: from E0 down to about 95 % of the energy loss; depth: up
+to the 99.9 % point of the exit path length, 40 unequal steps).
+The range boxes are then read-only.
+Off: the boxes keep the values you enter, and 'Build master pattern'
+uses them. Build refuses (with a message) a range whose lower end
+is not below its upper end, an energy above E0, or a range that
+does not overlap the Monte Carlo distribution.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRangesFromMonteCarlo.Name" xml:space="preserve">
+    <value>checkBoxRangesFromMonteCarlo</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRangesFromMonteCarlo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRangesFromMonteCarlo.Parent" xml:space="preserve">
+    <value>flowLayoutPanelSimulationParameters</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRangesFromMonteCarlo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="numericBoxThicknessStart.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
@@ -1328,7 +1376,7 @@ damps the wave, and the two are independent.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>Thickness from</value>
+    <value>Depth from</value>
   </data>
   <data name="numericBoxThicknessStart.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1352,9 +1400,12 @@ damps the wave, and the two are independent.</value>
     <value>133</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>Start of the sample-thickness scan
-range, in nm; Start, End, and Step
-define the thickness slices to calculate.</value>
+    <value>First (shallowest) depth slice of the master pattern, in nm.
+The depth is the path length along the exit direction
+(source depth ÷ cos χ). Start, End and Step define the
+depth slices.
+Set automatically while "Energy and Depth ranges from
+MC (automatic)" is checked.</value>
   </data>
   <data name="&gt;&gt;numericBoxThicknessStart.Name" xml:space="preserve">
     <value>numericBoxThicknessStart</value>
@@ -1402,8 +1453,8 @@ define the thickness slices to calculate.</value>
     <value>134</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>End of the sample-thickness scan range, in nm; Start,
-End, and Step define the thickness slices to calculate.</value>
+    <value>Last (deepest) depth slice of the master pattern, in nm;
+Start, End and Step define the depth slices.</value>
   </data>
   <data name="&gt;&gt;numericBoxThicknessEnd.Name" xml:space="preserve">
     <value>numericBoxThicknessEnd</value>
@@ -1628,9 +1679,6 @@ the value is shown in the Depth box.</value>
   <data name="labelPolarity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="labelPolarity.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="labelPolarity.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -1670,9 +1718,6 @@ gray-level polarity for the displayed image.</value>
   </data>
   <data name="labelColor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="labelColor.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="labelColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -1795,13 +1840,13 @@ grayscale for the pattern intensity.</value>
     <value>Gray</value>
   </data>
   <data name="comboBoxScale.Items1" xml:space="preserve">
-    <value>Cold-Warm</value>
+    <value>Cold-warm</value>
   </data>
   <data name="comboBoxScale.Items2" xml:space="preserve">
     <value>Spectrum</value>
   </data>
   <data name="comboBoxScale.Items3" xml:space="preserve">
-    <value>FIre</value>
+    <value>Fire</value>
   </data>
   <data name="comboBoxScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>188, 0</value>
@@ -2159,7 +2204,9 @@ Backscatter Diffraction) scan, in keV.</value>
   <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
     <value>Start (upper) energy of the backscattered
 electrons used in the EBSD (Electron
-Backscatter Diffraction) scan, in keV.</value>
+Backscatter Diffraction) scan, in keV.
+Set automatically while "Energy and Depth ranges from
+MC (automatic)" is checked.</value>
   </data>
   <data name="&gt;&gt;numericBoxEnergyStart.Name" xml:space="preserve">
     <value>numericBoxEnergyStart</value>
@@ -2250,7 +2297,9 @@ detected backscattered electrons had their
 last inelastic scattering event (falling
 back to the maximum penetration depth when
 there was none). This is the same depth
-definition used to weight the master pattern.</value>
+definition used to weight the master pattern.
+Double-click the graph to copy its values to the clipboard
+as text (x and y, tab-separated).</value>
   </data>
   <data name="&gt;&gt;labelBseDepth.Name" xml:space="preserve">
     <value>labelBseDepth</value>
@@ -2287,7 +2336,9 @@ definition used to weight the master pattern.</value>
   </data>
   <data name="labelBseDeltaE.ToolTip" xml:space="preserve">
     <value>Distribution of the energy loss ΔE (keV)
-of the simulated backscattered electrons.</value>
+of the simulated backscattered electrons.
+Double-click the graph to copy its values to the clipboard
+as text (x and y, tab-separated).</value>
   </data>
   <data name="&gt;&gt;labelBseDeltaE.Name" xml:space="preserve">
     <value>labelBseDeltaE</value>
@@ -2888,7 +2939,7 @@ master pattern is shown in the 2D view.</value>
     <value>4</value>
   </data>
   <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
-    <value>Build Master Pattern</value>
+    <value>Build master pattern</value>
   </data>
   <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
     <value>Build the EBSD master pattern (the full-sphere
@@ -3009,7 +3060,7 @@ preview to the clipboard.</value>
     <value>145</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
-    <value>Axis Labels</value>
+    <value>Axis labels</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisLabel.ToolTip" xml:space="preserve">
     <value>Show the a, b, c axis-label text
@@ -3052,7 +3103,7 @@ on the 3D master-pattern view.</value>
     <value>150</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.Text" xml:space="preserve">
-    <value>View Along</value>
+    <value>View along</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
     <value>Rotate the 3D master pattern so the zone axis
@@ -3090,7 +3141,7 @@ on the 3D master-pattern view.</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Enter the zone-axis indices [u v w] used by the
-'View Along' button to orient the 3D master pattern.</value>
+'View along' button to orient the 3D master pattern.</value>
   </data>
   <data name="&gt;&gt;indexControl.Name" xml:space="preserve">
     <value>indexControl</value>
@@ -3865,7 +3916,7 @@ programs that cannot paste metafiles.</value>
     <value>0</value>
   </data>
   <data name="labelDetectorSizeTilt.Text" xml:space="preserve">
-    <value>Size and Tilt</value>
+    <value>Size and tilt</value>
   </data>
   <data name="labelDetectorSizeTilt.ToolTip" xml:space="preserve">
     <value>Geometry of the detector screen: its tilt angle in degrees
@@ -5450,6 +5501,9 @@ does the same. There is no undo.</value>
   <data name="flowLayoutPanelColorScale.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="flowLayoutPanelColorScale.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="flowLayoutPanelColorScale.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -5476,6 +5530,9 @@ does the same. There is no undo.</value>
   </data>
   <data name="flowLayoutPanelBrightness.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="flowLayoutPanelBrightness.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="flowLayoutPanelBrightness.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -5539,6 +5596,9 @@ does the same. There is no undo.</value>
   </data>
   <data name="flowLayoutPanelWithBseDistribution.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="flowLayoutPanelWithBseDistribution.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="flowLayoutPanelWithBseDistribution.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -5655,7 +5715,7 @@ does the same. There is no undo.</value>
     <value>1</value>
   </data>
   <data name="tabPageBseDistribution.Text" xml:space="preserve">
-    <value>BSE Distribution</value>
+    <value>BSE distribution</value>
   </data>
   <data name="&gt;&gt;tabPageBseDistribution.Name" xml:space="preserve">
     <value>tabPageBseDistribution</value>
@@ -6237,10 +6297,10 @@ does the same. There is no undo.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxSimulationParameters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 561</value>
+    <value>3, 537</value>
   </data>
   <data name="groupBoxSimulationParameters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>413, 140</value>
+    <value>413, 164</value>
   </data>
   <data name="groupBoxSimulationParameters.TabIndex" type="System.Int32, mscorlib">
     <value>143</value>
@@ -6288,7 +6348,7 @@ does the same. There is no undo.</value>
     <value>flowLayoutPanelSimulationParameters</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelEnergyRange.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelThicknessRange.Name" xml:space="preserve">
     <value>flowLayoutPanelThicknessRange</value>
@@ -6300,7 +6360,7 @@ does the same. There is no undo.</value>
     <value>flowLayoutPanelSimulationParameters</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelThicknessRange.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelAbsorptionOptions.Name" xml:space="preserve">
     <value>flowLayoutPanelAbsorptionOptions</value>
@@ -6312,7 +6372,7 @@ does the same. There is no undo.</value>
     <value>flowLayoutPanelSimulationParameters</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelAbsorptionOptions.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="flowLayoutPanelSimulationParameters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -6324,7 +6384,7 @@ does the same. There is no undo.</value>
     <value>3, 21</value>
   </data>
   <data name="flowLayoutPanelSimulationParameters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>407, 116</value>
+    <value>407, 140</value>
   </data>
   <data name="flowLayoutPanelSimulationParameters.TabIndex" type="System.Int32, mscorlib">
     <value>151</value>
@@ -6360,7 +6420,7 @@ does the same. There is no undo.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelEnergyRange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 30</value>
+    <value>3, 54</value>
   </data>
   <data name="flowLayoutPanelEnergyRange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 3</value>
@@ -6381,7 +6441,7 @@ does the same. There is no undo.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelThicknessRange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 58</value>
+    <value>3, 82</value>
   </data>
   <data name="flowLayoutPanelThicknessRange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 3</value>
@@ -6402,7 +6462,7 @@ does the same. There is no undo.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelAbsorptionOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 86</value>
+    <value>3, 110</value>
   </data>
   <data name="flowLayoutPanelAbsorptionOptions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 3</value>
@@ -7009,9 +7069,6 @@ does the same. There is no undo.</value>
   </data>
   <data name="tabControlPatternSettings.TabIndex" type="System.Int32, mscorlib">
     <value>142</value>
-  </data>
-  <data name="tabPageOutputParameter.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="tabPageOutputParameter.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>

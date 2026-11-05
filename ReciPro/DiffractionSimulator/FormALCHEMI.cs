@@ -47,6 +47,12 @@ public partial class FormALCHEMI : FormBase
     /// <summary>run 時の反射列と θ_B [rad]。実行後にユーザーが入力を触っても表示がずれないよう結果と一緒に固定する</summary>
     private (int H, int K, int L) resultRow;
     private double resultThetaB = double.NaN;
+    /// <summary>261105Cl 追加 (監査 D10): run 時の結晶 (名前 / 空間群)・格子定数の行と、走査の原点の方位 (親の結晶の RotationMatrix の写し)。
+    /// CSV のヘッダは以前は出力した時点の結晶を書いていた (run の後に結晶を替えると、別の結晶の名前・格子定数が付いた) うえ、方位を書いていなかった</summary>
+    private (string Crystal, string Cell) resultHeader;
+    private Matrix3D resultRotation;
+    /// <summary>261105Cl 追加 (作者決定 D ALCHEMI): run 時の結晶 (参照)。結晶か加速電圧 (result.IncidentEnergyKeV) が今と違えば <see cref="RefreshLists"/> で曲線を消す</summary>
+    private Crystal resultCrystal;
     private readonly System.Diagnostics.Stopwatch sw = new();
 
     /// <summary>曲線の色 (サイト × チャネルの順に巡回)。GraphControl の凡例色と一致する</summary>
@@ -123,6 +129,13 @@ public partial class FormALCHEMI : FormBase
         foreach (var nb in new[] { numericBoxRange, numericBoxPoints })
             nb.ValueChanged += (s, e) => UpdateScanLabel();
         VisibleChanged += (s, e) => { if (Visible) RefreshLists(); };
+        // 261105Cl 追加 (監査 D22): 励起できない・収録範囲外のチャネル (理由つきで並ぶ) はチェックできないようにする。
+        //   ツールチップは「選択できません」と書いているのにチェックでき、計算では黙って外していた (BuildRequest の Status 判定)
+        checkedListBoxChannels.ItemCheck += (s, e) =>
+        {
+            if (e.NewValue == CheckState.Checked && e.Index < channelInfos.Length && channelInfos[e.Index].Status != IonizationAvailability.Available)
+                e.NewValue = CheckState.Unchecked;
+        };
     }
 
     /// <summary>表示文字列を 11 言語へ差し替える (Designer は英語のまま = VS で開いても壊れない)。</summary>
@@ -144,8 +157,11 @@ public partial class FormALCHEMI : FormBase
             pt: "Faixa  ±", it: "Intervallo  ±", ru: "Диапазон  ±", zhHans: "范围  ±", zhHant: "範圍  ±", ko: "범위  ±");
         numericBoxPoints.HeaderText = Localization.Loc(en: "Points", ja: "点数", de: "Punkte", fr: "Points", es: "Puntos",
             pt: "Pontos", it: "Punti", ru: "Точки", zhHans: "点数", zhHant: "點數", ko: "점 수");
-        groupBoxThickness.Text = Localization.Loc(en: "Thickness", ja: "厚み", de: "Dicke", fr: "Épaisseur", es: "Espesor",
-            pt: "Espessura", it: "Spessore", ru: "Толщина", zhHans: "厚度", zhHant: "厚度", ko: "두께");
+        // 261105Cl 変更前 (2 行):
+        //groupBoxThickness.Text = Localization.Loc(en: "Thickness", ja: "厚み", de: "Dicke", fr: "Épaisseur", es: "Espesor",
+        //pt: "Espessura", it: "Spessore", ru: "Толщина", zhHans: "厚度", zhHant: "厚度", ko: "두께");
+        groupBoxThickness.Text = Localization.Loc(en: "Thickness", ja: "試料厚さ", de: "Dicke", fr: "Épaisseur", es: "Espesor",
+            pt: "Espessura", it: "Spessore", ru: "Толщина", zhHans: "厚度", zhHant: "厚度", ko: "두께"); // 261105Cl 変更 (作者決定 K1-A3: 試料厚さ)
         numericBoxThicknessStart.HeaderText = Localization.Loc(en: "from", ja: "開始", de: "von", fr: "de", es: "desde",
             pt: "de", it: "da", ru: "от", zhHans: "从", zhHant: "從", ko: "부터");
         numericBoxThicknessEnd.HeaderText = Localization.Loc(en: "to", ja: "終了", de: "bis", fr: "à", es: "hasta",
@@ -154,8 +170,17 @@ public partial class FormALCHEMI : FormBase
             pt: "passo", it: "passo", ru: "шаг", zhHans: "步长", zhHant: "步長", ko: "간격");
         groupBoxCalculation.Text = Localization.Loc(en: "Calculation", ja: "計算条件", de: "Berechnung", fr: "Calcul",
             es: "Cálculo", pt: "Cálculo", it: "Calcolo", ru: "Расчёт", zhHans: "计算", zhHant: "計算", ko: "계산");
-        numericBoxMaxNumOfBloch.HeaderText = Localization.Loc(en: "Max. beams", ja: "最大波数", de: "Max. Strahlen", fr: "Faisceaux max.",
-            es: "Haces máx.", pt: "Feixes máx.", it: "Fasci max.", ru: "Макс. пучков", zhHans: "最大波数", zhHant: "最大波數", ko: "최대 빔 수");
+        // 261105Cl 変更前 (2 行):
+        //numericBoxMaxNumOfBloch.HeaderText = Localization.Loc(en: "Max. beams", ja: "最大波数", de: "Max. Strahlen", fr: "Faisceaux max.",
+        //es: "Haces máx.", pt: "Feixes máx.", it: "Fasci max.", ru: "Макс. пучков", zhHans: "最大波数", zhHant: "最大波數", ko: "최대 빔 수");
+        // 261106Cl 変更前 (2 行):
+        //numericBoxMaxNumOfBloch.HeaderText = Localization.Loc(en: "Max. diffr. waves", ja: "回折波の最大数", de: "Max. Strahlen", fr: "Faisceaux max.",
+        //    es: "Haces máx.", pt: "Feixes máx.", it: "Fasci max.", ru: "Макс. пучков", zhHans: "最大衍射波数", zhHant: "最大繞射波數", ko: "최대 빔 수"); // 261105Cl 変更 (作者決定 K1-A1: 「最大波数」は wavenumber と読める。en は欄 (166 px 固定) に収まる略記。zh も同じ理由で)
+        // 261106Cl 変更 (作者決定 K1-A1 を残りの 7 言語へ: 「ビーム」でなく「回折波」)。欄は 166 px 固定で、見出しが約 107 px を超えると数値欄が
+        //   "1600" より狭くなる。de・ru は「Max. gebeugte Wellen」「Макс. дифр. волн」が入らないので CBED の欄と同じ「Gebeugte Wellen」「Дифр. волны」
+        //   (上限であることはツールチップ)
+        numericBoxMaxNumOfBloch.HeaderText = Localization.Loc(en: "Max. diffr. waves", ja: "回折波の最大数", de: "Gebeugte Wellen", fr: "Ondes diffr. max.",
+            es: "Ondas difr. máx.", pt: "Ondas difr. máx.", it: "Onde diffr. max.", ru: "Дифр. волны", zhHans: "最大衍射波数", zhHant: "最大繞射波數", ko: "최대 회절파 수"); // 261106Cl
         labelSolver.Text = Localization.Loc(en: "Solver", ja: "ソルバ", de: "Löser", fr: "Solveur", es: "Solucionador",
             pt: "Solucionador", it: "Risolutore", ru: "Решатель", zhHans: "求解器", zhHant: "求解器", ko: "솔버");
         labelAngularSpread.Text = Localization.Loc(en: "Angular spread", ja: "角度広がり", de: "Winkelverbreiterung",
@@ -208,11 +233,14 @@ public partial class FormALCHEMI : FormBase
         //260810Cl: dataset v5 で表が s ≤ 16 Å⁻¹ になり、この上限 1600 と対になった。
         //実測の最大要求は 1600 波でも 10.54 Å⁻¹ (加速電圧に依らない) なので収録範囲は使い切れない
         toolTip.SetToolTip(numericBoxMaxNumOfBloch, Localization.Loc(
-            en: "Upper bound on the number of Bloch waves per orientation. The union over the whole scan is larger. The ionization form factor is tabulated to s = 16 A^-1, and this cap of 1600 is its counterpart: even at 1600 beams the basis only reaches about 10.5 A^-1. The diagnostic line below the graph reports how far it actually reached.",
-            ja: "1 方位あたりのブロッホ波数の上限です。走査全体の union はこれより大きくなります。イオン化形状因子は s = 16 Å⁻¹ まで収録されており、この上限 1600 はその対です (1600 波でも基底が要求する s は約 10.5 Å⁻¹ に留まります)。実際の到達値はグラフ下の診断行に出ます。"));
+            //en: "Upper bound on the number of Bloch waves per orientation. The union over the whole scan is larger. The ionization form factor is tabulated to s = 16 A^-1, and this cap of 1600 is its counterpart: even at 1600 beams the basis only reaches about 10.5 A^-1. The diagnostic line below the graph reports how far it actually reached.", // 261105Cl 変更前
+            en: "Upper bound on the number of Bloch waves per orientation. The union over the whole scan is larger. The ionization form factor is tabulated to s = 16 Å⁻¹, and this cap of 1600 is its counterpart: even at 1600 beams the basis only reaches about 10.5 Å⁻¹. The diagnostic line below the graph reports how far it actually reached.", // 261105Cl 変更 (監査 K21): A^-1 → Å⁻¹ (ja と同じ表記)
+            //ja: "1 方位あたりのブロッホ波数の上限です。走査全体の union はこれより大きくなります。イオン化形状因子は s = 16 Å⁻¹ まで収録されており、この上限 1600 はその対です (1600 波でも基底が要求する s は約 10.5 Å⁻¹ に留まります)。実際の到達値はグラフ下の診断行に出ます。")); // 261105Cl 変更前
+            ja: "1 方位あたりのブロッホ波 (回折波) の数の上限です。走査全体の union はこれより大きくなります。イオン化形状因子は s = 16 Å⁻¹ まで収録されており、この上限 1600 はその対です (1600 波でも基底が要求する s は約 10.5 Å⁻¹ に留まります)。実際の到達値はグラフ下の診断行に出ます。")); // 261105Cl 変更 (作者決定 K1-A1: 「波数」は wavenumber と読める)
         toolTip.SetToolTip(checkBoxDechannelling, Localization.Loc(
             en: "Electrons removed from the coherent Bloch field by thermal-diffuse absorption are re-emitted as randomly directed electrons over the remaining thickness. Omitting this dilutes the site contrast by tens of percent at typical thicknesses.",
-            ja: "熱散漫吸収でコヒーレントなブロッホ場から失われた電子を、方向がランダム化された電子として残りの厚みぶん走らせます。省くと典型的な厚みでサイトコントラストが数十パーセント薄まります。"));
+            //ja: "熱散漫吸収でコヒーレントなブロッホ場から失われた電子を、方向がランダム化された電子として残りの厚みぶん走らせます。省くと典型的な厚みでサイトコントラストが数十パーセント薄まります。")); // 261105Cl 変更前
+            ja: "熱散漫吸収でコヒーレントなブロッホ場から失われた電子を、方向がランダム化された電子として残りの厚さぶん走らせます。省くと典型的な厚さでサイトコントラストが数十パーセント薄まります。")); // 261105Cl 変更 (作者決定 K1-A3: 厚み → 厚さ)
         //toolTip.SetToolTip(checkedListBoxChannels, Localization.Loc(//260925Cl 変更前
         //    en: "Element and shell to ionize. Cross sections are Bote-Salvat and the shape factors are self-generated DHFS tables; channels that cannot be excited or fall outside the tabulated range are listed with the reason and cannot be selected.",
         //    ja: "イオン化する元素と殻です。断面積は Bote-Salvat、形状因子は自前の DHFS テーブルです。励起できない、または収録範囲外のチャネルは理由付きで表示され選択できません。"));
@@ -235,16 +263,20 @@ public partial class FormALCHEMI : FormBase
             ja: "走査全体で標本化する方位の個数です (3〜1001)。-Range から +Range まで等間隔に並ぶので、奇数にすると 1 点がちょうど出発方位に来ます (スピンボタンは奇数を保つため 2 刻みです)。曲線の角度分解能を決め、計算時間はこれに比例します。走査の広さを決める Range とは役割が違います。"));
         toolTip.SetToolTip(numericBoxThicknessStart, Localization.Loc(
             en: "First thickness of the series, in nm. from, to and step build the list of thicknesses computed in one run; every site/channel curve is evaluated at all of them and the Thickness box under the graph then picks which one is drawn. Site contrast can reverse sign with thickness, so start thin enough to see that.",
-            ja: "厚み列の最初の値です (nm)。開始・終了・刻みで 1 回の計算で扱う厚みの列を作り、各サイト / チャネル曲線をそのすべてについて求めます。どれをグラフに描くかはグラフ下の厚みボックスで選びます。サイトコントラストは厚みで符号が反転しうるので、それが見える程度に薄い値から始めてください。"));
+            //ja: "厚み列の最初の値です (nm)。開始・終了・刻みで 1 回の計算で扱う厚みの列を作り、各サイト / チャネル曲線をそのすべてについて求めます。どれをグラフに描くかはグラフ下の厚みボックスで選びます。サイトコントラストは厚みで符号が反転しうるので、それが見える程度に薄い値から始めてください。")); // 261105Cl 変更前
+            ja: "厚さ列の最初の値です (nm)。開始・終了・刻みで 1 回の計算で扱う厚さの列を作り、各サイト / チャネル曲線をそのすべてについて求めます。どれをグラフに描くかはグラフ下の厚さボックスで選びます。サイトコントラストは厚さで符号が反転しうるので、それが見える程度に薄い値から始めてください。")); // 261105Cl 変更 (作者決定 K1-A3: 厚み → 厚さ)
         toolTip.SetToolTip(numericBoxThicknessEnd, Localization.Loc(
             en: "Last thickness of the series, in nm. The list runs from the start value up to this one in increments of step, and a value not on the grid is simply not reached. Extending it costs almost nothing in solve time - the Bloch-wave problem is solved once per orientation and only the thickness propagation is repeated - but it does enlarge the CSV export.",
-            ja: "厚み列の最後の値です (nm)。開始からこの値まで刻みぶんずつ進み、刻みに乗らない端数には到達しません。ここを伸ばしても対角化は方位ごとに 1 回で厚み伝播だけを繰り返すため計算時間はほとんど増えませんが、CSV 出力は大きくなります。"));
+            //ja: "厚み列の最後の値です (nm)。開始からこの値まで刻みぶんずつ進み、刻みに乗らない端数には到達しません。ここを伸ばしても対角化は方位ごとに 1 回で厚み伝播だけを繰り返すため計算時間はほとんど増えませんが、CSV 出力は大きくなります。")); // 261105Cl 変更前
+            ja: "厚さ列の最後の値です (nm)。開始からこの値まで刻みぶんずつ進み、刻みに乗らない端数には到達しません。ここを伸ばしても対角化は方位ごとに 1 回で厚さ伝播だけを繰り返すため計算時間はほとんど増えませんが、CSV 出力は大きくなります。")); // 261105Cl 変更 (作者決定 K1-A3: 厚み → 厚さ)
         toolTip.SetToolTip(numericBoxThicknessStep, Localization.Loc(
             en: "Spacing of the thickness series, in nm. It also becomes the spin step of the Thickness box under the graph, so a coarse step makes it impossible to land between two thicknesses. A fine step multiplies the number of curves stored and exported without re-solving the Bloch-wave problem.",
-            ja: "厚み列の間隔です (nm)。この値がそのままグラフ下の厚みボックスのスピン刻みになるので、粗くすると 2 つの厚みの中間を選べません。細かくすると保存・出力される曲線の本数が増えますが、ブロッホ波の対角化はやり直しません。"));
+            //ja: "厚み列の間隔です (nm)。この値がそのままグラフ下の厚みボックスのスピン刻みになるので、粗くすると 2 つの厚みの中間を選べません。細かくすると保存・出力される曲線の本数が増えますが、ブロッホ波の対角化はやり直しません。")); // 261105Cl 変更前
+            ja: "厚さ列の間隔です (nm)。この値がそのままグラフ下の厚さボックスのスピン刻みになるので、粗くすると 2 つの厚さの中間を選べません。細かくすると保存・出力される曲線の本数が増えますが、ブロッホ波の対角化はやり直しません。")); // 261105Cl 変更 (作者決定 K1-A3: 厚み → 厚さ)
         toolTip.SetToolTip(buttonSimulate, Localization.Loc(
             en: "Run the ALCHEMI simulation with the settings on the left: for every orientation of the rocking scan a Bloch-wave calculation is solved, and the ionization yield of each selected site/channel pair is accumulated over the thickness series. Cost grows with Points x thicknesses x Max. beams^3, so a wide scan with many beams can take minutes; progress is shown in the status bar and Stop cancels it.",
-            ja: "左側の設定で ALCHEMI 計算を実行します。ロッキング走査の各方位についてブロッホ波計算を解き、選択したサイト / チャネルの組ごとにイオン化収量を厚みの列にわたって積算します。計算量は 点数 × 厚み数 × 最大波数³ で増えるので、広い走査と多波条件では数分かかります。進捗はステータスバーに出て、中止は Stop ボタンです。"));
+            //ja: "左側の設定で ALCHEMI 計算を実行します。ロッキング走査の各方位についてブロッホ波計算を解き、選択したサイト / チャネルの組ごとにイオン化収量を厚みの列にわたって積算します。計算量は 点数 × 厚み数 × 最大波数³ で増えるので、広い走査と多波条件では数分かかります。進捗はステータスバーに出て、中止は Stop ボタンです。")); // 261105Cl 変更前
+            ja: "左側の設定で ALCHEMI 計算を実行します。ロッキング走査の各方位についてブロッホ波計算を解き、選択したサイト / チャネルの組ごとにイオン化収量を厚さの列にわたって積算します。計算量は 点数 × 厚さの数 × 回折波の最大数³ で増えるので、広い走査と多波条件では数分かかります。進捗はステータスバーに出て、中止は Stop ボタンです。")); // 261105Cl 変更 (作者決定 K1-A1/A3)
         toolTip.SetToolTip(buttonStop, Localization.Loc(
             en: "Cancel the running simulation. The button only appears while a run is in progress. Cancellation takes effect at the next orientation, so it is not instantaneous; the graph and the diagnostics keep the result of the previous completed run.",
             ja: "実行中の計算を中止します。このボタンは計算中だけ表示されます。中止は次の方位の区切りで効くので即座ではありません。グラフと診断表示は直前に完了した計算の結果を保持します。"));
@@ -254,7 +286,8 @@ public partial class FormALCHEMI : FormBase
         //    ja: "グラフに表示する厚みです。サイトコントラストは薄い試料と厚い試料で大きく変わり符号すら反転しうるので、結論を出す前に複数の厚みを確認してください。"));
         toolTip.SetToolTip(numericBoxThickness, Localization.Loc(
             en: "Thickness shown in the graph. The spin buttons step through the computed thicknesses; a typed value snaps to the nearest one. The site contrast changes strongly - and can even reverse sign - between thin and thick specimens, so check several thicknesses before drawing conclusions.",
-            ja: "グラフに表示する厚みです。スピンボタンで計算済みの厚みを順送りし、直接入力した値は最寄りの計算済み厚みに揃えられます。サイトコントラストは薄い試料と厚い試料で大きく変わり符号すら反転しうるので、結論を出す前に複数の厚みを確認してください。"));
+            //ja: "グラフに表示する厚みです。スピンボタンで計算済みの厚みを順送りし、直接入力した値は最寄りの計算済み厚みに揃えられます。サイトコントラストは薄い試料と厚い試料で大きく変わり符号すら反転しうるので、結論を出す前に複数の厚みを確認してください。")); // 261105Cl 変更前
+            ja: "グラフに表示する厚さです。スピンボタンで計算済みの厚さを順送りし、直接入力した値は最寄りの計算済み厚さに揃えられます。サイトコントラストは薄い試料と厚い試料で大きく変わり符号すら反転しうるので、結論を出す前に複数の厚さを確認してください。")); // 261105Cl 変更 (作者決定 K1-A3: 厚み → 厚さ)
         //toolTip.SetToolTip(comboBoxNormalization, Localization.Loc(//260925Cl 変更前
         //    en: "Display normalization only; the stored quantity is always vacancies generated per incident electron. Maximum = 1 is for display and must not be used as an ICP reference.",
         //    ja: "表示上の規格化だけで、保存される量は常に入射電子 1 個あたりの発生空孔数です。最大値 = 1 は表示専用で、ICP の基準には使えません。"));
@@ -263,14 +296,17 @@ public partial class FormALCHEMI : FormBase
             ja: "表示上の規格化だけで、保存される量は殻のチャネルでは入射電子 1 個あたりの発生空孔数、線の系列では入射電子 1 個あたりに発生する X 線の光子数です。最大値 = 1 は表示専用で、ICP の基準には使えません。"));
         toolTip.SetToolTip(buttonExport, Localization.Loc(
             en: "Write the raw curves (dynamic, dechannelled and total, per incident electron) for every orientation, thickness, site and channel to a CSV file, together with a header that records the crystal, the voltage, the scan, the basis diagnostic, the angular spread and the data provenance.",
-            ja: "全方位・全厚み・全サイト・全チャネルの生の曲線 (動力学・非チャネリング・合計、入射電子 1 個あたり) を、結晶・電圧・走査・基底診断・角度広がり・データ出所を記録したヘッダとともに CSV に書き出します。"));
+            //ja: "全方位・全厚み・全サイト・全チャネルの生の曲線 (動力学・非チャネリング・合計、入射電子 1 個あたり) を、結晶・電圧・走査・基底診断・角度広がり・データ出所を記録したヘッダとともに CSV に書き出します。")); // 261105Cl 変更前
+            ja: "全方位・全厚さ・全サイト・全チャネルの生の曲線 (動力学・非チャネリング・合計、入射電子 1 個あたり) を、結晶・電圧・走査・基底診断・角度広がり・データ出所を記録したヘッダとともに CSV に書き出します。")); // 261105Cl 変更 (作者決定 K1-A3: 厚み → 厚さ)
         //260809Cl 追加
         toolTip.SetToolTip(comboBoxAngularSpread, Localization.Loc(
             en: "Convolution of the rocking curve with the angular spread of the incident beam (convergence semi-angle, drift). It is a post-process on the orientation axis and is applied BEFORE the display normalization. Nothing else about the experiment - thickness distribution, bending, self-absorption, detector response, background - is modelled, so this alone will not reproduce a measurement.",
-            ja: "入射ビームの角度広がり (収束半角・ドリフト) をロッキング曲線に畳み込みます。方位軸上の後処理で、表示の規格化より「前」に適用されます。厚み分布・曲げ・自己吸収・検出器応答・背景は一切モデル化していないので、これだけで実測を再現できるわけではありません。"));
+            //ja: "入射ビームの角度広がり (収束半角・ドリフト) をロッキング曲線に畳み込みます。方位軸上の後処理で、表示の規格化より「前」に適用されます。厚み分布・曲げ・自己吸収・検出器応答・背景は一切モデル化していないので、これだけで実測を再現できるわけではありません。")); // 261105Cl 変更前
+            ja: "入射ビームの角度広がり (収束半角・ドリフト) をロッキング曲線に畳み込みます。方位軸上の後処理で、表示の規格化より「前」に適用されます。厚さの分布・曲げ・自己吸収・検出器応答・背景は一切モデル化していないので、これだけで実測を再現できるわけではありません。")); // 261105Cl 変更 (作者決定 K1-A3)
         toolTip.SetToolTip(numericBoxSpreadFwhm, Localization.Loc(
             en: "Full width at half maximum of the Gaussian, in mrad. Ends of the scan are handled by renormalizing the kernel. Fitting this width together with thickness and occupancy makes them correlated, so use a measured value or a narrow prior.",
-            ja: "ガウシアンの半値全幅 (mrad) です。走査の端はカーネルを再規格化して扱います。この幅を厚みや占有率と一緒にフィットすると互いに相関するので、実測値か狭い事前範囲を使ってください。"));
+            //ja: "ガウシアンの半値全幅 (mrad) です。走査の端はカーネルを再規格化して扱います。この幅を厚みや占有率と一緒にフィットすると互いに相関するので、実測値か狭い事前範囲を使ってください。")); // 261105Cl 変更前
+            ja: "ガウシアンの半値全幅 (mrad) です。走査の端はカーネルを再規格化して扱います。この幅を厚さや占有率と一緒にフィットすると互いに相関するので、実測値か狭い事前範囲を使ってください。")); // 261105Cl 変更 (作者決定 K1-A3: 厚み → 厚さ)
         //260820Cl 追加
         toolTip.SetToolTip(textBoxDiagnostics, Localization.Loc(
             en: "Diagnostics of the last run, one item per line: basis size and expanded-basis convergence, fit eligibility, the Experimental notice, any warnings, and the contrast (max−min)/mean of every site/channel curve with its correlation to the first one. Scroll for the rest; the text can be selected and copied.",
@@ -291,11 +327,20 @@ public partial class FormALCHEMI : FormBase
 
     #region チャネル・サイト一覧の更新
 
+    /// <summary>261105Cl 追加 (監査 #19): チャネル・サイトの一覧を作ったときの結晶と加速電圧 (kV)。<see cref="BuildRequest"/> で今の値と比べる</summary>
+    private Crystal listsCrystal = null;
+    private double listsVoltage = double.NaN;
+
     /// <summary>結晶や加速電圧が変わったときにチャネル候補とサイト候補を作り直す。
-    /// 収録範囲 (K は Z=6-50 等) は Crystallography 側の照会に任せ、GUI にハードコードしない (設計 §5.9-3)。</summary>
-    private void RefreshLists()
+    /// 収録範囲 (K は Z=6-50 等) は Crystallography 側の照会に任せ、GUI にハードコードしない (設計 §5.9-3)。
+    /// 261105Cl 変更 (監査 #19): 以前は再表示 (VisibleChanged) でしか呼ばれず、窓を開いたまま結晶・電圧を変えると古い一覧のまま計算していた
+    /// (サイトの番号を新しい結晶の Atoms に当てるので、サイトが減ると例外、そうでなければ黙って別のサイト。チャネルも古い結晶の元素)。
+    /// 親 (FormDiffractionSimulator) の SetCrystal・波長の変更から呼ぶので internal にした</summary>
+    //private void RefreshLists() // 261105Cl 変更前
+    internal void RefreshLists()
     {
         if (FormDiffractionSimulator == null || Crystal?.Atoms == null) return;
+        (listsCrystal, listsVoltage) = (Crystal, Voltage); // 261105Cl 追加 (監査 #19)
 
         //var checkedChannels = checkedListBoxChannels.CheckedItems.Cast<string>().ToHashSet();//260925Cl 変更前
         //260925Cl 変更 (codex2 の指摘): チェックの保持を表示文字列ではなく (Z, 殻) で行う。表示文字列には U = E0/edge が入るので、
@@ -324,12 +369,42 @@ public partial class FormALCHEMI : FormBase
             checkedListBoxSites.Items.Add(text, checkedSites.Count == 0 || checkedSites.Contains(text));
         }
         UpdateScanLabel();
+        ClearResultIfStale(); // 261105Cl 追加 (作者決定 D ALCHEMI): 親の結晶・波長の変更と再表示はここを通る
+    }
+
+    /// <summary>261105Cl 追加 (作者決定 D ALCHEMI): 表示中の曲線を計算したときの結晶・加速電圧が今のものと違えば、曲線・診断・厚みの選択を消す。
+    /// 以前は結晶や電圧を替えても前の曲線が残り、今の条件の結果と見分けがつかなかった (CSV のヘッダは計算時の条件を書く)。
+    /// 結晶は参照で比べる (主窓で格子定数などを編集して適用すると別の Crystal になる)</summary>
+    private void ClearResultIfStale()
+    {
+        if (result == null || (ReferenceEquals(resultCrystal, Crystal) && result.IncidentEnergyKeV == Voltage)) return;
+        result = null;
+        headerResult = null; headerLines = null; tiltCache = null; lastDiagnosticsText = null; runError = null;
+        resultThetaB = double.NaN;
+        resultCrystal = null;
+        graphControl.VerticalLines = [];
+        graphControl.ClearProfile();
+        textBoxDiagnostics.Text = "";
+        numericBoxThickness.Enabled = false;
+        toolStripStatusLabel.Text = Localization.Loc(
+            en: "The crystal or the accelerating voltage has changed, so the previous curves were cleared.",
+            ja: "結晶または加速電圧が変わったので、前の曲線を消しました。",
+            de: "Kristall oder Beschleunigungsspannung wurde geändert; die bisherigen Kurven wurden gelöscht.",
+            fr: "Le cristal ou la tension d'accélération a changé ; les courbes précédentes ont été effacées.",
+            es: "El cristal o el voltaje de aceleración ha cambiado; se han borrado las curvas anteriores.",
+            pt: "O cristal ou a tensão de aceleração mudou; as curvas anteriores foram apagadas.",
+            it: "Il cristallo o la tensione di accelerazione è cambiato; le curve precedenti sono state cancellate.",
+            ru: "Кристалл или ускоряющее напряжение изменились, поэтому прежние кривые удалены.",
+            zhHans: "晶体或加速电压已更改，已清除之前的曲线。",
+            zhHant: "晶體或加速電壓已變更，已清除先前的曲線。",
+            ko: "결정 또는 가속 전압이 바뀌어 이전 곡선을 지웠습니다.");
     }
 
     /// <summary>選んだ反射列の θ_B と走査刻みを表示する (実行前に「何 θ_B ぶん振るのか」が分かるように)。</summary>
     private void UpdateScanLabel()
     {
         if (FormDiffractionSimulator == null || Crystal == null) { labelThetaB.Text = "-"; return; }
+        if (FormDiffractionSimulator.waveLengthControl.WaveSource != WaveSource.Electron) { labelThetaB.Text = NotElectronNotice(); return; } // 261105Cl 追加 (監査 D9): X 線・中性子のエネルギーで θ_B を出さない
         //var (h, k, l) = (numericBoxAxisH.ValueInteger, numericBoxAxisK.ValueInteger, numericBoxAxisL.ValueInteger); //260820Cl 変更
         var (h, k, l) = indexControlRow.Values;
         var range = numericBoxRange.Value * 1e-3;
@@ -356,11 +431,26 @@ public partial class FormALCHEMI : FormBase
     /// <summary>260809Cl 追加: GUI の入力から run 1 回ぶんの要求を組む (null = チャネル/サイト未選択、または軸が縮退)。
     /// <see cref="buttonSimulate_Click"/> と <see cref="PrepareCaptureForGuiAudit"/> で共用するため切り出した。
     /// 旧: この処理は buttonSimulate_Click に inline だった。</summary>
-    private AlchemiRequest BuildRequest(out (int H, int K, int L) row, out double thetaB)
+    //private AlchemiRequest BuildRequest(out (int H, int K, int L) row, out double thetaB) // 261105Cl 変更前
+    /// <param name="header">261105Cl 追加 (監査 D10): CSV のヘッダに書く、この run の結晶 (名前 / 空間群) と格子定数の行</param>
+    private AlchemiRequest BuildRequest(out (int H, int K, int L) row, out double thetaB, out (string Crystal, string Cell) header)
     {
         //row = (numericBoxAxisH.ValueInteger, numericBoxAxisK.ValueInteger, numericBoxAxisL.ValueInteger); //260820Cl 変更
         row = indexControlRow.Values;
         thetaB = double.NaN;
+        header = default; // 261105Cl 追加
+
+        // 261105Cl 追加 (監査 D9): ALCHEMI は電子線専用。X 線・中性子のときは Energy (光子・中性子のエネルギー) を電子の加速電圧として計算し、CSV にも書いていた
+        if (FormDiffractionSimulator.waveLengthControl.WaveSource != WaveSource.Electron)
+        {
+            toolStripStatusLabel.Text = NotElectronNotice();
+            return null;
+        }
+
+        // 261105Cl 追加 (監査 #19): 一覧が今の結晶・電圧のものでなければ (親が隠れていて通知が来なかったときなど) 先に作り直す。
+        //   チェックはチャネルが (Z, 殻)、サイトが表示文字列で引き継がれ、新しい結晶に無いサイトのチェックは外れる (→ 下の「選んでください」で止まる)
+        if (!ReferenceEquals(listsCrystal, Crystal) || listsVoltage != Voltage)
+            RefreshLists();
 
         var channels = Enumerable.Range(0, checkedListBoxChannels.Items.Count)
             .Where(checkedListBoxChannels.GetItemChecked)
@@ -385,7 +475,24 @@ public partial class FormALCHEMI : FormBase
         //掃く反射列 g に対し、傾斜軸は「ビームと g の両方に垂直」= その軸まわりに振ると s_g が動く
         var g = rotation * (Crystal.MatrixInverseTransposed * (h, k, l));
         var axis = Vector3DBase.VectorProduct(beam, g);
-        if (axis.Length < 1e-9) { UpdateScanLabel(); return null; }
+        //if (axis.Length < 1e-9) { UpdateScanLabel(); return null; } // 261105Cl 変更前: 何も表示せずに止まっていた
+        if (axis.Length < 1e-9) // 261105Cl 変更 (監査 D22): g がビームと平行 (傾斜軸が作れない) なら理由を出す
+        {
+            UpdateScanLabel();
+            toolStripStatusLabel.Text = Localization.Loc(
+                en: "The row g is parallel to the beam, so the scan cannot tilt it through its Bragg conditions. Choose a row that is not along the beam.",
+                ja: "反射列 g がビームと平行なので、走査で Bragg 条件を通して振れません。ビーム方向でない反射列を選んでください。",
+                de: "Die Reihe g ist parallel zum Strahl und kann daher nicht durch ihre Bragg-Bedingungen gekippt werden. Wählen Sie eine Reihe, die nicht entlang des Strahls liegt.",
+                fr: "La rangée g est parallèle au faisceau ; le balayage ne peut donc pas la faire passer par ses conditions de Bragg. Choisissez une rangée qui n'est pas le long du faisceau.",
+                es: "La fila g es paralela al haz, por lo que el barrido no puede inclinarla a través de sus condiciones de Bragg. Elija una fila que no esté a lo largo del haz.",
+                pt: "A fila g é paralela ao feixe, portanto a varredura não pode incliná-la através de suas condições de Bragg. Escolha uma fila que não esteja ao longo do feixe.",
+                it: "La fila g è parallela al fascio, quindi la scansione non può inclinarla attraverso le sue condizioni di Bragg. Scegliere una fila non lungo il fascio.",
+                ru: "Ряд g параллелен пучку, поэтому сканирование не может провести его через условия Брэгга. Выберите ряд, не направленный вдоль пучка.",
+                zhHans: "反射列 g 与电子束平行，扫描无法使其通过布拉格条件。请选择不沿电子束方向的反射列。",
+                zhHant: "反射列 g 與電子束平行，掃描無法使其通過布拉格條件。請選擇不沿電子束方向的反射列。",
+                ko: "반사열 g 가 빔과 평행하므로 스캔으로 Bragg 조건을 통과시킬 수 없습니다. 빔 방향이 아닌 반사열을 선택하세요.");
+            return null;
+        }
         thetaB = g.Length / (2 * UniversalConstants.Convert.EnergyToElectronWaveNumber(Voltage));
 
         var range = numericBoxRange.Value * 1e-3;
@@ -394,6 +501,11 @@ public partial class FormALCHEMI : FormBase
         for (var t = numericBoxThicknessStart.Value; t <= numericBoxThicknessEnd.Value + 1e-9; t += numericBoxThicknessStep.Value)
             thicknesses.Add(t);
         var sites = siteIndices.Select(i => new AlchemiSiteBasis(Crystal.Atoms[i].Label, [i])).ToArray();
+
+        // 261105Cl 追加 (監査 D10): 旧 buttonExport_Click の "crystal"・"cell_nm" の行と同じ書式 (InvariantCulture) で、run の時点の値を控える
+        header = ($"{Crystal.Name} / {Crystal.Symmetry.SpaceGroupHMStr}",
+            string.Create(CultureInfo.InvariantCulture, $"a {Crystal.A:f6} b {Crystal.B:f6} c {Crystal.C:f6} "
+                + $"alpha {Crystal.Alpha * 180 / Math.PI:f4} beta {Crystal.Beta * 180 / Math.PI:f4} gamma {Crystal.Gamma * 180 / Math.PI:f4} deg"));
 
         return new AlchemiRequest(Voltage, rotation, scan, [.. thicknesses], sites, channels)
         {
@@ -407,7 +519,8 @@ public partial class FormALCHEMI : FormBase
     {
         if (cts != null) return;
 
-        var request = BuildRequest(out var row, out var thetaB);
+        //var request = BuildRequest(out var row, out var thetaB); // 261105Cl 変更前
+        var request = BuildRequest(out var row, out var thetaB, out var header); // 261105Cl 変更 (監査 D10)
         if (request == null) return;
 
         cts = new CancellationTokenSource();
@@ -416,6 +529,7 @@ public partial class FormALCHEMI : FormBase
         toolStripProgressBar.Value = 0;
         sw.Restart();
         var progress = new Progress<AlchemiProgress>(ReportProgress);
+        var runCrystal = Crystal; // 261105Cl 追加 (作者決定 D ALCHEMI): 計算する結晶 (計算中に主窓で替えられても、結果はこの結晶のもの)
         var bethe = Crystal.Bethe;
         try
         {
@@ -423,10 +537,13 @@ public partial class FormALCHEMI : FormBase
             sw.Stop();
             resultRow = row;
             resultThetaB = thetaB;
+            (resultHeader, resultRotation) = (header, request.BaseRotation); // 261105Cl 追加 (監査 D10)
+            resultCrystal = runCrystal; // 261105Cl 追加 (作者決定 D ALCHEMI)
             runError = null; //260820Cl 追加 (/simplify2)
             toolStripStatusLabel.Text = $"{sw.ElapsedMilliseconds / 1000.0:f2} s";
             SetupThicknessSelector();
             DrawCurves();
+            ClearResultIfStale(); // 261105Cl 追加 (作者決定 D ALCHEMI): 計算中に結晶・電圧を替えていたら、描いた曲線はもう今の条件のものではないので消す
         }
         catch (OperationCanceledException)
         {
@@ -462,7 +579,8 @@ public partial class FormALCHEMI : FormBase
     public void PrepareCaptureForGuiAudit()
     {
         RefreshLists(); //VisibleChanged 経由の初期化に頼らない (撮影順で Visible が前後するため)
-        var request = BuildRequest(out var row, out var thetaB);
+        //var request = BuildRequest(out var row, out var thetaB); // 261105Cl 変更前
+        var request = BuildRequest(out var row, out var thetaB, out var header); // 261105Cl 変更 (監査 D10)
         if (request == null) return;
 
         sw.Restart();
@@ -470,6 +588,8 @@ public partial class FormALCHEMI : FormBase
         sw.Stop();
         resultRow = row;
         resultThetaB = thetaB;
+        (resultHeader, resultRotation) = (header, request.BaseRotation); // 261105Cl 追加 (監査 D10)
+        resultCrystal = Crystal; // 261105Cl 追加 (作者決定 D ALCHEMI)
         runError = null; //260820Cl 追加 (/simplify2)
         toolStripStatusLabel.Text = $"{sw.ElapsedMilliseconds / 1000.0:f2} s";
         toolStripProgressBar.Value = toolStripProgressBar.Maximum;
@@ -742,6 +862,20 @@ public partial class FormALCHEMI : FormBase
         zhHant: "Experimental：僅與 multislice 程式對比驗證（beta-AlCo [001], 250 keV）",
         ko: "Experimental: multislice 코드와의 대조만 수행 (beta-AlCo [001], 250 keV)");
 
+    /// <summary>261105Cl 追加 (監査 D9): 線源が電子線でないときの案内 (θ_B の表示欄とステータスバー)</summary>
+    private static string NotElectronNotice() => Localization.Loc(
+        en: "ALCHEMI is for electrons. Set the wave source of the diffraction simulator to Electron.",
+        ja: "ALCHEMI は電子線専用です。回折シミュレータの線源を電子線にしてください。",
+        de: "ALCHEMI ist nur für Elektronen. Stellen Sie die Strahlungsquelle des Beugungssimulators auf Elektronen.",
+        fr: "ALCHEMI est réservé aux électrons. Réglez la source du simulateur de diffraction sur Électron.",
+        es: "ALCHEMI es solo para electrones. Ajuste la fuente del simulador de difracción a Electrón.",
+        pt: "O ALCHEMI é apenas para elétrons. Defina a fonte do simulador de difração como Elétron.",
+        it: "ALCHEMI è solo per elettroni. Impostare la sorgente del simulatore di diffrazione su Elettroni.",
+        ru: "ALCHEMI работает только с электронами. Выберите электроны в качестве источника в симуляторе дифракции.",
+        zhHans: "ALCHEMI 仅适用于电子。请将衍射模拟器的线源设为电子。",
+        zhHant: "ALCHEMI 僅適用於電子。請將繞射模擬器的線源設為電子。",
+        ko: "ALCHEMI 는 전자선 전용입니다. 회절 시뮬레이터의 선원을 전자로 설정하세요.");
+
     /// <summary>260809Cl 追加 (⑪): 非有限値を**黙って通さない**。表示は NaN を落として描けてしまうので、
     /// 結果テンソルに NaN/Inf が混じったら診断行で明示する。</summary>
     private string NonFiniteNotice()
@@ -765,18 +899,19 @@ public partial class FormALCHEMI : FormBase
     /// <summary>260810Cl 追加: 80 kV 未満の告知。**hard gate にはしない** (作者決定) —
     /// s の要求が s_kin(E0) に収まる限り計算そのものは正しいので、電圧で弾くのは過剰。
     /// 「16 Å⁻¹ を保証できる下限が 80 kV」という事実だけを伝える。</summary>
-    private string LowVoltageNotice() => Voltage >= 80 ? "" : Localization.Loc( //260820Cl 変更 (/simplify): 旧 "   ⚠ " + …
-        en: "below 80 kV: the form factor table cannot guarantee s up to 16 A^-1 at this voltage",
+    //private string LowVoltageNotice() => Voltage >= 80 ? "" : Localization.Loc( //260820Cl 変更 (/simplify): 旧 "   ⚠ " + … // 261105Cl 変更前: 今の電圧 (run の後に電圧を変えると、表示中の結果と合わない告知)
+    private string LowVoltageNotice() => result.IncidentEnergyKeV >= 80 ? "" : Localization.Loc( // 261105Cl 変更 (監査 D10): 結果を計算した電圧で判定する / 261105Cl 変更 (監査 K21): 各言語の A^-1 → Å⁻¹ (ja・診断行の 1 行目と同じ表記)
+        en: "below 80 kV: the form factor table cannot guarantee s up to 16 Å⁻¹ at this voltage",
         ja: "80 kV 未満: この電圧では形状因子テーブルが s = 16 Å⁻¹ までを保証できません",
-        de: "unter 80 kV: die Formfaktortabelle kann s bis 16 A^-1 bei dieser Spannung nicht garantieren",
-        fr: "sous 80 kV : la table de facteurs de forme ne garantit pas s jusqu'à 16 A^-1 à cette tension",
-        es: "por debajo de 80 kV: la tabla de factores de forma no garantiza s hasta 16 A^-1 a esta tensión",
-        pt: "abaixo de 80 kV: a tabela de fatores de forma não garante s até 16 A^-1 nesta tensão",
-        it: "sotto 80 kV: la tabella dei fattori di forma non garantisce s fino a 16 A^-1 a questa tensione",
-        ru: "ниже 80 кВ: таблица форм-факторов не гарантирует s до 16 A^-1 при этом напряжении",
-        zhHans: "低于 80 kV：该电压下形状因子表无法保证 s 至 16 A^-1",
-        zhHant: "低於 80 kV：該電壓下形狀因子表無法保證 s 至 16 A^-1",
-        ko: "80 kV 미만: 이 전압에서는 형상 인자 표가 s = 16 A^-1 까지를 보장하지 못합니다");
+        de: "unter 80 kV: die Formfaktortabelle kann s bis 16 Å⁻¹ bei dieser Spannung nicht garantieren",
+        fr: "sous 80 kV : la table de facteurs de forme ne garantit pas s jusqu'à 16 Å⁻¹ à cette tension",
+        es: "por debajo de 80 kV: la tabla de factores de forma no garantiza s hasta 16 Å⁻¹ a esta tensión",
+        pt: "abaixo de 80 kV: a tabela de fatores de forma não garante s até 16 Å⁻¹ nesta tensão",
+        it: "sotto 80 kV: la tabella dei fattori di forma non garantisce s fino a 16 Å⁻¹ a questa tensione",
+        ru: "ниже 80 кВ: таблица форм-факторов не гарантирует s до 16 Å⁻¹ при этом напряжении",
+        zhHans: "低于 80 kV：该电压下形状因子表无法保证 s 至 16 Å⁻¹",
+        zhHant: "低於 80 kV：該電壓下形狀因子表無法保證 s 至 16 Å⁻¹",
+        ko: "80 kV 미만: 이 전압에서는 형상 인자 표가 s = 16 Å⁻¹ 까지를 보장하지 못합니다");
 
     /// <summary>260810Cl 追加: s &gt; s_cert を 0 で打ち切った場合の告知 (dataset v5)。
     /// **外挿と違って誤差の大きさが宣言される**ので、上界 ε を必ず数値で見せる。
@@ -888,13 +1023,19 @@ public partial class FormALCHEMI : FormBase
                 + "with the shape F = sum_i B_i sigma_i F_i / sum_i B_i sigma_i; B_i = fluorescence yield x line branching after the Coster-Kronig "
                 + "and radiative cascades (xraylib 4.2.1). The Auger cascade is NOT included (M-alpha about 5 % low, L-alpha up to 2 % low for Z <= 50). "
                 + "Supply from subshells outside the F table (K above Z = 50) is left out");
-        Key("crystal", $"{Crystal.Name} / {Crystal.Symmetry.SpaceGroupHMStr}");
+        //Key("crystal", $"{Crystal.Name} / {Crystal.Symmetry.SpaceGroupHMStr}"); // 261105Cl 変更前: 出力した時点の結晶
         //Key("cell_nm", $"a {Crystal.A:f6} b {Crystal.B:f6} c {Crystal.C:f6} " //260820Cl 変更 (/simplify2): この 1 行だけ既定カルチャだった (de/fr では小数点がカンマになり conventions 行と矛盾)
         //    + $"alpha {Crystal.Alpha * 180 / Math.PI:f4} beta {Crystal.Beta * 180 / Math.PI:f4} gamma {Crystal.Gamma * 180 / Math.PI:f4} deg");
-        Key("cell_nm", string.Create(inv, $"a {Crystal.A:f6} b {Crystal.B:f6} c {Crystal.C:f6} "
-            + $"alpha {Crystal.Alpha * 180 / Math.PI:f4} beta {Crystal.Beta * 180 / Math.PI:f4} gamma {Crystal.Gamma * 180 / Math.PI:f4} deg"));
+        //Key("cell_nm", string.Create(inv, $"a {Crystal.A:f6} b {Crystal.B:f6} c {Crystal.C:f6} " // 261105Cl 変更前
+        //    + $"alpha {Crystal.Alpha * 180 / Math.PI:f4} beta {Crystal.Beta * 180 / Math.PI:f4} gamma {Crystal.Gamma * 180 / Math.PI:f4} deg"));
+        Key("crystal", resultHeader.Crystal); // 261105Cl 変更 (監査 D10): run の時点の結晶 (BuildRequest で控えた値)
+        Key("cell_nm", resultHeader.Cell); // 261105Cl 変更 (監査 D10)
         Key("cell_volume_nm3", result.UnitCellVolumeNm3.ToString("e8", inv));
         Key("accelerating_voltage_kV", result.IncidentEnergyKeV.ToString("f3", inv));
+        // 261105Cl 追加 (監査 D10): 走査の原点 (tilt = 0) の方位。以前は書いておらず、ファイルだけでは計算を再現できなかった
+        var r = resultRotation;
+        Key("scan_origin_rotation_matrix", string.Create(inv, $"{r.E11:f9} {r.E12:f9} {r.E13:f9} {r.E21:f9} {r.E22:f9} {r.E23:f9} {r.E31:f9} {r.E32:f9} {r.E33:f9} "
+            + $"(row-major; the crystal orientation of the parent diffraction simulator at the run, mapping the crystal's Cartesian frame to the laboratory frame, in which the beam travels along -z)"));
         Key("scan_row_hkl", $"{resultRow.H} {resultRow.K} {resultRow.L}");
         Key("theta_B_mrad", (resultThetaB * 1e3).ToString("f6", inv));
         Key("scan_points", s.OrientationCount.ToString(inv));

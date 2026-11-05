@@ -98,9 +98,13 @@ public partial class FormStructureViewer : FormBase
     }
 
     private class cellID { }
+    /// <summary>261105Cl 追加: 副格子 (Show Subcell) の線。cellID の一種なので単位胞と一緒に消される。3D モデル出力には含めない</summary>
+    private class subCellID : cellID { }
     private class latticeID { }
     private class boundsID { }
     private class symmetryID { } // (260506Ch) 対称要素 GLObject を既存の原子・結合・格子タグと分離する
+    /// <summary>261105Cl 追加: 配位多面体を面 (Polygon) に分解して描くとき、各面に分解前の Polyhedron を持たせる (3D モデル出力が閉じた立体として使う)</summary>
+    private class polyhedronID(Polyhedron source) { public readonly Polyhedron Source = source; }
     #endregion
 
     #region コンストラクタ
@@ -115,6 +119,7 @@ public partial class FormStructureViewer : FormBase
             flowLayoutPanelLegend.BackColor = SystemColors.Control;
         GLObjectsP = GLObjects.AsParallel();
 
+        if (neighborKeys.Count != 0) return; // 261105Cl 追加: static なので、2 個目のインスタンス (撮影ハーネスの生成など) で 27 個ずつ重複し、結合・多面体の頂点が二重に数えられていた
         for (int a = -1; a < 2; a++)
             for (int b = -1; b < 2; b++)
                 for (int c = -1; c < 2; c++)
@@ -194,6 +199,7 @@ public partial class FormStructureViewer : FormBase
         glControlMainZsort.MouseDown += glControlMain_MouseDown;
         glControlMainZsort.MouseMove += glControlMain_MouseMove;
         glControlMainZsort.ProjWidthChanged += glControlMain_ProjWidthChanged; // 260703Cl 追加: ズーム操作(右ドラッグ/ホイール)で numericBoxProjWidth を同期
+        glControlMainZsort.ProjectionModeChanged += glControlMain_ProjectionModeChanged; // 261105Cl 追加: CTRL+右ダブルクリックの投影モード切替をコンボへ反映
 
         // glControlMainDDP
         glControlMainDDP = new GLControlAlpha(GLControlAlpha.FragShaders.DDP) // (260319Ch) DDP を StructureViewer の比較対象へ追加
@@ -217,6 +223,7 @@ public partial class FormStructureViewer : FormBase
         glControlMainDDP.MouseDown += glControlMain_MouseDown;
         glControlMainDDP.MouseMove += glControlMain_MouseMove;
         glControlMainDDP.ProjWidthChanged += glControlMain_ProjWidthChanged; // 260703Cl 追加
+        glControlMainDDP.ProjectionModeChanged += glControlMain_ProjectionModeChanged; // 261105Cl 追加
         glControlMainDDP.Visible = false;
 
         #region ARM64環境の対応待ちのため、PPLLは一旦コメントアウト (2025/12/10)
@@ -244,6 +251,7 @@ public partial class FormStructureViewer : FormBase
         glControlMainPPLL.MouseDown += glControlMain_MouseDown;
         glControlMainPPLL.MouseMove += glControlMain_MouseMove;
         glControlMainPPLL.ProjWidthChanged += glControlMain_ProjWidthChanged; // 260703Cl 追加
+        glControlMainPPLL.ProjectionModeChanged += glControlMain_ProjectionModeChanged; // 261105Cl 追加
         glControlMainPPLL.Visible = false;
         #endregion
 
@@ -490,14 +498,25 @@ public partial class FormStructureViewer : FormBase
         if (radioButtonBoundUnitCell.Checked)//境界条件としてUnit cellが選択されている場合
         {
             var inv = Matrix3d.Invert(axes);
+            //bounds = // 261105Cl 変更前 (8 行): 範囲が (投影中心 − Center) ± Range になり、Center を正にすると −a (−b, −c) 側へ動いていた
+            //    [
+            //        (new V4(inv.Row0.Normalized(),1/inv.Row0.Length * (numericBoxACenter.Value + numericBoxARange.Value)) , Color.Red),
+            //        (new V4(-inv.Row0.Normalized(),1/inv.Row0.Length *  -(numericBoxACenter.Value - numericBoxARange.Value)), Color.Red),
+            //        (new V4(inv.Row1.Normalized(),1/inv.Row1.Length *  (numericBoxBCenter.Value + numericBoxBRange.Value)), Color.Green),
+            //        (new V4(-inv.Row1.Normalized(),1/inv.Row1.Length * -(numericBoxBCenter.Value - numericBoxBRange.Value)), Color.Green),
+            //        (new V4(inv.Row2.Normalized(),1/inv.Row2.Length * (numericBoxCCenter.Value + numericBoxCRange.Value)), Color.Blue),
+            //        (new V4(-inv.Row2.Normalized(),1/inv.Row2.Length * -(numericBoxCCenter.Value - numericBoxCRange.Value)), Color.Blue),
+            //    ];
+            // 261105Cl 変更 (監査 H3): 範囲を (投影中心 + Center) ± Range にする (正の Center で +a, +b, +c の向きへ動く)。
+            // 面は n·r' + D ≥ 0 が内側 (r' は投影中心からの座標)。u = inv.Row0·r' (投影中心から測った分率座標) として、+Row0 の面は u ≥ Center − Range、−Row0 の面は u ≤ Center + Range
             bounds =
                 [
-                    (new V4(inv.Row0.Normalized(),1/inv.Row0.Length * (numericBoxACenter.Value + numericBoxARange.Value)) , Color.Red),
-                    (new V4(-inv.Row0.Normalized(),1/inv.Row0.Length *  -(numericBoxACenter.Value - numericBoxARange.Value)), Color.Red),
-                    (new V4(inv.Row1.Normalized(),1/inv.Row1.Length *  (numericBoxBCenter.Value + numericBoxBRange.Value)), Color.Green),
-                    (new V4(-inv.Row1.Normalized(),1/inv.Row1.Length * -(numericBoxBCenter.Value - numericBoxBRange.Value)), Color.Green),
-                    (new V4(inv.Row2.Normalized(),1/inv.Row2.Length * (numericBoxCCenter.Value + numericBoxCRange.Value)), Color.Blue),
-                    (new V4(-inv.Row2.Normalized(),1/inv.Row2.Length * -(numericBoxCCenter.Value - numericBoxCRange.Value)), Color.Blue),
+                    (new V4(inv.Row0.Normalized(),1/inv.Row0.Length * (numericBoxARange.Value - numericBoxACenter.Value)) , Color.Red),
+                    (new V4(-inv.Row0.Normalized(),1/inv.Row0.Length * (numericBoxARange.Value + numericBoxACenter.Value)), Color.Red),
+                    (new V4(inv.Row1.Normalized(),1/inv.Row1.Length * (numericBoxBRange.Value - numericBoxBCenter.Value)), Color.Green),
+                    (new V4(-inv.Row1.Normalized(),1/inv.Row1.Length * (numericBoxBRange.Value + numericBoxBCenter.Value)), Color.Green),
+                    (new V4(inv.Row2.Normalized(),1/inv.Row2.Length * (numericBoxCRange.Value - numericBoxCCenter.Value)), Color.Blue),
+                    (new V4(-inv.Row2.Normalized(),1/inv.Row2.Length * (numericBoxCRange.Value + numericBoxCCenter.Value)), Color.Blue),
                 ];
 
         }
@@ -505,7 +524,8 @@ public partial class FormStructureViewer : FormBase
         {
             foreach (var bc in boundControl.GetAll().Where(b => b.Enabled && b.PlaneParams != null && b.Index != (0, 0, 0)))
                 foreach (var (X, Y, Z, D) in bc.PlaneParams)
-                    bounds.Add((new V4(X, Y, Z, D), bc.Color));
+                    //bounds.Add((new V4(X, Y, Z, D), bc.Color)); // 261106Cl 変更前: 面 (n, D) をそのまま「n·r + D ≥ 0 が内側」として使い、面は投影中心から −n の側にあった
+                    bounds.Add((new V4(-X, -Y, -Z, D), bc.Color)); // 261106Cl 変更 (作者決定 D5): Bound.PlaneParams は「n·r ≤ D が内側」(面は投影中心から +n の側、距離 D)。ここの bounds は n·r + D ≥ 0 が内側なので法線を反転する
             if (!Geometry.Enclosed(bounds.Select(b => b.prm.ToArray()).ToArray()))//描画範囲が閉じていない場合
             {
                 //球面に近いポリゴンを作成
@@ -702,7 +722,8 @@ public partial class FormStructureViewer : FormBase
         sw.Restart();
         static bool within(double d, double max, double min) => d < max && d > min;
         var dic1 = new Dictionary<string, bondVertex[]>();
-        var dicMaterial = new ConcurrentDictionary<int, Material>();
+        //var dicMaterial = new ConcurrentDictionary<int, Material>(); // 261105Cl 変更前: 多面体の材質の鍵を Index + 1000 としていたので、原子サイトが 1000 を超えると結合の材質の鍵と衝突した
+        var dicMaterial = new ConcurrentDictionary<(int Index, bool Poly), Material>(); // 261105Cl 変更
         //260731Cl 追加: 中心原子(Serial)ごとに多面体頂点と付随ボンド(円柱)を全ボンド定義にわたって統合するための辞書 (例: Cu-O と Cu-Cl の両定義から一つの多面体を生成)
         //構成原子(中心+頂点)がすべて描画範囲外の多面体は付随ボンドごと描かない (判定と原子の Rendered 設定は一括生成ループ側で行う)
         var polyDic = new Dictionary<int, (bondVertex c, List<bondVertex> vertices, List<GLObject> bondObjs, DrawingMode mode)>();
@@ -710,11 +731,20 @@ public partial class FormStructureViewer : FormBase
         //List のインデクサ読取と Add の並走は arm64 の weak memory model では grow 時に理論上 null 読取の窓があるため、
         //書込対象 (この時点で追加済みの Sphere。ObjIndex は追記オンリーで不変) のスナップショット配列経由でアクセスして競合を消す。
         var glSnap = GLObjects.ToArray();
+        // 261105Cl 追加: 多面体の定義の「Show Center Atom」「Show Vertex Atoms」(従来は保存されるだけで描画に効いていなかった)。
+        // 定義をまたいで統合する中心 (Serial) では、先に処理された定義の値が勝つ (PolyMat・mode と同じ規則)
+        var polyShowAtoms = new Dictionary<int, (bool Center, bool Vertex)>();
+        // 261105Cl 追加 (監査 H4): 多面体の稜線の太さ (px)。従来は Edge width を読まず、常に 1 px だった。統合する中心では先に処理された定義の値が勝つ (上と同じ規則)
+        var polyEdgeWidth = new Dictionary<int, float>();
+        // 261105Cl 追加: ボンドのみの定義で実際に描く結合の両端の原子 (多面体の定義の「隠す」より表示を優先する)
+        var bondOnlyShown = new ConcurrentDictionary<int, byte>();
         bondControl.GetAll().Where(b => b.Enabled && (b.ShowPolyhedron || b.ShowBond)).ToList().ForEach(bond =>
         {
             double min = Math.Max(bond.MinLength, 0), min2 = min * min, max = bond.MaxLength, max2 = max * max, radius = bond.Radius;
             var polyhedronMode = bond.ShowEdges ? DrawingMode.SurfacesAndEdges : DrawingMode.Surfaces;
+            var edgeWidth = Math.Clamp(bond.EdgeLineWidth, 1f, 5f); // 261105Cl 追加 (監査 H4): 範囲は 1〜5 px。旧版の値 (0〜1、「Like Vesta」は 0) は 1 px として描く (= 従来の見え方)
             float bondTrans = bond.BondTransParency, polyTrans = bond.PolyhedronTransParency;
+            var showCylinder = bond.ShowBond && (!bond.ShowPolyhedron || bond.ShowInnerBonds); // 261105Cl 追加: 多面体の定義では「Show Inner Bonds」(中心と頂点を結ぶ結合) も見る
 
             //最初に、中心と頂点をdic1に格納する. こうしておけば、2回目に出てきたとき、再検索しなくて済む.
             foreach (var element in (new[] { bond.Element1, bond.Element2 }).Where(element => !dic1.ContainsKey(element)))
@@ -726,15 +756,19 @@ public partial class FormStructureViewer : FormBase
                         {
                             var s = e.Obj as Sphere;
                             var id = s.Tag as atomID;
-                            if (!dicMaterial.TryGetValue(id.Index, out var bondMat))
+                            //if (!dicMaterial.TryGetValue(id.Index, out var bondMat)) // 261105Cl 変更前 (鍵 id.Index / id.Index + 1000)
+                            if (!dicMaterial.TryGetValue((id.Index, false), out var bondMat)) // 261105Cl 変更
                             {
                                 bondMat = new Material(s.Material.Color, bondTrans);
-                                dicMaterial.TryAdd(id.Index, bondMat);
+                                //dicMaterial.TryAdd(id.Index, bondMat); // 261105Cl 変更前
+                                dicMaterial.TryAdd((id.Index, false), bondMat); // 261105Cl 変更
                             }
-                            if (!dicMaterial.TryGetValue(id.Index + 1000, out var polyMat))
+                            //if (!dicMaterial.TryGetValue(id.Index + 1000, out var polyMat)) // 261105Cl 変更前
+                            if (!dicMaterial.TryGetValue((id.Index, true), out var polyMat)) // 261105Cl 変更
                             {
                                 polyMat = new Material(s.Material.Color, polyTrans);
-                                dicMaterial.TryAdd(id.Index + 1000, polyMat);
+                                //dicMaterial.TryAdd(id.Index + 1000, polyMat); // 261105Cl 変更前
+                                dicMaterial.TryAdd((id.Index, true), polyMat); // 261105Cl 変更
                             }
                             //return new bondVertex(e.ObjIndex, id.Index, id.CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat);
                             return new bondVertex(e.ObjIndex, id.Index, id.CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat, id.IsInside);//260731Cl 変更: IsInsideを追加
@@ -830,12 +864,16 @@ public partial class FormStructureViewer : FormBase
                         if (!c.IsInside && !v.IsInside)
                             continue;
                         glSnap[c.ObjIndex].Rendered = glSnap[v.ObjIndex].Rendered = true;
+                        bondOnlyShown.TryAdd(c.ObjIndex, 0); // 261105Cl 追加
+                        bondOnlyShown.TryAdd(v.ObjIndex, 0); // 261105Cl 追加
                     }
                     var vec = v.O - c.O;//中心間を結ぶベクトル
                     var m = (1 + (c.R - v.R) / vec.Length) * vec / 2;//中間地点
                     var tag = new bondID(c.Serial, v.Serial);
-                    objects[n++] = new Cylinder(c.O, m, radius, c.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = bond.ShowBond };
-                    objects[n++] = new Cylinder(v.O, m - vec, radius, v.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = bond.ShowBond };
+                    //objects[n++] = new Cylinder(c.O, m, radius, c.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = bond.ShowBond }; // 261105Cl 変更前 (2 行)
+                    //objects[n++] = new Cylinder(v.O, m - vec, radius, v.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = bond.ShowBond };
+                    objects[n++] = new Cylinder(c.O, m, radius, c.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = showCylinder }; // 261105Cl 変更
+                    objects[n++] = new Cylinder(v.O, m - vec, radius, v.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = showCylinder }; // 261105Cl 変更
                 }
                 //lock (lockObj3)
                 //    GLObjects.AddRange(objects);
@@ -851,7 +889,11 @@ public partial class FormStructureViewer : FormBase
                     lock (lockObj3)
                     {
                         if (!polyDic.TryGetValue(c.Serial, out var p))
+                        {
                             polyDic.Add(c.Serial, p = (c, [], [], polyhedronMode));
+                            polyShowAtoms.Add(c.Serial, (bond.ShowCenterAtom, bond.ShowVertexAtom)); // 261105Cl 追加
+                            polyEdgeWidth.Add(c.Serial, edgeWidth); // 261105Cl 追加 (監査 H4)
+                        }
                         p.vertices.AddRange(verts);
                         p.bondObjs.AddRange(bondSlice);
                     }
@@ -901,24 +943,49 @@ public partial class FormStructureViewer : FormBase
 
         //260731Cl 追加: 描画が確定した中心原子ごとに、構成原子の表示化と、付随ボンド(円柱)+統合頂点から成る多面体の生成を並列実行
         //(Polyhedron コンストラクタが重いので、旧コードの ForAll 内生成と同等の並列度を保つ。GLObjects への追加のみ lock)
+        var shownAtoms = new ConcurrentDictionary<int, byte>(); // 261105Cl 追加
+        var hiddenAtoms = new ConcurrentDictionary<int, byte>(); // 261105Cl 追加
         drawn.AsParallel().ForAll(e =>
         {
-            glSnap[e.c.ObjIndex].Rendered = true;
+            //glSnap[e.c.ObjIndex].Rendered = true; // 261105Cl 変更前 (3 行): 中心・頂点を常に表示していた
+            //foreach (var v in e.vertices)
+            //    glSnap[v.ObjIndex].Rendered = true;
+            // 261105Cl 変更: 中心・頂点を表示するか隠すかを集め、ループの後でまとめて設定する (隠すのは、表示を求める役割がどこにも無い原子だけ)
+            var (showCenter, showVertex) = polyShowAtoms[e.c.Serial];
+            (showCenter ? shownAtoms : hiddenAtoms).TryAdd(e.c.ObjIndex, 0);
             foreach (var v in e.vertices)
-                glSnap[v.ObjIndex].Rendered = true;
-            IEnumerable<GLObject> polys = e.vertices.Count switch
+                (showVertex ? shownAtoms : hiddenAtoms).TryAdd(v.ObjIndex, 0);
+            //IEnumerable<GLObject> polys = e.vertices.Count switch // 261105Cl 変更前: 分解後の面 (Polygon) しか残らず、3D モデル出力 (閉じた立体だけを拾う) に多面体が出なかった
+            //{
+            //    <= 2 => [],
+            //    3 => [new Polygon(e.vertices.Select(v => v.O), e.c.PolyMat, e.mode) { Rendered = true }],
+            //    _ => new Polyhedron(e.vertices.Select(v => v.O), e.c.PolyMat, e.mode)
+            //         { Rendered = true, ShowClippedSection = false }.ToPolygons()//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
+            //};
+            // 261105Cl 変更: 4 頂点以上は、各面の Tag に分解前の Polyhedron を持たせる (ToPolygons は Tag を各面へ写す)
+            IEnumerable<GLObject> polys = [];
+            if (e.vertices.Count == 3)
+                polys = [new Polygon(e.vertices.Select(v => v.O), e.c.PolyMat, e.mode) { Rendered = true }];
+            else if (e.vertices.Count > 3)
             {
-                <= 2 => [],
-                3 => [new Polygon(e.vertices.Select(v => v.O), e.c.PolyMat, e.mode) { Rendered = true }],
-                _ => new Polyhedron(e.vertices.Select(v => v.O), e.c.PolyMat, e.mode)
-                     { Rendered = true, ShowClippedSection = false }.ToPolygons()//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
-            };
+                var polyhedron = new Polyhedron(e.vertices.Select(v => v.O), e.c.PolyMat, e.mode) { Rendered = true, ShowClippedSection = false };
+                polyhedron.Tag = new polyhedronID(polyhedron);
+                polys = polyhedron.ToPolygons();//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
+            }
+            foreach (var p in polys) // 261105Cl 追加 (監査 H4): 稜線の太さ (ToPolygons は LineWidth を写さないので、分けた後の面それぞれに設定する)
+                p.LineWidth = polyEdgeWidth[e.c.Serial];
             lock (lockObj3)
             {
                 GLObjects.AddRange(e.bondObjs);
                 GLObjects.AddRange(polys);
             }
         });
+        // 261105Cl 追加: 他の多面体の中心・頂点として表示を求められた原子、ボンドのみの定義の結合の端の原子は隠さない
+        foreach (var i in hiddenAtoms.Keys)
+            if (!shownAtoms.ContainsKey(i) && !bondOnlyShown.ContainsKey(i))
+                glSnap[i].Rendered = false;
+        foreach (var i in shownAtoms.Keys)
+            glSnap[i].Rendered = true;
 
         textBoxCalcInformation.AppendText($"Generation of bonds & polyhedra: {sw.ElapsedMilliseconds}ms.\r\n");
     }
@@ -1052,7 +1119,9 @@ public partial class FormStructureViewer : FormBase
             glControlMain.DeleteObjects(obj);
         GLObjects.RemoveAll(obj => obj.Tag is cellID);
 
-        var t = axes * (new V3(numericBoxCellTranslationA.Value, numericBoxCellTranslationB.Value, numericBoxCellTranslationC.Value)) + shift;
+        //var t = axes * (new V3(numericBoxCellTranslationA.Value, numericBoxCellTranslationB.Value, numericBoxCellTranslationC.Value)) + shift; // 261105Cl 変更前: 単位胞の原点が分率座標 −Translation に来て、正の値で −a (−b, −c) 側へ動いていた
+        // 261105Cl 変更 (監査 H18): 単位胞の原点を分率座標 +Translation に置く (正の値で +a, +b, +c の向きへ動く)。頂点は (e − t) なので t = shift − axes·Translation
+        var t = shift - axes * (new V3(numericBoxCellTranslationA.Value, numericBoxCellTranslationB.Value, numericBoxCellTranslationC.Value));
         V3 zero = new(0), c0 = axes.Column0, c1 = axes.Column1, c2 = axes.Column2;
 
         //エッジの描画
@@ -1075,6 +1144,22 @@ public partial class FormStructureViewer : FormBase
                     GLObjects.Add(line);
                     glControlMain.AddObjects(line);
                 }
+        }
+
+        // 261105Cl 追加 (監査 H5): 副格子 (Show Subcell)。単位胞の各軸を a, b, c の欄の数で等分した格子線を、辺と同じ色 (All edges / Each edge) で
+        // 辺より細く (辺の太さの半分、最小 1 px)・薄く (不透明度 0.5) 描く。「Show edges」とは独立。3D モデル出力には含めない (subCellID)
+        if (checkBoxUnitCell.Checked && checkBoxShowSubCell.Checked)
+        {
+            int[] colors = radioButtonCellEdgeColorAll.Checked ?
+                [colorControlCellEdge.Argb, colorControlCellEdge.Argb, colorControlCellEdge.Argb] :
+                [colorControlCellEdgeA.Argb, colorControlCellEdgeB.Argb, colorControlCellEdgeC.Argb];
+            var width = Math.Max(1f, trackBarCellEdgeWidth.Value / 2f);
+            foreach (var (axis, start, end) in subCellLines(c0, c1, c2, numericBoxSubCellA.ValueInteger, numericBoxSubCellB.ValueInteger, numericBoxSubCellC.ValueInteger))
+            {
+                var line = new Lines([start - t, end - t], width, new Material(colors[axis], 0.5)) { Tag = new subCellID() };
+                GLObjects.Add(line);
+                glControlMain.AddObjects(line);
+            }
         }
 
         if (checkBoxUnitCell.Checked && checkBoxCellShowPlane.Checked)
@@ -1106,6 +1191,29 @@ public partial class FormStructureViewer : FormBase
         textBoxCalcInformation.AppendText("Generation of cell planes: " + sw.ElapsedMilliseconds + "ms.\r\n");
 
     }
+
+    /// <summary>
+    /// 261105Cl 追加: 副格子の線分を返す。単位胞の各軸 (辺のベクトル c0, c1, c2) を na, nb, nc 等分した格子の線のうち、単位胞の面上と内部のもの
+    /// (単位胞の辺と重なる 4 本ずつは除く)。Axis は線の向き (0: a, 1: b, 2: c)、座標は単位胞の原点から。全軸 1 等分なら空。
+    /// </summary>
+    private static List<(int Axis, V3 Start, V3 End)> subCellLines(V3 c0, V3 c1, V3 c2, int na, int nb, int nc)
+    {
+        var lines = new List<(int Axis, V3 Start, V3 End)>();
+        V3[] v = [c0, c1, c2];
+        int[] n = [Math.Max(na, 1), Math.Max(nb, 1), Math.Max(nc, 1)];
+        for (int i = 0; i < 3; i++)
+        {
+            int j = (i + 1) % 3, k = (i + 2) % 3;
+            for (int p = 0; p <= n[j]; p++)
+                for (int q = 0; q <= n[k]; q++)
+                    if (!((p == 0 || p == n[j]) && (q == 0 || q == n[k])))//単位胞の辺と重なる線は除く
+                    {
+                        var o = (double)p / n[j] * v[j] + (double)q / n[k] * v[k];
+                        lines.Add((i, o, o + v[i]));
+                    }
+        }
+        return lines;
+    }
     #endregion
 
     #region 結晶格子面 GLObjectsの生成
@@ -1122,7 +1230,10 @@ public partial class FormStructureViewer : FormBase
 
         var latticePlanes = new List<((double X, double Y, double Z, double D), double t, Color color)>();
         foreach (var p in latticePlaneControl.GetAll().Where(p => p.Enabled && p.Index != (0, 0, 0)))
-            latticePlanes.Add((p.PlaneParam, p.Translation, p.Color));
+            //latticePlanes.Add((p.PlaneParam, p.Translation, p.Color)); // 261106Cl 変更前: 面が ĝ·r = −(m + T)d に来て、正の Translation (T) で −ĝ 側へ動いていた
+            // 261106Cl 変更 (作者決定 C5): 符号を反転し、正の T で +ĝ 側 (指定した (hkl) の法線の向き) へ動かす。下の t は −T なので、面は ĝ·r = −(m − T)d = (m' + T)d。
+            //   保存済みの結晶リストの値は逆側に描かれる (作者承知。T が 0 と ±0.5 なら見た目は同じ)
+            latticePlanes.Add((p.PlaneParam, -p.Translation, p.Color)); // 261106Cl
 
         var boundArray = bounds.Select(b => new[] { b.prm[0], b.prm[1], b.prm[2], b.prm[3] * 1.2 }).ToArray();
 
@@ -1132,12 +1243,18 @@ public partial class FormStructureViewer : FormBase
             int n = 0;
             var flag = true;
             var prm = new[] { prms.X, prms.Y, prms.Z, 0 };
+            // 261105Cl 追加: 面は ĝ·r' + W = 0 (r' は投影中心からの座標 = 原子と同じ r − shift)。格子面は結晶に固定する: ĝ·r = −(m + t)d → W = (m + t)d + ĝ·shift。
+            // 旧コードは ĝ·shift を落としていたので、面が投影中心に固定され (投影中心を変えると面だけ画面に残る)、既定の投影中心 (½ ½ ½) では h+k+l が奇数の面が d/2 ずれていた。
+            // 数え始め (m0) は投影中心に最も近い面
+            var gShift = prms.X * shift.X + prms.Y * shift.Y + prms.Z * shift.Z;
+            var m0 = -Math.Round(t + gShift / prms.D);
             while (flag)
             {
                 var verticesList = new List<double[][]>();
                 for (int i = 0; i < (n == 0 ? 1 : 2); i++)
                 {
-                    var vertices = Geometry.GetClippedPolygon([prms.X, prms.Y, prms.Z, ((i == 0 ? n : -n) + t) * prms.D], boundArray);
+                    //var vertices = Geometry.GetClippedPolygon([prms.X, prms.Y, prms.Z, ((i == 0 ? n : -n) + t) * prms.D], boundArray); // 261105Cl 変更前
+                    var vertices = Geometry.GetClippedPolygon([prms.X, prms.Y, prms.Z, (m0 + (i == 0 ? n : -n) + t) * prms.D + gShift], boundArray); // 261105Cl 変更
                     if (vertices != null)
                         verticesList.Add(vertices);
                 }
@@ -1357,7 +1474,8 @@ public partial class FormStructureViewer : FormBase
         if (e.Button == MouseButtons.Left && e.Clicks == 2)
         {
             var index = SearchAtom(e.X, e.Y);
-            if (index > 0)
+            //if (index > 0) // 261105Cl 変更前: GLObjects[0] の原子を無視していた (SearchAtom は見つからないとき -1 を返す)
+            if (index >= 0) // 261105Cl 変更
             {
                 tabControl.SelectedIndex = 6;
 
@@ -1369,7 +1487,9 @@ public partial class FormStructureViewer : FormBase
                 result.Add($"Selected Atom: {label} ({atom.Origin.X * 10:f3}, {atom.Origin.Y * 10:f3}, {atom.Origin.Z * 10:f3}) \t・・・0\r\n\r\n");
 
                 //最近接原子を探索
-                var tmp = Crystal.Search(enabledAtoms[(atom.Tag as atomID).Index], 1);
+                //var tmp = Crystal.Search(enabledAtoms[(atom.Tag as atomID).Index], 1); // 261105Cl 変更前: 常にそのサイトの第 1 等価位置の周りを探していたので、別の等価位置の原子をダブルクリックすると相対座標が画面の原子の周りと合わなかった (距離・角度は同じ)
+                var clicked = atom.Origin + shift; // 261105Cl 追加: ダブルクリックした原子の位置 (Origin は投影中心からの座標)
+                var tmp = Crystal.Search(enabledAtoms[(atom.Tag as atomID).Index], 1, Crystal.MatrixInverse * new Vector3DBase(clicked.X, clicked.Y, clicked.Z)); // 261105Cl 変更: その原子の周り
                 for (int i = 0; i < tmp.Count - 1; i++)
                     if (tmp[i].X == tmp[i + 1].X && tmp[i].Y == tmp[i + 1].Y && tmp[i].Z == tmp[i + 1].Z)
                         tmp.RemoveAt(i--);
@@ -1380,14 +1500,16 @@ public partial class FormStructureViewer : FormBase
 
                 int n = 1;//0番目は自分自身なので、1からはじめる
                 int count = 0;//結合角を求める上限数
-                for (int i = 1; n < 9 || i < 3; i++)
+                //for (int i = 1; n < 9 || i < 3; i++) // 261105Cl 変更前: 1 nm 以内の原子が少ないと tmp[n] が範囲外で例外
+                for (int i = 1; (n < 9 || i < 3) && n < tmp.Count; i++) // 261105Cl 変更
                 {
                     result.Add($"{Miscellaneous.Ordinal(i)} nearest: {tmp[n].Distance:f3} Å");
                     do
                     {
                         result.Add($"\t{tmp[n].Label} ({tmp[n].X:f3}, {tmp[n].Y:f3}, {tmp[n].Z:f3}) \t・・・{n} \r\n");
                         n++;
-                    } while (tmp[n].Distance - tmp[n - 1].Distance < 1E-4);
+                    //} while (tmp[n].Distance - tmp[n - 1].Distance < 1E-4); // 261105Cl 変更前
+                    } while (n < tmp.Count && tmp[n].Distance - tmp[n - 1].Distance < 1E-4); // 261105Cl 変更
 
                     if (count == 0 || tmp[n - 1].Distance / tmp[1].Distance < 1.2)
                         count = n;
@@ -1399,9 +1521,12 @@ public partial class FormStructureViewer : FormBase
 
                 result.Add($"\r\n");
                 result.Add($"Bond angles");
-                for (int i = 1; i < Math.Max(count, 3); i++)
+                var angleMax = Math.Min(Math.Max(count, 3), tmp.Count); // 261105Cl 追加: 近接原子が 3 個未満のときの範囲外を防ぐ
+                //for (int i = 1; i < Math.Max(count, 3); i++) // 261105Cl 変更前
+                for (int i = 1; i < angleMax; i++) // 261105Cl 変更
                 {
-                    for (int j = i + 1; j < Math.Max(count, 3); j++)
+                    //for (int j = i + 1; j < Math.Max(count, 3); j++) // 261105Cl 変更前
+                    for (int j = i + 1; j < angleMax; j++) // 261105Cl 変更
                     {
                         var angle = Vector3DBase.AngleBetVectors(new Vector3DBase(tmp[i].X, tmp[i].Y, tmp[i].Z), new Vector3DBase(tmp[j].X, tmp[j].Y, tmp[j].Z));
                         result.Add(i == 1 && j == 2 ? "\t\t" : "\t\t\t");
@@ -1436,7 +1561,8 @@ public partial class FormStructureViewer : FormBase
 
         var depthList = new SortedList<double, int>();
         for (int i = 0; i < GLObjects.Count; i++)
-            if (GLObjects[i] is Sphere sphere)
+            //if (GLObjects[i] is Sphere sphere) // 261105Cl 変更前: 対称要素の反転中心 (Sphere, Tag は symmetryID) や表示していない原子も拾い、反転中心では呼び出し側の (Tag as atomID).Index で例外になっていた
+            if (GLObjects[i] is Sphere { Tag: atomID, Rendered: true } sphere) // 261105Cl 変更: 表示中の原子だけ
             {
                 var origin = rot * new V4(sphere.Origin, 1);
                 double x = origin.X - a, y = origin.Y - b, z = origin.Z - c;
@@ -1459,6 +1585,7 @@ public partial class FormStructureViewer : FormBase
         SkipEvent = true;
         groupBoxShowUnitCell.Enabled = checkBoxUnitCell.Checked;
         toolStripButtonUnitCell.Checked = checkBoxUnitCell.Checked;
+        numericBoxSubCellA.Enabled = numericBoxSubCellB.Enabled = numericBoxSubCellC.Enabled = checkBoxShowSubCell.Checked; // 261105Cl 追加 (監査 H5): 分割数は Show Subcell のときだけ
         SkipEvent = false;
 
 
@@ -1474,12 +1601,16 @@ public partial class FormStructureViewer : FormBase
     {
         Bitmap bmp = null;
         var name = (sender as ToolStripMenuItem).Name.ToLower();
+        // 261105Cl 変更: GenerateBitmap(true) で描き直してから読む (旧: GenerateBitmap() は SwapBuffers 後の back buffer をそのまま読むので、内容が保証されない)
         if (name.Contains("main"))
-            bmp = glControlMain.GenerateBitmap();
+            //bmp = glControlMain.GenerateBitmap(); // 261105Cl 変更前
+            bmp = glControlMain.GenerateBitmap(true); // 261105Cl 変更
         else if (name.Contains("axes"))
-            bmp = glControlAxes.GenerateBitmap();
+            //bmp = glControlAxes.GenerateBitmap(); // 261105Cl 変更前
+            bmp = glControlAxes.GenerateBitmap(true); // 261105Cl 変更
         else if (name.Contains("light"))
-            bmp = glControlLight.GenerateBitmap();
+            //bmp = glControlLight.GenerateBitmap(); // 261105Cl 変更前
+            bmp = glControlLight.GenerateBitmap(true); // 261105Cl 変更
         else if (name.Contains("legend") && flowLayoutPanelLegend.Controls.Count > 0 && flowLayoutPanelLegend.ClientSize is { Width: > 0, Height: > 0 } size)
         {
             // 261105Cl 追加: 凡例 (原子ごとの GL の球 + ラベル) を 1 枚に合成する。
@@ -1521,11 +1652,12 @@ public partial class FormStructureViewer : FormBase
     //260804Cl 変更: オプション選択フォーム全面化 (要素選択/多面体スタイル/細結合の増径/形式選択)。旧実装は commit 811e8396 参照
     private void exportModelToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        GLObject[] objs;
-        lock (lockObj1)
-            objs = [.. GLObjects];
-        var snaps = ModelExporter.Collect(objs);
-        var lineSnaps = ModelExporter.CollectLines(objs);
+        //GLObject[] objs; // 261105Cl 変更前 (4 行): 分解後の多面体の面と対称要素も対象にしていた
+        //lock (lockObj1)
+        //    objs = [.. GLObjects];
+        //var snaps = ModelExporter.Collect(objs);
+        //var lineSnaps = ModelExporter.CollectLines(objs);
+        var (snaps, lineSnaps) = CollectExportSnapshots(); // 261105Cl 変更
         if (snaps.Count == 0 && lineSnaps.Count == 0)
         {
             //260805Cl 変更: メッセージを多言語化 (旧は英語直書き)
@@ -1541,7 +1673,8 @@ public partial class FormStructureViewer : FormBase
                 zhHans: "未显示可打印的实体 (原子、键或多面体)。",
                 zhHant: "未顯示可列印的實體 (原子、鍵或多面體)。",
                 ko: "출력 가능한 입체 (원자, 결합, 다면체) 가 표시되어 있지 않습니다."),
-                Localization.Loc(en: "Export 3D Model", ja: "3Dモデルの出力", de: "3D-Modell exportieren", fr: "Exporter le modèle 3D", es: "Exportar modelo 3D", pt: "Exportar modelo 3D", it: "Esporta modello 3D", ru: "Экспорт 3D-модели", zhHans: "导出 3D 模型", zhHant: "匯出 3D 模型", ko: "3D 모델 내보내기"),
+                //Localization.Loc(en: "Export 3D Model", ja: "3Dモデルの出力", de: "3D-Modell exportieren", fr: "Exporter le modèle 3D", es: "Exportar modelo 3D", pt: "Exportar modelo 3D", it: "Esporta modello 3D", ru: "Экспорт 3D-модели", zhHans: "导出 3D 模型", zhHant: "匯出 3D 模型", ko: "3D 모델 내보내기"), // 261105Cl 変更前
+                Localization.Loc(en: "Export 3D model", ja: "3Dモデルの出力", de: "3D-Modell exportieren", fr: "Exporter le modèle 3D", es: "Exportar modelo 3D", pt: "Exportar modelo 3D", it: "Esporta modello 3D", ru: "Экспорт 3D-модели", zhHans: "导出 3D 模型", zhHant: "匯出 3D 模型", ko: "3D 모델 내보내기"), // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
@@ -1633,7 +1766,8 @@ public partial class FormStructureViewer : FormBase
     /// <summary>260805Cl 追加: メインビューの描画画像を PNG 保存する (マクロ StructureViewer.SaveImage 用。filename が空ならダイアログ)。</summary>
     internal void SaveMainImage(string filename)
     {
-        using var bmp = glControlMain.GenerateBitmap();
+        //using var bmp = glControlMain.GenerateBitmap(); // 261105Cl 変更前
+        using var bmp = glControlMain.GenerateBitmap(true); // 261105Cl 変更: 描き直してから読む (保存・コピーのメニューと同じ)
         if (bmp == null)
             throw new InvalidOperationException("SaveImage: the 3D view is not ready.");
         if (string.IsNullOrEmpty(filename))
@@ -1653,12 +1787,29 @@ public partial class FormStructureViewer : FormBase
     /// </summary>
     internal FormExport3DModel PrepareCaptureExport3DModelDialog()
     {
+        //GLObject[] objs; // 261105Cl 変更前 (4 行)
+        //lock (lockObj1)
+        //    objs = [.. GLObjects];
+        //var snaps = ModelExporter.Collect(objs);
+        //var lineSnaps = ModelExporter.CollectLines(objs);
+        var (snaps, lineSnaps) = CollectExportSnapshots(); // 261105Cl 変更
+        return snaps.Count == 0 && lineSnaps.Count == 0 ? null : new FormExport3DModel(snaps, lineSnaps);
+    }
+
+    /// <summary>
+    /// 261105Cl 追加: 3D モデル出力の対象 (閉じた立体と単位胞の枠の線) を、表示中の GLObjects から集める (メニュー・マクロ・撮影ハーネスで共用)。
+    /// 配位多面体は描画用に面 (Polygon) へ分解してあるので、面の代わりに分解前の Polyhedron (polyhedronID.Source) を入れる (面のままだと閉じた立体でないため出力されなかった)。
+    /// 対称要素 (symmetryID) は印刷の対象外 (反転中心の球が原子として、対称軸の線が単位胞の枠として出ていた)。
+    /// </summary>
+    internal (List<MeshSnapshot> Solids, List<MeshSnapshot> Lines) CollectExportSnapshots()
+    {
         GLObject[] objs;
         lock (lockObj1)
             objs = [.. GLObjects];
-        var snaps = ModelExporter.Collect(objs);
-        var lineSnaps = ModelExporter.CollectLines(objs);
-        return snaps.Count == 0 && lineSnaps.Count == 0 ? null : new FormExport3DModel(snaps, lineSnaps);
+        //GLObject[] targets = [.. objs.Where(o => o.Tag is not (symmetryID or polyhedronID)), // 261105Cl 変更前
+        GLObject[] targets = [.. objs.Where(o => o.Tag is not (symmetryID or polyhedronID or subCellID)), // 261105Cl 変更 (監査 H5): 副格子の線は画面上の目安なので出力しない (単位胞の枠と同じ太さの棒になり原子を貫く)
+            .. objs.Select(o => o.Tag).OfType<polyhedronID>().Select(t => t.Source).Distinct()];
+        return (ModelExporter.Collect(targets), ModelExporter.CollectLines(targets));
     }
 
     #endregion 3Dモデル (STL/3MF) エクスポート
@@ -1874,7 +2025,10 @@ public partial class FormStructureViewer : FormBase
 
             var atoms = atomControl.GetAll().Where(a => a.GLEnabled).ToList();
             if (atoms.Count == 0)
+            {
+                flowLayoutPanelLegend.Controls.Clear(); // 261105Cl 追加: 原子をすべて非表示にしたとき、前の凡例が残っていた
                 return;
+            }
             if (atoms.Count > 40 && !checkBoxGroupByElement.Checked)
             {
                 checkBoxGroupByElement.Checked = true;
@@ -2122,6 +2276,16 @@ public partial class FormStructureViewer : FormBase
                 GLControlAlpha.ProjectionModes.Orhographic : GLControlAlpha.ProjectionModes.Perspective;
     }
 
+    /// <summary>261105Cl 追加: CTRL+右ダブルクリックで GL 側の投影モードが切り替わったとき、コンボ (と遠近の強さのスライダの有効/無効) を合わせる</summary>
+    private void glControlMain_ProjectionModeChanged(object sender, EventArgs e)
+    {
+        if (!ReferenceEquals(sender, glControlMain))
+            return; // 透明モード切替の swap 中など、非アクティブな GL コントロールからの通知は無視
+        var index = glControlMain.ProjectionMode == GLControlAlpha.ProjectionModes.Orhographic ? 0 : 1;
+        if (comboBoxProjectionMode.SelectedIndex != index)
+            comboBoxProjectionMode.SelectedIndex = index; // SelectedIndexChanged が同じモードを set し直すだけ (値が同じなのでイベントは再発しない)
+    }
+
     private void trackBarPerspective_Scroll(object sender, EventArgs e)
     {
         var x = Math.Pow(51.0, 1.0 / 100.0);
@@ -2213,7 +2377,8 @@ public partial class FormStructureViewer : FormBase
     private void FormStructureViewer_KeyDown(object sender, KeyEventArgs e)
     {
         if (e.Control && e.Shift && e.KeyCode == Keys.C)
-            Clipboard.SetDataObject(glControlMain.GenerateBitmap());
+            //Clipboard.SetDataObject(glControlMain.GenerateBitmap()); // 261105Cl 変更前
+            Clipboard.SetDataObject(glControlMain.GenerateBitmap(true)); // 261105Cl 変更: 描き直してから読む
     }
 
     /// <summary>角度をリセットする</summary>
@@ -2330,9 +2495,13 @@ public partial class FormStructureViewer : FormBase
         if (SkipEvent) return;
 
         SkipEvent = true;
-        numericBoxCellTranslationA.Value = 0.5 - numericBoxProjectionCenterX.Value;
-        numericBoxCellTranslationB.Value = 0.5 - numericBoxProjectionCenterY.Value;
-        numericBoxCellTranslationC.Value = 0.5 - numericBoxProjectionCenterZ.Value;
+        //numericBoxCellTranslationA.Value = 0.5 - numericBoxProjectionCenterX.Value; // 261105Cl 変更前 (3 行)
+        //numericBoxCellTranslationB.Value = 0.5 - numericBoxProjectionCenterY.Value;
+        //numericBoxCellTranslationC.Value = 0.5 - numericBoxProjectionCenterZ.Value;
+        // 261105Cl 変更 (監査 H18): 単位胞の Translation の符号を反転したので (正で +a の向き)、連動の式も Pc − 0.5 に。描かれる単位胞 (原点 = 分率座標 Pc − 0.5) は変更前と同じ
+        numericBoxCellTranslationA.Value = numericBoxProjectionCenterX.Value - 0.5;
+        numericBoxCellTranslationB.Value = numericBoxProjectionCenterY.Value - 0.5;
+        numericBoxCellTranslationC.Value = numericBoxProjectionCenterZ.Value - 0.5;
         SkipEvent = false;
 
         SetGLObjects();

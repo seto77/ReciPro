@@ -30,7 +30,7 @@ Dieses Fenster hat keine Tastenkombinationen mit Modifizierertasten; es wird dur
 | <kbd>F1</kbd> | Diese Seite des Online-Handbuchs öffnen |
 | <kbd>ENTER</kbd> in einem beliebigen Suchfeld | Die Datenbanksuche ausführen (entspricht der Schaltfläche **Suchen**) |
 | Auf eine Zeile in der Ergebnistabelle klicken | Diesen Kristall in das Hauptfenster laden |
-| Auf ein Element im Popup **Periodic table** klicken | Seinen Filter durchschalten: *ignore* → *must include* → *must exclude* |
+| Auf ein Element im Popup **Periodensystem** klicken | Seinen Filter durchschalten: *kann enthalten oder nicht* → *muss enthalten* → *muss ausschließen* |
 
 → Siehe **[21. Tastatur- & Maus-Kurzbefehle](21-shortcuts.md)** für einen Überblick über jedes Fenster.
 
@@ -53,48 +53,50 @@ Geben Sie unten die Suchkriterien ein und drücken Sie die Schaltfläche **Suche
 | Kriterium | Beschreibung |
 |-----------|-------------|
 | **Name** | Kristallname |
-| **Element** | Periodensystem-Auswahl (darf/muss/darf nicht enthalten) |
+| **Elemente** | Periodensystem-Auswahl (darf/muss/darf nicht enthalten) |
 | **Literatur** | Titel, Zeitschrift, Autor |
 | **Kristallsystem** | Kristallsystem auswählen |
 | **Gitterkonst.** | Gitterkonstanten und Fehler |
-| **d-spacing** | d-Werte des stärksten Reflexes und Fehler |
+| **d-Wert** | d-Werte starker Reflexe und Fehler |
 | **Dichte** | Dichte und Fehler |
 
 ### Name
 
-Freitext-Abgleich gegen den Kristallnamen. Teilübereinstimmungen sind zulässig.
+Freitext-Abgleich gegen den Kristallnamen. Teilübereinstimmungen sind zulässig; Groß-/Kleinschreibung wird ignoriert. Nur die Kriterien, deren Kontrollkästchen aktiviert sind, werden angewendet, und sie werden mit UND verknüpft.
 
-### Element
+### Elemente {#element}
 
-Drücken Sie die Schaltfläche **Periodic Table**, um die Elementauswahl zu öffnen. Jede Element-Schaltfläche durchläuft drei Zustände:
+Drücken Sie die Schaltfläche **Periodensystem**, um die Elementauswahl zu öffnen. Jede Element-Schaltfläche durchläuft drei Zustände:
 
-- **May or may not include** (Standard – grau)
-- **Must include** (grün)
-- **Must exclude** (rot)
+- **kann enthalten oder nicht** (Standard – gelb)
+- **muss enthalten** (blau)
+- **muss ausschließen** (rot)
+
+Ein Kristall muss jedes Element mit *muss enthalten* und keines der Elemente mit *muss ausschließen* enthalten; Einträge ohne Atomdaten werden ausgeschlossen, solange das Kriterium **Elemente** aktiv ist.
 
 Die drei Schaltflächen oben im Fenster setzen mit einem Klick jedes Element auf einen der drei Zustände zurück.
 
 ### Literatur
 
-Freitext-Abgleich gegen die Publikationsmetadaten: Titel der Arbeit, Name der Zeitschrift und Autorenliste.
+Freitext-Abgleich (Teilübereinstimmung, ohne Beachtung der Groß-/Kleinschreibung) gegen die Publikationsmetadaten: Titel der Arbeit, Name der Zeitschrift und Autorenliste.
 
 ### Kristallsystem
 
-Beschränkt die Suche auf ein bestimmtes Kristallsystem (Cubic, Tetragonal, Orthorhombic, Hexagonal, Trigonal, Monoclinic, Triclinic).
+Beschränkt die Suche auf ein bestimmtes Kristallsystem (cubic, tetragonal, orthorhombic, hexagonal, trigonal, monoclinic, triclinic). Der erste Eintrag, *Unknown*, bewirkt keine Einschränkung.
 
 ### Suche nach Zellparametern
 
 ![Suche nach Zellparametern](../assets/cap-de-auto/FormCrystalDatabase.panelSearch.searchCrystalControl.flowLayoutPanel1.groupBoxCellParameter.png)
 
-Geben Sie die gewünschten Gitterkonstanten *a*, *b*, *c*, *α*, *β*, *γ* und zulässige Fehler ein. Leere Felder werden als Platzhalter behandelt.
+Geben Sie die gewünschten Gitterkonstanten *a*, *b*, *c* (Å) und *α*, *β*, *γ* (°) sowie die zulässigen Fehler ein: eine relative Toleranz (±%), gemeinsam für *a*, *b*, *c*, und eine absolute Toleranz (±°), gemeinsam für die Winkel. Der Wert 0 bedeutet, dass dieser Parameter ignoriert wird.
 
 ### d-spacing
 
-Geben Sie den *d*-Wert (d-spacing) des stärksten Reflexes (oder mehrerer starker Reflexe) und einen zulässigen Fehler ein. Nützlich, wenn aus einem Experiment nur die Positionen der Beugungspeaks bekannt sind.
+Geben Sie bis zu drei *d*-Werte ein (Å; aktivieren Sie jeden, der verwendet werden soll), jeweils mit einer relativen Toleranz (±%). Ein Kristall passt, wenn jeder eingegebene Wert mit einem seiner in der Datenbank gespeicherten stärksten Reflexe übereinstimmt (bis zu 16, geordnet nach der Röntgen-Pulverintensität bei λ = 1,54 Å). Ist **Streufaktor ignorieren** aktiviert, werden die Werte stattdessen mit allen geometrisch möglichen *d*-Werten verglichen, die aus der Elementarzelle berechnet werden (einschließlich systematisch ausgelöschter Reflexe). Nützlich, wenn aus einem Experiment nur die Positionen der Beugungspeaks bekannt sind.
 
 ### Dichte
 
-Filtern nach Massendichte (g/cm³) innerhalb eines zulässigen Fehlerbandes.
+Filtern nach Massendichte (g/cm³) innerhalb einer relativen Toleranz (±%).
 
 ---
 

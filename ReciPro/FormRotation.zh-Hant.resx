@@ -126,8 +126,8 @@
   </data>
   <data name="numericBoxPsi.ToolTip" xml:space="preserve">
     <value>ReciPro 座標系統在 ZXZ 慣例下的第三歐拉角
-Ψ（度，繞 Z 軸的最後一次旋轉）；設定晶體
-方位。</value>
+Ψ（度，繞 Z 軸的最後一次旋轉）；唯讀，顯示目前的
+晶體方位。</value>
   </data>
   <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
     <value>ReciPro 座標系統在 ZXZ 慣例下的第三歐拉角
@@ -137,8 +137,7 @@
   <data name="numericBoxTheta.ToolTip" xml:space="preserve">
     <value>ReciPro 座標系統在 ZXZ 慣例下的
 第二歐拉角 Θ（度，繞 X 軸的中間
-旋轉）；設定晶體
-方位。</value>
+旋轉）；唯讀，顯示目前的晶體方位。</value>
   </data>
   <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
     <value>ReciPro 座標系統在 ZXZ 慣例下的
@@ -148,8 +147,8 @@
   </data>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
     <value>ReciPro 座標系統在 ZXZ 慣例下的
-第一歐拉角 Φ（度）；與 Θ、Ψ 一起
-設定晶體方位（旋轉矩陣）。</value>
+第一歐拉角 Φ（度）；唯讀，與 Θ、Ψ 一起
+顯示目前的晶體方位（旋轉矩陣）。</value>
   </data>
   <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
     <value>ReciPro 座標系統在 ZXZ 慣例下的
@@ -223,32 +222,32 @@
   <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
     <value>將第 2 測角儀旋轉軸設定為直角
 座標 Z 軸（第 2 次實驗旋轉
-numericBoxExp2 會繞其進行）。</value>
+會繞其進行）。</value>
   </data>
   <data name="radioButton2ndY.ToolTip" xml:space="preserve">
     <value>將第 2 測角儀旋轉軸設定為直角
 座標 Y 軸（第 2 次實驗旋轉
-numericBoxExp2 會繞其進行）。</value>
+會繞其進行）。</value>
   </data>
   <data name="radioButton2ndX.ToolTip" xml:space="preserve">
     <value>將第 2 測角儀旋轉軸設定為直角
 座標 X 軸（第 2 次實驗旋轉
-numericBoxExp2 會繞其進行）。</value>
+會繞其進行）。</value>
   </data>
   <data name="radioButton1stZ.ToolTip" xml:space="preserve">
     <value>將第 1 測角儀旋轉軸設定為直角
 座標 Z 軸（第 1 次實驗旋轉
-numericBoxExp1 會繞其進行）。</value>
+會繞其進行）。</value>
   </data>
   <data name="radioButton1stY.ToolTip" xml:space="preserve">
     <value>將第 1 測角儀旋轉軸設定為直角
 座標 Y 軸（第 1 次實驗旋轉
-numericBoxExp1 會繞其進行）。</value>
+會繞其進行）。</value>
   </data>
   <data name="radioButton1stX.ToolTip" xml:space="preserve">
     <value>將第 1 測角儀旋轉軸設定為直角
 座標 X 軸（第 1 次實驗旋轉
-numericBoxExp1 會繞其進行）。</value>
+會繞其進行）。</value>
   </data>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>將所有角度重設為零</value>

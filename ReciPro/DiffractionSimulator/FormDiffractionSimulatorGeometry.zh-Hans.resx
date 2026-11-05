@@ -94,12 +94,14 @@
 不透明度（0-100%）。</value>
   </data>
   <data name="numericBoxFootX.ToolTip" xml:space="preserve">
-    <value>设置探测器上脚点（直射束中心）
-的 X 像素坐标。</value>
+    <value>设置探测器上脚点（从样品向探测器平面所作垂线的
+垂足）的 X 像素坐标。仅当探测器未倾斜（tau = 0）时，
+它才与直射束的位置一致。</value>
   </data>
   <data name="numericBoxFootY.ToolTip" xml:space="preserve">
-    <value>设置探测器上脚点（直射束中心）
-的 Y 像素坐标。</value>
+    <value>设置探测器上脚点（从样品向探测器平面所作垂线的
+垂足）的 Y 像素坐标。仅当探测器未倾斜（tau = 0）时，
+它才与直射束的位置一致。</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
     <value>以毫米为单位设置一个探测器像素的物理尺寸。</value>
@@ -130,8 +132,8 @@
 强度上限。</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>设置显示叠加图像的
-强度上限。</value>
+    <value>通过黑点（Min int.）和白点（Max int.）
+调整叠加图像的显示亮度。</value>
   </data>
   <data name="trackBarMinInt.ToolTip" xml:space="preserve">
     <value>设置显示叠加图像的

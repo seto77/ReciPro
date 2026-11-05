@@ -155,7 +155,7 @@ projection</value>
     <value>Fondu en profondeur</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>Réinitialiser</value>
+    <value>Réinit. la vue</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Apparence</value>
@@ -334,7 +334,7 @@ d'indices au lieu de la couleur du point.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
     <value>Définit la couleur fixe utilisée pour les étiquettes
-d'indices lorsque « Spécifier la couleur » est activé.</value>
+d'indices lorsque « Couleur » est activé.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
     <value>Définit la couleur fixe utilisée pour les étiquettes
@@ -370,11 +370,11 @@ extérieur et axes principaux, les lignes les plus épaisses).</value>
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
     <value>Définit la couleur des lignes de grille à 1° (lignes
-fines, affichées uniquement lorsque « 1° Lines » est activé).</value>
+fines, affichées uniquement lorsque « Lignes à 1° » est activé).</value>
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>Définit la couleur des lignes de grille à 1° (lignes
-fines, affichées uniquement lorsque « 1° Lines » est activé).</value>
+fines, affichées uniquement lorsque « 1° lines » est activé).</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
     <value>Projette les lignes de latitude et de
@@ -650,7 +650,7 @@ la liste des indices spécifiés.</value>
   </data>
   <data name="colorControlIndex.ToolTip" xml:space="preserve">
     <value>Définit la couleur de tracé de l'indice en cours d'ajout ou
-actuellement sélectionné (utilisée lorsque « Rotate color » est désactivé).</value>
+actuellement sélectionné (utilisée lorsque « Rotation des couleurs » est désactivé).</value>
   </data>
   <data name="colorControlIndex.ToolTip1" xml:space="preserve">
     <value>Définit la couleur de tracé de l'indice en cours d'ajout ou
@@ -671,7 +671,7 @@ haut du classement des facteurs de structure (1–1000).</value>
   </data>
   <data name="indexControlDrawing.ToolTip" xml:space="preserve">
     <value>Saisissez l'indice à tracer — un seul [uvw]/(hkl) en
-mode « Specified », ou les valeurs maximales h,k,l en mode « Range ».</value>
+mode « Spécifiés », ou les valeurs maximales h,k,l en mode « Plage ».</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
     <value>Trace aussi tous les indices symétriquement équivalents (toute

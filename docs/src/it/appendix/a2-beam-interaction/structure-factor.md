@@ -96,7 +96,7 @@ diversa da zero soltanto quando la parte normale e quella anomala hanno fasi dif
 
 ## Dal fattore di struttura all'intensità su polveri
 
-Attivando **Powder Diffraction Intensities (Bragg–Brentano)** si converte $\lvert F\rvert^2$ in un'intensità relativa su polveri tenendo conto della geometria di un policristallo orientato casualmente:
+Attivando **Intensità di diffrazione da polveri (ottica Bragg-Brentano)** si converte $\lvert F\rvert^2$ in un'intensità relativa su polveri tenendo conto della geometria di un policristallo orientato casualmente:
 
 $$I_{hkl} \;\propto\; m_{hkl}\, \lvert F_{hkl}\rvert^2\, L p(\theta),$$
 

@@ -160,19 +160,38 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
         var path = (folderBrowserDialog.SelectedPath.Length == 0 ? "" : folderBrowserDialog.SelectedPath + "\\") + textBoxFileName.Text;
         sw.Restart();
 
-        for (int i = 0; i < count; i++)
+        //for (int i = 0; i < count; i++) // 261105Cl 変更前: 途中の例外 (画像・保存先の書き込みの失敗など) で抜けると、主窓の結晶が P1 に展開したまま、描画も止まったままだった
+        //{
+        //    ...
+        //}
+        //FormDiffractionSimulator.formMain.Crystal.RotationMatrix = initialRot;
+        //
+        //RevertCrystal();
+        //toolStripStatusLabel1.Text = "Elapsed time: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f1") + " s, Completed!";
+        // 261105Cl 変更 (監査 D14): 例外でも結晶・方位・描画を必ず元に戻し、理由をステータスバーに出す
+        try
         {
-            var filename = "";
-            if (checkBoxSaveSimulatedPattern.Checked)
-                filename = count == 1 ? path + ".tif" : path + "(omega=" + (numericBoxOmegaStep.Value * i).ToString() + ").tif";
+            for (int i = 0; i < count; i++)
+            {
+                var filename = "";
+                if (checkBoxSaveSimulatedPattern.Checked)
+                    filename = count == 1 ? path + ".tif" : path + "(omega=" + (numericBoxOmegaStep.Value * i).ToString() + ").tif";
 
-            FormDiffractionSimulator.formMain.Crystal.RotationMatrix = Matrix3D.Rot(new Vector3DBase(1, 0, 0), numericBoxOmegaStep.RadianValue * i) * initialRot;
-            execute(filename);
+                FormDiffractionSimulator.formMain.Crystal.RotationMatrix = Matrix3D.Rot(new Vector3DBase(1, 0, 0), numericBoxOmegaStep.RadianValue * i) * initialRot;
+                execute(filename);
+            }
+            toolStripStatusLabel1.Text = "Elapsed time: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f1") + " s, Completed!";
         }
-        FormDiffractionSimulator.formMain.Crystal.RotationMatrix = initialRot;
-
-        RevertCrystal();
-        toolStripStatusLabel1.Text = "Elapsed time: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f1") + " s, Completed!";
+        catch (Exception ex)
+        {
+            toolStripStatusLabel1.Text = "Elapsed time: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f1") + " s, Failed: " + ex.Message;
+        }
+        finally
+        {
+            FormDiffractionSimulator.formMain.Crystal.RotationMatrix = initialRot;
+            RevertCrystal();
+            FormDiffractionSimulator.SkipDrawing = FormDiffractionSimulator.formMain.SkipDrawing = false;
+        }
     }
 
     private void execute(string filename = "")
@@ -269,8 +288,15 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
 
                     double start = Math.Max(0, omega - range * sigmaOmega), end = omega + range * sigmaOmega, step = (end - start) / div2;
                     var rotationAngles = new List<PointD>();
-                    for (var speed = start; speed <= end + step / 2; speed += step)
-                        rotationAngles.Add(new PointD(speed, Math.Exp(-(speed - omega) * (speed - omega) / 2 / sigmaOmega / sigmaOmega)));
+                    //for (var speed = start; speed <= end + step / 2; speed += step) // 261105Cl 変更前
+                    //    rotationAngles.Add(new PointD(speed, Math.Exp(-(speed - omega) * (speed - omega) / 2 / sigmaOmega / sigmaOmega)));
+                    // 261105Cl 変更 (監査 #33): σ_ω = 0 (入力が 0、または圧縮面ちょうどの層で time = 0) だと step = 0 でこのループが終わらず UI が固まっていた。
+                    //   幅が 0 なら回転角は ω の 1 点 (重み 1)。分割数 0 (step = ∞) も同じく 1 点にする (∞ を足してもループが終わらない)
+                    if (step > 0 && double.IsFinite(step))
+                        for (var speed = start; speed <= end + step / 2; speed += step)
+                            rotationAngles.Add(new PointD(speed, Math.Exp(-(speed - omega) * (speed - omega) / 2 / sigmaOmega / sigmaOmega)));
+                    else
+                        rotationAngles.Add(new PointD(omega, 1));
                     foreach (var axis in rotationAxes2018)
                         foreach (var angle in rotationAngles)
                             rotationList.Add((Matrix3D.Rot(axis, angle.X), angle.Y));
@@ -283,17 +309,40 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
                     double stepTheta = (range * sigmaTheta) / ((int)Math.Sqrt(div1) + 1);
                     double startR = Math.Max(0, omega - range * sigmaOmega), endR = omega + range * sigmaOmega, stepR = (endR - startR) / div2;
                     double stepPhi = (2 * Math.PI) / ((int)Math.Sqrt(div1) + 1);
-                    if (stepTheta == 0)
-                        stepTheta = double.PositiveInfinity;
-                    if (stepR == 0)
-                        stepR = double.PositiveInfinity;
+                    //if (stepTheta == 0) // 261105Cl 変更前
+                    //    stepTheta = double.PositiveInfinity;
+                    //if (stepR == 0)
+                    //    stepR = double.PositiveInfinity;
+                    //
+                    //for (var theta = stepTheta / 2; theta <= range * sigmaTheta; theta += stepTheta)
+                    //    for (var phi = 0.0; phi < 2 * Math.PI; phi += stepPhi)
+                    //        for (var r = startR; r <= endR; r += stepR)
+                    //        {
+                    //            var v = new Vector3DBase(Math.Sin(theta) * Math.Cos(phi), Math.Sin(theta) * Math.Sin(phi), Math.Cos(theta));
+                    //            rotationList.Add((Matrix3D.Rot(m2 * v, r), Math.Exp(-(r - omega) * (r - omega) / 2 / sigmaOmega2 - theta * theta / 2 / sigmaTheta2) * r * r * Math.Sin(theta)));
+                    //        }
+                    // 261105Cl 変更 (監査 #33 と同じ σ = 0 の扱い): 重み exp(−(r−ω)²/2σ_ω²)·r² × exp(−θ²/2σ_θ²)·sinθ は r と θ で分かれるので、別々に標本化する。
+                    //   以前は σ_θ = 0 で θ の点が 1 つもできずこの層が黙って抜け落ち、σ_ω = 0 で重みが 0/0 = NaN になって像全体が NaN だった。
+                    //   幅が 0 (または分割数 0) の側は、その極限どおり 1 点 (θ = 0 / r = ω、重み 1) にする
+                    var thetaSamples = new List<(double Theta, double Weight)>();
+                    if (stepTheta > 0 && double.IsFinite(stepTheta))
+                        for (var theta = stepTheta / 2; theta <= range * sigmaTheta; theta += stepTheta)
+                            thetaSamples.Add((theta, Math.Exp(-theta * theta / 2 / sigmaTheta2) * Math.Sin(theta)));
+                    else
+                        thetaSamples.Add((0, 1));
+                    var rSamples = new List<(double R, double Weight)>();
+                    if (stepR > 0 && double.IsFinite(stepR))
+                        for (var r = startR; r <= endR; r += stepR)
+                            rSamples.Add((r, Math.Exp(-(r - omega) * (r - omega) / 2 / sigmaOmega2) * r * r));
+                    else
+                        rSamples.Add((omega, 1));
 
-                    for (var theta = stepTheta / 2; theta <= range * sigmaTheta; theta += stepTheta)
-                        for (var phi = 0.0; phi < 2 * Math.PI; phi += stepPhi)
-                            for (var r = startR; r <= endR; r += stepR)
+                    foreach (var (theta, wTheta) in thetaSamples)
+                        for (var phi = 0.0; phi < 2 * Math.PI; phi += theta == 0 ? 2 * Math.PI : stepPhi) // θ = 0 では φ によらず同じ軸なので 1 回
+                            foreach (var (r, wR) in rSamples)
                             {
                                 var v = new Vector3DBase(Math.Sin(theta) * Math.Cos(phi), Math.Sin(theta) * Math.Sin(phi), Math.Cos(theta));
-                                rotationList.Add((Matrix3D.Rot(m2 * v, r), Math.Exp(-(r - omega) * (r - omega) / 2 / sigmaOmega2 - theta * theta / 2 / sigmaTheta2) * r * r * Math.Sin(theta)));
+                                rotationList.Add((Matrix3D.Rot(m2 * v, r), wTheta * wR));
                             }
                 }
             }
@@ -341,13 +390,17 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
             {
                 var vec = initialRot * corrRot * g;
                 vec.Y = -vec.Y; vec.Z = -vec.Z;//ここでベクトルのY,Zの符号を反転
-                if (-sinTau * vec.Y + cosTau * (vec.Z + ewaldRadius) > 0)//(vec.X, vec.Y, vec.Z + EwaldRadius) と(0, -sinTau, cosTau) の内積が0より大きい)
-                {
-                    //2020/02/03の変更対処済み
-                    var point = Geometry.GetCrossPoint(0, -sinTau, cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
-                    if (IsDetectorArea(new PointD(point.X, point.Y * cosTau + point.Z * sinTau)))
-                        gVector.Add(g);
-                }
+                //if (-sinTau * vec.Y + cosTau * (vec.Z + ewaldRadius) > 0)//(vec.X, vec.Y, vec.Z + EwaldRadius) と(0, -sinTau, cosTau) の内積が0より大きい) // 261105Cl 変更前 (φ = 0 の式)
+                //{
+                //    //2020/02/03の変更対処済み
+                //    var point = Geometry.GetCrossPoint(0, -sinTau, cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
+                //    if (IsDetectorArea(new PointD(point.X, point.Y * cosTau + point.Z * sinTau)))
+                //        gVector.Add(g);
+                //}
+                // 261105Cl 変更 (監査 #17): 下の GetDiffractionSpots と同じく、親の検出器の変換 (DetectorRotationInv。τ と φ の両方) で検出器内かを判定する
+                var v = detectorRotationInv * new Vector3DBase(vec.X, vec.Y, vec.Z + ewaldRadius);
+                if (v.Z > 0 && IsDetectorArea(new PointD(v.X * cameraLength2 / v.Z, v.Y * cameraLength2 / v.Z)))
+                    gVector.Add(g);
             }//ここまで
 
             //ここから揺動のループ
@@ -382,10 +435,15 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
             compiledImage[j] *= 1E6;
         PseudoBitmap pseud = new(compiledImage, FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth);
 
-        Tiff.Writer("temp.tif", compiledImage, 2, FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth);
-        FormDiffractionSimulator.FormDiffractionSimulatorGeometry.ReadImage("temp.tif");
+        //Tiff.Writer("temp.tif", compiledImage, 2, FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth); // 261105Cl 変更前: 作業ディレクトリ (インストール先など、書けないことがある) に書いていた
+        //FormDiffractionSimulator.FormDiffractionSimulatorGeometry.ReadImage("temp.tif");
+        //
+        //if (filename != "") File.Copy("temp.tif", filename, true);
+        var tempFile = Path.Combine(Path.GetTempPath(), "ReciPro_DynamicCompression.tif"); // 261105Cl 変更 (監査 D14): 一時ファイルは一時フォルダに置く
+        Tiff.Writer(tempFile, compiledImage, 2, FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth);
+        FormDiffractionSimulator.FormDiffractionSimulatorGeometry.ReadImage(tempFile);
 
-        if (filename != "") File.Copy("temp.tif", filename, true);
+        if (filename != "") File.Copy(tempFile, filename, true);
 
         FormDiffractionSimulator.SkipDrawing = FormDiffractionSimulator.formMain.SkipDrawing = false;
     }
@@ -431,12 +489,64 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
         //data = ImageProcess.GaussianBlurFast(data, width, sigma / fdsg.DetectorPixelSize / 2);//半値幅なので、ちゃんと計算しなければ // 261105Cl 変更前
         // 261105Cl 修正: GaussianBlurFast の第 3 引数は半値半幅 (HWHM, px)。sigma は Gaussian の σ なので HWHM = σ·√(2 ln 2) ≈ 1.1774σ。
         //  旧式 (σ/2) ではぼかしの σ が 0.42σ しかなく、スポットが 2.3 倍ほど細かった (σ ≥ 3 px で σ_eff ≈ 0.43σ + 打点幅)
-        data = ImageProcess.GaussianBlurFast(data, width, sigma / fdsg.DetectorPixelSize * Math.Sqrt(2 * Math.Log(2))); // 261105Cl
+        //data = ImageProcess.GaussianBlurFast(data, width, sigma / fdsg.DetectorPixelSize * Math.Sqrt(2 * Math.Log(2))); // 261105Cl // 261105Cl 変更前 (5a7a3ac)
+        // 261105Cl 変更 (作者承認): 上で置いた打点 (中心の画素から半径 range px の円内の Gaussian) 自身にも広がり σ_dot があり、ぼかしと分散が足されるので、
+        //   ぼかしの σ を σ のままにすると σ ≲ 2 px でスポットが 12〜37 % 太かった。ぼかしの分散を σ² − σ_dot² にする (σ ≤ σ_dot ならぼかさない)。
+        //   σ_dot² = 打点の、真の中心のまわりの 2 次モーメント (1 軸) を、中心の画素内の位置 16×16 点で平均した値。
+        //   ぼかしの幅は、GaussianBlurFast の離散カーネル (半幅 floor(3·hwhm) px で打ち切って正規化。hwhm < 1/3 px では 1 点 = ぼかし無し) の分散が
+        //   ちょうど σ² − σ_dot² になる hwhm を二分法で求める。名目の hwhm = σ_blur·√(2 ln2) では σ_blur ≲ 1 px でカーネルの分散が足りず、
+        //   σ = 0.75 px で 7 % 細く、大きい σ でも打ち切りで 0.2 % 細かった
+        double sigmaPx = sigma / fdsg.DetectorPixelSize, dotVar = 0;
+        const int sub = 16;
+        int subCount = 0;
+        for (int a = 0; a < sub; a++)
+            for (int b = 0; b < sub; b++)
+            {
+                double ox = (a + 0.5) / sub - 0.5, oy = (b + 0.5) / sub - 0.5, sw = 0, swx2 = 0;
+                for (int dy = -range; dy <= range; dy++)
+                    for (int dx = -range; dx <= range; dx++)
+                        if (dx * dx + dy * dy <= range2)
+                        {
+                            var w = Math.Exp(-((dx - ox) * (dx - ox) + (dy - oy) * (dy - oy)) / (2 * sigmaPx * sigmaPx));
+                            sw += w;
+                            swx2 += w * (dx - ox) * (dx - ox);
+                        }
+                if (sw > 0) { dotVar += swx2 / sw; subCount++; } // σ ≪ 1 px で打点が消える (exp が 0 になる) 位置は数えない
+            }
+        if (subCount > 0) dotVar /= subCount;
+        var blurVar = sigmaPx * sigmaPx - dotVar;
+        if (blurVar > 0)
+        {
+            // GaussianBlurFast (Crystallography/Images/ImageProcessor.cs) と同じ離散カーネルの分散 (px²)
+            static double kernelVar(double hwhm)
+            {
+                int limit = (int)(hwhm * 3) * 2 + 1, c = limit / 2;
+                double s = 0, s2 = 0;
+                for (int h = 0; h < limit; h++)
+                {
+                    var k = Math.Exp(-(h - c) * (h - c) / hwhm / hwhm * Math.Log(2));
+                    s += k;
+                    s2 += k * (h - c) * (h - c);
+                }
+                return s2 / s;
+            }
+            double lo = 0, hi = Math.Sqrt(2 * Math.Log(2) * blurVar) + 1;
+            while (kernelVar(hi) < blurVar) hi *= 2;
+            for (int it = 0; it < 50; it++)
+            {
+                var mid = (lo + hi) / 2;
+                if (kernelVar(mid) < blurVar) lo = mid; else hi = mid;
+            }
+            data = ImageProcess.GaussianBlurFast(data, width, hi);
+        }
 
         return data;
     }
 
-    private double cosTau, sinTau, excitationError, ewaldRadius, cameraLength2, waveLength;
+    //private double cosTau, sinTau, excitationError, ewaldRadius, cameraLength2, waveLength; // 261105Cl 変更前
+    private double excitationError, ewaldRadius, cameraLength2, waveLength; // 261105Cl 変更: cosTau・sinTau (φ = 0 の式) は detectorRotationInv に置き換えた
+    /// <summary>261105Cl 追加 (監査 #17): 親の検出器の回転 (τ, φ) の逆行列 (<see cref="FormDiffractionSimulator.DetectorRotationInv"/>)。setParameter で控える</summary>
+    private Matrix3D detectorRotationInv = new();
     private double spotRadiusOnDetector, error2, error3;
     static readonly double sqrt2PI = Math.Sqrt(2 * Math.PI);
 
@@ -526,8 +636,10 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
         ewaldRadius = FormDiffractionSimulator.EwaldRadius;
         cameraLength2 = FormDiffractionSimulator.CameraLength2;
         waveLength = FormDiffractionSimulator.WaveLength;
-        cosTau = FormDiffractionSimulator.CosTau;
-        sinTau = FormDiffractionSimulator.SinTau;
+        //cosTau = FormDiffractionSimulator.CosTau; // 261105Cl 変更前
+        //sinTau = FormDiffractionSimulator.SinTau;
+        detectorRotationInv = new Matrix3D(FormDiffractionSimulator.DetectorRotationInv); // 261105Cl 追加 (監査 #17): 親と同じ検出器の変換 (φ も含む)
+        startArea = new PointD(double.NaN, double.NaN); // 261105Cl 追加 (監査 D13): 検出器の範囲は IsDetectorArea が初回に控えたまま二度と作り直さず、Geometry 窓で検出器の大きさ・Foot・画素サイズを変えても 1 回目の範囲で判定していた。実行のたびに作り直す
         spotRadiusOnDetector = cameraLength2 * Math.Tan(2 * Math.Asin(waveLength * excitationError / 2));
         error2 = excitationError * excitationError;
         error3 = excitationError * excitationError * excitationError;
@@ -552,11 +664,19 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
                 double dev = ewaldRadius - Math.Sqrt(L2 + (vec.Z + ewaldRadius) * (vec.Z + ewaldRadius)), dev2 = dev * dev;
                 if (dev2 < 9 * error2)
                 {
-                    if (-sinTau * vec.Y + cosTau * (vec.Z + ewaldRadius) > 0)//(vec.X, vec.Y, vec.Z + EwaldRadius) と(0, -sinTau, cosTau) の内積が0より大きい)
+                    //if (-sinTau * vec.Y + cosTau * (vec.Z + ewaldRadius) > 0)//(vec.X, vec.Y, vec.Z + EwaldRadius) と(0, -sinTau, cosTau) の内積が0より大きい) // 261105Cl 変更前
+                    //{
+                    //    //2020/02/03の変更対処済み
+                    //    var point = Geometry.GetCrossPoint(0, sinTau, -cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
+                    //    PointD pt = new PointD(point.X, point.Y * cosTau + point.Z * sinTau);
+                    // 261105Cl 変更 (監査 #17): 親 (FormDiffractionSimulator.ConvertReciprocalToDetector の平面検出器) と同じ変換にする。
+                    //   旧式は平面 (0, sinτ, −cosτ)·r = L (法線の向きが逆、= n·r = −L) との交点なので、本来の交点 P ではなく −P (原点に対して点対称の位置) を返していた
+                    //   (上の候補の絞り込みは正しい向きの平面なので、検出器内と判定した反射を反対側に描いていた)。τ≠0 では傾きによる歪みも反対側に出て、φ は使っていなかった。
+                    //   (vec.X, vec.Y, vec.Z + EwaldRadius) は Y・Z を反転した後の vec なので、親の (g.X, −g.Y, EwaldRadius − g.Z) と同じ
+                    var v = detectorRotationInv * new Vector3DBase(vec.X, vec.Y, vec.Z + ewaldRadius);
+                    if (v.Z > 0) // 検出器の側へ散乱するもの (親は v.Z < 0 を NaN にする)
                     {
-                        //2020/02/03の変更対処済み
-                        var point = Geometry.GetCrossPoint(0, sinTau, -cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
-                        PointD pt = new PointD(point.X, point.Y * cosTau + point.Z * sinTau);
+                        PointD pt = new PointD(v.X * cameraLength2 / v.Z, v.Y * cameraLength2 / v.Z);
 
                         //if (IsDetectorArea(pt))
                         {

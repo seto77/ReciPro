@@ -84,7 +84,7 @@
     <value>Opacità</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
-    <value>Ritaglia oggetti</value>
+    <value>Ritaglia oggetti ai piani di delimitazione</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>Limiti definiti dalla cella elementare</value>
@@ -97,7 +97,7 @@
   </data>
   <data name="labelMessage.Text" xml:space="preserve">
     <value>Questo controllo ora è visualizzato
- nella finestra "Structure Viewer".</value>
+ nella finestra "Visualizzatore struttura".</value>
   </data>
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>Atomi</value>
@@ -347,7 +347,7 @@ dai limiti</value>
     <value>Direzione luce</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copia immagine principale negli appunti</value>
+    <value>Copia immagine negli appunti</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Immagine principale</value>
@@ -392,13 +392,16 @@ dai limiti</value>
     <value>Imposta l'intervallo di visualizzazione a +/-1 di ogni asse della cella elementare</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value>Imposta il centro di visualizzazione all'origine (0, 0, 0)</value>
+    <value>Imposta il Centro a (0, 0, 0): la regione visualizzata
+è centrata sul centro di proiezione.</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value>Imposta il centro di visualizzazione a (1/4, 1/4, 1/4)</value>
+    <value>Imposta il Centro a (1/4, 1/4, 1/4): la regione visualizzata è spostata
+di 1/4 verso +a, +b, +c rispetto al centro di proiezione.</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
-    <value>Imposta il centro di visualizzazione a (1/2, 1/2, 1/2)</value>
+    <value>Imposta il Centro a (1/2, 1/2, 1/2): la regione visualizzata è spostata
+di 1/2 verso +a, +b, +c rispetto al centro di proiezione.</value>
   </data>
   <data name="buttonSetRange0.ToolTip" xml:space="preserve">
     <value>Imposta l'intervallo di visualizzazione a +/-1/4 di ogni asse della cella elementare</value>
@@ -437,34 +440,40 @@ l'asse a, in coordinate frazionarie;
 vengono disegnati gli atomi entro Centro ± Range.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>Centro della regione visualizzata lungo l'asse c, in
-coordinate frazionarie; combinato con Intervallo imposta
-i piani di delimitazione min/max della struttura disegnata.</value>
+    <value>Spostamento del centro della regione visualizzata rispetto al centro
+di proiezione lungo l'asse c, in coordinate frazionarie (positivo:
+verso +c). Combinato con Intervallo imposta i piani di delimitazione
+min/max: (centro di proiezione + Centro) ± Intervallo.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>Centro della regione visualizzata lungo l'asse c, in
-coordinate frazionarie; combinato con Range imposta
-i piani di delimitazione min/max della struttura disegnata.</value>
+    <value>Spostamento del centro della regione visualizzata rispetto al centro
+di proiezione lungo l'asse c, in coordinate frazionarie (positivo:
+verso +c). Combinato con Intervallo imposta i piani di delimitazione
+min/max: (centro di proiezione + Centro) ± Intervallo.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>Centro della regione visualizzata lungo l'asse b, in
-coordinate frazionarie; combinato con Intervallo imposta
-i piani di delimitazione min/max della struttura disegnata.</value>
+    <value>Spostamento del centro della regione visualizzata rispetto al centro
+di proiezione lungo l'asse b, in coordinate frazionarie (positivo:
+verso +b). Combinato con Intervallo imposta i piani di delimitazione
+min/max: (centro di proiezione + Centro) ± Intervallo.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>Centro della regione visualizzata lungo l'asse b, in
-coordinate frazionarie; combinato con Range imposta
-i piani di delimitazione min/max della struttura disegnata.</value>
+    <value>Spostamento del centro della regione visualizzata rispetto al centro
+di proiezione lungo l'asse b, in coordinate frazionarie (positivo:
+verso +b). Combinato con Intervallo imposta i piani di delimitazione
+min/max: (centro di proiezione + Centro) ± Intervallo.</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>Centro della regione visualizzata lungo l'asse a, in
-coordinate frazionarie; combinato con Intervallo imposta
-i piani di delimitazione min/max della struttura disegnata.</value>
+    <value>Spostamento del centro della regione visualizzata rispetto al centro
+di proiezione lungo l'asse a, in coordinate frazionarie (positivo:
+verso +a). Combinato con Intervallo imposta i piani di delimitazione
+min/max: (centro di proiezione + Centro) ± Intervallo.</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value>Centro della regione visualizzata lungo l'asse a, in
-coordinate frazionarie; combinato con Range imposta
-i piani di delimitazione min/max della struttura disegnata.</value>
+    <value>Spostamento del centro della regione visualizzata rispetto al centro
+di proiezione lungo l'asse a, in coordinate frazionarie (positivo:
+verso +a). Combinato con Intervallo imposta i piani di delimitazione
+min/max: (centro di proiezione + Centro) ± Intervallo.</value>
   </data>
   <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
     <value>Mostra/nasconde i piani di delimitazione del cristallo</value>
@@ -700,7 +709,7 @@ dei piani di simmetria (piani di riflessione e di scorrimento).</value>
 degli assi di simmetria (assi di rotazione, elicoidali e di rotoinversione).</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>Mostra le etichette nelle legende</value>
+    <value>Mostra le etichette degli atomi nella vista 3D</value>
   </data>
   <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
     <value>Usa il colore del materiale come colore dell'etichetta </value>
@@ -715,7 +724,7 @@ degli assi di simmetria (assi di rotazione, elicoidali e di rotoinversione).</va
     <value>Dimensione del carattere delle etichette degli atomi (0-200).</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>Se selezionato, le etichette della legenda hanno un contorno bianco.</value>
+    <value>Se selezionato, le etichette degli atomi nella vista 3D hanno un contorno bianco.</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
     <value>Mostra gli atomi legati anche se si trovano fuori dai limiti</value>
@@ -807,24 +816,26 @@ di simmetria, in percentuale (20-500%)</value>
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
     <value>Numero di suddivisioni della cella elementare lungo
 l'asse a (intero, 1-10) per la griglia di sotto-cella
-mostrata quando 'Show Subcell' è attivato.</value>
+mostrata quando 'Show subcell' è attivato.</value>
   </data>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
     <value>Numero di suddivisioni della cella elementare lungo
 l'asse b (intero, 1-10) per la griglia di sotto-cella
-mostrata quando 'Show Subcell' è attivato.</value>
+mostrata quando 'Show subcell' è attivato.</value>
   </data>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
     <value>Numero di suddivisioni della cella elementare lungo
 l'asse c (intero, 1-10) per la griglia di sotto-cella
-mostrata quando 'Show Subcell' è attivato.</value>
+mostrata quando 'Show subcell' è attivato.</value>
   </data>
   <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
     <value>Mostra/nasconde le etichette degli atomi (simboli
 degli elementi) sovrapposte a ciascun atomo.</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>Mostra/nasconde le sfere degli atomi nel modello 3D.</value>
+    <value>Mostra/nasconde le sfere degli atomi nel modello 3D.
+Legami, poliedri ed etichette sono costruiti dagli atomi,
+quindi vengono nascosti anch'essi.</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>Reimposta raggi, colori e legami degli atomi ai valori
@@ -847,8 +858,9 @@ diffuso per la visualizzazione di strutture cristalline).</value>
 centri di inversione) alla vista 3D.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>Centro della regione visualizzata (coordinate frazionarie)
-lungo ciascun asse della cella elementare.</value>
+    <value>Spostamento del centro della regione visualizzata rispetto al centro
+di proiezione, in coordinate frazionarie lungo ciascun asse della
+cella elementare (positivo: verso +a, +b, +c).</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>Trasla il telaio della cella elementare lungo gli
@@ -859,7 +871,8 @@ assi a, b, c (coordinate frazionarie).</value>
 frazionarie) lungo ciascun asse della cella elementare.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>Imposta il centro di visualizzazione su una posizione frazionaria preimpostata.</value>
+    <value>Imposta il Centro (lo spostamento rispetto al centro di proiezione)
+su un valore frazionario preimpostato.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value>Imposta l'intervallo di visualizzazione su una frazione
@@ -878,5 +891,8 @@ viene posizionato al centro della vista.</value>
 Valori più piccoli ingrandiscono la vista.
 Sincronizzata con lo zoom tramite trascinamento
 con il tasto destro / rotellina del mouse sulla vista.</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Visualizzatore struttura</value>
   </data>
 </root>

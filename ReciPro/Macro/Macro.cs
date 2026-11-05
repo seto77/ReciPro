@@ -66,6 +66,10 @@ public class Macro : MacroBase
 
         Potential = new PotentialClass(this);
         addHelp(Potential.GetType(), nameof(Potential));
+
+        // 261105Cl 追加 (監査 J15): root クラス自身の Help (ReciPro.Sleep) も一覧・補完に載せる。PDIndexer の Macro と同じく名前なしで呼ぶと "ReciPro.Sleep(int millisec)" になる。
+        //  以前は root を GenerateHelpText に渡していなかったので、Sleep は使えるのに一覧にも補完にも出なかった
+        addHelp(GetType(), null);
     }
 
     // (260414Ch) Help text revised throughout this file to match the implementation and improve English.
@@ -1270,10 +1274,13 @@ public class Macro : MacroBase
         [Help("Gets or sets the camera length in mm.")]
         public double CameraLength { get => spotID.CameraLength; set => spotID.CameraLength = value; }
 
-        [Help("Gets or sets the pixel size of the image in mm. Reading or writing it also switches the pixel-size unit to mm.")]
+        //[Help("Gets or sets the pixel size of the image in mm. Reading or writing it also switches the pixel-size unit to mm.")] // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I6): 取得では単位を切り替えず、mm に換算した値を返すようにしたので説明を直す
+        [Help("Gets or sets the pixel size of the image in mm. Writing it switches the pixel-size unit to mm; reading it returns the value converted to mm without changing the unit.")] // 261105Cl
         public double PixelSizeInMM { get => spotID.PixelSizeInMM; set => spotID.PixelSizeInMM = value; }
 
-        [Help("Gets or sets the pixel size of the image in nm^-1. Reading or writing it also switches the pixel-size unit to nm^-1.")]
+        //[Help("Gets or sets the pixel size of the image in nm^-1. Reading or writing it also switches the pixel-size unit to nm^-1.")] // 261105Cl 変更前
+        [Help("Gets or sets the pixel size of the image in nm^-1. Writing it switches the pixel-size unit to nm^-1; reading it returns the value converted to nm^-1 without changing the unit.")] // 261105Cl
         public double PixelSizeInNMinv { get => spotID.PixelSizeInNMinv; set => spotID.PixelSizeInNMinv = value; }
 
         [Help("Gets or sets the maximum number of spots to be detected by FindSpots().")]
@@ -1321,7 +1328,8 @@ public class Macro : MacroBase
             Execute(() => viewer.SaveMainImage(filename ?? ""));//260805Cl (/simplify): void ラムダは Execute(Action) に一意に束縛される
         }
 
-        [Help("Exports the displayed structure as a 3D-print model, like File > Export 3D Model (3MF/STL). The extension picks the format: '.stl' (single color) or '.3mf' (parts colored by element). The model is scaled so that its largest dimension becomes maxSizeInMM, or by the fixed scale fixedScaleInMMperNm when that is > 0. The include switches act only on element kinds actually displayed; polyhedraAsEdges outputs coordination polyhedra as edge frames of diameter polyEdgeDiaInMM; includeCellEdges turns the unit-cell frame into cylinders of diameter cellEdgeDiaInMM; bonds that would print thinner than thickenBondsToMM are thickened to that diameter (0 disables). The defaults equal the dialog defaults. Returns an information string with the triangle count and the printed size.", "string filename, double maxSizeInMM, double fixedScaleInMMperNm, bool includeAtoms, bool includeBonds, bool includePolyhedra, bool polyhedraAsEdges, double polyEdgeDiaInMM, bool includeCellEdges, double cellEdgeDiaInMM, double thickenBondsToMM")]
+        //[Help("Exports the displayed structure as a 3D-print model, like File > Export 3D Model (3MF/STL). The extension picks the format: '.stl' (single color) or '.3mf' (parts colored by element). The model is scaled so that its largest dimension becomes maxSizeInMM, or by the fixed scale fixedScaleInMMperNm when that is > 0. The include switches act only on element kinds actually displayed; polyhedraAsEdges outputs coordination polyhedra as edge frames of diameter polyEdgeDiaInMM; includeCellEdges turns the unit-cell frame into cylinders of diameter cellEdgeDiaInMM; bonds that would print thinner than thickenBondsToMM are thickened to that diameter (0 disables). The defaults equal the dialog defaults. Returns an information string with the triangle count and the printed size.", "string filename, double maxSizeInMM, double fixedScaleInMMperNm, bool includeAtoms, bool includeBonds, bool includePolyhedra, bool polyhedraAsEdges, double polyEdgeDiaInMM, bool includeCellEdges, double cellEdgeDiaInMM, double thickenBondsToMM")] // 261106Cl 変更前
+        [Help("Exports the displayed structure as a 3D-print model, like File > Export 3D model (3MF/STL). The extension picks the format: '.stl' (single color) or '.3mf' (parts colored by element). The model is scaled so that its largest dimension becomes maxSizeInMM, or by the fixed scale fixedScaleInMMperNm when that is > 0. The include switches act only on element kinds actually displayed; polyhedraAsEdges outputs coordination polyhedra as edge frames of diameter polyEdgeDiaInMM; includeCellEdges turns the unit-cell frame into cylinders of diameter cellEdgeDiaInMM; bonds that would print thinner than thickenBondsToMM are thickened to that diameter (0 disables). The defaults equal the dialog defaults. Returns an information string with the triangle count and the printed size.", "string filename, double maxSizeInMM, double fixedScaleInMMperNm, bool includeAtoms, bool includeBonds, bool includePolyhedra, bool polyhedraAsEdges, double polyEdgeDiaInMM, bool includeCellEdges, double cellEdgeDiaInMM, double thickenBondsToMM")] // 261106Cl 変更: メニューの表示名 (sentence case) に合わせる
         public string Export3DModel(string filename, double maxSizeInMM = 80, double fixedScaleInMMperNm = 0,
             bool includeAtoms = true, bool includeBonds = true, bool includePolyhedra = true, bool polyhedraAsEdges = false,
             double polyEdgeDiaInMM = 2.0, bool includeCellEdges = true, double cellEdgeDiaInMM = 2.4, double thickenBondsToMM = 1.2)
@@ -1339,11 +1347,12 @@ public class Macro : MacroBase
                 else if (filename.EndsWith(".stl", StringComparison.OrdinalIgnoreCase)) use3mf = false;
                 else throw new ArgumentException("Export3DModel: the filename must end with '.stl' or '.3mf'.");
 
-                GLObject[] objs;
-                lock (viewer.lockObj1)
-                    objs = [.. viewer.GLObjects];
-                var snaps = ModelExporter.Collect(objs);
-                var lineSnaps = ModelExporter.CollectLines(objs);
+                //GLObject[] objs; // 261105Cl 変更前 (4 行): 分解後の多面体の面と対称要素も対象にしていた (多面体が出ず、対称要素が原子・枠として出た)
+                //lock (viewer.lockObj1)
+                //    objs = [.. viewer.GLObjects];
+                //var snaps = ModelExporter.Collect(objs);
+                //var lineSnaps = ModelExporter.CollectLines(objs);
+                var (snaps, lineSnaps) = viewer.CollectExportSnapshots(); // 261105Cl 変更 (ダイアログ経由と同じ対象)
 
                 //表示中の種類だけを対象にする (ダイアログの has* と同じ)
                 static bool isAtom(MeshSnapshot s) => s.Kind is SnapshotKind.Sphere or SnapshotKind.Ellipsoid;
@@ -1357,17 +1366,31 @@ public class Macro : MacroBase
 
                 //含める要素の合成バウンディングからスケールを決める (ダイアログの SizeNm と同じ規約)。
                 //260805Cl (/simplify): min/max は結合的なので、種類別 GetBounds ×3 + merge ではなく 1 回の GetBounds に畳む
-                var (min, max) = ModelExporter.GetBounds(snaps.Where(s => isAtom(s) ? includeAtoms : isPoly(s) ? includePolyhedra : includeBonds));
+                //var (min, max) = ModelExporter.GetBounds(snaps.Where(s => isAtom(s) ? includeAtoms : isPoly(s) ? includePolyhedra : includeBonds)); // 261105Cl 変更前 (12 行): 枠・稜線の円柱の太さを数えず、出力が maxSizeInMM を直径の分だけ超えていた
+                //if (includeCellEdges)
+                //    foreach (var (s, t) in lineSnaps.SelectMany(l => l.Segments))
+                //    {
+                //        min = V3.ComponentMin(V3.ComponentMin(min, s), t);
+                //        max = V3.ComponentMax(V3.ComponentMax(max, s), t);
+                //    }
+                //var sizeNm = max - min;
+                //var maxExtent = Math.Max(sizeNm.X, Math.Max(sizeNm.Y, sizeNm.Z));
+                //var scale = fixedScaleInMMperNm > 0 ? fixedScaleInMMperNm
+                //          : maxExtent > 0 ? maxSizeInMM / maxExtent
+                //          : throw new InvalidOperationException("Export3DModel: the model extent is zero; pass fixedScaleInMMperNm.");
+                // 261105Cl 変更: 要素ごとの範囲 (nm) と、円柱化して外へ張り出す量 (片側 mm) から、ダイアログと同じく円柱の太さを含めて最大寸法に合わせる
+                var (solidMin, solidMax) = ModelExporter.GetBounds(snaps.Where(s => isAtom(s) ? includeAtoms : !isPoly(s) && includeBonds));
+                var (polyMin, polyMax) = ModelExporter.GetBounds(snaps.Where(s => isPoly(s) && includePolyhedra));
+                V3 lineMin = new(double.MaxValue), lineMax = new(double.MinValue);
                 if (includeCellEdges)
                     foreach (var (s, t) in lineSnaps.SelectMany(l => l.Segments))
                     {
-                        min = V3.ComponentMin(V3.ComponentMin(min, s), t);
-                        max = V3.ComponentMax(V3.ComponentMax(max, s), t);
+                        lineMin = V3.ComponentMin(V3.ComponentMin(lineMin, s), t);
+                        lineMax = V3.ComponentMax(V3.ComponentMax(lineMax, s), t);
                     }
-                var sizeNm = max - min;
-                var maxExtent = Math.Max(sizeNm.X, Math.Max(sizeNm.Y, sizeNm.Z));
+                List<(V3 Min, V3 Max, double PadMm)> boxes = [(solidMin, solidMax, 0), (polyMin, polyMax, polyhedraAsEdges ? polyEdgeDiaInMM / 2 : 0), (lineMin, lineMax, cellEdgeDiaInMM / 2)];
                 var scale = fixedScaleInMMperNm > 0 ? fixedScaleInMMperNm
-                          : maxExtent > 0 ? maxSizeInMM / maxExtent
+                          : ModelExporter.FitScale(boxes, maxSizeInMM) is var fit && fit > 0 ? fit
                           : throw new InvalidOperationException("Export3DModel: the model extent is zero; pass fixedScaleInMMperNm.");
 
                 return viewer.ExportModel(filename, use3mf, scale,

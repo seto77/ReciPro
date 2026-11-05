@@ -1,8 +1,12 @@
 ﻿using MemoryPack;
 using System.Buffers;
 using System.Drawing;
+using System.IO;//261105Cl 追加
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml;//261105Cl 追加: TEM パラメータのファイル (XML) の読み書き
+using System.Xml.Linq;//261105Cl 追加
+using System.Xml.Serialization;//261105Cl 追加
 using static ReciPro.FormImageSimulator;
 
 namespace ReciPro;
@@ -160,6 +164,11 @@ public partial struct ImageSimulatorSetting
 
     //共通
     public string Name;
+    /// <summary>261105Cl 注記 (監査 E8): **未使用**。一度も保存・適用されていない (計算ライブラリの切替は画面から廃止し、
+    /// HRTEM の像合成は NativeWrapper.Enabled と Options の設定に従う)。既存のプリセットを読めるよう残す:
+    /// 削るとフィールドの並びがずれ、MemoryPack で保存済みのプリセット (レジストリの blob) が読めなくなる (下の EdxChannels と同じ)。
+    /// TEM パラメータのファイル (XML) には書かない</summary>
+    [XmlIgnore]//261105Cl 追加
     public bool Native;
 
     public HRTEM_Modes HRTEM_Mode;
@@ -206,10 +215,28 @@ public partial struct ImageSimulatorSetting
     /// 計算するようにしたため、この項目は**未使用**。ただし**削除しない**: 削るとメンバ数が 27→26 になり、
     /// 27 で書かれた既存 blob が MemoryPackSerializationException になる (Reg.RW が握り潰すのでプリセットが
     /// 黙って消える)。将来また選択 UI を入れるときの枠として残す。</summary>
+    [XmlIgnore]//261105Cl 追加: 未使用なので TEM パラメータのファイル (XML) には書かない
     public (int Z, IonizationShell Shell)[] EdxChannels;
     /// <summary>260925Cl 追加: EDX で線の系列 (Kα・Kβ・Lα・Lβ・Mα) も計算するか。**末尾に追加** (上の MemoryPack の注意)。
     /// 旧 blob では既定値 false = 従来どおり殻のチャネルだけ。</summary>
     public bool EdxLineSeries;
+
+    //261105Cl 追加: 単一/シリーズ画像の切替と、シリーズの条件 (開始値・刻み・個数)。**末尾に追加** (上の MemoryPack の注意)。
+    //旧: これらを保存せず、プリセットの適用・起動時の復元でモードが戻らなかった。
+    //旧 blob ではすべて既定値 (Num = 0) になるので、SerialThicknessNum > 0 を「この版以降に保存した設定」の目印にして、
+    //旧 blob の適用は従来どおり (モード・開始値・刻み・個数に触れない) にする (Num の入力欄の最小値は 1)。
+    /// <summary>261105Cl 追加: シリーズ画像モードか (false = 単一画像)</summary>
+    public bool SerialImageMode;
+    /// <summary>261105Cl 追加: シリーズで厚みを振るか</summary>
+    public bool SerialImageWithThickness;
+    /// <summary>261105Cl 追加: シリーズでデフォーカスを振るか</summary>
+    public bool SerialImageWithDefocus;
+    /// <summary>261105Cl 追加: シリーズの厚みの開始値・刻み (nm)・個数</summary>
+    public double SerialThicknessStart, SerialThicknessStep;
+    public int SerialThicknessNum;
+    /// <summary>261105Cl 追加: シリーズのデフォーカスの開始値・刻み (nm)・個数</summary>
+    public double SerialDefocusStart, SerialDefocusStep;
+    public int SerialDefocusNum;
     #endregion
 
     public override readonly string ToString() => Name;
@@ -243,8 +270,18 @@ public partial struct ImageSimulatorSetting
         Beta = f.HRTEM_Beta;
 
         //シリアルイメージモード
-        ThicknessArray = f.ThicknessArray;
-        DefocusArray = f.DefocusArray;
+        //ThicknessArray = f.ThicknessArray; // 261105Cl 変更前
+        //DefocusArray = f.DefocusArray; // 261105Cl 変更前
+        //261105Cl 変更: リストの中身をモードに依らず保存する (旧: 単一モードでは単一の値 1 個になり、適用するとシリーズのリストが 1 行に潰れていた)。
+        //リストが読めない・空のときは単一の値で代える (旧と違い、保存のたびに「リストが不正」のメッセージを出さない)
+        ThicknessArray = f.SerialImageThicknessList is { Length: > 0 } thicknesses ? thicknesses : [f.Thickness];
+        DefocusArray = f.SerialImageDefocusList is { Length: > 0 } defocusses ? defocusses : [f.Defocus];
+        //261105Cl 追加: 単一/シリーズの切替とシリーズの条件
+        SerialImageMode = f.SerialImageMode;
+        SerialImageWithThickness = f.SerialImageWithThickness;
+        SerialImageWithDefocus = f.SerialImageWithDefocus;
+        (SerialThicknessStart, SerialThicknessStep, SerialThicknessNum) = (f.SerialImageThicknessStart, f.SerialImageThicknessStep, f.SerialImageThicknessNum);
+        (SerialDefocusStart, SerialDefocusStep, SerialDefocusNum) = (f.SerialImageDefocusStart, f.SerialImageDefocusStep, f.SerialImageDefocusNum);
 
         //STEM固有
         DetectorInnerAngle = f.STEM_DetectorInnerAngle;
@@ -284,8 +321,23 @@ public partial struct ImageSimulatorSetting
         f.HRTEM_Beta = Beta;
 
         //シリアルイメージモード
+        //261105Cl 追加: 開始値・刻み・個数を先に戻す (戻すとリストが作り直されるので、手で編集したリストは下で上書きして戻す)。
+        //SerialThicknessNum > 0 = この版以降に保存した設定 (旧 blob は従来どおり触れない)
+        var hasSerialSettings = SerialThicknessNum > 0;
+        if (hasSerialSettings)
+        {
+            (f.SerialImageThicknessStart, f.SerialImageThicknessStep, f.SerialImageThicknessNum) = (SerialThicknessStart, SerialThicknessStep, SerialThicknessNum);
+            (f.SerialImageDefocusStart, f.SerialImageDefocusStep, f.SerialImageDefocusNum) = (SerialDefocusStart, SerialDefocusStep, SerialDefocusNum);
+        }
         f.ThicknessArray = ThicknessArray;
         f.DefocusArray = DefocusArray;
+        //261105Cl 追加: 単一/シリーズの切替 (リストを戻した後に。切替のハンドラが入力欄の有効・無効を決める)
+        if (hasSerialSettings)
+        {
+            f.SerialImageWithThickness = SerialImageWithThickness;
+            f.SerialImageWithDefocus = SerialImageWithDefocus;
+            if (SerialImageMode) f.SerialImageMode = true; else f.SingleImageMode = true;
+        }
 
         //STEM固有
         f.STEM_DetectorInnerAngle = DetectorInnerAngle;
@@ -303,6 +355,45 @@ public partial struct ImageSimulatorSetting
         f.EdxEnabled = EdxEnabled;
         //260802Cl: EdxChannels は未使用 (常に全チャネル計算) なので適用しない
     }
+
+    #region TEM パラメータのファイル (XML) の読み書き 261105Cl 追加 (監査 E7: メニューの Load/Save TEM parameters)
+    //人が読めて、別の PC・共同研究者と共有できるよう XML にする (プリセット・起動時の復元は従来どおりレジストリの MemoryPack blob)。
+    //書くのはこの構造体の公開フィールドのうち [XmlIgnore] (未使用の Native・EdxChannels) 以外のすべて。
+    //フィールドを足せば自動的にファイルにも入る。読むときは、ファイルに無い項目 (古い版のファイル) を defaults の値にし、
+    //知らない項目 (新しい版のファイル) は無視する。
+
+    /// <summary>261105Cl 追加: TEM パラメータのファイルの拡張子 (中身は XML。ReciPro Image Simulator の略。.rpmp = ReciPro Master Pattern にならう)</summary>
+    public const string FileExtension = ".rpis";
+
+    /// <summary>261105Cl 追加: この設定を XML ファイルに書く</summary>
+    public readonly void SaveXml(string path)
+    {
+        using var writer = XmlWriter.Create(path, new XmlWriterSettings { Indent = true });
+        new XmlSerializer(typeof(ImageSimulatorSetting)).Serialize(writer, this);
+    }
+
+    /// <summary>261105Cl 追加: <see cref="SaveXml"/> で書いたファイルを読む。ファイルに無い項目は <paramref name="defaults"/> の値にする。
+    /// XML でない・別の種類の XML・値が読めないときは例外 (呼び出し側で知らせる)</summary>
+    public static ImageSimulatorSetting LoadXml(string path, ImageSimulatorSetting defaults)
+    {
+        var file = XElement.Load(path);
+        if (file.Name.LocalName != nameof(ImageSimulatorSetting))
+            throw new InvalidDataException($"The root element is <{file.Name.LocalName}>, not <{nameof(ImageSimulatorSetting)}>.");
+
+        //既定値を XML にして、ファイルにある項目だけ差し替えてから読む (XmlSerializer は既存の値の上に読み込めないため)
+        var serializer = new XmlSerializer(typeof(ImageSimulatorSetting));
+        var merged = new XDocument();
+        using (var writer = merged.CreateWriter())
+            serializer.Serialize(writer, defaults);
+        foreach (var element in file.Elements())
+        {
+            merged.Root.Element(element.Name)?.Remove();
+            merged.Root.Add(new XElement(element));
+        }
+        using var reader = merged.Root.CreateReader();
+        return (ImageSimulatorSetting)serializer.Deserialize(reader);
+    }
+    #endregion
 }
 #endregion
 

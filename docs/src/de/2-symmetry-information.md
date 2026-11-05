@@ -38,9 +38,10 @@ Geben Sie zwei Kristallebenen \((h_1, k_1, l_1)\), \((h_2, k_2, l_2)\) oder zwei
 
 - den Netzebenenabstand jeder Ebene / die Länge jeder Achse,
 - den Winkel zwischen den beiden Ebenen (oder den beiden Achsen),
-- **den zu beiden Ebenen senkrechten Richtungsindex** und **den zu beiden Achsen senkrechten Ebenenindex**.
+- den Winkel zwischen der Normalen von Ebene 1 und Achse 1 sowie zwischen der Normalen von Ebene 2 und Achse 2 (90°, wenn die Achse in der Ebene liegt),
+- **Achse parallel zu beiden Ebenen** (die Zonenachse [*uvw*] der beiden Ebenen) und **Ebene, die beide Achsen enthält** (die Ebene (*hkl*), die die beiden Achsen enthält). Die Vorzeichen folgen [*uvw*] = (*h*₁*k*₁*l*₁) × (*h*₂*k*₂*l*₂) und (*hkl*) = [*u*₁*v*₁*w*₁] × [*u*₂*v*₂*w*₂]. <!-- 261106Cl 作者の決定 B16 --> <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップ (numericBoxAnglePlaneAxis1/2.ToolTip) に合わせた。以前の「normal to」は逆 -->
 
-Diese Berechnungen berücksichtigen die Metrik der aktuellen Elementarzelle.
+Diese Berechnungen berücksichtigen die Metrik der aktuellen Elementarzelle. Längen werden in Å und Winkel in Grad angezeigt.
 
 ---
 
@@ -48,7 +49,7 @@ Diese Berechnungen berücksichtigen die Metrik der aktuellen Elementarzelle.
 
 ![Wyckoff-Lagen](../assets/cap-de-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-Listet jede Wyckoff-Lage mit ihrer Multiplizität, ihrem Wyckoff-Buchstaben, ihrer Lagesymmetrie und der Angabe, ob es sich um eine allgemeine oder spezielle Lage handelt. Bei zentrierten Gittern werden die Gittertranslationsvektoren in der Kopfzeile angezeigt.
+Listet jede Wyckoff-Lage mit ihrer Multiplizität (**Mult.**), ihrem Wyckoff-Buchstaben (**Wyck.-Buchst.**), ihrer Lagesymmetrie (**Lagesym.**) und den **Koordinaten** (bis zu vier je Zeile; längere Listen werden in den folgenden Zeilen fortgesetzt). Der erste Wyckoff-Eintrag (höchste Multiplizität) ist die allgemeine Lage. Bei zentrierten Gittern werden die Gittertranslationsvektoren in der Kopfzeile angezeigt; bei R-Gruppen in hexagonalen Achsen sind dies die drei Zentrierungstranslationen der obversen Aufstellung, (0,0,0)+, (2/3,1/3,1/3)+ und (1/3,2/3,2/3)+. <!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
 
 ---
 
@@ -57,6 +58,8 @@ Listet jede Wyckoff-Lage mit ihrer Multiplizität, ihrem Wyckoff-Buchstaben, ihr
 ![Bedingungen](../assets/cap-de-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageConditions.png)
 
 Die Reflexionsbedingungen, die sich aus der Gitterzentrierung und aus den Gleitspiegel- und Schraubenoperatoren ergeben.
+
+Jede Zeile hat drei Spalten: **Indizes** (die Reflexklasse, z. B. $hkl$, $h0l$, $00l$), **Bedingung** (z. B. $h+k=2n$) und **Element** (die verantwortliche Gitterzentrierung bzw. das verantwortliche Symmetrieelement). Gibt es keine Bedingung, wird *No Condition* angezeigt.
 
 ---
 
@@ -97,12 +100,13 @@ Die beiden Felder unten geben die schematischen Symmetriediagramme der Raumgrupp
 - **Symmetrieelemente (links)**: Dreh-/Schraubenachsen, Spiegel-/Gleitspiegelebenen sowie Inversionszentren/Drehinversionspunkte werden mit den konventionellen graphischen Symbolen gezeichnet.
   - Für das \(F\)-Gitter des kubischen Systems wird nur das obere linke Viertel der projizierten Zelle gezeigt (siehe [Anhang A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram)).
   - Diese Symmetrieelemente können auch direkt auf das 3D-Modell in der [Strukturansicht](5-structure-viewer.md) gezeichnet werden.
-- **Allgemeine Lagen (rechts)**: Die allgemeinen äquivalenten Lagen werden als Kreise dargestellt (ein Komma bezeichnet ein Spiegelbild) und mit ihren fraktionellen Koordinaten beschriftet.
+- **Allgemeine Lagen (rechts)**: Die allgemeinen äquivalenten Lagen werden als Kreise dargestellt (ein Komma bezeichnet ein Spiegelbild), jeweils beschriftet mit ihrer Höhe entlang der Projektionsachse (`+`, `−`, `½+`, …; siehe [Anhang A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md)).
+  - Der Testpunkt $(x,y,z)$ wird mit den Feldern **a** / **b** / **c** neben der Schaltfläche **Kopieren** der allgemeinen Lage eingestellt (Bereich −1 bis 1, Schrittweite 0,01). Er wird bei jedem Wechsel der Punktgruppe auf einen Standardwert für die Punktgruppe zurückgesetzt und bleibt erhalten, wenn sich nur die Raumgruppe innerhalb derselben Punktgruppe ändert.
   - Nur für das kubische System verbinden Hilfslinien die drei Kreise, die durch eine dreizählige Drehachse miteinander verknüpft sind.
 
-Bedienelemente unterhalb der Diagramme:
+Bedienelemente (das Feld **Optionen** am unteren Rand des Fensters und die Schaltfläche **Kopieren** über jedem Diagramm):
 
-- **Richtung** (`a` / `b` / `c`) : wählt die Kristallachse, entlang derer projiziert wird.
+- **Richtung** (`a` / `b` / `c`) : wählt die Kristallachse, entlang derer projiziert wird. Sie ist nur bei orthorhombischen Raumgruppen wählbar (Standard `c`); bei monoklinen Gruppen wird automatisch die ausgezeichnete Achse verwendet, bei allen anderen Kristallsystemen `c`.
 - **Kopieren** : kopiert jedes Diagramm in dem mit **Kopierformat** gewählten Format (Vektor-**emf** / Raster-**bmp**) in die Zwischenablage; emf kann in PowerPoint entgruppiert und bearbeitet werden.
 - **Gruppenrelationen...** öffnet einen Browser für die Beziehungen der aktuellen Raumgruppe zu ihren maximalen Untergruppen und minimalen Obergruppen. Wie er zu lesen ist, erklärt [Anhang A4.2](appendix/a4-symmetry-space-groups/group-subgroup-relations.md).
 

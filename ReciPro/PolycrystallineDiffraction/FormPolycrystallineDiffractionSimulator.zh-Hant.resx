@@ -70,7 +70,7 @@
 振盪範圍 (±°) 與步進 (°) 設定。</value>
   </data>
   <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>當退火後的「Num per Step」降至右側
+    <value>當退火後的「Num per step」降至右側
 所設定的閾值 (%) 以下時,自動停止
 擬合。</value>
   </data>
@@ -150,7 +150,7 @@ Negative 則反轉(高強度顯示為暗)。</value>
 縮小(×0.8)。</value>
   </data>
   <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>「Num per Step」的閾值 (%):當該參數退火至
+    <value>「Num per step」的閾值 (%):當該參數退火至
 此水準以下時,擬合即停止。</value>
   </data>
   <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">

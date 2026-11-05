@@ -1117,6 +1117,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(asMetafileToolStripMenuItem1, "asMetafileToolStripMenuItem1");
             asMetafileToolStripMenuItem1.Name = "asMetafileToolStripMenuItem1";
+            asMetafileToolStripMenuItem1.Click += saveMetafileToolStripMenuItem_Click; // 261105Cl 追加 (監査 G-24): 旧: 未配線
             // 
             // toolStripMenuItem1
             // 

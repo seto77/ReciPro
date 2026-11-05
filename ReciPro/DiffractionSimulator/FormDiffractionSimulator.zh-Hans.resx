@@ -153,7 +153,7 @@
     <value>步长</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>重置</value>
+    <value>重置视角</value>
   </data>
   <data name="groupBoxViewDirection.Text" xml:space="preserve">
     <value>观察方向</value>
@@ -239,7 +239,7 @@
     <value>保存图像</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>为图像  （PNG 格式）</value>
+    <value>为图像（PNG 格式）</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>为图元文件 (EMF)</value>
@@ -320,7 +320,7 @@
     <value>电子 200 kV</value>
   </data>
   <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
-    <value>电子 120 keV</value>
+    <value>电子 120 kV</value>
   </data>
   <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
     <value>X射线 30 keV</value>
@@ -363,7 +363,7 @@
     <value>进动属性</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>半角</value>
+    <value>进动角</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>步长</value>
@@ -498,10 +498,14 @@
 表示倒易点阵点偏离精确布拉格条件/
 Ewald 球的程度。</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>强度</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>勾选后，显示各斑点的结构因子
-幅值 |Fg|；|Fg| 越大，
-通常表示衍射越强。</value>
+    <value>勾选后，以最强反射为 100% 显示各斑点的强度：
+运动学为 |Fg|²（不含激发误差），动力学理论为
+|Φg|² 及衍射波的复振幅 Φg = Re + Im i。
+选择“仅激发误差”时不显示。</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>设置字符串的大小</value>
@@ -784,11 +788,12 @@ mm（原点：晶体）。</value>
 mm（原点：晶体）。</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>对应鼠标指针位置的晶面间距 d（nm）。</value>
+    <value>对应鼠标指针位置的晶面间距 d。单位（Å 或 nm）
+随主窗口晶格常数的 Å/nm 切换而定。</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>对应鼠标指针位置的倒易
-间距 d⁻¹（nm⁻¹）。</value>
+    <value>对应鼠标指针位置的倒易间距 d⁻¹。单位（Å⁻¹ 或 nm⁻¹）
+随主窗口晶格常数的 Å/nm 切换而定。</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>对应鼠标指针位置的散射角 2θ，
@@ -872,6 +877,9 @@ mm（原点：图样垂足）。</value>
     <value>设置相机长度 2，即从试样到
 检测器（显示器）的距离。</value>
   </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>详细</value>
+  </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>打开详细光学系统设置窗口。</value>
   </data>
@@ -914,12 +922,12 @@ mm（原点：图样垂足）。</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
     <value>设置 PED（进动电子衍射）模拟的
-进动半角（mrad）；即用于倾斜并积分
+进动角（mrad）；即用于倾斜并积分
 入射束的圆锥半顶角。</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
     <value>设置 PED（进动电子衍射）模拟的
-进动半角（mrad）；即用于倾斜并积分
+进动角（mrad）；即用于倾斜并积分
 入射束的圆锥半顶角。</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">

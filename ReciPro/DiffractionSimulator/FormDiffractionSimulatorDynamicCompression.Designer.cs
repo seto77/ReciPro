@@ -642,7 +642,7 @@ namespace ReciPro
             // numericBoxMassAbsorption
             // 
                        numericBoxMassAbsorption.BackColor = System.Drawing.SystemColors.Control;
-                        numericBoxMassAbsorption.FooterText = "cm^2/g";
+                        numericBoxMassAbsorption.FooterText = "cm²/g"; // 261105Cl 変更 (監査 K21): 旧 "cm^2/g"
             numericBoxMassAbsorption.Location = new System.Drawing.Point(76, 187);
             numericBoxMassAbsorption.Margin = new System.Windows.Forms.Padding(0);
             numericBoxMassAbsorption.Maximum = 10000D;
@@ -934,7 +934,8 @@ namespace ReciPro
             graphControl.Smoothing = false;
             graphControl.TabIndex = 0;
             graphControl.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            graphControl.UnitX = " nm";
+            //graphControl.UnitX = " nm"; // 261105Cl 変更前
+            graphControl.UnitX = " µm"; // 261105Cl 変更 (監査 D17): 深さは µm (時間 = 深さ / Us で km/s = µm/ns、吸収は /10000 で cm にしている)
             graphControl.UnitY = " MBar";
             graphControl.MousePositionVisible = false;
             graphControl.LinePositionChanged += new Crystallography.Controls.GraphControl.LinePositionChengedEventHandler(graphControl1_LinePositionChanged);

@@ -6,7 +6,7 @@
 
 Si apre dal menu **Opzioni** del [Simulatore di diffrazione](index.md) → **Simulatore ALCHEMI...**
 
-Condizioni GUI: Wave Length = Electron (cristallo, tensione di accelerazione e orientazione provengono dal simulatore di diffrazione padre)
+Condizioni GUI: Sorgente d'onda = Elettroni (cristallo, tensione di accelerazione e orientazione provengono dal simulatore di diffrazione padre). Con un'altra sorgente la finestra si apre comunque, ma la lettura di θ_B e **Simula** mostrano solo l'avviso *ALCHEMI è solo per elettroni. Impostare la sorgente del simulatore di diffrazione su Elettroni.* <!-- 261105Cl 監査: FormALCHEMI.cs NotElectronNotice (6ae7a85) -->
 
 ![Simulatore ALCHEMI](../../assets/cap-it-auto/FormALCHEMI.png)
 
@@ -51,7 +51,7 @@ $$
 
 Deselezionare **Includi la componente decanalizzata** nel riquadro **Calcolo** elimina questo termine. Agli spessori tipici vale decine di punti percentuali della resa totale, quindi ometterlo fa apparire il contrasto di sito più forte di quanto sia.
 
-### Grandezza in uscita
+### Grandezza in uscita {#output-quantity}
 
 Per un canale di guscio la grandezza primaria è il **numero di lacune di guscio interno generate per elettrone incidente**; la conversione in fotoni X (resa di fluorescenza e ramificazione delle righe) non è applicata. Per una serie di righe X (Kα, Kβ, Lα, Lβ, Mα), elencata dopo i gusci in **Canali di ionizzazione** e non spuntata per impostazione predefinita, è il **numero di fotoni X generati per elettrone incidente** (in tutte le direzioni): le rese di fluorescenza, le cascate Coster–Kronig e radiative e la ramificazione delle righe di xraylib 4.2.1 sono applicate, e la cascata Auger non è inclusa. **L'autoassorbimento dei raggi X nel campione e l'efficienza e l'angolo solido del rivelatore NON sono applicati in NESSUNO dei due casi.**
 
@@ -93,7 +93,7 @@ Il contrasto di sito cambia molto — e può perfino invertire segno — tra cam
 
 | Voce | Descrizione | Predefinito |
 |------|-------------|-------------|
-| **Fasci max.** | Limite superiore del numero di onde di Bloch per orientazione (1–1600). L'unione su tutta la scansione è maggiore | 120 |
+| **Onde diffr. max.** | Limite superiore del numero di onde di Bloch per orientazione (1–1600). L'unione su tutta la scansione è maggiore | 120 |
 | **Risolutore** | Motore di calcolo del problema agli autovalori: **Nativo** (Eigen C++) o **Gestito** (.NET). Dove il risolutore nativo non è disponibile, la scelta è fissata su Gestito | Nativo |
 | **Includi la componente decanalizzata** | Se aggiungere $Y_\text{dech}$ sopra | attivo |
 | **Allargamento angolare** | Convolve la curva con l'allargamento angolare del fascio incidente: **Nessuno** o **Gaussian** con una larghezza a metà altezza in mrad. È una post-elaborazione sull'asse delle orientazioni, applicata **prima** della normalizzazione di visualizzazione | Nessuno |
@@ -115,13 +115,13 @@ Elenco dei siti atomici la cui resa è calcolata separatamente, mostrati come `e
 
 ### Simula / Ferma
 
-**Simula** avvia la scansione. L'avanzamento è riportato nella barra di stato in cinque fasi (risoluzione dei dati di ionizzazione → costruzione della base unione → costruzione delle matrici di ionizzazione → risoluzione delle orientazioni → verifica della base ampliata), e **Ferma** interrompe in qualsiasi momento.
+**Simula** avvia la scansione. L'avanzamento è riportato nella barra di stato in cinque fasi (risoluzione dei dati di ionizzazione → costruzione della base unione → costruzione delle matrici di ionizzazione → risoluzione delle orientazioni → verifica della base ampliata), e **Ferma** interrompe in qualsiasi momento. Se la fila **g** è parallela al fascio, la scansione non può inclinarla attraverso le sue condizioni di Bragg; **Simula** allora riporta solo questo motivo nella barra di stato. <!-- 261105Cl 監査: FormALCHEMI.cs BuildRequest (732813e) -->
 
 ---
 
 ## Riquadro destro: scheda Curva
 
-Al termine del calcolo viene tracciata una curva per ogni coppia sito × canale. La legenda si legge `etichetta di sito / canale`.
+Al termine del calcolo viene tracciata una curva per ogni coppia sito × canale. La legenda si legge `etichetta di sito / canale`. Se in seguito si cambia il cristallo o la tensione di accelerazione (anche a finestra chiusa), le curve, la diagnostica e la scelta dello spessore vengono cancellate e la riga di stato ne indica il motivo. <!-- 261106Cl 作者の決定 ALCHEMI -->
 
 | Voce | Descrizione |
 |------|-------------|
@@ -166,7 +166,7 @@ Nelle situazioni seguenti vengono aggiunti ulteriori avvisi come righe separate 
 
 ## Esportazione CSV {#esportazione-csv}
 
-**Esporta CSV** scrive una tabella in formato lungo preceduta da un'intestazione nel formato `# key: value` (qui abbreviata). L'intestazione è pensata perché il solo file dichiari le condizioni necessarie a riprodurlo.
+**Esporta CSV** scrive una tabella in formato lungo preceduta da un'intestazione nel formato `# key: value` (qui abbreviata). L'intestazione è pensata perché il solo file dichiari le condizioni necessarie a riprodurlo; `scan_origin_rotation_matrix` registra l'orientazione del cristallo all'origine della scansione (inclinazione 0) come matrice di rotazione per righe (row-major). <!-- 261105Cl 監査: FormALCHEMI.cs buttonExport_Click の Key("scan_origin_rotation_matrix", ...) -->
 
 ```text
 # generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
@@ -175,6 +175,7 @@ Nelle situazioni seguenti vengono aggiunti ulteriori avvisi come righe separate 
 # crystal: MgAl2O4 (spinel) / F d -3 m
 # cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
 # accelerating_voltage_kV: 200.000
+# scan_origin_rotation_matrix: 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 (row-major; the crystal orientation of the parent diffraction simulator at the run, mapping the crystal's Cartesian frame to the laboratory frame, in which the beam travels along -z)
 # scan_row_hkl: 1 0 0
 # theta_B_mrad: 1.552030
 # thicknesses_nm: 10.0000 20.0000 ... 100.0000
@@ -250,7 +251,7 @@ Ciò che quel valore segnala è il punto in cui la riduzione a un **unico** vett
 
 L'energia della riga da sola non può certificare un risultato: entrano l'estensione spaziale del guscio, l'orientazione, lo spessore e i vettori reciproci effettivamente richiesti dalla base. Trattate 3–4 keV come un invito a guardare più da vicino, non come un esito di prova. Dove potete scegliere, confrontare righe di **energia simile** tende a rendere più confrontabile la distorsione da delocalizzazione delle due; Jones (2002) raccomanda esattamente questo come primo passo pratico e, come secondo, di preferire una fila sistematica a un asse di zona — la geometria che la v1 calcola (un asse di zona canalizza più fortemente, ma richiede una correzione di delocalizzazione maggiore).
 
-⚠ Le basse energie di emissione risentono anche di più dell'**autoassorbimento dei raggi X**, benché quanto dipenda dalla composizione del campione e dalle sue soglie di assorbimento, dal cammino e dall'angolo di uscita, non dalla sola energia emessa. È una sorgente d'errore **distinta**, per nulla modellata (vedere [Grandezza in uscita](#grandezza-in-uscita) sopra), e falsa il confronto con un esperimento indipendentemente da quanto fa l'approssimazione locale.
+⚠ Le basse energie di emissione risentono anche di più dell'**autoassorbimento dei raggi X**, benché quanto dipenda dalla composizione del campione e dalle sue soglie di assorbimento, dal cammino e dall'angolo di uscita, non dalla sola energia emessa. È una sorgente d'errore **distinta**, per nulla modellata (vedere [Grandezza in uscita](#output-quantity) sopra), e falsa il confronto con un esperimento indipendentemente da quanto fa l'approssimazione locale.
 
 ### Ipotesi del modello
 

@@ -23,12 +23,12 @@ Spot ID v1 takes spot geometry as **numeric input** (the former *TEM ID* workflo
 
 ## Zone-axis search from spot geometry (former TEM ID)
 
-When you do not have an image to load, you can still search for candidate zone axes by entering the geometry of a selected-area electron diffraction (SAED) pattern by hand. Enter the TEM observation conditions and the spot geometry, then press **Find Zone Axis** of a photo (or **Search zone axes from two/three patterns** to use several photos together) to find candidate crystal orientations.
+When you do not have an image to load, you can still search for candidate zone axes by entering the geometry of a selected-area electron diffraction (SAED) pattern by hand. Enter the TEM observation conditions and the spot geometry, then press **Find zone axis** of a photo (or **Search zone axes from two/three patterns** to use several photos together) to find candidate crystal orientations.
 
 ### TEM condition
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSpotIDv1.Designer.cs: numericBoxAccVol / numericBoxCamaraLength / textBoxWaveLength) -->
-Enter **Acc. Voltage** (kV, default 200) and **Camera Length** (mm, default 1000). **Wavelength** (nm) is computed from the voltage and shown read-only.
+Enter **Acc. voltage** (kV, default 200) and **Camera length** (mm, default 1000). **Wavelength** (nm) is computed from the voltage and shown read-only.
 
 ### Photo 1, 2, 3
 
@@ -45,7 +45,7 @@ Enter the geometry of the diffraction spots.
 - Tolerances (the **±** boxes) : each length has a tolerance in % (0–50, default 5) and θ in degrees (0–30, default 3). The value not entered (θ in three-sides mode, l3 in two-sides mode) is computed and shown, and a sketch of the resulting pattern is drawn beside the inputs.
 - **Holder conditions** : **Tilt 1** / **Tilt 2** (°) of the goniometer holder at which the photo was taken, each with a tolerance (0–10°, default 3°). The angles between the holder settings of the photos are computed and shown.
 - **Photo 2** / **Photo 3** : enable the second and third photos. The checkboxes between the photos treat l1 (or l2) of two photos as the same reflection and copy its length.
-- **Find Zone Axis** searches one photo; **Search zone axes from two patterns** / **from three patterns** searches combinations consistent with all enabled photos and the holder-tilt angles between them. The search runs over every crystal selected in the main-window list (multiple selection is enabled while Spot ID v1 is open). If more than 1000 candidates are found, nothing is listed and you are asked to narrow the conditions; otherwise the results window opens. Double-click a row to select the crystal and rotate it to that orientation.
+- **Find zone axis** searches one photo; **Search zone axes from two patterns** / **from three patterns** searches combinations consistent with the photos and the holder-tilt angles between them; photo 3 is used only when **Photo 3** is checked and all its values are entered, otherwise two photos are used. In the result table of a single photo (**Find zone axis**), g1, d1, g2 and d2 are always shown, plus g3 and d3 in three-sides mode or θ in two-sides-and-angle mode. <!-- 261105Cl 監査: buttonSearchAll_Click (afd65e0)、FormSpotIDv1Results.SetDataSet (46d91db) --> The search runs over every crystal selected in the main-window list (multiple selection is enabled while Spot ID v1 is open). If more than 1000 candidates are found, nothing is listed and you are asked to narrow the conditions; otherwise the results window opens. Double-click a row to select the crystal and rotate it to that orientation. The sign of each candidate zone axis follows the textbook convention **g**₁ × **g**₂, so it is reversed compared with versions before 2026-11 (the orientation is the same). <!-- 261106Cl 作者の決定 B16 -->
 
 ---
 

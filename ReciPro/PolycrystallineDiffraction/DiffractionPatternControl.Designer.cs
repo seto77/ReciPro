@@ -260,7 +260,8 @@
             toolTip.SetToolTip(checkBoxMaskDonut, resources.GetString("checkBoxMaskDonut.ToolTip")); // 260531Cl
             checkBoxMaskDonut.Size = new System.Drawing.Size(90, 18);
             checkBoxMaskDonut.TabIndex = 160;
-            checkBoxMaskDonut.Text = "Donut Mask";
+            //checkBoxMaskDonut.Text = "Donut Mask"; // 261105Cl 変更前
+            checkBoxMaskDonut.Text = "Donut mask"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             checkBoxMaskDonut.UseVisualStyleBackColor = true;
             checkBoxMaskDonut.CheckedChanged += checkBoxCircleMask_CheckedChanged;
             // 
@@ -274,7 +275,8 @@
             toolTip.SetToolTip(checkBoxMaskRectangle, resources.GetString("checkBoxMaskRectangle.ToolTip")); // 260531Cl
             checkBoxMaskRectangle.Size = new System.Drawing.Size(110, 18);
             checkBoxMaskRectangle.TabIndex = 161;
-            checkBoxMaskRectangle.Text = "Rectangle Mask";
+            //checkBoxMaskRectangle.Text = "Rectangle Mask"; // 261105Cl 変更前
+            checkBoxMaskRectangle.Text = "Rectangle mask"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             checkBoxMaskRectangle.UseVisualStyleBackColor = true;
             checkBoxMaskRectangle.CheckedChanged += checkBoxRectangleMask_CheckedChanged;
             // 
@@ -365,7 +367,8 @@
             toolTip.SetToolTip(buttonUnmaskAll, resources.GetString("buttonUnmaskAll.ToolTip")); // 260531Cl
             buttonUnmaskAll.Size = new System.Drawing.Size(74, 24);
             buttonUnmaskAll.TabIndex = 145;
-            buttonUnmaskAll.Text = "Unmask All";
+            //buttonUnmaskAll.Text = "Unmask All"; // 261105Cl 変更前
+            buttonUnmaskAll.Text = "Unmask all"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             buttonUnmaskAll.UseVisualStyleBackColor = true;
             buttonUnmaskAll.Click += buttonClearMask_Click;
             // 
@@ -438,7 +441,8 @@
             toolTip.SetToolTip(label23, resources.GetString("label23.ToolTip")); // 260531Cl
             label23.Size = new System.Drawing.Size(71, 14);
             label23.TabIndex = 15;
-            label23.Text = "Band Width";
+            //label23.Text = "Band Width"; // 261105Cl 変更前
+            label23.Text = "Band width"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             // 
             // numericBoxRectangleBand
             // 
@@ -475,7 +479,8 @@
             toolTip.SetToolTip(checkBoxRectangleIsBothSide, resources.GetString("checkBoxRectangleIsBothSide.ToolTip")); // 260531Cl
             checkBoxRectangleIsBothSide.Size = new System.Drawing.Size(79, 18);
             checkBoxRectangleIsBothSide.TabIndex = 13;
-            checkBoxRectangleIsBothSide.Text = "Both Side";
+            //checkBoxRectangleIsBothSide.Text = "Both Side"; // 261105Cl 変更前
+            checkBoxRectangleIsBothSide.Text = "Both side"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             checkBoxRectangleIsBothSide.UseVisualStyleBackColor = true;
             checkBoxRectangleIsBothSide.CheckedChanged += checkBoxRectangleIsBothSide_CheckedChanged;
             // 
@@ -788,7 +793,8 @@
             toolTip.SetToolTip(label45, resources.GetString("label45.ToolTip")); // 260531Cl
             label45.Size = new System.Drawing.Size(79, 14);
             label45.TabIndex = 65;
-            label45.Text = "Convergence";
+            //label45.Text = "Convergence"; // 261105Cl 変更前
+            label45.Text = "Conv. semi-angle"; // 261105Cl 変更 (作者決定 K1-A2: 収束半角 (各言語は LocalizationData))
             // 
             // label44
             // 
@@ -953,7 +959,8 @@
             toolTip.SetToolTip(label19, resources.GetString("label19.ToolTip")); // 260531Cl
             label19.Size = new System.Drawing.Size(108, 14);
             label19.TabIndex = 67;
-            label19.Text = "Monitor Resolution";
+            //label19.Text = "Monitor Resolution"; // 261105Cl 変更前
+            label19.Text = "Monitor resolution"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             // 
             // label2
             // 
@@ -965,7 +972,8 @@
             toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
             label2.Size = new System.Drawing.Size(90, 14);
             label2.TabIndex = 47;
-            label2.Text = "Camera Length";
+            //label2.Text = "Camera Length"; // 261105Cl 変更前
+            label2.Text = "Camera length"; // 261105Cl 変更 (作者決定 K1-A6)
             // 
             // numericBoxCameraLength
             // 
@@ -993,7 +1001,8 @@
             toolTip.SetToolTip(label31, resources.GetString("label31.ToolTip")); // 260531Cl
             label31.Size = new System.Drawing.Size(101, 14);
             label31.TabIndex = 67;
-            label31.Text = "Image Resolution";
+            //label31.Text = "Image Resolution"; // 261105Cl 変更前
+            label31.Text = "Image resolution"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             // 
             // label13
             // 
@@ -1078,6 +1087,10 @@
             // checkBoxFilmBlur
             // 
             checkBoxFilmBlur.AutoSize = true;
+            // 261105Cl 追加 (監査 I13): このチェックはどこからも読まれず、ぼかしは右の数値の欄 (FilmBlur) だけで常に掛かるので、チェック済みの灰色に
+            checkBoxFilmBlur.Checked = true; // 261105Cl 追加
+            checkBoxFilmBlur.CheckState = System.Windows.Forms.CheckState.Checked; // 261105Cl 追加
+            checkBoxFilmBlur.Enabled = false; // 261105Cl 追加
             checkBoxFilmBlur.Font = new System.Drawing.Font("Tahoma", 9F);
             checkBoxFilmBlur.Location = new System.Drawing.Point(17, 190);
             checkBoxFilmBlur.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -1085,7 +1098,8 @@
             toolTip.SetToolTip(checkBoxFilmBlur, resources.GetString("checkBoxFilmBlur.ToolTip")); // 260531Cl
             checkBoxFilmBlur.Size = new System.Drawing.Size(70, 18);
             checkBoxFilmBlur.TabIndex = 7;
-            checkBoxFilmBlur.Text = "Film Blur";
+            //checkBoxFilmBlur.Text = "Film Blur"; // 261105Cl 変更前
+            checkBoxFilmBlur.Text = "Film blur"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             checkBoxFilmBlur.UseVisualStyleBackColor = true;
             // 
             // label40
@@ -1139,6 +1153,7 @@
             // checkBoxMaskDiffractionPeaks
             // 
             checkBoxMaskDiffractionPeaks.AutoSize = true;
+            checkBoxMaskDiffractionPeaks.Enabled = false; // 261105Cl 追加 (監査 I17): 回折ピークでのマスクは作られず (面指数の一覧は空、Select area around the peaks は何もしない)、入れても他のマスクを外すだけなので灰色に
             checkBoxMaskDiffractionPeaks.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             checkBoxMaskDiffractionPeaks.Location = new System.Drawing.Point(9, 208);
             checkBoxMaskDiffractionPeaks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1160,7 +1175,8 @@
             toolTip.SetToolTip(checkBoxMaskManual, resources.GetString("checkBoxMaskManual.ToolTip")); // 260531Cl
             checkBoxMaskManual.Size = new System.Drawing.Size(93, 18);
             checkBoxMaskManual.TabIndex = 160;
-            checkBoxMaskManual.Text = "Manual Mask";
+            //checkBoxMaskManual.Text = "Manual Mask"; // 261105Cl 変更前
+            checkBoxMaskManual.Text = "Manual mask"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             checkBoxMaskManual.UseVisualStyleBackColor = true;
             checkBoxMaskManual.CheckedChanged += checkBoxManualMask_CheckedChanged;
             // 
@@ -1183,6 +1199,7 @@
             // checkedListBoxPlaneList
             // 
             checkedListBoxPlaneList.ColumnWidth = 70;
+            checkedListBoxPlaneList.Enabled = false; // 261105Cl 追加 (監査 I17): 中身を入れる処理 (SetPlaneIndex の本体) がコメントアウトされていて常に空なので灰色に
             checkedListBoxPlaneList.FormattingEnabled = true;
             checkedListBoxPlaneList.HorizontalExtent = 40;
             checkedListBoxPlaneList.HorizontalScrollbar = true;
@@ -1195,6 +1212,7 @@
             // 
             // buttonCheckAllIndices
             // 
+            buttonCheckAllIndices.Enabled = false; // 261105Cl 追加 (監査 I17): 対象の面指数の一覧が常に空なので灰色に
             buttonCheckAllIndices.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             buttonCheckAllIndices.Location = new System.Drawing.Point(63, 23);
             buttonCheckAllIndices.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
@@ -1202,12 +1220,14 @@
             toolTip.SetToolTip(buttonCheckAllIndices, resources.GetString("buttonCheckAllIndices.ToolTip")); // 260531Cl
             buttonCheckAllIndices.Size = new System.Drawing.Size(78, 24);
             buttonCheckAllIndices.TabIndex = 144;
-            buttonCheckAllIndices.Text = "Check All";
+            //buttonCheckAllIndices.Text = "Check All"; // 261105Cl 変更前
+            buttonCheckAllIndices.Text = "Check all"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             buttonCheckAllIndices.UseVisualStyleBackColor = true;
             buttonCheckAllIndices.Click += buttonCheckAllIndices_Click;
             // 
             // buttonUnmaskSelectedPeaks
             // 
+            buttonUnmaskSelectedPeaks.Enabled = false; // 261105Cl 追加 (監査 I17): 押しても何もしない (buttonUnmaskSelectedPeaks_Click が空) ので灰色に
             buttonUnmaskSelectedPeaks.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             buttonUnmaskSelectedPeaks.Location = new System.Drawing.Point(11, 154);
             buttonUnmaskSelectedPeaks.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
@@ -1221,6 +1241,7 @@
             // 
             // buttonUncheckAllIndices
             // 
+            buttonUncheckAllIndices.Enabled = false; // 261105Cl 追加 (監査 I17): 対象の面指数の一覧が常に空なので灰色に
             buttonUncheckAllIndices.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             buttonUncheckAllIndices.Location = new System.Drawing.Point(141, 23);
             buttonUncheckAllIndices.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
@@ -1228,7 +1249,8 @@
             toolTip.SetToolTip(buttonUncheckAllIndices, resources.GetString("buttonUncheckAllIndices.ToolTip")); // 260531Cl
             buttonUncheckAllIndices.Size = new System.Drawing.Size(80, 24);
             buttonUncheckAllIndices.TabIndex = 144;
-            buttonUncheckAllIndices.Text = "Uncheck All";
+            //buttonUncheckAllIndices.Text = "Uncheck All"; // 261105Cl 変更前
+            buttonUncheckAllIndices.Text = "Uncheck all"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             buttonUncheckAllIndices.UseVisualStyleBackColor = true;
             buttonUncheckAllIndices.Click += buttonUncheckAllIndices_Click;
             // 
@@ -1352,7 +1374,8 @@
             toolTip.SetToolTip(buttonMaskAll, resources.GetString("buttonMaskAll.ToolTip")); // 260531Cl
             buttonMaskAll.Size = new System.Drawing.Size(77, 24);
             buttonMaskAll.TabIndex = 145;
-            buttonMaskAll.Text = "Mask All";
+            //buttonMaskAll.Text = "Mask All"; // 261105Cl 変更前
+            buttonMaskAll.Text = "Mask all"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             buttonMaskAll.UseVisualStyleBackColor = true;
             buttonMaskAll.Click += buttonMaskAll_Click;
             // 
@@ -1382,6 +1405,7 @@
             // 
             // textBoxDiffractionInformation
             // 
+            textBoxDiffractionInformation.Enabled = false; // 261105Cl 追加 (監査 I17): 書き込む処理 (DiffractionInformation) の本体が空で、常に空欄なので灰色に
             textBoxDiffractionInformation.Location = new System.Drawing.Point(0, 0);
             textBoxDiffractionInformation.Multiline = true;
             textBoxDiffractionInformation.Name = "textBoxDiffractionInformation";
@@ -1412,7 +1436,8 @@
             toolTip.SetToolTip(buttonSaveImage, resources.GetString("buttonSaveImage.ToolTip")); // 260531Cl
             buttonSaveImage.Size = new System.Drawing.Size(82, 25);
             buttonSaveImage.TabIndex = 187;
-            buttonSaveImage.Text = "Save Image";
+            //buttonSaveImage.Text = "Save Image"; // 261105Cl 変更前
+            buttonSaveImage.Text = "Save image"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             buttonSaveImage.UseVisualStyleBackColor = true;
             buttonSaveImage.Click += buttonSaveImage_Click;
             // 

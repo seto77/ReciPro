@@ -263,7 +263,9 @@ et la plage d'ajustement dans la case à droite.</value>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
     <value>Ignore les réflexions cinématiquement interdites qui
 peuvent apparaître par diffraction multiple (dynamique),
-en les excluant du cliché calculé.</value>
+en les excluant du cliché calculé.
+Avec les rayons X et les neutrons, elles sont toujours
+ignorées (traitement cinématique).</value>
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
     <value>Demi-amplitude angulaire (le demi-angle de convergence,

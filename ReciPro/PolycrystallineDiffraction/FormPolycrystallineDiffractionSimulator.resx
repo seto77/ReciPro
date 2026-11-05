@@ -121,7 +121,7 @@ oscillation range (±°) and step (°) below.</value>
   </data>
   <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
     <value>Stop the fit automatically once the
-annealed 'Num per Step' falls below the
+annealed 'Num per step' falls below the
 threshold value (%) set on the right.</value>
   </data>
   <data name="checkBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
@@ -191,7 +191,7 @@ Orientation) fit. Larger = bigger steps; the value
 is annealed down (×0.8) as the fit converges.</value>
   </data>
   <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>Threshold value (%) for 'Num per Step': the fit stops
+    <value>Threshold value (%) for 'Num per step': the fit stops
 when the parameter is annealed below this level.</value>
   </data>
   <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">

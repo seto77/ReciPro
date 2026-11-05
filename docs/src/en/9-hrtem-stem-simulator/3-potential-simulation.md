@@ -12,7 +12,7 @@
 
 Electrons inside a crystal are scattered by the crystal potential. Its distribution underlies all diffraction and imaging phenomena and is key information for understanding crystal structure. Because this mode includes neither lens aberrations nor thickness-dependent dynamical effects, it is well suited to inspecting the structure itself.
 
-> **In potential mode the specimen-thickness, intensity-normalisation and image-mode (single / serial) panels are not shown.** Of the TEM conditions, only the accelerating voltage is active.
+> **In potential mode the specimen-thickness, intensity-normalisation and Single/serial mode panels are not shown.** Of the TEM conditions, only the accelerating voltage is active.
 
 ---
 
@@ -20,7 +20,7 @@ Electrons inside a crystal are scattered by the crystal potential. Its distribut
 
 ![TEM conditions](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **Acc. Voltage (kV)** — accelerating voltage. It sets the electron wavelength and is used to compute the Fourier coefficients $U_g$ of the potential.
+- **Acc. voltage** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> — accelerating voltage (kV). It sets the electron wavelength and is used to compute the Fourier coefficients $U_g$ of the potential.
 
 > **Defocus, Cs, Cc, β, ΔV and the PCTF are inactive in potential mode** (no image-formation optics is applied) and appear greyed out.
 
@@ -64,7 +64,7 @@ $U_g$ and $U'_g$ can be shown at the same time (one pane is added for each one t
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.resx:groupBoxDiffractedWaves.Text) -->
 ![Diffracted waves](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** — maximum number of Bloch waves (Fourier coefficients) included in the Fourier synthesis of the potential (default 80). Larger values include higher spatial frequencies and reproduce finer detail of the potential.
+- Maximum number of Bloch waves (Fourier coefficients) included in the Fourier synthesis of the potential (default 80). Larger values include higher spatial frequencies and reproduce finer detail of the potential.
 
 ---
 

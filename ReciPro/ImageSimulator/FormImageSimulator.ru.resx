@@ -164,11 +164,17 @@
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
     <value>N</value>
   </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>Нач.</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>Шаг</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
     <value>N</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>Нач.</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>Шаг</value>
@@ -305,7 +311,7 @@ Simulator"</value>
     <value>Установить дефокус по Шерцеру</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>Обнулить все аберрации</value>
+    <value>Идеальные условия (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
     <value>Функция передачи контраста (CTF)</value>
@@ -314,7 +320,7 @@ Simulator"</value>
     <value>Дефокус Δf</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>Уск. напряжение (kV)</value>
+    <value>Уск. напряжение</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Дефокус
@@ -371,8 +377,18 @@ Simulator"</value>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>Загрузить параметры ПЭМ</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Загружает условия моделирования из файла, сохранённого командой
+«Сохранить параметры ПЭМ» (*.rpis). Параметры, которых нет в файле
+(например, из старой версии), получают значения по умолчанию.</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить параметры ПЭМ</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Сохраняет текущие условия моделирования (те же параметры,
+что и в пресетах) в XML-файл (*.rpis), который можно открыть
+на другом ПК или передать коллегам.</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>Файл</value>
@@ -536,12 +552,14 @@ TDS (термическое диффузное рассеяние).</value>
 Относится только к опорному STEM-изображению (ADF / упругое / TDS) - для карт STEM-EDX не используется.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>Эффективный размер источника электронов (nm). Большие значения
-размывают STEM-зонд и снижают чёткость мелких деталей изображения.</value>
+    <value>Эффективный размер источника электронов: полная ширина на половине
+высоты (FWHM) гауссова изображения источника на образце (pm). Большие
+значения размывают STEM-зонд и снижают чёткость мелких деталей изображения.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
-    <value>Эффективный размер источника электронов (nm). Большие значения
-размывают STEM-зонд и снижают чёткость мелких деталей изображения.</value>
+    <value>Эффективный размер источника электронов: полная ширина на половине
+высоты (FWHM) гауссова изображения источника на образце (pm). Большие
+значения размывают STEM-зонд и снижают чёткость мелких деталей изображения.</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
     <value>Полуугол сходимости падающего STEM-зонда
@@ -914,7 +932,7 @@ U'g) как изображения действительной и мнимой 
     <value>Рассчитать карты EDX</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>Рассчитывает карты ионизации (EDX) для выбранных каналов элемент/оболочка.&#xD;&#xA;Опорное STEM-изображение (ADF / упругое / TDS) вычисляется всегда;&#xD;&#xA;каждый канал EDX добавляет после него ещё один проход ионизации.</value>
+    <value>Также рассчитывает карты STEM-EDX для всех характеристических рентгеновских каналов (элемент × оболочка),&#xD;&#xA;которые можно рассчитать для этого кристалла при этом ускоряющем напряжении (список ниже).&#xD;&#xA;Опорное STEM-изображение (ADF / упругое / TDS) вычисляется всегда;&#xD;&#xA;каждый канал EDX добавляет после него ещё один проход ионизации.</value>
   </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>Общая EDX</value>
@@ -927,5 +945,11 @@ U'g) как изображения действительной и мнимой 
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
     <value>Показывает элементную карту STEM-EDX вместо изображения типа ADF; характеристическая линия выбирается ниже. Для канала оболочки (K, L, M) значения — модельные ионизационные вакансии на один падающий электрон. Для серии линий (Kα, Kβ, Lα, Lβ, Mα) — число рентгеновских фотонов на один падающий электрон: выход флуоресценции, каскады Костера–Кронига и радиационные каскады и ветвление линий учтены, оже-каскад — нет. Самопоглощение, телесный угол и эффективность детектора НЕ учтены, поэтому ни то, ни другое не является предсказанным числом рентгеновских квантов.</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.HeaderText" xml:space="preserve">
+    <value>Полуугол сход. α</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
+    <value>Эфф. размер источника (FWHM)</value>
   </data>
 </root>

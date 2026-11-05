@@ -58,8 +58,8 @@ Ce manuel sur GitHub Pages constitue la référence actuelle. Utilisez la naviga
 
 ## Démarrage rapide
 1. Téléchargez et installez depuis [Releases](https://github.com/seto77/ReciPro/releases/latest).
-2. Sélectionnez un cristal dans la liste intégrée (~80 cristaux). Vous pouvez également importer des fichiers CIF ou utiliser [CSManager](https://github.com/seto77/CSManager).
-3. Appelez les fonctions depuis le panneau de droite : Visualiseur de structure, Stéréonet, Simulateur de diffraction, simulation HRTEM, etc.
+2. Sélectionnez un cristal dans la liste intégrée (66 cristaux). Vous pouvez également importer des fichiers CIF ou utiliser [CSManager](https://github.com/seto77/CSManager).
+3. Appelez les fonctions depuis le panneau de droite : Visualiseur de structure, Stéréonet, Simulateur de diffraction, HRTEM/STEM Simulator, etc.
 4. Faites pivoter le cristal par glisser de souris ou en saisissant des indices d'axe de zone / de plan.
 
 ## Référence

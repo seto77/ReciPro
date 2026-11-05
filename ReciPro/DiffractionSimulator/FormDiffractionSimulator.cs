@@ -371,6 +371,15 @@ public partial class FormDiffractionSimulator : FormBase
     public bool DynamicCompressionMode { get; set; } = false;
     public List<double[]> DynamicCompression_SpotInformation = [];
 
+    /// <summary>261105Cl 追加 (監査 C8): この画面の SetVector が作った各結晶の VectorOfG (配列の参照で比べる)。
+    /// EBSD・ステレオ投影なども同じ結晶の VectorOfG を自分の条件で作り直す (Crystal.SetVectorOfG は毎回新しい配列) ので、
+    /// Draw で違う配列になっていたら、この画面の条件 (d の範囲・禁制反射・色) で作り直してから描く</summary>
+    private readonly System.Runtime.CompilerServices.ConditionalWeakTable<Crystal, Vector3D[]> ownVectorOfG = new();
+
+    /// <summary>261105Cl 追加 (監査 C8): この画面の菊池線の候補。旧は formMain.Crystal.VectorOfG_KikuchiLine で、EBSD (表示・指数付け) と
+    /// 同じリストを上書きし合っていた</summary>
+    private List<Vector3D> kikuchiLines = [];
+
     public double MouseSpeedFactor
     {
         get
@@ -517,6 +526,12 @@ public partial class FormDiffractionSimulator : FormBase
         glControl = glControlZsort;
         splitContainer1.Panel2.Controls.Add(glControl);
         glControl.BringToFront();
+
+        // 261105Cl 追加 (作者決定 C20): スポットのラベルの d は主窓の Å/nm に従うので、切り替えたら描き直す (Load は一度しか来ないので購読も一度)
+        if (formMain?.crystalControl != null) // 261105Cl
+            //formMain.crystalControl.LengthUnitChanged += (s, ev) => { if (Visible && toolStripButtonDspacing.Checked) Draw(); }; // 261105Cl // 261106Cl 変更前: d のラベルだけ
+            // 261106Cl 変更 (作者決定 C2): 1/d・Sg のラベルとマウス位置の d・d⁻¹ も Å/nm に従う。ラベルは描き直し、マウス位置の欄は次にマウスを動かしたときに書き直す
+            formMain.crystalControl.LengthUnitChanged += (s, ev) => { if (Visible && (toolStripButtonDspacing.Checked || toolStripButtonDspacingInv.Checked || toolStripButtonExcitationError.Checked)) Draw(); }; // 261106Cl
     }
 
     //クローズ
@@ -562,6 +577,9 @@ public partial class FormDiffractionSimulator : FormBase
             FormDiffractionBeamTable.Visible = false;
             FormDiffractionSimulatorGeometry.Visible = false;
             FormDiffractionSimulatorCBED.Visible = false;
+            FormDiffractionSimulatorDynamicCompression.Visible = false; // 261105Cl 追加 (監査 C25): 本体を閉じても動的圧縮・試料ホルダー・ALCHEMI の窓が残っていた
+            FormDiffractionSimulatorHolder.Visible = false; // 261105Cl
+            FormALCHEMI.Visible = false; // 261105Cl
         }
     }
 
@@ -704,8 +722,13 @@ public partial class FormDiffractionSimulator : FormBase
         if (!SetProjection(g))
             return;
 
+        // 261105Cl 追加 (監査 C8): EBSD・ステレオ投影などが同じ結晶の VectorOfG を自分の条件 (d の範囲・Flag1・色なし) で作り直した後は、
+        //  黒いスポット・禁制反射の設定の無視などになっていた。この画面の SetVector が作った配列でなければ作り直してから描く
+        if (toolStripButtonDiffractionSpots.Checked && formMain.Crystals.Any(c => !ownVectorOfG.TryGetValue(c, out var own) || !ReferenceEquals(own, c.VectorOfG))) // 261105Cl
+            SetVector(); // 261105Cl
+
         //背景を描画
-        if (drawOverlappedImage)
+        //if (drawOverlappedImage) // 261105Cl 変更前 (監査 C10): 重ね画像を描かないとき (検出器範囲の保存・コピーで "No") は背景まで描かず、透明な画像になっていた
         {
             var topleft = convertScreenToDetector(new Point(0, 0));
             var bottomright = convertScreenToDetector(new Point(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height));
@@ -938,7 +961,8 @@ public partial class FormDiffractionSimulator : FormBase
         var linearCoeff = Math.Pow(trackBarIntensityForPointSpread.Value / 400.0, 6) * 100;
         var logCoeff = 16.0 * trackBarIntensityForPointSpread.Value / trackBarIntensityForPointSpread.Maximum;
 
-        if (Source == WaveSource.Xray)
+        //if (Source == WaveSource.Xray) // 261105Cl 変更前 (監査 C14): 中性子も X 線と同じ 0.1 nm 程度の波長でスポットの σ が大きいのに補正が無く、ガウス表示でほとんど描かれなかった
+        if (Source != WaveSource.Electron) // 261105Cl
         {
             linearCoeff *= 1000;
             logCoeff *= 1000000;
@@ -963,7 +987,9 @@ public partial class FormDiffractionSimulator : FormBase
                     .Where(g => g.Flag1)//Flag1がtrueのものだけを取り出し、
                     .Select(g => new Vector3D(crystal.RotationMatrix * g) { Index = g.Index, Flag1 = true, RelativeIntensity = g.RelativeIntensity, Text = g.Text })//回転させて新しいリストを作る
                     .Where(g => g.Length2 - 2 * g.Z * maxEwaldR < 0 && g.Z2 / g.Length2 > minCosTheta2).ToList();//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別
-                if (gVector.Count == 0) return null;
+                // 261105Cl 変更 (監査 C17): 結晶ごとのループの中で return していたので、複数の結晶を選んでも 1 つ目しか描かれなかった。次の結晶へ進む
+                //if (gVector.Count == 0) return null; // 261105Cl 変更前
+                if (gVector.Count == 0) continue; // 261105Cl
                 //260403Cl indexから位置へのDictionaryを構築 (IndexOfの線形検索→O(1)ルックアップ)
                 //var indexList = gVector.Select(g => g.Index).ToList();
                 var indexDict = new Dictionary<(int h, int k, int l), int>();
@@ -995,12 +1021,14 @@ public partial class FormDiffractionSimulator : FormBase
                 });
 
                 gVector = [.. gVector.Where(g => g.Flag1)];
-                if (gVector.Count == 0) return null;
+                //if (gVector.Count == 0) return null; // 261105Cl 変更前 (監査 C17)
+                if (gVector.Count == 0) continue; // 261105Cl
                 var maxIntensity = gVector.Max(g => g.RelativeIntensity);
                 Parallel.ForEach(gVector, g => g.RelativeIntensity /= maxIntensity);
 
                 //スポットを描画
-                var color = colorControlNoCondition.Color;
+                //var color = colorControlNoCondition.Color; // 261105Cl 変更前 (監査 C17)
+                var color = formMain.Crystals.Length == 1 && !checkBoxUseCrystalColor.Checked ? colorControlNoCondition.Color : Color.FromArgb(crystal.Argb); // 261105Cl 他のモード (SetVector) と同じく、複数の結晶は結晶の色で
                 foreach (var g in gVector.Where(g => g.RelativeIntensity > 0))
                 {
                     var pt = new PointD(g.X, g.Y);
@@ -1029,15 +1057,16 @@ public partial class FormDiffractionSimulator : FormBase
                     }
                 }
 
-                //ダイレクトスポットの描画
-                var origin = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0));
-                if (IsScreenArea(origin))
-                {
-                    //graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), origin, spotRadiusOnDetector); // (260611Ch) 旧: Pen が未解放
-                    using var originPen = new Pen(colorControlOrigin.Color, (float)Resolution); // (260611Ch)
-                    graphics.DrawCross(originPen, origin, spotRadiusOnDetector);
-                }
-                return null;
+                //ダイレクトスポットの描画 → 261105Cl (監査 C17) 全結晶を描いた後 (foreach の後) へ移した
+                //var origin = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0)); // 261105Cl 変更前 (以下 return null まで)
+                //if (IsScreenArea(origin))
+                //{
+                //    //graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), origin, spotRadiusOnDetector); // (260611Ch) 旧: Pen が未解放
+                //    using var originPen = new Pen(colorControlOrigin.Color, (float)Resolution); // (260611Ch)
+                //    graphics.DrawCross(originPen, origin, spotRadiusOnDetector);
+                //}
+                //return null;
+                continue; // 261105Cl
                 #endregion
             }
             //ベーテ法による動力学回折の場合
@@ -1211,6 +1240,16 @@ public partial class FormDiffractionSimulator : FormBase
                 }
             }
         }
+        if (radioButtonBeamBackLaue.Checked) // 261105Cl 追加 (監査 C17): Back Laue のダイレクトスポット (入射ビームの穴) は全結晶を描いた後に 1 回だけ描く (旧は 1 つ目の結晶のループ内)
+        {
+            var origin = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0)); // 261105Cl
+            if (IsScreenArea(origin)) // 261105Cl
+            {
+                using var originPen = new Pen(colorControlOrigin.Color, (float)Resolution); // 261105Cl
+                graphics.DrawCross(originPen, origin, spotRadiusOnDetector); // 261105Cl
+            }
+            return null; // 261105Cl
+        }
         if (outputOnlySpotInformation)
             return [.. spotInformation];
 
@@ -1270,9 +1309,24 @@ public partial class FormDiffractionSimulator : FormBase
             else
                 sb.AppendLine(g.Text);
         }
-        if (toolStripButtonDspacing.Checked) sb.AppendLine($"{g.d * 10:#.###} Å");
-        if (toolStripButtonDspacingInv.Checked) sb.AppendLine($"{1 / g.d:#.###} /nm");
-        if (toolStripButtonDistance.Checked) sb.AppendLine($"{CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2)):#.###} mm");
+        //if (toolStripButtonDspacing.Checked) sb.AppendLine($"{g.d * 10:#.###} Å"); // 261105Cl 変更前: d だけ Å 固定 (ほかのラベルは nm)
+        // 261105Cl 変更 (作者決定 C20): d の単位は主窓の格子定数の欄の Å/nm の切り替えに従う (切り替えたら Load で購読した LengthUnitChanged で描き直す)
+        if (toolStripButtonDspacing.Checked) // 261105Cl
+            sb.AppendLine(formMain?.crystalControl?.LengthUnit == LengthUnitEnum.NanoMeter ? $"{g.d:0.####} nm" : $"{g.d * 10:#.###} Å"); // 261105Cl
+        //if (toolStripButtonDspacingInv.Checked) sb.AppendLine($"{1 / g.d:#.###} /nm"); // 261106Cl 変更前: 1/d は nm⁻¹ 固定
+        // 261106Cl 変更 (作者決定 C2): 1/d と Sg も主窓の Å/nm に従う (Å なら Å⁻¹)。桁は d のラベルと同じ考え方で、値が 1/10 になる Å⁻¹ は小数を 1 桁多く
+        var nanometer = formMain?.crystalControl?.LengthUnit == LengthUnitEnum.NanoMeter; // 261106Cl
+        if (toolStripButtonDspacingInv.Checked) // 261106Cl
+            sb.AppendLine(nanometer ? $"{1 / g.d:#.###} nm⁻¹" : $"{0.1 / g.d:0.####} Å⁻¹"); // 261106Cl
+        //if (toolStripButtonDistance.Checked) sb.AppendLine($"{CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2)):#.###} mm"); // 261105Cl 変更前 (監査 C15)
+        // 261105Cl 変更: CL·tan2θ は傾けていない平板の検出器でしか画面上の距離と合わない (検出器の傾斜・X 線プリセッション CL·λ/d・Back Laue で違う)。
+        //  ツールチップのとおり「透過スポットまでの検出器上の距離」を、描いた位置 pt と透過スポットの位置 (Back Laue は入射ビームの穴 = 原点) から求める
+        if (toolStripButtonDistance.Checked) // 261105Cl
+        {
+            var distance = (pt - ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0))).Length; // 261105Cl
+            if (!double.IsNaN(distance)) // 261105Cl 透過波が検出器に当たらないほど傾けたときは書かない
+                sb.AppendLine($"{distance:#.###} mm"); // 261105Cl
+        }
         if (toolStripButton2Theta.Checked || toolStripButtonAzimuth.Checked)//260703Cl 追加: 散乱角2θと方位角χのラベル (issue #64)。スケール(同心円/放射線)と同じ定義になるよう実空間座標から算出
         {
             var real = convertDetectorToReal(pt);
@@ -1280,6 +1334,8 @@ public partial class FormDiffractionSimulator : FormBase
             if (toolStripButton2Theta.Checked)//260703Cl X線プリセッション時はスケール同心円(get2ThetaRangeと同じ) 2θ=2·asin(r/2/CL2) の定義に合わせる
             {
                 var twoTheta = radioButtonBeamPrecessionXray.Checked ? 2 * Math.Asin(Math.Sqrt(real.X2Y2) / CameraLength2 / 2) : Math.Acos(real.Z / real.Length);
+                if (radioButtonBeamBackLaue.Checked) // 261105Cl 追加 (監査 C13): Back Laue の検出器は入射側にあり、軸からの角は 180° − 2θ (DrawDiffractionSpots の後方散乱の写像)
+                    twoTheta = Math.PI - twoTheta; // 261105Cl
                 if (!double.IsNaN(twoTheta))//260703Cl プリセッション時、r > 2·CL2 の定義域外スポット(スケール円が届かない領域)では NaN になるので省略
                     sb.AppendLine($"2θ {twoTheta / Math.PI * 180:0.###}°");
             }
@@ -1287,7 +1343,8 @@ public partial class FormDiffractionSimulator : FormBase
             if (toolStripButtonAzimuth.Checked && real.X2Y2 > 1E-20)//260703Cl 既存プロパティX2Y2を利用。直接スポット(000)では方位角が定義できないので省略
                 sb.AppendLine($"χ {Math.Atan2(real.X, -real.Y) / Math.PI * 180:0.##}°");//画面上向きが0°、時計回りが正 (方位角スケール線と同じ定義)
         }
-        if (toolStripButtonExcitationError.Checked) sb.AppendLine($"{error:f3} /nm");
+        //if (toolStripButtonExcitationError.Checked) sb.AppendLine($"{error:f3} /nm"); // 261106Cl 変更前
+        if (toolStripButtonExcitationError.Checked) sb.AppendLine(nanometer ? $"{error:f3} nm⁻¹" : $"{error / 10:f4} Å⁻¹"); // 261106Cl 変更 (作者決定 C2): error は nm⁻¹
 
         if (toolStripButtonFg.Checked)
         {
@@ -1310,7 +1367,9 @@ public partial class FormDiffractionSimulator : FormBase
     {
         //260805Cl 追加: Dynamical band モード。プロファイルが揃っていればバンドを描き、
         //ラベル不要ならここで終了。未完成 (worker 計算中) は従来の幾何線で fallback する。
-        bool dynamicalDrawn = KikuchiModeSelected == KikuchiMode.DynamicalBand && DrawKikuchiDynamicalBands(graphics); //260806Cl enum 化
+        //bool dynamicalDrawn = KikuchiModeSelected == KikuchiMode.DynamicalBand && DrawKikuchiDynamicalBands(graphics); //260806Cl enum 化 // 261105Cl 変更前 (監査 C9)
+        // 261105Cl 変更: 動力学バンドは電子線の計算 (Energy を kV とみなす)。X 線 (keV)・中性子 (meV) では計算せず幾何の線で描く (注記は UpdateKikuchiNotice)
+        bool dynamicalDrawn = KikuchiModeSelected == KikuchiMode.DynamicalBand && Source == WaveSource.Electron && DrawKikuchiDynamicalBands(graphics); // 261105Cl
         if (dynamicalDrawn && !toolStripButtonIndexLabels.Checked)
             return;
 
@@ -1327,7 +1386,8 @@ public partial class FormDiffractionSimulator : FormBase
         //var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替 // (260611Ch) 旧: 未解放
         using var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替 // (260611Ch)
         using var brush = new SolidBrush(colorControlString.Color); // (260611Ch)
-        foreach (var g in formMain.Crystal.VectorOfG_KikuchiLine)
+        //foreach (var g in formMain.Crystal.VectorOfG_KikuchiLine) // 261105Cl 変更前 (監査 C8)
+        foreach (var g in kikuchiLines) // 261105Cl
         {
             double sinTheta = WaveLength * g.Length / 2, sin2Theta = sinTheta * sinTheta;
 
@@ -1393,7 +1453,8 @@ public partial class FormDiffractionSimulator : FormBase
                             graphics.TranslateTransform(pts[^1].X, pts[^1].Y);
                             graphics.RotateTransform(θ + Math.PI);
                         }
-                        graphics.DrawString(g.Text, font, brush, new PointF(0, 0));
+                        //graphics.DrawString(g.Text, font, brush, new PointF(0, 0)); // 261105Cl 変更前 (監査 C23): 4 指数表記の設定でも 3 指数だった (スポットのラベルは 4 指数)
+                        graphics.DrawString(formMain.MillerBravaisActive ? FormMain.PlaneString(g.Index.h, g.Index.k, g.Index.l, true) : g.Text, font, brush, new PointF(0, 0)); // 261105Cl
                         graphics.Transform = original;
                     }
                 }
@@ -1459,7 +1520,8 @@ public partial class FormDiffractionSimulator : FormBase
         double Thickness, int BandNum, int Samples, double KV, List<Vector3D> GList);
 
     private KikuchiRequestKey KikuchiCurrentKey(Crystal crystal) => new(
-        crystal.RotationMatrix.Tuple, Thickness, numericBoxKikuchiBandNumber.ValueInteger, KikuchiSampleCount, Energy, crystal.VectorOfG_KikuchiLine);
+        //crystal.RotationMatrix.Tuple, Thickness, numericBoxKikuchiBandNumber.ValueInteger, KikuchiSampleCount, Energy, crystal.VectorOfG_KikuchiLine); // 261105Cl 変更前 (監査 C8)
+        crystal.RotationMatrix.Tuple, Thickness, numericBoxKikuchiBandNumber.ValueInteger, KikuchiSampleCount, Energy, kikuchiLines); // 261105Cl SetVector は毎回新しい List を作る
 
     /// <summary>
     /// 動力学バンドを描画できたら true。プロファイル未完成のときは false (呼び出し側が幾何線 fallback)。
@@ -1527,7 +1589,8 @@ public partial class FormDiffractionSimulator : FormBase
     private void ScheduleKikuchiComputeIfStale()
     {
         var crystal = formMain?.Crystal;
-        if (crystal?.VectorOfG_KikuchiLine == null || crystal.VectorOfG_KikuchiLine.Count == 0)
+        //if (crystal?.VectorOfG_KikuchiLine == null || crystal.VectorOfG_KikuchiLine.Count == 0) // 261105Cl 変更前 (監査 C8)
+        if (crystal == null || kikuchiLines == null || kikuchiLines.Count == 0) // 261105Cl
             return;
         var key = KikuchiCurrentKey(crystal);
         if (kikuchiProfiles != null && key == kikuchiProfilesKey && kikuchiSnapshot?.Matches(crystal, Energy) == true)
@@ -1549,7 +1612,8 @@ public partial class FormDiffractionSimulator : FormBase
     private void StartKikuchiCompute()
     {
         var crystal = formMain?.Crystal;
-        if (IsDisposed || crystal?.VectorOfG_KikuchiLine == null || KikuchiModeSelected != KikuchiMode.DynamicalBand) //260806Cl /simplify2 (H1): 破棄後の timer 発火を無害化。enum 化
+        //if (IsDisposed || crystal?.VectorOfG_KikuchiLine == null || KikuchiModeSelected != KikuchiMode.DynamicalBand) //260806Cl /simplify2 (H1): 破棄後の timer 発火を無害化。enum 化 // 261105Cl 変更前 (監査 C8)
+        if (IsDisposed || crystal == null || kikuchiLines == null || KikuchiModeSelected != KikuchiMode.DynamicalBand || Source != WaveSource.Electron) // 261105Cl 電子線のみ (監査 C9。予約の後に線源を変えた場合)
             return;
         var key = KikuchiCurrentKey(crystal); //260806Cl /simplify: 取込条件は key と同一値から取る (4 箇所列挙のドリフト防止)
         var kV = key.KV;
@@ -1649,6 +1713,14 @@ public partial class FormDiffractionSimulator : FormBase
             var twoTheta = 2 * Math.Asin(WaveLength / 2 / formMain.Crystal.Plane[n].d);
 
             var ptsArray = Geometry.ConicSection(twoTheta, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
+            if (radioButtonBeamPrecessionXray.Checked) // 261105Cl 追加 (監査 C6): X 線プリセッションの写真は逆格子の 0 層の等倍像なので、リングの半径は CL·λ/d = 2·CL·sinθ
+            {                                          //  (目盛の 2θ の同心円 DrawScale と同じ)。平板の円錐の式 CL·tan2θ では 2θ = 30° で約 11% 大きかった
+                var ringRadius = 2 * CameraLength2 * Math.Sin(twoTheta / 2); // 261105Cl
+                var circle = new PointD[3600]; // 261105Cl
+                for (int i = 0; i < circle.Length; i++) // 261105Cl
+                    circle[i] = ringRadius * new PointD(Math.Cos(i / 1800.0 * Math.PI), Math.Sin(i / 1800.0 * Math.PI)); // 261105Cl
+                ptsArray = [[.. circle]]; // 261105Cl
+            }
 
             var red = (int)(ringR * intensity + bgR * (1 - intensity));
             var green = (int)(ringG * intensity + bgG * (1 - intensity));
@@ -1663,7 +1735,12 @@ public partial class FormDiffractionSimulator : FormBase
             if (checkBoxDebyeRingLabel.Checked && !double.IsNaN(labelPosition.X))
             {
 
-                g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, colorControlString.Color, convertDetectorToScreen(labelPosition), true);
+                //g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, colorControlString.Color, convertDetectorToScreen(labelPosition), true); // 261105Cl 変更前 (監査 C23)
+                var hkl = formMain.Crystal.Plane[n].strHKL; // 261105Cl "h k l" または "h k l + h k l + …"
+                if (formMain.MillerBravaisActive) // 261105Cl 4 指数表記の設定なら各面を "h k i l" に
+                    hkl = string.Join(" + ", hkl.Split(" + ").Select(s => s.Split(' ', StringSplitOptions.RemoveEmptyEntries) is [var h, var k, var l] && int.TryParse(h, out var hi) && int.TryParse(k, out var ki) && int.TryParse(l, out var li)
+                        ? FormMain.PlaneString(hi, ki, li, true) : s)); // 261105Cl
+                g.DrawString("{" + hkl.Replace(" + ", "} + {") + "}", font, colorControlString.Color, convertDetectorToScreen(labelPosition), true); // 261105Cl
                 //g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, new SolidBrush(colorControlString.Color), labelPosition.ToPointF());
 
             }
@@ -1811,7 +1888,8 @@ public partial class FormDiffractionSimulator : FormBase
             var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 20)), originSrc, -135);
             if (checkBoxScaleLabel.Checked && !double.IsNaN(labelPosition.X))
             {
-                g.DrawString($"{twoTheta:g12}°", font, colorControlScale2Theta.Color, convertDetectorToScreen(labelPosition), true);
+                //g.DrawString($"{twoTheta:g12}°", font, colorControlScale2Theta.Color, convertDetectorToScreen(labelPosition), true); // 261105Cl 変更前 (監査 C13): Back Laue では軸からの角 (= 180° − 2θ) を 2θ として書いていた
+                g.DrawString($"{(radioButtonBeamBackLaue.Checked ? 180 - twoTheta : twoTheta):g12}°", font, colorControlScale2Theta.Color, convertDetectorToScreen(labelPosition), true); // 261105Cl
                 //g.DrawString(twoTheta.ToString("g12") + "°", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
             }
 
@@ -1954,6 +2032,13 @@ public partial class FormDiffractionSimulator : FormBase
         //(UpdateKikuchiModeVisibility) ので、Text を空にする必要はない
         if (KikuchiModeSelected != KikuchiMode.DynamicalBand) //260806Cl enum 化
             return;
+        if (Source != WaveSource.Electron) // 261105Cl 追加 (監査 C9): X 線・中性子では動力学バンドを計算せず線で描く (DrawKikuchiLine)
+        {
+            labelKikuchiNotice.Text = Crystallography.Localization.Loc(en: "Electron beam only: drawn as lines", ja: "電子線のみ: 線で表示", // 261105Cl
+                de: "Nur Elektronen: als Linien", fr: "Électrons seulement : lignes", es: "Solo electrones: como líneas", pt: "Só elétrons: como linhas", // 261105Cl
+                it: "Solo elettroni: come linee", ru: "Только электроны: линии", zhHans: "仅限电子束：以线显示", zhHant: "僅限電子束：以線顯示", ko: "전자선 전용: 선으로 표시"); // 261105Cl
+            return; // 261105Cl
+        }
         //260806Cl i18n: 組み立て部を Loc 化 (EN/JA。他言語は EN フォールバック)。
         //⚠表示するのは KikuchiProfileCalculator.DisplayNormalizedTag ("source-loss not balanced") と
         //同義の短縮形 "source-loss unbalanced"。定数そのものは幅に収まらないので参照していない
@@ -2010,7 +2095,8 @@ public partial class FormDiffractionSimulator : FormBase
         //260606Cl X線異常分散 f'/f'' を構造因子へ反映するか。上で設定した Enabled(単色X線=平行/X線歳差のみ。Back Laue 等で無効)に集約済みの条件を再利用し二重管理を避ける。
         bool useAnomalousDispersion = checkBoxAnomalousDispersion.Checked && checkBoxAnomalousDispersion.Enabled;
 
-        if (toolStripButtonDiffractionSpots.Checked)
+        //if (toolStripButtonDiffractionSpots.Checked) // 261105Cl 変更前 (監査 C12): Spots を外して菊池線だけのとき、菊池線の候補の元 (VectorOfG) が作り直されず、波長などを変えても古いまま (未作成なら何も出ない)
+        if (toolStripButtonDiffractionSpots.Checked || toolStripButtonKikuchiLines.Checked) // 261105Cl
         {
             if (radioButtonBeamBackLaue.Checked)//Back Laueのとき
             {
@@ -2021,6 +2107,7 @@ public partial class FormDiffractionSimulator : FormBase
             foreach (var crystal in formMain.Crystals)
             {
                 crystal.SetVectorOfG(minD, maxD, Source, xrayEnergyKeV: Energy, anomalousDispersion: useAnomalousDispersion);//260606Cl X線異常分散(f'/f'')を反映(既定ON, チェックOFF/非X線/Back Laue で無効)
+                ownVectorOfG.AddOrUpdate(crystal, crystal.VectorOfG); // 261105Cl 追加 (監査 C8)
 
                 var latticeType = crystal.Symmetry.LatticeTypeStr;
 
@@ -2060,9 +2147,11 @@ public partial class FormDiffractionSimulator : FormBase
 
         if (toolStripButtonKikuchiLines.Checked)
         {
+            // 261105Cl 変更 (監査 C8): formMain.Crystal.VectorOfG_KikuchiLine (EBSD と共有) でなく、この画面の kikuchiLines に入れる
             if (radioButtonKikuchiThresholdOfLength.Checked)
             {
-                formMain.Crystal.VectorOfG_KikuchiLine =
+                //formMain.Crystal.VectorOfG_KikuchiLine = // 261105Cl 変更前
+                kikuchiLines = // 261105Cl
                 [.. formMain.Crystal.VectorOfG.Where(g => g.Length < numericBoxKikuchiThresholdOfLength.Value).OrderByDescending(g => g.Length)];
             }
             else
@@ -2076,8 +2165,10 @@ public partial class FormDiffractionSimulator : FormBase
                     else
                         break;
                 }
-                formMain.Crystal.VectorOfG_KikuchiLine = list[0..max];
-                formMain.Crystal.VectorOfG_KikuchiLine.Reverse();
+                //formMain.Crystal.VectorOfG_KikuchiLine = list[0..max]; // 261105Cl 変更前
+                //formMain.Crystal.VectorOfG_KikuchiLine.Reverse();
+                kikuchiLines = list[0..max]; // 261105Cl
+                kikuchiLines.Reverse(); // 261105Cl
             }
         }
         toolStripStatusLabelTimeForSearchingG.Text = $"Time for searching g-vectors: {StatusBarHelper.FormatElapsed(sw.Elapsed)}.  ";// 260520Cl 時間表記を統一
@@ -2288,6 +2379,8 @@ public partial class FormDiffractionSimulator : FormBase
         if (FormDiffractionSimulatorHolder.Visible)
             FormDiffractionSimulatorHolder.CrystalChanged();
 
+        if (FormALCHEMI?.Visible == true) // 261105Cl 追加 (監査 #19): 開いたままの ALCHEMI のサイト・チャネル一覧を新しい結晶で作り直す
+            FormALCHEMI.RefreshLists();
     }
     #endregion
 
@@ -2317,14 +2410,18 @@ public partial class FormDiffractionSimulator : FormBase
 
                 //最も方向が近くて、逆格子原点からも近い点を表示
                 #region 最大θを検索
+                // 261105Cl 変更 (監査 C16): 描画 (DrawDiffractionSpots の Back Laue) と候補の条件が違っていた。描画は get2ThetaRange の最大角と cos² で
+                //  選ぶのに、ここは画面の 2 倍の範囲の四隅から最大角を求め、cos² を cos と比べていた (端に描かれたスポットが候補から漏れる)。描画と同じ条件にする
                 //260717Cl 変更: 一時配列 + LINQ Max を Math.Max ネストに
-                var L = Math.Max(
-                    Math.Max(convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length,
-                             convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length),
-                    Math.Max(convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length,
-                             convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length));
-                var maxTwoTheta = Math.Atan(L / CameraLength2);
-                var minCosTheta = Math.Cos(maxTwoTheta / 2);
+                //var L = Math.Max( // 261105Cl 変更前 (以下 minCosTheta まで)
+                //    Math.Max(convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length,
+                //             convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length),
+                //    Math.Max(convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length,
+                //             convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length));
+                //var maxTwoTheta = Math.Atan(L / CameraLength2);
+                //var minCosTheta = Math.Cos(maxTwoTheta / 2);
+                var (_, maxTwoTheta) = get2ThetaRange(); // 261105Cl
+                double minCosTheta = Math.Cos(maxTwoTheta / 2), minCosTheta2 = minCosTheta * minCosTheta; // 261105Cl
                 #endregion
 
                 var maxEwaldR = 1 / UniversalConstants.Convert.EnergyToXrayWaveLength(50_000);
@@ -2332,7 +2429,8 @@ public partial class FormDiffractionSimulator : FormBase
                 var gVector = crystal.VectorOfG_P
                   .Where(g => g.Flag1)//Flag1がtrueのものだけを取り出し、
                   .Select(g => new Vector3D(crystal.RotationMatrix * g) { Index = g.Index, Flag1 = true, RelativeIntensity = g.RelativeIntensity, F = g.F, Text = g.Text })//回転させて新しいリストを作る
-                  .Where(g => g.Length2 - 2 * g.Z * maxEwaldR < 0 && g.Z * g.Z / g.Length2 > minCosTheta)//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別
+                  //.Where(g => g.Length2 - 2 * g.Z * maxEwaldR < 0 && g.Z * g.Z / g.Length2 > minCosTheta)//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別 // 261105Cl 変更前
+                  .Where(g => g.Length2 - 2 * g.Z * maxEwaldR < 0 && g.Z * g.Z / g.Length2 > minCosTheta2)//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別 // 261105Cl
                   .OrderByDescending(g => g * v / g.Length).ToList();//ベクトルv に近いもの順に並び替え
                 if (gVector.Count == 0) return;
 
@@ -2451,11 +2549,17 @@ public partial class FormDiffractionSimulator : FormBase
         labelMousePositionReciprocal.Text = radioButtonBeamBackLaue.Checked ? $"(-, -, -)" : $"({invPos.X:f3}, {invPos.Y:f3}, {invPos.Z:f3})";
 
         //labelDinv.Text = radioButtonBeamBackLaue.Checked ? "$d⁻¹: - nm⁻¹" : $"d⁻¹: {invPos.Length:f4} nm⁻¹"; // 261105Cl 変更前: Back Laue で "$" がそのまま出ていた
-        labelDinv.Text = radioButtonBeamBackLaue.Checked ? "d⁻¹: - nm⁻¹" : $"d⁻¹: {invPos.Length:f4} nm⁻¹"; // 261105Cl 修正
+        //labelDinv.Text = radioButtonBeamBackLaue.Checked ? "d⁻¹: - nm⁻¹" : $"d⁻¹: {invPos.Length:f4} nm⁻¹"; // 261105Cl 修正 // 261106Cl 変更前: nm⁻¹ 固定
+        // 261106Cl 変更 (作者決定 C2): マウス位置の d・d⁻¹ も主窓の Å/nm に従う (Å なら Å・Å⁻¹)。桁はスポットのラベルと同じく、値が 1/10 になる側を 1 桁多く
+        var nanometer = formMain?.crystalControl?.LengthUnit == LengthUnitEnum.NanoMeter; // 261106Cl
+        labelDinv.Text = radioButtonBeamBackLaue.Checked ? $"d⁻¹: - {(nanometer ? "nm⁻¹" : "Å⁻¹")}" // 261106Cl
+            : nanometer ? $"d⁻¹: {invPos.Length:f4} nm⁻¹" : $"d⁻¹: {invPos.Length / 10:f5} Å⁻¹"; // 261106Cl (invPos は nm⁻¹)
         var d = 1.0 / invPos.Length;
         //labelD.Text = radioButtonBeamBackLaue.Checked ? "$\"d: - nm\" " : $"d: {d:f4} nm"; // 261105Cl 変更前: Back Laue で $"d: - nm" (引用符と末尾の空白込み) と出ていた
-        labelD.Text = radioButtonBeamBackLaue.Checked ? "d: - nm" : $"d: {d:f4} nm"; // 261105Cl 修正
-        var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d);
+        //labelD.Text = radioButtonBeamBackLaue.Checked ? "d: - nm" : $"d: {d:f4} nm"; // 261105Cl 修正 // 261106Cl 変更前: nm 固定
+        labelD.Text = radioButtonBeamBackLaue.Checked ? $"d: - {(nanometer ? "nm" : "Å")}" : nanometer ? $"d: {d:f4} nm" : $"d: {d * 10:f3} Å"; // 261106Cl 変更 (作者決定 C2)
+        //var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d); // 261105Cl 変更前 (監査 C13): Back Laue では前方の写像の角 (= 180° − 2θ) が出ていた
+        var twoThetaRad = radioButtonBeamBackLaue.Checked ? Math.PI - Math.Atan2(Math.Sqrt(realPos.X2Y2), realPos.Z) : 2 * Math.Asin(WaveLength / 2 / d); // 261105Cl 検出器は入射側
         var twoThetaDeg = twoThetaRad / Math.PI * 180;
         labelTwoThetaDeg.Text = $"2θ: {twoThetaDeg:g4}°";
         labelTwoThetaRad.Text = $"2θ: {(twoThetaRad < 0.1 ? $"{twoThetaRad * 1000:g4} mrad" : $"{twoThetaRad:g4} rad")}";
@@ -2492,8 +2596,10 @@ public partial class FormDiffractionSimulator : FormBase
             //コントロールキーが押されていて、かつ検出器エリアが表示の時
             else if ((ModifierKeys & Keys.Control) == Keys.Control && FormDiffractionSimulatorGeometry.ShowDetectorArea)
             {
+                SkipEvent = true; // 261105Cl 追加 (監査 D11): Geometry 窓の検出器の欄の ValueChanged (親を描き直す) を X・Y の 2 回走らせない。描画は下で 1 回
                 FormDiffractionSimulatorGeometry.FootX += (lastMousePositionScreen.X - e.X) * Resolution / FormDiffractionSimulatorGeometry.DetectorPixelSize;
                 FormDiffractionSimulatorGeometry.FootY += (lastMousePositionScreen.Y - e.Y) * Resolution / FormDiffractionSimulatorGeometry.DetectorPixelSize;
+                SkipEvent = false; // 261105Cl 追加
                 if (FormDiffractionSimulatorGeometry.Visible)
                     FormDiffractionSimulatorGeometry.Refresh();
                 Draw(null, false);
@@ -2546,35 +2652,54 @@ public partial class FormDiffractionSimulator : FormBase
     /// <param name="e"></param>
     private void presetToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var name = (sender as ToolStripMenuItem).Text.Split(" ", true);
-        if (name[0].Contains("Electron"))
+        // 261105Cl 変更 (監査 #36・C3): 翻訳後のメニュー文字列 ("Elektron 300 kV" など) を "Electron"/"X-ray" と比べていたため、
+        //  de/es/fr/it/ko/pt/ru/zh の 8 言語では何も起きなかった。押されたメニュー項目そのもので判定する (値は英語の表示と同じ)。
+        //var name = (sender as ToolStripMenuItem).Text.Split(" ", true); // 261105Cl 変更前 (以下 if 文の終わりまで)
+        //if (name[0].Contains("Electron"))
+        //{
+        //    Source = WaveSource.Electron;
+        //    Energy = name[1].ToDouble();
+        //
+        //}
+        //else if (name[0].Contains("X-ray"))
+        //{
+        //    Source = WaveSource.Xray;
+        //    if (name.Length == 3)
+        //    {
+        //        waveLengthControl.XrayWaveSourceElementNumber = 0;
+        //        Energy = name[1].ToDouble();
+        //    }
+        //    else
+        //    {
+        //        if (name[3] == "(MoKα₁)")
+        //        {
+        //            waveLengthControl.XrayWaveSourceElementNumber = 42;
+        //            waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
+        //        }
+        //        else if (name[3] == "(CuKα₁)")
+        //        {
+        //            waveLengthControl.XrayWaveSourceElementNumber = 29;
+        //            waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
+        //        }
+        //
+        //    }
+        //}
+        if (sender == electron300KVToolStripMenuItem || sender == electron200KVToolStripMenuItem || sender == electron120KeVToolStripMenuItem) // 261105Cl
         {
-            Source = WaveSource.Electron;
-            Energy = name[1].ToDouble();
-
+            Source = WaveSource.Electron; // 261105Cl
+            Energy = sender == electron300KVToolStripMenuItem ? 300 : sender == electron200KVToolStripMenuItem ? 200 : 120; // 261105Cl kV
         }
-        else if (name[0].Contains("X-ray"))
+        else if (sender == xray30KeVToolStripMenuItem || sender == xray20KeVToolStripMenuItem) // 261105Cl 特性 X 線でない単色 X 線
         {
-            Source = WaveSource.Xray;
-            if (name.Length == 3)
-            {
-                waveLengthControl.XrayWaveSourceElementNumber = 0;
-                Energy = name[1].ToDouble();
-            }
-            else
-            {
-                if (name[3] == "(MoKα₁)")
-                {
-                    waveLengthControl.XrayWaveSourceElementNumber = 42;
-                    waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
-                }
-                else if (name[3] == "(CuKα₁)")
-                {
-                    waveLengthControl.XrayWaveSourceElementNumber = 29;
-                    waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
-                }
-
-            }
+            Source = WaveSource.Xray; // 261105Cl
+            waveLengthControl.XrayWaveSourceElementNumber = 0; // 261105Cl
+            Energy = sender == xray30KeVToolStripMenuItem ? 30 : 20; // 261105Cl keV
+        }
+        else if (sender == xrayMoKαToolStripMenuItem || sender == xrayCuKαToolStripMenuItem) // 261105Cl
+        {
+            Source = WaveSource.Xray; // 261105Cl
+            waveLengthControl.XrayWaveSourceElementNumber = sender == xrayMoKαToolStripMenuItem ? 42 : 29; // 261105Cl Mo / Cu
+            waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1; // 261105Cl
         }
 
     }
@@ -2668,15 +2793,21 @@ public partial class FormDiffractionSimulator : FormBase
 
         if (sender is ToolStripButton button)
         {
-            var text = button.Text;
-            if (text.Contains("Spot"))
-                groupBoxSpotProperty.Enabled = button.Checked;
-            else if (text.Contains("Kikuchi") || text.Contains("Debye") || text.Contains("Scale"))//260717Cl 修正: 2 つ目の条件が "Kikuchi" の重複で、Debye Ring ボタンでタブが自動選択されなかった
+            // 261105Cl 変更 (監査 #36・C4): 翻訳後の表示文字列で判定していたため、英語以外ではタブの自動選択が効かず、
+            //  英語では Spots を外すと groupBoxSpotProperty ごと無効になり、菊池線・デバイリング・目盛が使う波長・光学系・厚さまで変えられなかった
+            //  (他の 10 言語では一度も無効にならない)。ボタンそのもので判定し、Optics の欄は無効にしない。
+            //var text = button.Text; // 261105Cl 変更前
+            //if (text.Contains("Spot"))
+            //    groupBoxSpotProperty.Enabled = button.Checked;
+            //else if (text.Contains("Kikuchi") || text.Contains("Debye") || text.Contains("Scale"))//260717Cl 修正: 2 つ目の条件が "Kikuchi" の重複で、Debye Ring ボタンでタブが自動選択されなかった
+            if (button == toolStripButtonKikuchiLines || button == toolStripButtonDebyeRing || button == toolStripButtonScale) // 261105Cl
             {
                 TabPage page;
-                if (button.Name.Contains("Kikuchi"))
+                //if (button.Name.Contains("Kikuchi")) // 261105Cl 変更前
+                if (button == toolStripButtonKikuchiLines) // 261105Cl
                     page = tabPageKikuchi;
-                else if (button.Name.Contains("Debye"))
+                //else if (button.Name.Contains("Debye")) // 261105Cl 変更前
+                else if (button == toolStripButtonDebyeRing) // 261105Cl
                     page = tabPageDebye;
                 else
                     page = tabPageScale;
@@ -2705,9 +2836,23 @@ public partial class FormDiffractionSimulator : FormBase
             sb.AppendLine($"Monitor resolution:\t{Resolution}");
             sb.AppendLine($"Camera Length2:  {CameraLength2}");
 
+            // 261105Cl 追加 (監査 C24): 線源・エネルギー・波長・光学系 (旧は無く、計算の条件を再現できなかった)
+            sb.AppendLine($"Source:\t{Source}"); // 261105Cl
+            sb.AppendLine($"Energy:\t{Energy} {(Source == WaveSource.Electron ? "kV" : Source == WaveSource.Xray ? "keV" : "meV")}"); // 261105Cl
+            sb.AppendLine($"Wavelength:\t{WaveLength} nm"); // 261105Cl
+            sb.AppendLine($"Optics:\t{(radioButtonBeamBackLaue.Checked ? "Back Laue" : BeamMode.ToString())}"); // 261105Cl BeamModes に Back Laue は無い
             sb.AppendLine($"Spot shape:\t{(radioButtonCircleArea.Checked ? "Solid sphere" : "Gaussian")}");
             sb.AppendLine($"Radius or Sigma:\t{numericBoxSpotRadius.Value}");
-            sb.AppendLine($"Intensity calculation:\t{(radioButtonIntensityExcitation.Checked ? "Excitation error only" : "Kinematical")}");
+            //sb.AppendLine($"Intensity calculation:\t{(radioButtonIntensityExcitation.Checked ? "Excitation error only" : "Kinematical")}"); // 261105Cl 変更前: 動力学でも "Kinematical" と書いていた
+            sb.AppendLine($"Intensity calculation:\t{CalcMode switch { CalcModes.Excitation => "Excitation error only", CalcModes.Kinematical => "Kinematical", _ => "Dynamical" }}"); // 261105Cl
+            if (CalcMode == CalcModes.Dynamical) // 261105Cl 追加: 動力学の計算条件
+            {
+                sb.AppendLine($"Thickness:\t{Thickness} nm"); // 261105Cl
+                sb.AppendLine($"Number of diffracted waves:\t{NumberOfDiffractedWaves}"); // 261105Cl
+                if (BeamMode == BeamModes.PrecessionElectron) // 261105Cl
+                    //sb.AppendLine($"Precession semi-angle:\t{numericBoxPED_Semiangle.Value} mrad"); // 261105Cl // 261106Cl 変更前
+                    sb.AppendLine($"Precession angle:\t{numericBoxPED_Semiangle.Value} mrad"); // 261106Cl 変更 (作者決定 D1): 欄の名前を「歳差角 (Precession angle)」にしたのに合わせる
+            }
             sb.AppendLine($"Tau:\t{Tau / Math.PI * 180}");
             sb.AppendLine($"Image name:\t{fdsg.textBoxFileName.Text}");
             sb.AppendLine($"Detector width:\t{fdsg.DetectorWidth}");
@@ -2790,6 +2935,8 @@ public partial class FormDiffractionSimulator : FormBase
     #region 波長コントロールのイベント
     private void waveLengthControl_WavelengthChanged(object sender, EventArgs e)
     {
+        if (FormALCHEMI?.Visible == true) // 261105Cl 追加 (監査 #19): ALCHEMI のチャネル一覧 (励起できるか・過電圧比 U) は加速電圧で変わる
+            FormALCHEMI.RefreshLists();
         if (this.Visible == false) return;
 
         SetVector();
@@ -2833,6 +2980,7 @@ public partial class FormDiffractionSimulator : FormBase
             checkBoxAnomalousDispersion.Visible = false;//異常分散は非表示
 
         }
+        UpdateKikuchiNotice(); // 261105Cl 追加 (監査 C9): 動力学バンドは電子線のみ。線源に合わせて注記を替える
     }
     #endregion
 
@@ -3133,7 +3281,8 @@ public partial class FormDiffractionSimulator : FormBase
 
     private void SaveCBEDasTiffToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var png = ((ToolStripItem)sender).Text.Contains("PNG");
+        //var png = ((ToolStripItem)sender).Text.Contains("PNG"); // 261105Cl 変更前
+        var png = sender == saveCBEDasPngToolStripMenuItem; // 261105Cl 変更 (作者決定 K5: 表示文字列で形式を判定しない (呼ばれるのは PNG と TIFF の 2 項目だけ))
 
         SaveFileDialog dlg = new() { Filter = png ? "*.png|*.png" : "*.tif|*.tif" };
 
@@ -3143,7 +3292,8 @@ public partial class FormDiffractionSimulator : FormBase
             for (int t = FormDiffractionSimulatorCBED.trackBarOutputThickness.Minimum; t <= FormDiffractionSimulatorCBED.trackBarOutputThickness.Maximum; t++)
             {
                 FormDiffractionSimulatorCBED.trackBarOutputThickness.Value = t;
-                var thickness = FormDiffractionSimulatorCBED.ThicknessArray[t];
+                //var thickness = FormDiffractionSimulatorCBED.ThicknessArray[t]; // 261105Cl 変更前: 今の入力欄の厚み (計算の後に範囲を変えるとファイル名の厚さが中身と違った)
+                var thickness = FormDiffractionSimulatorCBED.CompletedThicknesses[t]; // 261105Cl 変更 (監査 D7): 計算した厚み
                 foreach (var disk in FormDiffractionSimulatorCBED.Disks)
                 {
                     var info = $" ({thickness}nm_{disk.H}_{disk.K}_{disk.L})";
@@ -3195,7 +3345,8 @@ public partial class FormDiffractionSimulator : FormBase
         for (int t = FormDiffractionSimulatorCBED.trackBarOutputThickness.Minimum; t <= FormDiffractionSimulatorCBED.trackBarOutputThickness.Maximum; t++)
         {
             FormDiffractionSimulatorCBED.trackBarOutputThickness.Value = t;
-            var thickness = FormDiffractionSimulatorCBED.ThicknessArray[t];
+            //var thickness = FormDiffractionSimulatorCBED.ThicknessArray[t]; // 261105Cl 変更前
+            var thickness = FormDiffractionSimulatorCBED.CompletedThicknesses[t]; // 261105Cl 変更 (監査 D7): 計算した厚み
 
             var disk0 = FormDiffractionSimulatorCBED.Disks.Where(d => d.Bitmap != null).First();
             var resolution = disk0.Size.Width / disk0.PixelSize.Width;//1ピクセル辺りの長さ (mm/pixel)
@@ -3254,11 +3405,14 @@ public partial class FormDiffractionSimulator : FormBase
 
     }
 
-    private void SaveCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false);
-    private void CopyCBEDasImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, true);
+    //private void SaveCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false); // 261105Cl 変更前 (3 行): CBED のメニューも検出器範囲の分岐に入り得た
+    //private void CopyCBEDasImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, true);
+    private void SaveCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false, cbed: true); // 261105Cl
+    private void CopyCBEDasImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, true, cbed: true); // 261105Cl
 
     //private void copyCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, false);
-    private void SaveCBEDasCollectiveImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true);
+    //private void SaveCBEDasCollectiveImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true); // 261105Cl 変更前
+    private void SaveCBEDasCollectiveImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true, cbed: true); // 261105Cl
 
     public void SaveOrCopy(bool save, bool isImage, bool drawOverlappedImage, string filename = "")
     {
@@ -3318,12 +3472,20 @@ public partial class FormDiffractionSimulator : FormBase
         }
     }
 
-    private void SaveOrCopyDetector(bool save, bool asImage, bool asTiff = false)
+    //private void SaveOrCopyDetector(bool save, bool asImage, bool asTiff = false) // 261105Cl 変更前のシグネチャ
+    /// <param name="cbed">261105Cl 追加: CBED のメニューから呼ぶときは true (検出器範囲の分岐に入れない)</param>
+    private void SaveOrCopyDetector(bool save, bool asImage, bool asTiff = false, bool cbed = false)
     {
         bool drawOverlappedImage;
-        if (FormDiffractionSimulatorGeometry.ShowDetectorArea && FormDiffractionSimulatorGeometry.OverlappedImage != null)
+        // 261105Cl 変更 (監査 C10): 重ね画像が無いと検出器範囲の Save/Copy は何もしなかった (メニューは検出器範囲の表示中なら出ている)。
+        //  重ね画像が無ければ尋ねずに、シミュレーションだけを検出器の範囲・画素で出す
+        //if (FormDiffractionSimulatorGeometry.ShowDetectorArea && FormDiffractionSimulatorGeometry.OverlappedImage != null) // 261105Cl 変更前
+        //{
+        //    drawOverlappedImage = MessageBox.Show("Include the overlapped image?", "Copy option", MessageBoxButtons.YesNo) == DialogResult.Yes;
+        if (!cbed && FormDiffractionSimulatorGeometry.ShowDetectorArea) // 261105Cl
         {
-            drawOverlappedImage = MessageBox.Show("Include the overlapped image?", "Copy option", MessageBoxButtons.YesNo) == DialogResult.Yes;
+            drawOverlappedImage = FormDiffractionSimulatorGeometry.OverlappedImage != null // 261105Cl
+                && MessageBox.Show("Include the overlapped image?", "Copy option", MessageBoxButtons.YesNo) == DialogResult.Yes; // 261105Cl
 
             graphicsBox.Visible = false;
             var originalSize = graphicsBox.Size;
@@ -3358,7 +3520,8 @@ public partial class FormDiffractionSimulator : FormBase
             Draw();
             graphicsBox.Refresh();
         }
-        else if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.Disks != null)
+        //else if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.Disks != null) // 261105Cl 変更前
+        else if (cbed && FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.Disks != null) // 261105Cl
         {
             drawOverlappedImage = true;
 
@@ -3585,7 +3748,8 @@ public partial class FormDiffractionSimulator : FormBase
                 spotList.Add(new Sphere(vec.ToOpenTK() + shift, radius, new Material(col, trans), DrawingMode.Surfaces));
 
                 if (checkBox3D_ShowIndices.Checked && dev < spotRadius)
-                    textList.Add((g.Text, 9f, vec.ToOpenTK() + shift, radius + 0.1, false, matText));
+                    //textList.Add((g.Text, 9f, vec.ToOpenTK() + shift, radius + 0.1, false, matText)); // 261105Cl 変更前 (監査 C23)
+                    textList.Add((formMain.MillerBravaisActive ? FormMain.PlaneString(g.Index.h, g.Index.k, g.Index.l, true) : g.Text, 9f, vec.ToOpenTK() + shift, radius + 0.1, false, matText)); // 261105Cl
             }
             glObjects.AddRange(spotList);
             glObjects.AddRange(textList.Select(e => new TextObject(e.text, e.fontSize, e.position, e.popout, e.whiteEdge, e.mat, glControl)));
@@ -3741,6 +3905,8 @@ public partial class FormDiffractionSimulator : FormBase
         colorControlBackGround.Inversion = colorControlNoCondition.Inversion = colorControlString.Inversion = colorControlExcessLine.Inversion =
             colorControlDeficientLine.Inversion = //260805Cl 追加: Deficient 色も反転連鎖に含める
             colorControlKikuchiLine.Inversion = //260806Cl 追加: 幾何線/運動学線の色も反転連鎖に含める (色コントロール分離に伴う)
+            colorControlForbiddenLattice.Inversion = colorControlScrewGlide.Inversion = colorControlOrigin.Inversion = colorControlFoot.Inversion = // 261105Cl 追加 (監査 C21): 禁制反射 2 色・ダイレクトスポット・垂線の足・
+            colorControlDebyeRing.Inversion = colorControlScale2Theta.Inversion = colorControlScaleAzimuth.Inversion = // 261105Cl デバイリング・目盛 2 色が反転せず、背景とともに反転した画面で他の色と食い違っていた
             checkBoxNegativeImage.Checked;
         SetVector();
         Draw();

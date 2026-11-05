@@ -175,8 +175,8 @@ Active lorsque « Afficher les lignes 1° » est cochée</value>
     <value>Lorsque cette case est cochée, les touches fléchées inclinent
 le porte-échantillon : Gauche/Droite modifient Tilt X et
 Haut/Bas modifient Tilt Y du pas des flèches.
-Actif tant que cette fenêtre est ouverte, même si
-une autre fenêtre de ReciPro est au premier plan.</value>
+Actif uniquement lorsque cette fenêtre est
+active (au premier plan).</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>Incrément de l'angle d'inclinaison (en degrés)
@@ -234,7 +234,9 @@ valeurs Link Tilt X/Y et utiliser l'orientation
 résultante comme direction neutre.</value>
   </data>
   <data name="buttonRotate180.ToolTip" xml:space="preserve">
-    <value>Faire pivoter le cristal de 180° autour de l'axe du faisceau ([001]).</value>
+    <value>Faire pivoter le cristal de 180° autour de l'axe du faisceau
+(perpendiculaire à l'écran), même si un axe ou un plan est
+fixé (« Fixer ») dans la fenêtre principale.</value>
   </data>
   <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
     <value>Angle Tilt X cible (en degrés) appliqué

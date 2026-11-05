@@ -25,7 +25,14 @@ public partial class FormImageSimulator : FormBase
     public bool CTFVisible { get => checkBoxCTF.Checked; set => checkBoxCTF.Checked = value; }
 
     public ImageSimulatorSetting Setting { get => new("", this); set => value.Apply(this); }
-    public bool Native => toolStripComboBoxCaclulationLibrary.SelectedIndex == 0;
+    //public bool Native => toolStripComboBoxCaclulationLibrary.SelectedIndex == 0; // 261105Cl 変更前
+    //261105Cl 廃止 (監査 E12): 画面の計算ライブラリの切替 (Native / Managed) は HRTEM の像合成にしか効かず、起動のたびに Native に戻っていた。
+    //切替は Designer で非表示にし、HRTEM の像合成は NativeWrapper.Enabled と主窓の Options の「Crystallography.Native を無効化」に従う
+    //(GetHRTEMImage は native && BetheMethod.EigenEnabled で native を使う。EigenEnabled = 読み込めた かつ Options で無効にしていない)
+
+    /// <summary>261105Cl 追加: 初期状態 (デザイナの値) の設定。TEM パラメータのファイルに無い項目 (古い版のファイル) はこの値にする。
+    /// コンストラクタで InitializeComponent の直後 (レジストリから復元する前) に控える</summary>
+    private readonly ImageSimulatorSetting defaultSetting;
 
     public ImageModes ImageMode
     {
@@ -152,7 +159,29 @@ public partial class FormImageSimulator : FormBase
                 textBoxDefocusList.Text = String.Join("\r\n", value);
         }
     }
-    #endregion 
+
+    /// <summary>261105Cl 追加: シリーズ画像の厚みリストの中身 (単一/シリーズのモードに依らない)。読めない行があれば null (メッセージは出さない)。
+    /// プリセット・起動時の復元の保存用 (ThicknessArray は単一モードでは単一の厚みを返すので、それを保存するとリストが 1 行に潰れていた)。
+    /// 書き込みは ThicknessArray の setter (どちらのモードでもリストに書く) を使う</summary>
+    public double[] SerialImageThicknessList
+    {
+        get
+        {
+            try { return [.. textBoxThicknessList.Text.Split(["\r\n"], StringSplitOptions.RemoveEmptyEntries).Select(str => double.Parse(str))]; }
+            catch { return null; }
+        }
+    }
+
+    /// <summary>261105Cl 追加: シリーズ画像のデフォーカスリストの中身 (単一/シリーズのモードに依らない)。読めない行があれば null。SerialImageThicknessList と同じ</summary>
+    public double[] SerialImageDefocusList
+    {
+        get
+        {
+            try { return [.. textBoxDefocusList.Text.Split(["\r\n"], StringSplitOptions.RemoveEmptyEntries).Select(str => double.Parse(str))]; }
+            catch { return null; }
+        }
+    }
+    #endregion
 
     #region 画像関連
     public bool UnitCellVisible { get => checkBoxShowUnitcell.Checked; set => checkBoxShowUnitcell.Checked = value; }
@@ -329,6 +358,15 @@ public partial class FormImageSimulator : FormBase
     {
         if (labelEdxSummary is null) return;
 
+        //261105Cl 追加: EDX を計算しないときは空にする (旧: 起動直後は廃止した選択 UI の文言「No channel selected」が残り、
+        //チェックを外した後は計算しないチャネルの一覧が残っていた)
+        if (checkBoxCalculateEdx is { Checked: false })
+        {
+            labelEdxSummary.Text = "";
+            RenewProbeGridLabel();
+            return;
+        }
+
         //260802Cl 変更 (作者指示): 「選択したチャネル」ではなく「これから計算する全チャネル」を並べる
         var names = AvailableEdxChannels.Select(spec => spec.ShortLabel).ToArray();
         labelEdxSummary.Text = names.Length == 0
@@ -414,6 +452,26 @@ public partial class FormImageSimulator : FormBase
         //260805Cl 追加 (作者承認): EDX は native ヘルパ必須 (managed 経路は非実装のまま確定)。backend の
         //ガード (BetheMethod の NotSupportedException) は worker の奥で英語の生例外ダイアログになるため、
         //実行前にここで説明付きで止める。実際に踏み得るのはポータブル版で native DLL が欠落したケース。
+        //261105Cl 追加: native は読み込めたが、オプションの「Crystallography.Native を無効化」で止めている場合 (BetheMethod.EigenEnabled = false)。
+        //旧: ここを素通りして worker の奥で NotSupportedException になり、StemCompleted が「スライス数が多すぎる」という古い案内を出していた
+        if (NativeWrapper.Enabled && !BetheMethod.EigenEnabled)
+        {
+            MessageBox.Show(
+                Loc(en: "STEM-EDX requires the native library (Crystallography.Native), which is turned off in Options > \"Disable Crystallography.Native library\". STEM itself runs without it, but EDX maps cannot be computed.\r\nClear that option and restart ReciPro, or clear the checkbox to run without EDX.",
+                    ja: "STEM-EDX にはネイティブライブラリ (Crystallography.Native) が必要ですが、オプション >「Crystallography.Native.dll を無効化」で止められています。STEM 自体は動作しますが、EDX マップは計算できません。\r\nその項目のチェックを外して ReciPro を再起動するか、EDX なしで実行するにはチェックを外してください。",
+                    de: "STEM-EDX benötigt die native Bibliothek (Crystallography.Native), die unter Optionen > „Crystallography.Native-Bibliothek deaktivieren“ ausgeschaltet ist. STEM selbst funktioniert auch ohne sie, aber EDX-Karten können nicht berechnet werden.\r\nDeaktivieren Sie diese Option und starten Sie ReciPro neu, oder deaktivieren Sie das Kontrollkästchen, um ohne EDX zu rechnen.",
+                    fr: "STEM-EDX nécessite la bibliothèque native (Crystallography.Native), qui est désactivée dans Options > « Désactiver la bibliothèque Crystallography.Native ». STEM fonctionne sans elle, mais les cartes EDX ne peuvent pas être calculées.\r\nDécochez cette option et redémarrez ReciPro, ou décochez la case pour calculer sans EDX.",
+                    es: "STEM-EDX requiere la biblioteca nativa (Crystallography.Native), que está desactivada en Opciones > «Desactivar biblioteca Crystallography.Native». STEM funciona sin ella, pero los mapas EDX no se pueden calcular.\r\nDesmarque esa opción y reinicie ReciPro, o desmarque la casilla para calcular sin EDX.",
+                    pt: "O STEM-EDX requer a biblioteca nativa (Crystallography.Native), que está desativada em Opções > \"Desativar biblioteca Crystallography.Native\". O STEM funciona sem ela, mas os mapas EDX não podem ser calculados.\r\nDesmarque essa opção e reinicie o ReciPro, ou desmarque a caixa para calcular sem EDX.",
+                    it: "STEM-EDX richiede la libreria nativa (Crystallography.Native), che è disattivata in Opzioni > \"Disabilita la libreria Crystallography.Native\". STEM funziona anche senza, ma le mappe EDX non possono essere calcolate.\r\nDeselezionare tale opzione e riavviare ReciPro, oppure deselezionare la casella per calcolare senza EDX.",
+                    ru: "Для STEM-EDX требуется нативная библиотека (Crystallography.Native), но она отключена в меню Параметры > «Отключить библиотеку Crystallography.Native». STEM работает и без неё, но карты EDX рассчитать нельзя.\r\nСнимите этот флажок в меню и перезапустите ReciPro или снимите флажок, чтобы считать без EDX.",
+                    zhHans: "STEM-EDX 需要原生库 (Crystallography.Native)，但已在 选项 >「禁用 Crystallography.Native 库」中关闭。STEM 本身可以运行，但无法计算 EDX 分布图。\r\n请取消该选项并重新启动 ReciPro，或取消勾选以在不计算 EDX 的情况下运行。",
+                    zhHant: "STEM-EDX 需要原生程式庫 (Crystallography.Native)，但已在 選項 >「停用 Crystallography.Native 程式庫」中關閉。STEM 本身可以執行，但無法計算 EDX 分布圖。\r\n請取消該選項並重新啟動 ReciPro，或取消勾選以在不計算 EDX 的情況下執行。",
+                    ko: "STEM-EDX 에는 네이티브 라이브러리 (Crystallography.Native) 가 필요하지만 옵션 >「Crystallography.Native 라이브러리 사용 안 함」에서 꺼져 있습니다. STEM 자체는 동작하지만 EDX 맵은 계산할 수 없습니다.\r\n그 옵션을 해제하고 ReciPro 를 다시 시작하거나, EDX 없이 실행하려면 체크를 해제하세요."),
+                "STEM-EDX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
         if (!NativeWrapper.Enabled)
         {
             MessageBox.Show(
@@ -628,6 +686,7 @@ public partial class FormImageSimulator : FormBase
     {
         InitializeComponent();
         HelpPage = "9-hrtem-stem-simulator"; //260529Cl 追加
+        defaultSetting = new ImageSimulatorSetting("", this);//261105Cl 追加: 初期状態を控える (TEM パラメータのファイルに無い項目の既定値)
 
         FormDiffractionSpotInfo = new FormDiffractionSpotInfo { Visible = false, FormImageSimulator = this };
 
@@ -658,7 +717,7 @@ public partial class FormImageSimulator : FormBase
 
     private void FormImageSimulator_Load(object sender, EventArgs e)
     {
-        toolStripComboBoxCaclulationLibrary.SelectedIndex = 0;
+        //toolStripComboBoxCaclulationLibrary.SelectedIndex = 0; // 261105Cl 変更前 (監査 E12: 起動のたびに Native に戻していた。切替は廃止した)
 
         //260718Cl 変更: 小さな UI スケール画像 2 枚の生成に ParallelEnumerable は過剰なため、単純 for に
         static double[] gradient(int width, int height)
@@ -677,8 +736,16 @@ public partial class FormImageSimulator : FormBase
             var r = box.ClientRectangle;
             if (r.Width <= 0 || r.Height <= 0) { box.Image = null; return; }
             var bmp = new PseudoBitmap(gradient(r.Width, r.Height), r.Width) { MaxValue = 1, MinValue = 0 };
-            if (rotation) bmp.SetScaleRotation(); else bmp.SetScaleGray();
-            scaleImage = bmp;
+            //if (rotation) bmp.SetScaleRotation(); else bmp.SetScaleGray(); // 261105Cl 変更前
+            //scaleImage = bmp; // 261105Cl 変更前
+            //261105Cl 変更: scaleImage は強度のスケールだけを指す (旧: 位相のスケールを作り直すと scaleImage が位相の画像に替わり、
+            //カラースケールの切替で強度の欄に位相の画像が入っていた)。強度のスケールは今のカラースケールで作る (旧: 大きさが変わると Gray に戻った)
+            if (rotation) bmp.SetScaleRotation();
+            else
+            {
+                if (comboBoxScaleColorScale.SelectedIndex == 1) bmp.SetScaleColdWarm(); else bmp.SetScaleGray();
+                scaleImage = bmp;
+            }
             box.Image = bmp.GetImage();
         }
         buildScale(pictureBoxPhaseScale, true);
@@ -691,6 +758,7 @@ public partial class FormImageSimulator : FormBase
         //260802Cl 追加: EDX はまだ計算結果が無いので選べない (run 完了時に RenewEdxDisplayList が有効化する)
         radioButtonSTEM_target_EDX.Enabled = false;
         checkBoxEdxCommonScale.Visible = false;
+        RenewEdxSummary();//261105Cl 追加: 要約の初期表示 (EDX を計算しないなら空、計算するならチャネルの一覧)
 
         //260802Cl 変更: 検出器角が STEM 参照像専用である旨 (§5.9.1-4) は、Load でツールチップへ実行時追記していたのをやめ、
         //11 言語 resx の numericBoxSTEM_Detector*Angle.ToolTip 本文へ直接書いた (Designer コントロールの静的な文は resx = 方式①。
@@ -856,6 +924,9 @@ public partial class FormImageSimulator : FormBase
         this.buttonSimulate.Visible = false;
         this.buttonStop.Visible = true;
         this.splitContainer1.Enabled = false;
+        //261105Cl 追加: 計算中はプリセット窓も操作できなくする (別窓なので splitContainer1 の無効化が及ばず、
+        //計算中にプリセットでモードや条件が変わると、完了時に結果が描かれない・表示中の条件と結果が食い違うことがあった)
+        FormPresets.Enabled = false;
 
         if (sync)
             // 260428Cl 同期マクロ呼び出し用の UI ポンプ。Macro 自体が同期 API のため、ここでは DoEvents を残す (Macro の async 化時に削除予定)
@@ -1005,18 +1076,33 @@ public partial class FormImageSimulator : FormBase
             //生の英語メッセージだけでは何を直せばよいか分からないので、操作に翻訳して案内する (設計書 §5.9.1-7)。
             //260802Cl 変更: 経路一本化で slice 数や波数の制約は消えた。残るのは native ヘルパ (Crystallography.Native) が
             //無い環境だけで、これは利用者の操作では直せないので案内文もその旨に寄せる。
+            //var msg = e.Error is NotSupportedException // 261105Cl 変更前 (案内が経路一本化の前の「スライス数が多すぎる」のままだった)
+            //    ? Loc(en: "STEM-EDX could not run with these settings: the number of depth slices is too large for the calculation path it needs.\r\nIncrease 'Slice thickness (TDS)', reduce the specimen thickness, or increase 'Diffracted waves'.",
+            //          ja: "この設定では STEM-EDX を実行できません。深さ方向のスライス数が、必要な計算経路に対して多すぎます。\r\n「スライス厚 (TDS)」を大きくするか、試料の厚さを減らすか、「回折波」の数を増やしてください。",
+            //          de: "STEM-EDX konnte mit diesen Einstellungen nicht laufen: die Zahl der Tiefenschichten ist für den benötigten Rechenweg zu groß.\r\nErhöhen Sie 'Schichtdicke (TDS)', verringern Sie die Probendicke oder erhöhen Sie 'Wellen'.",
+            //          fr: "STEM-EDX n'a pas pu s'exécuter avec ces réglages : le nombre de tranches en profondeur est trop grand pour le chemin de calcul requis.\r\nAugmentez « Épaisseur de tranche (TDS) », réduisez l'épaisseur de l'échantillon ou augmentez le nombre d'ondes.",
+            //          es: "STEM-EDX no pudo ejecutarse con estos ajustes: el número de capas en profundidad es demasiado grande para la ruta de cálculo necesaria.\r\nAumente 'Espesor de capa (TDS)', reduzca el espesor de la muestra o aumente el número de ondas.",
+            //          pt: "O STEM-EDX não pôde ser executado com estas definições: o número de fatias em profundidade é grande demais para o caminho de cálculo necessário.\r\nAumente 'Espessura da fatia (TDS)', reduza a espessura da amostra ou aumente o número de ondas.",
+            //          it: "STEM-EDX non ha potuto essere eseguito con queste impostazioni: il numero di fette in profondità è troppo grande per il percorso di calcolo richiesto.\r\nAumentare 'Spessore della fetta (TDS)', ridurre lo spessore del campione o aumentare il numero di onde.",
+            //          ru: "STEM-EDX не удалось запустить с этими настройками: число слоёв по глубине слишком велико для требуемого пути расчёта.\r\nУвеличьте «Толщина слоя (TDS)», уменьшите толщину образца или увеличьте число волн.",
+            //          zhHans: "当前设置无法运行 STEM-EDX：深度方向的切片数对所需的计算路径而言过多。\r\n请增大「切片厚度 (TDS)」、减小试样厚度，或增加衍射波数。",
+            //          zhHant: "目前設定無法執行 STEM-EDX：深度方向的切片數對所需的計算路徑而言過多。\r\n請增大「切片厚度 (TDS)」、減小試樣厚度，或增加繞射波數。",
+            //          ko: "현재 설정으로는 STEM-EDX 를 실행할 수 없습니다. 깊이 방향 슬라이스 수가 필요한 계산 경로에 비해 너무 많습니다.\r\n「슬라이스 두께 (TDS)」를 크게 하거나, 시료 두께를 줄이거나, 회절파 수를 늘리세요.")
+            //    : e.Error.Message;
+            //261105Cl 変更: NotSupportedException は今は「native ヘルパが使えない」ときだけ (BetheMethod.StemDoWork)。
+            //実行前の ValidateEdxRequest で止めるようにしたので通常は来ないが、来たときも実際の原因を案内する
             var msg = e.Error is NotSupportedException
-                ? Loc(en: "STEM-EDX could not run with these settings: the number of depth slices is too large for the calculation path it needs.\r\nIncrease 'Slice thickness (TDS)', reduce the specimen thickness, or increase 'Diffracted waves'.",
-                      ja: "この設定では STEM-EDX を実行できません。深さ方向のスライス数が、必要な計算経路に対して多すぎます。\r\n「スライス厚 (TDS)」を大きくするか、試料の厚さを減らすか、「回折波」の数を増やしてください。",
-                      de: "STEM-EDX konnte mit diesen Einstellungen nicht laufen: die Zahl der Tiefenschichten ist für den benötigten Rechenweg zu groß.\r\nErhöhen Sie 'Schichtdicke (TDS)', verringern Sie die Probendicke oder erhöhen Sie 'Wellen'.",
-                      fr: "STEM-EDX n'a pas pu s'exécuter avec ces réglages : le nombre de tranches en profondeur est trop grand pour le chemin de calcul requis.\r\nAugmentez « Épaisseur de tranche (TDS) », réduisez l'épaisseur de l'échantillon ou augmentez le nombre d'ondes.",
-                      es: "STEM-EDX no pudo ejecutarse con estos ajustes: el número de capas en profundidad es demasiado grande para la ruta de cálculo necesaria.\r\nAumente 'Espesor de capa (TDS)', reduzca el espesor de la muestra o aumente el número de ondas.",
-                      pt: "O STEM-EDX não pôde ser executado com estas definições: o número de fatias em profundidade é grande demais para o caminho de cálculo necessário.\r\nAumente 'Espessura da fatia (TDS)', reduza a espessura da amostra ou aumente o número de ondas.",
-                      it: "STEM-EDX non ha potuto essere eseguito con queste impostazioni: il numero di fette in profondità è troppo grande per il percorso di calcolo richiesto.\r\nAumentare 'Spessore della fetta (TDS)', ridurre lo spessore del campione o aumentare il numero di onde.",
-                      ru: "STEM-EDX не удалось запустить с этими настройками: число слоёв по глубине слишком велико для требуемого пути расчёта.\r\nУвеличьте «Толщина слоя (TDS)», уменьшите толщину образца или увеличьте число волн.",
-                      zhHans: "当前设置无法运行 STEM-EDX：深度方向的切片数对所需的计算路径而言过多。\r\n请增大「切片厚度 (TDS)」、减小试样厚度，或增加衍射波数。",
-                      zhHant: "目前設定無法執行 STEM-EDX：深度方向的切片數對所需的計算路徑而言過多。\r\n請增大「切片厚度 (TDS)」、減小試樣厚度，或增加繞射波數。",
-                      ko: "현재 설정으로는 STEM-EDX 를 실행할 수 없습니다. 깊이 방향 슬라이스 수가 필요한 계산 경로에 비해 너무 많습니다.\r\n「슬라이스 두께 (TDS)」를 크게 하거나, 시료 두께를 줄이거나, 회절파 수를 늘리세요.")
+                ? Loc(en: "STEM-EDX could not run: it requires the native library (Crystallography.Native), which is not available in this session (it could not be loaded, or it is turned off in Options).\r\nClear the checkbox to run without EDX.",
+                      ja: "STEM-EDX を実行できませんでした。ネイティブライブラリ (Crystallography.Native) が必要ですが、このセッションでは使えません (読み込めなかったか、オプションで無効にされています)。\r\nEDX なしで実行するにはチェックを外してください。",
+                      de: "STEM-EDX konnte nicht laufen: es benötigt die native Bibliothek (Crystallography.Native), die in dieser Sitzung nicht verfügbar ist (sie konnte nicht geladen werden oder ist in den Optionen ausgeschaltet).\r\nDeaktivieren Sie das Kontrollkästchen, um ohne EDX zu rechnen.",
+                      fr: "STEM-EDX n'a pas pu s'exécuter : il nécessite la bibliothèque native (Crystallography.Native), qui n'est pas disponible dans cette session (elle n'a pas pu être chargée ou elle est désactivée dans les Options).\r\nDécochez la case pour calculer sans EDX.",
+                      es: "STEM-EDX no pudo ejecutarse: requiere la biblioteca nativa (Crystallography.Native), que no está disponible en esta sesión (no se pudo cargar o está desactivada en Opciones).\r\nDesmarque la casilla para calcular sin EDX.",
+                      pt: "O STEM-EDX não pôde ser executado: requer a biblioteca nativa (Crystallography.Native), que não está disponível nesta sessão (não pôde ser carregada ou está desativada em Opções).\r\nDesmarque a caixa para calcular sem EDX.",
+                      it: "STEM-EDX non ha potuto essere eseguito: richiede la libreria nativa (Crystallography.Native), che non è disponibile in questa sessione (non è stato possibile caricarla oppure è disattivata in Opzioni).\r\nDeselezionare la casella per calcolare senza EDX.",
+                      ru: "Не удалось выполнить STEM-EDX: требуется нативная библиотека (Crystallography.Native), которая недоступна в этом сеансе (её не удалось загрузить или она отключена в меню Параметры).\r\nСнимите флажок, чтобы считать без EDX.",
+                      zhHans: "无法运行 STEM-EDX：需要原生库 (Crystallography.Native)，但本次会话中不可用（无法加载，或已在选项中关闭）。\r\n取消勾选可在不计算 EDX 的情况下运行。",
+                      zhHant: "無法執行 STEM-EDX：需要原生程式庫 (Crystallography.Native)，但本次工作階段中無法使用（無法載入，或已在選項中關閉）。\r\n取消勾選可在不計算 EDX 的情況下執行。",
+                      ko: "STEM-EDX 를 실행할 수 없습니다. 네이티브 라이브러리 (Crystallography.Native) 가 필요하지만 이 세션에서는 사용할 수 없습니다 (로드할 수 없었거나 옵션에서 꺼져 있습니다).\r\nEDX 없이 실행하려면 체크를 해제하세요.")
                 : e.Error.Message;
             MessageBox.Show(msg, "STEM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
@@ -1052,6 +1138,7 @@ public partial class FormImageSimulator : FormBase
         this.buttonStop.Visible = false;
         this.buttonStop.Enabled = true;//260801Cl 追加 (buttonStop_Click で無効化した分を戻す)
         this.splitContainer1.Enabled = true;
+        FormPresets.Enabled = true;//261105Cl 追加 (simulateSTEM で無効化した分を戻す)
         stemBethe = null;//260801Cl 追加
         //260801Cl 修正: sw3 の Stop/Reset が 2 回書かれ sw4 が reset されていなかった (旧: sw3.Reset(); sw3.Reset();)
         sw1.Stop(); sw1.Reset(); sw2.Stop(); sw2.Reset(); sw3.Stop(); sw3.Reset(); sw4.Stop(); sw4.Reset(); sw5.Stop(); sw5.Reset();
@@ -1093,10 +1180,14 @@ public partial class FormImageSimulator : FormBase
             ThicknessArray,
             DefocusArray,
             HRTEM_Mode == HRTEM_Modes.Quasi,
-            Native);
+            //Native); // 261105Cl 変更前
+            native: true);//261105Cl 変更 (監査 E12): 画面の切替を廃止。実際に native を使うかは BetheMethod.EigenEnabled (NativeWrapper.Enabled と Options) が決める
 
         var temp = sw1.ElapsedMilliseconds;
-        toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw1.ElapsedMilliseconds} ms,   ";
+        //toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw1.ElapsedMilliseconds} ms,   "; // 261105Cl 変更前
+        //261105Cl 変更: 追記でなく代入 (リアルタイム計算の RotationChanged → SimulateHRTEM(true) は Simulate() を通らず欄を空にしないので、
+        //回転のたびに文字列が伸び続けていた。ポテンシャル像と同じ書き方)
+        toolStripStatusLabel1.Text = $"Generation of HRTEM images: {sw1.ElapsedMilliseconds} ms,   ";
 
         GeneratePseudBitmap();
 
@@ -1105,14 +1196,30 @@ public partial class FormImageSimulator : FormBase
     #endregion
 
     #region ポテンシャルシミュレーション
-    private void simulatePotential(bool realtimeMode = false)
+    /// <summary>261105Cl 追加: 最後に計算したポテンシャル像と、その計算条件 (表示の切替で、計算し直さずに描き直すため)</summary>
+    private (double[][] Images, bool MagAndPhase, Matrix3D Mat, Size Size, double Resolution)? potentialResult;
+
+    //private void simulatePotential(bool realtimeMode = false) // 261105Cl 変更前
+    /// <param name="redrawOnly">261105Cl 追加: true なら前回の計算結果 (potentialResult) を今の表示の選択で描き直すだけ</param>
+    private void simulatePotential(bool realtimeMode = false, bool redrawOnly = false)
     {
         sw1.Restart();
 
         if (!checkBoxPotentialUg.Checked && !checkBoxPotentialUgPrime.Checked) return;
 
-        Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]);
-        var images = FormMain.Crystal.Bethe.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked);
+        //261105Cl 変更: 計算は redrawOnly でないとき、または前回と量が違うとき (振幅・位相 ⇔ 実部・虚部) だけ
+        if (!redrawOnly || potentialResult is not { } last || last.MagAndPhase != radioButtonPotentialModeMagAndPhase.Checked)
+        {
+            //Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]); // 261105Cl 変更前
+            //261105Cl 変更: ポテンシャル像は Ug・U'g だけで決まり厚みに依らないので、単一モードの厚みを渡す。
+            //旧: ThicknessArray はこのモードでは隠れているシリーズ画像の厚みリストを読み、リストが不正だと null → NullReferenceException
+            Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, Thickness);
+            //var images = FormMain.Crystal.Bethe.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked); // 261105Cl 変更前
+            potentialResult = (FormMain.Crystal.Bethe.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked),
+                radioButtonPotentialModeMagAndPhase.Checked, FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal, ImageSize, ImageResolution);
+        }
+        //261105Cl 変更: 以降は計算したときの像・方位・大きさ・解像度で描く (描き直しで今の入力欄の値と混ざらないように)
+        var (images, _, mat, size, resolution) = potentialResult.Value;
 
         //画像が上下左右反転 (180度回転) しているみたいなので、処理 20230304
         //なぜかまた上下左右反転 (180度回転) しているみたいなので、削除 20241101
@@ -1135,8 +1242,9 @@ public partial class FormImageSimulator : FormBase
         SkipEvent = false;
 
         //作成したイメージをPseudoBitmapに変換
-        var mat = FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal;
-        int width = ImageSize.Width, height = ImageSize.Height;
+        //var mat = FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal; // 261105Cl 変更前 (mat は potentialResult から)
+        //int width = ImageSize.Width, height = ImageSize.Height; // 261105Cl 変更前
+        int width = size.Width, height = size.Height; // 261105Cl 変更
         var range = Enumerable.Range(0, 2).ToList();
         var pseudo = range.Select(_ => range.Select(_ => new PseudoBitmap()).ToList()).ToList();
 
@@ -1150,7 +1258,8 @@ public partial class FormImageSimulator : FormBase
                 {
                     MaxValue = j == 0 ? max : 180,
                     MinValue = j == 0 ? min : -180,
-                    Tag = new ImageInfo(width, height, ImageResolution, mat, text, j == 1),
+                    //Tag = new ImageInfo(width, height, ImageResolution, mat, text, j == 1), // 261105Cl 変更前
+                    Tag = new ImageInfo(width, height, resolution, mat, text, j == 1), // 261105Cl 変更: 計算したときの解像度
                     Scale = j == 0 ?
                     (comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear) :
                     PseudoBitmap.Scales.RotationLinear
@@ -1163,7 +1272,8 @@ public partial class FormImageSimulator : FormBase
                 {
                     MaxValue = max,
                     MinValue = min,
-                    Tag = new ImageInfo(width, height, ImageResolution, mat, text),
+                    //Tag = new ImageInfo(width, height, ImageResolution, mat, text), // 261105Cl 変更前
+                    Tag = new ImageInfo(width, height, resolution, mat, text), // 261105Cl 変更: 計算したときの解像度
                     Scale = comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear
                 };
 
@@ -1187,6 +1297,9 @@ public partial class FormImageSimulator : FormBase
                 result[r, c] = pseudo[r][c];
 
         SetPseudoBitamap(result);
+        //261105Cl 追加: ぼかしにチェックが入っていれば、作り直した像にも掛ける (HRTEM/STEM の GeneratePseudBitmap と同じ)
+        if (checkBoxGaussianBlur.Checked)
+            ApplyGaussianBlur();
         toolStripStatusLabel1.Text += $"Drawing: {sw1.ElapsedMilliseconds - temp} ms";
         TrackBarAdvancedMin_ValueChanged(new object(), 0);
         //260802Cl 追加: 位相像は LockIntensity なのでトラックバー経路が飛ばす。ここで全セルを描かないと
@@ -1240,6 +1353,10 @@ public partial class FormImageSimulator : FormBase
             var r = bethe.ResultHRTEM;
             FillReferenceGrid(r.Image, r.Size, r.Resolution, r.rot * FormMain.Crystal.MatrixReal, r.Thicknesses, r.Defocusses, "HRTEM");
         }
+
+        //261105Cl 追加: ぼかしにチェックが入っていれば、作り直した像にも掛ける (旧: 新しい像はぼけないまま表示・保存されていた)
+        if (checkBoxGaussianBlur.Checked)
+            ApplyGaussianBlur();
 
         //260802Cl 追加: **レイアウトが確定してから**描く。SetPseudoBitamap の中で描くと、新規生成直後のセルは
         //まだ 1x1 で ScalablePictureBox.drawPictureBox が何もせずに戻り、画像が出ないまま残る
@@ -1621,9 +1738,14 @@ public partial class FormImageSimulator : FormBase
         BeamsInside = BetheMethod.ExtractInsideBeams(beams, AccVol, HRTEM_ObjAperRadius, HRTEM_ObjAperX, HRTEM_ObjAperY);
         textBoxNumOfSpots.Text = BeamsInside.Length.ToString();
 
-        if (FormDiffractionSpotInfo.Visible)
+        //if (FormDiffractionSpotInfo.Visible) // 261105Cl 変更前 (下の Beams の行も)
+        //{
+        //    Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]);
+        // 261105Cl 変更 (監査 E): シリーズの厚みリストが不正 (null) や空のとき、回転のたびに NullReferenceException / IndexOutOfRange になっていた。
+        //  そのときはスポット詳細の表を更新しない (リストが不正なことは ThicknessArray がメッセージで知らせる)
+        if (FormDiffractionSpotInfo.Visible && ThicknessArray is { Length: > 0 } thicknesses)
         {
-            Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]);
+            Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknesses[0]);
             BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, HRTEM_ObjAperRadius, HRTEM_ObjAperX, HRTEM_ObjAperY);
             FormDiffractionSpotInfo.SetTable(AccVol, BeamsInside);
         }
@@ -1722,7 +1844,10 @@ public partial class FormImageSimulator : FormBase
             var mode = ImageMode;
             var isStem = mode == ImageModes.STEM;
 
-            numericBoxDefocus.Enabled = mode != ImageModes.POTENTIAL;
+            //numericBoxDefocus.Enabled = mode != ImageModes.POTENTIAL; // 261105Cl 変更前
+            //261105Cl 変更: シリーズ画像でデフォーカスを振っている間は無効のまま (CheckBoxSerialDefocus_CheckedChanged と同じ条件。
+            //旧: モードを切り替えるとシリーズ中でも入力できる状態に戻り、入れた値は計算に使われなかった)
+            numericBoxDefocus.Enabled = mode != ImageModes.POTENTIAL && !(radioButtonSerialMode.Checked && checkBoxSerialDefocus.Checked);
 
             numericBoxHRTEM_BetaAgnle.Enabled = mode == ImageModes.HRTEM;
 
@@ -1985,6 +2110,66 @@ public partial class FormImageSimulator : FormBase
     private void ToolStripMenuItemCopyMetafile_Click(object sender, EventArgs e) => Save(FormatEnum.Meta, ActionEnum.Copy);
     #endregion 画像のコピー/保存
 
+    #region TEM パラメータのファイルの読み書き 261105Cl 追加 (監査 E7: 旧はメニューが常に灰色で未配線)
+    //中身はプリセットと同じ範囲 (ImageSimulatorSetting)。形式は XML (ImageSimulatorSetting.SaveXml / LoadXml)
+
+    /// <summary>261105Cl 追加: File > Load TEM parameters</summary>
+    private void loadTEMParameterToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var ext = "*" + ImageSimulatorSetting.FileExtension;
+        using var dlg = new OpenFileDialog { Filter = $"{ext}|{ext}|*.*|*.*" };
+        if (dlg.ShowDialog() != DialogResult.OK) return;
+
+        ImageSimulatorSetting setting;
+        try
+        {
+            setting = ImageSimulatorSetting.LoadXml(dlg.FileName, defaultSetting);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(
+                Loc(en: "This file could not be read as TEM parameters. Choose a file saved with \"Save TEM parameters\" ({0}).",
+                    ja: "このファイルは TEM パラメータとして読み込めませんでした。「TEMパラメータを保存」で保存したファイル ({0}) を選んでください。",
+                    de: "Diese Datei konnte nicht als TEM-Parameter gelesen werden. Wählen Sie eine mit „TEM-Parameter speichern“ gespeicherte Datei ({0}).",
+                    fr: "Impossible de lire ce fichier comme paramètres TEM. Choisissez un fichier enregistré avec « Enregistrer les paramètres TEM » ({0}).",
+                    es: "No se pudo leer este archivo como parámetros TEM. Elija un archivo guardado con «Guardar parámetros TEM» ({0}).",
+                    pt: "Não foi possível ler este arquivo como parâmetros TEM. Escolha um arquivo salvo com \"Salvar parâmetros TEM\" ({0}).",
+                    it: "Impossibile leggere questo file come parametri TEM. Scegliere un file salvato con \"Salva parametri TEM\" ({0}).",
+                    ru: "Не удалось прочитать этот файл как параметры ПЭМ. Выберите файл, сохранённый командой «Сохранить параметры ПЭМ» ({0}).",
+                    zhHans: "无法将此文件读取为 TEM 参数。请选择用「保存 TEM 参数」保存的文件 ({0})。",
+                    zhHant: "無法將此檔案讀取為 TEM 參數。請選擇以「儲存 TEM 參數」儲存的檔案 ({0})。",
+                    ko: "이 파일을 TEM 파라미터로 읽을 수 없습니다. 'TEM 파라미터 저장'으로 저장한 파일 ({0}) 을 선택하세요.")
+                .Replace("{0}", ext) + $"\r\n\r\n{dlg.FileName}\r\n{ex.Message}",
+                loadTEMParameterToolStripMenuItem.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+        Setting = setting;
+    }
+
+    /// <summary>261105Cl 追加: File > Save TEM parameters</summary>
+    private void saveTEMParametersToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var ext = "*" + ImageSimulatorSetting.FileExtension;
+        using var dlg = new SaveFileDialog { Filter = $"{ext}|{ext}" };
+        if (dlg.ShowDialog() != DialogResult.OK) return;
+        try
+        {
+            Setting.SaveXml(dlg.FileName);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(
+                Loc(en: "The TEM parameters could not be saved.", ja: "TEM パラメータを保存できませんでした。",
+                    de: "Die TEM-Parameter konnten nicht gespeichert werden.", fr: "Impossible d'enregistrer les paramètres TEM.",
+                    es: "No se pudieron guardar los parámetros TEM.", pt: "Não foi possível salvar os parâmetros TEM.",
+                    it: "Impossibile salvare i parametri TEM.", ru: "Не удалось сохранить параметры ПЭМ.",
+                    zhHans: "无法保存 TEM 参数。", zhHant: "無法儲存 TEM 參數。", ko: "TEM 파라미터를 저장할 수 없습니다.")
+                + $"\r\n\r\n{dlg.FileName}\r\n{ex.Message}",
+                saveTEMParametersToolStripMenuItem.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+    }
+    #endregion
+
     #region その他イベント
     private void DetailsOfHRTEMSimulationToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -2033,6 +2218,12 @@ public partial class FormImageSimulator : FormBase
             SkipEvent = true;
             comboBoxScaleColorScale.SelectedIndex = 0;
             SkipEvent = false;
+            //261105Cl 追加: 上の SkipEvent でスケールの見本が ColdWarm のまま残っていた (像は GeneratePseudBitmap で Gray になる)
+            if (scaleImage is not null)
+            {
+                scaleImage.SetScaleGray();
+                pictureBoxScaleOfIntensity.Image = scaleImage.GetImage();
+            }
         }
         GeneratePseudBitmap();
     }
@@ -2047,6 +2238,23 @@ public partial class FormImageSimulator : FormBase
     {
         flowLayoutPanelMagAndPhase.Visible = panelPhaseScale.Visible = radioButtonPotentialModeMagAndPhase.Checked;
         flowLayoutPanelRealAndImaiginary.Visible = radioButtonPotentialModeRealAndImag.Checked;
+        //261105Cl 追加: 振幅・位相 ⇔ 実部・虚部 の切替も像に反映する (このハンドラは Mag 側にだけ配線されていて、切替 1 回につき 1 回来る)
+        DisplaySelection_Changed(this, e);
+    }
+
+    /// <summary>261105Cl 追加: 表示の選択 (ポテンシャルの振幅・位相 / 実部・虚部と表示する成分、Ug・U'g、シリーズ画像の横方向) が
+    /// 変わったときに像を描き直す (旧: 次の Simulate まで像が変わらなかった)。ポテンシャルは前回の計算結果から描き直し
+    /// (量が変わるときだけ計算し直す)、HRTEM/STEM は保持している結果から作り直す。</summary>
+    private void DisplaySelection_Changed(object sender, EventArgs e)
+    {
+        if (sender is RadioButton { Checked: false }) return;//RadioButton の CheckedChanged は外れた側でも来るので捨てる
+        if (ImageMode == ImageModes.POTENTIAL)
+        {
+            if (potentialResult is not null)
+                simulatePotential(redrawOnly: true);
+        }
+        else
+            GeneratePseudBitmap();
     }
 
     private bool TrackBarAdvancedMin_ValueChanged(object sender, double value)
@@ -2066,12 +2274,16 @@ public partial class FormImageSimulator : FormBase
     {
         if (SkipEvent) return;
 
-        if (comboBoxScaleColorScale.SelectedIndex == 0)
-            scaleImage.SetScaleGray();
+        //261105Cl 変更: 強度のスケールがまだ無い (欄の大きさが 0 の間) ときは飛ばす (大きさが決まったときに今のカラースケールで作られる)
+        if (scaleImage is not null)
+        {
+            if (comboBoxScaleColorScale.SelectedIndex == 0)
+                scaleImage.SetScaleGray();
 
-        else
-            scaleImage.SetScaleColdWarm();
-        pictureBoxScaleOfIntensity.Image = scaleImage.GetImage();
+            else
+                scaleImage.SetScaleColdWarm();
+            pictureBoxScaleOfIntensity.Image = scaleImage.GetImage();
+        }
 
         foreach (var box in Boxes)
             if (box.PseudoBitmap.Tag is ImageInfo { LockIntensity: false })
@@ -2089,17 +2301,40 @@ public partial class FormImageSimulator : FormBase
 
         numericBoxGaussianBlurRadius.Enabled = checkBoxGaussianBlur.Checked;
 
+        //foreach (var box in Boxes)
+        //    if (box.PseudoBitmap.Tag is ImageInfo { LockIntensity: false })
+        //    {
+        //        if (checkBoxGaussianBlur.Checked)
+        //            //261105Cl 修正: SetBlurImage の引数は半値半幅 (HWHM)。UI は FWHM なので 1/2 にする (ScalablePictureBoxAdvanced と同じ)。
+        //            //旧: box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / numericBoxResolution.Value, PseudoBitmap.BlurModeEnum.Gaussian);
+        //            box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / numericBoxResolution.Value / 2, PseudoBitmap.BlurModeEnum.Gaussian);
+        //        else
+        //            box.PseudoBitmap.SetOriginalGray();
+        //
+        //        box.drawPictureBox();
+        //    }
+        //261105Cl 変更: ぼかしの適用を ApplyGaussianBlur へ (Simulate で作り直した像にも同じ処理を掛けるため)
+        ApplyGaussianBlur();
         foreach (var box in Boxes)
             if (box.PseudoBitmap.Tag is ImageInfo { LockIntensity: false })
+                box.drawPictureBox();
+    }
+
+    /// <summary>261105Cl 追加: 表示用の Gaussian ぼかしを、今のチェックの状態に合わせて全セルに掛ける (外す) 。描画はしない。
+    /// チェックの切替・FWHM の変更のほか、Simulate や表示の切替で PseudoBitmap を作り直した後にも呼ぶ
+    /// (旧: チェックの切替時にしか掛けず、チェックを入れたまま Simulate した新しい像はぼけないまま表示・保存されていた)。
+    /// 画素の大きさは**その像を計算したときの解像度** (ImageInfo.Resolution, nm/pix) を使う
+    /// (旧: 今の入力欄の値 numericBoxResolution。計算後に入力欄を変えるとぼかしの幅がずれた)。</summary>
+    private void ApplyGaussianBlur()
+    {
+        foreach (var box in Boxes)
+            if (box.PseudoBitmap.Tag is ImageInfo { LockIntensity: false } info)
             {
                 if (checkBoxGaussianBlur.Checked)
-                    //261105Cl 修正: SetBlurImage の引数は半値半幅 (HWHM)。UI は FWHM なので 1/2 にする (ScalablePictureBoxAdvanced と同じ)。
-                    //旧: box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / numericBoxResolution.Value, PseudoBitmap.BlurModeEnum.Gaussian);
-                    box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / numericBoxResolution.Value / 2, PseudoBitmap.BlurModeEnum.Gaussian);
+                    //SetBlurImage の引数は半値半幅 (HWHM, pix)。入力欄は FWHM (pm)、info.Resolution は nm/pix
+                    box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / (info.Resolution * 1000) / 2, PseudoBitmap.BlurModeEnum.Gaussian);
                 else
                     box.PseudoBitmap.SetOriginalGray();
-
-                box.drawPictureBox();
             }
     }
     #endregion 画像の輝度、カラースケール、ガウシアンぼかし
@@ -2192,9 +2427,10 @@ public partial class FormImageSimulator : FormBase
     }
     #endregion
 
-    private void radioButtonPotentialShowPhase_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }
+    //261105Cl 削除: 空のハンドラ。radioButtonPotentialShowPhase は DisplaySelection_Changed へ配線し直した
+    //private void radioButtonPotentialShowPhase_CheckedChanged(object sender, EventArgs e)
+    //{
+    //
+    //}
 }
 

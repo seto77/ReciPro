@@ -6,7 +6,7 @@
 
 Öffnen über das Menü **Optionen** des [Beugungssimulators](index.md) → **ALCHEMI-Simulator...**
 
-GUI-Bedingungen: Wave Length = Electron (Kristall, Beschleunigungsspannung und Orientierung werden vom übergeordneten Beugungssimulator übernommen)
+GUI-Bedingungen: Wellenquelle = Elektron (Kristall, Beschleunigungsspannung und Orientierung werden vom übergeordneten Beugungssimulator übernommen). Bei einer anderen Quelle öffnet sich das Fenster zwar, aber die Anzeige θ_B und **Simulieren** zeigen nur den Hinweis *ALCHEMI ist nur für Elektronen. Stellen Sie die Strahlungsquelle des Beugungssimulators auf Elektronen.* <!-- 261105Cl 監査: FormALCHEMI.cs NotElectronNotice (6ae7a85) -->
 
 ![ALCHEMI-Simulator](../../assets/cap-de-auto/FormALCHEMI.png)
 
@@ -51,7 +51,7 @@ $$
 
 Das Abwählen von **Dechannelling-Anteil einbeziehen** im Feld **Berechnung** lässt diesen Term entfallen. Er macht bei typischen Dicken mehrere zehn Prozent der Gesamtausbeute aus; wird er weggelassen, erscheint der Platzkontrast stärker, als er ist.
 
-### Ausgabegröße
+### Ausgabegröße {#output-quantity}
 
 Für einen Schalenkanal ist die primäre Größe die **Anzahl der pro einfallendem Elektron erzeugten Innerschalen-Löcher**; die Umrechnung in Röntgenphotonen (Fluoreszenzausbeute und Linienverzweigung) wird nicht angewandt. Für eine Röntgen-Linienserie (Kα, Kβ, Lα, Lβ, Mα), die unter **Ionisationskanäle** nach den Schalen aufgeführt und standardmäßig nicht angehakt ist, ist es die **Anzahl der pro einfallendem Elektron erzeugten Röntgenphotonen** (in alle Richtungen): Fluoreszenzausbeuten, Coster-Kronig- und Strahlungskaskaden und Linienverzweigung aus xraylib 4.2.1 sind berücksichtigt, die Auger-Kaskade ist nicht enthalten. **Die Röntgen-Selbstabsorption in der Probe sowie Detektoreffizienz und Raumwinkel sind in KEINEM der beiden Fälle berücksichtigt.**
 
@@ -93,7 +93,7 @@ Der Platzkontrast ändert sich zwischen dünnen und dicken Proben stark und kann
 
 | Eintrag | Beschreibung | Standard |
 |---------|--------------|----------|
-| **Max. Strahlen** | Obergrenze der Zahl der Bloch-Wellen pro Orientierung (1–1600). Die Vereinigung über den gesamten Scan ist größer | 120 |
+| **Gebeugte Wellen** | Obergrenze der Zahl der Bloch-Wellen pro Orientierung (1–1600). Die Vereinigung über den gesamten Scan ist größer | 120 |
 | **Löser** | Rechenkern für das Eigenwertproblem: **Nativ** (Eigen C++) oder **Verwaltet** (.NET). Wo der native Löser nicht verfügbar ist, wird die Auswahl auf Verwaltet festgelegt | Nativ |
 | **Dechannelling-Anteil einbeziehen** | Ob $Y_\text{dech}$ (oben) addiert wird | ein |
 | **Winkelverbreiterung** | Faltet die Kurve mit der Winkelverbreiterung des einfallenden Strahls: **Keine** oder **Gaussian** mit einer Halbwertsbreite in mrad. Ein Nachbearbeitungsschritt auf der Orientierungsachse, angewendet **vor** der Anzeigenormierung | Keine |
@@ -115,13 +115,13 @@ Die Liste der Atomplätze, deren Ausbeute getrennt berechnet wird, dargestellt a
 
 ### Simulieren / Stopp
 
-**Simulieren** startet den Scan. Der Fortschritt wird in der Statusleiste in fünf Stufen gemeldet (Ionisationsdaten werden aufgelöst → Vereinigungsbasis wird aufgebaut → Ionisationsmatrizen werden aufgebaut → Orientierungen werden gelöst → erweiterte Basis wird geprüft); **Stopp** bricht jederzeit ab.
+**Simulieren** startet den Scan. Der Fortschritt wird in der Statusleiste in fünf Stufen gemeldet (Ionisationsdaten werden aufgelöst → Vereinigungsbasis wird aufgebaut → Ionisationsmatrizen werden aufgebaut → Orientierungen werden gelöst → erweiterte Basis wird geprüft); **Stopp** bricht jederzeit ab. Ist die Reihe **g** parallel zum Strahl, kann der Scan sie nicht durch ihre Bragg-Bedingungen kippen; **Simulieren** meldet dann nur diesen Grund in der Statusleiste. <!-- 261105Cl 監査: FormALCHEMI.cs BuildRequest (732813e) -->
 
 ---
 
 ## Rechter Bereich: Registerkarte Kurve
 
-Nach Abschluss der Rechnung wird pro Paar aus Platz × Kanal eine Kurve gezeichnet. Die Legende lautet `Platzbezeichnung / Kanal`.
+Nach Abschluss der Rechnung wird pro Paar aus Platz × Kanal eine Kurve gezeichnet. Die Legende lautet `Platzbezeichnung / Kanal`. Werden danach der Kristall oder die Beschleunigungsspannung geändert (auch bei geschlossenem Fenster), werden die Kurven, die Diagnose und die Dickenauswahl gelöscht, und die Statuszeile nennt den Grund. <!-- 261106Cl 作者の決定 ALCHEMI -->
 
 | Eintrag | Beschreibung |
 |---------|--------------|
@@ -166,7 +166,7 @@ In den folgenden Situationen werden weitere Warnungen als eigene Zeilen (jeweils
 
 ## CSV-Export {#csv-export}
 
-**CSV exportieren** schreibt eine Tabelle im Long-Format, der ein Kopf im Format `# key: value` vorangestellt ist (unten gekürzt). Der Kopf ist so gestaltet, dass die Datei allein die zur Reproduktion nötigen Bedingungen nennt.
+**CSV exportieren** schreibt eine Tabelle im Long-Format, der ein Kopf im Format `# key: value` vorangestellt ist (unten gekürzt). Der Kopf ist so gestaltet, dass die Datei allein die zur Reproduktion nötigen Bedingungen nennt; `scan_origin_rotation_matrix` hält die Kristallorientierung am Scan-Ursprung (Kippung 0) als zeilenweise geschriebene Rotationsmatrix fest. <!-- 261105Cl 監査: FormALCHEMI.cs buttonExport_Click の Key("scan_origin_rotation_matrix", ...) -->
 
 ```text
 # generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
@@ -175,6 +175,7 @@ In den folgenden Situationen werden weitere Warnungen als eigene Zeilen (jeweils
 # crystal: MgAl2O4 (spinel) / F d -3 m
 # cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
 # accelerating_voltage_kV: 200.000
+# scan_origin_rotation_matrix: 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 (row-major; the crystal orientation of the parent diffraction simulator at the run, mapping the crystal's Cartesian frame to the laboratory frame, in which the beam travels along -z)
 # scan_row_hkl: 1 0 0
 # theta_B_mrad: 1.552030
 # thicknesses_nm: 10.0000 20.0000 ... 100.0000
@@ -250,7 +251,7 @@ Was der Wert markiert, ist die Stelle, an der die Reduktion auf einen **einzigen
 
 Die Energie der Linie allein kann ein Ergebnis nicht absichern: Die räumliche Ausdehnung der Schale, die Orientierung, die Dicke und die vom Basissystem tatsächlich benötigten reziproken Vektoren gehen alle ein. Behandeln Sie 3–4 keV als Hinweis auf genaueres Hinsehen, nicht als Bestehensmarke. Wo Sie die Wahl haben, macht der Vergleich von Linien **ähnlicher Energie** die Delokalisierungsverzerrung beider eher vergleichbar; Jones (2002) empfiehlt genau das als ersten praktischen Schritt und als zweiten, eine systematische Reihe einer Zonenachse vorzuziehen — die systematische Reihe ist die Geometrie, die v1 rechnet (eine Zonenachse kanalisiert stärker, benötigt aber eine größere Delokalisierungskorrektur).
 
-⚠ Niedrige Emissionsenergien leiden zudem am stärksten unter der **Röntgen-Selbstabsorption** — wie stark, hängt allerdings von der Zusammensetzung der Probe und ihren Absorptionskanten, der Weglänge und dem Abnahmewinkel ab, nicht allein von der Emissionsenergie. Das ist eine **eigenständige** Fehlerquelle, die überhaupt nicht modelliert ist (siehe [Ausgabegröße](#ausgabegröße) oben), und sie verfälscht den Vergleich mit einem Experiment unabhängig von allem, was die lokale Näherung tut.
+⚠ Niedrige Emissionsenergien leiden zudem am stärksten unter der **Röntgen-Selbstabsorption** — wie stark, hängt allerdings von der Zusammensetzung der Probe und ihren Absorptionskanten, der Weglänge und dem Abnahmewinkel ab, nicht allein von der Emissionsenergie. Das ist eine **eigenständige** Fehlerquelle, die überhaupt nicht modelliert ist (siehe [Ausgabegröße](#output-quantity) oben), und sie verfälscht den Vergleich mit einem Experiment unabhängig von allem, was die lokale Näherung tut.
 
 ### Modellannahmen
 

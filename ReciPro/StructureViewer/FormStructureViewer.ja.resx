@@ -175,13 +175,15 @@
     <value>表示範囲を各単位胞軸の ±1 に設定</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value>表示中心を原点 (0, 0, 0) に設定</value>
+    <value>「中心」を (0, 0, 0) に設定: 表示領域の中心を投影中心に合わせます。</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value>表示中心を (1/4, 1/4, 1/4) に設定</value>
+    <value>「中心」を (1/4, 1/4, 1/4) に設定: 表示領域を投影中心から
++a, +b, +c の向きに 1/4 ずつずらします。</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
-    <value>表示中心を (1/2, 1/2, 1/2) に設定</value>
+    <value>「中心」を (1/2, 1/2, 1/2) に設定: 表示領域を投影中心から
++a, +b, +c の向きに 1/2 ずつずらします。</value>
   </data>
   <data name="buttonSetRange0.ToolTip" xml:space="preserve">
     <value>表示範囲を各単位胞軸の ±1/4 に設定</value>
@@ -203,16 +205,19 @@
 中心 ± この値 の範囲内の原子を描画します。</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>表示領域の中心の c 軸成分（分率座標）。Range と
-組み合わせて描画範囲の上限／下限面を決めます。</value>
+    <value>表示領域の中心の、投影中心からの c 軸方向のずれ (分率座標。
+正で +c の向き)。「範囲」と組み合わせて描画範囲の上限／下限面を
+決めます: (投影中心 + 中心) ± 範囲。</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>表示領域の中心の b 軸成分（分率座標）。Range と
-組み合わせて描画範囲の上限／下限面を決めます。</value>
+    <value>表示領域の中心の、投影中心からの b 軸方向のずれ (分率座標。
+正で +b の向き)。「範囲」と組み合わせて描画範囲の上限／下限面を
+決めます: (投影中心 + 中心) ± 範囲。</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>表示領域の中心の a 軸成分（分率座標）。Range と
-組み合わせて描画範囲の上限／下限面を決めます。</value>
+    <value>表示領域の中心の、投影中心からの a 軸方向のずれ (分率座標。
+正で +a の向き)。「範囲」と組み合わせて描画範囲の上限／下限面を
+決めます: (投影中心 + 中心) ± 範囲。</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>範囲</value>
@@ -230,13 +235,14 @@
     <value>中心を以下の値にセット</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>表示中心をプリセットの分率座標位置に設定します。</value>
+    <value>「中心」(投影中心からのずれ) をプリセットの分率座標の値に設定します。</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>中心</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>各単位胞軸方向の表示領域の中心(分率座標)。</value>
+    <value>表示領域の中心の、投影中心からのずれ (各単位胞軸方向の
+分率座標。正で +a, +b, +c の向き)。</value>
   </data>
   <data name="tabPageBoundPlane.ToolTip" xml:space="preserve">
     <value />
@@ -251,7 +257,7 @@
     <value>結晶の境界面の表示/非表示</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderText" xml:space="preserve">
-    <value>透明度</value>
+    <value>不透明度</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.ToolTip" xml:space="preserve">
     <value>境界面の不透明度（0=透明、1=不透明）</value>
@@ -338,7 +344,7 @@
     <value>不透明度</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip" xml:space="preserve">
-    <value>格子面の不透明度 (1: 不透明, 0: 透明)</value>
+    <value>単位胞の面の不透明度 (1: 不透明, 0: 透明)</value>
   </data>
   <data name="flowLayoutPanelCellEdgeColors.ToolTip" xml:space="preserve">
     <value />
@@ -399,7 +405,7 @@
   </data>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
     <value>サブセル格子を描く際の b 軸方向の分割数(整数、
-1〜10)。'Show Subcell' 有効時に表示されます。</value>
+1〜10)。'Show subcell' 有効時に表示されます。</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>平行移動</value>
@@ -415,11 +421,11 @@
   </data>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
     <value>サブセル格子を描く際の c 軸方向の分割数(整数、
-1〜10)。'Show Subcell' 有効時に表示されます。</value>
+1〜10)。'Show subcell' 有効時に表示されます。</value>
   </data>
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
     <value>サブセル格子を描く際の a 軸方向の分割数(整数、
-1〜10)。'Show Subcell' 有効時に表示されます。</value>
+1〜10)。'Show subcell' 有効時に表示されます。</value>
   </data>
   <data name="tabPageLatticePlane.Text" xml:space="preserve">
     <value>格子面</value>
@@ -572,7 +578,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
 遠方境界と対で遠い原子をフェードします。</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>最遠</value>
+    <value>遠方</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>デプスキューイングの遠方境界 (Å): これより遠い
@@ -584,7 +590,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
 近方境界と対で遠い原子をフェードします。</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>最近</value>
+    <value>近方</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>デプスキューイングの近方境界 (Å): これより近い
@@ -698,7 +704,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>原子ラベルを表示</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>凡例にラベルを表示</value>
+    <value>3D 表示に原子ラベルを表示</value>
   </data>
   <data name="radioButtonUseMaterialColor.Text" xml:space="preserve">
     <value>原子色を使う</value>
@@ -722,7 +728,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>白く縁取り</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>チェックすると、凡例の文字に白い縁取りが付きます</value>
+    <value>チェックすると、3D 表示の原子ラベルに白い縁取りが付きます</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>(凡例をクリックして
@@ -799,7 +805,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>凡例の表示/非表示</value>
   </data>
   <data name="toolStripButtonResetRotation.Text" xml:space="preserve">
-    <value>角度をリセット</value>
+    <value>回転をリセット</value>
   </data>
   <data name="toolStripButtonAtomObjects.Text" xml:space="preserve">
     <value>原子</value>
@@ -826,7 +832,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>画像を保存</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>画像をクリップボードにコピー</value>
+    <value>コピー</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
     <value>動画を保存</value>
@@ -897,7 +903,8 @@ List、新しい OpenGL が必要）かを選びます。</value>
 (元素記号)の表示/非表示を切り替えます。</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>3D モデル中の原子(球)の表示/非表示を切り替えます。</value>
+    <value>3D モデル中の原子(球)の表示/非表示を切り替えます。
+結合・多面体・ラベルは原子から作るので、これらも消えます。</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>原子半径・色・結合を VESTA 風の既定値にリセットし
@@ -926,16 +933,19 @@ List、新しい OpenGL が必要）かを選びます。</value>
 中心 ± この値 の範囲内の原子を描画します。</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>表示領域の中心の c 軸成分（分率座標）。Range と
-組み合わせて描画範囲の上限／下限面を決めます。</value>
+    <value>表示領域の中心の、投影中心からの c 軸方向のずれ (分率座標。
+正で +c の向き)。「範囲」と組み合わせて描画範囲の上限／下限面を
+決めます: (投影中心 + 中心) ± 範囲。</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>表示領域の中心の b 軸成分（分率座標）。Range と
-組み合わせて描画範囲の上限／下限面を決めます。</value>
+    <value>表示領域の中心の、投影中心からの b 軸方向のずれ (分率座標。
+正で +b の向き)。「範囲」と組み合わせて描画範囲の上限／下限面を
+決めます: (投影中心 + 中心) ± 範囲。</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value>表示領域の中心の a 軸成分（分率座標）。Range と
-組み合わせて描画範囲の上限／下限面を決めます。</value>
+    <value>表示領域の中心の、投影中心からの a 軸方向のずれ (分率座標。
+正で +a の向き)。「範囲」と組み合わせて描画範囲の上限／下限面を
+決めます: (投影中心 + 中心) ± 範囲。</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.ToolTip1" xml:space="preserve">
     <value>境界面の不透明度（0=透明、1=不透明）</value>
@@ -953,7 +963,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>c 軸に垂直な単位胞面の色（「Each plane」選択時に使用）。</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip1" xml:space="preserve">
-    <value>格子面の不透明度 (1: 不透明, 0: 透明)</value>
+    <value>単位胞の面の不透明度 (1: 不透明, 0: 透明)</value>
   </data>
   <data name="colorControlCellEdge.ToolTip1" xml:space="preserve">
     <value>すべてのセル辺の色を設定</value>
@@ -1191,5 +1201,63 @@ List、新しい OpenGL が必要）かを選びます。</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>結晶構造ビューア</value>
+  </data>
+  <data name="labelMessage.Text" xml:space="preserve">
+    <value>このコントロールは現在
+「結晶構造ビューア」ウィンドウに表示されています。</value>
+  </data>
+  <data name="labelGraphicsCard.Text" xml:space="preserve">
+    <value>グラフィックカード:  </value>
+  </data>
+  <data name="labelGraphicsDriver.Text" xml:space="preserve">
+    <value>グラフィックドライバ:  </value>
+  </data>
+  <data name="labelOpenGLversion.Text" xml:space="preserve">
+    <value>OpenGL バージョン:  </value>
+  </data>
+  <data name="toolStripButtonLikeVesta.Text" xml:space="preserve">
+    <value>VESTA 風</value>
+  </data>
+  <data name="iLikeVESTAToolStripMenuItem.Text" xml:space="preserve">
+    <value>VESTA 風にする</value>
+  </data>
+  <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
+    <value>メイン</value>
+  </data>
+  <data name="saveLegendToolStripMenuItem.Text" xml:space="preserve">
+    <value>凡例</value>
+  </data>
+  <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
+    <value>結晶軸</value>
+  </data>
+  <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
+    <value>光源方向</value>
+  </data>
+  <data name="copyMainToolStripMenuItem.Text" xml:space="preserve">
+    <value>メイン</value>
+  </data>
+  <data name="copyLegendToolStripMenuItem1.Text" xml:space="preserve">
+    <value>凡例</value>
+  </data>
+  <data name="copyAxesToolStripMenuItem.Text" xml:space="preserve">
+    <value>結晶軸</value>
+  </data>
+  <data name="copyLightToolStripMenuItem.Text" xml:space="preserve">
+    <value>光源方向</value>
+  </data>
+  <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
+    <value>CTRL+SHIFT+c:  メイン画像をクリップボードにコピー</value>
+  </data>
+  <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
+    <value>CTRL+ マウス右ダブルクリック:  透視投影 &lt;=&gt; 正射影 を交互に切り替え</value>
+  </data>
+  <data name="toolStripMenuItem2.Text" xml:space="preserve">
+    <value>CTRL+ マウス右ボタンで上下:  透視の度合いを変更</value>
+  </data>
+  <data name="sizeControl1.HeaderText" xml:space="preserve">
+    <value>サイズ (W×H)</value>
   </data>
 </root>

@@ -8,12 +8,23 @@ O ReciPro associa muitas funções a **combinações de teclas** e a **botões d
 
 ## Atalhos válidos em todo o aplicativo
 
-Estes são instalados pela [janela principal](0-main-window.md), mas permanecem ativos enquanto as janelas Visualizador de estrutura, Estereonete, Simulador de difração e Spot ID estiverem em foco.
+Estes são instalados pela [janela principal](0-main-window.md), mas permanecem ativos enquanto as janelas Visualizador de estrutura, Estereonete, Simulador de difração e Spot ID v1 estiverem em foco.
 
 | Atalho | Ação |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + teclas de seta | Girar o cristal um passo nessa direção (mantenha duas setas para uma diagonal) |
-| Manter <kbd>CTRL</kbd> pressionado enquanto o ReciPro inicia | Iniciar com o OpenGL desativado (recuperação para problemas gráficos) |
+| Manter <kbd>CTRL</kbd> pressionado enquanto o ReciPro inicia | Iniciar com o OpenGL desativado (recuperação para problemas gráficos; apenas nesta execução, não é salvo) |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> (qualquer janela) | Abrir a ferramenta (experimental) de captura da GUI para a janela ativa |
+
+### Caixas de entrada numérica
+
+A maioria dos campos numéricos de todas as janelas se comporta da mesma maneira.
+
+| Atalho | Ação |
+|----------|--------|
+| <kbd>↑</kbd> / <kbd>↓</kbd> (campo em foco, botões giratórios exibidos) | Aumentar / diminuir o valor em um passo, exatamente como os botões giratórios |
+| <kbd>ENTER</kbd> | Confirmar o valor digitado |
+| <kbd>SHIFT</kbd>+<kbd>ENTER</kbd> ou <kbd>CTRL</kbd>+<kbd>ENTER</kbd> | Avaliar a expressão aritmética digitada e substituí-la pelo resultado |
 
 ---
 
@@ -47,7 +58,7 @@ Usadas pelo padrão do [Simulador de difração](7-diffraction-simulator/index.m
 | Arrastar uma caixa com o botão direito | Ampliar o zoom na região selecionada |
 | Arrastar com o botão do meio | Deslocar |
 
-Nessas visualizações **não** há zoom pela roda do mouse.
+Apenas o padrão do Simulador de difração também aceita zoom pela roda do mouse (×2 / ×0,5, recentrado no cursor); a Estereonete e o padrão de Kikuchi do EBSD **não** têm zoom pela roda do mouse. Não há zoom pelas teclas <kbd>+</kbd> / <kbd>-</kbd>.
 
 ### Visualizações de imagem { #image }
 
@@ -72,9 +83,9 @@ Usadas pelos painéis de resultado do [HRTEM/STEM](9-hrtem-stem-simulator/index.
 | Arrastar com o botão esquerdo o widget de orientação (canto inferior esquerdo) | Girar o cristal |
 | Clique duplo direito no widget de orientação | Copiar a imagem do widget para a área de transferência |
 | Clique único / clique duplo em um botão de função | Alternar essa janela / forçá-la para a frente |
-| Clique direito em um cristal na lista | Menu de contexto (Renomear / Duplicar / Excluir / Exportar CIF…) |
-| Clique duplo no rótulo **Current Index** | Mostrar / ocultar a caixa de max-UVW |
-| Soltar um arquivo | Carregar uma lista de cristais (`.xml`, `.cdb2`) ou um cristal (`.cif`, `.amc`) |
+| Clique direito em um cristal na lista | Menu de contexto (Renomear / Exportar como CIF / Duplicar / Excluir) |
+| Clique duplo no rótulo do índice do eixo de zona (`[u v w]`) | Mostrar / ocultar a caixa de max-UVW |
+| Soltar um arquivo | Carregar uma lista de cristais (`.xml`, `.out`) ou um cristal (`.cif`, `.amc`) <!-- 261105Cl 監査: .cdb2 を外した (ドロップを受け付けない) --> |
 
 ### 1. Banco de dados de cristais
 [Abrir página →](1-crystal-database.md)
@@ -83,10 +94,10 @@ Usadas pelos painéis de resultado do [HRTEM/STEM](9-hrtem-stem-simulator/index.
 |----------|--------|
 | <kbd>ENTER</kbd> em um campo de busca | Executar a busca |
 | Clique em uma linha de resultado | Carregar esse cristal |
-| Clique em um elemento no pop-up da tabela periódica | Percorrer seu filtro: ignorar → deve incluir → deve excluir |
+| Clique em um elemento no pop-up **Tabela periódica** | Percorrer seu filtro: *pode ou não incluir* → *deve incluir* → *deve excluir* |
 
 ### 2. Informação de simetria · 3. Interação do feixe
-A Informação de simetria não tem combinações especiais de tecla/mouse. Na Interação do feixe, além de <kbd>F1</kbd> e dos botões **Copy**, o cursor vertical no gráfico **Scattering factors** pode ser arrastado para ler o valor de cada elemento.
+A Informação de simetria não tem combinações especiais de tecla/mouse. Na Interação do feixe, além de <kbd>F1</kbd> e dos botões **Copiar**, o cursor vertical no gráfico **Fatores de dispersão** pode ser arrastado para ler o valor de cada elemento.
 [Simetria →](2-symmetry-information.md) · [Interação do feixe →](3-beam-interaction.md)
 
 ### 4. Geometria de rotação
@@ -107,21 +118,22 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 
 | Atalho | Ação |
 |----------|--------|
-| Clique duplo esquerdo na rede | Alternar entre projeção **Plane** e **Axis** |
+| Clique duplo esquerdo na rede | Alternar entre projeção **Planos** e **Eixos** |
 | Mover o mouse sobre a rede | Ler o (hkl)/[uvw] sob o cursor |
 
 ### 7. Simulador de difração
-[Abrir página →](7-diffraction-simulator/index.md) — o padrão é uma [visualização de padrão de difração](#pattern) (sem zoom pela roda do mouse).
+[Abrir página →](7-diffraction-simulator/index.md) — o padrão é uma [visualização de padrão de difração](#pattern), com zoom pela roda do mouse.
 
 | Atalho | Ação |
 |----------|--------|
+| Roda do mouse para cima / baixo | Ampliar (×2) / reduzir (×0,5) o zoom, recentrando a visualização na posição do cursor (no centro fixo quando a caixa **Fixar** do centro está marcada) |
 | Clique duplo esquerdo em um ponto | Mostrar detalhes da reflexão (índice, *d*, fator de estrutura, erro de excitação) |
 | <kbd>CTRL</kbd> + arrastar com o botão do meio | Mover o centro do detector (quando a área do detector é exibida) |
 | Clique duplo direito na barra de status | Copiar um resumo em texto das configurações atuais |
 | Clique duplo direito em um botão de camada ativo (Spots / Kikuchi / Debye / Scale) | Fazer essa camada piscar |
-| Clique duplo esquerdo na estereonete — janela **TEM holder** | Definir a inclinação do suporte para esse ponto |
-| Teclas de seta — janela **TEM holder** | Avançar a inclinação do suporte em passos (marque **Ativar teclas de seta** antes; funciona com qualquer janela do ReciPro em primeiro plano) |
-| Soltar `.prm` / imagem — **Detector geometry**, ou `.txt` — **Dynamic compression** | Carregar esses dados |
+| Clique duplo esquerdo na estereonete — janela **Simulação de suporte TEM** | Definir a inclinação do suporte para esse ponto |
+| Teclas de seta — janela **Simulação de suporte TEM** | Avançar a inclinação do suporte em passos (marque **Ativar teclas de seta** antes; funciona somente enquanto a janela do suporte estiver ativa) <!-- 261106Cl 作者の決定 D25 --> |
+| Soltar `.prm` / imagem — **Geometria do detector**, ou `.txt` — **Compressão dinâmica** | Carregar esses dados |
 
 ### 8. Trajetórias eletrônicas
 [Abrir página →](8-electron-trajectory.md) — uma [visualização 3-D](#3d) com o deslocamento desativado.
@@ -136,7 +148,7 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 | Clique duplo esquerdo em um painel | Maximizar esse painel / restaurar a grade (layouts de múltiplos painéis) |
 
 ### 10. Spot ID v1
-[Abrir página →](10-spot-id.md) — a imagem é apenas de referência (não interativa).
+[Abrir página →](10-spot-id.md) — não há visualização de imagem (a geometria das reflexões é inserida numericamente).
 
 | Atalho | Ação |
 |----------|--------|
@@ -160,6 +172,7 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 | Atalho | Ação |
 |----------|--------|
 | Clique duplo no padrão de Kikuchi | Selecionar a subcélula do detector sob o cursor e mostrar suas estatísticas |
+| Com a seleção **Zone axis** ativada: clique duplo esquerdo / <kbd>CTRL</kbd> + clique duplo esquerdo / <kbd>SHIFT</kbd> + clique duplo esquerdo no padrão | Adicionar um ponto de eixo de zona / remover o ponto a até 5 pixels de tela / selecionar esse ponto |
 
 ### 20. Macro
 [Abrir página →](20-macro/index.md)
@@ -169,4 +182,4 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Salvar o texto do editor de volta na entrada selecionada da lista de macros |
 | <kbd>F10</kbd> | Avançar um passo (durante a execução passo a passo) |
 | Clique duplo em uma linha da lista de ajuda de funções | Inserir a assinatura dessa função no ponto de inserção |
-| Soltar um arquivo `.mcr` | Carregá-lo no editor |
+| Soltar um arquivo `.mcr` sobre a janela | Carregá-lo no editor e adicioná-lo à lista de macros (o nome do arquivo passa a ser o nome da macro) |

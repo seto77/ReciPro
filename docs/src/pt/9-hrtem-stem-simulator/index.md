@@ -96,8 +96,8 @@ O painel no canto inferior esquerdo ajusta a aparência do resultado — brilho,
 ![Ajustar](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
 
 - **Min** / **Max** : extremos inferior (preto) e superior (branco) da faixa de intensidade exibida. Use as barras deslizantes para ajustar o contraste.
-- **Cor** : escala de cores da imagem — **Gray scale** (tons de cinza) ou **Cold-Warm** (do azul ao vermelho).
-- **Desfoque gaussiano (FWHM)** : quando marcado, aplica um desfoque gaussiano com a largura a meia altura (pm) indicada à direita, aproximando uma resolução finita (função de espalhamento pontual).
+- **Cor** : escala de cores da imagem — **Gray scale** (tons de cinza) ou **Cold-warm** (do azul ao vermelho).
+- **Desfoque gaussiano (FWHM)** : quando marcado, aplica um desfoque gaussiano com a largura a meia altura (pm) indicada à direita, aproximando uma resolução finita (função de espalhamento pontual). Enquanto estiver marcado, as imagens recém-calculadas também são desfocadas. A FWHM é convertida em pixels com a **Resolução** (pm/px) com que cada imagem foi calculada. <!-- 261105Cl 監査: FormImageSimulator.cs:ApplyGaussianBlur -->
 
 ### Normalização
 
@@ -105,6 +105,8 @@ O painel no canto inferior esquerdo ajusta a aparência do resultado — brilho,
 
 - **Por imagem** : quando marcado, normaliza cada imagem separadamente (quando desmarcado, toda a série compartilha uma escala comum).
 - **Min** / **Max** : fixa o extremo inferior / superior da normalização no valor indicado à direita, em vez do mínimo / máximo da imagem.
+- **EDX comum** : exibido apenas enquanto um [mapa EDX](2-stem-simulation.md#stem-edx) é mostrado e a execução produziu mais de um canal; coloca todos os canais da mesma grandeza numa mesma faixa de exibição. Os mapas EDX nunca são reescalados por **Min** / **Max**: o seu extremo inferior é fixo em 0 e apenas o extremo superior segue **Por imagem** / **EDX comum**.
+- Este grupo fica oculto no modo Potencial.
 
 ### Imagem STEM
 
@@ -118,8 +120,8 @@ Exibido apenas no modo STEM. Seleciona qual componente de espalhamento da imagem
 
 Define os elementos sobrepostos à imagem.
 
-- **Célula** : sobrepõe o contorno da célula unitária projetada, para relacionar o contraste da imagem com a rede cristalina.
-- **Texto** : sobrepõe rótulos como espessura, desfoco e índices. É possível especificar **Tam.** (tamanho da fonte) e **Cor**.
+- **Célula** : sobrepõe o contorno da célula unitária projetada, para relacionar o contraste da imagem com a rede cristalina. As arestas paralelas a **a**, **b** e **c** são desenhadas em vermelho, verde e azul, centradas no centro da imagem.
+- **Texto** : sobrepõe o rótulo de cada painel — a espessura `t=` e o desfoco `f=` (nm) em HRTEM / STEM, ou o nome do painel (por exemplo *Ug magnitude*) no modo Potencial. É possível especificar **Tam.** (tamanho da fonte) e **Cor**.
 - **Escala** : sobrepõe uma barra de escala. É possível especificar **Compr.** (nm) e **Cor**.
 
 ---
@@ -131,7 +133,17 @@ Define os elementos sobrepostos à imagem.
 - **Simular** : executa o cálculo com o cristal, as condições do microscópio, a espessura, o desfoco e as configurações de exibição atuais.
 - **Parar** : interrompe o cálculo em andamento (exibido apenas durante o cálculo).
 - **Tempo real** : quando marcado, recalcula imediatamente à medida que o cristal é girado (oculto no modo STEM).
-- **Predefinições** : mostra/oculta a janela de predefinições, que armazena e recupera condições de imagem TEM.
+- **Predefinições** : mostra/oculta a janela de predefinições, que armazena e recupera condições de imagem TEM (veja [Lista de predefinições](#preset-list) abaixo).
+
+### Lista de predefinições {#preset-list}
+
+A janela **Lista de predefinições** guarda instantâneos nomeados das configurações do simulador. Um instantâneo armazena o modo de imagem, a tensão de aceleração, Cs, Cc, ΔV, o desfoco, β, a abertura da objetiva (tamanho e deslocamento), o modelo de coerência parcial do HRTEM, a espessura, o modo único/série, quais grandezas uma série varre (espessura / desfoco) com o seu **Início / Passo / Núm**, as listas de espessura / desfoco em série, o tamanho e a resolução da imagem, o número de ondas de Bloch e as configurações STEM (ângulo de convergência, ângulos do detector, tamanho da fonte, espessura das fatias, resolução angular, **Calcular mapas EDX** e **Séries de linhas (Kα, Lα…)**). A lista é salva com as configurações do ReciPro e persiste após reiniciar. As predefinições salvas por versões anteriores não guardam as configurações de modo único/série; aplicá-las deixa essas configurações inalteradas. <!-- 261105Cl 監査: FormPresets.cs ImageSimulatorSetting (SerialImageMode ほか) -->
+
+- Clicar numa entrada a aplica imediatamente.
+- **OK** fecha a janela e mantém as configurações atuais; **Cancelar** (ou <kbd>Esc</kbd>) fecha-a e restaura as configurações que estavam em vigor quando a janela foi aberta.
+- **Gerenciar a lista de predefinições** : quando marcado, clicar numa entrada apenas a seleciona (sem aplicá-la) e aparecem a caixa **Nome** e os botões **Adicionar** / **Substituir** / **Renomear** / **Excluir**. **Adicionar** acrescenta as configurações atuais com o nome indicado, **Substituir** sobrescreve no próprio lugar a entrada selecionada com as configurações atuais e o nome da caixa **Nome**, e **Renomear** altera apenas o seu nome.
+
+As predefinições de microscópio (ARM300F, 2100F, …) não estão nesta lista; elas ficam no menu de clique direito de **Condições TEM** (veja [Simulação HRTEM](1-hrtem-simulation.md#tem-conditions)).
 
 ---
 
@@ -139,17 +151,19 @@ Define os elementos sobrepostos à imagem.
 
 ![Menu Arquivo](../../assets/cap-pt-auto/FormImageSimulator.menuStrip1.fileToolStripMenuItem.png)
 
-- **Salvar imagem** : salva **como imagem (formato PNG)**, **como imagem (formato TIFF)** ou **como metarquivo (EMF)**. **Salvar individualmente no modo de imagem em série** grava as imagens de uma execução em série uma a uma.
+- **Salvar imagem** : salva **como imagem (formato PNG)**, **como imagem (formato TIFF)** ou **como metarquivo (EMF)**. PNG e EMF salvam o que é exibido (faixa de exibição e escala de cores); **Salvar individualmente no modo de imagem em série** (ativado por padrão) grava cada painel em seu próprio arquivo, em vez de uma única imagem em mosaico. O TIFF sempre grava um arquivo de ponto flutuante por painel, sem sobreposições. Ele armazena os valores de pixel após a **Normalização** (e após o **Desfoque gaussiano (FWHM)**, se aplicado), e não a faixa de exibição de **Ajustar**; com os padrões (**Min** 0, **Max** 1, **Por imagem**), cada imagem é escalada para 0–1, portanto desmarque **Min** / **Max** para exportar as intensidades calculadas. Os mapas EDX são sempre gravados sem escala.
 - **Copiar imagem** : copia para a área de transferência **como imagem** ou **como metarquivo (EMF)**.
-- **Sobrepor símbolos** : incorpora a célula unitária, os rótulos e a barra de escala à imagem salva.
-- **Carregar parâmetros TEM** / **Salvar parâmetros TEM** : salvam as condições ópticas (tensão de aceleração, aberrações etc.) em um arquivo e as restauram.
+- **Sobrepor símbolos** (ativado por padrão) : incorpora a célula unitária, os rótulos e a barra de escala à imagem PNG / EMF salva ou copiada.
+- **Carregar parâmetros TEM** / **Salvar parâmetros TEM** : leem ou gravam as configurações do simulador num arquivo XML (`*.rpis`). O arquivo contém os mesmos itens de uma [predefinição](#preset-list) — modo de imagem, tensão de aceleração, aberrações, desfoco, abertura da objetiva, espessura e as configurações de modo único/série, tamanho e resolução da imagem, configurações STEM etc. —, de modo que as condições podem ser guardadas ou compartilhadas entre computadores. Os itens ausentes de um arquivo (por exemplo, um gravado por uma versão mais antiga) recebem os valores iniciais da janela e os itens desconhecidos são ignorados; um arquivo que não pode ser lido é informado com uma mensagem. Carregar não recalcula a imagem. <!-- 261106Cl 作者の決定 E7: FormPresets.cs ImageSimulatorSetting.SaveXml/LoadXml -->
 
 ## Menu Ajuda
 
 ![Menu Ajuda](../../assets/cap-pt-auto/FormImageSimulator.menuStrip1.helpToolStripMenuItem.png)
 
 - **Conceito básico da simulação HRTEM** : abre a explicação da formação da imagem HRTEM ([Apêndice A3.2](../appendix/a3-bloch-wave/hrtem.md)).
-- **Biblioteca de cálculo** : seleciona a biblioteca de cálculo — **Native code** (C++/Eigen, rápida) ou **Managed code** (.NET). A nativa normalmente é mais rápida.
+
+<!-- 261106Cl 作者の決定 E12: 計算ライブラリの切替を廃止 (旧: Biblioteca de cálculo の項目) -->
+A biblioteca de cálculo já não é escolhida nesta janela: a síntese da imagem HRTEM usa automaticamente a biblioteca nativa (C++/Eigen) quando ela está disponível. Para deixar de usá-la, ative **Opções ▸ Desativar biblioteca Crystallography.Native (requer reinício)** na [janela principal](../0-main-window.md).
 
 ---
 

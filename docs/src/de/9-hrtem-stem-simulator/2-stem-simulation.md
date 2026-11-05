@@ -50,13 +50,13 @@ Siehe [Anhang A3.4 — STEM-Berechnung](../appendix/a3-bloch-wave/stem.md) für 
 
 | Parameter | Beschreibung | Standard / typisch |
 |-----------|-------------|-------------------|
-| **Beschl.-Spannung (kV)** | Beschleunigungsspannung. Die relativistisch korrigierte Elektronenwellenlänge wird daneben angezeigt | 200 kV |
-| **Defocus Δf** | Defokus der Objektivlinse (sondenformenden Linse) (nm) | −57.8 nm |
+| **Beschl.-Spannung** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Beschleunigungsspannung (kV). Die relativistisch korrigierte Elektronenwellenlänge wird daneben angezeigt | 200 kV |
+| **Defokus Δf** | Defokus der Objektivlinse (sondenformenden Linse) (nm) | −57.8 nm |
 | **Cs** | Sphärischer Aberrationskoeffizient (mm). Beeinflusst die Sondengröße | 0.5–1.0 mm |
 | **Cc** | Chromatischer Aberrationskoeffizient (mm) | 1.0–2.0 mm |
-| **ΔV (FWHM)** | Halbwertsbreite der Energiebreite der Elektronen (eV) | 0.5–2.0 eV |
+| **ΔV** | Halbwertsbreite der Energiebreite der Elektronen (eV) | 0.5–2.0 eV |
 
-> **β (Beleuchtungs-Halbwinkel) ist im STEM-Modus deaktiviert**, weil der Konvergenzwinkel α seine Rolle übernimmt.
+> **β (Beleuchtungs-Halbwinkel) ist im STEM-Modus deaktiviert**, weil der Konvergenzwinkel α seine Rolle übernimmt. Defokus und Cs gehen über dieselbe Aberrationsfunktion $\chi$ wie bei HRTEM in die Sonde ein (negatives Δf = Unterfokus; siehe [HRTEM-Simulation](1-hrtem-simulation.md#tem-conditions)). Das Rechtsklickmenü von **TEM-Bedingungen** (Aberrationen auf null, Scherzer-Defokus, Mikroskop-Voreinstellungen) funktioniert auch hier.
 
 ---
 
@@ -68,10 +68,12 @@ Lege die Geometrie der konvergenten Sonde und des Ringdetektors fest. Jeder Wink
 
 | Parameter | Beschreibung | Standard / typisch |
 |-----------|-------------|-------------------|
-| **α (convergence angle)** | Halbwinkel der konvergenten Sonde (mrad). Größere Werte ergeben eine feinere Sonde und verändern den Beugungskontrast | 15–25 mrad |
-| **(Annular) detector inner angle** | Innerer Erfassungs-Halbwinkel des Ringdetektors (mrad). Signal innerhalb dieses Winkels wird ausgeschlossen | BF: 0, HAADF: 80 |
-| **(Annular) detector outer angle** | Äußerer Erfassungs-Halbwinkel des Ringdetektors (mrad). Signal außerhalb dieses Winkels wird ausgeschlossen | BF: 5, HAADF: 250 |
-| **Effective source size σs (FWHM)** | Effektive Größe der Elektronenquelle. Größere Werte verschmieren die Sonde und verringern den Kontrast feiner Details | — |
+| **Konv.-Halbwinkel α** | Halbwinkel der konvergenten Sonde (mrad). Größere Werte ergeben eine feinere Sonde und verändern den Beugungskontrast | 25 mrad (Standard); 15–25 mrad |
+| **Ringdetektor — Innen** | Innerer Erfassungs-Halbwinkel des Ringdetektors (mrad). Signal innerhalb dieses Winkels wird ausgeschlossen | 0 (Standard); BF: 0, HAADF: 80 |
+| **Ringdetektor — Außen** | Äußerer Erfassungs-Halbwinkel des Ringdetektors (mrad). Signal außerhalb dieses Winkels wird ausgeschlossen | 20 (Standard); BF: 5, HAADF: 250 |
+| **Effektive Quellgröße (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Effektive Größe der Elektronenquelle (pm). Wird nach der Berechnung als Gauß-Faltung auf jedes Elast.-/TDS-/EDX-Bild angewendet. Größere Werte verschmieren das Bild und verringern den Kontrast feiner Details | 20 pm (Standard) |
+
+Die Detektorwinkel gelten nur für das STEM-Referenzbild (Elast. / TDS / Elast. & TDS); STEM-EDX-Karten verwenden sie nicht. Die Standardwerte gelten nur beim ersten Start; danach werden die zuletzt verwendeten Werte wiederhergestellt.
 
 ---
 
@@ -79,17 +81,18 @@ Lege die Geometrie der konvergenten Sonde und des Ringdetektors fest. Jeder Wink
 
 ![STEM-Optionen (Simulation)](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
-- **Slice thickness for inelastic** : Schichtdicke der Probe (nm), die bei der Berechnung der TDS-Intensität (thermisch-diffus, inelastisch) verwendet wird. Kleinere Werte sind genauer, aber langsamer.
-- **Angular resolution** : Winkel-Abtastauflösung der Einfallsrichtungen der Sonde (mrad). Kleinere Werte tasten die Sonde feiner ab, sind aber langsamer. Die Zahl der Richtungen wächst quadratisch mit diesem Verhältnis und ist damit der wichtigste Hebel für die Rechenzeit; gemessene Konvergenzwerte siehe [Winkelabtastung der Sonde](../appendix/a3-bloch-wave/stem.md#angular-sampling).
+- **Schichtdicke (TDS)** : Schichtdicke der Probe (nm, Standard 1, Bereich 0,1–10), die bei der Berechnung der TDS-Intensität (thermisch-diffus, inelastisch) verwendet wird. Kleinere Werte sind genauer, aber langsamer.
+- **Winkelauflösung** : Winkel-Abtastauflösung der Einfallsrichtungen der Sonde (mrad, Standard 0,4). Kleinere Werte tasten die Sonde feiner ab, sind aber langsamer. Die Sondenrichtungen bilden ein $N\times N$-Raster mit $N=\lceil 2\times1.05\,\alpha/\Delta\alpha\rceil$, von dem die Punkte innerhalb einer Scheibe berechnet werden, die etwa 5 % größer als der Konvergenzwinkel ist (ein Rand für die Interpolation); ihre Zahl wächst daher quadratisch mit $\alpha/\Delta\alpha$ und ist damit der wichtigste Hebel für die Rechenzeit. Die Zeile unter dem Feld zeigt das Raster (z. B. `Gitter: 132²`); gemessene Konvergenzwerte siehe [Winkelabtastung der Sonde](../appendix/a3-bloch-wave/stem.md#angular-sampling).
 
 ---
 
-## Bildmodus (single / serial)
+## Einzel-/Serienmodus
 
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text) と HRTEM のページに合わせた -->
 ![Einzel-/Serienmodus](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 - **Einzelbild** : berechnet ein STEM-Bild bei der aktuellen Dicke.
-- **Serienbild** : erzeugt eine Bildserie mit schrittweise variierter Dicke / Defokus (festgelegt über **Start / Step / Num**; die Liste darunter kann auch direkt bearbeitet werden).
+- **Serienbild** : erzeugt eine Bildserie mit schrittweise variierter Dicke / Defokus (festgelegt über **Start / Schritt / Anz**; die Liste darunter kann auch direkt bearbeitet werden).
 
 ---
 
@@ -97,8 +100,8 @@ Lege die Geometrie der konvergenten Sonde und des Ringdetektors fest. Jeder Wink
 
 ![Bildeigenschaften](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-- **Größe (B×H)** : Anzahl der Pixel im gerasterten Bild (Standard 512×512). In STEM entspricht dies der Anzahl der Rasterpunkte und skaliert die Rechenzeit linear.
-- **Resolution** : Abtastauflösung (pm/px).
+- **Größe (B×H)** : Anzahl der Pixel im gerasterten Bild (Standard 512×512). Die Eigenlösung und die Berechnung von $I(Q)$ (Stufen 1–4 in der Statusleiste) hängen nicht davon ab; sie geht nur in die abschließende Synthese des Realraumbildes aus den $I(Q)$-Koeffizienten ein, deren Aufwand proportional zu Pixelzahl × Anzahl der $Q$-Vektoren ist.
+- **Auflösung** : Abtastauflösung (pm/px).
 
 ---
 
@@ -106,7 +109,18 @@ Lege die Geometrie der konvergenten Sonde und des Ringdetektors fest. Jeder Wink
 
 ![Wellen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** : maximale Anzahl der in der Bethe-Methode verwendeten Bloch-Wellen (Standard 80). Der Aufwand des Eigenwertproblems skaliert mit der dritten Potenz der Wellenanzahl.
+- Maximale Anzahl der in der Bethe-Methode verwendeten Bloch-Wellen (Standard 80). Der Aufwand des Eigenwertproblems skaliert mit der dritten Potenz der Wellenanzahl.
+
+---
+
+## Kontrastübertragungsfunktion (STEM) {#ctf-stem}
+
+Das Kontrollkästchen **Kontrastübertragungsfunktion (CTF)** unter **TEM-Bedingungen** öffnet dasselbe CTF-Fenster wie im HRTEM-Modus. Im STEM-Modus bietet es zwei Optionen:
+
+- **Kohärente Abbildung** : stellt $\sin\chi$, $\cos\chi$, $E_\text{s}$, $E_\text{c}$, PCTF und ACTF wie bei HRTEM dar, jedoch wird $E_\text{s}(u)=\exp(-2\pi^2\sigma_s^2u^2)$ aus der effektiven Quellgröße gebildet ($\sigma_s$ = FWHM / $2\sqrt{2\ln2}$), und PCTF / ACTF werden beim Konvergenzwinkel abgeschnitten.
+- **Inkohärente Abbildung** : stellt die inkohärente Übertragungsfunktion dar, berechnet durch Integration der Linsenfunktion über den Überlapp zweier sondenformender Blenden (192 × 192 Abtastpunkte der Blende) und Multiplikation mit $\exp(-2\pi^2\sigma_s^2u^2)$.
+
+<!-- screenshot: FormCTF in STEM mode, Incoherent imaging selected -->
 
 ---
 
@@ -136,7 +150,7 @@ Aktiviere **EDX-Karten berechnen**, um Karten der charakteristischen Röntgenstr
 
 Es gibt keine Elementauswahl. Ist das Kontrollkästchen aktiviert, wird **jeder Element-/Schalen-Kanal berechnet, der für diesen Kristall bei dieser Beschleunigungsspannung berechenbar ist**, und die Zeile unter dem Kontrollkästchen listet sie auf (z. B. `3 Karte(n): O-K, Mg-K, Al-K`). Ein Kanal ist verfügbar, wenn die Beschleunigungsspannung im Bereich 30–400 kV liegt (dem Bereich der mitgelieferten Tabelle), die Ionisationskante darunter liegt und die Schale von den mitgelieferten Daten abgedeckt wird — K: C–Sn (Z = 6–50), L1–L3: Ca–Rn (Z = 20–86), M1–M3: Zn–Rn (Z = 30–86), M4–M5: As–Rn (Z = 33–86); die L- und M-Kanäle summieren die jeweils vorhandenen Unterschalen. Die mitgelieferte Tabelle enthält für jeden Kanal voll relativistische Ionisations-Formfaktoren bis zu einem Streuvektor von 16 Å⁻¹, bei niedriger Beschleunigungsspannung auch weniger weit. Es wird nichts extrapoliert: Wo die Rechnung einen größeren Streuvektor braucht, als eine Tabellenzeile abdeckt, wird der Formfaktor auf null gesetzt und der Kanal in der EDX-Combobox mit ⚠ markiert. Ist kein Kanal verfügbar, wird der Lauf mit einer erklärenden Meldung abgelehnt, statt eine leere Karte zu erzeugen.
 
-Die nächste Zeile gibt das Richtungsgitter der Sonde an, z. B. `Gitter: 132² (empfohlen: ≥48²)`. Dieses Gitter wird durch **Winkelauflösung** und den Konvergenzwinkel festgelegt; siehe [Winkelabtastung der Sonde](../appendix/a3-bloch-wave/stem.md#angular-sampling). Unterhalb der empfohlenen Unterteilung kann das hermitesche ±q-Residuum die Toleranz überschreiten und den Lauf abbrechen; der Wert wird daher orange dargestellt, und vor Beginn der Berechnung erscheint ein Bestätigungsdialog.
+Das Richtungsgitter der Sonde wird unter **Winkelauflösung** in *STEM-Optionen (Simulation)* angegeben; solange **EDX-Karten berechnen** aktiviert ist, kommt die empfohlene Unterteilung hinzu, z. B. `Gitter: 132² (empfohlen: ≥48²)`. Dieses Gitter wird durch **Winkelauflösung** und den Konvergenzwinkel festgelegt; siehe [Winkelabtastung der Sonde](../appendix/a3-bloch-wave/stem.md#angular-sampling). Unterhalb der empfohlenen Unterteilung kann das hermitesche ±q-Residuum die Toleranz überschreiten und den Lauf abbrechen; der Wert wird daher orange dargestellt, und vor Beginn der Berechnung erscheint ein Bestätigungsdialog.
 
 !!! warning "Was die Werte bedeuten"
     Für einen Schalenkanal (K, L, M) zeigt die Karte die **Zahl der pro einfallendem Elektron erzeugten Innerschalen-Vakanzen**; eine Fluoreszenzausbeute wird nicht angewandt. Für eine Linienserie (Kα, Kβ, Lα, Lβ, Mα), die berechnet wird, wenn **Linienserien (Kα, Lα…)** aktiviert ist, zeigt sie die **Zahl der pro einfallendem Elektron erzeugten Röntgenphotonen**, in alle Richtungen und vor der Detektion: Fluoreszenzausbeute, Coster-Kronig- und Strahlungskaskaden sowie Linienverzweigung (xraylib 4.2.1) sind berücksichtigt, die Auger-Kaskade nicht. Beides sind Modellgrößen, keine vorhergesagten Röntgenzählraten: Selbstabsorption in der Probe, Raumwinkel des Detektors und Detektoreffizienz werden **nicht** berücksichtigt. Verwende die Karten für die räumliche Verteilung und zum Vergleich von Dicke oder Orientierung, nicht zur absoluten Quantifizierung.
@@ -172,7 +186,7 @@ Die STEM-Simulation ist rechenaufwendig, daher sollten die folgenden Parameter a
 | **Konvergenzwinkel** | Größer → mehr Überlappung der CBED-Scheiben → höherer Aufwand |
 | **Bloch-Wellen** | Aufwand des Eigenwertproblems skaliert mit N³ |
 | **Winkelauflösung** | Feiner → genauer, aber Aufwand skaliert mit N² |
-| **Bildpixel (Size)** | Lineare Skalierung mit der Anzahl der Rasterpunkte |
+| **Bildpixel (Größe)** | Nur die abschließende Realraumsynthese (Pixel × Anzahl der $Q$-Vektoren); die Stufen 1–4 hängen nicht davon ab |
 
 ---
 

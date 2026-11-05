@@ -96,7 +96,7 @@ nur dann von null verschieden, wenn der normale und der anomale Teil unterschied
 
 ## Vom Strukturfaktor zur Pulverintensität
 
-Das Einschalten von **Powder Diffraction Intensities (Bragg–Brentano)** wandelt $\lvert F\rvert^2$ in eine relative Pulverintensität um, indem die Geometrie eines regellos orientierten Polykristalls eingerechnet wird:
+Das Einschalten von **Pulverbeugungsintensitäten (Bragg-Brentano-Optik)** wandelt $\lvert F\rvert^2$ in eine relative Pulverintensität um, indem die Geometrie eines regellos orientierten Polykristalls eingerechnet wird:
 
 $$I_{hkl} \;\propto\; m_{hkl}\, \lvert F_{hkl}\rvert^2\, L p(\theta),$$
 

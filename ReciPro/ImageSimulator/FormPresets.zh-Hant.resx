@@ -89,7 +89,7 @@
     <value>從清單中刪除選取的預設。</value>
   </data>
   <data name="buttonRename.ToolTip" xml:space="preserve">
-    <value>將選取的預設重新命名為 Name 欄中的文字。</value>
+    <value>將選取的預設重新命名為「名稱」欄中的文字。</value>
   </data>
   <data name="buttonReplace.ToolTip" xml:space="preserve">
     <value>以目前的設定覆寫選取的預設。</value>

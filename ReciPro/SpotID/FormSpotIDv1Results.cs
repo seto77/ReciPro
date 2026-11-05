@@ -7,7 +7,10 @@ namespace ReciPro
 {
     public partial class FormSpotIDv1Results : FormBase
     {
-        public FormSpotIDv1 formTEMID = new();
+        //public FormSpotIDv1 formTEMID = new(); // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I5): 初期化子で使わない FormSpotIDv1 (コントロール一式) を毎回作っていた。結果の窓は FormSpotIDv1Results(FormSpotIDv1) で作るので、
+        //  呼び出し元の FormSpotIDv1 が入る (引数なしのコンストラクタ (デザイナー・GuiCapture 用) では null のまま。SetDataSet は null を許す)
+        public FormSpotIDv1 formTEMID;
         public List<ZoneAxes> zoneAxes;
         public List<ZoneAxis> zoneAxis;
 
@@ -33,18 +36,23 @@ namespace ReciPro
             for (int i = 0; i < zoneaxis.Count; i++)
                 if (zoneaxis[i].plane1.IsRootIndex)
                     dataSet.Tables[0].Rows.Add(GetTableRows(i, photo, zoneaxis[i], useMB));            // 260425Cl Miller-Bravais 4 指数対応
-            if (photo.IsTriangleMode)
-            {
-                dataGridView1.Columns[5].Visible = true;
-                dataGridView1.Columns[6].Visible = true;
-                dataGridView1.Columns[7].Visible = false;
-            }
-            else
-            {
-                dataGridView1.Columns[5].Visible = false;
-                dataGridView1.Columns[6].Visible = false;
-                dataGridView1.Columns[7].Visible = true;
-            }
+            // 261105Cl 変更 (監査 I5): 列を番号でなく列そのもので指定する。先頭に Phase 列が入ってから番号が 1 つずれ、
+            //  3 辺モードで d3 が隠れて θ が出たまま、2 辺と角度のモードで d2 が隠れて g3 の d (d3) が出ていた。
+            //  本来の意図: 3 辺モードは g3・d3 を出して θ を隠す、2 辺と角度のモードは g3・d3 を隠して θ を出す
+            //if (photo.IsTriangleMode) // 261105Cl 変更前
+            //{
+            //    dataGridView1.Columns[5].Visible = true;
+            //    dataGridView1.Columns[6].Visible = true;
+            //    dataGridView1.Columns[7].Visible = false;
+            //}
+            //else
+            //{
+            //    dataGridView1.Columns[5].Visible = false;
+            //    dataGridView1.Columns[6].Visible = false;
+            //    dataGridView1.Columns[7].Visible = true;
+            //}
+            g3DataGridViewTextBoxColumn.Visible = d3DataGridViewTextBoxColumn.Visible = photo.IsTriangleMode; // 261105Cl
+            θDataGridViewTextBoxColumn.Visible = !photo.IsTriangleMode; // 261105Cl
         }
 
         public void SetDataSet(double[] obsAngle, List<ZoneAxes> zoneaxes)

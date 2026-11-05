@@ -8,7 +8,7 @@
 
 2つのウィンドウを扱い、次の順で読むのが最適です。
 
-1. **[A4.1. 空間群記号と対称性模式図](symbols-and-diagrams.md)** — ヘルマン・モーガン記号・シェーンフリース記号・Hall記号、**Properties**（群の性質）タブに表示される群論的分類（中心対称・Sohncke・Symmorphic・極性・算術結晶類・Patterson 対称、…）、**Operations**（対称操作）タブの各対称操作の座標トリプレット/Seitz記号/幾何学的種類による表現、そして [対称性情報](../../2-symmetry-information.md) ウィンドウ下部の対称要素・一般位置模式図の図記号の約束事。
+1. **[A4.1. 空間群記号と対称性模式図](symbols-and-diagrams.md)** — ヘルマン・モーガン記号・シェーンフリース記号・Hall記号、**Properties**（群の性質）タブに表示される群論的分類（中心対称・Sohncke・共型 (シンモルフィック)・極性・算術結晶類・Patterson 対称、…）、**Operations**（対称操作）タブの各対称操作の座標トリプレット/Seitz記号/幾何学的種類による表現、そして [対称性情報](../../2-symmetry-information.md) ウィンドウ下部の対称要素・一般位置模式図の図記号の約束事。
 2. **[A4.2. 群・部分群の関係](group-subgroup-relations.md)** — *極大部分群* / *極小超群* とは何か、Hermann の *t*-/*k*- の区別、そして対称性情報の **Options**（オプション）パネルから開く **Group Relations...**（群の関係）ブラウザの各タブ（Diagram/Matrix/Orbit splitting/Domains & Twins/New reflections）の読み方。
 
 A4.1 を先に置くのは、A4.2 がそこで導入した表記（同じヘルマン・モーガン記号、Seitz記号、"3-fold rotation"・"c-glide plane"・"screw axis" のような幾何学的種類の言い回し）を、部分群/超群の関係を説明する際に絶えず参照するためです。

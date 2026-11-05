@@ -125,13 +125,13 @@ for k in range(-2, 3):
 
 | 속성 | 형식 | 설명 |
 |----------|------|-------------|
-| `Energy` | double | 에너지 (keV) |
-| `Wavelength` | double | 파장 (Å) |
+| `Energy` | double | 에너지 (X선·전자는 keV, 중성자는 meV) |
+| `Wavelength` | double | 파장 (nm) |
 | `Thickness` | double | 시료 두께 (nm) |
 | `NumberOfDiffractedWaves` | int | 블로흐파의 수 |
 | `CameraLength2` | double | 카메라 길이 (mm) |
 | `ExcitationError` | double | 스폿 반지름 (nm⁻¹): 운동학/여기 오차 모드에서 `SpotInfo()`는 \|Sg\|가 이 값 이내인 반사를 내보냅니다 |
-| `SkipRendering` | bool | 일괄 처리를 위해 렌더링을 건너뛰기 |
+| `SkipRendering` | bool | 동역학 모드(`Calc_Dynamical()`)에서만 유효: 블로흐파 계산은 그대로 실행되지만(따라서 `SpotInfo()`는 유효) 반사점은 그려지지 않으며, 그동안 저장한 이미지에는 반사점이 없습니다. 운동학/여기 오차 모드에서는 효과가 없습니다 |
 
 ### 빔 모드
 
@@ -156,7 +156,7 @@ for k in range(-2, 3):
 |----------|-------------|
 | `Tau` / `TauInDeg` | 검출기 기울기 각 τ (rad / deg) |
 | `Phi` / `PhiInDeg` | 검출기 회전축 φ (rad / deg) |
-| `Foot(x, y)` | Foot 위치 (pixel) |
+| `Foot(x, y)` | 시료에서 검출기로 내린 수선의 발 위치 (mm, 이미지 중심 기준). 이미지 중심 자체는 검출기 좌표 (−x, −y)에 있습니다. `Foot(0, 0)`이면 수선의 발이 이미지 중심에 옵니다 |
 
 ### 출력
 
@@ -183,11 +183,11 @@ for k in range(-2, 3):
 
 | 함수 | 설명 |
 |------|------|
-| `SpotID.LoadFile(filename)` | **File > Load** 와 같은 방식으로 파일을 읽는다. `.csv` 는 스폿 목록으로(먼저 이미지를 읽어야 함), 그 밖의 확장자는 회절 도형 이미지로 읽는다(dm3, dm4, mrc, ipa, tif 등 지원 형식). `filename` 을 생략하면 파일 선택 대화 상자를 연다 |
-| `SpotID.FindSpots()` | 읽어들인 이미지에서 스폿을 검출하고 피팅한다(**Find spots** 버튼과 동일) |
-| `SpotID.Identify()` | 검출된 스폿을 설명하는 방위를 탐색하고(**Identify spots** 버튼과 동일) 후보 수를 반환한다. 대상 결정은 메인 창의 결정 목록에서 선택 중인 것 |
+| `SpotID.LoadFile(filename)` | **파일 > 불러오기** 와 같은 방식으로 파일을 읽는다. `.csv` 는 스폿 목록으로(먼저 이미지를 읽어야 함), 그 밖의 확장자는 회절 도형 이미지로 읽는다(dm3, dm4, mrc, ipa, tif 등 지원 형식). `filename` 을 생략하면 파일 선택 대화 상자를 연다 |
+| `SpotID.FindSpots()` | 읽어들인 이미지에서 스폿을 검출하고 피팅한다(**스폿 검출 & 피팅** 버튼과 동일) <!-- 261105Cl 監査: ボタン名を FormSpotIDV2.resx に合わせた --> |
+| `SpotID.Identify()` | 검출된 스폿을 설명하는 방위를 탐색하고(**스폿 식별** 버튼과 동일) 후보 수를 반환한다. 대상 결정은 메인 창의 결정 목록에서 선택 중인 것. 이미지를 읽어들이지 않았거나, 등록된 스폿이 두 개 미만이거나, 결정을 선택하지 않았으면 탐색하지 않고 0 을 반환한다 |
 | `SpotID.CandidateList()` | 후보 방위 목록을 CSV 텍스트로 반환한다 |
-| `SpotID.SpotList()` | 관측 스폿 목록을 CSV 텍스트로 반환한다(열은 **File > Save** 와 동일). `File.SaveText()` 와 함께 저장하면 `LoadFile()` 로 다시 읽을 수 있다 |
+| `SpotID.SpotList()` | 관측 스폿 목록을 CSV 텍스트로 반환한다(열은 **스폿 정보** 의 **저장** 버튼과 동일). `File.SaveText()` 와 함께 저장하면 `LoadFile()` 로 다시 읽을 수 있다 |
 
 `CandidateList()` 는 후보마다 결정 이름, Z-X-Z 오일러 각(도), 회전 행렬의 9 성분 R11–R33(결정 좌표계 → 실험실 좌표계, 열벡터에 작용), 잔차의 평균 제곱(nm⁻²), 관측 스폿과 *hkl* 지수의 대응을 반환합니다. 후보는 할당된 스폿 수의 내림차순, 그다음 잔차의 오름차순으로 정렬됩니다. 숫자는 invariant culture 로 기록되므로 소수점은 항상 마침표입니다.
 
@@ -197,13 +197,13 @@ for k in range(-2, 3):
 |------|----|------|
 | `Energy` | double | 입사선의 에너지(X선·전자선은 keV, 중성자선은 meV) |
 | `CameraLength` | double | 카메라 길이(mm) |
-| `PixelSizeInMM` | double | 이미지의 픽셀 크기(mm). 읽거나 쓰면 픽셀 크기 단위도 mm 로 전환된다 |
-| `PixelSizeInNMinv` | double | 이미지의 픽셀 크기(nm⁻¹). 읽거나 쓰면 단위도 nm⁻¹ 로 전환된다 |
+| `PixelSizeInMM` | double | 이미지의 픽셀 크기(mm). 쓰면 픽셀 크기 단위가 mm 로 전환되고, 읽으면 단위를 바꾸지 않고 mm 로 환산한 값을 반환한다 <!-- 261105Cl 監査: Macro.cs の Help 文 (I6) --> |
+| `PixelSizeInNMinv` | double | 이미지의 픽셀 크기(nm⁻¹). 쓰면 단위가 nm⁻¹ 로 전환되고, 읽으면 단위를 바꾸지 않고 nm⁻¹ 로 환산한 값을 반환한다 |
 | `MaxNumberOfSpots` | int | `FindSpots()` 가 검출하는 스폿 수의 상한 |
 | `NearestNeighbor` | int | 검출되는 스폿 사이에 허용하는 최소 간격(픽셀) |
 | `FittingRange` | double | 피크 피팅에 사용하는 각 스폿 주위 영역의 반지름(픽셀) |
 | `AcceptableError` | double | 관측 스폿을 후보 반사에 대응시킬 때 허용하는 면간격의 상대차(%) |
-| `IgnoreProhibitedReflections` | bool | 다중 회절로 나타날 수 있는 소광칙 금지 반사를 무시할지 여부 |
+| `IgnoreProhibitedReflections` | bool | 다중 회절로 나타날 수 있는 소광칙 금지 반사를 무시할지 여부. X선과 중성자에서는 항상 `true` 이며, 그동안 설정한 값은 선원을 전자로 되돌렸을 때 적용된다 <!-- 261106Cl 作者の決定 I4 --> |
 | `MultiGrain` | bool | 여러 결정립을 탐색할지 여부. `False` 이면 단결정 |
 | `MaxNumberOfGrains` | int | `MultiGrain` 이 `True` 일 때 탐색하는 결정립 방위의 최대 수 |
 | `NumberOfDetectedSpots` | int | 검출된 스폿 수(읽기 전용) |
@@ -220,7 +220,7 @@ for k in range(-2, 3):
 | `StructureViewer.Open()` | 결정 구조 뷰어 창을 연다 |
 | `StructureViewer.Close()` | 결정 구조 뷰어 창을 닫는다 |
 | `StructureViewer.SaveImage(filename)` | 메인 뷰의 렌더링 이미지를 PNG 로 저장(픽셀 크기는 창의 **Size (W×H)** 상자). `filename` 을 생략하면 저장 대화 상자를 연다 |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 표시 중인 구조를 3D 프린팅용으로 출력(File 메뉴의 **Export 3D Model (3MF/STL)** 과 동일). 형식은 확장자로 결정(`.stl` = 단색 / `.3mf` = 원소별 색). 필수는 `filename` 뿐이며 나머지 기본값은 대화 상자와 동일(최장변 80 mm·단위 격자 테두리 ⌀2.4 mm·결합 증경 ⌀1.2 mm). `fixedScaleInMMperNm` > 0 을 주면 여러 모형을 같은 축척으로 만들 수 있다 |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 표시 중인 구조를 3D 프린팅용으로 출력(**파일** 메뉴의 **Export 3D model (3MF/STL)** 과 동일). 형식은 확장자로 결정(`.stl` = 단색 / `.3mf` = 원소별 색). 필수는 `filename` 뿐이며 나머지 기본값은 대화 상자와 동일(최장변 80 mm·단위 격자 테두리 ⌀2.4 mm·결합 증경 ⌀1.2 mm). `fixedScaleInMMperNm` > 0 을 주면 여러 모형을 같은 축척으로 만들 수 있다. `filename` 은 `.stl` 또는 `.3mf` 로 끝나야 한다(대화 상자는 열리지 않음). 삼각형 수와 출력 크기를 담은 정보 문자열을 반환한다 |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -317,7 +317,7 @@ ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60,
 
 | 함수 | 설명 |
 |----------|-------------|
-| `Sleep(ms)` | 지정한 밀리초만큼 대기 |
+| `ReciPro.Sleep(ms)` | 지정한 밀리초만큼 대기. `ReciPro.Sleep(ms)`로 호출한다 <!-- 261105Cl 監査: エディタの関数表にも出るようになった (41cb5a7b) --> |
 
 ---
 

@@ -97,7 +97,7 @@
   </data>
   <data name="labelMessage.Text" xml:space="preserve">
     <value>이 컨트롤은 이제
- "Structure Viewer" 창에 표시됩니다.</value>
+ "구조 뷰어" 창에 표시됩니다.</value>
   </data>
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>원자</value>
@@ -311,7 +311,7 @@
     <value>원자</value>
   </data>
   <data name="toolStripButtonAtomLabels.Text" xml:space="preserve">
-    <value>라벨</value>
+    <value>레이블</value>
   </data>
   <data name="toolStripButtonUnitCell.Text" xml:space="preserve">
     <value>단위 격자</value>
@@ -347,7 +347,7 @@
     <value>광원 방향</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>주 이미지를 클립보드에 복사</value>
+    <value>이미지를 클립보드에 복사</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
     <value>주 이미지</value>
@@ -395,13 +395,15 @@
     <value>표시 범위를 각 단위 격자 축의 ±1로 설정</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value>표시 중심을 원점 (0, 0, 0)으로 설정</value>
+    <value>'중심'을 (0, 0, 0)으로 설정: 표시 영역의 중심이 투영 중심과 일치합니다.</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value>표시 중심을 (1/4, 1/4, 1/4)로 설정</value>
+    <value>'중심'을 (1/4, 1/4, 1/4)로 설정: 표시 영역을 투영 중심에서
++a, +b, +c 방향으로 1/4씩 이동합니다.</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
-    <value>표시 중심을 (1/2, 1/2, 1/2)로 설정</value>
+    <value>'중심'을 (1/2, 1/2, 1/2)로 설정: 표시 영역을 투영 중심에서
++a, +b, +c 방향으로 1/2씩 이동합니다.</value>
   </data>
   <data name="buttonSetRange0.ToolTip" xml:space="preserve">
     <value>표시 범위를 각 단위 격자 축의 ±1/4로 설정</value>
@@ -440,34 +442,34 @@
 내의 원자가 그려집니다.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>c축 방향 표시 영역의 중심이며, 분율 좌표로
-나타냅니다. 범위와 결합하여 그려지는 구조의
-최소/최대 경계면을 결정합니다.</value>
+    <value>표시 영역 중심의 투영 중심으로부터의 c축 방향 오프셋(분율 좌표,
+양수는 +c 방향)입니다. 범위와 결합하여 그려지는 구조의 최소/최대
+경계면을 결정합니다: (투영 중심 + 중심) ± 범위.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>c축 방향 표시 영역의 중심이며, 분율 좌표로
-나타냅니다. Range와 결합하여 그려지는 구조의
-최소/최대 경계면을 결정합니다.</value>
+    <value>표시 영역 중심의 투영 중심으로부터의 c축 방향 오프셋(분율 좌표,
+양수는 +c 방향)입니다. 범위와 결합하여 그려지는 구조의 최소/최대
+경계면을 결정합니다: (투영 중심 + 중심) ± 범위.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>b축 방향 표시 영역의 중심이며, 분율 좌표로
-나타냅니다. 범위와 결합하여 그려지는 구조의
-최소/최대 경계면을 결정합니다.</value>
+    <value>표시 영역 중심의 투영 중심으로부터의 b축 방향 오프셋(분율 좌표,
+양수는 +b 방향)입니다. 범위와 결합하여 그려지는 구조의 최소/최대
+경계면을 결정합니다: (투영 중심 + 중심) ± 범위.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>b축 방향 표시 영역의 중심이며, 분율 좌표로
-나타냅니다. Range와 결합하여 그려지는 구조의
-최소/최대 경계면을 결정합니다.</value>
+    <value>표시 영역 중심의 투영 중심으로부터의 b축 방향 오프셋(분율 좌표,
+양수는 +b 방향)입니다. 범위와 결합하여 그려지는 구조의 최소/최대
+경계면을 결정합니다: (투영 중심 + 중심) ± 범위.</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>a축 방향 표시 영역의 중심이며, 분율 좌표로
-나타냅니다. 범위와 결합하여 그려지는 구조의
-최소/최대 경계면을 결정합니다.</value>
+    <value>표시 영역 중심의 투영 중심으로부터의 a축 방향 오프셋(분율 좌표,
+양수는 +a 방향)입니다. 범위와 결합하여 그려지는 구조의 최소/최대
+경계면을 결정합니다: (투영 중심 + 중심) ± 범위.</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value>a축 방향 표시 영역의 중심이며, 분율 좌표로
-나타냅니다. Range와 결합하여 그려지는 구조의
-최소/최대 경계면을 결정합니다.</value>
+    <value>표시 영역 중심의 투영 중심으로부터의 a축 방향 오프셋(분율 좌표,
+양수는 +a 방향)입니다. 범위와 결합하여 그려지는 구조의 최소/최대
+경계면을 결정합니다: (투영 중심 + 중심) ± 범위.</value>
   </data>
   <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
     <value>결정의 경계면 표시/숨기기</value>
@@ -703,7 +705,7 @@
 표시 색을 설정합니다.</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>범례에 레이블 표시</value>
+    <value>3D 보기에 원자 레이블 표시</value>
   </data>
   <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
     <value>재질 색을 레이블 색으로 사용 </value>
@@ -718,7 +720,7 @@
     <value>원자 라벨의 글자 크기(0–200).</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>체크하면 범례 레이블에 흰색 윤곽선이 붙습니다.</value>
+    <value>체크하면 3D 보기의 원자 레이블에 흰색 윤곽선이 붙습니다.</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
     <value>경계 밖에 있더라도 결합된 원자를 표시</value>
@@ -827,7 +829,8 @@
 (원소 기호)의 표시/숨김을 전환합니다.</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>3D 모델의 원자 구 (球)의 표시/숨김을 전환합니다.</value>
+    <value>3D 모델의 원자 구 (球)의 표시/숨김을 전환합니다.
+결합·다면체·레이블은 원자에서 만들어지므로 함께 숨겨집니다.</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>원자 반지름, 색, 결합을 VESTA 스타일의
@@ -850,8 +853,8 @@
 그립니다.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>각 단위 격자 축 방향을 따라 표시 영역의
-중심 (분율 좌표)입니다.</value>
+    <value>표시 영역 중심의 투영 중심으로부터의 오프셋입니다(각 단위 격자
+축 방향의 분율 좌표, 양수는 +a, +b, +c 방향).</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>단위 격자 프레임을 a, b, c 축 방향으로
@@ -862,7 +865,7 @@
 반폭 (분율 좌표)입니다.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>표시 중심을 미리 설정된 분율 좌표 위치로 설정합니다.</value>
+    <value>'중심'(투영 중심으로부터의 오프셋)을 미리 설정된 분율 좌표 값으로 설정합니다.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value>표시 범위를 각 단위 격자 축의
@@ -880,5 +883,8 @@
     <value>투영된 메인 뷰의 너비를 nm 단위로 설정합니다.
 값이 작을수록 확대됩니다. 뷰에서의 마우스
 오른쪽 드래그/휠 확대·축소와 동기화됩니다.</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>구조 뷰어</value>
   </data>
 </root>

@@ -153,7 +153,7 @@
     <value>步進</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>重設</value>
+    <value>重設視角</value>
   </data>
   <data name="groupBoxViewDirection.Text" xml:space="preserve">
     <value>視角方向</value>
@@ -239,7 +239,7 @@
     <value>儲存影像</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>存為影像  (PNG 格式)</value>
+    <value>存為影像 (PNG 格式)</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>存為中繼檔 (EMF)</value>
@@ -320,7 +320,7 @@
     <value>電子 200 kV</value>
   </data>
   <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
-    <value>電子 120 keV</value>
+    <value>電子 120 kV</value>
   </data>
   <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
     <value>X射線 30 keV</value>
@@ -363,7 +363,7 @@
     <value>進動性質</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>半角</value>
+    <value>進動角</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>步進</value>
@@ -498,10 +498,14 @@
 表示倒晶格點偏離嚴格 Bragg 條件 /
 Ewald 球的程度。</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>強度</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>勾選後，將為每個斑點顯示結構因子
-大小 |Fg|；|Fg| 越大，
-一般代表繞射越強。</value>
+    <value>勾選後，以最強反射為 100% 顯示各斑點的強度：
+運動學為 |Fg|²（不含激發誤差），動力學理論為
+|Φg|² 及繞射波的複振幅 Φg = Re + Im i。
+選擇「僅激發誤差」時不顯示。</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>設定字串的大小</value>
@@ -781,11 +785,12 @@ Beam/Top/Right 方向導引箭頭。</value>
 單位 mm（原點：晶體）。</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>對應滑鼠指標位置的晶面間距 d (nm)。</value>
+    <value>對應滑鼠指標位置的晶面間距 d。單位 (Å 或 nm)
+依主視窗晶格常數的 Å/nm 切換而定。</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>對應滑鼠指標位置的
-倒晶格間距 d⁻¹ (nm⁻¹)。</value>
+    <value>對應滑鼠指標位置的倒晶格間距 d⁻¹。單位 (Å⁻¹ 或 nm⁻¹)
+依主視窗晶格常數的 Å/nm 切換而定。</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>對應滑鼠指標位置的
@@ -869,6 +874,9 @@ Beam/Top/Right 方向導引箭頭。</value>
     <value>設定相機長度 2，即試料
 到偵測器（螢幕）的距離。</value>
   </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>詳細</value>
+  </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>開啟詳細光學系統設定視窗。</value>
   </data>
@@ -911,12 +919,12 @@ Beam/Top/Right 方向導引箭頭。</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
     <value>設定 PED（進動電子繞射）模擬的
-進動半角 (mrad)；即用於傾斜並積分
+進動角 (mrad)；即用於傾斜並積分
 入射束的圓錐半頂角。</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
     <value>設定 PED（進動電子繞射）模擬的
-進動半角 (mrad)；即用於傾斜並積分
+進動角 (mrad)；即用於傾斜並積分
 入射束的圓錐半頂角。</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">

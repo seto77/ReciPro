@@ -96,7 +96,7 @@
     <value>Múltiplos grãos</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Metafile (EMF)</value>
+    <value>como metarquivo (EMF)</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.Text" xml:space="preserve">
     <value>Mostrar rótulo</value>
@@ -165,7 +165,7 @@
     <value>Nº</value>
   </data>
   <data name="copyAsBitmapToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Imagem</value>
+    <value>como imagem</value>
   </data>
   <data name="buttonGlobalFit.Text" xml:space="preserve">
     <value>Ajuste global</value>
@@ -174,7 +174,7 @@
     <value>Nome do cristal</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Metafile (EMF)</value>
+    <value>como metarquivo (EMF)</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
     <value>Grão único</value>
@@ -201,7 +201,7 @@
     <value>Spots atribuídos</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>como Imagem (formato PNG)</value>
+    <value>como imagem (formato PNG)</value>
   </data>
   <data name="groupBoxOptics.Text" xml:space="preserve">
     <value>Óptica</value>
@@ -263,7 +263,9 @@ e o intervalo de ajuste na caixa à direita.</value>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
     <value>Ignora reflexões cinematicamente proibidas que
 podem surgir por difração múltipla (dinâmica),
-excluindo-as do padrão calculado.</value>
+excluindo-as do padrão calculado.
+Com raios X e nêutrons, são sempre ignoradas
+(tratamento cinemático).</value>
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
     <value>Semi-amplitude angular (o semiângulo de convergência,
@@ -293,7 +295,7 @@ mesclados para que um único spot não seja contado duas vezes.</value>
     <value>Número máximo de orientações de grãos a procurar</value>
   </data>
   <data name="numericBoxCameraLength.ToolTip1" xml:space="preserve">
-    <value>Comprimento de câmara para o padrão de difração (mm)</value>
+    <value>Comprimento de câmera para o padrão de difração (mm)</value>
   </data>
   <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
     <value>Comprimento de câmera para o padrão de difração (mm)</value>

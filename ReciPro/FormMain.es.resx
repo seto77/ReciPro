@@ -216,7 +216,7 @@
     <value>Usar índices de Miller-Bravais (hkil)</value>
   </data>
   <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
-    <value>Capturar componentes de la GUI...</value>
+    <value>(experimental) Capturar componentes de la GUI...</value>
   </data>
   <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
     <value>Información del cristal</value>
@@ -321,7 +321,8 @@ rotación que define la orientación del cristal.</value>
 rotación que define la orientación del cristal.</value>
   </data>
   <data name="buttonAdd.ToolTip" xml:space="preserve">
-    <value>Añade el cristal seleccionado a la lista de arriba.</value>
+    <value>Añade el nuevo cristal de abajo
+a la lista de arriba.</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
     <value>Abrir Información de simetría</value>
@@ -339,11 +340,11 @@ Si también se especifica un índice de eje, esa dirección del eje se muestra h
     <value>Abrir Difracción de polvo</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value>Fija/muestra el ángulo de Euler θ (grados), la segunda
+    <value>Fija/muestra el ángulo de Euler Θ (grados), la segunda
 rotación que define la orientación del cristal.</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
-    <value>Fija/muestra el ángulo de Euler θ (grados), la segunda
+    <value>Fija/muestra el ángulo de Euler Θ (grados), la segunda
 rotación que define la orientación del cristal.</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
@@ -355,11 +356,11 @@ rotación que define la orientación del cristal.</value>
 rotación que define la orientación del cristal.</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>Fija/muestra el ángulo de Euler ψ (grados), la tercera
+    <value>Fija/muestra el ángulo de Euler Ψ (grados), la tercera
 rotación que define la orientación del cristal.</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
-    <value>Fija/muestra el ángulo de Euler ψ (grados), la tercera
+    <value>Fija/muestra el ángulo de Euler Ψ (grados), la tercera
 rotación que define la orientación del cristal.</value>
   </data>
   <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
@@ -384,7 +385,7 @@ como velocidad de rotación en grados por segundo.</value>
     <value>Abre el Visor de Estructura (estructura cristalina 3D).</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>Ángulos de Euler (φ, θ, ψ) que describen
+    <value>Ángulos de Euler (Φ, Θ, Ψ) que describen
 la rotación 3D actual del cristal;
 edite para fijar la orientación directamente.</value>
   </data>
@@ -479,5 +480,16 @@ arriba por el nuevo cristal de abajo.</value>
   </data>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>Abrir Spot ID v2</value>
+  </data>
+  <data name="toolStripButtonEBSD.Text" xml:space="preserve">
+    <value>  Simulador
+  EBSD</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
+    <value>  Simulador
+  HRTEM/STEM</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
+    <value>Aceptar comandos de macro externos (canalización con nombre)</value>
   </data>
 </root>

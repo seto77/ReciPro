@@ -71,7 +71,7 @@
   </data>
   <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
     <value>Останавливать подгонку автоматически, как только
-отожжённое 'Num per Step' опустится ниже
+отожжённое 'Num per step' опустится ниже
 порогового значения (%), заданного справа.</value>
   </data>
   <data name="checkBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
@@ -150,7 +150,7 @@ Orientation). Больше = крупнее шаги; значение
 уменьшается при отжиге (×0.8) по мере сходимости подгонки.</value>
   </data>
   <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>Пороговое значение (%) для 'Num per Step': подгонка останавливается,
+    <value>Пороговое значение (%) для 'Num per step': подгонка останавливается,
 когда параметр отжигается ниже этого уровня.</value>
   </data>
   <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">

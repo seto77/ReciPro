@@ -49,7 +49,7 @@ Les composantes cartésiennes de $\mathbf g$ s'obtiennent à partir des vecteurs
 $$\begin{pmatrix} g_x\\ g_y\\ g_z\end{pmatrix} = \begin{pmatrix} a_x^{*} & b_x^{*} & c_x^{*}\\ a_y^{*} & b_y^{*} & c_y^{*}\\ a_z^{*} & b_z^{*} & c_z^{*}\end{pmatrix}\begin{pmatrix} h\\ k\\ l\end{pmatrix} = \begin{pmatrix} h\,a_x^{*} + k\,b_x^{*} + l\,c_x^{*}\\ h\,a_y^{*} + k\,b_y^{*} + l\,c_y^{*}\\ h\,a_z^{*} + k\,b_z^{*} + l\,c_z^{*}\end{pmatrix}$$
 
 !!! note
-    Les valeurs $U_{\mathbf g}$ affichées dans la table **Details** du simulateur de diffraction sont les valeurs brutes *avant* application du facteur relativiste $\gamma$.
+    Les valeurs $U_{\mathbf g}$ affichées dans la table **Détails des taches** du simulateur de diffraction sont les valeurs brutes *avant* application du facteur relativiste $\gamma$.
 
 ---
 

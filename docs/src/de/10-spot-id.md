@@ -1,6 +1,6 @@
 # Spot ID v1
 
-**Spot ID v1** erkennt, fittet und indiziert Beugungsreflexe aus experimentellen Elektronenbeugungsbildern. Zusätzlich unterstützt es die manuelle Zonenachsensuche anhand einer numerisch eingegebenen Reflexgeometrie (das frühere **TEM ID**).
+**Spot ID v1** (das frühere **TEM ID**) sucht Kandidaten-Zonenachsen anhand einer numerisch eingegebenen Reflexgeometrie von einem bis drei Beugungsmustern. Reflexerkennung, Fit und Indizierung an einem Bild erfolgen in [Spot ID v2](11-spot-id-v2.md).
 
 ![Spot ID v1](../assets/cap-de-auto/FormSpotIDv1.png)
 
@@ -8,7 +8,7 @@
 
 ## Tastatur- & Maus-Kurzbefehle
 
-Spot ID v1 nimmt die Reflexgeometrie als **numerische Eingabe** entgegen (der frühere *TEM ID*-Arbeitsablauf), und Reflexerkennung/-fit erfolgt schaltflächengesteuert; das Beugungsbild wird nur zur Referenz angezeigt und ist nicht klickbar (Mauszoom und manuelles Auswählen von Reflexen gehören zu [Spot ID v2](11-spot-id-v2.md)). Der einzige Kurzbefehl befindet sich im Ergebnisfenster:
+Spot ID v1 nimmt die Reflexgeometrie als **numerische Eingabe** entgegen (der frühere *TEM ID*-Arbeitsablauf); es hat keine Bildansicht (Laden von Bildern, Mauszoom, Reflexerkennung und manuelles Auswählen von Reflexen gehören zu [Spot ID v2](11-spot-id-v2.md)). Der einzige Kurzbefehl befindet sich im Ergebnisfenster:
 
 | Kurzbefehl | Aktion |
 |----------|--------|
@@ -19,79 +19,13 @@ Spot ID v1 nimmt die Reflexgeometrie als **numerische Eingabe** entgegen (der fr
 
 ---
 
-## Hauptbereich
-
-Zeigt das Beugungsbild zur Referenz an. Bilder werden per Drag & Drop oder über das Menü **File** geladen.
-
-### Bildanpassungen
-
-| Einstellung | Beschreibung |
-|---------|-------------|
-| Min / Max | Helligkeitsbereich (auch über den Schieberegler einstellbar) |
-| Gradient | Positiv oder Negativ |
-| Scale | Linear oder Log |
-| Colour | Graustufen oder Cold-Warm |
-| Dust & Scratch | Außergewöhnlich helle/dunkle Pixel entfernen (Bereich und Schwellenwert festlegen) |
-| Gaussian blur | Weichzeichnung anwenden (Bereich in Pixeln) |
-
----
-
-## Optik
-
-Geben Sie die einfallende Quelle, Energie/Wellenlänge, Kameralänge und Detektor-Pixelgröße ein.
-
-> Wird eine dm3/dm4-Datei (Gatan Digital Micrograph) geladen, werden diese Werte automatisch gesetzt.
-
----
-
-## Reflexerkennung und -fit
-
-Drücken Sie **Detect & fit spots**, um Beugungsreflexe automatisch zu erkennen und sie mit einer 2D-Pseudo-Voigt-Funktion zu fitten. Die Ergebnisse erscheinen in der Tabelle.
-
-### Erkennungsoptionen
-
-| Parameter | Beschreibung |
-|-----------|-------------|
-| Number | Maximale Anzahl der zu erkennenden Reflexe |
-| Nearest neighbour | Mindestabstand zwischen erkannten Reflexen |
-| Fitting range | Radius (Pixel) um jeden Reflex für den Fit |
-
-### Tabellensteuerung
-
-| Schaltfläche | Aktion |
-|--------|--------|
-| Reset range | Fit-Bereich für alle Reflexe zurücksetzen |
-| Show label/symbol | Bezeichnungen/Symbole auf dem Bild überlagern |
-| Clear all spots | Alle Reflexe entfernen |
-| Save / Copy | Tabelle im tabulatorgetrennten Format (Excel) exportieren |
-| Re-fit all | Alle Reflexe neu fitten |
-
-### Reflexdetail-Fenster
-
-Aktivieren Sie das Kontrollkästchen, um ein Detailfenster zu öffnen, das den ausgewählten Reflex (links) und Profile in vier Richtungen (rechts) zeigt. Blau = Messdaten, rot = Fit.
-
----
-
-## Index
-
-Drücken Sie **Identify spots**, um erkannte Reflexe gegen den im Hauptfenster ausgewählten Kristall zu indizieren.
-
-| Einstellung | Beschreibung |
-|---------|-------------|
-| Acceptable error | Toleranz für die Indizierung |
-| Single grain / Multi grains | Als Einkristall oder als mehrere Körner indizieren (maximale Kornanzahl festlegen) |
-| Show label/symbol | Indizierte Bezeichnungen auf dem Bild überlagern |
-| Refine thickness and direction | Dynamische Theorie (Bethe-Methode) anwenden, um Probendicke und Kristallorientierung zu verfeinern, die am besten zu den erkannten Intensitäten passen |
-
----
-
 ## Zonenachsensuche aus der Reflexgeometrie (früher TEM ID)
 
-Wenn Sie kein Bild zum Laden haben, können Sie dennoch nach Kandidaten-Zonenachsen suchen, indem Sie die Geometrie eines Feinbereichs-Elektronenbeugungsmusters (SAED) von Hand eingeben. Geben Sie die TEM-Beobachtungsbedingungen und die Reflexgeometrie ein und drücken Sie dann **Zonenachsen aus drei Mustern suchen**, um Kandidaten für die Kristallorientierung zu finden.
+Wenn Sie kein Bild zum Laden haben, können Sie dennoch nach Kandidaten-Zonenachsen suchen, indem Sie die Geometrie eines Feinbereichs-Elektronenbeugungsmusters (SAED) von Hand eingeben. Geben Sie die TEM-Beobachtungsbedingungen und die Reflexgeometrie ein und drücken Sie dann **Zonenachse suchen** eines Fotos (oder **Zonenachsen aus zwei Mustern suchen** / **Zonenachsen aus drei Mustern suchen**, um mehrere Fotos gemeinsam zu verwenden), um Kandidaten für die Kristallorientierung zu finden.
 
 ### TEM-Bedingung
 
-Geben Sie die TEM-Beobachtungsbedingungen ein (Beschleunigungsspannung, Kameralänge usw.).
+Geben Sie **Beschl.-Spannung** (kV, Standard 200) und **Kameralänge** (mm, Standard 1000) ein. Die **Wellenlänge** (nm) wird aus der Spannung berechnet und schreibgeschützt angezeigt.
 
 ### Foto 1, 2, 3
 
@@ -100,9 +34,14 @@ Geben Sie die Geometrie der Beugungsreflexe ein.
 - Um den Abstand zwischen zwei Reflexen auf dem Detektor einzugeben, verwenden Sie das Feld **mm**.
 - Wenn Sie den *d*-Wert kennen, geben Sie ihn in den Einheiten **Å** oder **nm⁻¹** ein.
 
-**Three sides mode** : Geben Sie die Längen der drei Seiten eines Dreiecks ein, dessen einer Eckpunkt der direct spot ist.
+**Drei Seiten** : Geben Sie die Längen der drei Seiten eines Dreiecks ein, dessen einer Eckpunkt der Primärstrahlreflex ist.
 
-**Two sides and an angle mode** : Geben Sie die Längen zweier Seiten ein (einschließlich des direct spot) sowie den Winkel zwischen ihnen.
+**Zwei Seiten und ein Winkel** : Geben Sie die Längen zweier Seiten ein (einschließlich des Primärstrahlreflexes) sowie den Winkel zwischen ihnen.
+
+- Toleranzen (die **±**-Felder) : Jede Länge hat eine Toleranz in % (0–50, Standard 5), θ eine in Grad (0–30, Standard 3). Der nicht eingegebene Wert (θ im Modus „Drei Seiten“, l3 im Modus „Zwei Seiten und ein Winkel“) wird berechnet und angezeigt, und neben den Eingaben wird eine Skizze des resultierenden Musters gezeichnet.
+- **Halterbedingungen** : **Tilt 1** / **Tilt 2** (°) des Goniometerhalters, bei denen das Foto aufgenommen wurde, jeweils mit einer Toleranz (0–10°, Standard 3°). Die Winkel zwischen den Haltereinstellungen der Fotos werden berechnet und angezeigt.
+- **Foto 2** / **Foto 3** : aktivieren das zweite und dritte Foto. Die Kontrollkästchen zwischen den Fotos behandeln l1 (bzw. l2) zweier Fotos als denselben Reflex und übernehmen seine Länge.
+- **Zonenachse suchen** durchsucht ein Foto; **Zonenachsen aus zwei Mustern suchen** / **Zonenachsen aus drei Mustern suchen** sucht Kombinationen, die mit den Fotos und den Halterkippwinkeln zwischen ihnen vereinbar sind; Foto 3 wird nur verwendet, wenn **Foto 3** aktiviert ist und alle seine Werte eingegeben sind, andernfalls werden zwei Fotos verwendet. In der Ergebnistabelle eines einzelnen Fotos (**Zonenachse suchen**) werden g1, d1, g2 und d2 immer angezeigt, dazu g3 und d3 im Modus „Drei Seiten“ bzw. θ im Modus „Zwei Seiten und ein Winkel“. <!-- 261105Cl 監査: buttonSearchAll_Click (afd65e0)、FormSpotIDv1Results.SetDataSet (46d91db) --> Die Suche läuft über jeden in der Liste des Hauptfensters ausgewählten Kristall (solange Spot ID v1 geöffnet ist, ist Mehrfachauswahl möglich). Werden mehr als 1000 Kandidaten gefunden, wird nichts aufgelistet und Sie werden gebeten, die Bedingungen einzuschränken; andernfalls öffnet sich das Ergebnisfenster. Doppelklicken Sie auf eine Zeile, um den Kristall auszuwählen und in diese Orientierung zu drehen. Das Vorzeichen jeder Kandidaten-Zonenachse folgt der Lehrbuchkonvention **g**₁ × **g**₂ und ist daher gegenüber Versionen vor 2026-11 umgekehrt (die Orientierung ist dieselbe). <!-- 261106Cl 作者の決定 B16 -->
 
 ---
 

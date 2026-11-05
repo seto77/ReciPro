@@ -6,7 +6,7 @@
 
 Open it from the **Options** menu of the [Diffraction Simulator](index.md) → **ALCHEMI simulator...**
 
-GUI conditions: Wave Length = Electron (the crystal, accelerating voltage and orientation are taken from the parent diffraction simulator)
+GUI conditions: Wave source = Electron (the crystal, accelerating voltage and orientation are taken from the parent diffraction simulator). With another source the window still opens, but the θ_B read-out and **Simulate** only show the notice *ALCHEMI is for electrons. Set the wave source of the diffraction simulator to Electron.* <!-- 261105Cl 監査: FormALCHEMI.cs NotElectronNotice (6ae7a85) -->
 
 ![ALCHEMI simulator](../../assets/cap-en-auto/FormALCHEMI.png)
 
@@ -51,7 +51,7 @@ $$
 
 Clearing **Include the dechannelled component** in the **Calculation** box drops this term. It accounts for tens of percent of the total yield at typical thicknesses, so omitting it makes the site contrast look stronger than it is.
 
-### Output quantity
+### Output quantity {#output-quantity}
 
 For a shell channel the primary quantity is the **number of core-shell vacancies generated per incident electron**; conversion to X-ray photons (fluorescence yield and line branching) is not applied. For an X-ray line series (Kα, Kβ, Lα, Lβ, Mα), listed after the shells under **Ionization channels** and unchecked by default, it is the **number of X-ray photons generated per incident electron** (in all directions): fluorescence yields, Coster–Kronig and radiative cascades and line branching from xraylib 4.2.1 are applied, and the Auger cascade is not included. **X-ray self-absorption in the specimen, and detector efficiency and solid angle, are NOT applied to either.**
 
@@ -93,7 +93,7 @@ The site contrast changes strongly — and can even reverse sign — between thi
 
 | Item | Description | Default |
 |------|-------------|---------|
-| **Max. beams** | Upper bound on the number of Bloch waves per orientation (1–1600). The union over the whole scan is larger | 120 |
+| **Max. diffr. waves** | Upper bound on the number of Bloch waves per orientation (1–1600). The union over the whole scan is larger | 120 |
 | **Solver** | Calculation engine for the eigenvalue problem: **Native** (Eigen C++) or **Managed** (.NET). Where the native solver is unavailable the choice is fixed to Managed | Native |
 | **Include the dechannelled component** | Whether to add $Y_\text{dech}$ above | on |
 | **Angular spread** | Convolves the curve with the angular spread of the incident beam: **None** or **Gaussian** with a FWHM in mrad. It is a post-process on the orientation axis, applied **before** the display normalization | None |
@@ -115,13 +115,13 @@ The list of atomic sites whose yield is computed separately, shown as `label ele
 
 ### Simulate / Stop
 
-**Simulate** starts the scan. The progress is reported in the status bar in five stages (resolving ionization data → building the union basis → building the ionization matrices → solving orientations → checking the expanded basis), and **Stop** aborts at any time.
+**Simulate** starts the scan. The progress is reported in the status bar in five stages (resolving ionization data → building the union basis → building the ionization matrices → solving orientations → checking the expanded basis), and **Stop** aborts at any time. If the row **g** is parallel to the beam, the scan cannot tilt it through its Bragg conditions; **Simulate** then only reports this reason in the status bar. <!-- 261105Cl 監査: FormALCHEMI.cs BuildRequest (732813e) -->
 
 ---
 
 ## Right pane: Curve tab
 
-When the calculation finishes, one curve is drawn per site × channel pair. The legend reads `site label / channel`.
+When the calculation finishes, one curve is drawn per site × channel pair. The legend reads `site label / channel`. If the crystal or the accelerating voltage is changed afterwards (also while the window is closed), the curves, the diagnostics and the thickness choice are cleared and the status line says why. <!-- 261106Cl 作者の決定 ALCHEMI -->
 
 | Item | Description |
 |------|-------------|
@@ -166,7 +166,7 @@ Further warnings are added as separate lines of the diagnostics box, each prefix
 
 ## CSV export
 
-**Export CSV** writes a long-format table preceded by a `# key: value` header (abridged below). The header is written so that the file alone states the conditions needed to reproduce it.
+**Export CSV** writes a long-format table preceded by a `# key: value` header (abridged below). The header is written so that the file alone states the conditions needed to reproduce it; `scan_origin_rotation_matrix` records the crystal orientation at the scan origin (tilt 0) as a row-major rotation matrix. <!-- 261105Cl 監査: FormALCHEMI.cs buttonExport_Click の Key("scan_origin_rotation_matrix", ...) -->
 
 ```text
 # generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
@@ -175,6 +175,7 @@ Further warnings are added as separate lines of the diagnostics box, each prefix
 # crystal: MgAl2O4 (spinel) / F d -3 m
 # cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
 # accelerating_voltage_kV: 200.000
+# scan_origin_rotation_matrix: 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 (row-major; the crystal orientation of the parent diffraction simulator at the run, mapping the crystal's Cartesian frame to the laboratory frame, in which the beam travels along -z)
 # scan_row_hkl: 1 0 0
 # theta_B_mrad: 1.552030
 # thicknesses_nm: 10.0000 20.0000 ... 100.0000

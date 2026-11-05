@@ -12,7 +12,7 @@
 
 結晶内の電子は結晶ポテンシャルの影響を受けて散乱されます。ポテンシャルの分布は回折・結像現象の基礎であり、結晶構造を理解するための重要な情報です。本モードはレンズ収差や厚さ依存の動力学効果を含まないため、構造そのものの確認に適します。
 
-> **ポテンシャルモードでは、試料厚み・強度の規格化・画像モード（単一/シリーズ）のパネルは表示されません。** TEMの条件のうち有効なのは加速電圧のみです。
+> **ポテンシャルモードでは、試料厚さ・強度の規格化・**単一/シリーズ画像** のパネルは表示されません。** TEMの条件のうち有効なのは加速電圧のみです。
 
 ---
 
@@ -20,7 +20,7 @@
 
 ![TEMの条件](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **加速電圧 (kV)** : 加速電圧。電子波長を決め、ポテンシャルのフーリエ係数 $U_g$ の計算に用いられます。
+- **加速電圧** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> : 加速電圧 (kV)。電子波長を決め、ポテンシャルのフーリエ係数 $U_g$ の計算に用いられます。
 
 > **デフォーカス・Cs・Cc・β・ΔV・CTF はポテンシャルモードでは無効**です（結像光学を適用しないため）。グレーアウト表示になります。
 
@@ -54,16 +54,16 @@ $U_g$ と $U'_g$ は同時に表示できます（チェックした分だけペ
 
 ![生成画像](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-- **Size (W×H)** : 生成する画像のピクセル数（既定 512×512）。
+- **サイズ (W×H)** : 生成する画像のピクセル数（既定 512×512）。
 - **解像度** : サンプリング分解能 (pm/px)。
 
 ---
 
-## 波の数
+## 回折波の数
 
-![波の数](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![回折波の数](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **最大ブロッホ波数** : ポテンシャルのフーリエ合成に含めるブロッホ波（フーリエ係数）の最大数（既定 80）。多くするほど高い空間周波数まで含まれ、ポテンシャルの細部が再現されます。
+- ポテンシャルのフーリエ合成に含めるブロッホ波（フーリエ係数）の最大数（既定 80）。多くするほど高い空間周波数まで含まれ、ポテンシャルの細部が再現されます。
 
 ---
 

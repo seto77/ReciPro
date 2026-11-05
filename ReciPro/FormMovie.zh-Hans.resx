@@ -125,7 +125,7 @@
   </data>
   <data name="radioButtonAxis.ToolTip" xml:space="preserve">
     <value>用晶体方向指数 [uvw] 指定旋转轴。启用
-Translation 时，[uvw] 同时给出平移方向
+“平移”时，[uvw] 同时给出平移方向
 （此时为唯一可用模式）。</value>
   </data>
   <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
@@ -147,7 +147,7 @@ Translation 时，[uvw] 同时给出平移方向
   <data name="indexControl.ToolTip" xml:space="preserve">
     <value>输入定义旋转轴的指数：在方向指数模式下
 为方向 [uvw]，在晶面模式下为晶面 (hkl)
-（绕其法线旋转）。启用 Translation 时，
+（绕其法线旋转）。启用“平移”时，
 [uvw] 还将设定平移方向。</value>
   </data>
   <data name="numericBoxFps.ToolTip" xml:space="preserve">
@@ -166,12 +166,12 @@ Translation 时，[uvw] 同时给出平移方向
 负值反转移动方向。</value>
   </data>
   <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
-    <value>在 t = Duration 处追加一帧，使影片恰好
+    <value>在 t = 持续时间 处追加一帧，使影片恰好
 结束于最终的方位/位置。</value>
   </data>
   <data name="checkBoxRotation.ToolTip" xml:space="preserve">
     <value>在影片中旋转视图。取消勾选可生成仅平移的影片
-（Rotation 与 Translation 至少需启用其一）。</value>
+（“旋转”与“平移” 至少需启用其一）。</value>
   </data>
   <data name="checkBoxTranslation.ToolTip" xml:space="preserve">
     <value>在影片中平移投影中心。平移方向由方向指数

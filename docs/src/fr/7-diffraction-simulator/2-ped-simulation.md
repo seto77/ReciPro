@@ -2,9 +2,9 @@
 
 La simulation **PED (Precession Electron Diffraction)** calcule les clichés de diffraction électronique obtenus en faisant précesser le faisceau incident sur un cône autour de l'axe optique.
 
-> Cette page recense tous les paramètres qui apparaissent sur le côté droit lorsque vous sélectionnez **Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)**. Notez que **la sélection de Precession (electron) pour le faisceau incident bascule automatiquement le calcul d'intensité sur Dynamical**. Pour les opérations à l'échelle de la fenêtre, telles que le dessin et l'enregistrement, consultez la [page de présentation](index.md).
+> Cette page recense tous les paramètres qui apparaissent sur le côté droit lorsque vous sélectionnez **Source d'onde = Électrons, Optique = Précession (électrons), Calcul d'intensité = Théorie dynamique (automatique)**. Notez que **la sélection de Précession (électrons) dans Optique bascule automatiquement le calcul d'intensité sur Théorie dynamique**. Pour les opérations à l'échelle de la fenêtre, telles que le dessin et l'enregistrement, consultez la [page de présentation](index.md).
 
-Conditions GUI : **Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)**
+Conditions GUI : **Source d'onde = Électrons, Optique = Précession (électrons), Calcul d'intensité = Théorie dynamique (automatique)**
 
 ![Simulateur de diffraction en mode PED](../../assets/cap-fr-auto/FormDiffractionSimulator-ped.png)
 
@@ -20,21 +20,21 @@ En PED, le faisceau électronique est mis en précession sur un cône autour de 
 
 ---
 
-## Réglage de la longueur d'onde
+## Source d'onde {#wavelength-setup}
 
-![Longueur d'onde](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Source d'onde](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Puisque la PED est une diffraction électronique, sélectionnez **Electron beam** comme source. La saisie de l'énergie des électrons (keV) ou de la longueur d'onde (nm) calcule la longueur d'onde corrigée relativistement.
+Puisque la PED est une diffraction électronique, sélectionnez **Électrons** comme **Source d'onde**. La saisie de l'énergie des électrons (keV) ou de la longueur d'onde (Å ou nm, au choix ; Å par défaut) calcule la longueur d'onde corrigée relativistement.
 
 ---
 
-## Faisceau incident
+## Optique {#incident-beam}
 
-![Mode du faisceau incident](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Optique](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-Pour la géométrie du faisceau incident, sélectionnez **Precession (electron)** (disponible uniquement lorsque le faisceau électronique est sélectionné).
+Dans **Optique** (la géométrie du faisceau incident), sélectionnez **Précession (électrons)** (disponible uniquement lorsque **Électrons** est sélectionné).
 
-> **Note** : La sélection de **Precession (electron)** **bascule automatiquement le calcul d'intensité sur Dynamical**, et le panneau de réglages de la méthode des ondes de Bloch ainsi que le panneau de réglages de la précession apparaissent. **Only excitation error** / **Kinematical** ne peuvent plus être sélectionnés.
+> **Note** : La sélection de **Précession (électrons)** **bascule automatiquement le calcul d'intensité sur Théorie dynamique**, et le panneau de réglages de la méthode des ondes de Bloch ainsi que le panneau de réglages de la précession apparaissent. **Erreur d'excitation** / **Cinématique & err. exc.** ne peuvent plus être sélectionnés.
 
 ---
 
@@ -46,21 +46,21 @@ Définissez la forme et l'échantillonnage du cône de précession.
 
 | Paramètre | Description | Recommandé |
 |-----------|-------------|-------------|
-| **Semi-angle** | Demi-angle du cône de précession (mrad) | 10–40 mrad |
-| **Step** | Nombre de directions de faisceau parallèle échantillonnées sur le cône de précession. Des valeurs plus grandes donnent une intégration plus lisse mais augmentent linéairement le temps de calcul | 36–72 |
+| **Angle préc.** | Angle de précession, c'est-à-dire le demi-angle au sommet du cône de précession (mrad ; 0.1–500, 50 par défaut) <!-- 261106Cl 仕上げ R3 D1: 欄名 Demi-angle → Angle préc. --> | 10–40 mrad |
+| **Pas** | Nombre de directions de faisceau parallèle échantillonnées sur le cône de précession (2–1080, 36 par défaut). Des valeurs plus grandes donnent une intégration plus lisse mais augmentent linéairement le temps de calcul | 36–72 |
 
 ---
 
 ## Calcul d'intensité et réglages des ondes de Bloch
 
-Dès que **Precession (electron)** est sélectionné, **Intensity = Dynamical (automatic)** est fixé. Pour le faisceau parallèle dans chaque direction de précession, l'intensité de diffraction est calculée par la méthode des ondes de Bloch (calcul dynamique), et l'intégration sur toutes les directions donne le cliché PED.
+Dès que **Précession (électrons)** est sélectionné, **Calcul d'intensité** est fixé sur **Théorie dynamique** (automatique). Pour le faisceau parallèle dans chaque direction de précession, l'intensité de diffraction est calculée par la méthode des ondes de Bloch (calcul dynamique), et l'intégration sur toutes les directions donne le cliché PED.
 
 ![Paramètres des ondes de Bloch](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
 | Paramètre | Description | Recommandé |
 |-----------|-------------|-------------|
-| **No. of diffracted waves** | Nombre d'ondes de Bloch incluses dans le problème aux valeurs propres. Des valeurs plus grandes donnent des intensités plus précises, mais le temps de calcul croît en $O(N^3)$ | 50–200 |
-| **Thickness** | Épaisseur de l'échantillon utilisée dans le calcul dynamique (nm) | — |
+| **Nombre d'ondes diffractées** | Nombre d'ondes de Bloch incluses dans le problème aux valeurs propres (8–1000, 240 par défaut). Des valeurs plus grandes donnent des intensités plus précises, mais le temps de calcul croît en $O(N^3)$ | 50–200 |
+| **Épaisseur** | Épaisseur de l'échantillon utilisée dans le calcul dynamique (nm ; 0.01–10000, 50 par défaut) | — |
 
 Le coût de calcul correspond à peu près à « nombre d'étapes × calcul des ondes de Bloch par direction ». Pour les détails du calcul dynamique, consultez [Calcul dynamique (méthode des ondes de Bloch)](../appendix/a3-bloch-wave/calculation.md).
 
@@ -72,14 +72,12 @@ Le coût de calcul correspond à peu près à « nombre d'étapes × calcul des 
 
 Contrôle la manière dont chaque tache de diffraction est dessinée.
 
-- **Solid sphere / Gaussian** : Modèle géométrique des nœuds du réseau réciproque. **Solid sphere** dessine la section d'une sphère de rayon $R$ avec la sphère d'Ewald, et **Gaussian** dessine la section (une gaussienne 2D) d'une gaussienne 3D avec $\sigma = R$ et la sphère d'Ewald.
-- **Opacity** : Transparence de la tache (0 = transparent, 1 = opaque).
-- **Radius (R)** : Rayon des nœuds du réseau réciproque. Pour les intensités dynamiques, l'intégrale gaussienne $=$ Brightness $\times I_\text{dyn}$, et Solid sphere utilise le rayon $R \times I_\text{dyn}^{1/2}$ (de sorte que l'aire est proportionnelle à l'intensité dynamique).
-- **Brightness** : Disponible uniquement en mode **Gaussian**. Intensité intégrée de la gaussienne dessinée.
-- **Color scale** : Carte de couleurs **Gray scale** ou **Cold-warm**.
-- **Log scale** : Affiche l'intensité sur une échelle logarithmique.
-- **Spot color** : Couleur de la tache utilisée lorsqu'aucune carte de couleurs n'est appliquée.
-- **Color per crystal** : Dessine les taches dans la couleur attribuée à chaque cristal.
+- **Sphère pleine / Gaussienne** : Modèle géométrique des nœuds du réseau réciproque. **Sphère pleine** dessine la section d'une sphère de rayon $R$ avec la sphère d'Ewald, et **Gaussienne** dessine la section (une gaussienne 2D) d'une gaussienne 3D avec $\sigma = R$ et la sphère d'Ewald.
+- **Opacité** : Transparence de la tache (0 = transparent, 1 = opaque).
+- **Rayon de tache (R)** : Rayon des nœuds du réseau réciproque. Pour les intensités dynamiques, l'intégrale gaussienne $=$ Luminosité $\times I_\text{dyn}$, et Sphère pleine utilise le rayon $R \times I_\text{dyn}^{1/2}$ (de sorte que l'aire est proportionnelle à l'intensité dynamique).
+- **Luminosité**, **Échelle de couleurs**, **Échelle log** : affichés uniquement en mode **Gaussienne**. **Luminosité** met à l'échelle l'intensité intégrée de la gaussienne dessinée ; **Échelle de couleurs** vaut **Gray** (taches dans les couleurs de taches ci-dessous), **Cold-warm**, **Spectrum** ou **Fire** ; **Échelle log** affiche l'intensité sur une échelle logarithmique.
+- **Couleur de tache** : affiché tant que l'**Échelle de couleurs** est **Gray** (réglage initial) : **Taches générales** / **Taches éteintes (hélic./gliss.)** / **Taches éteintes (centrage)**.
+- **Couleur par cristal** : Dessine les taches dans la couleur attribuée à chaque cristal.
 
 ---
 

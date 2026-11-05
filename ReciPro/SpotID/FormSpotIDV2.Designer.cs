@@ -802,6 +802,7 @@ namespace ReciPro
             waveLengthControl1.WaveLength = 0.0025079347460000003D;
             waveLengthControl1.XrayWaveSourceElementNumber = 0;
             waveLengthControl1.WavelengthChanged += WaveLengthControl1_WavelengthChanged;
+            waveLengthControl1.WaveSourceChanged += WaveLengthControl1_WaveSourceChanged; // 261105Cl 追加 (監査 I4)
             // 
             // flowLayoutPanel5
             // 

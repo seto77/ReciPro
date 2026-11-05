@@ -161,7 +161,7 @@
     <value>깊이 페이드</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>초기화</value>
+    <value>시점 초기화</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>외관</value>
@@ -388,7 +388,7 @@
 때만 표시)의 색을 설정합니다.</value>
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
-    <value>1° 격자선(가는 선, '1° Lines'가 활성화되었을
+    <value>1° 격자선(가는 선, '1° lines'가 활성화되었을
 때만 표시)의 색을 설정합니다.</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">

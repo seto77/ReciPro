@@ -28,9 +28,9 @@ Cette fenêtre n'a pas de combinaisons avec des touches de modification ; elle s
 | Raccourci | Action |
 |----------|--------|
 | <kbd>F1</kbd> | Ouvrir cette page du manuel en ligne |
-| <kbd>ENTER</kbd> dans n'importe quel champ de recherche | Lancer la recherche dans la base de données (équivaut au bouton **Search**) |
+| <kbd>ENTER</kbd> dans n'importe quel champ de recherche | Lancer la recherche dans la base de données (équivaut au bouton **Rechercher**) |
 | Cliquer sur une ligne du tableau des résultats | Charger ce cristal dans la fenêtre principale |
-| Cliquer sur un élément dans la fenêtre contextuelle **Periodic table** | Faire défiler son filtre : *ignore* → *must include* → *must exclude* |
+| Cliquer sur un élément dans la fenêtre contextuelle **Tableau périodique** | Faire défiler son filtre : *peut inclure ou non* → *doit inclure* → *doit exclure* |
 
 → Voir **[21. Raccourcis clavier et souris](21-shortcuts.md)** pour un aperçu de chaque fenêtre.
 
@@ -40,7 +40,7 @@ Cette fenêtre n'a pas de combinaisons avec des touches de modification ; elle s
 
 ![Tableau de la base de données de cristaux](../assets/cap-fr-auto/FormCrystalDatabase.crystalDatabaseControl.png)
 
-Affiche les cristaux correspondant aux critères de recherche. Sélectionnez un cristal pour le transférer vers les Informations sur le cristal de la fenêtre principale. Appuyez sur **Add** ou **Replace** pour l'ajouter à la Liste des cristaux.
+Affiche les cristaux correspondant aux critères de recherche. Sélectionnez un cristal pour le transférer vers les Informations sur le cristal de la fenêtre principale. Appuyez sur **Ajouter** ou **Remplacer** pour l'ajouter à la Liste des cristaux.
 
 ---
 
@@ -48,53 +48,55 @@ Affiche les cristaux correspondant aux critères de recherche. Sélectionnez un 
 
 ![Options de recherche](../assets/cap-fr-auto/FormCrystalDatabase.panelSearch.searchCrystalControl.png)
 
-Saisissez ci-dessous les critères de recherche et appuyez sur le bouton **Search** ou sur la touche **Enter**.
+Saisissez ci-dessous les critères de recherche et appuyez sur le bouton **Rechercher** ou sur la touche **Enter**.
 
 | Critère | Description |
 |-----------|-------------|
 | **Name** | Nom du cristal |
-| **Element** | Sélecteur du tableau périodique (peut/doit/ne doit pas contenir) |
-| **Reference** | Titre, revue, auteur |
-| **Crystal system** | Sélectionner le système cristallin |
-| **Cell Param** | Constantes du réseau et erreur |
-| **d-spacing** | Valeurs d de la réflexion la plus forte et erreur |
-| **Density** | Densité et erreur |
+| **Éléments** | Sélecteur du tableau périodique (peut/doit/ne doit pas contenir) |
+| **Référence** | Titre, revue, auteur |
+| **Système cristallin** | Sélectionner le système cristallin |
+| **Param. de maille** | Constantes du réseau et erreur |
+| **Distances d** | Valeurs d des réflexions fortes et erreur |
+| **Densité** | Densité et erreur |
 
 ### Name
 
-Correspondance en texte libre avec le nom du cristal. Les correspondances partielles sont autorisées.
+Correspondance en texte libre avec le nom du cristal. Les correspondances partielles sont autorisées ; la casse est ignorée. Seuls les critères dont la case est cochée sont appliqués, et ils sont combinés par ET.
 
-### Element
+### Éléments {#element}
 
-Appuyez sur le bouton **Periodic Table** pour ouvrir le sélecteur d'éléments. Chaque bouton d'élément parcourt trois états :
+Appuyez sur le bouton **Tableau périodique** pour ouvrir le sélecteur d'éléments. Chaque bouton d'élément parcourt trois états :
 
-- **May or may not include** (par défaut – gris)
-- **Must include** (vert)
-- **Must exclude** (rouge)
+- **peut inclure ou non** (par défaut – jaune)
+- **doit inclure** (bleu)
+- **doit exclure** (rouge)
+
+Un cristal doit contenir tous les éléments *doit inclure* et aucun des éléments *doit exclure* ; tant que le critère **Éléments** est actif, les entrées sans données atomiques sont exclues.
 
 Les trois boutons en haut de la fenêtre réinitialisent chaque élément à l'un des trois états en un seul clic.
 
-### Reference
+### Référence
 
-Correspondance en texte libre avec les métadonnées de la publication : titre de l'article, nom de la revue et liste des auteurs.
+Correspondance en texte libre (partielle, insensible à la casse) avec les métadonnées de la publication : titre de l'article, nom de la revue et liste des auteurs.
 
-### Crystal system
+### Système cristallin
 
-Restreint la recherche à un système cristallin spécifique (Cubic, Tetragonal, Orthorhombic, Hexagonal, Trigonal, Monoclinic, Triclinic).
+Restreint la recherche à un système cristallin spécifique (cubic, tetragonal, orthorhombic, hexagonal, trigonal, monoclinic, triclinic). Le premier élément, *Unknown*, n'applique aucune restriction.
 
 ### Recherche par paramètres de maille
 
 ![Recherche par paramètres de maille](../assets/cap-fr-auto/FormCrystalDatabase.panelSearch.searchCrystalControl.flowLayoutPanel1.groupBoxCellParameter.png)
 
-Saisissez les constantes du réseau cibles *a*, *b*, *c*, *α*, *β*, *γ* et les erreurs acceptables. Les champs vides sont traités comme des caractères génériques.
+Saisissez les constantes du réseau cibles *a*, *b*, *c* (Å) et *α*, *β*, *γ* (°) ainsi que les erreurs acceptables : une tolérance relative (±%) commune à *a*, *b*, *c*, et une tolérance absolue (±°) commune aux angles. Une valeur de 0 signifie que le paramètre est ignoré.
 
-### d-spacing
+### Distances d
 
-Saisissez la *d*-spacing de la réflexion la plus forte (ou de plusieurs réflexions fortes) et une erreur acceptable. Utile lorsque seules les positions des pics de diffraction sont connues à partir d'une expérience.
+Saisissez jusqu'à trois distances *d* (Å ; cochez chacune pour l'utiliser), chacune avec une tolérance relative (±%). Un cristal correspond lorsque chaque valeur saisie concorde avec l'une de ses réflexions les plus fortes enregistrées dans la base de données (jusqu'à 16, classées par intensité de diffraction X sur poudre à λ = 1.54 Å). Lorsque **Ignorer le facteur de diffusion** est coché, les valeurs sont comparées à toutes les distances *d* géométriquement possibles calculées à partir de la maille (y compris les réflexions systématiquement éteintes). Utile lorsque seules les positions des pics de diffraction sont connues à partir d'une expérience.
 
-### Density
+### Densité
 
-Filtre par masse volumique (g/cm³) à l'intérieur d'une bande d'erreur acceptable.
+Filtre par masse volumique (g/cm³) avec une tolérance relative (±%).
 
 ---
 

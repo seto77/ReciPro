@@ -96,7 +96,7 @@ $$\lvert F_{\mathbf g}\rvert^2 - \lvert F_{-\mathbf g}\rvert^2 = -4\,\operatorna
 
 ## 구조 인자에서 분말 강도로
 
-**Powder Diffraction Intensities (Bragg–Brentano)** 를 켜면 무작위로 배향된 다결정의 기하학을 접어 넣어 $\lvert F\rvert^2$ 를 상대 분말 강도로 변환한다:
+**분말 회절 강도 (브래그-브렌타노 광학계)** 를 켜면 무작위로 배향된 다결정의 기하학을 접어 넣어 $\lvert F\rvert^2$ 를 상대 분말 강도로 변환한다:
 
 $$I_{hkl} \;\propto\; m_{hkl}\, \lvert F_{hkl}\rvert^2\, L p(\theta),$$
 

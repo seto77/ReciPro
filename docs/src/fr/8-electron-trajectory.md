@@ -1,6 +1,7 @@
 # Trajectoires électroniques
 
-Le **Simulateur de trajectoires (méthode de Monte-Carlo)** calcule les trajectoires électroniques à l'intérieur d'un échantillon par la **méthode de Monte-Carlo** : les électrons incidents subissent une diffusion élastique et inélastique, et les distributions résultantes des électrons rétrodiffusés (BSE) — direction, énergie à l'échappement, profondeur de pénétration et étalement latéral — sont accumulées. Ces distributions alimentent également la pondération angulaire/énergétique/en profondeur utilisée par la [12. Simulation EBSD](12-ebsd-simulation.md).
+Le **Simulateur de trajectoires (méthode de Monte-Carlo)** calcule les trajectoires électroniques à l'intérieur d'un échantillon par la **méthode de Monte-Carlo** : les électrons incidents subissent une diffusion élastique et inélastique, et les distributions résultantes des électrons rétrodiffusés (BSE) — direction, énergie à l'échappement, profondeur de pénétration et étalement latéral — sont accumulées.
+La [12. Simulation EBSD](12-ebsd-simulation.md) utilise le même moteur de Monte-Carlo pour sa pondération angulaire/énergétique/en profondeur, mais l'exécute en interne avec ses propres réglages ; les résultats de cette fenêtre ne lui sont pas transmis.
 
 ![Electron Trajectory](../assets/cap-fr-auto/FormTrajectory.png)
 
@@ -28,18 +29,22 @@ Les trajectoires sont affichées dans une vue 3-D OpenGL. Elle utilise la [navig
 Les commandes situées en haut de la fenêtre définissent le calcul :
 
 - **Simuler les trajectoires** : lance le calcul de Monte-Carlo. La barre d'état en bas de la fenêtre indique séparément le temps écoulé pour le calcul des trajectoires, le tracé des graphiques et le rendu 3-D.
-- **Number of trajectories** : nombre d'électrons incidents à suivre. Davantage d'électrons réduisent le bruit statistique de toutes les distributions ci-dessous, au prix d'un temps d'exécution qui croît linéairement.
-- **Inclinaison de l'échantillon** (°) : inclinaison de la surface de l'échantillon autour de l'axe *X*. Laissez 0 pour une incidence normale ; utilisez **−70°** pour reproduire la géométrie du [simulateur EBSD](12-ebsd-simulation.md), où la forte inclinaison augmente le rendement de rétrodiffusion.
-- **Energy** (keV) / **Wavelength** / **Unit** : la tension d'accélération du faisceau incident, et la longueur d'onde électronique corrigée relativistement qui lui est liée. L'énergie fixe l'énergie cinétique utilisée à la fois par le modèle élastique (Mott NIST) et par le modèle inélastique (pouvoir d'arrêt / IMFP).
+- **Number of trajectories** (100–1 000 000, 100 000 par défaut) : nombre d'électrons incidents à suivre. Davantage d'électrons réduisent le bruit statistique de toutes les distributions ci-dessous, au prix d'un temps d'exécution qui croît linéairement.
+- **Inclinaison de l'échantillon** (°, −90 à 0, 0 par défaut) : inclinaison de la surface de l'échantillon autour de l'axe *X*. Laissez 0 pour une incidence normale ; utilisez **−70°** pour reproduire la géométrie du [simulateur EBSD](12-ebsd-simulation.md), où la forte inclinaison augmente le rendement de rétrodiffusion.
+- **Énergie** (keV) / **Long. d'onde** / **Unit** : la tension d'accélération du faisceau incident, et la longueur d'onde électronique corrigée relativistement qui lui est liée. L'énergie fixe l'énergie cinétique utilisée à la fois par le modèle élastique (Mott NIST) et par le modèle inélastique (pouvoir d'arrêt / IMFP).
 
-Les modèles de diffusion eux-mêmes ne sont pas sélectionnables par l'utilisateur : les sections efficaces élastiques proviennent de la table de Mott NIST fournie (avec repli sur la formule de Rutherford écrantée hors de son domaine), et le pouvoir d'arrêt de la forme de Jablonski modifiée (2008). Le modèle effectivement utilisé est indiqué à côté de chaque valeur dans **Statistiques**. Voir [Atténuation et transport](appendix/a2-beam-interaction/attenuation-transport.md) pour la description de ces modèles.
+Modifier **Inclinaison de l'échantillon** ou **Énergie** après un calcul ne change pas le résultat affiché : tant que **Simuler les trajectoires** n'est pas pressé de nouveau, chaque nouveau tracé (vue 3-D, stéréonet, histogrammes) utilise l'inclinaison et l'énergie avec lesquelles les trajectoires ont été calculées. <!-- 261105Cl 監査: FormTrajectory.cs calcTilt/calcEnergy (9890ced0) -->
+
+Un électron est suivi jusqu'à ce qu'il quitte l'échantillon ou que son énergie tombe à **2 keV** (seuil fixe). Les électrons qui sortent avec plus de 2 keV sont comptés comme électrons rétrodiffusés ; η (leur fraction parmi tous les électrons incidents), l'énergie BSE moyenne, le stéréonet et les histogrammes ci-dessous sont calculés à partir de ces électrons. La section efficace, le libre parcours moyen et le pouvoir d'arrêt affichés dans **Statistiques** sont des valeurs de modèle à l'énergie du faisceau.
+
+Les modèles de diffusion eux-mêmes ne sont pas sélectionnables par l'utilisateur : les sections efficaces élastiques proviennent de la table de Mott NIST fournie (avec repli sur la formule de Rutherford écrantée hors de son domaine), et le pouvoir d'arrêt de la forme de Jablonski modifiée (2008). Le modèle effectivement utilisé est indiqué à côté de la section efficace et du pouvoir d'arrêt dans **Statistiques**. Voir [Atténuation et transport](appendix/a2-beam-interaction/attenuation-transport.md) pour la description de ces modèles.
 
 ### Vue 3-D des trajectoires
 
-Les trajectoires rouges sont celles des électrons absorbés dans l'échantillon, les orange celles des électrons qui s'échappent en tant qu'électrons rétrodiffusés. Les cercles de repère concentriques sont gradués en nm (ou µm), et **+X**, **+Y**, **+Z (=beam)** indiquent les axes.
+Les trajectoires des électrons rétrodiffusés sont tracées en **rouge**, celles des électrons absorbés dans l'échantillon en **bleu** ; le long de chaque trajet, la couleur s'estompe vers le blanc/transparent en 16 paliers à mesure que l'électron perd de l'énergie. Le trajet après l'échappement (voir ci-dessous) est tracé sous forme d'un court segment **orange** dont la longueur est proportionnelle à l'énergie d'échappement. Les cercles de repère concentriques sont gradués en nm (ou µm), et **+X**, **+Y**, **+Z (=beam)** indiquent les axes.
 
 - **Depuis l'axe Z (= direction du faisceau)** / **Depuis l'axe X (axe de rotation)** / **Normale de surface** : orientent la vue selon les directions standard.
-- **Nombre de trajectoires à tracer** : nombre de trajectoires calculées à afficher (tracer chacune des 100 000 trajectoires serait illisible et lent).
+- **Nombre de trajectoires à tracer** (1–100 000, 500 par défaut) : nombre de trajectoires calculées à afficher (tracer chacune des 100 000 trajectoires serait illisible et lent). Les premières dans l'ordre de calcul sont prises, en sautant les électrons absorbés lorsque ceux-ci ne sont pas tracés.
 - **Tracer les axes** / **Cercles de repère** : les flèches des axes et l'échelle des distances.
 - **Tracer les trajectoires absorbées dans l'échantillon** : inclut les électrons qui ne s'échappent jamais.
 - **Tracer le trajet après l'échappement** : continue à tracer le trajet d'un électron rétrodiffusé après qu'il a quitté la surface.
@@ -50,13 +55,13 @@ Les trajectoires rouges sont celles des électrons absorbés dans l'échantillon
 
 ![Statistiques](../assets/cap-fr-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
-Valeurs pour l'énergie de faisceau actuelle, avec entre crochets le modèle qui a produit chacune d'elles.
+Valeurs pour l'énergie de faisceau actuelle. La section efficace et le pouvoir d'arrêt portent entre crochets le nom du modèle qui les a produits.
 
 - **Section efficace de diffusion (σ_E)** (nm²) — section efficace élastique totale par atome.
 - **Libre parcours moyen élastique (λ)** (nm) — distance moyenne entre deux événements de diffusion élastique.
 - **Pouvoir d'arrêt (dE/ds)** (eV/nm, négatif) — énergie perdue par unité de longueur de trajet.
 - **Coefficient de rétrodiffusion électronique, η** (%) — fraction des électrons incidents qui ressortent par la surface d'entrée. C'est la grandeur sur laquelle repose le contraste de l'imagerie BSE.
-- **Énergie BSE moyenne** (keV) — énergie moyenne des électrons rétrodiffusés au moment de leur échappement.
+- **Énergie BSE moyenne** (keV) — énergie moyenne des électrons rétrodiffusés au moment de leur échappement. Affichée « - » lorsqu'aucun électron n'est rétrodiffusé (les histogrammes sont alors vides). <!-- 261105Cl 監査: FormTrajectory.cs DrawStatistics (count == 0) -->
 
 ---
 
@@ -76,11 +81,11 @@ Distribution angulaire des électrons rétrodiffusés, tracée sur un stéréone
 
 ![Histogrammes](../assets/cap-fr-auto/FormTrajectory.flowLayoutPanelProfiles.png)
 
-Trois distributions des électrons rétrodiffusés, toutes normalisées à une aire unité.
+Trois distributions des électrons rétrodiffusés. Chaque classe contient la fraction de tous les électrons rétrodiffusés qui y tombent (la somme des valeurs des classes vaut 1 ; elles ne sont pas divisées par la largeur de classe).
 
 ### Distribution énergétique des BSE à l'échappement
 
-Histogramme de l'**énergie que les électrons rétrodiffusés possèdent encore lorsqu'ils quittent l'échantillon** (keV) — et non de leur perte d'énergie. Le simulateur EBSD l'utilise pour pondérer l'intégration en énergie du master pattern.
+Histogramme de l'**énergie que les électrons rétrodiffusés possèdent encore lorsqu'ils quittent l'échantillon** (keV) — et non de leur perte d'énergie. Le simulateur EBSD pondère l'intégration en énergie du master pattern avec une distribution de ce type, issue de son propre calcul de Monte-Carlo.
 
 ### Distance maximale des BSE parallèle à la surface
 
@@ -88,7 +93,7 @@ Histogramme de la distance parcourue **latéralement** (parallèlement à la sur
 
 ### Profondeur de pénétration maximale des BSE
 
-Histogramme de la profondeur maximale **perpendiculairement à la surface** (nm) atteinte par chaque électron rétrodiffusé avant son échappement. Le simulateur EBSD l'utilise pour pondérer l'intégration en profondeur du master pattern.
+Histogramme de la profondeur maximale **perpendiculairement à la surface** (nm) atteinte par chaque électron rétrodiffusé avant son échappement.
 
 ---
 

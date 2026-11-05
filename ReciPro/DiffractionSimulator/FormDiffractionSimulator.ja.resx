@@ -176,7 +176,7 @@
     <value>チェックすると、スケール線がシミュレートされます。</value>
   </data>
   <data name="toolStripButtonIndexLabels.Text" xml:space="preserve">
-    <value>面指数</value>
+    <value>指数ラベル</value>
   </data>
   <data name="toolStripButtonIndexLabels.ToolTipText" xml:space="preserve">
     <value>回折斑点の指数を表示します</value>
@@ -196,7 +196,7 @@
   </data>
   <data name="toolStripButtonDistance.ToolTipText" xml:space="preserve">
     <value>チェックすると、各スポットから
-透過スポットまでの距離(mm)が表示されます</value>
+直接スポットまでの距離(mm)が表示されます</value>
   </data>
   <data name="toolStripButton2Theta.ToolTipText" xml:space="preserve">
     <value>チェックすると、各スポットの散乱角2θ(°)が表示されます
@@ -216,12 +216,14 @@
 球からどれだけ外れているかを表します。</value>
   </data>
   <data name="toolStripButtonFg.Text" xml:space="preserve">
-    <value>構造因子</value>
+    <value>強度</value>
   </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>チェックすると、各スポットの構造因子の
-大きさ |Fg| を表示します。|Fg| が大き
-いほど、一般に強い反射を示します。</value>
+    <value>チェックすると、各スポットの強度を、最も強い反射を
+100 % とした割合で表示します。運動学では |Fg|² (励起
+誤差は含みません)、動力学では |Φg|² と回折波の複素振幅
+Φg (実部 + 虚部 i) です。「励起誤差のみ考慮」では
+表示しません。</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tabControl.ToolTip" xml:space="preserve">
@@ -262,10 +264,10 @@
     <value>試料からの垂線の足の色を設定します。</value>
   </data>
   <data name="colorControlOrigin.FooterText" xml:space="preserve">
-    <value>ダイレクトスポット位置</value>
+    <value>直接スポット位置</value>
   </data>
   <data name="colorControlOrigin.ToolTip" xml:space="preserve">
-    <value>透過スポットの色を設定</value>
+    <value>直接スポットの色を設定</value>
   </data>
   <data name="colorControlFoot.ToolTip" xml:space="preserve">
     <value>試料からの垂線の足の色を設定します。</value>
@@ -325,7 +327,7 @@ excess/deficient バンド形状を背景スレッドで
     <value>明るさを固定</value>
   </data>
   <data name="checkBoxKikuchiFixedScale.ToolTip" xml:space="preserve">
-    <value>動力学バンドの明るさ正規化を現在値に固定します。
+    <value>動力学バンドの明るさの規格化を現在値に固定します。
 オフのときは再計算のたびに自動決定されるため
 (バンドコントラストの 98.5 パーセンタイル)、方位を
 変えると明るさが変動します。方位・厚さ・加速電圧を
@@ -371,7 +373,7 @@ excess/deficient の微細構造が滑らかになりますが
   </data>
   <data name="colorControlDeficientLine.ToolTip" xml:space="preserve">
     <value>動力学菊池バンドの deficient (欠損、暗い) 側の色です。
-バンドのコントラストが負になる画素、つまり強度が
+バンドのコントラストが負になるピクセル、つまり強度が
 拡散背景の水準より暗くなる側です。</value>
   </data>
   <data name="labelKikuchiScale.Text" xml:space="preserve">
@@ -402,7 +404,7 @@ Tanh = tanh(x)。滑らかなソフトリミッタ (既定)。
   <data name="labelKikuchiNotice.ToolTip" xml:space="preserve">
     <value>動力学バンドの明るさは表示用の変換であり、実機
 カメラの応答ではありません。全バンドの符号付き
-コントラスト c = (I − I_ref)/I_ref を画素ごとに
+コントラスト c = (I − I_ref)/I_ref をピクセルごとに
 合算し、選択したスケールカーブ (Linear / Log / Tanh)
 で一度だけ不透明度へ圧縮しています (excess =
 正の色、deficient = 負の色)。 「源と吸収が非整合」:
@@ -434,7 +436,7 @@ excess/deficient の符号までです。 「B→0.5」: B = 0
   </data>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
     <value>動力学菊池バンドの excess (過剰、明るい) 側の色です。
-バンドのコントラストが正になる画素、つまり強度が
+バンドのコントラストが正になるピクセル、つまり強度が
 拡散背景の水準より明るくなる側です。</value>
   </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
@@ -465,7 +467,7 @@ excess/deficient の符号までです。 「B→0.5」: B = 0
     <value>デバイリングの色を設定</value>
   </data>
   <data name="checkBoxDebyeRingLabel.Text" xml:space="preserve">
-    <value>指数を表示する</value>
+    <value>指数ラベルを表示</value>
   </data>
   <data name="checkBoxDebyeRingLabel.ToolTip" xml:space="preserve">
     <value>チェックすると、デバイリングの指数ラベルが表示されます</value>
@@ -672,7 +674,7 @@ excess/deficient の符号までです。 「B→0.5」: B = 0
     <value>上のボタンの角度ステップ、または回転速度を設定</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>リセット</value>
+    <value>視点をリセット</value>
   </data>
   <data name="buttonResetAngle.ToolTip" xml:space="preserve">
     <value>3Dビューの視線方向を初期状態に戻します</value>
@@ -748,10 +750,12 @@ Beam/Top/Right の方向ガイド矢印を表示します。</value>
     <value>マウス位置の実空間座標(mm 単位、原点は結晶)を表示します。</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>マウス位置に対応する面間隔 d (nm) を表示します。</value>
+    <value>マウス位置に対応する面間隔 d を表示します。単位 (Å または nm) は
+主画面の格子定数の Å/nm の切り替えに従います。</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>マウス位置に対応する逆格子間隔 d⁻¹ (nm⁻¹) を表示します。</value>
+    <value>マウス位置に対応する逆格子間隔 d⁻¹ を表示します。単位 (Å⁻¹ または nm⁻¹) は
+主画面の格子定数の Å/nm の切り替えに従います。</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>マウス位置に対応する散乱角 2θ を度(°)で表示します。</value>
@@ -841,7 +845,7 @@ Beam/Top/Right の方向ガイド矢印を表示します。</value>
     <value>垂線の足</value>
   </data>
   <data name="comboBoxCenter.Items1" xml:space="preserve">
-    <value>ダイレクトスポット</value>
+    <value>直接スポット</value>
   </data>
   <data name="comboBoxCenter.Items2" xml:space="preserve">
     <value>検出器の中心</value>
@@ -912,10 +916,10 @@ Beam/Top/Right の方向ガイド矢印を表示します。</value>
     <value />
   </data>
   <data name="numericBoxCameraLength2.HeaderText" xml:space="preserve">
-    <value>カメラ長2</value>
+    <value>カメラ長 2</value>
   </data>
   <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
-    <value>カメラ長2(試料から検出器(モニター)までの距離)を設定します。</value>
+    <value>カメラ長 2 (試料から検出器(モニター)までの距離)を設定します。</value>
   </data>
   <data name="buttonDetailedGeometry.Text" xml:space="preserve">
     <value>詳細</value>
@@ -970,7 +974,7 @@ Beam/Top/Right の方向ガイド矢印を表示します。</value>
     <value>チェックすると、回折スポットの描画色が結晶の色に設定されます</value>
   </data>
   <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
-    <value>Anomalous dispersion (f', f'')</value>
+    <value>異常分散 (f', f'')</value>
   </data>
   <data name="checkBoxAnomalousDispersion.ToolTip" xml:space="preserve">
     <value>構造因子にエネルギー依存の X 線異常分散項 (f', f'') を加える。吸収端近傍では Friedel 則が破れ、hkl と -h-k-l の間に Bijvoet 強度差が生じる。オフで従来の分散なしの結果に戻る。</value>
@@ -1000,25 +1004,25 @@ Beam/Top/Right の方向ガイド矢印を表示します。</value>
     <value />
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>プリセション設定</value>
+    <value>歳差の設定</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value>プリセッション電子回折(PED)シミュレーションに関する設定</value>
+    <value>歳差電子回折 (PED) シミュレーションに関する設定</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>半頂角</value>
+    <value>歳差角</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>PED（プリセッション電子回折）シミュレーション
-のプリセッション半角 (mrad) を設定します。
+    <value>歳差電子回折 (PED) シミュレーション
+の歳差角 (mrad) を設定します。
 入射ビームを傾けて積分する円錐の半頂角です。</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>ステップ</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">
-    <value>PED（プリセッション電子回折）シミュレーションで、
-プリセッション円錐を方位方向に分割する数を設定し
+    <value>歳差電子回折 (PED) シミュレーションで、
+歳差の円錐を方位方向に分割する数を設定し
 ます。多いほど滑らかですが計算は遅くなります。</value>
   </data>
   <data name="flowLayoutPanelBethe.ToolTip" xml:space="preserve">
@@ -1039,10 +1043,10 @@ Beam/Top/Right の方向ガイド矢印を表示します。</value>
 ほど精度は上がりますが計算は遅くなります。</value>
   </data>
   <data name="numericBoxThickness.HeaderText" xml:space="preserve">
-    <value>試料厚み</value>
+    <value>試料厚さ</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
-    <value>試料の厚さを設定</value>
+    <value>試料厚さを設定</value>
   </data>
   <data name="flowLayoutPanelAppearance.ToolTip" xml:space="preserve">
     <value />
@@ -1230,7 +1234,7 @@ Beam/Top/Right の方向ガイド矢印を表示します。</value>
   <data name="radioButtonBeamPrecessionXray.ToolTip" xml:space="preserve">
     <value>X線歳差モード（ZOLZ, 零次ラウエ帯）：零層の
 逆格子面を極投影で表示します。電子の
-PED（プリセッション電子回折）モードとは別です。</value>
+歳差電子回折 (PED) モードとは別です。</value>
   </data>
   <data name="flowLayoutPanelWaveLength.ToolTip" xml:space="preserve">
     <value />
@@ -1254,7 +1258,7 @@ PED（プリセッション電子回折）モードとは別です。</value>
     <value>文字列の色を設定</value>
   </data>
   <data name="colorControlOrigin.ToolTip1" xml:space="preserve">
-    <value>透過スポットの色を設定</value>
+    <value>直接スポットの色を設定</value>
   </data>
   <data name="colorControlFoot.ToolTip1" xml:space="preserve">
     <value />
@@ -1270,7 +1274,9 @@ PED（プリセッション電子回折）モードとは別です。</value>
 描画します（= d 値が 1/値 より大きい反射）。</value>
   </data>
   <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
-    <value />
+    <value>動力学菊池バンドの excess (過剰、明るい) 側の色です。
+バンドのコントラストが正になるピクセル、つまり強度が
+拡散背景の水準より明るくなる側です。</value>
   </data>
   <data name="colorControlDebyeRing.ToolTip1" xml:space="preserve">
     <value>デバイリングの色を設定</value>
@@ -1317,7 +1323,7 @@ PED（プリセッション電子回折）モードとは別です。</value>
     <value>シミュレーションパターンの解像度を設定</value>
   </data>
   <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
-    <value>カメラ長2(試料から検出器(モニター)までの距離)を設定します。</value>
+    <value>カメラ長 2 (試料から検出器(モニター)までの距離)を設定します。</value>
   </data>
   <data name="numericBoxDev.ToolTip1" xml:space="preserve">
     <value />
@@ -1326,13 +1332,13 @@ PED（プリセッション電子回折）モードとは別です。</value>
     <value />
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>PED（プリセッション電子回折）シミュレーション
-のプリセッション半角 (mrad) を設定します。
+    <value>歳差電子回折 (PED) シミュレーション
+の歳差角 (mrad) を設定します。
 入射ビームを傾けて積分する円錐の半頂角です。</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip1" xml:space="preserve">
-    <value>PED（プリセッション電子回折）シミュレーションで、
-プリセッション円錐を方位方向に分割する数を設定し
+    <value>歳差電子回折 (PED) シミュレーションで、
+歳差の円錐を方位方向に分割する数を設定し
 ます。多いほど滑らかですが計算は遅くなります。</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
@@ -1341,7 +1347,7 @@ PED（プリセッション電子回折）モードとは別です。</value>
 ほど精度は上がりますが計算は遅くなります。</value>
   </data>
   <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
-    <value>試料の厚さを設定</value>
+    <value>試料厚さを設定</value>
   </data>
   <data name="numericBoxSpotRadius.ToolTip1" xml:space="preserve">
     <value>回折スポットの半径または Gaussian の sigma を
@@ -1726,5 +1732,116 @@ excess/deficient の微細構造が滑らかになりますが
   </data>
   <data name="colorControlKikuchiLine.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>回折シミュレータ</value>
+  </data>
+  <data name="sizeControl1.HeaderText" xml:space="preserve">
+    <value>サイズ (W×H)</value>
+  </data>
+  <data name="groupBoxOptions.Text" xml:space="preserve">
+    <value>オプション</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像を保存</value>
+  </data>
+  <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像として (PNG 形式)</value>
+  </data>
+  <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>メタファイルとして (EMF)</value>
+  </data>
+  <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>検出器領域を保存</value>
+  </data>
+  <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像として (PNG 形式)</value>
+  </data>
+  <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>メタファイルとして (EMF)</value>
+  </data>
+  <data name="saveCBEDPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>CBED ディスクを保存</value>
+  </data>
+  <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
+    <value>個別の画像として (PNG 形式)</value>
+  </data>
+  <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
+    <value>個別の画像として (TIFF 形式)</value>
+  </data>
+  <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>1 枚にまとめた画像として (PNG 形式)</value>
+  </data>
+  <data name="asCollectiveImageTiffFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>1 枚にまとめた画像として (TIFF 形式)</value>
+  </data>
+  <data name="copyImageToClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="copyAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像として</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>メタファイルとして (EMF)</value>
+  </data>
+  <data name="copyDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>検出器領域をコピー</value>
+  </data>
+  <data name="copyDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像として</value>
+  </data>
+  <data name="copyDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>メタファイルとして (EMF)</value>
+  </data>
+  <data name="copyCBEDPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>CBED ディスクをコピー</value>
+  </data>
+  <data name="copyCBEDasImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>1 枚にまとめた画像として</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>動画を保存</value>
+  </data>
+  <data name="toolStripMenuItemSaveMovieDiffractionPattern.Text" xml:space="preserve">
+    <value>回折パターン</value>
+  </data>
+  <data name="toolStripMenuItemSaveMovieReciprocalSpace.Text" xml:space="preserve">
+    <value>逆空間</value>
+  </data>
+  <data name="pageSetupToolStripMenuItem.Text" xml:space="preserve">
+    <value>プリント設定</value>
+  </data>
+  <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
+    <value>プリントプレビュー</value>
+  </data>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>プリント</value>
+  </data>
+  <data name="dynamicCompressionToolStripMenuItem.Text" xml:space="preserve">
+    <value>動的圧縮</value>
+  </data>
+  <data name="electron300KVToolStripMenuItem.Text" xml:space="preserve">
+    <value>電子線 300 kV</value>
+  </data>
+  <data name="electron200KVToolStripMenuItem.Text" xml:space="preserve">
+    <value>電子線 200 kV</value>
+  </data>
+  <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>電子線 120 kV</value>
+  </data>
+  <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>X線 30 keV</value>
+  </data>
+  <data name="xray20KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>X線 20 keV</value>
+  </data>
+  <data name="xrayMoKαToolStripMenuItem.Text" xml:space="preserve">
+    <value>X線 17.48 keV (MoKα₁)</value>
+  </data>
+  <data name="xrayCuKαToolStripMenuItem.Text" xml:space="preserve">
+    <value>X線 8.041 keV (CuKα₁)</value>
+  </data>
+  <data name="basicConceptOfBethesMethodToolStripMenuItem.Text" xml:space="preserve">
+    <value>Bethe法の基本概念</value>
   </data>
 </root>

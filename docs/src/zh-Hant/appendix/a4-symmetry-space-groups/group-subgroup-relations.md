@@ -48,8 +48,8 @@
 
 顯示母設定與子設定之間的基底變換與原點位移，採用 ITA 的慣例：新基向量為 $(\mathbf a',\mathbf b',\mathbf c')=(\mathbf a,\mathbf b,\mathbf c)\cdot P$，一點在母設定中的座標為 $\mathbf x_{\text{parent}} = P\,\mathbf x_{\text{child}} + \mathbf p$。$3\times3$ 矩陣 $P$ 與原點位移 $\mathbf p$ 以分數列印。
 
-- 當你是從 **極大子群** 抵達此關係時，直接顯示 $P$ 與 $\mathbf p$（母 → 子方向）。
-- 當你改從 **極小超群** 抵達時，索引標籤顯示 $P^{-1}$（以及相應反轉的位移），並加註*「由超群自身的子群表推得」* — 瀏覽器一律以較大之群的觀點儲存關係，需要時再即時求逆，而不是維護兩份獨立的副本。
+- 當你是從 **極大子群** 抵達此關係時，直接顯示 $P$ 與 $\mathbf p$（母 → 子方向），標題為 *"Transformation to subgroup basis (a',b',c')=(a,b,c)P"*，並以 $P=$ 與 $p=$ 標示。
+- 當你改從 **極小超群** 抵達時，索引標籤顯示逆變換：標題為 *"Transformation to supergroup basis (a',b',c')=(a,b,c)P⁻¹"*，矩陣與位移分別以 $P^{-1}=$ 與 $-P^{-1}p=$ 標示，並以所瀏覽之設定的座標軸（例如 $P2_1/n$）而非標準設定表示 <!-- 261106Cl 作者の決定 B14 --> <!-- 261105Cl 監査: FormGroupRelations.cs BuildTransformationLatex / BuildMatrixLatex(inverse) --> — 瀏覽器一律以較大之群的觀點儲存關係，需要時再即時求逆，而不是維護兩份獨立的副本。
 - **本類共軛子群數: $n$** 報告上文所述共軛類的大小。
 - 生成元表列出每一個陪集代表元，標記為 **保持**（仍存在於 $H$ 中）或 **消失**（存在於 $G$ 但不在 $H$ 中 — 這些正是造成對稱性破缺的操作），各附 [A4.1](symbols-and-diagrams.md#對稱操作對稱操作索引標籤) 中的 Seitz 符號與幾何類型描述。
 - 若某候選關係的目標空間群類型無法與 ReciPro 的目錄比對確認，索引標籤會直白說明而不臆測，並僅顯示點群符號。

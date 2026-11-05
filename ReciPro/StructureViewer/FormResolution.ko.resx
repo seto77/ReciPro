@@ -65,20 +65,20 @@
   </data>
   <data name="numericUpDownHeight.ToolTip" xml:space="preserve">
     <value>이미지 높이(픽셀 단위, 0–4096, 256 단위);
-Keep Aspect Ratio가 켜져 있으면 너비도 연동됩니다.</value>
+Keep aspect ratio가 켜져 있으면 너비도 연동됩니다.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>이미지 높이(픽셀 단위, 0–4096, 256 단위);
-Keep Aspect Ratio가 켜져 있으면 너비도 연동됩니다.</value>
+Keep aspect ratio가 켜져 있으면 너비도 연동됩니다.</value>
   </data>
   <data name="numericUpDownWidth.ToolTip" xml:space="preserve">
     <value>이미지 너비(픽셀 단위, 0–4096, 256 단위);
-Keep Aspect Ratio가 켜져 있으면 높이도
+Keep aspect ratio가 켜져 있으면 높이도
 연동됩니다.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>이미지 너비(픽셀 단위, 0–4096, 256 단위);
-Keep Aspect Ratio가 켜져 있으면 높이도
+Keep aspect ratio가 켜져 있으면 높이도
 연동됩니다.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">

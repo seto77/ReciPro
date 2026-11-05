@@ -56,7 +56,7 @@ Pendant son exécution, ReciPro peut accepter des macros provenant d'autres prog
 
 L'écouteur est **désactivé par défaut**. Activez-le depuis la fenêtre principale :
 
-**Options → Accept external macro commands (named pipe)**
+**Options → Accepter les commandes de macro externes (canal nommé)**
 
 Le réglage est conservé d'une session à l'autre.
 

@@ -96,14 +96,14 @@ não nula apenas quando as partes normal e anômala têm fases diferentes — is
 
 ## Do fator de estrutura à intensidade de pó
 
-Ativar **Powder Diffraction Intensities (Bragg–Brentano)** converte $\lvert F\rvert^2$ em uma intensidade de pó relativa ao incorporar a geometria de um policristal orientado aleatoriamente:
+Ativar **Intensidades de difração de pó (óptica Bragg-Brentano)** converte $\lvert F\rvert^2$ em uma intensidade de pó relativa ao incorporar a geometria de um policristal orientado aleatoriamente:
 
 $$I_{hkl} \;\propto\; m_{hkl}\, \lvert F_{hkl}\rvert^2\, L p(\theta),$$
 
 - $m_{hkl}$ : **multiplicidade** — o número de planos equivalentes por simetria que se sobrepõem no mesmo $2\theta$ (a coluna *Multi.* da tabela).
 - $Lp(\theta)$ : o fator de **Lorentz–polarização** para a óptica de Bragg–Brentano, $Lp = \dfrac{1+\cos^2 2\theta}{\sin^2\theta\,\cos\theta}$, que reforça fortemente os picos a baixos ângulos.
 
-Como os planos equivalentes são mesclados em uma única linha nesse modo, o ReciPro também força a ativação de *Hide equivalent planes* e *Hide prohibited planes*.
+Como os planos equivalentes são mesclados em uma única linha nesse modo, o ReciPro também força a ativação de *Ocultar planos equivalentes* e *Ocultar planos proibidos*.
 
 ---
 

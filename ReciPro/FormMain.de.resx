@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>Ausgewähltes Kristall als CIF-&amp;Datei exportieren</value>
+    <value>Ausgewählten Kristall als CIF-&amp;Datei exportieren</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Lizenz</value>
@@ -147,7 +147,7 @@
     <value>&amp;Als CIF exportieren</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
-    <value>Zurücksetzen</value>
+    <value>Rotation rücksetzen</value>
   </data>
   <data name="groupBoxProjectAlong.Text" xml:space="preserve">
     <value>Blick entlang</value>
@@ -219,7 +219,7 @@
     <value>Miller-Bravais-Index (hkil) verwenden</value>
   </data>
   <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
-    <value>GUI-Komponenten erfassen...</value>
+    <value>(experimentell) GUI-Komponenten erfassen...</value>
   </data>
   <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
     <value>Kristallinformation</value>
@@ -324,7 +324,8 @@ Rotation, die die Kristallorientierung definiert.</value>
 Rotation, die die Kristallorientierung definiert.</value>
   </data>
   <data name="buttonAdd.ToolTip" xml:space="preserve">
-    <value>Fügt den ausgewählten Kristall der obigen Liste hinzu.</value>
+    <value>Fügt den neuen Kristall unten
+der obigen Liste hinzu.</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
     <value>Symmetrieinformationen öffnen</value>
@@ -342,11 +343,11 @@ Wenn zusätzlich ein Achsenindex angegeben ist, wird diese Achsenrichtung nach o
     <value>Pulverbeugung öffnen</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value>Setzt/zeigt den Euler-Winkel θ (Grad), die zweite
+    <value>Setzt/zeigt den Euler-Winkel Θ (Grad), die zweite
 Rotation, die die Kristallorientierung definiert.</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
-    <value>Setzt/zeigt den Euler-Winkel θ (Grad), die zweite
+    <value>Setzt/zeigt den Euler-Winkel Θ (Grad), die zweite
 Rotation, die die Kristallorientierung definiert.</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
@@ -358,11 +359,11 @@ Rotation, die die Kristallorientierung definiert.</value>
 Rotation, die die Kristallorientierung definiert.</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>Setzt/zeigt den Euler-Winkel ψ (Grad), die dritte
+    <value>Setzt/zeigt den Euler-Winkel Ψ (Grad), die dritte
 Rotation, die die Kristallorientierung definiert.</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
-    <value>Setzt/zeigt den Euler-Winkel ψ (Grad), die dritte
+    <value>Setzt/zeigt den Euler-Winkel Ψ (Grad), die dritte
 Rotation, die die Kristallorientierung definiert.</value>
   </data>
   <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
@@ -384,10 +385,10 @@ fest; bei aktivierter Animation wird derselbe Wert
 als Rotationsgeschwindigkeit in Grad pro Sekunde verwendet.</value>
   </data>
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
-    <value>Öffnet den Structure Viewer (3-D-Kristallstruktur).</value>
+    <value>Öffnet die Strukturansicht (3-D-Kristallstruktur).</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>Euler-Winkel (φ, θ, ψ), die die aktuelle
+    <value>Euler-Winkel (Φ, Θ, Ψ), die die aktuelle
 3-D-Rotation des Kristalls beschreiben;
 bearbeiten, um die Orientierung direkt zu setzen.</value>
   </data>
@@ -432,7 +433,7 @@ Wenn zusätzlich ein Ebenenindex angegeben ist, wird diese Ebenenrichtung nach o
     <value>Verschiebt den ausgewählten Kristall nach oben</value>
   </data>
   <data name="toolStripButtonBeamInteraction.ToolTipText" xml:space="preserve">
-    <value>Beam Interaction öffnen</value>
+    <value>Strahlwechselwirkung öffnen</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
     <value>Lädt die native Intel-MKL-Bibliothek (ca. 55 MB) herunter.
@@ -456,7 +457,7 @@ Um alle Kristalle aus der Liste zu entfernen, klicken Sie auf 'Alle Kristalle le
     <value>Aktuelle Orientierung des ausgewählten Kristalls.</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
-    <value>Öffnet den Trajectory Simulator.</value>
+    <value>Öffnet den Trajektorien-Simulator.</value>
   </data>
   <data name="checkBoxAnimation.ToolTip" xml:space="preserve">
     <value>Wenn aktiviert, dreht ein Klick auf die obigen Schaltflächen
@@ -482,5 +483,16 @@ Kristall durch den neuen Kristall unten.</value>
   </data>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>"Spot-ID v2" öffnen</value>
+  </data>
+  <data name="toolStripButtonEBSD.Text" xml:space="preserve">
+    <value>  EBSD-
+  Simulator</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
+    <value>  HRTEM/STEM-
+  Simulator</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
+    <value>Externe Makrobefehle annehmen (Named Pipe)</value>
   </data>
 </root>

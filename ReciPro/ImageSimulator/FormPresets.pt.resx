@@ -89,7 +89,7 @@ de imagem (a menos que o modo de gerenciamento esteja ativo).</value>
     <value>Exclui a predefinição selecionada da lista.</value>
   </data>
   <data name="buttonRename.ToolTip" xml:space="preserve">
-    <value>Renomeia a predefinição selecionada para o texto na caixa Name.</value>
+    <value>Renomeia a predefinição selecionada para o texto na caixa Nome.</value>
   </data>
   <data name="buttonReplace.ToolTip" xml:space="preserve">
     <value>Sobrescreve a predefinição selecionada com a configuração atual.</value>

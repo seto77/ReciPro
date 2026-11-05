@@ -2,9 +2,9 @@
 
 **X-ray / neutron diffraction simulation** computes single-crystal X-ray and neutron diffraction patterns. It is one of the main modes of the [diffraction simulator](index.md).
 
-> This page lists every setting that appears on the right-hand side when you select **Wave Length = X-ray** (or neutron). For window-wide operations such as drawing and saving, see the [overview page](index.md).
+> This page lists every setting that appears on the right-hand side when you select **Wave source** = **X-ray** (or **Neutron**). For window-wide operations such as drawing and saving, see the [overview page](index.md).
 
-GUI conditions: Wave Length = X-ray / Neutron · Incident beam = Parallel / Precession (X-ray) / Back-Laue · Intensity calculation = Only excitation error / Kinematical
+GUI conditions: Wave source = X-ray / Neutron · Optics = Parallel beam / Precession (X-ray, ZOLZ) / Back Laue (X-ray) · Intensity calculation = Only excitation error / Kinematical & exc. error
 
 ![Diffraction simulator in X-ray / neutron mode](../../assets/cap-en-auto/FormDiffractionSimulator-xray.png)
 
@@ -16,11 +16,11 @@ X-rays have a longer wavelength than electrons (Cu Kα: 0.15406 nm = 1.5406 Å),
 
 ---
 
-## Wave Length
+## Wave source {#wave-length}
 
-![Wave Length](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Wave source](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Select **X-ray** as the radiation source. X-rays can be specified in two ways: characteristic X-rays and synchrotron radiation.
+Select **X-ray** as the **Wave source**. X-rays can be specified in two ways: characteristic X-rays and synchrotron radiation.
 
 ### Characteristic X-rays
 
@@ -40,30 +40,32 @@ Set **Element** to **0: Custom** and enter the energy (keV) or wavelength (Å) d
 
 ---
 
-## Incident beam mode
+## Optics {#incident-beam-mode}
 
-![Beam mode](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Optics](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
 Selects the geometry of the incident beam. Three modes are available for X-rays.
 
-### Parallel
+### Parallel beam {#parallel}
 
 The standard plane wave. A parallel incident beam used for SAED and single-crystal X-ray diffraction.
 
-### Precession (X-ray) — precession camera
+### Precession (X-ray, ZOLZ) — precession camera {#precession-x-ray--precession-camera}
 
-Simulates an X-ray precession camera. This is a precession photograph that captures a single layer of the reciprocal lattice.
+Simulates an X-ray precession camera. This is a precession photograph that captures a single layer of the reciprocal lattice. Debye rings are drawn as circles of radius $2L_2\sin\theta$ ($L_2$ = camera length 2), the same as the 2θ scale circles. <!-- 261105Cl 監査: DrawDebyeRing (C6) -->
 
-### Back-Laue (back-reflection Laue)
+### Back Laue (X-ray) — back-reflection Laue {#back-laue-back-reflection-laue}
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:radioButtonBeamParallel_CheckedChanged / SetVector / Draw (BackLaue region)) -->
-Simulates a back-reflection Laue pattern with white (polychromatic) X-rays. In this back-reflection geometry the detector is placed on the source side, and **Monochrome** is turned off. The spots are projected onto a flat detector **perpendicular to the beam** at the camera length on the source side; the detector tilt **Tau / Phi** of [Detector geometry](index.md#detector-geometry) is not used in this projection.
+Simulates a back-reflection Laue pattern with white (polychromatic) X-rays. In this back-reflection geometry the detector is placed on the source side; the energy / wavelength boxes and the element selector of the **Wave source** control are hidden and **Flat white** is shown instead. The spots are projected onto a flat detector **perpendicular to the beam** at the camera length on the source side; the detector tilt **Tau / Phi** of [Detector geometry](index.md#detector-geometry) is not used in this projection.
 
 - The white spectrum is cut at **50 keV**: reflections are collected down to $d = \lambda(50\ \text{keV})/2$, and no spectral weighting is applied.
 - Harmonics $n\mathbf{g}$ lying on the same line through the origin fall on the same spot; their $\lvert F\rvert^2$ are summed onto the lowest-order reflection and the spot intensities are normalised to the strongest spot.
 - **Anomalous dispersion (f', f'')** is disabled (the energy is not single-valued), and **Spot radius** has no unit in this mode.
+- 2θ (mouse position, spot labels and the 2θ scale) is the scattering angle: 180° at the beam hole in the centre, decreasing outward. <!-- 261105Cl 監査: Back Laue の 2θ (C13) -->
+- Every selected crystal is drawn; with more than one crystal (or with **Color per crystal** on) the spots of each crystal take that crystal's colour. <!-- 261105Cl 監査: Back Laue の複数結晶 -->
 
-> **Note**: The incident-beam options follow the wavelength. **Precession (electron)** and **Convergence (CBED)** appear only when electron radiation is selected, whereas the **Precession (X-ray)** and **Back-Laue** options above appear only when X-ray radiation is selected. For neutrons, only **Parallel** is available. Depending on the state at capture time, the screenshot may not show the X-ray-specific options.
+> **Note**: The **Optics** options follow the wave source. **Precession (electron)** and **Convergence (electron)** appear only when **Electron** is selected, whereas the **Precession (X-ray, ZOLZ)** and **Back Laue (X-ray)** options above appear only when **X-ray** is selected. For neutrons, only **Parallel beam** is available. Depending on the state at capture time, the screenshot may not show the X-ray-specific options.
 
 ---
 
@@ -75,7 +77,7 @@ Selects the method used to compute spot intensities. Two modes are available for
 
 ### Only excitation error
 
-Intensity is determined solely by the geometric distance between the Ewald sphere and the reciprocal-lattice point (the excitation error $S_g$). It is largest at $S_g = 0$ — exactly on the sphere — and falls off as $\lvert S_g\rvert$ grows, reaching zero once $\lvert S_g\rvert$ exceeds the **Radius** given for the reciprocal-lattice point. The structure factor is ignored.
+Intensity is determined solely by the geometric distance between the Ewald sphere and the reciprocal-lattice point (the excitation error $S_g$). It is largest at $S_g = 0$ — exactly on the sphere — and falls off as $\lvert S_g\rvert$ grows, reaching zero once $\lvert S_g\rvert$ exceeds the **Spot radius** given for the reciprocal-lattice point. The structure factor is ignored.
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:radioButtonIntensityCalculationMethod_CheckedChanged / SetVector) -->
 Only in this mode, the following options appear:
@@ -105,7 +107,7 @@ Controls how each diffraction spot is rendered.
 - **Opacity** : transparency of the spot (0 = transparent, 1 = opaque).
 - **Spot radius (R)** : radius of the reciprocal-lattice point. The rendered spot size is determined by the combination of **Appearance** and **Intensity calculation**.
 - **Brightness** : active only in **Gaussian** mode. Sets the integrated intensity of the rendered Gaussian. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:comboBoxScaleColorScale / FormDiffractionSimulator.cs:comboBoxScaleColorScale_SelectedIndexChanged, radioButtonPointSpread_CheckedChanged) -->
-- **Color scale** (Gaussian only) : **Gray**, **Cold-Warm**, **Spectrum** or **Fire**.
+- **Color scale** (Gaussian only) : **Gray**, **Cold-warm**, **Spectrum** or **Fire**.
 - **Log scale** (Gaussian only) : display intensities on a logarithmic scale.
 - **Spot color** : spot colours used with the **Gray** colour scale (this group is hidden for the other colour scales).
 - **Color per crystal** : when checked, draws spots in the colour assigned to each crystal.
@@ -117,7 +119,7 @@ Controls how each diffraction spot is rendered.
 Debye rings of a polycrystalline specimen can be displayed. Enable **Debye rings** on the toolbar (see [Toolbar](index.md#toolbar)).
 
 - **Ignore diffraction intensity** : draws all rings in the same colour and intensity (used for a purely geometric comparison that ignores the structure factor).
-- **Show Index Labels** : displays the (*hkl*) index near each ring.
+- **Show index labels** : displays the indices {*hkl*} near each ring (four indices {*hkil*} with **Options ▸ Use Miller-Bravais (hkil) index** on for hexagonal axes). <!-- 261105Cl 監査: DrawDebyeRing (C23) -->
 
 Detailed settings are on the Debye rings tab of the [tab menu](index.md#drawing-overlay-tabs).
 
@@ -125,8 +127,8 @@ Detailed settings are on the Debye rings tab of the [tab menu](index.md#drawing-
 
 ## Neutron diffraction
 
-Selecting **Neutron** in the Wave Length control computes a neutron diffraction pattern. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Crystallography.Controls/Wave/WaveLengthControl.cs:radioButtonWaveSource_CheckedChanged / LengthUnit) -->
-Enter the energy (meV) or wavelength (Å or nm, switchable; default Å). The incident beam can only be **Parallel**. The intensity calculation can be **Only excitation error** or **Kinematical & exc. error** (**Dynamical theory** is not available). The kinematical intensity uses the neutron scattering length instead of the atomic scattering factor.
+Selecting **Neutron** in **Wave source** computes a neutron diffraction pattern. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Crystallography.Controls/Wave/WaveLengthControl.cs:radioButtonWaveSource_CheckedChanged / LengthUnit) -->
+Enter the energy (meV) or wavelength (Å or nm, switchable; default Å). **Optics** can only be **Parallel beam**. The intensity calculation can be **Only excitation error** or **Kinematical & exc. error** (**Dynamical theory** is not available). The kinematical intensity uses the neutron scattering length instead of the atomic scattering factor.
 
 ---
 

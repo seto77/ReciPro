@@ -75,7 +75,7 @@
     <value>Da normal à superfície</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Simulador de Trajetórias (Método de Monte Carlo)</value>
+    <value>Simulador de trajetórias (método de Monte Carlo)</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>Desenhar

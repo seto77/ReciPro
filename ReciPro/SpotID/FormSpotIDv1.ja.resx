@@ -226,8 +226,8 @@
   </data>
   <data name="numericBoxP1Theta.ToolTip" xml:space="preserve">
     <value>Pattern 1 の逆格子ベクトル L1 と L2 のなす
-角 θ (度)。「Two Sides and an Angle」モード
-で入力、「Three Sides」モードでは L1/L2/L3
+角 θ (度)。「Two sides and an angle」モード
+で入力、「Three sides」モードでは L1/L2/L3
 から計算され読み取り専用で表示されます。</value>
   </data>
   <data name="numericBoxP1Tilt1.ToolTip" xml:space="preserve">
@@ -241,8 +241,8 @@
   </data>
   <data name="numericBoxP2Theta.ToolTip" xml:space="preserve">
     <value>Pattern 2 の逆格子ベクトル L1 と L2 のなす
-角 θ (度)。「Two Sides and an Angle」モード
-で入力、「Three Sides」モードでは L1/L2/L3
+角 θ (度)。「Two sides and an angle」モード
+で入力、「Three sides」モードでは L1/L2/L3
 から計算され読み取り専用で表示されます。</value>
   </data>
   <data name="numericBoxP2Tilt1.ToolTip" xml:space="preserve">
@@ -256,8 +256,8 @@
   </data>
   <data name="numericBoxP3Theta.ToolTip" xml:space="preserve">
     <value>Photo 3 の 2 本の回折ベクトル L1・L2 のなす角 θ (度)。
-'Three Sides' モードでは三辺から計算され読み取り専用、
-'Two Sides and an Angle' モードでは直接入力します。</value>
+'Three sides' モードでは三辺から計算され読み取り専用、
+'Two sides and an angle' モードでは直接入力します。</value>
   </data>
   <data name="numericBoxP3Tilt1.ToolTip" xml:space="preserve">
     <value>Photo 3 撮影時の試料ホルダー第1傾斜軸の角度(度)。Tilt
@@ -279,12 +279,12 @@
   </data>
   <data name="numericBoxPhoto1L3Err.ToolTip" xml:space="preserve">
     <value>Pattern 1 の L3 の許容誤差 (長さに対する %、0〜50%、
-既定 5)。「Three Sides」モードでのみ有効で、入力 L3
+既定 5)。「Three sides」モードでのみ有効で、入力 L3
 からこの割合までずれた候補も一致とみなします。</value>
   </data>
   <data name="numericBoxPhoto1ThetaErr.ToolTip" xml:space="preserve">
     <value>Pattern 1 の角 θ の許容誤差 (度、0〜30、既定 3)。
-「Two Sides and an Angle」モードでのみ有効で、角度が
+「Two sides and an angle」モードでのみ有効で、角度が
 この度数までずれた候補も一致とみなして検索します。</value>
   </data>
   <data name="numericBoxPhoto1Tilt1Err.ToolTip" xml:space="preserve">
@@ -307,12 +307,12 @@
   </data>
   <data name="numericBoxPhoto2L3Err.ToolTip" xml:space="preserve">
     <value>Pattern 2 の L3 の許容誤差 (長さに対する %、0〜50%、
-既定 5)。「Three Sides」モードでのみ有効で、入力 L3
+既定 5)。「Three sides」モードでのみ有効で、入力 L3
 からこの割合までずれた候補も一致とみなします。</value>
   </data>
   <data name="numericBoxPhoto2ThetaErr.ToolTip" xml:space="preserve">
     <value>Pattern 2 の角 θ の許容誤差 (度、0〜30、既定 3)。
-「Two Sides and an Angle」モードでのみ有効で、角度が
+「Two sides and an angle」モードでのみ有効で、角度が
 この度数までずれた候補も一致とみなして検索します。</value>
   </data>
   <data name="numericBoxPhoto2Tilt1Err.ToolTip" xml:space="preserve">
@@ -333,7 +333,7 @@
   </data>
   <data name="numericBoxPhoto3L3Err.ToolTip" xml:space="preserve">
     <value>Photo 3 の第3辺 L3 長さに対する探索許容誤差 (%、
-0〜50)。'Three Sides' モードでのみ有効です。</value>
+0〜50)。'Three sides' モードでのみ有効です。</value>
   </data>
   <data name="numericBoxPhoto3ThetaErr.ToolTip" xml:space="preserve">
     <value>Photo 3 の角度 θ に対する探索許容誤差 (度、0〜30)。
@@ -397,7 +397,7 @@ Sides and an Angle' モードでのみ有効です。</value>
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
     <value>L3：Pattern 1 の第 3 逆格子ベクトルの長さ (写真上 mm)。
-「Three Sides」モードで回折斑点の三角形を定義します。</value>
+「Three sides」モードで回折斑点の三角形を定義します。</value>
   </data>
   <data name="label12.ToolTip" xml:space="preserve">
     <value>L2：Pattern 1 の第 2 逆格子ベクトルの長さ (写真上 mm)。</value>
@@ -423,7 +423,7 @@ Sides and an Angle' モードでのみ有効です。</value>
   </data>
   <data name="label26.ToolTip" xml:space="preserve">
     <value>%：Pattern 2 の L3 の許容誤差の単位 (0〜50%、
-既定 5、「Three Sides」モードで使用)。</value>
+既定 5、「Three sides」モードで使用)。</value>
   </data>
   <data name="label27.ToolTip" xml:space="preserve">
     <value>L1：Pattern 2 の第 1 逆格子ベクトルの長さ (写真上 mm)。</value>
@@ -436,7 +436,7 @@ Sides and an Angle' モードでのみ有効です。</value>
   </data>
   <data name="label30.ToolTip" xml:space="preserve">
     <value>L3：Pattern 2 の第 3 逆格子ベクトルの長さ
-(写真上 mm)。「Three Sides」モードで使用します。</value>
+(写真上 mm)。「Three sides」モードで使用します。</value>
   </data>
   <data name="label31.ToolTip" xml:space="preserve">
     <value>度：Pattern 2 の L1-L2 間の角 θ の単位。</value>
@@ -464,7 +464,7 @@ Sides and an Angle' モードでのみ有効です。</value>
   </data>
   <data name="label56.ToolTip" xml:space="preserve">
     <value>Photo 3 のパターン三角形の第3辺 L3
-(mm、'Three Sides' モードで使用)。</value>
+(mm、'Three sides' モードで使用)。</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Photo 2 撮影時のホルダー第1傾斜角 Tilt 1 (度)。</value>
@@ -483,11 +483,11 @@ Sides and an Angle' モードでのみ有効です。</value>
   </data>
   <data name="label71.ToolTip" xml:space="preserve">
     <value>Pattern 1 の L3 に適用する許容誤差 (±、長さ
-に対する %、「Three Sides」モードで使用)。</value>
+に対する %、「Three sides」モードで使用)。</value>
   </data>
   <data name="label75.ToolTip" xml:space="preserve">
     <value>Pattern 1 の角 θ に適用する許容誤差 (±、度、
-「Two Sides and an Angle」モードで使用)。</value>
+「Two sides and an angle」モードで使用)。</value>
   </data>
   <data name="label76.ToolTip" xml:space="preserve">
     <value>Pattern 2 の L1 に適用する許容誤差 (±、長さに対する %)。</value>
@@ -497,11 +497,11 @@ Sides and an Angle' モードでのみ有効です。</value>
   </data>
   <data name="label78.ToolTip" xml:space="preserve">
     <value>Pattern 2 の L3 に適用する許容誤差 (±、長さ
-に対する %、「Three Sides」モードで使用)。</value>
+に対する %、「Three sides」モードで使用)。</value>
   </data>
   <data name="label79.ToolTip" xml:space="preserve">
     <value>Pattern 2 の角 θ に適用する許容誤差 (±、度、
-「Two Sides and an Angle」モードで使用)。</value>
+「Two sides and an angle」モードで使用)。</value>
   </data>
   <data name="labelPhoto1Mode1_1.ToolTip" xml:space="preserve">
     <value>Pattern 1 の逆格子ベクトル L1 と L2 のなす角 θ (度)。</value>
@@ -514,7 +514,7 @@ Sides and an Angle' モードでのみ有効です。</value>
   </data>
   <data name="labelPhoto1Mode2_6.ToolTip" xml:space="preserve">
     <value>Pattern 1 の L3 の許容誤差 (長さに対する %、
-0〜50%、既定 5、「Three Sides」モードで使用)。</value>
+0〜50%、既定 5、「Three sides」モードで使用)。</value>
   </data>
   <data name="numericBoxCamaraLength.HeaderText" xml:space="preserve">
     <value>カメラ長</value>
@@ -836,5 +836,17 @@ Sides and an Angle' モードでのみ有効です。</value>
   </data>
   <data name="panel9.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxTEMCondition.Text" xml:space="preserve">
+    <value>TEM 条件</value>
+  </data>
+  <data name="groupBoxPhoto1Pattern.Text" xml:space="preserve">
+    <value>パターン</value>
+  </data>
+  <data name="groupBoxPhoto2Pattern.Text" xml:space="preserve">
+    <value>パターン</value>
+  </data>
+  <data name="groupBoxPhoto3Pattern.Text" xml:space="preserve">
+    <value>パターン</value>
   </data>
 </root>

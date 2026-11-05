@@ -4,7 +4,7 @@ La **simulación de potencial** calcula y muestra la distribución 2D del potenc
 
 ![Potential mode of the simulator](../../assets/cap-es-auto/FormImageSimulator-potential.png)
 
-> Esta página cubre todos los ajustes que aparecen en el lado derecho cuando **Image mode = Potential**. Para la visualización de resultados, el ajuste de brillo y los demás controles del lado izquierdo, consulte la [página de resumen](index.md#display-settings).
+> Esta página cubre todos los ajustes que aparecen en el lado derecho cuando **Modo de imagen = Potential**. Para la visualización de resultados, el ajuste de brillo y los demás controles del lado izquierdo, consulte la [página de resumen](index.md#display-settings).
 
 ---
 
@@ -12,7 +12,7 @@ La **simulación de potencial** calcula y muestra la distribución 2D del potenc
 
 Los electrones dentro de un cristal son dispersados por el potencial del cristal. Su distribución subyace a todos los fenómenos de difracción y formación de imágenes, y es información clave para comprender la estructura del cristal. Como este modo no incluye ni aberraciones de la lente ni efectos dinámicos dependientes del espesor, resulta muy adecuado para inspeccionar la estructura en sí.
 
-> **En el modo de potencial no se muestran los paneles de espesor de la muestra, normalización de intensidad y modo de imagen (single / serial).** De las condiciones TEM, solo la tensión de aceleración está activa.
+> **En el modo de potencial no se muestran los paneles de espesor de la muestra, normalización de intensidad y «Modo único/en serie».** De las condiciones TEM, solo la tensión de aceleración está activa.
 
 ---
 
@@ -20,7 +20,7 @@ Los electrones dentro de un cristal son dispersados por el potencial del cristal
 
 ![Condiciones TEM](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **Voltaje de acel. (kV)** — tensión de aceleración. Determina la longitud de onda del electrón y se utiliza para calcular los coeficientes de Fourier $U_g$ del potencial.
+- **Voltaje de acel.** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> — tensión de aceleración (kV). Determina la longitud de onda del electrón y se utiliza para calcular los coeficientes de Fourier $U_g$ del potencial.
 
 > **Defocus, Cs, Cc, β, ΔV y la PCTF están inactivos en el modo de potencial** (no se aplica ninguna óptica de formación de imagen) y aparecen atenuados.
 
@@ -45,8 +45,8 @@ $U_g$ y $U'_g$ pueden mostrarse al mismo tiempo (se añade un panel por cada uno
 
 | Modo | Opciones |
 |------|---------|
-| **Magnitude and phase** | **Both** / **Magnitude only** / **Phase only** (la fase se representa con una rueda de color y debajo se muestra una escala de fase) |
-| **Real and imaginary part** | **Both** / **Real only** / **Imaginary only** |
+| **Magnitud y fase** | **Ambos** / **Solo magnitud** / **Solo fase** (la fase se representa con una rueda de color y debajo se muestra una escala de fase) |
+| **Parte real e imaginaria** | **Ambas** / **Solo parte real** / **Solo parte imaginaria** |
 
 ---
 
@@ -54,8 +54,8 @@ $U_g$ y $U'_g$ pueden mostrarse al mismo tiempo (se añade un panel por cada uno
 
 ![Propiedades de imagen](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-- **Size (W×H)** — dimensiones en píxeles de la imagen generada (predeterminado 512×512).
-- **Resolution** — resolución de muestreo (pm/px).
+- **Tamaño (An×Al)** — dimensiones en píxeles de la imagen generada (predeterminado 512×512).
+- **Resolución** — resolución de muestreo (pm/px).
 
 ---
 
@@ -63,13 +63,13 @@ $U_g$ y $U'_g$ pueden mostrarse al mismo tiempo (se añade un panel por cada uno
 
 ![Ondas](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** — número máximo de ondas de Bloch (coeficientes de Fourier) incluidas en la síntesis de Fourier del potencial (predeterminado 80). Valores mayores incluyen frecuencias espaciales más altas y reproducen detalles más finos del potencial.
+- Número máximo de ondas de Bloch (coeficientes de Fourier) incluidas en la síntesis de Fourier del potencial (predeterminado 80). Valores mayores incluyen frecuencias espaciales más altas y reproducen detalles más finos del potencial.
 
 ---
 
 ## Ajuste de la imagen (lado izquierdo)
 
-El brillo (Min / Max), la escala de color y la superposición de la cuadrícula de la celda elemental se configuran en el lado izquierdo, en **Adjust** y **Display** (consulte la [página de resumen](index.md#display-settings)).
+El brillo (Min / Max), la escala de color y la superposición de la cuadrícula de la celda elemental se configuran en el lado izquierdo, en **Ajuste** y **Visualización** (consulte la [página de resumen](index.md#display-settings)).
 
 ---
 

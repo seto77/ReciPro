@@ -114,6 +114,7 @@
             numericBoxKikuchiThresholdOfLength = new NumericBox();
             labelTextSize = new System.Windows.Forms.Label();
             numericBoxThicknessStep = new NumericBox();
+            checkBoxRangesFromMonteCarlo = new System.Windows.Forms.CheckBox(); // 261105Cl 追加 (監査 F5)
             numericBoxMaxNumOfG = new NumericBox();
             checkBoxNonLocalAbsorption = new System.Windows.Forms.CheckBox();
             checkBoxTDSBackground = new System.Windows.Forms.CheckBox();
@@ -593,7 +594,8 @@
             radioButtonKikuchiThresholdOfLength.Name = "radioButtonKikuchiThresholdOfLength";
             toolTip.SetToolTip(radioButtonKikuchiThresholdOfLength, resources.GetString("radioButtonKikuchiThresholdOfLength.ToolTip"));
             radioButtonKikuchiThresholdOfLength.UseVisualStyleBackColor = true;
-            // 
+            radioButtonKikuchiThresholdOfLength.CheckedChanged += radioButtonKikuchiThresholdOfStructureFactor_CheckedChanged; // 261105Cl 追加 (監査 F9): 「1/d Cutoff」へ切り替えても菊池線が更新されなかった (同じハンドラは Checked になった側だけ処理する)
+            //
             // numericBoxKikuchiThresholdOfStructureFactor
             // 
             numericBoxKikuchiThresholdOfStructureFactor.BackColor = System.Drawing.Color.Transparent;
@@ -642,7 +644,18 @@
             numericBoxThicknessStep.Value = 1D;
             numericBoxThicknessStep.ValueBoxWidth = 38;
             numericBoxThicknessStep.ValueChanged += NumericBoxThicknessStart_ValueChanged;
-            // 
+            //
+            // checkBoxRangesFromMonteCarlo
+            // 261105Cl 追加 (監査 F5・作者決定): Energy・Depth の範囲を MC から自動で決めるか (既定 ON)
+            //
+            resources.ApplyResources(checkBoxRangesFromMonteCarlo, "checkBoxRangesFromMonteCarlo");
+            checkBoxRangesFromMonteCarlo.Checked = true;
+            checkBoxRangesFromMonteCarlo.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxRangesFromMonteCarlo.Name = "checkBoxRangesFromMonteCarlo";
+            toolTip.SetToolTip(checkBoxRangesFromMonteCarlo, resources.GetString("checkBoxRangesFromMonteCarlo.ToolTip"));
+            checkBoxRangesFromMonteCarlo.UseVisualStyleBackColor = true;
+            checkBoxRangesFromMonteCarlo.CheckedChanged += checkBoxRangesFromMonteCarlo_CheckedChanged;
+            //
             // numericBoxMaxNumOfG
             // 
             numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
@@ -1888,6 +1901,7 @@
             // 
             resources.ApplyResources(flowLayoutPanelSimulationParameters, "flowLayoutPanelSimulationParameters");
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelMaxNumOfGAndGrid);
+            flowLayoutPanelSimulationParameters.Controls.Add(checkBoxRangesFromMonteCarlo); // 261105Cl 追加 (監査 F5): 範囲の 2 行の上に 1 行
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelEnergyRange);
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelThicknessRange);
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelAbsorptionOptions);
@@ -2527,6 +2541,7 @@
         private NumericBox numericBoxPhosphorDeadEnergy; // 260919Cl 追加
         private NumericBox numericBoxEnergyFilter; // 260922Cl 追加 (作者指示): エネルギーフィルター
         private System.Windows.Forms.CheckBox checkBoxEnergyHistogram; // 260925Cl 追加 (作者指示): ビンごとのエネルギー分布を MC のヒストグラムで
+        private System.Windows.Forms.CheckBox checkBoxRangesFromMonteCarlo; // 261105Cl 追加 (監査 F5・作者決定): Energy・Depth の範囲を MC から自動で決めるか
         private NumericBox numericBoxMasterPatternEnergy;
         private NumericBox numericBoxMasterPatternDepth;
         private NumericBox numericBoxEnergy;

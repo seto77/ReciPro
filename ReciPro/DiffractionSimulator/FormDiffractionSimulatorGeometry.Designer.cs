@@ -92,7 +92,8 @@
             // 
             comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxGradient.FormattingEnabled = true;
-            comboBoxGradient.Items.AddRange(new object[] { "Positive Film", "Negative Film" });
+            //comboBoxGradient.Items.AddRange(new object[] { "Positive Film", "Negative Film" }); // 261105Cl 変更前
+            comboBoxGradient.Items.AddRange(new object[] { "Positive film", "Negative film" }); // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             comboBoxGradient.Location = new System.Drawing.Point(212, 0);
             comboBoxGradient.Margin = new System.Windows.Forms.Padding(0);
             comboBoxGradient.Name = "comboBoxGradient";
@@ -105,7 +106,8 @@
             // 
             comboBoxScale1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale1.FormattingEnabled = true;
-            comboBoxScale1.Items.AddRange(new object[] { "Log Scale", "Linear Scale" });
+            //comboBoxScale1.Items.AddRange(new object[] { "Log Scale", "Linear Scale" }); // 261105Cl 変更前
+            comboBoxScale1.Items.AddRange(new object[] { "Log scale", "Linear scale" }); // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             comboBoxScale1.Location = new System.Drawing.Point(369, 0);
             comboBoxScale1.Margin = new System.Windows.Forms.Padding(0);
             comboBoxScale1.Name = "comboBoxScale1";
@@ -118,7 +120,8 @@
             // 
             comboBoxScale2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale2.FormattingEnabled = true;
-            comboBoxScale2.Items.AddRange(new object[] { "Gray", "Cold-Warm", "Spectrum", "Fire" });
+            //comboBoxScale2.Items.AddRange(new object[] { "Gray", "Cold-Warm", "Spectrum", "Fire" }); // 261105Cl 変更前
+            comboBoxScale2.Items.AddRange(new object[] { "Gray", "Cold-warm", "Spectrum", "Fire" }); // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             comboBoxScale2.Location = new System.Drawing.Point(514, 0);
             comboBoxScale2.Margin = new System.Windows.Forms.Padding(0);
             comboBoxScale2.Name = "comboBoxScale2";
@@ -212,6 +215,7 @@
             numericBoxFootX.Value = 512D;
             numericBoxFootX.ValueBoxWidth = 60;
             numericBoxFootX.ValueFontSize = 9F;
+            numericBoxFootX.ValueChanged += detectorArea_ValueChanged; // 261105Cl 追加 (監査 D11): 変更で親の検出器の枠・重ねた画像を描き直す
             // 
             // numericBoxFootY
             // 
@@ -234,6 +238,7 @@
             numericBoxFootY.Value = 512D;
             numericBoxFootY.ValueBoxWidth = 60;
             numericBoxFootY.ValueFontSize = 9F;
+            numericBoxFootY.ValueChanged += detectorArea_ValueChanged; // 261105Cl 追加 (監査 D11): 変更で親の検出器の枠・重ねた画像を描き直す
             // 
             // numericBoxPixelSize
             // 
@@ -241,7 +246,8 @@
             numericBoxPixelSize.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxPixelSize.FooterText = "mm";
             numericBoxPixelSize.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            numericBoxPixelSize.HeaderText = "pix. size";
+            //numericBoxPixelSize.HeaderText = "pix. size"; // 261105Cl 変更前
+            numericBoxPixelSize.HeaderText = "Pixel size"; // 261105Cl 変更 (作者決定 K1-A6)
             numericBoxPixelSize.Location = new System.Drawing.Point(441, 0);
             numericBoxPixelSize.Margin = new System.Windows.Forms.Padding(0);
             numericBoxPixelSize.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -256,6 +262,7 @@
             numericBoxPixelSize.Value = 0.1D;
             numericBoxPixelSize.ValueBoxWidth = 40;
             numericBoxPixelSize.ValueFontSize = 9F;
+            numericBoxPixelSize.ValueChanged += detectorArea_ValueChanged; // 261105Cl 追加 (監査 D11): 変更で親の検出器の枠・重ねた画像を描き直す
             // 
             // sizeControl1
             // 
@@ -272,6 +279,7 @@
             toolTip.SetToolTip(sizeControl1, resources.GetString("sizeControl1.ToolTip"));
             sizeControl1.Value = new System.Drawing.Size(1024, 1024);
             sizeControl1.ValueFontSize = 9F;
+            sizeControl1.ValueChanged += detectorArea_ValueChanged; // 261105Cl 追加 (監査 D11): 変更で親の検出器の枠・重ねた画像を描き直す
             // 
             // buttonClearPicture
             // 

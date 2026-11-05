@@ -207,11 +207,11 @@ for k in range(-2, 3):
 
 | 関数 | 説明 |
 |------|------|
-| `SpotID.LoadFile(filename)` | **File > Load** と同じ動作でファイルを読み込む。`.csv` はスポット一覧として（先に画像の読み込みが必要）、それ以外の拡張子は回折図形の画像として読む（dm3、dm4、mrc、ipa、tif ほか対応形式）。`filename` を省略するとファイル選択ダイアログを開く |
-| `SpotID.FindSpots()` | 読み込んだ画像からスポットを検出してフィッティングする（**Find spots** ボタンと同じ） |
-| `SpotID.Identify()` | 検出したスポットを説明する方位を探索し（**Identify spots** ボタンと同じ）、候補数を返す。対象となる結晶はメインウィンドウの結晶リストで選択中のもの |
+| `SpotID.LoadFile(filename)` | **ファイル > 開く** と同じ動作でファイルを読み込む。`.csv` はスポット一覧として（先に画像の読み込みが必要）、それ以外の拡張子は回折図形の画像として読む（dm3、dm4、mrc、ipa、tif ほか対応形式）。`filename` を省略するとファイル選択ダイアログを開く |
+| `SpotID.FindSpots()` | 読み込んだ画像からスポットを検出してフィッティングする（**スポット検出** ボタンと同じ） <!-- 261105Cl 監査: ボタン名・メニュー名を FormSpotIDV2.ja.resx に合わせた --> |
+| `SpotID.Identify()` | 検出したスポットを説明する方位を探索し（**スポット同定** ボタンと同じ）、候補数を返す。対象となる結晶はメインウィンドウの結晶リストで選択中のもの。画像が無い・スポットが 2 個未満・結晶が選ばれていないときは探索せずに 0 を返す |
 | `SpotID.CandidateList()` | 候補方位の一覧を CSV テキストで返す |
-| `SpotID.SpotList()` | 観測スポットの一覧を CSV テキストで返す（列は **File > Save** と同じ）。`File.SaveText()` と組み合わせて保存すれば `LoadFile()` で読み戻せる |
+| `SpotID.SpotList()` | 観測スポットの一覧を CSV テキストで返す（列は **スポット情報** の **保存** ボタンと同じ）。`File.SaveText()` と組み合わせて保存すれば `LoadFile()` で読み戻せる |
 
 `CandidateList()` は候補ごとに、結晶名・Z-X-Z オイラー角（度）・回転行列の 9 成分 R11〜R33（結晶座標系→実験室座標系、列ベクトルに作用）・残差の平均二乗（nm⁻²）・観測スポットと *hkl* 指数の対応を返します。候補は割り当てられたスポット数の降順、次いで残差の昇順に並びます。数値は invariant culture で書き出されるため、小数点は常にピリオドです。
 
@@ -221,13 +221,13 @@ for k in range(-2, 3):
 |-----------|---|------|
 | `Energy` | double | 入射線のエネルギー（X線・電子線は keV、中性子線は meV） |
 | `CameraLength` | double | カメラ長（mm） |
-| `PixelSizeInMM` | double | 画像のピクセルサイズ（mm）。読み書きするとピクセルサイズの単位も mm に切り替わる |
-| `PixelSizeInNMinv` | double | 画像のピクセルサイズ（nm⁻¹）。読み書きすると単位も nm⁻¹ に切り替わる |
+| `PixelSizeInMM` | double | 画像のピクセルサイズ（mm）。書き込むとピクセルサイズの単位が mm に切り替わる。読むだけでは単位は変わらず、mm に換算した値を返す <!-- 261105Cl 監査: Macro.cs の Help 文 (I6) --> |
+| `PixelSizeInNMinv` | double | 画像のピクセルサイズ（nm⁻¹）。書き込むと単位が nm⁻¹ に切り替わる。読むだけでは単位は変わらず、nm⁻¹ に換算した値を返す |
 | `MaxNumberOfSpots` | int | `FindSpots()` が検出するスポット数の上限 |
 | `NearestNeighbor` | int | 検出するスポット同士に許す最小間隔（ピクセル） |
 | `FittingRange` | double | ピークフィッティングに使う、各スポット周囲の領域の半径（ピクセル） |
 | `AcceptableError` | double | 観測スポットを候補反射に対応づけるときに許す面間隔の相対差（%） |
-| `IgnoreProhibitedReflections` | bool | 多重回折で現れうる消滅則禁制反射を無視するか |
+| `IgnoreProhibitedReflections` | bool | 多重回折で現れうる消滅則禁制反射を無視するか。X 線・中性子線では常に `true`。そのとき設定した値は、線源を電子線に戻したときに効く <!-- 261106Cl 作者の決定 I4 --> |
 | `MultiGrain` | bool | 複数の結晶粒を探索するか。`False` なら単結晶 |
 | `MaxNumberOfGrains` | int | `MultiGrain` が `True` のときに探索する粒方位の最大数 |
 | `NumberOfDetectedSpots` | int | 検出されたスポット数（読み取り専用） |
@@ -243,7 +243,7 @@ for k in range(-2, 3):
 |---|---|
 | `StructureViewer.Open()` | 結晶構造ビューアのウィンドウを開く |
 | `StructureViewer.Close()` | 結晶構造ビューアのウィンドウを閉じる |
-| `StructureViewer.SaveImage(filename)` | メインビューの描画画像を PNG 保存（ピクセルサイズはウィンドウの **Size (W×H)** ボックス）。`filename` 省略で保存ダイアログ |
+| `StructureViewer.SaveImage(filename)` | メインビューの描画画像を PNG 保存（ピクセルサイズはウィンドウの **サイズ (W×H)** ボックス）。`filename` 省略で保存ダイアログ |
 | `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 表示中の構造を 3D プリント用に出力（ファイルメニューの **3Dモデルを出力 (3MF/STL)** と同じ）。形式は拡張子で決まる（`.stl` = 単色 / `.3mf` = 元素色分け）。必須は `filename` のみで、他の既定値はダイアログの既定と同じ（最長辺 80 mm・単位胞枠 ⌀2.4 mm・結合の増径 ⌀1.2 mm）。`fixedScaleInMMperNm` > 0 を渡すと複数の模型を同縮尺で作れる。<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Macro.cs:StructureViewerClass.Export3DModel) --> `filename` は `.stl` か `.3mf` で終わる必要がある（ダイアログは開かない）。戻り値は三角形数と出力サイズを含む情報文字列 |
 
 ```python
@@ -329,8 +329,8 @@ ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60,
 
 | プロパティ/関数 | 説明 |
 |----------------|------|
-| `#.SaveImageAsPng(filename)` | PNG形式で保存（filename 省略時はダイアログ） |
-| `#.SaveImageAsTif(filename)` | TIFF形式で保存（filename 省略時はダイアログ） |
+| `#.SaveImageAsPng(filename)` | PNG 形式で保存（filename 省略時はダイアログ） |
+| `#.SaveImageAsTif(filename)` | TIFF 形式で保存（filename 省略時はダイアログ） |
 | `#.SaveImageAsEmf(filename)` | EMFメタファイルで保存（filename 省略時はダイアログ） |
 | `#.SaveIndividually` | シリーズモード時に各画像を個別保存 (true/false) |
 | `#.OverprintSymbols` | 保存画像に単位胞・ラベル・スケールバーを焼き込む (true/false) |
@@ -341,7 +341,7 @@ ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60,
 
 | 関数 | 説明 |
 |------|------|
-| `ReciPro.Sleep(ms)` | <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Macro.cs:Macro.Sleep / Macro ctor (addHelp は子クラスのみ)) --> 指定ミリ秒だけ待機。`ReciPro.Sleep(ms)` の形で呼ぶ。エディタの組み込み関数表には表示されない |
+| `ReciPro.Sleep(ms)` | <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Macro.cs:Macro.Sleep / Macro ctor (addHelp は子クラスのみ)) --> 指定ミリ秒だけ待機。`ReciPro.Sleep(ms)` の形で呼ぶ <!-- 261105Cl 監査: エディタの関数表にも出るようになった (41cb5a7b) --> |
 
 ---
 

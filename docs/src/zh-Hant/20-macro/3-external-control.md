@@ -56,7 +56,7 @@ ReciPro 執行期間，可透過 Windows 具名管道 **`\\.\pipe\ReciPro.Macro.
 
 接聽器**預設為關閉**。請在主視窗中啟用：
 
-**選項 → Accept external macro commands (named pipe)**
+**選項 → 接受外部巨集命令 (具名管道)**
 
 此設定會在下次啟動時保留。
 

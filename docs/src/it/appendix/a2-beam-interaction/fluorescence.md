@@ -44,7 +44,7 @@ e una $\omega$ piccola significa che la maggior parte delle lacune decade per em
 
 $$p_{\ell\mid X} = \frac{\Gamma_\ell}{\sum_{\ell'\in X}\Gamma_{\ell'}},$$
 
-la velocità radiativa relativa all'interno della shell $X$. ReciPro elenca $\omega_K$ per ciascun elemento e la linea più intensa dello spettro.
+la velocità radiativa relativa all'interno della shell $X$. ReciPro elenca $\omega_K$ per ciascun elemento e la linea più intensa dello spettro. Si tratta di un elenco di riferimento che non considera quanto fortemente viene eccitato ciascun guscio (nessuna sezione d'urto di ionizzazione), quindi quella linea non è necessariamente la più intensa in uno spettro misurato. <!-- 261106Cl 作者の決定 J6 -->
 
 ---
 

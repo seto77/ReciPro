@@ -40,7 +40,7 @@
 
 ![試樣參數](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
 
-- **Thickness** : 試樣厚度 (nm)。在 **Serial image** 模式下此值會被忽略。
+- **厚度** : 試樣厚度 (nm)。在 **序列影像** 模式下此值會被忽略。
 
 ---
 
@@ -50,13 +50,13 @@
 
 | 參數 | 說明 | 預設 / 典型 |
 |-----------|-------------|-------------------|
-| **加速電壓 (kV)** | 加速電壓。經相對論修正的電子波長會顯示於旁邊 | 200 kV |
-| **Defocus Δf** | 物鏡（探針成形透鏡）的欠焦 (nm) | −57.8 nm |
+| **加速電壓** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | 加速電壓 (kV)。經相對論修正的電子波長會顯示於旁邊 | 200 kV |
+| **散焦 Δf** | 物鏡（探針成形透鏡）的欠焦 (nm) | −57.8 nm |
 | **Cs** | 球面像差係數 (mm)。影響探針尺寸 | 0.5–1.0 mm |
 | **Cc** | 色像差係數 (mm) | 1.0–2.0 mm |
-| **ΔV (FWHM)** | 電子能量分布的半高全寬 (eV) | 0.5–2.0 eV |
+| **ΔV** | 電子能量分布的半高全寬 (eV) | 0.5–2.0 eV |
 
-> **β（照明半角）在 STEM 模式下停用**，因為會聚角 α 取代了它的角色。
+> **β（照明半角）在 STEM 模式下停用**，因為會聚角 α 取代了它的角色。散焦與 Cs 透過與 HRTEM 相同的像差函式 $\chi$ 進入探針（負的 Δf = 欠焦；請參閱 [HRTEM 模擬](1-hrtem-simulation.md#tem-conditions)）。**TEM 條件** 的右鍵選單（像差歸零、Scherzer 散焦、顯微鏡預設組）在此也可使用。
 
 ---
 
@@ -68,10 +68,12 @@
 
 | 參數 | 說明 | 預設 / 典型 |
 |-----------|-------------|-------------------|
-| **α (convergence angle)** | 會聚探針的半角 (mrad)。較大的值會產生較細的探針並改變繞射對比 | 15–25 mrad |
-| **(Annular) detector inner angle** | 環形偵測器的內側收集半角 (mrad)。此角度以內的訊號會被排除 | BF: 0, HAADF: 80 |
-| **(Annular) detector outer angle** | 環形偵測器的外側收集半角 (mrad)。此角度以外的訊號會被排除 | BF: 5, HAADF: 250 |
-| **Effective source size σs (FWHM)** | 有效電子源尺寸。較大的值會使探針模糊並降低細節對比 | — |
+| **會聚半角 α** | 會聚探針的半角 (mrad)。較大的值會產生較細的探針並改變繞射對比 | 25 mrad（預設）；15–25 mrad |
+| **環形偵測器 — 內** | 環形偵測器的內側收集半角 (mrad)。此角度以內的訊號會被排除 | 0（預設）；BF: 0, HAADF: 80 |
+| **環形偵測器 — 外** | 環形偵測器的外側收集半角 (mrad)。此角度以外的訊號會被排除 | 20（預設）；BF: 5, HAADF: 250 |
+| **有效電子源尺寸 (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | 有效電子源尺寸 (pm)。在計算之後，以高斯摺積套用到每一張 彈性 / TDS / EDX 影像。較大的值會使影像模糊並降低細節對比 | 20 pm（預設） |
+
+偵測器角度只適用於 STEM 參考影像（彈性 / TDS / 彈性 & TDS）；STEM-EDX 分布圖不使用它們。上述預設值僅適用於首次啟動；之後會還原上次使用的值。
 
 ---
 
@@ -79,17 +81,18 @@
 
 ![STEM 選項（模擬）](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
-- **Slice thickness for inelastic** : 計算 TDS（熱漫、非彈性）強度時所用的試樣切片厚度 (nm)。較小的值較準確但較慢。
-- **Angular resolution** : 入射探針方向的角度取樣解析度 (mrad)。較小的值對探針取樣較細但較慢。 方向數按該比值的平方增長，因而是左右計算時間的最主要因素；收斂實測值參見[探針的角度取樣](../appendix/a3-bloch-wave/stem.md#angular-sampling)。
+- **切片厚度 (TDS)** : 計算 TDS（熱漫、非彈性）強度時所用的試樣切片厚度（nm，預設 1，範圍 0.1–10）。較小的值較準確但較慢。
+- **角解析度** : 入射探針方向的角度取樣解析度（mrad，預設 0.4）。較小的值對探針取樣較細但較慢。探針方向構成 $N\times N$ 的格點，$N=\lceil 2\times1.05\,\alpha/\Delta\alpha\rceil$，其中只計算位於比會聚角大約 5 %（內插用的餘裕）之圓盤內的方向；因此方向數隨 $\alpha/\Delta\alpha$ 的平方增長，是左右計算時間的最主要因素。方塊下方的一行會顯示格點（例如 `格點: 132²`）；收斂實測值參見[探針的角度取樣](../appendix/a3-bloch-wave/stem.md#angular-sampling)。
 
 ---
 
-## 影像模式（single / serial）
+## 單張/序列模式
 
-![影像模式](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text) と HRTEM のページに合わせた -->
+![單張/序列模式](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
-- **Single image** : 在目前厚度計算一張 STEM 影像。
-- **Serial image** : 產生一系列影像，厚度 / 欠焦會分階段遞變（以 **Start / Step / Num** 設定；下方的清單也可直接編輯）。
+- **單張影像** : 在目前厚度計算一張 STEM 影像。
+- **序列影像** : 產生一系列影像，厚度 / 欠焦會分階段遞變（以 **起始 / 步進 / 數量** 設定；下方的清單也可直接編輯）。
 
 ---
 
@@ -97,16 +100,27 @@
 
 ![影像屬性](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-- **Size (W×H)** : 掃描影像的像素數（預設 512×512）。在 STEM 中此值等於掃描點數，並使計算時間線性增加。
-- **Resolution** : 取樣解析度 (pm/px)。
+- **尺寸 (寬×高)** : 掃描影像的像素數（預設 512×512）。本徵解與 $I(Q)$ 的計算（狀態列中的 Stage 1–4）與此值無關；它只影響最後由 $I(Q)$ 係數合成實空間影像的步驟，其成本與 像素數 × $Q$ 向量數 成正比。
+- **解析度** : 取樣解析度 (pm/px)。
 
 ---
 
-## 波
+## 繞射波
 
-![波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![繞射波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** : Bethe 法所用布洛赫波的最大數目（預設 80）。本徵值問題的計算成本隨波數的立方增加。
+- Bethe 法所用布洛赫波的最大數目（預設 80）。本徵值問題的計算成本隨波數的立方增加。
+
+---
+
+## 對比傳遞函數 (STEM) {#ctf-stem}
+
+**TEM 條件** 中的 **對比傳遞函數 (CTF)** 核取方塊會開啟與 HRTEM 模式相同的 CTF 視窗。在 STEM 模式下有兩個選項：
+
+- **同調成像** : 與 HRTEM 一樣繪出 $\sin\chi$、$\cos\chi$、$E_\text{s}$、$E_\text{c}$、PCTF 與 ACTF，但 $E_\text{s}(u)=\exp(-2\pi^2\sigma_s^2u^2)$ 取自有效光源尺寸（$\sigma_s$ = FWHM / $2\sqrt{2\ln2}$），且 PCTF / ACTF 在會聚角處截斷。
+- **非同調成像** : 繪出非同調傳遞函數；其計算方式是在兩個探針成形光圈的重疊區域上對透鏡函式積分（光圈以 192 × 192 取樣），再乘上 $\exp(-2\pi^2\sigma_s^2u^2)$。
+
+<!-- screenshot: FormCTF in STEM mode, Incoherent imaging selected -->
 
 ---
 
@@ -136,7 +150,7 @@
 
 沒有元素選擇器：勾選之後，會計算**此晶體在此加速電壓下所有可計算的元素／殼層通道**，核取方塊下方的一行會列出這些通道（例如 `3 張圖: O-K, Mg-K, Al-K`）。當加速電壓在 30–400 kV（隨附資料表的範圍）內、游離邊低於加速電壓、且該殼層在隨附資料的涵蓋範圍內時，該通道即可計算 — K 為 C–Sn (Z = 6–50)、L1–L3 為 Ca–Rn (Z = 20–86)、M1–M3 為 Zn–Rn (Z = 30–86)、M4–M5 為 As–Rn (Z = 33–86)；L 與 M 通道是所收錄各支殼層之和。隨附的資料表為每個通道儲存了散射向量直到 16 Å⁻¹（加速電壓較低時則更短）的完全相對論性游離形狀因子。不進行外插：在計算所需的散射向量超出某一列收錄範圍之處，形狀因子取為 0，並在 EDX 下拉式選單中為該通道標上 ⚠。若沒有任何可計算的通道，計算會被拒絕並顯示說明訊息，而不會產生一張空白的分布圖。
 
-下一行顯示探針方向格點，例如 `格點: 132²（建議: ≥48²）`。此格點由**角解析度**與會聚角決定；參見[探針的角度取樣](../appendix/a3-bloch-wave/stem.md#angular-sampling)。低於建議的分割數時，±q 厄米殘差可能超出容許值而使計算中止，因此該數值會轉為橘色，並在開始計算前顯示確認對話方塊。
+探針方向格點顯示於 *STEM 選項（模擬）* 中 **角解析度** 的下方；勾選 **計算 EDX 分布圖** 期間，還會加上建議的分割數，例如 `格點: 132²（建議: ≥48²）`。此格點由**角解析度**與會聚角決定；參見[探針的角度取樣](../appendix/a3-bloch-wave/stem.md#angular-sampling)。低於建議的分割數時，±q 厄米殘差可能超出容許值而使計算中止，因此該數值會轉為橘色，並在開始計算前顯示確認對話方塊。
 
 !!! warning "數值的意義"
     殼層通道（K、L、M）的分布圖數值是**每個入射電子所產生的內殼層空位數**，未計入螢光產率。勾選 **譜線系 (Kα, Lα…)** 時計算的譜線系（Kα、Kβ、Lα、Lβ、Mα）分布圖數值是**每個入射電子所產生的 X 射線光子數**（全方向，偵測之前）：已計入螢光產率、Coster–Kronig 與輻射級聯以及譜線分支比（xraylib 4.2.1），未計入歐傑級聯。兩者都是模型量，而非預測的 X 射線計數：試樣內的自吸收、偵測器立體角與偵測器效率皆**未**納入。請將分布圖用於觀察空間分布、比較厚度或方位，而不要用於絕對定量。
@@ -172,7 +186,7 @@ STEM 模擬的計算成本很高，因此請適當設定下列參數。
 | **會聚角** | 較大 → CBED 盤重疊較多 → 成本較高 |
 | **布洛赫波** | 本徵值問題的成本隨 N³ 增加 |
 | **角度解析度** | 較細 → 較準確，但成本隨 N² 增加 |
-| **影像像素 (Size)** | 隨掃描點數線性增加 |
+| **影像像素 (Size)** | 只影響最後的實空間合成（像素數 × $Q$ 向量數）；Stage 1–4 與其無關 |
 
 ---
 

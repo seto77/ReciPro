@@ -85,13 +85,14 @@ public partial class DiffractionPatternControl : UserControlBase
         get => numericBoxConvergentAngle.Value;
     }
 
-    private double monochromaticity = 0;
+    //private double monochromaticity = 0; // 261105Cl 変更前 (欄の値そのものを使うので不要)
 
+    /// <summary>261105Cl 追加: 単色性 (Δλ/λ)。欄 numericBoxMonochromaticity は % で表示する</summary>
     public double Monochromaticity
     {
         set
         {
-            monochromaticity = value;
+            //monochromaticity = value; // 261105Cl 変更前
             try
             {
                 if (numericBoxMonochromaticity.Value != value * 100.0)
@@ -99,7 +100,10 @@ public partial class DiffractionPatternControl : UserControlBase
             }
             catch { }
         }
-        get => monochromaticity;
+        //get => monochromaticity; // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I13): 欄の値 (%) から読む。旧は setter (参照パターンの読込) でしか変わらない別の変数を返したので、
+        //  欄に入れた単色性は計算 (WaveProperty → Crystallite.SetGVector / SetDiffractedPixels) に効かず、シミュレーションのタブでは常に 0 だった
+        get => numericBoxMonochromaticity.Value / 100.0; // 261105Cl
     }
 
     #endregion WaveProperty関連
@@ -877,7 +881,8 @@ public partial class DiffractionPatternControl : UserControlBase
                             scalablePictureBox.PseudoBitmap.Filter3[j * ImageWidth + i] = e.Button == System.Windows.Forms.MouseButtons.Left;
                 scalablePictureBox.drawPictureBox();
             }
-            else if (radioButtonManualRectangle.Checked && startMaskPoint.X != int.MinValue)
+            //else if (radioButtonManualRectangle.Checked && startMaskPoint.X != int.MinValue) // 261105Cl 変更前
+            else if (radioButtonManualRectangle.Checked && !double.IsNaN(startMaskPoint.X)) // 261105Cl 変更 (監査 I22): 未開始は NaN (int.MinValue ではない。MouseMove・円・ドーナツと同じ判定)
             {
                 var startPoint = new Point((int)Math.Round(startMaskPoint.X), (int)Math.Round(startMaskPoint.Y));
                 var currentPoint = new Point((int)Math.Round(pt.X), (int)Math.Round(pt.Y));
@@ -902,7 +907,8 @@ public partial class DiffractionPatternControl : UserControlBase
                 for (int j = top; j <= bottom; j++)
                     for (int i = left; i <= right; i++)
                     {
-                        var r2 = (new PointD(j, i) - center).Length2;
+                        //var r2 = (new PointD(j, i) - center).Length2; // 261105Cl 変更前
+                        var r2 = (new PointD(i, j) - center).Length2; // 261105Cl 変更 (監査 I22): i が x、j が y (MouseMove の表示と同じ)。旧は x と y が逆で、中心が画像の中央でないと表示と違う所がマスクされた
                         if (r2 < maxR * maxR && r2 > minR * minR)
                             scalablePictureBox.PseudoBitmap.Filter3[j * ImageWidth + i] = e.Button == System.Windows.Forms.MouseButtons.Left;
                     }
@@ -929,7 +935,10 @@ public partial class DiffractionPatternControl : UserControlBase
 
     public void setSimulatedPixels()
     {
-        if (SrcPixels == null)
+        //if (SrcPixels == null) // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I14): シミュレーションのタブ (参照画像なし) で Size を変えて計算し直すと、DiffractionPixels の大きさが前の SrcPixels と違い、
+        //  下の Length の一致の判定で何もせずに戻って画像が更新されなかった。参照画像でないときは大きさが変わったら作り直す
+        if (SrcPixels == null || (!IsReferrenceImage && SrcPixels.Length != DiffractionPixels.Length)) // 261105Cl
         {
             SrcPixels = new double[DiffractionPixels.Length];
             Filter = new bool[DiffractionPixels.Length];
@@ -947,6 +956,10 @@ public partial class DiffractionPatternControl : UserControlBase
                     SimulatedPixels[i] = ScaleFactor * DiffractionPixels[i] + BackgroundPixels[i];
 
             Profile p = setFrequencyProfile(SimulatedPixels);
+            // 261105Cl 追加: 0 番目 (参照画像の頻度) は SetImage でしか入らないので、シミュレーションのタブでは空のまま。旧はこのとき下の
+            //  ProfileList[1] で IndexOutOfRangeException になり、シミュレーションのタブの「Simulate Debye ring pattern」が毎回例外で止まっていた。空の 0 番目を置く
+            if (graphControlFrequency.ProfileList.Length == 0) // 261105Cl 追加
+                graphControlFrequency.AddProfile(new Profile()); // 261105Cl 追加
             if (graphControlFrequency.ProfileList.Length == 1)
                 graphControlFrequency.AddProfile(p);
             else
@@ -1033,7 +1046,27 @@ public partial class DiffractionPatternControl : UserControlBase
         double[] diffractionPixels = new double[ImageLength];
         foreach (Crystal c in Crystals)
         {
-            if (renewGVector)
+            // 261105Cl 追加 (監査 A19): 結晶の欄を編集すると CrystalControl.GenerateFromInterface が新しい Crystal を作り、結晶子の集合 (Crystallites) は
+            // 前の結晶から引き継ぐ。Crystallites.BaseCrystal が前の結晶のままだと、応力・歪み・Hill 係数・弾性定数・結晶子サイズの編集が計算に効かない。
+            // 角度の分割 (配列の大きさを決める AngleResolution・SubDivision) が同じなら、計算する結晶に付け替える (違うときは従来どおり。Ctrl+Simulate で作り直す)
+            //if (c.Crystallites?.BaseCrystal is Crystal b && !ReferenceEquals(b, c) && b.AngleResolution == c.AngleResolution && b.SubDivision == c.SubDivision)
+            //    c.Crystallites.BaseCrystal = c; // 261106Cl 変更前
+            // 261106Cl 変更 (作者の決定 C8-1): 角度の分割が違うとき (結晶の欄で角度分解能・分割数を変えた) は、結晶子の集合をこの結晶で作り直し、
+            //  逆格子ベクトルと回折の画素も計算し直す (以前は Ctrl+Simulate を押すまで前の分割の集合のまま、応力などの編集が効かなかった)。
+            //  配列の大きさが分割で決まるので前の集合の濃度 (方位の偏り) は引き継げず、一様に戻る (Ctrl+Simulate と同じ)
+            bool rebuilt = false;
+            if (c.Crystallites?.BaseCrystal is Crystal b && !ReferenceEquals(b, c))
+            {
+                if (b.AngleResolution == c.AngleResolution && b.SubDivision == c.SubDivision)
+                    c.Crystallites.BaseCrystal = c;
+                else
+                {
+                    c.SetCrystallites();
+                    rebuilt = true;
+                }
+            }
+            //if (renewGVector) // 261106Cl 変更前
+            if (renewGVector || rebuilt) // 261106Cl 変更: 作り直した集合は逆格子ベクトルが未設定
             {
                 if (c.Crystallites == null)
                     c.SetCrystallites();
@@ -1041,7 +1074,8 @@ public partial class DiffractionPatternControl : UserControlBase
                 c.Crystallites.ValidIndex = null;
                 //c.Crystallites.ValidSubRotNum = null;
             }
-            if (renewDiffractionPixels)
+            //if (renewDiffractionPixels) // 261106Cl 変更前
+            if (renewDiffractionPixels || rebuilt) // 261106Cl 変更: 作り直した集合は回折の画素が未計算
             {
                 c.Crystallites.ProgressChanged += ProgressChanged;
                 c.Crystallites.SetDiffractedPixels(DetectorProperty);
@@ -1049,7 +1083,9 @@ public partial class DiffractionPatternControl : UserControlBase
 
             }
 
-            double[] temp = c.Crystallites.GetSimulatedPattern(DetectorProperty, density);
+            //double[] temp = c.Crystallites.GetSimulatedPattern(DetectorProperty, density); // 261106Cl 変更前
+            // 261106Cl 変更: 上で作り直すと結晶子の数が変わるので、前の数で作った濃度 (Debug の test) は使わない
+            double[] temp = c.Crystallites.GetSimulatedPattern(DetectorProperty, density?.Length == c.Crystallites.TotalCrystalline ? density : null);
 
             for (int i = 0; i < ImageLength; i++)
                 diffractionPixels[i] += temp[i];
@@ -1717,7 +1753,10 @@ public partial class DiffractionPatternControl : UserControlBase
 
     #endregion
 
-    public void ContolEnabled(bool flag) => groupBoxBackground.Enabled = groupBoxGeometry.Enabled = checkBoxInitialBackground.Enabled = flag;
+    //public void ContolEnabled(bool flag) => groupBoxBackground.Enabled = groupBoxGeometry.Enabled = checkBoxInitialBackground.Enabled = flag; // 261105Cl 変更前
+    // 261105Cl 変更 (監査 I13): 検出器の傾き (groupBoxGeometry の φ・τ) は計算のどこにも使われない (Rotation を読む所が無い) ので、Designer の Enabled = false のまま灰色にしておく。
+    //  旧は方位探索の後 (ContolEnabled(true)) に有効になっていた
+    public void ContolEnabled(bool flag) => groupBoxBackground.Enabled = checkBoxInitialBackground.Enabled = flag;
 
     private void numericBoxCenterX_ValueChanged(object sender, EventArgs e) => center = new PointD(numericBoxCenterX.Value, numericBoxCenterY.Value);
 

@@ -7,7 +7,7 @@
 ウィンドウは、空間群の情報（左上）、計算・表のタブ領域（右上）、2つの模式図（下部）から構成されます。
 
 !!! tip "対称性の理論的背景 (Appendix A4)"
-    ヘルマン・モーガン/Hall/シェーンフリース記号が実際に何を表しているか、**Properties**（群の性質）タブの群論的分類（中心対称・Sohncke・Symmorphic・極性、…）、下部の対称要素・一般位置模式図の意味、そして **Group Relations...**（群の関係）が示す群・部分群の関係は、すべて **[Appendix A4. 対称性と空間群](appendix/a4-symmetry-space-groups/index.md)** で説明しています。
+    ヘルマン・モーガン/Hall/シェーンフリース記号が実際に何を表しているか、**Properties**（群の性質）タブの群論的分類（中心対称・Sohncke・共型 (シンモルフィック)・極性、…）、下部の対称要素・一般位置模式図の意味、そして **Group Relations...**（群の関係）が示す群・部分群の関係は、すべて **[Appendix A4. 対称性と空間群](appendix/a4-symmetry-space-groups/index.md)** で説明しています。
 
 ---
 
@@ -38,8 +38,8 @@
 
 - 各面の面間隔／各軸の長さ
 - 2面間（または2軸間）の角度
-- 面1と軸1、面2と軸2のなす角 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:numericBox_ValueChanged) -->
-- **両面に垂直な方向指数** と **両軸に垂直な面指数**
+- 面1の法線と軸1、面2の法線と軸2のなす角（軸が面内にあるとき 90°） <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:numericBox_ValueChanged) -->
+- **両面に平行な軸**（2 つの面の晶帯軸 [*uvw*]）と **両軸を含む面**（2 つの軸を含む面 (*hkl*)）。符号は [*uvw*] = (*h*₁*k*₁*l*₁) × (*h*₂*k*₂*l*₂)、(*hkl*) = [*u*₁*v*₁*w*₁] × [*u*₂*v*₂*w*₂] の向きです <!-- 261106Cl 作者の決定 B16 --> <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップに合わせた。以前の「垂直な」は逆 -->
 
 これらは現在の単位胞の計量に基づいて計算されます。長さは Å、角度は度で表示されます。
 
@@ -50,7 +50,7 @@
 ![ワイコフ位置](../assets/cap-ja-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:SetupExtraTables/SetWyckoffPosition) -->
-すべてのワイコフ位置について、**多重度**・**記号**（ワイコフ記号）・**サイト対称性**・**座標**（1行に最大4個。それ以上は次の行に続く）を一覧表示します。最初のワイコフ位置（最大の多重度）が一般位置です。複合格子では 格子並進ベクトルがヘッダ行に示されます。
+すべてのワイコフ位置について、**多重度**・**記号**（ワイコフ記号）・**サイト対称性**・**座標**（1行に最大4個。それ以上は次の行に続く）を一覧表示します。最初のワイコフ位置（最大の多重度）が一般位置です。複合格子では 格子並進ベクトルがヘッダ行に示されます。R 格子の六方軸では、obverse の 3 つの中心化並進 (0,0,0)+・(2/3,1/3,1/3)+・(1/3,2/3,2/3)+ が示されます。 <!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
 
 ---
 
@@ -79,7 +79,7 @@
 
 ![群の性質](../assets/cap-ja-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageProperties.png)
 
-現在の空間群の群論的分類（一般位置の多重度、点群の位数、中心対称、Sohncke、Symmorphic、極性、掌性対の相手、結晶族・格子系・ブラベー型、算術結晶類、Patterson対称）と、その対称性で許容される巨視的物性（焦電性/強誘電性、圧電性、第二高調波発生、旋光性）を表示します。
+現在の空間群の群論的分類（一般位置の多重度、点群の位数、中心対称、Sohncke、共型 (シンモルフィック)、極性、掌性対の相手、結晶族・格子系・ブラベー型、算術結晶類、Patterson対称）と、その対称性で許容される巨視的物性（焦電性/強誘電性、圧電性、第二高調波発生、旋光性）を表示します。
 
 → 各用語の意味は **[Appendix A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#群論的分類群の性質タブ)** を参照してください。
 

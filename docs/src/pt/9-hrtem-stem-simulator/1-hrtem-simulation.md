@@ -31,7 +31,7 @@ Para a teoria, consulte o [Apêndice A3.2 — Formação da imagem HRTEM](../app
 
 ---
 
-## Condições TEM
+## Condições TEM {#tem-conditions}
 
 ![Condições TEM](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
@@ -39,18 +39,24 @@ Define as condições de imagem da lente objetiva.
 
 | Parâmetro | Descrição | Padrão / típico |
 |-----------|-------------|-------------------|
-| **Tensão de acel. (kV)** | Tensão de aceleração. O comprimento de onda do elétron corrigido relativisticamente é exibido à direita | 200 kV |
+| **Tensão de acel.** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Tensão de aceleração (kV). O comprimento de onda do elétron corrigido relativisticamente é exibido à direita | 200 kV |
 | **Desfoco Δf** | Desfoco da lente objetiva (nm). O valor de referência do **Desfoco de Scherzer** é exibido abaixo | −57.8 nm |
-| **Cs** | Coeficiente de aberração esférica (mm). Afeta a CTF e o desfoco de Scherzer | 0.5–1.0 (convencional), < 0.01 (corrigido por Cs) |
-| **Cc** | Coeficiente de aberração cromática (mm). Determina o borramento da imagem causado pela dispersão de energia | 1.0–2.0 mm |
-| **β** | Semiângulo de iluminação (mrad). Representa o efeito do tamanho finito da fonte (coerência espacial) | 0.1–1.0 mrad |
-| **ΔV** | Largura a meia altura da dispersão de energia dos elétrons (eV). Junto com Cc, determina a dispersão de foco devida à aberração cromática | 0.5–2.0 eV |
+| **Cs** | Coeficiente de aberração esférica (mm). Afeta a CTF e o desfoco de Scherzer. Valores negativos (−20 a 20 mm) são aceitos | 1.0 mm (padrão); 0.5–1.0 (convencional), < 0.01 (corrigido por Cs) |
+| **Cc** | Coeficiente de aberração cromática (mm). Determina o borramento da imagem causado pela dispersão de energia | 1.4 mm (padrão); 1.0–2.0 mm |
+| **β** | Semiângulo de iluminação (mrad). Representa o efeito do tamanho finito da fonte (coerência espacial) | 0 mrad (padrão); 0.1–1.0 mrad |
+| **ΔV** | Largura a meia altura da dispersão de energia dos elétrons (eV). Junto com Cc, determina a dispersão de foco devida à aberração cromática | 0.8 eV (padrão); 0.5–2.0 eV |
 
-> **Menu de clique direito**: no painel Condições TEM é possível aplicar com um único clique **Definir todas as aberrações como zero** / **Definir desfoco com o valor de Scherzer** / **Definir desfoco como 0 nm**. Predefinições de condições (300kV ARM300F, 200kV 2100F etc.) estão disponíveis em **Predefinições**, no canto inferior esquerdo.
+Os padrões acima valem apenas na primeira execução; depois disso, os últimos valores usados são restaurados. Internamente, ΔV (FWHM) é convertido num desvio padrão $\sigma_V = \Delta V / (2\sqrt{2\ln 2})$ e a dispersão de foco é $\delta = C_c\,\sigma_V / V$. A função de aberração é
+
+$$\chi(u) = \pi\lambda\,\Delta f\,u^2 + \tfrac{\pi}{2}\,C_s\lambda^3 u^4 ,$$
+
+e cada onda difratada é multiplicada por $\exp[-i\chi(u)]$, de modo que **Δf negativo é subfoco** (a convenção em que o desfoco de Scherzer é negativo).
+
+> **Menu de clique direito**: no painel Condições TEM é possível aplicar com um único clique **Definir desfoco como 0 nm** / **Definir desfoco com o valor de Scherzer** / **Condições ideais (Cs, Cc, β, ΔV, Δf = 0)** (este último define Cs, Cc, β, ΔV **e o desfoco** como 0). <!-- 261106Cl 作者の決定 E19: 表示名を理想条件に --> O mesmo menu contém quatro predefinições de microscópio — *300kV Cold-FEG sem Cs (Cs 0, Cc 2.8, ΔV 0.3) ARM300F*, *200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F*, *200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F* e *200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100* — que definem a tensão de aceleração, Cs, Cc e ΔV conforme escrito no item e, em seguida, definem o desfoco com o valor de Scherzer (β não é alterado). A caixa de seleção **Predefinições**, no canto inferior direito, abre a janela que armazena as suas próprias condições (veja [Lista de predefinições](index.md#preset-list)). <!-- 261105Cl 監査: プリセット名は ΔV (FormImageSimulator.resx presets1〜4ToolStripMenuItem.Text) -->
 
 ### Desfoco de Scherzer
 
-O valor de desfoco próximo do qual o contraste de fase é ótimo, calculado a partir do comprimento de onda atual e da aberração esférica $C_s$ (exibido como referência).
+O valor de desfoco próximo do qual o contraste de fase é ótimo, calculado a partir do comprimento de onda atual e da aberração esférica $C_s$ (exibido como referência). Para $C_s$ negativo, o valor exibido é $+\sqrt{\tfrac{4}{3}|C_s|\lambda}$.
 
 $$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\approx -1.155\,\sqrt{C_s \lambda}\right)$$
 
@@ -68,7 +74,11 @@ Marcar **Função de transferência de contraste (CTF)** abre uma janela que tra
 - $E_\text{s}(u)$ : função envelope de coerência espacial; o amortecimento devido ao tamanho finito da fonte ($\beta$)
 - $E_\text{c}(u)$ : função envelope de coerência temporal; o amortecimento devido à flutuação de energia ($C_c$, $\Delta V$)
 
-Alterar o limite superior do eixo horizontal $u$ (frequência espacial) altera a faixa traçada.
+Cada curva tem sua própria caixa de seleção: $\sin\chi$, $\cos\chi$, $E_\text{s}$, $E_\text{c}$, **PCTF** $=\sin\chi\,E_\text{s}E_\text{c}$ e **ACTF** $=\cos\chi\,E_\text{s}E_\text{c}$; PCTF e ACTF são zeradas fora da abertura da objetiva. No modo HRTEM,
+
+$$E_\text{s}(u)=\exp\!\left[-\pi^2\beta^2u^2\left(\Delta f+C_s\lambda^2u^2\right)^2\right],\qquad E_\text{c}(u)=\exp\!\left[-\tfrac{1}{2}\pi^2\lambda^2\delta^2u^4\right].$$
+
+**u máx.** (nm⁻¹, padrão 6) define o limite superior do eixo horizontal. **Copiar** coloca as curvas traçadas na área de transferência como texto separado por tabulações. A janela também está disponível no modo STEM (veja [Simulação STEM](2-stem-simulation.md#ctf-stem)); ela fica desativada no modo Potencial.
 
 ---
 
@@ -76,10 +86,10 @@ Alterar o limite superior do eixo horizontal $u$ (frequência espacial) altera a
 
 ![Abertura da objetiva (opção HRTEM)](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
-Restringe as ondas difratadas que passam pela abertura da objetiva. O número de ondas difratadas cortadas pela abertura também altera o número de pontos incluídos no cálculo de ondas de Bloch (o limite superior é o número máximo de ondas de Bloch definido em **Ondas**).
+Restringe as ondas difratadas que passam pela abertura da objetiva. O próprio cálculo de ondas de Bloch sempre usa o número de ondas definido em **Ondas**; a abertura seleciona então quais desses feixes contribuem para a imagem (um feixe passa quando $|\mathbf{g}-\mathbf{c}| < 2\sin(\alpha_\text{obj}/2)/\lambda$, sendo $\mathbf{c}$ o centro da abertura). Se menos de dois feixes passarem, o cálculo é interrompido com uma mensagem pedindo que você aumente a abertura.
 
-- **Tamanho** : semiângulo da abertura da objetiva (mrad). Quanto menor, mais ondas difratadas de alto ângulo são cortadas e mais suaves ficam os detalhes de alta resolução. O raio equivalente no espaço recíproco $\sin\theta/\lambda$ (nm⁻¹) é exibido.
-- **Deslocamento X** / **Y** : deslocamento do centro da abertura da objetiva (mrad). Usado para imagens de campo escuro e com feixe inclinado.
+- **Tamanho** : semiângulo da abertura da objetiva (mrad, padrão 12). Quanto menor, mais ondas difratadas de alto ângulo são cortadas e mais suaves ficam os detalhes de alta resolução. O raio equivalente no espaço recíproco $\sin\theta/\lambda$ (nm⁻¹) é exibido.
+- **Deslocamento X** / **Y** : deslocamento do centro da abertura da objetiva (mrad). Usado para imagens de campo escuro com abertura deslocada; a iluminação em si não é inclinada.
 - **Abertura aberta** : abre a abertura da objetiva (infinita), de modo que todas as ondas difratadas sejam usadas na formação da imagem.
 - **reflexões dentro** : o número de feixes difratados (pontos) que caem dentro da abertura (somente leitura).
 - **Info da reflexão** : abre uma tabela que lista os feixes difratados dentro da abertura (intensidade, amplitude complexa etc.).
@@ -92,10 +102,10 @@ Restringe as ondas difratadas que passam pela abertura da objetiva. O número de
 
 ![Opções HRTEM (modelo de coerência parcial)](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
 
-Seleciona o modelo de interferência usado ao integrar as contribuições de todas as direções do feixe incidente.
+Seleciona como a coerência parcial (β e a dispersão de foco δ) é incluída. A onda de saída é calculada para uma única direção incidente (o eixo do feixe); a dispersão da iluminação e a dispersão de energia entram apenas por meio das funções envelope abaixo.
 
-- **Imagem linear** : computacionalmente barato. Adequado a amostras finas em que vale a aproximação de objeto de fase fraca; multiplica a PCTF pelos envelopes de coerência espacial e temporal.
-- **Coef. cruz. de transm.** (coeficiente de transmissão cruzada) : computacionalmente caro, porém mais preciso. Integra o coeficiente de transmissão cruzada completo e é o modelo a usar para espalhadores fortes que excitam muitas ondas difratadas intensas.
+- **Imagem linear** (modelo quase coerente) : computacionalmente barato. Cada onda difratada $\psi_g$ da onda de saída dinâmica é multiplicada por $\exp[-i\chi(g)]\,E_\text{s}(g)\,E_\text{c}(g)$ e as ondas são somadas coerentemente: $I(\mathbf{r}) = \left|\sum_g \psi_g\,e^{-i\chi(g)}\,E_\text{s}(g)\,E_\text{c}(g)\,e^{2\pi i\,\mathbf{g}\cdot\mathbf{r}}\right|^2$. Preciso quando a imagem é dominada pela interferência com o feixe transmitido (amostras finas).
+- **Coef. cruz. de transm.** (coeficiente de transmissão cruzada) : computacionalmente caro, porém mais preciso. Cada par de feixes $(g,h)$ é somado com o envelope mútuo (o coeficiente de transmissão cruzada completo), e é o modelo a usar para espalhadores fortes que excitam muitas ondas difratadas intensas. O custo cresce com o quadrado do número de feixes dentro da abertura.
 
 Para mais detalhes, consulte o [Apêndice A3.2 — Formação da imagem HRTEM](../appendix/a3-bloch-wave/hrtem.md).
 
@@ -113,10 +123,10 @@ Para uma imagem em série, defina o seguinte.
 | Item | Descrição |
 |------|-------------|
 | **Espessura (nm)** / **Desfoco (nm)** | Qual grandeza varrer (ambas são permitidas) |
-| **Start / Passo / Núm** | Valor inicial, largura do passo e número de imagens. São expandidos na caixa de lista abaixo, que também pode ser editada diretamente |
+| **Início / Passo / Núm** | Valor inicial, largura do passo e número de imagens. São expandidos na caixa de lista abaixo, que também pode ser editada diretamente |
 | **Direção horizontal:** | Quando espessura e desfoco são varridos, a grandeza disposta na direção horizontal da grade (**Desfoco** ou **Espessura**) |
 
-Varrer espessura e desfoco produz uma matriz de imagens linhas × colunas.
+Varrer espessura e desfoco produz uma matriz de imagens linhas × colunas. **Núm** é limitado a 20 para cada grandeza. Quando apenas uma grandeza é varrida e há mais de duas imagens, a linha é quebrada numa grade aproximadamente quadrada.
 
 ---
 
@@ -125,7 +135,7 @@ Varrer espessura e desfoco produz uma matriz de imagens linhas × colunas.
 ![Propriedades da imagem](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 - **Tamanho (L×A)** : número de pixels da imagem simulada (512×512 por padrão).
-- **Resolução** : resolução de amostragem (pm/px). Um valor menor resolve franjas de rede mais finas, mas o tempo de FFT cresce proporcionalmente.
+- **Resolução** : resolução de amostragem (pm/px, padrão 2). O campo de visão é Tamanho × Resolução, de modo que um valor menor amostra as franjas com mais detalhe numa área menor. A imagem é sintetizada por uma soma de Fourier direta sobre os feixes em cada pixel (sem FFT), portanto o tempo de cálculo depende do número de pixels e do número de feixes, e não deste valor.
 
 ---
 

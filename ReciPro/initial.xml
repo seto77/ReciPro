@@ -164,6 +164,7 @@
         <Enabled>true</Enabled>
       </Bound>
     </Bounds>
+    <HillCoefficient>0.5</HillCoefficient>
     <ElasticStiffnessArray>
       <double>192.9</double>
       <double>163.8</double>
@@ -413,6 +414,7 @@
         <Enabled>false</Enabled>
       </Bound>
     </Bounds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.39231</Item1>
@@ -499,6 +501,7 @@
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <ElasticStiffnessArray>
       <double>43.6478650500791</double>
       <double>6.74749604638903</double>
@@ -610,6 +613,7 @@
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <ElasticStiffnessArray>
       <double>43.64786505007907</double>
       <double>6.747496046389035</double>
@@ -723,6 +727,7 @@
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.42110000000000003</Item1>
@@ -809,6 +814,7 @@
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <ElasticStiffnessArray>
       <double>479.00000000000006</double>
       <double>154</double>
@@ -912,6 +918,7 @@ _database_code_amcsd 0015106</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>8</Z>
       <N>1</N>
@@ -992,6 +999,7 @@ _database_code_amcsd 0012844</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>8</Z>
       <N>1</N>
@@ -1042,6 +1050,7 @@ _database_code_amcsd 0012844</PublSectionTitle>
       </Atoms>
     </Atoms>
     <Bonds />
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.22866</Item1>
@@ -1088,6 +1097,7 @@ _database_code_amcsd 0012844</PublSectionTitle>
       </Atoms>
     </Atoms>
     <Bonds />
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.27608</Item1>
@@ -1173,6 +1183,7 @@ _database_code_amcsd 0012844</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.24559999999999998</Item1>
@@ -1264,6 +1275,7 @@ _database_code_amcsd 0012844</PublSectionTitle>
         <ColorArgb>-16192</ColorArgb>
       </LatticePlane>
     </LatticePlanes>
+    <HillCoefficient>0.5</HillCoefficient>
     <ElasticStiffnessArray>
       <double>1068.6</double>
       <double>119.8</double>
@@ -1363,6 +1375,7 @@ _database_code_amcsd 0012844</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>4</Z>
       <N>1</N>
@@ -1413,6 +1426,7 @@ _database_code_amcsd 0012844</PublSectionTitle>
       </Atoms>
     </Atoms>
     <Bonds />
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.357</Item1>
@@ -1459,6 +1473,7 @@ _database_code_amcsd 0012844</PublSectionTitle>
       </Atoms>
     </Atoms>
     <Bonds />
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.4429</Item1>
@@ -1505,6 +1520,7 @@ _database_code_amcsd 0012844</PublSectionTitle>
       </Atoms>
     </Atoms>
     <Bonds />
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.5256000000000001</Item1>
@@ -1594,6 +1610,7 @@ _database_code_amcsd 0011523</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>4</Z>
       <N>2</N>
@@ -1725,6 +1742,7 @@ _database_code_amcsd 0016627</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>4</Z>
       <N>5</N>
@@ -1801,6 +1819,7 @@ _database_code_amcsd 0016627</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.5403</Item1>
@@ -1887,6 +1906,7 @@ _database_code_amcsd 0016627</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.5624</Item1>
@@ -1973,6 +1993,7 @@ _database_code_amcsd 0016627</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.5410999999999999</Item1>
@@ -2059,6 +2080,7 @@ _database_code_amcsd 0016627</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.62879</Item1>
@@ -2145,6 +2167,7 @@ _database_code_amcsd 0016627</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.49160000000000004</Item1>
@@ -2296,6 +2319,7 @@ _database_code_amcsd 0016627</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.71356</Item1>
@@ -2382,6 +2406,7 @@ _database_code_amcsd 0016627</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.41811999999999994</Item1>
@@ -2466,6 +2491,7 @@ _database_code_amcsd 0016627</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>2</Z>
       <N>3</N>
@@ -2557,6 +2583,7 @@ _database_code_amcsd 0016627</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>4</Z>
       <N>3</N>
@@ -2647,6 +2674,7 @@ _database_code_amcsd 0016627</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.39299</Item1>
@@ -2733,6 +2761,7 @@ _database_code_amcsd 0016627</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.459373</Item1>
@@ -2860,6 +2889,7 @@ _database_code_amcsd 0016627</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.46338999999999997</Item1>
@@ -3033,6 +3063,7 @@ _database_code_amcsd 0018541</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>8</Z>
       <N>20</N>
@@ -3190,6 +3221,7 @@ _database_code_amcsd 0018541</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.808149</Item1>
@@ -3408,6 +3440,7 @@ _database_code_amcsd 0018541</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>1.8233000000000001</Item1>
@@ -3548,6 +3581,7 @@ _database_code_amcsd 0018541</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>4</Z>
       <N>5</N>
@@ -3692,6 +3726,7 @@ _database_code_amcsd 0018541</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>4</Z>
       <N>5</N>
@@ -3863,6 +3898,7 @@ _database_code_amcsd 0018541</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.24559999999999998</Item1>
@@ -4029,7 +4065,7 @@ _database_code_amcsd 0018541</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
-    <HillCoefficient>1</HillCoefficient>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>4</Z>
       <Ze>280</Ze>
@@ -4227,6 +4263,7 @@ _database_code_amcsd 0018541</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.56978</Item1>
@@ -4419,6 +4456,7 @@ _database_code_amcsd 0018541</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.5613699999999999</Item1>
@@ -4549,6 +4587,7 @@ _database_code_amcsd 0001624</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>8</Z>
       <N>7</N>
@@ -4707,6 +4746,7 @@ _database_code_amcsd 0001624</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.314979</Item1>
@@ -4959,6 +4999,7 @@ _database_code_amcsd 0005583</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>1</Z>
       <N>18</N>
@@ -7633,6 +7674,7 @@ _database_code_amcsd 0005589</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>1</Z>
       <N>291</N>
@@ -7683,6 +7725,7 @@ _database_code_amcsd 0005589</PublSectionTitle>
       </Atoms>
     </Atoms>
     <Bonds />
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>2</Z>
       <N>1</N>
@@ -7737,6 +7780,7 @@ _database_code_amcsd 0019448</PublSectionTitle>
       </Atoms>
     </Atoms>
     <Bonds />
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>4</Z>
       <N>1</N>
@@ -7787,6 +7831,7 @@ _database_code_amcsd 0019448</PublSectionTitle>
       </Atoms>
     </Atoms>
     <Bonds />
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.2347</Item1>
@@ -7873,6 +7918,7 @@ _database_code_amcsd 0019448</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.43108</Item1>
@@ -7971,6 +8017,7 @@ _database_code_amcsd 0019448</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.83941</Item1>
@@ -8057,6 +8104,7 @@ _database_code_amcsd 0019448</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.5038</Item1>
@@ -8223,6 +8271,7 @@ _database_code_amcsd 0019448</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <ElasticStiffnessArray>
       <double>265.85</double>
       <double>92.4</double>
@@ -8415,6 +8464,7 @@ _database_code_amcsd 0019448</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>4</Z>
       <N>4</N>
@@ -8510,6 +8560,7 @@ _database_code_amcsd 0012728</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>4</Z>
       <N>3</N>
@@ -8629,6 +8680,7 @@ _database_code_amcsd 0009769</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>12</Z>
       <N>2</N>
@@ -8807,6 +8859,7 @@ _database_code_amcsd 0000634</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>8</Z>
       <N>20</N>
@@ -9007,6 +9060,7 @@ _database_code_amcsd 0000634</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.9744999999999999</Item1>
@@ -9292,6 +9346,7 @@ _database_code_amcsd 0012435</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>12</Z>
       <N>5</N>
@@ -9425,6 +9480,7 @@ _database_code_amcsd 0012435</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.3407</Item1>
@@ -9565,6 +9621,7 @@ _database_code_amcsd 0012435</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.5378499999999999</Item1>
@@ -9692,6 +9749,7 @@ _database_code_amcsd 0012435</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.4988</Item1>
@@ -9832,6 +9890,7 @@ _database_code_amcsd 0012435</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>4</Z>
       <N>5</N>
@@ -10006,6 +10065,7 @@ _database_code_amcsd 0012435</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition />
     <CellValue>
       <Item1>0.47636</Item1>
@@ -10190,6 +10250,7 @@ _database_code_amcsd 0004662</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>2</Z>
       <N>5</N>
@@ -10324,6 +10385,7 @@ _database_code_amcsd 0008446</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>1</Z>
       <N>5</N>
@@ -10727,6 +10789,7 @@ _database_code_amcsd 0014740</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>1</Z>
       <N>108</N>
@@ -11022,6 +11085,7 @@ _database_code_amcsd 0001683</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>4</Z>
       <N>13</N>
@@ -11815,6 +11879,7 @@ _database_code_amcsd 0001286</PublSectionTitle>
         <NanometerUnit>true</NanometerUnit>
       </Bonds>
     </Bonds>
+    <HillCoefficient>0.5</HillCoefficient>
     <EOSCondition>
       <Z>8</Z>
       <N>13</N>

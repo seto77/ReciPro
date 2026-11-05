@@ -288,6 +288,7 @@
             // 
             buttonLoadSetting.AutoSize = true;
             buttonLoadSetting.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonLoadSetting.Enabled = false; // 261105Cl 追加 (監査 I17): 押しても何もしない (buttonLoadSetting_Click が空) ので灰色に
             buttonLoadSetting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             buttonLoadSetting.Location = new System.Drawing.Point(291, 21);
             buttonLoadSetting.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
@@ -325,7 +326,8 @@
             toolTip.SetToolTip(buttonSearch, resources.GetString("buttonSearch.ToolTip")); // 260531Cl
             buttonSearch.Size = new System.Drawing.Size(146, 26);
             buttonSearch.TabIndex = 68;
-            buttonSearch.Text = "Search Orientations";
+            //buttonSearch.Text = "Search Orientations"; // 261105Cl 変更前
+            buttonSearch.Text = "Search orientations"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             buttonSearch.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
             buttonSearch.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
             buttonSearch.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
@@ -399,7 +401,8 @@
             numericBoxCrystalNumPerStep.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxCrystalNumPerStep.FooterText = "%";
             numericBoxCrystalNumPerStep.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            numericBoxCrystalNumPerStep.HeaderText = "Num per Step";
+            //numericBoxCrystalNumPerStep.HeaderText = "Num per Step"; // 261105Cl 変更前
+            numericBoxCrystalNumPerStep.HeaderText = "Num per step"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             numericBoxCrystalNumPerStep.Location = new System.Drawing.Point(18, 27);
             numericBoxCrystalNumPerStep.Margin = new System.Windows.Forms.Padding(0);
             numericBoxCrystalNumPerStep.Maximum = 10D;
@@ -600,6 +603,7 @@
             // checkBoxRefineConvergence
             // 
             checkBoxRefineConvergence.AutoSize = true;
+            checkBoxRefineConvergence.Enabled = false; // 261105Cl 追加 (監査 I17): どこからも読まれず、収束角はフィットに含まれないので灰色に
             checkBoxRefineConvergence.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             checkBoxRefineConvergence.Location = new System.Drawing.Point(8, 62);
             checkBoxRefineConvergence.Margin = new System.Windows.Forms.Padding(4);
@@ -607,12 +611,14 @@
             toolTip.SetToolTip(checkBoxRefineConvergence, resources.GetString("checkBoxRefineConvergence.ToolTip")); // 260531Cl
             checkBoxRefineConvergence.Size = new System.Drawing.Size(102, 36);
             checkBoxRefineConvergence.TabIndex = 409;
-            checkBoxRefineConvergence.Text = "Beam\r\n convergence";
+            //checkBoxRefineConvergence.Text = "Beam\r\n convergence"; // 261105Cl 変更前
+            checkBoxRefineConvergence.Text = "Convergence\r\n semi-angle"; // 261105Cl 変更 (作者決定 K1-A2: 収束半角)
             checkBoxRefineConvergence.UseVisualStyleBackColor = true;
             // 
             // checkBoxRefineStress
             // 
             checkBoxRefineStress.AutoSize = true;
+            checkBoxRefineStress.Enabled = false; // 261105Cl 追加 (監査 I17): 読む行 (setting.RefineStress = ...) がコメントアウトされていて、応力はフィットに含まれないので灰色に
             checkBoxRefineStress.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             checkBoxRefineStress.Location = new System.Drawing.Point(8, 161);
             checkBoxRefineStress.Margin = new System.Windows.Forms.Padding(4);
@@ -773,6 +779,7 @@
             // 
             // buttonSearchUnrelatedOrientations
             // 
+            buttonSearchUnrelatedOrientations.Enabled = false; // 261105Cl 追加 (監査 I17): 押しても何もしない (buttonSearchUnrelatedOrientations_Click が空) ので灰色に
             buttonSearchUnrelatedOrientations.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             buttonSearchUnrelatedOrientations.Location = new System.Drawing.Point(5, 32);
             buttonSearchUnrelatedOrientations.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
@@ -813,6 +820,7 @@
             groupBoxGonioScan.Controls.Add(checkBox2);
             groupBoxGonioScan.Controls.Add(checkBox3);
             groupBoxGonioScan.Controls.Add(label58);
+            groupBoxGonioScan.Enabled = false; // 261105Cl 追加 (監査 I17): 画面外 (y = 1026) にあり、走査の設定 (YusaGonio) は DiffractionPatternControl.Simulate が受け取っても使わないので灰色に
             groupBoxGonioScan.Location = new System.Drawing.Point(6, 1026);
             groupBoxGonioScan.Margin = new System.Windows.Forms.Padding(4);
             groupBoxGonioScan.Name = "groupBoxGonioScan";
@@ -832,7 +840,8 @@
             toolTip.SetToolTip(checkBoxYusaGonioScan, resources.GetString("checkBoxYusaGonioScan.ToolTip")); // 260531Cl
             checkBoxYusaGonioScan.Size = new System.Drawing.Size(142, 20);
             checkBoxYusaGonioScan.TabIndex = 101;
-            checkBoxYusaGonioScan.Text = "Use YusaGonio Scan";
+            //checkBoxYusaGonioScan.Text = "Use YusaGonio Scan"; // 261105Cl 変更前
+            checkBoxYusaGonioScan.Text = "Use YusaGonio scan"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             checkBoxYusaGonioScan.UseVisualStyleBackColor = true;
             // 
             // numericBoxRxSpeed
@@ -940,7 +949,7 @@
             toolTip.SetToolTip(label53, resources.GetString("label53.ToolTip")); // 260531Cl
             label53.Size = new System.Drawing.Size(29, 13);
             label53.TabIndex = 15;
-            label53.Text = "deg.";
+            label53.Text = "°"; // 261105Cl 変更 (監査 K21): 旧 "deg."。角度の単位は ° に統一
             // 
             // label50
             // 
@@ -1022,7 +1031,7 @@
             toolTip.SetToolTip(label55, resources.GetString("label55.ToolTip")); // 260531Cl
             label55.Size = new System.Drawing.Size(29, 13);
             label55.TabIndex = 23;
-            label55.Text = "deg.";
+            label55.Text = "°"; // 261105Cl 変更 (監査 K21): 旧 "deg."。角度の単位は ° に統一
             // 
             // label48
             // 
@@ -1191,7 +1200,7 @@
             groupBoxPatterns.Size = new System.Drawing.Size(1001, 911);
             groupBoxPatterns.TabIndex = 129;
             groupBoxPatterns.TabStop = false;
-            groupBoxPatterns.Text = "Simulated / refference patterns";
+            groupBoxPatterns.Text = "Simulated / reference patterns"; // 261105Cl 誤字を修正 (旧 "Simulated / refference patterns")
             // 
             // groupBoxAppearance
             // 
@@ -1217,9 +1226,13 @@
             comboBoxScale2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             comboBoxScale2.FormattingEnabled = true;
+            // 261105Cl 変更前 (3 行):
+            //comboBoxScale2.Items.AddRange(new object[] {
+            //"Gray scale",
+            //"Cold-Warm scale"});
             comboBoxScale2.Items.AddRange(new object[] {
             "Gray scale",
-            "Cold-Warm scale"});
+            "Cold-warm scale"}); // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             // comboBoxScale2.Location = new System.Drawing.Point(498, 22); // 260715Ch 旧
             comboBoxScale2.Location = new System.Drawing.Point(528, 22); // 260715Ch: Scale 1 ラベルの多言語幅を確保
             comboBoxScale2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
@@ -1275,12 +1288,19 @@
             comboBoxScale1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             comboBoxScale1.FormattingEnabled = true;
+            // 261105Cl 変更前 (6 行):
+            //comboBoxScale1.Items.AddRange(new object[] {
+            //"Log Scale",
+            //"Linear Scale"}); // 260521Cl Phase7: Liner→Linear typo
+            //// comboBoxScale1.Location = new System.Drawing.Point(289, 22); // 260715Ch 旧: 翻訳後の label28 と衝突
+            //comboBoxScale1.Location = new System.Drawing.Point(319, 22); // 260715Ch: Scale 1 ラベル右側に余白を確保
+            //comboBoxScale1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             comboBoxScale1.Items.AddRange(new object[] {
-            "Log Scale",
-            "Linear Scale"}); // 260521Cl Phase7: Liner→Linear typo
+            "Log scale",
+            "Linear scale"}); // 260521Cl Phase7: Liner→Linear typo
             // comboBoxScale1.Location = new System.Drawing.Point(289, 22); // 260715Ch 旧: 翻訳後の label28 と衝突
             comboBoxScale1.Location = new System.Drawing.Point(319, 22); // 260715Ch: Scale 1 ラベル右側に余白を確保
-            comboBoxScale1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            comboBoxScale1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6); // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             comboBoxScale1.Name = "comboBoxScale1";
             toolTip.SetToolTip(comboBoxScale1, resources.GetString("comboBoxScale1.ToolTip")); // 260531Cl
             comboBoxScale1.Size = new System.Drawing.Size(135, 22);
@@ -1363,7 +1383,8 @@
             tabPage1.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
             tabPage1.Size = new System.Drawing.Size(979, 776);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "Simulated Pattern";
+            //tabPage1.Text = "Simulated Pattern"; // 261105Cl 変更前
+            tabPage1.Text = "Simulated pattern"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // diffractionPatternControlSimulation
@@ -1436,7 +1457,8 @@
             Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             Name = "FormPolycrystallineDiffractionSimulator";
-            Text = "Powder Diffraction Simulator";
+            //Text = "Powder Diffraction Simulator"; // 261105Cl 変更前
+            Text = "Powder Diffraction Simulator (experimental)"; // 261105Cl 変更 (監査 I13・I17・I25): 実験的な機能と明記。他の 10 言語は LocalizationData.cs の "this"
             FormClosing += new System.Windows.Forms.FormClosingEventHandler(FormPolycrystallineDiffractionSimulator_FormClosing);
             Load += new System.EventHandler(FormPolycrystallineDiffractionSimulator_Load);
             VisibleChanged += new System.EventHandler(FormPolycrystallineDiffractionSimulator_VisibleChanged);

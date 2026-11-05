@@ -1,6 +1,6 @@
 # Spot ID v1
 
-**Spot ID v1** detecta, ajusta e indexa reflexiones de difracción a partir de imágenes experimentales de difracción de electrones. Además admite la búsqueda manual de ejes de zona a partir de una geometría de reflexiones introducida numéricamente (el antiguo **TEM ID**).
+**Spot ID v1** (el antiguo **TEM ID**) busca ejes de zona candidatos a partir de la geometría de reflexiones, introducida numéricamente, de uno a tres patrones de difracción. La detección, el ajuste y la indexación de reflexiones sobre una imagen se realizan en [Spot ID v2](11-spot-id-v2.md).
 
 ![Spot ID v1](../assets/cap-es-auto/FormSpotIDv1.png)
 
@@ -8,7 +8,7 @@
 
 ## Atajos de teclado y ratón
 
-Spot ID v1 toma la geometría de las reflexiones como **entrada numérica** (el antiguo flujo de trabajo *TEM ID*), y la detección/ajuste de reflexiones se controla mediante botones; la imagen de difracción se muestra solo como referencia y no es interactiva al hacer clic (el zoom con el ratón y la selección manual de reflexiones pertenecen a [Spot ID v2](11-spot-id-v2.md)). El único atajo se encuentra en la ventana de resultados:
+Spot ID v1 toma la geometría de las reflexiones como **entrada numérica** (el antiguo flujo de trabajo *TEM ID*); no tiene vista de imagen (la carga de imágenes, el zoom con el ratón, la detección de reflexiones y la selección manual de reflexiones pertenecen a [Spot ID v2](11-spot-id-v2.md)). El único atajo se encuentra en la ventana de resultados:
 
 | Atajo | Acción |
 |----------|--------|
@@ -19,90 +19,29 @@ Spot ID v1 toma la geometría de las reflexiones como **entrada numérica** (el 
 
 ---
 
-## Área principal
-
-Muestra la imagen de difracción como referencia. Cargue las imágenes mediante arrastrar y soltar o desde el menú **File**.
-
-### Ajustes de imagen
-
-| Ajuste | Descripción |
-|---------|-------------|
-| Min / Max | Rango de brillo (también ajustable mediante la barra deslizante) |
-| Gradient | Positivo o Negativo |
-| Scale | Lineal o Log |
-| Colour | Escala de grises o Cold-Warm |
-| Dust & Scratch | Eliminar píxeles excepcionalmente claros/oscuros (definir rango y umbral) |
-| Gaussian blur | Aplicar desenfoque (rango en píxeles) |
-
----
-
-## Optics
-
-Introduzca la fuente incidente, la energía/longitud de onda, la longitud de cámara y el tamaño de píxel del detector.
-
-> Si se carga un archivo dm3/dm4 (Gatan Digital Micrograph), estos valores se establecen automáticamente.
-
----
-
-## Detección y ajuste de reflexiones
-
-Pulse **Detect & fit spots** para detectar automáticamente las reflexiones de difracción y ajustarlas con una función Pseudo-Voigt 2D. Los resultados aparecen en la tabla.
-
-### Opciones de detección
-
-| Parámetro | Descripción |
-|-----------|-------------|
-| Number | Número máximo de reflexiones a detectar |
-| Nearest neighbour | Distancia mínima entre reflexiones detectadas |
-| Fitting range | Radio (píxeles) alrededor de cada reflexión para el ajuste |
-
-### Controles de la tabla
-
-| Botón | Acción |
-|--------|--------|
-| Reset range | Restablecer el rango de ajuste de todas las reflexiones |
-| Show label/symbol | Superponer etiquetas/símbolos sobre la imagen |
-| Clear all spots | Eliminar todas las reflexiones |
-| Save / Copy | Exportar la tabla en formato separado por tabuladores (Excel) |
-| Re-fit all | Reajustar todas las reflexiones |
-
-### Ventana de detalle de la reflexión
-
-Marque la casilla para abrir una ventana de detalle que muestra la reflexión seleccionada (izquierda) y los perfiles en cuatro direcciones (derecha). Azul = datos observados, rojo = ajuste.
-
----
-
-## Index
-
-Pulse **Identify spots** para indexar las reflexiones detectadas frente al cristal seleccionado en la Ventana principal.
-
-| Ajuste | Descripción |
-|---------|-------------|
-| Acceptable error | Tolerancia para la indexación |
-| Single grain / Multi grains | Indexar como cristal único o como varios granos (definir el número máximo de granos) |
-| Show label/symbol | Superponer las etiquetas indexadas sobre la imagen |
-| Refine thickness and direction | Aplicar la teoría dinámica (método de Bethe) para refinar el espesor de la muestra y la orientación del cristal que mejor se ajusten a las intensidades detectadas |
-
----
-
 ## Búsqueda de eje de zona a partir de la geometría de reflexiones (antiguo TEM ID)
 
-Cuando no dispone de una imagen para cargar, todavía puede buscar ejes de zona candidatos introduciendo a mano la geometría de un patrón de difracción de electrones de área seleccionada (SAED). Introduzca las condiciones de observación TEM y la geometría de las reflexiones, y luego pulse **Search zone axes** para encontrar orientaciones cristalinas candidatas.
+Cuando no dispone de una imagen para cargar, todavía puede buscar ejes de zona candidatos introduciendo a mano la geometría de un patrón de difracción de electrones de área seleccionada (SAED). Introduzca las condiciones de observación TEM y la geometría de las reflexiones, y luego pulse **Buscar eje de zona** de una foto (o **Buscar ejes de zona a partir de dos/tres patrones** para usar varias fotos a la vez) para encontrar orientaciones cristalinas candidatas.
 
-### TEM condition
+### Condición TEM
 
-Introduzca las condiciones de observación TEM (voltaje de aceleración, longitud de cámara, etc.).
+Introduzca **Volt. acel.** (kV, por defecto 200) y **Longitud de cámara** (mm, por defecto 1000). La **Longitud de onda** (nm) se calcula a partir del voltaje y se muestra como solo lectura.
 
-### Photo 1, 2, 3
+### Foto 1, 2, 3
 
 Introduzca la geometría de las reflexiones de difracción.
 
 - Para introducir la distancia entre reflexiones en el detector, use la casilla **mm**.
 - Si conoce el valor *d*, introdúzcalo en unidades **Å** o **nm⁻¹**.
 
-**Three sides mode** : Introduzca las longitudes de los tres lados de un triángulo cuyo vértice es el direct spot.
+**Modo Tres lados** : Introduzca las longitudes de los tres lados de un triángulo cuyo vértice es el direct spot.
 
-**Two sides and an angle mode** : Introduzca las longitudes de dos lados (incluyendo el direct spot) y el ángulo entre ellos.
+**Modo Dos lados y un ángulo** : Introduzca las longitudes de dos lados (incluyendo el direct spot) y el ángulo entre ellos.
+
+- Tolerancias (las casillas **±**) : cada longitud tiene una tolerancia en % (0–50, por defecto 5) y θ, en grados (0–30, por defecto 3). El valor que no se introduce (θ en el modo de tres lados, l3 en el modo de dos lados) se calcula y se muestra, y junto a las entradas se dibuja un esquema del patrón resultante.
+- **Condiciones del portamuestras** : **Tilt 1** / **Tilt 2** (°) del portamuestras goniométrico con los que se tomó la foto, cada uno con una tolerancia (0–10°, por defecto 3°). Se calculan y muestran los ángulos entre los ajustes del portamuestras de las distintas fotos.
+- **Foto 2** / **Foto 3** : habilitan la segunda y la tercera foto. Las casillas situadas entre las fotos tratan l1 (o l2) de dos fotos como la misma reflexión y copian su longitud.
+- **Buscar eje de zona** busca en una sola foto; **Buscar ejes de zona a partir de dos patrones** / **a partir de tres patrones** busca combinaciones coherentes con las fotos y con los ángulos de inclinación del portamuestras entre ellas; la foto 3 solo se usa cuando **Foto 3** está marcada y todos sus valores están introducidos, y en caso contrario se usan dos fotos. En la tabla de resultados de una sola foto (**Buscar eje de zona**) se muestran siempre g1, d1, g2 y d2, más g3 y d3 en el modo de tres lados o θ en el modo de dos lados y un ángulo. <!-- 261105Cl 監査: buttonSearchAll_Click (afd65e0)、FormSpotIDv1Results.SetDataSet (46d91db) --> La búsqueda recorre todos los cristales seleccionados en la lista de la ventana principal (la selección múltiple está habilitada mientras Spot ID v1 está abierto). Si se encuentran más de 1000 candidatos, no se lista nada y se le pide que restrinja las condiciones; en caso contrario se abre la ventana de resultados. Haga doble clic en una fila para seleccionar el cristal y rotarlo a esa orientación. El signo de cada eje de zona candidato sigue la convención de los libros de texto **g**₁ × **g**₂, por lo que está invertido respecto a las versiones anteriores a 2026-11 (la orientación es la misma). <!-- 261106Cl 作者の決定 B16 -->
 
 ---
 

@@ -155,11 +155,17 @@ autoabsorción de los rayos X emitidos.</value>
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
     <value>Núm</value>
   </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>Paso</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
     <value>Núm</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>Inicio</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>Paso</value>
@@ -296,10 +302,10 @@ Simulator"</value>
     <value>Ajustar desenfoque al valor de Scherzer</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ajustar todas las aberraciones a cero</value>
+    <value>Condiciones ideales (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="presets1ToolStripMenuItem.Text" xml:space="preserve">
-    <value>300kV Cold-FEG sin Cs (Cs 0, Cc 2.8, ΔE 0.3) ARM300F</value>
+    <value>300kV Cold-FEG sin Cs (Cs 0, Cc 2.8, ΔV 0.3) ARM300F</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
     <value>Función de transferencia de contraste (CTF)</value>
@@ -308,7 +314,7 @@ Simulator"</value>
     <value>Desenfoque Δf</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>Voltaje de acel. (kV)</value>
+    <value>Voltaje de acel.</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Desenfoque de
@@ -336,10 +342,10 @@ Simulator"</value>
     <value>Simular</value>
   </data>
   <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>como Imagen (formato PNG)</value>
+    <value>como imagen (formato PNG)</value>
   </data>
   <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>como Imagen (formato TIFF)</value>
+    <value>como imagen (formato TIFF)</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
     <value>como metarchivo (EMF)</value>
@@ -351,7 +357,7 @@ Simulator"</value>
     <value>Guardar imagen</value>
   </data>
   <data name="toolStripMenuItemCopyImage.Text" xml:space="preserve">
-    <value>como Imagen</value>
+    <value>como imagen</value>
   </data>
   <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
     <value>como metarchivo (EMF)</value>
@@ -365,8 +371,18 @@ Simulator"</value>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>Cargar parámetros TEM</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Carga las condiciones de simulación desde un archivo guardado con
+«Guardar parámetros TEM» (*.rpis). Los elementos que faltan en el
+archivo (p. ej., de una versión anterior) toman su valor predeterminado.</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>Guardar parámetros TEM</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Guarda las condiciones de simulación actuales (los mismos
+elementos que los predefinidos) en un archivo XML (*.rpis),
+que puede cargarse en otro PC o compartirse con colaboradores.</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>Archivo</value>
@@ -530,12 +546,14 @@ anular (mrad); las señales por encima de este ángulo se excluyen.
 Se aplica solo a la imagen STEM de referencia (ADF / elástica / TDS); no se usa en los mapas STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>Tamaño efectivo de la fuente de electrones (nm). Valores mayores
-difuminan la sonda STEM y reducen el detalle fino de la imagen.</value>
+    <value>Tamaño efectivo de la fuente de electrones: anchura total a media
+altura (FWHM) de la imagen gaussiana de la fuente sobre la muestra (pm).
+Valores mayores difuminan la sonda STEM y reducen el detalle fino de la imagen.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
-    <value>Tamaño efectivo de la fuente de electrones (nm). Valores mayores
-difuminan la sonda STEM y reducen el detalle fino de la imagen.</value>
+    <value>Tamaño efectivo de la fuente de electrones: anchura total a media
+altura (FWHM) de la imagen gaussiana de la fuente sobre la muestra (pm).
+Valores mayores difuminan la sonda STEM y reducen el detalle fino de la imagen.</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
     <value>Semiángulo de convergencia de la sonda incidente
@@ -908,7 +926,7 @@ a lo largo del eje horizontal de la cuadrícula de imágenes en serie.</value>
     <value>Calcular mapas EDX</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>Calcula mapas de ionización (EDX) para los canales elemento/capa seleccionados.&#xD;&#xA;La imagen STEM de referencia (ADF / elástica / TDS) siempre se calcula;&#xD;&#xA;cada canal EDX añade después una pasada de ionización adicional.</value>
+    <value>Calcula también mapas STEM-EDX para todos los canales de rayos X característicos (elemento × capa)&#xD;&#xA;que se pueden calcular para este cristal a esta tensión de aceleración (lista abajo).&#xD;&#xA;La imagen STEM de referencia (ADF / elástica / TDS) siempre se calcula;&#xD;&#xA;cada canal EDX añade después una pasada de ionización adicional.</value>
   </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX común</value>
@@ -921,5 +939,11 @@ a lo largo del eje horizontal de la cuadrícula de imágenes en serie.</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
     <value>Muestra el mapa elemental STEM-EDX en lugar de la imagen de tipo ADF; la línea de rayos X característica se elige abajo. Para un canal de capa (K, L, M) los valores son vacantes de ionización modeladas por electrón incidente. Para una serie de líneas (Kα, Kβ, Lα, Lβ, Mα) son fotones de rayos X generados por electrón incidente: se aplican el rendimiento de fluorescencia, las cascadas Coster–Kronig y radiativas y la ramificación de líneas, pero no la cascada Auger. La autoabsorción, el ángulo sólido y la eficiencia del detector NO se aplican, por lo que ninguno es un recuento de rayos X previsto.</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.HeaderText" xml:space="preserve">
+    <value>Semiáng. conv. α</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
+    <value>Tamaño efectivo de la fuente (FWHM)</value>
   </data>
 </root>

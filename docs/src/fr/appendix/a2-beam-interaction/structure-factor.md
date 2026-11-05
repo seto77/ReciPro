@@ -54,7 +54,7 @@ de sorte que $B$ croît avec la température et décroît pour les atomes lourds
 
 Une réflexion peut être **absente** pour deux raisons distinctes :
 
-- **Extinctions systématiques (liées au groupe d'espace).** Le centrage du réseau et les éléments de symétrie possédant une composante de translation (axes hélicoïdaux, plans de glissement) font disparaître *exactement* des classes entières de réflexions, pour chaque cristal de ce groupe d'espace, indépendamment du contenu atomique. Ce sont les règles qui sous-tendent **Hide prohibited planes**.
+- **Extinctions systématiques (liées au groupe d'espace).** Le centrage du réseau et les éléments de symétrie possédant une composante de translation (axes hélicoïdaux, plans de glissement) font disparaître *exactement* des classes entières de réflexions, pour chaque cristal de ce groupe d'espace, indépendamment du contenu atomique. Ce sont les règles qui sous-tendent **Masquer les plans interdits**.
 - **Quasi-extinctions accidentelles.** Lorsque les contributions atomiques s'annulent par hasard pour une structure particulière, l'intensité est faible mais non interdite par la symétrie, et elle peut réapparaître si la composition ou les positions changent. Celles-ci ne sont *pas* supprimées par les règles d'extinction.
 
 Une extinction systématique est une annulation de phase entre les copies de la maille reliées par symétrie. Pour des translations de centrage $\mathbf t_\alpha$, le facteur de structure porte un facteur commun
@@ -96,14 +96,14 @@ non nulle uniquement lorsque les parties normale et anomale ont des phases diff�
 
 ## Du facteur de structure à l'intensité sur poudre
 
-Activer **Powder Diffraction Intensities (Bragg–Brentano)** convertit $\lvert F\rvert^2$ en une intensité relative sur poudre en intégrant la géométrie d'un polycristal orienté aléatoirement :
+Activer **Intensités de diffraction des poudres (optique de Bragg-Brentano)** convertit $\lvert F\rvert^2$ en une intensité relative sur poudre en intégrant la géométrie d'un polycristal orienté aléatoirement :
 
 $$I_{hkl} \;\propto\; m_{hkl}\, \lvert F_{hkl}\rvert^2\, L p(\theta),$$
 
 - $m_{hkl}$ : **multiplicité** — le nombre de plans équivalents par symétrie qui se superposent au même $2\theta$ (la colonne *Multi.* du tableau).
 - $Lp(\theta)$ : le facteur de **Lorentz–polarisation** pour l'optique Bragg–Brentano, $Lp = \dfrac{1+\cos^2 2\theta}{\sin^2\theta\,\cos\theta}$, qui rehausse fortement les pics aux petits angles.
 
-Comme les plans équivalents sont fusionnés en une seule raie dans ce mode, ReciPro force également *Hide equivalent planes* et *Hide prohibited planes*.
+Comme les plans équivalents sont fusionnés en une seule raie dans ce mode, ReciPro force également *Masquer les plans équivalents* et *Masquer les plans interdits*.
 
 ---
 

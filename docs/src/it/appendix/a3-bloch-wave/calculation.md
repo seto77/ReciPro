@@ -49,7 +49,7 @@ Le componenti cartesiane di $\mathbf g$ si ottengono dai vettori di base recipro
 $$\begin{pmatrix} g_x\\ g_y\\ g_z\end{pmatrix} = \begin{pmatrix} a_x^{*} & b_x^{*} & c_x^{*}\\ a_y^{*} & b_y^{*} & c_y^{*}\\ a_z^{*} & b_z^{*} & c_z^{*}\end{pmatrix}\begin{pmatrix} h\\ k\\ l\end{pmatrix} = \begin{pmatrix} h\,a_x^{*} + k\,b_x^{*} + l\,c_x^{*}\\ h\,a_y^{*} + k\,b_y^{*} + l\,c_y^{*}\\ h\,a_z^{*} + k\,b_z^{*} + l\,c_z^{*}\end{pmatrix}$$
 
 !!! note
-    I valori $U_{\mathbf g}$ mostrati nella tabella **Details** del simulatore di diffrazione sono i valori grezzi *prima* dell'applicazione del fattore relativistico $\gamma$.
+    I valori $U_{\mathbf g}$ mostrati nella tabella **Dettagli riflessi** del simulatore di diffrazione sono i valori grezzi *prima* dell'applicazione del fattore relativistico $\gamma$.
 
 ---
 
@@ -62,7 +62,7 @@ $$U'_{g,h} = \gamma\,\frac{1}{\pi\Omega}\sum_k f'_k(\mathbf g,\mathbf h)\,\exp\!
 con il **fattore di diffusione di assorbimento** — un integrale che convolve il fattore di diffusione elastico $f_e$ sulla sfera di Ewald:
 
 $$f'_k(\mathbf g,\mathbf h) = \frac{\gamma\,k_{vac}}{2}\oint_{|\mathbf K|=k_{vac}} f_{e,k}(s_-)\,f_{e,k}(s_+)\left[1-\exp\!\left\{M_k\left(\frac{|\mathbf g-\mathbf h|^2}{4}-s_-^2-s_+^2\right)\right\}\right]\mathrm d\Omega,
-\qquad s_\mp=\frac{1}{2}\left|\mathbf K\mp\frac{\mathbf g-\mathbf h}{2}\right|$$
+\qquad s_\mp=\frac{1}{2}\left|\mathbf q\mp\frac{\mathbf g-\mathbf h}{2}\right|,\qquad \mathbf q=\mathbf K-\mathbf k_{vac}+\frac{\mathbf g+\mathbf h}{2}$$
 
 Qui $\mathbf K$ è il vettore d'onda *diffuso*, che percorre la sfera $|\mathbf K| = k_{vac}$ con elemento di angolo solido $\mathrm d\Omega$, e $\mathbf K-\mathbf k_{vac}$ è quindi il vettore di diffusione di quella direzione. In modo equivalente, i due argomenti sono $s_- = \lvert(\mathbf K-\mathbf k_{vac})-\mathbf g\rvert/2$ e $s_+ = \lvert(\mathbf K-\mathbf k_{vac})-\mathbf h\rvert/2$, che è la forma valutata da ReciPro. ReciPro valuta questo integrale numericamente con la quadratura di Gauss–Legendre (l'integrando ha un picco acuto in avanti, quindi l'angolo polare viene suddiviso in intervalli geometrici del modulo del vettore di diffusione per risolverlo). Per la TDS raccolta da un rivelatore anulare STEM, o la TDS retrodiffusa in EBSD, **lo stesso integrando** viene integrato sull'intervallo angolare del rivelatore (un anello o l'emisfero posteriore).
 

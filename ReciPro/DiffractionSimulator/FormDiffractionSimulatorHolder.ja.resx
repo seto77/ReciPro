@@ -134,7 +134,7 @@
     <value>ステレオネット設定</value>
   </data>
   <data name="groupBoxIndexRange.Text" xml:space="preserve">
-    <value>軸指数範囲</value>
+    <value>方向指数の範囲</value>
   </data>
   <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
     <value>等価な指数を含める</value>
@@ -188,7 +188,7 @@
     <value>1° 線を表示</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
-    <value>軸指数を表示</value>
+    <value>指数ラベルを表示</value>
   </data>
   <data name="groupBoxHolderAngles.Text" xml:space="preserve">
     <value>ホルダー角度</value>
@@ -229,8 +229,8 @@
     <value>チェックすると矢印キーでホルダーを
 傾斜します。左右で Tilt X、上下で Tilt
 Y を矢印ステップ分だけ変化させます。
-このウィンドウが開いている間は、ReciPro
-のどのウィンドウが前面でも有効です。</value>
+このウィンドウが前面 (アクティブ) の
+ときだけ有効です。</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>矢印キー1回あたりに変化させる
@@ -283,7 +283,8 @@ X（主軸）の方位（度）を設定します。</value>
 適用し、その姿勢を中立方向として設定します。</value>
   </data>
   <data name="buttonRotate180.ToolTip" xml:space="preserve">
-    <value>結晶を電子線（[001]）軸まわりに 180° 回転します。</value>
+    <value>結晶をビーム軸 (画面に垂直な軸) のまわりに 180° 回転します。
+主画面で軸/面を「固定」していても、ビーム軸のまわりに回します。</value>
   </data>
   <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
     <value>Link ボタンを押したときに Tilt X へ

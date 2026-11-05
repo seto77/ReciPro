@@ -96,7 +96,7 @@
     <value>다중 결정립</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>메타파일 (EMF)</value>
+    <value>메타파일로 (EMF)</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.Text" xml:space="preserve">
     <value>레이블 표시</value>
@@ -165,7 +165,7 @@
     <value>번호</value>
   </data>
   <data name="copyAsBitmapToolStripMenuItem.Text" xml:space="preserve">
-    <value>이미지</value>
+    <value>이미지로</value>
   </data>
   <data name="buttonGlobalFit.Text" xml:space="preserve">
     <value>전역 피팅</value>
@@ -174,7 +174,7 @@
     <value>결정 이름</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>메타파일 (EMF)</value>
+    <value>메타파일로 (EMF)</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
     <value>단일 결정립</value>
@@ -201,7 +201,7 @@
     <value>할당된 스폿</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>이미지 (PNG 형식)</value>
+    <value>이미지로 (PNG 형식)</value>
   </data>
   <data name="groupBoxOptics.Text" xml:space="preserve">
     <value>광학계</value>
@@ -266,7 +266,9 @@
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
     <value>운동학적으로는 금지되지만 다중(동역학) 회절로
 나타날 수 있는 반사를 계산 패턴에서
-제외합니다.</value>
+제외합니다.
+X선과 중성자에서는 항상 무시합니다
+(운동학적으로 취급).</value>
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
     <value>두께/방위 정밀화 시 입사빔 방향을

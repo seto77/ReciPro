@@ -291,7 +291,8 @@
             // zoneAxisDataGridViewTextBoxColumn
             // 
             zoneAxisDataGridViewTextBoxColumn.DataPropertyName = "Zone Axis";
-            zoneAxisDataGridViewTextBoxColumn.HeaderText = "Zone Axis";
+            //zoneAxisDataGridViewTextBoxColumn.HeaderText = "Zone Axis"; // 261105Cl 変更前
+            zoneAxisDataGridViewTextBoxColumn.HeaderText = "Zone axis"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             zoneAxisDataGridViewTextBoxColumn.Name = "zoneAxisDataGridViewTextBoxColumn";
             zoneAxisDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -354,7 +355,8 @@
             // photo1ZoneAxisDataGridViewTextBoxColumn1
             // 
             photo1ZoneAxisDataGridViewTextBoxColumn1.DataPropertyName = "Photo 1 Zone Axis";
-            photo1ZoneAxisDataGridViewTextBoxColumn1.HeaderText = "Photo 1 Zone Axis";
+            //photo1ZoneAxisDataGridViewTextBoxColumn1.HeaderText = "Photo 1 Zone Axis"; // 261105Cl 変更前
+            photo1ZoneAxisDataGridViewTextBoxColumn1.HeaderText = "Photo 1 zone axis"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             photo1ZoneAxisDataGridViewTextBoxColumn1.Name = "photo1ZoneAxisDataGridViewTextBoxColumn1";
             photo1ZoneAxisDataGridViewTextBoxColumn1.ReadOnly = true;
             photo1ZoneAxisDataGridViewTextBoxColumn1.Width = 125;
@@ -362,7 +364,8 @@
             // photo2ZoneAxisDataGridViewTextBoxColumn
             // 
             photo2ZoneAxisDataGridViewTextBoxColumn.DataPropertyName = "Photo 2 Zone Axis";
-            photo2ZoneAxisDataGridViewTextBoxColumn.HeaderText = "Photo 2 Zone Axis";
+            //photo2ZoneAxisDataGridViewTextBoxColumn.HeaderText = "Photo 2 Zone Axis"; // 261105Cl 変更前
+            photo2ZoneAxisDataGridViewTextBoxColumn.HeaderText = "Photo 2 zone axis"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             photo2ZoneAxisDataGridViewTextBoxColumn.Name = "photo2ZoneAxisDataGridViewTextBoxColumn";
             photo2ZoneAxisDataGridViewTextBoxColumn.ReadOnly = true;
             photo2ZoneAxisDataGridViewTextBoxColumn.Width = 125;
@@ -370,7 +373,8 @@
             // photo3ZoneAxisDataGridViewTextBoxColumn
             // 
             photo3ZoneAxisDataGridViewTextBoxColumn.DataPropertyName = "Photo 3 Zone Axis";
-            photo3ZoneAxisDataGridViewTextBoxColumn.HeaderText = "Photo 3 Zone Axis";
+            //photo3ZoneAxisDataGridViewTextBoxColumn.HeaderText = "Photo 3 Zone Axis"; // 261105Cl 変更前
+            photo3ZoneAxisDataGridViewTextBoxColumn.HeaderText = "Photo 3 zone axis"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             photo3ZoneAxisDataGridViewTextBoxColumn.Name = "photo3ZoneAxisDataGridViewTextBoxColumn";
             photo3ZoneAxisDataGridViewTextBoxColumn.ReadOnly = true;
             photo3ZoneAxisDataGridViewTextBoxColumn.Width = 125;
@@ -378,7 +382,8 @@
             // angleBetweenPhoto12DataGridViewTextBoxColumn
             // 
             angleBetweenPhoto12DataGridViewTextBoxColumn.DataPropertyName = "Angle Between Photo 1 & 2";
-            angleBetweenPhoto12DataGridViewTextBoxColumn.HeaderText = "Angle Between Photo 1 & 2";
+            //angleBetweenPhoto12DataGridViewTextBoxColumn.HeaderText = "Angle Between Photo 1 & 2"; // 261105Cl 変更前
+            angleBetweenPhoto12DataGridViewTextBoxColumn.HeaderText = "Angle between photo 1 & 2"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             angleBetweenPhoto12DataGridViewTextBoxColumn.Name = "angleBetweenPhoto12DataGridViewTextBoxColumn";
             angleBetweenPhoto12DataGridViewTextBoxColumn.ReadOnly = true;
             angleBetweenPhoto12DataGridViewTextBoxColumn.Width = 130;
@@ -386,7 +391,8 @@
             // angleBetweenPhoto23DataGridViewTextBoxColumn
             // 
             angleBetweenPhoto23DataGridViewTextBoxColumn.DataPropertyName = "Angle Between Photo 2 & 3";
-            angleBetweenPhoto23DataGridViewTextBoxColumn.HeaderText = "Angle Between Photo 2 & 3";
+            //angleBetweenPhoto23DataGridViewTextBoxColumn.HeaderText = "Angle Between Photo 2 & 3"; // 261105Cl 変更前
+            angleBetweenPhoto23DataGridViewTextBoxColumn.HeaderText = "Angle between photo 2 & 3"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             angleBetweenPhoto23DataGridViewTextBoxColumn.Name = "angleBetweenPhoto23DataGridViewTextBoxColumn";
             angleBetweenPhoto23DataGridViewTextBoxColumn.ReadOnly = true;
             angleBetweenPhoto23DataGridViewTextBoxColumn.Width = 130;
@@ -394,7 +400,8 @@
             // angleBetweenPhoto31DataGridViewTextBoxColumn
             // 
             angleBetweenPhoto31DataGridViewTextBoxColumn.DataPropertyName = "Angle Between Photo 3 & 1";
-            angleBetweenPhoto31DataGridViewTextBoxColumn.HeaderText = "Angle Between Photo 3 & 1";
+            //angleBetweenPhoto31DataGridViewTextBoxColumn.HeaderText = "Angle Between Photo 3 & 1"; // 261105Cl 変更前
+            angleBetweenPhoto31DataGridViewTextBoxColumn.HeaderText = "Angle between photo 3 & 1"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             angleBetweenPhoto31DataGridViewTextBoxColumn.Name = "angleBetweenPhoto31DataGridViewTextBoxColumn";
             angleBetweenPhoto31DataGridViewTextBoxColumn.ReadOnly = true;
             angleBetweenPhoto31DataGridViewTextBoxColumn.Width = 130;

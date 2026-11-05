@@ -8,7 +8,7 @@ ReciPro include un sistema di macro basato su **IronPython** per automatizzare o
 
 ![Editor delle macro](../../assets/cap-it-auto/FormMacro.png)
 
-Nello screenshot qui sopra è attivata l'opzione **Show samples**, che mostra le macro di esempio integrate. L'elenco delle macro è a sinistra, l'editor del codice a destra e una tabella di aiuto delle funzioni integrate in basso.
+Nello screenshot qui sopra è attivata l'opzione **Mostra esempi**, che mostra le macro di esempio integrate. L'elenco delle macro è a sinistra, l'editor del codice a destra e una tabella di aiuto delle funzioni integrate in basso.
 
 ---
 
@@ -20,7 +20,7 @@ Nello screenshot qui sopra è attivata l'opzione **Show samples**, che mostra le
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Salva il testo dell'editor di nuovo nella voce selezionata dell'elenco delle macro |
 | <kbd>F10</kbd> | Avanza di un passo (durante l'esecuzione passo-passo) |
 | Doppio clic su una riga nell'elenco di aiuto delle funzioni | Inserisce la firma di quella funzione in corrispondenza del cursore |
-| Trascina un file `.mcr` sulla finestra | Lo carica nell'editor |
+| Trascina un file `.mcr` sulla finestra | Lo carica nell'editor e lo aggiunge all'elenco delle macro (il nome del file diventa il nome della macro) |
 
 **Run**, **Step** e **Stop** sono pulsanti (nessun acceleratore da tastiera).
 
@@ -34,7 +34,7 @@ Le macro sono scritte con la sintassi di Python. Usando le classi e le funzioni 
 
 - **Linguaggio**: Python 3 (IronPython 3.4)
 - **Archiviazione**: binario compresso nel Registro di sistema di Windows (persiste tra le sessioni)
-- **Accesso**: fare clic sul pulsante Macro nella finestra principale per aprire l'editor delle macro
+- **Accesso**: **Macro > Editor** nel menu della finestra principale apre l'editor delle macro. Ogni macro dell'elenco viene inoltre aggiunta come voce del menu **Macro**; selezionandola, quella macro viene eseguita direttamente
 
 ---
 
@@ -46,6 +46,7 @@ L'editor delle macro è composto dalle seguenti aree:
 |------|---------|
 | **Elenco delle macro** (a sinistra) | Macro memorizzate. `Add` aggiunge una nuova macro, `Replace` sovrascrive quella selezionata, `Delete` la rimuove. Up/Down ne cambiano l'ordine. |
 | **Campo nome** (in alto) | Identificatore della macro in fase di modifica. |
+| **Menu File** | **Load file** legge un file `.mcr` (UTF-8) e lo aggiunge all'elenco; **Save file** scrive il testo dell'editor in un file `.mcr`. |
 | **Area del codice** (a destra) | Editor di codice Python con barra dei numeri di riga, indentazione automatica e popup di aiuto sulla sintassi. |
 | **Tabella delle funzioni integrate** (in basso) | Elenco delle funzioni/proprietà integrate fornite da ReciPro, ciascuna con una descrizione di aiuto. Un riferimento durante la scrittura del codice. |
 | **Barra di stato** (in fondo) | Mostra la posizione corrente del cursore come `Line N, Col M`. |
@@ -55,7 +56,7 @@ La barra del titolo mostra **`Macro*`** (con un asterisco) finché vi sono modif
 
 ### Macro di esempio
 
-Attivando **Show samples** (in alto a sinistra) il proprio elenco di macro viene temporaneamente sostituito dalle macro di esempio integrate (cicli e condizioni di base, funzioni matematiche, rotazione/allineamento, scansione dell'elenco cristalli, simulazione di diffrazione/immagini, serie di inclinazioni/energie, informazioni sulle riflessioni e altro). Gli esempi sono di sola lettura e mostrati nella lingua corrente dell'interfaccia; usali per imparare o come punto di partenza da copiare. Disattivandolo si ripristinano le proprie macro.
+Attivando **Mostra esempi** (in alto a sinistra) il proprio elenco di macro viene temporaneamente sostituito dalle macro di esempio integrate (cicli e condizioni di base, funzioni matematiche, rotazione/allineamento, scansione dell'elenco cristalli, simulazione di diffrazione/immagini, serie di inclinazioni/energie, informazioni sulle riflessioni e altro). Gli esempi sono di sola lettura e mostrati nella lingua corrente dell'interfaccia; usali per imparare o come punto di partenza da copiare. Disattivandolo si ripristinano le proprie macro.
 
 ---
 

@@ -81,13 +81,13 @@ distância do ponto (mm). Clique para editar este campo.</value>
   </data>
   <data name="numericBoxLength.ToolTip" xml:space="preserve">
     <value>Distância em mm do centro do padrão até
-o ponto; com o comprimento de câmara e o comprimento de onda
+o ponto; com o comprimento de câmera e o comprimento de onda
 calcula a distância interplanar (Å) e o comprimento g
 (nm⁻¹). Clique para editar este campo.</value>
   </data>
   <data name="label50.ToolTip" xml:space="preserve">
     <value>Distância em mm do centro do padrão até
-o ponto; com o comprimento de câmara e o comprimento de onda
+o ponto; com o comprimento de câmera e o comprimento de onda
 calcula a distância interplanar (Å) e o comprimento g
 (nm⁻¹). Clique para editar este campo.</value>
   </data>

@@ -84,11 +84,25 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
 
     private void numericBoxCameraLength2_ValueChanged(object sender, EventArgs e)
     {
-        if (this.Visible || !FormDiffractionSimulator.Visible)//このフォームがvisibleの時か、親フォームがvisible出ない時(つまり、最初のロード時)
-            FormDiffractionSimulator.CameraLength2 = CameraLength2;
+        //if (this.Visible || !FormDiffractionSimulator.Visible)//このフォームがvisibleの時か、親フォームがvisible出ない時(つまり、最初のロード時) // 261105Cl 変更前
+        //    FormDiffractionSimulator.CameraLength2 = CameraLength2;
+        // 261105Cl 変更 (監査 D15): この窓が隠れているときの変更 (.prm・.ipa のドロップ、マクロ) も親の「カメラ長 2」の欄へ返す。
+        //   以前は返さず、計算はこの窓の値 (親の CameraLength2 の getter) なのに、親の欄は古い値のまま見え、次に親の欄を触るとドロップした値が消えていた。
+        //   親の欄から来た変更は同じ値なので、親の欄は動かない (NumericBox は同じ値では ValueChanged を出さない)
+        FormDiffractionSimulator.CameraLength2 = CameraLength2;
 
         FormDiffractionSimulator.SetVector();
 
+        FormDiffractionSimulator.Draw();
+    }
+
+    /// <summary>261105Cl 追加 (監査 D11): 検出器の大きさ・Foot・画素サイズの変更。以前はどこにも配線されておらず、親 (回折シミュレータ) の検出器の枠・重ねた画像・
+    /// 「検出器の中心」に固定した中心が、次に別の操作で再描画されるまで古いままだった</summary>
+    private void detectorArea_ValueChanged(object sender, EventArgs e)
+    {
+        if (FormDiffractionSimulator == null || FormDiffractionSimulator.SkipEvent) return; // 親のマウス操作 (Ctrl + 中ボタンで検出器を動かす) は親が自分で 1 回描く
+        if (FormDiffractionSimulator.IsCenterFixed)
+            FormDiffractionSimulator.Foot = FormDiffractionSimulator.FixedCenter;
         FormDiffractionSimulator.Draw();
     }
 
@@ -160,8 +174,10 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
     {
         //var dlg = new OpenFileDialog { Filter = ImageIO.FilterString + "|All files(*.*)|*.*" }; // 旧: ダイアログを解放していなかった
         using var dlg = new OpenFileDialog { Filter = ImageIO.FilterString + "|All files(*.*)|*.*" }; // (260715Ch)
-        if (dlg.ShowDialog() == DialogResult.OK)
-            ReadImage(dlg.FileName);
+        //if (dlg.ShowDialog() == DialogResult.OK) // 261105Cl 変更前
+        //    ReadImage(dlg.FileName);
+        if (dlg.ShowDialog() == DialogResult.OK && !ReadImage(dlg.FileName)) // 261105Cl 変更 (監査 D18): 読めなかったら知らせる
+            showCannotRead(dlg.FileName);
     }
 
     private double trackbarConstantA = 0, trackbarConstantB = 1;
@@ -186,16 +202,43 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
         if (fileName.Length == 1 && fileName[0].EndsWith("prm", StringComparison.OrdinalIgnoreCase))//260718Cl ToLower→OrdinalIgnoreCase
         {
             var prm = DiffractionOptics.Read(fileName[0]);
-            FormDiffractionSimulator.SkipDrawing = true;
+            // 261105Cl 追加: .prm の数値は DiffractionOptics.ParseNumber で読む。CurrentCulture の Convert.ToDouble では、IPAnalyzer の
+            //   新しい .prm ("0.1", InvariantCulture) を de-DE が桁区切りとみなして黙って 1 と読み、fr-FR / sv-SE は例外になる。
+            //   旧形式 ("0,1" や U+2212 の負号) も読める。要素が無い (null) ときは従来の Convert.ToDouble(null) と同じく 0 にする
+            static double num(string s) => s == null ? 0 : DiffractionOptics.ParseNumber(s); // 261105Cl 追加
+            // 261105Cl 追加 (監査 D16): 読めない .prm (Read は null を返す) で、下の SkipDrawing = true のまま例外で抜け、以後この回折シミュレータが一切描画しなくなっていた
+            if (prm == null)
             {
-                FormDiffractionSimulator.waveLengthControl.WaveSource = WaveSource.Xray;
-                FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber = 0;
-                FormDiffractionSimulator.waveLengthControl.WaveLength = Convert.ToDouble(prm.waveLength) * 0.1;
+                showCannotRead(fileName[0]);
+                return;
+            }
+            FormDiffractionSimulator.SkipDrawing = true;
+            try // 261105Cl 追加 (監査 D16): 値の読み取りで例外になっても描画を戻す
+            {
+                //FormDiffractionSimulator.waveLengthControl.WaveSource = WaveSource.Xray; // 261105Cl 変更前: .prm の線源 (waveSource・xRayElement・xRayLine) を無視して常に X 線 (波長の直接指定) にし、
+                //FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber = 0; //   波長を保存していない .prm では波長 0 にしていた
+                //FormDiffractionSimulator.waveLengthControl.WaveLength = Convert.ToDouble(prm.waveLength) * 0.1;
+                // 261105Cl 変更 (監査 D16): IPAnalyzer の .prm の読み込み (FormMain の「Read checked parameters」) と同じく、保存されている項目だけを、線源も含めて取り込む
+                if (prm.waveLength != null)
+                {
+                    var wlc = FormDiffractionSimulator.waveLengthControl;
+                    wlc.WaveSource = prm.waveSource != null ? (WaveSource)Convert.ToInt32(prm.waveSource) : WaveSource.Xray;
+                    if (wlc.WaveSource == WaveSource.Xray)
+                    {
+                        wlc.XrayWaveSourceElementNumber = prm.xRayElement != null ? Convert.ToInt32(prm.xRayElement) : 0;
+                        if (prm.xRayLine != null)
+                            wlc.XrayWaveSourceLine = (XrayLine)Convert.ToInt32(prm.xRayLine);
+                    }
+                    if (wlc.WaveSource != WaveSource.Xray || wlc.XrayWaveSourceElementNumber == 0) // 特性 X 線を選んでいるときは、元素と線で波長が決まる
+                        wlc.WaveLength = num(prm.waveLength) * 0.1; // .prm の波長は Å // 261105Cl 変更: ParseNumber で読む
+                }
 
                 if (prm.SACLA_EH5_PixelHeight != null)
-                    DetectorHeight = Convert.ToInt32(prm.SACLA_EH5_PixelHeight);
+                    //DetectorHeight = Convert.ToInt32(prm.SACLA_EH5_PixelHeight); // 261105Cl 変更前
+                    DetectorHeight = (int)num(prm.SACLA_EH5_PixelHeight); // 261105Cl 変更
                 if (prm.SACLA_EH5_PixelWidth != null)
-                    DetectorWidth = Convert.ToInt32(prm.SACLA_EH5_PixelWidth);
+                    //DetectorWidth = Convert.ToInt32(prm.SACLA_EH5_PixelWidth); // 261105Cl 変更前
+                    DetectorWidth = (int)num(prm.SACLA_EH5_PixelWidth); // 261105Cl 変更
 
                 if (pseudBitmap != null && (pseudBitmap.Width != DetectorWidth || pseudBitmap.Height != DetectorHeight))//既に読み込んでいる画像のサイズと異なっていたら
                 {
@@ -204,17 +247,40 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
                     SetPseudoBitmap(null); // 260716Cl キャッシュ Bitmap を含む所有リソースを破棄してから参照を外す
                 }
 
-                FootX = Convert.ToDouble(prm.FootX);
-                FootY = Convert.ToDouble(prm.FootY);
-                Tau = Convert.ToDouble(prm.tiltTau) / 180.0 * Math.PI;
-                Phi = Convert.ToDouble(prm.tiltPhi) / 180.0 * Math.PI;
-                CameraLength2 = Convert.ToDouble(prm.CameraLength2);
-            }
-            //DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeX)) / 2.0; // 旧: Y 方向のピクセル寸法を無視
-            DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeY)) / 2.0; // (260715Ch)
+                //FootX = Convert.ToDouble(prm.FootX); // 261105Cl 変更前: 保存されていない項目 (null) は 0 になっていた (Convert.ToDouble(null) = 0)
+                //FootY = Convert.ToDouble(prm.FootY);
+                //Tau = Convert.ToDouble(prm.tiltTau) / 180.0 * Math.PI;
+                //Phi = Convert.ToDouble(prm.tiltPhi) / 180.0 * Math.PI;
+                //CameraLength2 = Convert.ToDouble(prm.CameraLength2);
+                if (prm.FootX != null && prm.FootY != null) // 261105Cl 変更 (監査 D16): 保存されている項目だけ。数値は ParseNumber で読む
+                {
+                    FootX = num(prm.FootX);
+                    FootY = num(prm.FootY);
+                }
+                if (prm.tiltTau != null && prm.tiltPhi != null)
+                {
+                    Tau = num(prm.tiltTau) / 180.0 * Math.PI;
+                    Phi = num(prm.tiltPhi) / 180.0 * Math.PI;
+                }
+                if (prm.CameraLength2 != null)
+                    CameraLength2 = num(prm.CameraLength2);
+                //DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeX)) / 2.0; // 旧: Y 方向のピクセル寸法を無視
+                //DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeY)) / 2.0; // (260715Ch) // 261105Cl 変更前: 画素サイズの無い .prm で 0
+                if (prm.pixSizeX != null) // 261105Cl 変更 (監査 D16): 古い形式 (pixSize と aspectRatio) も IPAnalyzer と同じく読む
+                    DetectorPixelSize = (num(prm.pixSizeX) + num(prm.pixSizeY ?? prm.pixSizeX)) / 2.0;
+                else if (prm.pixSize != null)
+                    DetectorPixelSize = num(prm.pixSize) * (1 + (prm.aspectRatio != null ? num(prm.aspectRatio) : 1)) / 2.0;
 
-            ShowDetectorArea = true;
-            FormDiffractionSimulator.SkipDrawing = false;
+                ShowDetectorArea = true;
+            }
+            catch (Exception ex) // 261105Cl 追加 (監査 D16)
+            {
+                showCannotRead(fileName[0], ex.Message);
+            }
+            finally // 261105Cl 追加 (監査 D16)
+            {
+                FormDiffractionSimulator.SkipDrawing = false;
+            }
         }
         else
         {
@@ -224,8 +290,26 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
                 this.Visible = true;
                 trackBarMaxInt_ValueChanged(sender, e);
             }
+            else // 261105Cl 追加 (監査 D18): 読めない画像を落としても何も起きず、理由が分からなかった
+                showCannotRead(fileName[0]);
         }
     }
+
+    /// <summary>261105Cl 追加 (監査 D16・D18): .prm や画像を読めなかったことを知らせる</summary>
+    private void showCannotRead(string fileName, string detail = "")
+        => MessageBox.Show(this, Localization.Loc(
+            en: "Could not read this file as a detector parameter file (.prm) or a diffraction image:",
+            ja: "このファイルを検出器パラメータ (.prm) または回折像として読み込めませんでした:",
+            de: "Diese Datei konnte weder als Detektorparameterdatei (.prm) noch als Beugungsbild gelesen werden:",
+            fr: "Impossible de lire ce fichier comme fichier de paramètres du détecteur (.prm) ou comme image de diffraction :",
+            es: "No se pudo leer este archivo como archivo de parámetros del detector (.prm) ni como imagen de difracción:",
+            pt: "Não foi possível ler este arquivo como arquivo de parâmetros do detector (.prm) nem como imagem de difração:",
+            it: "Impossibile leggere questo file come file dei parametri del rivelatore (.prm) o come immagine di diffrazione:",
+            ru: "Не удалось прочитать этот файл как файл параметров детектора (.prm) или как дифракционное изображение:",
+            zhHans: "无法将此文件读取为探测器参数文件 (.prm) 或衍射图像：",
+            zhHant: "無法將此檔案讀取為偵測器參數檔 (.prm) 或繞射影像：",
+            ko: "이 파일을 검출기 파라미터 파일 (.prm) 또는 회절 이미지로 읽을 수 없습니다:")
+            + "\r\n" + fileName + (detail.Length > 0 ? "\r\n" + detail : ""), "ReciPro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
     public void FormDiffractionSimulatorGeometry_DragEnter(object sender, DragEventArgs e) => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
 
@@ -319,6 +403,7 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
                 //DetectorPixelSize = ipa.Resolution; FootX = ipa.Center.X; FootY = ipa.Center.Y; CameraLength2 = ipa.CameraLength; // 旧
                 DetectorPixelSize = Ring.IP.PixSizeX; FootX = Ring.IP.CenterX; FootY = Ring.IP.CenterY; // (260715Ch)
                 CameraLength2 = Ring.IP.FilmDistance; // (260715Ch)
+                Tau = 0; // 261105Cl 追加 (監査 D18): .ipa は傾きを持たない (中心 = 直接ビームの位置とカメラ長だけ) ので、上の Foot = 中心・カメラ長 2 = カメラ長は τ = 0 のときだけ正しい。以前は前の τ を残していた (dm3 の分岐と同じく 0 にする)
             }
             //if (ext == "dm3" || ext == "dm4") // 旧: 独立 if のため IPA が後続の汎用画像分岐にも入り、二重に PseudoBitmap を生成していた
             else if (ext == "dm3" || ext == "dm4") // (260715Ch)

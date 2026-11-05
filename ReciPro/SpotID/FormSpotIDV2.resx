@@ -1144,7 +1144,7 @@ background in donut subtraction (1-100).</value>
     <value>2</value>
   </data>
   <data name="buttonFindSpots.Text" xml:space="preserve">
-    <value>Detect &amp;&amp; Fit Spots</value>
+    <value>Detect &amp;&amp; fit spots</value>
   </data>
   <data name="buttonFindSpots.ToolTip" xml:space="preserve">
     <value>Detect diffraction spots in the loaded image and fit them with the selected function.
@@ -1330,7 +1330,7 @@ this circle are fitted with the pseudo-Voigt function.</value>
     <value>4</value>
   </data>
   <data name="buttonResetRangeForAllSpots.Text" xml:space="preserve">
-    <value>Apply to All</value>
+    <value>Apply to all</value>
   </data>
   <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
     <value>Set every spot's fitting radius to the
@@ -1472,7 +1472,7 @@ current 'Fitting range' value (px).</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxCameraLength.HeaderText" xml:space="preserve">
-    <value>Camera Length</value>
+    <value>Camera length</value>
   </data>
   <data name="numericBoxCameraLength.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 0</value>
@@ -1523,7 +1523,7 @@ current 'Fitting range' value (px).</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxPixelSize.HeaderText" xml:space="preserve">
-    <value>Pixel Size</value>
+    <value>Pixel size</value>
   </data>
   <data name="numericBoxPixelSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -2002,7 +2002,7 @@ row to show its grain orientation(s) below.</value>
     <value>5</value>
   </data>
   <data name="buttonIdentifySpots.Text" xml:space="preserve">
-    <value>Identify Spots</value>
+    <value>Identify spots</value>
   </data>
   <data name="buttonIdentifySpots.ToolTip" xml:space="preserve">
     <value>Identify spots
@@ -2300,7 +2300,9 @@ candidate reflections (0.1–10%).</value>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
     <value>Ignore kinematically forbidden reflections that
 can appear via multiple (dynamical) diffraction,
-excluding them from the calculated pattern.</value>
+excluding them from the calculated pattern.
+With X-rays and neutrons they are always ignored
+(kinematical treatment).</value>
   </data>
   <data name="&gt;&gt;checkBoxIgnoreMultipleDiffraction.Name" xml:space="preserve">
     <value>checkBoxIgnoreMultipleDiffraction</value>
@@ -2360,7 +2362,7 @@ excluding them from the calculated pattern.</value>
     <value>8</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
-    <value>Single Grain</value>
+    <value>Single grain</value>
   </data>
   <data name="radioButtonSingleGrain.ToolTip" xml:space="preserve">
     <value>Search for a single crystal grain orientation</value>
@@ -2396,7 +2398,7 @@ excluding them from the calculated pattern.</value>
     <value>9</value>
   </data>
   <data name="radioButtonMultiGrain.Text" xml:space="preserve">
-    <value>Multiple Grains</value>
+    <value>Multiple grains</value>
   </data>
   <data name="radioButtonMultiGrain.ToolTip" xml:space="preserve">
     <value>Search for multiple crystal grain orientations</value>
@@ -2770,13 +2772,13 @@ and assigns hkl indices to the observed spots.</value>
     <value>193, 22</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Metafile (EMF)</value>
+    <value>as metafile (EMF)</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>193, 22</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>as Image (PNG format)</value>
+    <value>as image (PNG format)</value>
   </data>
   <data name="saveCandidateListToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>193, 22</value>
@@ -2794,13 +2796,13 @@ and assigns hkl indices to the observed spots.</value>
     <value>175, 22</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Metafile (EMF)</value>
+    <value>as metafile (EMF)</value>
   </data>
   <data name="copyAsBitmapToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 22</value>
   </data>
   <data name="copyAsBitmapToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Image</value>
+    <value>as image</value>
   </data>
   <data name="copyCandidateListToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 22</value>
@@ -2872,7 +2874,7 @@ and assigns hkl indices to the observed spots.</value>
     <value>303, 22</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>Ctrl + Left double click : Add the direct spot</value>
+    <value>Ctrl + left double click : Add the direct spot</value>
   </data>
   <data name="toolStripMenuItem3.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2881,13 +2883,13 @@ and assigns hkl indices to the observed spots.</value>
     <value>303, 22</value>
   </data>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Ctrl + Right click : Remove the spot</value>
+    <value>Ctrl + right click : Remove the spot</value>
   </data>
   <data name="shortcutHintsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 19</value>
   </data>
   <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Shortcut Hints</value>
+    <value>Shortcut hints</value>
   </data>
   <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>

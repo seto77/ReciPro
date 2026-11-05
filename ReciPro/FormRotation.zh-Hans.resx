@@ -126,7 +126,7 @@
   </data>
   <data name="numericBoxPsi.ToolTip" xml:space="preserve">
     <value>ZXZ 约定下 ReciPro 坐标系的第 3 欧拉角 Ψ（度，
-最后一次绕 Z 轴的旋转）；用于设定晶体取向。</value>
+最后一次绕 Z 轴的旋转）；只读，显示当前的晶体取向。</value>
   </data>
   <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
     <value>ZXZ 约定下 ReciPro 坐标系的第 3 欧拉角 Ψ（度，
@@ -135,7 +135,7 @@
   <data name="numericBoxTheta.ToolTip" xml:space="preserve">
     <value>ZXZ 约定下 ReciPro 坐标系的第 2
 欧拉角 Θ（度，中间一次绕 X 轴的
-旋转）；用于设定晶体取向。</value>
+旋转）；只读，显示当前的晶体取向。</value>
   </data>
   <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
     <value>ZXZ 约定下 ReciPro 坐标系的第 2
@@ -144,8 +144,8 @@
   </data>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
     <value>ZXZ 约定下 ReciPro 坐标系的第 1
-欧拉角 Φ（度）；与 Θ、Ψ 一起设定
-晶体取向（旋转矩阵）。</value>
+欧拉角 Φ（度）；只读，与 Θ、Ψ 一起显示
+当前的晶体取向（旋转矩阵）。</value>
   </data>
   <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
     <value>ZXZ 约定下 ReciPro 坐标系的第 1
@@ -216,32 +216,32 @@ X 轴（第 3 次实验旋转将绕此轴
   </data>
   <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
     <value>将第 2 测角仪旋转轴设为直角坐标的
-Z 轴（第 2 次实验旋转 numericBoxExp2
+Z 轴（第 2 次实验旋转
 将绕此轴施加）。</value>
   </data>
   <data name="radioButton2ndY.ToolTip" xml:space="preserve">
     <value>将第 2 测角仪旋转轴设为直角坐标的
-Y 轴（第 2 次实验旋转 numericBoxExp2
+Y 轴（第 2 次实验旋转
 将绕此轴施加）。</value>
   </data>
   <data name="radioButton2ndX.ToolTip" xml:space="preserve">
     <value>将第 2 测角仪旋转轴设为直角坐标的
-X 轴（第 2 次实验旋转 numericBoxExp2
+X 轴（第 2 次实验旋转
 将绕此轴施加）。</value>
   </data>
   <data name="radioButton1stZ.ToolTip" xml:space="preserve">
     <value>将第 1 测角仪旋转轴设为直角坐标的
-Z 轴（第 1 次实验旋转 numericBoxExp1
+Z 轴（第 1 次实验旋转
 将绕此轴施加）。</value>
   </data>
   <data name="radioButton1stY.ToolTip" xml:space="preserve">
     <value>将第 1 测角仪旋转轴设为直角坐标的
-Y 轴（第 1 次实验旋转 numericBoxExp1
+Y 轴（第 1 次实验旋转
 将绕此轴施加）。</value>
   </data>
   <data name="radioButton1stX.ToolTip" xml:space="preserve">
     <value>将第 1 测角仪旋转轴设为直角坐标的
-X 轴（第 1 次实验旋转 numericBoxExp1
+X 轴（第 1 次实验旋转
 将绕此轴施加）。</value>
   </data>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">

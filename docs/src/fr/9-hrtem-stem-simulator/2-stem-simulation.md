@@ -40,7 +40,7 @@ Voir l'[Annexe A3.4 — Calcul STEM](../appendix/a3-bloch-wave/stem.md) pour la 
 
 ![Paramètres de l'échantillon](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
 
-- **Thickness** : épaisseur de l'échantillon (nm). Cette valeur est ignorée en mode **Serial image**.
+- **Épaisseur** : épaisseur de l'échantillon (nm). Cette valeur est ignorée en mode **Image en série**.
 
 ---
 
@@ -50,13 +50,13 @@ Voir l'[Annexe A3.4 — Calcul STEM](../appendix/a3-bloch-wave/stem.md) pour la 
 
 | Paramètre | Description | Par défaut / typique |
 |-----------|-------------|-------------------|
-| **Tension d'accél. (kV)** | Tension d'accélération. La longueur d'onde des électrons corrigée relativistiquement est affichée à côté | 200 kV |
-| **Defocus Δf** | Défocalisation de la lentille objectif (lentille formant la sonde) (nm) | −57.8 nm |
+| **Tension d'accél.** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Tension d'accélération (kV). La longueur d'onde des électrons corrigée relativistiquement est affichée à côté | 200 kV |
+| **Défocalisation Δf** | Défocalisation de la lentille objectif (lentille formant la sonde) (nm) | −57.8 nm |
 | **Cs** | Coefficient d'aberration sphérique (mm). Affecte la taille de la sonde | 0.5–1.0 mm |
 | **Cc** | Coefficient d'aberration chromatique (mm) | 1.0–2.0 mm |
-| **ΔV (FWHM)** | Largeur à mi-hauteur de la dispersion en énergie des électrons (eV) | 0.5–2.0 eV |
+| **ΔV** | Largeur à mi-hauteur de la dispersion en énergie des électrons (eV) | 0.5–2.0 eV |
 
-> **β (demi-angle d'illumination) est désactivé en mode STEM**, car l'angle de convergence α en assume le rôle.
+> **β (demi-angle d'illumination) est désactivé en mode STEM**, car l'angle de convergence α en assume le rôle. La défocalisation et Cs agissent sur la sonde à travers la même fonction d'aberration $\chi$ qu'en HRTEM (Δf négative = sous-focalisation ; voir [Simulation HRTEM](1-hrtem-simulation.md#tem-conditions)). Le menu contextuel de **Conditions TEM** (aberrations à zéro, défocalisation de Scherzer, préréglages de microscope) fonctionne ici aussi.
 
 ---
 
@@ -68,10 +68,12 @@ Définissez la géométrie de la sonde convergente et du détecteur annulaire. C
 
 | Paramètre | Description | Par défaut / typique |
 |-----------|-------------|-------------------|
-| **α (convergence angle)** | Demi-angle de la sonde convergente (mrad). Des valeurs plus grandes donnent une sonde plus fine et modifient le contraste de diffraction | 15–25 mrad |
-| **(Annular) detector inner angle** | Demi-angle de collection interne du détecteur annulaire (mrad). Le signal à l'intérieur de cet angle est exclu | BF: 0, HAADF: 80 |
-| **(Annular) detector outer angle** | Demi-angle de collection externe du détecteur annulaire (mrad). Le signal à l'extérieur de cet angle est exclu | BF: 5, HAADF: 250 |
-| **Effective source size σs (FWHM)** | Taille effective de la source d'électrons. Des valeurs plus grandes brouillent la sonde et réduisent le contraste des détails fins | — |
+| **Demi-angle conv. α** | Demi-angle de la sonde convergente (mrad). Des valeurs plus grandes donnent une sonde plus fine et modifient le contraste de diffraction | 25 mrad (par défaut) ; 15–25 mrad |
+| **Détecteur annulaire — Interne** | Demi-angle de collection interne du détecteur annulaire (mrad). Le signal à l'intérieur de cet angle est exclu | 0 (par défaut) ; BF: 0, HAADF: 80 |
+| **Détecteur annulaire — Externe** | Demi-angle de collection externe du détecteur annulaire (mrad). Le signal à l'extérieur de cet angle est exclu | 20 (par défaut) ; BF: 5, HAADF: 250 |
+| **Taille effective de la source (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Taille effective de la source d'électrons (pm). Appliquée après le calcul sous forme de convolution gaussienne de chaque image Élast. / TDS / EDX. Des valeurs plus grandes brouillent l'image et réduisent le contraste des détails fins | 20 pm (par défaut) |
+
+Les angles du détecteur ne s'appliquent qu'à l'image STEM de référence (Élast. / TDS / Élast. & TDS) ; les cartes STEM-EDX ne les utilisent pas. Les valeurs par défaut ne s'appliquent qu'au premier démarrage ; ensuite, les dernières valeurs utilisées sont restaurées.
 
 ---
 
@@ -79,17 +81,18 @@ Définissez la géométrie de la sonde convergente et du détecteur annulaire. C
 
 ![Options STEM (simulation)](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
-- **Slice thickness for inelastic** : épaisseur de tranche de l'échantillon (nm) utilisée lors du calcul de l'intensité TDS (thermique diffuse, inélastique). Des valeurs plus petites sont plus précises mais plus lentes.
-- **Angular resolution** : résolution d'échantillonnage angulaire des directions d'incidence de la sonde (mrad). Des valeurs plus petites échantillonnent la sonde plus finement mais sont plus lentes. Le nombre de directions croît comme le carré de ce rapport, ce qui en fait le principal levier sur le temps de calcul ; voir [Échantillonnage angulaire de la sonde](../appendix/a3-bloch-wave/stem.md#angular-sampling) pour les mesures de convergence.
+- **Épaisseur de tranche (TDS)** : épaisseur de tranche de l'échantillon (nm, 1 par défaut, plage 0.1–10) utilisée lors du calcul de l'intensité TDS (thermique diffuse, inélastique). Des valeurs plus petites sont plus précises mais plus lentes.
+- **Résolution angulaire** : résolution d'échantillonnage angulaire des directions d'incidence de la sonde (mrad, 0.4 par défaut). Des valeurs plus petites échantillonnent la sonde plus finement mais sont plus lentes. Les directions de la sonde forment une grille $N\times N$ avec $N=\lceil 2\times1.05\,\alpha/\Delta\alpha\rceil$, dont on calcule celles situées dans un disque environ 5 % plus grand que l'angle de convergence (marge pour l'interpolation) ; leur nombre croît donc comme le carré de $\alpha/\Delta\alpha$, ce qui en fait le principal levier sur le temps de calcul. La ligne sous le champ indique la grille (par exemple `Grille : 132²`) ; voir [Échantillonnage angulaire de la sonde](../appendix/a3-bloch-wave/stem.md#angular-sampling) pour les mesures de convergence.
 
 ---
 
-## Mode d'image (single / serial)
+## Mode unique/série
 
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text) と HRTEM のページに合わせた -->
 ![Mode unique/série](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
-- **Single image** : calcule une seule image STEM à l'épaisseur courante.
-- **Serial image** : génère une série d'images avec l'épaisseur / la défocalisation variées par paliers (définies via **Start / Step / Num** ; la liste ci-dessous peut aussi être modifiée directement).
+- **Image unique** : calcule une seule image STEM à l'épaisseur courante.
+- **Image en série** : génère une série d'images avec l'épaisseur / la défocalisation variées par paliers (définies via **Début / Pas / N** ; la liste ci-dessous peut aussi être modifiée directement).
 
 ---
 
@@ -97,8 +100,8 @@ Définissez la géométrie de la sonde convergente et du détecteur annulaire. C
 
 ![Propriétés de l'image](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-- **Size (W×H)** : nombre de pixels de l'image balayée (par défaut 512×512). En STEM, cela correspond au nombre de points de balayage et fait varier linéairement le temps de calcul.
-- **Resolution** : résolution d'échantillonnage (pm/px).
+- **Taille (L×H)** : nombre de pixels de l'image balayée (par défaut 512×512). La solution propre et le calcul de $I(Q)$ (étapes 1–4 dans la barre d'état) n'en dépendent pas ; elle n'intervient que dans la synthèse finale de l'image dans l'espace réel à partir des coefficients $I(Q)$, dont le coût est proportionnel au nombre de pixels × nombre de vecteurs $Q$.
+- **Résolution** : résolution d'échantillonnage (pm/px).
 
 ---
 
@@ -106,7 +109,16 @@ Définissez la géométrie de la sonde convergente et du détecteur annulaire. C
 
 ![Ondes](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** : nombre maximal d'ondes de Bloch utilisées dans la méthode de Bethe (par défaut 80). Le coût du problème aux valeurs propres varie comme le cube du nombre d'ondes.
+- Nombre maximal d'ondes de Bloch utilisées dans la méthode de Bethe (par défaut 80). Le coût du problème aux valeurs propres varie comme le cube du nombre d'ondes.
+
+---
+
+## Fonction de transfert de contraste (STEM) {#ctf-stem}
+
+La case **Fonction de transfert de contraste (CTF)** de **Conditions TEM** ouvre la même fenêtre CTF qu'en mode HRTEM. En mode STEM, elle propose deux choix :
+
+- **Imagerie cohérente** : trace $\sin\chi$, $\cos\chi$, $E_\text{s}$, $E_\text{c}$, PCTF et ACTF comme en HRTEM, mais $E_\text{s}(u)=\exp(-2\pi^2\sigma_s^2u^2)$ est tirée de la taille effective de la source ($\sigma_s$ = FWHM / $2\sqrt{2\ln2}$), et PCTF / ACTF sont coupées à l'angle de convergence.
+- **Imagerie incohérente** : trace la fonction de transfert incohérente, calculée en intégrant la fonction de lentille sur le recouvrement de deux diaphragmes formant la sonde (échantillonnage 192 × 192 du diaphragme) et en multipliant par $\exp(-2\pi^2\sigma_s^2u^2)$.
 
 ---
 
@@ -118,9 +130,9 @@ Le sélecteur d'affichage en bas à gauche de la fenêtre choisit quelle composa
 
 | Cible d'affichage | Description |
 |----------------|-------------|
-| **Elastic** | Image issue uniquement de la diffusion élastique |
+| **Élast.** | Image issue uniquement de la diffusion élastique |
 | **TDS** | Image issue uniquement de la diffusion thermique diffuse |
-| **Elastic & TDS** | Somme de l'élastique + TDS |
+| **Élast. & TDS** | Somme de l'élastique + TDS |
 | **EDX** | Carte de rayons X caractéristiques. La raie à afficher (par exemple `O-K`) se choisit dans la liste déroulante en dessous, et **EDX commun** dans *Normalisation* place les canaux de même grandeur (canaux de couche : lacunes ; séries de raies : photons X) sur une même plage d'affichage partagée, de sorte que passer de l'un à l'autre ne remet pas l'image à l'échelle |
 
 !!! note
@@ -136,7 +148,7 @@ Cochez **Calculer les cartes EDX** pour calculer des cartes de rayons X caracté
 
 Il n'y a pas de sélecteur d'élément. Lorsque la case est cochée, **tous les canaux élément/couche calculables pour ce cristal à cette tension d'accélération** sont calculés, et la ligne sous la case les énumère (par exemple `3 carte(s) : O-K, Mg-K, Al-K`). Un canal est disponible lorsque la tension d'accélération se situe dans la plage 30–400 kV (celle de la table fournie), que le seuil d'ionisation se situe en dessous et que la couche est couverte par les données fournies — K : C–Sn (Z = 6–50), L1–L3 : Ca–Rn (Z = 20–86), M1–M3 : Zn–Rn (Z = 30–86), M4–M5 : As–Rn (Z = 33–86) ; les canaux L et M additionnent les sous-couches présentes. La table fournie contient, pour chaque canal, des facteurs de forme d'ionisation entièrement relativistes jusqu'à un vecteur de diffusion de 16 Å⁻¹, ou moins aux basses tensions d'accélération. Rien n'est extrapolé : là où le calcul demande un vecteur de diffusion plus grand que celui que couvre une ligne de la table, le facteur de forme est mis à zéro et le canal est marqué ⚠ dans la liste déroulante EDX. Si aucun canal n'est disponible, le calcul est refusé avec un message explicatif plutôt que de produire une carte vide.
 
-La ligne suivante indique la grille de directions de la sonde, par exemple `Grille : 132² (recommandé : ≥48²)`. Cette grille est déterminée par **Résolution angulaire** et par l'angle de convergence ; voir [Échantillonnage angulaire de la sonde](../appendix/a3-bloch-wave/stem.md#angular-sampling). En dessous de la division recommandée, le résidu hermitien ±q peut dépasser la tolérance et interrompre le calcul ; c'est pourquoi la valeur passe en orange et une boîte de dialogue de confirmation s'affiche avant le lancement du calcul.
+La grille des directions de la sonde est indiquée sous **Résolution angulaire** dans *Options STEM (simulation)* ; tant que **Calculer les cartes EDX** est coché, elle ajoute la division recommandée, par exemple `Grille : 132² (recommandé : ≥48²)`. Cette grille est déterminée par **Résolution angulaire** et par l'angle de convergence ; voir [Échantillonnage angulaire de la sonde](../appendix/a3-bloch-wave/stem.md#angular-sampling). En dessous de la division recommandée, le résidu hermitien ±q peut dépasser la tolérance et interrompre le calcul ; c'est pourquoi la valeur passe en orange et une boîte de dialogue de confirmation s'affiche avant le lancement du calcul.
 
 !!! warning "Ce que représentent les valeurs"
     Pour un canal de couche (K, L, M), la carte donne le **nombre de lacunes de couche interne créées par électron incident** ; aucun rendement de fluorescence n'est appliqué. Pour une série de raies (Kα, Kβ, Lα, Lβ, Mα), calculée lorsque **Séries de raies (Kα, Lα…)** est cochée, elle donne le **nombre de photons X générés par électron incident**, dans toutes les directions et avant détection : rendement de fluorescence, cascades Coster–Kronig et radiatives et branchement des raies (xraylib 4.2.1) sont appliqués, la cascade Auger ne l'est pas. Dans les deux cas, ce sont des grandeurs du modèle, pas des nombres de rayons X prédits : l'auto-absorption dans l'échantillon, l'angle solide du détecteur et l'efficacité du détecteur ne sont **pas** appliqués. Utilisez les cartes pour la distribution spatiale et pour comparer épaisseurs ou orientations, pas pour une quantification absolue.
@@ -172,7 +184,7 @@ La simulation STEM est coûteuse en calcul, il convient donc de régler les para
 | **Angle de convergence** | Plus grand → plus de recouvrement des disques CBED → coût plus élevé |
 | **Ondes de Bloch** | Le coût du problème aux valeurs propres varie comme N³ |
 | **Résolution angulaire** | Plus fine → plus précise mais le coût varie comme N² |
-| **Pixels de l'image (Size)** | Variation linéaire avec le nombre de points de balayage |
+| **Pixels de l'image (Taille)** | Seule la synthèse finale dans l'espace réel (pixels × nombre de vecteurs $Q$) ; les étapes 1–4 n'en dépendent pas |
 
 ---
 

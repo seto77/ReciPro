@@ -8,18 +8,18 @@
 
 ## Keyboard & mouse shortcuts
 
-The stereonet itself is a 2-D projection; an optional 3-D sphere can be shown with **3D View**.
+The stereonet itself is a 2-D projection; an optional 3-D sphere can be shown with **3D view**.
 
 | Shortcut | Action |
 |----------|--------|
 | <kbd>F1</kbd> | Open this page of the online manual |
 | Left-drag near the centre | Tilt the crystal |
 | Left-drag the outer area | Spin the crystal about the view axis |
-| Left double-click | Switch between **Plane** and **Axis** projection |
+| Left double-click | Switch between **Planes** and **Axes** projection |
 | Right-click | Zoom out |
 | Right-drag a box | Zoom in to the selected region |
 | Middle-drag | Pan |
-| Move the mouse (no button) | Read off the (hkl)/[uvw] under the cursor — useful for indexing a measured spot |
+| Move the mouse (no button) | Read off the (hkl)/[uvw] under the cursor — useful for indexing a measured spot (also in the lower hemisphere) <!-- 261105Cl 監査: 下半球の読み取り (268779a1) --> |
 
 Dragging on the net rotates the **crystal**; the rotation state is shared across all windows.
 
@@ -39,15 +39,15 @@ The stereonet projection of the selected crystal's crystal planes, direction ind
 
 ## File menu
 
-Save as a raster image (PNG), or copy as a raster image or a vector metafile (EMF). A pasted metafile lets you edit fonts and line widths in PowerPoint or other vector editors.
+Save or copy as a raster image (PNG) or a vector metafile (EMF). A pasted metafile lets you edit fonts and line widths in PowerPoint or other vector editors.
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.Designer.cs:fileToolStripMenuItem; FormStereonet.cs:toolStripMenuItemSaveMovieStereonet_Click/toolStripMenuItemSaveMovie3D_Click) -->
 | Menu item | Description |
 |-----------|-------------|
-| Save Image ▸ as Image (PNG format) / as Metafile (EMF) | Save the stereonet as a PNG file (the *as Metafile (EMF)* item is currently disabled; for vector output use **Copy to clipboard ▸ as Metafile (EMF)**) |
-| Copy to clipboard ▸ As Image / as Metafile (EMF) | Copy the stereonet |
-| Save Movie ▸ Stereonet / 3D | Save a rotation movie (MP4) of the stereonet or of the 3-D view, using the same Movie setting dialog as the [Structure Viewer](5-structure-viewer.md#file-menu) (rotation only) |
-| Page Setup / Print Preview / Print | Print the stereonet |
+| Save image ▸ as image (PNG format) / as metafile (EMF) | Save the stereonet as a PNG file or as a vector EMF file <!-- 261105Cl 監査: as Metafile (EMF) の保存を配線 (FormStereonet.cs, 268779a1) --> |
+| Copy to clipboard ▸ As image / as metafile (EMF) | Copy the stereonet |
+| Save movie ▸ Stereonet / 3D | Save a rotation movie (MP4) of the stereonet or of the 3-D view, using the same Movie setting dialog as the [Structure Viewer](5-structure-viewer.md#file-menu) (rotation only) |
+| Page setup / Print preview / Print | Print the stereonet |
 
 ---
 
@@ -67,8 +67,8 @@ Select what to project onto the net.
 
 | Method | Description |
 |--------|-------------|
-| **Wulff** (equal-angle / stereographic) | Preserves the angle relation between projected features but not solid angle. Used by classical crystallographers when reading inter-axis or inter-plane angles. |
-| **Schmidt** (equal-area / Lambert) | Preserves the solid-angle (area) of each region but distorts angles. Preferred for statistical pole figures where relative density matters. |
+| **Equal-angle** (Wulff / stereographic) | Preserves the angle relation between projected features but not solid angle. Used by classical crystallographers when reading inter-axis or inter-plane angles. |
+| **Equiarea** (Schmidt / equal-area / Lambert) | Preserves the solid-angle (area) of each region but distorts angles. Preferred for statistical pole figures where relative density matters. |
 
 ### Hemisphere
 
@@ -82,7 +82,7 @@ Upper = the $+Z$ side (toward the viewer, see [Appendix A1.1](appendix/a1-coordi
 - **Apply structure factors to intensity**: when **Planes** or **Kikuchi line pairs** is selected, weight each item by its structure factor (set the wave source and wavelength in the [Wave tab](#wave)). The weight is $I_{\mathrm{rel}} = |F_{hkl}|^2 / \max|F|^2$ over the displayed set: in **Planes** mode the point radius is multiplied by $\sqrt{I_{\mathrm{rel}}}$ (i.e. $\propto |F_{hkl}|$); in **Kikuchi line pairs** mode the line opacity is $I_{\mathrm{rel}}$. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.cs:setVector, DrawStereoNet) -->
 - **Anomalous dispersion**: include the X-ray anomalous-dispersion terms $f'$, $f''$ in the structure factors. Enabled only for X-rays and in **Planes** / **Kikuchi line pairs** mode.
 
-> For trigonal/hexagonal crystals, Miller–Bravais (4-index) notation can be enabled from **Option ▸ Use Miller-Bravais (hkil) index** in the main window.
+> For trigonal/hexagonal crystals, Miller–Bravais (4-index) notation can be enabled from **Options ▸ Use Miller-Bravais (hkil) index** in the main window.
 
 ---
 
@@ -119,15 +119,15 @@ Set the **colour** and **size** of the plotted points. Tick **Rotate color** to 
 ![3D Options](../assets/cap-en-auto/FormStereonet.panel3.panel3DOptions.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.resx:checkBox3dOption*/button3D_reset/label29; FormStereonet.cs:button3D_reset_Click, Draw3D) -->
-Shown when **3D View** is ticked; the 3-D sphere appears in a pane to the right of the net.
+Shown when **3D view** is ticked; the 3-D sphere appears in a pane to the right of the net.
 
-- **Reset**: return the 3-D view to the default direction and zoom.
-- **Label**: draw index labels in 3-D.
+- **Reset view**: return the 3-D view to the default direction and zoom.
+- **Label**: draw index labels in 3-D. Directions are labelled [uvw]; the four-index form (with **Use Miller-Bravais (hkil) index** on) is used only for planes and Kikuchi lines. <!-- 261105Cl 監査: 3D のラベル (FormStereonet.cs, 268779a1) -->
 - **Hemisphere**: draw only the poles on the upper ($Z>0$) hemisphere.
 - **Stereonet**: draw the projection plane (net) in 3-D, with the projected points of the upper-hemisphere poles.
 - **Sphere outline**: draw the latitude/longitude grid of the sphere.
 - **Projection lines** (with **Stereonet** on): draw the auxiliary projection lines of each upper-hemisphere pole — a straight line from the south pole $(0,0,-1)$ to the pole for Wulff, an arc for Schmidt.
-- **Depth Fade**: strength of the depth fading of the 3-D view.
+- **Depth fade**: strength of the depth fading of the 3-D view.
 
 ---
 
@@ -139,7 +139,7 @@ Shown when **3D View** is ticked; the 3-D sphere appears in a pane to the right 
 
 #### Outline
 
-How the stereonet outline is drawn — the bounding circle and the optional great-circle latitude/longitude grid. Pick **Equator** or **Pole**, toggle **1° Lines** and the **Background** fill, set the **90° / 10° / 1°** grid colours, and adjust the **Line width** with the track bar.
+How the stereonet outline is drawn — the bounding circle and the optional great-circle latitude/longitude grid. Pick **Equator** or **Pole**, toggle **1° lines** and the **Background** fill, set the **90° / 10° / 1°** grid colours, and adjust the **Line width** with the track bar.
 
 #### Index labels
 
@@ -152,12 +152,12 @@ How the stereonet outline is drawn — the bounding circle and the optional grea
 - **Point size** — size of the plotted points.
 - **Point** / **Label** — colours of the points and their labels.
 
-### Great Circle
+### Great circle
 
-![Great Circle tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage2.png)
+![Great circle tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage2.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.cs:buttonAddCircle_Click, DrawCircles) -->
-Draw great circles (small circles are not supported). Specify either by **Zone axis index** \([uvw]\) (the great circle formed by the zone of that axis) or by **Zone defined by two planes** (the zone axis is their cross product). Use **Add** / **Remove** to edit the list; unticking an entry hides that circle. The colour and line width of the circles are also configurable.
+Draw great circles (small circles are not supported). Specify either by **Zone axis index** \([uvw]\) (the great circle formed by the zone of that axis) or by **Zone defined by two planes** (the zone axis is their cross product). Use **Add** / **Remove** to edit the list; unticking an entry hides that circle. The colour and line width of the circles are also configurable. The circles follow the projection method and hemisphere chosen in [Mode](#mode) (Wulff or Schmidt, upper or lower). <!-- 261105Cl 監査: Schmidt・下半球の大円 (268779a1) -->
 
 ### Wave {#wave}
 

@@ -164,11 +164,17 @@ emittierten Röntgenstrahlen wird noch nicht angewandt.</value>
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
     <value>Anz</value>
   </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>Start</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>Schritt</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
     <value>Anz</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>Start</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>Schritt</value>
@@ -305,10 +311,10 @@ Simulator" angezeigt</value>
     <value>Defokus auf Scherzer-Wert setzen</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>Alle Aberrationen auf Null setzen</value>
+    <value>Ideale Bedingungen (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="presets1ToolStripMenuItem.Text" xml:space="preserve">
-    <value>300kV Cold-FEG Cs-frei (Cs 0, Cc 2.8, ΔE 0.3) ARM300F</value>
+    <value>300kV Cold-FEG Cs-frei (Cs 0, Cc 2.8, ΔV 0.3) ARM300F</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
     <value>Kontrastübertragungsfunktion (CTF)</value>
@@ -317,7 +323,7 @@ Simulator" angezeigt</value>
     <value>Defokus Δf</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>Beschl.-Spannung (kV)</value>
+    <value>Beschl.-Spannung</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Scherzer-
@@ -374,8 +380,18 @@ Simulator" angezeigt</value>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>TEM-Parameter laden</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Lädt Simulationsbedingungen aus einer mit „TEM-Parameter speichern“
+gespeicherten Datei (*.rpis). Einträge, die in der Datei fehlen
+(z. B. aus einer älteren Version), erhalten ihre Standardwerte.</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>TEM-Parameter speichern</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Speichert die aktuellen Simulationsbedingungen (dieselben
+Einträge wie die Voreinstellungen) in einer XML-Datei (*.rpis),
+die auf einem anderen PC geladen oder weitergegeben werden kann.</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>Datei</value>
@@ -539,11 +555,13 @@ Detektors (mrad); Signale oberhalb dieses Winkels werden ausgeschlossen.
 Gilt nur für das STEM-Referenzbild (ADF / elastisch / TDS) - nicht für STEM-EDX-Karten.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>Effektive Elektronenquellengröße (nm). Größere Werte
+    <value>Effektive Elektronenquellengröße: Halbwertsbreite (FWHM) des
+gaußförmigen Quellbilds auf der Probe (pm). Größere Werte
 verwischen die STEM-Sonde und reduzieren feine Bilddetails.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
-    <value>Effektive Elektronenquellengröße (nm). Größere Werte
+    <value>Effektive Elektronenquellengröße: Halbwertsbreite (FWHM) des
+gaußförmigen Quellbilds auf der Probe (pm). Größere Werte
 verwischen die STEM-Sonde und reduzieren feine Bilddetails.</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
@@ -917,7 +935,7 @@ der horizontalen Achse des Bildserien-Gitters variiert.</value>
     <value>EDX-Karten berechnen</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>Berechnet Ionisationskarten (EDX) für die ausgewählten Element-/Schalenkanäle.&#xD;&#xA;Das STEM-Referenzbild (ADF / elastisch / TDS) wird immer berechnet;&#xD;&#xA;jeder EDX-Kanal fügt danach einen weiteren Ionisationsdurchlauf hinzu.</value>
+    <value>Berechnet zusätzlich STEM-EDX-Karten für alle charakteristischen Röntgenkanäle (Element × Schale),&#xD;&#xA;die für diesen Kristall bei dieser Beschleunigungsspannung berechnet werden können (Liste unten).&#xD;&#xA;Das STEM-Referenzbild (ADF / elastisch / TDS) wird immer berechnet;&#xD;&#xA;jeder EDX-Kanal fügt danach einen weiteren Ionisationsdurchlauf hinzu.</value>
   </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX gemeinsam</value>
@@ -930,5 +948,11 @@ der horizontalen Achse des Bildserien-Gitters variiert.</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
     <value>Zeigt die STEM-EDX-Elementkarte anstelle des ADF-artigen Bildes; die charakteristische Röntgenlinie wird unten gewählt. Für einen Schalenkanal (K, L, M) sind die Werte modellierte Ionisationslücken pro einfallendem Elektron. Für eine Linienserie (Kα, Kβ, Lα, Lβ, Mα) sind es erzeugte Röntgenphotonen pro einfallendem Elektron: Fluoreszenzausbeute, Coster-Kronig- und Strahlungskaskaden sowie Linienverzweigung sind berücksichtigt, die Auger-Kaskade nicht. Selbstabsorption, Detektorraumwinkel und Detektoreffizienz sind NICHT berücksichtigt - beides ist also keine vorhergesagte Röntgenzählrate.</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.HeaderText" xml:space="preserve">
+    <value>Konv.-Halbwinkel α</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
+    <value>Effektive Quellgröße (FWHM)</value>
   </data>
 </root>

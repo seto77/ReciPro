@@ -16,20 +16,21 @@ Beim Start von ReciPro erscheint das Hauptfenster. Von diesem Fenster aus wähle
 
 ## Tastatur- & Maus-Kurzbefehle {#keyboard-mouse-shortcuts}
 
-Das Hauptfenster installiert mehrere **anwendungsweite** Kurzbefehle. Sie bleiben aktiv, während die Fenster Strukturansicht, Stereonetz, Beugungssimulator und Spot ID den Fokus haben.
+Das Hauptfenster installiert mehrere **anwendungsweite** Kurzbefehle. Sie bleiben aktiv, während die Fenster Strukturansicht, Stereonetz, Beugungssimulator und Spot ID v1 den Fokus haben.
 
 | Kurzbefehl | Aktion |
 |----------|--------|
 | <kbd>F1</kbd> | Diese Seite des Online-Handbuchs öffnen |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + Pfeiltasten | Den Kristall einen Schritt in diese Richtung drehen (zwei Pfeile gleichzeitig für diagonal) |
-| <kbd>CTRL</kbd> beim Start von ReciPro halten | Mit deaktiviertem OpenGL starten (Wiederherstellung bei Grafikproblemen) |
-| Mit links das Orientierungs-Widget ziehen (unten links, unter *Aktuelle Orientierung*) | Den Kristall drehen |
+| <kbd>CTRL</kbd> beim Start von ReciPro halten | Mit deaktiviertem OpenGL starten (Wiederherstellung bei Grafikproblemen; nur für diesen Start, wird nicht gespeichert) |
+| Mit links das Orientierungs-Widget ziehen (unten links, unter *Orientierung*) | Den Kristall drehen |
 | Rechts-Doppelklick auf das Orientierungs-Widget | Das Widget-Bild in die Zwischenablage kopieren |
-| Einfachklick auf eine Funktionsschaltfläche | Das betreffende Fenster öffnen / schließen |
+| Einfachklick auf eine Funktionsschaltfläche | Das betreffende Fenster öffnen / schließen (ein minimiertes Fenster wird stattdessen wiederhergestellt, nicht geschlossen) |
 | Doppelklick auf eine Funktionsschaltfläche | Das Fenster sichtbar erzwingen und in den Vordergrund holen |
-| Rechtsklick auf einen Kristall in der Liste | Kontextmenü (Umbenennen / Duplizieren / Löschen / CIF exportieren…) |
-| Doppelklick auf die Beschriftung **Current Index** | Das max-UVW-Feld ein-/ausblenden |
-| Eine Datei auf das Fenster ablegen | Eine Kristallliste (`.xml`, `.cdb2`) oder einen Kristall (`.cif`, `.amc`) laden |
+| Rechtsklick auf einen Kristall in der Liste | Kontextmenü (Umbenennen / Als CIF exportieren / Duplizieren / Löschen) |
+| Doppelklick auf die Beschriftung des Zonenachsenindex (`[u v w]`, unter *Orientierung*) | Das max-UVW-Feld ein-/ausblenden |
+| Eine Datei auf das Fenster ablegen | Eine Kristallliste (`.xml`, `.out`; es wird gefragt, ob die Liste ersetzt oder ergänzt werden soll) oder einen Kristall (`.cif`, `.amc`) laden <!-- 261105Cl 監査: .cdb2 はドロップで読めないので外した (FormMain.cs:FormMain_DragDrop) --> |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> | Das (experimentelle) GUI-Erfassungswerkzeug für das aktive Fenster öffnen |
 
 → Siehe **[21. Tastatur- & Maus-Kurzbefehle](21-shortcuts.md)** für jedes Fenster auf einen Blick.
 
@@ -53,12 +54,12 @@ Wenn Sie ReciPro zum ersten Mal verwenden, folgen Sie diesen Schritten:
 
 | Menüpunkt | Beschreibung |
 |-----------|-------------|
-| Kristallliste laden (aktuelle Liste ersetzen) | Eine Kristalllisten-Datei (`*.xml`) laden und die aktuelle Liste ersetzen |
-| Kristallliste laden (zur aktuellen Liste hinzufügen) | Eine Kristalllisten-Datei laden und an die aktuelle Liste anhängen |
+| Kristallliste laden (aktuelle Liste ersetzen) | Eine Kristalllisten-Datei (`*.xml`, `*.out`) laden und die aktuelle Liste ersetzen; in einem Dialog wählen Sie, welche Kristalle geladen werden |
+| Kristallliste laden (zur aktuellen Liste hinzufügen) | Eine Kristalllisten-Datei laden und an die aktuelle Liste anhängen (mit demselben Auswahldialog) |
 | Auf anfängliche Kristallliste zurücksetzen | Die mit ReciPro ausgelieferte Kristallliste neu laden |
 | Kristall aus CIF- oder AMC-Datei importieren | Einen einzelnen Kristall aus einer CIF- / AMC-Datei laden |
-| Kristallliste speichern | Die aktuelle Kristallliste speichern |
-| Ausgewähltes Kristall als CIF-Datei exportieren | Den ausgewählten Kristall im CIF-Format speichern |
+| Kristallliste speichern | Die aktuelle Kristallliste speichern (in einem Dialog wählen Sie, welche Kristalle geschrieben werden) |
+| Ausgewählten Kristall als CIF-Datei exportieren | Den ausgewählten Kristall im CIF-Format speichern |
 | Alle Kristalle leeren | Alle Kristalle aus der Liste entfernen |
 | Beenden | Die Anwendung schließen |
 
@@ -67,17 +68,17 @@ Wenn Sie ReciPro zum ersten Mal verwenden, folgen Sie diesen Schritten:
 
 | Menüpunkt | Beschreibung |
 |-----------|-------------|
-| Tooltips anzeigen | Anzeige der Tooltips umschalten |
+| Tooltips anzeigen | Die Tooltips in allen Fenstern ein- oder ausblenden — die der Steuerelemente, der Symbolleisten- und Menüeinträge, der Tabellenzellen und der Registerkarten; die Einstellung bleibt für den nächsten Start erhalten <!-- 261106Cl 作者の決定 C9 --> <!-- 261106Cl 作者の決定 A20 --> |
 | Dunkler Modus | Zwischen hellem und dunklem Farbdesign umschalten |
 | Miller-Bravais-Index (hkil) verwenden | In der gesamten Anwendung die 4-Index-Notation für trigonale/hexagonale Systeme verwenden |
-| Ionische Streufaktoren verwenden | Den Ionenladungsterm in die für die Berechnungen verwendeten atomaren Streufaktoren einbeziehen |
+| Ionische Streufaktoren verwenden | In den dynamischen Elektronenrechnungen (Bloch-Wellen-Methode), einschließlich der Kikuchi-Profile, ionische Elektronen-Streufaktoren (Peng) für die den Atomen zugeordneten Ionen verwenden; der Monopolterm für $g \neq 0$ wird nur zu den elastischen Koeffizienten $U_g$ addiert (die TDS-Absorption und die Kikuchi-TDS-Quelle verwenden den endlichen ionischen Anteil). Ohne Häkchen werden Streufaktoren neutraler Atome verwendet. Ist die Elementarzelle nicht ladungsneutral ($\Sigma q \neq 0$), entfällt der Monopolterm und nur der endliche Anteil (abgeschirmtes Ion) wird verwendet; beim Einschalten der Option erscheint ein Hinweis |
 | MKL-Bibliothek herunterladen | Die native Intel-MKL-Bibliothek (~55 MB) herunterladen; nach der Installation wird sie automatisch für große Berechnungen verwendet |
-| Accept external macro commands (named pipe) | Auf der Named Pipe `ReciPro.Macro.v1` lauschen und von externen Programmen gesendete Makros ausführen — siehe [Externe Steuerung](20-macro/3-external-control.md) |
+| Externe Makrobefehle annehmen (Named Pipe) | Auf der Named Pipe `ReciPro.Macro.v1` lauschen und von externen Programmen gesendete Makros ausführen — siehe [Externe Steuerung](20-macro/3-external-control.md) |
 | Registrierungseinstellungen beim Beenden zurücksetzen (wirksam nach Neustart) | Einstellungen beim nächsten Neustart zurücksetzen |
 | Crystallography.Native-Bibliothek deaktivieren (Neustart erforderlich) | Auf verwalteten Code zurückfallen, falls die native (C++) Bibliothek nicht geladen werden kann |
 | Gesamtes OpenGL-Rendering deaktivieren (Neustart erforderlich) | Für ältere GPUs / Remotedesktop |
 | OpenGL-Textrendering deaktivieren (Neustart erforderlich) | Behelfslösung für Textdarstellungsprobleme auf manchen GPUs |
-| GUI-Komponenten erfassen... | Entwicklerwerkzeug zum Speichern von GUI-Screenshots |
+| (experimentell) GUI-Komponenten erfassen... | Entwicklerwerkzeug zum Speichern von GUI-Screenshots |
 | Pulverbeugungsfunktion (in Entwicklung) | Das Fenster für polykristalline (Pulver-) Beugung aktivieren |
 
 ### Hilfe
@@ -87,7 +88,7 @@ Wenn Sie ReciPro zum ersten Mal verwenden, folgen Sie diesen Schritten:
 | Auf Updates prüfen | Prüfen, ob eine neue Version von ReciPro verfügbar ist, und sie installieren |
 | Hinweise | Bedienungshinweise anzeigen (veraltet) |
 | Versionsverlauf | Den Versionsverlauf-Dialog öffnen |
-| License | Die MIT-Lizenz anzeigen |
+| Lizenz | Die MIT-Lizenz anzeigen |
 | GitHub-Repository | Das ReciPro-Repository im Browser öffnen |
 | Fehler, Wünsche oder Kommentare melden | Die GitHub-Issues-Seite öffnen |
 | Hilfe (Web) | Das Online-Handbuch auf GitHub Pages in der zur UI-Sprache passenden Seite öffnen |
@@ -100,7 +101,7 @@ Die UI-Sprache umschalten. Elf Sprachen stehen zur Verfügung — English, 日�
 
 ### Makro
 
-Öffnet das [Makro](20-macro/index.md)-Fenster, um ReciPro-Operationen mit Python-ähnlichen Skripten zu automatisieren. Für wiederkehrende Arbeitsabläufe siehe die [integrierten Funktionen](20-macro/1-built-in-functions.md) und die [Makro-Beispiele](20-macro/2-examples.md).
+**Editor** öffnet das [Makro](20-macro/index.md)-Fenster, um ReciPro-Operationen mit Python-ähnlichen Skripten zu automatisieren. Die in diesem Fenster registrierten Makros werden außerdem unterhalb von **Editor** aufgelistet; die Auswahl eines Eintrags führt das Makro direkt aus. Für wiederkehrende Arbeitsabläufe siehe die [integrierten Funktionen](20-macro/1-built-in-functions.md) und die [Makro-Beispiele](20-macro/2-examples.md).
 
 
 ---
@@ -115,11 +116,11 @@ Der Rotationszustand des Kristalls wird vom Beugungssimulator, der Strukturansic
 
 Zeigt die Kristallorientierung. Zum Drehen ziehen. Achsen: rot = *a*, grün = *b*, blau = *c*.
 
-### Rotation zurücksetzen
+### Rotation rücksetzen
 Setzt auf den Anfangszustand zurück: *c*-Achse senkrecht zum Bildschirm, *b*-Achse nach oben.
 
 ### Zonenachse
-Zeigt die zur Bildschirmnormalen nächstgelegene Zonenachse [*uvw*] an; gesucht wird unter den Indizes, deren Beträge die im max-UVW-Feld angezeigte Grenze nicht überschreiten (Doppelklick auf die Beschriftung **Current Index** blendet dieses Feld ein bzw. aus).
+Zeigt die zur Bildschirmnormalen nächstgelegene Zonenachse [*uvw*] an. Kandidaten sind die teilerfremden Indizes (ggT = 1) mit $|u|+|v|+|w| \le$ der Grenze im max-UVW-Feld (1–100, Standard 30); ein Doppelklick auf die Indexbeschriftung blendet dieses Feld ein bzw. aus.
 
 ### Euler-Winkel (Z-X-Z)
 Stellen Sie die Kristallorientierung mit **Z–X–Z**-Euler-Winkeln ein:
@@ -134,7 +135,7 @@ Die Drehungen werden in der Reihenfolge \(\Psi \to \Theta \to \Phi\) angewendet.
 
 ![Pfeile](../assets/cap-de-auto/FormMain.toolStripContainer1.panel1.groupBoxArrows.png)
 
-Dreht um den Winkel Schritt. Aktivieren Sie Animation für kontinuierliche Drehung.
+Dreht um den Winkel Schritt (Standard 10°). ↺ / ↻ drehen um die Bildschirmnormale. Aktivieren Sie Animation für kontinuierliche Drehung; Schritt ist dann eine Rate in °/s.
 
 ### Blick entlang
 
@@ -142,15 +143,15 @@ Dreht um den Winkel Schritt. Aktivieren Sie Animation für kontinuierliche Drehu
 
 Richtet eine Zonenachse [*uvw*] oder eine Kristallebene (*hkl*) senkrecht zum Bildschirm aus.
 
-- **Fest**: Wenn aktiviert, wird die angegebene Zonenachse oder Ebene während nachfolgender Rotationsoperationen räumlich fixiert gehalten.
-- **Achse**: Stellt die eingegebene Zonenachse \([uvw]\) senkrecht zum Bildschirm. Wenn zusätzlich **Ebene** gesetzt ist, wird diese Richtung auf dem Bildschirm nach oben ausgerichtet.
-- **Ebene**: Stellt die Normale der eingegebenen Kristallebene \((hkl)\) senkrecht zum Bildschirm. Wenn zusätzlich **Achse** gesetzt ist, wird diese Richtung auf dem Bildschirm nach oben ausgerichtet.
+- **Fest**: Wenn aktiviert, werden alle nachfolgenden Drehungen (Pfeile, Ziehen mit der Maus) um die angegebene Zonenachse bzw. Ebenennormale ausgeführt, sodass diese Richtung fest bleibt. Nur eines der beiden **Fest**-Kästchen kann aktiv sein, und es lässt sich nicht aktivieren, solange der Index 0 0 0 ist.
+- **Achse**: Stellt die eingegebene Zonenachse \([uvw]\) senkrecht zum Bildschirm. Wenn zusätzlich **Ebene** gesetzt ist und die Achse in dieser Ebene liegt ($uh+vk+wl=0$), wird die Ebenennormale auf dem Bildschirm nach oben ausgerichtet; andernfalls wird eine Aufwärtsrichtung automatisch gewählt.
+- **Ebene**: Stellt die Normale der eingegebenen Kristallebene \((hkl)\) senkrecht zum Bildschirm. Wenn zusätzlich **Achse** gesetzt ist und in der Ebene liegt ($uh+vk+wl=0$), wird diese Achse auf dem Bildschirm nach oben ausgerichtet; andernfalls wird eine Aufwärtsrichtung automatisch gewählt.
 
 ### Grundlegende Möglichkeiten zur Festlegung der Orientierung
 
 | Methode | Anwenden, wenn | Wo |
 |--------|----------|-------|
-| Ziehen mit der Maus | Sie frei drehen möchten, während Sie die Kristallachsen beobachten. | Panel **Aktuelle Orientierung** |
+| Ziehen mit der Maus | Sie frei drehen möchten, während Sie die Kristallachsen beobachten. | Panel **Orientierung** |
 | Pfeilschaltflächen | Sie kleine, wiederholbare Drehungen möchten. | Panel **Pfeile** |
 | Zonenachse | Sie die Blickrichtung kennen, etwa \([001]\) oder \([110]\). | **Blick entlang** / Zonenachsen-Eingabe |
 | Ebenennormale | Sie eine Kristallebene \((hkl)\) senkrecht zum Bildschirm möchten. | **Blick entlang** / Ebenen-Eingabe |
@@ -164,49 +165,51 @@ Siehe [Rotationsgeometrie](4-rotation-geometry.md) und [Anhang A1. Koordinatensy
 
 ![Kristallliste](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalList.png)
 
-~80 Kristalle in der Standardinstallation. Auswählen, um Details anzuzeigen und für Berechnungen festzulegen. **Rechtsklick auf einen Kristall** in der Kristallliste für ein Kontextmenü: *Rename*, *Export as CIF*, *Duplicate*, *Delete*.
+66 Kristalle in der Standardinstallation. Auswählen, um Details anzuzeigen und für Berechnungen festzulegen. **Rechtsklick auf einen Kristall** in der Kristallliste für ein Kontextmenü: *Umbenennen*, *Als CIF exportieren*, *Duplizieren*, *Löschen*.
 
 ![Kristall-Bearbeitungsschaltflächen](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.flowLayoutPanelCrystalEdit.png)
 
 | Schaltfläche | Aktion |
 |--------|--------|
 | Auf / Ab | Reihenfolge ändern |
-| Duplicate | Den ausgewählten Kristall kopieren |
-| Löschen / Alle Kristalle leeren | Kristalle entfernen |
+| Duplizieren | Den ausgewählten Kristall kopieren |
+| Löschen / Alle Kristalle leeren | Den ausgewählten Kristall / alle Kristalle entfernen |
 | ↑ Hinzufügen ↑ / ↑ Ersetzen ↑ | Zur Liste hinzufügen oder den ausgewählten Eintrag ersetzen |
 
 ---
 
 ## Kristallinformation
 
-Bearbeiten Sie Gitterparameter, Symmetrie und Atome; ziehen Sie CIF/AMC-Dateien per Drag & Drop hinein, um eine Struktur zu laden. Dieses Steuerelement wird von ReciPro, PDIndexer und CSManager gemeinsam genutzt, aber die angezeigten Registerkarten und Funktionen unterscheiden sich je nach Anwendung. ReciPro zeigt die Registerkarten Basisinfo, Atominfo und Lit. (die Registerkarten EOS, Elasticity und andere sind für die anderen Anwendungen und werden in ReciPro nicht angezeigt).
+Bearbeiten Sie Gitterparameter, Symmetrie und Atome; ziehen Sie CIF/AMC-Dateien per Drag & Drop hinein, um eine Struktur zu laden. Dieses Steuerelement wird von ReciPro, PDIndexer und CSManager gemeinsam genutzt, aber die angezeigten Registerkarten und Funktionen unterscheiden sich je nach Anwendung. ReciPro zeigt die Registerkarten **Basisinfo**, **Atominfo** und **Lit.** (die Registerkarten EOS, Elasticity und andere sind für die anderen Anwendungen und werden in ReciPro nicht angezeigt).
 
 > **Wichtig**: Drücken Sie **↑ Hinzufügen ↑** oder **↑ Ersetzen ↑**, um Änderungen zu speichern.
 
 ![Crystal Control](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-Der obere Bereich des Panels zeigt stets **Name** (Kristallname), **Summenformel** (chemische Formel, aus der Atomliste berechnet) und **Z** (Anzahl der Formeleinheiten pro Elementarzelle). Die Schaltflächen **Symmetrieinfo** und **Strahlwechselwirkung** öffnen die Fenster [Symmetrieinformationen](2-symmetry-information.md) und [Strahl-Wechselwirkung](3-beam-interaction.md). Gew.-%, Atom-% und die Umrechnung in Oxide zeigt der Kontextmenüpunkt [Details der chemischen Zusammensetzung](#chemical-composition).
+Der obere Bereich des Panels zeigt stets **Name** (Kristallname), **Summenformel** (chemische Formel, aus der Atomliste berechnet), **Z** (Anzahl der Formeleinheiten pro Elementarzelle) und **Farbe** (die Anzeigefarbe des Kristalls, verwendet in der 3D-Strukturansicht und für die Kurven von Beugungsprofilen). Die Schaltflächen **Symmetrieinfo** und **Strahlwechselwirkung** öffnen die Fenster [Symmetrieinformationen](2-symmetry-information.md) und [Strahl-Wechselwirkung](3-beam-interaction.md). Gew.-%, Atom-% und die Umrechnung in Oxide zeigt der Kontextmenüpunkt [Details der chemischen Zusammensetzung](#chemical-composition).
 
-### Registerkarte Basisinfo
+### Registerkarte Basisinfo {#basic-info-tab}
 
-![Basic Info](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
+![Basisinfo](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
 
 Gitterparameter, Symmetrie und daraus abgeleitete Größen.
 
 | Element | Beschreibung |
 |------|------|
-| Gitterkonstanten | Gitterparameter a, b, c (**Einheit**: Å = 10⁻¹⁰ m oder nm) und α, β, γ. Die Wahl einer Symmetrie schränkt sie automatisch ein (z. B. a=b=c, α=β=γ=90° für kubisch). |
+| Gitterkonstanten | Gitterparameter a, b, c (**Einheit**: Å = 10⁻¹⁰ m oder nm; die Einheit bleibt für den nächsten Start erhalten) und α, β, γ. Die Wahl einer Symmetrie schränkt sie automatisch ein (z. B. a=b=c, α=β=γ=90° für kubisch). |
 | Symmetrie | Wählen Sie **Kristallsystem**, **Punktgruppe** und **Raumgruppe**. Geben Sie in das Feld **Suchen** ein, um passende Kandidaten aufzulisten (Groß-/Kleinschreibung beachten). |
-| Zellvolumen / Zellmasse | Volumen und Masse der Elementarzelle. Das Volumen wird entsprechend der **Einheit**-Auswahl in Å³ / nm³ angezeigt. |
-| Molvolumen / Molmasse / Dichte | Molvolumen, molare Masse und Dichte. Wird **nur angezeigt, wenn Atome eingegeben wurden**. |
-| Mittleres Z (Anzahl) / Mittleres Z (Masse) / Mittleres A | Anzahl- bzw. massengewichtete mittlere Ordnungszahl und mittleres Atomgewicht pro Atom. |
+| Zellvolumen / Zellmasse | Volumen und Masse der Elementarzelle. Das Volumen wird entsprechend der **Einheit**-Auswahl in Å³ / nm³ angezeigt; die Masse in 10⁻²⁴ g. |
+| Molvolumen / Molmasse / Dichte | Molvolumen (cm³/mol, pro Formeleinheit), molare Masse (g/mol) und Dichte (g/cm³). Wird **nur angezeigt, wenn Atome eingegeben wurden**. |
+| Mittleres Z (Anzahl) / Mittleres Z (Masse) / Mittleres A | Anzahl- bzw. massengewichtete mittlere Ordnungszahl und mittleres Atomgewicht pro Atom (g/mol). Besetzungen werden berücksichtigt. |
+| Fehler anzeigen | Die Fehlerfelder (±) der Gitterkonstanten anzeigen. |
+| Change axes/origin setting | Wie der Kontextmenüpunkt **Achsen-/Ursprungseinstellung ändern**: in eine andere Achsen-/Ursprungsaufstellung derselben Raumgruppe umwandeln. |
 | Atomdichte / Elektronendichte | Anzahl der Atome bzw. Elektronen pro Zellvolumen, angezeigt in Å⁻³ / nm⁻³ entsprechend der **Einheit**-Auswahl. |
 
-### Registerkarte Atominfo
+### Registerkarte Atominfo {#atom-tab}
 
-![Atom](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
+![Atominfo](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
-Legen Sie Spezies, Position, Temperaturfaktor und Streufaktor jedes Atoms fest. Bearbeiten Sie die Atomliste mit **Hinzufügen**, **Ersetzen** (die ausgewählte Zeile ersetzen), **Hoch/Runter** (Reihenfolge ändern) und **Löschen**. Jedes Atom hat:
+Legen Sie Spezies, Position, Temperaturfaktor und Streufaktor jedes Atoms fest. Bearbeiten Sie die Atomliste mit **Hinzufügen**, **Ersetzen** (die ausgewählte Zeile ersetzen), **Hoch/Runter** (Reihenfolge ändern) und **Löschen**. Die Atomliste zeigt außerdem für jede Lage die Multiplizität (**Mult.**), den Wyckoff-Buchstaben (**Wyck.-Buchst.**) und die Lagesymmetrie (**Lagesym.**). Jedes Atom hat:
 
 | Element | Beschreibung |
 |------|------|
@@ -217,9 +220,9 @@ Legen Sie Spezies, Position, Temperaturfaktor und Streufaktor jedes Atoms fest. 
 
 Klicken Sie mit der rechten Maustaste auf eine Atomzeile und wählen Sie **Äquivalente Atompositionen anzeigen**, um ein kleines Fenster zu öffnen, das alle durch die Symmetrieoperationen der Raumgruppe erzeugten Positionen auflistet; die Schaltfläche **Copy** kopiert die Liste als tabulatorgetrennten Text (z. B. zum Einfügen in eine Tabellenkalkulation).
 
-**Ursprungsverschiebung**: verschiebt den Ursprung aller Atomkoordinaten. Verwenden Sie die voreingestellten Schaltflächen (**+** / **−**) für Standardverschiebungen oder **Apply custom shift** für einen beliebigen Betrag.
+**Ursprungsverschiebung**: verschiebt den Ursprung aller Atomkoordinaten. Wählen Sie das Vorzeichen mit **+** / **−** und drücken Sie dann einen der voreingestellten Vektoren — (⅛ ⅛ ⅛), (¼ ¼ ¼), (0 ¼ ⅛), (¼ 0 ¼), (0 ¼ ¼), (¼ ¼ 0), (¼ −¼ 0), (¼ −¼ ¼), (0 ¼ −⅛) — oder verwenden Sie **Apply custom shift** für einen beliebigen Betrag.
 
-**Debye–Waller-Faktor (Temperaturfaktor)**:
+**Auslenkung (B)** (Debye–Waller- / Temperaturfaktor):
 
 | Element | Beschreibung |
 |------|------|
@@ -227,7 +230,7 @@ Klicken Sie mit der rechten Maustaste auf eine Atomzeile und wählen Sie **Äqui
 | Modell | Isotrop oder anisotrop. |
 | U##, β## | Für den anisotropen Fall jede Komponente eingeben: $U_{ij}$ in Å² oder in der B-Notation die dimensionslosen $\beta_{ij} = 2\pi^2 a^*_i a^*_j U_{ij}$ (wie B(i,j) in AMCSD-Dateien). |
 
-**Scattering factor**: Wählen Sie den für jedes Atom verwendeten Streufaktor.
+**Streufaktor**: Wählen Sie den für jedes Atom verwendeten Streufaktor.
 
 | Strahlung | Quelle / Einstellung |
 |-----------|------|
@@ -235,9 +238,9 @@ Klicken Sie mit der rechten Maustaste auf eine Atomzeile und wählen Sie **Äqui
 | Electron | Elektronen-Streufaktoren — neutrale Atome nach Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276; Ionen nach Peng (1998), *Acta Cryst.* **A54**, 481–485. |
 | Neutron | Neutronen-Streulängen. Wählen Sie **Natural isotope abundance** oder **Custom isotope abundance** (eine beliebige Isotopenzusammensetzung). |
 
-### Registerkarte Lit.
+### Registerkarte Lit. {#reference-tab}
 
-![Reference](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
+![Lit.](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
 
 Erfassen Sie die Quelle der Struktur: **Note**, **Autoren**, **Zeitschrift** und **Titel**.
 
@@ -277,19 +280,19 @@ Die senkrechte Schaltflächenleiste rechts startet die unten aufgeführten Analy
 
 | Schaltfläche | Beschreibung | Details |
 |--------|-------------|---------|
-| Crystal Database | Kristalle aus den mitgelieferten / Online-Datenbanken suchen und importieren | [1. Kristalldatenbank](1-crystal-database.md) |
-| Symmetry Information | Raumgruppeninformationen und Symmetriediagramme aus *International Tables* Vol. A | [2. Symmetrieinformationen](2-symmetry-information.md) |
-| Beam Interaction | Strahl-Kristall-Wechselwirkung: Reflexe, Abschwächung, Streufaktoren, Fluoreszenz | [3. Strahl-Wechselwirkung](3-beam-interaction.md) |
-| Rotation Geometry | 3D-Rotationsmatrix / Goniometerwinkel | [4. Rotationsgeometrie](4-rotation-geometry.md) |
-| Structure Viewer | 3D-Kristallstruktur | [5. Strukturansicht](5-structure-viewer.md) |
-| Stereonet | Stereografische Projektion | [6. Stereonetz](6-stereonet.md) |
-| Diffraction Simulator | Einkristall-Röntgen-/Elektronenbeugung | [7. Beugungssimulator](7-diffraction-simulator/index.md) |
-| Trajectory Simulator | Monte-Carlo-Simulation von Elektronenbahnen | [8. Elektronenbahnen](8-electron-trajectory.md) |
-| HRTEM/STEM Simulator | HRTEM-/STEM-Bildsimulation | [9. HRTEM/STEM-Simulator](9-hrtem-stem-simulator/index.md) |
+| Kristall-Datenbank | Kristalle aus den mitgelieferten / Online-Datenbanken suchen und importieren | [1. Kristalldatenbank](1-crystal-database.md) |
+| Symmetrie-Information | Raumgruppeninformationen und Symmetriediagramme aus *International Tables* Vol. A | [2. Symmetrieinformationen](2-symmetry-information.md) |
+| Strahl-Wechselwirkung | Strahl-Kristall-Wechselwirkung: Reflexe, Abschwächung, Streufaktoren, Fluoreszenz | [3. Strahl-Wechselwirkung](3-beam-interaction.md) |
+| Rotations-Geometrie | 3D-Rotationsmatrix / Goniometerwinkel | [4. Rotationsgeometrie](4-rotation-geometry.md) |
+| Struktur-Ansicht | 3D-Kristallstruktur | [5. Strukturansicht](5-structure-viewer.md) |
+| Stereonetz | Stereografische Projektion | [6. Stereonetz](6-stereonet.md) |
+| Beugungs-Simulator | Einkristall-Röntgen-/Elektronenbeugung | [7. Beugungssimulator](7-diffraction-simulator/index.md) |
+| Bahn-Simulator | Monte-Carlo-Simulation von Elektronenbahnen | [8. Elektronenbahnen](8-electron-trajectory.md) |
+| HRTEM/STEM-Simulator | HRTEM-/STEM-Bildsimulation | [9. HRTEM/STEM-Simulator](9-hrtem-stem-simulator/index.md) |
 | Spot ID v1 | SAED-Musterindizierung (früher „TEM ID") | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | Reflexerkennung & Indizierung | [11. Spot ID v2](11-spot-id-v2.md) |
-| EBSD Simulator | EBSD-Mustersimulation | [12. EBSD-Simulation](12-ebsd-simulation.md) |
-| Powder Diffraction | Polykristalline (Pulver-) Beugung — über **Optionen ▸ Pulverbeugungsfunktion (in Entwicklung)** aktivieren | - |
+| EBSD-Simulator | EBSD-Mustersimulation | [12. EBSD-Simulation](12-ebsd-simulation.md) |
+| Pulver-Beugung | Polykristalline (Pulver-) Beugung — über **Optionen ▸ Pulverbeugungsfunktion (in Entwicklung)** aktivieren | - |
 
 ---
 

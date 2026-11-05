@@ -40,7 +40,7 @@
 
 ![样品参数](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
 
-- **Thickness** ：样品厚度（nm）。在 **Serial image** 模式下此值被忽略。
+- **厚度** ：样品厚度（nm）。在 **序列图像** 模式下此值被忽略。
 
 ---
 
@@ -50,13 +50,13 @@
 
 | 参数 | 说明 | 默认值 / 典型值 |
 |-----------|-------------|-------------------|
-| **加速电压 (kV)** | 加速电压。旁边显示经相对论修正的电子波长 | 200 kV |
+| **加速电压** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | 加速电压 (kV)。旁边显示经相对论修正的电子波长 | 200 kV |
 | **Defocus Δf** | 物镜（探针形成透镜）的欠焦量（nm） | −57.8 nm |
 | **Cs** | 球差系数（mm）。影响探针尺寸 | 0.5–1.0 mm |
 | **Cc** | 色差系数（mm） | 1.0–2.0 mm |
-| **ΔV (FWHM)** | 电子能量分散的半高全宽（eV） | 0.5–2.0 eV |
+| **ΔV** | 电子能量分散的半高全宽（eV） | 0.5–2.0 eV |
 
-> **β（照明半角）在 STEM 模式下被禁用**，因为其作用由会聚半角 α 承担。
+> **β（照明半角）在 STEM 模式下被禁用**，因为其作用由会聚半角 α 承担。欠焦和 Cs 通过与 HRTEM 相同的像差函数 $\chi$ 进入探针（负的 Δf = 欠焦；见 [HRTEM 模拟](1-hrtem-simulation.md#tem-conditions)）。**TEM 条件** 的右键菜单（像差归零、谢尔策欠焦、显微镜预设）在这里同样可用。
 
 ---
 
@@ -68,10 +68,12 @@
 
 | 参数 | 说明 | 默认值 / 典型值 |
 |-----------|-------------|-------------------|
-| **α (convergence angle)** | 会聚探针的半角（mrad）。较大的值得到更细的探针并改变衍射衬度 | 15–25 mrad |
-| **(Annular) detector inner angle** | 环形探测器的内侧收集半角（mrad）。此角度以内的信号被排除 | BF: 0, HAADF: 80 |
-| **(Annular) detector outer angle** | 环形探测器的外侧收集半角（mrad）。此角度以外的信号被排除 | BF: 5, HAADF: 250 |
-| **Effective source size σs (FWHM)** | 有效电子源尺寸。较大的值会使探针模糊并降低细节衬度 | — |
+| **会聚半角 α** | 会聚探针的半角（mrad）。较大的值得到更细的探针并改变衍射衬度 | 25 mrad（默认）；15–25 mrad |
+| **环形探测器 — 内** | 环形探测器的内侧收集半角（mrad）。此角度以内的信号被排除 | 0（默认）；BF: 0, HAADF: 80 |
+| **环形探测器 — 外** | 环形探测器的外侧收集半角（mrad）。此角度以外的信号被排除 | 20（默认）；BF: 5, HAADF: 250 |
+| **有效电子源尺寸 (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | 有效电子源尺寸（pm）。在计算之后以高斯卷积的形式作用于每一幅 Elastic / TDS / EDX 图像。较大的值会使图像模糊并降低细节衬度 | 20 pm（默认） |
+
+探测器角度只作用于 STEM 参考图像（Elastic / TDS / Elastic & TDS）；STEM-EDX 分布图不使用它们。上述默认值仅在首次启动时适用；之后会恢复上次使用的值。
 
 ---
 
@@ -79,17 +81,18 @@
 
 ![STEM 选项（模拟）](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
-- **Slice thickness for inelastic** ：计算 TDS（热漫、非弹性）强度时所用的样品切片厚度（nm）。较小的值更精确但更慢。
-- **Angular resolution** ：入射探针方向的角度采样分辨率（mrad）。较小的值对探针采样更精细但更慢。 方向数按该比值的平方增长，因而是左右计算时间的最主要因素；收敛实测值参见[探针的角度采样](../appendix/a3-bloch-wave/stem.md#angular-sampling)。
+- **切片厚度 (TDS)** ：计算 TDS（热漫、非弹性）强度时所用的样品切片厚度（nm，默认 1，范围 0.1–10）。较小的值更精确但更慢。
+- **角分辨率** ：入射探针方向的角度采样分辨率（mrad，默认 0.4）。较小的值对探针采样更精细但更慢。探针方向构成 $N\times N$ 网格，$N=\lceil 2\times1.05\,\alpha/\Delta\alpha\rceil$，其中只计算位于比会聚角大约 5 %（插值余量）的圆盘内的方向；因此方向数按 $\alpha/\Delta\alpha$ 的平方增长，是左右计算时间的最主要因素。输入框下方的一行显示网格（例如 `网格: 132²`）；收敛实测值参见[探针的角度采样](../appendix/a3-bloch-wave/stem.md#angular-sampling)。
 
 ---
 
-## 图像模式（single / serial）
+## 单幅/序列模式
 
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text) と HRTEM のページに合わせた -->
 ![单幅/序列模式](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
-- **Single image** ：在当前厚度下计算一张 STEM 图像。
-- **Serial image** ：生成一系列图像，厚度 / 欠焦量按阶梯变化（由 **Start / Step / Num** 设置；下方的列表也可直接编辑）。
+- **单幅图像** ：在当前厚度下计算一张 STEM 图像。
+- **序列图像** ：生成一系列图像，厚度 / 欠焦量按阶梯变化（由 **起始 / 步长 / 数量** 设置；下方的列表也可直接编辑）。
 
 ---
 
@@ -97,8 +100,8 @@
 
 ![图像属性](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-- **Size (W×H)** ：扫描图像的像素数（默认 512×512）。在 STEM 中这等于扫描点的数量，并使计算时间线性增长。
-- **Resolution** ：采样分辨率（pm/px）。
+- **尺寸 (宽×高)** ：扫描图像的像素数（默认 512×512）。本征解和 $I(Q)$ 的计算（状态栏中的第 1–4 阶段）与它无关；它只参与由 $I(Q)$ 系数合成实空间图像的最后一步，其开销正比于 像素数 × $Q$ 矢量数。
+- **分辨率** ：采样分辨率（pm/px）。
 
 ---
 
@@ -106,7 +109,16 @@
 
 ![衍射波](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** ：Bethe 方法中使用的布洛赫波最大数量（默认 80）。本征值问题的计算量按波数的立方增长。
+- Bethe 方法中使用的布洛赫波最大数量（默认 80）。本征值问题的计算量按波数的立方增长。
+
+---
+
+## 衬度传递函数 (STEM) {#ctf-stem}
+
+**TEM 条件** 中的 **衬度传递函数 (CTF)** 复选框会打开与 HRTEM 模式相同的 CTF 窗口。在 STEM 模式下有两个选项：
+
+- **相干成像** ：与 HRTEM 一样绘制 $\sin\chi$、$\cos\chi$、$E_\text{s}$、$E_\text{c}$、PCTF 和 ACTF，但 $E_\text{s}(u)=\exp(-2\pi^2\sigma_s^2u^2)$ 取自有效光源尺寸（$\sigma_s$ = FWHM / $2\sqrt{2\ln2}$），PCTF / ACTF 在会聚角处截断。
+- **非相干成像** ：绘制非相干传递函数，它由透镜函数在两个探针形成光阑重叠区域上的积分（光阑以 192 × 192 采样）乘以 $\exp(-2\pi^2\sigma_s^2u^2)$ 得到。
 
 ---
 
@@ -136,7 +148,7 @@
 
 这里没有元素选择器。勾选该复选框后，**当前晶体在当前加速电压下所有可计算的元素/壳层通道**都会被计算，复选框下方的一行会将它们列出（例如 `3 张图: O-K, Mg-K, Al-K`）。当加速电压在 30–400 kV（内置数据表的范围）内、电离边低于加速电压、且该壳层在内置数据的覆盖范围内（K：C–Sn (Z = 6–50)；L1–L3：Ca–Rn (Z = 20–86)；M1–M3：Zn–Rn (Z = 30–86)；M4–M5：As–Rn (Z = 33–86)）时，通道即为可用；L 与 M 通道是所收录各支壳层之和。内置数据表为每个通道存储了散射矢量直至 16 Å⁻¹（加速电压较低时则更短）的全相对论电离形状因子。不进行外推：在计算所需的散射矢量超出某一行收录范围之处，形状因子取为 0，并在 EDX 组合框中为该通道标上 ⚠。若没有任何可用通道，程序会拒绝计算并给出说明信息，而不是生成一张空白分布图。
 
-再下一行报告探针方向网格，例如 `网格: 132²（建议: ≥48²）`。该网格由**角分辨率**和会聚半角决定；参见[探针的角度采样](../appendix/a3-bloch-wave/stem.md#angular-sampling)。当划分低于建议值时，±q 厄米残差可能超出容差并中止计算，因此该数值会变为橙色，并在计算开始前弹出确认对话框。
+探针方向网格显示在 *STEM 选项（模拟）* 的 **角分辨率** 下方；勾选 **计算 EDX 分布图** 时会附加建议的划分数，例如 `网格: 132²（建议: ≥48²）`。该网格由**角分辨率**和会聚半角决定；参见[探针的角度采样](../appendix/a3-bloch-wave/stem.md#angular-sampling)。当划分低于建议值时，±q 厄米残差可能超出容差并中止计算，因此该数值会变为橙色，并在计算开始前弹出确认对话框。
 
 !!! warning "这些数值的含义"
     壳层通道（K、L、M）的分布图给出的是**每个入射电子产生的内壳层空位数**，未计入荧光产额。勾选 **谱线系 (Kα, Lα…)** 时计算的谱线系（Kα、Kβ、Lα、Lβ、Mα）分布图给出的是**每个入射电子产生的 X 射线光子数**（全方向，探测之前）：已计入荧光产额、Coster–Kronig 与辐射级联以及谱线分支比（xraylib 4.2.1），未计入俄歇级联。两者都是模型量，而不是预测的 X 射线计数：样品内的自吸收、探测器立体角和探测器效率均**未**计入。请将这些分布图用于考察空间分布、比较厚度或取向，而不要用于绝对定量。
@@ -172,7 +184,7 @@ STEM 模拟的计算开销很大，因此应适当设置以下参数。
 | **会聚半角** | 越大 → CBED 盘重叠越多 → 开销越高 |
 | **布洛赫波** | 本征值问题的开销按 N³ 增长 |
 | **角度分辨率** | 越精细 → 越精确，但开销按 N² 增长 |
-| **图像像素（Size）** | 与扫描点数量呈线性关系 |
+| **图像像素（Size）** | 只影响最后的实空间合成（像素数 × $Q$ 矢量数）；第 1–4 阶段与它无关 |
 
 ---
 

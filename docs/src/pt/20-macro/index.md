@@ -8,7 +8,7 @@ O ReciPro inclui um sistema de macros baseado em **IronPython** para automatizar
 
 ![Editor de macros](../../assets/cap-pt-auto/FormMacro.png)
 
-Na captura de tela acima, **Show samples** está ativado, exibindo as macros de exemplo integradas. A lista de macros fica à esquerda, o editor de código à direita e uma tabela de ajuda das funções integradas na parte inferior.
+Na captura de tela acima, **Mostrar exemplos** está ativado, exibindo as macros de exemplo integradas. A lista de macros fica à esquerda, o editor de código à direita e uma tabela de ajuda das funções integradas na parte inferior.
 
 ---
 
@@ -20,7 +20,7 @@ Na captura de tela acima, **Show samples** está ativado, exibindo as macros de 
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Salvar o texto do editor de volta na entrada selecionada da lista de macros |
 | <kbd>F10</kbd> | Avançar um passo (durante a execução passo a passo) |
 | Clique duplo em uma linha da lista de ajuda de funções | Inserir a assinatura dessa função na posição do cursor |
-| Arrastar um arquivo `.mcr` para a janela | Carregá-lo no editor |
+| Arrastar um arquivo `.mcr` para a janela | Carregá-lo no editor e adicioná-lo à lista de macros (o nome do arquivo se torna o nome da macro) |
 
 **Run**, **Step** e **Stop** são botões (sem atalho de teclado).
 
@@ -34,7 +34,7 @@ As macros são escritas com sintaxe Python. Usando as classes e funções integr
 
 - **Linguagem**: Python 3 (IronPython 3.4)
 - **Armazenamento**: Binário compactado no Registro do Windows (persiste entre sessões)
-- **Acesso**: Clique no botão Macro na janela principal para abrir o editor de macros
+- **Acesso**: **Macro > Editor** no menu da janela principal abre o editor de macros. Cada macro da lista também é adicionada como item do menu **Macro**; escolhê-la executa essa macro diretamente
 
 ---
 
@@ -46,6 +46,7 @@ O editor de macros é composto pelas seguintes áreas:
 |------|---------|
 | **Lista de macros** (esquerda) | Macros armazenadas. `Add` acrescenta uma nova macro, `Replace` sobrescreve a selecionada, `Delete` a remove. Up/Down reordenam. |
 | **Campo de nome** (topo) | Identificador da macro em edição. |
+| **Menu File** | **Load file** lê um arquivo `.mcr` (UTF-8) e o adiciona à lista; **Save file** grava o texto do editor num arquivo `.mcr`. |
 | **Área de código** (direita) | Editor de código Python com calha de números de linha, recuo automático e popup de ajuda de sintaxe. |
 | **Tabela de funções integradas** (parte inferior) | Lista das funções/propriedades integradas fornecidas pelo ReciPro, cada uma com uma descrição de Ajuda. Uma referência durante a escrita do código. |
 | **Barra de status** (na base) | Mostra a posição atual do cursor como `Line N, Col M`. |
@@ -55,7 +56,7 @@ A barra de título mostra **`Macro*`** (com asterisco) enquanto houver edições
 
 ### Macros de exemplo
 
-Ativar **Show samples** (canto superior esquerdo) substitui temporariamente sua lista de macros pelas macros de exemplo integradas (laços e condicionais básicos, funções matemáticas, rotação/alinhamento, varredura da lista de cristais, simulação de difração/imagem, séries de inclinação/energia, informações de reflexão e muito mais). Os exemplos são somente leitura e são exibidos no idioma atual da interface; use-os para aprender ou como ponto de partida para copiar. Ao desativar, suas próprias macros são restauradas.
+Ativar **Mostrar exemplos** (canto superior esquerdo) substitui temporariamente sua lista de macros pelas macros de exemplo integradas (laços e condicionais básicos, funções matemáticas, rotação/alinhamento, varredura da lista de cristais, simulação de difração/imagem, séries de inclinação/energia, informações de reflexão e muito mais). Os exemplos são somente leitura e são exibidos no idioma atual da interface; use-os para aprender ou como ponto de partida para copiar. Ao desativar, suas próprias macros são restauradas.
 
 ---
 

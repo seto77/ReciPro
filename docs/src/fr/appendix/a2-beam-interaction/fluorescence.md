@@ -44,7 +44,7 @@ et un $\omega$ petit signifie que la plupart des lacunes se désexcitent par ém
 
 $$p_{\ell\mid X} = \frac{\Gamma_\ell}{\sum_{\ell'\in X}\Gamma_{\ell'}},$$
 
-le taux radiatif relatif au sein de la couche $X$. ReciPro indique $\omega_K$ pour chaque élément ainsi que la raie la plus intense du spectre.
+le taux radiatif relatif au sein de la couche $X$. ReciPro indique $\omega_K$ pour chaque élément ainsi que la raie la plus intense du spectre. Il s'agit d'une liste de référence qui ne tient pas compte de l'intensité avec laquelle chaque couche est excitée (pas de section efficace d'ionisation) ; cette raie n'est donc pas forcément la plus forte d'un spectre mesuré. <!-- 261106Cl 作者の決定 J6 -->
 
 ---
 

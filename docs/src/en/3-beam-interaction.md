@@ -4,7 +4,7 @@
 
 ![Beam Interaction](../assets/cap-en-auto/FormBeamInteraction.png)
 
-The incident beam is selected in the band at the top of the window; the four tabs below — **Reflections**, **Attenuations & Transport**, **Scattering factors**, and **Fluorescence** — show the different aspects of the interaction. Each tab section below shows the tab under **X-ray / Electron / Neutron** beams (use the tabs in each figure); the content changes markedly with the beam.
+The incident beam is selected in the band at the top of the window; the four tabs below — **Reflections**, **Attenuations & transport**, **Scattering factors**, and **Fluorescence** — show the different aspects of the interaction. Each tab section below shows the tab under **X-ray / Electron / Neutron** beams (use the tabs in each figure); the content changes markedly with the beam.
 
 !!! tip "Solid-state background (Appendix A2)"
     The scattering and solid-state physics behind these four tabs — atomic scattering factors, the structure factor, beam attenuation and transport, and fluorescence — are explained in **[Appendix A2. Beam interaction (solid-state background)](appendix/a2-beam-interaction/index.md)**.
@@ -32,16 +32,17 @@ The top band is a **Wave Length Control** shared with the other simulators.
 - For **X-ray**, choosing the **Element** (anode material) and characteristic line (Kα, etc.) sets the wavelength of that characteristic X-ray automatically.
 - **Energy (keV)** and **Wavelength (Å)** are linked; setting either updates the other, and both drive the 2θ used in the **Reflections** table.
 - **Unit (Å / nm)** switches the length unit used for d-spacing and similar quantities.
+- Switching the source restores the energy last used with that source (for X-rays also the element and line). A source not used yet starts from Cu Kα for X-rays, 200 kV for electrons and 25.3 meV (thermal neutrons). These values are not kept after ReciPro is closed. <!-- 261106Cl 作者の決定 J18 -->
 
 The chosen beam also decides which tabs and curves are meaningful:
 
-| Beam | Reflections | Attenuations & Transport | Scattering factors | Fluorescence |
+| Beam | Reflections | Attenuations & transport | Scattering factors | Fluorescence |
 |------|------|------|------|------|
 | **X-ray** | structure factors incl. anomalous dispersion | µ/ρ, µ, transmission + absorption edges (vs energy) | $f(s)$ (Waasmaier–Kirfel or Temari) or $F(q)+S(q)$ | characteristic lines + EDX sticks |
 | **Electron** | electron structure factors | σ, MFP, \|dE/ds\|, IMFP, range (vs energy) | Peng / Kirkland / 8-Gaussians / Temari | — (hidden) |
 | **Neutron** | nuclear structure factors | scattering lengths & cross sections (no energy curve) | scattering lengths (no *s* dependence) | — (hidden) |
 
-The **Fluorescence** tab is X-ray-only and disappears for electron and neutron beams. For neutrons the energy-dependent graphs in **Attenuations & Transport** and **Scattering factors** are replaced by element tables, because the nuclear scattering length does not depend on scattering angle or energy.
+The **Fluorescence** tab is X-ray-only and disappears for electron and neutron beams. For neutrons the energy-dependent graphs in **Attenuations & transport** and **Scattering factors** are replaced by element tables, because the nuclear scattering length does not depend on scattering angle or energy.
 
 ---
 
@@ -61,10 +62,10 @@ Lists the allowed crystal planes (reflections) of the crystal and the **structur
 **Options**
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormBeamInteraction.cs:SetSortedPlanes, checkBoxBragBrentano_CheckedChanged) -->
-- **Powder Diffraction Intensities (Bragg-Brentano Optics)** : computes the relative intensity as a powder-diffraction (Bragg–Brentano) intensity, $I \propto m\,\lvert F\rvert^2 / V^2 \times L$, where $m$ is the multiplicity, $V$ the cell volume, and $L = (1+\cos^2 2\theta)/(\sin 2\theta\,\sin\theta)$ (Lorentz–polarization factor) for X-rays or $L = 1/(\sin 2\theta\,\sin\theta)$ (Lorentz factor only, no polarization term) for electrons and neutrons. When off, it displays the structure-factor intensity $\lvert F\rvert^2$. Turning it on also forces *Hide equivalent planes* and *Hide prohibited planes* on and greys them out.
+- **Powder diffraction intensities (Bragg-Brentano optics)** : computes the relative intensity as a powder-diffraction (Bragg–Brentano) intensity, $I \propto m\,\lvert F\rvert^2 / V^2 \times L$, where $m$ is the multiplicity, $V$ the cell volume, and $L = (1+\cos^2 2\theta)/(\sin 2\theta\,\sin\theta)$ (Lorentz–polarization factor) for X-rays or $L = 1/(\sin 2\theta\,\sin\theta)$ (Lorentz factor only, no polarization term) for electrons and neutrons. Reflections the beam cannot reach (d < λ/2, 2θ shown as ∞) get an intensity of 0. <!-- 261105Cl 監査: J25 届かない反射の BB 強度は 0 --> When off, it displays the structure-factor intensity $\lvert F\rvert^2$. Turning it on also forces *Hide equivalent planes* and *Hide prohibited planes* on and greys them out.
 - **Hide equivalent planes** (on by default) : collapses crystallographically equivalent planes into a single entry. The **Multi.** column is shown only while this is on. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormBeamInteraction.Designer.cs (Checked/Value), FormBeamInteraction.cs:SetSortedPlanes) -->
 - **Hide prohibited planes** (on by default) : excludes planes that are systematically absent by the extinction rules. While it is off, a **Condition** column shows the reflection condition(s) that forbid each absent plane.
-- **d-Spacing Cutoff >** (default 1 Å) : excludes reflections with a d-spacing smaller than this value (length unit follows the **Unit** selection).
+- **d-spacing cutoff >** (default 1 Å) : excludes reflections with a d-spacing smaller than this value (length unit follows the **Unit** selection). The smallest value it accepts is (a + b + c)/20 of the current cell, in the same unit. <!-- 261105Cl 監査: J8 numericBoxCutoffD.Minimum を表示単位に合わせた -->
 
 Each row is one reflection (or a group of symmetry-equivalent planes):
 
@@ -81,7 +82,7 @@ Each row is one reflection (or a group of symmetry-equivalent planes):
 | **F^2** | structure-factor intensity ($\lvert F\rvert^2$) |
 | **Rel. Int. (%)** | relative intensity, with the strongest reflection set to 100 |
 | **Condition** | extinction condition(s) violated by the plane (shown only when *Hide prohibited planes* is off) |
-| **i** | the redundant Miller–Bravais index $i=-(h+k)$ (shown only when the main window's **Options ▸ Use Miller-Bravais (hkil) index** is on and the crystal uses hexagonal axes — hexagonal, or trigonal not in a rhombohedral-axes setting) |
+| **i** | the redundant Miller–Bravais index $i=-(h+k)$ (shown only when the main window's **Options ▸ Use Miller-Bravais (hkil) index** is on and the crystal uses hexagonal axes — hexagonal, or trigonal not in a rhombohedral-axes setting); **Copy** writes it as displayed <!-- 261105Cl 監査: J9 i 列は表示している値をコピー --> |
 
 **Diffraction-peak plot.** Below the table the same reflections are drawn as a stick pattern, with the strongest peaks labelled by their *hkl*.
 
@@ -91,23 +92,23 @@ Each row is one reflection (or a group of symmetry-equivalent planes):
 
 ---
 
-## Attenuations & Transport tab
+## Attenuations & transport tab
 
 How far the beam penetrates the material and how it loses energy. The content depends on the beam.
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../assets/cap-en-auto/FormBeamInteraction-xray-attenuations.png)
+    ![Attenuations & transport — X-ray](../assets/cap-en-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../assets/cap-en-auto/FormBeamInteraction-electron-attenuations.png)
+    ![Attenuations & transport — electron](../assets/cap-en-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../assets/cap-en-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![Attenuations & transport — neutron](../assets/cap-en-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ### X-ray
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormBeamInteraction.cs:DrawXrayAttenuationGraph (eMin=1, eMax=60, YLog), Designer: numericBoxAttenThickness.Value=100) -->
-The radio buttons choose the plotted coefficient against photon energy (computed over 1–60 keV on a linear energy axis; the vertical axis is logarithmic for µ/ρ and µ and linear for T %):
+The radio buttons choose the plotted coefficient against photon energy (computed over 1–60 keV on a linear energy axis; the vertical axis is logarithmic for µ/ρ and µ and linear for T %; if the current energy is outside this range, the graph title says so, e.g. *(current 0.5 keV is out of range)*): <!-- 261106Cl 作者の決定 J5 -->
 
 - **µ/ρ** — the **mass** attenuation coefficient (cm²/g): how strongly the material removes X-rays per gram, independent of how densely it is packed (this is the value found in reference tables). The graph shows the **total** together with its **photo**, **Rayleigh**, and **Compton** components.
 - **µ** — the **linear** attenuation coefficient $\mu = (\mu/\rho)\cdot\rho$ (cm⁻¹): the attenuation per centimetre of the actual material at its real density. The transmitted intensity follows $I = I_0\,e^{-\mu t}$, and $1/\mu$ is the distance over which the intensity falls to about 37 % (1/e).
@@ -118,7 +119,7 @@ The vertical line marks the current energy. The scalar table on the left lists, 
 ### Electron
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormBeamInteraction.cs:DrawElectronTransportGraph (kMin=1, kMax=50)) -->
-The quantity selector chooses what is plotted against beam energy (computed over 1–50 keV; the initial view shows 0–20 keV):
+The quantity selector chooses what is plotted against beam energy (computed over 1–50 keV; the initial view shows 0–20 keV; an energy outside this range is noted in the graph title, e.g. *(current 200 keV is out of range)*): <!-- 261106Cl 作者の決定 J5 -->
 
 - **All (normalized)** — overlays the three curves below, each rescaled to its own maximum so the shapes can be compared on one plot (read absolute values from the table).
 - **σ elastic (nm²)** — elastic scattering cross section: how likely a single atom is to deflect the electron.
@@ -149,10 +150,10 @@ The atomic scattering factor of each constituent element, plotted against $s = \
     ![Scattering factors — neutron](../assets/cap-en-auto/FormBeamInteraction-neutron-scattering.png)
 
 - **X-ray** offers two **Model** modes: **f(s)** plots the conventional X-ray atomic scattering factor (in electron units); **F(q)+S(q)** plots the Rayleigh **coherent** form factor $F(q)$ together with the Compton **incoherent** scattering function $S(q)$ (from xraylib). The table also lists the anomalous-dispersion terms **f'(E)** and **f''(E)** at the current energy, and a **model** column naming the source the f(s) column came from. When **f(s)** is selected, a second row of radio buttons chooses **where the curve comes from** — **Waasmaier–Kirfel** (the default fit, which also covers ions over Z = 1–98) or **Temari**. It is greyed out while **F(q)+S(q)** is showing, because those two curves come from xraylib and have no source choice.
-- **Electron** offers four sources for the electron scattering factor: **Peng**, **Kirkland**, **8-Gaussians** and **Temari**. The table shows $f_e(s)$ (nm) and which **model** produced it.
+- **Electron** offers four sources for the electron scattering factor: **Peng**, **Kirkland**, **8-Gaussians** and **Temari**. The table shows $f_e(s)$ (nm) and which **model** produced it. **Kirkland** and **8-Gaussians** have no parameters for ions, so for ions their curves are omitted and their table cells left blank (**Peng** gives ion values). <!-- 261106Cl 作者の決定 J12 -->
 - **Neutron** scattering lengths do not depend on $s$, so no curve is drawn; the table lists each element's coherent scattering length **b_coh** and its coherent / incoherent cross sections.
 - **Temari** is not a fit but a computed table (Temari dataset-factors v2.0.0, CC-BY-4.0, from a full Dirac self-consistent-field calculation). It covers **neutral atoms Z = 1–86 only**: ions and Z = 87–98 have no entry, so their curves are omitted and their table cells left blank rather than filled with neutral-atom values.
-- **Debye-Waller** multiplies each factor by the thermal damping $e^{-B s^2}$ using each atom's isotropic displacement parameter.
+- **Atomic displacement (B)** multiplies each factor by the thermal damping $e^{-B s^2}$ using each atom's isotropic displacement parameter.
 
 ---
 
@@ -162,7 +163,7 @@ For an X-ray beam, the characteristic **fluorescence** emission of the sample. (
 
 ![Fluorescence (X-ray)](../assets/cap-en-auto/FormBeamInteraction-xray-fluorescence.png)
 
-The **EDX emission lines** plot draws the characteristic lines (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) of every element as sticks at their photon energies, with the height proportional to the atomic fraction × radiative rate × fluorescence yield (a qualitative EDX-style preview; excitation cross section and detector efficiency are not modelled). The lower table lists, per line, the element, line name, energy **E keV**, relative intensity **Rel.I**, and the fluorescence yield **ω**. The scalar table reports the K-shell yield **ω_K** of each element and the **strongest line** in the spectrum.
+The **EDX emission lines (reference list; excitation not considered)** plot draws the characteristic lines (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) of every element as sticks at their photon energies, with the height proportional to the atomic fraction × radiative rate × fluorescence yield (a qualitative EDX-style preview and a reference list: excitation cross section and detector efficiency are not modelled, so the "strongest line" need not be the strongest in a measured spectrum). <!-- 261106Cl 作者の決定 J6 --> The lower table lists, per line, the element, line name, energy **E keV**, relative intensity **Rel.I** (the share of this line among the radiative transitions that fill a vacancy in its shell, %), and the fluorescence yield **ω**. The scalar table reports the K-shell yield **ω_K** of each element, the **strongest line (excitation ignored)** in the spectrum, and the **source** of the values: *xraylib (E, I, ω)* when xraylib is available (line energies, relative intensities and yields all come from xraylib), otherwise *internal (E only)*. <!-- 261105Cl 監査: FormBeamInteraction.cs (Rel.I = LineRadRate × 100、出典の行, Controls c6d62ed) -->
 
 ---
 

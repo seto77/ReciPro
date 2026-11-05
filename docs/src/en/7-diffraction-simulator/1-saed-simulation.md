@@ -2,9 +2,9 @@
 
 **SAED (Selected Area Electron Diffraction)** simulation calculates single-crystal electron diffraction patterns produced by a parallel electron beam. This is the default mode of the [diffraction simulator](index.md).
 
-> This page lists every setting that appears in the **Spot property** panel on the right when you choose **Wave Length = Electron** and **Incident beam mode = Parallel**. For window-wide operations such as drawing and saving, see the [overview page](index.md).
+> This page lists every setting that appears in the **Simulation settings** panel on the right when you choose **Wave source** = **Electron** and **Optics** = **Parallel beam**. For window-wide operations such as drawing and saving, see the [overview page](index.md).
 
-GUI conditions: Wave Length = Electron, Incident beam mode = Parallel, Intensity calculation = Only excitation error / Kinematical / Dynamical.
+GUI conditions: Wave source = Electron, Optics = Parallel beam, Intensity calculation = Only excitation error / Kinematical & exc. error / Dynamical theory.
 
 ![Diffraction simulator in SAED mode](../../assets/cap-en-auto/FormDiffractionSimulator-saed.png)
 
@@ -16,21 +16,21 @@ Simulates the diffraction pattern produced when a parallel electron beam passes 
 
 ---
 
-## Wave Length
+## Wave source {#wave-length}
 
-![Wave Length](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Wave source](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Set the radiation source to **Electron**. Enter the energy (keV) or wavelength (Å or nm, switchable; default Å) and the relativistically corrected wavelength is computed. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:waveLengthControl, presetToolStripMenuItem) -->The initial value is 200 keV; the **Presets** menu sets 300 / 200 / 120 kV in one click. For X-ray and neutron sources, see [X-ray diffraction simulation](5-x-ray-neutron-diffraction.md).
+Set the radiation source to **Electron**. Enter the energy (keV) or wavelength (Å or nm, switchable; default Å) and the relativistically corrected wavelength is computed. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:waveLengthControl, presetToolStripMenuItem) --> The initial value is 200 keV; the **Presets** menu sets 300 / 200 / 120 kV in one click. For X-ray and neutron sources, see [X-ray diffraction simulation](5-x-ray-neutron-diffraction.md).
 
 ---
 
-## Incident beam mode
+## Optics {#incident-beam-mode}
 
-![Incident beam mode](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Optics](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-Set the incident-beam geometry to **Parallel**. This is the standard plane-wave geometry used for SAED and X-ray diffraction.
+Set **Optics** (the incident-beam geometry) to **Parallel beam**. This is the standard plane-wave geometry used for SAED and X-ray diffraction.
 
-> **Note**: For electrons you can choose **Parallel / Precession (electron = PED) / Convergence (CBED)**. Choosing **Precession** gives a [PED simulation](2-ped-simulation.md) and choosing **Convergence** gives a [CBED simulation](3-cbed-simulation.md); in both cases the intensity calculation automatically switches to Dynamical.
+> **Note**: For electrons you can choose **Parallel beam** / **Precession (electron)** / **Convergence (electron)**. Choosing **Precession (electron)** gives a [PED simulation](2-ped-simulation.md) and choosing **Convergence (electron)** gives a [CBED simulation](3-cbed-simulation.md); in both cases the intensity calculation automatically switches to **Dynamical theory**.
 
 ---
 
@@ -42,7 +42,7 @@ Selects how spot intensities are computed.
 
 ### Only excitation error
 
-Intensity is determined solely from the geometric distance between the Ewald sphere and the reciprocal-lattice point (the excitation error $S_g$). It is largest at $S_g = 0$ — exactly on the sphere — and falls off as $\lvert S_g\rvert$ grows, reaching zero once $\lvert S_g\rvert$ exceeds the **Radius** given for the reciprocal-lattice point. Because the crystal structure factor is ignored, this is the fastest mode and is suited to checking diffraction-spot positions.
+Intensity is determined solely from the geometric distance between the Ewald sphere and the reciprocal-lattice point (the excitation error $S_g$). It is largest at $S_g = 0$ — exactly on the sphere — and falls off as $\lvert S_g\rvert$ grows, reaching zero once $\lvert S_g\rvert$ exceeds the **Spot radius** given for the reciprocal-lattice point. Because the crystal structure factor is ignored, this is the fastest mode and is suited to checking diffraction-spot positions.
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:radioButtonIntensityCalculationMethod_CheckedChanged, CheckBoxExtinctionAll_CheckedChanged; FormDiffractionSimulator.Designer.cs:checkBoxExtinctionAll/Lattice, checkBoxDrawSameSize) -->
 Only in this mode, the following options appear:
@@ -76,7 +76,7 @@ Active only when **Intensity calculation = Dynamical**.
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:numericBoxNumOfBlochWave, numericBoxThickness) -->
 | Parameter | Description |
 |-----------|-------------|
-| **Number of Diffracted Waves** | Number of Bloch waves included in the eigenvalue problem (8–1000, default 240). Larger values give more accurate intensities but increase computation time as $O(N^3)$ |
+| **Number of diffracted waves** | Number of Bloch waves included in the eigenvalue problem (8–1000, default 240). Larger values give more accurate intensities but increase computation time as $O(N^3)$ |
 | **Thickness** | Specimen thickness (nm) used in the dynamical calculation (0.01–10000 nm, default 50 nm) |
 
 ---
@@ -92,8 +92,8 @@ Controls how each diffraction spot is rendered.
 - **Solid sphere / Gaussian** : the geometric model of the reciprocal-lattice point (default **Solid sphere**). **Solid sphere** draws the cross-section (a circle) between a sphere and the Ewald sphere: the sphere radius is $R\,I^{1/3}$ for **Kinematical & exc. error** (sphere volume ∝ intensity) and $R$ for **Only excitation error**; for **Dynamical theory** a disc of radius $R\,I_\text{dyn}^{1/2}$ (area ∝ intensity) is drawn without the Ewald-sphere cut. **Gaussian** draws the cross-section (a 2-D Gaussian) of a 3-D Gaussian with $\sigma = R$, with its integral corresponding to the diffraction intensity.
 - **Opacity** : transparency of the spot (0 = transparent, 1 = opaque).
 - **Spot radius (R)** : virtual radius of the reciprocal-lattice point (nm⁻¹; 0.01–1, default 0.2). The spot size is fixed by the combination of **Appearance** mode and **Intensity calculation** (see above).
-- **Brightness**, **Color scale**, **Log scale** : shown only in **Gaussian** mode. **Brightness** scales the integrated intensity of the rendered Gaussian; **Color scale** is **Gray** (spots in the spot colours below), **Cold-Warm**, **Spectrum** or **Fire**; **Log scale** displays intensities on a logarithmic scale (useful for patterns with large intensity contrast).
-- **Spot color** : shown while the **Color scale** is **Gray** (the initial setting). **General spots**, **Extinct spots (Screw or Glide)** and **Extinct spots (Lattice centring)** set the colours of allowed and forbidden reflections.
+- **Brightness**, **Color scale**, **Log scale** : shown only in **Gaussian** mode. **Brightness** scales the integrated intensity of the rendered Gaussian; **Color scale** is **Gray** (spots in the spot colours below), **Cold-warm**, **Spectrum** or **Fire**; **Log scale** displays intensities on a logarithmic scale (useful for patterns with large intensity contrast).
+- **Spot color** : shown while the **Color scale** is **Gray** (the initial setting). **General spots**, **Extinct spots (screw or glide)** and **Extinct spots (lattice centring)** set the colours of allowed and forbidden reflections.
 - **Color per crystal** : when checked, spots are drawn in the colour assigned to each crystal (also for a single crystal).
 
 ---
@@ -105,14 +105,14 @@ The labels overlaid on the spots are selected from the [toolbar](index.md#toolba
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpotsLabel) -->
 | Label | Content |
 |-------|---------|
-| **Index** | Miller indices $(hkl)$ |
-| **d** | interplanar spacing $d$ (shown in Å) |
-| **1/d** | reciprocal of the interplanar spacing $1/d$ (nm⁻¹) |
-| **Distance** | distance of the spot from the direct spot on the detector, $L_2 \tan 2\theta$ (mm; $L_2$ = camera length 2; exact for an untilted detector, τ = 0) |
+| **Index** | Miller indices $(hkl)$; four indices $(hkil)$ when the main window's **Options ▸ Use Miller-Bravais (hkil) index** is on and the crystal uses hexagonal axes (the Kikuchi-line, Debye-ring and 3-D labels follow the same setting) <!-- 261105Cl 監査: C23 --> |
+| **d** | interplanar spacing $d$, in Å or nm following the main window's length unit <!-- 261106Cl 作者の決定 C20 --> |
+| **1/d** | reciprocal of the interplanar spacing $1/d$, in nm⁻¹ or Å⁻¹ following the main window's length unit <!-- 261106Cl 作者の決定 C2 --> |
+| **Distance** | distance on the detector from the spot to the transmitted (direct) spot (mm), measured between the drawn positions, so it also holds for a tilted detector, the X-ray precession camera and Back Laue (measured from the beam hole); not shown when the transmitted beam misses the detector <!-- 261105Cl 監査: DrawDiffractionSpotsLabel (C15)。L2 tan2θ は傾けない平板の検出器だけ --> |
 | **2θ** | scattering angle $2\theta$ (same definition as the concentric 2θ scale circles) |
 | **χ** | azimuth angle $\chi$, measured from the upward (12 o'clock) direction, positive clockwise (same definition as the radial azimuth scale lines) |
-| **Excit. Err.** | excitation error $S_g$ (nm⁻¹) |
-| **\|Fg\|** | relative intensity (%) in **Kinematical & exc. error** mode; in **Dynamical theory** mode the relative intensity (% of the strongest diffracted beam, 000 excluded) and the complex exit-surface amplitude. Nothing is shown for **Only excitation error** |
+| **Excit. err.** | excitation error $S_g$, in nm⁻¹ or Å⁻¹ following the main window's length unit |
+| **Intens.** | relative intensity (%) in **Kinematical & exc. error** mode; in **Dynamical theory** mode the relative intensity (% of the strongest diffracted beam, 000 excluded) and the complex exit-surface amplitude. Nothing is shown for **Only excitation error** |
 
 ---
 

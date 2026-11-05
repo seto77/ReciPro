@@ -4,7 +4,7 @@ Dieses Fenster stellt den Rotationszustand eines Kristalls als 3×3-Matrix dar u
 
 ![Rotationsgeometrie](../assets/cap-de-auto/FormRotationMatrix.png)
 
-ReciPro verwendet drei Eulerwinkel — **Ψ**, **θ** und **Φ** — die in der Reihenfolge **Z–X–Z** angewendet werden. Diese Konvention stimmt jedoch nicht zwangsläufig mit den Goniometerachsen Ihres tatsächlichen Geräts überein. Das Fenster **Rotationsgeometrie** ermöglicht es Ihnen, die Eulerwinkel von ReciPro in ein beliebig definiertes Koordinatensystem umzurechnen, und unterstützt so die Goniometereinstellung im Labor.
+ReciPro verwendet drei Eulerwinkel — **Ψ**, **Θ** und **Φ** — die in der Reihenfolge **Z–X–Z** angewendet werden. Diese Konvention stimmt jedoch nicht zwangsläufig mit den Goniometerachsen Ihres tatsächlichen Geräts überein. Das Fenster **Rotationsgeometrie** ermöglicht es Ihnen, die Eulerwinkel von ReciPro in ein beliebig definiertes Koordinatensystem umzurechnen, und unterstützt so die Goniometereinstellung im Labor. <!-- 261105Cl 監査: 画面の欄の見出し・ツールチップ (Φ, Θ, Ψ) に合わせ θ → Θ に統一 -->
 
 ---
 
@@ -28,24 +28,24 @@ In den kleinen Ansichten *Axes* und *Objects* sind Zoomen und Verschieben deakti
 
 Die obere Hälfte des Fensters zeigt den Rotationszustand im "ReciPro-Koordinatensystem".
 
-- Die Werte **Φ, θ, Ψ** sind mit den im Hauptfenster eingestellten Eulerwinkeln synchronisiert.
+- **Φ, Θ, Ψ** sind schreibgeschützte Felder, die die aktuelle Orientierung anzeigen (die Euler-Winkel des Hauptfensters). Rotationen, die bei geschlossenem Fenster vorgenommen werden, werden beim erneuten Öffnen angezeigt. <!-- 261105Cl 監査: 読み取り専用の表示・開き直したときの反映 (FormRotation.cs) -->
 - **Rotationsmatrix** zeigt die 3×3-Matrix an, die dem aktuellen Rotationszustand entspricht.
 
-### Φ, θ, Ψ (Z–X–Z-Eulerwinkel)
+### Φ, Θ, Ψ (Z–X–Z-Eulerwinkel)
 
 Die Kristallorientierung wird durch drei Rotationen parametrisiert. Im **körperfesten (intrinsischen)** Bezugssystem beschrieben, werden sie in dieser Reihenfolge angewendet:
 
 1. **Φ** — erste Rotation um die **Z**-Achse.
-2. **θ** — Rotation um die **X**-Achse des einmal gedrehten Bezugssystems.
+2. **Θ** — Rotation um die **X**-Achse des einmal gedrehten Bezugssystems.
 3. **Ψ** — zweite Rotation um die **Z**-Achse des zweimal gedrehten Bezugssystems.
 
-Dieselbe Rotation, im **raumfesten Labor**-Bezugssystem betrachtet, ist die umgekehrte Abfolge (Ψ um $Z$, dann θ um $X$, dann Φ um $Z$); diese Beschreibung wird in [Anhang A1.1](appendix/a1-coordinate-system/1-orientation.md) verwendet. Beide ergeben die identische Matrix $R$ unten; Φ ist einfach die äußerste (goniometerartige) Achse und Ψ die innerste.
+Dieselbe Rotation, im **raumfesten Labor**-Bezugssystem betrachtet, ist die umgekehrte Abfolge (Ψ um $Z$, dann Θ um $X$, dann Φ um $Z$); diese Beschreibung wird in [Anhang A1.1](appendix/a1-coordinate-system/1-orientation.md) verwendet. Beide ergeben die identische Matrix $R$ unten; Φ ist einfach die äußerste (goniometerartige) Achse und Ψ die innerste.
 
-Jedes Zahlenfeld ist editierbar; eine Wertänderung hier aktualisiert das Hauptfenster und jeden verknüpften Simulator.
+Die Felder Φ, Θ, Ψ und die neun Matrixfelder sind **schreibgeschützte** Anzeigen. Um die Orientierung zu ändern, drehen Sie den Kristall im Hauptfenster, verwenden Sie **Aus Excel einfügen** oder bearbeiten Sie (bei aktiviertem **Verknüpfen**) die Winkel der experimentellen Achsen weiter unten; jede Änderung wird an das Hauptfenster und alle verknüpften Simulatoren weitergegeben.
 
 ### Rotationsmatrix
 
-Die 3 × 3-Matrix, die aus dem aktuellen (Φ, θ, Ψ) erzeugt wird. Verwenden Sie **Kopieren** / **Aus Excel einfügen**, um die Matrix über eine Tabellenkalkulation hin und zurück zu übertragen.
+Die 3 × 3-Matrix, die aus dem aktuellen (Φ, Θ, Ψ) erzeugt wird. Verwenden Sie **Kopieren** / **Aus Excel einfügen**, um die Matrix über eine Tabellenkalkulation hin und zurück zu übertragen.
 
 Die Matrix folgt überall in ReciPro ein und derselben Konvention:
 
@@ -56,15 +56,15 @@ $$
 - \(R\) ist die **aktive** Rotation des Kristalls, ausgedrückt im monitorfesten Laborsystem (\(X\) nach rechts, \(Y\) nach oben, \(Z\) zum Betrachter — siehe [Anhang A1.1](appendix/a1-coordinate-system/1-orientation.md)).
 - \(\mathbf{v}_{0}\) : kartesische Koordinaten (Spaltenvektor) einer kristallfesten Richtung in der **Ausgangsorientierung** (\(c \parallel Z\), \(b\) in der \(YZ\)-Ebene).
 - \(\mathbf{v}_{\mathrm{rot}}\) : Koordinaten derselben Richtung nach der Rotation, weiterhin im Laborsystem.
-- Bei \(\Phi=\theta=\Psi=0\) ist \(R\) die Einheitsmatrix. \(R\) ist orthonormal mit Determinante +1, die Umkehrtransformation ist daher einfach die Transponierte: \(R^{-1}=R^{\mathsf T}\).
+- Bei \(\Phi=\Theta=\Psi=0\) ist \(R\) die Einheitsmatrix. \(R\) ist orthonormal mit Determinante +1, die Umkehrtransformation ist daher einfach die Transponierte: \(R^{-1}=R^{\mathsf T}\).
 
-In den Eulerwinkeln gilt \(R = R_Z(\Phi)\,R_X(\theta)\,R_Z(\Psi)\) (rechtshändige Rotationen um die festen Achsen; \(\Psi\) wirkt zuerst auf den Vektor):
+In den Eulerwinkeln gilt \(R = R_Z(\Phi)\,R_X(\Theta)\,R_Z(\Psi)\) (rechtshändige Rotationen um die festen Achsen; \(\Psi\) wirkt zuerst auf den Vektor):
 
 $$
 R=\begin{pmatrix}
-\cos\Phi\cos\Psi-\cos\theta\,\sin\Phi\sin\Psi & -\cos\Phi\sin\Psi-\cos\theta\,\sin\Phi\cos\Psi & \sin\theta\,\sin\Phi\\
-\sin\Phi\cos\Psi+\cos\theta\,\cos\Phi\sin\Psi & -\sin\Phi\sin\Psi+\cos\theta\,\cos\Phi\cos\Psi & -\sin\theta\,\cos\Phi\\
-\sin\theta\,\sin\Psi & \sin\theta\,\cos\Psi & \cos\theta
+\cos\Phi\cos\Psi-\cos\Theta\,\sin\Phi\sin\Psi & -\cos\Phi\sin\Psi-\cos\Theta\,\sin\Phi\cos\Psi & \sin\Theta\,\sin\Phi\\
+\sin\Phi\cos\Psi+\cos\Theta\,\cos\Phi\sin\Psi & -\sin\Phi\sin\Psi+\cos\Theta\,\cos\Phi\cos\Psi & -\sin\Theta\,\cos\Phi\\
+\sin\Theta\,\sin\Psi & \sin\Theta\,\cos\Psi & \cos\Theta
 \end{pmatrix}
 $$
 
@@ -83,12 +83,12 @@ Die 3D-Ansicht zeigt die aktuelle Rotation mithilfe von drei farbigen Tori (Donu
 | Farbe | Eulerwinkel | Goniometerebene |
 |--------|------------|-----------------|
 | **Gelb** | Φ | 1. (obere) Achse |
-| **Hellblau** | θ | 2. (mittlere) Achse |
+| **Hellblau** | Θ | 2. (mittlere) Achse |
 | **Rosa** | Ψ | 3. (untere) Achse |
 
 Die Pfeile in **Rot**, **Grün** und **Blau** stellen die X-, Y- und Z-Achse in kartesischen Realraumkoordinaten dar. Diese sind *nicht* identisch mit den im Hauptfenster gezeigten Kristallachsen.
 
-Die graue Kugel im Zentrum stellt die Probe dar; die roten/grünen/blauen Kugeln zeigen, wie sich das Objekt aus seiner Ausgangsorientierung gedreht hat (bei Φ = θ = Ψ = 0 sind sie jeweils an +X, +Y, +Z ausgerichtet).
+Die graue Kugel im Zentrum stellt die Probe dar. Die kleinen roten / grünen / blauen Kugeln (beschriftet mit **+a/−a**, **+b/−b**, **+c/−c**) markieren die Richtungen der normierten Kristallachsen *a*, *b*, *c* nach der Rotation (größere Kugel = +-Ende). Bei Φ = Θ = Ψ = 0 zeigen sie die Ausgangsorientierung des Kristalls (*c* ∥ +Z, *b* in der YZ-Ebene), sodass *a* und *b* nur bei orthogonalen Zellen mit +X und +Y zusammenfallen.
 
 > **Hinweis**: Das Ziehen im OpenGL-Fenster ändert nur die *Projektionsrichtung* dieser Ansicht, nicht die Kristallorientierung selbst. Um den Kristall zu drehen, verwenden Sie das Hauptfenster.
 
@@ -96,8 +96,8 @@ Die graue Kugel im Zentrum stellt die Probe dar; die roten/grünen/blauen Kugeln
 
 | Schaltfläche | Aktion |
 |--------|--------|
-| Kopieren | Die 3×3-Rotationsmatrix im tabulatorgetrennten Format kopieren |
-| Aus Excel einfügen | Rotationsmatrix aus der Zwischenablage setzen (tabulatorgetrennt 3×3) |
+| Kopieren | Die 3×3-Rotationsmatrix als tabulatorgetrennten Text kopieren, eine Zeile pro Matrixzeile; sie kann mit **Aus Excel einfügen** wieder eingefügt werden |
+| Aus Excel einfügen | Die Rotationsmatrix aus der Zwischenablage setzen (3×3, tabulatorgetrennt). Werte, die keine Rotationsmatrix sind (orthonormale Zeilen und Spalten, Determinante +1), werden mit einer Meldung abgewiesen; kleine Abweichungen wie Rundungen der Tabellenkalkulation (bis 10⁻³) werden zur nächstgelegenen Rotationsmatrix korrigiert <!-- 261105Cl 監査: FormRotation.cs の Paste の検査 (RᵀR − I ≤ 1e-3, det > 0) と Copy の改行 (\r\n) --> |
 | Ansicht entlang Strahl | An die Projektion des Hauptfensters anpassen (Z-Achse senkrecht zum Bildschirm) |
 | Isometrische Ansicht | Zur isometrischen Projektion wechseln |
 
@@ -109,15 +109,37 @@ Die untere Hälfte definiert Eulerwinkel auf einem beliebigen Satz von Rotations
 
 ### 1., 2., 3. Achse
 
-Wählen Sie die Rotationsachsen des Goniometers aus **±X**, **±Y** und **±Z** für jede Ebene (oben, Mitte, unten). Die Grafik wird entsprechend aktualisiert.
+Wählen Sie die Rotationsachse jeder Goniometerebene (1. = oben, 2. = Mitte, 3. = unten) aus **X**, **Y** oder **Z** (nur die positiven Richtungen des Laborsystems). Die 2. Achse darf nicht gleich der 1. sein und die 3. nicht gleich der 2. (das widersprechende Optionsfeld wird deaktiviert). Standard ist **X – Z – Y**. Die Grafik wird entsprechend aktualisiert.
 
-Die Eulerwinkel für jede Achse werden in den zugehörigen farbigen Textfeldern (gelb, hellblau, rosa) angezeigt. Sie können die Werte auch direkt eingeben.
+Der Winkel jeder Achse wird im zugehörigen farbigen Feld (gelb, hellblau, rosa) angezeigt und kann direkt eingegeben werden (in Grad; Werte außerhalb von −180…180° werden umgebrochen). Die experimentelle Rotation wird auf dieselbe Weise zusammengesetzt wie ReciPros eigene Matrix, mit der 1. Achse als äußerster:
+
+$$
+R_{\mathrm{exp}} = R_{\mathbf{e}_1}(\omega_1)\,R_{\mathbf{e}_2}(\omega_2)\,R_{\mathbf{e}_3}(\omega_3)
+$$
+
+(rechtshändige Rotationen um die festen Laborachsen $\mathbf{e}_i$).
+
+| Bedienelement | Aktion |
+|---------|--------|
+| **2. Achse** / **3. Achse** | Diese Ebene aktivieren oder deaktivieren (ein Goniometer mit nur einer oder zwei Achsen). Beim Deaktivieren wird ihr Winkel auf 0 gesetzt. Das Deaktivieren der 2. Achse deaktiviert auch die 3. |
+| **Fest** | Diesen Winkel auf seinem aktuellen Wert halten, während Verknüpfen eine neue Orientierung in Goniometerwinkel zerlegt (siehe unten). |
+| **Winkel zurücksetzen** | Alle drei experimentellen Winkel auf 0 setzen. |
+
 
 ---
 
 ## Verknüpfen
 
 Wenn **Verknüpfen** aktiviert ist, sind das ReciPro-Koordinatensystem und das experimentelle Koordinatensystem gekoppelt: Ihre Eulerwinkel werden so angepasst, dass die Objektorientierung zwischen beiden Systemen konsistent bleibt.
+
+In dem Moment, in dem **Verknüpfen** aktiviert wird, wird der Versatz $R_{\mathrm{base}} = R_{\mathrm{exp}}^{-1} R$ zwischen beiden Systemen gespeichert, und von da an gilt $R = R_{\mathrm{exp}}\,R_{\mathrm{base}}$. Solange verknüpft ist:
+
+- dreht die Bearbeitung eines experimentellen Winkels den Kristall in jedem Fenster;
+- wird eine inkrementelle Rotation (Pfeilschaltflächen, CTRL+SHIFT+Pfeiltasten oder Ziehen im Hauptfenster bzw. in anderen Fenstern) numerisch in die aktivierten, nicht mit **Fest** fixierten Goniometerwinkel zerlegt, und der Kristall wird auf die **nächstgelegene Orientierung gesetzt, die das Goniometer erreichen kann** — bei fixierten oder deaktivierten Achsen folgt der Kristall daher den Einschränkungen des Goniometers statt exakt der Maus;
+- gelten die Kontrollkästchen **Fest** des Hauptfensters weiterhin: Ist eines davon aktiviert, erfolgt die inkrementelle Rotation um diese Zonenachse bzw. Ebenennormale, bevor sie zerlegt wird; <!-- 261105Cl 監査: Link 中も主窓の Fix が効く (FormMain.cs, bc75fdc4) -->
+- wird eine absolute Orientierung — Eingabe in die Felder **Euler-Winkel** des Hauptfensters (die Felder Φ, Θ, Ψ dieses Fensters sind schreibgeschützt), **Rotation rücksetzen**, **Blick entlang** ▸ **Achse** / **Ebene**, **Aus Excel einfügen** in diesem Fenster, die Auswahl eines Kristalls mit anderer Orientierung in der Kristallliste oder das Setzen der Orientierung aus einem anderen Fenster (z. B. durch Übernahme eines Indizierungsergebnisses) oder aus einem Makro — exakt übernommen und **Verknüpfen ausgeschaltet**; die Statusleiste des Hauptfensters meldet dies. Die Goniometerwinkel, die **Fest**-Einstellungen und die aktivierten Achsen bleiben erhalten. Aktivieren Sie **Verknüpfen** erneut, um bei der neuen Orientierung zu verknüpfen. Vorgänge, die die Orientierung nicht ändern (z. B. das Bearbeiten des Kristalls), lassen Verknüpfen eingeschaltet. <!-- 261106Cl 作者の決定 G-13: FormRotation.cs SetRotation(bool) -->
+
+Wird der Kristall gedreht, während dieses Fenster bei aktiviertem **Verknüpfen** geschlossen ist, setzt das erneute Öffnen die Verknüpfung auf die aktuelle Orientierung neu auf (als würde **Verknüpfen** erneut aktiviert), sodass weder die Kristallorientierung noch die Goniometerwinkel springen. <!-- 261105Cl 監査: 開き直したときの Link の扱い (FormRotation.cs, ecdcec9a) -->
 
 ### Beispiel-Arbeitsablauf
 

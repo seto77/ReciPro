@@ -32,7 +32,23 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
     private readonly Timer timer = new();
     private Crystal crystal => FormDiffractionSimulator.formMain.Crystal;
 
-    private Matrix3D NeutralDirection { get; set; } = Matrix3D.IdentityMatrix;
+    //private Matrix3D NeutralDirection { get; set; } = Matrix3D.IdentityMatrix; // 261105Cl 変更前
+    /// <summary>ホルダーを傾けていないときの結晶の方位 (今の方位 = HolderRotation⁻¹ · NeutralDirection)。
+    /// 261105Cl 変更: 設定のたびに、今の傾斜で結晶があるはずの方位と、その結晶を控える (<see cref="numericBoxTilt_ValueChanged"/> で、ほかの窓で回されたかを見る)</summary>
+    private Matrix3D NeutralDirection
+    {
+        get => neutralDirection;
+        set
+        {
+            neutralDirection = value;
+            expectedRotation = HolderRotation.Inverse() * value;
+            expectedCrystal = FormDiffractionSimulator?.formMain?.Crystal;
+        }
+    }
+    private Matrix3D neutralDirection = Matrix3D.IdentityMatrix; // 261105Cl 追加
+    /// <summary>261105Cl 追加: この窓が最後に結晶の方位を控えた (または置いた) ときの方位 (写し) と結晶</summary>
+    private Matrix3D expectedRotation = Matrix3D.IdentityMatrix;
+    private Crystal expectedCrystal;
 
     private Matrix3D HolderRotation =>
         Matrix3D.RotZ(numericBoxTiltXDirection.RadianValue) *
@@ -84,6 +100,18 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
     {
         e.Cancel = true;
         this.Visible = false;
+    }
+
+    /// <summary>261105Cl 追加 (監査 #18): 再表示のたびに、今の結晶の方位を「今の傾斜での方位」として NeutralDirection を作り直し、晶帯軸も今の結晶で作り直す。
+    /// 親は窓が見えているときしか RotationChanged / CrystalChanged を呼ばず、Load は初回の表示でしか来ないので、閉じている間に方位 (や結晶) を変えて
+    /// 開き直すと NeutralDirection が古いまま残り、Tilt を動かすと結晶が昔の方位へ飛んでいた (方位 = HolderRotation⁻¹ · NeutralDirection)</summary>
+    protected override void OnVisibleChanged(EventArgs e)
+    {
+        base.OnVisibleChanged(e);
+        if (!Visible || FormDiffractionSimulator?.formMain?.Crystal == null) return;
+        NeutralDirection = HolderRotation * crystal.RotationMatrix;
+        setVector();
+        Draw();
     }
     #endregion
 
@@ -311,7 +339,16 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
     private void checkBox1DegLine_CheckedChanged(object sender, EventArgs e) => Draw();
     private void colorControlUniqueAxis_ColorChanged(object sender, EventArgs e) => Draw();
     private void numericBoxDrawingArea_ValueChanged(object sender, EventArgs e) => Draw();
-    private void numericBoxPrimaryAxisDirection_ValueChanged(object sender, EventArgs e) => Draw();
+    //private void numericBoxPrimaryAxisDirection_ValueChanged(object sender, EventArgs e) => Draw(); // 261105Cl 変更前
+    /// <summary>傾斜軸の向き (numericBoxTiltXDirection)・Tilt Y の極性 (radioButtonTiltY_Plus) の変更。
+    /// 261105Cl 変更 (監査 #18): どちらも HolderRotation を変えるが、結晶は実際には動いていないので、今の方位を保ったまま NeutralDirection を作り直す。
+    /// 以前は作り直さなかったので、次に Tilt を動かしたとき 方位 = H_new⁻¹ · H_old · R となって結晶が飛んでいた</summary>
+    private void numericBoxPrimaryAxisDirection_ValueChanged(object sender, EventArgs e)
+    {
+        if (FormDiffractionSimulator?.formMain?.Crystal != null) // InitializeComponent 中は親が未配線
+            NeutralDirection = HolderRotation * crystal.RotationMatrix;
+        Draw();
+    }
 
     private void numericBoxU_ValueChanged(object sender, EventArgs e)
     {
@@ -345,9 +382,24 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
     {
         if (skipEventFromThis) return;
 
+        // 261105Cl 追加: 親 (回折シミュレータ) が隠れていると、主窓での回転・結晶の切り替えがこの窓に届かない (FormMain.SetRotation・SetCrystal は
+        //   親が見えているときしか中継しない。この窓は親を閉じても開いたまま残る)。そのまま Tilt を動かすと結晶が昔の方位・前の結晶の方位へ飛んでいた。
+        //   控えた方位・結晶と今のものが違えば、ほかの窓で回した (替えた) ので、変更前の傾斜 H_old = N · R_expected⁻¹ のもとでの今の方位として N を取り直す
+        static bool same(Matrix3D a, Matrix3D b) =>
+            Math.Abs(a.E11 - b.E11) < 1e-9 && Math.Abs(a.E12 - b.E12) < 1e-9 && Math.Abs(a.E13 - b.E13) < 1e-9 &&
+            Math.Abs(a.E21 - b.E21) < 1e-9 && Math.Abs(a.E22 - b.E22) < 1e-9 && Math.Abs(a.E23 - b.E23) < 1e-9 &&
+            Math.Abs(a.E31 - b.E31) < 1e-9 && Math.Abs(a.E32 - b.E32) < 1e-9 && Math.Abs(a.E33 - b.E33) < 1e-9;
+        var crystalChanged = !ReferenceEquals(expectedCrystal, crystal);
+        if (crystalChanged || !same(expectedRotation, crystal.RotationMatrix))
+        {
+            NeutralDirection = NeutralDirection * expectedRotation.Inverse() * crystal.RotationMatrix;
+            if (crystalChanged) setVector();
+        }
+
         skipEventFromParent = true;
         FormDiffractionSimulator.formMain.SetRotation(HolderRotation.Inverse() * NeutralDirection);
         skipEventFromParent = false;
+        expectedRotation = HolderRotation.Inverse() * NeutralDirection; // 261105Cl 追加: いま置いた方位 (写し)
         Draw();
     }
 
@@ -357,6 +409,8 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
     //PreFilterMessage で UI スレッド全体の WM_KEYDOWN を先取りする方式に置き換えた。これなら ReciPro のどのウィンドウが前面でも
     //(このフォームが Visible かつ checkBoxEnableArrow.Checked なら) 矢印キーでホルダーを傾けられる。
     //メッセージフィルタは同一スレッド内のメッセージにしか掛からないので、他アプリのキー入力を横取りすることは無い。
+    //261105Cl 変更 (作者決定 D25): ほかの窓の入力欄の矢印キーまで奪っていたので、この窓がアクティブなときだけに絞った (PreFilterMessage の ActiveForm 判定)。
+    //フィルタ方式は残す (この窓の中ではフォーカスのあるコントロールより先に拾える)
     //旧:
     //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
     //{
@@ -370,7 +424,9 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
         if (m.Msg != WM_KEYDOWN) return false;
         var key = (Keys)(int)m.WParam;
         if (key is not (Keys.Left or Keys.Right or Keys.Up or Keys.Down)) return false; //安価な判定を先に
-        if (!Visible || !checkBoxEnableArrow.Checked) return false;
+        //if (!Visible || !checkBoxEnableArrow.Checked) return false; // 261105Cl 変更前: どの窓が前面でも矢印キーを奪い、主窓などの入力欄でカーソルを動かせなかった
+        // 261105Cl 変更 (作者決定 D25): この窓が前面 (アクティブ) のときだけ傾きに使う。ほかの窓 (この窓から開いたダイアログを含む) では素通しにする
+        if (!Visible || !checkBoxEnableArrow.Checked || ActiveForm != this) return false; // 261105Cl
         //修飾キー併用時は tiltByArrowKey 側の完全一致で弾かれる
         return tiltByArrowKey(key | ModifierKeys);
     }
@@ -426,7 +482,8 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
 
     private void buttonRotate180_Click(object sender, EventArgs e)
     {
-        FormDiffractionSimulator.formMain.Rotate((0, 0, 1), Math.PI);
+        //FormDiffractionSimulator.formMain.Rotate((0, 0, 1), Math.PI); // 261105Cl 変更前: 主窓で「軸/面を固定」していると、その結晶軸 (面法線) のまわりに回っていた
+        FormDiffractionSimulator.formMain.Rotate((0, 0, 1), Math.PI, ignoreFixedAxis: true); // 261105Cl 変更 (作者決定 D25): 常にビーム軸 (画面に垂直) のまわり
     }
 
     private void checkBoxIncludingEquivalent_CheckedChanged(object sender, EventArgs e)

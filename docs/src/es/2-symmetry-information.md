@@ -38,9 +38,10 @@ Introduzca dos planos cristalinos \((h_1, k_1, l_1)\), \((h_2, k_2, l_2)\) o dos
 
 - el espaciado d de cada plano / la longitud de cada eje,
 - el ángulo entre los dos planos (o los dos ejes),
-- **el índice de dirección normal a ambos planos** y **el índice de plano normal a ambos ejes**.
+- el ángulo entre la normal del plano 1 y el eje 1, y entre la normal del plano 2 y el eje 2 (90° cuando el eje está contenido en el plano),
+- **Eje paralelo a ambos planos** (el eje de zona [*uvw*] de los dos planos) y **Plano que contiene ambos ejes** (el plano (*hkl*) que contiene los dos ejes). Los signos siguen [*uvw*] = (*h*₁*k*₁*l*₁) × (*h*₂*k*₂*l*₂) y (*hkl*) = [*u*₁*v*₁*w*₁] × [*u*₂*v*₂*w*₂]. <!-- 261106Cl 作者の決定 B16 --> <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップ (numericBoxAnglePlaneAxis1/2.ToolTip) に合わせた。以前の「normal to」は逆 -->
 
-Estos cálculos respetan la métrica de la celda elemental actual.
+Estos cálculos respetan la métrica de la celda elemental actual. Las longitudes se muestran en Å y los ángulos en grados.
 
 ---
 
@@ -48,7 +49,7 @@ Estos cálculos respetan la métrica de la celda elemental actual.
 
 ![Posiciones de Wyckoff](../assets/cap-es-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-Enumera cada posición de Wyckoff con su multiplicidad, su letra de Wyckoff, su simetría de sitio y si se trata de una posición general o especial. En el caso de las redes centradas, los vectores de traslación de la red se muestran en la fila de cabecera.
+Enumera cada posición de Wyckoff con su multiplicidad (**Mult.**), su letra de Wyckoff (**Letra Wyck.**), su simetría de sitio (**Sim. sitio**) y sus **Coordenadas** (hasta cuatro por fila; las listas más largas continúan en las filas siguientes). La primera entrada de Wyckoff (la de mayor multiplicidad) es la posición general. En el caso de las redes centradas, los vectores de traslación de la red se muestran en la fila de cabecera; para los grupos R en ejes hexagonales son las tres traslaciones de centrado de la configuración obversa, (0,0,0)+, (2/3,1/3,1/3)+ y (1/3,2/3,2/3)+. <!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
 
 ---
 
@@ -57,6 +58,8 @@ Enumera cada posición de Wyckoff con su multiplicidad, su letra de Wyckoff, su 
 ![Condiciones](../assets/cap-es-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageConditions.png)
 
 Las condiciones de reflexión que surgen del centrado de la red y de los operadores de simetría de deslizamiento y helicoidales.
+
+Cada fila tiene tres columnas: **Índices** (la clase de reflexiones, p. ej. $hkl$, $h0l$, $00l$), **Condición** (p. ej. $h+k=2n$) y **Elemento** (el centrado de la red o el elemento de simetría responsable). Cuando no hay ninguna, se muestra *No Condition*.
 
 ---
 
@@ -97,12 +100,13 @@ Los dos paneles inferiores reproducen los diagramas esquemáticos de simetría d
 - **Elementos de simetría (izquierda)**: los ejes de rotación/helicoidales, los planos de espejo/deslizamiento y los centros de inversión/puntos de rotoinversión se dibujan con los símbolos gráficos convencionales.
   - Para la red \(F\) del sistema cúbico, solo se muestra el cuarto superior izquierdo de la celda proyectada (véase el [Apéndice A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram)).
   - Estos elementos de simetría también pueden dibujarse directamente sobre el modelo 3D en el [Visor de estructura](5-structure-viewer.md).
-- **Posiciones generales (derecha)**: las posiciones equivalentes generales se representan como círculos (una coma denota una imagen especular), anotadas con sus coordenadas fraccionarias.
+- **Posiciones generales (derecha)**: las posiciones equivalentes generales se representan como círculos (una coma denota una imagen especular), cada una anotada con su altura a lo largo del eje de proyección (`+`, `−`, `½+`, …; véase el [Apéndice A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md)).
+  - El punto de prueba $(x,y,z)$ se fija con las casillas **a** / **b** / **c** situadas junto al botón **Copiar** de las posiciones generales (intervalo de −1 a 1, paso 0.01). Se restablece a un valor por defecto para el grupo puntual cada vez que cambia el grupo puntual, y se conserva cuando solo cambia el grupo espacial dentro del mismo grupo puntual.
   - Solo para el sistema cúbico, líneas auxiliares conectan los tres círculos relacionados por un eje de rotación de orden 3.
 
-Controles debajo de los diagramas:
+Controles (el panel **Opciones** de la parte inferior de la ventana y el botón **Copiar** situado sobre cada diagrama):
 
-- **Dirección** (`a` / `b` / `c`) : elija el eje cristalino a lo largo del cual proyectar.
+- **Dirección** (`a` / `b` / `c`) : elija el eje cristalino a lo largo del cual proyectar. Solo puede elegirse para los grupos espaciales ortorrómbicos (por defecto `c`); para los grupos monoclínicos se usa automáticamente el eje único, y para todos los demás sistemas cristalinos, `c`.
 - **Copiar** : copia cada diagrama al portapapeles en el formato seleccionado en **Formato de copia** (**emf** vectorial / **bmp** rasterizado); el emf puede desagruparse y editarse en PowerPoint.
 - **Relaciones de grupo…** abre un explorador de las relaciones de subgrupos maximales/supergrupos minimales del grupo espacial actual. Véase el [Apéndice A4.2](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) para saber cómo leerlo.
 

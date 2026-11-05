@@ -161,7 +161,7 @@ proyección</value>
     <value>Atenuación por profundidad</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>Restablecer</value>
+    <value>Restab. vista</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Apariencia</value>
@@ -346,7 +346,7 @@ planos); el valor mínimo oculta las etiquetas.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
     <value>Establece el color fijo usado para las etiquetas de
-índice cuando 'Especificar color' está habilitado.</value>
+índice cuando 'Color' está habilitado.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
     <value>Establece el color fijo usado para las etiquetas de
@@ -662,7 +662,7 @@ la lista de índices especificados.</value>
   </data>
   <data name="colorControlIndex.ToolTip" xml:space="preserve">
     <value>Establece el color de representación del índice que se está añadiendo o
-seleccionado actualmente (se usa cuando 'Rotate color' está desactivado).</value>
+seleccionado actualmente (se usa cuando 'Rotar color' está desactivado).</value>
   </data>
   <data name="colorControlIndex.ToolTip1" xml:space="preserve">
     <value>Establece el color de representación del índice que se está añadiendo o
@@ -683,7 +683,7 @@ superior de la clasificación del factor de estructura (1–1000).</value>
   </data>
   <data name="indexControlDrawing.ToolTip" xml:space="preserve">
     <value>Introduzca el índice a representar — un solo [uvw]/(hkl) en
-modo 'Specified', o el h,k,l máximo en modo 'Range'.</value>
+modo 'Especificado', o el h,k,l máximo en modo 'Intervalo'.</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
     <value>Representa también todos los índices simétricamente equivalentes (la

@@ -115,7 +115,7 @@
     <value>Fonte não local</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>Espessura</value>
+    <value>Profundidade</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>até</value>
@@ -279,9 +279,11 @@ de Kikuchi cujo 1/d está abaixo deste valor são desenhadas, de modo
 que valores menores mantêm apenas reflexões com maior distância interplanar.</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>Tamanho do passo da varredura de espessura
-da amostra, em nm; o intervalo de Start a
-End é calculado com este incremento.</value>
+    <value>Passo entre as fatias de profundidade do master pattern, em nm.
+As profundidades automáticas não são equiespaçadas (mais finas
+perto da superfície); os campos mostram então o primeiro ponto, o
+último ponto e o primeiro intervalo. Editar um campo torna os
+passos iguais.</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Número de feixes difratados (vetores g) incluídos
@@ -289,13 +291,16 @@ no cálculo dinâmico de ondas de Bloch (1-2048);
 mais feixes melhoram a precisão mas tornam o cálculo mais lento.</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>Início do intervalo de varredura de espessura
-da amostra, em nm; Start, End e Step
-definem as fatias de espessura a calcular.</value>
+    <value>Primeira fatia de profundidade (a mais rasa) do master pattern,
+em nm. A profundidade é o comprimento do percurso na direção de
+saída (profundidade da fonte ÷ cos χ). Start, End e Step definem
+as fatias.
+Definida automaticamente enquanto "Faixas de energia e
+profundidade automáticas (MC)" estiver marcada.</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>Fim do intervalo de varredura de espessura da amostra, em nm; Start,
-End e Step definem as fatias de espessura a calcular.</value>
+    <value>Última fatia de profundidade (a mais funda) do master pattern,
+em nm; Start, End e Step definem as fatias.</value>
   </data>
   <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
     <value>Energia final (inferior) dos elétrons
@@ -305,7 +310,9 @@ de Elétrons Retroespalhados), em keV.</value>
   <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
     <value>Energia inicial (superior) dos elétrons
 retroespalhados usada na varredura EBSD (Difração
-de Elétrons Retroespalhados), em keV.</value>
+de Elétrons Retroespalhados), em keV.
+Definida automaticamente enquanto "Faixas de energia e
+profundidade automáticas (MC)" estiver marcada.</value>
   </data>
   <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
     <value>Tamanho do passo da varredura de energia
@@ -482,16 +489,18 @@ cor (Gray, Cold-Warm, Spectrum ou Fire).</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Insira os índices do eixo de zona [u v w] usados pelo
-botão 'View Along' para orientar o master pattern 3D.</value>
+botão 'View along' para orientar o master pattern 3D.</value>
   </data>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Mostra a profundidade (nm) da fatia do padrão
 EBSD atualmente renderizada (modo de fatia única).</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>Define o ângulo de inclinação do plano do detector em graus
-em relação ao eixo do feixe (Z). Isso afeta o comprimento de
-câmara e a forma projetada das bandas de Kikuchi.</value>
+    <value>Define o ângulo de inclinação da tela do detector em graus,
+medido a partir do plano horizontal (perpendicular ao eixo do
+feixe Z): 0° = horizontal, 90° = tela vertical (padrão). Isso
+afeta o comprimento de câmera e a forma projetada das
+bandas de Kikuchi.</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
     <value>Mostra a energia do elétron (keV) da fatia do padrão
@@ -518,17 +527,17 @@ pelo controle deslizante de energia para pré-visualização.</value>
 a geometria de projeção do retroespalhamento.</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>Define a coordenada Y do centro do detector, em
-mm: o deslocamento da amostra para a tela dentro
-do plano da superfície da amostra, perpendicular
-ao eixo de rotação X. Junto com Z e a inclinação
-do detector determina o comprimento de câmera.
-(O deslocamento lateral é ajustado com X.)</value>
+    <value>Define a coordenada Y do centro do detector, em mm:
+o deslocamento horizontal perpendicular ao eixo do feixe (Z)
+e ao eixo de inclinação da amostra (X), no referencial do
+microscópio (não na superfície inclinada da amostra). Junto
+com Z e a inclinação do detector determina o comprimento de
+câmera. (O deslocamento lateral é ajustado com X.)</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>Define a coordenada Z (ao longo da direção do feixe)
 do centro do detector, em mm. Em conjunto com Y
-ela determina o comprimento de câmara.</value>
+ela determina o comprimento de câmera.</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>Seleciona reflexões para as linhas de Kikuchi
@@ -583,11 +592,17 @@ elétrons retroespalhados detectados tiveram seu
 último evento de espalhamento inelástico (ou a
 profundidade máxima de penetração quando não
 houve nenhum). É a mesma definição de
-profundidade usada para ponderar o master pattern.</value>
+profundidade usada para ponderar o master pattern.
+Clique duas vezes no gráfico para copiar seus valores para
+a área de transferência como texto (x e y separados por
+tabulação).</value>
   </data>
   <data name="labelBseDeltaE.ToolTip" xml:space="preserve">
     <value>Distribuição da perda de energia ΔE (keV)
-dos elétrons retroespalhados simulados.</value>
+dos elétrons retroespalhados simulados.
+Clique duas vezes no gráfico para copiar seus valores para
+a área de transferência como texto (x e y separados por
+tabulação).</value>
   </data>
   <data name="labelBseStereonetNote.ToolTip" xml:space="preserve">
     <value>Nesta rede estereográfica, o centro
@@ -755,7 +770,7 @@ normalizada de média zero).</value>
     <value>Coordenada X do centro do detector, em mm: o deslocamento
 lateral (esquerda-direita) da tela ao longo do eixo de
 inclinação da amostra. Y e Z definem o deslocamento no
-plano e o comprimento de câmara. (Faixa -1000 a 1000.)</value>
+plano e o comprimento de câmera. (Faixa -1000 a 1000.)</value>
   </data>
   <data name="numericBoxDetWidth.ToolTip" xml:space="preserve">
     <value>Número de pixels do detector na direção horizontal
@@ -789,7 +804,7 @@ graus em relação ao eixo do feixe e tamanho em pixels
   <data name="labelDetectorCenter.ToolTip" xml:space="preserve">
     <value>Posição do centro do detector em mm (X, Y, Z), medida a
 partir do ponto onde o feixe atinge a amostra. Y e Z com a
-inclinação determinam o comprimento de câmara;
+inclinação determinam o comprimento de câmera;
 X é o deslocamento lateral.</value>
   </data>
   <data name="numericBoxResolution.ToolTip" xml:space="preserve">
@@ -1011,5 +1026,19 @@ materiais ou tensões.
 Antes de editar: 0,8 keV para a gaussiana assimétrica; 0,9 keV para histograma + A por elétron (mediana provisória de 18 bandas fixas Si004 a 20 kV).
 Depois de editar E_c, o valor é mantido ao mudar a distribuição.
 Os valores dependem do material e das reflexões; botallackita: cerca de 0,43–0,71 keV. Recalibre se mudar a grade energia/profundidade, a síntese ou a métrica.</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.Text" xml:space="preserve">
+    <value>Faixas de energia e profundidade automáticas (MC)</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.ToolTip" xml:space="preserve">
+    <value>Ligado (padrão): cada Simular e Criar master pattern define as faixas
+de energia e profundidade abaixo a partir do resultado de Monte Carlo
+(energia: de E0 até cerca de 95 % da perda de energia; profundidade:
+até o ponto de 99,9 % do comprimento do percurso de saída, 40 passos
+desiguais). Os campos ficam somente leitura.
+Desligado: os campos mantêm os valores digitados e o master pattern é
+criado com eles. Uma faixa cujo limite inferior não está abaixo do
+superior, uma energia acima de E0 ou uma faixa fora da distribuição de
+Monte Carlo é recusada com uma mensagem.</value>
   </data>
 </root>

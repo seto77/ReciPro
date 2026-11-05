@@ -56,7 +56,7 @@ Mentre ReciPro è in esecuzione può accettare macro da altri programmi tramite 
 
 Il listener è **disattivato per impostazione predefinita**. Attivalo dalla finestra principale:
 
-**Opzioni → Accept external macro commands (named pipe)**
+**Opzioni → Accetta comandi macro esterni (named pipe)**
 
 L'impostazione viene ricordata tra le sessioni.
 

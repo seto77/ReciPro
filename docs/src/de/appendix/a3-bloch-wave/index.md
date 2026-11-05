@@ -105,7 +105,7 @@ $$
 
 Die Diagonalisierung von $\mathbf{A}$ liefert **alle** Bloch-Wellenvektoren und Amplituden auf einmal. Die Amplituden der gebeugten Strahlen — und damit die Intensitäten — folgen dann aus den Randbedingungen an der Eintritts- und Austrittsfläche sowie aus der Probendicke. Diese Schritte, das optische (komplexe) Potential, der Debye–Waller-Faktor und die Transmissionskoeffizienten $T_{\mathbf g}$ sind unter [Dynamische Berechnung (gemeinsamer Kern)](calculation.md) beschrieben.
 
-> **Hinweis:** Die in der Tabelle **Details** des Beugungssimulators angezeigten $V_{\mathbf g}$-Werte sind die Rohwerte *vor* Anwendung des relativistischen Korrekturfaktors.
+> **Hinweis:** Die in der Tabelle **Reflexdetails** des Beugungssimulators angezeigten $V_{\mathbf g}$-Werte sind die Rohwerte *vor* Anwendung des relativistischen Korrekturfaktors.
 
 ---
 

@@ -161,11 +161,17 @@
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
     <value>數量</value>
   </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>起始</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>步進</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
     <value>數量</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>起始</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>步進</value>
@@ -301,7 +307,7 @@
     <value>將散焦設為 Scherzer 值</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>將所有像差設為零</value>
+    <value>理想條件 (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
     <value>對比傳遞函數 (CTF)</value>
@@ -310,7 +316,7 @@
     <value>散焦 Δf</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>加速電壓 (kV)</value>
+    <value>加速電壓</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Scherzer
@@ -367,8 +373,16 @@
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>載入 TEM 參數</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>從以「儲存 TEM 參數」儲存的檔案 (*.rpis) 讀取模擬條件。
+檔案中沒有的項目（例如舊版本的檔案）將設為預設值。</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>儲存 TEM 參數</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>將目前的模擬條件（與預設設定相同的項目）儲存到 XML 檔案 (*.rpis)。
+可以在其他電腦上讀取，或與合作者共用。</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>檔案</value>
@@ -532,12 +546,12 @@ TDS（thermal diffuse scattering,
 僅適用於 STEM 參考影像 (ADF / 彈性 / TDS)，不用於 STEM-EDX 分布圖。</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>有效電子源尺寸 (nm)。數值越大會使 STEM
-探束模糊，並降低影像的細部。</value>
+    <value>有效電子源尺寸：試樣上高斯光源像的半高全寬 (FWHM)，
+單位 pm。數值越大會使 STEM 探束模糊，並降低影像的細部。</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
-    <value>有效電子源尺寸 (nm)。數值越大會使 STEM
-探束模糊，並降低影像的細部。</value>
+    <value>有效電子源尺寸：試樣上高斯光源像的半高全寬 (FWHM)，
+單位 pm。數值越大會使 STEM 探束模糊，並降低影像的細部。</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
     <value>STEM 入射探束的會聚半角 (mrad)；
@@ -909,7 +923,7 @@ sin(theta)/lambda (nm^-1) 表示；
     <value>計算 EDX 分布圖</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>計算所選元素/殼層通道的游離 (EDX) 分布圖。&#xD;&#xA;STEM 參考影像 (ADF / 彈性 / TDS) 一律會計算；&#xD;&#xA;每個 EDX 通道會在其後額外增加一次游離計算。</value>
+    <value>計算該晶體在此加速電壓下可計算的所有特徵 X 射線通道（元素 × 殼層）的&#xD;&#xA;STEM-EDX 分布圖（列表顯示於下方）。&#xD;&#xA;STEM 參考影像 (ADF / 彈性 / TDS) 一律會計算；&#xD;&#xA;每個 EDX 通道會在其後額外增加一次游離計算。</value>
   </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX 共用</value>
@@ -922,5 +936,11 @@ sin(theta)/lambda (nm^-1) 表示；
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
     <value>顯示 STEM-EDX 元素分佈圖，取代 ADF 類影像；特徵 X 射線在下方選擇。殼層通道（K、L、M）的數值是每個入射電子產生的內殼空穴數（模型值）。譜線系（Kα、Kβ、Lα、Lβ、Mα）的數值是每個入射電子產生的 X 射線光子數：已計入螢光產率、Coster–Kronig 與輻射級聯以及譜線分支比，未計入歐傑級聯。自吸收、偵測器立體角與偵測效率均未計入，因此兩者都不是預測的 X 射線計數。</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.HeaderText" xml:space="preserve">
+    <value>會聚半角 α</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
+    <value>有效電子源尺寸 (FWHM)</value>
   </data>
 </root>

@@ -66,10 +66,10 @@
     <value>Arquivo</value>
   </data>
   <data name="asBitmapToolStripMenuItem.Text" xml:space="preserve">
-    <value>Como Imagem</value>
+    <value>Como imagem</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Imagem (formato PNG)</value>
+    <value>como imagem (formato PNG)</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>como metarquivo (EMF)</value>
@@ -78,13 +78,13 @@
     <value>como metarquivo (EMF)</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Salvar Imagem</value>
+    <value>Salvar imagem</value>
   </data>
   <data name="pageSetupToolStripMenuItem.Text" xml:space="preserve">
-    <value>Configurar Página</value>
+    <value>Configurar página</value>
   </data>
   <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
-    <value>Visualizar Impressão</value>
+    <value>Visualizar impressão</value>
   </data>
   <data name="printToolStripMenuItem.Text" xml:space="preserve">
     <value>Imprimir</value>
@@ -93,7 +93,7 @@
     <value>Copiar para a área de transferência</value>
   </data>
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
-    <value>Salvar Vídeo</value>
+    <value>Salvar vídeo</value>
   </data>
   <data name="toolStripMenuItemSaveMovieStereonet.Text" xml:space="preserve">
     <value>Estereonete</value>
@@ -161,7 +161,7 @@ projeção</value>
     <value>Atenuação de profundidade</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>Redefinir</value>
+    <value>Redefinir vista</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Aparência</value>
@@ -349,7 +349,7 @@ planos); o valor mínimo oculta os rótulos.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
     <value>Define a cor fixa usada para os rótulos de
-índice quando 'Especificar cor' está ativado.</value>
+índice quando 'Cor' está ativado.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
     <value>Define a cor fixa usada para os rótulos de
@@ -389,7 +389,7 @@ finas, exibidas apenas quando 'Linhas de 1°' está ativado).</value>
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>Define a cor das linhas de grade de 1° (linhas
-finas, exibidas apenas quando '1° Lines' está ativado).</value>
+finas, exibidas apenas quando '1° lines' está ativado).</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
     <value>Projeta as linhas de latitude e longitude

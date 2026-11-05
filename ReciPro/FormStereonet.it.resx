@@ -158,7 +158,7 @@ proiezione</value>
     <value>Dissolvenza profondità</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
-    <value>Reimposta</value>
+    <value>Azzera vista</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Aspetto</value>
@@ -346,7 +346,7 @@ indici invece del colore dello spot.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
     <value>Imposta il colore fisso usato per le etichette degli
-indici quando «Specifica colore» è abilitato.</value>
+indici quando «Colore» è abilitato.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
     <value>Imposta il colore fisso usato per le etichette degli

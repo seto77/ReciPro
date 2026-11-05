@@ -175,7 +175,7 @@ pro Indexeinheit (skaliert mit den Indexwerten).
 Negative Werte kehren die Richtung um.</value>
   </data>
   <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
-    <value>Fügt bei t = Duration ein zusätzliches Bild hinzu,
+    <value>Fügt bei t = Dauer ein zusätzliches Bild hinzu,
 sodass der Film exakt in der endgültigen
 Orientierung/Position endet.</value>
   </data>

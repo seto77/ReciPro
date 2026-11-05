@@ -97,7 +97,7 @@
     <value>Seuil 1/d</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
-    <value>Haut</value>
+    <value>Max.</value>
   </data>
   <data name="labelTextSize.Text" xml:space="preserve">
     <value>Taille du texte</value>
@@ -115,7 +115,7 @@
     <value>Source non locale</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>Épaisseur</value>
+    <value>Profondeur</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>à</value>
@@ -280,9 +280,11 @@ de Kikuchi dont le 1/d est inférieur à cette valeur sont tracées, donc
 des valeurs plus basses ne conservent que les réflexions de grande distance interréticulaire.</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>Pas du balayage de l'épaisseur de
-l'échantillon, en nm ; la plage de Start à
-End est calculée selon cet incrément.</value>
+    <value>Pas entre les tranches de profondeur du master pattern, en nm.
+Les profondeurs automatiques sont inégalement espacées (plus fines
+près de la surface) ; les champs montrent alors le premier point, le
+dernier point et le premier intervalle. Modifier un champ rend les
+pas égaux.</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Nombre de faisceaux diffractés (vecteurs g) inclus
@@ -290,13 +292,16 @@ dans le calcul dynamique en ondes de Bloch (1-2048) ;
 plus de faisceaux améliore la précision mais ralentit le calcul.</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>Début de la plage de balayage de l'épaisseur
-de l'échantillon, en nm ; Start, End et Step
-définissent les tranches d'épaisseur à calculer.</value>
+    <value>Première tranche de profondeur (la moins profonde) du master
+pattern, en nm. La profondeur est la longueur du trajet dans la
+direction de sortie (profondeur de la source ÷ cos χ). Start, End
+et Step définissent les tranches.
+Réglée automatiquement tant que « Plages d'énergie et de
+profondeur automatiques (MC) » est cochée.</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>Fin de la plage de balayage de l'épaisseur de l'échantillon, en nm ; Start,
-End et Step définissent les tranches d'épaisseur à calculer.</value>
+    <value>Dernière tranche de profondeur (la plus profonde) du master
+pattern, en nm ; Start, End et Step définissent les tranches.</value>
   </data>
   <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
     <value>Énergie de fin (inférieure) des électrons
@@ -306,7 +311,9 @@ des électrons rétrodiffusés), en keV.</value>
   <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
     <value>Énergie de début (supérieure) des électrons
 rétrodiffusés utilisée dans le balayage EBSD (diffraction
-des électrons rétrodiffusés), en keV.</value>
+des électrons rétrodiffusés), en keV.
+Réglée automatiquement tant que « Plages d'énergie et de
+profondeur automatiques (MC) » est cochée.</value>
   </data>
   <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
     <value>Pas du balayage en énergie des électrons
@@ -485,16 +492,18 @@ une couleur (Gray, Cold-Warm, Spectrum ou Fire).</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Saisit les indices d'axe de zone [u v w] utilisés par le
-bouton « View Along » pour orienter le master pattern 3D.</value>
+bouton « View along » pour orienter le master pattern 3D.</value>
   </data>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Affiche la profondeur (nm) de la tranche du diagramme
 EBSD actuellement rendue (mode tranche unique).</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>Définit l'angle d'inclinaison du plan du détecteur en degrés
-par rapport à l'axe du faisceau (Z). Cela affecte la longueur de
-caméra et la forme projetée des bandes de Kikuchi.</value>
+    <value>Définit l'angle d'inclinaison de l'écran du détecteur en degrés,
+mesuré depuis le plan horizontal (perpendiculaire à l'axe du
+faisceau Z) : 0° = horizontal, 90° = écran vertical (par défaut).
+Cela affecte la longueur de caméra et la forme projetée des
+bandes de Kikuchi.</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
     <value>Affiche l'énergie des électrons (keV) de la tranche du diagramme
@@ -521,12 +530,12 @@ par le curseur d'énergie pour l'aperçu.</value>
 la géométrie de projection de la rétrodiffusion.</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>Définit la coordonnée Y du centre du détecteur, en mm
-: le décalage de l'échantillon vers l'écran dans le
-plan de la surface de l'échantillon,
-perpendiculairement à l'axe de rotation X. Avec Z et
-l'inclinaison du détecteur, elle détermine la longueur
-de caméra. (Le décalage gauche-droite se règle avec X.)</value>
+    <value>Définit la coordonnée Y du centre du détecteur, en mm :
+le décalage horizontal perpendiculaire à l'axe du faisceau (Z)
+et à l'axe d'inclinaison de l'échantillon (X), dans le repère du
+microscope (pas dans la surface inclinée de l'échantillon).
+Avec Z et l'inclinaison du détecteur, elle détermine la
+longueur de caméra. (Le décalage gauche-droite se règle avec X.)</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>Définit la coordonnée Z (le long de la direction du faisceau)
@@ -586,11 +595,17 @@ primaires pour la simulation EBSD).</value>
 dernière diffusion inélastique (ou la profondeur
 de pénétration maximale s'il n'y en a pas eu).
 C'est la même définition de profondeur que celle
-utilisée pour pondérer le master pattern.</value>
+utilisée pour pondérer le master pattern.
+Double-cliquez sur le graphique pour copier ses valeurs
+dans le presse-papiers sous forme de texte (x et y séparés
+par une tabulation).</value>
   </data>
   <data name="labelBseDeltaE.ToolTip" xml:space="preserve">
     <value>Distribution de la perte d'énergie ΔE (keV)
-des électrons rétrodiffusés simulés.</value>
+des électrons rétrodiffusés simulés.
+Double-cliquez sur le graphique pour copier ses valeurs
+dans le presse-papiers sous forme de texte (x et y séparés
+par une tabulation).</value>
   </data>
   <data name="labelBseStereonetNote.ToolTip" xml:space="preserve">
     <value>Dans ce stéréonet, le centre
@@ -1024,5 +1039,19 @@ d'autres matériaux ou tensions.
 Avant modification : 0,8 keV pour la gaussienne asymétrique ; 0,9 keV pour histogramme + A par électron (médiane provisoire de 18 bandes fixes de Si004 à 20 kV).
 Après modification de E_c, la valeur est conservée lors du changement de distribution.
 Les valeurs dépendent du matériau et des réflexions ; botallackite : environ 0,43–0,71 keV. Recalibrez si la grille énergie/profondeur, la synthèse ou la métrique change.</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.Text" xml:space="preserve">
+    <value>Plages d'énergie et de profondeur automatiques (MC)</value>
+  </data>
+  <data name="checkBoxRangesFromMonteCarlo.ToolTip" xml:space="preserve">
+    <value>Activé (par défaut) : à chaque Simuler et Créer le master pattern,
+les plages d'énergie et de profondeur ci-dessous sont fixées par le
+résultat Monte-Carlo (énergie : de E0 jusqu'à environ 95 % de la perte
+d'énergie ; profondeur : jusqu'au point 99,9 % de la longueur du trajet
+de sortie, 40 pas inégaux). Les champs sont alors en lecture seule.
+Désactivé : les champs gardent vos valeurs et le master pattern est
+créé avec elles. Une plage dont la borne inférieure n'est pas sous la
+borne supérieure, une énergie au-dessus de E0 ou une plage hors de la
+distribution Monte-Carlo est refusée avec un message.</value>
   </data>
 </root>

@@ -84,7 +84,7 @@
     <value>Deckkraft</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
-    <value>Objekte abschneiden</value>
+    <value>Objekte an Begrenzungsebenen abschneiden</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>Grenzen durch Elementarzelle definiert</value>
@@ -97,7 +97,7 @@
   </data>
   <data name="labelMessage.Text" xml:space="preserve">
     <value>Dieses Steuerelement wird jetzt im
- Fenster "Structure Viewer" angezeigt.</value>
+ Fenster "Strukturansicht" angezeigt.</value>
   </data>
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>Atome</value>
@@ -347,7 +347,7 @@ der Grenzen liegen</value>
     <value>Lichtrichtung</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Hauptbild in Zwischenablage kopieren</value>
+    <value>Bild in Zwischenablage kopieren</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Hauptbild</value>
@@ -395,13 +395,16 @@ der Grenzen liegen</value>
     <value>Anzeigebereich auf ±1 jeder Elementarzellenachse setzen</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value>Anzeigezentrum auf den Ursprung (0, 0, 0) setzen</value>
+    <value>Zentrum auf (0, 0, 0) setzen: der angezeigte Bereich
+ist um das Projektionszentrum zentriert.</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value>Anzeigezentrum auf (1/4, 1/4, 1/4) setzen</value>
+    <value>Zentrum auf (1/4, 1/4, 1/4) setzen: der angezeigte Bereich wird gegenüber
+dem Projektionszentrum um 1/4 in Richtung +a, +b, +c verschoben.</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
-    <value>Anzeigezentrum auf (1/2, 1/2, 1/2) setzen</value>
+    <value>Zentrum auf (1/2, 1/2, 1/2) setzen: der angezeigte Bereich wird gegenüber
+dem Projektionszentrum um 1/2 in Richtung +a, +b, +c verschoben.</value>
   </data>
   <data name="buttonSetRange0.ToolTip" xml:space="preserve">
     <value>Anzeigebereich auf ±1/4 jeder Elementarzellenachse setzen</value>
@@ -440,34 +443,40 @@ der a-Achse, in fraktionellen Koordinaten;
 Atome innerhalb von Zentrum ± Range werden gezeichnet.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>Zentrum des angezeigten Bereichs entlang der c-Achse, in
-fraktionellen Koordinaten; zusammen mit dem Bereich legt es
-die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
+    <value>Verschiebung der Mitte des angezeigten Bereichs gegenüber dem
+Projektionszentrum entlang der c-Achse, in fraktionellen Koordinaten
+(positiv: in Richtung +c). Zusammen mit dem Bereich legt sie die
+minimalen/maximalen Begrenzungsebenen fest: (Projektionszentrum + Zentrum) ± Bereich.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>Zentrum des angezeigten Bereichs entlang der c-Achse, in
-fraktionellen Koordinaten; zusammen mit Range legt es
-die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
+    <value>Verschiebung der Mitte des angezeigten Bereichs gegenüber dem
+Projektionszentrum entlang der c-Achse, in fraktionellen Koordinaten
+(positiv: in Richtung +c). Zusammen mit dem Bereich legt sie die
+minimalen/maximalen Begrenzungsebenen fest: (Projektionszentrum + Zentrum) ± Bereich.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>Zentrum des angezeigten Bereichs entlang der b-Achse, in
-fraktionellen Koordinaten; zusammen mit dem Bereich legt es
-die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
+    <value>Verschiebung der Mitte des angezeigten Bereichs gegenüber dem
+Projektionszentrum entlang der b-Achse, in fraktionellen Koordinaten
+(positiv: in Richtung +b). Zusammen mit dem Bereich legt sie die
+minimalen/maximalen Begrenzungsebenen fest: (Projektionszentrum + Zentrum) ± Bereich.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>Zentrum des angezeigten Bereichs entlang der b-Achse, in
-fraktionellen Koordinaten; zusammen mit Range legt es
-die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
+    <value>Verschiebung der Mitte des angezeigten Bereichs gegenüber dem
+Projektionszentrum entlang der b-Achse, in fraktionellen Koordinaten
+(positiv: in Richtung +b). Zusammen mit dem Bereich legt sie die
+minimalen/maximalen Begrenzungsebenen fest: (Projektionszentrum + Zentrum) ± Bereich.</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>Zentrum des angezeigten Bereichs entlang der a-Achse, in
-fraktionellen Koordinaten; zusammen mit dem Bereich legt es
-die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
+    <value>Verschiebung der Mitte des angezeigten Bereichs gegenüber dem
+Projektionszentrum entlang der a-Achse, in fraktionellen Koordinaten
+(positiv: in Richtung +a). Zusammen mit dem Bereich legt sie die
+minimalen/maximalen Begrenzungsebenen fest: (Projektionszentrum + Zentrum) ± Bereich.</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value>Zentrum des angezeigten Bereichs entlang der a-Achse, in
-fraktionellen Koordinaten; zusammen mit Range legt es
-die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
+    <value>Verschiebung der Mitte des angezeigten Bereichs gegenüber dem
+Projektionszentrum entlang der a-Achse, in fraktionellen Koordinaten
+(positiv: in Richtung +a). Zusammen mit dem Bereich legt sie die
+minimalen/maximalen Begrenzungsebenen fest: (Projektionszentrum + Zentrum) ± Bereich.</value>
   </data>
   <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
     <value>Begrenzungsebenen des Kristalls ein-/ausblenden</value>
@@ -703,7 +712,7 @@ Symbole (Spiegel- und Gleitspiegelebenen) festlegen.</value>
 Symbole (Dreh-, Schrauben- und Drehinversionsachsen) festlegen.</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>Beschriftungen in Legenden anzeigen</value>
+    <value>Atombeschriftungen in der 3D-Ansicht anzeigen</value>
   </data>
   <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
     <value>Die Materialfarbe als Beschriftungsfarbe verwenden </value>
@@ -718,7 +727,7 @@ Symbole (Dreh-, Schrauben- und Drehinversionsachsen) festlegen.</value>
     <value>Schriftgröße der Atombeschriftungen (0-200).</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>Wenn aktiviert, werden Legendenbeschriftungen weiß umrandet.</value>
+    <value>Wenn aktiviert, werden die Atombeschriftungen in der 3D-Ansicht weiß umrandet.</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
     <value>Gebundene Atome auch dann anzeigen, wenn sie außerhalb der Grenzen liegen</value>
@@ -810,24 +819,26 @@ Symbole, in Prozent (20-500%)</value>
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
     <value>Anzahl der Unterteilungen der Elementarzelle entlang
 der a-Achse (ganzzahlig, 1-10) für das Subzellen-
-Gitter, das bei aktiviertem 'Show Subcell' erscheint.</value>
+Gitter, das bei aktiviertem 'Show subcell' erscheint.</value>
   </data>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
     <value>Anzahl der Unterteilungen der Elementarzelle entlang
 der b-Achse (ganzzahlig, 1-10) für das Subzellen-
-Gitter, das bei aktiviertem 'Show Subcell' erscheint.</value>
+Gitter, das bei aktiviertem 'Show subcell' erscheint.</value>
   </data>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
     <value>Anzahl der Unterteilungen der Elementarzelle entlang
 der c-Achse (ganzzahlig, 1-10) für das Subzellen-
-Gitter, das bei aktiviertem 'Show Subcell' erscheint.</value>
+Gitter, das bei aktiviertem 'Show subcell' erscheint.</value>
   </data>
   <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
     <value>Blendet die Atom-Beschriftungen (Element-
 symbole) ein/aus, die jedem Atom überlagert werden.</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>Blendet die Atomkugeln im 3D-Modell ein/aus.</value>
+    <value>Blendet die Atomkugeln im 3D-Modell ein/aus.
+Bindungen, Polyeder und Beschriftungen werden aus den Atomen
+erzeugt und daher ebenfalls ausgeblendet.</value>
   </data>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>Setzt Atomradien, Farben und Bindungen auf die
@@ -850,8 +861,9 @@ verbreitetes Programm zur Visualisierung von Kristallstrukturen).</value>
 Inversionszentren) über die 3D-Ansicht.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>Zentrum des dargestellten Bereichs (fraktionelle
-Koordinaten) entlang jeder Elementarzellenachse.</value>
+    <value>Verschiebung der Mitte des dargestellten Bereichs gegenüber dem
+Projektionszentrum, in fraktionellen Koordinaten entlang jeder
+Elementarzellenachse (positiv: in Richtung +a, +b, +c).</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>Verschiebt den Rahmen der Elementarzelle entlang der
@@ -862,7 +874,8 @@ a-, b-, c-Achse (fraktionelle Koordinaten).</value>
 Koordinaten) entlang jeder Elementarzellenachse.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>Setzt das Anzeigezentrum auf eine voreingestellte fraktionelle Position.</value>
+    <value>Setzt das Zentrum (die Verschiebung gegenüber dem Projektionszentrum)
+auf einen voreingestellten fraktionellen Wert.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value>Setzt den Anzeigebereich auf einen voreingestellten
@@ -881,5 +894,8 @@ Punkt wird in die Mitte der Ansicht gesetzt.</value>
 Kleinere Werte entsprechen einer stärkeren
 Vergrößerung. Synchronisiert mit dem Zoomen in
 der Ansicht (Ziehen mit rechter Maustaste/Mausrad).</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Strukturansicht</value>
   </data>
 </root>

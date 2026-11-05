@@ -2,9 +2,9 @@
 
 Die **SAED-Simulation (Selected Area Electron Diffraction)** berechnet Einkristall-Elektronenbeugungsmuster, die durch einen parallelen Elektronenstrahl erzeugt werden. Dies ist der Standardmodus des [Beugungssimulators](index.md).
 
-> Diese Seite listet jede Einstellung auf, die im Bereich **Spot property** rechts erscheint, wenn Sie **Wave Length = Electron** und **Incident beam mode = Parallel** wählen. Fensterweite Operationen wie Zeichnen und Speichern finden Sie auf der [Übersichtsseite](index.md).
+> Diese Seite listet jede Einstellung auf, die im Bereich **Simulationseinstellungen** rechts erscheint, wenn Sie **Wellenquelle** = **Elektron** und **Optik** = **Paralleler Strahl** wählen. Fensterweite Operationen wie Zeichnen und Speichern finden Sie auf der [Übersichtsseite](index.md).
 
-GUI-Bedingungen: Wave Length = Electron, Incident beam mode = Parallel, Intensity calculation = Only excitation error / Kinematical / Dynamical.
+GUI-Bedingungen: Wellenquelle = Elektron, Optik = Paralleler Strahl, Intensitätsberechnung = Nur Anregungsfehler / Kinematisch & Anr.-Fehler / Dynamische Theorie.
 
 ![Beugungssimulator im SAED-Modus](../../assets/cap-de-auto/FormDiffractionSimulator-saed.png)
 
@@ -16,21 +16,21 @@ Simuliert das Beugungsmuster, das entsteht, wenn ein paralleler Elektronenstrahl
 
 ---
 
-## Wave Length
+## Wellenquelle {#wave-length}
 
-![Wave Length](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Wellenquelle](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Stellen Sie die Strahlungsquelle auf **Electron**. Geben Sie die Energie (keV) oder die Wellenlänge (nm) ein, und die relativistisch korrigierte Wellenlänge wird berechnet. Für Röntgen- und Neutronenquellen siehe [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md).
+Stellen Sie die Strahlungsquelle auf **Elektron**. Geben Sie die Energie (keV) oder die Wellenlänge (Å oder nm, umschaltbar; Standard Å) ein, und die relativistisch korrigierte Wellenlänge wird berechnet. Der Anfangswert ist 200 keV; das Menü **Voreinstellungen** setzt 300 / 200 / 120 kV mit einem Klick. Für Röntgen- und Neutronenquellen siehe [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md).
 
 ---
 
-## Modus des einfallenden Strahls
+## Optik {#incident-beam-mode}
 
-![Incident beam mode](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Optik](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-Stellen Sie die Geometrie des einfallenden Strahls auf **Parallel**. Dies ist die übliche ebene-Wellen-Geometrie, die für SAED und Röntgenbeugung verwendet wird.
+Stellen Sie **Optik** (die Geometrie des einfallenden Strahls) auf **Paralleler Strahl**. Dies ist die übliche ebene-Wellen-Geometrie, die für SAED und Röntgenbeugung verwendet wird.
 
-> **Hinweis**: Für Elektronen können Sie **Parallel / Precession (electron = PED) / Convergence (CBED)** wählen. Die Wahl von **Precession** ergibt eine [PED-Simulation](2-ped-simulation.md), und die Wahl von **Convergence** ergibt eine [CBED-Simulation](3-cbed-simulation.md); in beiden Fällen wechselt die Intensitätsberechnung automatisch zu Dynamical.
+> **Hinweis**: Für Elektronen können Sie **Paralleler Strahl** / **Präzession (Elektron)** / **Konvergenz (Elektron)** wählen. Die Wahl von **Präzession (Elektron)** ergibt eine [PED-Simulation](2-ped-simulation.md), und die Wahl von **Konvergenz (Elektron)** ergibt eine [CBED-Simulation](3-cbed-simulation.md); in beiden Fällen wechselt die Intensitätsberechnung automatisch zu **Dynamische Theorie**.
 
 ---
 
@@ -42,7 +42,17 @@ Legt fest, wie die Spotintensitäten berechnet werden.
 
 ### Nur Anregungsfehler
 
-Die Intensität wird ausschließlich aus dem geometrischen Abstand zwischen der Ewald-Kugel und dem reziproken Gitterpunkt (dem Anregungsfehler $S_g$) bestimmt. Sie ist bei $S_g = 0$ — genau auf der Kugel — am größten und nimmt mit wachsendem $\lvert S_g\rvert$ ab; sie fällt auf null, sobald $\lvert S_g\rvert$ den für den reziproken Gitterpunkt angegebenen **Radius** überschreitet. Da der Strukturfaktor des Kristalls ignoriert wird, ist dies der schnellste Modus und eignet sich zum Überprüfen der Beugungsspotpositionen.
+Die Intensität wird ausschließlich aus dem geometrischen Abstand zwischen der Ewald-Kugel und dem reziproken Gitterpunkt (dem Anregungsfehler $S_g$) bestimmt. Sie ist bei $S_g = 0$ — genau auf der Kugel — am größten und nimmt mit wachsendem $\lvert S_g\rvert$ ab; sie fällt auf null, sobald $\lvert S_g\rvert$ den für den reziproken Gitterpunkt angegebenen **Reflexradius** überschreitet. Da der Strukturfaktor des Kristalls ignoriert wird, ist dies der schnellste Modus und eignet sich zum Überprüfen der Beugungsspotpositionen.
+
+Nur in diesem Modus erscheinen die folgenden Optionen:
+
+| Option | Beschreibung |
+|--------|-------------|
+| **Alle verbotenen Reflexe ausschließen** | Blendet jeden durch die Raumgruppe verbotenen Reflex aus (Gitterzentrierung, Schraubenachsen und Gleitspiegelebenen). Das Anhaken aktiviert und sperrt zugleich die nächste Option. |
+| **Durch Gitterzentrierung verbotene Reflexe ausschließen** | Blendet nur Reflexe aus, die durch die Gitterzentrierung verboten sind (standardmäßig an). |
+| **Alle Reflexe mit gleichem Radius zeichnen** | Zeichnet jeden angeregten Spot unabhängig von $S_g$ mit dem vollen Radius *R*. |
+
+Verbotene Reflexe, die sichtbar bleiben, werden in den Farben **Ausgelöscht** gezeichnet (siehe [Darstellung der Spots](#darstellung-der-spots)).
 
 ### Kinematisch
 
@@ -50,9 +60,9 @@ Zusätzlich zum Anregungsfehler wird der kinematische Strukturfaktor $\lvert F_{
 
 ### Dynamisch (Bloch-Wellen-Methode, nur Elektron)
 
-Eine strenge dynamische Berechnung mit der Bloch-Wellen-Methode (Bethe-Methode). Sie reproduziert die Mehrfachstreuung und die dickenabhängige Variation der Intensität und ist für dicke Proben oder starke Beugung erforderlich. Nur verfügbar, wenn Electron gewählt ist. Zur Theorie siehe [Anhang A3. Bloch-Wellen-Methode](../appendix/a3-bloch-wave/calculation.md).
+Eine strenge dynamische Berechnung mit der Bloch-Wellen-Methode (Bethe-Methode). Sie reproduziert die Mehrfachstreuung und die dickenabhängige Variation der Intensität und ist für dicke Proben oder starke Beugung erforderlich. Nur verfügbar, wenn **Elektron** gewählt ist. Zur Theorie siehe [Anhang A3. Bloch-Wellen-Methode](../appendix/a3-bloch-wave/calculation.md).
 
-> **Hinweis**: Wenn **Dynamical** gewählt ist, erscheint unten ein Bereich **Bloch-Wellen-Einstellungen**.
+> **Hinweis**: Wenn **Dynamische Theorie** gewählt ist, erscheint unten ein Bereich **Bloch-Wellen-Einstellungen**.
 
 ---
 
@@ -60,12 +70,12 @@ Eine strenge dynamische Berechnung mit der Bloch-Wellen-Methode (Bethe-Methode).
 
 ![Bloch wave parameters](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
-Nur aktiv, wenn **Intensity calculation = Dynamical**.
+Nur aktiv, wenn **Intensitätsberechnung** = **Dynamische Theorie**.
 
 | Parameter | Beschreibung |
 |-----------|-------------|
-| **Number of diffracted waves** | Anzahl der Bloch-Wellen, die im Eigenwertproblem berücksichtigt werden. Größere Werte ergeben genauere Intensitäten, erhöhen aber die Rechenzeit mit $O(N^3)$ |
-| **Thickness** | Probendicke (nm), die in der dynamischen Berechnung verwendet wird |
+| **Anzahl gebeugter Wellen** | Anzahl der Bloch-Wellen, die im Eigenwertproblem berücksichtigt werden (8–1000, Standard 240). Größere Werte ergeben genauere Intensitäten, erhöhen aber die Rechenzeit mit $O(N^3)$ |
+| **Dicke** | Probendicke (nm), die in der dynamischen Berechnung verwendet wird (0,01–10000 nm, Standard 50 nm) |
 
 ---
 
@@ -75,14 +85,12 @@ Nur aktiv, wenn **Intensity calculation = Dynamical**.
 
 Steuert, wie jeder Beugungsspot dargestellt wird.
 
-- **Solid sphere / Gaussian** : das geometrische Modell des reziproken Gitterpunkts. **Solid sphere** zeichnet den Querschnitt (einen Kreis) zwischen einer Kugel mit Radius $R$ und der Ewald-Kugel, wobei die Kreisfläche der Beugungsintensität entspricht; **Gaussian** zeichnet den Querschnitt (eine 2-D-Gaußfunktion) einer 3-D-Gaußfunktion mit $\sigma = R$, deren Integral der Beugungsintensität entspricht.
-- **Opacity** : Transparenz des Spots (0 = transparent, 1 = undurchsichtig).
-- **Radius (R)** : virtueller Radius des reziproken Gitterpunkts. Die Spotgröße wird durch die Kombination aus dem Modus **Appearance** und der **Intensity calculation** festgelegt (z. B. ergibt Solid sphere + Dynamical einen Radius proportional zu $I_\text{dyn}^{1/2}$).
-- **Brightness** : nur im Modus **Gaussian** aktiv. Integrierte Intensität der gezeichneten Gaußfunktion.
-- **Color scale** : **Gray scale** oder **Cold-warm**.
-- **Log scale** : Intensitäten in logarithmischer Skala anzeigen. Nützlich für Muster mit großem Intensitätskontrast.
-- **Reflexfarbe** : Spotfarbe, die verwendet wird, wenn keine Farbskala genutzt wird.
-- **Farbe je Kristall** : wenn aktiviert, werden die Spots in der jedem Kristall zugewiesenen Farbe gezeichnet.
+- **Vollkugel / Gauß** : das geometrische Modell des reziproken Gitterpunkts (Standard **Vollkugel**). **Vollkugel** zeichnet den Querschnitt (einen Kreis) zwischen einer Kugel und der Ewald-Kugel: Der Kugelradius ist $R\,I^{1/3}$ bei **Kinematisch & Anr.-Fehler** (Kugelvolumen ∝ Intensität) und $R$ bei **Nur Anregungsfehler**; bei **Dynamische Theorie** wird eine Scheibe mit Radius $R\,I_\text{dyn}^{1/2}$ (Fläche ∝ Intensität) ohne den Schnitt mit der Ewald-Kugel gezeichnet. **Gauß** zeichnet den Querschnitt (eine 2-D-Gaußfunktion) einer 3-D-Gaußfunktion mit $\sigma = R$, deren Integral der Beugungsintensität entspricht.
+- **Deckkraft** : Transparenz des Spots (0 = transparent, 1 = undurchsichtig).
+- **Reflexradius (R)** : virtueller Radius des reziproken Gitterpunkts (nm⁻¹; 0,01–1, Standard 0,2). Die Spotgröße wird durch die Kombination aus dem Modus **Darstellung** und der **Intensitätsberechnung** festgelegt (siehe oben).
+- **Helligkeit**, **Farbskala**, **Log-Skala** : nur im Modus **Gauß** angezeigt. **Helligkeit** skaliert die integrierte Intensität der gezeichneten Gaußfunktion; **Farbskala** ist **Gray** (Spots in den unten festgelegten Reflexfarben), **Cold-warm**, **Spectrum** oder **Fire**; **Log-Skala** zeigt die Intensitäten in logarithmischer Skala an (nützlich für Muster mit großem Intensitätskontrast).
+- **Reflexfarbe** : angezeigt, solange die **Farbskala** **Gray** ist (die Anfangseinstellung). **Allgemeine Reflexe**, **Ausgelöscht (Schraube/Gleit.)** und **Ausgelöscht (Zentrierung)** legen die Farben der erlaubten und der verbotenen Reflexe fest.
+- **Farbe je Kristall** : wenn aktiviert, werden die Spots in der jedem Kristall zugewiesenen Farbe gezeichnet (auch bei einem einzelnen Kristall).
 
 ---
 
@@ -92,14 +100,14 @@ Die über den Spots eingeblendeten Beschriftungen werden in der [Symbolleiste](i
 
 | Label | Inhalt |
 |-------|---------|
-| **Index** | Miller-Indizes $(hkl)$ |
-| **d** | Netzebenenabstand $d$ |
-| **1/d** | Kehrwert des Netzebenenabstands $1/d$ |
-| **Distance** | Spot-zu-Spot-Abstand auf dem Detektor |
+| **Index** | Miller-Indizes $(hkl)$; vier Indizes $(hkil)$, wenn im Hauptfenster **Optionen ▸ Miller-Bravais-Index (hkil) verwenden** aktiv ist und der Kristall hexagonale Achsen verwendet (die Beschriftungen der Kikuchi-Linien, der Debye-Ringe und der 3-D-Ansicht folgen derselben Einstellung) <!-- 261105Cl 監査: C23 --> |
+| **d** | Netzebenenabstand $d$, in Å oder nm entsprechend der Längeneinheit des Hauptfensters <!-- 261106Cl 作者の決定 C20 --> |
+| **1/d** | Kehrwert des Netzebenenabstands $1/d$, in nm⁻¹ oder Å⁻¹ entsprechend der Längeneinheit des Hauptfensters <!-- 261106Cl 作者の決定 C2 --> |
+| **Abstand** | Abstand auf dem Detektor vom Spot zum durchgehenden (Primärstrahl-)Reflex (mm), gemessen zwischen den gezeichneten Positionen; er gilt daher auch für einen gekippten Detektor, die Röntgen-Präzessionskamera und Rück-Laue (gemessen vom Strahlloch); nicht angezeigt, wenn der durchgehende Strahl den Detektor verfehlt <!-- 261105Cl 監査: DrawDiffractionSpotsLabel (C15)。L2 tan2θ は傾けない平板の検出器だけ --> |
 | **2θ** | Streuwinkel $2\theta$ (gleiche Definition wie die konzentrischen 2θ-Skalenkreise) |
 | **χ** | Azimutwinkel $\chi$, von der 12-Uhr-Richtung aus gemessen, positiv im Uhrzeigersinn (gleiche Definition wie die radialen Azimut-Skalenlinien) |
-| **Excit. Err.** | Anregungsfehler $S_g$ |
-| **\|Fg\|** | Betrag des Strukturfaktors $\lvert F_{hkl} \rvert$ |
+| **Anr.-Fehler** | Anregungsfehler $S_g$, in nm⁻¹ oder Å⁻¹ entsprechend der Längeneinheit des Hauptfensters |
+| **Intensität** | relative Intensität (%) im Modus **Kinematisch & Anr.-Fehler**; im Modus **Dynamische Theorie** die relative Intensität (% des stärksten gebeugten Strahls, ohne 000) und die komplexe Amplitude an der Austrittsfläche. Bei **Nur Anregungsfehler** wird nichts angezeigt |
 
 ---
 

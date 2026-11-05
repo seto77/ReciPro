@@ -65,19 +65,19 @@ una, la otra se actualiza para coincidir.</value>
   </data>
   <data name="numericUpDownHeight.ToolTip" xml:space="preserve">
     <value>Altura de la imagen en píxeles (0-4096, paso 256);
-la anchura se ajusta si Keep Aspect Ratio está activado.</value>
+la anchura se ajusta si Keep aspect ratio está activado.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Altura de la imagen en píxeles (0-4096, paso 256);
-la anchura se ajusta si Keep Aspect Ratio está activado.</value>
+la anchura se ajusta si Keep aspect ratio está activado.</value>
   </data>
   <data name="numericUpDownWidth.ToolTip" xml:space="preserve">
     <value>Anchura de la imagen en píxeles (0-4096, paso 256);
-la altura se ajusta si Keep Aspect Ratio está activado.</value>
+la altura se ajusta si Keep aspect ratio está activado.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>Anchura de la imagen en píxeles (0-4096, paso 256);
-la altura se ajusta si Keep Aspect Ratio está activado.</value>
+la altura se ajusta si Keep aspect ratio está activado.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>Define la anchura de la imagen de salida en píxeles (1-4096).</value>

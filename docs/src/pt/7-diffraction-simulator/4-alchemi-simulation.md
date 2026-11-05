@@ -6,7 +6,7 @@
 
 Abra-o pelo menu **Opções** do [Simulador de difração](index.md) → **Simulador ALCHEMI...**
 
-Condições da GUI: Wave Length = Electron (o cristal, a tensão de aceleração e a orientação vêm do simulador de difração principal)
+Condições da GUI: Fonte de ondas = Elétrons (o cristal, a tensão de aceleração e a orientação vêm do simulador de difração principal). Com outra fonte, a janela ainda abre, mas a leitura de θ_B e **Simular** apenas mostram o aviso *O ALCHEMI é apenas para elétrons. Defina a fonte do simulador de difração como Elétron.* <!-- 261105Cl 監査: FormALCHEMI.cs NotElectronNotice (6ae7a85) -->
 
 ![Simulador ALCHEMI](../../assets/cap-pt-auto/FormALCHEMI.png)
 
@@ -51,7 +51,7 @@ $$
 
 Desmarcar **Incluir a componente descanalizada** na caixa **Cálculo** elimina esse termo. Em espessuras típicas ele responde por dezenas de por cento do rendimento total, de modo que omiti-lo faz o contraste de sítio parecer mais forte do que é.
 
-### Grandeza de saída
+### Grandeza de saída {#output-quantity}
 
 Para um canal de camada, a grandeza primária é o **número de lacunas de camada interna geradas por elétron incidente**; a conversão em fótons de raios X (rendimento de fluorescência e ramificação de linhas) não é aplicada. Para uma série de linhas de raios X (Kα, Kβ, Lα, Lβ, Mα), listada depois das camadas em **Canais de ionização** e desmarcada por padrão, é o **número de fótons de raios X gerados por elétron incidente** (em todas as direções): aplicam-se os rendimentos de fluorescência, as cascatas Coster–Kronig e radiativas e a ramificação de linhas do xraylib 4.2.1, e a cascata Auger não é incluída. **A autoabsorção de raios X na amostra e a eficiência e o ângulo sólido do detector NÃO são aplicados em NENHUM dos dois casos.**
 
@@ -93,7 +93,7 @@ O contraste de sítio muda fortemente — e pode até inverter de sinal — entr
 
 | Item | Descrição | Padrão |
 |------|-----------|--------|
-| **Feixes máx.** | Limite superior do número de ondas de Bloch por orientação (1–1600). A união sobre toda a varredura é maior | 120 |
+| **Ondas difr. máx.** | Limite superior do número de ondas de Bloch por orientação (1–1600). A união sobre toda a varredura é maior | 120 |
 | **Solucionador** | Motor de cálculo do problema de autovalores: **Nativo** (Eigen C++) ou **Gerido** (.NET). Onde o solucionador nativo não está disponível, a escolha fica fixada em Gerido | Nativo |
 | **Incluir a componente descanalizada** | Se soma $Y_\text{dech}$ acima | ligado |
 | **Espalhamento angular** | Convolui a curva com o espalhamento angular do feixe incidente: **Nenhum** ou **Gaussian** com uma largura a meia altura em mrad. É um pós-processamento no eixo das orientações, aplicado **antes** da normalização de exibição | Nenhum |
@@ -115,13 +115,13 @@ Lista dos sítios atômicos cujo rendimento é calculado separadamente, exibidos
 
 ### Simular / Parar
 
-**Simular** inicia a varredura. O progresso é informado na barra de estado em cinco etapas (resolvendo dados de ionização → construindo a base união → construindo as matrizes de ionização → resolvendo orientações → verificando a base ampliada), e **Parar** aborta a qualquer momento.
+**Simular** inicia a varredura. O progresso é informado na barra de estado em cinco etapas (resolvendo dados de ionização → construindo a base união → construindo as matrizes de ionização → resolvendo orientações → verificando a base ampliada), e **Parar** aborta a qualquer momento. Se a fila **g** for paralela ao feixe, a varredura não consegue incliná-la através das suas condições de Bragg; **Simular** então apenas informa esse motivo na barra de estado. <!-- 261105Cl 監査: FormALCHEMI.cs BuildRequest (732813e) -->
 
 ---
 
 ## Painel direito: aba Curva
 
-Ao terminar o cálculo, é desenhada uma curva por par sítio × canal. A legenda é `rótulo do sítio / canal`.
+Ao terminar o cálculo, é desenhada uma curva por par sítio × canal. A legenda é `rótulo do sítio / canal`. Se o cristal ou a tensão de aceleração forem alterados depois (também com a janela fechada), as curvas, os diagnósticos e a escolha da espessura são apagados, e a linha de estado indica o motivo. <!-- 261106Cl 作者の決定 ALCHEMI -->
 
 | Item | Descrição |
 |------|-----------|
@@ -166,7 +166,7 @@ Nas situações a seguir são acrescentados mais avisos como linhas separadas (c
 
 ## Exportação CSV {#exportação-csv}
 
-**Exportar CSV** escreve uma tabela em formato longo precedida por um cabeçalho no formato `# key: value` (abreviado abaixo). O cabeçalho é escrito de modo que o próprio arquivo declare as condições necessárias para reproduzi-lo.
+**Exportar CSV** escreve uma tabela em formato longo precedida por um cabeçalho no formato `# key: value` (abreviado abaixo). O cabeçalho é escrito de modo que o próprio arquivo declare as condições necessárias para reproduzi-lo; `scan_origin_rotation_matrix` registra a orientação do cristal na origem da varredura (inclinação 0) como uma matriz de rotação por linhas. <!-- 261105Cl 監査: FormALCHEMI.cs buttonExport_Click の Key("scan_origin_rotation_matrix", ...) -->
 
 ```text
 # generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
@@ -175,6 +175,7 @@ Nas situações a seguir são acrescentados mais avisos como linhas separadas (c
 # crystal: MgAl2O4 (spinel) / F d -3 m
 # cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
 # accelerating_voltage_kV: 200.000
+# scan_origin_rotation_matrix: 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 (row-major; the crystal orientation of the parent diffraction simulator at the run, mapping the crystal's Cartesian frame to the laboratory frame, in which the beam travels along -z)
 # scan_row_hkl: 1 0 0
 # theta_B_mrad: 1.552030
 # thicknesses_nm: 10.0000 20.0000 ... 100.0000
@@ -250,7 +251,7 @@ O que esse valor assinala é onde a redução a um **único** vetor $G$ começa 
 
 A energia da linha, por si só, não certifica um resultado: entram a extensão espacial da camada, a orientação, a espessura e os vetores recíprocos que a base realmente exige. Trate 3–4 keV como um sinal para olhar com mais cuidado, não como uma marca de aprovação. Quando houver escolha, comparar linhas de **energia semelhante** tende a tornar mais comparável o viés de deslocalização das duas; Jones (2002) recomenda exatamente isso como primeiro passo prático e, como segundo, preferir uma fila sistemática a um eixo de zona — que é a geometria calculada pela v1 (um eixo de zona canaliza mais fortemente, mas exige uma correção de deslocalização maior).
 
-⚠ Energias de emissão baixas também sofrem mais fortemente com a **autoabsorção de raios X** — embora o quanto dependa da composição da amostra e de suas bordas de absorção, do caminho percorrido e do ângulo de saída, não apenas da energia emitida. É uma fonte de erro **separada**, não modelada de forma alguma (veja [Grandeza de saída](#grandeza-de-saída) acima), e afeta a comparação com um experimento independentemente do que faça a aproximação local.
+⚠ Energias de emissão baixas também sofrem mais fortemente com a **autoabsorção de raios X** — embora o quanto dependa da composição da amostra e de suas bordas de absorção, do caminho percorrido e do ângulo de saída, não apenas da energia emitida. É uma fonte de erro **separada**, não modelada de forma alguma (veja [Grandeza de saída](#output-quantity) acima), e afeta a comparação com um experimento independentemente do que faça a aproximação local.
 
 ### Premissas do modelo
 

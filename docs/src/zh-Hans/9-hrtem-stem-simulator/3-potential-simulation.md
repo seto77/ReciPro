@@ -12,7 +12,7 @@
 
 晶体内部的电子会被晶体势散射。其分布是一切衍射与成像现象的基础，也是理解晶体结构的关键信息。由于该模式既不包含透镜像差，也不包含依赖厚度的动力学效应，因此非常适合用于考察结构本身。
 
-> **在势模式下，样品厚度、强度归一化和图像模式（single / serial）面板不会显示。** 在 TEM 条件中，只有加速电压处于激活状态。
+> **在势模式下，样品厚度、强度归一化和“单幅/序列模式”面板不会显示。** 在 TEM 条件中，只有加速电压处于激活状态。
 
 ---
 
@@ -20,7 +20,7 @@
 
 ![TEM 条件](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **加速电压 (kV)** — 加速电压。它确定电子波长，并用于计算势的傅里叶系数 $U_g$。
+- **加速电压** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> — 加速电压 (kV)。它确定电子波长，并用于计算势的傅里叶系数 $U_g$。
 
 > **Defocus、Cs、Cc、β、ΔV 和 PCTF 在势模式下不激活**（不施加成像光学），并显示为灰色。
 
@@ -54,8 +54,8 @@ $U_g$ 与 $U'_g$ 可以同时显示（每勾选一项就会增加一个窗格）
 
 ![图像属性](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-- **Size (W×H)** — 生成图像的像素尺寸（默认 512×512）。
-- **Resolution** — 采样分辨率（pm/px）。
+- **尺寸 (宽×高)** — 生成图像的像素尺寸（默认 512×512）。
+- **分辨率** — 采样分辨率（pm/px）。
 
 ---
 
@@ -63,7 +63,7 @@ $U_g$ 与 $U'_g$ 可以同时显示（每勾选一项就会增加一个窗格）
 
 ![衍射波](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** — 在势的傅里叶合成中纳入的布洛赫波（傅里叶系数）的最大数量（默认 80）。数值越大，纳入的空间频率越高，越能再现势的细节。
+- 在势的傅里叶合成中纳入的布洛赫波（傅里叶系数）的最大数量（默认 80）。数值越大，纳入的空间频率越高，越能再现势的细节。
 
 ---
 

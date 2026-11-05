@@ -183,7 +183,8 @@
             toolTip.SetToolTip(checkBoxKeepAspect, resources.GetString("checkBoxKeepAspect.ToolTip")); // 260531Cl
             checkBoxKeepAspect.Size = new System.Drawing.Size(126, 19);
             checkBoxKeepAspect.TabIndex = 3;
-            checkBoxKeepAspect.Text = "Keep Aspect Ratio";
+            //checkBoxKeepAspect.Text = "Keep Aspect Ratio"; // 261105Cl 変更前
+            checkBoxKeepAspect.Text = "Keep aspect ratio"; // 261105Cl 変更 (作者決定 K5: 英語の表示を sentence case に)
             checkBoxKeepAspect.UseVisualStyleBackColor = true;
             // 
             // FormResolution
@@ -208,7 +209,8 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormResolution";
-            Text = "Image Size";
+            //Text = "Image Size"; // 261106Cl 変更前
+            Text = "Image size"; // 261106Cl 変更: K5 (英語の表示を sentence case に) の漏れ (Crystallography.Controls の同名フォームは "Image size")
             ((System.ComponentModel.ISupportInitialize)(numericUpDownWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(numericUpDownHeight)).EndInit();
             ResumeLayout(false);

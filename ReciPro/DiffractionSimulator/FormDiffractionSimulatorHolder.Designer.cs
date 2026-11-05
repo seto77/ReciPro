@@ -498,7 +498,7 @@
             numericBoxArrowStep.Value = 0.2D;
             numericBoxArrowStep.ValueBoxWidth = 24;
             numericBoxArrowStep.ValueFontSize = 9F;
-            numericBoxArrowStep.ValueChanged += numericBoxTilt_ValueChanged;
+            // numericBoxArrowStep.ValueChanged += numericBoxTilt_ValueChanged; // 261105Cl 削除 (監査 #18): 刻み幅の欄が Tilt のハンドラに配線され、刻みを変えただけで結晶を回していた (刻みは矢印キーの処理 tiltByArrowKey が読むだけ)
             // 
             // label19
             // 

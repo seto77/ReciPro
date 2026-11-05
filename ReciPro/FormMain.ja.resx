@@ -120,10 +120,10 @@
 新規追加するには、下の″Crystal Information″パネルで結晶を新規設定し″リストへ追加″します。
 変更するには対象結晶を選択し、″Crystal Information″パネルで変更後、″選択結晶と入れ替え″します。
 削除するには対象結晶を選択し、″削除″します。
-リストに載っているすべての結晶を削除するには″全削除″します。</value>
+リストに載っているすべての結晶を削除するには″すべての結晶を削除″します。</value>
   </data>
   <data name="buttonClearAllCrystals.Text" xml:space="preserve">
-    <value>全削除</value>
+    <value>すべての結晶を削除</value>
   </data>
   <data name="buttonClearAllCrystals.ToolTip" xml:space="preserve">
     <value>リスト中のすべての結晶を削除します</value>
@@ -173,11 +173,11 @@
 画面手前（視線方向）を向くよう結晶が回転します。</value>
   </data>
   <data name="buttonSetPlane.Text" xml:space="preserve">
-    <value>面方向</value>
+    <value>面指数</value>
   </data>
   <data name="buttonSetPlane.ToolTip" xml:space="preserve">
-    <value>指定された面を画面手前方向にセットします。
-軸指数が指定されているときは、その面方向が画面上向きに表示されます。</value>
+    <value>指定した面指数 (hkl) の面を画面手前方向にセットします。
+方向指数も指定されているときは、その方向が画面上向きに表示されます。</value>
   </data>
   <data name="checkBoxFixePlane.Text" xml:space="preserve">
     <value>固定</value>
@@ -191,11 +191,11 @@
 方向）を向くよう結晶が回転します。</value>
   </data>
   <data name="buttonSetAxis.Text" xml:space="preserve">
-    <value>軸方向</value>
+    <value>方向指数</value>
   </data>
   <data name="buttonSetAxis.ToolTip" xml:space="preserve">
-    <value>指定した軸を画面手前方向にセットします。
-面指数が指定されているときは、その面方向が画面上向きに表示されます。</value>
+    <value>指定した方向指数 [uvw] の軸を画面手前方向にセットします。
+面指数も指定されているときは、その面の法線が画面上向きに表示されます。</value>
   </data>
   <data name="checkBoxFixAxis.Text" xml:space="preserve">
     <value>固定</value>
@@ -259,32 +259,32 @@
     <value>選択された結晶の現在の方位</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>結晶方位を定義するオイラー角 ψ（度）を設定／表示します。</value>
+    <value>結晶方位を定義するオイラー角 Ψ（度）を設定／表示します。</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
-    <value>結晶方位を定義するオイラー角 ψ（度）を設定／表示します。</value>
+    <value>結晶方位を定義するオイラー角 Ψ（度）を設定／表示します。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>結晶方位を定義するオイラー角 Φ（度）を設定／表示します。</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
-    <value>結晶方位を定義するオイラー角 θ（度）を設定／表示します。</value>
+    <value>結晶方位を定義するオイラー角 Θ（度）を設定／表示します。</value>
   </data>
   <data name="numericBoxEulerPhi.ToolTip" xml:space="preserve">
     <value>結晶方位を定義するオイラー角 Φ（度）を設定／表示します。</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value>結晶方位を定義するオイラー角 θ（度）を設定／表示します。</value>
+    <value>結晶方位を定義するオイラー角 Θ（度）を設定／表示します。</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>オイラー角</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>結晶の現在の3次元回転姿勢を表すオイラー角(φ,
-θ, ψ)。値を編集すると方位を直接設定できます。</value>
+    <value>結晶の現在の3次元回転姿勢を表すオイラー角(Φ,
+Θ, Ψ)。値を編集すると方位を直接設定できます。</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
-    <value>方向リセット</value>
+    <value>回転をリセット</value>
   </data>
   <data name="buttonReset.ToolTip" xml:space="preserve">
     <value>回転を初期状態にリセットします。</value>
@@ -312,7 +312,7 @@
   </data>
   <data name="toolStripButtonSymmetryInformation.Text" xml:space="preserve">
     <value>対称性
-詳細</value>
+情報</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
     <value>「対称性情報」機能を開く</value>
@@ -325,17 +325,18 @@
     <value>「ビーム相互作用」機能を開く</value>
   </data>
   <data name="toolStripButtonRotation.Text" xml:space="preserve">
-    <value>ゴニオ
-メーター</value>
+    <value>回転
+ジオメトリ</value>
   </data>
   <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
     <value>「回転ジオメトリ」機能を開きます。</value>
   </data>
   <data name="toolStripButtonStructureViewer.Text" xml:space="preserve">
-    <value>結晶構造</value>
+    <value>結晶構造
+ビューア</value>
   </data>
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
-    <value>ストラクチャビューア（結晶の三次元構造
+    <value>「結晶構造ビューア」（結晶の三次元構造
 表示）を開きます。</value>
   </data>
   <data name="toolStripButtonStereonet.Text" xml:space="preserve">
@@ -357,10 +358,10 @@
  シミュレータ</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
-    <value>「軌道シミュレータ」機能を開きます。</value>
+    <value>「電子飛程シミュレータ」を開きます。</value>
   </data>
   <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
-    <value>HR/STEM
+    <value>HRTEM/STEM
 シミュレータ</value>
   </data>
   <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
@@ -376,7 +377,7 @@ v1</value>
     <value>「スポットID v1」機能を開く</value>
   </data>
   <data name="toolStripButtonSpotIDv2.Text" xml:space="preserve">
-    <value>スポット ID
+    <value>スポットID
 v2</value>
   </data>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
@@ -416,7 +417,7 @@ v2</value>
     <value>選択結晶をCIF形式で書き出し(&amp;E)</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>現在のリストを消去(&amp;C)</value>
+    <value>すべての結晶を削除(&amp;C)</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>閉じる(&amp;X)</value>
@@ -695,5 +696,24 @@ v2</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="toolStripStatusLabel.Text" xml:space="preserve">
+    <value>計算時間: </value>
+  </data>
+  <data name="toolStripButtonDiffractionPoly.Text" xml:space="preserve">
+    <value>粉末
+回折</value>
+  </data>
+  <data name="toolStripMenuItemUseMillerBravais.Text" xml:space="preserve">
+    <value>ミラー・ブラベー指数 (hkil) を使う</value>
+  </data>
+  <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
+    <value>(実験的) GUI 部品をキャプチャ</value>
+  </data>
+  <data name="powderDiffractionFunctionToolStripMenuItem.Text" xml:space="preserve">
+    <value>(実験的) 粉末回折機能</value>
+  </data>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>言語(&amp;L)</value>
   </data>
 </root>

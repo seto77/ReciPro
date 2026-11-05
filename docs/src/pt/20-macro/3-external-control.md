@@ -56,7 +56,7 @@ Enquanto o ReciPro está em execução, ele pode aceitar macros de outros progra
 
 O ouvinte fica **desligado por padrão**. Ative-o na janela principal:
 
-**Opções → Accept external macro commands (named pipe)**
+**Opções → Aceitar comandos de macro externos (pipe nomeado)**
 
 A configuração é mantida entre sessões.
 

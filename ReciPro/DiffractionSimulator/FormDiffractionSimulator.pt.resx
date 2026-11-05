@@ -153,7 +153,7 @@ esfera de Ewald transparentes</value>
     <value>Passo</value>
   </data>
   <data name="buttonResetAngle.Text" xml:space="preserve">
-    <value>Redefinir</value>
+    <value>Redefinir vista</value>
   </data>
   <data name="groupBoxViewDirection.Text" xml:space="preserve">
     <value>Direção de visualização</value>
@@ -221,7 +221,7 @@ intensidade relativa</value>
     <value>Diversos</value>
   </data>
   <data name="numericBoxCameraLength2.HeaderText" xml:space="preserve">
-    <value>Comprimento de câmara 2</value>
+    <value>Comp. câmera 2</value>
   </data>
   <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
     <value>Geometria detector &amp;&amp; imagem sobreposta</value>
@@ -230,7 +230,7 @@ intensidade relativa</value>
     <value>Código de desenvolvedor</value>
   </data>
   <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Imagem (formato PNG)</value>
+    <value>como imagem (formato PNG)</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>como metarquivo (EMF)</value>
@@ -239,7 +239,7 @@ intensidade relativa</value>
     <value>Salvar imagem</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Imagem  (formato PNG)</value>
+    <value>como imagem (formato PNG)</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>como metarquivo (EMF)</value>
@@ -248,10 +248,10 @@ intensidade relativa</value>
     <value>Salvar área do detector</value>
   </data>
   <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Imagens individuais (formato PNG)</value>
+    <value>como imagens individuais (formato PNG)</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Imagens individuais (formato TIFF)</value>
+    <value>como imagens individuais (formato TIFF)</value>
   </data>
   <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>como imagem coletiva (formato PNG)</value>
@@ -263,7 +263,7 @@ intensidade relativa</value>
     <value>Salvar discos CBED</value>
   </data>
   <data name="copyAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Imagem</value>
+    <value>como imagem</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>como metarquivo (EMF)</value>
@@ -272,7 +272,7 @@ intensidade relativa</value>
     <value>Copiar</value>
   </data>
   <data name="copyDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Imagem</value>
+    <value>como imagem</value>
   </data>
   <data name="copyDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>como metarquivo (EMF)</value>
@@ -320,7 +320,7 @@ intensidade relativa</value>
     <value>Elétrons 200 kV</value>
   </data>
   <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
-    <value>Elétrons 120 keV</value>
+    <value>Elétrons 120 kV</value>
   </data>
   <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
     <value>Raios X 30 keV</value>
@@ -363,7 +363,7 @@ intensidade relativa</value>
     <value>Propriedade de precessão</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>Semiângulo</value>
+    <value>Âng. prec.</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>Passo</value>
@@ -493,10 +493,15 @@ definição das linhas radiais da escala azimutal)</value>
 para cada ponto, mostrando o quão distante o ponto da
 rede recíproca está da condição exata de Bragg/esfera de Ewald.</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>Intensidade</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>Quando marcado, a magnitude do fator de estrutura
-|Fg| é exibida para cada ponto; |Fg| maior
-geralmente significa uma reflexão mais forte.</value>
+    <value>Quando marcado, a intensidade de cada ponto é exibida
+em % da reflexão mais intensa: |Fg|² (cinemático, sem o
+erro de excitação) ou |Φg|² seguido da amplitude complexa
+Φg = Re + Im i (teoria dinâmica). Nada é exibido com
+"Apenas erro de exc.".</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>Define o tamanho dos textos</value>
@@ -783,11 +788,12 @@ mouse em mm (origem: cristal).</value>
 mouse em mm (origem: cristal).</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value>Distância interplanar d (nm) correspondente à posição do ponteiro do mouse.</value>
+    <value>Distância interplanar d correspondente à posição do ponteiro do mouse,
+em Å ou nm (segue a seleção Å/nm dos parâmetros de rede na janela principal).</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value>Distância recíproca d⁻¹ (nm⁻¹) correspondente
-à posição do ponteiro do mouse.</value>
+    <value>Distância recíproca d⁻¹ correspondente à posição do ponteiro do mouse,
+em Å⁻¹ ou nm⁻¹ (segue a seleção Å/nm dos parâmetros de rede na janela principal).</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
     <value>Ângulo de espalhamento 2θ em graus
@@ -868,8 +874,11 @@ comprimento no espaço recíproco por pixel (nm⁻¹/px).</value>
 da amostra até o detector (monitor).</value>
   </data>
   <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
-    <value>Define o Comprimento de Câmera 2, ou seja, a distância
+    <value>Define o comprimento de câmera 2, ou seja, a distância
 da amostra até o detector (monitor).</value>
+  </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>Detalhes</value>
   </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>Abra a janela de configurações detalhadas da óptica.</value>
@@ -912,12 +921,12 @@ pela centragem da rede são ocultadas.</value>
 de elétrons por precessão (PED)</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>Semiângulo de precessão (mrad) para a simulação de PED (Difração
+    <value>Ângulo de precessão (mrad) para a simulação de PED (Difração
 de Elétrons por Precessão); o meio-ângulo do cone
 usado para inclinar e integrar o feixe incidente.</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>Semiângulo de precessão (mrad) para a simulação de PED (Difração
+    <value>Ângulo de precessão (mrad) para a simulação de PED (Difração
 de Elétrons por Precessão); o meio-ângulo do cone
 usado para inclinar e integrar o feixe incidente.</value>
   </data>

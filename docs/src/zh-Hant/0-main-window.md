@@ -16,20 +16,21 @@
 
 ## 鍵盤與滑鼠快速鍵 {#keyboard-mouse-shortcuts}
 
-主視窗會安裝數個**應用程式全域**快速鍵。當結構檢視器、極網、繞射模擬器與 Spot ID 視窗取得焦點時，這些快速鍵仍持續有效。
+主視窗會安裝數個**應用程式全域**快速鍵。當結構檢視器、極網、繞射模擬器與 Spot ID v1 視窗取得焦點時，這些快速鍵仍持續有效。
 
 | 快速鍵 | 動作 |
 |----------|--------|
 | <kbd>F1</kbd> | 開啟線上手冊的本頁 |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + 方向鍵 | 將晶體往該方向旋轉一步（同時按住兩個方向鍵可斜向旋轉） |
-| ReciPro 啟動時按住 <kbd>CTRL</kbd> | 以停用 OpenGL 的方式啟動（圖形問題的復原方式） |
+| ReciPro 啟動時按住 <kbd>CTRL</kbd> | 以停用 OpenGL 的方式啟動（圖形問題的復原方式；僅限該次啟動，不會儲存） |
 | 以左鍵拖曳方位小工具（左下方，*目前方位* 之下） | 旋轉晶體 |
 | 在方位小工具上右鍵連按兩下 | 將小工具影像複製到剪貼簿 |
-| 單擊功能按鈕 | 開啟 / 關閉該視窗 |
+| 單擊功能按鈕 | 開啟 / 關閉該視窗（若視窗已最小化，則改為將其還原，而不關閉） |
 | 雙擊功能按鈕 | 強制顯示該視窗並使其置於最前 |
-| 在清單中右鍵點按某晶體 | 內容功能表（重新命名 / 複製 / 刪除 / 匯出 CIF…） |
-| 雙擊 **Current Index** 標籤 | 顯示 / 隱藏 max-UVW 方塊 |
-| 將檔案拖放到視窗上 | 載入晶體清單（`.xml`、`.cdb2`）或晶體（`.cif`、`.amc`） |
+| 在清單中右鍵點按某晶體 | 內容功能表（重新命名 / 匯出為 CIF / 複製 / 刪除） |
+| 雙擊晶帶軸指數標籤（*目前方位* 之下的 `[u v w]`） | 顯示 / 隱藏 max-UVW 方塊 |
+| 將檔案拖放到視窗上 | 載入晶體清單（`.xml`、`.out`；會詢問要取代或附加）或晶體（`.cif`、`.amc`） <!-- 261105Cl 監査: .cdb2 はドロップで読めないので外した (FormMain.cs:FormMain_DragDrop) --> |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> | 為作用中的視窗開啟（實驗性的）GUI 擷取工具 |
 
 → 各視窗一覽請參閱 **[21. 鍵盤與滑鼠快速鍵](21-shortcuts.md)**。
 
@@ -41,46 +42,46 @@
 
 1. 在**晶體清單**中選擇目標晶體。若要使用 CIF/AMC 檔案，請將其拖放到**晶體資訊**中。
 2. 若您編輯了點陣參數或原子位置，請按 **↑ 新增 ↑** 或 **↑ 取代 ↑**，將變更寫回晶體清單。
-3. 在**旋轉控制**中，使用晶帶軸、晶面、Euler 角或滑鼠拖曳來設定晶體方位。
+3. 在**旋轉控制**中，使用晶帶軸、晶面、尤拉角或滑鼠拖曳來設定晶體方位。
 4. 從**功能**開啟所需工具。繞射、HRTEM/STEM、EBSD 及其他計算視窗會使用目前所選的晶體與方位。
 
 ---
 
 ## 檔案選單
 
-### File
+### 檔案
 
 
 | 選單項目 | 說明 |
 |-----------|-------------|
-| 載入晶體清單（取代目前清單） | 載入晶體清單檔案（`*.xml`）並取代目前的清單 |
-| 載入晶體清單（加入目前清單） | 載入晶體清單檔案並附加至目前的清單 |
+| 載入晶體清單（取代目前清單） | 載入晶體清單檔案（`*.xml`、`*.out`）並取代目前的清單；可在對話方塊中選擇要載入哪些晶體 |
+| 載入晶體清單（加入目前清單） | 載入晶體清單檔案並附加至目前的清單（使用相同的選擇對話方塊） |
 | 重設為初始晶體清單 | 重新載入 ReciPro 隨附的晶體清單 |
 | 從 CIF 或 AMC 檔案匯入晶體 | 從 CIF / AMC 檔案載入單一晶體 |
-| 儲存晶體清單 | 儲存目前的晶體清單 |
+| 儲存晶體清單 | 儲存目前的晶體清單（可在對話方塊中選擇要寫出哪些晶體） |
 | 將選取的晶體匯出為 CIF 檔案 | 以 CIF 格式儲存所選的晶體 |
 | 清除所有晶體 | 從清單中移除所有晶體 |
 | 結束 | 關閉應用程式 |
 
-### Options
+### 選項
 
 
 | 選單項目 | 說明 |
 |-----------|-------------|
-| 顯示工具提示 | 切換工具提示的顯示 |
+| 顯示工具提示 | 顯示或隱藏所有視窗中的工具提示——包括控制項、工具列與選單項目、表格儲存格及索引標籤的工具提示；此設定會保留到下次啟動 <!-- 261106Cl 作者の決定 C9 --> <!-- 261106Cl 作者の決定 A20 --> |
 | 深色模式 | 在淺色與深色配色佈景主題間切換 |
 | 使用米勒-布拉維 (hkil) 指數 | 在整個應用程式中對三方/六方晶系使用 4 指數記法 |
-| 使用離子散射因子 | 在計算所用的原子散射因子中納入離子電荷項 |
+| 使用離子散射因子 | 在動力學（布洛赫波）電子計算（含菊池輪廓）中，對各原子所指定的離子使用離子的電子散射因子（Peng）；$g \neq 0$ 的單極項只加到彈性係數 $U_g$（TDS 吸收與菊池 TDS 源使用有限的離子部分）。未勾選時使用中性原子的散射因子。若晶胞不是電中性（$\Sigma q \neq 0$），則捨去單極項，只使用有限的（屏蔽離子）部分；開啟此選項時會顯示提示訊息 |
 | 下載 MKL 程式庫 | 下載 Intel MKL 原生程式庫（約 55 MB）；安裝後會自動用於大規模計算 |
-| Accept external macro commands (named pipe) | 在具名管道 `ReciPro.Macro.v1` 上接聽並執行外部程式傳送的巨集 — 參見[外部控制](20-macro/3-external-control.md) |
+| 接受外部巨集命令 (具名管道) | 在具名管道 `ReciPro.Macro.v1` 上接聽並執行外部程式傳送的巨集 — 參見[外部控制](20-macro/3-external-control.md) |
 | 結束時重設登錄設定（重新啟動後生效） | 在下次重新啟動時重設設定 |
 | 停用 Crystallography.Native 程式庫（需重新啟動） | 若原生（C++）程式庫載入失敗，則退回使用受控碼 |
 | 停用所有 OpenGL 算繪（需重新啟動） | 適用於較舊的 GPU / 遠端桌面 |
 | 停用 OpenGL 文字算繪（需重新啟動） | 用於某些 GPU 上文字繪製問題的因應措施 |
-| 擷取 GUI 元件... | 用於儲存 GUI 螢幕擷取的開發者工具 |
+| (實驗性) 擷取 GUI 元件... | 用於儲存 GUI 螢幕擷取的開發者工具 |
 | 粉末繞射功能（開發中） | 啟用多晶（粉末）繞射視窗 |
 
-### Help
+### 說明
 
 | 選單項目 | 說明 |
 |-----------|-------------|
@@ -94,13 +95,13 @@
 
 介面語言可從另外的 **語言** 選單切換（需重新啟動）。
 
-### Language
+### 語言
 
 切換 UI 語言。共支援 11 種語言 —— English、日本語、Deutsch、Français、Español、Português、Italiano、Русский、简体中文、繁體中文、한국어 —— 選單中以各語言自身的文字顯示。變更會在重新啟動 ReciPro 後生效。線上手冊也遵循相同設定，因此 <kbd>F1</kbd> 與 **說明 ▸ 說明（網頁）** 會以您所選的語言開啟頁面。
 
-### Macro
+### 巨集
 
-開啟 [巨集](20-macro/index.md) 視窗，以類 Python 指令稿自動化 ReciPro 的操作。對於重複性的工作流程，請參閱[內建函式](20-macro/1-built-in-functions.md)與[巨集範例](20-macro/2-examples.md)。
+**Editor** 會開啟 [巨集](20-macro/index.md) 視窗，以類 Python 指令稿自動化 ReciPro 的操作。在該視窗中登錄的巨集也會列在 **Editor** 下方；選取其中之一即可直接執行。對於重複性的工作流程，請參閱[內建函式](20-macro/1-built-in-functions.md)與[巨集範例](20-macro/2-examples.md)。
 
 
 ---
@@ -119,10 +120,10 @@
 重設為初始狀態：*c* 軸垂直於螢幕，*b* 軸朝上。
 
 ### 晶帶軸
-顯示最接近螢幕法線的晶帶軸 [*uvw*]；搜尋範圍限於各指數絕對值不超過 max-UVW 方塊所示上限者（雙擊 **Current Index** 標籤可顯示或隱藏該方塊）。
+顯示最接近螢幕法線的晶帶軸 [*uvw*]。候選為滿足 $|u|+|v|+|w| \le$ max-UVW 方塊上限（1–100，預設 30）的既約指數（gcd = 1）；雙擊指數標籤可顯示或隱藏該方塊。
 
-### Euler 角 (Z-X-Z)
-使用 **Z–X–Z** Euler 角設定晶體方位：
+### 尤拉角 (Z-X-Z)
+使用 **Z–X–Z** 尤拉角設定晶體方位：
 
 - \(\Phi\)：繞 Z 軸旋轉
 - \(\Theta\)：繞 X 軸旋轉
@@ -134,7 +135,7 @@
 
 ![箭頭](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.panel1.groupBoxArrows.png)
 
-依角度 Step 旋轉。勾選 Animation 可進行連續旋轉。
+依 **步進** 角度旋轉（預設 10°）。↺ / ↻ 繞螢幕法線旋轉。勾選 **Animation** 可進行連續旋轉；此時 **步進** 為以 °/s 計的速率。
 
 ### 視線方向
 
@@ -142,9 +143,9 @@
 
 將晶帶軸 [*uvw*] 或晶面 (*hkl*) 對齊為垂直於螢幕。
 
-- **固定**：勾選時，在後續的旋轉操作中將指定的晶帶軸或晶面在空間中保持固定。
-- **軸**：將輸入的晶帶軸 \([uvw]\) 置於垂直於螢幕。若同時設定了 **晶面**，則該方向會在螢幕上朝上。
-- **晶面**：將輸入晶面 \((hkl)\) 的法線置於垂直於螢幕。若同時設定了 **軸**，則該方向會在螢幕上朝上。
+- **固定**：勾選時，之後的旋轉（箭頭、滑鼠拖曳）全部繞指定的晶帶軸或晶面法線進行，因此該方向保持固定。兩個 **固定** 方塊同時只能勾選一個，且指數為 0 0 0 時無法勾選。
+- **軸**：將輸入的晶帶軸 \([uvw]\) 置於垂直於螢幕。若同時設定了 **晶面** 且該軸位於該晶面內（$uh+vk+wl=0$），則晶面法線會在螢幕上朝上；否則自動選擇朝上的方向。
+- **晶面**：將輸入晶面 \((hkl)\) 的法線置於垂直於螢幕。若同時設定了 **軸** 且該軸位於該晶面內（$uh+vk+wl=0$），則該軸會在螢幕上朝上；否則自動選擇朝上的方向。
 
 ### 設定方位的基本方式
 
@@ -154,7 +155,7 @@
 | 箭頭按鈕 | 您想要小幅且可重複的旋轉。 | **箭頭**面板 |
 | 晶帶軸 | 您已知檢視方向，例如 \([001]\) 或 \([110]\)。 | **視線方向** / 晶帶軸輸入 |
 | 晶面法線 | 您想讓某晶面 \((hkl)\) 垂直於螢幕。 | **視線方向** / 晶面輸入 |
-| Euler 角 | 您需要可重現的數值方位。 | **Euler 角 (Z-X-Z)** |
+| 尤拉角 | 您需要可重現的數值方位。 | **尤拉角** |
 
 旋轉矩陣與座標慣例請參閱[旋轉幾何](4-rotation-geometry.md)與[附錄 A1. 座標系](appendix/a1-coordinate-system/1-orientation.md)。
 
@@ -164,7 +165,7 @@
 
 ![晶體清單](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalList.png)
 
-預設安裝約有 80 個晶體。選擇即可檢視詳細資訊並設定用於計算。在晶體清單中**右鍵點按某晶體**可開啟內容功能表：*重新命名*、*匯出為 CIF*、*複製*、*刪除*。
+預設安裝有 66 個晶體。選擇即可檢視詳細資訊並設定用於計算。在晶體清單中**右鍵點按某晶體**可開啟內容功能表：*重新命名*、*匯出為 CIF*、*複製*、*刪除*。
 
 ![Crystal edit buttons](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.flowLayoutPanelCrystalEdit.png)
 
@@ -172,41 +173,43 @@
 |--------|--------|
 | 上移 / 下移 | 重新排序 |
 | 複製 | 複製所選晶體 |
-| 刪除 / 清除所有晶體 | 移除晶體 |
+| 刪除 / 清除所有晶體 | 移除所選晶體 / 所有晶體 |
 | ↑ 新增 ↑ / ↑ 取代 ↑ | 加入清單或取代所選項目 |
 
 ---
 
 ## 晶體資訊
 
-編輯點陣參數、對稱性與原子；將 CIF/AMC 檔案拖放至此以載入結構。此控制項由 ReciPro、PDIndexer 與 CSManager 共用，但所顯示的索引標籤與功能因應用程式而異。ReciPro 顯示 Basic Info、Atom 與 Reference 索引標籤（EOS、Elasticity 及其他索引標籤屬於其他應用程式，不會在 ReciPro 中顯示）。
+編輯點陣參數、對稱性與原子；將 CIF/AMC 檔案拖放至此以載入結構。此控制項由 ReciPro、PDIndexer 與 CSManager 共用，但所顯示的索引標籤與功能因應用程式而異。ReciPro 顯示 **基本資訊**、**原子資訊** 與 **文獻** 索引標籤（EOS、Elasticity 及其他索引標籤屬於其他應用程式，不會在 ReciPro 中顯示）。
 
 > **重要**：請按 **↑ 新增 ↑** 或 **↑ 取代 ↑** 以儲存變更。
 
 ![Crystal Control](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-面板頂端固定顯示 **Name**（晶體名稱）、**化學式**（由原子清單計算得出）與 **Z**（每個晶胞的化學式單位數）。**對稱性資訊** 與 **電子束交互作用** 按鈕分別開啟[對稱性資訊](2-symmetry-information.md)與[電子束交互作用](3-beam-interaction.md)視窗。 質量%、原子% 以及換算為氧化物，可透過右鍵選單的[化學組成詳情](#chemical-composition)檢視。
+面板頂端固定顯示 **Name**（晶體名稱）、**化學式**（由原子清單計算得出）、**Z**（每個晶胞的化學式單位數）與 **顏色**（晶體的顯示顏色，用於 3D 結構檢視與繞射輪廓曲線）。**對稱性資訊** 與 **電子束交互作用** 按鈕分別開啟[對稱性資訊](2-symmetry-information.md)與[電子束交互作用](3-beam-interaction.md)視窗。 質量%、原子% 以及換算為氧化物，可透過右鍵選單的[化學組成詳情](#chemical-composition)檢視。
 
-### 基本資訊 索引標籤
+### 基本資訊 索引標籤 {#basic-info-tab}
 
-![Basic Info](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
+![基本資訊](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
 
 點陣參數、對稱性及由其衍生的量。
 
 | 項目 | 說明 |
 |------|------|
-| 晶胞參數 | 點陣參數 a、b、c（**單位**：Å = 10⁻¹⁰ m 或 nm）與 α、β、γ。選擇某對稱性會自動加以約束（例如立方晶系為 a=b=c、α=β=γ=90°）。 |
+| 晶胞參數 | 點陣參數 a、b、c（**單位**：Å = 10⁻¹⁰ m 或 nm；單位會保留到下次啟動）與 α、β、γ。選擇某對稱性會自動加以約束（例如立方晶系為 a=b=c、α=β=γ=90°）。 |
 | 對稱性 | 選擇**晶系**、**點群**與**空間群**。在**搜尋**方塊中輸入即可列出符合的候選項（區分大小寫）。 |
-| 晶胞體積 / 晶胞質量 | 晶胞的體積與質量。體積依**單位**選擇以 Å³ / nm³ 顯示。 |
-| 莫耳體積 / 莫耳質量 / 密度 | 莫耳體積、莫耳質量與密度。**僅在已輸入原子時**顯示。 |
-| 平均Z (數目) / 平均Z (質量) / 平均A | 依數目與依質量加權的平均原子序，以及每個原子的平均原子量。 |
+| 晶胞體積 / 晶胞質量 | 晶胞的體積與質量。體積依**單位**選擇以 Å³ / nm³ 顯示；質量以 10⁻²⁴ g 為單位。 |
+| 莫耳體積 / 莫耳質量 / 密度 | 莫耳體積（cm³/mol，以化學式單位計）、莫耳質量（g/mol）與密度（g/cm³）。**僅在已輸入原子時**顯示。 |
+| 平均Z (數目) / 平均Z (質量) / 平均A | 依數目與依質量加權的平均原子序，以及每個原子的平均原子量（g/mol）。計算時納入佔有率。 |
+| 顯示誤差 | 顯示晶胞參數的誤差（±）欄位。 |
+| Change axes/origin setting | 與內容功能表項目 **變更軸/原點設定** 相同：轉換為同一空間群的另一種軸/原點設定。 |
 | 原子密度 / 電子密度 | 每晶胞體積中的原子數與電子數，依**單位**選擇以 Å⁻³ / nm⁻³ 顯示。 |
 
-### 原子資訊 索引標籤
+### 原子資訊 索引標籤 {#atom-tab}
 
-![Atom](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
+![原子資訊](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
-設定每個原子的種類、位置、溫度因子與散射因子。以 **Add**、**Replace**（取代所選列）、**Up/Down**（重新排序）與 **Delete** 編輯原子清單。每個原子具有：
+設定每個原子的種類、位置、溫度因子與散射因子。以 **新增**、**取代**（取代所選列）、**上移/下移**（重新排序）與 **刪除** 編輯原子清單。原子清單也會為每個位置顯示其多重度（**多重度**）、維科夫字母（**維科夫字母**）與位置對稱（**位置對稱**）。每個原子具有：
 
 | 項目 | 說明 |
 |------|------|
@@ -217,9 +220,9 @@
 
 在原子清單的列上按一下右鍵並選擇 **顯示等效原子位置**，會開啟一個小視窗，列出由空間群對稱操作所產生的全部等效位置；其 **Copy** 按鈕可將清單複製為以 Tab 分隔的文字（例如便於貼入試算表）。
 
-**原點平移**：平移所有原子座標的原點。使用預設按鈕（**+** / **−**）進行標準位移，或使用 **Apply custom shift** 進行任意量的位移。
+**原點平移**：平移所有原子座標的原點。以 **+** / **−** 選擇正負號，然後按下其中一個預設向量——(⅛ ⅛ ⅛)、(¼ ¼ ¼)、(0 ¼ ⅛)、(¼ 0 ¼)、(0 ¼ ¼)、(¼ ¼ 0)、(¼ −¼ 0)、(¼ −¼ ¼)、(0 ¼ −⅛)——或使用 **Apply custom shift** 進行任意量的位移。
 
-**德拜-沃勒因子（溫度因子）**：
+**原子位移 (B)**（德拜-沃勒因子 / 溫度因子）：
 
 | 項目 | 說明 |
 |------|------|
@@ -235,9 +238,9 @@
 | Electron | 電子散射因子 —— 中性原子取自 Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276；離子取自 Peng (1998), *Acta Cryst.* **A54**, 481–485。 |
 | Neutron | 中子散射長度。選擇 **Natural isotope abundance** 或 **Custom isotope abundance**（任意同位素組成）。 |
 
-### 文獻 索引標籤
+### 文獻 索引標籤 {#reference-tab}
 
-![Reference](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
+![文獻](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
 
 記錄結構的來源：**Note**、**作者**、**期刊** 與 **標題**。
 
@@ -277,19 +280,19 @@
 
 | 按鈕 | 說明 | 詳細資訊 |
 |--------|-------------|---------|
-| Crystal Database | 從隨附 / 線上資料庫搜尋並匯入晶體 | [1. 晶體資料庫](1-crystal-database.md) |
-| Symmetry Information | 空間群資訊與 *International Tables* Vol. A 對稱性圖 | [2. 對稱性資訊](2-symmetry-information.md) |
-| Beam Interaction | 電子束與晶體的交互作用：反射、衰減、散射因子、螢光 | [3. 電子束交互作用](3-beam-interaction.md) |
-| Rotation Geometry | 3D 旋轉矩陣 / 測角儀角度 | [4. 旋轉幾何](4-rotation-geometry.md) |
-| Structure Viewer | 3D 晶體結構 | [5. 結構檢視器](5-structure-viewer.md) |
-| Stereonet | 立體投影 | [6. 極網](6-stereonet.md) |
-| Diffraction Simulator | 單晶 X 光 / 電子繞射 | [7. 繞射模擬器](7-diffraction-simulator/index.md) |
-| Trajectory Simulator | 蒙地卡羅電子軌跡模擬 | [8. 電子軌跡](8-electron-trajectory.md) |
-| HRTEM/STEM Simulator | HRTEM / STEM 影像模擬 | [9. HRTEM/STEM 模擬器](9-hrtem-stem-simulator/index.md) |
+| 晶體資料庫 | 從隨附 / 線上資料庫搜尋並匯入晶體 | [1. 晶體資料庫](1-crystal-database.md) |
+| 對稱性資訊 | 空間群資訊與 *International Tables* Vol. A 對稱性圖 | [2. 對稱性資訊](2-symmetry-information.md) |
+| 電子束交互作用 | 電子束與晶體的交互作用：反射、衰減、散射因子、螢光 | [3. 電子束交互作用](3-beam-interaction.md) |
+| 旋轉幾何 | 3D 旋轉矩陣 / 測角儀角度 | [4. 旋轉幾何](4-rotation-geometry.md) |
+| 結構檢視器 | 3D 晶體結構 | [5. 結構檢視器](5-structure-viewer.md) |
+| 極網 | 立體投影 | [6. 極網](6-stereonet.md) |
+| 繞射模擬器 | 單晶 X 光 / 電子繞射 | [7. 繞射模擬器](7-diffraction-simulator/index.md) |
+| 軌跡模擬器 | 蒙地卡羅電子軌跡模擬 | [8. 電子軌跡](8-electron-trajectory.md) |
+| HRTEM/STEM 模擬器 | HRTEM / STEM 影像模擬 | [9. HRTEM/STEM 模擬器](9-hrtem-stem-simulator/index.md) |
 | Spot ID v1 | SAED 圖案指標化（舊稱「TEM ID」） | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | 斑點偵測與指標化 | [11. Spot ID v2](11-spot-id-v2.md) |
-| EBSD Simulator | EBSD 圖案模擬 | [12. EBSD 模擬](12-ebsd-simulation.md) |
-| Powder Diffraction | 多晶（粉末）繞射——透過 **選項 ▸ 粉末繞射功能（開發中）** 啟用 | - |
+| EBSD 模擬器 | EBSD 圖案模擬 | [12. EBSD 模擬](12-ebsd-simulation.md) |
+| 粉末繞射 | 多晶（粉末）繞射——透過 **選項 ▸ 粉末繞射功能（開發中）** 啟用 | - |
 
 ---
 

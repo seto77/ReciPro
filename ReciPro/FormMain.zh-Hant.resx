@@ -219,7 +219,7 @@
     <value>使用米勒-布拉維 (hkil) 指數</value>
   </data>
   <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
-    <value>擷取 GUI 元件...</value>
+    <value>(實驗性) 擷取 GUI 元件...</value>
   </data>
   <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
     <value>晶體資訊</value>
@@ -322,7 +322,8 @@
 即定義晶體方位的第一個旋轉。</value>
   </data>
   <data name="buttonAdd.ToolTip" xml:space="preserve">
-    <value>將選取的晶體加入上方的清單。</value>
+    <value>將下方的新晶體
+加入上方的清單。</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
     <value>開啟「對稱性資訊」</value>
@@ -340,11 +341,11 @@
     <value>開啟「粉末繞射」</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value>設定／顯示尤拉角 θ（度），
+    <value>設定／顯示尤拉角 Θ（度），
 即定義晶體方位的第二個旋轉。</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
-    <value>設定／顯示尤拉角 θ（度），
+    <value>設定／顯示尤拉角 Θ（度），
 即定義晶體方位的第二個旋轉。</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
@@ -356,11 +357,11 @@
 即定義晶體方位的第三個旋轉。</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>設定／顯示尤拉角 ψ（度），
+    <value>設定／顯示尤拉角 Ψ（度），
 即定義晶體方位的第三個旋轉。</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
-    <value>設定／顯示尤拉角 ψ（度），
+    <value>設定／顯示尤拉角 Ψ（度），
 即定義晶體方位的第三個旋轉。</value>
   </data>
   <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
@@ -384,7 +385,7 @@
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
     <value>描述晶體目前三維旋轉的尤拉角
-(φ, θ, ψ)；可編輯以直接設定方位。</value>
+(Φ, Θ, Ψ)；可編輯以直接設定方位。</value>
   </data>
   <data name="toolStripButtonSpotIDv1.ToolTipText" xml:space="preserve">
     <value>開啟「Spot ID v1」</value>
@@ -477,5 +478,16 @@
   </data>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>開啟「Spot ID v2」功能</value>
+  </data>
+  <data name="toolStripButtonEBSD.Text" xml:space="preserve">
+    <value>  EBSD
+  模擬器</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
+    <value>  HRTEM/STEM
+  模擬器</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
+    <value>接受外部巨集命令 (具名管道)</value>
   </data>
 </root>

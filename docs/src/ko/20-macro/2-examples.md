@@ -32,7 +32,7 @@ circumference = 2 * math.pi * r
 ### C. 현재 결정 회전하기
 
 ```python
-# Rotate the current crystal by 30 degrees around the a-axis (x-axis).
+# Rotate the current crystal by 30 degrees around its a-axis [100].
 ReciPro.Dir.RotateAroundAxisInDeg(1, 0, 0, 30)
 ```
 
@@ -148,7 +148,7 @@ ReciPro.File.SaveText(info, "spot_info.csv")
 
 - **값 확인하기**: 이 환경에서는 `print()`가 동작하지 않습니다 (콘솔 없음). **Step by step** 실행을 사용하고, 각 줄의 지역 변수를 나열하는 디버그 패널을 관찰하세요.
 - **`math`는 미리 임포트됨**: `math.sqrt(x)`, `math.sin(x)`, `math.pi`, `math.radians(deg)`는 `import math` 없이 사용할 수 있습니다.
-- **일괄 처리 가속**: 반복 횟수가 많은 루프에서는 `ReciPro.DifSim.SkipRendering = True`로 설정하고, 이후에 `False`로 되돌리세요.
+- **일괄 처리 가속**: `ReciPro.DifSim.SkipRendering = True`는 **동역학** 모드에서만 반사점 그리기를 건너뜁니다 (계산 자체는 그대로 실행되므로 `SpotInfo()` 일괄 처리에 적합하며, 그동안 저장한 이미지에는 반사점이 없습니다). 이후에 `False`로 되돌리세요. 운동학/여기 오차 모드에서는 효과가 없습니다.
 - **렌더링 대기**: GUI가 따라잡아야 할 때는 `ReciPro.Sleep(ms)`를 호출하여 실행을 일시 정지하세요.
 - **자동 완성**: 팝업은 전체 `ReciPro.Class.Member` 형식을 표시합니다. 몇 글자를 입력하고 `Enter` 또는 `Tab`으로 확정하세요.
 

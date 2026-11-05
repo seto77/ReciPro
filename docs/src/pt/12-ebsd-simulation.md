@@ -7,7 +7,7 @@ O **Simulador EBSD** simula os padrões de difração de elétrons retroespalhad
 A janela possui três colunas.
 
 - **Esquerda** : condições da simulação. As abas selecionam **Geometria** (geometria da amostra/detector e uma vista 3D), **Distribuição BSE** (distribuições dos elétrons retroespalhados) e **Sobreposições** (linhas de Kikuchi e outras anotações).
-- **Centro** : o padrão EBSD (de Kikuchi) para a orientação atual do cristal. Abaixo dele, as abas selecionam **Parâmetros de saída** e **Imagem experimental**.
+- **Centro** : o padrão EBSD (de Kikuchi) para a orientação atual do cristal. Abaixo dele, as abas selecionam **Imagem simulada** e **Imagem experimental**.
 - **Direita** : o master pattern independente da orientação, nas abas **2D** e **3D**.
 
 A barra de status na parte inferior mostra o andamento do cálculo em execução e um resumo do seu resultado. Se a janela for estreita, uma mensagem longa é cortada na borda direita; passe o mouse sobre ela para ver a mensagem completa.
@@ -23,7 +23,7 @@ A vista central do padrão EBSD (de Kikuchi) e as vistas do master pattern do la
 | <kbd>F1</kbd> | Abrir esta página do manual on-line |
 | Arrastar com o botão esquerdo o padrão perto do centro | Inclinar o cristal |
 | Arrastar com o botão esquerdo a área externa do padrão | Girar o cristal |
-| Clique duplo no padrão | Selecionar a subcélula do detector sob o cursor e mostrar suas estatísticas |
+| Clique duplo no padrão | Selecionar a subcélula do detector sob o cursor e mostrar suas estatísticas (enquanto a seleção **Zone axis** estiver ativada: adicionar um eixo de zona; veja [Seleção de eixos de zona](#zone-axis-picking)) |
 | Soltar um arquivo de imagem sobre a janela | Carregá-lo como imagem EBSD experimental |
 | Arrastar com o botão esquerdo uma vista 3D (geometria / esfera master) | Rotacionar |
 | Arrastar com o botão direito, ou roda do mouse, em uma vista 3D | Zoom |
@@ -40,12 +40,12 @@ As vistas 3D usam a [navegação de vista](21-shortcuts.md) padrão do ReciPro (
 
 Pressionar **Criar master pattern** executa as seguintes etapas em ordem.
 
-1. **Simulação BSE de Monte Carlo** : usando a composição atual do cristal, a densidade, a tensão de aceleração e a inclinação da amostra, cerca de 2,5 milhões de elétrons são rastreados dentro da amostra (espalhamento elástico: seções de choque de Mott/NIST; espalhamento inelástico: modelo de resposta dielétrica). Isso fornece a distribuição conjunta de *profundidade de penetração × direção de saída × energia de saída* dos elétrons retroespalhados.
+1. **Simulação BSE de Monte Carlo** : usando a composição atual do cristal, a densidade, a tensão de aceleração e a inclinação da amostra, 10 milhões de elétrons incidentes são rastreados dentro da amostra (espalhamento elástico: seções de choque de Mott/NIST; espalhamento inelástico: modelo de resposta dielétrica). Isso fornece a distribuição conjunta de *profundidade de penetração × direção de saída × energia de saída* dos elétrons retroespalhados.
 2. **Seleção automática de faixa** : a partir dessa distribuição, a faixa de energia (da energia incidente até cerca do 95º percentil da perda de energia) e a faixa de profundidade usadas no cálculo dinâmico são definidas automaticamente. Aqui a profundidade é a espessura do master pattern, isto é, o comprimento de trajetória medido ao longo da direção de saída (profundidade da fonte ÷ cos χ, onde χ é o ângulo entre a direção de saída e a normal à superfície da amostra). A faixa de profundidade vai até o 99,9º percentil desse comprimento de trajetória para os elétrons que alcançam o detector (arredondado para cima a dois algarismos significativos) e é dividida em 40 passos desiguais, mais finos perto da superfície.
 3. **Construção do master pattern** : para cada energia e profundidade, o problema da difração dinâmica (ondas de Bloch) é resolvido e integrado sobre a esfera de direções, ponderado pela distribuição de Monte Carlo, para fornecer a intensidade da difração retroespalhada em todas as direções. O resultado é armazenado em uma grade de área igual (Roşca–Lambert).
 4. **Projeção sobre o detector, com ponderação** : para a orientação atual do cristal, a intensidade da direção subtendida por cada pixel do detector é consultada no master pattern e desenhada como o padrão de Kikuchi, opcionalmente ponderada pela distribuição angular/de energia dos BSE.
 
-As faixas de energia e profundidade são definidas automaticamente nas etapas 1–2, mas podem ser ajustadas manualmente antes da construção.
+As faixas de energia e profundidade são definidas automaticamente nas etapas 1–2 enquanto **Faixas de energia e profundidade automáticas (MC)** estiver marcada (o padrão; as caixas das faixas ficam então somente leitura). Desmarque-a para construir com faixas digitadas à mão: o Monte Carlo deixa então as caixas como estão, e as faixas digitadas à mão são salvas e restauradas na próxima inicialização. <!-- 261106Cl 作者の決定 C11 --> Faixas que não podem ser usadas — um limite inferior que não fica abaixo do limite superior, uma energia acima da tensão de aceleração (verificada antes de o Monte Carlo começar) ou uma faixa inteiramente fora da distribuição de Monte Carlo — não são construídas; uma mensagem informa o motivo e os valores. <!-- 261106Cl 作者の決定 F5/F15 -->
 
 ---
 
@@ -55,9 +55,9 @@ As faixas de energia e profundidade são definidas automaticamente nas etapas 1�
 
 ![Condições do SEM & da amostra](../assets/cap-pt-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
-- **Energy** : tensão de aceleração do feixe incidente (keV).
-- **Wavelength** : comprimento de onda do elétron, vinculado a Energy. **Unit** seleciona Å ou nm.
-- **Sample tilt** : ângulo de inclinação da amostra (tipicamente −70°). A grande inclinação no EBSD aumenta o rendimento de elétrons retroespalhados.
+- **Energia** : tensão de aceleração do feixe incidente (keV). O valor é restaurado na próxima inicialização, junto com as faixas de energia e profundidade digitadas à mão. <!-- 261106Cl 仕上げ R3 D4: FormEBSD.AcceleratingVoltageKV をレジストリに保存 -->
+- **Compr. de onda** : comprimento de onda do elétron, vinculado a **Energia**. **Unit** seleciona Å ou nm.
+- **Inclinação da amostra** : ângulo de inclinação da amostra (tipicamente −70°). A grande inclinação no EBSD aumenta o rendimento de elétrons retroespalhados. Alterá-la descarta os resultados de Monte Carlo (as distribuições BSE e os seus pesos; execute **Simular** novamente); o master pattern não depende da inclinação e é mantido. <!-- 261106Cl 作者の決定 F17 -->
 
 ### Geometria EBSD
 
@@ -65,11 +65,11 @@ As faixas de energia e profundidade são definidas automaticamente nas etapas 1�
 
 O detector (tela de fósforo) é um retângulo definido por uma contagem de pixels e um tamanho de pixel.
 
-- **Tamanho e inclinação** : **Tilt** é a inclinação do plano do detector (°); **Width** e **Height** são o número de pixels do detector.
-- **Resolução** : o tamanho físico de um pixel do detector (mm/px). O tamanho físico do detector é, portanto, Width × Resolução por Height × Resolução.
-- **Coordenadas do centro do detector** : posição **X**, **Y**, **Z** do centro do detector em relação ao ponto de impacto do feixe (mm). Y e Z, junto com a inclinação, determinam o comprimento de câmara; X é o deslocamento esquerda-direita.
+- **Tamanho e inclinação** : **Inclinação** é a inclinação da tela do detector (°), medida a partir do plano horizontal (perpendicular ao feixe): 0° = tela horizontal, 90° = tela vertical (o padrão). **Largura** e **Altura** são o número de pixels do detector. <!-- 261105Cl 監査: numericBoxDetTilt.ToolTip (EbsdDetectorGeometry の法線 (0, sin d, −cos d)) -->
+- **Resolução** : o tamanho físico de um pixel do detector (mm/px). O tamanho físico do detector é, portanto, Largura × Resolução por Altura × Resolução.
+- **Coordenadas do centro do detector** : posição **X**, **Y**, **Z** do centro do detector em relação ao ponto de impacto do feixe (mm), no referencial do microscópio (laboratório). **Y** é o deslocamento horizontal perpendicular tanto ao feixe (Z) quanto ao eixo de inclinação da amostra (X), e não uma direção dentro da superfície inclinada da amostra. <!-- 261105Cl 監査: numericBoxDetY.ToolTip --> Y e Z, junto com a inclinação, determinam o comprimento de câmera; X é o deslocamento esquerda-direita.
 
-Ao carregar uma imagem experimental, **Width** e **Height** passam a ser o tamanho da imagem, de modo que um pixel do detector corresponda a um pixel da imagem (a **Resolução** não é alterada).
+Ao carregar uma imagem experimental, **Largura** e **Altura** passam a ser o tamanho da imagem, de modo que um pixel do detector corresponda a um pixel da imagem (a **Resolução** não é alterada).
 
 A geometria pode ser inspecionada na vista 3D na aba **Geometria**.
 
@@ -83,13 +83,13 @@ A placa cinza é a amostra, a placa retangular verde é o detector e o **+Z (=be
 
 ![Distribuição BSE](../assets/cap-pt-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageBseDistribution.png)
 
-A aba **Distribuição BSE** mostra as distribuições de Monte Carlo dos elétrons retroespalhados. Use **Simular** para recalculá-las.
+A aba **Distribuição BSE** mostra as distribuições de Monte Carlo dos elétrons retroespalhados. Use **Simular** para recalculá-las. Apenas um Monte Carlo é executado de cada vez: enquanto um estiver em execução (iniciado por **Simular** ou pela primeira etapa de **Criar master pattern**), **Simular** não inicia outro, e a barra de status pede que você aguarde ou pressione **Parar**. <!-- 261105Cl 監査: FormEBSD.cs buttonBSE_Click (monteCarloCts) -->
 
 - **Stereonet** : distribuição angular (histograma das direções de saída) dos elétrons retroespalhados. O centro é a direção da normal à superfície, e o contorno amarelo marca a região retangular subtendida pelo detector. **Desenhar eixos** sobrepõe os eixos cristalinos, e a escala de cores (**Min** / **Max**, **Resolution**, **Cor**) é ajustável.
 - **ΔE (keV)** : distribuição da perda de energia dos elétrons retroespalhados.
-- **Profundidade (nm)** : distribuição da profundidade em que os elétrons retroespalhados detectados sofreram seu último evento de espalhamento inelástico — a mesma definição de profundidade que pondera o master pattern.
+- **Profundidade (nm)** : distribuição da profundidade da fonte dos elétrons retroespalhados detectados, conforme definida por **Profundidade da fonte (MC)** (padrão: o último evento de espalhamento inelástico) — a mesma definição de profundidade que pondera o master pattern.
 
-Essas distribuições são calculadas pelo mesmo mecanismo de Monte Carlo das [Trajetórias eletrônicas](8-electron-trajectory.md) e são usadas para ponderar o master pattern.
+Essas distribuições são calculadas pelo mesmo mecanismo de Monte Carlo das [Trajetórias eletrônicas](8-electron-trajectory.md) e são usadas para ponderar o master pattern. Trocar o cristal ou a tensão de aceleração descarta esses resultados junto com o master pattern (uma alteração feita com a janela fechada tem efeito quando ela é reaberta); a barra de status informa o que foi descartado. Clique duas vezes no gráfico **ΔE** ou **Profundidade** para copiar os seus valores para a área de transferência como texto (x e y, separados por tabulação). <!-- 261106Cl 作者の決定 F23 --> <!-- 261105Cl 監査: FormEBSD.cs SetCrystal / 電圧の変更 / 開き直し (4bc81f06) -->
 
 ---
 
@@ -99,10 +99,10 @@ Essas distribuições são calculadas pelo mesmo mecanismo de Monte Carlo das [T
 
 A aba **Sobreposições** configura as anotações desenhadas sobre o padrão EBSD.
 
-- **Background color** : cor de fundo.
+- **Cor de fundo** : cor de fundo.
 - **Contorno do detector** : o contorno do detector. **Mostrar contorno** (o retângulo amarelo na borda do detector) / **Mostrar malha** (grade de divisão).
 - **Mostrar linhas de Kikuchi** : desenhar linhas de Kikuchi. **Largura da linha** / **Cor** e **Aplicar fatores de estrutura à intensidade das linhas de Kikuchi** (cada linha se funde ao fundo em proporção ao seu fator de estrutura).
-- **Critérios das linhas de Kikuchi** : quais linhas de Kikuchi desenhar: **Fator de estrutura** (as **Top** *N* por fator de estrutura) ou **Corte 1/d** (aquelas com 1/d abaixo de um limiar, nm⁻¹).
+- **Critérios das linhas de Kikuchi** : quais linhas de Kikuchi desenhar: **Fator de estrutura** (as **Máx.** *N* por fator de estrutura) ou **Corte 1/d** (aquelas com 1/d abaixo de um limiar, nm⁻¹). Alternar entre as duas opções redesenha as linhas imediatamente. <!-- 261105Cl 監査: 1/d Cutoff 側にもハンドラを配線 (d88da429) -->
 - **Mostrar índices das linhas de Kikuchi** : mostrar os índices das linhas de Kikuchi (bandas).
 - **Mostrar índices dos eixos de zona** : mostrar os índices dos eixos de zona.
 - **Configurações de texto** : **Tamanho do texto** / **Cor** dos rótulos de índice.
@@ -119,7 +119,7 @@ Se algum sítio atômico não tiver parâmetro de deslocamento atômico (B = 0),
 
 - Aba **2D** : projeção de área igual (de Lambert) de um hemisfério. **Hemisfério** seleciona o hemisfério projetado (+Z / −Z).
 - Aba **3D** : uma esfera com a intensidade mapeada sobre ela. Pode ser rotacionada com o mouse, e um quadro no canto superior esquerdo mostra os eixos cristalinos sincronizados (a/b/c). **Rótulos dos eixos** / **Setas dos eixos** alternam os rótulos/setas, e **Ver na direção** olha ao longo do eixo de zona [u v w] informado ao lado.
-- Controles deslizantes **Energy / Depth** : selecionam a fatia de energia/profundidade da pré-visualização.
+- Controles deslizantes **Energia / Profundidade** : selecionam a fatia de energia/profundidade da pré-visualização.
 - Qualquer das vistas pode ser enviada para a área de transferência com **Copiar**.
 - **Salvar vídeo** (aba **3D**) : salva um vídeo (MP4) do master pattern esférico em rotação. A direção de rotação, a velocidade, a duração, os fps e a qualidade são definidos na mesma caixa de diálogo "Movie setting" do [Visualizador de estrutura](5-structure-viewer.md). Apenas esta vista 3D gira; a orientação do cristal (os ângulos de Euler da janela principal) não é alterada.
 
@@ -129,16 +129,18 @@ Se algum sítio atômico não tiver parâmetro de deslocamento atômico (B = 0),
 
 ![Parâmetros de simulação dinâmica](../assets/cap-pt-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.groupBoxSimulationParameters.png)
 
-- **Number of diffracted waves** : número de feixes difratados (ondas) incluídos no cálculo de ondas de Bloch. Mais ondas são mais precisas, mas mais lentas.
+- **Número de ondas difratadas** : número de feixes difratados (ondas) incluídos no cálculo de ondas de Bloch. Mais ondas são mais precisas, mas mais lentas.
 - **Grade** : resolução da grade do master pattern (pixels por lado, 64–8192; padrão 256). 4096 e 8192 exigem uma quantidade enorme de memória para os dados intermediários (com as 16 energias × 40 profundidades padrão, cerca de 344 GB em 4096 e 1374 GB em 8192; já cerca de 86 GB em 2048), de modo que o número de passos de energia e profundidade precisa ser reduzido drasticamente para que se tornem utilizáveis. Se a memória se esgotar, o cálculo termina com "MasterPattern failed" (o ReciPro continua em execução).
-- **Energy from … to … with step of …** : faixa de energia e passo integrados (keV); definidos automaticamente a partir do resultado de Monte Carlo.
-- **Thickness from … to … with step of …** : faixa de profundidade e passo integrados (nm); também definidos automaticamente. As profundidades automáticas não são equiespaçadas; por isso as caixas mostram, como referência, o ponto mais raso, o limite superior e o primeiro intervalo. Editar uma caixa manualmente passa para profundidades equiespaçadas com esses valores.
+- **Faixas de energia e profundidade automáticas (MC)** (ativado por padrão) : enquanto marcada, o Monte Carlo define as duas faixas abaixo e as suas caixas ficam somente leitura; desmarcada, o master pattern é construído com as faixas digitadas nas caixas (veja [Fluxo de trabalho](#fluxo-de-trabalho)), e essas faixas são mantidas para a próxima inicialização. A configuração é mantida para a próxima inicialização. <!-- 261106Cl 作者の決定 F5/F15 -->
+- **Energia … até … passo …** : faixa de energia e passo integrados (keV); definidos automaticamente a partir do resultado de Monte Carlo enquanto a caixa acima estiver marcada.
+- **Profundidade … até … passo …** : faixa de profundidade e passo integrados (nm), medida como o comprimento de trajetória ao longo da direção de saída; também definidos automaticamente. As profundidades automáticas não são equiespaçadas; por isso as caixas mostram, como referência, o ponto mais raso, o limite superior e o primeiro intervalo. Editar uma caixa manualmente passa para profundidades equiespaçadas com esses valores.
 - **Absorção não local** : usar a forma de absorção não local.
-- **Fonte não local** : substitui a fonte de retroespalhamento localizada nos sítios atômicos pela forma não local do potencial absortivo (U'_back integrado sobre o hemisfério posterior). Ambas usam a mesma seção de choque física: é uma troca de modelo, não um fundo aditivo.
+- **Fonte não local** (ativado por padrão) : substitui a fonte de retroespalhamento localizada nos sítios atômicos pela forma não local do potencial absortivo (U'_back integrado sobre o hemisfério posterior). Ambas usam a mesma seção de choque física: é uma troca de modelo, não um fundo aditivo.
 - **Profundidade da fonte (MC)** : qual evento Monte Carlo define a profundidade da fonte coerente de retroespalhamento usada na ponderação (energia × profundidade): o último evento inelástico (padrão), o último evento de transporte de qualquer tipo ou a última decoerência. Neste último caso um evento reinicia a fonte só se for localizado o bastante para deixar na amostra a informação de qual átomo espalhou: os elásticos com a probabilidade térmico-difusa 1 − exp(−2B s²) do fator de Debye–Waller (o espalhamento de Bragg coerente não), os inelásticos sempre para excitações de caroço ou alta perda e, para excitações de valência, só com a fração cuja transferência de momento excede o corte plasmônico q_c = ω_p/v_F (plasmons e pares elétron–buraco deslocalizados preservam o estado de Bloch). Fontes mais rasas carregam menos modulação de Kikuchi, então a última opção define o fundo difuso só pelo transporte, sem parâmetro livre. Mudar apenas reagrupa os elétrons salvos, sem repetir o Monte Carlo.
-- **O contraste cai com a perda de energia** (ativado por padrão; E_c = 0,8 keV com gaussiana assimétrica e 0,9 keV com histograma + A por elétron) : multiplica o contraste de Kikuchi de cada fatia de energia por A(E) = exp(−(E0 − E)/E_c), onde E0 é a energia do feixe e E a energia de saída, e passa a parte perdida para um pedestal plano com média sobre as direções, de modo que o brilho sem contraste de bandas não muda. Os pesos de Monte Carlo contam cada elétron retroespalhado, mas elétrons que perderam muita energia quase não carregam contraste de Kikuchi nítido; sem esta correção, cada fatia carrega o contraste completo e as bandas saem cerca de 12 % mais largas do que para elétrons monocromáticos em E0 (Si, 20 kV). E_c é um parâmetro efetivo, não uma constante do material; valores menores dão atenuação mais forte. O valor padrão de 0,8 keV da gaussiana assimétrica baseia-se numa calibração, com as condições de cálculo originais, às larguras de banda de um padrão medido de Si a 20 kV (conjunto de dados Si004; razão de comprimento de onda efetivo α ≈ 1.017). Os valores calibrados dependem do material e das reflexões usadas; para a botallackita obtiveram-se cerca de 0.43–0.71 keV conforme a seleção de reflexões. Para comparações quantitativas das larguras de banda, recalibre E_c quando mudarem a grade de energia/profundidade, o método de síntese ou a medida de avaliação. Alterá-lo apenas repondera as fatias existentes, sem recalcular o master pattern nem o Monte Carlo.
+- **O contraste cai com a perda de energia** (ativado por padrão; mantido para a próxima inicialização, E_c não; E_c = 0,8 keV com gaussiana assimétrica e 0,9 keV com histograma + A por elétron) : multiplica o contraste de Kikuchi de cada fatia de energia por A(E) = exp(−(E0 − E)/E_c), onde E0 é a energia do feixe e E a energia de saída, e passa a parte perdida para um pedestal plano com média sobre as direções, de modo que o brilho sem contraste de bandas não muda. Os pesos de Monte Carlo contam cada elétron retroespalhado, mas elétrons que perderam muita energia quase não carregam contraste de Kikuchi nítido; sem esta correção, cada fatia carrega o contraste completo e as bandas saem cerca de 12 % mais largas do que para elétrons monocromáticos em E0 (Si, 20 kV). E_c é um parâmetro efetivo, não uma constante do material; valores menores dão atenuação mais forte. O valor padrão de 0,8 keV da gaussiana assimétrica baseia-se numa calibração, com as condições de cálculo originais, às larguras de banda de um padrão medido de Si a 20 kV (conjunto de dados Si004; razão de comprimento de onda efetivo α ≈ 1.017). Os valores calibrados dependem do material e das reflexões usadas; para a botallackita obtiveram-se cerca de 0.43–0.71 keV conforme a seleção de reflexões. Para comparações quantitativas das larguras de banda, recalibre E_c quando mudarem a grade de energia/profundidade, o método de síntese ou a medida de avaliação. Alterá-lo apenas repondera as fatias existentes, sem recalcular o master pattern nem o Monte Carlo.
 - **Camada amorfa superficial** : espessura (nm) de uma camada superficial não cristalina (óxido nativo, contaminação, dano de polimento ou de desbaste iônico). Elétrons cuja fonte coerente de retroespalhamento está dentro da camada não carregam modulação de Kikuchi e são somados como contribuição uniforme média em direção, com a mesma intensidade por elétron; fontes abaixo da camada são medidas a partir da superfície do cristal. O transporte é calculado com a composição e densidade do cristal, adequado para poucos nm. 0 desativa; mudar apenas reagrupa os elétrons salvos, sem repetir o Monte Carlo.
 - **Ponderar pela resposta do fósforo** (ativo por padrão, E_dead = 2 keV) : pondera cada elétron Monte Carlo pelo rendimento luminoso de uma tela de fósforo, φ(E) = max(0, E − E_dead), em vez de contar cada elétron uma vez. Elétrons de maior energia saem da amostra inclinada mais para a frente, de modo que a ponderação reduz o gradiente de intensidade de cima para baixo do padrão (para Si a 20 kV de cerca de 2,5 para 1,7 ao longo do detector) e enfraquece ligeiramente os eixos de zona. Aplica-se ao binning no plano do detector e à distribuição de energia por bin; a alteração re-agrupa os elétrons guardados sem repetir o Monte Carlo. Desligue para um detector direto que conta elétrons. E_dead é a energia da camada morta (limiar) do fósforo; valores típicos 0–3 keV para uma tela P43 com revestimento de alumínio.
+- **Energy filter E >** (keV; padrão 0 = desligado) : um filtro de energia passa-alta ideal na frente do detector. Os elétrons cuja energia de saída é menor ou igual a esse valor não contribuem para o padrão. A alteração re-agrupa os elétrons guardados sem repetir o Monte Carlo nem reconstruir o master pattern.
 - **Distribuição de energia por histograma MC** (desligado por padrão) : constrói a distribuição de energia de saída de cada bin de direção a partir do histograma Monte Carlo bruto (ponderado por φ, repartido linearmente entre as duas fatias de energia vizinhas do master pattern) em vez de uma gaussiana assimétrica ajustada à média e às dispersões de cada lado. A gaussiana subestima o pico perto da energia do feixe por um fator 2–3, o que faz as bandas parecerem mais largas. Com esta opção ativada, o A(E) de **O contraste cai com a perda de energia** também é aplicado a cada elétron na sua própria energia de saída antes de repartir o elétron entre as fatias de energia, em vez de ser avaliado nas energias das fatias. No modo histograma + A por elétron, enquanto E_c não for editado, ele muda para o valor provisório de 0,9 keV obtido pela mediana das larguras de 18 bandas fixas Si004 a 20 kV; outras medidas (por exemplo, a correlação da imagem inteira) dão valores diferentes. Depois de editar E_c, o valor inserido é mantido ao mudar a distribuição. A alteração reagrupa os elétrons armazenados sem repetir o Monte Carlo.
 
 ---
@@ -153,31 +155,33 @@ O painel central mostra o padrão EBSD (de bandas de Kikuchi) para a orientaçã
 - **Sobreposições** : desenha as linhas de Kikuchi, os índices e o contorno do detector configurados na aba **Sobreposições**.
 - **Imagem experimental** : sobrepõe a imagem experimental carregada (veja abaixo).
 - **Inverter E-D** : espelha o padrão e todas as suas sobreposições da esquerda para a direita. Desmarcado (padrão) é a vista do detector em direção à amostra, isto é, o padrão como uma câmera EBSD o registra; marque-o apenas se a sua imagem experimental tiver a quiralidade oposta.
-- **Resolution** (mm/px) e **Size (W×H)** (px) : resolução e tamanho da vista exibida.
+- **Resolução** (mm/px) e **Tamanho (L×A)** (px) : resolução e tamanho da vista exibida.
 - **Salvar** : salva o padrão em um arquivo, usando a faixa e a resolução selecionadas ao lado. O formato (PNG / TIFF / EMF) é escolhido na caixa de diálogo de salvamento.
-  - **Pattern values (\*.csv)** grava, em vez de uma imagem, as intensidades brutas na grade de pixels do detector.
-  - Um TIFF é gravado em escala de cinza de 16 bits (sem quantização para 256 níveis) quando a faixa é **Detector**, **EBSD dinâmico** está exibido e **Imagem experimental** não. Nesse caso as **Sobreposições** são omitidas independentemente da caixa de seleção, e os valores de pixel são o padrão mapeado linearmente do seu próprio mínimo–máximo para 0–65535 (o mínimo e o máximo usados são informados na barra de status; use a exportação csv quando precisar de valores absolutos).
+  - **Pattern values (\*.csv)** grava, em vez de uma imagem, as intensidades brutas na grade de pixels do detector. As suas linhas de cabeçalho `#` registram as condições (cristal, matriz e tamanho de pixel do detector, tensão, inclinações do detector e da amostra em graus, X/Y/Z do detector, …) e o mínimo e o máximo. <!-- 261105Cl 監査: 傾斜角は度で書く (FormEBSD.cs, 5f7484d1) -->
+  - Um TIFF é gravado em escala de cinza de 16 bits (sem quantização para 256 níveis) quando a faixa é **Detector**, **EBSD dinâmico** está exibido e nenhuma imagem experimental está sobreposta (nenhuma foi carregada, ou **Imagem experimental** está desmarcada). <!-- 261105Cl 監査: 16 bit の条件 (FormEBSD.cs, 5f7484d1) --> Nesse caso as **Sobreposições** são omitidas independentemente da caixa de seleção, e os valores de pixel são o padrão mapeado linearmente do seu próprio mínimo–máximo para 0–65535 (o mínimo e o máximo usados são informados na barra de status; use a exportação csv quando precisar de valores absolutos).
 - **Copiar** : copia o padrão para a área de transferência, usando a faixa e o formato selecionados ao lado.
   - **Vista atual** copia a área exibida no momento (com o deslocamento e o zoom atuais); **Detector** copia apenas a área do detector, caso em que o contorno amarelo é omitido para que a imagem termine exatamente na borda do detector.
   - **emf** copia um Enhanced Metafile, mantendo as linhas de Kikuchi e os rótulos de índice como vetores; **bmp** rasteriza tudo.
   - **Ajustar à resolução do detector** copia com um pixel de imagem por pixel do detector (o lado maior é limitado a 4096 px). Desmarcado, é usada a resolução da tela.
 
-### Parâmetros de saída
+### Imagem simulada
 
-- **Mostrar imagem com distribuições angulares/de energia de BSE** : quando marcado, o padrão é composto por ponderação com a distribuição BSE (energia, profundidade, direção) em vez de uma única fatia.
-- **Energy / Depth** : quando a opção acima está desligada, seleciona a fatia de energia/profundidade a ser exibida.
-- **Brilho** (**Min** / **Max**), **Contraste**, **Polaridade**, **Cor** : os pontos de preto e de branco do padrão simulado como porcentagem da faixa de exibição (controles lineares), a largura dessa faixa, sua polaridade e a escala de cores. Contraste 0 torna a faixa de exibição igual à faixa de intensidade do próprio padrão; -1 a alarga dez vezes (contraste dez vezes mais fraco) e +1 a estreita para um décimo, mantendo o centro fixo.
+Antes de o primeiro master pattern ser construído, apenas as linhas de exibição abaixo (distribuições BSE e fatia, brilho e contraste, cor) ficam desativadas; as configurações de Monte Carlo (**Profundidade da fonte (MC)**, **O contraste cai com a perda de energia**, **Camada amorfa superficial**, **Ponderar pela resposta do fósforo**, **Energy filter E >**, **Distribuição de energia por histograma MC**) podem ser alteradas desde o início. <!-- 261106Cl 作者の決定 F16 -->
+
+- **Com distribuições angulares/de energia de BSE** (ativado por padrão) : quando marcado, o padrão é composto por ponderação com a distribuição BSE (energia, profundidade, direção) em vez de uma única fatia.
+- **Energia / Profundidade** : quando a opção acima está desligada, seleciona a fatia de energia/profundidade a ser exibida.
+- **Brilho** (**Mín** / **Máx**), **Contraste**, **Polaridade**, **Cor** : os pontos de preto e de branco do padrão simulado como porcentagem da faixa de exibição (controles lineares), a largura dessa faixa, sua polaridade e a escala de cores. Contraste 0 torna a faixa de exibição igual à faixa de intensidade do próprio padrão; -1 a alarga dez vezes (contraste dez vezes mais fraco) e +1 a estreita para um décimo, mantendo o centro fixo.
 - **Aplanar o fundo** (**FWHM**, px; desligado por padrão, 100 px) : subtrai do padrão simulado uma cópia desfocada com uma gaussiana, removendo a distribuição de brilho de variação lenta para comparar bandas e eixos de zona com um padrão experimental corrigido de fundo. A largura a meia altura é dada em pixels do detector e não depende do zoom. Afeta a imagem exibida e a exportação PNG/TIFF; a exportação CSV mantém os valores brutos.
 
 ### Imagem experimental
 
 ![Imagem experimental](../assets/cap-pt-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
 
-Solte um arquivo de imagem EBSD (TIFF, PNG, BMP ou JPEG; TIFF de 16 bits é lido em profundidade total) em qualquer ponto da janela para carregá-lo como padrão experimental. Ele é desenhado sobre a área do detector — acima do padrão simulado e abaixo das sobreposições de linhas de Kikuchi —, de modo que a simulação possa ser comparada diretamente com a medida. O carregamento também define **Width** e **Height** do detector com o tamanho da imagem.
+Solte um arquivo de imagem EBSD (TIFF, PNG, BMP ou JPEG; TIFF de 16 bits é lido em profundidade total) em qualquer ponto da janela para carregá-lo como padrão experimental. Ele é desenhado sobre a área do detector — acima do padrão simulado e abaixo das sobreposições de linhas de Kikuchi —, de modo que a simulação possa ser comparada diretamente com a medida. O carregamento também define **Largura** e **Altura** do detector com o tamanho da imagem.
 
-- **Brilho** (**Min** / **Max**), **Contraste** : os pontos de preto e de branco da imagem sobreposta como porcentagem da sua faixa de exibição, e a largura dessa faixa (controles lineares, mesma convenção do padrão simulado). Atuam somente sobre a imagem experimental.
+- **Brilho** (**Mín** / **Máx**), **Contraste** : os pontos de preto e de branco da imagem sobreposta como porcentagem da sua faixa de exibição, e a largura dessa faixa (controles lineares, mesma convenção do padrão simulado). Atuam somente sobre a imagem experimental.
 - **Aplanar o fundo** (**FWHM**, px; desligado por padrão, 100 px) : subtrai da imagem experimental uma cópia desfocada com uma gaussiana, removendo sua distribuição de brilho de variação lenta. Os controles de intensidade passam então a atuar sobre os valores aplanados.
-- **Ajustar à imagem** : define **Min**, **Max** e **Contraste** do padrão simulado de modo que seus níveis de intensidade de 2 % e 98 % sejam exibidos com o mesmo cinza que os da imagem experimental. O ajuste usa percentis, portanto não depende da solução de orientação e é insensível a um pedestal ou a alguns pixels brilhantes de eixos de zona. Polaridade, Cor e as duas configurações de **Aplanar o fundo** não são alteradas; por isso, aplane ambos os lados ou nenhum antes de pressioná-lo.
+- **Ajustar à imagem** : define **Mín**, **Máx** e **Contraste** do padrão simulado de modo que seus níveis de intensidade de 2 % e 98 % sejam exibidos com o mesmo cinza que os da imagem experimental. O ajuste usa percentis, portanto não depende da solução de orientação e é insensível a um pedestal ou a alguns pixels brilhantes de eixos de zona. Polaridade, Cor e as duas configurações de **Aplanar o fundo** não são alteradas; por isso, aplane ambos os lados ou nenhum antes de pressioná-lo.
 - **Opacidade** : opacidade da imagem sobreposta, de 0 (invisível) a 100 % (opaca). Reduza-a para ver o padrão simulado por baixo.
 
 A orientação que explica a imagem é então procurada por um de dois mecanismos.
@@ -197,7 +201,17 @@ A orientação que explica a imagem é então procurada por um de dois mecanismo
 
 **Clicar em uma linha aplica essa orientação a todo o programa**: o padrão simulado é redesenhado sobre o experimental e a orientação do cristal de todas as outras janelas o acompanha.
 
-**Calibrar geometria** refina a geometria do detector — centro do padrão (PC) e distância do detector (DD) — alternadamente com a orientação, maximizando a ZNCC entre os padrões simulado e experimental. Requer o master pattern, mantém a inclinação do detector fixa e grava o resultado de volta nos campos **Coordenadas do centro do detector** X/Y/Z. Como a varredura do feixe de um MEV desloca o centro do padrão apenas uma fração de milímetro, normalmente basta uma calibração no início do experimento para toda uma série de imagens.
+### Seleção de eixos de zona {#zone-axis-picking}
+
+Em vez de comparar a imagem inteira, a orientação também pode ser determinada a partir de interseções de bandas (eixos de zona) selecionadas manualmente na imagem experimental.
+
+- **Zone axis** : ativa a seleção. Enquanto estiver ativada, um clique duplo esquerdo no padrão adiciona um ponto, <kbd>CTRL</kbd> + clique duplo esquerdo remove o ponto a até 5 pixels de tela e <kbd>SHIFT</kbd> + clique duplo esquerdo seleciona um ponto (desenhado em amarelo; os demais ficam em ciano, numerados). Enquanto estiver desativada, o clique duplo seleciona uma célula do detector como de costume.
+- **[u v w]** : o índice do eixo de zona do ponto selecionado. Deixe 0 0 0 para que a busca o atribua; digitar um índice restringe a busca (útil para cristais de baixa simetria e eixos de índices altos).
+- **+ geometry** : otimiza também o centro do detector (X, Y, Z, mm) junto com a orientação, minimizando o resíduo em pixels entre as posições previstas e selecionadas dos eixos de zona. Requer pelo menos 4 pontos atribuídos; ao selecionar um candidato, a geometria refinada também é aplicada.
+- **Find** : busca as orientações que explicam os eixos de zona selecionados (pelo menos 2 pontos; três costumam bastar, dois são ambíguos). A tolerância angular é de 2°, com nova tentativa a 5° se nada for encontrado. Até 10 candidatos são escritos na mesma tabela de candidatos, e clicar numa linha os aplica como acima.
+- **Clear** : remove todos os pontos selecionados, os índices digitados e os candidatos da última busca por eixos de zona (sem desfazer). Carregar uma nova imagem experimental tem o mesmo efeito.
+
+**Calibrar geometria** refina a geometria do detector — centro do padrão (PC) e distância do detector (DD) — alternadamente com a orientação, maximizando a ZNCC entre os padrões simulado e experimental. Requer o master pattern, mantém a inclinação do detector fixa e grava o resultado de volta nos campos **Coordenadas do centro do detector** X/Y/Z, mantendo o detector no lado (+Y ou −Y) em que estava. <!-- 261105Cl 監査: +Y 側の検出器も側を保つ (e1d645d5) --> Como a varredura do feixe de um MEV desloca o centro do padrão apenas uma fração de milímetro, normalmente basta uma calibração no início do experimento para toda uma série de imagens.
 
 ---
 

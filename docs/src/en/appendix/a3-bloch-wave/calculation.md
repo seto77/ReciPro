@@ -49,7 +49,7 @@ The Cartesian components of $\mathbf g$ are obtained from the reciprocal basis v
 $$\begin{pmatrix} g_x\\ g_y\\ g_z\end{pmatrix} = \begin{pmatrix} a_x^{*} & b_x^{*} & c_x^{*}\\ a_y^{*} & b_y^{*} & c_y^{*}\\ a_z^{*} & b_z^{*} & c_z^{*}\end{pmatrix}\begin{pmatrix} h\\ k\\ l\end{pmatrix} = \begin{pmatrix} h\,a_x^{*} + k\,b_x^{*} + l\,c_x^{*}\\ h\,a_y^{*} + k\,b_y^{*} + l\,c_y^{*}\\ h\,a_z^{*} + k\,b_z^{*} + l\,c_z^{*}\end{pmatrix}$$
 
 !!! note
-    The $U_{\mathbf g}$ values shown in the diffraction simulator's **Details** table are the raw values *before* the relativistic factor $\gamma$ is applied.
+    The $U_{\mathbf g}$ values shown in the diffraction simulator's **Spot details** table are the raw values *before* the relativistic factor $\gamma$ is applied.
 
 ---
 

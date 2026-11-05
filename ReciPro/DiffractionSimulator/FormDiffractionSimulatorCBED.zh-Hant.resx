@@ -72,7 +72,7 @@
     <value>繞射波數目</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
-    <value>半角</value>
+    <value>會聚半角 α</value>
   </data>
   <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
     <value>圓盤解析度</value>
@@ -159,8 +159,10 @@ MKL 函式庫）。結果應相同，但速度
 內部強度隨入射光束傾斜而改變。</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
-    <value>LACBED（大角度會聚電子繞射）模式：使用
-較寬的會聚角，使一個反射在較大的角度範圍內被記錄。</value>
+    <value>LACBED（大角度會聚電子繞射）模式：只輸出並繪製
+穿透圓盤 (000)，不疊加相互重疊的相鄰圓盤，因此可以
+使用大於布拉格角的半角（明場 LACBED）。
+此模式不會增大半角本身。</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>納入動力學多重散射計算的繞射波
@@ -175,15 +177,14 @@ MKL 函式庫）。結果應相同，但速度
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
     <value>橫跨每個圓盤的每像素角度取樣步距
-（mrad/pixel）。值越小，直徑方向
-的分割數越多（顯示於右側），圓盤越
-精細，但計算時間越長。</value>
+（mrad/pixel）。值越小，圓盤越精細、像素越多；
+每個圓盤的像素數顯示於右側（總像素），
+計算時間隨該數目增加。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>橫跨每個圓盤的每像素角度取樣步距
-（mrad/pixel）。值越小，直徑方向
-的分割數越多（顯示於右側），圓盤越
-精細，但計算時間越長。</value>
+    <value>每個圓盤的像素數，即會聚圓內入射光束方向的數目。
+每個像素進行一次布洛赫波計算，
+因此計算時間與該數目成正比。</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
     <value>設定試樣厚度的範圍與步距</value>
@@ -265,10 +266,9 @@ Positive 表示亮為強；Negative
 試樣厚度（nm）。</value>
   </data>
   <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
-    <value>橫跨每個圓盤的每像素角度取樣步距
-（mrad/pixel）。值越小，直徑方向
-的分割數越多（顯示於此），圓盤越
-精細，但計算時間越長。</value>
+    <value>每個圓盤的像素數，即會聚圓內入射光束方向的數目。
+每個像素進行一次布洛赫波計算，
+因此計算時間與該數目成正比。</value>
   </data>
   <data name="labelGamma.ToolTip" xml:space="preserve">
     <value>設定 gamma 值。此值越大，

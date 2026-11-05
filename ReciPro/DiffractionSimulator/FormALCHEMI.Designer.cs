@@ -276,7 +276,8 @@ namespace ReciPro
             groupBoxCalculation.Text = "Calculation";
 
             numericBoxMaxNumOfBloch.DecimalPlaces = 0;
-            numericBoxMaxNumOfBloch.HeaderText = "Max. beams";
+            //numericBoxMaxNumOfBloch.HeaderText = "Max. beams"; // 261105Cl 変更前
+            numericBoxMaxNumOfBloch.HeaderText = "Max. diffr. waves"; // 261105Cl 変更 (作者決定 K1-A1: 回折波の最大数。欄 (166 px 固定) に収まる略記)
             numericBoxMaxNumOfBloch.Location = new System.Drawing.Point(8, 20);
             //260810Cl 変更: 2000 → 1600 (作者判断)。1600 は F(s) テーブルの s グリッド上限 16 Å⁻¹ と
             //対になる設計目標である。AlchemiCheck basis の実測では **N = 1600 での要求 s の最大は

@@ -156,6 +156,46 @@ public static class ModelExporter
         return (min, max);
     }
 
+    /// <summary>
+    /// 261105Cl 追加: 倍率 scale (mm/nm) で出力したときの外形寸法 (mm)。boxes は要素ごとの範囲 (nm) と、その要素が範囲の外へ張り出す量 PadMm
+    /// (片側 mm: 線を円柱化した単位胞の枠・多面体の稜線の半径。角・頂点に同じ半径の球を置くので、どの向きにもちょうどこの量)。要素の無い範囲 (Min > Max) は飛ばす。
+    /// </summary>
+    public static V3 OutputSizeMm(IEnumerable<(V3 Min, V3 Max, double PadMm)> boxes, double scale)
+    {
+        V3 min = new(double.MaxValue), max = new(double.MinValue);
+        foreach (var (bMin, bMax, pad) in boxes)
+        {
+            if (bMin.X > bMax.X)
+                continue;
+            min = V3.ComponentMin(min, bMin * scale - new V3(pad));
+            max = V3.ComponentMax(max, bMax * scale + new V3(pad));
+        }
+        return min.X > max.X ? new V3(0) : max - min;
+    }
+
+    /// <summary>
+    /// 261105Cl 追加: 出力の最大寸法がちょうど targetMm になる倍率 (mm/nm)。張り出し (mm) は倍率に依らないので、
+    /// 単純に targetMm / (範囲の最大寸法 nm) とすると、張り出しの分 (枠の直径など) だけ targetMm を超える。
+    /// 寸法は倍率について単調増加なので二分法で解く。張り出しだけで targetMm を超えるときは従来の倍率を返す。範囲が空なら 0。
+    /// </summary>
+    public static double FitScale(IReadOnlyCollection<(V3 Min, V3 Max, double PadMm)> boxes, double targetMm)
+    {
+        static double maxOf(V3 v) => Math.Max(v.X, Math.Max(v.Y, v.Z));
+        var extentNm = maxOf(OutputSizeMm(boxes.Select(b => (b.Min, b.Max, 0.0)), 1));
+        if (extentNm <= 0)
+            return 0;
+        double lo = 0, hi = targetMm / extentNm;//hi では張り出しの分だけ targetMm 以上
+        if (maxOf(OutputSizeMm(boxes, lo)) >= targetMm)
+            return hi;
+        for (int i = 0; i < 60; i++)
+        {
+            var mid = (lo + hi) / 2;
+            if (maxOf(OutputSizeMm(boxes, mid)) > targetMm) hi = mid;
+            else lo = mid;
+        }
+        return (lo + hi) / 2;
+    }
+
     /// <summary>XY 中心が原点、Z 最小値が 0 (ビルドプレート面) に来る平行移動量</summary>
     private static V3 GetShift(List<MeshSnapshot> snaps)
     {

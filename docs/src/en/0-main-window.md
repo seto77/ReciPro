@@ -23,14 +23,14 @@ The main window installs several **application-wide** shortcuts. They keep worki
 |----------|--------|
 | <kbd>F1</kbd> | Open this page of the online manual |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + arrow keys | Rotate the crystal one step in that direction (hold two arrows for a diagonal) |
-| Hold <kbd>CTRL</kbd> while ReciPro starts | Start with OpenGL disabled (recovery for graphics problems) |
+| Hold <kbd>CTRL</kbd> while ReciPro starts | Start with OpenGL disabled (recovery for graphics problems; this launch only, not saved) |
 | Left-drag the orientation widget (bottom-left, under *Current orientation*) | Rotate the crystal |
 | Right double-click the orientation widget | Copy the widget image to the clipboard |
 | Single-click a function button | Open / close that window (a minimised window is restored instead of closed) |
 | Double-click a function button | Force the window visible and bring it to the front |
 | Right-click a crystal in the list | Context menu (Rename / Export as CIF / Duplicate / Delete) |
 | Double-click the zone-axis index label (`[u v w]`, under *Current orientation*) | Show / hide the max-UVW box |
-| Drop a file on the window | Load a crystal list (`.xml`, `.out`, `.cdb2`; asks whether to replace or append) or a crystal (`.cif`, `.amc`) |
+| Drop a file on the window | Load a crystal list (`.xml`, `.out`; asks whether to replace or append) or a crystal (`.cif`, `.amc`) <!-- 261105Cl 監査: .cdb2 はドロップで読めないので外した (FormMain.cs:FormMain_DragDrop) --> |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> | Open the (experimental) GUI-capture tool for the active window |
 
 → See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
@@ -55,12 +55,12 @@ If you are new to ReciPro, refer to the following steps:
 
 | Menu item | Description |
 |-----------|-------------|
-| Load Crystal List (Replace current list) | Load a crystal-list file (`*.xml`, `*.out`), replacing the current list; a dialog lets you choose which crystals to load <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:ReadCrystalList (showSelectionDialog=true → FormCrystalSelection), SaveCrystalDataToolStripMenuItem_Click) --> |
-| Load Crystal List (Add to current list) | Load a crystal-list file and append it to the current list (with the same selection dialog) |
+| Load crystal list (replace current list) | Load a crystal-list file (`*.xml`, `*.out`), replacing the current list; a dialog lets you choose which crystals to load <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:ReadCrystalList (showSelectionDialog=true → FormCrystalSelection), SaveCrystalDataToolStripMenuItem_Click) --> |
+| Load crystal list (add to current list) | Load a crystal-list file and append it to the current list (with the same selection dialog) |
 | Reset to initial crystal list | Reload the crystal list ReciPro ships with |
-| Import Crystal from a CIF or AMC File | Load a single crystal from a CIF / AMC file |
+| Import crystal from a CIF or AMC file | Load a single crystal from a CIF / AMC file |
 | Save crystal list | Save the current crystal list (a dialog lets you choose which crystals to write) |
-| Export the Selected Crystal as a CIF File | Save the selected crystal in CIF format |
+| Export the selected crystal as a CIF file | Save the selected crystal in CIF format |
 | Clear all crystals | Remove every crystal from the list |
 | Exit | Close the application |
 
@@ -69,36 +69,36 @@ If you are new to ReciPro, refer to the following steps:
 
 | Menu item | Description |
 |-----------|-------------|
-| Show Tooltips | Toggle tooltip display |
+| Show tooltips | Show or hide the tooltips in every window — those of controls, toolbar and menu items, table cells and tabs; the setting is kept for the next start <!-- 261106Cl 作者の決定 C9 --> <!-- 261106Cl 作者の決定 A20 --> |
 | Dark mode | Switch between light and dark colour themes |
 | Use Miller-Bravais (hkil) index | Use 4-index notation for trigonal/hexagonal systems throughout the app |
 | Use ionic scattering factors | Use ionic electron scattering factors (Peng) for the atoms' assigned ions in the dynamical (Bloch-wave) electron calculations, including Kikuchi profiles; the $g \neq 0$ monopole term is added only to the elastic coefficients $U_g$ (TDS absorption and the Kikuchi TDS source use the finite ionic part). When unchecked, neutral-atom factors are used. If the unit cell is not charge-neutral ($\Sigma q \neq 0$), the monopole term is dropped and only the finite (screened-ion) part is used; a notice is shown when the option is switched on <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:toolStripMenuItemIonicScattering_CheckedChanged, BetheMethod.cs:ElasticIonModel) --> |
-| Download MKL Library | Download the Intel MKL native library (~55 MB); once installed it is used automatically for large computations |
+| Download MKL library | Download the Intel MKL native library (~55 MB); once installed it is used automatically for large computations |
 | Accept external macro commands (named pipe) | Listen on the named pipe `ReciPro.Macro.v1` and run macros sent by external programs — see [External control](20-macro/3-external-control.md) |
 | Reset registry settings on exit (effective after restart) | Reset settings on next restart |
 | Disable Crystallography.Native library (requires restart) | Fall back to managed code if the native (C++) library fails to load |
 | Disable all OpenGL rendering (requires restart) | For older GPUs / remote desktop |
 | Disable OpenGL text rendering (requires restart) | Workaround for text-rendering issues on some GPUs |
-| (experimental) Capture GUI Components | Developer tool for saving GUI screenshots |
+| (experimental) Capture GUI components | Developer tool for saving GUI screenshots |
 | (experimental) Powder diffraction function | Enable the polycrystalline (powder) diffraction window |
 
 ### Help
 
 | Menu item | Description |
 |-----------|-------------|
-| Check for Updates | Check whether a new version of ReciPro is available and install it |
+| Check for updates | Check whether a new version of ReciPro is available and install it |
 | Hints | Display usage hints (deprecated) |
-| Version History | Open the version-history dialog |
+| Version history | Open the version-history dialog |
 | License | Display the MIT licence |
-| GitHub Repository | Open the ReciPro repository in a browser |
-| Report Bugs, Requests, or Comments | Open the GitHub Issues page |
-| Help (Web) | Open the online manual on GitHub Pages, in the page matching the UI language |
+| GitHub repository | Open the ReciPro repository in a browser |
+| Report bugs, requests, or comments | Open the GitHub Issues page |
+| Help (web) | Open the online manual on GitHub Pages, in the page matching the UI language |
 
 The UI language is switched from the separate **Language** menu (requires restart).
 
 ### Language
 
-Switch the UI language. Eleven languages are available — English, 日本語 (Japanese), Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文 and 한국어 — and the menu shows each of them in its own script. The change takes effect after restarting ReciPro. The online manual follows the same setting, so <kbd>F1</kbd> and **Help ▸ Help (Web)** open the page in the language you have chosen.
+Switch the UI language. Eleven languages are available — English, 日本語 (Japanese), Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文 and 한국어 — and the menu shows each of them in its own script. The change takes effect after restarting ReciPro. The online manual follows the same setting, so <kbd>F1</kbd> and **Help ▸ Help (web)** open the page in the language you have chosen.
 
 ### Macro
 
@@ -186,7 +186,7 @@ See [Rotation Geometry](4-rotation-geometry.md) and [Appendix A1. Coordinate sys
 
 ## Crystal Information
 
-Edit lattice parameters, symmetry, and atoms; drag & drop CIF/AMC files to load a structure. This control is shared by ReciPro, PDIndexer, and CSManager, but the tabs and features shown differ per application. ReciPro shows the Basic Info, Atom, and Reference tabs (the EOS, Elasticity, and other tabs are for the other applications and are not shown in ReciPro).
+Edit lattice parameters, symmetry, and atoms; drag & drop CIF/AMC files to load a structure. This control is shared by ReciPro, PDIndexer, and CSManager, but the tabs and features shown differ per application. ReciPro shows the **Basic info.**, **Atom info.**, and **Ref.** tabs (the EOS, Elasticity, and other tabs are for the other applications and are not shown in ReciPro).
 
 > **Important**: Press **Add** or **Replace** to save changes.
 
@@ -195,29 +195,29 @@ Edit lattice parameters, symmetry, and atoms; drag & drop CIF/AMC files to load 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: CrystalControl.resx colorControl.HeaderText/ToolTip) -->
 The top of the panel always shows **Name** (crystal name), **Formula** (chemical formula, computed from the atom list), **Z** (number of formula units per unit cell), and **Color** (the crystal's display colour, used in the 3D structure view and in diffraction-profile curves). The **Symmetry info.** and **Beam interaction** buttons open the [Symmetry Information](2-symmetry-information.md) and [Beam Interaction](3-beam-interaction.md) windows. Right-click the panel and choose [Details of the chemical composition](#chemical-composition) for wt%, at% and conversion to oxides.
 
-### Basic Info tab
+### Basic info. tab {#basic-info-tab}
 
-![Basic Info](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
+![Basic info.](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
 
 Lattice parameters, symmetry, and quantities derived from them.
 
 | Item | Description |
 |------|------|
-| Cell constants | Lattice parameters a, b, c (**Unit**: Å = 10⁻¹⁰ m or nm) and α, β, γ. Choosing a symmetry constrains them automatically (e.g. a=b=c, α=β=γ=90° for cubic). |
-| Symmetry | Choose the **Crystal System**, **Point Group**, and **Space Group**. Type in the **Search** box to list matching candidates (case-sensitive). |
-| Cell Volume / Cell Mass | Volume and mass of the unit cell. The volume is shown in Å³ / nm³ following the **Unit** selection; the mass is in 10⁻²⁴ g. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: CrystalControl.resx numericBox*.FooterText/HeaderText, SymmetryControl.resx checkBoxShowError, CrystalControl.cs:buttonChangeAxesOriginSetting_Click) --> |
-| Molar Volume / Molar Mass / Density | Molar volume (cm³/mol, per formula unit), molar mass (g/mol), and density (g/cm³). Shown **only when atoms have been entered**. |
+| Cell constants | Lattice parameters a, b, c (**Unit**: Å = 10⁻¹⁰ m or nm; the unit is kept for the next start) and α, β, γ. Choosing a symmetry constrains them automatically (e.g. a=b=c, α=β=γ=90° for cubic). |
+| Symmetry | Choose the **Crystal system**, **Point group**, and **Space group**. Type in the **Search** box to list matching candidates (case-sensitive). |
+| Cell volume / Cell mass | Volume and mass of the unit cell. The volume is shown in Å³ / nm³ following the **Unit** selection; the mass is in 10⁻²⁴ g. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: CrystalControl.resx numericBox*.FooterText/HeaderText, SymmetryControl.resx checkBoxShowError, CrystalControl.cs:buttonChangeAxesOriginSetting_Click) --> |
+| Molar volume / Molar mass / Density | Molar volume (cm³/mol, per formula unit), molar mass (g/mol), and density (g/cm³). Shown **only when atoms have been entered**. |
 | Mean Z (number) / Mean Z (mass) / Mean A | Number- and mass-averaged atomic number, and the mean atomic weight per atom (g/mol). Occupancies are included. |
-| Show Errors | Show the error (±) fields of the cell constants. |
+| Show errors | Show the error (±) fields of the cell constants. |
 | Change axes/origin setting | Same as the context-menu item **Change the axes/origin setting**: convert to another axis/origin setting of the same space group. |
 | Atom density / Electron density | Numbers of atoms and electrons per unit-cell volume, shown in Å⁻³ / nm⁻³ following the **Unit** selection. |
 
-### Atom tab
+### Atom info. tab {#atom-tab}
 
-![Atom](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
+![Atom info.](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: AtomControl.resx multi/wyckLet/siteSymDataGridViewTextBoxColumn.HeaderText) -->
-Set the species, position, temperature factor, and scattering factor of each atom. Edit the atom list with **Add**, **Replace** (replace the selected row), **Up/Down** (reorder), and **Delete**. The atom list also shows, for each site, its multiplicity (**Multi.**), Wyckoff letter (**Wyck. Let.**) and site symmetry (**Site Sym.**). Each atom has:
+Set the species, position, temperature factor, and scattering factor of each atom. Edit the atom list with **Add**, **Replace** (replace the selected row), **Up/Down** (reorder), and **Delete**. The atom list also shows, for each site, its multiplicity (**Multi.**), Wyckoff letter (**Wyck. Let.**) and site symmetry (**Site sym.**). Each atom has:
 
 | Item | Description |
 |------|------|
@@ -229,9 +229,9 @@ Set the species, position, temperature factor, and scattering factor of each ato
 Right-click an atom row and choose **Show equivalent atom positions** to open a small window listing all positions generated by the space-group symmetry operations; its **Copy** button copies the list as tab-separated text (e.g. for pasting into a spreadsheet).
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: AtomControl.resx: radioButtonOriginShiftPlus/Minus, buttonOriginShift1–9, buttonOriginShiftCustom) -->
-**Origin Shift**: shifts the origin of all atomic coordinates. Choose the sign with **+** / **−**, then press one of the preset vectors — (⅛ ⅛ ⅛), (¼ ¼ ¼), (0 ¼ ⅛), (¼ 0 ¼), (0 ¼ ¼), (¼ ¼ 0), (¼ −¼ 0), (¼ −¼ ¼), (0 ¼ −⅛) — or use **Apply custom shift** for an arbitrary amount.
+**Origin shift**: shifts the origin of all atomic coordinates. Choose the sign with **+** / **−**, then press one of the preset vectors — (⅛ ⅛ ⅛), (¼ ¼ ¼), (0 ¼ ⅛), (¼ 0 ¼), (0 ¼ ¼), (¼ ¼ 0), (¼ −¼ 0), (¼ −¼ ¼), (0 ¼ −⅛) — or use **Apply custom shift** for an arbitrary amount.
 
-**Debye–Waller factor (temperature factor)**:
+**Atomic displacement (B)** (Debye–Waller / temperature factor):
 
 | Item | Description |
 |------|------|
@@ -247,9 +247,9 @@ Right-click an atom row and choose **Show equivalent atom positions** to open a 
 | Electron | Electron scattering factors — neutral atoms from Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276; ions from Peng (1998), *Acta Cryst.* **A54**, 481–485. |
 | Neutron | Neutron scattering lengths. Choose **Natural isotope abundance** or **Custom isotope abundance** (an arbitrary isotope composition). |
 
-### Reference tab
+### Ref. tab {#reference-tab}
 
-![Reference](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
+![Ref.](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
 
 Record the source of the structure: **Note**, **Authors**, **Journal**, and **Title**.
 
@@ -265,7 +265,7 @@ Right-click an empty area of the control for these main actions:
 | Import from CIF or AMC... | Load a crystal from a CIF / AMC file. |
 | Export to CIF | Export the current crystal as CIF. |
 | Revert cell constants | Restore the cell constants to the values first loaded. |
-| Convert to P1 Space Group | Expand the structure to space group P1. |
+| Convert to P1 space group | Expand the structure to space group P1. |
 | Convert to a superstructure | Convert to a superstructure with integer multiples of a, b, c (size dialog). |
 | Change the axes/origin setting | Convert to an equivalent space group (a different axis setting). |
 

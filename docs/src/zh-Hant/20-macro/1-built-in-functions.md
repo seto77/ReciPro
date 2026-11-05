@@ -125,13 +125,13 @@ for k in range(-2, 3):
 
 | 屬性 | 型別 | 說明 |
 |----------|------|-------------|
-| `Energy` | double | 能量 (keV) |
-| `Wavelength` | double | 波長 (Å) |
+| `Energy` | double | 能量（X 光與電子束為 keV，中子束為 meV） |
+| `Wavelength` | double | 波長 (nm) |
 | `Thickness` | double | 試樣厚度 (nm) |
 | `NumberOfDiffractedWaves` | int | 布洛赫波的數目 |
 | `CameraLength2` | double | 相機長度 (mm) |
 | `ExcitationError` | double | 繞射點半徑 (nm⁻¹)：在運動學／激發誤差模式下，`SpotInfo()` 會匯出 \|Sg\| 在此值以內的反射 |
-| `SkipRendering` | bool | 跳過算繪以進行批次處理 |
+| `SkipRendering` | bool | 僅在動力學模式（`Calc_Dynamical()`）下有效：布洛赫波計算照常執行（因此 `SpotInfo()` 仍有效），但不繪製繞射點——此期間儲存的影像不含繞射點。在運動學／激發誤差模式下無作用 |
 
 ### 束模式
 
@@ -156,7 +156,7 @@ for k in range(-2, 3):
 |----------|-------------|
 | `Tau` / `TauInDeg` | 偵測器傾斜角 τ（rad / deg） |
 | `Phi` / `PhiInDeg` | 偵測器旋轉軸 φ（rad / deg） |
-| `Foot(x, y)` | foot 位置（以像素計） |
+| `Foot(x, y)` | 由試樣向偵測器所作垂線之垂足（foot）的位置（mm），從影像中心起算；影像中心本身位於偵測器座標 (−x, −y)。`Foot(0, 0)` 使垂足位於影像中心 |
 
 ### 輸出
 
@@ -183,11 +183,11 @@ for k in range(-2, 3):
 
 | 函式 | 說明 |
 |------|------|
-| `SpotID.LoadFile(filename)` | 以 **File > Load** 的方式讀入檔案：`.csv` 視為斑點清單讀取（須先讀入影像），其他副檔名則視為繞射圖樣影像讀取（dm3、dm4、mrc、ipa、tif 等支援格式）。省略 `filename` 則開啟檔案選擇對話方塊 |
-| `SpotID.FindSpots()` | 在讀入的影像中偵測斑點並擬合（等同 **Find spots** 按鈕） |
-| `SpotID.Identify()` | 搜尋能解釋所偵測斑點的取向（等同 **Identify spots** 按鈕），並回傳候選數。參與檢驗的晶體為主視窗晶體清單中選取的那些 |
+| `SpotID.LoadFile(filename)` | 以 **檔案 > 載入** 的方式讀入檔案：`.csv` 視為斑點清單讀取（須先讀入影像），其他副檔名則視為繞射圖樣影像讀取（dm3、dm4、mrc、ipa、tif 等支援格式）。省略 `filename` 則開啟檔案選擇對話方塊 |
+| `SpotID.FindSpots()` | 在讀入的影像中偵測斑點並擬合（等同 **偵測 & 擬合繞射點** 按鈕） <!-- 261105Cl 監査: ボタン名を FormSpotIDV2.resx に合わせた --> |
+| `SpotID.Identify()` | 搜尋能解釋所偵測斑點的取向（等同 **辨識繞射點** 按鈕），並回傳候選數。參與檢驗的晶體為主視窗晶體清單中選取的那些。若未載入影像、登錄的斑點少於兩個或未選取任何晶體，則不進行搜尋並回傳 0 |
 | `SpotID.CandidateList()` | 以 CSV 文字回傳候選取向清單 |
-| `SpotID.SpotList()` | 以 CSV 文字回傳觀測斑點清單（欄位與 **File > Save** 相同）。與 `File.SaveText()` 搭配儲存後，可用 `LoadFile()` 再次讀入 |
+| `SpotID.SpotList()` | 以 CSV 文字回傳觀測斑點清單（欄位與 **繞射點資訊** 的 **儲存** 按鈕相同）。與 `File.SaveText()` 搭配儲存後，可用 `LoadFile()` 再次讀入 |
 
 `CandidateList()` 對每個候選回傳：晶體名稱、Z-X-Z 尤拉角（度）、旋轉矩陣的九個元素 R11–R33（晶體座標系→實驗室座標系，作用於行向量）、殘差的均方（nm⁻²），以及觀測斑點與 *hkl* 指數的對應。候選依已指派斑點數遞減、其次依殘差遞增排列。數值以 invariant culture 寫出，因此小數點一律為句點。
 
@@ -197,13 +197,13 @@ for k in range(-2, 3):
 |------|------|------|
 | `Energy` | double | 入射線能量（X 光與電子束為 keV，中子束為 meV） |
 | `CameraLength` | double | 相機長度（mm） |
-| `PixelSizeInMM` | double | 影像的像素尺寸（mm）。讀寫此屬性時也會把像素尺寸單位切換為 mm |
-| `PixelSizeInNMinv` | double | 影像的像素尺寸（nm⁻¹）。讀寫此屬性時也會把單位切換為 nm⁻¹ |
+| `PixelSizeInMM` | double | 影像的像素尺寸（mm）。寫入時會把像素尺寸單位切換為 mm；讀取時則回傳換算為 mm 的值，不會變更單位 <!-- 261105Cl 監査: Macro.cs の Help 文 (I6) --> |
+| `PixelSizeInNMinv` | double | 影像的像素尺寸（nm⁻¹）。寫入時會把單位切換為 nm⁻¹；讀取時則回傳換算為 nm⁻¹ 的值，不會變更單位 |
 | `MaxNumberOfSpots` | int | `FindSpots()` 可偵測的斑點數上限 |
 | `NearestNeighbor` | int | 所偵測斑點之間允許的最小間隔（像素） |
 | `FittingRange` | double | 峰形擬合所用、每個斑點周圍區域的半徑（像素） |
 | `AcceptableError` | double | 將觀測斑點對應到候選繞射時允許的面間距相對差（%） |
-| `IgnoreProhibitedReflections` | bool | 是否忽略運動學消光但可經多重繞射出現的繞射 |
+| `IgnoreProhibitedReflections` | bool | 是否忽略運動學消光但可經多重繞射出現的繞射。對 X 光與中子一律為 `true`；此時設定的值會在入射源切回電子時生效 <!-- 261106Cl 作者の決定 I4 --> |
 | `MultiGrain` | bool | 是否搜尋多個晶粒；`False` 表示單晶 |
 | `MaxNumberOfGrains` | int | `MultiGrain` 為 `True` 時搜尋的晶粒取向數上限 |
 | `NumberOfDetectedSpots` | int | 已偵測的斑點數（唯讀） |
@@ -219,8 +219,8 @@ for k in range(-2, 3):
 |---|---|
 | `StructureViewer.Open()` | 開啟結構檢視器視窗 |
 | `StructureViewer.Close()` | 關閉結構檢視器視窗 |
-| `StructureViewer.SaveImage(filename)` | 將主檢視的算繪影像儲存為 PNG（像素尺寸取視窗的 **Size (W×H)** 方塊）。省略 `filename` 則開啟儲存對話方塊 |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 將顯示中的結構匯出用於 3D 列印（與 File 選單的 **Export 3D Model (3MF/STL)** 相同）。格式由副檔名決定（`.stl` = 單色 / `.3mf` = 依元素著色）。僅 `filename` 為必要，其餘預設值與對話方塊相同（最長邊 80 mm、晶胞外框 ⌀2.4 mm、鍵增粗至 ⌀1.2 mm）。傳入 `fixedScaleInMMperNm` > 0 可以同一比例製作多個模型 |
+| `StructureViewer.SaveImage(filename)` | 將主檢視的算繪影像儲存為 PNG（像素尺寸取視窗的 **尺寸 (寬×高)** 方塊）。省略 `filename` 則開啟儲存對話方塊 |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 將顯示中的結構匯出用於 3D 列印（與 **檔案** 選單的 **Export 3D model (3MF/STL)** 相同）。格式由副檔名決定（`.stl` = 單色 / `.3mf` = 依元素著色）。僅 `filename` 為必要，其餘預設值與對話方塊相同（最長邊 80 mm、晶胞外框 ⌀2.4 mm、鍵增粗至 ⌀1.2 mm）。傳入 `fixedScaleInMMperNm` > 0 可以同一比例製作多個模型。`filename` 必須以 `.stl` 或 `.3mf` 結尾（不會開啟對話方塊）；傳回含三角形數與列印尺寸的資訊字串 |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -317,7 +317,7 @@ ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60,
 
 | 函式 | 說明 |
 |----------|-------------|
-| `Sleep(ms)` | 等待指定的毫秒數 |
+| `ReciPro.Sleep(ms)` | 等待指定的毫秒數。以 `ReciPro.Sleep(ms)` 呼叫 <!-- 261105Cl 監査: エディタの関数表にも出るようになった (41cb5a7b) --> |
 
 ---
 

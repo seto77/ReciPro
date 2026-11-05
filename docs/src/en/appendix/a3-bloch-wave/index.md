@@ -105,7 +105,7 @@ $$
 
 Diagonalising $\mathbf{A}$ yields **all** Bloch wavevectors and amplitudes at once. The diffracted-beam amplitudes — and hence the intensities — then follow from the boundary conditions at the entrance and exit surfaces and from the specimen thickness. Those steps, the optical (complex) potential, the Debye–Waller factor, and the transmission coefficients $T_{\mathbf g}$ are described in [Dynamical calculation (common core)](calculation.md).
 
-> **Note:** The $V_{\mathbf g}$ values shown in the **Details** table of the diffraction simulator are the raw values *before* the relativistic correction factor is applied.
+> **Note:** The $V_{\mathbf g}$ values shown in the **Spot details** table of the diffraction simulator are the raw values *before* the relativistic correction factor is applied.
 
 ---
 

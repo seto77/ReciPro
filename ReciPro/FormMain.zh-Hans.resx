@@ -219,7 +219,7 @@
     <value>使用米勒-布拉维 (hkil) 指数</value>
   </data>
   <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
-    <value>捕获 GUI 组件...</value>
+    <value>(实验性) 捕获 GUI 组件...</value>
   </data>
   <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
     <value>晶体信息</value>
@@ -322,7 +322,8 @@
 定义晶体取向的第一个旋转。</value>
   </data>
   <data name="buttonAdd.ToolTip" xml:space="preserve">
-    <value>将选定的晶体添加到上方列表。</value>
+    <value>将下方的新晶体
+添加到上方列表。</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
     <value>打开对称性信息</value>
@@ -340,11 +341,11 @@ STEM 为扫描透射电子显微镜。</value>
     <value>打开粉末衍射</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value>设置／显示欧拉角 θ（度），即
+    <value>设置／显示欧拉角 Θ（度），即
 定义晶体取向的第二个旋转。</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
-    <value>设置／显示欧拉角 θ（度），即
+    <value>设置／显示欧拉角 Θ（度），即
 定义晶体取向的第二个旋转。</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
@@ -356,11 +357,11 @@ STEM 为扫描透射电子显微镜。</value>
 定义晶体取向的第三个旋转。</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>设置／显示欧拉角 ψ（度），即
+    <value>设置／显示欧拉角 Ψ（度），即
 定义晶体取向的第三个旋转。</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
-    <value>设置／显示欧拉角 ψ（度），即
+    <value>设置／显示欧拉角 Ψ（度），即
 定义晶体取向的第三个旋转。</value>
   </data>
   <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
@@ -386,7 +387,7 @@ STEM 为扫描透射电子显微镜。</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
     <value>描述晶体当前三维旋转的
-欧拉角 (φ, θ, ψ)；
+欧拉角 (Φ, Θ, Ψ)；
 编辑可直接设置取向。</value>
   </data>
   <data name="toolStripButtonSpotIDv1.ToolTipText" xml:space="preserve">
@@ -480,5 +481,16 @@ STEM 为扫描透射电子显微镜。</value>
   </data>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>打开 Spot ID v2</value>
+  </data>
+  <data name="toolStripButtonEBSD.Text" xml:space="preserve">
+    <value>  EBSD
+  模拟器</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
+    <value>  HRTEM/STEM
+  模拟器</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
+    <value>接受外部宏命令 (命名管道)</value>
   </data>
 </root>

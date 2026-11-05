@@ -161,8 +161,14 @@ dei raggi X emessi non è ancora applicato.</value>
   <data name="groupBoxDisplay.Text" xml:space="preserve">
     <value>Visualizzazione</value>
   </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>Inizio</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>Passo</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>Inizio</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>Passo</value>
@@ -293,16 +299,16 @@ Simulator"</value>
     <value>Imposta defocus al valore di Scherzer</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>Azzera tutte le aberrazioni</value>
+    <value>Condizioni ideali (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="presets1ToolStripMenuItem.Text" xml:space="preserve">
-    <value>300kV Cold-FEG senza Cs (Cs 0, Cc 2.8, ΔE 0.3) ARM300F</value>
+    <value>300kV Cold-FEG senza Cs (Cs 0, Cc 2.8, ΔV 0.3) ARM300F</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
     <value>Funzione di trasferimento del contrasto (CTF)</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>Tensione di accel. (kV)</value>
+    <value>Tensione di accel.</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Defocus di
@@ -359,8 +365,18 @@ Simulator"</value>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>Carica parametri TEM</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Carica le condizioni di simulazione da un file salvato con
+"Salva parametri TEM" (*.rpis). Le voci assenti nel file
+(ad es. di una versione precedente) assumono il valore predefinito.</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>Salva parametri TEM</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Salva le condizioni di simulazione attuali (le stesse voci
+delle preimpostazioni) in un file XML (*.rpis), che può essere
+caricato su un altro PC o condiviso con i collaboratori.</value>
   </data>
   <data name="detailsOfHRTEMSimulationToolStripMenuItem.Text" xml:space="preserve">
     <value>Concetto base della simulazione HRTEM</value>
@@ -521,11 +537,13 @@ anulare (mrad); i segnali oltre questo angolo sono esclusi.
 Si applica solo all'immagine STEM di riferimento (ADF / elastica / TDS), non alle mappe STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>Dimensione efficace della sorgente di elettroni (nm). Valori maggiori
+    <value>Dimensione efficace della sorgente di elettroni: larghezza a metà altezza (FWHM)
+dell'immagine gaussiana della sorgente sul campione (pm). Valori maggiori
 sfocano la sonda STEM e riducono il dettaglio fine dell'immagine.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
-    <value>Dimensione efficace della sorgente di elettroni (nm). Valori maggiori
+    <value>Dimensione efficace della sorgente di elettroni: larghezza a metà altezza (FWHM)
+dell'immagine gaussiana della sorgente sul campione (pm). Valori maggiori
 sfocano la sonda STEM e riducono il dettaglio fine dell'immagine.</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
@@ -899,7 +917,7 @@ lungo l'asse orizzontale della griglia di immagini seriali.</value>
     <value>Calcola le mappe EDX</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>Calcola le mappe di ionizzazione (EDX) per i canali elemento/guscio selezionati.&#xD;&#xA;L'immagine STEM di riferimento (ADF / elastica / TDS) viene sempre calcolata;&#xD;&#xA;ogni canale EDX aggiunge poi un ulteriore passaggio di ionizzazione.</value>
+    <value>Calcola anche le mappe STEM-EDX per tutti i canali di raggi X caratteristici (elemento × guscio)&#xD;&#xA;calcolabili per questo cristallo a questa tensione di accelerazione (elenco sotto).&#xD;&#xA;L'immagine STEM di riferimento (ADF / elastica / TDS) viene sempre calcolata;&#xD;&#xA;ogni canale EDX aggiunge poi un ulteriore passaggio di ionizzazione.</value>
   </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX comune</value>
@@ -912,5 +930,11 @@ lungo l'asse orizzontale della griglia di immagini seriali.</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
     <value>Mostra la mappa elementare STEM-EDX invece dell'immagine di tipo ADF; la riga X caratteristica si sceglie qui sotto. Per un canale di shell (K, L, M) i valori sono lacune di ionizzazione modellate per elettrone incidente. Per una serie di righe (Kα, Kβ, Lα, Lβ, Mα) sono fotoni X generati per elettrone incidente: resa di fluorescenza, cascate Coster–Kronig e radiative e ramificazione delle righe sono applicate, la cascata Auger no. Autoassorbimento, angolo solido ed efficienza del rivelatore NON sono applicati: nessuno dei due è quindi un conteggio di raggi X previsto.</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.HeaderText" xml:space="preserve">
+    <value>Semiang. conv. α</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
+    <value>Dim. efficace della sorgente (FWHM)</value>
   </data>
 </root>
