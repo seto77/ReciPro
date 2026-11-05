@@ -746,6 +746,10 @@ public partial class FormMain : FormBase
             rw(() => FormStereonet.Bounds);
             #endregion
 
+            #region StructureViewer 261105Cl 追加 (監査 H6): 窓の位置と大きさだけ保存する (FormStructureViewer は FormStereonet より先に作られるので、ここでは必ずある)
+            rw(() => FormStructureViewer.Bounds);
+            #endregion
+
             #region SpotIDv1
             rw(() => FormSpotIDv1.Bounds);
             #endregion

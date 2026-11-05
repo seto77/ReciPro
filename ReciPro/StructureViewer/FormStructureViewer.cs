@@ -98,6 +98,8 @@ public partial class FormStructureViewer : FormBase
     }
 
     private class cellID { }
+    /// <summary>261105Cl 追加: 副格子 (Show Subcell) の線。cellID の一種なので単位胞と一緒に消される。3D モデル出力には含めない</summary>
+    private class subCellID : cellID { }
     private class latticeID { }
     private class boundsID { }
     private class symmetryID { } // (260506Ch) 対称要素 GLObject を既存の原子・結合・格子タグと分離する
@@ -496,14 +498,25 @@ public partial class FormStructureViewer : FormBase
         if (radioButtonBoundUnitCell.Checked)//境界条件としてUnit cellが選択されている場合
         {
             var inv = Matrix3d.Invert(axes);
+            //bounds = // 261105Cl 変更前 (8 行): 範囲が (投影中心 − Center) ± Range になり、Center を正にすると −a (−b, −c) 側へ動いていた
+            //    [
+            //        (new V4(inv.Row0.Normalized(),1/inv.Row0.Length * (numericBoxACenter.Value + numericBoxARange.Value)) , Color.Red),
+            //        (new V4(-inv.Row0.Normalized(),1/inv.Row0.Length *  -(numericBoxACenter.Value - numericBoxARange.Value)), Color.Red),
+            //        (new V4(inv.Row1.Normalized(),1/inv.Row1.Length *  (numericBoxBCenter.Value + numericBoxBRange.Value)), Color.Green),
+            //        (new V4(-inv.Row1.Normalized(),1/inv.Row1.Length * -(numericBoxBCenter.Value - numericBoxBRange.Value)), Color.Green),
+            //        (new V4(inv.Row2.Normalized(),1/inv.Row2.Length * (numericBoxCCenter.Value + numericBoxCRange.Value)), Color.Blue),
+            //        (new V4(-inv.Row2.Normalized(),1/inv.Row2.Length * -(numericBoxCCenter.Value - numericBoxCRange.Value)), Color.Blue),
+            //    ];
+            // 261105Cl 変更 (監査 H3): 範囲を (投影中心 + Center) ± Range にする (正の Center で +a, +b, +c の向きへ動く)。
+            // 面は n·r' + D ≥ 0 が内側 (r' は投影中心からの座標)。u = inv.Row0·r' (投影中心から測った分率座標) として、+Row0 の面は u ≥ Center − Range、−Row0 の面は u ≤ Center + Range
             bounds =
                 [
-                    (new V4(inv.Row0.Normalized(),1/inv.Row0.Length * (numericBoxACenter.Value + numericBoxARange.Value)) , Color.Red),
-                    (new V4(-inv.Row0.Normalized(),1/inv.Row0.Length *  -(numericBoxACenter.Value - numericBoxARange.Value)), Color.Red),
-                    (new V4(inv.Row1.Normalized(),1/inv.Row1.Length *  (numericBoxBCenter.Value + numericBoxBRange.Value)), Color.Green),
-                    (new V4(-inv.Row1.Normalized(),1/inv.Row1.Length * -(numericBoxBCenter.Value - numericBoxBRange.Value)), Color.Green),
-                    (new V4(inv.Row2.Normalized(),1/inv.Row2.Length * (numericBoxCCenter.Value + numericBoxCRange.Value)), Color.Blue),
-                    (new V4(-inv.Row2.Normalized(),1/inv.Row2.Length * -(numericBoxCCenter.Value - numericBoxCRange.Value)), Color.Blue),
+                    (new V4(inv.Row0.Normalized(),1/inv.Row0.Length * (numericBoxARange.Value - numericBoxACenter.Value)) , Color.Red),
+                    (new V4(-inv.Row0.Normalized(),1/inv.Row0.Length * (numericBoxARange.Value + numericBoxACenter.Value)), Color.Red),
+                    (new V4(inv.Row1.Normalized(),1/inv.Row1.Length * (numericBoxBRange.Value - numericBoxBCenter.Value)), Color.Green),
+                    (new V4(-inv.Row1.Normalized(),1/inv.Row1.Length * (numericBoxBRange.Value + numericBoxBCenter.Value)), Color.Green),
+                    (new V4(inv.Row2.Normalized(),1/inv.Row2.Length * (numericBoxCRange.Value - numericBoxCCenter.Value)), Color.Blue),
+                    (new V4(-inv.Row2.Normalized(),1/inv.Row2.Length * (numericBoxCRange.Value + numericBoxCCenter.Value)), Color.Blue),
                 ];
 
         }
@@ -720,12 +733,15 @@ public partial class FormStructureViewer : FormBase
         // 261105Cl 追加: 多面体の定義の「Show Center Atom」「Show Vertex Atoms」(従来は保存されるだけで描画に効いていなかった)。
         // 定義をまたいで統合する中心 (Serial) では、先に処理された定義の値が勝つ (PolyMat・mode と同じ規則)
         var polyShowAtoms = new Dictionary<int, (bool Center, bool Vertex)>();
+        // 261105Cl 追加 (監査 H4): 多面体の稜線の太さ (px)。従来は Edge width を読まず、常に 1 px だった。統合する中心では先に処理された定義の値が勝つ (上と同じ規則)
+        var polyEdgeWidth = new Dictionary<int, float>();
         // 261105Cl 追加: ボンドのみの定義で実際に描く結合の両端の原子 (多面体の定義の「隠す」より表示を優先する)
         var bondOnlyShown = new ConcurrentDictionary<int, byte>();
         bondControl.GetAll().Where(b => b.Enabled && (b.ShowPolyhedron || b.ShowBond)).ToList().ForEach(bond =>
         {
             double min = Math.Max(bond.MinLength, 0), min2 = min * min, max = bond.MaxLength, max2 = max * max, radius = bond.Radius;
             var polyhedronMode = bond.ShowEdges ? DrawingMode.SurfacesAndEdges : DrawingMode.Surfaces;
+            var edgeWidth = Math.Clamp(bond.EdgeLineWidth, 1f, 5f); // 261105Cl 追加 (監査 H4): 範囲は 1〜5 px。旧版の値 (0〜1、「Like Vesta」は 0) は 1 px として描く (= 従来の見え方)
             float bondTrans = bond.BondTransParency, polyTrans = bond.PolyhedronTransParency;
             var showCylinder = bond.ShowBond && (!bond.ShowPolyhedron || bond.ShowInnerBonds); // 261105Cl 追加: 多面体の定義では「Show Inner Bonds」(中心と頂点を結ぶ結合) も見る
 
@@ -875,6 +891,7 @@ public partial class FormStructureViewer : FormBase
                         {
                             polyDic.Add(c.Serial, p = (c, [], [], polyhedronMode));
                             polyShowAtoms.Add(c.Serial, (bond.ShowCenterAtom, bond.ShowVertexAtom)); // 261105Cl 追加
+                            polyEdgeWidth.Add(c.Serial, edgeWidth); // 261105Cl 追加 (監査 H4)
                         }
                         p.vertices.AddRange(verts);
                         p.bondObjs.AddRange(bondSlice);
@@ -954,6 +971,8 @@ public partial class FormStructureViewer : FormBase
                 polyhedron.Tag = new polyhedronID(polyhedron);
                 polys = polyhedron.ToPolygons();//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
             }
+            foreach (var p in polys) // 261105Cl 追加 (監査 H4): 稜線の太さ (ToPolygons は LineWidth を写さないので、分けた後の面それぞれに設定する)
+                p.LineWidth = polyEdgeWidth[e.c.Serial];
             lock (lockObj3)
             {
                 GLObjects.AddRange(e.bondObjs);
@@ -1099,7 +1118,9 @@ public partial class FormStructureViewer : FormBase
             glControlMain.DeleteObjects(obj);
         GLObjects.RemoveAll(obj => obj.Tag is cellID);
 
-        var t = axes * (new V3(numericBoxCellTranslationA.Value, numericBoxCellTranslationB.Value, numericBoxCellTranslationC.Value)) + shift;
+        //var t = axes * (new V3(numericBoxCellTranslationA.Value, numericBoxCellTranslationB.Value, numericBoxCellTranslationC.Value)) + shift; // 261105Cl 変更前: 単位胞の原点が分率座標 −Translation に来て、正の値で −a (−b, −c) 側へ動いていた
+        // 261105Cl 変更 (監査 H18): 単位胞の原点を分率座標 +Translation に置く (正の値で +a, +b, +c の向きへ動く)。頂点は (e − t) なので t = shift − axes·Translation
+        var t = shift - axes * (new V3(numericBoxCellTranslationA.Value, numericBoxCellTranslationB.Value, numericBoxCellTranslationC.Value));
         V3 zero = new(0), c0 = axes.Column0, c1 = axes.Column1, c2 = axes.Column2;
 
         //エッジの描画
@@ -1122,6 +1143,22 @@ public partial class FormStructureViewer : FormBase
                     GLObjects.Add(line);
                     glControlMain.AddObjects(line);
                 }
+        }
+
+        // 261105Cl 追加 (監査 H5): 副格子 (Show Subcell)。単位胞の各軸を a, b, c の欄の数で等分した格子線を、辺と同じ色 (All edges / Each edge) で
+        // 辺より細く (辺の太さの半分、最小 1 px)・薄く (不透明度 0.5) 描く。「Show edges」とは独立。3D モデル出力には含めない (subCellID)
+        if (checkBoxUnitCell.Checked && checkBoxShowSubCell.Checked)
+        {
+            int[] colors = radioButtonCellEdgeColorAll.Checked ?
+                [colorControlCellEdge.Argb, colorControlCellEdge.Argb, colorControlCellEdge.Argb] :
+                [colorControlCellEdgeA.Argb, colorControlCellEdgeB.Argb, colorControlCellEdgeC.Argb];
+            var width = Math.Max(1f, trackBarCellEdgeWidth.Value / 2f);
+            foreach (var (axis, start, end) in subCellLines(c0, c1, c2, numericBoxSubCellA.ValueInteger, numericBoxSubCellB.ValueInteger, numericBoxSubCellC.ValueInteger))
+            {
+                var line = new Lines([start - t, end - t], width, new Material(colors[axis], 0.5)) { Tag = new subCellID() };
+                GLObjects.Add(line);
+                glControlMain.AddObjects(line);
+            }
         }
 
         if (checkBoxUnitCell.Checked && checkBoxCellShowPlane.Checked)
@@ -1152,6 +1189,29 @@ public partial class FormStructureViewer : FormBase
         }
         textBoxCalcInformation.AppendText("Generation of cell planes: " + sw.ElapsedMilliseconds + "ms.\r\n");
 
+    }
+
+    /// <summary>
+    /// 261105Cl 追加: 副格子の線分を返す。単位胞の各軸 (辺のベクトル c0, c1, c2) を na, nb, nc 等分した格子の線のうち、単位胞の面上と内部のもの
+    /// (単位胞の辺と重なる 4 本ずつは除く)。Axis は線の向き (0: a, 1: b, 2: c)、座標は単位胞の原点から。全軸 1 等分なら空。
+    /// </summary>
+    private static List<(int Axis, V3 Start, V3 End)> subCellLines(V3 c0, V3 c1, V3 c2, int na, int nb, int nc)
+    {
+        var lines = new List<(int Axis, V3 Start, V3 End)>();
+        V3[] v = [c0, c1, c2];
+        int[] n = [Math.Max(na, 1), Math.Max(nb, 1), Math.Max(nc, 1)];
+        for (int i = 0; i < 3; i++)
+        {
+            int j = (i + 1) % 3, k = (i + 2) % 3;
+            for (int p = 0; p <= n[j]; p++)
+                for (int q = 0; q <= n[k]; q++)
+                    if (!((p == 0 || p == n[j]) && (q == 0 || q == n[k])))//単位胞の辺と重なる線は除く
+                    {
+                        var o = (double)p / n[j] * v[j] + (double)q / n[k] * v[k];
+                        lines.Add((i, o, o + v[i]));
+                    }
+        }
+        return lines;
     }
     #endregion
 
@@ -1521,6 +1581,7 @@ public partial class FormStructureViewer : FormBase
         SkipEvent = true;
         groupBoxShowUnitCell.Enabled = checkBoxUnitCell.Checked;
         toolStripButtonUnitCell.Checked = checkBoxUnitCell.Checked;
+        numericBoxSubCellA.Enabled = numericBoxSubCellB.Enabled = numericBoxSubCellC.Enabled = checkBoxShowSubCell.Checked; // 261105Cl 追加 (監査 H5): 分割数は Show Subcell のときだけ
         SkipEvent = false;
 
 
@@ -1740,7 +1801,8 @@ public partial class FormStructureViewer : FormBase
         GLObject[] objs;
         lock (lockObj1)
             objs = [.. GLObjects];
-        GLObject[] targets = [.. objs.Where(o => o.Tag is not (symmetryID or polyhedronID)),
+        //GLObject[] targets = [.. objs.Where(o => o.Tag is not (symmetryID or polyhedronID)), // 261105Cl 変更前
+        GLObject[] targets = [.. objs.Where(o => o.Tag is not (symmetryID or polyhedronID or subCellID)), // 261105Cl 変更 (監査 H5): 副格子の線は画面上の目安なので出力しない (単位胞の枠と同じ太さの棒になり原子を貫く)
             .. objs.Select(o => o.Tag).OfType<polyhedronID>().Select(t => t.Source).Distinct()];
         return (ModelExporter.Collect(targets), ModelExporter.CollectLines(targets));
     }
@@ -2428,9 +2490,13 @@ public partial class FormStructureViewer : FormBase
         if (SkipEvent) return;
 
         SkipEvent = true;
-        numericBoxCellTranslationA.Value = 0.5 - numericBoxProjectionCenterX.Value;
-        numericBoxCellTranslationB.Value = 0.5 - numericBoxProjectionCenterY.Value;
-        numericBoxCellTranslationC.Value = 0.5 - numericBoxProjectionCenterZ.Value;
+        //numericBoxCellTranslationA.Value = 0.5 - numericBoxProjectionCenterX.Value; // 261105Cl 変更前 (3 行)
+        //numericBoxCellTranslationB.Value = 0.5 - numericBoxProjectionCenterY.Value;
+        //numericBoxCellTranslationC.Value = 0.5 - numericBoxProjectionCenterZ.Value;
+        // 261105Cl 変更 (監査 H18): 単位胞の Translation の符号を反転したので (正で +a の向き)、連動の式も Pc − 0.5 に。描かれる単位胞 (原点 = 分率座標 Pc − 0.5) は変更前と同じ
+        numericBoxCellTranslationA.Value = numericBoxProjectionCenterX.Value - 0.5;
+        numericBoxCellTranslationB.Value = numericBoxProjectionCenterY.Value - 0.5;
+        numericBoxCellTranslationC.Value = numericBoxProjectionCenterZ.Value - 0.5;
         SkipEvent = false;
 
         SetGLObjects();

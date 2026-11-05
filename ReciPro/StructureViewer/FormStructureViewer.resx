@@ -2446,9 +2446,6 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="checkBoxShowSubCell.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBoxShowSubCell.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="checkBoxShowSubCell.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>

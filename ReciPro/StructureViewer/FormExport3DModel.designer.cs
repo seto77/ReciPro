@@ -64,6 +64,7 @@ namespace ReciPro
             radioButton3mf = new System.Windows.Forms.RadioButton();
             buttonOK = new System.Windows.Forms.Button();
             buttonCancel = new System.Windows.Forms.Button();
+            labelClipNote = new System.Windows.Forms.Label(); // 261105Cl 追加 (監査 H10)
             ((System.ComponentModel.ISupportInitialize)(numericUpDownMaxSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(numericUpDownScale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(numericUpDownPolyEdgeDia)).BeginInit();
@@ -626,7 +627,8 @@ namespace ReciPro
             //
             buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             buttonOK.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            buttonOK.Location = new System.Drawing.Point(216, 461); // 260805Cl 変更: 436→461
+            //buttonOK.Location = new System.Drawing.Point(216, 461); // 260805Cl 変更: 436→461 // 261105Cl 変更前
+            buttonOK.Location = new System.Drawing.Point(216, 481); // 261105Cl 変更: 注記 (labelClipNote) の 1 行分 461→481
             buttonOK.Name = "buttonOK";
             buttonOK.Size = new System.Drawing.Size(100, 25);
             buttonOK.TabIndex = 6;
@@ -637,12 +639,26 @@ namespace ReciPro
             //
             buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             buttonCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            buttonCancel.Location = new System.Drawing.Point(322, 461); // 260805Cl 変更: 436→461
+            //buttonCancel.Location = new System.Drawing.Point(322, 461); // 260805Cl 変更: 436→461 // 261105Cl 変更前
+            buttonCancel.Location = new System.Drawing.Point(322, 481); // 261105Cl 変更: 461→481
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new System.Drawing.Size(65, 25);
             buttonCancel.TabIndex = 7;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = true;
+            //
+            // labelClipNote
+            // 261105Cl 追加 (監査 H10): 「Clip objects by bound planes」は 3D モデル出力に効かない (出力は境界をまたぐ物体を切らない) ことの注記。
+            // 11 言語とも Segoe UI 9pt で 1 行 (幅 382 px 以内) に収まることを TextRenderer で実測済み。訳は LocalizationData の reg["FormExport3DModel"]
+            //
+            labelClipNote.AutoSize = true;
+            labelClipNote.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            labelClipNote.Location = new System.Drawing.Point(12, 459);
+            labelClipNote.MaximumSize = new System.Drawing.Size(382, 0);
+            labelClipNote.Name = "labelClipNote";
+            labelClipNote.Size = new System.Drawing.Size(343, 15);
+            labelClipNote.TabIndex = 8;
+            labelClipNote.Text = "Note: clipping by the bound planes is not applied to the output.";
             //
             // FormExport3DModel
             //
@@ -653,13 +669,15 @@ namespace ReciPro
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             CancelButton = buttonCancel;
-            ClientSize = new System.Drawing.Size(402, 496); // 260805Cl 変更: バー径/ピッチの2行化で 471→496
+            //ClientSize = new System.Drawing.Size(402, 496); // 260805Cl 変更: バー径/ピッチの2行化で 471→496 // 261105Cl 変更前
+            ClientSize = new System.Drawing.Size(402, 516); // 261105Cl 変更: 注記 (labelClipNote) の 1 行分 496→516
             Controls.Add(labelInfo);
             Controls.Add(labelSizeAng);
             Controls.Add(groupBoxScale);
             Controls.Add(groupBoxInclude);
             Controls.Add(groupBoxPrintability);
             Controls.Add(groupBoxFormat);
+            Controls.Add(labelClipNote); // 261105Cl 追加
             Controls.Add(buttonOK);
             Controls.Add(buttonCancel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -729,5 +747,6 @@ namespace ReciPro
         private System.Windows.Forms.RadioButton radioButton3mf;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Label labelClipNote; // 261105Cl 追加 (監査 H10)
     }
 }
