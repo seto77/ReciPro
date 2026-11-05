@@ -593,7 +593,8 @@
             radioButtonKikuchiThresholdOfLength.Name = "radioButtonKikuchiThresholdOfLength";
             toolTip.SetToolTip(radioButtonKikuchiThresholdOfLength, resources.GetString("radioButtonKikuchiThresholdOfLength.ToolTip"));
             radioButtonKikuchiThresholdOfLength.UseVisualStyleBackColor = true;
-            // 
+            radioButtonKikuchiThresholdOfLength.CheckedChanged += radioButtonKikuchiThresholdOfStructureFactor_CheckedChanged; // 261105Cl 追加 (監査 F9): 「1/d Cutoff」へ切り替えても菊池線が更新されなかった (同じハンドラは Checked になった側だけ処理する)
+            //
             // numericBoxKikuchiThresholdOfStructureFactor
             // 
             numericBoxKikuchiThresholdOfStructureFactor.BackColor = System.Drawing.Color.Transparent;
