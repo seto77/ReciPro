@@ -499,6 +499,7 @@ public partial class FormMain : FormBase
 
         commonDialog.Progress = ("Now Loading...Initializing 'Spot ID' form.", 0.65);
         FormSpotIDv2 = new FormSpotIDV2 { FormMain = this, Visible = false };
+        FormSpotIDv2.VisibleChanged += multiSelectionForms_VisibleChanged; // 261105Cl 追加 (監査 I18): v2 も選択した複数の結晶で同定するので、開いている間は複数選択にする
 
         //260801Cl 削除: 電卓 (FormCalculator) を ReciPro から廃止 (作者判断)。開く手段は Ctrl 二度押しだけで、
         //その二度押し自体を廃止したため到達不能になっていた。FormCalculator 自体は共有ライブラリ側に残す
@@ -1221,8 +1222,12 @@ public partial class FormMain : FormBase
     //260717Cl 統合: FormTEMID_VisibleChanged / FormElectronDiffraction_VisibleChanged / formPolycrystallineDiffractionSimulator_VisibleChanged の 3 ハンドラが同一本体だったため 1 つに
     private void multiSelectionForms_VisibleChanged(object sender, EventArgs e)
     {
-        listBox.SelectionMode = FormSpotIDv1.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
-            SelectionMode.MultiExtended : SelectionMode.One;
+        //listBox.SelectionMode = FormSpotIDv1.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ? // 261105Cl 変更前
+        //    SelectionMode.MultiExtended : SelectionMode.One;
+        // 261105Cl 変更 (監査 I18): Spot ID v2 も加える (旧は v2 だけを開いていると単一選択で、複数の結晶での同定・多粒の探索ができなかった)。
+        //  FormSpotIDv2 は FormSpotIDv1 より後に作るので、v1 の表示変更が先に来ても落ちないよう null を許す
+        listBox.SelectionMode = FormSpotIDv1.Visible || (FormSpotIDv2?.Visible ?? false) || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ? // 261105Cl
+            SelectionMode.MultiExtended : SelectionMode.One; // 261105Cl
     }
 
     private void crystalControl_BeamInteraction_VisibleChanged(object sender, EventArgs e) => toolStripButtonBeamInteraction.Checked = crystalControl.FormBeamInteraction.Visible;
