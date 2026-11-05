@@ -1670,6 +1670,14 @@ public partial class FormDiffractionSimulator : FormBase
             var twoTheta = 2 * Math.Asin(WaveLength / 2 / formMain.Crystal.Plane[n].d);
 
             var ptsArray = Geometry.ConicSection(twoTheta, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
+            if (radioButtonBeamPrecessionXray.Checked) // 261105Cl 追加 (監査 C6): X 線プリセッションの写真は逆格子の 0 層の等倍像なので、リングの半径は CL·λ/d = 2·CL·sinθ
+            {                                          //  (目盛の 2θ の同心円 DrawScale と同じ)。平板の円錐の式 CL·tan2θ では 2θ = 30° で約 11% 大きかった
+                var ringRadius = 2 * CameraLength2 * Math.Sin(twoTheta / 2); // 261105Cl
+                var circle = new PointD[3600]; // 261105Cl
+                for (int i = 0; i < circle.Length; i++) // 261105Cl
+                    circle[i] = ringRadius * new PointD(Math.Cos(i / 1800.0 * Math.PI), Math.Sin(i / 1800.0 * Math.PI)); // 261105Cl
+                ptsArray = [[.. circle]]; // 261105Cl
+            }
 
             var red = (int)(ringR * intensity + bgR * (1 - intensity));
             var green = (int)(ringG * intensity + bgG * (1 - intensity));
