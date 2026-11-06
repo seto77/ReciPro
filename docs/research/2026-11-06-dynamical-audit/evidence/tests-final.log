@@ -1,0 +1,5 @@
+C:\Users\seto\source\repos\ReciPro\Crystallography\tests\Crystallography.Tests\bin\x64\Release\net11.0-windows\Crystallography.Tests.dll (.NETCoreApp,Version=v11.0) のテスト実行
+合計 1 個のテスト ファイルが指定されたパターンと一致しました。
+結果ファイル: C:\tmp\recipro_dynamical_audit_261106\test-results\dynamical-audit-final.trx
+
+成功!   -失敗:     0、合格:  6703、スキップ:     0、合計:  6703、期間: 3 s - Crystallography.Tests.dll (net11.0)

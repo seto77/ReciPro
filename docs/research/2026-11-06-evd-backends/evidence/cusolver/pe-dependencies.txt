@@ -1,0 +1,25 @@
+Microsoft (R) COFF/PE Dumper Version 14.44.35229.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file C:\tmp\recipro_evd_261106\cuda\13.3.1\libcusolver-windows-x86_64-12.2.6.9-archive\bin\x64\cusolver64_12.dll
+
+File Type: DLL
+
+  Image has the following dependencies:
+
+    cusparse64_12.dll
+    cublas64_13.dll
+    cublasLt64_13.dll
+    KERNEL32.dll
+
+  Summary
+
+       33000 .data
+        2000 .nvFatBi
+     8B38000 .nv_fatb
+       3D000 .pdata
+       C1000 .rdata
+        1000 .reloc
+        7000 .rsrc
+      864000 .text

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "cudart64_13.dll",
+    "path": "C:\\tmp\\recipro_evd_261106\\cuda\\13.3.1\\cuda_cudart-windows-x86_64-13.3.29-archive\\bin\\x64\\cudart64_13.dll",
+    "bytes": 551024,
+    "sha256": "b00ca6f53699120da815bf3e06e2e4285fae2f201235b883dcbb50eec51e2a2a"
+  },
+  {
+    "name": "cublas64_13.dll",
+    "path": "C:\\tmp\\recipro_evd_261106\\cuda\\13.3.1\\libcublas-windows-x86_64-13.6.0.2-archive\\bin\\x64\\cublas64_13.dll",
+    "bytes": 52697712,
+    "sha256": "8c6bac24474af29627ec96500025a5d410a1b7e8ffa00e1fe13b1781fc6b3ddc"
+  },
+  {
+    "name": "cublasLt64_13.dll",
+    "path": "C:\\tmp\\recipro_evd_261106\\cuda\\13.3.1\\libcublas-windows-x86_64-13.6.0.2-archive\\bin\\x64\\cublasLt64_13.dll",
+    "bytes": 463655536,
+    "sha256": "e323abd89e0f03c1db91a09d7aeb1928de08e1f86192cc713b335fefe3e368a9"
+  },
+  {
+    "name": "cusolver64_12.dll",
+    "path": "C:\\tmp\\recipro_evd_261106\\cuda\\13.3.1\\libcusolver-windows-x86_64-12.2.6.9-archive\\bin\\x64\\cusolver64_12.dll",
+    "bytes": 155873904,
+    "sha256": "07dc4be54ebc75128eebbec18a27fcb6ccf3bb0020b3903b38a7b8be71f3a938"
+  },
+  {
+    "name": "cusparse64_12.dll",
+    "path": "C:\\tmp\\recipro_evd_261106\\cuda\\13.3.1\\libcusparse-windows-x86_64-12.8.2.51-archive\\bin\\x64\\cusparse64_12.dll",
+    "bytes": 166481008,
+    "sha256": "fa7629e5eda676ccb685119490d2db88881b044cccf4023a9c326ad7513c425b"
+  },
+  {
+    "name": "nvJitLink_130_0.dll",
+    "path": "C:\\tmp\\recipro_evd_261106\\cuda\\13.3.1\\libnvjitlink-windows-x86_64-13.3.33-archive\\bin\\x64\\nvJitLink_130_0.dll",
+    "bytes": 92465776,
+    "sha256": "727a0acfc4495b229143b53843004eef36e0a3463fb2e1c7c4215468607fd613"
+  }
+]

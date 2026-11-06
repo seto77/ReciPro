@@ -1,0 +1,8 @@
+A: C:\tmp\recipro_speed_261106\baseline-nonuniform-nonlocal.bin (2026-11-06T17:14:25.1060190+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx512.dll, nativeSha=4084DE960898, flavorEnv=avx512, crystallography=1.0.0+b575e701ee8bed6a60cc3fa6238867d7fd7d6a2f)
+B: C:\tmp\recipro_speed_261106\current-nonuniform-nonlocal.bin (2026-11-06T17:14:26.4090478+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx512.dll, nativeSha=78B2B691DE80, flavorEnv=avx512, crystallography=1.0.0+9c463498d6593bcb7a0c2f3c84ca30ddfc827d0b)
+
+dataset                                             n       max|Δ| rel(max/scale)    rms/scale
+Au/EBSD/amp                                      2592   7.772e-016     6.512e-015   1.249e-015
+Silicon (I)/EBSD/amp                             2592   2.845e-016     6.367e-015   8.858e-016
+
+PASS (tol=1.0e-012)

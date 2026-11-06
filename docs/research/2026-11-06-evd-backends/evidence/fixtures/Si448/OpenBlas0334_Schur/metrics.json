@@ -1,0 +1,24 @@
+{
+  "Label": "Si448",
+  "backend": "OpenBlas0334_Schur",
+  "n": 448,
+  "referenceResidual": 5.96125909265339E-16,
+  "residual": 3.7462494827337326E-16,
+  "waveDifference": 1.7776672865620166E-13,
+  "boundary": 2.228694486690797E-16,
+  "referenceBoundary": 1.180539009098806E-16,
+  "referenceFusedDifference": 1.0720984053762522E-15,
+  "fusedDifference": 8.010741897413913E-16,
+  "fluxDifference": 7.993605777301127E-15,
+  "conservedFluxError": 0,
+  "flux": [
+    1.0000000000000004,
+    0.9293804566184501,
+    0.8018838981544627
+  ],
+  "referenceFlux": [
+    0.9999999999999998,
+    0.9293804566184422,
+    0.8018838981544578
+  ]
+}

@@ -1,0 +1,6 @@
+
+        294  125 0014BE30 cusolverDnSetMathMode
+        387  182 005EAA00 cusolverDnXgeev
+        388  183 005EB090 cusolverDnXgeev_bufferSize
+        543  21E 000577D0 cusolverGetVersion
+

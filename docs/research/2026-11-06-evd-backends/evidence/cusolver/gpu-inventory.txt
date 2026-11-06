@@ -1,0 +1,5 @@
+2026-11-06 read-only inventory
+NVIDIA GeForce RTX 4060, 610.88, 8188 MiB, 8.9
+CUDA UMD: 13.3 (nvidia-smi)
+Driver model: WDDM; display active
+No nvcc on PATH; CUDA toolkit directory absent; conda torch 2.12.0+cpu.

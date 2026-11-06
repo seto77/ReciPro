@@ -1,0 +1,27 @@
+  復元対象のプロジェクトを決定しています...
+  C:\Users\seto\source\repos\ReciPro\Crystallography.OpenGL\Crystallography.OpenGL.csproj を復元しました (53 ミリ秒)。
+  C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Crystallography.Controls.csproj を復元しました (65 ミリ秒)。
+  C:\Users\seto\source\repos\ReciPro\ReciPro\ReciPro.csproj を復元しました (66 ミリ秒)。
+  4 個中 1 個の復元対象のプロジェクトは最新です。
+C:\Program Files\dotnet\sdk\11.0.100-rc.3.26522.148\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.RuntimeIdentifierInference.targets(385,5): message NETSDK1057: プレビュー版の .NET を使用しています。https://aka.ms/dotnet-support-policy をご覧ください [C:\Users\seto\source\repos\ReciPro\ReciPro\ReciPro.csproj]
+  Crystallography -> C:\Users\seto\source\repos\ReciPro\Crystallography\bin\x64\Release\net11.0-windows\Crystallography.dll
+C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\FormBase.Designer.cs(6,31): warning WFO3002: Declare designer member 'captureExtender' at the end of the Designer partial, after its methods, to preserve the generated layout (https://aka.ms/winforms-warnings/wfo3002) [C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Crystallography.Controls.csproj]
+C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\UserControlBase.Designer.cs(6,31): warning WFO3002: Declare designer member 'captureExtender' at the end of the Designer partial, after its methods, to preserve the generated layout (https://aka.ms/winforms-warnings/wfo3002) [C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Crystallography.Controls.csproj]
+C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Wave\WaveLengthControl.cs(320,25): warning WFO2000: Getter 'Property' directly returns a newly constructed reference instance on this path; cache it only if stable identity is intended, or use a factory method for intentional creation (https://aka.ms/winforms-warnings/wfo2000) [C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Crystallography.Controls.csproj]
+C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Crystal\FormStrain.cs(16,21): warning WFO2000: Getter 'StrainMatrix' directly returns a newly constructed reference instance on this path; cache it only if stable identity is intended, or use a factory method for intentional creation (https://aka.ms/winforms-warnings/wfo2000) [C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Crystallography.Controls.csproj]
+  Crystallography.Controls -> C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\bin\x64\Release\net11.0-windows\Crystallography.Controls.dll
+  Crystallography.OpenGL -> C:\Users\seto\source\repos\ReciPro\Crystallography.OpenGL\bin\x64\Release\net11.0-windows\Crystallography.OpenGL.dll
+C:\Users\seto\source\repos\ReciPro\ReciPro\PolycrystallineDiffraction\DiffractionPatternControl.cs(54,25): warning WFO2000: Getter 'WaveProperty' directly returns a newly constructed reference instance on this path; cache it only if stable identity is intended, or use a factory method for intentional creation (https://aka.ms/winforms-warnings/wfo2000) [C:\Users\seto\source\repos\ReciPro\ReciPro\ReciPro.csproj]
+  ReciPro -> C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\ReciPro.dll
+
+ビルドに成功しました。
+
+C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\FormBase.Designer.cs(6,31): warning WFO3002: Declare designer member 'captureExtender' at the end of the Designer partial, after its methods, to preserve the generated layout (https://aka.ms/winforms-warnings/wfo3002) [C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Crystallography.Controls.csproj]
+C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\UserControlBase.Designer.cs(6,31): warning WFO3002: Declare designer member 'captureExtender' at the end of the Designer partial, after its methods, to preserve the generated layout (https://aka.ms/winforms-warnings/wfo3002) [C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Crystallography.Controls.csproj]
+C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Wave\WaveLengthControl.cs(320,25): warning WFO2000: Getter 'Property' directly returns a newly constructed reference instance on this path; cache it only if stable identity is intended, or use a factory method for intentional creation (https://aka.ms/winforms-warnings/wfo2000) [C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Crystallography.Controls.csproj]
+C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Crystal\FormStrain.cs(16,21): warning WFO2000: Getter 'StrainMatrix' directly returns a newly constructed reference instance on this path; cache it only if stable identity is intended, or use a factory method for intentional creation (https://aka.ms/winforms-warnings/wfo2000) [C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Crystallography.Controls.csproj]
+C:\Users\seto\source\repos\ReciPro\ReciPro\PolycrystallineDiffraction\DiffractionPatternControl.cs(54,25): warning WFO2000: Getter 'WaveProperty' directly returns a newly constructed reference instance on this path; cache it only if stable identity is intended, or use a factory method for intentional creation (https://aka.ms/winforms-warnings/wfo2000) [C:\Users\seto\source\repos\ReciPro\ReciPro\ReciPro.csproj]
+    5 個の警告
+    0 エラー
+
+経過時間 00:00:09.97

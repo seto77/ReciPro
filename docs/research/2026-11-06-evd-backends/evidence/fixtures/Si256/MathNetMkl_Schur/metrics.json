@@ -1,0 +1,24 @@
+{
+  "Label": "Si256",
+  "backend": "MathNetMkl_Schur",
+  "n": 256,
+  "referenceResidual": 3.9028599569866236E-16,
+  "residual": 3.7571299253058783E-16,
+  "waveDifference": 5.2453531110278073E-14,
+  "boundary": 4.45492136478861E-16,
+  "referenceBoundary": 2.2974199545682777E-16,
+  "referenceFusedDifference": 1.032940070473853E-15,
+  "fusedDifference": 4.775249788392738E-16,
+  "fluxDifference": 1.3100631690576847E-14,
+  "conservedFluxError": 0,
+  "flux": [
+    0.9999999999999991,
+    0.9312030080398782,
+    0.806805439303509
+  ],
+  "referenceFlux": [
+    1.0000000000000004,
+    0.9312030080398774,
+    0.8068054393034959
+  ]
+}

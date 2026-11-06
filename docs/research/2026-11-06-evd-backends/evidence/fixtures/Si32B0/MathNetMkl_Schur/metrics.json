@@ -1,0 +1,24 @@
+{
+  "Label": "Si32B0",
+  "backend": "MathNetMkl_Schur",
+  "n": 32,
+  "referenceResidual": 3.4973018245058386E-16,
+  "residual": 4.1786627355347084E-16,
+  "waveDifference": 2.3580807737299482E-14,
+  "boundary": 2.2204460517437264E-16,
+  "referenceBoundary": 2.2204460977303886E-16,
+  "referenceFusedDifference": 5.810469165661948E-16,
+  "fusedDifference": 4.30882404652278E-16,
+  "fluxDifference": 4.440892098500626E-15,
+  "conservedFluxError": 3.552713678800501E-15,
+  "flux": [
+    1.0000000000000004,
+    1.0000000000000016,
+    1.0000000000000036
+  ],
+  "referenceFlux": [
+    0.9999999999999996,
+    0.9999999999999992,
+    0.9999999999999991
+  ]
+}

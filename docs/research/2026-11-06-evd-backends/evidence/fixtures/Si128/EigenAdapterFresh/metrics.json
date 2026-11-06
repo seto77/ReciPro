@@ -1,0 +1,24 @@
+{
+  "Label": "Si128",
+  "backend": "EigenAdapterFresh",
+  "n": 128,
+  "referenceResidual": 3.5321003735547966E-16,
+  "residual": 2.922295590982727E-16,
+  "waveDifference": 7.592505621483705E-14,
+  "boundary": 6.186491056787347E-16,
+  "referenceBoundary": 5.478245367618742E-16,
+  "referenceFusedDifference": 6.473657049138938E-16,
+  "fusedDifference": 3.510833468576701E-16,
+  "fluxDifference": 2.9976021664879227E-15,
+  "conservedFluxError": 0,
+  "flux": [
+    1,
+    0.9320685294664381,
+    0.8094184153275346
+  ],
+  "referenceFlux": [
+    1,
+    0.9320685294664351,
+    0.8094184153275318
+  ]
+}

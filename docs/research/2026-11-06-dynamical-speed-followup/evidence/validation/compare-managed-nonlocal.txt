@@ -1,0 +1,8 @@
+A: C:\tmp\recipro_speed_261106\baseline-managed-nonlocal.bin (2026-11-06T17:14:27.2312892+09:00 SETO-DESKTOP Eigen=False arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=DISABLED, flavorEnv=managed-regression, crystallography=1.0.0+b575e701ee8bed6a60cc3fa6238867d7fd7d6a2f)
+B: C:\tmp\recipro_speed_261106\current-managed-nonlocal.bin (2026-11-06T17:14:27.9822473+09:00 SETO-DESKTOP Eigen=False arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=DISABLED, flavorEnv=managed-regression, crystallography=1.0.0+9c463498d6593bcb7a0c2f3c84ca30ddfc827d0b)
+
+dataset                                             n       max|Δ| rel(max/scale)    rms/scale
+Au/EBSD/amp                                       640   9.714e-017     1.158e-015   2.483e-016
+Silicon (I)/EBSD/amp                              640   2.429e-017     1.159e-015   1.854e-016
+
+PASS (tol=1.0e-012)

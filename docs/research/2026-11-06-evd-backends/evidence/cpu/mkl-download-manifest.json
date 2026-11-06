@@ -1,0 +1,26 @@
+[
+  {
+    "package": "mkl",
+    "version": "2026.2.0",
+    "filename": "mkl-2026.2.0-py2.py3-none-win_amd64.whl",
+    "url": "https://files.pythonhosted.org/packages/31/bc/0e8380d982d353bad1f01d4828830563e53d309eeb38d5be3d6f519d83cb/mkl-2026.2.0-py2.py3-none-win_amd64.whl",
+    "sha256": "5f2c187f0dda47efa19c1922cb3c8815924b8e5ed1613d28a3a69ec2327d4045",
+    "size": 185172289
+  },
+  {
+    "package": "onemkl-license",
+    "version": "2026.2.0",
+    "filename": "onemkl_license-2026.2.0-py2.py3-none-win_amd64.whl",
+    "url": "https://files.pythonhosted.org/packages/61/fb/0e80b495cd359d737d1a6b427387ea5f9af54d6444e6d8306330076b8c0b/onemkl_license-2026.2.0-py2.py3-none-win_amd64.whl",
+    "sha256": "971d94a133e2f10184a3be19604d7150de92b8b4631182e28eccd9c573e8a06f",
+    "size": 54912
+  },
+  {
+    "package": "intel-openmp",
+    "version": "2026.2.0",
+    "filename": "intel_openmp-2026.2.0-py2.py3-none-win_amd64.whl",
+    "url": "https://files.pythonhosted.org/packages/cd/81/3014f8c74e15bbea3de37e12ef43ea8df8fac498378162d1a89f28236398/intel_openmp-2026.2.0-py2.py3-none-win_amd64.whl",
+    "sha256": "0fcd60701d6dcf8f17cd40c9733d7046ff3b82921a0a039bea2e6a68fb12c152",
+    "size": 23199644
+  }
+]

@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "comparisons": 129,
+  "scalars_per_version": 6559199,
+  "tolerance": 1e-12,
+  "cases": [
+    {
+      "case": "quick-generic",
+      "datasets": 40,
+      "scalars_per_version": 2178421,
+      "nonfinite": 0,
+      "maximum_peak_normalized_error": 3.244861977897966e-13,
+      "baseline_runtime": "2026-11-06T17:12:01.3669434+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.dll, nativeSha=5029CCAFCBA9, flavorEnv=generic, crystallography=1.0.0+b575e701ee8bed6a60cc3fa6238867d7fd7d6a2f",
+      "current_runtime": "2026-11-06T17:12:15.2174392+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.dll, nativeSha=CF1A1A96553A, flavorEnv=generic, crystallography=1.0.0+9c463498d6593bcb7a0c2f3c84ca30ddfc827d0b"
+    },
+    {
+      "case": "quick-avx2",
+      "datasets": 40,
+      "scalars_per_version": 2178421,
+      "nonfinite": 0,
+      "maximum_peak_normalized_error": 2.5731573942952007e-13,
+      "baseline_runtime": "2026-11-06T17:12:26.1075356+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx2.dll, nativeSha=8F999DB81F02, flavorEnv=avx2, crystallography=1.0.0+b575e701ee8bed6a60cc3fa6238867d7fd7d6a2f",
+      "current_runtime": "2026-11-06T17:12:37.1158964+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx2.dll, nativeSha=4A3CB69F562C, flavorEnv=avx2, crystallography=1.0.0+9c463498d6593bcb7a0c2f3c84ca30ddfc827d0b"
+    },
+    {
+      "case": "quick-avx512",
+      "datasets": 40,
+      "scalars_per_version": 2178421,
+      "nonfinite": 0,
+      "maximum_peak_normalized_error": 3.260806081997602e-13,
+      "baseline_runtime": "2026-11-06T17:12:46.9422266+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx512.dll, nativeSha=4084DE960898, flavorEnv=avx512, crystallography=1.0.0+b575e701ee8bed6a60cc3fa6238867d7fd7d6a2f",
+      "current_runtime": "2026-11-06T17:12:57.0577904+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx512.dll, nativeSha=78B2B691DE80, flavorEnv=avx512, crystallography=1.0.0+9c463498d6593bcb7a0c2f3c84ca30ddfc827d0b"
+    },
+    {
+      "case": "heavy-stem",
+      "datasets": 3,
+      "scalars_per_version": 12288,
+      "nonfinite": 0,
+      "maximum_peak_normalized_error": 4.25938744399893e-14,
+      "baseline_runtime": "2026-11-06T17:13:38.8765561+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx512.dll, nativeSha=4084DE960898, flavorEnv=avx512, crystallography=1.0.0+b575e701ee8bed6a60cc3fa6238867d7fd7d6a2f",
+      "current_runtime": "2026-11-06T17:14:20.9214345+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx512.dll, nativeSha=78B2B691DE80, flavorEnv=avx512, crystallography=1.0.0+9c463498d6593bcb7a0c2f3c84ca30ddfc827d0b"
+    },
+    {
+      "case": "nonuniform-local",
+      "datasets": 2,
+      "scalars_per_version": 5184,
+      "nonfinite": 0,
+      "maximum_peak_normalized_error": 1.077985742158593e-14,
+      "baseline_runtime": "2026-11-06T17:14:22.3028941+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx512.dll, nativeSha=4084DE960898, flavorEnv=avx512, crystallography=1.0.0+b575e701ee8bed6a60cc3fa6238867d7fd7d6a2f",
+      "current_runtime": "2026-11-06T17:14:23.5830211+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx512.dll, nativeSha=78B2B691DE80, flavorEnv=avx512, crystallography=1.0.0+9c463498d6593bcb7a0c2f3c84ca30ddfc827d0b"
+    },
+    {
+      "case": "nonuniform-nonlocal",
+      "datasets": 2,
+      "scalars_per_version": 5184,
+      "nonfinite": 0,
+      "maximum_peak_normalized_error": 6.5118366627411184e-15,
+      "baseline_runtime": "2026-11-06T17:14:25.1060190+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx512.dll, nativeSha=4084DE960898, flavorEnv=avx512, crystallography=1.0.0+b575e701ee8bed6a60cc3fa6238867d7fd7d6a2f",
+      "current_runtime": "2026-11-06T17:14:26.4090478+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx512.dll, nativeSha=78B2B691DE80, flavorEnv=avx512, crystallography=1.0.0+9c463498d6593bcb7a0c2f3c84ca30ddfc827d0b"
+    },
+    {
+      "case": "managed-nonlocal",
+      "datasets": 2,
+      "scalars_per_version": 1280,
+      "nonfinite": 0,
+      "maximum_peak_normalized_error": 1.1591679269376558e-15,
+      "baseline_runtime": "2026-11-06T17:14:27.2312892+09:00 SETO-DESKTOP Eigen=False arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=DISABLED, flavorEnv=managed-regression, crystallography=1.0.0+b575e701ee8bed6a60cc3fa6238867d7fd7d6a2f",
+      "current_runtime": "2026-11-06T17:14:27.9822473+09:00 SETO-DESKTOP Eigen=False arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=DISABLED, flavorEnv=managed-regression, crystallography=1.0.0+9c463498d6593bcb7a0c2f3c84ca30ddfc827d0b"
+    }
+  ]
+}

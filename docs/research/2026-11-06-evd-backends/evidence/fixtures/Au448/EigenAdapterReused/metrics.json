@@ -1,0 +1,24 @@
+{
+  "Label": "Au448",
+  "backend": "EigenAdapterReused",
+  "n": 448,
+  "referenceResidual": 6.736882118949344E-16,
+  "residual": 6.469458234477714E-16,
+  "waveDifference": 4.0900327011412885E-14,
+  "boundary": 1.3356019068354063E-15,
+  "referenceBoundary": 1.9984223635388933E-15,
+  "referenceFusedDifference": 1.1103099355805603E-15,
+  "fusedDifference": 6.192062014255894E-16,
+  "fluxDifference": 6.050715484207103E-15,
+  "conservedFluxError": 0,
+  "flux": [
+    0.9999999999999973,
+    0.28060884516617907,
+    0.06693231840000165
+  ],
+  "referenceFlux": [
+    0.999999999999996,
+    0.280608845166173,
+    0.06693231839999575
+  ]
+}

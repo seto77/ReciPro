@@ -1,0 +1,28 @@
+{
+  "recorded": "2026-11-06T22:17:39.417039+09:00",
+  "passed": true,
+  "benchmark_counts": {
+    "Mkl2026_Geev-bounded": 24,
+    "OpenBlas0334_Geev-bounded": 24,
+    "cuSOLVER1331-bounded": 12,
+    "Mkl2026_Schur-secondary": 12,
+    "OpenBlas0334_Schur-secondary": 12,
+    "MathNetMkl_Schur-secondary": 12
+  },
+  "total_benchmarks": 96,
+  "samples_per_benchmark": 8,
+  "frozen_matrix_hashes_unchanged": {
+    "Au448": "da23cf5ef3b96b2a92de9afb246212b7807d2fbc1a5b1be747c220f0687a32f7",
+    "GaAs256": "91febafb14fa036f75a7a34e76453000bab23175816998c977c5fc422c86ecf6",
+    "GaAs32B0": "25b5c2d70bfdc8b2edb2ffc00c09deeecfaa21bbbfe8f9ac0b9c388032d1fa72",
+    "NearDegenerate8": "2d01c2c288f872e7bfbb30faf4c29a2d4fd9428e0918849c8db4bad7975e9026",
+    "Si128": "d07f70ba651a2e2307e5eded478bd17890e2925bb1dfdfe33b8ab0c9a9343163",
+    "Si256": "d473c9628763fb11805dcea575f3ea36973e477c5b8afd7bb1a032ac01371f92",
+    "Si32B0": "41838490b3c479664f291722281747fe8de64f7f2c113345d6edffc567dc038e",
+    "Si448": "53fc6302c06c6707a5920c345a7fc6c43417224be6e89853cf4de9c3b23d154b",
+    "Si640": "70b2aed1797109ca815e123ac3c2554bc7ed53c6c848eeab13a1592dca981dbd"
+  },
+  "local_markdown_links_valid": true,
+  "python_syntax_valid": true,
+  "notes": "Initial sealed-class rejection excluded. No product backend routing change; research prototypes only."
+}

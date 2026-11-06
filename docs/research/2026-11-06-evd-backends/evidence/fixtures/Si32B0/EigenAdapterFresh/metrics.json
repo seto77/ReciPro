@@ -1,0 +1,24 @@
+{
+  "Label": "Si32B0",
+  "backend": "EigenAdapterFresh",
+  "n": 32,
+  "referenceResidual": 3.4973018245058386E-16,
+  "residual": 3.855899463543381E-16,
+  "waveDifference": 1.443460725449431E-14,
+  "boundary": 1.110223060564266E-16,
+  "referenceBoundary": 2.2204460977303886E-16,
+  "referenceFusedDifference": 5.810469165661948E-16,
+  "fusedDifference": 3.7751664318895333E-16,
+  "fluxDifference": 3.3306690738754696E-16,
+  "conservedFluxError": 1.1102230246251565E-15,
+  "flux": [
+    0.9999999999999998,
+    0.9999999999999996,
+    0.9999999999999989
+  ],
+  "referenceFlux": [
+    0.9999999999999996,
+    0.9999999999999992,
+    0.9999999999999991
+  ]
+}

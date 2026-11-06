@@ -1,0 +1,24 @@
+NativeWrapper.Enabled = True
+
+flux = (1/P_0) Σ_g P_g|ψ_g|²  (行割りなら無吸収で ≡1)
+anti = P_0 Σ_g |ψ_g|²/P_g     (列割りが保存してしまう非物理量)
+
+--- Si001_B0_tilt20  (MaxBloch=32, 200 kV, tilt=20°)
+  t =    10 nm   flux = 1.000000000000   anti = 1.000092734870   beams = 31
+  t =    30 nm   flux = 1.000000000000   anti = 1.000010920956   beams = 31
+  t =    80 nm   flux = 1.000000000000   anti = 1.000081200959   beams = 31
+  t =   200 nm   flux = 1.000000000000   anti = 1.000081659870   beams = 31
+  => max|flux−1| = 6.66e-016  max|anti−1| = 9.27e-005  : PASS (行割り)
+
+--- Si001_B0_tilt0  (MaxBloch=32, 200 kV, tilt=0°)
+  t =    10 nm   flux = 1.000000000000   anti = 1.000000000000   beams = 29
+  t =    30 nm   flux = 1.000000000000   anti = 1.000000000000   beams = 29
+  t =    80 nm   flux = 1.000000000000   anti = 1.000000000000   beams = 29
+  t =   200 nm   flux = 1.000000000000   anti = 1.000000000000   beams = 29
+
+--- GaAs001_B0_tilt20  (MaxBloch=32, 200 kV, tilt=20°)
+  t =    10 nm   flux = 1.000000000000   anti = 1.000430577163   beams = 31
+  t =    30 nm   flux = 1.000000000000   anti = 1.000349629292   beams = 31
+  t =    80 nm   flux = 1.000000000000   anti = 1.000220383321   beams = 31
+  => max|flux−1| = 2.44e-015  max|anti−1| = 4.31e-004  : PASS (行割り)
+

@@ -1,0 +1,24 @@
+{
+  "Label": "Si640",
+  "backend": "OpenBlas0334_Geev",
+  "n": 640,
+  "referenceResidual": 7.120812808002683E-16,
+  "residual": 3.481764739162985E-16,
+  "waveDifference": 1.0302601979266128E-13,
+  "boundary": 2.2579188217441164E-16,
+  "referenceBoundary": 1.3325014494637219E-15,
+  "referenceFusedDifference": 7.894497640785687E-16,
+  "fusedDifference": 3.7238012298709107E-16,
+  "fluxDifference": 2.020605904817785E-14,
+  "conservedFluxError": 0,
+  "flux": [
+    0.9999999999999996,
+    0.928968538732261,
+    0.8008291343488051
+  ],
+  "referenceFlux": [
+    1.0000000000000027,
+    0.9289685387322617,
+    0.8008291343488253
+  ]
+}

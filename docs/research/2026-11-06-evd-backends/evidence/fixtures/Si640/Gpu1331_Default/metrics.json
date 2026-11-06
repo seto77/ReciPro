@@ -1,0 +1,24 @@
+{
+  "Label": "Si640",
+  "backend": "Gpu1331_Default",
+  "n": 640,
+  "referenceResidual": 7.120812808002683E-16,
+  "residual": 3.5995429908818095E-16,
+  "waveDifference": 1.9645121137461576E-13,
+  "boundary": 6.661442997120373E-16,
+  "referenceBoundary": 1.3325014494637219E-15,
+  "referenceFusedDifference": 7.894497640785687E-16,
+  "fusedDifference": 0,
+  "fluxDifference": 2.9976021664879227E-14,
+  "conservedFluxError": 0,
+  "flux": [
+    1.0000000000000013,
+    0.9289685387322424,
+    0.8008291343487953
+  ],
+  "referenceFlux": [
+    1.0000000000000027,
+    0.9289685387322617,
+    0.8008291343488253
+  ]
+}

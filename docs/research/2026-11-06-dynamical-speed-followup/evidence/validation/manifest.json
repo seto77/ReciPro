@@ -1,0 +1,248 @@
+{
+  "recorded_at": "2026-11-06T17:16:48.974137+09:00",
+  "eigen_commit": "5a19218d5a28bfc38ca6b1475ea040c8f73257ba",
+  "eigen_upstream_files_byte_identical": 1035,
+  "files": [
+    {
+      "path": "C:/tmp/recipro_speed_261106/eigen-upstream.zip",
+      "bytes": 6359152,
+      "sha256": "453b9ab5765c8752d65a39713af2afbd644c56a99df88d3ca7c578374794aede"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/BetheBench-Program-tested.cs",
+      "bytes": 66144,
+      "sha256": "7b14623c8f514340b8f2851389677ea7a7af31343c7f7a7a35ce5d1adbee0e16"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/test-results/final-native-full.trx",
+      "bytes": 9605039,
+      "sha256": "5698fe5ba62b213eb6bc2dce27191ac0468a3e2e21c73ab43b519279e5b355fa"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/native-before/Crystallography.Native.avx2.dll",
+      "bytes": 891904,
+      "sha256": "8f999db81f0224c85a909835e82c235ea1f8fd1112f9515b45d21e1692ce2125",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/native-before/Crystallography.Native.avx512.dll",
+      "bytes": 1477632,
+      "sha256": "4084de960898e59572f72b0b66acdfddca1680ae1873e4ecb6f21494e20c610a",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/native-before/Crystallography.Native.dll",
+      "bytes": 791552,
+      "sha256": "5029ccafcba9497e815dff8989b03e69e445e6d563bb181e38dced0e2276a903",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/native-eigen-only/Crystallography.Native.avx2.dll",
+      "bytes": 940032,
+      "sha256": "258af6fa4e61339d72693dadb686746a71d5491973c5695e47fbfe3358412ec7",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/native-eigen-only/Crystallography.Native.avx512.dll",
+      "bytes": 1459200,
+      "sha256": "8fa71a2b32db9cd27a1209d62862774b5cc205fc06f4a5dbda782e8d6e5f0241",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/native-eigen-only/Crystallography.Native.dll",
+      "bytes": 852992,
+      "sha256": "98d56a04f6023d62b81cbe5c84338d249cd01539778e7f3cd3c8d2c298b2ca3a",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/baseline-bethebench/Crystallography.dll",
+      "bytes": 9317376,
+      "sha256": "9f73c52e4f7006ce35e9d56800c050dc7bbee6ea4bca05affc6bda11de54ba0f"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/baseline-bethebench/Crystallography.Native.avx2.dll",
+      "bytes": 891904,
+      "sha256": "8f999db81f0224c85a909835e82c235ea1f8fd1112f9515b45d21e1692ce2125",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/baseline-bethebench/Crystallography.Native.avx512.dll",
+      "bytes": 1477632,
+      "sha256": "4084de960898e59572f72b0b66acdfddca1680ae1873e4ecb6f21494e20c610a",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/baseline-bethebench/Crystallography.Native.dll",
+      "bytes": 791552,
+      "sha256": "5029ccafcba9497e815dff8989b03e69e445e6d563bb181e38dced0e2276a903",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/baseline-bethebench/BetheBench.deps.json",
+      "bytes": 15326,
+      "sha256": "515e8415f3e6ad5a33727a30117cbab42dddd94530eeb65ba61e904e83be237b"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/baseline-bethebench/BetheBench.dll",
+      "bytes": 55808,
+      "sha256": "fb0dd762e2ec9133b6a5e97cc96f11a84e8c7780dcf21ba14f3aefe84ef695e0"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/baseline-bethebench/BetheBench.exe",
+      "bytes": 73728,
+      "sha256": "1ab2ea71e136d284598160c9cd454dcd6714c58f03958e85634c6e88362d289d"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/baseline-bethebench/BetheBench.pdb",
+      "bytes": 24824,
+      "sha256": "4bfa20104401ba16865e2ef41631b4c8625da9605987ed40fac01dff6ae3d5c3"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/baseline-bethebench/BetheBench.runtimeconfig.json",
+      "bytes": 627,
+      "sha256": "a896e25f6b4d2ae6e3b6d7a8ebe0a78a6cd5c6aeaabf6f7873a9564bc71a97b0"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/current-bethebench/Crystallography.dll",
+      "bytes": 9316864,
+      "sha256": "b5a7afb27cb61aea8366a2e68e398c18c1d5034ce16ba5cf16a4f61b78450814"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/current-bethebench/Crystallography.Native.avx2.dll",
+      "bytes": 942592,
+      "sha256": "4a3cb69f562c24ff598d635043f66694d7e7519ca4fee4d051e97d842008bcf2",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/current-bethebench/Crystallography.Native.avx512.dll",
+      "bytes": 1461248,
+      "sha256": "78b2b691de805fb7eed7e0f877561883d346b1f781303c75f906ed85ef894174",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/current-bethebench/Crystallography.Native.dll",
+      "bytes": 855040,
+      "sha256": "cf1a1a96553af46e42909aecdf566385f1acd57bdda0325285e6739c29eca833",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/current-bethebench/BetheBench.deps.json",
+      "bytes": 15326,
+      "sha256": "515e8415f3e6ad5a33727a30117cbab42dddd94530eeb65ba61e904e83be237b"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/current-bethebench/BetheBench.dll",
+      "bytes": 55808,
+      "sha256": "fb0dd762e2ec9133b6a5e97cc96f11a84e8c7780dcf21ba14f3aefe84ef695e0"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/current-bethebench/BetheBench.exe",
+      "bytes": 73728,
+      "sha256": "1ab2ea71e136d284598160c9cd454dcd6714c58f03958e85634c6e88362d289d"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/current-bethebench/BetheBench.pdb",
+      "bytes": 24824,
+      "sha256": "4bfa20104401ba16865e2ef41631b4c8625da9605987ed40fac01dff6ae3d5c3"
+    },
+    {
+      "path": "C:/tmp/recipro_speed_261106/current-bethebench/BetheBench.runtimeconfig.json",
+      "bytes": 627,
+      "sha256": "a896e25f6b4d2ae6e3b6d7a8ebe0a78a6cd5c6aeaabf6f7873a9564bc71a97b0"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/ReciPro/bin/Release/Crystallography.Native.avx2.dll",
+      "bytes": 942592,
+      "sha256": "4a3cb69f562c24ff598d635043f66694d7e7519ca4fee4d051e97d842008bcf2",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/ReciPro/bin/Release/Crystallography.Native.avx512.dll",
+      "bytes": 1461248,
+      "sha256": "78b2b691de805fb7eed7e0f877561883d346b1f781303c75f906ed85ef894174",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/ReciPro/bin/Release/Crystallography.Native.dll",
+      "bytes": 855040,
+      "sha256": "cf1a1a96553af46e42909aecdf566385f1acd57bdda0325285e6739c29eca833",
+      "pe_machine": "0x8664"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/ReciPro/bin/Release/ARM64/Crystallography.Native.dll",
+      "bytes": 606208,
+      "sha256": "b616ce551f295aa001ac5f4c7fff92c93fc3881ccca760a222a734fe480e0556",
+      "pe_machine": "0xAA64"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/Crystallography/Diffraction/BetheMethod.cs",
+      "bytes": 336010,
+      "sha256": "75121d6319d06c010ca89b79cc3afc84ae2520f6562beadb889a9611f10519b7"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/Crystallography/NativeWrapper.cs",
+      "bytes": 59981,
+      "sha256": "a14ab4325ad3f2c0c8399e1e7b1f2023234d424b915e5d1e507ec9c30606f49f"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/Crystallography.Native/EigenFuncs.cpp",
+      "bytes": 37610,
+      "sha256": "fb6dcad04431fb3e30ce6758466eec459d425cbc763637c59b69767d1cdf4735"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/Crystallography.Native/BlochWaveIntegral.h",
+      "bytes": 664,
+      "sha256": "f38fc0d94f20552acd7adacb110505e3361d293da020b59c0cafef61eeac19f7"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/Crystallography.Native/Crystallography.Native.vcxproj",
+      "bytes": 18798,
+      "sha256": "8f608d87fd2abe022e06dd6d0d41027dcb7dbe71f82e3b8f149c830001ebdc13"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/Crystallography.Native/THIRD-PARTY-NOTICES.md",
+      "bytes": 3978,
+      "sha256": "a5eb11810ef01e97c09ca6663aa9a086e2758ade3859b05d81f8d6310b2104e4"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/Crystallography/tests/Crystallography.Tests/HrtemTccTests.cs",
+      "bytes": 7501,
+      "sha256": "0dfd29c4374e8927d84c578b1ed8187b42ee617a7fa1246f5a2900680680c714"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/Crystallography/tests/Crystallography.Tests/EbsdLocalSourceSkipTests.cs",
+      "bytes": 6525,
+      "sha256": "b749cb716f33eaa5ccbd93afa2269c2c85f658812c7a934bf954ae55a22686ed"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/ReciPro.Benchmarks/EigenVersionBenchmark.cs",
+      "bytes": 11301,
+      "sha256": "343273fbe89d1b04008e1da456f25266be646d437e68f8e35ea9d7a5d3c0e776"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/ReciPro.Benchmarks/HrtemCoefficientBenchmark.cs",
+      "bytes": 12883,
+      "sha256": "e17703c37caf70de25d547b791e0689d40e51f1b98959463abcfc9115d1a3d50"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/ReciPro.Benchmarks/NativeEbsdKernelBenchmark.cs",
+      "bytes": 4948,
+      "sha256": "5591f5916dea73aa2f771a98b470f2fafe6becaa0ec4db42c964e05b66fcee66"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/tools/DynamicalSpeed261106/verify.ps1",
+      "bytes": 3178,
+      "sha256": "1e8ffb093d5efbdeadc11de49f3f187e4d5ad2a409d7c22903840785ee1ff4be"
+    },
+    {
+      "path": "C:/Users/seto/source/repos/ReciPro/tools/DynamicalSpeed261106/validate_results.py",
+      "bytes": 4136,
+      "sha256": "e80b450843d78585216ac10801d251957ba0740e53145e14244f57727f1aa077"
+    }
+  ],
+  "local_history_commits": {
+    "tools": "f8d6223c5fc9bfb74d43763be6731a4dffcd493f",
+    "ReciPro.Benchmarks": "27841e222a6a427c0fbec33fe0742fbfbe5718aa",
+    ".project-guidance": "e360c7ad6c41b3bd761c767b5f800913f12d1080"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "Label": "Si640",
+  "backend": "Mkl2026_Schur",
+  "n": 640,
+  "referenceResidual": 7.120812808002683E-16,
+  "residual": 3.5129809512548145E-16,
+  "waveDifference": 4.121333300508886E-14,
+  "boundary": 4.587195024067472E-16,
+  "referenceBoundary": 1.3325014494637219E-15,
+  "referenceFusedDifference": 7.894497640785687E-16,
+  "fusedDifference": 6.713178136967711E-16,
+  "fluxDifference": 1.8984813721090177E-14,
+  "conservedFluxError": 0,
+  "flux": [
+    1.0000000000000009,
+    0.9289685387322734,
+    0.8008291343488443
+  ],
+  "referenceFlux": [
+    1.0000000000000027,
+    0.9289685387322617,
+    0.8008291343488253
+  ]
+}

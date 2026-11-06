@@ -1,0 +1,24 @@
+{
+  "Label": "GaAs256",
+  "backend": "Mkl2026_Geev",
+  "n": 256,
+  "referenceResidual": 6.694624089503431E-16,
+  "residual": 3.803118626473549E-16,
+  "waveDifference": 4.7987265181196376E-14,
+  "boundary": 3.9761599268955566E-16,
+  "referenceBoundary": 7.772643551114874E-16,
+  "referenceFusedDifference": 6.497413668604476E-16,
+  "fusedDifference": 4.793364605007606E-16,
+  "fluxDifference": 3.885780586188048E-15,
+  "conservedFluxError": 0,
+  "flux": [
+    1,
+    0.7410769331580884,
+    0.5884887914092737
+  ],
+  "referenceFlux": [
+    0.9999999999999984,
+    0.7410769331580845,
+    0.5884887914092763
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "release": "13.3.1",
+  "components": [
+    {
+      "component": "cuda_cudart",
+      "version": "13.3.29",
+      "url": "https://developer.download.nvidia.com/compute/cuda/redist/cuda_cudart/windows-x86_64/cuda_cudart-windows-x86_64-13.3.29-archive.zip",
+      "sha256": "1feb7dd266813ffe8dbc24e115183a5ac35a4795c8d34aca0df85ab616b64d9c",
+      "size": 2589792
+    },
+    {
+      "component": "libcusolver",
+      "version": "12.2.6.9",
+      "url": "https://developer.download.nvidia.com/compute/cuda/redist/libcusolver/windows-x86_64/libcusolver-windows-x86_64-12.2.6.9-archive.zip",
+      "sha256": "b9d477c6efe2dc3286c5e83956296586a013c1057ffdf2c7fd70b1a1a5a93f2f",
+      "size": 236630673
+    },
+    {
+      "component": "libcublas",
+      "version": "13.6.0.2",
+      "url": "https://developer.download.nvidia.com/compute/cuda/redist/libcublas/windows-x86_64/libcublas-windows-x86_64-13.6.0.2-archive.zip",
+      "sha256": "62e9fa30560c8f0a28e0cdcf9d6fc1fed347bcfab8847239b9ae1fdc1d86408a",
+      "size": 393706755
+    },
+    {
+      "component": "libcusparse",
+      "version": "12.8.2.51",
+      "url": "https://developer.download.nvidia.com/compute/cuda/redist/libcusparse/windows-x86_64/libcusparse-windows-x86_64-12.8.2.51-archive.zip",
+      "sha256": "bc019c7c37ed421399155bf5fc5f37331ebf55aca66c42d8cc89bc52f61521f8",
+      "size": 152461374
+    },
+    {
+      "component": "libnvjitlink",
+      "version": "13.3.33",
+      "url": "https://developer.download.nvidia.com/compute/cuda/redist/libnvjitlink/windows-x86_64/libnvjitlink-windows-x86_64-13.3.33-archive.zip",
+      "sha256": "43bc22509507c138c86885191bb2709b5d23506ea6abdc8bc64d9960e2b63363",
+      "size": 274601597
+    }
+  ]
+}

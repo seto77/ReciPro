@@ -1,0 +1,18 @@
+data_GaAs
+_cell_length_a 5.6533
+_cell_length_b 5.6533
+_cell_length_c 5.6533
+_cell_angle_alpha 90
+_cell_angle_beta 90
+_cell_angle_gamma 90
+_symmetry_space_group_name_H-M 'F -4 3 m'
+_symmetry_Int_Tables_number 216
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_B_iso_or_equiv
+Ga1 Ga 0 0 0 0.6
+As1 As 0.25 0.25 0.25 0.6

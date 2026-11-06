@@ -1,0 +1,24 @@
+{
+  "Label": "Au448",
+  "backend": "MathNetMkl_Schur",
+  "n": 448,
+  "referenceResidual": 6.736882118949344E-16,
+  "residual": 3.5542707093791773E-16,
+  "waveDifference": 3.5093981219874904E-14,
+  "boundary": 3.3981648150438275E-16,
+  "referenceBoundary": 1.9984223635388933E-15,
+  "referenceFusedDifference": 1.1103099355805603E-15,
+  "fusedDifference": 5.319014089382403E-16,
+  "fluxDifference": 3.3306690738754696E-15,
+  "conservedFluxError": 0,
+  "flux": [
+    0.9999999999999993,
+    0.2806088451661734,
+    0.06693231839999658
+  ],
+  "referenceFlux": [
+    0.999999999999996,
+    0.280608845166173,
+    0.06693231839999575
+  ]
+}

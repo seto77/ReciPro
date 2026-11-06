@@ -1,0 +1,24 @@
+{
+  "Label": "Si640",
+  "backend": "EigenAdapterFresh",
+  "n": 640,
+  "referenceResidual": 7.120812808002683E-16,
+  "residual": 7.054124375261616E-16,
+  "waveDifference": 7.613155556447971E-14,
+  "boundary": 1.1104910701835212E-15,
+  "referenceBoundary": 1.3325014494637219E-15,
+  "referenceFusedDifference": 7.894497640785687E-16,
+  "fusedDifference": 7.731808680624454E-16,
+  "fluxDifference": 7.793765632868599E-14,
+  "conservedFluxError": 0,
+  "flux": [
+    1.0000000000000022,
+    0.9289685387322346,
+    0.8008291343487474
+  ],
+  "referenceFlux": [
+    1.0000000000000027,
+    0.9289685387322617,
+    0.8008291343488253
+  ]
+}

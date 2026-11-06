@@ -1,0 +1,18 @@
+{
+  "fixture": {
+    "label": "NearDegenerate8",
+    "n": 8,
+    "physical": false,
+    "separation": 1E-08,
+    "upperCoupling": 0.0001,
+    "damping": 0.0001
+  },
+  "n": 8,
+  "layout": "column-major; complex Float64 real/imag interleaved; little-endian; waves[t*N\u002Bg]",
+  "thicknessesNm": [
+    0,
+    35,
+    100
+  ],
+  "matrixSha256": "2D01C2C288F872E7BFBB30FAF4C29A2D4FD9428E0918849C8DB4BAD7975E9026"
+}

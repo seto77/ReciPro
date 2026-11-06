@@ -1,0 +1,24 @@
+{
+  "Label": "NearDegenerate8",
+  "backend": "EigenAdapterFresh",
+  "n": 8,
+  "referenceResidual": 1.7125854986889768E-17,
+  "residual": 1.7125854986889768E-17,
+  "waveDifference": 0,
+  "boundary": 0,
+  "referenceBoundary": 0,
+  "referenceFusedDifference": 1.1102230247544035E-16,
+  "fusedDifference": 2.327027459872964E-13,
+  "fluxDifference": 0,
+  "conservedFluxError": 0,
+  "flux": [
+    1,
+    0.9574336997204724,
+    0.8853930248664134
+  ],
+  "referenceFlux": [
+    1,
+    0.9574336997204724,
+    0.8853930248664134
+  ]
+}

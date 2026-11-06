@@ -1,0 +1,24 @@
+{
+  "Label": "GaAs256",
+  "backend": "EigenAdapterReused",
+  "n": 256,
+  "referenceResidual": 6.694624089503431E-16,
+  "residual": 7.189499444629975E-16,
+  "waveDifference": 3.904637370670167E-14,
+  "boundary": 2.6151501768098433E-16,
+  "referenceBoundary": 7.772643551114874E-16,
+  "referenceFusedDifference": 6.497413668604476E-16,
+  "fusedDifference": 7.947987303456224E-16,
+  "fluxDifference": 2.6201263381153694E-14,
+  "conservedFluxError": 0,
+  "flux": [
+    1,
+    0.7410769331580723,
+    0.5884887914092501
+  ],
+  "referenceFlux": [
+    0.9999999999999984,
+    0.7410769331580845,
+    0.5884887914092763
+  ]
+}

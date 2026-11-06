@@ -1,0 +1,2 @@
+timestamp, name, utilization.gpu [%], memory.used [MiB], pstate
+2026/11/06 22:07:49.551, NVIDIA GeForce RTX 4060, 13 %, 2325 MiB, P8

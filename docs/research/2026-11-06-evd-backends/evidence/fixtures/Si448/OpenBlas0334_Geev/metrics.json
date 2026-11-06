@@ -1,0 +1,24 @@
+{
+  "Label": "Si448",
+  "backend": "OpenBlas0334_Geev",
+  "n": 448,
+  "referenceResidual": 5.96125909265339E-16,
+  "residual": 3.596857840623676E-16,
+  "waveDifference": 1.503937343817197E-13,
+  "boundary": 3.0851292302284604E-16,
+  "referenceBoundary": 1.180539009098806E-16,
+  "referenceFusedDifference": 1.0720984053762522E-15,
+  "fusedDifference": 5.661048867003675E-16,
+  "fluxDifference": 1.2101430968414206E-14,
+  "conservedFluxError": 0,
+  "flux": [
+    1.0000000000000004,
+    0.929380456618441,
+    0.8018838981544457
+  ],
+  "referenceFlux": [
+    0.9999999999999998,
+    0.9293804566184422,
+    0.8018838981544578
+  ]
+}

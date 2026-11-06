@@ -1,0 +1,24 @@
+{
+  "Label": "Au448",
+  "backend": "Gpu1331_Default",
+  "n": 448,
+  "referenceResidual": 6.736882118949344E-16,
+  "residual": 3.5524596088974077E-16,
+  "waveDifference": 2.7164772647987195E-14,
+  "boundary": 4.465533948621848E-16,
+  "referenceBoundary": 1.9984223635388933E-15,
+  "referenceFusedDifference": 1.1103099355805603E-15,
+  "fusedDifference": 0,
+  "fluxDifference": 8.493206138382448E-15,
+  "conservedFluxError": 0,
+  "flux": [
+    0.9999999999999991,
+    0.2806088451661815,
+    0.06693231839999741
+  ],
+  "referenceFlux": [
+    0.999999999999996,
+    0.280608845166173,
+    0.06693231839999575
+  ]
+}

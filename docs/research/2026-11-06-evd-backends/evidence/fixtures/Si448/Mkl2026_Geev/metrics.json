@@ -1,0 +1,24 @@
+{
+  "Label": "Si448",
+  "backend": "Mkl2026_Geev",
+  "n": 448,
+  "referenceResidual": 5.96125909265339E-16,
+  "residual": 3.742746837432174E-16,
+  "waveDifference": 8.430718971510928E-14,
+  "boundary": 2.221978617168051E-16,
+  "referenceBoundary": 1.180539009098806E-16,
+  "referenceFusedDifference": 1.0720984053762522E-15,
+  "fusedDifference": 8.326672684688672E-16,
+  "fluxDifference": 1.199040866595169E-14,
+  "conservedFluxError": 0,
+  "flux": [
+    1.0000000000000004,
+    0.9293804566184429,
+    0.8018838981544698
+  ],
+  "referenceFlux": [
+    0.9999999999999998,
+    0.9293804566184422,
+    0.8018838981544578
+  ]
+}

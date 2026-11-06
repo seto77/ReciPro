@@ -1,0 +1,218 @@
+[
+  {
+    "Label": "Si128",
+    "backend": "Gpu1331_Default",
+    "n": 128,
+    "referenceResidual": 3.5321003735547966e-16,
+    "residual": 4.498105229802694e-16,
+    "waveDifference": 1.073668549822111e-13,
+    "boundary": 7.533158502145655e-17,
+    "referenceBoundary": 5.478245367618742e-16,
+    "referenceFusedDifference": 6.473657049138938e-16,
+    "fusedDifference": 0,
+    "fluxDifference": 2.9976021664879227e-15,
+    "conservedFluxError": 0,
+    "flux": [
+      1,
+      0.9320685294664321,
+      0.8094184153275293
+    ],
+    "referenceFlux": [
+      1,
+      0.9320685294664351,
+      0.8094184153275318
+    ]
+  },
+  {
+    "Label": "Si256",
+    "backend": "Gpu1331_Default",
+    "n": 256,
+    "referenceResidual": 3.9028599569866236e-16,
+    "residual": 4.385284770138314e-16,
+    "waveDifference": 2.847837027769005e-14,
+    "boundary": 3.3308623934062257e-16,
+    "referenceBoundary": 2.2974199545682777e-16,
+    "referenceFusedDifference": 1.032940070473853e-15,
+    "fusedDifference": 0,
+    "fluxDifference": 4.551914400963142e-15,
+    "conservedFluxError": 0,
+    "flux": [
+      0.9999999999999993,
+      0.9312030080398762,
+      0.8068054393034914
+    ],
+    "referenceFlux": [
+      1.0000000000000004,
+      0.9312030080398774,
+      0.8068054393034959
+    ]
+  },
+  {
+    "Label": "Si448",
+    "backend": "Gpu1331_Default",
+    "n": 448,
+    "referenceResidual": 5.96125909265339e-16,
+    "residual": 3.6802720293998756e-16,
+    "waveDifference": 7.513316918403164e-14,
+    "boundary": 2.813675749421134e-16,
+    "referenceBoundary": 1.180539009098806e-16,
+    "referenceFusedDifference": 1.0720984053762522e-15,
+    "fusedDifference": 0,
+    "fluxDifference": 4.9960036108132044e-15,
+    "conservedFluxError": 0,
+    "flux": [
+      0.9999999999999996,
+      0.9293804566184406,
+      0.8018838981544528
+    ],
+    "referenceFlux": [
+      0.9999999999999998,
+      0.9293804566184422,
+      0.8018838981544578
+    ]
+  },
+  {
+    "Label": "Si640",
+    "backend": "Gpu1331_Default",
+    "n": 640,
+    "referenceResidual": 7.120812808002683e-16,
+    "residual": 3.5995429908818095e-16,
+    "waveDifference": 1.9645121137461576e-13,
+    "boundary": 6.661442997120373e-16,
+    "referenceBoundary": 1.3325014494637219e-15,
+    "referenceFusedDifference": 7.894497640785687e-16,
+    "fusedDifference": 0,
+    "fluxDifference": 2.9976021664879227e-14,
+    "conservedFluxError": 0,
+    "flux": [
+      1.0000000000000013,
+      0.9289685387322424,
+      0.8008291343487953
+    ],
+    "referenceFlux": [
+      1.0000000000000027,
+      0.9289685387322617,
+      0.8008291343488253
+    ]
+  },
+  {
+    "Label": "Au448",
+    "backend": "Gpu1331_Default",
+    "n": 448,
+    "referenceResidual": 6.736882118949344e-16,
+    "residual": 3.5524596088974077e-16,
+    "waveDifference": 2.7164772647987195e-14,
+    "boundary": 4.465533948621848e-16,
+    "referenceBoundary": 1.9984223635388933e-15,
+    "referenceFusedDifference": 1.1103099355805603e-15,
+    "fusedDifference": 0,
+    "fluxDifference": 8.493206138382448e-15,
+    "conservedFluxError": 0,
+    "flux": [
+      0.9999999999999991,
+      0.2806088451661815,
+      0.06693231839999741
+    ],
+    "referenceFlux": [
+      0.999999999999996,
+      0.280608845166173,
+      0.06693231839999575
+    ]
+  },
+  {
+    "Label": "GaAs256",
+    "backend": "Gpu1331_Default",
+    "n": 256,
+    "referenceResidual": 6.694624089503431e-16,
+    "residual": 3.8395641025510025e-16,
+    "waveDifference": 2.0290190745242396e-14,
+    "boundary": 3.3336890114588173e-16,
+    "referenceBoundary": 7.772643551114874e-16,
+    "referenceFusedDifference": 6.497413668604476e-16,
+    "fusedDifference": 0,
+    "fluxDifference": 5.662137425588298e-15,
+    "conservedFluxError": 0,
+    "flux": [
+      0.9999999999999993,
+      0.7410769331580789,
+      0.5884887914092751
+    ],
+    "referenceFlux": [
+      0.9999999999999984,
+      0.7410769331580845,
+      0.5884887914092763
+    ]
+  },
+  {
+    "Label": "Si32B0",
+    "backend": "Gpu1331_Default",
+    "n": 32,
+    "referenceResidual": 3.4973018245058386e-16,
+    "residual": 5.507849481482167e-16,
+    "waveDifference": 2.2118634103994117e-14,
+    "boundary": 2.220446049250313e-16,
+    "referenceBoundary": 2.2204460977303886e-16,
+    "referenceFusedDifference": 5.810469165661948e-16,
+    "fusedDifference": 0,
+    "fluxDifference": 2.55351295663786e-15,
+    "conservedFluxError": 3.4416913763379853e-15,
+    "flux": [
+      0.9999999999999996,
+      0.9999999999999992,
+      0.9999999999999966
+    ],
+    "referenceFlux": [
+      0.9999999999999996,
+      0.9999999999999992,
+      0.9999999999999991
+    ]
+  },
+  {
+    "Label": "GaAs32B0",
+    "backend": "Gpu1331_Default",
+    "n": 32,
+    "referenceResidual": 2.9086102691648725e-16,
+    "residual": 4.246560771227266e-16,
+    "waveDifference": 2.4689130566540123e-14,
+    "boundary": 5.551115123125783e-16,
+    "referenceBoundary": 1.1287984571584433e-16,
+    "referenceFusedDifference": 1.1018648905114063e-15,
+    "fusedDifference": 0,
+    "fluxDifference": 1.6653345369377348e-15,
+    "conservedFluxError": 2.220446049250313e-15,
+    "flux": [
+      0.9999999999999989,
+      0.9999999999999993,
+      0.9999999999999978
+    ],
+    "referenceFlux": [
+      1,
+      1.0000000000000009,
+      0.9999999999999994
+    ]
+  },
+  {
+    "Label": "NearDegenerate8",
+    "backend": "Gpu1331_Default",
+    "n": 8,
+    "referenceResidual": 1.7125854986889768e-17,
+    "residual": 1.7125854986889768e-17,
+    "waveDifference": 1.1102230246251565e-16,
+    "boundary": 1.1102230246251565e-16,
+    "referenceBoundary": 0,
+    "referenceFusedDifference": 1.1102230247544035e-16,
+    "fusedDifference": 0,
+    "fluxDifference": 2.220446049250313e-16,
+    "conservedFluxError": 0,
+    "flux": [
+      0.9999999999999998,
+      0.9574336997204722,
+      0.8853930248664134
+    ],
+    "referenceFlux": [
+      1,
+      0.9574336997204724,
+      0.8853930248664134
+    ]
+  }
+]

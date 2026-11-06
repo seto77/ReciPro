@@ -1,0 +1,24 @@
+{
+  "Label": "Si256",
+  "backend": "Mkl2026_Geev",
+  "n": 256,
+  "referenceResidual": 3.9028599569866236E-16,
+  "residual": 3.963832930518369E-16,
+  "waveDifference": 1.9465347506247276E-14,
+  "boundary": 2.840270052864218E-16,
+  "referenceBoundary": 2.2974199545682777E-16,
+  "referenceFusedDifference": 1.032940070473853E-15,
+  "fusedDifference": 1.1443916996305596E-15,
+  "fluxDifference": 4.6629367034256575E-15,
+  "conservedFluxError": 0,
+  "flux": [
+    0.9999999999999998,
+    0.9312030080398733,
+    0.8068054393035006
+  ],
+  "referenceFlux": [
+    1.0000000000000004,
+    0.9312030080398774,
+    0.8068054393034959
+  ]
+}

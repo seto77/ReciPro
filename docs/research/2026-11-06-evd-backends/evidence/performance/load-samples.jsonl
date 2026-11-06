@@ -1,0 +1,15 @@
+{"cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":100},"backend":"Mkl2026_Geev","recorded":"2026-11-06T21:54:11.3197134+09:00","phase":"start"}
+{"cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":100},"backend":"Mkl2026_Geev","recorded":"2026-11-06T21:54:32.7167047+09:00","phase":"end"}
+{"cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":100},"backend":"OpenBlas0334_Geev","recorded":"2026-11-06T21:54:34.2345205+09:00","phase":"start"}
+{"runTag":"bounded","cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":100},"recorded":"2026-11-06T22:01:31.3373162+09:00","phase":"start","backend":"Mkl2026_Geev"}
+{"runTag":"bounded","cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":83},"recorded":"2026-11-06T22:04:11.2184264+09:00","phase":"end","backend":"Mkl2026_Geev"}
+{"runTag":"bounded","cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":87},"recorded":"2026-11-06T22:04:12.2621297+09:00","phase":"start","backend":"OpenBlas0334_Geev"}
+{"runTag":"bounded","cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":100},"recorded":"2026-11-06T22:06:21.8425170+09:00","phase":"end","backend":"OpenBlas0334_Geev"}
+{"runTag":"bounded","cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":99},"recorded":"2026-11-06T22:06:22.8866154+09:00","phase":"start","backend":"cuSOLVER1331"}
+{"runTag":"bounded","cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":87},"recorded":"2026-11-06T22:07:45.3970151+09:00","phase":"end","backend":"cuSOLVER1331"}
+{"backend":"Mkl2026_Schur","phase":"start","cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":97},"runTag":"secondary","recorded":"2026-11-06T22:08:02.8634376+09:00"}
+{"backend":"Mkl2026_Schur","phase":"end","cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":97},"runTag":"secondary","recorded":"2026-11-06T22:09:36.0981302+09:00"}
+{"backend":"OpenBlas0334_Schur","phase":"start","cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":96},"runTag":"secondary","recorded":"2026-11-06T22:09:37.1391364+09:00"}
+{"backend":"OpenBlas0334_Schur","phase":"end","cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":99},"runTag":"secondary","recorded":"2026-11-06T22:11:04.6218864+09:00"}
+{"backend":"MathNetMkl_Schur","phase":"start","cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":91},"runTag":"secondary","recorded":"2026-11-06T22:11:05.6680509+09:00"}
+{"backend":"MathNetMkl_Schur","phase":"end","cpu":{"Name":"AMD Ryzen 9 9950X 16-Core Processor            ","LoadPercentage":100},"runTag":"secondary","recorded":"2026-11-06T22:12:59.0586241+09:00"}

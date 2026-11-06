@@ -1,0 +1,77 @@
+NativeWrapper.Enabled = True  ()
+--- seed 1: γ = 0.115+0.0418i, -0.143+0.0247i, 0.208+0.0250i, -0.242+0.0275i, ...  min Im γ = 1.76e-002
+  uniform     native  _EBSDSolver                max rel err 3.04e-012 PASS
+  uniform     native  WithTDS.intensity          max rel err 3.04e-012 PASS
+  uniform     native  WithTDS.tds (U=local)      max rel err 3.04e-012 PASS
+  uniform     native  WithTDS.tds (U=random)     max rel err 2.82e-012 PASS
+  uniform     managed EBSDSolverManaged          max rel err 3.04e-012 PASS
+  uniform     managed ComputeTDS (U=local)       max rel err 3.04e-012 PASS
+  uniform     managed ComputeTDS (U=random)      max rel err 2.82e-012 PASS
+  uniform     managed ComputeAbsorbedFlux        max rel err 1.70e-012 PASS
+  nonuniform  native  _EBSDSolver                max rel err 3.04e-012 PASS
+  nonuniform  native  WithTDS.intensity          max rel err 3.04e-012 PASS
+  nonuniform  native  WithTDS.tds (U=local)      max rel err 3.04e-012 PASS
+  nonuniform  native  WithTDS.tds (U=random)     max rel err 2.82e-012 PASS
+  nonuniform  managed EBSDSolverManaged          max rel err 3.04e-012 PASS
+  nonuniform  managed ComputeTDS (U=local)       max rel err 3.04e-012 PASS
+  nonuniform  managed ComputeTDS (U=random)      max rel err 2.82e-012 PASS
+  nonuniform  managed ComputeAbsorbedFlux        max rel err 2.84e-012 PASS
+  [2,4,8,16]  native  _EBSDSolver                max rel err 3.03e-012 PASS
+  [2,4,8,16]  native  WithTDS.intensity          max rel err 3.03e-012 PASS
+  [2,4,8,16]  native  WithTDS.tds (U=local)      max rel err 3.03e-012 PASS
+  [2,4,8,16]  native  WithTDS.tds (U=random)     max rel err 2.80e-012 PASS
+  [2,4,8,16]  managed EBSDSolverManaged          max rel err 3.03e-012 PASS
+  [2,4,8,16]  managed ComputeTDS (U=local)       max rel err 3.03e-012 PASS
+  [2,4,8,16]  managed ComputeTDS (U=random)      max rel err 2.80e-012 PASS
+  [2,4,8,16]  managed ComputeAbsorbedFlux        max rel err 2.39e-012 PASS
+--- seed 2: γ = 0.007+0.0189i, 0.155+0.0412i, -0.178+0.0483i, 0.283+0.0260i, ...  min Im γ = 1.89e-002
+  uniform     native  _EBSDSolver                max rel err 2.76e-012 PASS
+  uniform     native  WithTDS.intensity          max rel err 2.76e-012 PASS
+  uniform     native  WithTDS.tds (U=local)      max rel err 2.76e-012 PASS
+  uniform     native  WithTDS.tds (U=random)     max rel err 4.61e-012 PASS
+  uniform     managed EBSDSolverManaged          max rel err 2.76e-012 PASS
+  uniform     managed ComputeTDS (U=local)       max rel err 2.76e-012 PASS
+  uniform     managed ComputeTDS (U=random)      max rel err 4.61e-012 PASS
+  uniform     managed ComputeAbsorbedFlux        max rel err 4.06e-012 PASS
+  nonuniform  native  _EBSDSolver                max rel err 4.69e-012 PASS
+  nonuniform  native  WithTDS.intensity          max rel err 4.69e-012 PASS
+  nonuniform  native  WithTDS.tds (U=local)      max rel err 4.69e-012 PASS
+  nonuniform  native  WithTDS.tds (U=random)     max rel err 4.59e-012 PASS
+  nonuniform  managed EBSDSolverManaged          max rel err 4.69e-012 PASS
+  nonuniform  managed ComputeTDS (U=local)       max rel err 4.69e-012 PASS
+  nonuniform  managed ComputeTDS (U=random)      max rel err 4.59e-012 PASS
+  nonuniform  managed ComputeAbsorbedFlux        max rel err 9.56e-012 PASS
+  [2,4,8,16]  native  _EBSDSolver                max rel err 2.76e-012 PASS
+  [2,4,8,16]  native  WithTDS.intensity          max rel err 2.76e-012 PASS
+  [2,4,8,16]  native  WithTDS.tds (U=local)      max rel err 2.76e-012 PASS
+  [2,4,8,16]  native  WithTDS.tds (U=random)     max rel err 4.59e-012 PASS
+  [2,4,8,16]  managed EBSDSolverManaged          max rel err 2.76e-012 PASS
+  [2,4,8,16]  managed ComputeTDS (U=local)       max rel err 2.76e-012 PASS
+  [2,4,8,16]  managed ComputeTDS (U=random)      max rel err 4.59e-012 PASS
+  [2,4,8,16]  managed ComputeAbsorbedFlux        max rel err 7.01e-012 PASS
+--- seed 3: γ = -0.102+0.0218i, 0.130+0.0438i, 0.322+0.0347i, 0.353+0.0325i, ...  min Im γ = 2.08e-002
+  uniform     native  _EBSDSolver                max rel err 4.38e-012 PASS
+  uniform     native  WithTDS.intensity          max rel err 4.38e-012 PASS
+  uniform     native  WithTDS.tds (U=local)      max rel err 4.38e-012 PASS
+  uniform     native  WithTDS.tds (U=random)     max rel err 3.69e-012 PASS
+  uniform     managed EBSDSolverManaged          max rel err 4.38e-012 PASS
+  uniform     managed ComputeTDS (U=local)       max rel err 4.38e-012 PASS
+  uniform     managed ComputeTDS (U=random)      max rel err 3.69e-012 PASS
+  uniform     managed ComputeAbsorbedFlux        max rel err 2.34e-012 PASS
+  nonuniform  native  _EBSDSolver                max rel err 4.38e-012 PASS
+  nonuniform  native  WithTDS.intensity          max rel err 4.38e-012 PASS
+  nonuniform  native  WithTDS.tds (U=local)      max rel err 4.38e-012 PASS
+  nonuniform  native  WithTDS.tds (U=random)     max rel err 3.69e-012 PASS
+  nonuniform  managed EBSDSolverManaged          max rel err 4.38e-012 PASS
+  nonuniform  managed ComputeTDS (U=local)       max rel err 4.38e-012 PASS
+  nonuniform  managed ComputeTDS (U=random)      max rel err 3.69e-012 PASS
+  nonuniform  managed ComputeAbsorbedFlux        max rel err 2.57e-012 PASS
+  [2,4,8,16]  native  _EBSDSolver                max rel err 4.26e-012 PASS
+  [2,4,8,16]  native  WithTDS.intensity          max rel err 4.26e-012 PASS
+  [2,4,8,16]  native  WithTDS.tds (U=local)      max rel err 4.26e-012 PASS
+  [2,4,8,16]  native  WithTDS.tds (U=random)     max rel err 3.63e-012 PASS
+  [2,4,8,16]  managed EBSDSolverManaged          max rel err 4.26e-012 PASS
+  [2,4,8,16]  managed ComputeTDS (U=local)       max rel err 4.26e-012 PASS
+  [2,4,8,16]  managed ComputeTDS (U=random)      max rel err 3.63e-012 PASS
+  [2,4,8,16]  managed ComputeAbsorbedFlux        max rel err 2.57e-012 PASS
+WORST 9.56e-012 → ALL PASS

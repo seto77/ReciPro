@@ -1,0 +1,7 @@
+PASS: quick-generic
+PASS: quick-avx2
+PASS: quick-avx512
+PASS: heavy-stem
+PASS: nonuniform-local
+PASS: nonuniform-nonlocal
+PASS: managed-nonlocal

@@ -1,0 +1,34 @@
+[
+  {
+    "Path": "C:\\tmp\\recipro_evd_261106\\baseline\\BetheMethod.cs",
+    "Hash": "75121D6319D06C010CA89B79CC3AFC84AE2520F6562BEADB889A9611F10519B7"
+  },
+  {
+    "Path": "C:\\tmp\\recipro_evd_261106\\baseline\\Crystallography.Native.avx2.dll",
+    "Hash": "4A3CB69F562C24FF598D635043F66694D7E7519CA4FEE4D051E97D842008BCF2"
+  },
+  {
+    "Path": "C:\\tmp\\recipro_evd_261106\\baseline\\Crystallography.Native.avx512.dll",
+    "Hash": "78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174"
+  },
+  {
+    "Path": "C:\\tmp\\recipro_evd_261106\\baseline\\Crystallography.Native.dll",
+    "Hash": "CF1A1A96553AF46E42909AECDF566385F1ACD57BDDA0325285E6739C29ECA833"
+  },
+  {
+    "Path": "C:\\tmp\\recipro_evd_261106\\baseline\\Crystallography.Native.vcxproj",
+    "Hash": "8F608D87FD2ABE022E06DD6D0D41027DCB7DBE71F82E3B8F149C830001EBDC13"
+  },
+  {
+    "Path": "C:\\tmp\\recipro_evd_261106\\baseline\\EigenFuncs.cpp",
+    "Hash": "FB6DCAD04431FB3E30CE6758466EEC459D425CBC763637C59B69767D1CDF4735"
+  },
+  {
+    "Path": "C:\\tmp\\recipro_evd_261106\\baseline\\MathNetProviderManager.cs",
+    "Hash": "669E8A7BECC442513897E9DFC8162224B5058D5D4042F889BB9011287260D215"
+  },
+  {
+    "Path": "C:\\tmp\\recipro_evd_261106\\baseline\\NativeWrapper.cs",
+    "Hash": "A14AB4325AD3F2C0C8399E1E7B1F2023234D424B915E5D1E507EC9C30606F49F"
+  }
+]

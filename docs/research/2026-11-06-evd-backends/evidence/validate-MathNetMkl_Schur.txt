@@ -1,0 +1,29 @@
+ProcessorCount=2; MKL_NUM_THREADS=1; OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
+REFERENCE=C:\tmp\recipro_evd_261106\baseline\Crystallography.Native.avx512.dll; SHA256=78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174
+CPU algorithm=3; workspaceElements=0
+{"Label":"Si128","backend":"MathNetMkl_Schur","n":128,"referenceResidual":3.5321003735547966E-16,"residual":3.7491929266887354E-16,"waveDifference":3.017530219943414E-14,"boundary":2.220683449797542E-16,"referenceBoundary":5.478245367618742E-16,"referenceFusedDifference":6.473657049138938E-16,"fusedDifference":6.707437923744495E-16,"fluxDifference":4.551914400963142E-15,"conservedFluxError":0,"flux":[0.9999999999999996,0.9320685294664369,0.8094184153275363],"referenceFlux":[1,0.9320685294664351,0.8094184153275318]}
+PASS Si128
+CPU algorithm=3; workspaceElements=0
+{"Label":"Si256","backend":"MathNetMkl_Schur","n":256,"referenceResidual":3.9028599569866236E-16,"residual":3.7571299253058783E-16,"waveDifference":5.2453531110278073E-14,"boundary":4.45492136478861E-16,"referenceBoundary":2.2974199545682777E-16,"referenceFusedDifference":1.032940070473853E-15,"fusedDifference":4.775249788392738E-16,"fluxDifference":1.3100631690576847E-14,"conservedFluxError":0,"flux":[0.9999999999999991,0.9312030080398782,0.806805439303509],"referenceFlux":[1.0000000000000004,0.9312030080398774,0.8068054393034959]}
+PASS Si256
+CPU algorithm=3; workspaceElements=0
+{"Label":"Si448","backend":"MathNetMkl_Schur","n":448,"referenceResidual":5.96125909265339E-16,"residual":3.9555843171964444E-16,"waveDifference":1.1784118224795166E-13,"boundary":2.244768382970926E-16,"referenceBoundary":1.180539009098806E-16,"referenceFusedDifference":1.0720984053762522E-15,"fusedDifference":4.126162952233365E-16,"fluxDifference":3.1086244689504383E-15,"conservedFluxError":0,"flux":[1.0000000000000004,0.9293804566184442,0.8018838981544609],"referenceFlux":[0.9999999999999998,0.9293804566184422,0.8018838981544578]}
+PASS Si448
+CPU algorithm=3; workspaceElements=0
+{"Label":"Si640","backend":"MathNetMkl_Schur","n":640,"referenceResidual":7.120812808002683E-16,"residual":3.5949759872340924E-16,"waveDifference":8.454530573337832E-14,"boundary":2.5908996311706785E-16,"referenceBoundary":1.3325014494637219E-15,"referenceFusedDifference":7.894497640785687E-16,"fusedDifference":7.065416064076986E-16,"fluxDifference":8.493206138382448E-14,"conservedFluxError":0,"flux":[1.0000000000000004,0.9289685387322197,0.8008291343487404],"referenceFlux":[1.0000000000000027,0.9289685387322617,0.8008291343488253]}
+PASS Si640
+CPU algorithm=3; workspaceElements=0
+{"Label":"Au448","backend":"MathNetMkl_Schur","n":448,"referenceResidual":6.736882118949344E-16,"residual":3.5542707093791773E-16,"waveDifference":3.5093981219874904E-14,"boundary":3.3981648150438275E-16,"referenceBoundary":1.9984223635388933E-15,"referenceFusedDifference":1.1103099355805603E-15,"fusedDifference":5.319014089382403E-16,"fluxDifference":3.3306690738754696E-15,"conservedFluxError":0,"flux":[0.9999999999999993,0.2806088451661734,0.06693231839999658],"referenceFlux":[0.999999999999996,0.280608845166173,0.06693231839999575]}
+PASS Au448
+CPU algorithm=3; workspaceElements=0
+{"Label":"GaAs256","backend":"MathNetMkl_Schur","n":256,"referenceResidual":6.694624089503431E-16,"residual":3.7140552355196596E-16,"waveDifference":8.230061733786036E-14,"boundary":4.469632284288567E-16,"referenceBoundary":7.772643551114874E-16,"referenceFusedDifference":6.497413668604476E-16,"fusedDifference":4.443059973708343E-16,"fluxDifference":1.5543122344752192E-15,"conservedFluxError":0,"flux":[0.9999999999999991,0.7410769331580831,0.5884887914092779],"referenceFlux":[0.9999999999999984,0.7410769331580845,0.5884887914092763]}
+PASS GaAs256
+CPU algorithm=3; workspaceElements=0
+{"Label":"Si32B0","backend":"MathNetMkl_Schur","n":32,"referenceResidual":3.4973018245058386E-16,"residual":4.1786627355347084E-16,"waveDifference":2.3580807737299482E-14,"boundary":2.2204460517437264E-16,"referenceBoundary":2.2204460977303886E-16,"referenceFusedDifference":5.810469165661948E-16,"fusedDifference":4.30882404652278E-16,"fluxDifference":4.440892098500626E-15,"conservedFluxError":3.552713678800501E-15,"flux":[1.0000000000000004,1.0000000000000016,1.0000000000000036],"referenceFlux":[0.9999999999999996,0.9999999999999992,0.9999999999999991]}
+PASS Si32B0
+CPU algorithm=3; workspaceElements=0
+{"Label":"GaAs32B0","backend":"MathNetMkl_Schur","n":32,"referenceResidual":2.9086102691648725E-16,"residual":3.5604428683982916E-16,"waveDifference":2.2313657376946527E-14,"boundary":3.3306690738754696E-16,"referenceBoundary":1.1287984571584433E-16,"referenceFusedDifference":1.1018648905114063E-15,"fusedDifference":8.082545620880533E-16,"fluxDifference":2.7755575615628914E-15,"conservedFluxError":3.1086244689504383E-15,"flux":[0.9999999999999993,0.9999999999999981,0.9999999999999969],"referenceFlux":[1,1.0000000000000009,0.9999999999999994]}
+PASS GaAs32B0
+CPU algorithm=3; workspaceElements=0
+{"Label":"NearDegenerate8","backend":"MathNetMkl_Schur","n":8,"referenceResidual":1.7125854986889768E-17,"residual":8.16624400333172E-24,"waveDifference":1.1102230246574683E-16,"boundary":0,"referenceBoundary":0,"referenceFusedDifference":1.1102230247544035E-16,"fusedDifference":2.7226777748170485E-13,"fluxDifference":2.220446049250313E-16,"conservedFluxError":0,"flux":[1,0.9574336997204724,0.8853930248664136],"referenceFlux":[1,0.9574336997204724,0.8853930248664134]}
+PASS NearDegenerate8

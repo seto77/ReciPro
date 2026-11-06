@@ -1,0 +1,1 @@
+checks=10540, worst normalized error=1.929012505e-14, DLL=C:\Users\seto\source\repos\ReciPro\tools\NativeEbsdSpeedStudy\EbsdKernels.dll

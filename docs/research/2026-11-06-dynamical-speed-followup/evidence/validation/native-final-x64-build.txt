@@ -1,0 +1,1259 @@
+17:00 でビルドが開始されました...
+1>------ ビルド開始: プロジェクト: Crystallography.Native, 構成: Release x64 ------
+NuGet パッケージの復元に失敗しました。詳細な警告とエラーについては、[エラー一覧] ウィンドウを参照してください。
+次の NuGet パッケージを復元中にエラーが発生しました: プロジェクト ReciPro の詳細を読み込めなかったため、操作が失敗しました。
+経過した時間: 00:00:01.5941696
+========== 終了 ==========
+
+
+C:\Users\seto\source\repos\ReciPro\Crystallography\Crystallography.csproj を復元しました (1.56 秒)。
+C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Crystallography.Controls.csproj を復元しました (1.56 秒)。
+C:\Users\seto\source\repos\ReciPro\ReciPro\ReciPro.csproj を復元しました (1.56 秒)。
+C:\Users\seto\source\repos\ReciPro\Crystallography.OpenGL\Crystallography.OpenGL.csproj を復元しました (1.56 秒)。
+1>  In file included from EigenFuncs.cpp:25:
+1>  In file included from Eigen\../Eigen/Core:205:
+1>Eigen\../Eigen\src/Core/NumTraits.h(261,60): warning : use of infinity is undefined behavior due to the currently enabled floating-point options [-Wnan-infinity-disabled]
+1>    261 |   EIGEN_DEVICE_FUNC constexpr static T infinity() { return numext::numeric_limits<T>::infinity(); }
+1>        |                                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/arch/Default\GenericPacketMathComplex.h(69,69): note: in instantiation of member function 'Eigen::GenericNumTraits<float>::infinity' requested here
+1>     69 |     const RealPacket inf = pset1<RealPacket>(NumTraits<RealScalar>::infinity());
+1>        |                                                                     ^
+1>  Eigen\../Eigen\src/Core/arch/SSE/Complex.h(215,10): note: in instantiation of function template specialization 'Eigen::internal::pdiv_complex<Eigen::internal::Packet2cf>' requested here
+1>    215 |   return pdiv_complex(a, b);
+1>        |          ^
+1>  In file included from EigenFuncs.cpp:25:
+1>  In file included from Eigen\../Eigen/Core:205:
+1>Eigen\../Eigen\src/Core/NumTraits.h(261,60): warning : use of infinity is undefined behavior due to the currently enabled floating-point options [-Wnan-infinity-disabled]
+1>    261 |   EIGEN_DEVICE_FUNC constexpr static T infinity() { return numext::numeric_limits<T>::infinity(); }
+1>        |                                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/arch/Default\GenericPacketMathComplex.h(69,69): note: in instantiation of member function 'Eigen::GenericNumTraits<double>::infinity' requested here
+1>     69 |     const RealPacket inf = pset1<RealPacket>(NumTraits<RealScalar>::infinity());
+1>        |                                                                     ^
+1>  Eigen\../Eigen\src/Core/arch/SSE/Complex.h(367,10): note: in instantiation of function template specialization 'Eigen::internal::pdiv_complex<Eigen::internal::Packet1cd>' requested here
+1>    367 |   return pdiv_complex(a, b);
+1>        |          ^
+1>  2 warnings generated.
+1>  6 warnings generated.
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:597:3: warning: Potential leak of memory pointed to by field 'm_data' [clang-analyzer-unix.Malloc]
+1>    597 |   }
+1>        |   ^
+1>  C:\Users\seto\source\repos\ReciPro\Crystallography.Native\EigenFuncs.cpp:244:3: note: Calling 'NoAlias::operator='
+1>    244 |                 Map<Mat>((dcomplex*)_result, 1, 1).noalias() = (r[0] * rV1.conjugate() + r[1] * rV2.conjugate() + r[2] * rV3.conjugate() + r[3] * rV4.conjugate()) * m * cV;
+1>        |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/NoAlias.h:43:5: note: Calling 'call_assignment_no_alias<Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>, Eigen::Product<Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_sum_op<std::complex<double>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_sum_op<std::complex<double>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_sum_op<std::complex<double>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, 1>>>, Eigen::internal::assign_op<std::complex<double>, std::complex<double>>>'
+1>     43 |     call_assignment_no_alias(m_expression, other.derived(),
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>     44 |                              internal::assign_op<Scalar, typename OtherDerived::Scalar>());
+1>        |                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/AssignEvaluator.h:1061:3: note: Calling 'Assignment::run'
+1>   1061 |   Assignment<ActualDstTypeCleaned, Src, Func>::run(actualDst, src, func);
+1>        |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:171:5: note: Calling 'generic_product_impl::evalTo'
+1>    171 |     generic_product_impl<Lhs, Rhs>::evalTo(dst, src.lhs(), src.rhs());
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:274:26: note: Calling 'default_inner_product_impl::run'
+1>    274 |     dst.coeffRef(0, 0) = impl::run(lhs, rhs);
+1>        |                          ^~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/InnerProduct.h:218:15: note: Calling constructor for 'inner_product_evaluator<Eigen::internal::scalar_inner_product_op<std::complex<double>, std::complex<double>, false>, Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_sum_op<std::complex<double>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_sum_op<std::complex<double>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_sum_op<std::complex<double>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, 1>>>'
+1>    218 |     Evaluator eval(a.derived(), b.derived(), Op());
+1>        |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/InnerProduct.h:50:23: note: Calling constructor for 'evaluator<Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_sum_op<std::complex<double>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_sum_op<std::complex<double>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_sum_op<std::complex<double>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>>'
+1>     50 |       : m_func(func), m_lhs(lhs), m_rhs(rhs), m_size(lhs.size()) {
+1>        |                       ^~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:43:82: note: Calling constructor for 'product_evaluator<Eigen::Product<Eigen::CwiseBinaryOp<Eigen::internal::scalar_sum_op<std::complex<double>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_sum_op<std::complex<double>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_sum_op<std::complex<double>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>>, const Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, std::complex<double>>, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 1, -1>>, const Eigen::CwiseUnaryOp<Eigen::internal::scalar_conjugate_op<std::complex<double>>, const Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>>>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>, 7, Eigen::DenseShape, Eigen::DenseShape, std::complex<double>, std::complex<double>>'
+1>     43 |   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE explicit evaluator(const XprType& xpr) : Base(xpr) {}
+1>        |                                                                                  ^~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:152:5: note: Calling 'generic_product_impl_base::evalTo'
+1>    152 |     generic_product_impl<Lhs, Rhs, LhsShape, RhsShape, ProductTag>::evalTo(m_result, xpr.lhs(), xpr.rhs());
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:447:5: note: Calling 'generic_product_impl_base::scaleAndAddTo'
+1>    447 |     scaleAndAddTo(dst, lhs, rhs, Scalar(1));
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:463:5: note: Calling 'generic_product_impl::scaleAndAddTo'
+1>    463 |     Derived::scaleAndAddTo(dst, lhs, rhs, alpha);
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:9: note: Assuming the condition is true
+1>    480 |     if (lhs.rows() == 1 && rhs.cols() == 1) {
+1>        |         ^~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:9: note: Left side of '&&' is true
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:28: note: Assuming the condition is false
+1>    480 |     if (lhs.rows() == 1 && rhs.cols() == 1) {
+1>        |                            ^~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:5: note: Taking false branch
+1>    480 |     if (lhs.rows() == 1 && rhs.cols() == 1) {
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:486:5: note: Calling 'gemv_dense_selector::run'
+1>    486 |     internal::gemv_dense_selector<Side, (int(MatrixType::Flags) & RowMajorBit) ? RowMajor : ColMajor,
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    487 |                                   bool(internal::blas_traits<MatrixType>::HasUsableDirectAccess)>::run(actual_lhs,
+1>        |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    488 |                                                                                                        actual_rhs, dst,
+1>        |                                                                                                        ~~~~~~~~~~~~~~~~
+1>    489 |                                                                                                        alpha);
+1>        |                                                                                                        ~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:404:5: note: Calling 'gemv_dense_selector::run_impl'
+1>    404 |     run_impl(lhs, rhs, dest, alpha,
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    405 |              functor_is_commutative<scalar_product_op<typename Lhs::Scalar, typename Rhs::Scalar>>());
+1>        |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:413:5: note: Calling 'gemv_dense_selector::run'
+1>    413 |     gemv_dense_selector<OnTheRight, OtherStorageOrder, BlasCompatible>::run(rhs.transpose(), lhs.transpose(), destT,
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    414 |                                                                             alpha);
+1>        |                                                                             ~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:563:67: note: 'Dynamic' is equal to ColsAtCompileTime
+1>    563 |     constexpr bool EnableSingleColumn = Lhs::ColsAtCompileTime == Dynamic && !NumTraits<ResScalar>::IsComplex &&
+1>        |                                                                   ^~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:563:41: note: Left side of '&&' is true
+1>    563 |     constexpr bool EnableSingleColumn = Lhs::ColsAtCompileTime == Dynamic && !NumTraits<ResScalar>::IsComplex &&
+1>        |                                         ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:563:111: note: Left side of '&&' is false
+1>    563 |     constexpr bool EnableSingleColumn = Lhs::ColsAtCompileTime == Dynamic && !NumTraits<ResScalar>::IsComplex &&
+1>        |                                                                                                               ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:567:5: note: Taking false branch
+1>    567 |     if (gemv_single_column<EnableSingleColumn, LhsBlasTraits::NeedToConjugate, RhsBlasTraits::NeedToConjugate>::run(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:584:9: note: '?' condition is true
+1>    584 |         DirectlyUseRhs ? const_cast<RhsScalar*>(actualRhs.data()) : static_rhs.data());
+1>        |         ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is false
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:901:16: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    901 |   TYPE* NAME = (BUFFER) != 0                                                                                      \
+1>        |                ^~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is false
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:901:16: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    901 |   TYPE* NAME = (BUFFER) != 0                                                                                      \
+1>        |                ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is false
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:903:47: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    903 |                    : reinterpret_cast<TYPE*>((sizeof(TYPE) * (SIZE) <= EIGEN_STACK_ALLOCATION_LIMIT)              \
+1>        |                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is false
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:903:46: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    903 |                    : reinterpret_cast<TYPE*>((sizeof(TYPE) * (SIZE) <= EIGEN_STACK_ALLOCATION_LIMIT)              \
+1>        |                                              ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Calling 'scratch_malloc<std::complex<double>>'
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:905:52: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    905 |                                                  : Eigen::internal::scratch_malloc<TYPE>(sizeof(TYPE) * (SIZE))); \
+1>        |                                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:704:61: note: Left side of '||' is true
+1>    704 |   EIGEN_IF_CONSTEXPR (alignof(T) <= EIGEN_STACK_ALIGN_BYTES ||
+1>        |                                                             ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:704:3: note: Taking true branch
+1>    704 |   EIGEN_IF_CONSTEXPR (alignof(T) <= EIGEN_STACK_ALIGN_BYTES ||
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:33: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                 ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:706:28: note: Calling 'scratch_malloc'
+1>    706 |     return static_cast<T*>(scratch_malloc(size));
+1>        |                            ^~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:690:10: note: Calling 'aligned_malloc'
+1>    690 |   return aligned_malloc(size);
+1>        |          ^~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:221:7: note: Assuming 'size' is not equal to 0
+1>    221 |   if (size == 0) return nullptr;
+1>        |       ^~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:221:3: note: Taking false branch
+1>    221 |   if (size == 0) return nullptr;
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:228:12: note: Memory is allocated
+1>    228 |   result = malloc(size);
+1>        |            ^~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:239:7: note: Assuming 'result' is non-null
+1>    239 |   if (!result && size) throw_std_bad_alloc();
+1>        |       ^~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:239:15: note: Left side of '&&' is false
+1>    239 |   if (!result && size) throw_std_bad_alloc();
+1>        |               ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:690:10: note: Returned allocated memory
+1>    690 |   return aligned_malloc(size);
+1>        |          ^~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:706:28: note: Returned allocated memory
+1>    706 |     return static_cast<T*>(scratch_malloc(size));
+1>        |                            ^~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Returned allocated memory
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:905:52: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    905 |                                                  : Eigen::internal::scratch_malloc<TYPE>(sizeof(TYPE) * (SIZE))); \
+1>        |                                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:584:9: note: '?' condition is true
+1>    584 |         DirectlyUseRhs ? const_cast<RhsScalar*>(actualRhs.data()) : static_rhs.data());
+1>        |         ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is false
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:7: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |       ^~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is false
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:7: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |       ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is false
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:39: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:597:3: note: Potential leak of memory pointed to by field 'm_data'
+1>    597 |   }
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/NumTraits.h:261:60: warning: use of infinity is undefined behavior due to the currently enabled floating-point options [clang-diagnostic-nan-infinity-disabled]
+1>    261 |   EIGEN_DEVICE_FUNC constexpr static T infinity() { return numext::numeric_limits<T>::infinity(); }
+1>        |                                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/arch/Default\GenericPacketMathComplex.h:69:69: note: in instantiation of member function 'Eigen::GenericNumTraits<float>::infinity' requested here
+1>     69 |     const RealPacket inf = pset1<RealPacket>(NumTraits<RealScalar>::infinity());
+1>        |                                                                     ^
+1>  Eigen\../Eigen\src/Core/arch/SSE/Complex.h:215:10: note: in instantiation of function template specialization 'Eigen::internal::pdiv_complex<Eigen::internal::Packet2cf>' requested here
+1>    215 |   return pdiv_complex(a, b);
+1>        |          ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:79:3: warning: Potential leak of memory pointed to by 'actualRhs' [clang-analyzer-unix.Malloc]
+1>     79 |   }
+1>        |   ^
+1>  C:\Users\seto\source\repos\ReciPro\Crystallography.Native\EigenFuncs.cpp:398:3: note: Calling 'NoAlias::operator='
+1>    398 |                 alphas.noalias() = vecs.partialPivLu().solve(Map<Vec>((dcomplex*)psi0, dim));
+1>        |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/NoAlias.h:43:5: note: Calling 'call_assignment_no_alias<Eigen::Map<Eigen::Matrix<std::complex<double>, -1, 1>>, Eigen::Solve<Eigen::PartialPivLU<Eigen::Matrix<std::complex<double>, -1, -1>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, 1>>>, Eigen::internal::assign_op<std::complex<double>, std::complex<double>>>'
+1>     43 |     call_assignment_no_alias(m_expression, other.derived(),
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>     44 |                              internal::assign_op<Scalar, typename OtherDerived::Scalar>());
+1>        |                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/AssignEvaluator.h:1061:3: note: Calling 'Assignment::run'
+1>   1061 |   Assignment<ActualDstTypeCleaned, Src, Func>::run(actualDst, src, func);
+1>        |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/Solve.h:132:5: note: Calling 'PartialPivLU::_solve_impl'
+1>    132 |     src.dec()._solve_impl(src.rhs(), dst);
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/LU/PartialPivLU.h:279:5: note: Calling 'TriangularViewImpl::solveInPlace'
+1>    279 |     m_lu.template triangularView<UnitLower>().solveInPlace(dst);
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/TriangularMatrix.h:629:12: note: Calling 'TriangularViewImpl::solveInPlace'
+1>    629 |     return solveInPlace<OnTheLeft>(other);
+1>        |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:197:3: note: 'Proven' is false
+1>    197 |   EIGEN_INTERNAL_ASSERT_SQUARE(derived());
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:242:3: note: expanded from macro 'EIGEN_INTERNAL_ASSERT_SQUARE'
+1>    242 |   EIGEN_INTERNAL_ASSERT_SQUARE_MSG(Xpr, "This operation requires a square matrix")
+1>        |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:239:32: note: expanded from macro 'EIGEN_INTERNAL_ASSERT_SQUARE_MSG'
+1>    239 |   EIGEN_INTERNAL_SHAPE_ASSERT((Eigen::internal::square_dimensions<EIGEN_INTERNAL_SHAPE_TYPE(Xpr)>::Proven), \
+1>        |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    240 |                               (Xpr).rows() == (Xpr).cols() && (Message))
+1>        |                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:147:27: note: expanded from macro 'EIGEN_INTERNAL_SHAPE_ASSERT'
+1>    147 |     EIGEN_IF_CONSTEXPR (!(Proven)) {                   \
+1>        |     ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:47: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                               ^~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:197:3: note: Taking true branch
+1>    197 |   EIGEN_INTERNAL_ASSERT_SQUARE(derived());
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:242:3: note: expanded from macro 'EIGEN_INTERNAL_ASSERT_SQUARE'
+1>    242 |   EIGEN_INTERNAL_ASSERT_SQUARE_MSG(Xpr, "This operation requires a square matrix")
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:239:3: note: expanded from macro 'EIGEN_INTERNAL_ASSERT_SQUARE_MSG'
+1>    239 |   EIGEN_INTERNAL_SHAPE_ASSERT((Eigen::internal::square_dimensions<EIGEN_INTERNAL_SHAPE_TYPE(Xpr)>::Proven), \
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:147:5: note: expanded from macro 'EIGEN_INTERNAL_SHAPE_ASSERT'
+1>    147 |     EIGEN_IF_CONSTEXPR (!(Proven)) {                   \
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:33: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                 ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:197:3: note: Loop condition is false.  Exiting loop
+1>    197 |   EIGEN_INTERNAL_ASSERT_SQUARE(derived());
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:242:3: note: expanded from macro 'EIGEN_INTERNAL_ASSERT_SQUARE'
+1>    242 |   EIGEN_INTERNAL_ASSERT_SQUARE_MSG(Xpr, "This operation requires a square matrix")
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:239:3: note: expanded from macro 'EIGEN_INTERNAL_ASSERT_SQUARE_MSG'
+1>    239 |   EIGEN_INTERNAL_SHAPE_ASSERT((Eigen::internal::square_dimensions<EIGEN_INTERNAL_SHAPE_TYPE(Xpr)>::Proven), \
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:146:3: note: expanded from macro 'EIGEN_INTERNAL_SHAPE_ASSERT'
+1>    146 |   do {                                                 \
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:199:3: note: 'Proven' is false
+1>    199 |   EIGEN_INTERNAL_CHECK_SHAPE(
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:170:26: note: expanded from macro 'EIGEN_INTERNAL_CHECK_SHAPE'
+1>    170 |     EIGEN_IF_CONSTEXPR (!ShapeRelation::Proven) {           \
+1>        |                          ^~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:47: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                               ^~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:199:3: note: Taking true branch
+1>    199 |   EIGEN_INTERNAL_CHECK_SHAPE(
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:170:5: note: expanded from macro 'EIGEN_INTERNAL_CHECK_SHAPE'
+1>    170 |     EIGEN_IF_CONSTEXPR (!ShapeRelation::Proven) {           \
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:33: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                 ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:199:3: note: Loop condition is false.  Exiting loop
+1>    199 |   EIGEN_INTERNAL_CHECK_SHAPE(
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:167:3: note: expanded from macro 'EIGEN_INTERNAL_CHECK_SHAPE'
+1>    167 |   do {                                                      \
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:206:7: note: Assuming the condition is false
+1>    206 |   if (derived().cols() == 0) return;
+1>        |       ^~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:206:3: note: Taking false branch
+1>    206 |   if (derived().cols() == 0) return;
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:226:58: note: Left side of '&&' is false
+1>    226 |       internal::blas_traits<MatrixType>::HasScalarFactor &&
+1>        |                                                          ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:232:3: note: Calling 'triangular_solver_selector::run'
+1>    232 |   internal::triangular_solver_selector<Lhs, OtherCopyCleaned, Side, Mode>::run(lhs, otherCopy);
+1>        |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:65:27: note: InnerStrideAtCompileTime is equal to 1
+1>     65 |     bool useRhsDirectly = Rhs::InnerStrideAtCompileTime == 1 || rhs.innerStride() == 1;
+1>        |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:65:62: note: Left side of '||' is true
+1>     65 |     bool useRhsDirectly = Rhs::InnerStrideAtCompileTime == 1 || rhs.innerStride() == 1;
+1>        |                                                              ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:86: note: 'useRhsDirectly' is true
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |                                                                                      ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:86: note: '?' condition is true
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: Assuming the condition is false
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:901:16: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    901 |   TYPE* NAME = (BUFFER) != 0                                                                                      \
+1>        |                ^~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: '?' condition is false
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:901:16: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    901 |   TYPE* NAME = (BUFFER) != 0                                                                                      \
+1>        |                ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: Assuming the condition is false
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:903:47: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    903 |                    : reinterpret_cast<TYPE*>((sizeof(TYPE) * (SIZE) <= EIGEN_STACK_ALLOCATION_LIMIT)              \
+1>        |                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: '?' condition is false
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:903:46: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    903 |                    : reinterpret_cast<TYPE*>((sizeof(TYPE) * (SIZE) <= EIGEN_STACK_ALLOCATION_LIMIT)              \
+1>        |                                              ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: Calling 'scratch_malloc<std::complex<double>>'
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:905:52: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    905 |                                                  : Eigen::internal::scratch_malloc<TYPE>(sizeof(TYPE) * (SIZE))); \
+1>        |                                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:704:61: note: Left side of '||' is true
+1>    704 |   EIGEN_IF_CONSTEXPR (alignof(T) <= EIGEN_STACK_ALIGN_BYTES ||
+1>        |                                                             ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:704:3: note: Taking true branch
+1>    704 |   EIGEN_IF_CONSTEXPR (alignof(T) <= EIGEN_STACK_ALIGN_BYTES ||
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:33: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                 ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:706:28: note: Calling 'scratch_malloc'
+1>    706 |     return static_cast<T*>(scratch_malloc(size));
+1>        |                            ^~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:690:10: note: Calling 'aligned_malloc'
+1>    690 |   return aligned_malloc(size);
+1>        |          ^~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:221:7: note: Assuming 'size' is not equal to 0
+1>    221 |   if (size == 0) return nullptr;
+1>        |       ^~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:221:3: note: Taking false branch
+1>    221 |   if (size == 0) return nullptr;
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:228:12: note: Memory is allocated
+1>    228 |   result = malloc(size);
+1>        |            ^~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:239:7: note: Assuming 'result' is non-null
+1>    239 |   if (!result && size) throw_std_bad_alloc();
+1>        |       ^~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:239:15: note: Left side of '&&' is false
+1>    239 |   if (!result && size) throw_std_bad_alloc();
+1>        |               ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:690:10: note: Returned allocated memory
+1>    690 |   return aligned_malloc(size);
+1>        |          ^~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:706:28: note: Returned allocated memory
+1>    706 |     return static_cast<T*>(scratch_malloc(size));
+1>        |                            ^~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: Returned allocated memory
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:905:52: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    905 |                                                  : Eigen::internal::scratch_malloc<TYPE>(sizeof(TYPE) * (SIZE))); \
+1>        |                                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:86: note: 'useRhsDirectly' is true
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |                                                                                      ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:86: note: '?' condition is true
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: Assuming the condition is false
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:7: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |       ^~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: '?' condition is false
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:7: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |       ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: Assuming the condition is false
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:39: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:69:10: note: 'useRhsDirectly' is true
+1>     69 |     if (!useRhsDirectly) MappedRhs(actualRhs, rhs.size()) = rhs;
+1>        |          ^~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:69:5: note: Taking false branch
+1>     69 |     if (!useRhsDirectly) MappedRhs(actualRhs, rhs.size()) = rhs;
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:78:10: note: 'useRhsDirectly' is true
+1>     78 |     if (!useRhsDirectly) rhs = MappedRhs(actualRhs, rhs.size());
+1>        |          ^~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:78:5: note: Taking false branch
+1>     78 |     if (!useRhsDirectly) rhs = MappedRhs(actualRhs, rhs.size());
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:79:3: note: Potential leak of memory pointed to by 'actualRhs'
+1>     79 |   }
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:79:3: warning: Potential leak of memory pointed to by 'actualRhs_stack_memory_destructor.m_ptr' [clang-analyzer-unix.Malloc]
+1>     79 |   }
+1>        |   ^
+1>  C:\Users\seto\source\repos\ReciPro\Crystallography.Native\EigenFuncs.cpp:398:3: note: Calling 'NoAlias::operator='
+1>    398 |                 alphas.noalias() = vecs.partialPivLu().solve(Map<Vec>((dcomplex*)psi0, dim));
+1>        |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/NoAlias.h:43:5: note: Calling 'call_assignment_no_alias<Eigen::Map<Eigen::Matrix<std::complex<double>, -1, 1>>, Eigen::Solve<Eigen::PartialPivLU<Eigen::Matrix<std::complex<double>, -1, -1>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, 1>>>, Eigen::internal::assign_op<std::complex<double>, std::complex<double>>>'
+1>     43 |     call_assignment_no_alias(m_expression, other.derived(),
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>     44 |                              internal::assign_op<Scalar, typename OtherDerived::Scalar>());
+1>        |                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/AssignEvaluator.h:1061:3: note: Calling 'Assignment::run'
+1>   1061 |   Assignment<ActualDstTypeCleaned, Src, Func>::run(actualDst, src, func);
+1>        |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/Solve.h:132:5: note: Calling 'PartialPivLU::_solve_impl'
+1>    132 |     src.dec()._solve_impl(src.rhs(), dst);
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/LU/PartialPivLU.h:279:5: note: Calling 'TriangularViewImpl::solveInPlace'
+1>    279 |     m_lu.template triangularView<UnitLower>().solveInPlace(dst);
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/TriangularMatrix.h:629:12: note: Calling 'TriangularViewImpl::solveInPlace'
+1>    629 |     return solveInPlace<OnTheLeft>(other);
+1>        |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:197:3: note: 'Proven' is false
+1>    197 |   EIGEN_INTERNAL_ASSERT_SQUARE(derived());
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:242:3: note: expanded from macro 'EIGEN_INTERNAL_ASSERT_SQUARE'
+1>    242 |   EIGEN_INTERNAL_ASSERT_SQUARE_MSG(Xpr, "This operation requires a square matrix")
+1>        |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:239:32: note: expanded from macro 'EIGEN_INTERNAL_ASSERT_SQUARE_MSG'
+1>    239 |   EIGEN_INTERNAL_SHAPE_ASSERT((Eigen::internal::square_dimensions<EIGEN_INTERNAL_SHAPE_TYPE(Xpr)>::Proven), \
+1>        |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    240 |                               (Xpr).rows() == (Xpr).cols() && (Message))
+1>        |                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:147:27: note: expanded from macro 'EIGEN_INTERNAL_SHAPE_ASSERT'
+1>    147 |     EIGEN_IF_CONSTEXPR (!(Proven)) {                   \
+1>        |     ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:47: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                               ^~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:197:3: note: Taking true branch
+1>    197 |   EIGEN_INTERNAL_ASSERT_SQUARE(derived());
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:242:3: note: expanded from macro 'EIGEN_INTERNAL_ASSERT_SQUARE'
+1>    242 |   EIGEN_INTERNAL_ASSERT_SQUARE_MSG(Xpr, "This operation requires a square matrix")
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:239:3: note: expanded from macro 'EIGEN_INTERNAL_ASSERT_SQUARE_MSG'
+1>    239 |   EIGEN_INTERNAL_SHAPE_ASSERT((Eigen::internal::square_dimensions<EIGEN_INTERNAL_SHAPE_TYPE(Xpr)>::Proven), \
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:147:5: note: expanded from macro 'EIGEN_INTERNAL_SHAPE_ASSERT'
+1>    147 |     EIGEN_IF_CONSTEXPR (!(Proven)) {                   \
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:33: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                 ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:197:3: note: Loop condition is false.  Exiting loop
+1>    197 |   EIGEN_INTERNAL_ASSERT_SQUARE(derived());
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:242:3: note: expanded from macro 'EIGEN_INTERNAL_ASSERT_SQUARE'
+1>    242 |   EIGEN_INTERNAL_ASSERT_SQUARE_MSG(Xpr, "This operation requires a square matrix")
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:239:3: note: expanded from macro 'EIGEN_INTERNAL_ASSERT_SQUARE_MSG'
+1>    239 |   EIGEN_INTERNAL_SHAPE_ASSERT((Eigen::internal::square_dimensions<EIGEN_INTERNAL_SHAPE_TYPE(Xpr)>::Proven), \
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:146:3: note: expanded from macro 'EIGEN_INTERNAL_SHAPE_ASSERT'
+1>    146 |   do {                                                 \
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:199:3: note: 'Proven' is false
+1>    199 |   EIGEN_INTERNAL_CHECK_SHAPE(
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:170:26: note: expanded from macro 'EIGEN_INTERNAL_CHECK_SHAPE'
+1>    170 |     EIGEN_IF_CONSTEXPR (!ShapeRelation::Proven) {           \
+1>        |                          ^~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:47: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                               ^~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:199:3: note: Taking true branch
+1>    199 |   EIGEN_INTERNAL_CHECK_SHAPE(
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:170:5: note: expanded from macro 'EIGEN_INTERNAL_CHECK_SHAPE'
+1>    170 |     EIGEN_IF_CONSTEXPR (!ShapeRelation::Proven) {           \
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:33: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                 ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:199:3: note: Loop condition is false.  Exiting loop
+1>    199 |   EIGEN_INTERNAL_CHECK_SHAPE(
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/ShapeChecks.h:167:3: note: expanded from macro 'EIGEN_INTERNAL_CHECK_SHAPE'
+1>    167 |   do {                                                      \
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:206:7: note: Assuming the condition is false
+1>    206 |   if (derived().cols() == 0) return;
+1>        |       ^~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:206:3: note: Taking false branch
+1>    206 |   if (derived().cols() == 0) return;
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:226:58: note: Left side of '&&' is false
+1>    226 |       internal::blas_traits<MatrixType>::HasScalarFactor &&
+1>        |                                                          ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:232:3: note: Calling 'triangular_solver_selector::run'
+1>    232 |   internal::triangular_solver_selector<Lhs, OtherCopyCleaned, Side, Mode>::run(lhs, otherCopy);
+1>        |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:65:27: note: InnerStrideAtCompileTime is equal to 1
+1>     65 |     bool useRhsDirectly = Rhs::InnerStrideAtCompileTime == 1 || rhs.innerStride() == 1;
+1>        |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:65:62: note: Left side of '||' is true
+1>     65 |     bool useRhsDirectly = Rhs::InnerStrideAtCompileTime == 1 || rhs.innerStride() == 1;
+1>        |                                                              ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:86: note: 'useRhsDirectly' is true
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |                                                                                      ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:86: note: '?' condition is true
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: Assuming the condition is false
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:901:16: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    901 |   TYPE* NAME = (BUFFER) != 0                                                                                      \
+1>        |                ^~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: '?' condition is false
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:901:16: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    901 |   TYPE* NAME = (BUFFER) != 0                                                                                      \
+1>        |                ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: Assuming the condition is false
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:903:47: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    903 |                    : reinterpret_cast<TYPE*>((sizeof(TYPE) * (SIZE) <= EIGEN_STACK_ALLOCATION_LIMIT)              \
+1>        |                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: '?' condition is false
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:903:46: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    903 |                    : reinterpret_cast<TYPE*>((sizeof(TYPE) * (SIZE) <= EIGEN_STACK_ALLOCATION_LIMIT)              \
+1>        |                                              ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: Calling 'scratch_malloc<std::complex<double>>'
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:905:52: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    905 |                                                  : Eigen::internal::scratch_malloc<TYPE>(sizeof(TYPE) * (SIZE))); \
+1>        |                                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:704:61: note: Left side of '||' is true
+1>    704 |   EIGEN_IF_CONSTEXPR (alignof(T) <= EIGEN_STACK_ALIGN_BYTES ||
+1>        |                                                             ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:704:3: note: Taking true branch
+1>    704 |   EIGEN_IF_CONSTEXPR (alignof(T) <= EIGEN_STACK_ALIGN_BYTES ||
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:33: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                 ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:706:28: note: Calling 'scratch_malloc'
+1>    706 |     return static_cast<T*>(scratch_malloc(size));
+1>        |                            ^~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:690:10: note: Calling 'aligned_malloc'
+1>    690 |   return aligned_malloc(size);
+1>        |          ^~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:221:7: note: Assuming 'size' is not equal to 0
+1>    221 |   if (size == 0) return nullptr;
+1>        |       ^~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:221:3: note: Taking false branch
+1>    221 |   if (size == 0) return nullptr;
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:228:12: note: Memory is allocated
+1>    228 |   result = malloc(size);
+1>        |            ^~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:239:7: note: Assuming 'result' is non-null
+1>    239 |   if (!result && size) throw_std_bad_alloc();
+1>        |       ^~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:239:15: note: Left side of '&&' is false
+1>    239 |   if (!result && size) throw_std_bad_alloc();
+1>        |               ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:690:10: note: Returned allocated memory
+1>    690 |   return aligned_malloc(size);
+1>        |          ^~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:706:28: note: Returned allocated memory
+1>    706 |     return static_cast<T*>(scratch_malloc(size));
+1>        |                            ^~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: Returned allocated memory
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:905:52: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    905 |                                                  : Eigen::internal::scratch_malloc<TYPE>(sizeof(TYPE) * (SIZE))); \
+1>        |                                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:86: note: 'useRhsDirectly' is true
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |                                                                                      ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:86: note: '?' condition is true
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: Assuming the condition is true
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:7: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |       ^~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: '?' condition is true
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:7: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |       ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:67:5: note: Assuming the condition is false
+1>     67 |     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:39: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:69:10: note: 'useRhsDirectly' is true
+1>     69 |     if (!useRhsDirectly) MappedRhs(actualRhs, rhs.size()) = rhs;
+1>        |          ^~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:69:5: note: Taking false branch
+1>     69 |     if (!useRhsDirectly) MappedRhs(actualRhs, rhs.size()) = rhs;
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:78:10: note: 'useRhsDirectly' is true
+1>     78 |     if (!useRhsDirectly) rhs = MappedRhs(actualRhs, rhs.size());
+1>        |          ^~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:78:5: note: Taking false branch
+1>     78 |     if (!useRhsDirectly) rhs = MappedRhs(actualRhs, rhs.size());
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/SolveTriangular.h:79:3: note: Potential leak of memory pointed to by 'actualRhs_stack_memory_destructor.m_ptr'
+1>     79 |   }
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:251:5: warning: Memory allocated by 'alloca()' should not be deallocated [clang-analyzer-unix.Malloc]
+1>    251 |     free(ptr);
+1>        |     ^
+1>  C:\Users\seto\source\repos\ReciPro\Crystallography.Native\EigenFuncs.cpp:221:3: note: Calling 'NoAlias::operator='
+1>    221 |                 Map<Mat>((dcomplex*)_result, 1, 1).noalias() = rV * m * cV;
+1>        |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/NoAlias.h:43:5: note: Calling 'call_assignment_no_alias<Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>, Eigen::Product<Eigen::Product<Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, 1>>>, Eigen::internal::assign_op<std::complex<double>, std::complex<double>>>'
+1>     43 |     call_assignment_no_alias(m_expression, other.derived(),
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>     44 |                              internal::assign_op<Scalar, typename OtherDerived::Scalar>());
+1>        |                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/AssignEvaluator.h:1061:3: note: Calling 'Assignment::run'
+1>   1061 |   Assignment<ActualDstTypeCleaned, Src, Func>::run(actualDst, src, func);
+1>        |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:171:5: note: Calling 'generic_product_impl::evalTo'
+1>    171 |     generic_product_impl<Lhs, Rhs>::evalTo(dst, src.lhs(), src.rhs());
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:274:26: note: Calling 'default_inner_product_impl::run'
+1>    274 |     dst.coeffRef(0, 0) = impl::run(lhs, rhs);
+1>        |                          ^~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/InnerProduct.h:218:15: note: Calling constructor for 'inner_product_evaluator<Eigen::internal::scalar_inner_product_op<std::complex<double>, std::complex<double>, false>, Eigen::Product<Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, 1>>>'
+1>    218 |     Evaluator eval(a.derived(), b.derived(), Op());
+1>        |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/InnerProduct.h:50:23: note: Calling constructor for 'evaluator<Eigen::Product<Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>>'
+1>     50 |       : m_func(func), m_lhs(lhs), m_rhs(rhs), m_size(lhs.size()) {
+1>        |                       ^~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:43:82: note: Calling constructor for 'product_evaluator<Eigen::Product<Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>, 7, Eigen::DenseShape, Eigen::DenseShape, std::complex<double>, std::complex<double>>'
+1>     43 |   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE explicit evaluator(const XprType& xpr) : Base(xpr) {}
+1>        |                                                                                  ^~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:152:5: note: Calling 'generic_product_impl_base::evalTo'
+1>    152 |     generic_product_impl<Lhs, Rhs, LhsShape, RhsShape, ProductTag>::evalTo(m_result, xpr.lhs(), xpr.rhs());
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:447:5: note: Calling 'generic_product_impl_base::scaleAndAddTo'
+1>    447 |     scaleAndAddTo(dst, lhs, rhs, Scalar(1));
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:463:5: note: Calling 'generic_product_impl::scaleAndAddTo'
+1>    463 |     Derived::scaleAndAddTo(dst, lhs, rhs, alpha);
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:9: note: Assuming the condition is true
+1>    480 |     if (lhs.rows() == 1 && rhs.cols() == 1) {
+1>        |         ^~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:9: note: Left side of '&&' is true
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:28: note: Assuming the condition is false
+1>    480 |     if (lhs.rows() == 1 && rhs.cols() == 1) {
+1>        |                            ^~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:5: note: Taking false branch
+1>    480 |     if (lhs.rows() == 1 && rhs.cols() == 1) {
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:486:5: note: Calling 'gemv_dense_selector::run'
+1>    486 |     internal::gemv_dense_selector<Side, (int(MatrixType::Flags) & RowMajorBit) ? RowMajor : ColMajor,
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    487 |                                   bool(internal::blas_traits<MatrixType>::HasUsableDirectAccess)>::run(actual_lhs,
+1>        |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    488 |                                                                                                        actual_rhs, dst,
+1>        |                                                                                                        ~~~~~~~~~~~~~~~~
+1>    489 |                                                                                                        alpha);
+1>        |                                                                                                        ~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:404:5: note: Calling 'gemv_dense_selector::run_impl'
+1>    404 |     run_impl(lhs, rhs, dest, alpha,
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    405 |              functor_is_commutative<scalar_product_op<typename Lhs::Scalar, typename Rhs::Scalar>>());
+1>        |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:413:5: note: Calling 'gemv_dense_selector::run'
+1>    413 |     gemv_dense_selector<OnTheRight, OtherStorageOrder, BlasCompatible>::run(rhs.transpose(), lhs.transpose(), destT,
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    414 |                                                                             alpha);
+1>        |                                                                             ~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:563:67: note: 'Dynamic' is equal to ColsAtCompileTime
+1>    563 |     constexpr bool EnableSingleColumn = Lhs::ColsAtCompileTime == Dynamic && !NumTraits<ResScalar>::IsComplex &&
+1>        |                                                                   ^~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:563:41: note: Left side of '&&' is true
+1>    563 |     constexpr bool EnableSingleColumn = Lhs::ColsAtCompileTime == Dynamic && !NumTraits<ResScalar>::IsComplex &&
+1>        |                                         ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:563:111: note: Left side of '&&' is false
+1>    563 |     constexpr bool EnableSingleColumn = Lhs::ColsAtCompileTime == Dynamic && !NumTraits<ResScalar>::IsComplex &&
+1>        |                                                                                                               ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:567:5: note: Taking false branch
+1>    567 |     if (gemv_single_column<EnableSingleColumn, LhsBlasTraits::NeedToConjugate, RhsBlasTraits::NeedToConjugate>::run(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:584:9: note: '?' condition is true
+1>    584 |         DirectlyUseRhs ? const_cast<RhsScalar*>(actualRhs.data()) : static_rhs.data());
+1>        |         ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is false
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:901:16: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    901 |   TYPE* NAME = (BUFFER) != 0                                                                                      \
+1>        |                ^~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is false
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:901:16: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    901 |   TYPE* NAME = (BUFFER) != 0                                                                                      \
+1>        |                ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:903:47: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    903 |                    : reinterpret_cast<TYPE*>((sizeof(TYPE) * (SIZE) <= EIGEN_STACK_ALLOCATION_LIMIT)              \
+1>        |                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:903:46: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    903 |                    : reinterpret_cast<TYPE*>((sizeof(TYPE) * (SIZE) <= EIGEN_STACK_ALLOCATION_LIMIT)              \
+1>        |                                              ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:904:52: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    904 |                                                  ? EIGEN_TYPED_ALIGNED_ALLOCA(TYPE, sizeof(TYPE) * (SIZE))        \
+1>        |                                                    ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:891:4: note: expanded from macro 'EIGEN_TYPED_ALIGNED_ALLOCA'
+1>    891 |   (alignof(TYPE) <= EIGEN_STACK_ALIGN_BYTES                                                                     \
+1>        |    ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:584:9: note: '?' condition is true
+1>    584 |         DirectlyUseRhs ? const_cast<RhsScalar*>(actualRhs.data()) : static_rhs.data());
+1>        |         ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:7: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |       ^~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:7: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |       ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:39: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:597:3: note: Calling '~aligned_stack_memory_handler'
+1>    597 |   }
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:779:5: note: Taking false branch
+1>    779 |     EIGEN_IF_CONSTEXPR (NumTraits<T>::RequireInitialization) {
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:33: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                 ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:782:9: note: Field 'm_deallocate' is true
+1>    782 |     if (m_deallocate) Eigen::internal::scratch_free<T>(m_ptr);
+1>        |         ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:782:5: note: Taking true branch
+1>    782 |     if (m_deallocate) Eigen::internal::scratch_free<T>(m_ptr);
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:782:23: note: Calling 'scratch_free<std::complex<double>>'
+1>    782 |     if (m_deallocate) Eigen::internal::scratch_free<T>(m_ptr);
+1>        |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:727:61: note: Left side of '||' is true
+1>    727 |   EIGEN_IF_CONSTEXPR (alignof(T) <= EIGEN_STACK_ALIGN_BYTES ||
+1>        |                                                             ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:727:3: note: Taking true branch
+1>    727 |   EIGEN_IF_CONSTEXPR (alignof(T) <= EIGEN_STACK_ALIGN_BYTES ||
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:33: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                 ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:729:5: note: Calling 'scratch_free'
+1>    729 |     scratch_free(ptr);
+1>        |     ^~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:697:3: note: Calling 'aligned_free'
+1>    697 |   aligned_free(ptr);
+1>        |   ^~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:248:3: note: Taking true branch
+1>    248 |   if (ptr != nullptr) {
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:251:5: note: Memory allocated by 'alloca()' should not be deallocated
+1>    251 |     free(ptr);
+1>        |     ^    ~~~
+1>  Crystallography.Native.vcxproj -> C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\Crystallography.Native.dll
+1>  Building native variants: generic, avx2, avx512
+1>  In file included from EigenFuncs.cpp:25:
+1>  In file included from Eigen\../Eigen/Core:205:
+1>Eigen\../Eigen\src/Core/NumTraits.h(261,60): warning : use of infinity is undefined behavior due to the currently enabled floating-point options [-Wnan-infinity-disabled]
+1>    261 |   EIGEN_DEVICE_FUNC constexpr static T infinity() { return numext::numeric_limits<T>::infinity(); }
+1>        |                                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/arch/AVX/MathFunctions.h(96,79): note: in instantiation of member function 'Eigen::GenericNumTraits<float>::infinity' requested here
+1>     96 |   const Packet8f redo = pcmp_eq(pmul(a, e), pset1<Packet8f>(NumTraits<float>::infinity()));
+1>        |                                                                               ^
+1>  In file included from EigenFuncs.cpp:25:
+1>  In file included from Eigen\../Eigen/Core:205:
+1>Eigen\../Eigen\src/Core/NumTraits.h(261,60): warning : use of infinity is undefined behavior due to the currently enabled floating-point options [-Wnan-infinity-disabled]
+1>    261 |   EIGEN_DEVICE_FUNC constexpr static T infinity() { return numext::numeric_limits<T>::infinity(); }
+1>        |                                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/arch/Default\GenericPacketMathComplex.h(69,69): note: in instantiation of member function 'Eigen::GenericNumTraits<double>::infinity' requested here
+1>     69 |     const RealPacket inf = pset1<RealPacket>(NumTraits<RealScalar>::infinity());
+1>        |                                                                     ^
+1>  Eigen\../Eigen\src/Core/arch/SSE/Complex.h(367,10): note: in instantiation of function template specialization 'Eigen::internal::pdiv_complex<Eigen::internal::Packet1cd>' requested here
+1>    367 |   return pdiv_complex(a, b);
+1>        |          ^
+1>  2 warnings generated.
+1>  3 warnings generated.
+1>  Eigen\../Eigen\src/Core/NumTraits.h:261:60: warning: use of infinity is undefined behavior due to the currently enabled floating-point options [clang-diagnostic-nan-infinity-disabled]
+1>    261 |   EIGEN_DEVICE_FUNC constexpr static T infinity() { return numext::numeric_limits<T>::infinity(); }
+1>        |                                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/arch/AVX/MathFunctions.h:96:79: note: in instantiation of member function 'Eigen::GenericNumTraits<float>::infinity' requested here
+1>     96 |   const Packet8f redo = pcmp_eq(pmul(a, e), pset1<Packet8f>(NumTraits<float>::infinity()));
+1>        |                                                                               ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:178:51: warning: Out of bound access to memory preceding the memory returned by 'alloca' [clang-analyzer-security.ArrayBound]
+1>    178 |     std::size_t offset = static_cast<std::size_t>(*(static_cast<uint8_t*>(ptr) - 1)) + 1;
+1>        |                                                   ^
+1>  C:\Users\seto\source\repos\ReciPro\Crystallography.Native\EigenFuncs.cpp:221:3: note: Calling 'NoAlias::operator='
+1>    221 |                 Map<Mat>((dcomplex*)_result, 1, 1).noalias() = rV * m * cV;
+1>        |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/NoAlias.h:43:5: note: Calling 'call_assignment_no_alias<Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>, Eigen::Product<Eigen::Product<Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, 1>>>, Eigen::internal::assign_op<std::complex<double>, std::complex<double>>>'
+1>     43 |     call_assignment_no_alias(m_expression, other.derived(),
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>     44 |                              internal::assign_op<Scalar, typename OtherDerived::Scalar>());
+1>        |                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/AssignEvaluator.h:1061:3: note: Calling 'Assignment::run'
+1>   1061 |   Assignment<ActualDstTypeCleaned, Src, Func>::run(actualDst, src, func);
+1>        |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:171:5: note: Calling 'generic_product_impl::evalTo'
+1>    171 |     generic_product_impl<Lhs, Rhs>::evalTo(dst, src.lhs(), src.rhs());
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:274:26: note: Calling 'default_inner_product_impl::run'
+1>    274 |     dst.coeffRef(0, 0) = impl::run(lhs, rhs);
+1>        |                          ^~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/InnerProduct.h:218:15: note: Calling constructor for 'inner_product_evaluator<Eigen::internal::scalar_inner_product_op<std::complex<double>, std::complex<double>, false>, Eigen::Product<Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, 1>>>'
+1>    218 |     Evaluator eval(a.derived(), b.derived(), Op());
+1>        |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/InnerProduct.h:50:23: note: Calling constructor for 'evaluator<Eigen::Product<Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>>'
+1>     50 |       : m_func(func), m_lhs(lhs), m_rhs(rhs), m_size(lhs.size()) {
+1>        |                       ^~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:43:82: note: Calling constructor for 'product_evaluator<Eigen::Product<Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>, 7, Eigen::DenseShape, Eigen::DenseShape, std::complex<double>, std::complex<double>>'
+1>     43 |   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE explicit evaluator(const XprType& xpr) : Base(xpr) {}
+1>        |                                                                                  ^~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:152:5: note: Calling 'generic_product_impl_base::evalTo'
+1>    152 |     generic_product_impl<Lhs, Rhs, LhsShape, RhsShape, ProductTag>::evalTo(m_result, xpr.lhs(), xpr.rhs());
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:447:5: note: Calling 'generic_product_impl_base::scaleAndAddTo'
+1>    447 |     scaleAndAddTo(dst, lhs, rhs, Scalar(1));
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:463:5: note: Calling 'generic_product_impl::scaleAndAddTo'
+1>    463 |     Derived::scaleAndAddTo(dst, lhs, rhs, alpha);
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:9: note: Assuming the condition is true
+1>    480 |     if (lhs.rows() == 1 && rhs.cols() == 1) {
+1>        |         ^~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:9: note: Left side of '&&' is true
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:28: note: Assuming the condition is false
+1>    480 |     if (lhs.rows() == 1 && rhs.cols() == 1) {
+1>        |                            ^~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:5: note: Taking false branch
+1>    480 |     if (lhs.rows() == 1 && rhs.cols() == 1) {
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:486:5: note: Calling 'gemv_dense_selector::run'
+1>    486 |     internal::gemv_dense_selector<Side, (int(MatrixType::Flags) & RowMajorBit) ? RowMajor : ColMajor,
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    487 |                                   bool(internal::blas_traits<MatrixType>::HasUsableDirectAccess)>::run(actual_lhs,
+1>        |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    488 |                                                                                                        actual_rhs, dst,
+1>        |                                                                                                        ~~~~~~~~~~~~~~~~
+1>    489 |                                                                                                        alpha);
+1>        |                                                                                                        ~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:404:5: note: Calling 'gemv_dense_selector::run_impl'
+1>    404 |     run_impl(lhs, rhs, dest, alpha,
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    405 |              functor_is_commutative<scalar_product_op<typename Lhs::Scalar, typename Rhs::Scalar>>());
+1>        |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:413:5: note: Calling 'gemv_dense_selector::run'
+1>    413 |     gemv_dense_selector<OnTheRight, OtherStorageOrder, BlasCompatible>::run(rhs.transpose(), lhs.transpose(), destT,
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    414 |                                                                             alpha);
+1>        |                                                                             ~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:563:67: note: 'Dynamic' is equal to ColsAtCompileTime
+1>    563 |     constexpr bool EnableSingleColumn = Lhs::ColsAtCompileTime == Dynamic && !NumTraits<ResScalar>::IsComplex &&
+1>        |                                                                   ^~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:563:41: note: Left side of '&&' is true
+1>    563 |     constexpr bool EnableSingleColumn = Lhs::ColsAtCompileTime == Dynamic && !NumTraits<ResScalar>::IsComplex &&
+1>        |                                         ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:563:111: note: Left side of '&&' is false
+1>    563 |     constexpr bool EnableSingleColumn = Lhs::ColsAtCompileTime == Dynamic && !NumTraits<ResScalar>::IsComplex &&
+1>        |                                                                                                               ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:567:5: note: Taking false branch
+1>    567 |     if (gemv_single_column<EnableSingleColumn, LhsBlasTraits::NeedToConjugate, RhsBlasTraits::NeedToConjugate>::run(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:584:9: note: '?' condition is true
+1>    584 |         DirectlyUseRhs ? const_cast<RhsScalar*>(actualRhs.data()) : static_rhs.data());
+1>        |         ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is false
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:901:16: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    901 |   TYPE* NAME = (BUFFER) != 0                                                                                      \
+1>        |                ^~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is false
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:901:16: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    901 |   TYPE* NAME = (BUFFER) != 0                                                                                      \
+1>        |                ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:903:47: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    903 |                    : reinterpret_cast<TYPE*>((sizeof(TYPE) * (SIZE) <= EIGEN_STACK_ALLOCATION_LIMIT)              \
+1>        |                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:903:46: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    903 |                    : reinterpret_cast<TYPE*>((sizeof(TYPE) * (SIZE) <= EIGEN_STACK_ALLOCATION_LIMIT)              \
+1>        |                                              ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:904:52: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    904 |                                                  ? EIGEN_TYPED_ALIGNED_ALLOCA(TYPE, sizeof(TYPE) * (SIZE))        \
+1>        |                                                    ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:891:4: note: expanded from macro 'EIGEN_TYPED_ALIGNED_ALLOCA'
+1>    891 |   (alignof(TYPE) <= EIGEN_STACK_ALIGN_BYTES                                                                     \
+1>        |    ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:584:9: note: '?' condition is true
+1>    584 |         DirectlyUseRhs ? const_cast<RhsScalar*>(actualRhs.data()) : static_rhs.data());
+1>        |         ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:7: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |       ^~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:7: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |       ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:39: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:597:3: note: Calling '~aligned_stack_memory_handler'
+1>    597 |   }
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:779:5: note: Taking false branch
+1>    779 |     EIGEN_IF_CONSTEXPR (NumTraits<T>::RequireInitialization) {
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:33: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                 ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:782:9: note: Field 'm_deallocate' is true
+1>    782 |     if (m_deallocate) Eigen::internal::scratch_free<T>(m_ptr);
+1>        |         ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:782:5: note: Taking true branch
+1>    782 |     if (m_deallocate) Eigen::internal::scratch_free<T>(m_ptr);
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:782:23: note: Calling 'scratch_free<std::complex<double>>'
+1>    782 |     if (m_deallocate) Eigen::internal::scratch_free<T>(m_ptr);
+1>        |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:727:61: note: Left side of '||' is true
+1>    727 |   EIGEN_IF_CONSTEXPR (alignof(T) <= EIGEN_STACK_ALIGN_BYTES ||
+1>        |                                                             ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:727:3: note: Taking true branch
+1>    727 |   EIGEN_IF_CONSTEXPR (alignof(T) <= EIGEN_STACK_ALIGN_BYTES ||
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:33: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                 ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:729:5: note: Calling 'scratch_free'
+1>    729 |     scratch_free(ptr);
+1>        |     ^~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:697:3: note: Calling 'aligned_free'
+1>    697 |   aligned_free(ptr);
+1>        |   ^~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:255:3: note: Calling 'handmade_aligned_free'
+1>    255 |   handmade_aligned_free(ptr);
+1>        |   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:177:3: note: Taking true branch
+1>    177 |   if (ptr != nullptr) {
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:178:51: note: Access of 'unsigned char' element in the memory returned by 'alloca' at negative index -1
+1>    178 |     std::size_t offset = static_cast<std::size_t>(*(static_cast<uint8_t*>(ptr) - 1)) + 1;
+1>        |                                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Crystallography.Native.vcxproj -> C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\Crystallography.Native.avx2.dll
+1>  In file included from EigenFuncs.cpp:25:
+1>  In file included from Eigen\../Eigen/Core:205:
+1>Eigen\../Eigen\src/Core/NumTraits.h(261,60): warning : use of infinity is undefined behavior due to the currently enabled floating-point options [-Wnan-infinity-disabled]
+1>    261 |   EIGEN_DEVICE_FUNC constexpr static T infinity() { return numext::numeric_limits<T>::infinity(); }
+1>        |                                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/arch/AVX/MathFunctions.h(96,79): note: in instantiation of member function 'Eigen::GenericNumTraits<float>::infinity' requested here
+1>     96 |   const Packet8f redo = pcmp_eq(pmul(a, e), pset1<Packet8f>(NumTraits<float>::infinity()));
+1>        |                                                                               ^
+1>  In file included from EigenFuncs.cpp:25:
+1>  In file included from Eigen\../Eigen/Core:205:
+1>Eigen\../Eigen\src/Core/NumTraits.h(261,60): warning : use of infinity is undefined behavior due to the currently enabled floating-point options [-Wnan-infinity-disabled]
+1>    261 |   EIGEN_DEVICE_FUNC constexpr static T infinity() { return numext::numeric_limits<T>::infinity(); }
+1>        |                                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/arch/Default\GenericPacketMathComplex.h(69,69): note: in instantiation of member function 'Eigen::GenericNumTraits<double>::infinity' requested here
+1>     69 |     const RealPacket inf = pset1<RealPacket>(NumTraits<RealScalar>::infinity());
+1>        |                                                                     ^
+1>  Eigen\../Eigen\src/Core/arch/SSE/Complex.h(367,10): note: in instantiation of function template specialization 'Eigen::internal::pdiv_complex<Eigen::internal::Packet1cd>' requested here
+1>    367 |   return pdiv_complex(a, b);
+1>        |          ^
+1>  2 warnings generated.
+1>  3 warnings generated.
+1>  Eigen\../Eigen\src/Core/NumTraits.h:261:60: warning: use of infinity is undefined behavior due to the currently enabled floating-point options [clang-diagnostic-nan-infinity-disabled]
+1>    261 |   EIGEN_DEVICE_FUNC constexpr static T infinity() { return numext::numeric_limits<T>::infinity(); }
+1>        |                                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/arch/AVX/MathFunctions.h:96:79: note: in instantiation of member function 'Eigen::GenericNumTraits<float>::infinity' requested here
+1>     96 |   const Packet8f redo = pcmp_eq(pmul(a, e), pset1<Packet8f>(NumTraits<float>::infinity()));
+1>        |                                                                               ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:178:51: warning: Out of bound access to memory preceding the memory returned by 'alloca' [clang-analyzer-security.ArrayBound]
+1>    178 |     std::size_t offset = static_cast<std::size_t>(*(static_cast<uint8_t*>(ptr) - 1)) + 1;
+1>        |                                                   ^
+1>  C:\Users\seto\source\repos\ReciPro\Crystallography.Native\EigenFuncs.cpp:221:3: note: Calling 'NoAlias::operator='
+1>    221 |                 Map<Mat>((dcomplex*)_result, 1, 1).noalias() = rV * m * cV;
+1>        |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/NoAlias.h:43:5: note: Calling 'call_assignment_no_alias<Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>, Eigen::Product<Eigen::Product<Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, 1>>>, Eigen::internal::assign_op<std::complex<double>, std::complex<double>>>'
+1>     43 |     call_assignment_no_alias(m_expression, other.derived(),
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>     44 |                              internal::assign_op<Scalar, typename OtherDerived::Scalar>());
+1>        |                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/AssignEvaluator.h:1061:3: note: Calling 'Assignment::run'
+1>   1061 |   Assignment<ActualDstTypeCleaned, Src, Func>::run(actualDst, src, func);
+1>        |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:171:5: note: Calling 'generic_product_impl::evalTo'
+1>    171 |     generic_product_impl<Lhs, Rhs>::evalTo(dst, src.lhs(), src.rhs());
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:274:26: note: Calling 'default_inner_product_impl::run'
+1>    274 |     dst.coeffRef(0, 0) = impl::run(lhs, rhs);
+1>        |                          ^~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/InnerProduct.h:218:15: note: Calling constructor for 'inner_product_evaluator<Eigen::internal::scalar_inner_product_op<std::complex<double>, std::complex<double>, false>, Eigen::Product<Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, 1>>>'
+1>    218 |     Evaluator eval(a.derived(), b.derived(), Op());
+1>        |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/InnerProduct.h:50:23: note: Calling constructor for 'evaluator<Eigen::Product<Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>>'
+1>     50 |       : m_func(func), m_lhs(lhs), m_rhs(rhs), m_size(lhs.size()) {
+1>        |                       ^~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:43:82: note: Calling constructor for 'product_evaluator<Eigen::Product<Eigen::Map<Eigen::Matrix<std::complex<double>, 1, -1>>, Eigen::Map<Eigen::Matrix<std::complex<double>, -1, -1>>>, 7, Eigen::DenseShape, Eigen::DenseShape, std::complex<double>, std::complex<double>>'
+1>     43 |   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE explicit evaluator(const XprType& xpr) : Base(xpr) {}
+1>        |                                                                                  ^~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:152:5: note: Calling 'generic_product_impl_base::evalTo'
+1>    152 |     generic_product_impl<Lhs, Rhs, LhsShape, RhsShape, ProductTag>::evalTo(m_result, xpr.lhs(), xpr.rhs());
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:447:5: note: Calling 'generic_product_impl_base::scaleAndAddTo'
+1>    447 |     scaleAndAddTo(dst, lhs, rhs, Scalar(1));
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:463:5: note: Calling 'generic_product_impl::scaleAndAddTo'
+1>    463 |     Derived::scaleAndAddTo(dst, lhs, rhs, alpha);
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:9: note: Assuming the condition is true
+1>    480 |     if (lhs.rows() == 1 && rhs.cols() == 1) {
+1>        |         ^~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:9: note: Left side of '&&' is true
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:28: note: Assuming the condition is false
+1>    480 |     if (lhs.rows() == 1 && rhs.cols() == 1) {
+1>        |                            ^~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:480:5: note: Taking false branch
+1>    480 |     if (lhs.rows() == 1 && rhs.cols() == 1) {
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/ProductEvaluators.h:486:5: note: Calling 'gemv_dense_selector::run'
+1>    486 |     internal::gemv_dense_selector<Side, (int(MatrixType::Flags) & RowMajorBit) ? RowMajor : ColMajor,
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    487 |                                   bool(internal::blas_traits<MatrixType>::HasUsableDirectAccess)>::run(actual_lhs,
+1>        |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    488 |                                                                                                        actual_rhs, dst,
+1>        |                                                                                                        ~~~~~~~~~~~~~~~~
+1>    489 |                                                                                                        alpha);
+1>        |                                                                                                        ~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:404:5: note: Calling 'gemv_dense_selector::run_impl'
+1>    404 |     run_impl(lhs, rhs, dest, alpha,
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    405 |              functor_is_commutative<scalar_product_op<typename Lhs::Scalar, typename Rhs::Scalar>>());
+1>        |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:413:5: note: Calling 'gemv_dense_selector::run'
+1>    413 |     gemv_dense_selector<OnTheRight, OtherStorageOrder, BlasCompatible>::run(rhs.transpose(), lhs.transpose(), destT,
+1>        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>    414 |                                                                             alpha);
+1>        |                                                                             ~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:563:67: note: 'Dynamic' is equal to ColsAtCompileTime
+1>    563 |     constexpr bool EnableSingleColumn = Lhs::ColsAtCompileTime == Dynamic && !NumTraits<ResScalar>::IsComplex &&
+1>        |                                                                   ^~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:563:41: note: Left side of '&&' is true
+1>    563 |     constexpr bool EnableSingleColumn = Lhs::ColsAtCompileTime == Dynamic && !NumTraits<ResScalar>::IsComplex &&
+1>        |                                         ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:563:111: note: Left side of '&&' is false
+1>    563 |     constexpr bool EnableSingleColumn = Lhs::ColsAtCompileTime == Dynamic && !NumTraits<ResScalar>::IsComplex &&
+1>        |                                                                                                               ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:567:5: note: Taking false branch
+1>    567 |     if (gemv_single_column<EnableSingleColumn, LhsBlasTraits::NeedToConjugate, RhsBlasTraits::NeedToConjugate>::run(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:584:9: note: '?' condition is true
+1>    584 |         DirectlyUseRhs ? const_cast<RhsScalar*>(actualRhs.data()) : static_rhs.data());
+1>        |         ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is false
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:901:16: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    901 |   TYPE* NAME = (BUFFER) != 0                                                                                      \
+1>        |                ^~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is false
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:901:16: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    901 |   TYPE* NAME = (BUFFER) != 0                                                                                      \
+1>        |                ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:903:47: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    903 |                    : reinterpret_cast<TYPE*>((sizeof(TYPE) * (SIZE) <= EIGEN_STACK_ALLOCATION_LIMIT)              \
+1>        |                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:903:46: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    903 |                    : reinterpret_cast<TYPE*>((sizeof(TYPE) * (SIZE) <= EIGEN_STACK_ALLOCATION_LIMIT)              \
+1>        |                                              ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:904:52: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    904 |                                                  ? EIGEN_TYPED_ALIGNED_ALLOCA(TYPE, sizeof(TYPE) * (SIZE))        \
+1>        |                                                    ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:891:4: note: expanded from macro 'EIGEN_TYPED_ALIGNED_ALLOCA'
+1>    891 |   (alignof(TYPE) <= EIGEN_STACK_ALIGN_BYTES                                                                     \
+1>        |    ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:584:9: note: '?' condition is true
+1>    584 |         DirectlyUseRhs ? const_cast<RhsScalar*>(actualRhs.data()) : static_rhs.data());
+1>        |         ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:7: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |       ^~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: '?' condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:7: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |       ^
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:582:5: note: Assuming the condition is true
+1>    582 |     ei_declare_aligned_stack_constructed_variable(
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:907:39: note: expanded from macro 'ei_declare_aligned_stack_constructed_variable'
+1>    907 |       (BUFFER) == 0 ? NAME : 0, SIZE, sizeof(TYPE) * (SIZE) > EIGEN_STACK_ALLOCATION_LIMIT)
+1>        |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/GeneralProduct.h:597:3: note: Calling '~aligned_stack_memory_handler'
+1>    597 |   }
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:779:5: note: Taking false branch
+1>    779 |     EIGEN_IF_CONSTEXPR (NumTraits<T>::RequireInitialization) {
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:33: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                 ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:782:9: note: Field 'm_deallocate' is true
+1>    782 |     if (m_deallocate) Eigen::internal::scratch_free<T>(m_ptr);
+1>        |         ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:782:5: note: Taking true branch
+1>    782 |     if (m_deallocate) Eigen::internal::scratch_free<T>(m_ptr);
+1>        |     ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:782:23: note: Calling 'scratch_free<std::complex<double>>'
+1>    782 |     if (m_deallocate) Eigen::internal::scratch_free<T>(m_ptr);
+1>        |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:727:61: note: Left side of '||' is true
+1>    727 |   EIGEN_IF_CONSTEXPR (alignof(T) <= EIGEN_STACK_ALIGN_BYTES ||
+1>        |                                                             ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:727:3: note: Taking true branch
+1>    727 |   EIGEN_IF_CONSTEXPR (alignof(T) <= EIGEN_STACK_ALIGN_BYTES ||
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Macros.h:1677:33: note: expanded from macro 'EIGEN_IF_CONSTEXPR'
+1>   1677 | #define EIGEN_IF_CONSTEXPR(...) if constexpr (__VA_ARGS__)
+1>        |                                 ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:729:5: note: Calling 'scratch_free'
+1>    729 |     scratch_free(ptr);
+1>        |     ^~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:697:3: note: Calling 'aligned_free'
+1>    697 |   aligned_free(ptr);
+1>        |   ^~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:255:3: note: Calling 'handmade_aligned_free'
+1>    255 |   handmade_aligned_free(ptr);
+1>        |   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Eigen\../Eigen\src/Core/util/Memory.h:177:3: note: Taking true branch
+1>    177 |   if (ptr != nullptr) {
+1>        |   ^
+1>  Eigen\../Eigen\src/Core/util/Memory.h:178:51: note: Access of 'unsigned char' element in the memory returned by 'alloca' at negative index -1
+1>    178 |     std::size_t offset = static_cast<std::size_t>(*(static_cast<uint8_t*>(ptr) - 1)) + 1;
+1>        |                                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1>  Crystallography.Native.vcxproj -> C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\Crystallography.Native.avx512.dll
+========== ビルド: 成功 1、失敗 0、最新の状態 0、スキップ 0 ==========
+=========== ビルド は 17:03 で完了し、03:35.524 分 掛かりました ==========
+

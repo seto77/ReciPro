@@ -1,0 +1,24 @@
+{
+  "Label": "GaAs256",
+  "backend": "Mkl2026_Schur",
+  "n": 256,
+  "referenceResidual": 6.694624089503431E-16,
+  "residual": 3.7727658750149204E-16,
+  "waveDifference": 4.78401002313507E-14,
+  "boundary": 5.334028866919407E-16,
+  "referenceBoundary": 7.772643551114874E-16,
+  "referenceFusedDifference": 6.497413668604476E-16,
+  "fusedDifference": 5.311767472816654E-16,
+  "fluxDifference": 3.885780586188048E-15,
+  "conservedFluxError": 0,
+  "flux": [
+    0.9999999999999996,
+    0.7410769331580884,
+    0.5884887914092733
+  ],
+  "referenceFlux": [
+    0.9999999999999984,
+    0.7410769331580845,
+    0.5884887914092763
+  ]
+}

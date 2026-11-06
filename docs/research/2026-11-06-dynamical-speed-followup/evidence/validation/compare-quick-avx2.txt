@@ -1,0 +1,46 @@
+A: C:\tmp\recipro_speed_261106\baseline-quick-avx2.bin (2026-11-06T17:12:26.1075356+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx2.dll, nativeSha=8F999DB81F02, flavorEnv=avx2, crystallography=1.0.0+b575e701ee8bed6a60cc3fa6238867d7fd7d6a2f)
+B: C:\tmp\recipro_speed_261106\current-quick-avx2.bin (2026-11-06T17:12:37.1158964+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx2.dll, nativeSha=4A3CB69F562C, flavorEnv=avx2, crystallography=1.0.0+9c463498d6593bcb7a0c2f3c84ca30ddfc827d0b)
+
+dataset                                             n       max|Δ| rel(max/scale)    rms/scale
+Au/CBED/final                                  101439   4.677e-014     6.581e-014   1.740e-015
+Au/CBED/raw                                    202878   8.538e-014     1.498e-013   3.066e-015
+Au/EBSD/amp                                     18432   1.374e-015     1.715e-014   1.872e-015
+Au/HRTEM/img                                    16384   4.552e-015     5.869e-015   3.835e-015
+Au/POT/img                                      65536   0.000e+000     0.000e+000   0.000e+000
+Au/STEM/both                                     4096   1.554e-015     2.662e-015   6.625e-016
+Au/STEM/ela                                      4096   7.199e-017     5.876e-015   3.774e-015
+Au/STEM/tds                                      4096   1.554e-015     2.697e-015   6.884e-016
+C (Graphite)/CBED/final                        110109   1.062e-013     1.028e-013   2.372e-015
+C (Graphite)/CBED/raw                          220218   2.262e-013     2.573e-013   4.013e-015
+C (Graphite)/EBSD/amp                           18432   2.463e-016     7.159e-015   1.062e-015
+C (Graphite)/HRTEM/img                          16384   4.774e-015     1.999e-015   9.004e-016
+C (Graphite)/POT/img                            65536   0.000e+000     0.000e+000   0.000e+000
+C (Graphite)/STEM/both                           4096   6.939e-017     2.941e-015   7.641e-016
+C (Graphite)/STEM/ela                            4096   1.325e-017     7.268e-014   3.788e-014
+C (Graphite)/STEM/tds                            4096   7.633e-017     3.258e-015   7.397e-016
+Fe3O4 (magnetite)/CBED/final                   108375   2.920e-014     3.335e-014   2.658e-015
+Fe3O4 (magnetite)/CBED/raw                     216750   6.542e-014     1.082e-013   3.164e-015
+Fe3O4 (magnetite)/EBSD/amp                      18432   2.984e-016     4.037e-015   8.345e-016
+Fe3O4 (magnetite)/HRTEM/img                     16384   1.799e-014     7.139e-015   1.275e-015
+Fe3O4 (magnetite)/POT/img                       65536   0.000e+000     0.000e+000   0.000e+000
+Fe3O4 (magnetite)/STEM/both                      4096   6.939e-016     3.512e-015   9.961e-016
+Fe3O4 (magnetite)/STEM/ela                       4096   1.213e-018     2.077e-014   7.116e-015
+Fe3O4 (magnetite)/STEM/tds                       4096   6.939e-016     3.512e-015   9.965e-016
+SiO2 (qtz)/CBED/final                          110109   5.995e-014     6.604e-014   3.386e-015
+SiO2 (qtz)/CBED/raw                            220218   1.166e-013     1.876e-013   5.156e-015
+SiO2 (qtz)/EBSD/amp                             18432   1.908e-016     4.231e-015   7.473e-016
+SiO2 (qtz)/HRTEM/img                            16384   2.220e-014     4.510e-015   8.872e-016
+SiO2 (qtz)/POT/img                              65536   0.000e+000     0.000e+000   0.000e+000
+SiO2 (qtz)/STEM/both                             4096   2.220e-016     4.492e-015   1.007e-015
+SiO2 (qtz)/STEM/ela                              4096   1.084e-019     3.914e-014   1.400e-014
+SiO2 (qtz)/STEM/tds                              4096   2.220e-016     4.492e-015   1.007e-015
+Silicon (I)/CBED/final                         108375   7.228e-014     7.207e-014   3.081e-015
+Silicon (I)/CBED/raw                           216750   1.321e-013     1.488e-013   3.416e-015
+Silicon (I)/EBSD/amp                            18432   2.984e-016     5.145e-015   1.104e-015
+Silicon (I)/HRTEM/img                           16384   3.664e-015     2.271e-015   7.493e-016
+Silicon (I)/POT/img                             65536   0.000e+000     0.000e+000   0.000e+000
+Silicon (I)/STEM/both                            4096   1.388e-016     2.410e-015   6.015e-016
+Silicon (I)/STEM/ela                             4096   1.605e-017     4.918e-014   1.652e-014
+Silicon (I)/STEM/tds                             4096   1.527e-016     2.666e-015   6.481e-016
+
+PASS (tol=1.0e-012)

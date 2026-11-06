@@ -1,0 +1,24 @@
+{
+  "Label": "GaAs256",
+  "backend": "Gpu1331_Default",
+  "n": 256,
+  "referenceResidual": 6.694624089503431E-16,
+  "residual": 3.8395641025510025E-16,
+  "waveDifference": 2.0290190745242396E-14,
+  "boundary": 3.3336890114588173E-16,
+  "referenceBoundary": 7.772643551114874E-16,
+  "referenceFusedDifference": 6.497413668604476E-16,
+  "fusedDifference": 0,
+  "fluxDifference": 5.662137425588298E-15,
+  "conservedFluxError": 0,
+  "flux": [
+    0.9999999999999993,
+    0.7410769331580789,
+    0.5884887914092751
+  ],
+  "referenceFlux": [
+    0.9999999999999984,
+    0.7410769331580845,
+    0.5884887914092763
+  ]
+}

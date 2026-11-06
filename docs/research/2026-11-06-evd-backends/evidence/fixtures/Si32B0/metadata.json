@@ -1,0 +1,192 @@
+{
+  "fixture": {
+    "label": "Si32B0",
+    "n": 32,
+    "requested": 32,
+    "physical": true,
+    "species": "Si",
+    "voltageKv": 200,
+    "offZoneDeg": 0.5,
+    "surfaceTiltDeg": 23,
+    "latticeNm": 0.54309,
+    "bisoAngstromSquared": 0,
+    "noAbsorption": true,
+    "expandedAtomCounts": [
+      8
+    ],
+    "elasticIonModel": "Neutral",
+    "absorptionElasticModel": "TemariHybrid",
+    "beamCandidateMultiplier": 0,
+    "beamBoundaryTieMode": "DropGroup",
+    "hkl": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        -2,
+        2,
+        0
+      ],
+      [
+        -2,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        0
+      ],
+      [
+        0,
+        2,
+        0
+      ],
+      [
+        2,
+        2,
+        0
+      ],
+      [
+        -2,
+        4,
+        0
+      ],
+      [
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        -2,
+        0
+      ],
+      [
+        2,
+        4,
+        0
+      ],
+      [
+        -4,
+        2,
+        0
+      ],
+      [
+        -2,
+        -2,
+        0
+      ],
+      [
+        -4,
+        0,
+        0
+      ],
+      [
+        2,
+        -2,
+        0
+      ],
+      [
+        -4,
+        4,
+        0
+      ],
+      [
+        0,
+        6,
+        0
+      ],
+      [
+        4,
+        2,
+        0
+      ],
+      [
+        -2,
+        6,
+        0
+      ],
+      [
+        4,
+        0,
+        0
+      ],
+      [
+        -4,
+        -2,
+        0
+      ],
+      [
+        2,
+        6,
+        0
+      ],
+      [
+        4,
+        4,
+        0
+      ],
+      [
+        0,
+        -4,
+        0
+      ],
+      [
+        -6,
+        2,
+        0
+      ],
+      [
+        4,
+        -2,
+        0
+      ],
+      [
+        -2,
+        -4,
+        0
+      ],
+      [
+        -4,
+        6,
+        0
+      ],
+      [
+        -6,
+        0,
+        0
+      ],
+      [
+        2,
+        -4,
+        0
+      ],
+      [
+        -6,
+        4,
+        0
+      ],
+      [
+        4,
+        6,
+        0
+      ],
+      [
+        6,
+        2,
+        0
+      ]
+    ]
+  },
+  "n": 32,
+  "layout": "column-major; complex Float64 real/imag interleaved; little-endian; waves[t*N\u002Bg]",
+  "thicknessesNm": [
+    0,
+    35,
+    100
+  ],
+  "matrixSha256": "41838490B3C479664F291722281747FE8DE64F7F2C113345D6EDFFC567DC038E"
+}

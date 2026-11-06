@@ -1,0 +1,878 @@
+NativeWrapper.Enabled = True
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 12 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// ***** Done, took 00:00:00 (0.03 sec)   *****
+// Found 12 benchmarks:
+//   EvdBackendBenchmark.EigenEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si128]
+//   EvdBackendBenchmark.CandidateEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si128]
+//   EvdBackendBenchmark.EigenEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si448]
+//   EvdBackendBenchmark.CandidateEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si448]
+//   EvdBackendBenchmark.EigenEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si640]
+//   EvdBackendBenchmark.CandidateEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si640]
+//   EvdBackendBenchmark.EigenPropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si128]
+//   EvdBackendBenchmark.CandidatePropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si128]
+//   EvdBackendBenchmark.EigenPropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si448]
+//   EvdBackendBenchmark.CandidatePropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si448]
+//   EvdBackendBenchmark.EigenPropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si640]
+//   EvdBackendBenchmark.CandidatePropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si640]
+
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: 高パフォーマンス)
+// **************************
+// Benchmark: EvdBackendBenchmark.EigenEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si128]
+// *** Execute ***
+// Launch: 1 / 1
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.16.0-preview.2
+// Runtime=.NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+// GC=Concurrent Server
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-YLDRND(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3)
+
+ProcessorCount=2; MKL_NUM_THREADS=1; OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
+REFERENCE=C:\tmp\recipro_evd_261106\baseline\Crystallography.Native.avx512.dll; SHA256=78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174
+CPU algorithm=3; label=MathNetMkl_Schur; adapter=C:\Users\seto\source\repos\ReciPro\tools\EvdBackendStudy261106\cpu_adapter.dll; backend=C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\libMathNetNumericsMKL.dll; workspaceElements=0; candidate reusable workspace, input copy included
+ADAPTER_SHA256=EE18CBF60EEE82E28E8962E22510EB466232F1D5AE1D95AB9BED99F4F11FCA27
+BACKEND_SHA256=7ABDCB4FBBB282D68526CC02EF01C36CB007F09FC60CC4C9688A0AE8F51B3EEC
+{"Label":"Si128","backend":"MathNetMkl_Schur","n":128,"referenceResidual":3.5321003735547966E-16,"residual":3.7491929266887354E-16,"waveDifference":3.017530219943414E-14,"boundary":2.220683449797542E-16,"referenceBoundary":5.478245367618742E-16,"referenceFusedDifference":6.473657049138938E-16,"fusedDifference":6.707437923744495E-16,"fluxDifference":4.551914400963142E-15,"conservedFluxError":0,"flux":[0.9999999999999996,0.9320685294664369,0.8094184153275363],"referenceFlux":[1,0.9320685294664351,0.8094184153275318]}
+WorkloadWarmup   1: 1 op, 8266800.00 ns, 8.2668 ms/op
+WorkloadWarmup   2: 1 op, 9681600.00 ns, 9.6816 ms/op
+WorkloadWarmup   3: 1 op, 7700100.00 ns, 7.7001 ms/op
+
+WorkloadActual   1: 1 op, 8790100.00 ns, 8.7901 ms/op
+WorkloadActual   2: 1 op, 7096600.00 ns, 7.0966 ms/op
+WorkloadActual   3: 1 op, 6482300.00 ns, 6.4823 ms/op
+WorkloadActual   4: 1 op, 8358600.00 ns, 8.3586 ms/op
+WorkloadActual   5: 1 op, 7236100.00 ns, 7.2361 ms/op
+WorkloadActual   6: 1 op, 11026200.00 ns, 11.0262 ms/op
+WorkloadActual   7: 1 op, 8155000.00 ns, 8.1550 ms/op
+WorkloadActual   8: 1 op, 7072700.00 ns, 7.0727 ms/op
+
+WorkloadExtra    1: 1 op, 7309100.00 ns, 7.3091 ms/op
+WorkloadResult   1: 1 op, 8790100.00 ns, 8.7901 ms/op
+WorkloadResult   2: 1 op, 7096600.00 ns, 7.0966 ms/op
+WorkloadResult   3: 1 op, 6482300.00 ns, 6.4823 ms/op
+WorkloadResult   4: 1 op, 8358600.00 ns, 8.3586 ms/op
+WorkloadResult   5: 1 op, 7236100.00 ns, 7.2361 ms/op
+WorkloadResult   6: 1 op, 11026200.00 ns, 11.0262 ms/op
+WorkloadResult   7: 1 op, 8155000.00 ns, 8.1550 ms/op
+WorkloadResult   8: 1 op, 7072700.00 ns, 7.0727 ms/op
+// GC:  0 0 0 0 1
+
+
+Mean = 8.027 ms, StdErr = 0.509 ms (6.34%), N = 8, StdDev = 1.439 ms
+Min = 6.482 ms, Q1 = 7.091 ms, Median = 7.696 ms, Q3 = 8.466 ms, Max = 11.026 ms
+IQR = 1.376 ms, LowerFence = 5.027 ms, UpperFence = 10.530 ms
+ConfidenceInterval = [5.276 ms; 10.778 ms] (CI 99.9%), Margin = 2.751 ms (34.27% of Mean)
+Skewness = 0.91, Kurtosis = 2.59, MValue = 3.5
+
+// ** Remained 11 (91.7%) benchmark(s) to run. Estimated finish 2026-11-06 22:11 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: 高パフォーマンス)
+// **************************
+// Benchmark: EvdBackendBenchmark.CandidateEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si128]
+// *** Execute ***
+// Launch: 1 / 1
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.16.0-preview.2
+// Runtime=.NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+// GC=Concurrent Server
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-YLDRND(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3)
+
+ProcessorCount=2; MKL_NUM_THREADS=1; OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
+REFERENCE=C:\tmp\recipro_evd_261106\baseline\Crystallography.Native.avx512.dll; SHA256=78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174
+CPU algorithm=3; label=MathNetMkl_Schur; adapter=C:\Users\seto\source\repos\ReciPro\tools\EvdBackendStudy261106\cpu_adapter.dll; backend=C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\libMathNetNumericsMKL.dll; workspaceElements=0; candidate reusable workspace, input copy included
+ADAPTER_SHA256=EE18CBF60EEE82E28E8962E22510EB466232F1D5AE1D95AB9BED99F4F11FCA27
+BACKEND_SHA256=7ABDCB4FBBB282D68526CC02EF01C36CB007F09FC60CC4C9688A0AE8F51B3EEC
+{"Label":"Si128","backend":"MathNetMkl_Schur","n":128,"referenceResidual":3.5321003735547966E-16,"residual":3.7491929266887354E-16,"waveDifference":3.017530219943414E-14,"boundary":2.220683449797542E-16,"referenceBoundary":5.478245367618742E-16,"referenceFusedDifference":6.473657049138938E-16,"fusedDifference":6.707437923744495E-16,"fluxDifference":4.551914400963142E-15,"conservedFluxError":0,"flux":[0.9999999999999996,0.9320685294664369,0.8094184153275363],"referenceFlux":[1,0.9320685294664351,0.8094184153275318]}
+WorkloadWarmup   1: 1 op, 16257300.00 ns, 16.2573 ms/op
+WorkloadWarmup   2: 1 op, 14576800.00 ns, 14.5768 ms/op
+WorkloadWarmup   3: 1 op, 21362100.00 ns, 21.3621 ms/op
+
+WorkloadActual   1: 1 op, 15825800.00 ns, 15.8258 ms/op
+WorkloadActual   2: 1 op, 38213600.00 ns, 38.2136 ms/op
+WorkloadActual   3: 1 op, 20868000.00 ns, 20.8680 ms/op
+WorkloadActual   4: 1 op, 17802600.00 ns, 17.8026 ms/op
+WorkloadActual   5: 1 op, 28242900.00 ns, 28.2429 ms/op
+WorkloadActual   6: 1 op, 19747000.00 ns, 19.7470 ms/op
+WorkloadActual   7: 1 op, 14941200.00 ns, 14.9412 ms/op
+WorkloadActual   8: 1 op, 18798700.00 ns, 18.7987 ms/op
+
+WorkloadExtra    1: 1 op, 15581800.00 ns, 15.5818 ms/op
+WorkloadResult   1: 1 op, 15825800.00 ns, 15.8258 ms/op
+WorkloadResult   2: 1 op, 38213600.00 ns, 38.2136 ms/op
+WorkloadResult   3: 1 op, 20868000.00 ns, 20.8680 ms/op
+WorkloadResult   4: 1 op, 17802600.00 ns, 17.8026 ms/op
+WorkloadResult   5: 1 op, 28242900.00 ns, 28.2429 ms/op
+WorkloadResult   6: 1 op, 19747000.00 ns, 19.7470 ms/op
+WorkloadResult   7: 1 op, 14941200.00 ns, 14.9412 ms/op
+WorkloadResult   8: 1 op, 18798700.00 ns, 18.7987 ms/op
+// GC:  0 0 0 0 1
+
+
+Mean = 21.805 ms, StdErr = 2.751 ms (12.62%), N = 8, StdDev = 7.780 ms
+Min = 14.941 ms, Q1 = 17.308 ms, Median = 19.273 ms, Q3 = 22.712 ms, Max = 38.214 ms
+IQR = 5.403 ms, LowerFence = 9.203 ms, UpperFence = 30.817 ms
+ConfidenceInterval = [6.929 ms; 36.681 ms] (CI 99.9%), Margin = 14.876 ms (68.22% of Mean)
+Skewness = 1.07, Kurtosis = 2.66, MValue = 2.33
+
+// ** Remained 10 (83.3%) benchmark(s) to run. Estimated finish 2026-11-06 22:11 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: 高パフォーマンス)
+// **************************
+// Benchmark: EvdBackendBenchmark.EigenEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si448]
+// *** Execute ***
+// Launch: 1 / 1
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.16.0-preview.2
+// Runtime=.NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+// GC=Concurrent Server
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-YLDRND(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3)
+
+ProcessorCount=2; MKL_NUM_THREADS=1; OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
+REFERENCE=C:\tmp\recipro_evd_261106\baseline\Crystallography.Native.avx512.dll; SHA256=78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174
+CPU algorithm=3; label=MathNetMkl_Schur; adapter=C:\Users\seto\source\repos\ReciPro\tools\EvdBackendStudy261106\cpu_adapter.dll; backend=C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\libMathNetNumericsMKL.dll; workspaceElements=0; candidate reusable workspace, input copy included
+ADAPTER_SHA256=EE18CBF60EEE82E28E8962E22510EB466232F1D5AE1D95AB9BED99F4F11FCA27
+BACKEND_SHA256=7ABDCB4FBBB282D68526CC02EF01C36CB007F09FC60CC4C9688A0AE8F51B3EEC
+{"Label":"Si448","backend":"MathNetMkl_Schur","n":448,"referenceResidual":5.96125909265339E-16,"residual":3.9555843171964444E-16,"waveDifference":1.1784118224795166E-13,"boundary":2.244768382970926E-16,"referenceBoundary":1.180539009098806E-16,"referenceFusedDifference":1.0720984053762522E-15,"fusedDifference":4.126162952233365E-16,"fluxDifference":3.1086244689504383E-15,"conservedFluxError":0,"flux":[1.0000000000000004,0.9293804566184442,0.8018838981544609],"referenceFlux":[0.9999999999999998,0.9293804566184422,0.8018838981544578]}
+WorkloadWarmup   1: 1 op, 368011500.00 ns, 368.0115 ms/op
+WorkloadWarmup   2: 1 op, 285031200.00 ns, 285.0312 ms/op
+WorkloadWarmup   3: 1 op, 300355500.00 ns, 300.3555 ms/op
+
+WorkloadActual   1: 1 op, 345081700.00 ns, 345.0817 ms/op
+WorkloadActual   2: 1 op, 278422500.00 ns, 278.4225 ms/op
+WorkloadActual   3: 1 op, 284589200.00 ns, 284.5892 ms/op
+WorkloadActual   4: 1 op, 308437400.00 ns, 308.4374 ms/op
+WorkloadActual   5: 1 op, 276755700.00 ns, 276.7557 ms/op
+WorkloadActual   6: 1 op, 268176900.00 ns, 268.1769 ms/op
+WorkloadActual   7: 1 op, 395565900.00 ns, 395.5659 ms/op
+WorkloadActual   8: 1 op, 296326600.00 ns, 296.3266 ms/op
+
+WorkloadExtra    1: 1 op, 304605200.00 ns, 304.6052 ms/op
+WorkloadResult   1: 1 op, 345081700.00 ns, 345.0817 ms/op
+WorkloadResult   2: 1 op, 278422500.00 ns, 278.4225 ms/op
+WorkloadResult   3: 1 op, 284589200.00 ns, 284.5892 ms/op
+WorkloadResult   4: 1 op, 308437400.00 ns, 308.4374 ms/op
+WorkloadResult   5: 1 op, 276755700.00 ns, 276.7557 ms/op
+WorkloadResult   6: 1 op, 268176900.00 ns, 268.1769 ms/op
+WorkloadResult   7: 1 op, 395565900.00 ns, 395.5659 ms/op
+WorkloadResult   8: 1 op, 296326600.00 ns, 296.3266 ms/op
+// GC:  0 0 0 0 1
+
+
+Mean = 306.669 ms, StdErr = 15.324 ms (5.00%), N = 8, StdDev = 43.343 ms
+Min = 268.177 ms, Q1 = 278.006 ms, Median = 290.458 ms, Q3 = 317.598 ms, Max = 395.566 ms
+IQR = 39.593 ms, LowerFence = 218.617 ms, UpperFence = 376.987 ms
+ConfidenceInterval = [223.799 ms; 389.540 ms] (CI 99.9%), Margin = 82.870 ms (27.02% of Mean)
+Skewness = 0.98, Kurtosis = 2.43, MValue = 2
+
+// ** Remained 9 (75.0%) benchmark(s) to run. Estimated finish 2026-11-06 22:11 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: 高パフォーマンス)
+// **************************
+// Benchmark: EvdBackendBenchmark.CandidateEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si448]
+// *** Execute ***
+// Launch: 1 / 1
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.16.0-preview.2
+// Runtime=.NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+// GC=Concurrent Server
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-YLDRND(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3)
+
+ProcessorCount=2; MKL_NUM_THREADS=1; OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
+REFERENCE=C:\tmp\recipro_evd_261106\baseline\Crystallography.Native.avx512.dll; SHA256=78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174
+CPU algorithm=3; label=MathNetMkl_Schur; adapter=C:\Users\seto\source\repos\ReciPro\tools\EvdBackendStudy261106\cpu_adapter.dll; backend=C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\libMathNetNumericsMKL.dll; workspaceElements=0; candidate reusable workspace, input copy included
+ADAPTER_SHA256=EE18CBF60EEE82E28E8962E22510EB466232F1D5AE1D95AB9BED99F4F11FCA27
+BACKEND_SHA256=7ABDCB4FBBB282D68526CC02EF01C36CB007F09FC60CC4C9688A0AE8F51B3EEC
+{"Label":"Si448","backend":"MathNetMkl_Schur","n":448,"referenceResidual":5.96125909265339E-16,"residual":3.9555843171964444E-16,"waveDifference":1.1784118224795166E-13,"boundary":2.244768382970926E-16,"referenceBoundary":1.180539009098806E-16,"referenceFusedDifference":1.0720984053762522E-15,"fusedDifference":4.126162952233365E-16,"fluxDifference":3.1086244689504383E-15,"conservedFluxError":0,"flux":[1.0000000000000004,0.9293804566184442,0.8018838981544609],"referenceFlux":[0.9999999999999998,0.9293804566184422,0.8018838981544578]}
+WorkloadWarmup   1: 1 op, 383925100.00 ns, 383.9251 ms/op
+WorkloadWarmup   2: 1 op, 363290500.00 ns, 363.2905 ms/op
+WorkloadWarmup   3: 1 op, 357840100.00 ns, 357.8401 ms/op
+
+WorkloadActual   1: 1 op, 371243800.00 ns, 371.2438 ms/op
+WorkloadActual   2: 1 op, 384283900.00 ns, 384.2839 ms/op
+WorkloadActual   3: 1 op, 379479200.00 ns, 379.4792 ms/op
+WorkloadActual   4: 1 op, 349375300.00 ns, 349.3753 ms/op
+WorkloadActual   5: 1 op, 372912500.00 ns, 372.9125 ms/op
+WorkloadActual   6: 1 op, 343713300.00 ns, 343.7133 ms/op
+WorkloadActual   7: 1 op, 345251100.00 ns, 345.2511 ms/op
+WorkloadActual   8: 1 op, 393611200.00 ns, 393.6112 ms/op
+
+WorkloadExtra    1: 1 op, 366984300.00 ns, 366.9843 ms/op
+WorkloadResult   1: 1 op, 371243800.00 ns, 371.2438 ms/op
+WorkloadResult   2: 1 op, 384283900.00 ns, 384.2839 ms/op
+WorkloadResult   3: 1 op, 379479200.00 ns, 379.4792 ms/op
+WorkloadResult   4: 1 op, 349375300.00 ns, 349.3753 ms/op
+WorkloadResult   5: 1 op, 372912500.00 ns, 372.9125 ms/op
+WorkloadResult   6: 1 op, 343713300.00 ns, 343.7133 ms/op
+WorkloadResult   7: 1 op, 345251100.00 ns, 345.2511 ms/op
+WorkloadResult   8: 1 op, 393611200.00 ns, 393.6112 ms/op
+// GC:  0 0 0 0 1
+
+
+Mean = 367.484 ms, StdErr = 6.734 ms (1.83%), N = 8, StdDev = 19.047 ms
+Min = 343.713 ms, Q1 = 348.344 ms, Median = 372.078 ms, Q3 = 380.680 ms, Max = 393.611 ms
+IQR = 32.336 ms, LowerFence = 299.840 ms, UpperFence = 429.185 ms
+ConfidenceInterval = [331.066 ms; 403.902 ms] (CI 99.9%), Margin = 36.418 ms (9.91% of Mean)
+Skewness = -0.11, Kurtosis = 1.18, MValue = 3.2
+
+// ** Remained 8 (66.7%) benchmark(s) to run. Estimated finish 2026-11-06 22:12 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: 高パフォーマンス)
+// **************************
+// Benchmark: EvdBackendBenchmark.EigenEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si640]
+// *** Execute ***
+// Launch: 1 / 1
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.16.0-preview.2
+// Runtime=.NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+// GC=Concurrent Server
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-YLDRND(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3)
+
+ProcessorCount=2; MKL_NUM_THREADS=1; OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
+REFERENCE=C:\tmp\recipro_evd_261106\baseline\Crystallography.Native.avx512.dll; SHA256=78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174
+CPU algorithm=3; label=MathNetMkl_Schur; adapter=C:\Users\seto\source\repos\ReciPro\tools\EvdBackendStudy261106\cpu_adapter.dll; backend=C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\libMathNetNumericsMKL.dll; workspaceElements=0; candidate reusable workspace, input copy included
+ADAPTER_SHA256=EE18CBF60EEE82E28E8962E22510EB466232F1D5AE1D95AB9BED99F4F11FCA27
+BACKEND_SHA256=7ABDCB4FBBB282D68526CC02EF01C36CB007F09FC60CC4C9688A0AE8F51B3EEC
+{"Label":"Si640","backend":"MathNetMkl_Schur","n":640,"referenceResidual":7.120812808002683E-16,"residual":3.5949759872340924E-16,"waveDifference":8.454530573337832E-14,"boundary":2.5908996311706785E-16,"referenceBoundary":1.3325014494637219E-15,"referenceFusedDifference":7.894497640785687E-16,"fusedDifference":7.065416064076986E-16,"fluxDifference":8.493206138382448E-14,"conservedFluxError":0,"flux":[1.0000000000000004,0.9289685387322197,0.8008291343487404],"referenceFlux":[1.0000000000000027,0.9289685387322617,0.8008291343488253]}
+WorkloadWarmup   1: 1 op, 933208400.00 ns, 933.2084 ms/op
+WorkloadWarmup   2: 1 op, 912031600.00 ns, 912.0316 ms/op
+WorkloadWarmup   3: 1 op, 877625800.00 ns, 877.6258 ms/op
+
+WorkloadActual   1: 1 op, 987952900.00 ns, 987.9529 ms/op
+WorkloadActual   2: 1 op, 947868900.00 ns, 947.8689 ms/op
+WorkloadActual   3: 1 op, 900132600.00 ns, 900.1326 ms/op
+WorkloadActual   4: 1 op, 882789300.00 ns, 882.7893 ms/op
+WorkloadActual   5: 1 op, 987910800.00 ns, 987.9108 ms/op
+WorkloadActual   6: 1 op, 903312500.00 ns, 903.3125 ms/op
+WorkloadActual   7: 1 op, 901855300.00 ns, 901.8553 ms/op
+WorkloadActual   8: 1 op, 1031242300.00 ns, 1.0312 s/op
+
+WorkloadExtra    1: 1 op, 922445300.00 ns, 922.4453 ms/op
+WorkloadResult   1: 1 op, 987952900.00 ns, 987.9529 ms/op
+WorkloadResult   2: 1 op, 947868900.00 ns, 947.8689 ms/op
+WorkloadResult   3: 1 op, 900132600.00 ns, 900.1326 ms/op
+WorkloadResult   4: 1 op, 882789300.00 ns, 882.7893 ms/op
+WorkloadResult   5: 1 op, 987910800.00 ns, 987.9108 ms/op
+WorkloadResult   6: 1 op, 903312500.00 ns, 903.3125 ms/op
+WorkloadResult   7: 1 op, 901855300.00 ns, 901.8553 ms/op
+WorkloadResult   8: 1 op, 1031242300.00 ns, 1.0312 s/op
+// GC:  0 0 0 0 1
+
+
+Mean = 942.883 ms, StdErr = 19.170 ms (2.03%), N = 8, StdDev = 54.220 ms
+Min = 882.789 ms, Q1 = 901.425 ms, Median = 925.591 ms, Q3 = 987.921 ms, Max = 1,031.242 ms
+IQR = 86.497 ms, LowerFence = 771.680 ms, UpperFence = 1,117.666 ms
+ConfidenceInterval = [839.215 ms; 1,046.551 ms] (CI 99.9%), Margin = 103.668 ms (10.99% of Mean)
+Skewness = 0.35, Kurtosis = 1.31, MValue = 2
+
+// ** Remained 7 (58.3%) benchmark(s) to run. Estimated finish 2026-11-06 22:12 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: 高パフォーマンス)
+// **************************
+// Benchmark: EvdBackendBenchmark.CandidateEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si640]
+// *** Execute ***
+// Launch: 1 / 1
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.16.0-preview.2
+// Runtime=.NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+// GC=Concurrent Server
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-YLDRND(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3)
+
+ProcessorCount=2; MKL_NUM_THREADS=1; OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
+REFERENCE=C:\tmp\recipro_evd_261106\baseline\Crystallography.Native.avx512.dll; SHA256=78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174
+CPU algorithm=3; label=MathNetMkl_Schur; adapter=C:\Users\seto\source\repos\ReciPro\tools\EvdBackendStudy261106\cpu_adapter.dll; backend=C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\libMathNetNumericsMKL.dll; workspaceElements=0; candidate reusable workspace, input copy included
+ADAPTER_SHA256=EE18CBF60EEE82E28E8962E22510EB466232F1D5AE1D95AB9BED99F4F11FCA27
+BACKEND_SHA256=7ABDCB4FBBB282D68526CC02EF01C36CB007F09FC60CC4C9688A0AE8F51B3EEC
+{"Label":"Si640","backend":"MathNetMkl_Schur","n":640,"referenceResidual":7.120812808002683E-16,"residual":3.5949759872340924E-16,"waveDifference":8.454530573337832E-14,"boundary":2.5908996311706785E-16,"referenceBoundary":1.3325014494637219E-15,"referenceFusedDifference":7.894497640785687E-16,"fusedDifference":7.065416064076986E-16,"fluxDifference":8.493206138382448E-14,"conservedFluxError":0,"flux":[1.0000000000000004,0.9289685387322197,0.8008291343487404],"referenceFlux":[1.0000000000000027,0.9289685387322617,0.8008291343488253]}
+WorkloadWarmup   1: 1 op, 965996400.00 ns, 965.9964 ms/op
+WorkloadWarmup   2: 1 op, 996231400.00 ns, 996.2314 ms/op
+WorkloadWarmup   3: 1 op, 1018270600.00 ns, 1.0183 s/op
+
+WorkloadActual   1: 1 op, 1058766700.00 ns, 1.0588 s/op
+WorkloadActual   2: 1 op, 950435100.00 ns, 950.4351 ms/op
+WorkloadActual   3: 1 op, 969974200.00 ns, 969.9742 ms/op
+WorkloadActual   4: 1 op, 1006774200.00 ns, 1.0068 s/op
+WorkloadActual   5: 1 op, 1037386100.00 ns, 1.0374 s/op
+WorkloadActual   6: 1 op, 1005690900.00 ns, 1.0057 s/op
+WorkloadActual   7: 1 op, 1024618000.00 ns, 1.0246 s/op
+WorkloadActual   8: 1 op, 948282900.00 ns, 948.2829 ms/op
+
+WorkloadExtra    1: 1 op, 1095571300.00 ns, 1.0956 s/op
+WorkloadResult   1: 1 op, 1058766700.00 ns, 1.0588 s/op
+WorkloadResult   2: 1 op, 950435100.00 ns, 950.4351 ms/op
+WorkloadResult   3: 1 op, 969974200.00 ns, 969.9742 ms/op
+WorkloadResult   4: 1 op, 1006774200.00 ns, 1.0068 s/op
+WorkloadResult   5: 1 op, 1037386100.00 ns, 1.0374 s/op
+WorkloadResult   6: 1 op, 1005690900.00 ns, 1.0057 s/op
+WorkloadResult   7: 1 op, 1024618000.00 ns, 1.0246 s/op
+WorkloadResult   8: 1 op, 948282900.00 ns, 948.2829 ms/op
+// GC:  0 0 0 0 1
+
+
+Mean = 1.000 s, StdErr = 0.014 s (1.44%), N = 8, StdDev = 0.041 s
+Min = 0.948 s, Q1 = 0.965 s, Median = 1.006 s, Q3 = 1.028 s, Max = 1.059 s
+IQR = 0.063 s, LowerFence = 0.871 s, UpperFence = 1.122 s
+ConfidenceInterval = [0.923 s; 1.078 s] (CI 99.9%), Margin = 0.078 s (7.77% of Mean)
+Skewness = -0.05, Kurtosis = 1.29, MValue = 3.2
+
+// ** Remained 6 (50.0%) benchmark(s) to run. Estimated finish 2026-11-06 22:12 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: 高パフォーマンス)
+// **************************
+// Benchmark: EvdBackendBenchmark.EigenPropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si128]
+// *** Execute ***
+// Launch: 1 / 1
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.16.0-preview.2
+// Runtime=.NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+// GC=Concurrent Server
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-YLDRND(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3)
+
+ProcessorCount=2; MKL_NUM_THREADS=1; OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
+REFERENCE=C:\tmp\recipro_evd_261106\baseline\Crystallography.Native.avx512.dll; SHA256=78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174
+CPU algorithm=3; label=MathNetMkl_Schur; adapter=C:\Users\seto\source\repos\ReciPro\tools\EvdBackendStudy261106\cpu_adapter.dll; backend=C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\libMathNetNumericsMKL.dll; workspaceElements=0; candidate reusable workspace, input copy included
+ADAPTER_SHA256=EE18CBF60EEE82E28E8962E22510EB466232F1D5AE1D95AB9BED99F4F11FCA27
+BACKEND_SHA256=7ABDCB4FBBB282D68526CC02EF01C36CB007F09FC60CC4C9688A0AE8F51B3EEC
+{"Label":"Si128","backend":"MathNetMkl_Schur","n":128,"referenceResidual":3.5321003735547966E-16,"residual":3.7491929266887354E-16,"waveDifference":3.017530219943414E-14,"boundary":2.220683449797542E-16,"referenceBoundary":5.478245367618742E-16,"referenceFusedDifference":6.473657049138938E-16,"fusedDifference":6.707437923744495E-16,"fluxDifference":4.551914400963142E-15,"conservedFluxError":0,"flux":[0.9999999999999996,0.9320685294664369,0.8094184153275363],"referenceFlux":[1,0.9320685294664351,0.8094184153275318]}
+WorkloadWarmup   1: 1 op, 8691400.00 ns, 8.6914 ms/op
+WorkloadWarmup   2: 1 op, 8148500.00 ns, 8.1485 ms/op
+WorkloadWarmup   3: 1 op, 7630300.00 ns, 7.6303 ms/op
+
+WorkloadActual   1: 1 op, 8359300.00 ns, 8.3593 ms/op
+WorkloadActual   2: 1 op, 8346300.00 ns, 8.3463 ms/op
+WorkloadActual   3: 1 op, 10394500.00 ns, 10.3945 ms/op
+WorkloadActual   4: 1 op, 7989200.00 ns, 7.9892 ms/op
+WorkloadActual   5: 1 op, 7970900.00 ns, 7.9709 ms/op
+WorkloadActual   6: 1 op, 7004800.00 ns, 7.0048 ms/op
+WorkloadActual   7: 1 op, 8382500.00 ns, 8.3825 ms/op
+WorkloadActual   8: 1 op, 10991300.00 ns, 10.9913 ms/op
+
+WorkloadExtra    1: 1 op, 8993500.00 ns, 8.9935 ms/op
+WorkloadResult   1: 1 op, 8359300.00 ns, 8.3593 ms/op
+WorkloadResult   2: 1 op, 8346300.00 ns, 8.3463 ms/op
+WorkloadResult   3: 1 op, 10394500.00 ns, 10.3945 ms/op
+WorkloadResult   4: 1 op, 7989200.00 ns, 7.9892 ms/op
+WorkloadResult   5: 1 op, 7970900.00 ns, 7.9709 ms/op
+WorkloadResult   6: 1 op, 7004800.00 ns, 7.0048 ms/op
+WorkloadResult   7: 1 op, 8382500.00 ns, 8.3825 ms/op
+WorkloadResult   8: 1 op, 10991300.00 ns, 10.9913 ms/op
+// GC:  0 0 0 0 1
+
+
+Mean = 8.680 ms, StdErr = 0.470 ms (5.41%), N = 8, StdDev = 1.329 ms
+Min = 7.005 ms, Q1 = 7.985 ms, Median = 8.353 ms, Q3 = 8.886 ms, Max = 10.991 ms
+IQR = 0.901 ms, LowerFence = 6.633 ms, UpperFence = 10.237 ms
+ConfidenceInterval = [6.138 ms; 11.222 ms] (CI 99.9%), Margin = 2.542 ms (29.28% of Mean)
+Skewness = 0.63, Kurtosis = 1.82, MValue = 2.4
+
+// ** Remained 5 (41.7%) benchmark(s) to run. Estimated finish 2026-11-06 22:12 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: 高パフォーマンス)
+// **************************
+// Benchmark: EvdBackendBenchmark.CandidatePropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si128]
+// *** Execute ***
+// Launch: 1 / 1
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.16.0-preview.2
+// Runtime=.NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+// GC=Concurrent Server
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-YLDRND(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3)
+
+ProcessorCount=2; MKL_NUM_THREADS=1; OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
+REFERENCE=C:\tmp\recipro_evd_261106\baseline\Crystallography.Native.avx512.dll; SHA256=78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174
+CPU algorithm=3; label=MathNetMkl_Schur; adapter=C:\Users\seto\source\repos\ReciPro\tools\EvdBackendStudy261106\cpu_adapter.dll; backend=C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\libMathNetNumericsMKL.dll; workspaceElements=0; candidate reusable workspace, input copy included
+ADAPTER_SHA256=EE18CBF60EEE82E28E8962E22510EB466232F1D5AE1D95AB9BED99F4F11FCA27
+BACKEND_SHA256=7ABDCB4FBBB282D68526CC02EF01C36CB007F09FC60CC4C9688A0AE8F51B3EEC
+{"Label":"Si128","backend":"MathNetMkl_Schur","n":128,"referenceResidual":3.5321003735547966E-16,"residual":3.7491929266887354E-16,"waveDifference":3.017530219943414E-14,"boundary":2.220683449797542E-16,"referenceBoundary":5.478245367618742E-16,"referenceFusedDifference":6.473657049138938E-16,"fusedDifference":6.707437923744495E-16,"fluxDifference":4.551914400963142E-15,"conservedFluxError":0,"flux":[0.9999999999999996,0.9320685294664369,0.8094184153275363],"referenceFlux":[1,0.9320685294664351,0.8094184153275318]}
+WorkloadWarmup   1: 1 op, 17801600.00 ns, 17.8016 ms/op
+WorkloadWarmup   2: 1 op, 15208900.00 ns, 15.2089 ms/op
+WorkloadWarmup   3: 1 op, 16369800.00 ns, 16.3698 ms/op
+
+WorkloadActual   1: 1 op, 17968900.00 ns, 17.9689 ms/op
+WorkloadActual   2: 1 op, 15431100.00 ns, 15.4311 ms/op
+WorkloadActual   3: 1 op, 20296200.00 ns, 20.2962 ms/op
+WorkloadActual   4: 1 op, 24802300.00 ns, 24.8023 ms/op
+WorkloadActual   5: 1 op, 19211800.00 ns, 19.2118 ms/op
+WorkloadActual   6: 1 op, 19204300.00 ns, 19.2043 ms/op
+WorkloadActual   7: 1 op, 17131400.00 ns, 17.1314 ms/op
+WorkloadActual   8: 1 op, 17259000.00 ns, 17.2590 ms/op
+
+WorkloadExtra    1: 1 op, 20012000.00 ns, 20.0120 ms/op
+WorkloadResult   1: 1 op, 17968900.00 ns, 17.9689 ms/op
+WorkloadResult   2: 1 op, 15431100.00 ns, 15.4311 ms/op
+WorkloadResult   3: 1 op, 20296200.00 ns, 20.2962 ms/op
+WorkloadResult   4: 1 op, 24802300.00 ns, 24.8023 ms/op
+WorkloadResult   5: 1 op, 19211800.00 ns, 19.2118 ms/op
+WorkloadResult   6: 1 op, 19204300.00 ns, 19.2043 ms/op
+WorkloadResult   7: 1 op, 17131400.00 ns, 17.1314 ms/op
+WorkloadResult   8: 1 op, 17259000.00 ns, 17.2590 ms/op
+// GC:  0 0 0 0 1
+
+
+Mean = 18.913 ms, StdErr = 0.997 ms (5.27%), N = 8, StdDev = 2.821 ms
+Min = 15.431 ms, Q1 = 17.227 ms, Median = 18.587 ms, Q3 = 19.483 ms, Max = 24.802 ms
+IQR = 2.256 ms, LowerFence = 13.843 ms, UpperFence = 22.867 ms
+ConfidenceInterval = [13.520 ms; 24.306 ms] (CI 99.9%), Margin = 5.393 ms (28.52% of Mean)
+Skewness = 0.86, Kurtosis = 2.71, MValue = 2
+
+// ** Remained 4 (33.3%) benchmark(s) to run. Estimated finish 2026-11-06 22:12 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: 高パフォーマンス)
+// **************************
+// Benchmark: EvdBackendBenchmark.EigenPropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si448]
+// *** Execute ***
+// Launch: 1 / 1
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.16.0-preview.2
+// Runtime=.NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+// GC=Concurrent Server
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-YLDRND(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3)
+
+ProcessorCount=2; MKL_NUM_THREADS=1; OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
+REFERENCE=C:\tmp\recipro_evd_261106\baseline\Crystallography.Native.avx512.dll; SHA256=78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174
+CPU algorithm=3; label=MathNetMkl_Schur; adapter=C:\Users\seto\source\repos\ReciPro\tools\EvdBackendStudy261106\cpu_adapter.dll; backend=C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\libMathNetNumericsMKL.dll; workspaceElements=0; candidate reusable workspace, input copy included
+ADAPTER_SHA256=EE18CBF60EEE82E28E8962E22510EB466232F1D5AE1D95AB9BED99F4F11FCA27
+BACKEND_SHA256=7ABDCB4FBBB282D68526CC02EF01C36CB007F09FC60CC4C9688A0AE8F51B3EEC
+{"Label":"Si448","backend":"MathNetMkl_Schur","n":448,"referenceResidual":5.96125909265339E-16,"residual":3.9555843171964444E-16,"waveDifference":1.1784118224795166E-13,"boundary":2.244768382970926E-16,"referenceBoundary":1.180539009098806E-16,"referenceFusedDifference":1.0720984053762522E-15,"fusedDifference":4.126162952233365E-16,"fluxDifference":3.1086244689504383E-15,"conservedFluxError":0,"flux":[1.0000000000000004,0.9293804566184442,0.8018838981544609],"referenceFlux":[0.9999999999999998,0.9293804566184422,0.8018838981544578]}
+WorkloadWarmup   1: 1 op, 308940400.00 ns, 308.9404 ms/op
+WorkloadWarmup   2: 1 op, 353913800.00 ns, 353.9138 ms/op
+WorkloadWarmup   3: 1 op, 337498100.00 ns, 337.4981 ms/op
+
+WorkloadActual   1: 1 op, 336763200.00 ns, 336.7632 ms/op
+WorkloadActual   2: 1 op, 325802300.00 ns, 325.8023 ms/op
+WorkloadActual   3: 1 op, 295130300.00 ns, 295.1303 ms/op
+WorkloadActual   4: 1 op, 330611300.00 ns, 330.6113 ms/op
+WorkloadActual   5: 1 op, 297358500.00 ns, 297.3585 ms/op
+WorkloadActual   6: 1 op, 307577100.00 ns, 307.5771 ms/op
+WorkloadActual   7: 1 op, 302673200.00 ns, 302.6732 ms/op
+WorkloadActual   8: 1 op, 308674600.00 ns, 308.6746 ms/op
+
+WorkloadExtra    1: 1 op, 286348100.00 ns, 286.3481 ms/op
+WorkloadResult   1: 1 op, 336763200.00 ns, 336.7632 ms/op
+WorkloadResult   2: 1 op, 325802300.00 ns, 325.8023 ms/op
+WorkloadResult   3: 1 op, 295130300.00 ns, 295.1303 ms/op
+WorkloadResult   4: 1 op, 330611300.00 ns, 330.6113 ms/op
+WorkloadResult   5: 1 op, 297358500.00 ns, 297.3585 ms/op
+WorkloadResult   6: 1 op, 307577100.00 ns, 307.5771 ms/op
+WorkloadResult   7: 1 op, 302673200.00 ns, 302.6732 ms/op
+WorkloadResult   8: 1 op, 308674600.00 ns, 308.6746 ms/op
+// GC:  0 0 0 0 1
+
+
+Mean = 313.074 ms, StdErr = 5.602 ms (1.79%), N = 8, StdDev = 15.845 ms
+Min = 295.130 ms, Q1 = 301.345 ms, Median = 308.126 ms, Q3 = 327.005 ms, Max = 336.763 ms
+IQR = 25.660 ms, LowerFence = 262.854 ms, UpperFence = 365.495 ms
+ConfidenceInterval = [282.779 ms; 343.369 ms] (CI 99.9%), Margin = 30.295 ms (9.68% of Mean)
+Skewness = 0.31, Kurtosis = 1.22, MValue = 3.2
+
+// ** Remained 3 (25.0%) benchmark(s) to run. Estimated finish 2026-11-06 22:12 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: 高パフォーマンス)
+// **************************
+// Benchmark: EvdBackendBenchmark.CandidatePropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si448]
+// *** Execute ***
+// Launch: 1 / 1
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.16.0-preview.2
+// Runtime=.NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+// GC=Concurrent Server
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-YLDRND(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3)
+
+ProcessorCount=2; MKL_NUM_THREADS=1; OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
+REFERENCE=C:\tmp\recipro_evd_261106\baseline\Crystallography.Native.avx512.dll; SHA256=78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174
+CPU algorithm=3; label=MathNetMkl_Schur; adapter=C:\Users\seto\source\repos\ReciPro\tools\EvdBackendStudy261106\cpu_adapter.dll; backend=C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\libMathNetNumericsMKL.dll; workspaceElements=0; candidate reusable workspace, input copy included
+ADAPTER_SHA256=EE18CBF60EEE82E28E8962E22510EB466232F1D5AE1D95AB9BED99F4F11FCA27
+BACKEND_SHA256=7ABDCB4FBBB282D68526CC02EF01C36CB007F09FC60CC4C9688A0AE8F51B3EEC
+{"Label":"Si448","backend":"MathNetMkl_Schur","n":448,"referenceResidual":5.96125909265339E-16,"residual":3.9555843171964444E-16,"waveDifference":1.1784118224795166E-13,"boundary":2.244768382970926E-16,"referenceBoundary":1.180539009098806E-16,"referenceFusedDifference":1.0720984053762522E-15,"fusedDifference":4.126162952233365E-16,"fluxDifference":3.1086244689504383E-15,"conservedFluxError":0,"flux":[1.0000000000000004,0.9293804566184442,0.8018838981544609],"referenceFlux":[0.9999999999999998,0.9293804566184422,0.8018838981544578]}
+WorkloadWarmup   1: 1 op, 418289900.00 ns, 418.2899 ms/op
+WorkloadWarmup   2: 1 op, 406594900.00 ns, 406.5949 ms/op
+WorkloadWarmup   3: 1 op, 351903800.00 ns, 351.9038 ms/op
+
+WorkloadActual   1: 1 op, 384042400.00 ns, 384.0424 ms/op
+WorkloadActual   2: 1 op, 400998900.00 ns, 400.9989 ms/op
+WorkloadActual   3: 1 op, 360445100.00 ns, 360.4451 ms/op
+WorkloadActual   4: 1 op, 363936200.00 ns, 363.9362 ms/op
+WorkloadActual   5: 1 op, 377395700.00 ns, 377.3957 ms/op
+WorkloadActual   6: 1 op, 360107300.00 ns, 360.1073 ms/op
+WorkloadActual   7: 1 op, 393714000.00 ns, 393.7140 ms/op
+WorkloadActual   8: 1 op, 373201500.00 ns, 373.2015 ms/op
+
+WorkloadExtra    1: 1 op, 353989500.00 ns, 353.9895 ms/op
+WorkloadResult   1: 1 op, 384042400.00 ns, 384.0424 ms/op
+WorkloadResult   2: 1 op, 400998900.00 ns, 400.9989 ms/op
+WorkloadResult   3: 1 op, 360445100.00 ns, 360.4451 ms/op
+WorkloadResult   4: 1 op, 363936200.00 ns, 363.9362 ms/op
+WorkloadResult   5: 1 op, 377395700.00 ns, 377.3957 ms/op
+WorkloadResult   6: 1 op, 360107300.00 ns, 360.1073 ms/op
+WorkloadResult   7: 1 op, 393714000.00 ns, 393.7140 ms/op
+WorkloadResult   8: 1 op, 373201500.00 ns, 373.2015 ms/op
+// GC:  0 0 0 0 1
+
+
+Mean = 376.730 ms, StdErr = 5.426 ms (1.44%), N = 8, StdDev = 15.348 ms
+Min = 360.107 ms, Q1 = 363.063 ms, Median = 375.299 ms, Q3 = 386.460 ms, Max = 400.999 ms
+IQR = 23.397 ms, LowerFence = 327.968 ms, UpperFence = 421.556 ms
+ConfidenceInterval = [347.385 ms; 406.076 ms] (CI 99.9%), Margin = 29.346 ms (7.79% of Mean)
+Skewness = 0.3, Kurtosis = 1.37, MValue = 2
+
+// ** Remained 2 (16.7%) benchmark(s) to run. Estimated finish 2026-11-06 22:12 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: 高パフォーマンス)
+// **************************
+// Benchmark: EvdBackendBenchmark.EigenPropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si640]
+// *** Execute ***
+// Launch: 1 / 1
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.16.0-preview.2
+// Runtime=.NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+// GC=Concurrent Server
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-YLDRND(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3)
+
+ProcessorCount=2; MKL_NUM_THREADS=1; OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
+REFERENCE=C:\tmp\recipro_evd_261106\baseline\Crystallography.Native.avx512.dll; SHA256=78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174
+CPU algorithm=3; label=MathNetMkl_Schur; adapter=C:\Users\seto\source\repos\ReciPro\tools\EvdBackendStudy261106\cpu_adapter.dll; backend=C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\libMathNetNumericsMKL.dll; workspaceElements=0; candidate reusable workspace, input copy included
+ADAPTER_SHA256=EE18CBF60EEE82E28E8962E22510EB466232F1D5AE1D95AB9BED99F4F11FCA27
+BACKEND_SHA256=7ABDCB4FBBB282D68526CC02EF01C36CB007F09FC60CC4C9688A0AE8F51B3EEC
+{"Label":"Si640","backend":"MathNetMkl_Schur","n":640,"referenceResidual":7.120812808002683E-16,"residual":3.5949759872340924E-16,"waveDifference":8.454530573337832E-14,"boundary":2.5908996311706785E-16,"referenceBoundary":1.3325014494637219E-15,"referenceFusedDifference":7.894497640785687E-16,"fusedDifference":7.065416064076986E-16,"fluxDifference":8.493206138382448E-14,"conservedFluxError":0,"flux":[1.0000000000000004,0.9289685387322197,0.8008291343487404],"referenceFlux":[1.0000000000000027,0.9289685387322617,0.8008291343488253]}
+WorkloadWarmup   1: 1 op, 921961500.00 ns, 921.9615 ms/op
+WorkloadWarmup   2: 1 op, 979853800.00 ns, 979.8538 ms/op
+WorkloadWarmup   3: 1 op, 986841300.00 ns, 986.8413 ms/op
+
+WorkloadActual   1: 1 op, 1348879900.00 ns, 1.3489 s/op
+WorkloadActual   2: 1 op, 1193964400.00 ns, 1.1940 s/op
+WorkloadActual   3: 1 op, 1145234800.00 ns, 1.1452 s/op
+WorkloadActual   4: 1 op, 1239729400.00 ns, 1.2397 s/op
+WorkloadActual   5: 1 op, 995275700.00 ns, 995.2757 ms/op
+WorkloadActual   6: 1 op, 1103215200.00 ns, 1.1032 s/op
+WorkloadActual   7: 1 op, 1102204300.00 ns, 1.1022 s/op
+WorkloadActual   8: 1 op, 1415376800.00 ns, 1.4154 s/op
+
+WorkloadExtra    1: 1 op, 1236606400.00 ns, 1.2366 s/op
+WorkloadResult   1: 1 op, 1348879900.00 ns, 1.3489 s/op
+WorkloadResult   2: 1 op, 1193964400.00 ns, 1.1940 s/op
+WorkloadResult   3: 1 op, 1145234800.00 ns, 1.1452 s/op
+WorkloadResult   4: 1 op, 1239729400.00 ns, 1.2397 s/op
+WorkloadResult   5: 1 op, 995275700.00 ns, 995.2757 ms/op
+WorkloadResult   6: 1 op, 1103215200.00 ns, 1.1032 s/op
+WorkloadResult   7: 1 op, 1102204300.00 ns, 1.1022 s/op
+WorkloadResult   8: 1 op, 1415376800.00 ns, 1.4154 s/op
+// GC:  0 0 0 0 1
+
+
+Mean = 1.193 s, StdErr = 0.049 s (4.09%), N = 8, StdDev = 0.138 s
+Min = 0.995 s, Q1 = 1.103 s, Median = 1.170 s, Q3 = 1.267 s, Max = 1.415 s
+IQR = 0.164 s, LowerFence = 0.857 s, UpperFence = 1.513 s
+ConfidenceInterval = [0.929 s; 1.457 s] (CI 99.9%), Margin = 0.264 s (22.14% of Mean)
+Skewness = 0.26, Kurtosis = 1.62, MValue = 2
+
+// ** Remained 1 (8.3%) benchmark(s) to run. Estimated finish 2026-11-06 22:12 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: 高パフォーマンス)
+// **************************
+// Benchmark: EvdBackendBenchmark.CandidatePropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si640]
+// *** Execute ***
+// Launch: 1 / 1
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.16.0-preview.2
+// Runtime=.NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+// GC=Concurrent Server
+// HardwareIntrinsics=AVX512 BITALG+VBMI2+VNNI+VPOPCNTDQ,AVX512 IFMA+VBMI,AVX512 F+BW+CD+DQ+VL,AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni VectorSize=256
+// Job: Job-YLDRND(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3)
+
+ProcessorCount=2; MKL_NUM_THREADS=1; OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
+REFERENCE=C:\tmp\recipro_evd_261106\baseline\Crystallography.Native.avx512.dll; SHA256=78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174
+CPU algorithm=3; label=MathNetMkl_Schur; adapter=C:\Users\seto\source\repos\ReciPro\tools\EvdBackendStudy261106\cpu_adapter.dll; backend=C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\libMathNetNumericsMKL.dll; workspaceElements=0; candidate reusable workspace, input copy included
+ADAPTER_SHA256=EE18CBF60EEE82E28E8962E22510EB466232F1D5AE1D95AB9BED99F4F11FCA27
+BACKEND_SHA256=7ABDCB4FBBB282D68526CC02EF01C36CB007F09FC60CC4C9688A0AE8F51B3EEC
+{"Label":"Si640","backend":"MathNetMkl_Schur","n":640,"referenceResidual":7.120812808002683E-16,"residual":3.5949759872340924E-16,"waveDifference":8.454530573337832E-14,"boundary":2.5908996311706785E-16,"referenceBoundary":1.3325014494637219E-15,"referenceFusedDifference":7.894497640785687E-16,"fusedDifference":7.065416064076986E-16,"fluxDifference":8.493206138382448E-14,"conservedFluxError":0,"flux":[1.0000000000000004,0.9289685387322197,0.8008291343487404],"referenceFlux":[1.0000000000000027,0.9289685387322617,0.8008291343488253]}
+WorkloadWarmup   1: 1 op, 1174946200.00 ns, 1.1749 s/op
+WorkloadWarmup   2: 1 op, 1118212200.00 ns, 1.1182 s/op
+WorkloadWarmup   3: 1 op, 1059801600.00 ns, 1.0598 s/op
+
+WorkloadActual   1: 1 op, 1040562500.00 ns, 1.0406 s/op
+WorkloadActual   2: 1 op, 1199041200.00 ns, 1.1990 s/op
+WorkloadActual   3: 1 op, 1316867800.00 ns, 1.3169 s/op
+WorkloadActual   4: 1 op, 1164214400.00 ns, 1.1642 s/op
+WorkloadActual   5: 1 op, 1313601400.00 ns, 1.3136 s/op
+WorkloadActual   6: 1 op, 1149970400.00 ns, 1.1500 s/op
+WorkloadActual   7: 1 op, 1199685700.00 ns, 1.1997 s/op
+WorkloadActual   8: 1 op, 1168674400.00 ns, 1.1687 s/op
+
+WorkloadExtra    1: 1 op, 1011889700.00 ns, 1.0119 s/op
+WorkloadResult   1: 1 op, 1040562500.00 ns, 1.0406 s/op
+WorkloadResult   2: 1 op, 1199041200.00 ns, 1.1990 s/op
+WorkloadResult   3: 1 op, 1316867800.00 ns, 1.3169 s/op
+WorkloadResult   4: 1 op, 1164214400.00 ns, 1.1642 s/op
+WorkloadResult   5: 1 op, 1313601400.00 ns, 1.3136 s/op
+WorkloadResult   6: 1 op, 1149970400.00 ns, 1.1500 s/op
+WorkloadResult   7: 1 op, 1199685700.00 ns, 1.1997 s/op
+WorkloadResult   8: 1 op, 1168674400.00 ns, 1.1687 s/op
+// GC:  0 0 0 0 1
+
+
+Mean = 1.194 s, StdErr = 0.032 s (2.66%), N = 8, StdDev = 0.090 s
+Min = 1.041 s, Q1 = 1.161 s, Median = 1.184 s, Q3 = 1.228 s, Max = 1.317 s
+IQR = 0.068 s, LowerFence = 1.059 s, UpperFence = 1.329 s
+ConfidenceInterval = [1.022 s; 1.366 s] (CI 99.9%), Margin = 0.172 s (14.38% of Mean)
+Skewness = -0.03, Kurtosis = 1.91, MValue = 2.8
+
+// ** Remained 0 (0.0%) benchmark(s) to run. Estimated finish 2026-11-06 22:12 (0h 0m from now) **
+Successfully reverted power plan (GUID: 381b4222-f694-41f0-9685-ff5bb260df2e FriendlyName: バランス)
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  C:\tmp\recipro_evd_261106\bdn-MathNetMkl_Schur-secondary\results\ReciPro.Benchmarks.EvdBackendBenchmark-report.csv
+  C:\tmp\recipro_evd_261106\bdn-MathNetMkl_Schur-secondary\results\ReciPro.Benchmarks.EvdBackendBenchmark-report-github.md
+  C:\tmp\recipro_evd_261106\bdn-MathNetMkl_Schur-secondary\results\ReciPro.Benchmarks.EvdBackendBenchmark-report.html
+  C:\tmp\recipro_evd_261106\bdn-MathNetMkl_Schur-secondary\results\ReciPro.Benchmarks.EvdBackendBenchmark-report-full.json
+  C:\tmp\recipro_evd_261106\bdn-MathNetMkl_Schur-secondary\results\ReciPro.Benchmarks.EvdBackendBenchmark-report-default.md
+
+// * Detailed results *
+EvdBackendBenchmark.EigenEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si128]
+Runtime = .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4; GC = Concurrent Server
+Mean = 8.027 ms, StdErr = 0.509 ms (6.34%), N = 8, StdDev = 1.439 ms
+Min = 6.482 ms, Q1 = 7.091 ms, Median = 7.696 ms, Q3 = 8.466 ms, Max = 11.026 ms
+IQR = 1.376 ms, LowerFence = 5.027 ms, UpperFence = 10.530 ms
+ConfidenceInterval = [5.276 ms; 10.778 ms] (CI 99.9%), Margin = 2.751 ms (34.27% of Mean)
+Skewness = 0.91, Kurtosis = 2.59, MValue = 3.5
+-------------------- Histogram --------------------
+[ 5.538 ms ;  6.987 ms) | @
+[ 6.987 ms ;  8.876 ms) | @@@@@@
+[ 8.876 ms ; 10.082 ms) | 
+[10.082 ms ; 11.970 ms) | @
+---------------------------------------------------
+
+EvdBackendBenchmark.CandidateEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si128]
+Runtime = .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4; GC = Concurrent Server
+Mean = 21.805 ms, StdErr = 2.751 ms (12.62%), N = 8, StdDev = 7.780 ms
+Min = 14.941 ms, Q1 = 17.308 ms, Median = 19.273 ms, Q3 = 22.712 ms, Max = 38.214 ms
+IQR = 5.403 ms, LowerFence = 9.203 ms, UpperFence = 30.817 ms
+ConfidenceInterval = [6.929 ms; 36.681 ms] (CI 99.9%), Margin = 14.876 ms (68.22% of Mean)
+Skewness = 1.07, Kurtosis = 2.66, MValue = 2.33
+-------------------- Histogram --------------------
+[12.799 ms ; 23.010 ms) | @@@@@@
+[23.010 ms ; 28.122 ms) | 
+[28.122 ms ; 38.334 ms) | @@
+---------------------------------------------------
+
+EvdBackendBenchmark.EigenEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si448]
+Runtime = .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4; GC = Concurrent Server
+Mean = 306.669 ms, StdErr = 15.324 ms (5.00%), N = 8, StdDev = 43.343 ms
+Min = 268.177 ms, Q1 = 278.006 ms, Median = 290.458 ms, Q3 = 317.598 ms, Max = 395.566 ms
+IQR = 39.593 ms, LowerFence = 218.617 ms, UpperFence = 376.987 ms
+ConfidenceInterval = [223.799 ms; 389.540 ms] (CI 99.9%), Margin = 82.870 ms (27.02% of Mean)
+Skewness = 0.98, Kurtosis = 2.43, MValue = 2
+-------------------- Histogram --------------------
+[259.864 ms ; 316.751 ms) | @@@@@@
+[316.751 ms ; 341.880 ms) | 
+[341.880 ms ; 398.767 ms) | @@
+---------------------------------------------------
+
+EvdBackendBenchmark.CandidateEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si448]
+Runtime = .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4; GC = Concurrent Server
+Mean = 367.484 ms, StdErr = 6.734 ms (1.83%), N = 8, StdDev = 19.047 ms
+Min = 343.713 ms, Q1 = 348.344 ms, Median = 372.078 ms, Q3 = 380.680 ms, Max = 393.611 ms
+IQR = 32.336 ms, LowerFence = 299.840 ms, UpperFence = 429.185 ms
+ConfidenceInterval = [331.066 ms; 403.902 ms] (CI 99.9%), Margin = 36.418 ms (9.91% of Mean)
+Skewness = -0.11, Kurtosis = 1.18, MValue = 3.2
+-------------------- Histogram --------------------
+[334.044 ms ; 359.044 ms) | @@@
+[359.044 ms ; 369.928 ms) | 
+[369.928 ms ; 394.927 ms) | @@@@@
+---------------------------------------------------
+
+EvdBackendBenchmark.EigenEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si640]
+Runtime = .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4; GC = Concurrent Server
+Mean = 942.883 ms, StdErr = 19.170 ms (2.03%), N = 8, StdDev = 54.220 ms
+Min = 882.789 ms, Q1 = 901.425 ms, Median = 925.591 ms, Q3 = 987.921 ms, Max = 1,031.242 ms
+IQR = 86.497 ms, LowerFence = 771.680 ms, UpperFence = 1,117.666 ms
+ConfidenceInterval = [839.215 ms; 1,046.551 ms] (CI 99.9%), Margin = 103.668 ms (10.99% of Mean)
+Skewness = 0.35, Kurtosis = 1.31, MValue = 2
+-------------------- Histogram --------------------
+[879.747 ms ;   950.911 ms) | @@@@@
+[950.911 ms ; 1,045.159 ms) | @@@
+---------------------------------------------------
+
+EvdBackendBenchmark.CandidateEvd: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si640]
+Runtime = .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4; GC = Concurrent Server
+Mean = 1.000 s, StdErr = 0.014 s (1.44%), N = 8, StdDev = 0.041 s
+Min = 0.948 s, Q1 = 0.965 s, Median = 1.006 s, Q3 = 1.028 s, Max = 1.059 s
+IQR = 0.063 s, LowerFence = 0.871 s, UpperFence = 1.122 s
+ConfidenceInterval = [0.923 s; 1.078 s] (CI 99.9%), Margin = 0.078 s (7.77% of Mean)
+Skewness = -0.05, Kurtosis = 1.29, MValue = 3.2
+-------------------- Histogram --------------------
+[0.932 s ; 0.986 s) | @@@
+[0.986 s ; 1.006 s) | 
+[1.006 s ; 1.059 s) | @@@@@
+---------------------------------------------------
+
+EvdBackendBenchmark.EigenPropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si128]
+Runtime = .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4; GC = Concurrent Server
+Mean = 8.680 ms, StdErr = 0.470 ms (5.41%), N = 8, StdDev = 1.329 ms
+Min = 7.005 ms, Q1 = 7.985 ms, Median = 8.353 ms, Q3 = 8.886 ms, Max = 10.991 ms
+IQR = 0.901 ms, LowerFence = 6.633 ms, UpperFence = 10.237 ms
+ConfidenceInterval = [6.138 ms; 11.222 ms] (CI 99.9%), Margin = 2.542 ms (29.28% of Mean)
+Skewness = 0.63, Kurtosis = 1.82, MValue = 2.4
+-------------------- Histogram --------------------
+[6.821 ms ;  8.566 ms) | @@@@@@
+[8.566 ms ;  9.820 ms) | 
+[9.820 ms ; 11.864 ms) | @@
+---------------------------------------------------
+
+EvdBackendBenchmark.CandidatePropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si128]
+Runtime = .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4; GC = Concurrent Server
+Mean = 18.913 ms, StdErr = 0.997 ms (5.27%), N = 8, StdDev = 2.821 ms
+Min = 15.431 ms, Q1 = 17.227 ms, Median = 18.587 ms, Q3 = 19.483 ms, Max = 24.802 ms
+IQR = 2.256 ms, LowerFence = 13.843 ms, UpperFence = 22.867 ms
+ConfidenceInterval = [13.520 ms; 24.306 ms] (CI 99.9%), Margin = 5.393 ms (28.52% of Mean)
+Skewness = 0.86, Kurtosis = 2.71, MValue = 2
+-------------------- Histogram --------------------
+[13.580 ms ; 16.863 ms) | @
+[16.863 ms ; 20.565 ms) | @@@@@@
+[20.565 ms ; 22.951 ms) | 
+[22.951 ms ; 26.653 ms) | @
+---------------------------------------------------
+
+EvdBackendBenchmark.EigenPropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si448]
+Runtime = .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4; GC = Concurrent Server
+Mean = 313.074 ms, StdErr = 5.602 ms (1.79%), N = 8, StdDev = 15.845 ms
+Min = 295.130 ms, Q1 = 301.345 ms, Median = 308.126 ms, Q3 = 327.005 ms, Max = 336.763 ms
+IQR = 25.660 ms, LowerFence = 262.854 ms, UpperFence = 365.495 ms
+ConfidenceInterval = [282.779 ms; 343.369 ms] (CI 99.9%), Margin = 30.295 ms (9.68% of Mean)
+Skewness = 0.31, Kurtosis = 1.22, MValue = 3.2
+-------------------- Histogram --------------------
+[291.504 ms ; 312.301 ms) | @@@@@
+[312.301 ms ; 320.884 ms) | 
+[320.884 ms ; 341.681 ms) | @@@
+---------------------------------------------------
+
+EvdBackendBenchmark.CandidatePropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si448]
+Runtime = .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4; GC = Concurrent Server
+Mean = 376.730 ms, StdErr = 5.426 ms (1.44%), N = 8, StdDev = 15.348 ms
+Min = 360.107 ms, Q1 = 363.063 ms, Median = 375.299 ms, Q3 = 386.460 ms, Max = 400.999 ms
+IQR = 23.397 ms, LowerFence = 327.968 ms, UpperFence = 421.556 ms
+ConfidenceInterval = [347.385 ms; 406.076 ms] (CI 99.9%), Margin = 29.346 ms (7.79% of Mean)
+Skewness = 0.3, Kurtosis = 1.37, MValue = 2
+-------------------- Histogram --------------------
+[358.679 ms ; 378.824 ms) | @@@@@
+[378.824 ms ; 402.593 ms) | @@@
+---------------------------------------------------
+
+EvdBackendBenchmark.EigenPropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si640]
+Runtime = .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4; GC = Concurrent Server
+Mean = 1.193 s, StdErr = 0.049 s (4.09%), N = 8, StdDev = 0.138 s
+Min = 0.995 s, Q1 = 1.103 s, Median = 1.170 s, Q3 = 1.267 s, Max = 1.415 s
+IQR = 0.164 s, LowerFence = 0.857 s, UpperFence = 1.513 s
+ConfidenceInterval = [0.929 s; 1.457 s] (CI 99.9%), Margin = 0.264 s (22.14% of Mean)
+Skewness = 0.26, Kurtosis = 1.62, MValue = 2
+-------------------- Histogram --------------------
+[0.905 s ; 1.080 s) | @
+[1.080 s ; 1.291 s) | @@@@@
+[1.291 s ; 1.506 s) | @@
+---------------------------------------------------
+
+EvdBackendBenchmark.CandidatePropagation: InProcess(OutlierMode=DontRemove, EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1, Server=True, Arguments=/p:Platform=x64, Runtime=.NET 11.0 (Windows7.0), Toolchain=InProcessEmitToolchain, InvocationCount=1, IterationCount=8, LaunchCount=1, RunStrategy=Monitoring, UnrollFactor=1, WarmupCount=3) [Scenario=Si640]
+Runtime = .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4; GC = Concurrent Server
+Mean = 1.194 s, StdErr = 0.032 s (2.66%), N = 8, StdDev = 0.090 s
+Min = 1.041 s, Q1 = 1.161 s, Median = 1.184 s, Q3 = 1.228 s, Max = 1.317 s
+IQR = 0.068 s, LowerFence = 1.059 s, UpperFence = 1.329 s
+ConfidenceInterval = [1.022 s; 1.366 s] (CI 99.9%), Margin = 0.172 s (14.38% of Mean)
+Skewness = -0.03, Kurtosis = 1.91, MValue = 2.8
+-------------------- Histogram --------------------
+[0.982 s ; 1.116 s) | @
+[1.116 s ; 1.256 s) | @@@@@
+[1.256 s ; 1.376 s) | @@
+---------------------------------------------------
+
+// * Summary *
+
+BenchmarkDotNet v0.16.0-preview.2, Windows 11 (10.0.26300.9818)
+AMD Ryzen 9 9950X 4.30GHz, 1 CPU, 32 logical and 16 physical cores
+Memory: 63.69 GB Total, 17.27 GB Available
+.NET SDK 11.0.100-rc.3.26522.148
+  [Host]    : .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+  InProcess : .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+
+Job=InProcess  OutlierMode=DontRemove  EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1  
+Server=True  Arguments=/p:Platform=x64  Runtime=.NET 11.0 (Windows7.0)  
+Toolchain=InProcessEmitToolchain  InvocationCount=1  IterationCount=8  
+LaunchCount=1  RunStrategy=Monitoring  UnrollFactor=1  
+WarmupCount=3  
+
+| Method               | Categories  | Scenario | Mean         | Error      | StdDev     | StdErr     | Min          | Q1           | Median       | Q3           | Max         | Op/s     | Ratio | RatioSD | Allocated | Alloc Ratio |
+|--------------------- |------------ |--------- |-------------:|-----------:|-----------:|-----------:|-------------:|-------------:|-------------:|-------------:|------------:|---------:|------:|--------:|----------:|------------:|
+| EigenEvd             | EVD         | Si128    |     8.027 ms |   2.751 ms |   1.439 ms |  0.5087 ms |     6.482 ms |     7.091 ms |     7.696 ms |     8.466 ms |    11.03 ms | 124.5764 |  1.00 |    0.00 |         - |          NA |
+| CandidateEvd         | EVD         | Si128    |    21.805 ms |  14.876 ms |   7.780 ms |  2.7507 ms |    14.941 ms |    17.308 ms |    19.273 ms |    22.712 ms |    38.21 ms |  45.8611 |  2.78 |    1.03 |         - |          NA |
+|                      |             |          |              |            |            |            |              |              |              |              |             |          |       |         |           |             |
+| EigenEvd             | EVD         | Si448    |   306.669 ms |  82.870 ms |  43.343 ms | 15.3240 ms |   268.177 ms |   278.006 ms |   290.458 ms |   317.598 ms |   395.57 ms |   3.2608 |  1.00 |    0.00 |         - |          NA |
+| CandidateEvd         | EVD         | Si448    |   367.484 ms |  36.418 ms |  19.047 ms |  6.7343 ms |   343.713 ms |   348.344 ms |   372.078 ms |   380.680 ms |   393.61 ms |   2.7212 |  1.22 |    0.15 |         - |          NA |
+|                      |             |          |              |            |            |            |              |              |              |              |             |          |       |         |           |             |
+| EigenEvd             | EVD         | Si640    |   942.883 ms | 103.668 ms |  54.220 ms | 19.1698 ms |   882.789 ms |   901.425 ms |   925.591 ms |   987.921 ms | 1,031.24 ms |   1.0606 |  1.00 |    0.00 |         - |          NA |
+| CandidateEvd         | EVD         | Si640    | 1,000.241 ms |  77.725 ms |  40.652 ms | 14.3726 ms |   948.283 ms |   965.089 ms | 1,006.233 ms | 1,027.810 ms | 1,058.77 ms |   0.9998 |  1.06 |    0.07 |         - |          NA |
+|                      |             |          |              |            |            |            |              |              |              |              |             |          |       |         |           |             |
+| EigenPropagation     | Propagation | Si128    |     8.680 ms |   2.542 ms |   1.329 ms |  0.4700 ms |     7.005 ms |     7.985 ms |     8.353 ms |     8.886 ms |    10.99 ms | 115.2094 |  1.00 |    0.00 |         - |          NA |
+| CandidatePropagation | Propagation | Si128    |    18.913 ms |   5.393 ms |   2.821 ms |  0.9973 ms |    15.431 ms |    17.227 ms |    18.587 ms |    19.483 ms |    24.80 ms |  52.8733 |  2.22 |    0.43 |         - |          NA |
+|                      |             |          |              |            |            |            |              |              |              |              |             |          |       |         |           |             |
+| EigenPropagation     | Propagation | Si448    |   313.074 ms |  30.295 ms |  15.845 ms |  5.6020 ms |   295.130 ms |   301.345 ms |   308.126 ms |   327.005 ms |   336.76 ms |   3.1941 |  1.00 |    0.00 |         - |          NA |
+| CandidatePropagation | Propagation | Si448    |   376.730 ms |  29.346 ms |  15.348 ms |  5.4264 ms |   360.107 ms |   363.063 ms |   375.299 ms |   386.460 ms |   401.00 ms |   2.6544 |  1.21 |    0.07 |         - |          NA |
+|                      |             |          |              |            |            |            |              |              |              |              |             |          |       |         |           |             |
+| EigenPropagation     | Propagation | Si640    | 1,192.985 ms | 264.157 ms | 138.159 ms | 48.8467 ms |   995.276 ms | 1,102.962 ms | 1,169.600 ms | 1,267.017 ms | 1,415.38 ms |   0.8382 |  1.00 |    0.00 |         - |          NA |
+| CandidatePropagation | Propagation | Si640    | 1,194.077 ms | 171.727 ms |  89.816 ms | 31.7549 ms | 1,040.562 ms | 1,160.653 ms | 1,183.858 ms | 1,228.165 ms | 1,316.87 ms |   0.8375 |  1.01 |    0.13 |         - |          NA |
+
+// * Warnings *
+MinIterationTime
+  EvdBackendBenchmark.EigenEvd: InProcess             -> The minimum observed iteration time is 6.482ms which is very small. It's recommended to increase it to at least 100ms using more operations.
+  EvdBackendBenchmark.CandidateEvd: InProcess         -> The minimum observed iteration time is 14.941ms which is very small. It's recommended to increase it to at least 100ms using more operations.
+  EvdBackendBenchmark.EigenPropagation: InProcess     -> The minimum observed iteration time is 7.005ms which is very small. It's recommended to increase it to at least 100ms using more operations.
+  EvdBackendBenchmark.CandidatePropagation: InProcess -> The minimum observed iteration time is 15.431ms which is very small. It's recommended to increase it to at least 100ms using more operations.
+
+// * Hints *
+Outliers
+  EvdBackendBenchmark.EigenEvd: InProcess             -> 1 outlier  was  detected (11.03 ms)
+  EvdBackendBenchmark.CandidateEvd: InProcess         -> 1 outlier  was  detected (38.21 ms)
+  EvdBackendBenchmark.EigenEvd: InProcess             -> 1 outlier  was  detected (395.57 ms)
+  EvdBackendBenchmark.EigenPropagation: InProcess     -> 2 outliers were detected (10.39 ms, 10.99 ms)
+  EvdBackendBenchmark.CandidatePropagation: InProcess -> 1 outlier  was  detected (24.80 ms)
+  EvdBackendBenchmark.CandidatePropagation: InProcess -> 1 outlier  was  detected (1.04 s)
+
+// * Legends *
+  Categories  : All categories of the corresponded method, class, and assembly
+  Scenario    : Value of the 'Scenario' parameter
+  Mean        : Arithmetic mean of all measurements
+  Error       : Half of 99.9% confidence interval
+  StdDev      : Standard deviation of all measurements
+  StdErr      : Standard error of all measurements
+  Min         : Minimum
+  Q1          : Quartile 1 (25th percentile)
+  Median      : Value separating the higher half of all measurements (50th percentile)
+  Q3          : Quartile 3 (75th percentile)
+  Max         : Maximum
+  Op/s        : Operation per second
+  Ratio       : Mean of the ratio distribution ([Current]/[Baseline])
+  RatioSD     : Standard deviation of the ratio distribution ([Current]/[Baseline])
+  Allocated   : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
+  Alloc Ratio : Allocated memory ratio distribution ([Current]/[Baseline])
+  1 ms        : 1 Millisecond (0.001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:01:50 (110.98 sec), executed benchmarks: 12
+
+Global total time: 00:01:51 (111.41 sec), executed benchmarks: 12
+// * Artifacts cleanup *
+Artifacts cleanup is finished

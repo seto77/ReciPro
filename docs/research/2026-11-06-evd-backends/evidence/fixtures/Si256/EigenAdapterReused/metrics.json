@@ -1,0 +1,24 @@
+{
+  "Label": "Si256",
+  "backend": "EigenAdapterReused",
+  "n": 256,
+  "referenceResidual": 3.9028599569866236E-16,
+  "residual": 3.6182168109851985E-16,
+  "waveDifference": 2.7703985969940856E-14,
+  "boundary": 2.2230132104642586E-16,
+  "referenceBoundary": 2.2974199545682777E-16,
+  "referenceFusedDifference": 1.032940070473853E-15,
+  "fusedDifference": 1.0778315928076985E-15,
+  "fluxDifference": 6.106226635438361E-15,
+  "conservedFluxError": 0,
+  "flux": [
+    1.0000000000000004,
+    0.931203008039877,
+    0.806805439303502
+  ],
+  "referenceFlux": [
+    1.0000000000000004,
+    0.9312030080398774,
+    0.8068054393034959
+  ]
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "n": "128",
+    "deviceWorkspace": "1049088",
+    "pinnedHostWorkspace": "676352",
+    "pinnedStaging": "526340",
+    "initMs": "9202.459"
+  },
+  {
+    "n": "256",
+    "deviceWorkspace": "1847808",
+    "pinnedHostWorkspace": "2694144",
+    "pinnedStaging": "2101252",
+    "initMs": "908.031"
+  },
+  {
+    "n": "448",
+    "deviceWorkspace": "3236864",
+    "pinnedHostWorkspace": "8230912",
+    "pinnedStaging": "6429700",
+    "initMs": "1644.682"
+  },
+  {
+    "n": "640",
+    "deviceWorkspace": "6589952",
+    "pinnedHostWorkspace": "16782336",
+    "pinnedStaging": "13117444",
+    "initMs": "3911.669"
+  },
+  {
+    "n": "448",
+    "deviceWorkspace": "3236864",
+    "pinnedHostWorkspace": "8230912",
+    "pinnedStaging": "6429700",
+    "initMs": "5822.188"
+  },
+  {
+    "n": "256",
+    "deviceWorkspace": "1847808",
+    "pinnedHostWorkspace": "2694144",
+    "pinnedStaging": "2101252",
+    "initMs": "1241.915"
+  },
+  {
+    "n": "32",
+    "deviceWorkspace": "546816",
+    "pinnedHostWorkspace": "51200",
+    "pinnedStaging": "33284",
+    "initMs": "305.513"
+  },
+  {
+    "n": "32",
+    "deviceWorkspace": "546816",
+    "pinnedHostWorkspace": "51200",
+    "pinnedStaging": "33284",
+    "initMs": "404.528"
+  },
+  {
+    "n": "8",
+    "deviceWorkspace": "530432",
+    "pinnedHostWorkspace": "3584",
+    "pinnedStaging": "2180",
+    "initMs": "396.389"
+  }
+]

@@ -1,0 +1,18 @@
+  復元対象のプロジェクトを決定しています...
+  C:\Users\seto\source\repos\ReciPro\Crystallography\Crystallography.csproj を復元しました (36 ミリ秒)。
+  C:\Users\seto\source\repos\ReciPro\Crystallography.OpenGL\Crystallography.OpenGL.csproj を復元しました (40 ミリ秒)。
+  C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\Crystallography.Controls.csproj を復元しました (67 ミリ秒)。
+  C:\Users\seto\source\repos\ReciPro\ReciPro\ReciPro.csproj を復元しました (80 ミリ秒)。
+  5 個中 1 個の復元対象のプロジェクトは最新です。
+C:\Program Files\dotnet\sdk\11.0.100-rc.3.26522.148\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.RuntimeIdentifierInference.targets(385,5): message NETSDK1057: プレビュー版の .NET を使用しています。https://aka.ms/dotnet-support-policy をご覧ください [C:\Users\seto\source\repos\ReciPro\ReciPro.Benchmarks\ReciPro.Benchmarks.csproj]
+  Crystallography -> C:\Users\seto\source\repos\ReciPro\Crystallography\bin\x64\Release\net11.0-windows\Crystallography.dll
+  Crystallography.Controls -> C:\Users\seto\source\repos\ReciPro\Crystallography.Controls\bin\x64\Release\net11.0-windows\Crystallography.Controls.dll
+  Crystallography.OpenGL -> C:\Users\seto\source\repos\ReciPro\Crystallography.OpenGL\bin\x64\Release\net11.0-windows\Crystallography.OpenGL.dll
+  ReciPro -> C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\ReciPro.dll
+  ReciPro.Benchmarks -> C:\Users\seto\source\repos\ReciPro\ReciPro.Benchmarks\bin\x64\Release\net11.0-windows\ReciPro.Benchmarks.dll
+
+ビルドに成功しました。
+    0 個の警告
+    0 エラー
+
+経過時間 00:00:06.62

@@ -1,0 +1,24 @@
+{
+  "Label": "GaAs32B0",
+  "backend": "OpenBlas0334_Geev",
+  "n": 32,
+  "referenceResidual": 2.9086102691648725E-16,
+  "residual": 3.8050773636685457E-16,
+  "waveDifference": 2.633013922692198E-14,
+  "boundary": 8.418829869349942E-17,
+  "referenceBoundary": 1.1287984571584433E-16,
+  "referenceFusedDifference": 1.1018648905114063E-15,
+  "fusedDifference": 6.087272963323595E-16,
+  "fluxDifference": 3.6637359812630166E-15,
+  "conservedFluxError": 4.218847493575595E-15,
+  "flux": [
+    1,
+    0.9999999999999979,
+    0.9999999999999958
+  ],
+  "referenceFlux": [
+    1,
+    1.0000000000000009,
+    0.9999999999999994
+  ]
+}

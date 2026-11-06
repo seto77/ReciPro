@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>ReciPro.Benchmarks.EvdBackendBenchmark</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.16.0-preview.2, Windows 11 (10.0.26300.9818)
+AMD Ryzen 9 9950X 4.30GHz, 1 CPU, 32 logical and 16 physical cores
+Memory: 63.69 GB Total, 22.94 GB Available
+.NET SDK 11.0.100-rc.3.26522.148
+  [Host]    : .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+  InProcess : .NET 11.0.0 (11.0.0-rc.3.26522.148, 11.0.26.52348), X64 RyuJIT x86-64-v4
+</code></pre>
+<pre><code>Job=InProcess  OutlierMode=DontRemove  EnvironmentVariables=DOTNET_GCDynamicAdaptationMode=0,DOTNET_TC_OnStackReplacement=1,COMPlus_TC_OnStackReplacement=1,DOTNET_TieredCompilation=1,DOTNET_TieredPGO=1  
+Server=True  Arguments=/p:Platform=x64  Runtime=.NET 11.0 (Windows7.0)  
+Toolchain=InProcessEmitToolchain  InvocationCount=1  IterationCount=8  
+LaunchCount=1  RunStrategy=Monitoring  UnrollFactor=1  
+WarmupCount=3  
+</code></pre>
+
+<table>
+<thead><tr><th>Method        </th><th>Categories</th><th>Scenario</th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min </th><th>Q1  </th><th>Median</th><th>Q3  </th><th>Max   </th><th>Op/s</th><th>Ratio</th><th>RatioSD</th><th>Allocated</th><th>Alloc Ratio</th>
+</tr>
+</thead><tbody><tr><td>EigenEvd</td><td>EVD</td><td>Au448</td><td>317.148 ms</td><td>61.192 ms</td><td>32.0047 ms</td><td>11.3154 ms</td><td>271.442 ms</td><td>294.362 ms</td><td>316.270 ms</td><td>341.842 ms</td><td>354.825 ms</td><td>3.153</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
+</tr><tr><td>CandidateEvd</td><td>EVD</td><td>Au448</td><td>293.660 ms</td><td>48.829 ms</td><td>25.5386 ms</td><td>9.0292 ms</td><td>268.560 ms</td><td>276.878 ms</td><td>281.343 ms</td><td>307.612 ms</td><td>332.899 ms</td><td>3.405</td><td>0.93</td><td>0.12</td><td>-</td><td>NA</td>
+</tr><tr><td>EigenEvd</td><td>EVD</td><td>GaAs256</td><td>145.140 ms</td><td>49.241 ms</td><td>25.7538 ms</td><td>9.1053 ms</td><td>119.093 ms</td><td>130.446 ms</td><td>136.242 ms</td><td>155.244 ms</td><td>194.880 ms</td><td>6.890</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
+</tr><tr><td>CandidateEvd</td><td>EVD</td><td>GaAs256</td><td>81.155 ms</td><td>19.598 ms</td><td>10.2500 ms</td><td>3.6239 ms</td><td>71.372 ms</td><td>72.187 ms</td><td>79.720 ms</td><td>87.141 ms</td><td>99.718 ms</td><td>12.322</td><td>0.57</td><td>0.11</td><td>-</td><td>NA</td>
+</tr><tr><td>EigenEvd</td><td>EVD</td><td>Si128</td><td>8.568 ms</td><td>4.589 ms</td><td>2.4004 ms</td><td>0.8487 ms</td><td>6.871 ms</td><td>7.322 ms</td><td>7.698 ms</td><td>8.590 ms</td><td>14.273 ms</td><td>116.708</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
+</tr><tr><td>CandidateEvd</td><td>EVD</td><td>Si128</td><td>21.106 ms</td><td>13.848 ms</td><td>7.2430 ms</td><td>2.5608 ms</td><td>11.552 ms</td><td>15.909 ms</td><td>20.505 ms</td><td>25.873 ms</td><td>32.794 ms</td><td>47.380</td><td>2.58</td><td>0.97</td><td>-</td><td>NA</td>
+</tr><tr><td>EigenEvd</td><td>EVD</td><td>Si256</td><td>130.985 ms</td><td>25.847 ms</td><td>13.5187 ms</td><td>4.7796 ms</td><td>117.770 ms</td><td>122.546 ms</td><td>126.816 ms</td><td>132.980 ms</td><td>154.764 ms</td><td>7.634</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
+</tr><tr><td>CandidateEvd</td><td>EVD</td><td>Si256</td><td>82.114 ms</td><td>18.076 ms</td><td>9.4542 ms</td><td>3.3426 ms</td><td>70.350 ms</td><td>76.188 ms</td><td>77.632 ms</td><td>92.355 ms</td><td>94.148 ms</td><td>12.178</td><td>0.63</td><td>0.09</td><td>-</td><td>NA</td>
+</tr><tr><td>EigenEvd</td><td>EVD</td><td>Si448</td><td>309.645 ms</td><td>61.346 ms</td><td>32.0850 ms</td><td>11.3438 ms</td><td>272.582 ms</td><td>281.191 ms</td><td>309.846 ms</td><td>322.669 ms</td><td>358.997 ms</td><td>3.230</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
+</tr><tr><td>CandidateEvd</td><td>EVD</td><td>Si448</td><td>305.136 ms</td><td>51.202 ms</td><td>26.7797 ms</td><td>9.4681 ms</td><td>266.739 ms</td><td>285.661 ms</td><td>305.506 ms</td><td>320.862 ms</td><td>349.565 ms</td><td>3.277</td><td>0.99</td><td>0.13</td><td>-</td><td>NA</td>
+</tr><tr><td>EigenEvd</td><td>EVD</td><td>Si640</td><td>994.963 ms</td><td>188.881 ms</td><td>98.7884 ms</td><td>34.9270 ms</td><td>910.562 ms</td><td>947.369 ms</td><td>965.771 ms</td><td>996.409 ms</td><td>1,227.067 ms</td><td>1.005</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
+</tr><tr><td>CandidateEvd</td><td>EVD</td><td>Si640</td><td>744.360 ms</td><td>30.582 ms</td><td>15.9951 ms</td><td>5.6551 ms</td><td>721.551 ms</td><td>734.837 ms</td><td>742.545 ms</td><td>752.188 ms</td><td>774.095 ms</td><td>1.343</td><td>0.75</td><td>0.06</td><td>-</td><td>NA</td>
+</tr><tr><td>EigenPropagation</td><td>Propagation</td><td>Au448</td><td>329.353 ms</td><td>43.252 ms</td><td>22.6219 ms</td><td>7.9980 ms</td><td>304.913 ms</td><td>315.980 ms</td><td>324.981 ms</td><td>334.671 ms</td><td>373.725 ms</td><td>3.036</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
+</tr><tr><td>CandidatePropagation</td><td>Propagation</td><td>Au448</td><td>323.485 ms</td><td>49.138 ms</td><td>25.7002 ms</td><td>9.0864 ms</td><td>288.105 ms</td><td>311.142 ms</td><td>318.460 ms</td><td>329.022 ms</td><td>373.630 ms</td><td>3.091</td><td>0.99</td><td>0.10</td><td>-</td><td>NA</td>
+</tr><tr><td>EigenPropagation</td><td>Propagation</td><td>GaAs256</td><td>123.844 ms</td><td>4.459 ms</td><td>2.3320 ms</td><td>0.8245 ms</td><td>121.079 ms</td><td>122.021 ms</td><td>123.477 ms</td><td>125.864 ms</td><td>127.354 ms</td><td>8.075</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
+</tr><tr><td>CandidatePropagation</td><td>Propagation</td><td>GaAs256</td><td>72.546 ms</td><td>11.534 ms</td><td>6.0328 ms</td><td>2.1329 ms</td><td>63.440 ms</td><td>68.238 ms</td><td>72.516 ms</td><td>76.145 ms</td><td>80.865 ms</td><td>13.784</td><td>0.59</td><td>0.05</td><td>-</td><td>NA</td>
+</tr><tr><td>EigenPropagation</td><td>Propagation</td><td>Si128</td><td>8.054 ms</td><td>1.514 ms</td><td>0.7920 ms</td><td>0.2800 ms</td><td>7.266 ms</td><td>7.622 ms</td><td>7.770 ms</td><td>8.205 ms</td><td>9.498 ms</td><td>124.164</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
+</tr><tr><td>CandidatePropagation</td><td>Propagation</td><td>Si128</td><td>14.908 ms</td><td>2.240 ms</td><td>1.1715 ms</td><td>0.4142 ms</td><td>13.656 ms</td><td>14.216 ms</td><td>14.612 ms</td><td>15.190 ms</td><td>17.475 ms</td><td>67.080</td><td>1.87</td><td>0.21</td><td>-</td><td>NA</td>
+</tr><tr><td>EigenPropagation</td><td>Propagation</td><td>Si256</td><td>118.389 ms</td><td>6.081 ms</td><td>3.1803 ms</td><td>1.1244 ms</td><td>114.392 ms</td><td>116.262 ms</td><td>117.674 ms</td><td>120.933 ms</td><td>123.275 ms</td><td>8.447</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
+</tr><tr><td>CandidatePropagation</td><td>Propagation</td><td>Si256</td><td>75.390 ms</td><td>7.593 ms</td><td>3.9710 ms</td><td>1.4040 ms</td><td>69.524 ms</td><td>72.547 ms</td><td>75.172 ms</td><td>77.990 ms</td><td>81.028 ms</td><td>13.264</td><td>0.64</td><td>0.04</td><td>-</td><td>NA</td>
+</tr><tr><td>EigenPropagation</td><td>Propagation</td><td>Si448</td><td>273.680 ms</td><td>24.950 ms</td><td>13.0491 ms</td><td>4.6136 ms</td><td>248.776 ms</td><td>268.573 ms</td><td>274.819 ms</td><td>283.472 ms</td><td>288.330 ms</td><td>3.654</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
+</tr><tr><td>CandidatePropagation</td><td>Propagation</td><td>Si448</td><td>279.612 ms</td><td>25.446 ms</td><td>13.3088 ms</td><td>4.7054 ms</td><td>257.862 ms</td><td>268.629 ms</td><td>283.514 ms</td><td>288.495 ms</td><td>294.920 ms</td><td>3.576</td><td>1.02</td><td>0.07</td><td>-</td><td>NA</td>
+</tr><tr><td>EigenPropagation</td><td>Propagation</td><td>Si640</td><td>888.163 ms</td><td>71.696 ms</td><td>37.4984 ms</td><td>13.2577 ms</td><td>820.237 ms</td><td>872.698 ms</td><td>893.537 ms</td><td>906.326 ms</td><td>945.894 ms</td><td>1.126</td><td>1.00</td><td>0.00</td><td>-</td><td>NA</td>
+</tr><tr><td>CandidatePropagation</td><td>Propagation</td><td>Si640</td><td>739.297 ms</td><td>32.798 ms</td><td>17.1542 ms</td><td>6.0649 ms</td><td>718.313 ms</td><td>730.524 ms</td><td>737.953 ms</td><td>742.140 ms</td><td>775.904 ms</td><td>1.353</td><td>0.83</td><td>0.04</td><td>-</td><td>NA</td>
+</tr></tbody></table>
+</body>
+</html>

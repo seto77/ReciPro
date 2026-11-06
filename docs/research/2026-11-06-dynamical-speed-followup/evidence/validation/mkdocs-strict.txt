@@ -1,0 +1,76 @@
+
+ ��  \u26a0  Warning from the Material for MkDocs team
+ ��
+ ��  MkDocs 2.0, the underlying framework of Material for MkDocs,
+ ��  will introduce backward-incompatible changes, including:
+ ��
+ ��  �~ All plugins will stop working \u2013 the plugin system has been removed
+ ��  �~ All theme overrides will break \u2013 the theming system has been rewritten
+ ��  �~ No migration path exists \u2013 existing projects cannot be upgraded
+ ��  �~ Closed contribution model \u2013 community members can't report bugs
+ ��  �~ Currently unlicensed \u2013 unsuitable for production use
+ ��
+ ��  Our full analysis:
+ ��
+ ��  https://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/
+
+----------------------------------------------------------------
+
+WARNING: MkDocs may break support for all existing plugins and themes soon!
+
+The owner of MkDocs has completely abandoned maintenance of the project, and instead is planning to publish a "version 2" which will not support any existing themes, plugins or even your configuration files. This v2 may eventually replace what you download with `pip install mkdocs`, suddenly breaking the build of your existing site.
+
+To avoid these risks, switch to ProperDocs, a continuation of MkDocs 1.x and a drop-in replacement that supports your current MkDocs setup.
+Simply install it with `pip install properdocs` and build your site with `properdocs build` instead of the MkDocs equivalents.
+
+Alternatively, to just skip this warning in the future, you can set the environment variable `DISABLE_MKDOCS_2_WARNING=true`.
+
+For more info visit https://github.com/ProperDocs/properdocs/discussions/33 and https://properdocs.org/
+
+(This warning was initiated by one of the plugins that you depend on.)
+
+----------------------------------------------------------------
+INFO    -  mkdocs_static_i18n: Building 'en' documentation to directory: C:\tmp\recipro-speed-docs-site
+INFO    -  mkdocs_static_i18n: Adding 'de' to the 'material/search' plugin 'lang' option
+INFO    -  mkdocs_static_i18n: Adding 'fr' to the 'material/search' plugin 'lang' option
+INFO    -  mkdocs_static_i18n: Adding 'es' to the 'material/search' plugin 'lang' option
+INFO    -  mkdocs_static_i18n: Adding 'it' to the 'material/search' plugin 'lang' option
+INFO    -  mkdocs_static_i18n: Adding 'ru' to the 'material/search' plugin 'lang' option
+INFO    -  mkdocs_static_i18n: Adding 'ko' to the 'material/search' plugin 'lang' option
+INFO    -  mkdocs_static_i18n: Adding 'pt' to the 'material/search' plugin 'lang' option
+INFO    -  Cleaning site directory
+INFO    -  Building documentation to directory: C:\tmp\recipro-speed-docs-site
+INFO    -  mkdocs_static_i18n: Building 'ja' documentation to directory: C:\tmp\recipro-speed-docs-site\ja
+INFO    -  mkdocs_static_i18n: Translated 43 navigation elements to 'ja'
+INFO    -  legacy_en_redirects: wrote 46 current + 38 legacy /en/ redirect stubs
+INFO    -  mkdocs_static_i18n: Building 'de' documentation to directory: C:\tmp\recipro-speed-docs-site\de
+INFO    -  mkdocs_static_i18n: Translated 48 navigation elements to 'de'
+INFO    -  legacy_en_redirects: wrote 92 current + 38 legacy /en/ redirect stubs
+INFO    -  mkdocs_static_i18n: Building 'fr' documentation to directory: C:\tmp\recipro-speed-docs-site\fr
+INFO    -  mkdocs_static_i18n: Translated 48 navigation elements to 'fr'
+INFO    -  legacy_en_redirects: wrote 138 current + 38 legacy /en/ redirect stubs
+INFO    -  mkdocs_static_i18n: Building 'es' documentation to directory: C:\tmp\recipro-speed-docs-site\es
+INFO    -  mkdocs_static_i18n: Translated 48 navigation elements to 'es'
+INFO    -  legacy_en_redirects: wrote 184 current + 38 legacy /en/ redirect stubs
+INFO    -  mkdocs_static_i18n: Building 'it' documentation to directory: C:\tmp\recipro-speed-docs-site\it
+INFO    -  mkdocs_static_i18n: Translated 48 navigation elements to 'it'
+INFO    -  legacy_en_redirects: wrote 230 current + 38 legacy /en/ redirect stubs
+INFO    -  mkdocs_static_i18n: Building 'ru' documentation to directory: C:\tmp\recipro-speed-docs-site\ru
+INFO    -  mkdocs_static_i18n: Translated 48 navigation elements to 'ru'
+INFO    -  legacy_en_redirects: wrote 276 current + 38 legacy /en/ redirect stubs
+INFO    -  mkdocs_static_i18n: Building 'zh-Hans' documentation to directory: C:\tmp\recipro-speed-docs-site\zh-Hans
+INFO    -  mkdocs_static_i18n: Language 'zh-Hans' is not supported by lunr.js, not setting it in the 'plugins.search.lang' option
+INFO    -  mkdocs_static_i18n: Translated 48 navigation elements to 'zh-Hans'
+INFO    -  legacy_en_redirects: wrote 322 current + 38 legacy /en/ redirect stubs
+INFO    -  mkdocs_static_i18n: Building 'zh-Hant' documentation to directory: C:\tmp\recipro-speed-docs-site\zh-Hant
+INFO    -  mkdocs_static_i18n: Language 'zh-Hant' is not supported by lunr.js, not setting it in the 'plugins.search.lang' option
+INFO    -  mkdocs_static_i18n: Translated 48 navigation elements to 'zh-Hant'
+INFO    -  legacy_en_redirects: wrote 368 current + 38 legacy /en/ redirect stubs
+INFO    -  mkdocs_static_i18n: Building 'ko' documentation to directory: C:\tmp\recipro-speed-docs-site\ko
+INFO    -  mkdocs_static_i18n: Translated 48 navigation elements to 'ko'
+INFO    -  legacy_en_redirects: wrote 414 current + 38 legacy /en/ redirect stubs
+INFO    -  mkdocs_static_i18n: Building 'pt' documentation to directory: C:\tmp\recipro-speed-docs-site\pt
+INFO    -  mkdocs_static_i18n: Translated 48 navigation elements to 'pt'
+INFO    -  legacy_en_redirects: wrote 460 current + 38 legacy /en/ redirect stubs
+INFO    -  legacy_en_redirects: wrote 460 current + 38 legacy /en/ redirect stubs
+INFO    -  Documentation built in 98.20 seconds

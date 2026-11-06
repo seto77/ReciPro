@@ -1,0 +1,83 @@
+{
+  "EigenAdapterFresh": {
+    "cases": 9,
+    "max_residual": 7.183990084183412e-16,
+    "max_expm_wave_error": 3.26849658770736e-13,
+    "max_fused_expm_error": 5.062616992766241e-13,
+    "max_flux_error": 9.08162434143378e-14,
+    "max_boundary_error": 1.3356019068354065e-15,
+    "max_condition_2": 20000.00005011878
+  },
+  "EigenAdapterReused": {
+    "cases": 9,
+    "max_residual": 7.183990084183412e-16,
+    "max_expm_wave_error": 3.26849658770736e-13,
+    "max_fused_expm_error": 5.062616992766241e-13,
+    "max_flux_error": 9.08162434143378e-14,
+    "max_boundary_error": 1.3356019068354065e-15,
+    "max_condition_2": 20000.00005011878
+  },
+  "EigenReference": {
+    "cases": 9,
+    "max_residual": 7.11699966147482e-16,
+    "max_expm_wave_error": 3.26849658770736e-13,
+    "max_fused_expm_error": null,
+    "max_flux_error": 2.5091040356528538e-14,
+    "max_boundary_error": 1.9984223635388937e-15,
+    "max_condition_2": 20000.00005011878
+  },
+  "Gpu1331_Default": {
+    "cases": 9,
+    "max_residual": 5.507849481482168e-16,
+    "max_expm_wave_error": 3.26849658770736e-13,
+    "max_fused_expm_error": null,
+    "max_flux_error": 4.340972026284362e-14,
+    "max_boundary_error": 6.661442997120372e-16,
+    "max_condition_2": 20000.000050118775
+  },
+  "MathNetMkl_Schur": {
+    "cases": 9,
+    "max_residual": 4.178624816582357e-16,
+    "max_expm_wave_error": 3.26849658770736e-13,
+    "max_fused_expm_error": 5.458267308264763e-13,
+    "max_flux_error": 9.781064846947629e-14,
+    "max_boundary_error": 4.469632284288567e-16,
+    "max_condition_2": 20000.000050118775
+  },
+  "Mkl2026_Geev": {
+    "cases": 9,
+    "max_residual": 4.0900389648016514e-16,
+    "max_expm_wave_error": 3.26849658770736e-13,
+    "max_fused_expm_error": 5.458267308264763e-13,
+    "max_flux_error": 3.6637359812630166e-14,
+    "max_boundary_error": 5.557211197384742e-16,
+    "max_condition_2": 20000.000050118775
+  },
+  "Mkl2026_Schur": {
+    "cases": 9,
+    "max_residual": 3.9176272684074e-16,
+    "max_expm_wave_error": 3.2684965854977094e-13,
+    "max_fused_expm_error": 5.062616992766241e-13,
+    "max_flux_error": 3.708144902248023e-14,
+    "max_boundary_error": 7.775651009075575e-16,
+    "max_condition_2": 20000.000050118775
+  },
+  "OpenBlas0334_Geev": {
+    "cases": 9,
+    "max_residual": 4.598522994358695e-16,
+    "max_expm_wave_error": 3.26849658770736e-13,
+    "max_fused_expm_error": 5.458267308264763e-13,
+    "max_flux_error": 3.275157922644212e-14,
+    "max_boundary_error": 3.344704205905403e-16,
+    "max_condition_2": 20000.000050118775
+  },
+  "OpenBlas0334_Schur": {
+    "cases": 9,
+    "max_residual": 4.643412438434107e-16,
+    "max_expm_wave_error": 3.2684965854977094e-13,
+    "max_fused_expm_error": 5.062616992766241e-13,
+    "max_flux_error": 7.183142969324763e-14,
+    "max_boundary_error": 7.822735197353584e-16,
+    "max_condition_2": 20000.000050118775
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "date_jst": "2026-11-06T14:16:04.016080+09:00",
+  "initial_crystallography_head": "b2bbacaaf972ca2922387bdec16b20ed20e90f6d",
+  "initial_native_head": "0700faa7a9ed9981240d9167c82471efc968c5ce",
+  "final_runtime": ".NET 11.0.0-rc.3.26522.148",
+  "bdn_runtime": ".NET 10.0.14",
+  "tests": {
+    "passed": 6703,
+    "failed": 0,
+    "skipped": 0,
+    "hrtem_native_enabled_output_count": 8
+  },
+  "sha256": {
+    "Crystallography/Diffraction/BetheMethod.cs": "413688db6e7e5cdfae4dc857fe37acd71da0677c4b377560f5fd887657ad28e9",
+    "Crystallography/Diffraction/BlochWaveIntegral.cs": "7ee244909a5405a36b044e5825e13d4edab37a982685101b5b20449684c80bfe",
+    "Crystallography/Diffraction/Alchemi/AlchemiReduction.cs": "fa46a7719d4c380142f56f9492fd351b726e4754716ebb5abecc1bad99fc404f",
+    "Crystallography/Diffraction/Kikuchi/KikuchiProfileCalculator.cs": "7c2362d77a775135a45dd16e22252a0459535098723a0ed9194f520740b509b7",
+    "Crystallography.Native/EigenFuncs.cpp": "de494b854ea921115fa4b263bf2e8350643a2cdf9efc26411273a4b66ee94945",
+    "Crystallography.Native/BlochWaveIntegral.h": "f38fc0d94f20552acd7adacb110505e3361d293da020b59c0cafef61eeac19f7",
+    "Crystallography.Native/Crystallography.Native.vcxproj": "8f608d87fd2abe022e06dd6d0d41027dcb7dbe71f82e3b8f149c830001ebdc13",
+    "Crystallography/Crystallography.csproj": "8996e39f81187bd3a0e6e694594bf7b78dbd8e9cfe402364885f57a8420bb5e4",
+    "Crystallography/tests/Crystallography.Tests/Crystallography.Tests.csproj": "4750d63530b2c8711b6c69964603cda1848dd75de7ba505e9a829c070ec52cb5",
+    "ReciPro.Benchmarks/HrtemTccBenchmark.cs": "ca1be2de85209d5fb7b41ff4a357cd398c01fe7f7a81d24259d7d2594641e9e9",
+    "tools/BlochIntegralCheck/Program.cs": "d3457246a197522da92ea981b3fe3a056751a64f6d20b7a3917bf536a16cddc0",
+    "tools/PedConvergenceCheck/Program.cs": "5a631822802234075a9a09ea9a691e3b6c1555ec24862d741cd540fe69e77e33",
+    "tools/EbsdSolverCheck/Program.cs": "94a73804f68a95c1caae80ad4e755e90ebba6c7dc80c250c6e00dec41872791e",
+    "Crystallography/tests/Crystallography.Tests/BethePedReuseTests.cs": "a3ffa903e377f466332608da0a7e4e61c1e2f7f1f7425fa1e949179035019f2e",
+    "Crystallography/tests/Crystallography.Tests/BlochWaveIntegralTests.cs": "918acdf599758e3a7f9c9ca2df28dabd09a5f577aeff44139fd257fb025c4ff9",
+    "Crystallography/tests/Crystallography.Tests/EbsdAbsorbedFluxTests.cs": "d4a536b10668b20464ddf3438da153daece5a681d580e98e35bd731c7a10cf94",
+    "Crystallography/tests/Crystallography.Tests/HrtemTccTests.cs": "ec4a3d190040a943d0dcfa1b9312207f114bb83c5c94c66c83812652dcc039dc",
+    "ReciPro/bin/Release/Crystallography.Native.avx2.dll": "8f999db81f0224c85a909835e82c235ea1f8fd1112f9515b45d21e1692ce2125",
+    "ReciPro/bin/Release/Crystallography.Native.avx512.dll": "4084de960898e59572f72b0b66acdfddca1680ae1873e4ecb6f21494e20c610a",
+    "ReciPro/bin/Release/Crystallography.Native.dll": "5029ccafcba9497e815dff8989b03e69e445e6d563bb181e38dced0e2276a903"
+  },
+  "transient_artifacts": {
+    "baseline-net11-quick.bin": "44f2b3a87fb3ef06f68a343f13b732c6ab523eb7454d40f974ad6625191921cf",
+    "current-net11-quick.bin": "2c3f55b4a6853a408ac58678907fd224ada1b3839ebceec07f693de0de0683b0",
+    "baseline-net11-heavy.bin": "0f8301153385d95f4652a3ef0be548abbb444b32a41b508d96945c2033b1c28a",
+    "current-net11-heavy.bin": "4ae3c50c0b67f9dcef733cbe81dbf4b1e2093d161145847dc55827cc15aa1adf",
+    "dynamical-audit-final.trx": "23e370954eb03ad86614b6208a4799c69e08a442f5c3a4fdcb296ca0aca4347f"
+  }
+}

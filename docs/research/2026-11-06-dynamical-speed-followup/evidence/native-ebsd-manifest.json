@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-06",
+  "compiler": "VS18 clang-cl, /O2 /arch:AVX2 /fp:fast /std:c++20",
+  "eigen_dependency": "Canonical Crystallography.Native/Eigen after root Eigen update; all strategies share one translation unit.",
+  "production_change": "EigenFuncs.cpp, new modal helper and nAtoms=0 skip; both exported function bodies token-compared to measured strategy 3 except added tLen==0 guards.",
+  "sha256": {
+    "tools/NativeEbsdSpeedStudy/EbsdKernels.cpp": "7729b3a9546f4e54a0da7fe58a2bfa72cf85adcfb22df655245601810c31cee9",
+    "tools/NativeEbsdSpeedStudy/CandidateKernels.h": "cf5d6e1d06ebfeef3e994740c412ab8b10267783ab5ecb620bd896bb7a255d48",
+    "tools/NativeEbsdSpeedStudy/FactorizedKernels.h": "15997ed9138bfed5e76cd7ae5f4e455d6deeb06d12974cf66b7c5e188b0be032",
+    "tools/NativeEbsdSpeedStudy/BlochWaveIntegral.h": "f38fc0d94f20552acd7adacb110505e3361d293da020b59c0cafef61eeac19f7",
+    "tools/NativeEbsdSpeedStudy/EbsdKernels.dll": "68a6375317e399bad0624a03d8dfcdf2f4cfe210904c69ae27e704ca3eaa1115",
+    "tools/NativeEbsdSpeedStudy/verify.py": "c962680fb35f4787e339b4ef4412ee7d54e8943138778709b0b527a31a66db30",
+    "ReciPro.Benchmarks/NativeEbsdKernelBenchmark.cs": "5591f5916dea73aa2f771a98b470f2fafe6becaa0ec4db42c964e05b66fcee66",
+    "Crystallography.Native/EigenFuncs.cpp": "fb6dcad04431fb3e30ce6758466eec459d425cbc763637c59b69767d1cdf4735"
+  },
+  "initial_packed_dll_sha256": "ce69f780be903f82a5503fdebdb8d685b21841a205a143c0f414c41118b6110f",
+  "evidence_sha256": {
+    "native-ebsd-packed-report.md": "ccd0a84a6fd3e6983902747eafc6ed348f88fc37c8d6ae5792b81323dbb83b34",
+    "native-ebsd-packed-report.json": "d60f6821e593f89a72bdbbfdd53cfe25c50fa415c2b5cc5358967de180ce22b1",
+    "native-ebsd-packed-report.csv": "f597625abdba5b543c83911eab9c618e081eb9be5d1eb6cef39c1021ac64d302",
+    "native-ebsd-minimal-report.md": "e4311e494eff8d8d0ebc9b1bf3df162e03dece36fe10b24d5e9bd0a8819c711f",
+    "native-ebsd-minimal-report.json": "6947869fbaddb2d8cf643a9f62fb0377fb83d28b07a2a937210e52dfcf1a8755",
+    "native-ebsd-minimal-report.csv": "ad782173d803a5ea309a32a4518cceb75070b491484503f8e66182453a10537a",
+    "native-ebsd-packed-verification.txt": "9c19718a935e1599832f8b080b74da21ea0b0e0556237493d82d52c82511f009",
+    "native-ebsd-minimal-verification.txt": "7bfaeff857598e04fdb12e161d55d765b96e2fd2ed83fce9ec315649e59f69b8"
+  }
+}

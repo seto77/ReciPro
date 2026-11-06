@@ -1,0 +1,16 @@
+  復元対象のプロジェクトを決定しています...
+  復元対象のすべてのプロジェクトは最新です。
+C:\Program Files\dotnet\sdk\11.0.100-rc.3.26522.148\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.RuntimeIdentifierInference.targets(385,5): message NETSDK1057: プレビュー版の .NET を使用しています。https://aka.ms/dotnet-support-policy をご覧ください [C:\Users\seto\source\repos\ReciPro\Crystallography\tests\Crystallography.Tests\Crystallography.Tests.csproj]
+  Crystallography -> C:\Users\seto\source\repos\ReciPro\Crystallography\bin\x64\Release\net11.0-windows\Crystallography.dll
+C:\Users\seto\source\repos\ReciPro\Crystallography\tests\Crystallography.Tests\PrmNumberTests.cs(15,46): warning WFO2000: Getter 'Valid' directly returns a newly constructed reference instance on this path; cache it only if stable identity is intended, or use a factory method for intentional creation (https://aka.ms/winforms-warnings/wfo2000) [C:\Users\seto\source\repos\ReciPro\Crystallography\tests\Crystallography.Tests\Crystallography.Tests.csproj]
+C:\Users\seto\source\repos\ReciPro\Crystallography\tests\Crystallography.Tests\PrmNumberTests.cs(29,38): warning WFO2000: Getter 'Invalid' directly returns a newly constructed reference instance on this path; cache it only if stable identity is intended, or use a factory method for intentional creation (https://aka.ms/winforms-warnings/wfo2000) [C:\Users\seto\source\repos\ReciPro\Crystallography\tests\Crystallography.Tests\Crystallography.Tests.csproj]
+  Crystallography.Tests -> C:\Users\seto\source\repos\ReciPro\Crystallography\tests\Crystallography.Tests\bin\x64\Release\net11.0-windows\Crystallography.Tests.dll
+
+ビルドに成功しました。
+
+C:\Users\seto\source\repos\ReciPro\Crystallography\tests\Crystallography.Tests\PrmNumberTests.cs(15,46): warning WFO2000: Getter 'Valid' directly returns a newly constructed reference instance on this path; cache it only if stable identity is intended, or use a factory method for intentional creation (https://aka.ms/winforms-warnings/wfo2000) [C:\Users\seto\source\repos\ReciPro\Crystallography\tests\Crystallography.Tests\Crystallography.Tests.csproj]
+C:\Users\seto\source\repos\ReciPro\Crystallography\tests\Crystallography.Tests\PrmNumberTests.cs(29,38): warning WFO2000: Getter 'Invalid' directly returns a newly constructed reference instance on this path; cache it only if stable identity is intended, or use a factory method for intentional creation (https://aka.ms/winforms-warnings/wfo2000) [C:\Users\seto\source\repos\ReciPro\Crystallography\tests\Crystallography.Tests\Crystallography.Tests.csproj]
+    2 個の警告
+    0 エラー
+
+経過時間 00:00:00.61

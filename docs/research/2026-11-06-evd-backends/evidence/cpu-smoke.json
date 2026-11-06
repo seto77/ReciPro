@@ -1,0 +1,731 @@
+{
+  "adapter_sha256": "ee18cbf60eee82e28e8962e22510eb466232f1d5ae1d95ab9bed99f4f11fca27",
+  "cases": [
+    {
+      "backend": "Eigen-fresh",
+      "n": 4,
+      "case": 0,
+      "residual": 2.967312428949088e-16,
+      "propagation_peak_normalized_error": 1.1484772899073014e-14
+    },
+    {
+      "backend": "Eigen-fresh",
+      "n": 4,
+      "case": 1,
+      "residual": 2.284930401594244e-16,
+      "propagation_peak_normalized_error": 8.674750236428083e-16
+    },
+    {
+      "backend": "Eigen-fresh",
+      "n": 4,
+      "case": 2,
+      "residual": 4.1554147723557084e-16,
+      "propagation_peak_normalized_error": 5.551115123125783e-16
+    },
+    {
+      "backend": "Eigen-fresh",
+      "n": 16,
+      "case": 0,
+      "residual": 2.985282530574058e-16,
+      "propagation_peak_normalized_error": 6.30876357606852e-15
+    },
+    {
+      "backend": "Eigen-fresh",
+      "n": 16,
+      "case": 1,
+      "residual": 2.5681587849742607e-16,
+      "propagation_peak_normalized_error": 1.7381244389920942e-15
+    },
+    {
+      "backend": "Eigen-fresh",
+      "n": 16,
+      "case": 2,
+      "residual": 2.5998103204313426e-16,
+      "propagation_peak_normalized_error": 3.9328089187205936e-16
+    },
+    {
+      "backend": "Eigen-fresh",
+      "n": 48,
+      "case": 0,
+      "residual": 4.276044429502458e-16,
+      "propagation_peak_normalized_error": 1.0896615498730766e-13
+    },
+    {
+      "backend": "Eigen-fresh",
+      "n": 48,
+      "case": 1,
+      "residual": 3.666726455009421e-16,
+      "propagation_peak_normalized_error": 8.298880097642314e-15
+    },
+    {
+      "backend": "Eigen-fresh",
+      "n": 48,
+      "case": 2,
+      "residual": 3.936417444766919e-16,
+      "propagation_peak_normalized_error": 2.669157179762418e-15
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 4,
+      "case": 0,
+      "residual": 3.168087637902933e-16,
+      "propagation_peak_normalized_error": 1.983079064425562e-14
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 4,
+      "case": 1,
+      "residual": 2.5948391834400816e-16,
+      "propagation_peak_normalized_error": 3.824393452344385e-16
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 4,
+      "case": 2,
+      "residual": 1.6457127415693496e-16,
+      "propagation_peak_normalized_error": 1.7209307212296828e-16
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 16,
+      "case": 0,
+      "residual": 4.2814371585859134e-16,
+      "propagation_peak_normalized_error": 2.393197447831442e-14
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 16,
+      "case": 1,
+      "residual": 3.220753941767904e-16,
+      "propagation_peak_normalized_error": 3.047383085633452e-15
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 16,
+      "case": 2,
+      "residual": 2.996875516428444e-16,
+      "propagation_peak_normalized_error": 7.447602459741819e-16
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 48,
+      "case": 0,
+      "residual": 3.416702287720793e-16,
+      "propagation_peak_normalized_error": 8.819041659808224e-14
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 48,
+      "case": 1,
+      "residual": 3.380873395341212e-16,
+      "propagation_peak_normalized_error": 1.6472656666837625e-14
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 48,
+      "case": 2,
+      "residual": 3.082817488673851e-16,
+      "propagation_peak_normalized_error": 8.005932084973443e-16
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 4,
+      "case": 0,
+      "residual": 3.0903998138851697e-16,
+      "propagation_peak_normalized_error": 4.9960036108132044e-15
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 4,
+      "case": 1,
+      "residual": 4.623135577505023e-16,
+      "propagation_peak_normalized_error": 9.618024089008702e-16
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 4,
+      "case": 2,
+      "residual": 2.947021761060758e-16,
+      "propagation_peak_normalized_error": 8.671119018262734e-16
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 16,
+      "case": 0,
+      "residual": 4.962023268390479e-16,
+      "propagation_peak_normalized_error": 5.414936393206963e-14
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 16,
+      "case": 1,
+      "residual": 4.780669603193739e-16,
+      "propagation_peak_normalized_error": 3.3048720602402417e-15
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 16,
+      "case": 2,
+      "residual": 4.085981386894212e-16,
+      "propagation_peak_normalized_error": 1.1801832636420706e-15
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 48,
+      "case": 0,
+      "residual": 4.180688598077618e-16,
+      "propagation_peak_normalized_error": 2.6775662241724263e-14
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 48,
+      "case": 1,
+      "residual": 4.90087958956628e-16,
+      "propagation_peak_normalized_error": 6.72998827319366e-15
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 48,
+      "case": 2,
+      "residual": 3.845653068956936e-16,
+      "propagation_peak_normalized_error": 7.052561852701895e-16
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 4,
+      "case": 0,
+      "residual": 2.265331454679049e-16,
+      "propagation_peak_normalized_error": 1.5582722720639763e-14
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 4,
+      "case": 1,
+      "residual": 3.3618119079598275e-16,
+      "propagation_peak_normalized_error": 5.978733960281817e-16
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 4,
+      "case": 2,
+      "residual": 2.1353088347509714e-16,
+      "propagation_peak_normalized_error": 3.433175098891678e-16
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 16,
+      "case": 0,
+      "residual": 5.144845776056273e-16,
+      "propagation_peak_normalized_error": 3.343717546647095e-14
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 16,
+      "case": 1,
+      "residual": 4.3335249944940795e-16,
+      "propagation_peak_normalized_error": 4.23338832335065e-15
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 16,
+      "case": 2,
+      "residual": 3.904925331666732e-16,
+      "propagation_peak_normalized_error": 1.0235750533041806e-15
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 48,
+      "case": 0,
+      "residual": 4.609294986829264e-16,
+      "propagation_peak_normalized_error": 3.057431302756012e-14
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 48,
+      "case": 1,
+      "residual": 6.453779613105266e-16,
+      "propagation_peak_normalized_error": 1.088286130260494e-14
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 48,
+      "case": 2,
+      "residual": 3.7394435030238717e-16,
+      "propagation_peak_normalized_error": 7.995013134618843e-16
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 4,
+      "case": 0,
+      "residual": 3.8851095383365175e-16,
+      "propagation_peak_normalized_error": 1.5782187371200806e-14
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 4,
+      "case": 1,
+      "residual": 4.836650946887432e-16,
+      "propagation_peak_normalized_error": 1.182872361807898e-15
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 4,
+      "case": 2,
+      "residual": 3.0853114558081274e-16,
+      "propagation_peak_normalized_error": 5.551115123125783e-16
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 16,
+      "case": 0,
+      "residual": 4.862626596007143e-16,
+      "propagation_peak_normalized_error": 5.603646567312687e-14
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 16,
+      "case": 1,
+      "residual": 4.561895875735194e-16,
+      "propagation_peak_normalized_error": 3.657592900831469e-15
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 16,
+      "case": 2,
+      "residual": 3.5685361455413307e-16,
+      "propagation_peak_normalized_error": 4.0029660424867215e-16
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 48,
+      "case": 0,
+      "residual": 4.3582126209892864e-16,
+      "propagation_peak_normalized_error": 2.4970367272356733e-14
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 48,
+      "case": 1,
+      "residual": 5.250895272527549e-16,
+      "propagation_peak_normalized_error": 1.3445013696782933e-14
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 48,
+      "case": 2,
+      "residual": 3.7091596876529666e-16,
+      "propagation_peak_normalized_error": 1.0079693248391343e-15
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 4,
+      "case": 0,
+      "residual": 2.983354793819228e-16,
+      "propagation_peak_normalized_error": 3.1401849173675502e-15
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 4,
+      "case": 1,
+      "residual": 3.940771014166766e-16,
+      "propagation_peak_normalized_error": 8.300631872826335e-16
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 4,
+      "case": 2,
+      "residual": 2.0478573933854745e-16,
+      "propagation_peak_normalized_error": 4.0029660424867215e-16
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 16,
+      "case": 0,
+      "residual": 4.053296082031297e-16,
+      "propagation_peak_normalized_error": 2.7179611106205058e-14
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 16,
+      "case": 1,
+      "residual": 5.072213822859878e-16,
+      "propagation_peak_normalized_error": 2.7392387335545786e-15
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 16,
+      "case": 2,
+      "residual": 3.4057607089061866e-16,
+      "propagation_peak_normalized_error": 4.468253502932695e-16
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 48,
+      "case": 0,
+      "residual": 4.625082441912531e-16,
+      "propagation_peak_normalized_error": 2.6882969702872157e-14
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 48,
+      "case": 1,
+      "residual": 5.377940545429051e-16,
+      "propagation_peak_normalized_error": 6.264419805624012e-15
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 48,
+      "case": 2,
+      "residual": 3.900001759523767e-16,
+      "propagation_peak_normalized_error": 6.184669147644059e-16
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 4,
+      "case": 0,
+      "residual": 2.0646690710924593e-16,
+      "propagation_peak_normalized_error": 1.2070835695371291e-14
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 4,
+      "case": 1,
+      "residual": 4.097639258087715e-16,
+      "propagation_peak_normalized_error": 4.176390743535991e-16
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 4,
+      "case": 2,
+      "residual": 4.1653415500370915e-16,
+      "propagation_peak_normalized_error": 4.710277376051326e-16
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 16,
+      "case": 0,
+      "residual": 4.696728416038172e-16,
+      "propagation_peak_normalized_error": 3.093062218511658e-14
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 16,
+      "case": 1,
+      "residual": 5.037217496039727e-16,
+      "propagation_peak_normalized_error": 6.826441654019239e-15
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 16,
+      "case": 2,
+      "residual": 2.627524629288318e-16,
+      "propagation_peak_normalized_error": 5.551115123125783e-16
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 48,
+      "case": 0,
+      "residual": 4.433689153133383e-16,
+      "propagation_peak_normalized_error": 2.9227274314304e-14
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 48,
+      "case": 1,
+      "residual": 5.379699862228537e-16,
+      "propagation_peak_normalized_error": 1.3515932642230394e-14
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 48,
+      "case": 2,
+      "residual": 4.0145367262200185e-16,
+      "propagation_peak_normalized_error": 1.3665980688911922e-15
+    }
+  ],
+  "workspaces": [
+    {
+      "backend": "Eigen-fresh",
+      "n": 4,
+      "complex_elements": 0
+    },
+    {
+      "backend": "Eigen-fresh",
+      "n": 16,
+      "complex_elements": 0
+    },
+    {
+      "backend": "Eigen-fresh",
+      "n": 48,
+      "complex_elements": 0
+    },
+    {
+      "backend": "Eigen-fresh",
+      "n": 128,
+      "complex_elements": 0
+    },
+    {
+      "backend": "Eigen-fresh",
+      "n": 256,
+      "complex_elements": 0
+    },
+    {
+      "backend": "Eigen-fresh",
+      "n": 448,
+      "complex_elements": 0
+    },
+    {
+      "backend": "Eigen-fresh",
+      "n": 640,
+      "complex_elements": 0
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 4,
+      "complex_elements": 0
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 16,
+      "complex_elements": 0
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 48,
+      "complex_elements": 0
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 128,
+      "complex_elements": 0
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 256,
+      "complex_elements": 0
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 448,
+      "complex_elements": 0
+    },
+    {
+      "backend": "Eigen-reuse",
+      "n": 640,
+      "complex_elements": 0
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 4,
+      "complex_elements": 520
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 16,
+      "complex_elements": 4259
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 48,
+      "complex_elements": 6240
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 128,
+      "complex_elements": 16640
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 256,
+      "complex_elements": 33280
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 448,
+      "complex_elements": 58240
+    },
+    {
+      "backend": "OpenBLAS-zgeev",
+      "n": 640,
+      "complex_elements": 83200
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 4,
+      "complex_elements": 132
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 16,
+      "complex_elements": 4259
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 48,
+      "complex_elements": 4325
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 128,
+      "complex_elements": 4523
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 256,
+      "complex_elements": 8448
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 448,
+      "complex_elements": 14784
+    },
+    {
+      "backend": "OpenBLAS-gees-trevc",
+      "n": 640,
+      "complex_elements": 21120
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 4,
+      "complex_elements": 0
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 16,
+      "complex_elements": 0
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 48,
+      "complex_elements": 0
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 128,
+      "complex_elements": 0
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 256,
+      "complex_elements": 0
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 448,
+      "complex_elements": 0
+    },
+    {
+      "backend": "MathNet-MKL",
+      "n": 640,
+      "complex_elements": 0
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 4,
+      "complex_elements": 132
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 16,
+      "complex_elements": 560
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 48,
+      "complex_elements": 4752
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 128,
+      "complex_elements": 33152
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 256,
+      "complex_elements": 99008
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 448,
+      "complex_elements": 173120
+    },
+    {
+      "backend": "MKL2026-zgeev",
+      "n": 640,
+      "complex_elements": 247232
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 4,
+      "complex_elements": 8
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 16,
+      "complex_elements": 528
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 48,
+      "complex_elements": 1584
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 128,
+      "complex_elements": 4224
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 256,
+      "complex_elements": 8448
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 448,
+      "complex_elements": 14784
+    },
+    {
+      "backend": "MKL2026-gees-trevc",
+      "n": 640,
+      "complex_elements": 21120
+    }
+  ],
+  "backends": [
+    {
+      "name": "Eigen-fresh",
+      "path": "",
+      "sha256": null
+    },
+    {
+      "name": "Eigen-reuse",
+      "path": "",
+      "sha256": null
+    },
+    {
+      "name": "OpenBLAS-zgeev",
+      "path": "C:/ProgramData/Miniconda3/Library/bin/openblas.dll",
+      "sha256": "bdf7dce1e2d3c4c44faf44e66253178a462d379751a187f7c86d3d90f72482b5"
+    },
+    {
+      "name": "OpenBLAS-gees-trevc",
+      "path": "C:/ProgramData/Miniconda3/Library/bin/openblas.dll",
+      "sha256": "bdf7dce1e2d3c4c44faf44e66253178a462d379751a187f7c86d3d90f72482b5"
+    },
+    {
+      "name": "MathNet-MKL",
+      "path": "C:\\Users\\seto\\source\\repos\\ReciPro\\ReciPro\\bin\\Release\\libMathNetNumericsMKL.dll",
+      "sha256": "7abdcb4fbbb282d68526cc02ef01c36cb007f09fc60cc4c9688a0ae8f51b3eec"
+    },
+    {
+      "name": "MKL2026-zgeev",
+      "path": "C:/tmp/recipro_evd_261106/mkl/runtime/mkl_rt.3.dll",
+      "sha256": "4d2dfbd55effdb6483de7deb7a2efcfaab9c9b934ae91cef97324afe9bf26489"
+    },
+    {
+      "name": "MKL2026-gees-trevc",
+      "path": "C:/tmp/recipro_evd_261106/mkl/runtime/mkl_rt.3.dll",
+      "sha256": "4d2dfbd55effdb6483de7deb7a2efcfaab9c9b934ae91cef97324afe9bf26489"
+    }
+  ],
+  "passed": true
+}

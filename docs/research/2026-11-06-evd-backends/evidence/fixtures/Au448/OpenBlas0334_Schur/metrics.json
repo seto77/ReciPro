@@ -1,0 +1,24 @@
+{
+  "Label": "Au448",
+  "backend": "OpenBlas0334_Schur",
+  "n": 448,
+  "referenceResidual": 6.736882118949344E-16,
+  "residual": 3.4881169279077707E-16,
+  "waveDifference": 1.2109616413188834E-14,
+  "boundary": 7.822735197353584E-16,
+  "referenceBoundary": 1.9984223635388933E-15,
+  "referenceFusedDifference": 1.1103099355805603E-15,
+  "fusedDifference": 3.34221388864417E-16,
+  "fluxDifference": 4.773959005888173E-15,
+  "conservedFluxError": 0,
+  "flux": [
+    0.9999999999999984,
+    0.2806088451661778,
+    0.0669323183999988
+  ],
+  "referenceFlux": [
+    0.999999999999996,
+    0.280608845166173,
+    0.06693231839999575
+  ]
+}

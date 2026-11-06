@@ -1,0 +1,24 @@
+{
+  "Label": "Si256",
+  "backend": "Gpu1331_Default",
+  "n": 256,
+  "referenceResidual": 3.9028599569866236E-16,
+  "residual": 4.385284770138314E-16,
+  "waveDifference": 2.847837027769005E-14,
+  "boundary": 3.3308623934062257E-16,
+  "referenceBoundary": 2.2974199545682777E-16,
+  "referenceFusedDifference": 1.032940070473853E-15,
+  "fusedDifference": 0,
+  "fluxDifference": 4.551914400963142E-15,
+  "conservedFluxError": 0,
+  "flux": [
+    0.9999999999999993,
+    0.9312030080398762,
+    0.8068054393034914
+  ],
+  "referenceFlux": [
+    1.0000000000000004,
+    0.9312030080398774,
+    0.8068054393034959
+  ]
+}

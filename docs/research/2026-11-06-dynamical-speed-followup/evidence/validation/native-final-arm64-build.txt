@@ -1,0 +1,21 @@
+17:05 でビルドが開始されました...
+1>------ ビルド開始: プロジェクト: Crystallography.Native, 構成: Release ARM64 ------
+NuGet パッケージの復元に失敗しました。詳細な警告とエラーについては、[エラー一覧] ウィンドウを参照してください。
+次の NuGet パッケージを復元中にエラーが発生しました: プロジェクト ReciPro の詳細を読み込めなかったため、操作が失敗しました。
+経過した時間: 00:00:00.0281356
+========== 終了 ==========
+
+
+1>  In file included from EigenFuncs.cpp:25:
+1>  In file included from Eigen\../Eigen/Core:205:
+1>Eigen\../Eigen\src/Core/NumTraits.h(261,60): warning : use of infinity is undefined behavior due to the currently enabled floating-point options [-Wnan-infinity-disabled]
+1>  Eigen\../Eigen\src/Core/arch/NEON/PacketMath.h(4622,58): note: in instantiation of member function 'Eigen::GenericNumTraits<float>::infinity' requested here
+1>  In file included from EigenFuncs.cpp:25:
+1>  In file included from Eigen\../Eigen/Core:205:
+1>Eigen\../Eigen\src/Core/NumTraits.h(261,60): warning : use of infinity is undefined behavior due to the currently enabled floating-point options [-Wnan-infinity-disabled]
+1>  Eigen\../Eigen\src/Core/arch/Default\GenericPacketMathComplex.h(69,69): note: in instantiation of member function 'Eigen::GenericNumTraits<double>::infinity' requested here
+1>  Eigen\../Eigen\src/Core/arch/NEON/Complex.h(638,10): note: in instantiation of function template specialization 'Eigen::internal::pdiv_complex<Eigen::internal::Packet1cd>' requested here
+1>  Crystallography.Native.vcxproj -> C:\Users\seto\source\repos\ReciPro\ReciPro\bin\Release\ARM64\Crystallography.Native.dll
+========== ビルド: 成功 1、失敗 0、最新の状態 0、スキップ 0 ==========
+=========== ビルド は 17:05 で完了し、22.325 秒 掛かりました ==========
+

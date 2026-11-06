@@ -1,0 +1,85 @@
+{
+  "recorded": "2026-11-06T21:48:38.7042952+09:00",
+  "os": {
+    "Caption": "Microsoft Windows 11 Pro",
+    "Version": "10.0.26300",
+    "BuildNumber": "26300"
+  },
+  "cpu": {
+    "Name": "AMD Ryzen 9 9950X 16-Core Processor            ",
+    "NumberOfCores": 16,
+    "NumberOfLogicalProcessors": 32
+  },
+  "libraries": [
+    {
+      "path": "C:\\tmp\\recipro_evd_261106\\baseline\\Crystallography.Native.avx512.dll",
+      "fileVersion": null,
+      "bytes": 1461248,
+      "sha256": "78B2B691DE805FB7EED7E0F877561883D346B1F781303C75F906ED85EF894174"
+    },
+    {
+      "path": "C:\\Users\\seto\\source\\repos\\ReciPro\\tools\\EvdBackendStudy261106\\cpu_adapter.dll",
+      "fileVersion": null,
+      "bytes": 336896,
+      "sha256": "EE18CBF60EEE82E28E8962E22510EB466232F1D5AE1D95AB9BED99F4F11FCA27"
+    },
+    {
+      "path": "C:\\tmp\\recipro_evd_261106\\mkl\\runtime\\mkl_rt.3.dll",
+      "fileVersion": "2026.2.0",
+      "bytes": 27913136,
+      "sha256": "4D2DFBD55EFFDB6483DE7DEB7A2EFCFAAB9C9B934AE91CEF97324AFE9BF26489"
+    },
+    {
+      "path": "C:\\tmp\\recipro_evd_261106\\openblas0334\\bin\\libopenblas.dll",
+      "fileVersion": null,
+      "bytes": 51379251,
+      "sha256": "0486735C359A67419D8832E3C40E2837F8762BAEBCDF4B62D3B18C91F9ECE12E"
+    },
+    {
+      "path": "C:\\Users\\seto\\source\\repos\\ReciPro\\ReciPro\\bin\\Release\\libMathNetNumericsMKL.dll",
+      "fileVersion": "3.0.0.0",
+      "bytes": 160656384,
+      "sha256": "7ABDCB4FBBB282D68526CC02EF01C36CB007F09FC60CC4C9688A0AE8F51B3EEC"
+    }
+  ],
+  "sources": [
+    {
+      "sha256": "A9B4DF46C1094625FAC7FF2BD9FDB3A5E58A693B7CA4D0DF90B8CA5FBE5943A0",
+      "path": "ReciPro.Benchmarks/EvdBackendBenchmark.cs"
+    },
+    {
+      "sha256": "B35DFCB143DA159E4FE74C7BE57B1DAA89BF34CA34FD0DB4FAE1A64ED0072E7F",
+      "path": "tools/EvdBackendStudy261106/cpu_adapter.cpp"
+    },
+    {
+      "sha256": "F7243484836B4E35132A30999D773036C4F4B2A93BACB19AF160E67E7A1FA575",
+      "path": "tools/EvdBackendStudy261106/CpuEvdBackend.cs"
+    },
+    {
+      "sha256": "5A4F186ED523B94A745E0EF6006D029CE963AD73F7D03593924C3B664F2666AD",
+      "path": "tools/EvdBackendStudy261106/GpuEvdBackend.cs"
+    },
+    {
+      "sha256": "75121D6319D06C010CA89B79CC3AFC84AE2520F6562BEADB889A9611F10519B7",
+      "path": "Crystallography/Diffraction/BetheMethod.cs"
+    }
+  ],
+  "timingBuild": {
+    "change": "Only benchmark classes unsealed for InProcessEmit; numerical fixture and solver logic unchanged",
+    "recorded": "2026-11-06T22:01:13.4149411+09:00",
+    "files": [
+      {
+        "sha256": "6B0B1B2825F08CCB5B8E27D16D7013994F84CEA89582B14E1575709183EF9A58",
+        "path": "ReciPro.Benchmarks/EvdBackendBenchmark.cs"
+      },
+      {
+        "sha256": "906586E0251E52533D435833AF3CF20692C26B0B363A186B593685D43EBABDB3",
+        "path": "ReciPro.Benchmarks/bin/x64/Release/net11.0-windows/ReciPro.Benchmarks.dll"
+      },
+      {
+        "sha256": "7805242E0DDC274D2E1FFF36BC0871FA9211436F5CE9C61B344D04D37495B5D4",
+        "path": "tools/EvdBackendStudy261106/run_benchmark.ps1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+PASS EigenAdapterFresh
+PASS EigenAdapterReused
+PASS Mkl2026_Geev
+PASS Mkl2026_Schur
+PASS MathNetMkl_Schur
+PASS OpenBlas0334_Geev
+PASS OpenBlas0334_Schur
+PASS cuSOLVER1331

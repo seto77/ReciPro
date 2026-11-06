@@ -1,0 +1,24 @@
+{
+  "Label": "Si256",
+  "backend": "OpenBlas0334_Schur",
+  "n": 256,
+  "referenceResidual": 3.9028599569866236E-16,
+  "residual": 3.820937298610641E-16,
+  "waveDifference": 2.882376103414891E-14,
+  "boundary": 6.664238287376147E-16,
+  "referenceBoundary": 2.2974199545682777E-16,
+  "referenceFusedDifference": 1.032940070473853E-15,
+  "fusedDifference": 7.021666937153398E-16,
+  "fluxDifference": 2.8199664825478976E-14,
+  "conservedFluxError": 0,
+  "flux": [
+    1.0000000000000013,
+    0.9312030080398825,
+    0.8068054393035241
+  ],
+  "referenceFlux": [
+    1.0000000000000004,
+    0.9312030080398774,
+    0.8068054393034959
+  ]
+}

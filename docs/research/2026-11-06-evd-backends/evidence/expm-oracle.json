@@ -1,0 +1,1658 @@
+{
+  "passed": true,
+  "numpy_version": "2.2.6",
+  "scipy_version": "1.15.3",
+  "wave_tolerance": 1e-10,
+  "residual_tolerance": 1e-11,
+  "reference": "scipy.linalg.expm(2*pi*i*A*t) @ psi0 (no eigendecomposition)",
+  "loaded_threadpools": "threadpoolctl unavailable",
+  "fixtures": [
+    {
+      "fixture": "Au448",
+      "n": 448,
+      "thicknesses_nm": [
+        0.0,
+        35.0,
+        100.0
+      ],
+      "normalized_nonnormality": 0.002827865513622029,
+      "backends": [
+        {
+          "backend": "EigenAdapterFresh",
+          "normalized_residual": 6.468428377382169e-16,
+          "peak_normalized_expm_error": 1.7955717714177217e-14,
+          "eigenvector_condition_2": 2.9141632077307302,
+          "flux": [
+            0.9999999999999973,
+            0.280608845166179,
+            0.0669323184000016
+          ],
+          "flux_reference": [
+            1.0,
+            0.28060884516617274,
+            0.06693231839999442
+          ],
+          "max_flux_error": 7.188694084447889e-15,
+          "boundary_error": 1.3356019068354065e-15,
+          "fused_expm_error": 1.8032651372420765e-14
+        },
+        {
+          "backend": "EigenAdapterReused",
+          "normalized_residual": 6.468428377382169e-16,
+          "peak_normalized_expm_error": 1.7955717714177217e-14,
+          "eigenvector_condition_2": 2.9141632077307302,
+          "flux": [
+            0.9999999999999973,
+            0.280608845166179,
+            0.0669323184000016
+          ],
+          "flux_reference": [
+            1.0,
+            0.28060884516617274,
+            0.06693231839999442
+          ],
+          "max_flux_error": 7.188694084447889e-15,
+          "boundary_error": 1.3356019068354065e-15,
+          "fused_expm_error": 1.8032651372420765e-14
+        },
+        {
+          "backend": "EigenReference",
+          "normalized_residual": 6.736172031666175e-16,
+          "peak_normalized_expm_error": 2.319790022154384e-14,
+          "eigenvector_condition_2": 2.914163207730498,
+          "flux": [
+            0.999999999999996,
+            0.280608845166173,
+            0.06693231839999564
+          ],
+          "flux_reference": [
+            1.0,
+            0.28060884516617274,
+            0.06693231839999442
+          ],
+          "max_flux_error": 3.9968028886505635e-15,
+          "boundary_error": 1.9984223635388937e-15,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "Gpu1331_Default",
+          "normalized_residual": 3.5515764427762086e-16,
+          "peak_normalized_expm_error": 5.025898095598178e-14,
+          "eigenvector_condition_2": 2.9141632077308848,
+          "flux": [
+            0.9999999999999991,
+            0.2806088451661812,
+            0.06693231839999736
+          ],
+          "flux_reference": [
+            1.0,
+            0.28060884516617274,
+            0.06693231839999442
+          ],
+          "max_flux_error": 8.43769498715119e-15,
+          "boundary_error": 4.465533948621848e-16,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "MathNetMkl_Schur",
+          "normalized_residual": 3.554747402059582e-16,
+          "peak_normalized_expm_error": 1.1918264853506832e-14,
+          "eigenvector_condition_2": 4.314017269861082,
+          "flux": [
+            0.9999999999999993,
+            0.28060884516617335,
+            0.06693231839999653
+          ],
+          "flux_reference": [
+            1.0,
+            0.28060884516617274,
+            0.06693231839999442
+          ],
+          "max_flux_error": 2.1094237467877974e-15,
+          "boundary_error": 3.398164815043827e-16,
+          "fused_expm_error": 1.2450046455702312e-14
+        },
+        {
+          "backend": "Mkl2026_Geev",
+          "normalized_residual": 3.70499519509347e-16,
+          "peak_normalized_expm_error": 2.732778864621728e-14,
+          "eigenvector_condition_2": 2.9141632077308666,
+          "flux": [
+            0.9999999999999989,
+            0.2806088451661829,
+            0.0669323183999989
+          ],
+          "flux_reference": [
+            1.0,
+            0.28060884516617274,
+            0.06693231839999442
+          ],
+          "max_flux_error": 1.0158540675320182e-14,
+          "boundary_error": 5.557211197384742e-16,
+          "fused_expm_error": 2.7336864338215464e-14
+        },
+        {
+          "backend": "Mkl2026_Schur",
+          "normalized_residual": 3.736268516015656e-16,
+          "peak_normalized_expm_error": 2.732775693238236e-14,
+          "eigenvector_condition_2": 4.701361049938684,
+          "flux": [
+            0.9999999999999984,
+            0.2806088451661828,
+            0.06693231839999889
+          ],
+          "flux_reference": [
+            1.0,
+            0.28060884516617274,
+            0.06693231839999442
+          ],
+          "max_flux_error": 1.0047518372857667e-14,
+          "boundary_error": 7.775651009075575e-16,
+          "fused_expm_error": 2.7318681739694034e-14
+        },
+        {
+          "backend": "OpenBlas0334_Geev",
+          "normalized_residual": 3.4177934799524384e-16,
+          "peak_normalized_expm_error": 2.8737909744959146e-14,
+          "eigenvector_condition_2": 2.914163207730323,
+          "flux": [
+            0.9999999999999993,
+            0.28060884516618245,
+            0.06693231839999983
+          ],
+          "flux_reference": [
+            1.0,
+            0.28060884516617274,
+            0.06693231839999442
+          ],
+          "max_flux_error": 9.71445146547012e-15,
+          "boundary_error": 3.344704205905403e-16,
+          "fused_expm_error": 2.813186079881044e-14
+        },
+        {
+          "backend": "OpenBlas0334_Schur",
+          "normalized_residual": 3.4829430601972184e-16,
+          "peak_normalized_expm_error": 2.4916550631536228e-14,
+          "eigenvector_condition_2": 4.32270153388058,
+          "flux": [
+            0.9999999999999984,
+            0.2806088451661777,
+            0.06693231839999873
+          ],
+          "flux_reference": [
+            1.0,
+            0.28060884516617274,
+            0.06693231839999442
+          ],
+          "max_flux_error": 4.9404924595819466e-15,
+          "boundary_error": 7.822735197353584e-16,
+          "fused_expm_error": 2.4875020088285757e-14
+        }
+      ]
+    },
+    {
+      "fixture": "GaAs256",
+      "n": 256,
+      "thicknesses_nm": [
+        0.0,
+        35.0,
+        100.0
+      ],
+      "normalized_nonnormality": 0.0009835776062000062,
+      "backends": [
+        {
+          "backend": "EigenAdapterFresh",
+          "normalized_residual": 7.183990084183412e-16,
+          "peak_normalized_expm_error": 3.233344679027811e-14,
+          "eigenvector_condition_2": 2.1371861945410773,
+          "flux": [
+            1.0,
+            0.7410769331580721,
+            0.5884887914092499
+          ],
+          "flux_reference": [
+            1.0,
+            0.7410769331580868,
+            0.5884887914092684
+          ],
+          "max_flux_error": 1.84297022087776e-14,
+          "boundary_error": 2.6151501768098433e-16,
+          "fused_expm_error": 3.2053750232216644e-14
+        },
+        {
+          "backend": "EigenAdapterReused",
+          "normalized_residual": 7.183990084183412e-16,
+          "peak_normalized_expm_error": 3.233344679027811e-14,
+          "eigenvector_condition_2": 2.1371861945410773,
+          "flux": [
+            1.0,
+            0.7410769331580721,
+            0.5884887914092499
+          ],
+          "flux_reference": [
+            1.0,
+            0.7410769331580868,
+            0.5884887914092684
+          ],
+          "max_flux_error": 1.84297022087776e-14,
+          "boundary_error": 2.6151501768098433e-16,
+          "fused_expm_error": 3.2053750232216644e-14
+        },
+        {
+          "backend": "EigenReference",
+          "normalized_residual": 6.692087571418138e-16,
+          "peak_normalized_expm_error": 1.9835451768259713e-14,
+          "eigenvector_condition_2": 2.137186194540641,
+          "flux": [
+            0.9999999999999984,
+            0.7410769331580848,
+            0.5884887914092762
+          ],
+          "flux_reference": [
+            1.0,
+            0.7410769331580868,
+            0.5884887914092684
+          ],
+          "max_flux_error": 7.882583474838611e-15,
+          "boundary_error": 7.772643551114874e-16,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "Gpu1331_Default",
+          "normalized_residual": 3.833601921799091e-16,
+          "peak_normalized_expm_error": 3.066713537210618e-14,
+          "eigenvector_condition_2": 2.137186194540631,
+          "flux": [
+            0.9999999999999993,
+            0.7410769331580791,
+            0.5884887914092749
+          ],
+          "flux_reference": [
+            1.0,
+            0.7410769331580868,
+            0.5884887914092684
+          ],
+          "max_flux_error": 7.66053886991358e-15,
+          "boundary_error": 3.3336890114588173e-16,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "MathNetMkl_Schur",
+          "normalized_residual": 3.714180886690935e-16,
+          "peak_normalized_expm_error": 6.337120056219087e-14,
+          "eigenvector_condition_2": 2.9610198704000528,
+          "flux": [
+            0.9999999999999991,
+            0.7410769331580833,
+            0.588488791409278
+          ],
+          "flux_reference": [
+            1.0,
+            0.7410769331580868,
+            0.5884887914092684
+          ],
+          "max_flux_error": 9.658940314238862e-15,
+          "boundary_error": 4.469632284288567e-16,
+          "fused_expm_error": 6.346267298718522e-14
+        },
+        {
+          "backend": "Mkl2026_Geev",
+          "normalized_residual": 3.8030080046441187e-16,
+          "peak_normalized_expm_error": 3.6416372950560245e-14,
+          "eigenvector_condition_2": 2.137186194541306,
+          "flux": [
+            1.0,
+            0.7410769331580886,
+            0.5884887914092738
+          ],
+          "flux_reference": [
+            1.0,
+            0.7410769331580868,
+            0.5884887914092684
+          ],
+          "max_flux_error": 5.440092820663267e-15,
+          "boundary_error": 3.976159926895556e-16,
+          "fused_expm_error": 3.643802877056796e-14
+        },
+        {
+          "backend": "Mkl2026_Schur",
+          "normalized_residual": 3.7736309437190497e-16,
+          "peak_normalized_expm_error": 3.6252904476432176e-14,
+          "eigenvector_condition_2": 2.993572696285173,
+          "flux": [
+            0.9999999999999996,
+            0.7410769331580886,
+            0.5884887914092737
+          ],
+          "flux_reference": [
+            1.0,
+            0.7410769331580868,
+            0.5884887914092684
+          ],
+          "max_flux_error": 5.329070518200751e-15,
+          "boundary_error": 5.334028866919407e-16,
+          "fused_expm_error": 3.625899207259586e-14
+        },
+        {
+          "backend": "OpenBlas0334_Geev",
+          "normalized_residual": 3.739609884559917e-16,
+          "peak_normalized_expm_error": 4.869268618382156e-14,
+          "eigenvector_condition_2": 2.1371861945407096,
+          "flux": [
+            1.0000000000000004,
+            0.7410769331580819,
+            0.5884887914092778
+          ],
+          "flux_reference": [
+            1.0,
+            0.7410769331580868,
+            0.5884887914092684
+          ],
+          "max_flux_error": 9.43689570931383e-15,
+          "boundary_error": 2.545021290912635e-16,
+          "fused_expm_error": 4.880804358577947e-14
+        },
+        {
+          "backend": "OpenBlas0334_Schur",
+          "normalized_residual": 3.8306949021667714e-16,
+          "peak_normalized_expm_error": 7.506448088217373e-14,
+          "eigenvector_condition_2": 2.985504933873414,
+          "flux": [
+            1.0000000000000004,
+            0.7410769331580905,
+            0.5884887914092864
+          ],
+          "flux_reference": [
+            1.0,
+            0.7410769331580868,
+            0.5884887914092684
+          ],
+          "max_flux_error": 1.8096635301390052e-14,
+          "boundary_error": 2.6902148941064666e-16,
+          "fused_expm_error": 7.505700020890558e-14
+        }
+      ]
+    },
+    {
+      "fixture": "GaAs32B0",
+      "n": 32,
+      "thicknesses_nm": [
+        0.0,
+        35.0,
+        100.0
+      ],
+      "normalized_nonnormality": 0.00026976877937313714,
+      "backends": [
+        {
+          "backend": "EigenAdapterFresh",
+          "normalized_residual": 2.562130485499374e-16,
+          "peak_normalized_expm_error": 1.6920796900987642e-14,
+          "eigenvector_condition_2": 1.0055870199268293,
+          "flux": [
+            1.0,
+            1.0000000000000013,
+            1.0000000000000047
+          ],
+          "flux_reference": [
+            1.0,
+            0.9999999999999986,
+            1.0000000000000033
+          ],
+          "max_flux_error": 2.7755575615628914e-15,
+          "boundary_error": 1.1087851861971924e-16,
+          "fused_expm_error": 1.7436975112225414e-14
+        },
+        {
+          "backend": "EigenAdapterReused",
+          "normalized_residual": 2.562130485499374e-16,
+          "peak_normalized_expm_error": 1.6920796900987642e-14,
+          "eigenvector_condition_2": 1.0055870199268293,
+          "flux": [
+            1.0,
+            1.0000000000000013,
+            1.0000000000000047
+          ],
+          "flux_reference": [
+            1.0,
+            0.9999999999999986,
+            1.0000000000000033
+          ],
+          "max_flux_error": 2.7755575615628914e-15,
+          "boundary_error": 1.1087851861971924e-16,
+          "fused_expm_error": 1.7436975112225414e-14
+        },
+        {
+          "backend": "EigenReference",
+          "normalized_residual": 2.908610269164872e-16,
+          "peak_normalized_expm_error": 2.6215328507407586e-14,
+          "eigenvector_condition_2": 1.0055870199268284,
+          "flux": [
+            1.0,
+            1.0000000000000009,
+            0.9999999999999992
+          ],
+          "flux_reference": [
+            1.0,
+            0.9999999999999986,
+            1.0000000000000033
+          ],
+          "max_flux_error": 4.107825191113079e-15,
+          "boundary_error": 1.1287984571584433e-16,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "Gpu1331_Default",
+          "normalized_residual": 4.2465607712272643e-16,
+          "peak_normalized_expm_error": 2.3030438699344066e-14,
+          "eigenvector_condition_2": 1.0055870199268164,
+          "flux": [
+            0.9999999999999989,
+            0.9999999999999994,
+            0.9999999999999983
+          ],
+          "flux_reference": [
+            1.0,
+            0.9999999999999986,
+            1.0000000000000033
+          ],
+          "max_flux_error": 4.9960036108132044e-15,
+          "boundary_error": 5.551115123125783e-16,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "MathNetMkl_Schur",
+          "normalized_residual": 3.56044286839829e-16,
+          "peak_normalized_expm_error": 2.423581913746841e-14,
+          "eigenvector_condition_2": 2.142687814051251,
+          "flux": [
+            0.9999999999999993,
+            0.9999999999999982,
+            0.999999999999997
+          ],
+          "flux_reference": [
+            1.0,
+            0.9999999999999986,
+            1.0000000000000033
+          ],
+          "max_flux_error": 6.328271240363392e-15,
+          "boundary_error": 3.3306690738754696e-16,
+          "fused_expm_error": 2.409300674723642e-14
+        },
+        {
+          "backend": "Mkl2026_Geev",
+          "normalized_residual": 3.716371233831258e-16,
+          "peak_normalized_expm_error": 2.064777919867796e-14,
+          "eigenvector_condition_2": 1.0055870199268333,
+          "flux": [
+            0.9999999999999998,
+            0.9999999999999987,
+            0.9999999999999947
+          ],
+          "flux_reference": [
+            1.0,
+            0.9999999999999986,
+            1.0000000000000033
+          ],
+          "max_flux_error": 8.659739592076221e-15,
+          "boundary_error": 1.862557688376426e-16,
+          "fused_expm_error": 2.085485688325844e-14
+        },
+        {
+          "backend": "Mkl2026_Schur",
+          "normalized_residual": 3.342533885936232e-16,
+          "peak_normalized_expm_error": 2.058682235477196e-14,
+          "eigenvector_condition_2": 2.1426878140512526,
+          "flux": [
+            0.9999999999999998,
+            0.9999999999999983,
+            0.9999999999999947
+          ],
+          "flux_reference": [
+            1.0,
+            0.9999999999999986,
+            1.0000000000000033
+          ],
+          "max_flux_error": 8.659739592076221e-15,
+          "boundary_error": 1.1102230246251565e-16,
+          "fused_expm_error": 2.0887177156026498e-14
+        },
+        {
+          "backend": "OpenBlas0334_Geev",
+          "normalized_residual": 3.8050773636685457e-16,
+          "peak_normalized_expm_error": 3.702841519846419e-14,
+          "eigenvector_condition_2": 1.005587019926842,
+          "flux": [
+            1.0,
+            0.9999999999999979,
+            0.9999999999999958
+          ],
+          "flux_reference": [
+            1.0,
+            0.9999999999999986,
+            1.0000000000000033
+          ],
+          "max_flux_error": 7.549516567451064e-15,
+          "boundary_error": 8.418829869349942e-17,
+          "fused_expm_error": 3.668115380469118e-14
+        },
+        {
+          "backend": "OpenBlas0334_Schur",
+          "normalized_residual": 3.5391260047231586e-16,
+          "peak_normalized_expm_error": 3.7067351065071196e-14,
+          "eigenvector_condition_2": 2.14268781405124,
+          "flux": [
+            1.0,
+            0.9999999999999979,
+            0.9999999999999958
+          ],
+          "flux_reference": [
+            1.0,
+            0.9999999999999986,
+            1.0000000000000033
+          ],
+          "max_flux_error": 7.549516567451064e-15,
+          "boundary_error": 1.1352274372281035e-16,
+          "fused_expm_error": 3.6712816339139255e-14
+        }
+      ]
+    },
+    {
+      "fixture": "NearDegenerate8",
+      "n": 8,
+      "thicknesses_nm": [
+        0.0,
+        35.0,
+        100.0
+      ],
+      "normalized_nonnormality": 1.010108826321752e-05,
+      "backends": [
+        {
+          "backend": "EigenAdapterFresh",
+          "normalized_residual": 1.7125854986889768e-17,
+          "peak_normalized_expm_error": 3.26849658770736e-13,
+          "eigenvector_condition_2": 20000.00005011878,
+          "flux": [
+            1.0,
+            0.9574336997204724,
+            0.8853930248664134
+          ],
+          "flux_reference": [
+            1.0,
+            0.9574336997204724,
+            0.8853930248664136
+          ],
+          "max_flux_error": 2.220446049250313e-16,
+          "boundary_error": 0.0,
+          "fused_expm_error": 5.062616992766241e-13
+        },
+        {
+          "backend": "EigenAdapterReused",
+          "normalized_residual": 1.7125854986889768e-17,
+          "peak_normalized_expm_error": 3.26849658770736e-13,
+          "eigenvector_condition_2": 20000.00005011878,
+          "flux": [
+            1.0,
+            0.9574336997204724,
+            0.8853930248664134
+          ],
+          "flux_reference": [
+            1.0,
+            0.9574336997204724,
+            0.8853930248664136
+          ],
+          "max_flux_error": 2.220446049250313e-16,
+          "boundary_error": 0.0,
+          "fused_expm_error": 5.062616992766241e-13
+        },
+        {
+          "backend": "EigenReference",
+          "normalized_residual": 1.7125854986889768e-17,
+          "peak_normalized_expm_error": 3.26849658770736e-13,
+          "eigenvector_condition_2": 20000.00005011878,
+          "flux": [
+            1.0,
+            0.9574336997204724,
+            0.8853930248664134
+          ],
+          "flux_reference": [
+            1.0,
+            0.9574336997204724,
+            0.8853930248664136
+          ],
+          "max_flux_error": 2.220446049250313e-16,
+          "boundary_error": 0.0,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "Gpu1331_Default",
+          "normalized_residual": 1.7125854986889768e-17,
+          "peak_normalized_expm_error": 3.26849658770736e-13,
+          "eigenvector_condition_2": 20000.000050118775,
+          "flux": [
+            0.9999999999999998,
+            0.9574336997204722,
+            0.8853930248664134
+          ],
+          "flux_reference": [
+            1.0,
+            0.9574336997204724,
+            0.8853930248664136
+          ],
+          "max_flux_error": 2.220446049250313e-16,
+          "boundary_error": 1.1102230246251565e-16,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "MathNetMkl_Schur",
+          "normalized_residual": 8.16624400333172e-24,
+          "peak_normalized_expm_error": 3.26849658770736e-13,
+          "eigenvector_condition_2": 20000.000050118775,
+          "flux": [
+            1.0,
+            0.9574336997204724,
+            0.8853930248664136
+          ],
+          "flux_reference": [
+            1.0,
+            0.9574336997204724,
+            0.8853930248664136
+          ],
+          "max_flux_error": 0.0,
+          "boundary_error": 0.0,
+          "fused_expm_error": 5.458267308264763e-13
+        },
+        {
+          "backend": "Mkl2026_Geev",
+          "normalized_residual": 1.7125854986889768e-17,
+          "peak_normalized_expm_error": 3.26849658770736e-13,
+          "eigenvector_condition_2": 20000.000050118775,
+          "flux": [
+            0.9999999999999998,
+            0.9574336997204722,
+            0.8853930248664134
+          ],
+          "flux_reference": [
+            1.0,
+            0.9574336997204724,
+            0.8853930248664136
+          ],
+          "max_flux_error": 2.220446049250313e-16,
+          "boundary_error": 1.1102230246251565e-16,
+          "fused_expm_error": 5.458267308264763e-13
+        },
+        {
+          "backend": "Mkl2026_Schur",
+          "normalized_residual": 0.0,
+          "peak_normalized_expm_error": 3.2684965854977094e-13,
+          "eigenvector_condition_2": 20000.000050118775,
+          "flux": [
+            1.0,
+            0.9574336997204725,
+            0.8853930248664136
+          ],
+          "flux_reference": [
+            1.0,
+            0.9574336997204724,
+            0.8853930248664136
+          ],
+          "max_flux_error": 1.1102230246251565e-16,
+          "boundary_error": 0.0,
+          "fused_expm_error": 5.062616992766241e-13
+        },
+        {
+          "backend": "OpenBlas0334_Geev",
+          "normalized_residual": 1.7125854986889768e-17,
+          "peak_normalized_expm_error": 3.26849658770736e-13,
+          "eigenvector_condition_2": 20000.000050118775,
+          "flux": [
+            0.9999999999999998,
+            0.9574336997204722,
+            0.8853930248664134
+          ],
+          "flux_reference": [
+            1.0,
+            0.9574336997204724,
+            0.8853930248664136
+          ],
+          "max_flux_error": 2.220446049250313e-16,
+          "boundary_error": 1.1102230246251565e-16,
+          "fused_expm_error": 5.458267308264763e-13
+        },
+        {
+          "backend": "OpenBlas0334_Schur",
+          "normalized_residual": 0.0,
+          "peak_normalized_expm_error": 3.2684965854977094e-13,
+          "eigenvector_condition_2": 20000.000050118775,
+          "flux": [
+            1.0,
+            0.9574336997204725,
+            0.8853930248664136
+          ],
+          "flux_reference": [
+            1.0,
+            0.9574336997204724,
+            0.8853930248664136
+          ],
+          "max_flux_error": 1.1102230246251565e-16,
+          "boundary_error": 0.0,
+          "fused_expm_error": 5.062616992766241e-13
+        }
+      ]
+    },
+    {
+      "fixture": "Si128",
+      "n": 128,
+      "thicknesses_nm": [
+        0.0,
+        35.0,
+        100.0
+      ],
+      "normalized_nonnormality": 0.00030843666955195873,
+      "backends": [
+        {
+          "backend": "EigenAdapterFresh",
+          "normalized_residual": 2.9265817653533616e-16,
+          "peak_normalized_expm_error": 4.7096918260094504e-14,
+          "eigenvector_condition_2": 1.3140696142826773,
+          "flux": [
+            1.0,
+            0.9320685294664384,
+            0.8094184153275346
+          ],
+          "flux_reference": [
+            1.0,
+            0.9320685294664205,
+            0.8094184153275358
+          ],
+          "max_flux_error": 1.787459069646502e-14,
+          "boundary_error": 6.186491056787348e-16,
+          "fused_expm_error": 4.69982794154215e-14
+        },
+        {
+          "backend": "EigenAdapterReused",
+          "normalized_residual": 2.9265817653533616e-16,
+          "peak_normalized_expm_error": 4.7096918260094504e-14,
+          "eigenvector_condition_2": 1.3140696142826773,
+          "flux": [
+            1.0,
+            0.9320685294664384,
+            0.8094184153275346
+          ],
+          "flux_reference": [
+            1.0,
+            0.9320685294664205,
+            0.8094184153275358
+          ],
+          "max_flux_error": 1.787459069646502e-14,
+          "boundary_error": 6.186491056787348e-16,
+          "fused_expm_error": 4.69982794154215e-14
+        },
+        {
+          "backend": "EigenReference",
+          "normalized_residual": 3.535614297313476e-16,
+          "peak_normalized_expm_error": 4.117077491453832e-14,
+          "eigenvector_condition_2": 1.3140696142818564,
+          "flux": [
+            1.0,
+            0.932068529466436,
+            0.8094184153275314
+          ],
+          "flux_reference": [
+            1.0,
+            0.9320685294664205,
+            0.8094184153275358
+          ],
+          "max_flux_error": 1.554312234475219e-14,
+          "boundary_error": 5.478245367618743e-16,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "Gpu1331_Default",
+          "normalized_residual": 4.497913542813706e-16,
+          "peak_normalized_expm_error": 6.655688070185876e-14,
+          "eigenvector_condition_2": 1.3140696142824442,
+          "flux": [
+            1.0,
+            0.9320685294664325,
+            0.809418415327529
+          ],
+          "flux_reference": [
+            1.0,
+            0.9320685294664205,
+            0.8094184153275358
+          ],
+          "max_flux_error": 1.199040866595169e-14,
+          "boundary_error": 7.533158502145655e-17,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "MathNetMkl_Schur",
+          "normalized_residual": 3.754273188077028e-16,
+          "peak_normalized_expm_error": 3.388240790903263e-14,
+          "eigenvector_condition_2": 1.8051230560249312,
+          "flux": [
+            0.9999999999999996,
+            0.9320685294664376,
+            0.8094184153275358
+          ],
+          "flux_reference": [
+            1.0,
+            0.9320685294664205,
+            0.8094184153275358
+          ],
+          "max_flux_error": 1.709743457922741e-14,
+          "boundary_error": 2.220683449797542e-16,
+          "fused_expm_error": 3.323467969253521e-14
+        },
+        {
+          "backend": "Mkl2026_Geev",
+          "normalized_residual": 3.726737769695064e-16,
+          "peak_normalized_expm_error": 5.3028260255842454e-14,
+          "eigenvector_condition_2": 1.3140696142819366,
+          "flux": [
+            1.0000000000000004,
+            0.9320685294664399,
+            0.8094184153275409
+          ],
+          "flux_reference": [
+            1.0,
+            0.9320685294664205,
+            0.8094184153275358
+          ],
+          "max_flux_error": 1.942890293094024e-14,
+          "boundary_error": 2.220477643542681e-16,
+          "fused_expm_error": 5.267513951282123e-14
+        },
+        {
+          "backend": "Mkl2026_Schur",
+          "normalized_residual": 3.808521572168771e-16,
+          "peak_normalized_expm_error": 5.3129507955513726e-14,
+          "eigenvector_condition_2": 1.6856226924212576,
+          "flux": [
+            1.0000000000000009,
+            0.93206852946644,
+            0.809418415327541
+          ],
+          "flux_reference": [
+            1.0,
+            0.9320685294664205,
+            0.8094184153275358
+          ],
+          "max_flux_error": 1.9539925233402755e-14,
+          "boundary_error": 4.445829381724176e-16,
+          "fused_expm_error": 5.2581104814609835e-14
+        },
+        {
+          "backend": "OpenBlas0334_Geev",
+          "normalized_residual": 4.004197174477149e-16,
+          "peak_normalized_expm_error": 3.950280548411892e-14,
+          "eigenvector_condition_2": 1.3140696142831836,
+          "flux": [
+            1.0000000000000004,
+            0.9320685294664323,
+            0.8094184153275246
+          ],
+          "flux_reference": [
+            1.0,
+            0.9320685294664205,
+            0.8094184153275358
+          ],
+          "max_flux_error": 1.176836406102666e-14,
+          "boundary_error": 2.22054277754987e-16,
+          "fused_expm_error": 4.002123021444577e-14
+        },
+        {
+          "backend": "OpenBlas0334_Schur",
+          "normalized_residual": 4.057771560321396e-16,
+          "peak_normalized_expm_error": 3.96269143775863e-14,
+          "eigenvector_condition_2": 1.9553795827735758,
+          "flux": [
+            1.0000000000000009,
+            0.9320685294664323,
+            0.809418415327525
+          ],
+          "flux_reference": [
+            1.0,
+            0.9320685294664205,
+            0.8094184153275358
+          ],
+          "max_flux_error": 1.176836406102666e-14,
+          "boundary_error": 4.44337866971725e-16,
+          "fused_expm_error": 4.009600080278193e-14
+        }
+      ]
+    },
+    {
+      "fixture": "Si256",
+      "n": 256,
+      "thicknesses_nm": [
+        0.0,
+        35.0,
+        100.0
+      ],
+      "normalized_nonnormality": 0.00022346169927315248,
+      "backends": [
+        {
+          "backend": "EigenAdapterFresh",
+          "normalized_residual": 3.6224346348785483e-16,
+          "peak_normalized_expm_error": 1.5393610956855485e-14,
+          "eigenvector_condition_2": 1.3405596535123265,
+          "flux": [
+            1.0000000000000004,
+            0.9312030080398772,
+            0.8068054393035026
+          ],
+          "flux_reference": [
+            1.0,
+            0.9312030080398802,
+            0.8068054393035059
+          ],
+          "max_flux_error": 3.3306690738754696e-15,
+          "boundary_error": 2.2230132104642586e-16,
+          "fused_expm_error": 1.5393537629806653e-14
+        },
+        {
+          "backend": "EigenAdapterReused",
+          "normalized_residual": 3.6224346348785483e-16,
+          "peak_normalized_expm_error": 1.5393610956855485e-14,
+          "eigenvector_condition_2": 1.3405596535123265,
+          "flux": [
+            1.0000000000000004,
+            0.9312030080398772,
+            0.8068054393035026
+          ],
+          "flux_reference": [
+            1.0,
+            0.9312030080398802,
+            0.8068054393035059
+          ],
+          "max_flux_error": 3.3306690738754696e-15,
+          "boundary_error": 2.2230132104642586e-16,
+          "fused_expm_error": 1.5393537629806653e-14
+        },
+        {
+          "backend": "EigenReference",
+          "normalized_residual": 3.895341001788461e-16,
+          "peak_normalized_expm_error": 1.5356134357017496e-14,
+          "eigenvector_condition_2": 1.3405596535122226,
+          "flux": [
+            1.0000000000000004,
+            0.9312030080398773,
+            0.8068054393034967
+          ],
+          "flux_reference": [
+            1.0,
+            0.9312030080398802,
+            0.8068054393035059
+          ],
+          "max_flux_error": 9.2148511043888e-15,
+          "boundary_error": 2.2974199545682777e-16,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "Gpu1331_Default",
+          "normalized_residual": 4.378971365022505e-16,
+          "peak_normalized_expm_error": 2.6428220149750443e-14,
+          "eigenvector_condition_2": 1.3405596535122144,
+          "flux": [
+            0.9999999999999993,
+            0.9312030080398765,
+            0.8068054393034919
+          ],
+          "flux_reference": [
+            1.0,
+            0.9312030080398802,
+            0.8068054393035059
+          ],
+          "max_flux_error": 1.3988810110276972e-14,
+          "boundary_error": 3.3308623934062257e-16,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "MathNetMkl_Schur",
+          "normalized_residual": 3.742540979055643e-16,
+          "peak_normalized_expm_error": 5.985446603763837e-14,
+          "eigenvector_condition_2": 1.9052770599681172,
+          "flux": [
+            0.9999999999999991,
+            0.9312030080398789,
+            0.8068054393035098
+          ],
+          "flux_reference": [
+            1.0,
+            0.9312030080398802,
+            0.8068054393035059
+          ],
+          "max_flux_error": 3.885780586188048e-15,
+          "boundary_error": 4.45492136478861e-16,
+          "fused_expm_error": 5.945633665558649e-14
+        },
+        {
+          "backend": "Mkl2026_Geev",
+          "normalized_residual": 3.9632135769006553e-16,
+          "peak_normalized_expm_error": 3.349425290722654e-14,
+          "eigenvector_condition_2": 1.3405596535133004,
+          "flux": [
+            0.9999999999999998,
+            0.9312030080398738,
+            0.8068054393035017
+          ],
+          "flux_reference": [
+            1.0,
+            0.9312030080398802,
+            0.8068054393035059
+          ],
+          "max_flux_error": 6.439293542825908e-15,
+          "boundary_error": 2.840270052864218e-16,
+          "fused_expm_error": 3.315299814366712e-14
+        },
+        {
+          "backend": "Mkl2026_Schur",
+          "normalized_residual": 3.9176272684074e-16,
+          "peak_normalized_expm_error": 3.335337990005177e-14,
+          "eigenvector_condition_2": 1.9451397713899103,
+          "flux": [
+            0.9999999999999998,
+            0.9312030080398731,
+            0.8068054393035009
+          ],
+          "flux_reference": [
+            1.0,
+            0.9312030080398802,
+            0.8068054393035059
+          ],
+          "max_flux_error": 7.105427357601002e-15,
+          "boundary_error": 1.348353039267163e-16,
+          "fused_expm_error": 3.3019617413968594e-14
+        },
+        {
+          "backend": "OpenBlas0334_Geev",
+          "normalized_residual": 3.999211315124628e-16,
+          "peak_normalized_expm_error": 5.063910261275619e-14,
+          "eigenvector_condition_2": 1.3405596535126267,
+          "flux": [
+            1.0000000000000004,
+            0.9312030080398821,
+            0.806805439303513
+          ],
+          "flux_reference": [
+            1.0,
+            0.9312030080398802,
+            0.8068054393035059
+          ],
+          "max_flux_error": 7.105427357601002e-15,
+          "boundary_error": 2.221262828651699e-16,
+          "fused_expm_error": 5.044620727365237e-14
+        },
+        {
+          "backend": "OpenBlas0334_Schur",
+          "normalized_residual": 3.8204653980410744e-16,
+          "peak_normalized_expm_error": 3.94171391229673e-14,
+          "eigenvector_condition_2": 1.8422694760938931,
+          "flux": [
+            1.0000000000000013,
+            0.9312030080398831,
+            0.8068054393035249
+          ],
+          "flux_reference": [
+            1.0,
+            0.9312030080398802,
+            0.8068054393035059
+          ],
+          "max_flux_error": 1.8984813721090177e-14,
+          "boundary_error": 6.664238287376147e-16,
+          "fused_expm_error": 3.9197565380184075e-14
+        }
+      ]
+    },
+    {
+      "fixture": "Si32B0",
+      "n": 32,
+      "thicknesses_nm": [
+        0.0,
+        35.0,
+        100.0
+      ],
+      "normalized_nonnormality": 0.00012641315944531253,
+      "backends": [
+        {
+          "backend": "EigenAdapterFresh",
+          "normalized_residual": 3.856145377224261e-16,
+          "peak_normalized_expm_error": 1.3307865088815604e-14,
+          "eigenvector_condition_2": 1.0046130900880603,
+          "flux": [
+            0.9999999999999998,
+            0.9999999999999996,
+            0.9999999999999989
+          ],
+          "flux_reference": [
+            1.0,
+            1.0000000000000018,
+            0.9999999999999993
+          ],
+          "max_flux_error": 2.220446049250313e-15,
+          "boundary_error": 1.110223060564266e-16,
+          "fused_expm_error": 1.3319560656948283e-14
+        },
+        {
+          "backend": "EigenAdapterReused",
+          "normalized_residual": 3.856145377224261e-16,
+          "peak_normalized_expm_error": 1.3307865088815604e-14,
+          "eigenvector_condition_2": 1.0046130900880603,
+          "flux": [
+            0.9999999999999998,
+            0.9999999999999996,
+            0.9999999999999989
+          ],
+          "flux_reference": [
+            1.0,
+            1.0000000000000018,
+            0.9999999999999993
+          ],
+          "max_flux_error": 2.220446049250313e-15,
+          "boundary_error": 1.110223060564266e-16,
+          "fused_expm_error": 1.3319560656948283e-14
+        },
+        {
+          "backend": "EigenReference",
+          "normalized_residual": 3.495809140175101e-16,
+          "peak_normalized_expm_error": 1.514142969381858e-14,
+          "eigenvector_condition_2": 1.0046130900880605,
+          "flux": [
+            0.9999999999999996,
+            0.9999999999999992,
+            0.9999999999999989
+          ],
+          "flux_reference": [
+            1.0,
+            1.0000000000000018,
+            0.9999999999999993
+          ],
+          "max_flux_error": 2.55351295663786e-15,
+          "boundary_error": 2.2204460977303886e-16,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "Gpu1331_Default",
+          "normalized_residual": 5.507849481482168e-16,
+          "peak_normalized_expm_error": 1.5957824519348896e-14,
+          "eigenvector_condition_2": 1.0046130900880632,
+          "flux": [
+            0.9999999999999996,
+            0.9999999999999991,
+            0.9999999999999963
+          ],
+          "flux_reference": [
+            1.0,
+            1.0000000000000018,
+            0.9999999999999993
+          ],
+          "max_flux_error": 2.9976021664879227e-15,
+          "boundary_error": 2.220446049250313e-16,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "MathNetMkl_Schur",
+          "normalized_residual": 4.178624816582357e-16,
+          "peak_normalized_expm_error": 1.3635200189819351e-14,
+          "eigenvector_condition_2": 2.026180341991734,
+          "flux": [
+            1.0000000000000004,
+            1.0000000000000018,
+            1.0000000000000038
+          ],
+          "flux_reference": [
+            1.0,
+            1.0000000000000018,
+            0.9999999999999993
+          ],
+          "max_flux_error": 4.440892098500626e-15,
+          "boundary_error": 2.2204460517437264e-16,
+          "fused_expm_error": 1.3633738205884724e-14
+        },
+        {
+          "backend": "Mkl2026_Geev",
+          "normalized_residual": 4.0900389648016514e-16,
+          "peak_normalized_expm_error": 3.123152286357991e-14,
+          "eigenvector_condition_2": 1.0046130900880657,
+          "flux": [
+            1.0,
+            0.999999999999998,
+            0.9999999999999973
+          ],
+          "flux_reference": [
+            1.0,
+            1.0000000000000018,
+            0.9999999999999993
+          ],
+          "max_flux_error": 3.774758283725532e-15,
+          "boundary_error": 1.457167719820509e-16,
+          "fused_expm_error": 3.1264164235997255e-14
+        },
+        {
+          "backend": "Mkl2026_Schur",
+          "normalized_residual": 3.8734886488690247e-16,
+          "peak_normalized_expm_error": 3.1251003313544475e-14,
+          "eigenvector_condition_2": 1.859865869112699,
+          "flux": [
+            0.9999999999999998,
+            0.999999999999998,
+            0.9999999999999973
+          ],
+          "flux_reference": [
+            1.0,
+            1.0000000000000018,
+            0.9999999999999993
+          ],
+          "max_flux_error": 3.774758283725532e-15,
+          "boundary_error": 1.1102230325668562e-16,
+          "fused_expm_error": 3.131621142631014e-14
+        },
+        {
+          "backend": "OpenBlas0334_Geev",
+          "normalized_residual": 4.598522994358695e-16,
+          "peak_normalized_expm_error": 3.671430336724578e-14,
+          "eigenvector_condition_2": 1.0046130900880619,
+          "flux": [
+            0.9999999999999996,
+            0.9999999999999989,
+            0.9999999999999989
+          ],
+          "flux_reference": [
+            1.0,
+            1.0000000000000018,
+            0.9999999999999993
+          ],
+          "max_flux_error": 2.886579864025407e-15,
+          "boundary_error": 2.220446049250313e-16,
+          "fused_expm_error": 3.679280035354117e-14
+        },
+        {
+          "backend": "OpenBlas0334_Schur",
+          "normalized_residual": 4.643412438434107e-16,
+          "peak_normalized_expm_error": 3.6705476380451303e-14,
+          "eigenvector_condition_2": 1.9865931571026272,
+          "flux": [
+            0.9999999999999996,
+            0.9999999999999983,
+            0.999999999999999
+          ],
+          "flux_reference": [
+            1.0,
+            1.0000000000000018,
+            0.9999999999999993
+          ],
+          "max_flux_error": 3.4416913763379853e-15,
+          "boundary_error": 2.220446049351856e-16,
+          "fused_expm_error": 3.679280035354117e-14
+        }
+      ]
+    },
+    {
+      "fixture": "Si448",
+      "n": 448,
+      "thicknesses_nm": [
+        0.0,
+        35.0,
+        100.0
+      ],
+      "normalized_nonnormality": 0.0001329520091670776,
+      "backends": [
+        {
+          "backend": "EigenAdapterFresh",
+          "normalized_residual": 5.46726857104264e-16,
+          "peak_normalized_expm_error": 8.428019269089771e-14,
+          "eigenvector_condition_2": 1.4359889891986999,
+          "flux": [
+            0.9999999999999998,
+            0.9293804566184541,
+            0.8018838981544874
+          ],
+          "flux_reference": [
+            1.0,
+            0.9293804566184507,
+            0.8018838981544575
+          ],
+          "max_flux_error": 2.986499936241671e-14,
+          "boundary_error": 3.1608124394988623e-16,
+          "fused_expm_error": 8.438617079246277e-14
+        },
+        {
+          "backend": "EigenAdapterReused",
+          "normalized_residual": 5.46726857104264e-16,
+          "peak_normalized_expm_error": 8.428019269089771e-14,
+          "eigenvector_condition_2": 1.4359889891986999,
+          "flux": [
+            0.9999999999999998,
+            0.9293804566184541,
+            0.8018838981544874
+          ],
+          "flux_reference": [
+            1.0,
+            0.9293804566184507,
+            0.8018838981544575
+          ],
+          "max_flux_error": 2.986499936241671e-14,
+          "boundary_error": 3.1608124394988623e-16,
+          "fused_expm_error": 8.438617079246277e-14
+        },
+        {
+          "backend": "EigenReference",
+          "normalized_residual": 5.964066044830234e-16,
+          "peak_normalized_expm_error": 1.0749259649593556e-13,
+          "eigenvector_condition_2": 1.4359889891994564,
+          "flux": [
+            0.9999999999999998,
+            0.9293804566184419,
+            0.8018838981544575
+          ],
+          "flux_reference": [
+            1.0,
+            0.9293804566184507,
+            0.8018838981544575
+          ],
+          "max_flux_error": 8.770761894538737e-15,
+          "boundary_error": 1.180539009098806e-16,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "Gpu1331_Default",
+          "normalized_residual": 3.6845999783827985e-16,
+          "peak_normalized_expm_error": 3.287947558729507e-14,
+          "eigenvector_condition_2": 1.4359889891967383,
+          "flux": [
+            0.9999999999999996,
+            0.9293804566184402,
+            0.8018838981544525
+          ],
+          "flux_reference": [
+            1.0,
+            0.9293804566184507,
+            0.8018838981544575
+          ],
+          "max_flux_error": 1.0547118733938987e-14,
+          "boundary_error": 2.813675749421134e-16,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "MathNetMkl_Schur",
+          "normalized_residual": 3.952920146243855e-16,
+          "peak_normalized_expm_error": 4.01955935583216e-14,
+          "eigenvector_condition_2": 1.8478759260972248,
+          "flux": [
+            1.0000000000000004,
+            0.9293804566184436,
+            0.8018838981544607
+          ],
+          "flux_reference": [
+            1.0,
+            0.9293804566184507,
+            0.8018838981544575
+          ],
+          "max_flux_error": 7.105427357601002e-15,
+          "boundary_error": 2.244768382970926e-16,
+          "fused_expm_error": 4.032433343328138e-14
+        },
+        {
+          "backend": "Mkl2026_Geev",
+          "normalized_residual": 3.743698798595761e-16,
+          "peak_normalized_expm_error": 8.114048213305834e-14,
+          "eigenvector_condition_2": 1.435988989197683,
+          "flux": [
+            1.0000000000000004,
+            0.9293804566184428,
+            0.8018838981544695
+          ],
+          "flux_reference": [
+            1.0,
+            0.9293804566184507,
+            0.8018838981544575
+          ],
+          "max_flux_error": 1.199040866595169e-14,
+          "boundary_error": 2.221978617168051e-16,
+          "fused_expm_error": 8.096671179593855e-14
+        },
+        {
+          "backend": "Mkl2026_Schur",
+          "normalized_residual": 3.746092041544177e-16,
+          "peak_normalized_expm_error": 8.11189841927886e-14,
+          "eigenvector_condition_2": 1.8485893577449162,
+          "flux": [
+            0.9999999999999996,
+            0.9293804566184422,
+            0.8018838981544691
+          ],
+          "flux_reference": [
+            1.0,
+            0.9293804566184507,
+            0.8018838981544575
+          ],
+          "max_flux_error": 1.1657341758564144e-14,
+          "boundary_error": 3.1157358136656125e-16,
+          "fused_expm_error": 8.092663557970221e-14
+        },
+        {
+          "backend": "OpenBlas0334_Geev",
+          "normalized_residual": 3.597221055970701e-16,
+          "peak_normalized_expm_error": 5.202010966189363e-14,
+          "eigenvector_condition_2": 1.4359889891990474,
+          "flux": [
+            1.0000000000000004,
+            0.9293804566184408,
+            0.8018838981544454
+          ],
+          "flux_reference": [
+            1.0,
+            0.9293804566184507,
+            0.8018838981544575
+          ],
+          "max_flux_error": 1.2101430968414206e-14,
+          "boundary_error": 3.085129230228461e-16,
+          "fused_expm_error": 5.1821614569585045e-14
+        },
+        {
+          "backend": "OpenBlas0334_Schur",
+          "normalized_residual": 3.7427769557705117e-16,
+          "peak_normalized_expm_error": 7.039306467136604e-14,
+          "eigenvector_condition_2": 1.7310456437834434,
+          "flux": [
+            1.0000000000000004,
+            0.9293804566184498,
+            0.8018838981544627
+          ],
+          "flux_reference": [
+            1.0,
+            0.9293804566184507,
+            0.8018838981544575
+          ],
+          "max_flux_error": 5.218048215738236e-15,
+          "boundary_error": 2.228694486690797e-16,
+          "fused_expm_error": 6.983954212135497e-14
+        }
+      ]
+    },
+    {
+      "fixture": "Si640",
+      "n": 640,
+      "thicknesses_nm": [
+        0.0,
+        35.0,
+        100.0
+      ],
+      "normalized_nonnormality": 0.00010033618089801,
+      "backends": [
+        {
+          "backend": "EigenAdapterFresh",
+          "normalized_residual": 7.053230012568156e-16,
+          "peak_normalized_expm_error": 5.75718233311725e-14,
+          "eigenvector_condition_2": 3.478286559831567,
+          "flux": [
+            1.0000000000000022,
+            0.9289685387322341,
+            0.8008291343487476
+          ],
+          "flux_reference": [
+            1.0,
+            0.9289685387322362,
+            0.8008291343488384
+          ],
+          "max_flux_error": 9.08162434143378e-14,
+          "boundary_error": 1.1104910701835214e-15,
+          "fused_expm_error": 5.792293379672498e-14
+        },
+        {
+          "backend": "EigenAdapterReused",
+          "normalized_residual": 7.053230012568156e-16,
+          "peak_normalized_expm_error": 5.75718233311725e-14,
+          "eigenvector_condition_2": 3.478286559831567,
+          "flux": [
+            1.0000000000000022,
+            0.9289685387322341,
+            0.8008291343487476
+          ],
+          "flux_reference": [
+            1.0,
+            0.9289685387322362,
+            0.8008291343488384
+          ],
+          "max_flux_error": 9.08162434143378e-14,
+          "boundary_error": 1.1104910701835214e-15,
+          "fused_expm_error": 5.792293379672498e-14
+        },
+        {
+          "backend": "EigenReference",
+          "normalized_residual": 7.11699966147482e-16,
+          "peak_normalized_expm_error": 3.713032147555512e-14,
+          "eigenvector_condition_2": 3.4782865596214467,
+          "flux": [
+            1.0000000000000027,
+            0.9289685387322613,
+            0.8008291343488257
+          ],
+          "flux_reference": [
+            1.0,
+            0.9289685387322362,
+            0.8008291343488384
+          ],
+          "max_flux_error": 2.5091040356528538e-14,
+          "boundary_error": 1.332501449463722e-15,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "Gpu1331_Default",
+          "normalized_residual": 3.599117040686972e-16,
+          "peak_normalized_expm_error": 1.6545069523234968e-13,
+          "eigenvector_condition_2": 3.4782865598746278,
+          "flux": [
+            1.0000000000000013,
+            0.9289685387322422,
+            0.800829134348795
+          ],
+          "flux_reference": [
+            1.0,
+            0.9289685387322362,
+            0.8008291343488384
+          ],
+          "max_flux_error": 4.340972026284362e-14,
+          "boundary_error": 6.661442997120372e-16,
+          "fused_expm_error": null
+        },
+        {
+          "backend": "MathNetMkl_Schur",
+          "normalized_residual": 3.597772598768043e-16,
+          "peak_normalized_expm_error": 5.140513191925551e-14,
+          "eigenvector_condition_2": 3.9900427984656566,
+          "flux": [
+            1.0000000000000004,
+            0.9289685387322193,
+            0.8008291343487406
+          ],
+          "flux_reference": [
+            1.0,
+            0.9289685387322362,
+            0.8008291343488384
+          ],
+          "max_flux_error": 9.781064846947629e-14,
+          "boundary_error": 2.5908996311706785e-16,
+          "fused_expm_error": 5.113261077714455e-14
+        },
+        {
+          "backend": "Mkl2026_Geev",
+          "normalized_residual": 3.498633476163605e-16,
+          "peak_normalized_expm_error": 2.9198285102078024e-14,
+          "eigenvector_condition_2": 3.4782865597675947,
+          "flux": [
+            1.0000000000000004,
+            0.9289685387322728,
+            0.8008291343488441
+          ],
+          "flux_reference": [
+            1.0,
+            0.9289685387322362,
+            0.8008291343488384
+          ],
+          "max_flux_error": 3.6637359812630166e-14,
+          "boundary_error": 2.22049109060936e-16,
+          "fused_expm_error": 2.863455448935157e-14
+        },
+        {
+          "backend": "Mkl2026_Schur",
+          "normalized_residual": 3.510791320916002e-16,
+          "peak_normalized_expm_error": 2.932465556300156e-14,
+          "eigenvector_condition_2": 3.85273633548882,
+          "flux": [
+            1.0000000000000009,
+            0.9289685387322733,
+            0.8008291343488446
+          ],
+          "flux_reference": [
+            1.0,
+            0.9289685387322362,
+            0.8008291343488384
+          ],
+          "max_flux_error": 3.708144902248023e-14,
+          "boundary_error": 4.587195024067472e-16,
+          "fused_expm_error": 2.888420752710719e-14
+        },
+        {
+          "backend": "OpenBlas0334_Geev",
+          "normalized_residual": 3.4824494894863366e-16,
+          "peak_normalized_expm_error": 8.778471328389469e-14,
+          "eigenvector_condition_2": 3.478286559851461,
+          "flux": [
+            0.9999999999999996,
+            0.9289685387322609,
+            0.8008291343488056
+          ],
+          "flux_reference": [
+            1.0,
+            0.9289685387322362,
+            0.8008291343488384
+          ],
+          "max_flux_error": 3.275157922644212e-14,
+          "boundary_error": 2.2579188217441164e-16,
+          "fused_expm_error": 8.760815300857454e-14
+        },
+        {
+          "backend": "OpenBlas0334_Schur",
+          "normalized_residual": 3.455283838328332e-16,
+          "peak_normalized_expm_error": 6.697622837306164e-14,
+          "eigenvector_condition_2": 3.6059185431190515,
+          "flux": [
+            1.0000000000000004,
+            0.9289685387322287,
+            0.8008291343487666
+          ],
+          "flux_reference": [
+            1.0,
+            0.9289685387322362,
+            0.8008291343488384
+          ],
+          "max_flux_error": 7.183142969324763e-14,
+          "boundary_error": 2.5168580858078916e-16,
+          "fused_expm_error": 6.675640622748786e-14
+        }
+      ]
+    }
+  ]
+}

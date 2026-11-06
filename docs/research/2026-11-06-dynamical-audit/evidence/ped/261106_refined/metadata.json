@@ -1,0 +1,49 @@
+{
+  "createdUtc": "2026-11-06T05:13:48.6809669+00:00",
+  "Voltage": 200,
+  "semiangleRadians": 0.017453292519943295,
+  "nRequested": [
+    64,
+    128
+  ],
+  "angularSamples": [
+    16,
+    32,
+    64,
+    128,
+    256
+  ],
+  "thicknessNm": [
+    20,
+    100
+  ],
+  "offZoneRotation": [
+    0.9999968560328215,
+    1.0479890595052379E-05,
+    0.002507551523777404,
+    1.0479890595052379E-05,
+    0.9999650670313498,
+    -0.008358505079258014,
+    -0.002507551523777404,
+    0.008358505079258014,
+    0.9999619230641713
+  ],
+  "surface": [
+    0,
+    0,
+    -1
+  ],
+  "elasticModel": "Neutral",
+  "absorptionModel": "TemariHybrid",
+  "candidateMultiplier": 0,
+  "boundaryTieMode": "DropGroup",
+  "Enabled": true,
+  "LoadedNativeLibrary": "Crystallography.Native.avx512.dll",
+  "nativeSha256": "4084DE960898E59572F72B0B66ACDFDDCA1680AE1873E4ECB6F21494E20C610A",
+  "assembly": "1.0.0\u002Bb2bbacaaf972ca2922387bdec16b20ed20e90f6d",
+  "assemblySha256": "1D721F1381081C5D74AC27D9A594ED339567C3F0378B3AE2BFDE9E0E1D9A338B",
+  "ProcessorCount": 2,
+  "executableDirectory": "C:\\Users\\seto\\source\\repos\\ReciPro\\tools\\PedConvergenceCheck\\bin\\x64\\Release\\net11.0-windows\\",
+  "metrics": "Union of hkl sets, missing=0; relL2=norm(test-reference)/norm(reference); maxScale=max(abs(test-reference))/max(reference). All beams, including 000. Higher M or N is the finite reference, not ground truth.",
+  "acceptanceThreshold": null
+}

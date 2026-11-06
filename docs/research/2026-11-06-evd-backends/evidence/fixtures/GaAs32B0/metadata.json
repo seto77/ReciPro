@@ -1,0 +1,193 @@
+{
+  "fixture": {
+    "label": "GaAs32B0",
+    "n": 32,
+    "requested": 32,
+    "physical": true,
+    "species": "GaAs",
+    "voltageKv": 200,
+    "offZoneDeg": 0.5,
+    "surfaceTiltDeg": 23,
+    "latticeNm": 0.56533,
+    "bisoAngstromSquared": 0,
+    "noAbsorption": true,
+    "expandedAtomCounts": [
+      4,
+      4
+    ],
+    "elasticIonModel": "Neutral",
+    "absorptionElasticModel": "TemariHybrid",
+    "beamCandidateMultiplier": 0,
+    "beamBoundaryTieMode": "DropGroup",
+    "hkl": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        0
+      ],
+      [
+        -2,
+        0,
+        0
+      ],
+      [
+        -2,
+        2,
+        0
+      ],
+      [
+        2,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        0
+      ],
+      [
+        -2,
+        4,
+        0
+      ],
+      [
+        2,
+        0,
+        0
+      ],
+      [
+        2,
+        4,
+        0
+      ],
+      [
+        0,
+        -2,
+        0
+      ],
+      [
+        -4,
+        2,
+        0
+      ],
+      [
+        -2,
+        -2,
+        0
+      ],
+      [
+        -4,
+        0,
+        0
+      ],
+      [
+        -4,
+        4,
+        0
+      ],
+      [
+        2,
+        -2,
+        0
+      ],
+      [
+        0,
+        6,
+        0
+      ],
+      [
+        4,
+        2,
+        0
+      ],
+      [
+        -2,
+        6,
+        0
+      ],
+      [
+        4,
+        0,
+        0
+      ],
+      [
+        -4,
+        -2,
+        0
+      ],
+      [
+        2,
+        6,
+        0
+      ],
+      [
+        4,
+        4,
+        0
+      ],
+      [
+        0,
+        -4,
+        0
+      ],
+      [
+        -6,
+        2,
+        0
+      ],
+      [
+        -4,
+        6,
+        0
+      ],
+      [
+        4,
+        -2,
+        0
+      ],
+      [
+        -2,
+        -4,
+        0
+      ],
+      [
+        -6,
+        0,
+        0
+      ],
+      [
+        2,
+        -4,
+        0
+      ],
+      [
+        -6,
+        4,
+        0
+      ],
+      [
+        4,
+        6,
+        0
+      ],
+      [
+        0,
+        8,
+        0
+      ]
+    ]
+  },
+  "n": 32,
+  "layout": "column-major; complex Float64 real/imag interleaved; little-endian; waves[t*N\u002Bg]",
+  "thicknessesNm": [
+    0,
+    35,
+    100
+  ],
+  "matrixSha256": "25B5C2D70BFDC8B2EDB2FFC00C09DEEECFAA21BBBFE8F9AC0B9C388032D1FA72"
+}

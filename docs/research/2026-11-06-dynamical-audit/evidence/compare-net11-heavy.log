@@ -1,0 +1,9 @@
+A: C:\tmp\recipro_dynamical_audit_261106\baseline-net11-heavy.bin (2026-11-06T14:11:17.0872524+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx512.dll, nativeSha=689FFD75D4D0, crystallography=1.0.0)
+B: C:\tmp\recipro_dynamical_audit_261106\current-net11-heavy.bin (2026-11-06T14:12:42.0036831+09:00 SETO-DESKTOP Eigen=True arch=X64, os=X64, fw=.NET 11.0.0-rc.3.26522.148, native=Crystallography.Native.avx512.dll, nativeSha=4084DE960898, crystallography=1.0.0+b2bbacaaf972ca2922387bdec16b20ed20e90f6d)
+
+dataset                                             n       max|Δ| rel(max/scale)    rms/scale
+Silicon (I)/STEM/both                            4096   2.776e-017     4.226e-016   6.434e-017
+Silicon (I)/STEM/ela                             4096   8.674e-019     7.129e-016   2.455e-016
+Silicon (I)/STEM/tds                             4096   2.776e-017     4.303e-016   6.213e-017
+
+PASS (tol=1.0e-012)
