@@ -101,7 +101,8 @@ namespace ReciPro
                 {
                     if (Rows.Count == 0) return null;
 
-                    var dList = new List<double>();
+                    // var dList = new List<double>(); // (261106Ch) 変更前
+                    List<double> dList = [with(capacity: Rows.Count)]; // (261106Ch) 全行分の容量を先に確保。
                     for (int i = 0; i < this.Count; i++)
                         dList.Add((double)this.Rows[i]["d"]);
                     return dList;
@@ -116,7 +117,8 @@ namespace ReciPro
                     if (Rows.Count == 0)
                         return null;
 
-                    var vec = new List<Vector3DBase>();
+                    // var vec = new List<Vector3DBase>(); // (261106Ch) 変更前
+                    List<Vector3DBase> vec = [with(capacity: Rows.Count)]; // (261106Ch) 全行分の容量を先に確保。
                     for (int i = 0; i < this.Rows.Count; i++)
                         vec.Add(AreaDetector.convertClientToReciprocalSpace((double)Rows[i]["x0"], (double)Rows[i]["y0"]));
 

@@ -2425,7 +2425,8 @@ public partial class FormMain : FormBase
         // 260517Cl 削除: FormStructureViewer.UpdatePlaneIndices() は no-op だったため。crystalControl.MillerBravais の同期で十分。
         FormStereonet?.UpdatePlaneIndices();
         FormImageSimulator?.UpdatePlaneIndices();
-        if (FormMovie != null) FormMovie.MillerBravaisIndex = active; // 260517Cl 追加: FormMovie の i 軸表示も同期させる
+        // if (FormMovie != null) FormMovie.MillerBravaisIndex = active; // 260517Cl 追加: FormMovie の i 軸表示も同期させる // (261106Ch) 変更前
+        FormMovie?.MillerBravaisIndex = active; // (261106Ch) null 判定付きの単一代入に集約。
         crystalControl.MillerBravais = active;
 
         indexControlPlane.MillerBravais = active;

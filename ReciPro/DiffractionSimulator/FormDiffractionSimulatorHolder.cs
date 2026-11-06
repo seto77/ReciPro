@@ -35,6 +35,8 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
     //private Matrix3D NeutralDirection { get; set; } = Matrix3D.IdentityMatrix; // 261105Cl 変更前
     /// <summary>ホルダーを傾けていないときの結晶の方位 (今の方位 = HolderRotation⁻¹ · NeutralDirection)。
     /// 261105Cl 変更: 設定のたびに、今の傾斜で結晶があるはずの方位と、その結晶を控える (<see cref="numericBoxTilt_ValueChanged"/> で、ほかの窓で回されたかを見る)</summary>
+    // (261106Ch) 変更前: 専用 backing field。初期値と更新順序は維持する。
+    /*
     private Matrix3D NeutralDirection
     {
         get => neutralDirection;
@@ -46,6 +48,17 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
         }
     }
     private Matrix3D neutralDirection = Matrix3D.IdentityMatrix; // 261105Cl 追加
+    */
+    private Matrix3D NeutralDirection
+    {
+        get;
+        set
+        {
+            field = value;
+            expectedRotation = HolderRotation.Inverse() * value;
+            expectedCrystal = FormDiffractionSimulator?.formMain?.Crystal;
+        }
+    } = Matrix3D.IdentityMatrix; // (261106Ch) C# 14 の field に集約。
     /// <summary>261105Cl 追加: この窓が最後に結晶の方位を控えた (または置いた) ときの方位 (写し) と結晶</summary>
     private Matrix3D expectedRotation = Matrix3D.IdentityMatrix;
     private Crystal expectedCrystal;
