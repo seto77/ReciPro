@@ -38,9 +38,12 @@
 * **浅色 / 深色主题** : 界面支持可选的浅色或深色配色模式。
 
 ## 系统要求
+
+以下要求适用于由此源代码构建的 .NET 11 RC 3 版本。对于已发布的版本，请遵循该版本注明的运行时要求。
+
 | 项目 | 最低要求 | 推荐配置 |
 |------|---------|-------------|
-| OS | 安装有 [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0) 的 Windows（支持 Windows on ARM64） | Windows 11 |
+| OS | 安装有 [.NET Desktop Runtime 11.0 RC 3](https://dotnet.microsoft.com/download/dotnet/11.0) 的 Windows（支持 Windows on ARM64） | Windows 11 |
 | GPU | OpenGL 1.3 | 支持 OpenGL 4.3 的独立 GPU |
 | 内存 | - | 16 GB 或更多 |
 | CPU | - | 8 核以上（用于动力学计算） |

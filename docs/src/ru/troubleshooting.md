@@ -67,13 +67,15 @@ ReciPro запускается (он виден в Диспетчере зада
 
 ### Симптом: приложение не запускается
 
-**Причина**: не установлена требуемая .NET Desktop Runtime. Текущие версии требуют **.NET Desktop Runtime 10.0** (более старые сборки: v4.895–v4.91x требовали 9.0; см. issue [#43](https://github.com/seto77/ReciPro/issues/43)).
+Эти требования относятся к сборкам .NET 11 RC 3 из данного исходного кода. Для опубликованных выпусков используйте требования к среде выполнения, указанные для соответствующего выпуска.
 
-**Решение**: загрузите и установите с <https://dotnet.microsoft.com/download/dotnet/10.0> (выберите **Desktop Runtime**, x64 для большинства ПК).
+**Причина**: не установлена требуемая .NET Desktop Runtime. Текущие версии требуют **.NET Desktop Runtime 11.0 RC 3** (более старые сборки: v4.895–v4.91x требовали 9.0; см. issue [#43](https://github.com/seto77/ReciPro/issues/43)).
+
+**Решение**: загрузите и установите с <https://dotnet.microsoft.com/download/dotnet/11.0> (выберите **Desktop Runtime**, x64 для большинства ПК).
 
 ### Симптом: не удаётся получить доступ к странице загрузки Microsoft
 
-**Решение**: вы можете загрузить установщик среды выполнения напрямую. Выберите **Windows Desktop Runtime X64** для вашей архитектуры на [странице загрузки .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0). (Issue [#49](https://github.com/seto77/ReciPro/issues/49))
+**Решение**: вы можете загрузить установщик среды выполнения напрямую. Выберите **Windows Desktop Runtime X64** для вашей архитектуры на [странице загрузки .NET 11.0 RC 3](https://dotnet.microsoft.com/download/dotnet/11.0). (Issue [#49](https://github.com/seto77/ReciPro/issues/49))
 
 ---
 

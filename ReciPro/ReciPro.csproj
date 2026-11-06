@@ -2,7 +2,9 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net10.0-windows</TargetFramework>
+    <!-- 261106Ch: retain the .NET 10 target for migration history. <TargetFramework>net10.0-windows</TargetFramework> -->
+    <TargetFramework>net11.0-windows</TargetFramework>
+    <LangVersion>15.0</LangVersion><!-- 261106Ch: use the .NET 11 language version explicitly. -->
     <UseWindowsForms>true</UseWindowsForms>
     <!-- 260725Cl 削除: <AssemblyVersion>/<FileVersion> の静的値 (旧値 2026.7.25.0146)。
          VS 拡張 Automatic Versions がビルド毎に書き換えるだけの行で、出荷物には一切使われていなかった:
@@ -167,7 +169,8 @@
     <PackageReference Include="MathNet.Numerics.Providers.MKL" Version="6.0.0-beta2" />
     <PackageReference Include="OpenTK" Version="4.9.4" />
     <PackageReference Include="SimdLinq" Version="1.3.2" />
-    <PackageReference Include="System.Management" Version="10.0.14" /><!-- 261105Cl 10.0.12 → 10.0.14 (.NET 10 サービシング・パッチ更新。Crystallography.OpenGL 側も 10.0.12 のため揃えること) -->
+    <!-- 261106Ch: <PackageReference Include="System.Management" Version="10.0.14" /> -->
+    <PackageReference Include="System.Management" Version="11.0.0-rc.3.26522.148" /><!-- 261106Ch: align with the .NET 11 RC 3 package in Crystallography.OpenGL. -->
     <PackageReference Include="ZLinq" Version="1.6.1" /><!-- 261105Cl 1.5.6 から更新 (Crystallography / Crystallography.Controls の 1.6.1 に揃える。揃えないと NU1605 でビルドできない) -->
   </ItemGroup>
 

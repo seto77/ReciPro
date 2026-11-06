@@ -38,9 +38,11 @@
 * **Helles / dunkles Design** : Die Oberfläche folgt einem wählbaren hellen oder dunklen Farbmodus.
 
 ## Systemanforderungen
+Diese Anforderungen gelten für .NET-11-RC-3-Builds aus diesem Quellstand. Beachten Sie bei veröffentlichten Versionen die jeweils angegebene Laufzeitanforderung.
+
 | Element | Minimum | Empfohlen |
 |------|---------|-------------|
-| Betriebssystem | Windows mit [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0) (Windows on ARM64 unterstützt) | Windows 11 |
+| Betriebssystem | Windows mit [.NET Desktop Runtime 11.0 RC 3](https://dotnet.microsoft.com/download/dotnet/11.0) (Windows on ARM64 unterstützt) | Windows 11 |
 | GPU | OpenGL 1.3 | Externe GPU mit OpenGL 4.3 |
 | Arbeitsspeicher | – | 16 GB oder mehr |
 | CPU | – | 8+ Kerne (für dynamische Berechnungen) |

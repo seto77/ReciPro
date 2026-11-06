@@ -67,13 +67,15 @@ ReciPro 已啟動（在工作管理員中可見），但其視窗始終不在螢
 
 ### 症狀：應用程式無法啟動
 
-**原因**：未安裝所需的 .NET Desktop Runtime。目前版本需要 **.NET Desktop Runtime 10.0**（較舊的組建：v4.895–v4.91x 需要 9.0；參見 issue [#43](https://github.com/seto77/ReciPro/issues/43)）。
+以下要求適用於由此原始碼建置的 .NET 11 RC 3 版本。對於已發布的版本，請遵循該版本註明的執行階段要求。
 
-**解決方法**：從 <https://dotnet.microsoft.com/download/dotnet/10.0> 下載並安裝（選擇 **Desktop Runtime**，大多數 PC 選 x64）。
+**原因**：未安裝所需的 .NET Desktop Runtime。目前版本需要 **.NET Desktop Runtime 11.0 RC 3**（較舊的組建：v4.895–v4.91x 需要 9.0；參見 issue [#43](https://github.com/seto77/ReciPro/issues/43)）。
+
+**解決方法**：從 <https://dotnet.microsoft.com/download/dotnet/11.0> 下載並安裝（選擇 **Desktop Runtime**，大多數 PC 選 x64）。
 
 ### 症狀：無法存取 Microsoft 下載頁面
 
-**解決方法**：你可以直接下載執行階段安裝程式。在 [.NET 10.0 下載頁面](https://dotnet.microsoft.com/download/dotnet/10.0) 上為你的架構選擇 **Windows Desktop Runtime X64**。（Issue [#49](https://github.com/seto77/ReciPro/issues/49)）
+**解決方法**：你可以直接下載執行階段安裝程式。在 [.NET 11.0 RC 3 下載頁面](https://dotnet.microsoft.com/download/dotnet/11.0) 上為你的架構選擇 **Windows Desktop Runtime X64**。（Issue [#49](https://github.com/seto77/ReciPro/issues/49)）
 
 ---
 

@@ -38,9 +38,12 @@
 * **Tema claro / escuro** : A interface segue um modo de cor claro ou escuro selecionável.
 
 ## Requisitos do sistema
+
+Estes requisitos aplicam-se às compilações .NET 11 RC 3 deste código-fonte. Para versões publicadas, siga os requisitos de runtime indicados para a versão correspondente.
+
 | Item | Mínimo | Recomendado |
 |------|---------|-------------|
-| SO | Windows com [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0) (Windows on ARM64 suportado) | Windows 11 |
+| SO | Windows com [.NET Desktop Runtime 11.0 RC 3](https://dotnet.microsoft.com/download/dotnet/11.0) (Windows on ARM64 suportado) | Windows 11 |
 | GPU | OpenGL 1.3 | GPU externa com OpenGL 4.3 |
 | Memória | – | 16 GB ou mais |
 | CPU | – | 8+ núcleos (para cálculos dinâmicos) |
