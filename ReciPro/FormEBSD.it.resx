@@ -288,7 +288,9 @@ uguali.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Numero di fasci diffratti (vettori g) inclusi
 nel calcolo dinamico a onde di Bloch (1-2048);
-più fasci migliorano l'accuratezza ma rallentano il calcolo.</value>
+più fasci migliorano l'accuratezza ma rallentano il calcolo.
+Con il metodo dressed-tail: numero base di
+fasci espliciti (predefinito 300).</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>Prima sezione di profondità (la meno profonda) del master
@@ -462,9 +464,11 @@ attenua l'onda, e i due sono indipendenti.</value>
 Circa 300 fasci forti e le riflessioni vicine alla sfera di Ewald sono
 risolti esplicitamente; i ~20 000 fasci deboli restanti non vengono
 scartati ma accoppiati come risposta statica. Per Si è circa 30 volte
-più preciso della selezione convenzionale (errore ~0,3 % invece di
-~10 %) e circa 3-4 volte più lento. Richiede la sorgente non locale;
-il numero massimo di onde di Bloch non è usato. Le celle troppo grandi
+più preciso della selezione convenzionale (errore ~0,3 % invece di ~10
+%) e circa 3-4 volte più lento. Richiede la sorgente non locale; il
+numero di onde diffratte fissa allora il numero base di fasci espliciti
+(predefinito 300; aumentarlo per cristalli che diffondono fortemente
+come MnAl, il tempo cresce circa in proporzione). Le celle troppo grandi
 per la memoria tornano al metodo convenzionale (motivo nella barra di
 stato).</value>
   </data>

@@ -288,7 +288,9 @@ pasos iguales.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Número de haces difractados (vectores g) incluidos
 en el cálculo dinámico de ondas de Bloch (1-2048);
-más haces mejoran la precisión pero ralentizan el cálculo.</value>
+más haces mejoran la precisión pero ralentizan el cálculo.
+Con el método dressed-tail: número base de
+haces explícitos (300 por defecto).</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>Primera sección de profundidad (la más superficial) del patrón
@@ -461,12 +463,14 @@ onda, y ambos son independientes.</value>
     <value>Selección de haces para el patrón maestro: método dressed-tail (nuevo).
 Unos 300 haces intensos y las reflexiones cercanas a la esfera de Ewald
 se resuelven explícitamente; los ~20 000 haces débiles restantes no se
-descartan, sino que se acoplan como respuesta estática. Para Si es
-unas 30 veces más preciso que la selección convencional (error ~0,3 %
-en lugar de ~10 %) y unas 3 a 4 veces más lento. Requiere la fuente
-no local; no se usa el número máximo de ondas de Bloch. Las celdas
-demasiado grandes para la memoria vuelven al método convencional (el
-motivo aparece en la barra de estado).</value>
+descartan, sino que se acoplan como respuesta estática. Para Si es unas
+30 veces más preciso que la selección convencional (error ~0,3 % en
+lugar de ~10 %) y unas 3 a 4 veces más lento. Requiere la fuente no
+local; el número de ondas difractadas fija entonces el número base de
+haces explícitos (300 por defecto; auméntelo para cristales que
+dispersan fuertemente como MnAl, el tiempo crece casi en proporción).
+Las celdas demasiado grandes para la memoria vuelven al método
+convencional (el motivo aparece en la barra de estado).</value>
   </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>Renderiza el patrón EBSD ponderado por la distribución

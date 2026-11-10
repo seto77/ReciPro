@@ -3698,9 +3698,14 @@ public partial class FormEBSD : FormBase
     }
 
     /// <summary>261110Cl 追加: ビーム選択の新方式 (着衣つきの裾) では N は固定 (E1 の基準 300 本) なので、最大の Bloch 波の数の欄を使えない見た目にする</summary>
+    // 261110Cl 追加 (作者の判断 2026-11-10「欄を使えるようにする」): 「回折波の数」の欄は、従来の方式では最大の Bloch 波の数、新方式では E1 の基準の本数 N (既定 300)。
+    //   方式を切り替えたら、それぞれの値を覚えて入れ替える (従来の既定 32 のまま新方式で解かない)。どちらの値もレジストリには保存しない (従来どおり)
+    int legacyMaxNumOfG = -1, dressedTailMaxNumOfG = BetheMethod.DressedTailDefaults.N;
     private void checkBoxDressedTail_CheckedChanged(object sender, EventArgs e)
     {
-        numericBoxMaxNumOfG.Enabled = !checkBoxDressedTail.Checked;
+        // numericBoxMaxNumOfG.Enabled = !checkBoxDressedTail.Checked; // 261110Cl 変更前 (新方式では欄を無効にしていた)
+        if (checkBoxDressedTail.Checked) { legacyMaxNumOfG = numericBoxMaxNumOfG.ValueInteger; numericBoxMaxNumOfG.Value = dressedTailMaxNumOfG; } // 261110Cl 追加
+        else { dressedTailMaxNumOfG = numericBoxMaxNumOfG.ValueInteger; if (legacyMaxNumOfG > 0) numericBoxMaxNumOfG.Value = legacyMaxNumOfG; } // 261110Cl 追加
         // 261110Cl 追加 (codex2 第 32 回): 表示中のマスターパターンが別の方式で作られていれば、作り直すまで切り替えが効かないことを知らせる
         string want = checkBoxDressedTail.Checked ? nameof(BetheMethod.EbsdBeamSelectionMethod.DressedTail) : nameof(BetheMethod.EbsdBeamSelectionMethod.Legacy);
         if (MasterPattern != null && MasterPattern.BeamSelectionUsed != want)

@@ -284,7 +284,9 @@ structure factors」時，弱菊池線會融入此顏色。</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>布洛赫波動力學計算中所含的繞射波（g 向量）
 數目 (1-2048)；繞射波越多精度越高，
-但計算越慢。</value>
+但計算越慢。
+修飾尾部方法中為顯式求解的
+基準光束數 (預設 300)。</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>主圖樣深度切片的第一個（最淺）值，單位為 nm。
@@ -435,7 +437,8 @@ a, b, c 軸標籤文字。</value>
 約 300 條強光束和靠近 Ewald 球的反射被顯式求解，其餘約 2 萬條
 弱光束不丟棄，而以靜態響應耦合進來。對 Si 比傳統選擇精確約 30 倍
 (誤差約 0.3 %，傳統約 10 %)，時間約 3～4 倍。需要非局域背散射源，
-不使用最大 Bloch 波數。記憶體放不下的大晶胞會退回傳統方法
+此時繞射波數為顯式求解的基準光束數 (預設 300；MnAl 等強散射晶體
+增大後更精確，時間大致成比例增加)。記憶體放不下的大晶胞會退回傳統方法
 (原因顯示在狀態列)。</value>
   </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">

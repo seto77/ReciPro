@@ -1235,7 +1235,9 @@ and the first interval. Editing a box makes the steps equal.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Number of diffracted beams (g-vectors) included
 in the Bloch-wave dynamical calculation (1-2048);
-more beams improve accuracy but slow calculation.</value>
+more beams improve accuracy but slow calculation.
+With the dressed-tail method: the base number
+of explicit beams (default 300).</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxNumOfG.Name" xml:space="preserve">
     <value>numericBoxMaxNumOfG</value>
@@ -1350,8 +1352,10 @@ are solved explicitly, and the remaining ~20,000 weak beams are kept
 as a static dressing instead of being discarded. For Si it is about
 30 times more accurate than the conventional selection (error about
 0.3 % instead of about 10 %) and about 3 to 4 times slower.
-Requires the non-local source; the maximum number of Bloch waves is
-not used. Unit cells too large for the memory fall back to the
+Requires the non-local source; the number of diffracted waves then
+sets the base number of explicit beams (default 300; raise it for
+strongly scattering crystals such as MnAl, the time grows roughly in
+proportion). Unit cells too large for the memory fall back to the
 conventional method (the reason is shown in the status bar).</value>
   </data>
   <data name="&gt;&gt;checkBoxDressedTail.Name" xml:space="preserve">

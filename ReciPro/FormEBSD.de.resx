@@ -290,7 +290,9 @@ Feldes ergibt gleiche Abstände.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Anzahl der gebeugten Strahlen (g-Vektoren), die in die
 dynamische Bloch-Wellen-Rechnung einbezogen werden (1-2048);
-mehr Strahlen erhöhen die Genauigkeit, verlangsamen aber die Rechnung.</value>
+mehr Strahlen erhöhen die Genauigkeit, verlangsamen aber die Rechnung.
+Mit der Dressed-Tail-Methode: Basisanzahl der
+explizit gelösten Strahlen (Standard 300).</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>Erste (flachste) Tiefenscheibe des Master-Patterns, in nm.
@@ -465,12 +467,14 @@ TDS), das die Welle dämpft – beide sind unabhängig.</value>
     <value>Strahlauswahl für das Master-Pattern: die Dressed-Tail-Methode (neu).
 Etwa 300 starke Strahlen und die Reflexe nahe der Ewald-Kugel werden
 explizit gelöst; die übrigen ca. 20 000 schwachen Strahlen werden nicht
-verworfen, sondern als statische Antwort angekoppelt. Für Si etwa
-30-mal genauer als die herkömmliche Auswahl (Fehler ca. 0,3 % statt
-ca. 10 %) und etwa 3- bis 4-mal langsamer. Erfordert die nichtlokale
-Quelle; die maximale Zahl der Bloch-Wellen wird nicht verwendet. Zu
-große Einheitszellen fallen auf die herkömmliche Methode zurück (Grund
-in der Statusleiste).</value>
+verworfen, sondern als statische Antwort angekoppelt. Für Si etwa 30-mal
+genauer als die herkömmliche Auswahl (Fehler ca. 0,3 % statt ca. 10 %)
+und etwa 3- bis 4-mal langsamer. Erfordert die nichtlokale Quelle; die
+Zahl der gebeugten Wellen gibt dann die Basisanzahl der explizit
+gelösten Strahlen an (Standard 300; für stark streuende Kristalle wie
+MnAl erhöhen, die Zeit wächst etwa proportional). Zu große
+Einheitszellen fallen auf die herkömmliche Methode zurück (Grund in der
+Statusleiste).</value>
   </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>Stellt das EBSD-Muster gewichtet mit der simulierten

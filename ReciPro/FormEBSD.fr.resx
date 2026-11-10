@@ -289,7 +289,9 @@ pas égaux.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Nombre de faisceaux diffractés (vecteurs g) inclus
 dans le calcul dynamique en ondes de Bloch (1-2048) ;
-plus de faisceaux améliore la précision mais ralentit le calcul.</value>
+plus de faisceaux améliore la précision mais ralentit le calcul.
+Avec la méthode dressed-tail : nombre de base
+de faisceaux explicites (300 par défaut).</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>Première tranche de profondeur (la moins profonde) du master
@@ -459,14 +461,17 @@ TDS) qui atténue l'onde, et les deux sont indépendants.</value>
   </data>
   <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
     <value>Sélection des faisceaux pour le motif maître : méthode dressed-tail (nouvelle).
-Environ 300 faisceaux forts et les réflexions proches de la sphère d'Ewald
-sont résolus explicitement ; les ~20 000 faisceaux faibles restants ne sont
-pas écartés mais couplés comme réponse statique. Pour Si, environ 30 fois
-plus précis que la sélection conventionnelle (erreur ~0,3 % au lieu de
-~10 %) et environ 3 à 4 fois plus lent. Nécessite la source non locale ;
-le nombre maximal d'ondes de Bloch n'est pas utilisé. Les mailles trop
-grandes pour la mémoire reviennent à la méthode conventionnelle (raison
-affichée dans la barre d'état).</value>
+Environ 300 faisceaux forts et les réflexions proches de la sphère
+d'Ewald sont résolus explicitement ; les ~20 000 faisceaux faibles
+restants ne sont pas écartés mais couplés comme réponse statique. Pour
+Si, environ 30 fois plus précis que la sélection conventionnelle (erreur
+~0,3 % au lieu de ~10 %) et environ 3 à 4 fois plus lent. Nécessite la
+source non locale ; le nombre d'ondes diffractées fixe alors le nombre
+de base de faisceaux explicites (300 par défaut ; l'augmenter pour les
+cristaux fortement diffusants comme MnAl, le temps croît à peu près
+proportionnellement). Les mailles trop grandes pour la mémoire
+reviennent à la méthode conventionnelle (raison affichée dans la barre
+d'état).</value>
   </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>Rend le diagramme EBSD pondéré par la distribution simulée

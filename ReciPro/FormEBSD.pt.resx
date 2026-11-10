@@ -288,7 +288,9 @@ passos iguais.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Número de feixes difratados (vetores g) incluídos
 no cálculo dinâmico de ondas de Bloch (1-2048);
-mais feixes melhoram a precisão mas tornam o cálculo mais lento.</value>
+mais feixes melhoram a precisão mas tornam o cálculo mais lento.
+Com o método dressed-tail: número base de
+feixes explícitos (padrão 300).</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>Primeira fatia de profundidade (a mais rasa) do master pattern,
@@ -462,9 +464,11 @@ Cerca de 300 feixes fortes e as reflexões próximas da esfera de Ewald
 são resolvidos explicitamente; os ~20 000 feixes fracos restantes não
 são descartados, mas acoplados como resposta estática. Para Si é cerca
 de 30 vezes mais preciso que a seleção convencional (erro ~0,3 % em vez
-de ~10 %) e cerca de 3 a 4 vezes mais lento. Requer a fonte não local;
-o número máximo de ondas de Bloch não é usado. Células grandes demais
-para a memória voltam ao método convencional (motivo na barra de
+de ~10 %) e cerca de 3 a 4 vezes mais lento. Requer a fonte não local; o
+número de ondas difratadas define então o número base de feixes
+explícitos (padrão 300; aumente-o para cristais que espalham fortemente
+como MnAl, o tempo cresce quase proporcionalmente). Células grandes
+demais para a memória voltam ao método convencional (motivo na barra de
 estado).</value>
   </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">

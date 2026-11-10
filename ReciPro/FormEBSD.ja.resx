@@ -271,7 +271,9 @@ PCHIP補間で圧縮し、生成ソースを出力します。</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Bloch 波動力学計算に含める回折波（g
 ベクトル）の本数 (1-2048) を設定します。多い
-ほど精度は上がりますが計算は遅くなります。</value>
+ほど精度は上がりますが計算は遅くなります。
+新方式 (着衣つきの裾) では、明示に解く
+ビームの基準の本数です (既定 300)。</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
     <value>非局所吸収モデル</value>
@@ -299,8 +301,10 @@ U' (熱散漫散乱、TDS) の側で、両者は独立です。</value>
 強いビーム約 300 本と Ewald 球に近い反射を明示に解き、残りの
 弱いビーム約 2 万本を捨てずに静的な応答として着せます。Si では
 従来の選択より約 30 倍正確 (誤差 約 0.3 %、従来 約 10 %) で、
-時間は約 3〜4 倍です。非局所後方散乱源が必要で、最大の
-Bloch 波の数は使いません。メモリに収まらない大きな単位胞は
+時間は約 3〜4 倍です。非局所後方散乱源が必要です。このとき
+回折波の数は明示に解くビームの基準の本数です (既定 300。MnAl
+など散乱の強い結晶では増やすと正確になり、時間はほぼ本数に比例)。
+メモリに収まらない大きな単位胞は
 従来の方式に戻ります (理由はステータスバーに出ます)。</value>
   </data>
   <data name="checkBoxDressedTail.Font" type="System.Drawing.Font, System.Drawing">
