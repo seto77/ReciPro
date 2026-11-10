@@ -195,7 +195,10 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             runningBethe.CbedDressedTail = BetheMethod.CbedDressedTailDefaults with { N = MaxNumOfBloch };
 
         //Crystal.Bethe.RunCBED(MaxNumOfBloch, Voltage, Crystal.RotationMatrix, ThicknessArray, Directions, LACBED, solver, numericBoxThread.ValueInteger); // 261105Cl 変更前
-        runningBethe.RunCBED(MaxNumOfBloch, Voltage, Crystal.RotationMatrix, runningThicknesses, Directions, LACBED, solver, numericBoxThread.ValueInteger); // 261105Cl 変更
+        // runningBethe.RunCBED(MaxNumOfBloch, Voltage, Crystal.RotationMatrix, runningThicknesses, Directions, LACBED, solver, numericBoxThread.ValueInteger); // 261105Cl 変更 // 261110Cl 変更前
+        // 261110Cl 変更 (codex2 第 37 回): 新方式では欄の値は新方式の N。従来へ戻るときの最大の Bloch 波の数は、覚えている従来の値 (切り替える前の欄の値)
+        int legacyN = checkBoxDressedTail.Checked && legacyMaxNumOfG > 0 ? legacyMaxNumOfG : MaxNumOfBloch;
+        runningBethe.RunCBED(legacyN, Voltage, Crystal.RotationMatrix, runningThicknesses, Directions, LACBED, solver, numericBoxThread.ValueInteger);
     }
     private void buttonStop_Click(object sender, EventArgs e)
     {
