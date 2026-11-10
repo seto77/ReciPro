@@ -189,6 +189,11 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         else
             solver = comboBoxSolver.Text.Contains("MKL") ? BetheMethod.Solver.MtxExp_MKL : BetheMethod.Solver.MtxExp_Eigen;
 
+        // 261110Cl 追加: ビーム選択の方式。新方式では「回折波の数」の欄 = E1 の基準の本数 N (既定 300、遅い反射の繰り上げで明示は増える)
+        runningBethe.CbedBeamSelection = checkBoxDressedTail.Checked ? BetheMethod.CbedBeamSelectionMethod.DressedTail : BetheMethod.CbedBeamSelectionMethod.Legacy;
+        if (checkBoxDressedTail.Checked)
+            runningBethe.CbedDressedTail = BetheMethod.CbedDressedTailDefaults with { N = MaxNumOfBloch };
+
         //Crystal.Bethe.RunCBED(MaxNumOfBloch, Voltage, Crystal.RotationMatrix, ThicknessArray, Directions, LACBED, solver, numericBoxThread.ValueInteger); // 261105Cl 変更前
         runningBethe.RunCBED(MaxNumOfBloch, Voltage, Crystal.RotationMatrix, runningThicknesses, Directions, LACBED, solver, numericBoxThread.ValueInteger); // 261105Cl 変更
     }
@@ -285,6 +290,12 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             toolStripStatusLabel1.Text += $"Bloch problem: {sec1:f2} s (";
             toolStripStatusLabel1.Text += sec1 / DivisionNumber > 1 ? $"{sec1 / DivisionNumber:f2} s " : $"{sec1 / DivisionNumber * 1000:f2} ms ";
             toolStripStatusLabel1.Text += $"/pixel).   Compiling disks: {sec2:f2} s"; // 260520Cl: typo fix (pixes → pixel)
+            // 261110Cl 追加: ビーム選択の方式 (新方式を要求して従来へ戻ったら理由も)。内訳はステータスの説明に
+            if (bethe.CbedBeamSelectionUsed == BetheMethod.CbedBeamSelectionMethod.DressedTail)
+                toolStripStatusLabel1.Text += $".   Beam selection: dressed tail ({bethe.Beams.Length} disks)";
+            else if (bethe.CbedBeamSelection == BetheMethod.CbedBeamSelectionMethod.DressedTail)
+                toolStripStatusLabel1.Text += $".   Beam selection: conventional (the dressed-tail method was not used: {bethe.CbedBeamSelectionFallbackReason})";
+            toolStripStatusLabel1.ToolTipText = bethe.CbedBeamSelectionUsed == BetheMethod.CbedBeamSelectionMethod.DressedTail ? bethe.CbedBeamSelectionDetail : "";
 
             groupBoxOutput.Enabled = true;
             generateImage();
@@ -460,6 +471,15 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     private void numericBoxMaxNumOfG_ValueChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
 
     private void CheckBoxDrawGuideCircles_CheckedChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
+
+    /// <summary>261110Cl 追加: 新方式 (着衣つきの裾) の切り替え。「回折波の数」の欄は新方式では E1 の基準の本数 N (既定 300)、従来では最大の Bloch 波の数 (既定 64)。
+    /// 切り替えのたびに両方の値を覚えて入れ替える (FormEBSD と同じ)</summary>
+    int legacyMaxNumOfG = -1, dressedTailMaxNumOfG = BetheMethod.CbedDressedTailDefaults.N;
+    private void checkBoxDressedTail_CheckedChanged(object sender, EventArgs e)
+    {
+        if (checkBoxDressedTail.Checked) { legacyMaxNumOfG = numericBoxMaxNumOfG.ValueInteger; numericBoxMaxNumOfG.Value = dressedTailMaxNumOfG; }
+        else { dressedTailMaxNumOfG = numericBoxMaxNumOfG.ValueInteger; if (legacyMaxNumOfG > 0) numericBoxMaxNumOfG.Value = legacyMaxNumOfG; }
+    }
 
     private void NumericBoxDivision_ValueChanged(object sender, EventArgs e) =>
         labelDivisionNumber.Text = $"{DivisionNumber:#,0}";

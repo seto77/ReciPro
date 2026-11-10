@@ -143,7 +143,8 @@
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>動力学的な多重散乱計算に含める回折波（Bloch
 波）の本数 (1〜2048) を設定します。多いほど
-精度は上がりますが計算は遅くなります。</value>
+精度は上がりますが計算は遅くなります。
+着衣の裾 (新方式) では、基準の本数 N です (既定 300)。</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
     <value>収束半角 α</value>
@@ -409,6 +410,23 @@ Eigen/MKL ライブラリ）を選択します。結果は同じになる
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>着衣の裾</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>CBED のディスクのビーム選択の新方式 (着衣つきの裾) です。
+強いビーム約 300 本と Ewald 球に近い反射を明示に解き、半径
+60 nm⁻¹ の中の残りの弱いビームを捨てずに静的な応答として
+着せます。ディスクを半径 1 mrad の区画に分け、区画の中では
+中心の着衣を使い回します。Si ではディスクの強度が従来 (64 本)
+より約 100〜600 倍正確ですが、計算に時間がかかります。
+このとき「回折波の数」は基準の本数です (既定 300)。非局所吸収
+には対応しません。その場合やメモリが足りない場合は従来の方式
+に戻ります (理由はステータスバーに出ます)。</value>
+  </data>
+  <data name="checkBoxDressedTail.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
 </root>

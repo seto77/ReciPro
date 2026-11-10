@@ -30,6 +30,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffractionSimulatorCBED));
             buttonSimulate = new System.Windows.Forms.Button();
             checkBoxDrawGuideCircles = new System.Windows.Forms.CheckBox();
+            checkBoxDressedTail = new System.Windows.Forms.CheckBox();
             groupBoxInputParameters = new System.Windows.Forms.GroupBox();
             flowLayoutPanel13 = new System.Windows.Forms.FlowLayoutPanel();
             label13 = new System.Windows.Forms.Label();
@@ -191,6 +192,7 @@
             flowLayoutPanel5.Controls.Add(radioButtonCBED);
             flowLayoutPanel5.Controls.Add(radioButtonLACBED);
             flowLayoutPanel5.Controls.Add(checkBoxDrawGuideCircles);
+            flowLayoutPanel5.Controls.Add(checkBoxDressedTail);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
             // 
             // radioButtonCBED
@@ -209,6 +211,14 @@
             radioButtonLACBED.Name = "radioButtonLACBED";
             toolTip.SetToolTip(radioButtonLACBED, resources.GetString("radioButtonLACBED.ToolTip"));
             radioButtonLACBED.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDressedTail
+            // 
+            resources.ApplyResources(checkBoxDressedTail, "checkBoxDressedTail");
+            checkBoxDressedTail.Name = "checkBoxDressedTail";
+            toolTip.SetToolTip(checkBoxDressedTail, resources.GetString("checkBoxDressedTail.ToolTip"));
+            checkBoxDressedTail.UseVisualStyleBackColor = true;
+            checkBoxDressedTail.CheckedChanged += checkBoxDressedTail_CheckedChanged;
             // 
             // flowLayoutPanel4
             // 
@@ -575,6 +585,7 @@
             statusStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             resources.ApplyResources(statusStrip2, "statusStrip2");
             statusStrip2.Name = "statusStrip2";
+            statusStrip2.ShowItemToolTips = true; // 261110Cl 追加: 新方式の内訳 (toolStripStatusLabel1 の説明) を出す
             statusStrip2.SizingGrip = false;
             // 
             // toolStripProgressBar
@@ -666,6 +677,7 @@
         private System.Windows.Forms.Button buttonSimulate;
         private Crystallography.Controls.NumericBox numericBoxWholeThicknessStart;
         private System.Windows.Forms.CheckBox checkBoxDrawGuideCircles;
+        private System.Windows.Forms.CheckBox checkBoxDressedTail; // 261110Cl 追加: CBED のビーム選択の新方式 (着衣つきの裾)
         private Crystallography.Controls.NumericBox numericBoxMaxNumOfG;
         private Crystallography.Controls.NumericBox numericBoxDiskResolution;
         private Crystallography.Controls.NumericBox numericBoxThicknessEnd;

@@ -166,7 +166,9 @@ ensancha el semiángulo en sí.</value>
     <value>Número de haces difractados (ondas de Bloch)
 incluidos en el cálculo dinámico de dispersión
 múltiple, 1-2048. Más ondas mejoran la
-precisión pero ralentizan el cálculo.</value>
+precisión pero ralentizan el cálculo.
+Con el método dressed-tail, es el número base de
+haces N (300 por defecto).</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Semiángulo de convergencia máximo (mrad)</value>
@@ -282,5 +284,22 @@ más brillante aparecerá el disco exterior.</value>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>Seleccione la dirección del gradiente
 (Positive o Negative / invertido).</value>
+  </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>Dressed-tail</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>Selección de haces para los discos CBED: el método dressed-tail
+(nuevo). Unos 300 haces fuertes y las reflexiones cercanas a la
+esfera de Ewald se resuelven explícitamente, y los haces débiles
+restantes dentro de 60 nm⁻¹ se conservan como un revestimiento
+estático en lugar de descartarse. El disco se divide en regiones de
+1 mrad de radio que comparten el revestimiento de su centro. Para Si,
+las intensidades de los discos son unas 100 a 600 veces más precisas
+que con los 64 haces convencionales, pero el cálculo tarda más.
+El número de ondas difractadas pasa a ser el número base de haces
+(300 por defecto). No admite la absorción no local; en ese caso, o si
+la memoria no basta, se usa el método convencional (el motivo se
+muestra en la barra de estado).</value>
   </data>
 </root>

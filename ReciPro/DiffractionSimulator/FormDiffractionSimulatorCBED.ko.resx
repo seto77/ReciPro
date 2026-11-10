@@ -168,7 +168,8 @@
     <value>동역학적 다중 산란 계산에 포함되는
 회절파(블로흐파)의 개수(1~2048)입니다.
 파동 수가 많을수록 정확도는 높아지지만
-계산은 느려집니다.</value>
+계산은 느려집니다.
+드레스드 테일 방식에서는 기준 빔 수 N입니다(기본 300).</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>최대 반수렴각(mrad)</value>
@@ -282,5 +283,19 @@ Positive는 밝을수록 강하고, Negative는
   <data name="label3.ToolTip" xml:space="preserve">
     <value>계조 방향(Positive 또는 Negative / 반전)을
 선택합니다.</value>
+  </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>드레스드 테일</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>CBED 디스크의 빔 선택 신규 방식(드레스드 테일)입니다.
+강한 빔 약 300개와 Ewald 구에 가까운 반사는 명시적으로 풀고,
+반경 60 nm⁻¹ 안의 나머지 약한 빔은 버리지 않고 정적인
+응답으로 입힙니다. 디스크를 반경 1 mrad의 구역으로 나누고,
+구역 안에서는 중심의 드레싱을 공유합니다. Si에서는 디스크
+강도가 기존(64개)보다 약 100~600배 정확하지만 계산 시간이
+더 걸립니다. 이때 회절파 수는 기준 빔 수입니다(기본 300).
+비국소 흡수는 지원하지 않습니다. 그 경우나 메모리가 부족한
+경우에는 기존 방식으로 돌아갑니다(이유는 상태 표시줄에 표시).</value>
   </data>
 </root>

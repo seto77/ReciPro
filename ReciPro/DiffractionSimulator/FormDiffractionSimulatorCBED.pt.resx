@@ -166,7 +166,9 @@ claro). Este modo não alarga o semiângulo em si.</value>
     <value>Número de feixes difratados (ondas de Bloch)
 incluídos no cálculo dinâmico de espalhamento
 múltiplo, 1-2048. Mais ondas melhoram a
-precisão, mas tornam o cálculo mais lento.</value>
+precisão, mas tornam o cálculo mais lento.
+Com o método dressed-tail, é o número base de
+feixes N (padrão 300).</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Semiângulo máximo de convergência (mrad)</value>
@@ -282,5 +284,22 @@ mais brilhante parece o disco externo.</value>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>Selecione a direção do gradiente
 (Positive ou Negative / invertido).</value>
+  </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>Dressed-tail</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>Seleção de feixes para os discos CBED: o método dressed-tail (novo).
+Cerca de 300 feixes fortes e as reflexões próximas da esfera de Ewald
+são resolvidos explicitamente, e os feixes fracos restantes dentro de
+60 nm⁻¹ são mantidos como um revestimento estático em vez de serem
+descartados. O disco é dividido em regiões de raio 1 mrad que
+compartilham o revestimento do seu centro. Para Si, as intensidades
+dos discos são cerca de 100 a 600 vezes mais precisas do que com os
+64 feixes convencionais, mas o cálculo demora mais. O número de ondas
+difratadas passa a ser o número base de feixes (padrão 300). A
+absorção não local não é suportada; nesse caso, ou se a memória não
+for suficiente, usa-se o método convencional (o motivo aparece na
+barra de status).</value>
   </data>
 </root>

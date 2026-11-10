@@ -169,7 +169,9 @@ non allarga il semiangolo stesso.</value>
     <value>Numero di fasci diffratti (onde di Bloch)
 inclusi nel calcolo dinamico a diffusione
 multipla, 1-2048. Più onde migliorano la
-precisione ma rallentano il calcolo.</value>
+precisione ma rallentano il calcolo.
+Con il metodo dressed-tail, è il numero base di
+fasci N (predefinito 300).</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Massimo angolo di semi-convergenza (mrad)</value>
@@ -285,5 +287,21 @@ più luminoso appare il disco esterno.</value>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>Seleziona la direzione del gradiente
 (Positivo o Negativo / invertito).</value>
+  </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>Dressed-tail</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>Selezione dei fasci per i dischi CBED: il metodo dressed-tail (nuovo).
+Circa 300 fasci forti e le riflessioni vicine alla sfera di Ewald
+sono risolti esplicitamente, e i restanti fasci deboli entro 60 nm⁻¹
+sono mantenuti come un rivestimento statico invece di essere scartati.
+Il disco è diviso in zone di raggio 1 mrad che condividono il
+rivestimento del loro centro. Per Si le intensità dei dischi sono
+circa 100-600 volte più accurate che con i 64 fasci convenzionali,
+ma il calcolo richiede più tempo. Il numero di onde diffratte diventa
+il numero base di fasci (predefinito 300). L'assorbimento non locale
+non è supportato; in quel caso, o se la memoria non basta, si usa il
+metodo convenzionale (il motivo è mostrato nella barra di stato).</value>
   </data>
 </root>

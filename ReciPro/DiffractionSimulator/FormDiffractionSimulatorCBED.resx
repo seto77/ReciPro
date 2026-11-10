@@ -680,7 +680,9 @@ This mode does not widen the semi-angle itself.</value>
     <value>Number of diffracted beams (Bloch waves)
 included in the dynamical, multiple-scattering
 calculation, 1-2048. More waves improve
-accuracy but slow the computation.</value>
+accuracy but slow the computation.
+With the dressed-tail method, this is the base number
+of beams N (default 300).</value>
   </data>
   <data name="numericBoxAlphaMax.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -2095,5 +2097,48 @@ disk pattern currently displayed.</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="checkBoxDressedTail.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDressedTail.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxDressedTail.Location" type="System.Drawing.Point, System.Drawing">
+    <value>283, 3</value>
+  </data>
+  <data name="checkBoxDressedTail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 21</value>
+  </data>
+  <data name="checkBoxDressedTail.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>Dressed tail</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>Beam selection for the CBED disks: the dressed-tail method (new).
+About 300 strong beams and the reflections close to the Ewald sphere
+are solved explicitly, and the remaining weak beams within 60 nm⁻¹
+are kept as a static dressing instead of being discarded. The disk is
+divided into patches of 1 mrad radius that share the dressing of their
+centre. For Si the disk intensities are about 100 to 600 times more
+accurate than with the conventional 64 beams, but the computation
+takes longer. The number of diffracted waves is then the base number
+of beams (default 300). Non-local absorption is not supported; in that
+case, or when the memory is not enough, the conventional method is
+used (the reason is shown in the status bar).</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDressedTail.Name" xml:space="preserve">
+    <value>checkBoxDressedTail</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDressedTail.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDressedTail.Parent" xml:space="preserve">
+    <value>flowLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDressedTail.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
 </root>

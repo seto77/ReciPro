@@ -163,7 +163,9 @@ LACBED). Der Halbwinkel selbst wird dadurch nicht größer.</value>
     <value>Anzahl der gebeugten Strahlen (Bloch-Wellen),
 die in die dynamische Mehrfachstreuungs-
 Berechnung einbezogen werden, 1-2048. Mehr Wellen verbessern
-die Genauigkeit, verlangsamen aber die Berechnung.</value>
+die Genauigkeit, verlangsamen aber die Berechnung.
+Bei der Dressed-Tail-Methode ist dies die Basisanzahl
+der Strahlen N (Standard 300).</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Maximaler halber Konvergenzwinkel (mrad)</value>
@@ -279,5 +281,22 @@ desto heller erscheint die äußere Scheibe.</value>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>Die Verlaufsrichtung auswählen
 (Positive oder Negative / invertiert).</value>
+  </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>Dressed-Tail</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>Strahlauswahl für die CBED-Scheiben: die Dressed-Tail-Methode (neu).
+Etwa 300 starke Strahlen und die Reflexe nahe der Ewald-Kugel
+werden explizit gelöst; die übrigen schwachen Strahlen innerhalb
+60 nm⁻¹ werden nicht verworfen, sondern als statische Ankopplung
+berücksichtigt. Die Scheibe wird in Bereiche mit 1 mrad Radius
+geteilt, die die Ankopplung ihres Zentrums gemeinsam nutzen. Für Si
+sind die Scheibenintensitäten etwa 100- bis 600-mal genauer als mit
+den herkömmlichen 64 Strahlen, die Berechnung dauert aber länger.
+Die Anzahl der gebeugten Wellen ist dann die Basisanzahl der Strahlen
+(Standard 300). Nichtlokale Absorption wird nicht unterstützt; in
+diesem Fall oder bei zu wenig Speicher wird die herkömmliche Methode
+verwendet (der Grund steht in der Statusleiste).</value>
   </data>
 </root>

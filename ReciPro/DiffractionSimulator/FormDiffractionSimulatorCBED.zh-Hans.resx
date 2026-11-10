@@ -168,7 +168,8 @@ Auto 时此项不可用。</value>
     <value>纳入动力学多重散射计算的
 衍射波（布洛赫波）数目，1-2048。
 波的数目越多精度越高，
-但计算越慢。</value>
+但计算越慢。
+使用修饰尾部方法时，为基准光束数 N（默认 300）。</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>最大会聚半角（mrad）</value>
@@ -281,5 +282,19 @@ Positive 表示越亮越强；Negative
   <data name="label3.ToolTip" xml:space="preserve">
     <value>选择梯度方向
 （Positive 或 Negative / 反转）。</value>
+  </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>修饰尾部</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>CBED 衍射盘的光束选择新方法（修饰尾部）。
+约 300 条强光束和靠近 Ewald 球的反射被显式求解，
+半径 60 nm⁻¹ 内其余的弱光束不被舍弃，而是作为
+静态响应加以修饰。衍射盘被划分为半径 1 mrad 的
+区块，区块内共用其中心的修饰。对于 Si，衍射盘
+强度比传统方法（64 条）精确约 100～600 倍，
+但计算时间更长。此时衍射波数目为基准光束数
+（默认 300）。不支持非局域吸收；此时或内存不足
+时将使用传统方法（原因显示在状态栏中）。</value>
   </data>
 </root>

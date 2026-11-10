@@ -167,7 +167,8 @@ MKL 函式庫）。結果應相同，但速度
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>納入動力學多重散射計算的繞射波
 （布洛赫波）數目，1-2048。波數越多
-精度越高，但計算越慢。</value>
+精度越高，但計算越慢。
+使用修飾尾部方法時，為基準光束數 N（預設 300）。</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>最大半會聚角（mrad）</value>
@@ -280,5 +281,19 @@ Positive 表示亮為強；Negative
   <data name="label3.ToolTip" xml:space="preserve">
     <value>選擇漸層方向
 （Positive 或 Negative／反轉）。</value>
+  </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>修飾尾部</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>CBED 繞射盤的光束選擇新方法（修飾尾部）。
+約 300 條強光束和靠近 Ewald 球的反射被顯式求解，
+半徑 60 nm⁻¹ 內其餘的弱光束不被捨棄，而是作為
+靜態響應加以修飾。繞射盤被劃分為半徑 1 mrad 的
+區塊，區塊內共用其中心的修飾。對於 Si，繞射盤
+強度比傳統方法（64 條）精確約 100～600 倍，
+但計算時間更長。此時繞射波數目為基準光束數
+（預設 300）。不支援非局域吸收；此時或記憶體不足
+時將使用傳統方法（原因顯示在狀態列中）。</value>
   </data>
 </root>
