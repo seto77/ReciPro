@@ -290,16 +290,18 @@ más brillante aparecerá el disco exterior.</value>
   </data>
   <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
     <value>Selección de haces para los discos CBED: el método dressed-tail
-(nuevo). Unos 300 haces fuertes y las reflexiones cercanas a la
-esfera de Ewald se resuelven explícitamente, y los haces débiles
-restantes dentro de 60 nm⁻¹ se conservan como un revestimiento
-estático en lugar de descartarse. El disco se divide en regiones de
-1 mrad de radio que comparten el revestimiento de su centro. Para Si,
-las intensidades de los discos son unas 100 a 600 veces más precisas
-que con los 64 haces convencionales, pero el cálculo tarda más.
-El número de ondas difractadas pasa a ser el número base de haces
-(300 por defecto). No admite la absorción no local; en ese caso, o si
-la memoria no basta, se usa el método convencional (el motivo se
-muestra en la barra de estado).</value>
+(nuevo). Unos 300 haces fuertes y las reflexiones cercanas a la esfera
+de Ewald (incluidas las reflexiones HOLZ hasta 60 nm⁻¹) se resuelven
+explícitamente, y los haces débiles restantes se conservan como un
+revestimiento estático en lugar de descartarse. El disco se divide en
+regiones de 2 mrad de radio que comparten el revestimiento de su
+centro, y solo se propagan las ondas de Bloch excitadas. Para Si, las
+intensidades de los discos son unas 200 a 600 veces más precisas que
+con los 64 haces convencionales, pero el cálculo tarda unas
+10 a 20 veces más (y unas 4 veces más sin la biblioteca MKL). El número
+de ondas difractadas pasa a ser el número base de haces (300 por
+defecto). No admite la absorción no local; en ese caso, o si la memoria
+no basta, se usa el método convencional (el motivo se muestra en la
+barra de estado).</value>
   </data>
 </root>

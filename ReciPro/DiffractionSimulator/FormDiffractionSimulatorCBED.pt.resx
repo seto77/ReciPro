@@ -291,15 +291,16 @@ mais brilhante parece o disco externo.</value>
   <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
     <value>Seleção de feixes para os discos CBED: o método dressed-tail (novo).
 Cerca de 300 feixes fortes e as reflexões próximas da esfera de Ewald
-são resolvidos explicitamente, e os feixes fracos restantes dentro de
-60 nm⁻¹ são mantidos como um revestimento estático em vez de serem
-descartados. O disco é dividido em regiões de raio 1 mrad que
-compartilham o revestimento do seu centro. Para Si, as intensidades
-dos discos são cerca de 100 a 600 vezes mais precisas do que com os
-64 feixes convencionais, mas o cálculo demora mais. O número de ondas
-difratadas passa a ser o número base de feixes (padrão 300). A
-absorção não local não é suportada; nesse caso, ou se a memória não
-for suficiente, usa-se o método convencional (o motivo aparece na
-barra de status).</value>
+(incluindo reflexões HOLZ até 60 nm⁻¹) são resolvidos explicitamente,
+e os feixes fracos restantes são mantidos como um revestimento estático
+em vez de serem descartados. O disco é dividido em regiões de raio
+2 mrad que compartilham o revestimento do seu centro, e apenas as ondas
+de Bloch excitadas são propagadas. Para Si, as intensidades dos discos
+são cerca de 200 a 600 vezes mais precisas do que com os 64 feixes
+convencionais, mas o cálculo demora cerca de 10 a 20 vezes mais (mais
+cerca de 4 vezes sem a biblioteca MKL). O número de ondas difratadas
+passa a ser o número base de feixes (padrão 300). A absorção não local
+não é suportada; nesse caso, ou se a memória não for suficiente, usa-se
+o método convencional (o motivo aparece na barra de status).</value>
   </data>
 </root>

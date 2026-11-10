@@ -291,15 +291,18 @@ plus le disque extérieur paraît lumineux.</value>
   <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
     <value>Sélection des faisceaux pour les disques CBED : la méthode
 dressed-tail (nouvelle). Environ 300 faisceaux forts et les réflexions
-proches de la sphère d'Ewald sont résolus explicitement ; les faisceaux
-faibles restants à moins de 60 nm⁻¹ sont conservés comme un habillage
-statique au lieu d'être écartés. Le disque est divisé en zones de
-1 mrad de rayon qui partagent l'habillage de leur centre. Pour Si, les
-intensités des disques sont environ 100 à 600 fois plus précises
-qu'avec les 64 faisceaux conventionnels, mais le calcul est plus long.
-Le nombre d'ondes diffractées devient le nombre de base de faisceaux
-(300 par défaut). L'absorption non locale n'est pas prise en charge ;
-dans ce cas, ou si la mémoire est insuffisante, la méthode
-conventionnelle est utilisée (la raison s'affiche dans la barre d'état).</value>
+proches de la sphère d'Ewald (y compris les réflexions HOLZ jusqu'à
+60 nm⁻¹) sont résolus explicitement ; les faisceaux faibles restants
+sont conservés comme un habillage statique au lieu d'être écartés. Le
+disque est divisé en zones de 2 mrad de rayon qui partagent l'habillage
+de leur centre, et seules les ondes de Bloch excitées sont propagées.
+Pour Si, les intensités des disques sont environ 200 à 600 fois plus
+précises qu'avec les 64 faisceaux conventionnels, mais le calcul est
+environ 10 à 20 fois plus long (encore environ 4 fois sans la
+bibliothèque MKL). Le nombre d'ondes diffractées devient le nombre de
+base de faisceaux (300 par défaut). L'absorption non locale n'est pas
+prise en charge ; dans ce cas, ou si la mémoire est insuffisante, la
+méthode conventionnelle est utilisée (la raison s'affiche dans la barre
+d'état).</value>
   </data>
 </root>

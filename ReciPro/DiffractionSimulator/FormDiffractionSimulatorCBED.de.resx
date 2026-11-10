@@ -288,15 +288,17 @@ desto heller erscheint die äußere Scheibe.</value>
   <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
     <value>Strahlauswahl für die CBED-Scheiben: die Dressed-Tail-Methode (neu).
 Etwa 300 starke Strahlen und die Reflexe nahe der Ewald-Kugel
-werden explizit gelöst; die übrigen schwachen Strahlen innerhalb
-60 nm⁻¹ werden nicht verworfen, sondern als statische Ankopplung
-berücksichtigt. Die Scheibe wird in Bereiche mit 1 mrad Radius
-geteilt, die die Ankopplung ihres Zentrums gemeinsam nutzen. Für Si
-sind die Scheibenintensitäten etwa 100- bis 600-mal genauer als mit
-den herkömmlichen 64 Strahlen, die Berechnung dauert aber länger.
-Die Anzahl der gebeugten Wellen ist dann die Basisanzahl der Strahlen
-(Standard 300). Nichtlokale Absorption wird nicht unterstützt; in
-diesem Fall oder bei zu wenig Speicher wird die herkömmliche Methode
-verwendet (der Grund steht in der Statusleiste).</value>
+(einschließlich HOLZ-Reflexen bis 60 nm⁻¹) werden explizit gelöst; die
+übrigen schwachen Strahlen werden nicht verworfen, sondern als statische
+Ankopplung berücksichtigt. Die Scheibe wird in Bereiche mit 2 mrad Radius
+geteilt, die die Ankopplung ihres Zentrums gemeinsam nutzen, und nur die
+angeregten Bloch-Wellen werden propagiert. Für Si sind die
+Scheibenintensitäten etwa 200- bis 600-mal genauer als mit den
+herkömmlichen 64 Strahlen, die Berechnung dauert aber etwa 10 bis 20-mal so
+lange (ohne die MKL-Bibliothek nochmals etwa 4-mal). Die Anzahl der
+gebeugten Wellen ist dann die Basisanzahl der Strahlen (Standard 300).
+Nichtlokale Absorption wird nicht unterstützt; in diesem Fall oder bei
+zu wenig Speicher wird die herkömmliche Methode verwendet (der Grund
+steht in der Statusleiste).</value>
   </data>
 </root>
