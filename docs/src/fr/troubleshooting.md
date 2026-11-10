@@ -67,15 +67,15 @@ Si rien de tout cela n'aide, la cause peut être l'environnement du système d'e
 
 ### Symptôme : L'application ne démarre pas
 
-Ces exigences concernent les builds .NET 11 RC 3 issus de ces sources. Pour les versions publiées, suivez les exigences de runtime indiquées pour la version concernée.
+Ces exigences concernent les builds .NET 11 issus de ces sources. Pour les versions publiées, suivez les exigences de runtime indiquées pour la version concernée.
 
-**Cause** : Le .NET Desktop Runtime requis n'est pas installé. Les versions actuelles requièrent le **.NET Desktop Runtime 11.0 RC 3** (anciens builds : v4.895–v4.91x requéraient 9.0 ; voir l'issue [#43](https://github.com/seto77/ReciPro/issues/43)).
+**Cause** : Le .NET Desktop Runtime requis n'est pas installé. Les versions actuelles requièrent le **.NET Desktop Runtime 11.0** (anciens builds : v4.895–v4.91x requéraient 9.0 ; voir l'issue [#43](https://github.com/seto77/ReciPro/issues/43)).
 
 **Solution** : Téléchargez-le et installez-le depuis <https://dotnet.microsoft.com/download/dotnet/11.0> (choisissez le **Desktop Runtime**, x64 pour la plupart des PC).
 
 ### Symptôme : Impossible d'atteindre la page de téléchargement Microsoft
 
-**Solution** : Vous pouvez télécharger le programme d'installation du runtime directement. Choisissez le **Windows Desktop Runtime X64** correspondant à votre architecture sur la [page de téléchargement de .NET 11.0 RC 3](https://dotnet.microsoft.com/download/dotnet/11.0). (Issue [#49](https://github.com/seto77/ReciPro/issues/49))
+**Solution** : Vous pouvez télécharger le programme d'installation du runtime directement. Choisissez le **Windows Desktop Runtime X64** correspondant à votre architecture sur la [page de téléchargement de .NET 11.0](https://dotnet.microsoft.com/download/dotnet/11.0). (Issue [#49](https://github.com/seto77/ReciPro/issues/49))
 
 ---
 

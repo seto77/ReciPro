@@ -67,15 +67,15 @@ ReciProは起動している（タスクマネージャーに表示される）�
 
 ### 症状: アプリケーションが起動しない
 
-以下は、このソースツリーから作成する .NET 11 RC 3 ビルドの要件です。公開済みリリースについては、そのリリースに記載されたランタイム要件に従ってください。
+以下は、このソースツリーから作成する .NET 11 ビルドの要件です。公開済みリリースについては、そのリリースに記載されたランタイム要件に従ってください。
 
-**原因**: 必要な .NET Desktop Runtime がインストールされていません。現行版は **.NET Desktop Runtime 11.0 RC 3** が必要です（古いビルドの v4.895〜v4.91x は 9.0 が必要でした。Issue [#43](https://github.com/seto77/ReciPro/issues/43)）。
+**原因**: 必要な .NET Desktop Runtime がインストールされていません。現行版は **.NET Desktop Runtime 11.0** が必要です（古いビルドの v4.895〜v4.91x は 9.0 が必要でした。Issue [#43](https://github.com/seto77/ReciPro/issues/43)）。
 
 **解決方法**: <https://dotnet.microsoft.com/download/dotnet/11.0> から **Desktop Runtime**（多くのPCはx64）をダウンロード・インストールしてください。
 
 ### 症状: Microsoftのダウンロードページにアクセスできない
 
-**解決方法**: ランタイムのインストーラを直接ダウンロードできます。[.NET 11.0 RC 3 ダウンロードページ](https://dotnet.microsoft.com/download/dotnet/11.0) から、ご使用のアーキテクチャ向けの **Windows Desktop Runtime X64** を選んでください。(Issue [#49](https://github.com/seto77/ReciPro/issues/49))
+**解決方法**: ランタイムのインストーラを直接ダウンロードできます。[.NET 11.0 ダウンロードページ](https://dotnet.microsoft.com/download/dotnet/11.0) から、ご使用のアーキテクチャ向けの **Windows Desktop Runtime X64** を選んでください。(Issue [#49](https://github.com/seto77/ReciPro/issues/49))
 
 ---
 

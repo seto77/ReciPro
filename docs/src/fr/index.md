@@ -39,11 +39,11 @@
 
 ## Configuration requise
 
-Ces exigences concernent les builds .NET 11 RC 3 issus de ces sources. Pour les versions publiées, suivez les exigences de runtime indiquées pour la version concernée.
+Ces exigences concernent les builds .NET 11 issus de ces sources. Pour les versions publiées, suivez les exigences de runtime indiquées pour la version concernée.
 
 | Élément | Minimum | Recommandé |
 |------|---------|-------------|
-| Système d'exploitation | Windows avec [.NET Desktop Runtime 11.0 RC 3](https://dotnet.microsoft.com/download/dotnet/11.0) (Windows on ARM64 pris en charge) | Windows 11 |
+| Système d'exploitation | Windows avec [.NET Desktop Runtime 11.0](https://dotnet.microsoft.com/download/dotnet/11.0) (Windows on ARM64 pris en charge) | Windows 11 |
 | GPU | OpenGL 1.3 | GPU externe avec OpenGL 4.3 |
 | Mémoire | – | 16 Go ou plus |
 | CPU | – | 8 cœurs ou plus (pour les calculs dynamiques) |

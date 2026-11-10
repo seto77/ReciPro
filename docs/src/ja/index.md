@@ -39,11 +39,11 @@
 
 ## 動作環境
 
-以下は、このソースツリーから作成する .NET 11 RC 3 ビルドの要件です。公開済みリリースについては、そのリリースに記載されたランタイム要件に従ってください。
+以下は、このソースツリーから作成する .NET 11 ビルドの要件です。公開済みリリースについては、そのリリースに記載されたランタイム要件に従ってください。
 
 | 項目 | 最低要件 | 推奨環境 |
 |------|---------|---------|
-| OS | [.NET Desktop Runtime 11.0 RC 3](https://dotnet.microsoft.com/download/dotnet/11.0) が動作するWindows（ARM64版Windowsにも対応） | Windows 11 |
+| OS | [.NET Desktop Runtime 11.0](https://dotnet.microsoft.com/download/dotnet/11.0) が動作するWindows（ARM64版Windowsにも対応） | Windows 11 |
 | GPU | OpenGL 1.3対応 | OpenGL 4.3対応の外付けGPU |
 | メモリ | — | 16 GB以上 |
 | CPU | — | 8コア以上（動力学計算時） |

@@ -39,11 +39,11 @@
 
 ## Requisitos del sistema
 
-Estos requisitos se aplican a las compilaciones .NET 11 RC 3 de este código fuente. Para las versiones publicadas, siga los requisitos de runtime indicados para esa versión.
+Estos requisitos se aplican a las compilaciones .NET 11 de este código fuente. Para las versiones publicadas, siga los requisitos de runtime indicados para esa versión.
 
 | Elemento | Mínimo | Recomendado |
 |------|---------|-------------|
-| SO | Windows con [.NET Desktop Runtime 11.0 RC 3](https://dotnet.microsoft.com/download/dotnet/11.0) (Windows on ARM64 compatible) | Windows 11 |
+| SO | Windows con [.NET Desktop Runtime 11.0](https://dotnet.microsoft.com/download/dotnet/11.0) (Windows on ARM64 compatible) | Windows 11 |
 | GPU | OpenGL 1.3 | GPU externa con OpenGL 4.3 |
 | Memoria | – | 16 GB o más |
 | CPU | – | 8+ núcleos (para cálculos dinámicos) |

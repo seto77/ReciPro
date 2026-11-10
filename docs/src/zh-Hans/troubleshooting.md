@@ -67,15 +67,15 @@ ReciPro 已启动（在任务管理器中可见），但其窗口始终不在屏
 
 ### 症状：应用程序无法启动
 
-以下要求适用于由此源代码构建的 .NET 11 RC 3 版本。对于已发布的版本，请遵循该版本注明的运行时要求。
+以下要求适用于由此源代码构建的 .NET 11 版本。对于已发布的版本，请遵循该版本注明的运行时要求。
 
-**原因**：未安装所需的 .NET Desktop Runtime。当前版本需要 **.NET Desktop Runtime 11.0 RC 3**（较旧的构建：v4.895–v4.91x 需要 9.0；参见 issue [#43](https://github.com/seto77/ReciPro/issues/43)）。
+**原因**：未安装所需的 .NET Desktop Runtime。当前版本需要 **.NET Desktop Runtime 11.0**（较旧的构建：v4.895–v4.91x 需要 9.0；参见 issue [#43](https://github.com/seto77/ReciPro/issues/43)）。
 
 **解决方法**：从 <https://dotnet.microsoft.com/download/dotnet/11.0> 下载并安装（选择 **Desktop Runtime**，大多数 PC 选 x64）。
 
 ### 症状：无法访问 Microsoft 下载页面
 
-**解决方法**：你可以直接下载运行时安装程序。在 [.NET 11.0 RC 3 下载页面](https://dotnet.microsoft.com/download/dotnet/11.0) 上为你的架构选择 **Windows Desktop Runtime X64**。（Issue [#49](https://github.com/seto77/ReciPro/issues/49)）
+**解决方法**：你可以直接下载运行时安装程序。在 [.NET 11.0 下载页面](https://dotnet.microsoft.com/download/dotnet/11.0) 上为你的架构选择 **Windows Desktop Runtime X64**。（Issue [#49](https://github.com/seto77/ReciPro/issues/49)）
 
 ---
 

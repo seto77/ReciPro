@@ -39,11 +39,11 @@
 
 ## 시스템 요구 사항
 
-아래 요구 사항은 이 소스 코드에서 빌드한 .NET 11 RC 3 버전에 적용됩니다. 이미 배포된 릴리스는 해당 릴리스에 명시된 런타임 요구 사항을 따르세요.
+아래 요구 사항은 이 소스 코드에서 빌드한 .NET 11 버전에 적용됩니다. 이미 배포된 릴리스는 해당 릴리스에 명시된 런타임 요구 사항을 따르세요.
 
 | 항목 | 최소 | 권장 |
 |------|---------|-------------|
-| 운영체제 | [.NET Desktop Runtime 11.0 RC 3](https://dotnet.microsoft.com/download/dotnet/11.0)가 설치된 Windows (Windows on ARM64 지원) | Windows 11 |
+| 운영체제 | [.NET Desktop Runtime 11.0](https://dotnet.microsoft.com/download/dotnet/11.0)가 설치된 Windows (Windows on ARM64 지원) | Windows 11 |
 | GPU | OpenGL 1.3 | OpenGL 4.3을 지원하는 외장 GPU |
 | 메모리 | - | 16 GB 이상 |
 | CPU | - | 8코어 이상 (동역학적 계산용) |

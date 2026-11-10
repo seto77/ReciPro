@@ -175,13 +175,13 @@ jobs:
         with:
           submodules: recursive # 260624Cl shared libs are git submodules
 
-      # 261106Ch: Pin the same .NET 11 RC 3 SDK as global.json.
+      # 261111Cl: .NET 11 GA. Follow the 11.0 SDK line as global.json does (261106Ch pinned RC 3: "11.0.100-rc.3.26522.148").
       # - name: Setup .NET 10
-      - name: Setup .NET 11 RC 3
+      - name: Setup .NET 11
         uses: actions/setup-dotnet@v5
         with:
           # dotnet-version: "10.0.x"
-          dotnet-version: "11.0.100-rc.3.26522.148"
+          dotnet-version: "11.0.x"
 
       - name: Restore managed dependencies
         shell: pwsh
@@ -673,18 +673,18 @@ jobs:
           $msi = Join-Path $env:RUNNER_TEMP "arm64-msi/${{ steps.names.outputs.msi_name }}"
           if (-not (Test-Path $msi)) { throw "MSI artifact not found: $msi" }
 
-          # MSI 版は framework-dependent → smoke 実行に .NET 11 RC 3 Desktop Runtime (arm64) が必要。
+          # MSI 版は framework-dependent → smoke 実行に .NET 11 Desktop Runtime (arm64) が必要。
           # ランナーに無ければ dotnet-install で導入 (DOTNET_ROOT は同一ステップ内の子プロセスに引き継がれる)
           $hasDesktop = $false
-          # 261106Ch: Check the exact RC runtime; a .NET 10 or other preview runtime is insufficient.
+          # 261111Cl: any GA 11.x Desktop Runtime (prerelease excluded); 261106Ch matched exactly 11.0.0-rc.3.26522.148.
           # try { $hasDesktop = ((dotnet --list-runtimes) | Select-String "Microsoft.WindowsDesktop.App 10\.") -ne $null } catch {}
-          try { $hasDesktop = ((dotnet --list-runtimes) | Select-String "^Microsoft\.WindowsDesktop\.App 11\.0\.0-rc\.3\.26522\.148 ") -ne $null } catch {}
+          try { $hasDesktop = ((dotnet --list-runtimes) | Select-String "^Microsoft\.WindowsDesktop\.App 11\.\d+\.\d+ ") -ne $null } catch {}
           if (-not $hasDesktop) {
-            Write-Host "Installing .NET 11 RC 3 Desktop Runtime (arm64) for the smoke test..."
+            Write-Host "Installing .NET 11 Desktop Runtime (arm64) for the smoke test..."
             Invoke-WebRequest https://dot.net/v1/dotnet-install.ps1 -OutFile "$env:RUNNER_TEMP\dotnet-install.ps1"
-            # 261106Ch: Install the exact RC 3 runtime.
+            # 261111Cl: .NET 11 GA channel. (261106Ch: -Version 11.0.0-rc.3.26522.148).
             # & "$env:RUNNER_TEMP\dotnet-install.ps1" -Runtime windowsdesktop -Channel 10.0 -Architecture arm64 -InstallDir "$env:RUNNER_TEMP\dotnet"
-            & "$env:RUNNER_TEMP\dotnet-install.ps1" -Runtime windowsdesktop -Version 11.0.0-rc.3.26522.148 -Architecture arm64 -InstallDir "$env:RUNNER_TEMP\dotnet"
+            & "$env:RUNNER_TEMP\dotnet-install.ps1" -Runtime windowsdesktop -Channel 11.0 -Architecture arm64 -InstallDir "$env:RUNNER_TEMP\dotnet"
             $env:DOTNET_ROOT = "$env:RUNNER_TEMP\dotnet"
           }
 

@@ -39,11 +39,11 @@
 
 ## 系統需求
 
-以下要求適用於由此原始碼建置的 .NET 11 RC 3 版本。對於已發布的版本，請遵循該版本註明的執行階段要求。
+以下要求適用於由此原始碼建置的 .NET 11 版本。對於已發布的版本，請遵循該版本註明的執行階段要求。
 
 | 項目 | 最低需求 | 建議配置 |
 |------|---------|-------------|
-| OS | 安裝有 [.NET Desktop Runtime 11.0 RC 3](https://dotnet.microsoft.com/download/dotnet/11.0) 的 Windows（支援 Windows on ARM64） | Windows 11 |
+| OS | 安裝有 [.NET Desktop Runtime 11.0](https://dotnet.microsoft.com/download/dotnet/11.0) 的 Windows（支援 Windows on ARM64） | Windows 11 |
 | GPU | OpenGL 1.3 | 支援 OpenGL 4.3 的獨立 GPU |
 | 記憶體 | - | 16 GB 或更多 |
 | CPU | - | 8 核以上（用於動力學計算） |
