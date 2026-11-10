@@ -3575,7 +3575,9 @@ public partial class FormEBSD : FormBase
                 //  計算コード (BetheMethod.ComputeAbsorbedFluxBackground) は調査用に残してあるので、ここを true にすれば効く。
                 //  既定 ON が物理として正しくない理由はフィールド宣言側 (FormEBSD.Designer.cs の checkBoxAbsorbedFluxBackground 跡) に書いた。
                 //旧: checkBoxAbsorbedFluxBackground.Checked);
-                false); // 260919Cl 追加 / 260920Cl GUI 廃止に伴い固定
+                // false); // 260919Cl 追加 / 260920Cl GUI 廃止に伴い固定 // 261110Cl 変更前
+                false, // 260919Cl 追加 / 260920Cl GUI 廃止に伴い固定
+                checkBoxDressedTail.Checked ? BetheMethod.EbsdBeamSelectionMethod.DressedTail : BetheMethod.EbsdBeamSelectionMethod.Legacy); // 261110Cl 追加: ビーム選択の方式
             masterPatternEbsd.MasterPatternProgressChanged -= MasterPattern_EBSD_ProgressChanged; // (260327Ch) 1 回しか使わない helper はインライン化
             masterPatternEbsd.MasterPatternCompleted -= MasterPattern_EBSD_Completed; // (260327Ch)
             masterPatternEbsd.MasterPatternProgressChanged += MasterPattern_EBSD_ProgressChanged; // (260327Ch)
@@ -3679,14 +3681,24 @@ public partial class FormEBSD : FormBase
             return;
         }
 
-        masterPatternInfo = MasterPatternFileInfo.FromBuildRequest(e.Request, Voltage, $"ReciPro {Application.ProductVersion}"); //260921Cl 追加: 保存用に作成条件を控える
+        // masterPatternInfo = MasterPatternFileInfo.FromBuildRequest(e.Request, Voltage, $"ReciPro {Application.ProductVersion}"); //260921Cl 追加: 保存用に作成条件を控える // 261110Cl 変更前
+        masterPatternInfo = MasterPatternFileInfo.FromBuildRequest(e.Request, Voltage, $"ReciPro {Application.ProductVersion}", e.MasterPattern); //260921Cl 追加: 保存用に作成条件を控える。261110Cl: 実際のビーム選択の方式も
+        // 261110Cl 追加: ビーム選択の方式 (新方式を要求して従来へ戻ったら理由も) を状態の行に出す
+        string beamSelectionNote = e.MasterPattern.BeamSelectionUsed == nameof(BetheMethod.EbsdBeamSelectionMethod.DressedTail)
+            ? $", beam selection: dressed tail ({e.MasterPattern.BeamSelectionSettingsVersion})"
+            : e.MasterPattern.BeamSelectionRequested == nameof(BetheMethod.EbsdBeamSelectionMethod.DressedTail)
+                ? $", beam selection: conventional (the dressed-tail method was not used: {e.MasterPattern.BeamSelectionFallbackReason})" : "";
         var totalSec = sw2.ElapsedMilliseconds / 1000.0;
         var monteCarloSec = masterPatternMonteCarloElapsedMilliseconds / 1000.0;
         //260921Cl 変更: 「画面を使える状態にする」部分を ActivateMasterPattern へ切り出し、ファイルからの読み込みと共有する (処理と順序は同一)
         ActivateMasterPattern("MasterPattern completed",
-            $"Total {totalSec:f2} s (MC {monteCarloSec:f2} s, Bethe {sec:f2} s), {e.Request.GridSize} x {e.Request.GridSize}, full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths",
+            // $"Total {totalSec:f2} s (MC {monteCarloSec:f2} s, Bethe {sec:f2} s), {e.Request.GridSize} x {e.Request.GridSize}, full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths", // 261110Cl 変更前
+            $"Total {totalSec:f2} s (MC {monteCarloSec:f2} s, Bethe {sec:f2} s), {e.Request.GridSize} x {e.Request.GridSize}, full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths{beamSelectionNote}", // 261110Cl: ビーム選択の方式
             TimeSpan.FromSeconds(totalSec));
     }
+
+    /// <summary>261110Cl 追加: ビーム選択の新方式 (着衣つきの裾) では N は固定 (E1 の基準 300 本) なので、最大の Bloch 波の数の欄を使えない見た目にする</summary>
+    private void checkBoxDressedTail_CheckedChanged(object sender, EventArgs e) => numericBoxMaxNumOfG.Enabled = !checkBoxDressedTail.Checked;
 
     /// <summary>260921Cl 追加 (MasterPattern_EBSD_Completed から切り出し): 新しい MasterPattern を画面で使える状態にする (構築完了・ファイル読み込みの共通部)。</summary>
     private void ActivateMasterPattern(string summary, string detail, TimeSpan elapsed)

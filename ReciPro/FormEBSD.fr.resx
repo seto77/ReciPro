@@ -454,6 +454,20 @@ modèle d'absorption non local » voisin agit sur le
 potentiel absorbant U' (diffusion thermique diffuse,
 TDS) qui atténue l'onde, et les deux sont indépendants.</value>
   </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>Sélection de faisceaux dressed-tail (nouvelle)</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>Sélection des faisceaux pour le motif maître : méthode dressed-tail (nouvelle).
+Environ 300 faisceaux forts et les réflexions proches de la sphère d'Ewald
+sont résolus explicitement ; les ~20 000 faisceaux faibles restants ne sont
+pas écartés mais couplés comme réponse statique. Pour Si, environ 30 fois
+plus précis que la sélection conventionnelle (erreur ~0,3 % au lieu de
+~10 %) et environ 3 à 4 fois plus lent. Nécessite la source non locale ;
+le nombre maximal d'ondes de Bloch n'est pas utilisé. Les mailles trop
+grandes pour la mémoire reviennent à la méthode conventionnelle (raison
+affichée dans la barre d'état).</value>
+  </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>Rend le diagramme EBSD pondéré par la distribution simulée
 en énergie et en profondeur des BSE (électrons rétrodiffusés),

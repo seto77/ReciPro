@@ -427,6 +427,17 @@ a, b, c 軸標籤文字。</value>
 這是背向散射源項；相鄰的「非局域吸收模型」控制使
 波衰減的吸收勢 U' (熱漫散射，TDS)，兩者相互獨立。</value>
   </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>修飾尾部的光束選擇 (新)</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>母圖的光束選擇：修飾尾部方法 (新)。
+約 300 條強光束和靠近 Ewald 球的反射被顯式求解，其餘約 2 萬條
+弱光束不丟棄，而以靜態響應耦合進來。對 Si 比傳統選擇精確約 30 倍
+(誤差約 0.3 %，傳統約 10 %)，時間約 3～4 倍。需要非局域背散射源，
+不使用最大 Bloch 波數。記憶體放不下的大晶胞會退回傳統方法
+(原因顯示在狀態列)。</value>
+  </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>以模擬的 BSE（背向散射電子）能量與深度
 分佈加權繪製 EBSD 圖樣，對所有切片積分，

@@ -453,6 +453,20 @@ vizinho «modelo de absorção não local» controla o
 potencial absortivo U' (espalhamento térmico difuso,
 TDS) que atenua a onda, e os dois são independentes.</value>
   </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>Seleção de feixes dressed-tail (nova)</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>Seleção de feixes para o padrão mestre: método dressed-tail (novo).
+Cerca de 300 feixes fortes e as reflexões próximas da esfera de Ewald
+são resolvidos explicitamente; os ~20 000 feixes fracos restantes não
+são descartados, mas acoplados como resposta estática. Para Si é cerca
+de 30 vezes mais preciso que a seleção convencional (erro ~0,3 % em vez
+de ~10 %) e cerca de 3 a 4 vezes mais lento. Requer a fonte não local;
+o número máximo de ondas de Bloch não é usado. Células grandes demais
+para a memória voltam ao método convencional (motivo na barra de
+estado).</value>
+  </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>Renderiza o padrão EBSD ponderado pela distribuição
 simulada de energia e profundidade dos BSE (Elétrons

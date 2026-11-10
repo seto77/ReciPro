@@ -454,6 +454,20 @@ no local» controla el potencial absorbente U'
 (dispersión térmica difusa, TDS) que atenúa la
 onda, y ambos son independientes.</value>
   </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>Selección de haces dressed-tail (nueva)</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>Selección de haces para el patrón maestro: método dressed-tail (nuevo).
+Unos 300 haces intensos y las reflexiones cercanas a la esfera de Ewald
+se resuelven explícitamente; los ~20 000 haces débiles restantes no se
+descartan, sino que se acoplan como respuesta estática. Para Si es
+unas 30 veces más preciso que la selección convencional (error ~0,3 %
+en lugar de ~10 %) y unas 3 a 4 veces más lento. Requiere la fuente
+no local; no se usa el número máximo de ondas de Bloch. Las celdas
+demasiado grandes para la memoria vuelven al método convencional (el
+motivo aparece en la barra de estado).</value>
+  </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>Renderiza el patrón EBSD ponderado por la distribución
 simulada de energía y profundidad de los BSE (electrones

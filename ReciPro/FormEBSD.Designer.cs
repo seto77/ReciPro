@@ -118,6 +118,7 @@
             numericBoxMaxNumOfG = new NumericBox();
             checkBoxNonLocalAbsorption = new System.Windows.Forms.CheckBox();
             checkBoxTDSBackground = new System.Windows.Forms.CheckBox();
+            checkBoxDressedTail = new System.Windows.Forms.CheckBox();
             numericBoxThicknessStart = new NumericBox();
             numericBoxThicknessEnd = new NumericBox();
             buttonStop = new System.Windows.Forms.Button();
@@ -685,6 +686,14 @@
             checkBoxTDSBackground.Name = "checkBoxTDSBackground";
             toolTip.SetToolTip(checkBoxTDSBackground, resources.GetString("checkBoxTDSBackground.ToolTip"));
             checkBoxTDSBackground.UseVisualStyleBackColor = true;
+            //
+            // checkBoxDressedTail
+            //
+            resources.ApplyResources(checkBoxDressedTail, "checkBoxDressedTail");
+            checkBoxDressedTail.Name = "checkBoxDressedTail";
+            toolTip.SetToolTip(checkBoxDressedTail, resources.GetString("checkBoxDressedTail.ToolTip"));
+            checkBoxDressedTail.UseVisualStyleBackColor = true;
+            checkBoxDressedTail.CheckedChanged += checkBoxDressedTail_CheckedChanged;
             // 
             // numericBoxThicknessStart
             // 
@@ -1936,6 +1945,7 @@
             resources.ApplyResources(flowLayoutPanelAbsorptionOptions, "flowLayoutPanelAbsorptionOptions");
             flowLayoutPanelAbsorptionOptions.Controls.Add(checkBoxNonLocalAbsorption);
             flowLayoutPanelAbsorptionOptions.Controls.Add(checkBoxTDSBackground);
+            flowLayoutPanelAbsorptionOptions.Controls.Add(checkBoxDressedTail);
             flowLayoutPanelAbsorptionOptions.Name = "flowLayoutPanelAbsorptionOptions";
             // 
             // statusStripMain
@@ -2475,6 +2485,7 @@
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.CheckBox checkBoxNonLocalAbsorption;
         private System.Windows.Forms.CheckBox checkBoxTDSBackground;
+        private System.Windows.Forms.CheckBox checkBoxDressedTail; // 261110Cl 追加: EBSD のビーム選択の新方式 (着衣つきの裾)
         private System.Windows.Forms.CheckBox checkBoxWithBSEDistribution;
         private System.Windows.Forms.CheckBox checkBoxFlipDetectorLeftRight; // 260718Cl 追加: 検出器を背面から見た左右反転
         private System.Windows.Forms.GroupBox groupBoxLatticePlanes;

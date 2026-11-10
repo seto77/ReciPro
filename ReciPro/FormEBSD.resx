@@ -1325,6 +1325,47 @@ damps the wave, and the two are independent.</value>
   <data name="&gt;&gt;checkBoxTDSBackground.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="checkBoxDressedTail.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDressedTail.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxDressedTail.Location" type="System.Drawing.Point, System.Drawing">
+    <value>358, 3</value>
+  </data>
+  <data name="checkBoxDressedTail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 21</value>
+  </data>
+  <data name="checkBoxDressedTail.TabIndex" type="System.Int32, mscorlib">
+    <value>147</value>
+  </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>Dressed-tail beam selection (new)</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>Beam selection for the master pattern: the dressed-tail method (new).
+About 300 strong beams and the reflections close to the Ewald sphere
+are solved explicitly, and the remaining ~20,000 weak beams are kept
+as a static dressing instead of being discarded. For Si it is about
+30 times more accurate than the conventional selection (error about
+0.3 % instead of about 10 %) and about 3 to 4 times slower.
+Requires the non-local source; the maximum number of Bloch waves is
+not used. Unit cells too large for the memory fall back to the
+conventional method (the reason is shown in the status bar).</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDressedTail.Name" xml:space="preserve">
+    <value>checkBoxDressedTail</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDressedTail.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDressedTail.Parent" xml:space="preserve">
+    <value>flowLayoutPanelAbsorptionOptions</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDressedTail.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="checkBoxRangesFromMonteCarlo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>

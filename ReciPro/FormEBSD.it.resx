@@ -454,6 +454,20 @@ assorbimento non locale» riguarda il potenziale
 assorbente U' (diffusione termica diffusa, TDS) che
 attenua l'onda, e i due sono indipendenti.</value>
   </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>Selezione dei fasci dressed-tail (nuova)</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>Selezione dei fasci per il master pattern: metodo dressed-tail (nuovo).
+Circa 300 fasci forti e le riflessioni vicine alla sfera di Ewald sono
+risolti esplicitamente; i ~20 000 fasci deboli restanti non vengono
+scartati ma accoppiati come risposta statica. Per Si è circa 30 volte
+più preciso della selezione convenzionale (errore ~0,3 % invece di
+~10 %) e circa 3-4 volte più lento. Richiede la sorgente non locale;
+il numero massimo di onde di Bloch non è usato. Le celle troppo grandi
+per la memoria tornano al metodo convenzionale (motivo nella barra di
+stato).</value>
+  </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>Genera il pattern EBSD pesato in base alla distribuzione di energia
 e profondità dei BSE (BackScattered Electron, elettroni retrodiffusi) simulati,

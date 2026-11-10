@@ -458,6 +458,20 @@ der Rückstreu-Quellterm; das benachbarte
 absorptive Potential U' (thermisch-diffuse Streuung,
 TDS), das die Welle dämpft – beide sind unabhängig.</value>
   </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>Dressed-Tail-Strahlauswahl (neu)</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>Strahlauswahl für das Master-Pattern: die Dressed-Tail-Methode (neu).
+Etwa 300 starke Strahlen und die Reflexe nahe der Ewald-Kugel werden
+explizit gelöst; die übrigen ca. 20 000 schwachen Strahlen werden nicht
+verworfen, sondern als statische Antwort angekoppelt. Für Si etwa
+30-mal genauer als die herkömmliche Auswahl (Fehler ca. 0,3 % statt
+ca. 10 %) und etwa 3- bis 4-mal langsamer. Erfordert die nichtlokale
+Quelle; die maximale Zahl der Bloch-Wellen wird nicht verwendet. Zu
+große Einheitszellen fallen auf die herkömmliche Methode zurück (Grund
+in der Statusleiste).</value>
+  </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>Stellt das EBSD-Muster gewichtet mit der simulierten
 Energie- und Tiefenverteilung der BSE (BackScattered Electron,

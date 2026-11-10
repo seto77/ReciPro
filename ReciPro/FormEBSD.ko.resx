@@ -444,6 +444,18 @@ a축(빨강)·b축(초록)·c축(파랑)을 ± 양방향
 ‘비국소 흡수 모델’은 파를 감쇠시키는 흡수 퍼텐셜
 U'(열확산 산란, TDS) 쪽이며 둘은 독립적입니다.</value>
   </data>
+  <data name="checkBoxDressedTail.Text" xml:space="preserve">
+    <value>드레스드 테일 빔 선택 (신규)</value>
+  </data>
+  <data name="checkBoxDressedTail.ToolTip" xml:space="preserve">
+    <value>마스터 패턴의 빔 선택: 드레스드 테일 방식 (신규).
+강한 빔 약 300개와 Ewald 구에 가까운 반사를 명시적으로 풀고,
+나머지 약 2만 개의 약한 빔은 버리지 않고 정적 응답으로 결합합니다.
+Si에서는 기존 선택보다 약 30배 정확하며 (오차 약 0.3 %, 기존 약
+10 %), 시간은 약 3~4배입니다. 비국소 후방산란원이 필요하며 최대
+Bloch 파 수는 사용하지 않습니다. 메모리에 들어가지 않는 큰 단위
+세포는 기존 방식으로 돌아갑니다 (이유는 상태 표시줄에 표시).</value>
+  </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>단일 에너지/깊이 슬라이스를 표시하는 대신, 시뮬레이션한
 BSE(후방산란 전자)의 에너지 및 깊이 분포로 가중하여
