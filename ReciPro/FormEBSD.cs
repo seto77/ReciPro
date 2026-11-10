@@ -3698,7 +3698,14 @@ public partial class FormEBSD : FormBase
     }
 
     /// <summary>261110Cl 追加: ビーム選択の新方式 (着衣つきの裾) では N は固定 (E1 の基準 300 本) なので、最大の Bloch 波の数の欄を使えない見た目にする</summary>
-    private void checkBoxDressedTail_CheckedChanged(object sender, EventArgs e) => numericBoxMaxNumOfG.Enabled = !checkBoxDressedTail.Checked;
+    private void checkBoxDressedTail_CheckedChanged(object sender, EventArgs e)
+    {
+        numericBoxMaxNumOfG.Enabled = !checkBoxDressedTail.Checked;
+        // 261110Cl 追加 (codex2 第 32 回): 表示中のマスターパターンが別の方式で作られていれば、作り直すまで切り替えが効かないことを知らせる
+        string want = checkBoxDressedTail.Checked ? nameof(BetheMethod.EbsdBeamSelectionMethod.DressedTail) : nameof(BetheMethod.EbsdBeamSelectionMethod.Legacy);
+        if (MasterPattern != null && MasterPattern.BeamSelectionUsed != want)
+            toolStripStatusLabelDetail.Text = $"The shown master pattern was built with the {(MasterPattern.BeamSelectionUsed == nameof(BetheMethod.EbsdBeamSelectionMethod.DressedTail) ? "dressed-tail" : "conventional")} beam selection. Build the master pattern again to apply the change.";
+    }
 
     /// <summary>260921Cl 追加 (MasterPattern_EBSD_Completed から切り出し): 新しい MasterPattern を画面で使える状態にする (構築完了・ファイル読み込みの共通部)。</summary>
     private void ActivateMasterPattern(string summary, string detail, TimeSpan elapsed)
