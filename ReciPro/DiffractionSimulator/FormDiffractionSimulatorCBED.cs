@@ -299,6 +299,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             else if (bethe.CbedBeamSelection == BetheMethod.CbedBeamSelectionMethod.DressedTail)
                 toolStripStatusLabel1.Text += $".   Beam selection: conventional (the dressed-tail method was not used: {bethe.CbedBeamSelectionFallbackReason})";
             toolStripStatusLabel1.ToolTipText = bethe.CbedBeamSelectionUsed == BetheMethod.CbedBeamSelectionMethod.DressedTail ? bethe.CbedBeamSelectionDetail : "";
+            if (!string.IsNullOrEmpty(bethe.CbedSymmetryDetail)) toolStripStatusLabel1.Text += $".   Zone-axis {bethe.CbedSymmetryDetail}"; // 261111Cl 追加: 晶帯軸の対称で代表の方向だけを解いたとき
 
             groupBoxOutput.Enabled = true;
             generateImage();
