@@ -2126,7 +2126,7 @@ the dressing of their centre, and only the Bloch waves excited in each
 patch are propagated. At a zone axis, directions related by the crystal
 symmetry are solved only once. For Si the disk intensities are about
 200 to 600 times more accurate than with the conventional 64 beams, but
-the computation takes tens of times longer depending on the conditions
+the computation takes several to tens of times longer depending on the conditions
 (about 20 to 40 times in measurements without symmetry; about 4 times
 longer again without the MKL library). The number of diffracted waves is
 then the base number of beams (default 300). Non-local absorption is not

@@ -299,7 +299,7 @@ de Bloch excitadas são propagadas. Num eixo de zona, as direções
 relacionadas pela simetria do cristal são resolvidas uma única vez.
 Para Si, as intensidades dos discos são cerca de 200 a 600 vezes mais
 precisas do que com os 64 feixes convencionais, mas o cálculo demora
-dezenas de vezes mais conforme as condições (cerca de 20 a 40 vezes em
+de várias a dezenas de vezes mais conforme as condições (cerca de 20 a 40 vezes em
 medições sem simetria; mais cerca de 4 vezes sem a biblioteca MKL).
 O número de ondas difratadas passa a ser o número base de feixes
 (padrão 300). A absorção não local não é suportada; nesse caso, ou se a

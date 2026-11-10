@@ -299,7 +299,7 @@ centro, y solo se propagan las ondas de Bloch excitadas. En un eje de
 zona, las direcciones relacionadas por la simetría del cristal se
 resuelven una sola vez. Para Si, las intensidades de los discos son
 unas 200 a 600 veces más precisas que con los 64 haces convencionales,
-pero el cálculo tarda decenas de veces más según las condiciones (unas
+pero el cálculo tarda de varias a decenas de veces más según las condiciones (unas
 20 a 40 veces en mediciones sin simetría; y unas 4 veces más sin la
 biblioteca MKL). El número de ondas difractadas pasa a ser el número
 base de haces (300 por defecto). No admite la absorción no local; en

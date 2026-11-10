@@ -299,7 +299,7 @@ de leur centre, et seules les ondes de Bloch excitées sont propagées.
 Sur un axe de zone, les directions reliées par la symétrie du cristal
 ne sont résolues qu'une seule fois. Pour Si, les intensités des disques
 sont environ 200 à 600 fois plus précises qu'avec les 64 faisceaux
-conventionnels, mais le calcul est des dizaines de fois plus long selon
+conventionnels, mais le calcul est de plusieurs à des dizaines de fois plus long selon
 les conditions (environ 20 à 40 fois dans des mesures sans symétrie ;
 encore environ 4 fois sans la bibliothèque MKL). Le nombre d'ondes
 diffractées devient le nombre de base de faisceaux (300 par défaut).
