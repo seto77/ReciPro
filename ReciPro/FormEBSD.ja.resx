@@ -293,6 +293,20 @@ PCHIP補間で圧縮し、生成ソースを出力します。</value>
 「非局所吸収モデル」は波を減衰させる吸収ポテンシャル
 U' (熱散漫散乱、TDS) の側で、両者は独立です。</value>
   </data>
+  <data name="checkBoxDressedTailLight.Text" xml:space="preserve">
+    <value>軽量 (N32・半径 40)</value>
+  </data>
+  <data name="checkBoxDressedTailLight.ToolTip" xml:space="preserve">
+    <value>着衣つきの裾の軽い設定です。明示の基準の本数 32、候補は 40 nm⁻¹ 以内
+(芯 31 nm⁻¹)。手早く確かめる用途向けで、時間は従来の N32 の約
+20〜25 倍、Si では約 10 倍正確です (誤差 約 3 %、従来 約 27 %)。
+散乱の強い結晶 (MnAl など) では最大 約 13 % が残るので、定量の
+当てはめには使わないでください。外すと、明示の本数を回折波の数の
+欄で指定できます。</value>
+  </data>
+  <data name="checkBoxDressedTailLight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
   <data name="checkBoxDressedTail.Text" xml:space="preserve">
     <value>着衣つきの裾 (新方式)</value>
   </data>

@@ -431,6 +431,16 @@ a、b、c 轴标签文字。</value>
 这是背散射源项；相邻的“非局域吸收模型”控制使波
 衰减的吸收势 U' (热漫散射，TDS)，两者相互独立。</value>
   </data>
+  <data name="checkBoxDressedTailLight.Text" xml:space="preserve">
+    <value>轻量 (N32，半径 40)</value>
+  </data>
+  <data name="checkBoxDressedTailLight.ToolTip" xml:space="preserve">
+    <value>修饰尾部方法的轻量设置：显式基准光束 32 条，候选在 40 nm⁻¹ 以内
+(核心 31 nm⁻¹)，用于快速查看。时间约为传统 N32 的 20～25 倍，
+对 Si 约精确 10 倍 (误差约 3 %，传统约 27 %)。强散射晶体 (如 MnAl)
+最大约残留 13 %，请勿用于定量拟合。取消勾选后，可在衍射波数一栏
+指定显式光束数。</value>
+  </data>
   <data name="checkBoxDressedTail.Text" xml:space="preserve">
     <value>修饰尾部的光束选择 (新)</value>
   </data>

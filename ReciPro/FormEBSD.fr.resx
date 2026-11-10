@@ -456,6 +456,18 @@ modèle d'absorption non local » voisin agit sur le
 potentiel absorbant U' (diffusion thermique diffuse,
 TDS) qui atténue l'onde, et les deux sont indépendants.</value>
   </data>
+  <data name="checkBoxDressedTailLight.Text" xml:space="preserve">
+    <value>Léger (N32, rayon 40)</value>
+  </data>
+  <data name="checkBoxDressedTailLight.ToolTip" xml:space="preserve">
+    <value>Réglage léger de la méthode dressed-tail : 32 faisceaux explicites de
+base et candidats jusqu'à 40 nm⁻¹ (cœur 31 nm⁻¹), pour un aperçu
+rapide. Environ 20 à 25 fois le temps du N32 conventionnel et environ
+10 fois plus précis pour Si (erreur ~3 % au lieu de ~27 %). Les
+cristaux très diffusants (p. ex. MnAl) gardent jusqu'à ~13 % ; ne pas
+l'utiliser pour les ajustements quantitatifs. Décoché, le nombre de
+faisceaux explicites est fixé par le nombre d'ondes diffractées.</value>
+  </data>
   <data name="checkBoxDressedTail.Text" xml:space="preserve">
     <value>Sélection de faisceaux dressed-tail (nouvelle)</value>
   </data>

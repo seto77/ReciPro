@@ -456,6 +456,18 @@ no local» controla el potencial absorbente U'
 (dispersión térmica difusa, TDS) que atenúa la
 onda, y ambos son independientes.</value>
   </data>
+  <data name="checkBoxDressedTailLight.Text" xml:space="preserve">
+    <value>Ligero (N32, radio 40)</value>
+  </data>
+  <data name="checkBoxDressedTailLight.ToolTip" xml:space="preserve">
+    <value>Ajuste ligero del método dressed-tail: 32 haces explícitos base y
+candidatos hasta 40 nm⁻¹ (núcleo 31 nm⁻¹), para una vista rápida.
+Tarda unas 20–25 veces el N32 convencional y es unas 10 veces más
+preciso para Si (error ~3 % en lugar de ~27 %). Los cristales que
+dispersan fuertemente (p. ej. MnAl) conservan hasta ~13 %; no lo use
+para ajustes cuantitativos. Sin marcar, el número de haces explícitos
+se fija con el número de ondas difractadas.</value>
+  </data>
   <data name="checkBoxDressedTail.Text" xml:space="preserve">
     <value>Selección de haces dressed-tail (nueva)</value>
   </data>

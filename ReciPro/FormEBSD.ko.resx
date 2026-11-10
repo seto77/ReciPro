@@ -446,6 +446,17 @@ a축(빨강)·b축(초록)·c축(파랑)을 ± 양방향
 ‘비국소 흡수 모델’은 파를 감쇠시키는 흡수 퍼텐셜
 U'(열확산 산란, TDS) 쪽이며 둘은 독립적입니다.</value>
   </data>
+  <data name="checkBoxDressedTailLight.Text" xml:space="preserve">
+    <value>경량 (N32, 반경 40)</value>
+  </data>
+  <data name="checkBoxDressedTailLight.ToolTip" xml:space="preserve">
+    <value>드레스드 테일 방식의 경량 설정입니다. 명시적 기준 빔 32개, 후보는
+40 nm⁻¹ 이내 (코어 31 nm⁻¹). 빠른 확인용으로, 시간은 기존 N32의
+약 20~25배이며 Si에서는 약 10배 정확합니다 (오차 약 3 %, 기존 약 27 %).
+산란이 강한 결정 (MnAl 등)에서는 최대 약 13 %가 남으므로 정량
+피팅에는 사용하지 마십시오. 해제하면 명시적 빔 수를 회절파 수
+칸에서 지정할 수 있습니다.</value>
+  </data>
   <data name="checkBoxDressedTail.Text" xml:space="preserve">
     <value>드레스드 테일 빔 선택 (신규)</value>
   </data>

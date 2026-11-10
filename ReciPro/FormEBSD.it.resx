@@ -456,6 +456,18 @@ assorbimento non locale» riguarda il potenziale
 assorbente U' (diffusione termica diffusa, TDS) che
 attenua l'onda, e i due sono indipendenti.</value>
   </data>
+  <data name="checkBoxDressedTailLight.Text" xml:space="preserve">
+    <value>Leggero (N32, raggio 40)</value>
+  </data>
+  <data name="checkBoxDressedTailLight.ToolTip" xml:space="preserve">
+    <value>Impostazione leggera del metodo dressed-tail: 32 fasci espliciti di
+base e candidati fino a 40 nm⁻¹ (nucleo 31 nm⁻¹), per una verifica
+rapida. Circa 20–25 volte il tempo del N32 convenzionale e circa
+10 volte più preciso per Si (errore ~3 % invece di ~27 %). I cristalli
+fortemente diffondenti (es. MnAl) mantengono fino a ~13 %; non usarlo
+per adattamenti quantitativi. Se non selezionato, il numero di fasci
+espliciti si imposta con il numero di onde diffratte.</value>
+  </data>
   <data name="checkBoxDressedTail.Text" xml:space="preserve">
     <value>Selezione dei fasci dressed-tail (nuova)</value>
   </data>

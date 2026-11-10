@@ -1370,6 +1370,48 @@ conventional method (the reason is shown in the status bar).</value>
   <data name="&gt;&gt;checkBoxDressedTail.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="checkBoxDressedTailLight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDressedTailLight.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBoxDressedTailLight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxDressedTailLight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>596, 3</value>
+  </data>
+  <data name="checkBoxDressedTailLight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 21</value>
+  </data>
+  <data name="checkBoxDressedTailLight.TabIndex" type="System.Int32, mscorlib">
+    <value>148</value>
+  </data>
+  <data name="checkBoxDressedTailLight.Text" xml:space="preserve">
+    <value>Light (N32, radius 40)</value>
+  </data>
+  <data name="checkBoxDressedTailLight.ToolTip" xml:space="preserve">
+    <value>Light setting of the dressed-tail method: 32 base explicit beams and
+candidates within 40 nm⁻¹ (core 31 nm⁻¹), for a quick look. It takes
+about 20–25 times the time of the conventional N32 and is about
+10 times more accurate for Si (error about 3 % instead of about 27 %).
+Strongly scattering crystals (e.g. MnAl) keep up to about 13 %;
+do not use it for quantitative fits. Uncheck it to set the number
+of explicit beams in the number of diffracted waves.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDressedTailLight.Name" xml:space="preserve">
+    <value>checkBoxDressedTailLight</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDressedTailLight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDressedTailLight.Parent" xml:space="preserve">
+    <value>flowLayoutPanelAbsorptionOptions</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDressedTailLight.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="checkBoxRangesFromMonteCarlo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>

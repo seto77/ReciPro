@@ -3577,7 +3577,8 @@ public partial class FormEBSD : FormBase
                 //旧: checkBoxAbsorbedFluxBackground.Checked);
                 // false); // 260919Cl 追加 / 260920Cl GUI 廃止に伴い固定 // 261110Cl 変更前
                 false, // 260919Cl 追加 / 260920Cl GUI 廃止に伴い固定
-                checkBoxDressedTail.Checked ? BetheMethod.EbsdBeamSelectionMethod.DressedTail : BetheMethod.EbsdBeamSelectionMethod.Legacy); // 261110Cl 追加: ビーム選択の方式
+                checkBoxDressedTail.Checked ? BetheMethod.EbsdBeamSelectionMethod.DressedTail : BetheMethod.EbsdBeamSelectionMethod.Legacy, // 261110Cl 追加: ビーム選択の方式
+                checkBoxDressedTail.Checked && checkBoxDressedTailLight.Checked ? BetheMethod.DressedTailLight : null); // 261110Cl 追加 (作者の判断「3 択」): 軽量なら軽量の設定、詳細なら null (本数の欄の N)
             masterPatternEbsd.MasterPatternProgressChanged -= MasterPattern_EBSD_ProgressChanged; // (260327Ch) 1 回しか使わない helper はインライン化
             masterPatternEbsd.MasterPatternCompleted -= MasterPattern_EBSD_Completed; // (260327Ch)
             masterPatternEbsd.MasterPatternProgressChanged += MasterPattern_EBSD_ProgressChanged; // (260327Ch)
@@ -3704,12 +3705,26 @@ public partial class FormEBSD : FormBase
     private void checkBoxDressedTail_CheckedChanged(object sender, EventArgs e)
     {
         // numericBoxMaxNumOfG.Enabled = !checkBoxDressedTail.Checked; // 261110Cl 変更前 (新方式では欄を無効にしていた)
-        if (checkBoxDressedTail.Checked) { legacyMaxNumOfG = numericBoxMaxNumOfG.ValueInteger; numericBoxMaxNumOfG.Value = dressedTailMaxNumOfG; } // 261110Cl 追加
-        else { dressedTailMaxNumOfG = numericBoxMaxNumOfG.ValueInteger; if (legacyMaxNumOfG > 0) numericBoxMaxNumOfG.Value = legacyMaxNumOfG; } // 261110Cl 追加
+        // if (checkBoxDressedTail.Checked) { legacyMaxNumOfG = numericBoxMaxNumOfG.ValueInteger; numericBoxMaxNumOfG.Value = dressedTailMaxNumOfG; } // 261110Cl 追加 // 261110Cl 変更前 (2 行)
+        // else { dressedTailMaxNumOfG = numericBoxMaxNumOfG.ValueInteger; if (legacyMaxNumOfG > 0) numericBoxMaxNumOfG.Value = legacyMaxNumOfG; } // 261110Cl 追加
+        // 261110Cl 変更 (作者の判断「3 択」): 軽量は新方式のときだけ選べる。軽量のあいだは本数の欄を 32 に固定して見せる (詳細のときの値は覚えて戻す)
+        if (checkBoxDressedTail.Checked) { legacyMaxNumOfG = numericBoxMaxNumOfG.ValueInteger; numericBoxMaxNumOfG.Value = checkBoxDressedTailLight.Checked ? BetheMethod.DressedTailLight.N : dressedTailMaxNumOfG; }
+        else { if (!checkBoxDressedTailLight.Checked) dressedTailMaxNumOfG = numericBoxMaxNumOfG.ValueInteger; if (legacyMaxNumOfG > 0) numericBoxMaxNumOfG.Value = legacyMaxNumOfG; }
+        checkBoxDressedTailLight.Enabled = checkBoxDressedTail.Checked;
+        numericBoxMaxNumOfG.Enabled = !(checkBoxDressedTail.Checked && checkBoxDressedTailLight.Checked);
         // 261110Cl 追加 (codex2 第 32 回): 表示中のマスターパターンが別の方式で作られていれば、作り直すまで切り替えが効かないことを知らせる
         string want = checkBoxDressedTail.Checked ? nameof(BetheMethod.EbsdBeamSelectionMethod.DressedTail) : nameof(BetheMethod.EbsdBeamSelectionMethod.Legacy);
         if (MasterPattern != null && MasterPattern.BeamSelectionUsed != want)
             toolStripStatusLabelDetail.Text = $"The shown master pattern was built with the {(MasterPattern.BeamSelectionUsed == nameof(BetheMethod.EbsdBeamSelectionMethod.DressedTail) ? "dressed-tail" : "conventional")} beam selection. Build the master pattern again to apply the change.";
+    }
+
+    /// <summary>261110Cl 追加 (作者の判断「3 択」): 新方式の軽量 (N32・候補 40) と詳細 (本数の欄) の切り替え。新方式が選ばれているときだけ効く</summary>
+    private void checkBoxDressedTailLight_CheckedChanged(object sender, EventArgs e)
+    {
+        if (!checkBoxDressedTail.Checked) return;
+        if (checkBoxDressedTailLight.Checked) { dressedTailMaxNumOfG = numericBoxMaxNumOfG.ValueInteger; numericBoxMaxNumOfG.Value = BetheMethod.DressedTailLight.N; }
+        else numericBoxMaxNumOfG.Value = dressedTailMaxNumOfG;
+        numericBoxMaxNumOfG.Enabled = !checkBoxDressedTailLight.Checked;
     }
 
     /// <summary>260921Cl 追加 (MasterPattern_EBSD_Completed から切り出し): 新しい MasterPattern を画面で使える状態にする (構築完了・ファイル読み込みの共通部)。</summary>

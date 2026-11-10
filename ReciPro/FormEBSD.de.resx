@@ -460,6 +460,18 @@ der Rückstreu-Quellterm; das benachbarte
 absorptive Potential U' (thermisch-diffuse Streuung,
 TDS), das die Welle dämpft – beide sind unabhängig.</value>
   </data>
+  <data name="checkBoxDressedTailLight.Text" xml:space="preserve">
+    <value>Leicht (N32, Radius 40)</value>
+  </data>
+  <data name="checkBoxDressedTailLight.ToolTip" xml:space="preserve">
+    <value>Leichte Einstellung der Dressed-Tail-Methode: 32 explizite Basisstrahlen,
+Kandidaten bis 40 nm⁻¹ (Kern 31 nm⁻¹), für einen schnellen Blick.
+Etwa 20–25-mal die Zeit des herkömmlichen N32, für Si etwa 10-mal
+genauer (Fehler etwa 3 % statt etwa 27 %). Stark streuende Kristalle
+(z. B. MnAl) behalten bis zu etwa 13 %; nicht für quantitative
+Anpassungen verwenden. Ohne Haken wird die Zahl der expliziten
+Strahlen über die Zahl der gebeugten Wellen festgelegt.</value>
+  </data>
   <data name="checkBoxDressedTail.Text" xml:space="preserve">
     <value>Dressed-Tail-Strahlauswahl (neu)</value>
   </data>

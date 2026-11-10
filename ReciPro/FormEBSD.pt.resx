@@ -455,6 +455,18 @@ vizinho «modelo de absorção não local» controla o
 potencial absortivo U' (espalhamento térmico difuso,
 TDS) que atenua a onda, e os dois são independentes.</value>
   </data>
+  <data name="checkBoxDressedTailLight.Text" xml:space="preserve">
+    <value>Leve (N32, raio 40)</value>
+  </data>
+  <data name="checkBoxDressedTailLight.ToolTip" xml:space="preserve">
+    <value>Configuração leve do método dressed-tail: 32 feixes explícitos de
+base e candidatos até 40 nm⁻¹ (núcleo 31 nm⁻¹), para uma visão
+rápida. Cerca de 20–25 vezes o tempo do N32 convencional e cerca de
+10 vezes mais preciso para Si (erro ~3 % em vez de ~27 %). Cristais
+que espalham fortemente (p. ex. MnAl) mantêm até ~13 %; não use para
+ajustes quantitativos. Desmarcado, o número de feixes explícitos é
+definido pelo número de ondas difratadas.</value>
+  </data>
   <data name="checkBoxDressedTail.Text" xml:space="preserve">
     <value>Seleção de feixes dressed-tail (nova)</value>
   </data>
