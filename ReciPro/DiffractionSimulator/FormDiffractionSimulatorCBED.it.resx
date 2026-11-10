@@ -298,12 +298,14 @@ Circa 300 fasci forti e le riflessioni vicine alla sfera di Ewald
 e i restanti fasci deboli sono mantenuti come un rivestimento statico
 invece di essere scartati. Il disco è diviso in zone di raggio 2 mrad
 che condividono il rivestimento del loro centro, e si propagano solo le
-onde di Bloch eccitate. Per Si le intensità dei dischi sono circa
-200-600 volte più accurate che con i 64 fasci convenzionali, ma il
-calcolo richiede circa 10-20 volte più tempo (circa 4 volte di più
-senza la libreria MKL). Il numero di onde diffratte diventa il numero
-base di fasci (predefinito 300). L'assorbimento non locale non è
-supportato; in quel caso, o se la memoria non basta, si usa il metodo
-convenzionale (il motivo è mostrato nella barra di stato).</value>
+onde di Bloch eccitate. In un asse di zona le direzioni legate dalla
+simmetria del cristallo sono risolte una sola volta. Per Si le intensità
+dei dischi sono circa 200-600 volte più accurate che con i 64 fasci
+convenzionali, ma il calcolo richiede decine di volte più tempo a
+seconda delle condizioni (circa 20-40 volte in misure senza simmetria;
+circa 4 volte di più senza la libreria MKL). Il numero di onde diffratte
+diventa il numero base di fasci (predefinito 300). L'assorbimento non
+locale non è supportato; in quel caso, o se la memoria non basta, si usa
+il metodo convenzionale (il motivo è mostrato nella barra di stato).</value>
   </data>
 </root>

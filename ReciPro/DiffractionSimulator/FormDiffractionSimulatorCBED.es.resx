@@ -295,13 +295,15 @@ de Ewald (incluidas las reflexiones HOLZ hasta 60 nm⁻¹) se resuelven
 explícitamente, y los haces débiles restantes se conservan como un
 revestimiento estático en lugar de descartarse. El disco se divide en
 regiones de 2 mrad de radio que comparten el revestimiento de su
-centro, y solo se propagan las ondas de Bloch excitadas. Para Si, las
-intensidades de los discos son unas 200 a 600 veces más precisas que
-con los 64 haces convencionales, pero el cálculo tarda unas
-10 a 20 veces más (y unas 4 veces más sin la biblioteca MKL). El número
-de ondas difractadas pasa a ser el número base de haces (300 por
-defecto). No admite la absorción no local; en ese caso, o si la memoria
-no basta, se usa el método convencional (el motivo se muestra en la
-barra de estado).</value>
+centro, y solo se propagan las ondas de Bloch excitadas. En un eje de
+zona, las direcciones relacionadas por la simetría del cristal se
+resuelven una sola vez. Para Si, las intensidades de los discos son
+unas 200 a 600 veces más precisas que con los 64 haces convencionales,
+pero el cálculo tarda decenas de veces más según las condiciones (unas
+20 a 40 veces en mediciones sin simetría; y unas 4 veces más sin la
+biblioteca MKL). El número de ondas difractadas pasa a ser el número
+base de haces (300 por defecto). No admite la absorción no local; en
+ese caso, o si la memoria no basta, se usa el método convencional (el
+motivo se muestra en la barra de estado).</value>
   </data>
 </root>

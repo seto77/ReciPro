@@ -296,13 +296,15 @@ proches de la sphère d'Ewald (y compris les réflexions HOLZ jusqu'à
 sont conservés comme un habillage statique au lieu d'être écartés. Le
 disque est divisé en zones de 2 mrad de rayon qui partagent l'habillage
 de leur centre, et seules les ondes de Bloch excitées sont propagées.
-Pour Si, les intensités des disques sont environ 200 à 600 fois plus
-précises qu'avec les 64 faisceaux conventionnels, mais le calcul est
-environ 10 à 20 fois plus long (encore environ 4 fois sans la
-bibliothèque MKL). Le nombre d'ondes diffractées devient le nombre de
-base de faisceaux (300 par défaut). L'absorption non locale n'est pas
-prise en charge ; dans ce cas, ou si la mémoire est insuffisante, la
-méthode conventionnelle est utilisée (la raison s'affiche dans la barre
-d'état).</value>
+Sur un axe de zone, les directions reliées par la symétrie du cristal
+ne sont résolues qu'une seule fois. Pour Si, les intensités des disques
+sont environ 200 à 600 fois plus précises qu'avec les 64 faisceaux
+conventionnels, mais le calcul est des dizaines de fois plus long selon
+les conditions (environ 20 à 40 fois dans des mesures sans symétrie ;
+encore environ 4 fois sans la bibliothèque MKL). Le nombre d'ondes
+diffractées devient le nombre de base de faisceaux (300 par défaut).
+L'absorption non locale n'est pas prise en charge ; dans ce cas, ou si
+la mémoire est insuffisante, la méthode conventionnelle est utilisée
+(la raison s'affiche dans la barre d'état).</value>
   </data>
 </root>

@@ -292,11 +292,13 @@ Etwa 300 starke Strahlen und die Reflexe nahe der Ewald-Kugel
 übrigen schwachen Strahlen werden nicht verworfen, sondern als statische
 Ankopplung berücksichtigt. Die Scheibe wird in Bereiche mit 2 mrad Radius
 geteilt, die die Ankopplung ihres Zentrums gemeinsam nutzen, und nur die
-angeregten Bloch-Wellen werden propagiert. Für Si sind die
-Scheibenintensitäten etwa 200- bis 600-mal genauer als mit den
-herkömmlichen 64 Strahlen, die Berechnung dauert aber etwa 10 bis 20-mal so
-lange (ohne die MKL-Bibliothek nochmals etwa 4-mal). Die Anzahl der
-gebeugten Wellen ist dann die Basisanzahl der Strahlen (Standard 300).
+angeregten Bloch-Wellen werden propagiert. In einer Zonenachse werden
+durch die Kristallsymmetrie verknüpfte Richtungen nur einmal berechnet.
+Für Si sind die Scheibenintensitäten etwa 200- bis 600-mal genauer als
+mit den herkömmlichen 64 Strahlen, die Berechnung dauert aber je nach
+Bedingungen um ein Vielfaches länger (in Messungen ohne Symmetrie etwa
+20- bis 40-mal; ohne die MKL-Bibliothek nochmals etwa 4-mal). Die Anzahl
+der gebeugten Wellen ist dann die Basisanzahl der Strahlen (Standard 300).
 Nichtlokale Absorption wird nicht unterstützt; in diesem Fall oder bei
 zu wenig Speicher wird die herkömmliche Methode verwendet (der Grund
 steht in der Statusleiste).</value>
