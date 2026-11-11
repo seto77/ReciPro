@@ -109,7 +109,7 @@
 
 ![회절파](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- 베테 방법에서 사용하는 블로흐파의 최대 개수 (기본값 80). 고유값 문제의 비용은 파의 개수의 세제곱에 비례합니다. STEM ADF/HAADF 상을 수 % 이내로 정확하게 구하려면 약 500개가 필요합니다 (Si [001], 200 kV에서 80개는 약 10 %, 200개는 약 6 % 차이가 납니다). <!-- 261111Cl 追加: STEM の HAADF (TDS) の収束の実測 (Si [001] 200 kV、700 本を基準) -->
+- 베테 방법에서 사용하는 블로흐파의 최대 개수 (기본값 80). 고유값 문제의 비용은 파의 개수의 세제곱에 비례합니다. STEM ADF/HAADF 상의 기준: Si [001], 200 kV (40~120 mrad)에서 80개는 약 1.5 %, 200개는 약 0.5 % 차이가 납니다. 무거운 원소와 높은 검출기 각도 (SrTiO₃, 64~200 mrad)에서는 200개가 약 7 %, 500개가 약 1 % 차이가 납니다. <!-- 261111Cl 追加・変更: STEM の HAADF (TDS) の収束の実測 (|g| の順のビーム、Si [001] は和集合 1054 本・SrTiO₃ は 700 本を基準) -->
 
 ---
 

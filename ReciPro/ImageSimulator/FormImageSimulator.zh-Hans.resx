@@ -530,12 +530,12 @@
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>贝特法中使用的布洛赫波的最大数量。
 数值越大，计算速度越慢，但精度越高。
-若要使 STEM ADF/HAADF 像的精度达到百分之几，约需 500 个（Si [001]、200 kV：80 个时偏差约 10 %，200 个时约 6 %）。</value>
+STEM ADF/HAADF 像的参考：Si [001]、200 kV（40～120 mrad）时，80 个偏差约 1.5 %，200 个约 0.5 %；重元素且检测器角度高时（SrTiO₃，64～200 mrad），200 个偏差约 7 %，500 个约 1 %。</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>贝特法中使用的布洛赫波的最大数量。
 数值越大，计算速度越慢，但精度越高。
-若要使 STEM ADF/HAADF 像的精度达到百分之几，约需 500 个（Si [001]、200 kV：80 个时偏差约 10 %，200 个时约 6 %）。</value>
+STEM ADF/HAADF 像的参考：Si [001]、200 kV（40～120 mrad）时，80 个偏差约 1.5 %，200 个约 0.5 %；重元素且检测器角度高时（SrTiO₃，64～200 mrad），200 个偏差约 7 %，500 个约 1 %。</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>环形 STEM 探测器的外收集半角（mrad）；

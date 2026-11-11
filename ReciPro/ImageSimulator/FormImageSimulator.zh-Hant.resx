@@ -530,12 +530,12 @@ TDS（thermal diffuse scattering,
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Bethe 法中所使用的布洛赫波最大數目。
 數值越大計算速度越慢，但精度越高。
-若要使 STEM ADF/HAADF 像的精度達到百分之幾，約需 500 個（Si [001]、200 kV：80 個時偏差約 10 %，200 個時約 6 %）。</value>
+STEM ADF/HAADF 像的參考：Si [001]、200 kV（40～120 mrad）時，80 個偏差約 1.5 %，200 個約 0.5 %；重元素且偵測器角度高時（SrTiO₃，64～200 mrad），200 個偏差約 7 %，500 個約 1 %。</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Bethe 法中所使用的 Bloch 波最大數目。
 數值越大計算速度越慢，但精度越高。
-若要使 STEM ADF/HAADF 像的精度達到百分之幾，約需 500 個（Si [001]、200 kV：80 個時偏差約 10 %，200 個時約 6 %）。</value>
+STEM ADF/HAADF 像的參考：Si [001]、200 kV（40～120 mrad）時，80 個偏差約 1.5 %，200 個約 0.5 %；重元素且偵測器角度高時（SrTiO₃，64～200 mrad），200 個偏差約 7 %，500 個約 1 %。</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>環狀 STEM 偵測器的外側收集半角 (mrad)；

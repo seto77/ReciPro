@@ -112,7 +112,7 @@ The detector angles apply only to the STEM reference image (Elastic / TDS / Elas
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.resx:groupBoxDiffractedWaves.Text) -->
 ![Diffracted waves](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- Maximum number of Bloch waves used in the Bethe method (default 80). The eigenvalue-problem cost scales as the cube of the number of waves. For STEM ADF/HAADF images, about 500 are needed for an accuracy of a few percent (Si [001] at 200 kV: 80 is about 10 % off and 200 about 6 %). <!-- 261111Cl 追加: STEM の HAADF (TDS) の収束の実測 (Si [001] 200 kV、700 本を基準) -->
+- Maximum number of Bloch waves used in the Bethe method (default 80). The eigenvalue-problem cost scales as the cube of the number of waves. As a guide for STEM ADF/HAADF images: for Si [001] at 200 kV (40–120 mrad), 80 are about 1.5 % off and 200 about 0.5 %; with heavy atoms and high detector angles (SrTiO₃, 64–200 mrad), 200 are about 7 % off and 500 about 1 %. <!-- 261111Cl 追加・変更: STEM の HAADF (TDS) の収束の実測 (|g| の順のビーム、Si [001] は和集合 1054 本・SrTiO₃ は 700 本を基準) -->
 
 ---
 

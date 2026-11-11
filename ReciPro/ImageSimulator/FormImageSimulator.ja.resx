@@ -868,7 +868,7 @@ through-thickness シリーズ) を生成します。</value>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>ベーテ法で使用するブロッホ波の最大数。
 値が大きいほど計算速度は遅くなりますが、精度が向上します。
-STEM の ADF/HAADF 像を数 % より正確に求めるには 500 前後が必要です (Si [001]・200 kV で、80 では約 10 %、200 では約 6 % ずれます)。</value>
+STEM の ADF/HAADF 像の目安: Si [001]・200 kV (40〜120 mrad) で 80 では約 1.5 %、200 では約 0.5 % ずれます。重い元素・高い角度 (SrTiO₃、64〜200 mrad) では 200 で約 7 %、500 で約 1 % ずれます。</value>
   </data>
   <data name="groupBoxDiffractedWaves.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
