@@ -109,7 +109,7 @@ Les angles du détecteur ne s'appliquent qu'à l'image STEM de référence (Éla
 
 ![Ondes](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- Nombre maximal d'ondes de Bloch utilisées dans la méthode de Bethe (par défaut 80). Le coût du problème aux valeurs propres varie comme le cube du nombre d'ondes. À titre indicatif pour les images STEM ADF/HAADF : pour Si [001] à 200 kV (40–120 mrad), l'écart est d'environ 1,5 % avec 80 et 0,5 % avec 200 ; avec des atomes lourds et des angles de détecteur élevés (SrTiO₃, 64–200 mrad), il est d'environ 7 % avec 200 et 1 % avec 500. <!-- 261111Cl 追加・変更: STEM の HAADF (TDS) の収束の実測 (|g| の順のビーム、Si [001] は和集合 1054 本・SrTiO₃ は 700 本を基準) -->
+- Nombre maximal d'ondes de Bloch utilisées dans la méthode de Bethe (par défaut 80). Le coût du problème aux valeurs propres varie comme le cube du nombre d'ondes. À titre indicatif pour les images STEM ADF/HAADF : pour Si [001] à 200 kV (40–120 mrad), l'écart est d'environ 1,5 % avec 80 et 0,5 % avec 200 ; avec des atomes lourds et des angles de détecteur élevés (SrTiO₃, 64–200 mrad), il est d'environ 7 % avec 200 et 1 % avec 500. Les cristaux à grande maille (p. ex. orthopyroxène) et ceux dont l'anneau HOLZ tombe dans la plage angulaire du détecteur (p. ex. magnétite [001]) peuvent en nécessiter 1000 ou plus. <!-- 261111Cl 追加・変更: STEM の HAADF (TDS) の収束の実測 (|g| の順のビーム、Si [001] は和集合 1054 本・SrTiO₃ は 700 本を基準)。大きな単位胞・検出器の中の HOLZ の環の注意 (8 結晶の確かめ、STEM 設計書 §23) -->
 
 ---
 

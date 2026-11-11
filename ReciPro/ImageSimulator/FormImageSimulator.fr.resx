@@ -536,12 +536,12 @@ excitent de nombreux faisceaux diffractés intenses.
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Nombre maximal d'ondes de Bloch utilisées dans la méthode de Bethe.
 Des valeurs plus grandes ralentissent le calcul mais augmentent la précision.
-À titre indicatif pour les images STEM ADF/HAADF : pour Si [001] à 200 kV (40–120 mrad), l'écart est d'environ 1,5 % avec 80 et 0,5 % avec 200 ; avec des atomes lourds et des angles de détecteur élevés (SrTiO₃, 64–200 mrad), il est d'environ 7 % avec 200 et 1 % avec 500.</value>
+À titre indicatif pour les images STEM ADF/HAADF : pour Si [001] à 200 kV (40–120 mrad), l'écart est d'environ 1,5 % avec 80 et 0,5 % avec 200 ; avec des atomes lourds et des angles de détecteur élevés (SrTiO₃, 64–200 mrad), il est d'environ 7 % avec 200 et 1 % avec 500. Les cristaux à grande maille (p. ex. orthopyroxène) et ceux dont l'anneau HOLZ tombe dans la plage angulaire du détecteur (p. ex. magnétite [001]) peuvent en nécessiter 1000 ou plus.</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Nombre maximal d'ondes de Bloch utilisées dans la méthode de Bethe.
 Des valeurs plus grandes ralentissent le calcul mais augmentent la précision.
-À titre indicatif pour les images STEM ADF/HAADF : pour Si [001] à 200 kV (40–120 mrad), l'écart est d'environ 1,5 % avec 80 et 0,5 % avec 200 ; avec des atomes lourds et des angles de détecteur élevés (SrTiO₃, 64–200 mrad), il est d'environ 7 % avec 200 et 1 % avec 500.</value>
+À titre indicatif pour les images STEM ADF/HAADF : pour Si [001] à 200 kV (40–120 mrad), l'écart est d'environ 1,5 % avec 80 et 0,5 % avec 200 ; avec des atomes lourds et des angles de détecteur élevés (SrTiO₃, 64–200 mrad), il est d'environ 7 % avec 200 et 1 % avec 500. Les cristaux à grande maille (p. ex. orthopyroxène) et ceux dont l'anneau HOLZ tombe dans la plage angulaire du détecteur (p. ex. magnétite [001]) peuvent en nécessiter 1000 ou plus.</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Demi-angle de collecte externe du détecteur STEM

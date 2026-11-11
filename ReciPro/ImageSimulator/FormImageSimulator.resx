@@ -1258,7 +1258,7 @@ Electron Microscopy) image simulation.</value>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Maximum number of Bloch waves used in the Bethe's method.
 Larger values result in slower calculation speed but higher accuracy.
-As a guide for STEM ADF/HAADF images: for Si [001] at 200 kV (40–120 mrad), 80 are about 1.5 % off and 200 about 0.5 %; with heavy atoms and high detector angles (SrTiO₃, 64–200 mrad), 200 are about 7 % off and 500 about 1 %.</value>
+As a guide for STEM ADF/HAADF images: for Si [001] at 200 kV (40–120 mrad), 80 are about 1.5 % off and 200 about 0.5 %; with heavy atoms and high detector angles (SrTiO₃, 64–200 mrad), 200 are about 7 % off and 500 about 1 %. Crystals with large unit cells (e.g. orthopyroxene) and crystals whose HOLZ ring falls within the detector angles (e.g. magnetite [001]) may need 1000 or more.</value>
   </data>
   <data name="&gt;&gt;checkBoxIntensityMax.Parent" xml:space="preserve">
     <value>flowLayoutPanelIntensityRange</value>

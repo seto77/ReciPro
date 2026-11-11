@@ -530,12 +530,12 @@ TDS（thermal diffuse scattering,
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Bethe 法中所使用的布洛赫波最大數目。
 數值越大計算速度越慢，但精度越高。
-STEM ADF/HAADF 像的參考：Si [001]、200 kV（40～120 mrad）時，80 個偏差約 1.5 %，200 個約 0.5 %；重元素且偵測器角度高時（SrTiO₃，64～200 mrad），200 個偏差約 7 %，500 個約 1 %。</value>
+STEM ADF/HAADF 像的參考：Si [001]、200 kV（40～120 mrad）時，80 個偏差約 1.5 %，200 個約 0.5 %；重元素且偵測器角度高時（SrTiO₃，64～200 mrad），200 個偏差約 7 %，500 個約 1 %。晶胞較大的晶體（如斜方輝石）或 HOLZ 環落在偵測器角度範圍內的晶體（如磁鐵礦 [001]）可能需要 1000 個以上。</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Bethe 法中所使用的 Bloch 波最大數目。
 數值越大計算速度越慢，但精度越高。
-STEM ADF/HAADF 像的參考：Si [001]、200 kV（40～120 mrad）時，80 個偏差約 1.5 %，200 個約 0.5 %；重元素且偵測器角度高時（SrTiO₃，64～200 mrad），200 個偏差約 7 %，500 個約 1 %。</value>
+STEM ADF/HAADF 像的參考：Si [001]、200 kV（40～120 mrad）時，80 個偏差約 1.5 %，200 個約 0.5 %；重元素且偵測器角度高時（SrTiO₃，64～200 mrad），200 個偏差約 7 %，500 個約 1 %。晶胞較大的晶體（如斜方輝石）或 HOLZ 環落在偵測器角度範圍內的晶體（如磁鐵礦 [001]）可能需要 1000 個以上。</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>環狀 STEM 偵測器的外側收集半角 (mrad)；

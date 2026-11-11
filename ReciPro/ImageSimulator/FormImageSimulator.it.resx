@@ -521,12 +521,12 @@ eccitano molti fasci diffratti intensi.
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Numero massimo di onde di Bloch usate nel metodo di Bethe.
 Valori maggiori comportano un calcolo più lento ma una maggiore accuratezza.
-Come riferimento per le immagini STEM ADF/HAADF: per Si [001] a 200 kV (40–120 mrad) lo scarto è di circa l'1,5 % con 80 e lo 0,5 % con 200; con atomi pesanti e angoli del rivelatore elevati (SrTiO₃, 64–200 mrad) è di circa il 7 % con 200 e l'1 % con 500.</value>
+Come riferimento per le immagini STEM ADF/HAADF: per Si [001] a 200 kV (40–120 mrad) lo scarto è di circa l'1,5 % con 80 e lo 0,5 % con 200; con atomi pesanti e angoli del rivelatore elevati (SrTiO₃, 64–200 mrad) è di circa il 7 % con 200 e l'1 % con 500. I cristalli con cella elementare grande (ad es. ortopirosseno) e quelli il cui anello HOLZ cade negli angoli del rivelatore (ad es. magnetite [001]) possono richiederne 1000 o più.</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Numero massimo di onde di Bloch usate nel metodo di Bethe.
 Valori maggiori comportano un calcolo più lento ma una maggiore accuratezza.
-Come riferimento per le immagini STEM ADF/HAADF: per Si [001] a 200 kV (40–120 mrad) lo scarto è di circa l'1,5 % con 80 e lo 0,5 % con 200; con atomi pesanti e angoli del rivelatore elevati (SrTiO₃, 64–200 mrad) è di circa il 7 % con 200 e l'1 % con 500.</value>
+Come riferimento per le immagini STEM ADF/HAADF: per Si [001] a 200 kV (40–120 mrad) lo scarto è di circa l'1,5 % con 80 e lo 0,5 % con 200; con atomi pesanti e angoli del rivelatore elevati (SrTiO₃, 64–200 mrad) è di circa il 7 % con 200 e l'1 % con 500. I cristalli con cella elementare grande (ad es. ortopirosseno) e quelli il cui anello HOLZ cade negli angoli del rivelatore (ad es. magnetite [001]) possono richiederne 1000 o più.</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Semiangolo di raccolta esterno del rivelatore STEM

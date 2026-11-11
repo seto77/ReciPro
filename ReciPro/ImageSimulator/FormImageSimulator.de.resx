@@ -539,12 +539,12 @@ viele starke gebeugte Strahlen anregen.
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Maximale Anzahl der in der Bethe-Methode verwendeten Bloch-Wellen.
 Größere Werte führen zu langsamerer Berechnungsgeschwindigkeit, aber höherer Genauigkeit.
-Richtwert für STEM-ADF/HAADF-Bilder: Für Si [001] bei 200 kV (40–120 mrad) weichen 80 um etwa 1,5 % und 200 um etwa 0,5 % ab; bei schweren Atomen und hohen Detektorwinkeln (SrTiO₃, 64–200 mrad) 200 um etwa 7 % und 500 um etwa 1 %.</value>
+Richtwert für STEM-ADF/HAADF-Bilder: Für Si [001] bei 200 kV (40–120 mrad) weichen 80 um etwa 1,5 % und 200 um etwa 0,5 % ab; bei schweren Atomen und hohen Detektorwinkeln (SrTiO₃, 64–200 mrad) 200 um etwa 7 % und 500 um etwa 1 %. Kristalle mit großen Elementarzellen (z. B. Orthopyroxen) und Kristalle, deren HOLZ-Ring in den Winkelbereich des Detektors fällt (z. B. Magnetit [001]), können 1000 oder mehr benötigen.</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Maximale Anzahl der in der Bethe-Methode verwendeten Bloch-Wellen.
 Größere Werte führen zu langsamerer Berechnungsgeschwindigkeit, aber höherer Genauigkeit.
-Richtwert für STEM-ADF/HAADF-Bilder: Für Si [001] bei 200 kV (40–120 mrad) weichen 80 um etwa 1,5 % und 200 um etwa 0,5 % ab; bei schweren Atomen und hohen Detektorwinkeln (SrTiO₃, 64–200 mrad) 200 um etwa 7 % und 500 um etwa 1 %.</value>
+Richtwert für STEM-ADF/HAADF-Bilder: Für Si [001] bei 200 kV (40–120 mrad) weichen 80 um etwa 1,5 % und 200 um etwa 0,5 % ab; bei schweren Atomen und hohen Detektorwinkeln (SrTiO₃, 64–200 mrad) 200 um etwa 7 % und 500 um etwa 1 %. Kristalle mit großen Elementarzellen (z. B. Orthopyroxen) und Kristalle, deren HOLZ-Ring in den Winkelbereich des Detektors fällt (z. B. Magnetit [001]), können 1000 oder mehr benötigen.</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Äußerer Sammel-Halbwinkel des ringförmigen STEM-

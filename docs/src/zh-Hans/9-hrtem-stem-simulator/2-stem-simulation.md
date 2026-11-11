@@ -109,7 +109,7 @@
 
 ![衍射波](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- Bethe 方法中使用的布洛赫波最大数量（默认 80）。本征值问题的计算量按波数的立方增长。STEM ADF/HAADF 像的参考：Si [001]、200 kV（40～120 mrad）时，80 个偏差约 1.5 %，200 个约 0.5 %；重元素且检测器角度高时（SrTiO₃，64～200 mrad），200 个偏差约 7 %，500 个约 1 %。 <!-- 261111Cl 追加・変更: STEM の HAADF (TDS) の収束の実測 (|g| の順のビーム、Si [001] は和集合 1054 本・SrTiO₃ は 700 本を基準) -->
+- Bethe 方法中使用的布洛赫波最大数量（默认 80）。本征值问题的计算量按波数的立方增长。STEM ADF/HAADF 像的参考：Si [001]、200 kV（40～120 mrad）时，80 个偏差约 1.5 %，200 个约 0.5 %；重元素且检测器角度高时（SrTiO₃，64～200 mrad），200 个偏差约 7 %，500 个约 1 %。晶胞较大的晶体（如斜方辉石）或 HOLZ 环落在检测器角度范围内的晶体（如磁铁矿 [001]）可能需要 1000 个以上。 <!-- 261111Cl 追加・変更: STEM の HAADF (TDS) の収束の実測 (|g| の順のビーム、Si [001] は和集合 1054 本・SrTiO₃ は 700 本を基準)。大きな単位胞・検出器の中の HOLZ の環の注意 (8 結晶の確かめ、STEM 設計書 §23) -->
 
 ---
 

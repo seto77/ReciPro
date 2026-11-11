@@ -539,12 +539,12 @@ excitam muitos feixes difratados intensos.
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Número máximo de ondas de Bloch usadas no método de Bethe.
 Valores maiores resultam em menor velocidade de cálculo, porém maior precisão.
-Como referência para imagens STEM ADF/HAADF: para Si [001] a 200 kV (40–120 mrad), o desvio é de cerca de 1,5 % com 80 e 0,5 % com 200; com átomos pesados e ângulos de detector altos (SrTiO₃, 64–200 mrad), é de cerca de 7 % com 200 e 1 % com 500.</value>
+Como referência para imagens STEM ADF/HAADF: para Si [001] a 200 kV (40–120 mrad), o desvio é de cerca de 1,5 % com 80 e 0,5 % com 200; com átomos pesados e ângulos de detector altos (SrTiO₃, 64–200 mrad), é de cerca de 7 % com 200 e 1 % com 500. Cristais com célula unitária grande (p. ex., ortopiroxênio) e cristais cujo anel HOLZ cai dentro dos ângulos do detector (p. ex., magnetita [001]) podem precisar de 1000 ou mais.</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Número máximo de ondas de Bloch usadas no método de Bethe.
 Valores maiores resultam em menor velocidade de cálculo, porém maior precisão.
-Como referência para imagens STEM ADF/HAADF: para Si [001] a 200 kV (40–120 mrad), o desvio é de cerca de 1,5 % com 80 e 0,5 % com 200; com átomos pesados e ângulos de detector altos (SrTiO₃, 64–200 mrad), é de cerca de 7 % com 200 e 1 % com 500.</value>
+Como referência para imagens STEM ADF/HAADF: para Si [001] a 200 kV (40–120 mrad), o desvio é de cerca de 1,5 % com 80 e 0,5 % com 200; com átomos pesados e ângulos de detector altos (SrTiO₃, 64–200 mrad), é de cerca de 7 % com 200 e 1 % com 500. Cristais com célula unitária grande (p. ex., ortopiroxênio) e cristais cujo anel HOLZ cai dentro dos ângulos do detector (p. ex., magnetita [001]) podem precisar de 1000 ou mais.</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Semiângulo externo de coleta do detector anular STEM
