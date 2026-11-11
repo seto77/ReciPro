@@ -538,11 +538,13 @@ excitam muitos feixes difratados intensos.
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Número máximo de ondas de Bloch usadas no método de Bethe.
-Valores maiores resultam em menor velocidade de cálculo, porém maior precisão.</value>
+Valores maiores resultam em menor velocidade de cálculo, porém maior precisão.
+Para imagens STEM ADF/HAADF são necessárias cerca de 500 para uma precisão de poucos por cento (Si [001] a 200 kV: com 80 o desvio é de cerca de 10 % e com 200 de cerca de 6 %).</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Número máximo de ondas de Bloch usadas no método de Bethe.
-Valores maiores resultam em menor velocidade de cálculo, porém maior precisão.</value>
+Valores maiores resultam em menor velocidade de cálculo, porém maior precisão.
+Para imagens STEM ADF/HAADF são necessárias cerca de 500 para uma precisão de poucos por cento (Si [001] a 200 kV: com 80 o desvio é de cerca de 10 % e com 200 de cerca de 6 %).</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Semiângulo externo de coleta do detector anular STEM

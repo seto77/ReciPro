@@ -109,7 +109,7 @@ Gli angoli del rivelatore si applicano solo all'immagine STEM di riferimento (El
 
 ![Onde](../../assets/cap-it-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- Numero massimo di onde di Bloch utilizzate nel metodo di Bethe (predefinito 80). Il costo del problema agli autovalori scala con il cubo del numero di onde.
+- Numero massimo di onde di Bloch utilizzate nel metodo di Bethe (predefinito 80). Il costo del problema agli autovalori scala con il cubo del numero di onde. Per le immagini STEM ADF/HAADF ne servono circa 500 per un'accuratezza di pochi punti percentuali (Si [001] a 200 kV: con 80 lo scarto è di circa il 10 %, con 200 di circa il 6 %). <!-- 261111Cl 追加: STEM の HAADF (TDS) の収束の実測 (Si [001] 200 kV、700 本を基準) -->
 
 ---
 

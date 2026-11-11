@@ -111,7 +111,7 @@ STEM像は、収束した電子ビームを試料上で走査し、各位置で�
 
 ![回折波の数](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- ベーテ法で使用するブロッホ波の最大数（既定 80）。固有値問題のコストは波数の3乗に比例します。
+- ベーテ法で使用するブロッホ波の最大数（既定 80）。固有値問題のコストは波数の3乗に比例します。STEM の ADF/HAADF 像を数 % より正確に求めるには 500 前後が必要です (Si [001]・200 kV で、80 では約 10 %、200 では約 6 % ずれます)。 <!-- 261111Cl 追加: STEM の HAADF (TDS) の収束の実測 (Si [001] 200 kV、700 本を基準) -->
 
 ---
 

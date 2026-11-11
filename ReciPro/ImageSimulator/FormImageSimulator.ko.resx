@@ -532,11 +532,13 @@ scattering, 열 확산 산란에 의한 비탄성)
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>베테 방법에서 사용하는 블로흐파의 최대 개수입니다.
-값이 클수록 계산 속도는 느려지지만 정확도는 높아집니다.</value>
+값이 클수록 계산 속도는 느려지지만 정확도는 높아집니다.
+STEM ADF/HAADF 상을 수 % 이내로 정확하게 구하려면 약 500개가 필요합니다 (Si [001], 200 kV에서 80개는 약 10 %, 200개는 약 6 % 차이가 납니다).</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>베테 방법에서 사용하는 블로흐 파의 최대 개수입니다.
-값이 클수록 계산 속도는 느려지지만 정확도는 높아집니다.</value>
+값이 클수록 계산 속도는 느려지지만 정확도는 높아집니다.
+STEM ADF/HAADF 상을 수 % 이내로 정확하게 구하려면 약 500개가 필요합니다 (Si [001], 200 kV에서 80개는 약 10 %, 200개는 약 6 % 차이가 납니다).</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>환형 STEM 검출기의 외측 수집 반각(mrad)입니다.

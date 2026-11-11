@@ -109,7 +109,7 @@
 
 ![衍射波](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- Bethe 方法中使用的布洛赫波最大数量（默认 80）。本征值问题的计算量按波数的立方增长。
+- Bethe 方法中使用的布洛赫波最大数量（默认 80）。本征值问题的计算量按波数的立方增长。若要使 STEM ADF/HAADF 像的精度达到百分之几，约需 500 个（Si [001]、200 kV：80 个时偏差约 10 %，200 个时约 6 %）。 <!-- 261111Cl 追加: STEM の HAADF (TDS) の収束の実測 (Si [001] 200 kV、700 本を基準) -->
 
 ---
 

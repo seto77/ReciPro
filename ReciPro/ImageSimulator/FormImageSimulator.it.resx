@@ -520,11 +520,13 @@ eccitano molti fasci diffratti intensi.
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Numero massimo di onde di Bloch usate nel metodo di Bethe.
-Valori maggiori comportano un calcolo più lento ma una maggiore accuratezza.</value>
+Valori maggiori comportano un calcolo più lento ma una maggiore accuratezza.
+Per le immagini STEM ADF/HAADF ne servono circa 500 per un'accuratezza di pochi punti percentuali (Si [001] a 200 kV: con 80 lo scarto è di circa il 10 %, con 200 di circa il 6 %).</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Numero massimo di onde di Bloch usate nel metodo di Bethe.
-Valori maggiori comportano un calcolo più lento ma una maggiore accuratezza.</value>
+Valori maggiori comportano un calcolo più lento ma una maggiore accuratezza.
+Per le immagini STEM ADF/HAADF ne servono circa 500 per un'accuratezza di pochi punti percentuali (Si [001] a 200 kV: con 80 lo scarto è di circa il 10 %, con 200 di circa il 6 %).</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Semiangolo di raccolta esterno del rivelatore STEM

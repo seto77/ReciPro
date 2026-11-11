@@ -1257,7 +1257,8 @@ Electron Microscopy) image simulation.</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Maximum number of Bloch waves used in the Bethe's method.
-Larger values result in slower calculation speed but higher accuracy.</value>
+Larger values result in slower calculation speed but higher accuracy.
+For STEM ADF/HAADF images, about 500 are needed for an accuracy of a few percent (Si [001] at 200 kV: 80 is about 10 % off and 200 about 6 %).</value>
   </data>
   <data name="&gt;&gt;checkBoxIntensityMax.Parent" xml:space="preserve">
     <value>flowLayoutPanelIntensityRange</value>

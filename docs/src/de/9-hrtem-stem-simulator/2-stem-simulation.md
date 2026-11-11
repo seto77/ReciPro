@@ -109,7 +109,7 @@ Die Detektorwinkel gelten nur für das STEM-Referenzbild (Elast. / TDS / Elast. 
 
 ![Wellen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- Maximale Anzahl der in der Bethe-Methode verwendeten Bloch-Wellen (Standard 80). Der Aufwand des Eigenwertproblems skaliert mit der dritten Potenz der Wellenanzahl.
+- Maximale Anzahl der in der Bethe-Methode verwendeten Bloch-Wellen (Standard 80). Der Aufwand des Eigenwertproblems skaliert mit der dritten Potenz der Wellenanzahl. Für STEM-ADF/HAADF-Bilder sind für eine Genauigkeit von wenigen Prozent etwa 500 nötig (Si [001] bei 200 kV: mit 80 etwa 10 % Abweichung, mit 200 etwa 6 %). <!-- 261111Cl 追加: STEM の HAADF (TDS) の収束の実測 (Si [001] 200 kV、700 本を基準) -->
 
 ---
 

@@ -109,7 +109,7 @@ Los ángulos del detector solo se aplican a la imagen STEM de referencia (Elást
 
 ![Ondas](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- Número máximo de ondas de Bloch usadas en el método de Bethe (predeterminado 80). El coste del problema de valores propios escala con el cubo del número de ondas.
+- Número máximo de ondas de Bloch usadas en el método de Bethe (predeterminado 80). El coste del problema de valores propios escala con el cubo del número de ondas. Para imágenes STEM ADF/HAADF se necesitan unas 500 para una precisión de pocos por ciento (Si [001] a 200 kV: con 80 la desviación es de un 10 % y con 200 de un 6 %). <!-- 261111Cl 追加: STEM の HAADF (TDS) の収束の実測 (Si [001] 200 kV、700 本を基準) -->
 
 ---
 

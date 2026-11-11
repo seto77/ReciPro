@@ -535,11 +535,13 @@ excitent de nombreux faisceaux diffractés intenses.
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Nombre maximal d'ondes de Bloch utilisées dans la méthode de Bethe.
-Des valeurs plus grandes ralentissent le calcul mais augmentent la précision.</value>
+Des valeurs plus grandes ralentissent le calcul mais augmentent la précision.
+Pour les images STEM ADF/HAADF, environ 500 sont nécessaires pour une précision de quelques pour cent (Si [001] à 200 kV : environ 10 % d'écart avec 80 et 6 % avec 200).</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Nombre maximal d'ondes de Bloch utilisées dans la méthode de Bethe.
-Des valeurs plus grandes ralentissent le calcul mais augmentent la précision.</value>
+Des valeurs plus grandes ralentissent le calcul mais augmentent la précision.
+Pour les images STEM ADF/HAADF, environ 500 sont nécessaires pour une précision de quelques pour cent (Si [001] à 200 kV : environ 10 % d'écart avec 80 et 6 % avec 200).</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Demi-angle de collecte externe du détecteur STEM
