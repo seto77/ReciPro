@@ -25,8 +25,11 @@ namespace ReciPro;
 public partial class FormMain : FormBase
 {
     #region LibraryImport
-    [DllImport("user32")]
-    private static extern short GetAsyncKeyState(int nVirtKey);
+    // 261111Cl 変更: [DllImport] (実行時に IL スタブを生成) を [LibraryImport] (コンパイル時にソース生成) へ。シグネチャ・呼ぶ関数は同じ
+    //[DllImport("user32")] // 261111Cl 変更前
+    //private static extern short GetAsyncKeyState(int nVirtKey);
+    [LibraryImport("user32")]
+    private static partial short GetAsyncKeyState(int nVirtKey);
     #endregion
 
     #region クリップボード監視
@@ -35,14 +38,21 @@ public partial class FormMain : FormBase
     private const int WM_DRAWCLIPBOARD = 0x0308;
     private const int WM_CHANGECBCHAIN = 0x030D;
 
-    [DllImport("user32")]
-    private static extern IntPtr SetClipboardViewer(IntPtr hWndNewViewer);
+    //[DllImport("user32")] // 261111Cl 変更前
+    //private static extern IntPtr SetClipboardViewer(IntPtr hWndNewViewer);
+    [LibraryImport("user32")] // 261111Cl 変更
+    private static partial IntPtr SetClipboardViewer(IntPtr hWndNewViewer);
 
-    [DllImport("user32")]
-    private static extern bool ChangeClipboardChain(IntPtr hWndRemove, IntPtr hWndNewNext);
+    //[DllImport("user32")] // 261111Cl 変更前
+    //private static extern bool ChangeClipboardChain(IntPtr hWndRemove, IntPtr hWndNewNext);
+    [LibraryImport("user32")] // 261111Cl 変更: bool は DllImport の既定と同じ 4 バイトの BOOL
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static partial bool ChangeClipboardChain(IntPtr hWndRemove, IntPtr hWndNewNext);
 
-    [DllImport("user32", CharSet = CharSet.Auto)]
-    private extern static int SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
+    //[DllImport("user32", CharSet = CharSet.Auto)] // 261111Cl 変更前
+    //private extern static int SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
+    [LibraryImport("user32", EntryPoint = "SendMessageW")] // 261111Cl 変更: CharSet.Auto (Windows では Unicode) が選んでいた W 版を明示 (LibraryImport は A/W を探さない)
+    private static partial int SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
 
     protected override void WndProc(ref System.Windows.Forms.Message msg)
     {
@@ -1398,11 +1408,16 @@ public partial class FormMain : FormBase
         // 260428Cl Application.DoEvents() を削除
     }
 
-    [DllImport("USER32.DLL", CharSet = CharSet.Unicode)]
-    public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+    //[DllImport("USER32.DLL", CharSet = CharSet.Unicode)] // 261111Cl 変更前
+    //public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+    [LibraryImport("USER32.DLL", EntryPoint = "FindWindowW", StringMarshalling = StringMarshalling.Utf16)] // 261111Cl 変更: CharSet.Unicode が選んでいた W 版を明示
+    public static partial IntPtr FindWindow(string lpClassName, string lpWindowName);
 
-    [DllImport("USER32.DLL")]
-    public static extern bool SetForegroundWindow(IntPtr hWnd);
+    //[DllImport("USER32.DLL")] // 261111Cl 変更前
+    //public static extern bool SetForegroundWindow(IntPtr hWnd);
+    [LibraryImport("USER32.DLL")] // 261111Cl 変更
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static partial bool SetForegroundWindow(IntPtr hWnd);
     private void ButtonAdd_Click(object sender, EventArgs e)
     {
 
@@ -2201,8 +2216,11 @@ public partial class FormMain : FormBase
 
     //260317Cl WebClient→HttpClient (ProgramUpdates.DownloadFileWithProgressAsync使用)
     //private void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+    private bool checkingUpdates; // 261111Cl 追加: 確認中の二重起動を防ぐ (旧は確認中 UI が止まっていたので二重には起きなかった)
+
     private async void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
     {
+        if (checkingUpdates) return; // 261111Cl 追加
         toolStripProgressBar.Visible = !IsPortable; //260805Cl 変更: portable はダウンロード進捗が無い (旧: = true)
 
         //260613Cl アセット改名 (作者決定): 新クライアントは新名称 (ReciPro-setup.msi / ReciPro-setup_arm64.msi) を明示参照する。
@@ -2210,7 +2228,14 @@ public partial class FormMain : FormBase
         //         自動更新互換のため release に同一バイトのコピーとして数年間併置される (release.yml)
         var installerAsset = RuntimeInformation.ProcessArchitecture == Architecture.Arm64 ? "ReciPro-setup_arm64.msi" : "ReciPro-setup.msi";
         //260805Cl IsPortable 引数追加: Portable ZIP 版は新版があってもインストーラを DL せず、最新リリースページを案内する
-        (var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate, installerAsset, IsPortable);
+        //(var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate, installerAsset, IsPortable); // 261111Cl 変更前
+        // 261111Cl 変更: Check は内部で .Result (同期の HTTP 待ち) を使うので、UI スレッドで呼ぶと通信中ずっと画面が止まっていた。
+        //  Check は UI に触れない (結果の文字列を返すだけ。メッセージ表示は下のこのメソッド) ので、スレッドプールで呼んで待つ
+        checkingUpdates = true;
+        (string Title, string Message, bool NeedUpdate, string URL, string Path) result;
+        try { result = await Task.Run(() => ProgramUpdates.Check(Version.Software, Version.VersionAndDate, installerAsset, IsPortable)); }
+        finally { checkingUpdates = false; }
+        (var Title, var Message, var NeedUpdate, var URL, var Path) = result;
 
         if (!NeedUpdate)
             MessageBox.Show(Message, Title, MessageBoxButtons.OK);

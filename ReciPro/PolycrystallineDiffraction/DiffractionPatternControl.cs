@@ -153,7 +153,7 @@ public partial class DiffractionPatternControl : UserControlBase
     /// <summary>イメージの傾き</summary>
     public Matrix3D Rotation => Matrix3D.Rot(new Vector3D(Math.Cos(Phi), Math.Sin(Phi), 0), Tau);
 
-    private delegate void callBack();
+    //private delegate void callBack(); // 261111Cl 削除: 下の Invoke はラムダ (Action) に
 
     private PointD center;
 
@@ -165,7 +165,8 @@ public partial class DiffractionPatternControl : UserControlBase
         {
             if (this.InvokeRequired)//別スレッドから呼び出されたとき
             {
-                this.Invoke(new callBack(delegate { Center = value; }));
+                //this.Invoke(new callBack(delegate { Center = value; })); // 261111Cl 変更前
+                this.Invoke(() => Center = value); // 261111Cl 変更
                 return;
             }
 
@@ -242,7 +243,8 @@ public partial class DiffractionPatternControl : UserControlBase
         {
             if (this.InvokeRequired)//別スレッドから呼び出されたとき
             {
-                this.Invoke(new callBack(delegate { FilmBlur = value; }));
+                //this.Invoke(new callBack(delegate { FilmBlur = value; })); // 261111Cl 変更前
+                this.Invoke(() => FilmBlur = value); // 261111Cl 変更
                 return;
             }
             numericBoxFilmBlur.Value = value;
@@ -365,39 +367,69 @@ public partial class DiffractionPatternControl : UserControlBase
     private Profile setFrequencyProfile(double[] pixels)
     {
         if (pixels == null || pixels.Length == 0) return null;
-        var frequency = new SortedList<uint, int>();//260718Cl: 旧 BeginInvoke 実装の残骸コメントと new 直後の Clear() を掃除
+        #region 261111Cl 変更前
+        //var frequency = new SortedList<uint, int>();//260718Cl: 旧 BeginInvoke 実装の残骸コメントと new 直後の Clear() を掃除
+        //int thread = 16;
+        //SortedList<uint, int> calcFreqDelegate(int start, int end)
+        //{
+        //    var freq = new SortedList<uint, int>();
+        //    for (int j = start; j < end; j++)
+        //    {
+        //        if (!Filter[j])
+        //        {
+        //            uint value;
+        //            value = (uint)(Math.Pow(1.003, Math.Round(Math.Log(pixels[j], 1.003))));
+        //
+        //            //260317Cl 変更: ContainsKey+indexer → TryGetValue
+        //            if (freq.TryGetValue(value, out var fv))
+        //                freq[value] = fv + 1;
+        //            else
+        //                freq.Add(value, 1);
+        //        }
+        //    }
+        //    return freq;
+        //};
+        //Parallel.For(0, thread, i =>
+        //{
+        //    var temp = calcFreqDelegate(pixels.Length / thread * i, Math.Min(pixels.Length / thread * (i + 1), pixels.Length));
+        //    lock (lockObj)
+        //    {
+        //        foreach (uint j in temp.Keys)
+        //            if (frequency.TryGetValue(j, out int value))
+        //                frequency[j] += temp[j];
+        //            else
+        //                frequency.Add(j, temp[j]);//260717Cl 修正: 初出キーの度数が out 既定値 0 で登録されていた
+        //    }
+        //});
+        #endregion
+        // 261111Cl 変更: 画素ごとの Pow と SortedList (二分探索) をやめ、ビン番号 r = Round(log_1.003 pixel) の度数を int 配列に数えて、
+        //  キー (uint)1.003^r は最後に r ごとに 1 回だけ旧と同じ式で求める。分割 (16 等分・端数の画素は数えない) と Log・Round の式は旧と同じ。
+        //  r < 0 (−∞ を含む) のキーは 1.003^r < 1 なので 0、r > rMax (+∞ を含む) は uint.MaxValue に飽和、NaN は (uint)NaN (= 0) で、どれも旧と同じ値
         int thread = 16;
-        SortedList<uint, int> calcFreqDelegate(int start, int end)
+        const int rMax = 8000; // 1.003^8000 ≈ 2.5e10 > uint.MaxValue
+        // total[0]: r < 0、total[1 + r]: 0 ≤ r ≤ rMax、total[rMax + 2]: r > rMax、total[rMax + 3]: NaN
+        var total = new int[rMax + 4];
+        int chunk = pixels.Length / thread;
+        Parallel.For(0, thread, () => new int[rMax + 4], (i, _, counts) =>
         {
-            var freq = new SortedList<uint, int>();
-            for (int j = start; j < end; j++)
-            {
+            for (int j = chunk * i; j < chunk * (i + 1); j++)
                 if (!Filter[j])
                 {
-                    uint value;
-                    value = (uint)(Math.Pow(1.003, Math.Round(Math.Log(pixels[j], 1.003))));
-
-                    //260317Cl 変更: ContainsKey+indexer → TryGetValue
-                    if (freq.TryGetValue(value, out var fv))
-                        freq[value] = fv + 1;
-                    else
-                        freq.Add(value, 1);
+                    var r = Math.Round(Math.Log(pixels[j], 1.003));
+                    if (r >= 0) counts[r <= rMax ? 1 + (int)r : rMax + 2]++;
+                    else if (r < 0) counts[0]++;
+                    else counts[rMax + 3]++; // NaN
                 }
-            }
-            return freq;
-        };
-        Parallel.For(0, thread, i =>
-        {
-            var temp = calcFreqDelegate(pixels.Length / thread * i, Math.Min(pixels.Length / thread * (i + 1), pixels.Length));
-            lock (lockObj)
+            return counts;
+        }, counts => { lock (lockObj) for (int k = 0; k < total.Length; k++) total[k] += counts[k]; });
+        var frequency = new SortedList<uint, int>();
+        for (int k = 0; k < total.Length; k++)
+            if (total[k] > 0)
             {
-                foreach (uint j in temp.Keys)
-                    if (frequency.TryGetValue(j, out int value))
-                        frequency[j] += temp[j];
-                    else
-                        frequency.Add(j, temp[j]);//260717Cl 修正: 初出キーの度数が out 既定値 0 で登録されていた
+                double r = k == 0 ? -1 : k <= rMax + 1 ? k - 1 : k == rMax + 2 ? double.PositiveInfinity : double.NaN;
+                var key = (uint)Math.Pow(1.003, r);
+                frequency[key] = frequency.GetValueOrDefault(key) + total[k];
             }
-        });
         Profile p = new Profile();
         for (int i = 0; i < frequency.Count; i++)
             p.Pt.Add(new PointD(frequency.Keys[i], frequency[frequency.Keys[i]]));
@@ -1120,13 +1152,16 @@ public partial class DiffractionPatternControl : UserControlBase
             double[] residualDiffrence2 = new double[ImageHeight];
             Parallel.For(10, ImageHeight - 10, y =>
             {
+                double acc = 0; // 261111Cl 追加: 共有配列 residualDiffrence2[y] を画素ごとに読み書きせず、ローカルに足して最後に 1 回書く (加算順は同じ)
                 for (int i = y * ImageWidth + 10; i < y * ImageWidth + ImageWidth - 10; i++)
                     if (!Filter[i] && DiffractionPixels[i] != 0)
                     {
                         double temp1 = DiffractionPixels[i] * ScaleFactor + BackgroundPixels[i] - SrcPixels[i];
                         double temp2 = temp1 - DiffractionPixels[i] * lpo_ratio * ScaleFactor;
-                        residualDiffrence2[y] += (temp2 * temp2 - temp1 * temp1) * Weight[i];
+                        //residualDiffrence2[y] += (temp2 * temp2 - temp1 * temp1) * Weight[i]; // 261111Cl 変更前
+                        acc += (temp2 * temp2 - temp1 * temp1) * Weight[i]; // 261111Cl 変更
                     }
+                residualDiffrence2[y] = acc; // 261111Cl 追加
             });
             lpo_residual = residualDiffrence2.Sum();
         }
@@ -1138,13 +1173,16 @@ public partial class DiffractionPatternControl : UserControlBase
 
         Parallel.For(10, ImageHeight - 10, y =>
         {
+            double acc = 0; // 261111Cl 追加: ローカルに足して最後に 1 回書く (上と同じ)
             for (int i = y * ImageWidth + 10; i < y * ImageWidth + ImageWidth - 10; i++)
                 if (!Filter[i] && DiffractionPixelsTemp[i] != 0)
                 {
                     double temp1 = DiffractionPixels[i] * (1 - lpo_ratio) * ScaleFactor + BackgroundPixels[i] - SrcPixels[i];
                     double temp2 = temp1 + DiffractionPixelsTemp[i] * ScaleFactor;
-                    residualDiffrence[y] += (temp2 * temp2 - temp1 * temp1) * Weight[i];
+                    //residualDiffrence[y] += (temp2 * temp2 - temp1 * temp1) * Weight[i]; // 261111Cl 変更前
+                    acc += (temp2 * temp2 - temp1 * temp1) * Weight[i]; // 261111Cl 変更
                 }
+            residualDiffrence[y] = acc; // 261111Cl 追加
         });
         return residualDiffrence.Sum() + lpo_residual;
     }
@@ -1184,33 +1222,101 @@ public partial class DiffractionPatternControl : UserControlBase
         }
         else
         {
-            blur = new double[limit];
+            #region 261111Cl 変更前
+            //blur = new double[limit];
+            //for (int h = 0; h < limit; h++)
+            //    blur[h] = Math.Exp(-(h - center) * (h - center) / filmBlurPixel / filmBlurPixel * Math.Log(2));
+            //double sum = blur.Sum();
+            //for (int i = 0; i < blur.Length; i++)
+            //    blur[i] /= sum;
+            //
+            //double[] pixelsFilmBlur1 = new double[ImageWidth * ImageHeight];
+            //
+            //Parallel.For(0, ImageWidth, w =>
+            //{
+            //    for (int h = 0; h < ImageHeight; h++)
+            //        if (pixels[h * ImageWidth + w] != 0)
+            //            for (int n = Math.Max(0, center - h); n < Math.Min(blur.Length, ImageHeight - h + center); n++)
+            //                pixelsFilmBlur1[(h - center + n) * ImageWidth + w] += blur[n] * pixels[h * ImageWidth + w];
+            //});
+            //
+            //double[] pixelsFilmBlur2 = new double[ImageWidth * ImageHeight];
+            //Parallel.For(0, ImageHeight, h =>
+            //{
+            //    for (int w = 0; w < ImageWidth; w++)
+            //        if (pixelsFilmBlur1[h * ImageWidth + w] != 0)
+            //            for (int n = Math.Max(0, center - w); n < Math.Min(blur.Length, ImageWidth - w + center); n++)
+            //                pixelsFilmBlur2[h * ImageWidth + w - center + n] += blur[n] * pixelsFilmBlur1[h * ImageWidth + w];
+            //});
+            //
+            //return pixelsFilmBlur2;
+            #endregion
+
+            // 261111Cl 変更: 1 段目 (縦) は列ごとに行ストライドで散布していた (キャッシュに不利)。両段とも「出力の行ごとに集める」形にし、
+            //  行方向に Vector<double> で積和する。出力 1 画素への寄与は旧と同じ順 (入力の行・列の昇順) に、同じ積を、乗算と加算を分けて足すので結果はビット一致
+            //  (旧は 0 画素を飛ばしていたが、0 を足しても和は変わらない。比較ハーネスで 64 通りビット一致を確認)。
+            //  中間バッファは ArrayPool から借りて使い回す (UI スレッドと LPO のワーカーから同時に呼ばれうるので、フィールドには持たない)。
+            //  にじみの核はローカル変数で持つ (旧はフィールド blur を同時の呼び出しが差し替えうる)
+            var kernel = new double[limit];
             for (int h = 0; h < limit; h++)
-                blur[h] = Math.Exp(-(h - center) * (h - center) / filmBlurPixel / filmBlurPixel * Math.Log(2));
-            double sum = blur.Sum();
-            for (int i = 0; i < blur.Length; i++)
-                blur[i] /= sum;
+                kernel[h] = Math.Exp(-(h - center) * (h - center) / filmBlurPixel / filmBlurPixel * Math.Log(2));
+            double sum = kernel.Sum();
+            for (int i = 0; i < kernel.Length; i++)
+                kernel[i] /= sum;
+            blur = kernel;
 
-            double[] pixelsFilmBlur1 = new double[ImageWidth * ImageHeight];
-
-            Parallel.For(0, ImageWidth, w =>
-           {
-               for (int h = 0; h < ImageHeight; h++)
-                   if (pixels[h * ImageWidth + w] != 0)
-                       for (int n = Math.Max(0, center - h); n < Math.Min(blur.Length, ImageHeight - h + center); n++)
-                           pixelsFilmBlur1[(h - center + n) * ImageWidth + w] += blur[n] * pixels[h * ImageWidth + w];
-           });
-
-            double[] pixelsFilmBlur2 = new double[ImageWidth * ImageHeight];
-            Parallel.For(0, ImageHeight, h =>
+            int width = ImageWidth, height = ImageHeight, nPix = width * height, vc = System.Numerics.Vector<double>.Count;
+            var mid = System.Buffers.ArrayPool<double>.Shared.Rent(nPix);
+            try
             {
-                for (int w = 0; w < ImageWidth; w++)
-                    if (pixelsFilmBlur1[h * ImageWidth + w] != 0)
-                        for (int n = Math.Max(0, center - w); n < Math.Min(blur.Length, ImageWidth - w + center); n++)
-                            pixelsFilmBlur2[h * ImageWidth + w - center + n] += blur[n] * pixelsFilmBlur1[h * ImageWidth + w];
-            });
+                //1 段目 (縦): mid[y, x] = Σ_h kernel[y − h + center]·pixels[h, x] (h の昇順)
+                Parallel.For(0, height, y =>
+                {
+                    var dst = mid.AsSpan(y * width, width);
+                    dst.Clear();
+                    int hStart = Math.Max(0, y + center - limit + 1), hEnd = Math.Min(height - 1, y + center);
+                    for (int h = hStart; h <= hEnd; h++)
+                    {
+                        var b = kernel[y - h + center];
+                        var src = pixels.AsSpan(h * width, width);
+                        int x = 0;
+                        if (System.Numerics.Vector.IsHardwareAccelerated)
+                        {
+                            var vb = new System.Numerics.Vector<double>(b);
+                            for (; x <= width - vc; x += vc)
+                                (new System.Numerics.Vector<double>(dst[x..]) + vb * new System.Numerics.Vector<double>(src[x..])).CopyTo(dst[x..]);
+                        }
+                        for (; x < width; x++)
+                            dst[x] += b * src[x];
+                    }
+                });
 
-            return pixelsFilmBlur2;
+                //2 段目 (横): result[y, x] = Σ_w kernel[x − w + center]·mid[y, w] (w の昇順)。行の両端に 0 を詰めた作業行で端を扱う
+                var result = new double[nPix];
+                int pad = limit;
+                Parallel.For(0, height, () => new double[width + 2 * pad], (y, _, row) =>
+                {
+                    mid.AsSpan(y * width, width).CopyTo(row.AsSpan(pad));
+                    var dst = result.AsSpan(y * width, width);
+                    for (int o = center - limit + 1; o <= center; o++) // o = w − x。o の昇順 = w の昇順
+                    {
+                        var b = kernel[center - o];
+                        var src = row.AsSpan(pad + o, width);
+                        int x = 0;
+                        if (System.Numerics.Vector.IsHardwareAccelerated)
+                        {
+                            var vb = new System.Numerics.Vector<double>(b);
+                            for (; x <= width - vc; x += vc)
+                                (new System.Numerics.Vector<double>(dst[x..]) + vb * new System.Numerics.Vector<double>(src[x..])).CopyTo(dst[x..]);
+                        }
+                        for (; x < width; x++)
+                            dst[x] += b * src[x];
+                    }
+                    return row;
+                }, _ => { });
+                return result;
+            }
+            finally { System.Buffers.ArrayPool<double>.Shared.Return(mid); }
         }
     }
 
@@ -1223,16 +1329,21 @@ public partial class DiffractionPatternControl : UserControlBase
         // for (int y = 10; y < ImageHeight - 10; y++)
         Parallel.For(10, ImageHeight - 10, y =>
         {
+            double accSquare = 0, accProduct = 0; // 261111Cl 追加: ローカルに足して最後に 1 回書く (加算順は同じ)
             for (int x = 10; x < ImageWidth - 10; x++)
             {
                 int i = y * ImageWidth + x;
                 if (!Filter[i] && DiffractionPixels[i] != 0)
                 {
                     //二乗の和と積を計算
-                    squareSum[y] += DiffractionPixels[i] * DiffractionPixels[i] * Weight[i];
-                    product[y] += DiffractionPixels[i] * (SrcPixels[i] - BackgroundPixels[i]) * Weight[i];
+                    //squareSum[y] += DiffractionPixels[i] * DiffractionPixels[i] * Weight[i]; // 261111Cl 変更前
+                    //product[y] += DiffractionPixels[i] * (SrcPixels[i] - BackgroundPixels[i]) * Weight[i];
+                    accSquare += DiffractionPixels[i] * DiffractionPixels[i] * Weight[i]; // 261111Cl 変更
+                    accProduct += DiffractionPixels[i] * (SrcPixels[i] - BackgroundPixels[i]) * Weight[i]; // 261111Cl 変更
                 }
             }
+            squareSum[y] = accSquare; // 261111Cl 追加
+            product[y] = accProduct; // 261111Cl 追加
         });
         ScaleFactor = product.Sum() / squareSum.Sum();
         return Residual();
@@ -1245,15 +1356,18 @@ public partial class DiffractionPatternControl : UserControlBase
         double[] residual = new double[ImageHeight];
         Parallel.For(10, ImageHeight - 10, y =>
         {
+            double acc = 0; // 261111Cl 追加: ローカルに足して最後に 1 回書く (加算順は同じ)
             for (int x = 10; x < ImageWidth - 10; x++)
             {
                 int i = y * ImageWidth + x;
                 if (!Filter[i])
                 {
                     double temp = DiffractionPixels[i] * ScaleFactor + BackgroundPixels[i] - SrcPixels[i];
-                    residual[y] += temp * temp * Weight[i];
+                    //residual[y] += temp * temp * Weight[i]; // 261111Cl 変更前
+                    acc += temp * temp * Weight[i]; // 261111Cl 変更
                 }
             }
+            residual[y] = acc; // 261111Cl 追加
         });
         return residual.Sum();
     }
@@ -1380,19 +1494,34 @@ public partial class DiffractionPatternControl : UserControlBase
                             diff[6][pos] = r / 1000;
                         }
 
-                var alpha = new DenseMatrix(prmNum, prmNum);
-                var beta = new DenseMatrix(prmNum, 1);
+                //var alpha = new DenseMatrix(prmNum, prmNum); // 261111Cl 変更前 (ここから)
+                //var beta = new DenseMatrix(prmNum, 1);
+                //
+                //for (int y = start; y < end; y++)
+                //    for (int x = 10, pos = y * ImageWidth + x; x < ImageWidth - 10; x++, pos++)
+                //        if (BackgroundArea[pos])
+                //            for (int k = 0; k < prmNum; k++)
+                //            {
+                //                beta[k, 0] += residualCurrent[pos] * diff[k][pos] * Weight[pos];
+                //                for (int l = k; l < prmNum; l++)
+                //                    alpha[k, l] += diff[k][pos] * diff[l][pos] * Weight[pos];
+                //            }
+                //return [alpha, beta]; // 261111Cl 変更前 (ここまで)
 
+                // 261111Cl 変更: 画素ごとの MathNet のインデクサ (範囲検査つきの仮想呼び出し) をやめ、ローカルの double[] に足してから行列にする。
+                //  配列は DenseMatrix と同じ列優先 ((k,l) → k + l·prmNum) で、要素ごとの加算順も同じ。DenseMatrix はこの配列をそのまま保持する
+                var alphaStorage = new double[prmNum * prmNum];
+                var betaStorage = new double[prmNum];
                 for (int y = start; y < end; y++)
                     for (int x = 10, pos = y * ImageWidth + x; x < ImageWidth - 10; x++, pos++)
                         if (BackgroundArea[pos])
                             for (int k = 0; k < prmNum; k++)
                             {
-                                beta[k, 0] += residualCurrent[pos] * diff[k][pos] * Weight[pos];
+                                betaStorage[k] += residualCurrent[pos] * diff[k][pos] * Weight[pos];
                                 for (int l = k; l < prmNum; l++)
-                                    alpha[k, l] += diff[k][pos] * diff[l][pos] * Weight[pos];
+                                    alphaStorage[k + l * prmNum] += diff[k][pos] * diff[l][pos] * Weight[pos];
                             }
-                return [alpha, beta];
+                return [new DenseMatrix(prmNum, prmNum, alphaStorage), new DenseMatrix(prmNum, 1, betaStorage)];
             }
 
         double ramda = 1;
@@ -1760,14 +1889,15 @@ public partial class DiffractionPatternControl : UserControlBase
 
     private void numericBoxCenterX_ValueChanged(object sender, EventArgs e) => center = new PointD(numericBoxCenterX.Value, numericBoxCenterY.Value);
 
-    private delegate void SetPlaneIndexCallBack();
+    //private delegate void SetPlaneIndexCallBack(); // 261111Cl 削除: 下の Invoke はラムダ (Action) に
 
     public void SetPlaneIndex()
     {
         if (this.InvokeRequired)//別スレッドから呼び出されたとき
         {
-            SetPlaneIndexCallBack d = new SetPlaneIndexCallBack(SetPlaneIndex);
-            this.Invoke(d);
+            //SetPlaneIndexCallBack d = new SetPlaneIndexCallBack(SetPlaneIndex); // 261111Cl 変更前
+            //this.Invoke(d);
+            this.Invoke(() => SetPlaneIndex()); // 261111Cl 変更
             return;
         }
 

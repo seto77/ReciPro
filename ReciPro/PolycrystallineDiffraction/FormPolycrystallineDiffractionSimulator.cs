@@ -27,16 +27,23 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
 
     public string currentPath = "";
 
+    private volatile string lastStatus; // 261111Cl 追加: 最後に表示した CurrentStatus (UI スレッドで書く)。ワーカーからの同じ文字列の送り直しを省くため
+
     public string CurrentStatus
     {
         set
         {
             if (this.InvokeRequired)//別スレッドから呼び出されたとき
             {
+                // 261111Cl 追加: LPO のワーカーは毎ステップ同じ文字列を送り、そのたびに同期の Invoke で UI を待っていた。
+                //  表示中と同じ文字列で、付随処理 (下の進捗バーを隠す) も無いものは送らない (表示は変わらない)
+                if (value == lastStatus && !(value.Contains("film blur") || value.Contains("center position") || value.Contains("background")))
+                    return;
                 this.Invoke(() => CurrentStatus = value);//260718Cl 現代化: callBack delegate → lambda
                 return;
             }
             toolStripStatusLabel.Text = value;
+            lastStatus = value; // 261111Cl 追加
             if (value.Contains("film blur") || value.Contains("center position") || value.Contains("background"))
             {
                 ProgressBarVisible = false;

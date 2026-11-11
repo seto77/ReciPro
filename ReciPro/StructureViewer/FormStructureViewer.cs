@@ -639,7 +639,10 @@ public partial class FormStructureViewer : FormBase
                     if (whole.Add(cell))
                     {
                         var spheres = new List<Sphere>();
-                        enabledAtomsP.ForAll(o =>
+                        //enabledAtomsP.ForAll(o => // 261111Cl 変更前
+                        // 261111Cl 変更: セル (最大 1 万) ごとに PLINQ の ForAll を起動し、球ごとに lock していた。原子ごとの処理は軽いので逐次にする。
+                        //  作る球の集合は同じ (GLObjects への追加順は旧は実行ごとに不定、新は enabledAtomsP の元のリストの順)
+                        foreach (var o in enabledAtomsP.AsSequential())
                         {
                             var pos = axes * (cell + o.Pos) - shift;
                             //260718Cl 変更: LINQ Min (ラムダ呼び出し) を直接ループに (原子×セル数のホットパス)
@@ -657,10 +660,11 @@ public partial class FormStructureViewer : FormBase
                                     Rendered = min > -0.0000001,
                                     Tag = new atomID(o.Index, min > -0.0000001, atomID.ComposeKey(cell))
                                 };
-                                lock (lockObj1)
-                                    spheres.Add(sphere);
+                                //lock (lockObj1) // 261111Cl 削除 (逐次になったので不要)
+                                spheres.Add(sphere);
                             }
-                        });
+                        //}); // 261111Cl 変更前
+                        } // 261111Cl 変更
 
                         if (spheres.Count != 0)
                         {

@@ -199,8 +199,11 @@ public partial class FormTrajectory : FormBase
 
             var hist = new MathNet.Numerics.Statistics.Histogram(energies, nBuckets, lower, lower + nBuckets * step);
 
-            var pts = ParallelEnumerable.Range(0, hist.BucketCount+1)
-                .Select(i => i== hist.BucketCount ? new PointD(energy + step / 2, 0) : new PointD((hist[i].UpperBound + hist[i].LowerBound) / 2, hist[i].Count / count));
+            //var pts = ParallelEnumerable.Range(0, hist.BucketCount+1) // 261111Cl 変更前
+            //    .Select(i => i== hist.BucketCount ? new PointD(energy + step / 2, 0) : new PointD((hist[i].UpperBound + hist[i].LowerBound) / 2, hist[i].Count / count));
+            // 261111Cl 変更: AsOrdered の無い PLINQ では点の順序が保証されない (Profile の点列が x 順でなくなりうる)。逐次の Enumerable.Range にする
+            var pts = Enumerable.Range(0, hist.BucketCount + 1)
+                .Select(i => i == hist.BucketCount ? new PointD(energy + step / 2, 0) : new PointD((hist[i].UpperBound + hist[i].LowerBound) / 2, hist[i].Count / count));
 
             //var pts = new List<PointD>();
             //for (int i = 0; i < histogram.BucketCount; i++)
@@ -219,14 +222,18 @@ public partial class FormTrajectory : FormBase
         //最大深さ分布　ここから
         if (count > 0) // 261105Cl 追加 (監査 #35)
         {
-            var depths = BSEs.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
-            double lower = 0, upper = depths.Max();
+            //var depths = BSEs.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z)); // 261111Cl 変更前 (遅延評価のまま Max とヒストグラムで 2 回評価していた)
+            //double lower = 0, upper = depths.Max();
+            var depths = BSEs.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z)).ToArray(); // 261111Cl 変更: 1 回だけ評価する
+            double lower = 0, upper = Enumerable.Max(depths); // 261111Cl 変更: 配列になったので、SimdLinq の Max (NaN の扱いが違う) でなく従来と同じ Enumerable.Max を明示
             //double step = (int)(upper * 100.0) / 400.0 / 50.0;//µm単位 // 261105Cl 変更前 (コメントの単位が誤り)
             double step = (int)(upper * 100.0) / 400.0 / 50.0;//nm単位 (軌跡の座標は nm) // 261105Cl 変更: コメントのみ
             int nBuckets = (int)((upper - lower) / step + 1);
             var hist = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
 
-            var pts = ParallelEnumerable.Range(0, hist.BucketCount)
+            //var pts = ParallelEnumerable.Range(0, hist.BucketCount) // 261111Cl 変更前
+            //    .Select(i => new PointD((hist[i].UpperBound + hist[i].LowerBound) / 2, hist[i].Count / count));
+            var pts = Enumerable.Range(0, hist.BucketCount) // 261111Cl 変更: 順序を保証する (上のエネルギー分布と同じ理由)
                 .Select(i => new PointD((hist[i].UpperBound + hist[i].LowerBound) / 2, hist[i].Count / count));
 
             //var pts = new List<PointD>();
@@ -259,20 +266,29 @@ public partial class FormTrajectory : FormBase
         //表面に沿った方向の距離分布
         if (count > 0) // 261105Cl 追加 (監査 #35)
         {
+            //var distances = BSEs.Select(e1 => e1.Max(e2 => // 261111Cl 変更前 (遅延評価のまま Max とヒストグラムで 2 回評価していた)
+            //{
+            //    var y = cosTilt * e2.p.Y + sinTilt * e2.p.Z;
+            //    return Math.Sqrt(e2.p.X * e2.p.X + y * y);
+            //}));
+            //
+            //double lower = 0, upper = distances.Max();
             var distances = BSEs.Select(e1 => e1.Max(e2 =>
             {
                 var y = cosTilt * e2.p.Y + sinTilt * e2.p.Z;
                 return Math.Sqrt(e2.p.X * e2.p.X + y * y);
-            }));
+            })).ToArray(); // 261111Cl 変更: 1 回だけ評価する
 
-            double lower = 0, upper = distances.Max();
+            double lower = 0, upper = Enumerable.Max(distances); // 261111Cl 変更: 従来と同じ Enumerable.Max を明示 (上の depths と同じ)
             //double step = (int)(upper * 100.0) / 100.0 / 50.0;//µm単位 // 261105Cl 変更前 (コメントの単位が誤り)
             double step = (int)(upper * 100.0) / 100.0 / 50.0;//nm単位 (軌跡の座標は nm) // 261105Cl 変更: コメントのみ
             int nBuckets = (int)((upper - lower) / step + 1);
             var hist = new MathNet.Numerics.Statistics.Histogram(distances, nBuckets, lower, lower + nBuckets * step);
 
-            var pts = ParallelEnumerable
-                .Range(0, hist.BucketCount)
+            //var pts = ParallelEnumerable // 261111Cl 変更前
+            //    .Range(0, hist.BucketCount)
+            //    .Select(i => new PointD((hist[i].UpperBound + hist[i].LowerBound) / 2, hist[i].Count / count));
+            var pts = Enumerable.Range(0, hist.BucketCount) // 261111Cl 変更: 順序を保証する (上のエネルギー分布と同じ理由)
                 .Select(i => new PointD((hist[i].UpperBound + hist[i].LowerBound) / 2, hist[i].Count / count));
 
             //var pts = new List<PointD>();

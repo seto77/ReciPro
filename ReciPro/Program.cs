@@ -100,10 +100,13 @@ internal static class Program
             }
         }
 
-        Application.EnableVisualStyles();
-        //Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled); // 260329Cl 変更: csproj の PerMonitorV2 と統一
-        Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
-        Application.SetCompatibleTextRenderingDefault(true);
+        //Application.EnableVisualStyles(); // 261111Cl 変更前 (以下 3 行)
+        ////Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled); // 260329Cl 変更: csproj の PerMonitorV2 と統一
+        //Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
+        //Application.SetCompatibleTextRenderingDefault(true);
+        // 261111Cl 変更: csproj の ApplicationVisualStyles=true / ApplicationHighDpiMode=PerMonitorV2 / ApplicationUseCompatibleTextRendering=true と
+        //  同じ値を手書きしていたので、それらから生成される ApplicationConfiguration.Initialize() に一本化する (呼ぶ 3 つと値は同じ。下の SetColorMode 以降の順は従来どおり)
+        ApplicationConfiguration.Initialize();
         // 260428Cl 変更: OS追従ではなくレジストリ保存値による手動切替
         //Application.SetColorMode(SystemColorMode.System);
         //Application.SetColorMode(ReadDarkMode() ? SystemColorMode.Dark : SystemColorMode.Classic); //260731Cl 変更前

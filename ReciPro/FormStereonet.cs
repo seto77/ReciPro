@@ -24,6 +24,7 @@ public partial class FormStereonet : FormBase
     private bool MouseRangingMode = false;
     private PointD centerPt = new(0, 0);
     private double mag;
+    private Font labelFont; // 261111Cl 追加: DrawStereoNet の指数ラベル用。大きさが変わったときだけ作り直す
     private GLControlAlpha glControl;
     private bool HexagonalLattice => (formMain.Crystal.Symmetry.CrystalSystemStr == "trigonal" || formMain.Crystal.Symmetry.CrystalSystemStr == "hexagonal") && formMain.Crystal.Alpha != formMain.Crystal.Gamma;
     public Matrix3D RotationMatrix => formMain.Crystal.RotationMatrix;
@@ -488,17 +489,34 @@ public partial class FormStereonet : FormBase
         var matBase = radioButtonAxes.Checked ? crystal.RotationMatrix * crystal.MatrixReal : crystal.RotationMatrix * crystal.MatrixInverseTransposed;
 
         var drawString = trackBarStrSize.Value != 1 && checkBoxShowIndexLabels.Checked;
-        using var font = new Font(WineCompat.Resolve("Times New Roman"), trackBarStrSize.Value / (float)mag / 7f); //260610Cl Wine時フォント切替
+        //using var font = new Font(WineCompat.Resolve("Times New Roman"), trackBarStrSize.Value / (float)mag / 7f); //260610Cl Wine時フォント切替 // 261111Cl 変更前
+        // 261111Cl 変更: Font を毎フレーム作らず、大きさ (文字サイズ・拡大率) が変わったときだけ作り直す
+        var fontSize = trackBarStrSize.Value / (float)mag / 7f;
+        if (labelFont == null || labelFont.Size != fontSize)
+        {
+            labelFont?.Dispose();
+            labelFont = new Font(WineCompat.Resolve("Times New Roman"), fontSize); //260610Cl Wine時フォント切替
+        }
+        var font = labelFont;
 
         Func<Vector3DBase, PointD> conv = radioButtonWulff.Checked ? Stereonet.ConvertVectorToWulff : Stereonet.ConvertVectorToSchmidt;
+
+        // 261111Cl 追加: Brush / Pen は対象ごとに new せず、ここで 1 本ずつ作って色だけ差し替える (太さ 2/mag はフレーム内で一定)
+        using var brush = new SolidBrush(Color.Black);
+        using var labelBrush = checkBoxSpecifyLabelColor.Checked ? new SolidBrush(colorControlIndexLabel.Color) : null;
+        using var pen = new Pen(Color.Black, 2f / (float)mag);
+        using var penKikuchi = new Pen(Color.Black, 2f / (float)mag);
+        var textBrush = labelBrush ?? brush;
 
         foreach (var obj in ProjectedObjects)
         {
             // 260528Cl 変更: ラベル色指定モード (checkBoxSpecifyLabelColor) を追加 + GDI+ を using 化
             // textBrush は false 時に brush をエイリアスし二重 using となるが SolidBrush.Dispose は冪等のため安全
-            using var brush = new SolidBrush(Color.FromArgb(obj.ARGB));
-            using var textBrush = checkBoxSpecifyLabelColor.Checked ? new SolidBrush(colorControlIndexLabel.Color) : brush;
-            using var pen = new Pen(Color.FromArgb(obj.ARGB), 2f / (float)mag);
+            //using var brush = new SolidBrush(Color.FromArgb(obj.ARGB)); // 261111Cl 変更前 (以下 3 行)
+            //using var textBrush = checkBoxSpecifyLabelColor.Checked ? new SolidBrush(colorControlIndexLabel.Color) : brush;
+            //using var pen = new Pen(Color.FromArgb(obj.ARGB), 2f / (float)mag);
+            brush.Color = Color.FromArgb(obj.ARGB); // 261111Cl 変更
+            pen.Color = Color.FromArgb(obj.ARGB); // 261111Cl 変更
             var radius = pointSize / mag;
             if (radioButtonPlanes.Checked && checkBoxReflectStructureFactor.Checked)
                 radius *= Sqrt(obj.Intensity);
@@ -560,7 +578,9 @@ public partial class FormStereonet : FormBase
                     var pts = new PointF[sin.Count];
                     for (int i = 0; i < sin.Count; i++)
                     {
-                        var p = conv(mat * new Vector3D(cosθ * sin[i], cosθ * cos[i], sinθ));
+                        //var p = conv(mat * new Vector3D(cosθ * sin[i], cosθ * cos[i], sinθ)); // 261111Cl 変更前
+                        // 261111Cl 変更: Vector3D (d の平方根つき) を 2 個作らず、タプルとの積 (Vector3DBase を 1 個) にする。積の式 (Dot3) は同じなので値は同一
+                        var p = conv(mat * (cosθ * sin[i], cosθ * cos[i], sinθ));
                         pts[i] = new PointF(-(float)p.X, (float)p.Y);
                     }
 
@@ -581,7 +601,8 @@ public partial class FormStereonet : FormBase
                         }
 
                     var col = checkBoxReflectStructureFactor.Checked ? Color.FromArgb((int)(obj.Intensity * 255), obj.Color) : obj.Color;
-                    using var penKikuchi = new Pen(col, 2f / (float)mag);
+                    //using var penKikuchi = new Pen(col, 2f / (float)mag); // 261111Cl 変更前
+                    penKikuchi.Color = col; // 261111Cl 変更: ループの外で作った Pen の色だけ差し替える
                     if (validEnd1 - validStart1 != 0)
                     {
                         pts = validStart1 != -1 && validStart2 == -1 ? pts[validStart1..(validEnd1 + 1)] : [.. pts[validStart2..(validEnd2 + 1)], .. pts[validStart1..(validEnd1 + 1)]];
@@ -1626,22 +1647,59 @@ public partial class FormStereonet : FormBase
         var crystal = formMain.Crystal;
         var target = crystal.RotationMatrix.Transpose() * v;
 
+        //double bestScoreA = -2, bestScoreP = -2; // 261111Cl 変更前 (ここから)
+        //(int U, int V, int W) bestUvw = (0, 0, 0), bestHkl = (0, 0, 0);
+        //for (int u = -sumMax, rem1 = sumMax - Abs(u); u <= sumMax; rem1 = sumMax - Abs(++u))
+        //    for (int vv = -rem1, rem2 = rem1 - Abs(vv); vv <= rem1; rem2 = rem1 - Abs(++vv))
+        //        for (int w = -rem2; w <= rem2; w++)
+        //        {
+        //            if ((u | vv | w) == 0 || Algebra.Irreducible(u, vv, w) != 1) continue;
+        //            var dirA = crystal.MatrixReal * (u, vv, w);
+        //            double cosA = dirA * target / dirA.Length;
+        //            if (cosA > bestScoreA) { bestScoreA = cosA; bestUvw = (u, vv, w); }
+        //            var dirP = crystal.MatrixInverseTransposed * (u, vv, w);
+        //            double cosP = dirP * target / dirP.Length;
+        //            if (cosP > bestScoreP) { bestScoreP = cosP; bestHkl = (u, vv, w); }
+        //        }
+        //return (bestUvw, bestHkl); // 261111Cl 変更前 (ここまで)
+
+        // 261111Cl 変更: マウスが動くたびに約 3.8 万点で gcd と行列×ベクトル (確保あり) を 2 回ずつ計算していた。
+        //  既約な uvw と、その実空間・逆空間の方向ベクトルと長さは格子の行列 (MatrixReal・MatrixInverseTransposed) だけで決まるので、
+        //  行列の値が変わったとき (結晶の切り替え・格子定数の変更) だけ表を作り直し、マウス移動時は内積と割り算だけにする。
+        //  表は旧と同じ列挙順で、方向・長さ・内積・割り算も旧と同じ式なので、結果 (同点時に先のものを残すことも含めて) は旧と同一。
+        //  表示モード (晶帯軸/面/菊池線・上下半球) は表に関係しない (下半球の Z 反転は上の v で済んでいる)
+        double[] key = [.. crystal.MatrixReal.ToArrayRowMajorOrder(), .. crystal.MatrixInverseTransposed.ToArrayRowMajorOrder()];
+        if (findIndexTable == null || findIndexKey == null || !findIndexKey.AsSpan().SequenceEqual(key))
+        {
+            var table = new List<(int U, int V, int W, double AX, double AY, double AZ, double LenA, double PX, double PY, double PZ, double LenP)>();
+            for (int u = -sumMax, rem1 = sumMax - Abs(u); u <= sumMax; rem1 = sumMax - Abs(++u))
+                for (int vv = -rem1, rem2 = rem1 - Abs(vv); vv <= rem1; rem2 = rem1 - Abs(++vv))
+                    for (int w = -rem2; w <= rem2; w++)
+                    {
+                        if ((u | vv | w) == 0 || Algebra.Irreducible(u, vv, w) != 1) continue;
+                        var dirA = crystal.MatrixReal * (u, vv, w);
+                        var dirP = crystal.MatrixInverseTransposed * (u, vv, w);
+                        table.Add((u, vv, w, dirA.X, dirA.Y, dirA.Z, dirA.Length, dirP.X, dirP.Y, dirP.Z, dirP.Length));
+                    }
+            findIndexTable = [.. table];
+            findIndexKey = key;
+        }
+
         double bestScoreA = -2, bestScoreP = -2;
         (int U, int V, int W) bestUvw = (0, 0, 0), bestHkl = (0, 0, 0);
-        for (int u = -sumMax, rem1 = sumMax - Abs(u); u <= sumMax; rem1 = sumMax - Abs(++u))
-            for (int vv = -rem1, rem2 = rem1 - Abs(vv); vv <= rem1; rem2 = rem1 - Abs(++vv))
-                for (int w = -rem2; w <= rem2; w++)
-                {
-                    if ((u | vv | w) == 0 || Algebra.Irreducible(u, vv, w) != 1) continue;
-                    var dirA = crystal.MatrixReal * (u, vv, w);
-                    double cosA = dirA * target / dirA.Length;
-                    if (cosA > bestScoreA) { bestScoreA = cosA; bestUvw = (u, vv, w); }
-                    var dirP = crystal.MatrixInverseTransposed * (u, vv, w);
-                    double cosP = dirP * target / dirP.Length;
-                    if (cosP > bestScoreP) { bestScoreP = cosP; bestHkl = (u, vv, w); }
-                }
+        double tX = target.X, tY = target.Y, tZ = target.Z;
+        foreach (ref readonly var e in findIndexTable.AsSpan())
+        {
+            double cosA = (e.AX * tX + e.AY * tY + e.AZ * tZ) / e.LenA; // = dirA * target / dirA.Length (Vector3DBase の内積と同じ式・同じ順)
+            if (cosA > bestScoreA) { bestScoreA = cosA; bestUvw = (e.U, e.V, e.W); }
+            double cosP = (e.PX * tX + e.PY * tY + e.PZ * tZ) / e.LenP;
+            if (cosP > bestScoreP) { bestScoreP = cosP; bestHkl = (e.U, e.V, e.W); }
+        }
         return (bestUvw, bestHkl);
     }
+    // 261111Cl 追加: FindIndex の前計算の表と、それを作ったときの格子の行列 (MatrixReal・MatrixInverseTransposed の 18 要素)
+    private (int U, int V, int W, double AX, double AY, double AZ, double LenA, double PX, double PY, double PZ, double LenP)[] findIndexTable;
+    private double[] findIndexKey;
     #endregion
     public void UpdatePlaneIndices(bool redraw = true) // 260517Cl 末尾 Draw() の有無を呼び出し側で選べるよう既定引数化（連続 Draw 重複を抑える）
     {

@@ -1308,7 +1308,10 @@ public partial class FormSpotIDV2 : FormBase
 
             vec.Add(new List<Vector3D>());
             for (int i = 0; i < c.VectorOfG.Length; i++)
-                vec[j].Add(Deep.Copy(c.VectorOfG[i]));
+                //vec[j].Add(Deep.Copy(c.VectorOfG[i])); // 261111Cl 変更前
+                // 261111Cl 変更: XmlSerializer の往復 (g 1 本ごとにシリアライザ生成 + XML 書き出し/読み戻し) を MemberwiseClone に。
+                //  探索で読むのは X/Y/Z・d・Index だけで、どれも値型 (複製後に書き換えない)。共有になる参照型メンバー (Tag・Operation) は探索では読まない
+                vec[j].Add((Vector3D)c.VectorOfG[i].Clone());
         }
         var obsSpots = dataSet.DataTableSpot.Spots;
 
@@ -1325,11 +1328,27 @@ public partial class FormSpotIDV2 : FormBase
                 if (cand == null)//260801Cl 追加: Stop 押下時は null が返る (旧実装はここで NullReferenceException になっていた)
                     return [];
                 cand.Sort(compareGrain);
+                var cosTolerance = Math.Cos(ToleranceAngle); // 261111Cl 追加: ループ不変 (ToleranceAngle は数値欄を読む)。対ごとに求めていた
                 for (int j = 0; j < cand.Count; j++)
                 {
+                    //for (int k = j + 1; k < cand.Count; k++) // 261111Cl 変更前
+                    //    if (Math.Cos(ToleranceAngle) < Math.Abs(((cand[k].Rotation * cand[j].Rotation.Inverse()).SumOfDiagonalCompenent() - 1) / 2))
+                    //        cand.RemoveAt(k--);
+                    // 261111Cl 変更: 対ごとの Rk·Rj⁻¹ (行列 2 個の確保と一般逆行列) と RemoveAt (後ろの詰め直し) をやめる。
+                    //  Rotation は Euler.ToMatrix の逆 (= 回転行列) なので Rj⁻¹ = Rjᵀ で、tr(Rk·Rjᵀ) = Σ Rk[a,b]·Rj[a,b]。
+                    //  残すものを順序を保ったまま前へ詰め、最後に RemoveRange する (残る候補とその順序は旧と同じ。境界ちょうどの対は丸め誤差で入れ替わりうる)
+                    var rj = cand[j].Rotation;
+                    int w = j + 1;
                     for (int k = j + 1; k < cand.Count; k++)
-                        if (Math.Cos(ToleranceAngle) < Math.Abs(((cand[k].Rotation * cand[j].Rotation.Inverse()).SumOfDiagonalCompenent() - 1) / 2))
-                            cand.RemoveAt(k--);
+                    {
+                        var rk = cand[k].Rotation;
+                        var trace = rk.E11 * rj.E11 + rk.E12 * rj.E12 + rk.E13 * rj.E13
+                                  + rk.E21 * rj.E21 + rk.E22 * rj.E22 + rk.E23 * rj.E23
+                                  + rk.E31 * rj.E31 + rk.E32 * rj.E32 + rk.E33 * rj.E33;
+                        if (!(cosTolerance < Math.Abs((trace - 1) / 2)))
+                            cand[w++] = cand[k];
+                    }
+                    cand.RemoveRange(w, cand.Count - w);
                     cand[j].ID = id;
                     // 261105Cl 変更 (監査 I8): 主窓のリストの「今の」選択 (FormMain.listBox.SelectedItems、別スレッドから読んでいた) でなく、同定を始めたときに集めた crystals[id] を使う。
                     //  同定中に選択を変えると、別の結晶の名前・スポット位置が付いていた
@@ -1570,18 +1589,33 @@ public partial class FormSpotIDV2 : FormBase
         {
             var func = new Func<double, double, double, double>((phi, theta, psi) =>
             {
-                double cosTheta = Math.Cos(theta), sinTheta = Math.Sin(theta), cosPsi = Math.Cos(psi), sinPsi = Math.Sin(psi), cosPhi = Math.Cos(phi), sinPhi = Math.Sin(phi);
+                //double cosTheta = Math.Cos(theta), sinTheta = Math.Sin(theta), cosPsi = Math.Cos(psi), sinPsi = Math.Sin(psi), cosPhi = Math.Cos(phi), sinPhi = Math.Sin(phi); // 261111Cl 変更前
+                // 261111Cl 変更: Cos/Sin 6 回 → SinCos 3 回
+                var (sinTheta, cosTheta) = Math.SinCos(theta);
+                var (sinPsi, cosPsi) = Math.SinCos(psi);
+                var (sinPhi, cosPhi) = Math.SinCos(phi);
                 double e11 = cosPhi * cosPsi - cosTheta * sinPhi * sinPsi, e12 = -cosPhi * sinPsi - cosTheta * sinPhi * cosPsi, e13 = sinTheta * sinPhi;
                 double e21 = sinPhi * cosPsi + cosTheta * cosPhi * sinPsi, e22 = -sinPhi * sinPsi + cosTheta * cosPhi * cosPsi, e23 = -sinTheta * cosPhi;
                 double e31 = sinPsi * sinTheta, e32 = cosPsi * sinTheta, e33 = cosTheta;
 
-                return v1.Select((v, i) =>
+                //return v1.Select((v, i) => // 261111Cl 変更前
+                //{
+                //    var xDev = e11 * v.X + e12 * v.Y + e13 * v.Z - v2[i].X;
+                //    var yDev = e21 * v.X + e22 * v.Y + e23 * v.Z - v2[i].Y;
+                //    var zDev = e31 * v.X + e32 * v.Y + e33 * v.Z - v2[i].Z;
+                //    return xDev * xDev + yDev * yDev + zDev * zDev;
+                //}).Sum();
+                // 261111Cl 変更: 評価ごとの Select イテレータとデリゲートの確保をやめ、for で足す (Enumerable.Sum と同じく 0 から先頭順に加算)
+                var sum = 0.0;
+                for (int i = 0; i < v1.Length; i++)
                 {
+                    var v = v1[i];
                     var xDev = e11 * v.X + e12 * v.Y + e13 * v.Z - v2[i].X;
                     var yDev = e21 * v.X + e22 * v.Y + e23 * v.Z - v2[i].Y;
                     var zDev = e31 * v.X + e32 * v.Y + e33 * v.Z - v2[i].Z;
-                    return xDev * xDev + yDev * yDev + zDev * zDev;
-                }).Sum();
+                    sum += xDev * xDev + yDev * yDev + zDev * zDev;
+                }
+                return sum;
             });
 
             var (Phi, Theta, Psi) = Euler.FromMatrix(initialRotation);

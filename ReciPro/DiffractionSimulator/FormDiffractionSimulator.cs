@@ -704,7 +704,8 @@ public partial class FormDiffractionSimulator : FormBase
     {
         if (this.InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
         {
-            this.Invoke(new Action(() => Draw(g, drawLabel, drawOverlappedImage)), null);
+            //this.Invoke(new Action(() => Draw(g, drawLabel, drawOverlappedImage)), null); // 261111Cl 変更前
+            this.Invoke(() => Draw(g, drawLabel, drawOverlappedImage)); // 261111Cl 変更
             return;
         }
 
@@ -881,6 +882,7 @@ public partial class FormDiffractionSimulator : FormBase
         #region ガウス関数で描画するローカル関数
         //int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
         int gradation = 32;
+        var colorScaleIndex = comboBoxScaleColorScale.SelectedIndex; // 261111Cl 追加: 描画の冒頭で 1 回だけ読む (SelectedIndex は CB_GETCURSEL の SendMessage。スポット×階調 32 回読んでいた)
         //var reuseBrush = new SolidBrush(Color.Black); //260403Cl GDIオブジェクト再利用 // (260611Ch) 旧: メソッド終了時に未解放
         using var reuseBrush = new SolidBrush(Color.Black); //260403Cl GDIオブジェクト再利用 // (260611Ch)
         using var reusePath = new GraphicsPath(); //260403Cl GDIオブジェクト再利用 // (260611Ch)
@@ -910,10 +912,12 @@ public partial class FormDiffractionSimulator : FormBase
                 var intensity2 = intensity * coeff1 * Math.Exp(-(radius1 * radius1) / 2 / sigma2);
 
                 var alpha = (int)(255 * intensity2 * alphaCoeff);
-                if (comboBoxScaleColorScale.SelectedIndex != 0)
+                //if (comboBoxScaleColorScale.SelectedIndex != 0) // 261111Cl 変更前 (下の switch の対象も)
+                if (colorScaleIndex != 0) // 261111Cl 変更
                 {
                     var index = Math.Min((int)(intensity2 * 65535), 65535);
-                    c = comboBoxScaleColorScale.SelectedIndex switch
+                    //c = comboBoxScaleColorScale.SelectedIndex switch // 261111Cl 変更前
+                    c = colorScaleIndex switch // 261111Cl 変更
                     {
                         1 => Color.FromArgb(PseudoBitmap.ColorScaleColdWarmLiner[index].R, PseudoBitmap.ColorScaleColdWarmLiner[index].G, PseudoBitmap.ColorScaleColdWarmLiner[index].B),
                         2 => Color.FromArgb(PseudoBitmap.ColorScaleSpectrumLiner[index].R, PseudoBitmap.ColorScaleSpectrumLiner[index].G, PseudoBitmap.ColorScaleSpectrumLiner[index].B),
@@ -996,8 +1000,39 @@ public partial class FormDiffractionSimulator : FormBase
                 for (int i = 0; i < gVector.Count; i++)
                     indexDict.TryAdd(gVector[i].Index, i);
                 //原点を通る直線状にある逆格子ベクトルをまとめる
-                Parallel.ForEach(gVector, g =>
+                #region 261111Cl 変更前
+                //Parallel.ForEach(gVector, g =>
+                //{
+                //    var n = Algebra.Irreducible(g.Index);
+                //    if (n != 1)
+                //    {
+                //        int h = g.Index.h / n, k = g.Index.k / n, l = g.Index.l / n;//既約なh,k,lを計算
+                //        for (int m = 1; m < n; m++)//既約なh,k,lが存在するとは限らないので、h,k,lを整数倍して探索する
+                //        {
+                //            if (indexDict.TryGetValue((m * h, m * k, m * l), out var j)) //260403Cl Dictionary化
+                //            {
+                //                g.Flag1 = false;
+                //                lock (lockObj)
+                //                    gVector[j].RelativeIntensity += g.RelativeIntensity;
+                //                break;
+                //            }
+                //        }
+                //    }
+                //    //ここでX,Yを検出器上の点に変換してしまう。
+                //    var cosTwoTheta = 2 * (g.Z * g.Z / g.Length2) - 1;
+                //    var scale = CameraLength2 * Math.Sqrt((1 - cosTwoTheta * cosTwoTheta) / g.X2Y2) / cosTwoTheta;
+                //    g.X *= scale;
+                //    g.Y *= -scale;
+                //});
+                #endregion
+                // 261111Cl 変更: 要素ごとに lock して合算していた。並列の段では合算先 (同じ直線上で存在する最小の倍数) を配列に記録するだけにし、
+                //  合算はあとで逐次に行う (合算の順が実行ごとに変わらなくなる。旧は並列の順で足していたので、和は丸め誤差の範囲で一致)。
+                //  合算先は自分より小さい倍数を持たないので自分は合算されず、読む値 (合算元の強度) と書く値 (合算先の強度) は重ならない
+                var mergeTo = new int[gVector.Count];
+                Parallel.For(0, gVector.Count, i =>
                 {
+                    var g = gVector[i];
+                    mergeTo[i] = -1;
                     var n = Algebra.Irreducible(g.Index);
                     if (n != 1)
                     {
@@ -1006,9 +1041,7 @@ public partial class FormDiffractionSimulator : FormBase
                         {
                             if (indexDict.TryGetValue((m * h, m * k, m * l), out var j)) //260403Cl Dictionary化
                             {
-                                g.Flag1 = false;
-                                lock (lockObj)
-                                    gVector[j].RelativeIntensity += g.RelativeIntensity;
+                                mergeTo[i] = j;
                                 break;
                             }
                         }
@@ -1019,12 +1052,20 @@ public partial class FormDiffractionSimulator : FormBase
                     g.X *= scale;
                     g.Y *= -scale;
                 });
+                for (int i = 0; i < gVector.Count; i++)
+                    if (mergeTo[i] >= 0)
+                    {
+                        gVector[i].Flag1 = false;
+                        gVector[mergeTo[i]].RelativeIntensity += gVector[i].RelativeIntensity;
+                    }
 
                 gVector = [.. gVector.Where(g => g.Flag1)];
                 //if (gVector.Count == 0) return null; // 261105Cl 変更前 (監査 C17)
                 if (gVector.Count == 0) continue; // 261105Cl
                 var maxIntensity = gVector.Max(g => g.RelativeIntensity);
-                Parallel.ForEach(gVector, g => g.RelativeIntensity /= maxIntensity);
+                //Parallel.ForEach(gVector, g => g.RelativeIntensity /= maxIntensity); // 261111Cl 変更前
+                for (int i = 0; i < gVector.Count; i++) // 261111Cl 変更: 割り算だけの並列は起動のほうが重い
+                    gVector[i].RelativeIntensity /= maxIntensity;
 
                 //スポットを描画
                 //var color = colorControlNoCondition.Color; // 261105Cl 変更前 (監査 C17)
@@ -1386,6 +1427,8 @@ public partial class FormDiffractionSimulator : FormBase
         //var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替 // (260611Ch) 旧: 未解放
         using var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替 // (260611Ch)
         using var brush = new SolidBrush(colorControlString.Color); // (260611Ch)
+        var rotDetector = Matrix3D.Rot(new Vector3DBase(Math.Cos(Phi), -Math.Sin(Phi), 0), -Tau); // 261111Cl 追加: ループ不変 (Phi・Tau は幾何設定)。菊池線 1 本ごとに作っていた
+        var ptsF = new List<PointF>(1001); // 261111Cl 追加: 描画用の点列を線どうしで使い回す
         //foreach (var g in formMain.Crystal.VectorOfG_KikuchiLine) // 261105Cl 変更前 (監査 C8)
         foreach (var g in kikuchiLines) // 261105Cl
         {
@@ -1398,7 +1441,8 @@ public partial class FormDiffractionSimulator : FormBase
 
             //vec2は、検出器法線がZ軸と一致するようにX軸を回転軸に回転させたベクトル
             //var (sinPhi, cosPhi)=Math.SinCos(Phi);
-            var vec2 = Matrix3D.Rot(new Vector3DBase(Math.Cos(Phi), -Math.Sin(Phi), 0), -Tau) * vec1;
+            //var vec2 = Matrix3D.Rot(new Vector3DBase(Math.Cos(Phi), -Math.Sin(Phi), 0), -Tau) * vec1; // 261111Cl 変更前
+            var vec2 = rotDetector * vec1; // 261111Cl 変更
 
             //vec3は、検出器法線(Z軸)を軸としてpsiだけ回転させて、(0,y,z)の形になるようにしたベクトル
             var psi = Math.Atan2(vec2.X, vec2.Y);
@@ -1420,37 +1464,56 @@ public partial class FormDiffractionSimulator : FormBase
             {
                 // y= sinh(x) の逆関数は x = log{y+ sqrt(y*y+1)}
                 double omegaMax = Math.Log(diag * Psqrt + Math.Sqrt(diag * Psqrt * diag * Psqrt + 1)) * 2;
-                var pts = new List<PointD>(1001);//260717Cl 容量指定 (ループ上限 = 1000 分割 + 1)
+                //var pts = new List<PointD>(1001);//260717Cl 容量指定 (ループ上限 = 1000 分割 + 1) // 261111Cl 変更前
+                //for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 500)
+                //{
+                //    double x = Math.Sinh(omega) / Psqrt, y = -Math.Cosh(omega) / Qsqrt;
+                //    var pt = new PointD(cosPsi * x - sinPsi * (y - Y), sinPsi * x + cosPsi * (y - Y));
+                //    if (IsScreenArea(pt))
+                //        pts.Add(pt);
+                //}
+                // 261111Cl 変更: List<PointD>→ToArray→拡張 DrawLines 内の Select(ToPointF).ToArray の 2 回のコピーをやめ、
+                //  使い回す List<PointF> に直接ためて span で描く。PointF への変換は PointD.ToPointF と同じ ((float)X, (float)Y)。
+                //  ラベルの向き・位置は従来どおり double の両端点 (first/last) で求める
+                ptsF.Clear();
+                PointD first = default, last = default;
                 for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 500)
                 {
                     double x = Math.Sinh(omega) / Psqrt, y = -Math.Cosh(omega) / Qsqrt;
                     var pt = new PointD(cosPsi * x - sinPsi * (y - Y), sinPsi * x + cosPsi * (y - Y));
                     if (IsScreenArea(pt))
-                        pts.Add(pt);
+                    {
+                        if (ptsF.Count == 0) first = pt;
+                        last = pt;
+                        ptsF.Add(new PointF((float)pt.X, (float)pt.Y));
+                    }
                 }
 
-                if (pts.Count > 1)
+                //if (pts.Count > 1) // 261111Cl 変更前
+                if (ptsF.Count > 1) // 261111Cl 変更
                 {
                     //if (checkBoxKikuchiLine_Kinematical.Checked) //260805Cl 変更前 (モード選択に統合)
                     if (kinematical) //260806Cl enum 化 / 260807Cl ホイスト
                         penKikuchi.Color = Blend(kikuchiLineColor, backGroundColor, g.RelativeIntensity); //260806Cl 線色コントロールを分離
                     if (!dynamicalDrawn) //260805Cl 追加: バンド描画済みのときは線は引かずラベルのみ
-                        graphics.DrawLines(penKikuchi, pts.ToArray());
+                        //graphics.DrawLines(penKikuchi, pts.ToArray()); // 261111Cl 変更前
+                        graphics.DrawLines(penKikuchi, (ReadOnlySpan<PointF>)CollectionsMarshal.AsSpan(ptsF)); // 261111Cl 変更
 
                     //ラベル描画
                     if (toolStripButtonIndexLabels.Checked)
                     {
                         //まず傾きをみて線のどちら側にラベルを付けるかを決める。θは -π ~ +πの範囲で調節
                         using var original = graphics.Transform;//260717Cl 追加: Transform getter が返す Matrix コピーを復元後に解放 (線ごとにリークしていた)
-                        var θ = Math.Atan2(pts[^1].Y - pts[0].Y, pts[^1].X - pts[0].X);
+                        //var θ = Math.Atan2(pts[^1].Y - pts[0].Y, pts[^1].X - pts[0].X); // 261111Cl 変更前 (下の pts[0]・pts[^1] も first・last に)
+                        var θ = Math.Atan2(last.Y - first.Y, last.X - first.X); // 261111Cl 変更
                         if (-Math.PI / 2 < θ && θ < Math.PI / 2)
                         {
-                            graphics.TranslateTransform(pts[0].X, pts[0].Y);
+                            graphics.TranslateTransform(first.X, first.Y); // 261111Cl
                             graphics.RotateTransform(θ);
                         }
                         else
                         {
-                            graphics.TranslateTransform(pts[^1].X, pts[^1].Y);
+                            graphics.TranslateTransform(last.X, last.Y); // 261111Cl
                             graphics.RotateTransform(θ + Math.PI);
                         }
                         //graphics.DrawString(g.Text, font, brush, new PointF(0, 0)); // 261105Cl 変更前 (監査 C23): 4 指数表記の設定でも 3 指数だった (スポットのラベルは 4 指数)
@@ -1565,9 +1628,15 @@ public partial class FormDiffractionSimulator : FormBase
         var ddx = (X: p10.X - p00.X, Y: p10.Y - p00.Y);
         var ddy = (X: p01.X - p00.X, Y: p01.Y - p00.Y);
         var det00 = (X: p00.X + 0.5 * (ddx.X + ddy.X), Y: p00.Y + 0.5 * (ddx.Y + ddy.Y));
-        using var bmp = KikuchiBandRenderer.Render(bands, w, h,
+        //using var bmp = KikuchiBandRenderer.Render(bands, w, h, // 261111Cl 変更前 (以下 2 行)
+        //    det00, ddx, ddy,
+        //    CameraLength2, fixedScale, contrast, gamma, KikuchiScaleMode, colorControlExcessLine.Color, colorControlDeficientLine.Color, out var usedScale);
+        // 261111Cl 変更: 画面と同じ大きさの Bitmap を毎フレーム new せず、レンダラー側で使い回す (所有はレンダラー。ここでは Dispose しない。
+        //  下の DrawImage は同期で描き終わるので、次のフレームで上書きしてよい)
+        var bmp = KikuchiBandRenderer.Render(bands, w, h,
             det00, ddx, ddy,
-            CameraLength2, fixedScale, contrast, gamma, KikuchiScaleMode, colorControlExcessLine.Color, colorControlDeficientLine.Color, out var usedScale);
+            CameraLength2, fixedScale, contrast, gamma, KikuchiScaleMode, colorControlExcessLine.Color, colorControlDeficientLine.Color, out var usedScale,
+            reuseBitmap: true);
         kikuchiAutoScale = usedScale;
         kikuchiScaleDirty = false;
 
@@ -1609,7 +1678,10 @@ public partial class FormDiffractionSimulator : FormBase
     }
 
     /// <summary>immutable なスナップショットを worker へ渡し、generation ID が一致したときだけ atomic に交換する (設計 §5)</summary>
-    private void StartKikuchiCompute()
+    //private void StartKikuchiCompute() // 261111Cl 変更前のシグネチャ
+    // 261111Cl 変更: async にし、計算は await Task.Run、結果の交換は await の後 (UI スレッド) で行う。
+    //  呼び出しは WinForms の Timer の Tick (UI スレッド) だけなので、await の後は UI スレッドに戻る
+    private async void StartKikuchiCompute()
     {
         var crystal = formMain?.Crystal;
         //if (IsDisposed || crystal?.VectorOfG_KikuchiLine == null || KikuchiModeSelected != KikuchiMode.DynamicalBand) //260806Cl /simplify2 (H1): 破棄後の timer 発火を無害化。enum 化 // 261105Cl 変更前 (監査 C8)
@@ -1629,54 +1701,98 @@ public partial class FormDiffractionSimulator : FormBase
         var snap = snapFresh ? oldSnap : new KikuchiPotentialSnapshot(crystal, kV);
         var prev = snapFresh ? kikuchiPrevSelection : null; //結晶・電圧が変わったら順位ヒステリシスはリセット
         int gen = System.Threading.Interlocked.Increment(ref kikuchiGeneration);
-        Task.Run(() =>
+        #region 261111Cl 変更前 (Task.Run の中から BeginInvoke で交換し、try と BeginInvoke が入れ子になっていた)
+        //Task.Run(() =>
+        //{
+        //    try
+        //    {
+        //        //260806Cl /simplify (効率レビュー): 候補構築 (Pair + ソート) も worker へ (旧: debounce tick で UI スレッドを塞いでいた)
+        //        var candidates = KikuchiBandFamily.Pair(gList)
+        //            .OrderByDescending(f => f.RelativeIntensity).Take(bandNum * 3).ToList(); //静的候補 = 表示数の3倍 (設計 §4 の二段階選定)
+        //        if (gen != System.Threading.Volatile.Read(ref kikuchiGeneration))
+        //            return; //260806Cl /simplify2 (C-6): 追い越された計算は本体前に打ち切る
+        //        var opt = new KikuchiProfileCalculator.Options { SampleCount = key.Samples };
+        //        List<KikuchiBandProfile> profiles = candidates.Count == 0
+        //            ? [] //260806Cl /simplify2 (C-7): 空でも「結果」として公開する (bare return だと key が更新されず毎 Draw 再計算し続ける)
+        //            : KikuchiProfileCalculator.ComputeProfiles(snap, candidates, rotation, thickness, bandNum, opt, prev);
+        //        BeginInvoke(() =>
+        //        {
+        //            if (gen != kikuchiGeneration || IsDisposed)
+        //                return;
+        //            kikuchiSnapshot = snap;
+        //            kikuchiProfiles = profiles;
+        //            kikuchiProfilesKey = key;
+        //            kikuchiPrevSelection = [.. profiles.Select(p => p.Family.Index)];
+        //            kikuchiScaleDirty = !checkBoxKikuchiFixedScale.Checked; //Auto 再決定は計算完了時のみ (ドラッグ中の明るさポンピング防止)
+        //            //260805Cl 追加: worker の結果を注記ラベルで可視化 (バンド数 0 や B 代用の診断が GUI だけで付くように)
+        //            kikuchiBandCount = profiles.Count;
+        //            kikuchiUsedDefaultBiso = (snap.Kernel as KikuchiTdsEinsteinKernel)?.UsedDefaultBiso == true;
+        //            UpdateKikuchiNotice();
+        //            Draw();
+        //        });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Kikuchi dynamical band computation failed: " + ex.Message);
+        //        //260805Cl 追加: 例外を GUI に可視化。260806Cl /simplify2 (C-7): key も公開して毎 Draw の無限再計算を止める
+        //        //(旧プロファイルは残すので、表示は直前の正常結果の再投影のまま)
+        //        try
+        //        {
+        //            BeginInvoke(() =>
+        //            {
+        //                if (gen != kikuchiGeneration || IsDisposed)
+        //                    return;
+        //                kikuchiProfiles ??= []; //初回失敗でも freshness が成立するように (非 null が条件)
+        //                kikuchiProfilesKey = key;
+        //                labelKikuchiNotice.Text = Crystallography.Localization.Loc(en: "Dynamical band error: ", ja: "動力学バンド計算エラー: ") + ex.Message; //260806Cl i18n
+        //            });
+        //        }
+        //        catch { }
+        //    }
+        //});
+        #endregion
+        List<KikuchiBandProfile> profiles;
+        try
         {
-            try
+            profiles = await Task.Run<List<KikuchiBandProfile>>(() =>
             {
                 //260806Cl /simplify (効率レビュー): 候補構築 (Pair + ソート) も worker へ (旧: debounce tick で UI スレッドを塞いでいた)
                 var candidates = KikuchiBandFamily.Pair(gList)
                     .OrderByDescending(f => f.RelativeIntensity).Take(bandNum * 3).ToList(); //静的候補 = 表示数の3倍 (設計 §4 の二段階選定)
                 if (gen != System.Threading.Volatile.Read(ref kikuchiGeneration))
-                    return; //260806Cl /simplify2 (C-6): 追い越された計算は本体前に打ち切る
+                    return null; //260806Cl /simplify2 (C-6): 追い越された計算は本体前に打ち切る (261111Cl: null で知らせ、交換しない)
                 var opt = new KikuchiProfileCalculator.Options { SampleCount = key.Samples };
-                List<KikuchiBandProfile> profiles = candidates.Count == 0
+                return candidates.Count == 0
                     ? [] //260806Cl /simplify2 (C-7): 空でも「結果」として公開する (bare return だと key が更新されず毎 Draw 再計算し続ける)
                     : KikuchiProfileCalculator.ComputeProfiles(snap, candidates, rotation, thickness, bandNum, opt, prev);
-                BeginInvoke(() =>
-                {
-                    if (gen != kikuchiGeneration || IsDisposed)
-                        return;
-                    kikuchiSnapshot = snap;
-                    kikuchiProfiles = profiles;
-                    kikuchiProfilesKey = key;
-                    kikuchiPrevSelection = [.. profiles.Select(p => p.Family.Index)];
-                    kikuchiScaleDirty = !checkBoxKikuchiFixedScale.Checked; //Auto 再決定は計算完了時のみ (ドラッグ中の明るさポンピング防止)
-                    //260805Cl 追加: worker の結果を注記ラベルで可視化 (バンド数 0 や B 代用の診断が GUI だけで付くように)
-                    kikuchiBandCount = profiles.Count;
-                    kikuchiUsedDefaultBiso = (snap.Kernel as KikuchiTdsEinsteinKernel)?.UsedDefaultBiso == true;
-                    UpdateKikuchiNotice();
-                    Draw();
-                });
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Kikuchi dynamical band computation failed: " + ex.Message);
-                //260805Cl 追加: 例外を GUI に可視化。260806Cl /simplify2 (C-7): key も公開して毎 Draw の無限再計算を止める
-                //(旧プロファイルは残すので、表示は直前の正常結果の再投影のまま)
-                try
-                {
-                    BeginInvoke(() =>
-                    {
-                        if (gen != kikuchiGeneration || IsDisposed)
-                            return;
-                        kikuchiProfiles ??= []; //初回失敗でも freshness が成立するように (非 null が条件)
-                        kikuchiProfilesKey = key;
-                        labelKikuchiNotice.Text = Crystallography.Localization.Loc(en: "Dynamical band error: ", ja: "動力学バンド計算エラー: ") + ex.Message; //260806Cl i18n
-                    });
-                }
-                catch { }
-            }
-        });
+            });
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Kikuchi dynamical band computation failed: " + ex.Message);
+            //260805Cl 追加: 例外を GUI に可視化。260806Cl /simplify2 (C-7): key も公開して毎 Draw の無限再計算を止める
+            //(旧プロファイルは残すので、表示は直前の正常結果の再投影のまま)
+            if (gen != kikuchiGeneration || IsDisposed)
+                return;
+            kikuchiProfiles ??= []; //初回失敗でも freshness が成立するように (非 null が条件)
+            kikuchiProfilesKey = key;
+            labelKikuchiNotice.Text = Crystallography.Localization.Loc(en: "Dynamical band error: ", ja: "動力学バンド計算エラー: ") + ex.Message; //260806Cl i18n
+            return;
+        }
+
+        // ここからは UI スレッド (旧の成功時の BeginInvoke の中身と同じ)
+        if (profiles == null || gen != kikuchiGeneration || IsDisposed)
+            return;
+        kikuchiSnapshot = snap;
+        kikuchiProfiles = profiles;
+        kikuchiProfilesKey = key;
+        kikuchiPrevSelection = [.. profiles.Select(p => p.Family.Index)];
+        kikuchiScaleDirty = !checkBoxKikuchiFixedScale.Checked; //Auto 再決定は計算完了時のみ (ドラッグ中の明るさポンピング防止)
+        //260805Cl 追加: worker の結果を注記ラベルで可視化 (バンド数 0 や B 代用の診断が GUI だけで付くように)
+        kikuchiBandCount = profiles.Count;
+        kikuchiUsedDefaultBiso = (snap.Kernel as KikuchiTdsEinsteinKernel)?.UsedDefaultBiso == true;
+        UpdateKikuchiNotice();
+        Draw();
     }
 
     #endregion
@@ -1942,7 +2058,10 @@ public partial class FormDiffractionSimulator : FormBase
     //解像度が変更されたときに逆格子点を計算しなおす
     private void numericUpDownResolution_ValueChanged(object sender, EventArgs e)
     {
-        if (Visible == false || SkipEvent) return;
+        //if (Visible == false || SkipEvent) return; // 261111Cl 変更前
+        // 261111Cl 変更: skipDrawing 中の変更は Resolution / ResolutionInNMinv の setter からで、setter が直後に SetVector と Draw を自分で呼ぶ。
+        //  ここでも SetVector を呼ぶと 1 回の変更で 2 回走っていた (Draw は SkipDrawing で既に素通り)。解像度欄を skipDrawing 中に変えるのはこの 2 つの setter だけ
+        if (Visible == false || SkipEvent || skipDrawing) return;
 
         //SetProjection();
         SetVector();
@@ -2489,7 +2608,7 @@ public partial class FormDiffractionSimulator : FormBase
 
         Foot = checkBoxFixCenter.Checked ? FixedCenter : -convertScreenToDetector(e.X, e.Y);
         Resolution /= GraphicsBox.GetWheelZoomFactor(e.Delta);
-        Draw();
+        //Draw(); // 261111Cl 削除: Resolution の setter が最後に必ず SetVector と Draw を呼ぶ (Foot は先に設定済み)。ホイール 1 目盛で 2 回描いていた
     }
 
     private void graphicsBox_MouseUp(object sender, MouseEventArgs e)

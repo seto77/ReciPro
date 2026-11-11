@@ -43,6 +43,9 @@ public static class KikuchiBandRenderer
     // ARGB 側は BitmapData へ直接書くので常駐するのはこの 2 本だけ (画素あたり float 1 個 + 標本 1/stride 個)。
     [ThreadStatic] private static float[] bufCache;
     [ThreadStatic] private static float[] sampleCache;
+    // 261111Cl 追加: Render(reuseBitmap: true) で使い回す出力 Bitmap。所有はこのクラス (呼び出し側は Dispose しない)。
+    //  大きさが変わったときだけ古いものを破棄して作り直す。下の書き込みループは透明画素も 0 を明示的に書くので、前フレームの内容は残らない
+    [ThreadStatic] private static Bitmap bmpCache;
 
     /// <summary>バンドごとの前計算定数 (260806Cl /simplify: 内側ループから除算・メソッド呼び出し・参照追跡を排除)</summary>
     private struct BandData
@@ -60,9 +63,15 @@ public static class KikuchiBandRenderer
     /// contrast: 1 が基準 (トラックバー 50/50)。
     /// gamma: 設計 §4 の m = sign(x)·|m₀|^{1/γ}。現状の呼び出し側は 1.0 固定 (素の圧縮カーブ。§9-7 作者調整枠)。
     /// </summary>
+    /// <param name="reuseBitmap">261111Cl 追加: true なら同じ大きさの Bitmap をスレッドごとに使い回して返す (所有はこのクラス。呼び出し側は Dispose せず、次の Render までに使い終えること)。
+    /// false (既定) は従来どおり毎回新しい Bitmap を返し、呼び出し側が破棄する</param>
+    //public static Bitmap Render(IReadOnlyList<BandInput> bands, int width, int height, // 261111Cl 変更前のシグネチャ (以下 2 行)
+    //    (double X, double Y) det00, (double X, double Y) detDx, (double X, double Y) detDy,
+    //    double cameraLength, double scale, double contrast, double gamma, ScaleMode scaleMode, Color excess, Color deficient, out double usedScale)
     public static Bitmap Render(IReadOnlyList<BandInput> bands, int width, int height,
         (double X, double Y) det00, (double X, double Y) detDx, (double X, double Y) detDy,
-        double cameraLength, double scale, double contrast, double gamma, ScaleMode scaleMode, Color excess, Color deficient, out double usedScale)
+        double cameraLength, double scale, double contrast, double gamma, ScaleMode scaleMode, Color excess, Color deficient, out double usedScale,
+        bool reuseBitmap = false) // 261111Cl 変更: reuseBitmap を追加
     {
         //var buf = new float[width * height]; //260807Cl 変更前: 毎フレーム確保していた
         int nPix = width * height;
@@ -125,7 +134,20 @@ public static class KikuchiBandRenderer
 
         // 選択スケールで圧縮 → E/D 色 + |m| 不透明度 (背景との合成は GDI+ のアルファに任せる)。
         // 260806Cl /simplify2 (M1): 例外時は Bitmap を破棄してから再スロー (呼び出し側の using に届かないため)
-        var bmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+        //var bmp = new Bitmap(width, height, PixelFormat.Format32bppArgb); // 261111Cl 変更前
+        // 261111Cl 変更: reuseBitmap のときは前フレームと同じ大きさなら使い回す (毎フレームの W×H の確保と 0 埋めをなくす)
+        Bitmap bmp;
+        if (reuseBitmap && bmpCache != null && bmpCache.Width == width && bmpCache.Height == height)
+            bmp = bmpCache;
+        else
+        {
+            bmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+            if (reuseBitmap)
+            {
+                bmpCache?.Dispose();
+                bmpCache = bmp;
+            }
+        }
         try
         {
             var data = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
@@ -176,7 +198,13 @@ public static class KikuchiBandRenderer
             finally { bmp.UnlockBits(data); }
             return bmp;
         }
-        catch { bmp.Dispose(); throw; } //260806Cl /simplify2 (M1): 例外時は呼び出し側の using に届かないため自前で破棄
+        //catch { bmp.Dispose(); throw; } //260806Cl /simplify2 (M1): 例外時は呼び出し側の using に届かないため自前で破棄 // 261111Cl 変更前
+        catch
+        {
+            bmp.Dispose(); //260806Cl /simplify2 (M1): 例外時は呼び出し側の using に届かないため自前で破棄
+            if (ReferenceEquals(bmp, bmpCache)) bmpCache = null; // 261111Cl 追加: 破棄したものを使い回さない
+            throw;
+        }
     }
 
     /// <summary>

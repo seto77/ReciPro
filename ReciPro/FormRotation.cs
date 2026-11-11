@@ -188,6 +188,11 @@ public partial class FormRotationMatrix : FormBase
 
         #endregion
         glControlReciProGonio.WorldMatrix = Matrix4d.CreateRotationZ(-Math.PI / 4) * Matrix4d.CreateRotationX(-0.4 * Math.PI);
+        // 261111Cl 追加: XYZ 軸は方位に依らない静的なオブジェクト (視点は WorldMatrix の連動で回る) なので、ここで 1 回だけ作る。
+        //  SetRotation で回転のたびに作り直していた (TextObject 3 個を含む)。GL の Program はコンストラクタで作られ、軸の窓のオブジェクトを消すのは setAxes だけ。
+        //  TextObject の大きさは DPI に依らないので、DPI の変更で作り直す必要もない
+        setAxes(glControlReciProAxes);
+        setAxes(glControlExpAxes);
         SetRotation();
 
         numericBoxPhi.ValueBackColor = numericBoxExp1.ValueBackColor = Color.FromArgb(255, 180, 180, 0);
@@ -446,7 +451,7 @@ public partial class FormRotationMatrix : FormBase
         glControlReciProObjects.DeleteAllObjects();
         glControlReciProObjects.AddObjects(createObject(glControlReciProObjects, dirReciPro, angleReciPro));
         glControlReciProObjects.Refresh(); // (260322Ch) 短い helper は介さずその場で処理する
-        setAxes(glControlReciProAxes);
+        //setAxes(glControlReciProAxes); // 261111Cl 削除: Load で 1 回だけ作る
 
         //Experimetal coordinatesの描画
         var dirExp = getExpDirections();
@@ -456,7 +461,7 @@ public partial class FormRotationMatrix : FormBase
         glControlExpObjects.DeleteAllObjects();
         glControlExpObjects.AddObjects(createObject(glControlExpObjects, dirExp, angleExp));
         glControlExpObjects.Refresh(); // (260322Ch)
-        setAxes(glControlExpAxes);
+        //setAxes(glControlExpAxes); // 261111Cl 削除: Load で 1 回だけ作る
     }
 
     #region OpenGL

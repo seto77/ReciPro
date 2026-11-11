@@ -179,11 +179,13 @@ public partial class FormDiffractionSpotInfo : FormBase
 
         //dataGridViewの内容の書き換えは非常に時間がかかるので、まず、更新すべきかどうかをチェック
         bool need = false;
+        var columnCount = dataSet.DataTableBethe.Columns.Count; // 261111Cl 追加: ItemArray.Length と同じ値 (ItemArray は読むたびに全列を箱詰めした object[] を作る)
         for (int i = 0; i < Math.Max(Beams.Length, dataSet.DataTableBethe.Rows.Count) && !need; i++)
         {
             if (i < Beams.Length && i < dataSet.DataTableBethe.Rows.Count)
             {
-                for (int j = 0; j < dataSet.DataTableBethe.Rows[i].ItemArray.Length && !need; j++)
+                //for (int j = 0; j < dataSet.DataTableBethe.Rows[i].ItemArray.Length && !need; j++) // 261111Cl 変更前
+                for (int j = 0; j < columnCount && !need; j++) // 261111Cl 変更
                 {
                     if (dataSet.DataTableBethe.Rows[i][j] == DBNull.Value)
                         need = true;

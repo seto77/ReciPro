@@ -121,9 +121,11 @@ public sealed class MacroPipeListener
             else
                 try
                 {
-                    (output, error) = ((string, string))main.Invoke(
-                        new Func<(string, string)>(() => stopping ? ("", "Listener stopped.")
-                                                                  : main.FormMacro.RunMacro(code, quiet: true)));
+                    //(output, error) = ((string, string))main.Invoke( // 261111Cl 変更前 (以下 2 行)
+                    //    new Func<(string, string)>(() => stopping ? ("", "Listener stopped.")
+                    //                                              : main.FormMacro.RunMacro(code, quiet: true)));
+                    (output, error) = main.Invoke<(string, string)>(() => stopping ? ("", "Listener stopped.") // 261111Cl 変更: Invoke<T> でキャストを省く
+                                                                                   : main.FormMacro.RunMacro(code, quiet: true));
                 }
                 catch (Exception ex) { error = ex.Message; } // フォーム破棄中の Invoke 失敗など
         }

@@ -114,22 +114,62 @@ public partial class FormImageSimulator : FormBase
     public double SerialImageDefocusStep { get => numericBoxDefocusStep.Value; set => numericBoxDefocusStep.Value = value; }
     // public int SerialImageDefocusNum { get => numericBoxDefocusNum.ValueInteger; set => numericBoxDefocusStep.Value = value; } // (260414Ch) 旧実装: setter が個数ではなく step を書き換えていた
     public int SerialImageDefocusNum { get => numericBoxDefocusNum.ValueInteger; set => numericBoxDefocusNum.Value = value; }
+    /// <summary>261111Cl 追加: リスト欄の解析結果のキャッシュ (欄の文字列と書式のカルチャが同じ間は解析し直さない)。Values は読めない行があれば null</summary>
+    private sealed record ParsedLineList(string Text, System.Globalization.CultureInfo Culture, double[] Values);
+    private ParsedLineList thicknessListCache, defocusListCache; // 261111Cl 追加 (参照の代入なので別スレッドから読んでも組が崩れない)
+
+    /// <summary>261111Cl 追加: "\r\n" 区切りの数値リストを読む。空の行は飛ばし、1 行でも読めなければ null。
+    /// 旧の Split(["\r\n"], RemoveEmptyEntries) + double.Parse / Convert.ToDouble (どちらも現在のカルチャ・Float | AllowThousands) と同じ判定・同じ値</summary>
+    private static double[] parseLineList(string text, System.Globalization.CultureInfo culture)
+    {
+        var list = new List<double>();
+        foreach (var range in text.AsSpan().Split("\r\n"))
+        {
+            var s = text.AsSpan(range);
+            if (s.IsEmpty) continue;
+            if (!double.TryParse(s, System.Globalization.NumberStyles.Float | System.Globalization.NumberStyles.AllowThousands, culture, out var v))
+                return null;
+            list.Add(v);
+        }
+        return [.. list];
+    }
+
     public double[] ThicknessArray
     {
         get
         {
             if (radioButtonSingleMode.Checked || !checkBoxSerialThickness.Checked)
                 return [numericBoxThickness.Value];
+            //try // 261111Cl 変更前 (ここから)
+            //{
+            //    //260317Cl 変更: Convert.ToDouble → double.Parse
+            //    return textBoxThicknessList.Text.Split(["\r\n"], StringSplitOptions.RemoveEmptyEntries).Select(str => double.Parse(str)).ToArray();
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Values in Thickness list are invalid.");
+            //    return null;
+            //}
+            // 261111Cl 変更前 (ここまで)
+            // 261111Cl 変更: 例外 (Parse の失敗) で判定せず TryParse と span の分割で読み、欄が変わらない間は解析結果を使い回す。
+            //  戻り値は毎回新しい配列 (旧と同じく呼び出し側が書き換えてもよい)。不正なときは旧と同じく毎回メッセージを出して null
+            double[] values;
             try
             {
-                //260317Cl 変更: Convert.ToDouble → double.Parse
-                return textBoxThicknessList.Text.Split(["\r\n"], StringSplitOptions.RemoveEmptyEntries).Select(str => double.Parse(str)).ToArray();
+                var text = textBoxThicknessList.Text;
+                var culture = System.Globalization.CultureInfo.CurrentCulture;
+                var cache = thicknessListCache;
+                if (cache == null || cache.Text != text || cache.Culture != culture)
+                    thicknessListCache = cache = new(text, culture, parseLineList(text, culture));
+                values = cache.Values;
             }
-            catch
+            catch { values = null; }
+            if (values == null)
             {
                 MessageBox.Show("Values in Thickness list are invalid.");
                 return null;
             }
+            return (double[])values.Clone();
         }
         set
         {
@@ -143,15 +183,34 @@ public partial class FormImageSimulator : FormBase
         {
             if (radioButtonSingleMode.Checked || !checkBoxSerialDefocus.Checked)
                 return [numericBoxDefocus.Value];
+            //try // 261111Cl 変更前 (ここから)
+            //{
+            //    return textBoxDefocusList.Text.Split(["\r\n"], StringSplitOptions.RemoveEmptyEntries).Select(str => Convert.ToDouble(str)).ToArray();
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Values in Defocus list are invalid.");
+            //    return null;
+            //}
+            // 261111Cl 変更前 (ここまで)
+            // 261111Cl 変更: ThicknessArray と同じ (Convert.ToDouble(string) は double.Parse(s, 現在のカルチャ) と同じ)
+            double[] values;
             try
             {
-                return textBoxDefocusList.Text.Split(["\r\n"], StringSplitOptions.RemoveEmptyEntries).Select(str => Convert.ToDouble(str)).ToArray();
+                var text = textBoxDefocusList.Text;
+                var culture = System.Globalization.CultureInfo.CurrentCulture;
+                var cache = defocusListCache;
+                if (cache == null || cache.Text != text || cache.Culture != culture)
+                    defocusListCache = cache = new(text, culture, parseLineList(text, culture));
+                values = cache.Values;
             }
-            catch
+            catch { values = null; }
+            if (values == null)
             {
                 MessageBox.Show("Values in Defocus list are invalid.");
                 return null;
             }
+            return (double[])values.Clone();
         }
         set
         {
@@ -1706,18 +1765,32 @@ public partial class FormImageSimulator : FormBase
     /// <param name="e"></param>
     private void NumericBoxThicknessSerial_ValueChanged(object sender, EventArgs e)
     {
-        textBoxThicknessList.Text = numericBoxThicknessStart.Value.ToString();
-        for (int i = 1; i < numericBoxThicknessNum.ValueInteger; i++)
-            textBoxThicknessList.Text += "\r\n" + (numericBoxThicknessStart.Value + numericBoxThicknessStep.Value * i).ToString();
+        //textBoxThicknessList.Text = numericBoxThicknessStart.Value.ToString(); // 261111Cl 変更前
+        //for (int i = 1; i < numericBoxThicknessNum.ValueInteger; i++)
+        //    textBoxThicknessList.Text += "\r\n" + (numericBoxThicknessStart.Value + numericBoxThicknessStep.Value * i).ToString();
+        // 261111Cl 変更: 行ごとに Text へ足す (WM_SETTEXT と読み戻しが行数ぶん) のをやめ、組み立ててから 1 回だけ代入する (文字列は同じ)
+        double start = numericBoxThicknessStart.Value, step = numericBoxThicknessStep.Value;
+        var lines = new string[Math.Max(1, numericBoxThicknessNum.ValueInteger)];
+        lines[0] = start.ToString();
+        for (int i = 1; i < lines.Length; i++)
+            lines[i] = (start + step * i).ToString();
+        textBoxThicknessList.Text = string.Join("\r\n", lines);
     }
     /// <summary>シリアルモードのデフォーカス、ステップ、個数が変更されたとき。デフォーカスリストを変更</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void NumericBoxDefocusSerial_ValueChanged(object sender, EventArgs e)
     {
-        textBoxDefocusList.Text = numericBoxDefocusStart.Value.ToString();
-        for (int i = 1; i < numericBoxDefocusNum.ValueInteger; i++)
-            textBoxDefocusList.Text += "\r\n" + (numericBoxDefocusStart.Value + numericBoxDefocusStep.Value * i).ToString();
+        //textBoxDefocusList.Text = numericBoxDefocusStart.Value.ToString(); // 261111Cl 変更前
+        //for (int i = 1; i < numericBoxDefocusNum.ValueInteger; i++)
+        //    textBoxDefocusList.Text += "\r\n" + (numericBoxDefocusStart.Value + numericBoxDefocusStep.Value * i).ToString();
+        // 261111Cl 変更: 厚みと同じく組み立ててから 1 回だけ代入する
+        double start = numericBoxDefocusStart.Value, step = numericBoxDefocusStep.Value;
+        var lines = new string[Math.Max(1, numericBoxDefocusNum.ValueInteger)];
+        lines[0] = start.ToString();
+        for (int i = 1; i < lines.Length; i++)
+            lines[i] = (start + step * i).ToString();
+        textBoxDefocusList.Text = string.Join("\r\n", lines);
     }
     /// <summary>ブロッホ波の個数が変更されたとき。FormDiffractionSimulator中のブロッホ波個数を変更、スポット情報更新</summary>
     /// <param name="sender"></param>
@@ -1730,7 +1803,9 @@ public partial class FormImageSimulator : FormBase
     }
 
     /// <summary>現在のパラメータに従って、対物絞り内のスポット情報を計算。SpotInfoのテーブルを更新。FormDiffractionSimulatorが表示されていれば更新</summary>
-    public void CalculateInsideSpotInfo()
+    /// <param name="redrawDiffraction">261111Cl 追加: false なら回折シミュレータを描き直さない (RotationChanged 用。回転時は FormMain が先に FDS.RotationChanged→Draw を呼んでいるため)</param>
+    //public void CalculateInsideSpotInfo() // 261111Cl 変更前
+    public void CalculateInsideSpotInfo(bool redrawDiffraction = true) // 261111Cl 変更
     {
         if (!this.Visible)
             return;
@@ -1750,7 +1825,8 @@ public partial class FormImageSimulator : FormBase
             FormDiffractionSpotInfo.SetTable(AccVol, BeamsInside);
         }
 
-        if (FormMain.FormDiffractionSimulator.Visible)
+        //if (FormMain.FormDiffractionSimulator.Visible) // 261111Cl 変更前
+        if (redrawDiffraction && FormMain.FormDiffractionSimulator.Visible) // 261111Cl 変更
             FormMain.FormDiffractionSimulator.Draw();
     }
 
@@ -1767,8 +1843,13 @@ public partial class FormImageSimulator : FormBase
                 simulatePotential(true);
         }
 
+        //if (ImageMode == ImageModes.HRTEM) // 261111Cl 変更前
+        //    CalculateInsideSpotInfo();
+        // 261111Cl 変更: 呼び出し元 (FormMain.SetRotation / crystalControl_CrystalChanged) は、この直前に回折シミュレータを
+        //  RotationChanged→Draw / SetCrystal→Draw で最新の方位・結晶で描いている。ここで描き直すと 1 回の回転で 2 回描いていた。
+        //  回折シミュレータが読むのは絞りの半径・位置 (数値欄の値) だけで、ここで計算する BeamsInside は読まないので、描き直しは要らない
         if (ImageMode == ImageModes.HRTEM)
-            CalculateInsideSpotInfo();
+            CalculateInsideSpotInfo(false);
 
         //260802Cl 追加: FormMain はこのメソッドを結晶切替 (crystalControl_CrystalChanged) でも呼ぶ。
         //EDX 候補は構成元素で決まるので、ここで作り直さないと前の結晶の元素が並んだままになり、
