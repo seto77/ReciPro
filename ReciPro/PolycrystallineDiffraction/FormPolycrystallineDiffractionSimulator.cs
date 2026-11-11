@@ -536,14 +536,38 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
                 }
             }
 
-            backgroundWorkerMain.ReportProgress(
+            //backgroundWorkerMain.ReportProgress( // 261111Cl 変更前 (ここから)
+            //    setting.TotalStep % 100 == 0 ? 0 : 1,
+            //    new object[] {
+            //            sw.ElapsedMilliseconds,
+            //            setting.TotalStep,
+            //            setting.LPO_SuccessTime,
+            //        Math.Sqrt(residualCurrent / residualInitial),
+            //        Math.Sqrt(residualCurrent / totalPixel) }); // 261111Cl 変更前 (ここまで)
+
+            // 261111Cl 追加: 100 ステップごとの表示用の写し。旧は UI スレッドの ProgressChanged が Simulate()/setSimulatedPixels() で DiffractionPixels を差し替え、
+            //  その間もこのワーカーが PartialDensity/ApplyPartialDensity で同じ配列を読み書きしていた (差し替え前の配列への更新の取りこぼし、途中で配列が替わった残差)。
+            //  旧の差し替え (密度からの作り直し) は計算にも効いていたので、同じ 100 ステップごとにここで行い、できた表示用の配列を UI へ渡す。UI は表示するだけ
+            double[][] simulatedPixels = null;
+            if (setting.TotalStep % 100 == 0)
+            {
+                simulatedPixels = new double[diffractionPatternControl.Count][];
+                for (int i = 0; i < diffractionPatternControl.Count; i++)
+                {
+                    diffractionPatternControl[i].Simulate(false, false, false, true);
+                    simulatedPixels[i] = diffractionPatternControl[i].GetSimulatedPixels();
+                }
+            }
+
+            backgroundWorkerMain.ReportProgress( // 261111Cl 変更: 最後に表示用の写し (100 ステップごと以外は null) を足す
                 setting.TotalStep % 100 == 0 ? 0 : 1,
                 new object[] {
                         sw.ElapsedMilliseconds,
                         setting.TotalStep,
                         setting.LPO_SuccessTime,
                     Math.Sqrt(residualCurrent / residualInitial),
-                    Math.Sqrt(residualCurrent / totalPixel) });
+                    Math.Sqrt(residualCurrent / totalPixel),
+                    simulatedPixels });
         }
 
         backgroundWorkerMain.CancelAsync();
@@ -600,11 +624,15 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
         foreach (var crystalControl in CrystalContlols)
             crystalControl.DrawPoleFigure();
 
-        for (int i = 0; i < diffractionPatternControl.Count; i++)
-        {
-            diffractionPatternControl[i].Simulate(false, false, false, true);
-            diffractionPatternControl[i].setSimulatedPixels();
-        }
+        //for (int i = 0; i < diffractionPatternControl.Count; i++) // 261111Cl 変更前 (ここから)
+        //{
+        //    diffractionPatternControl[i].Simulate(false, false, false, true);
+        //    diffractionPatternControl[i].setSimulatedPixels();
+        //} // 261111Cl 変更前 (ここまで)
+        // 261111Cl 変更: ワーカーが作った写しを表示するだけにする (ワーカーが使う DiffractionPixels などを UI スレッドで差し替えない・読まない)
+        if (((object[])e.UserState)[5] is double[][] simulatedPixels)
+            for (int i = 0; i < diffractionPatternControl.Count && i < simulatedPixels.Length; i++)
+                diffractionPatternControl[i].setSimulatedPixels(simulatedPixels[i]);
         graphControlResidual.AddPoint(0, new PointD(step, residual * 100));
         graphControlResidual.SetDrawingRangeXandExpandY(new RectangleD(graphControlResidual.Profile.Pt[0].X - 1, 0, graphControlResidual.Profile.Pt[0].X + step + 2, 0));
 

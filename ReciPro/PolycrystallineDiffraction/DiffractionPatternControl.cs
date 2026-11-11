@@ -965,27 +965,50 @@ public partial class DiffractionPatternControl : UserControlBase
 
     #endregion Mask関連
 
-    public void setSimulatedPixels()
+    /// <summary>261111Cl 追加: 今の DiffractionPixels・ScaleFactor・BackgroundPixels から「バックグラウンド + 回折リング × スケール因子」を新しい配列に作る
+    /// (マスクした画素は 0)。LPO のワーカーが、表示用の写しを自分のスレッドで作るのにも使う</summary>
+    public double[] GetSimulatedPixels()
     {
+        var pixels = new double[DiffractionPixels.Length];
+        for (int i = 0; i < DiffractionPixels.Length; i++)
+            if (!Filter[i])
+                pixels[i] = ScaleFactor * DiffractionPixels[i] + BackgroundPixels[i];
+        return pixels;
+    }
+
+    //public void setSimulatedPixels() // 261111Cl 変更前
+    /// <param name="simulatedPixels">261111Cl 追加: 渡すと、DiffractionPixels などから作らずに、これ (LPO のワーカーが作った写し) を表示する。
+    /// 参照画像 (SrcPixels がある。LPO の対象) では、このときワーカーが使う配列 (DiffractionPixels・BackgroundPixels・ScaleFactor) を読まず、書き換えもしない
+    /// (Filter・SrcPixels は読むだけ)</param>
+    public void setSimulatedPixels(double[] simulatedPixels = null) // 261111Cl 変更
+    {
+        int length = simulatedPixels?.Length ?? DiffractionPixels.Length; // 261111Cl 追加
         //if (SrcPixels == null) // 261105Cl 変更前
         // 261105Cl 変更 (監査 I14): シミュレーションのタブ (参照画像なし) で Size を変えて計算し直すと、DiffractionPixels の大きさが前の SrcPixels と違い、
         //  下の Length の一致の判定で何もせずに戻って画像が更新されなかった。参照画像でないときは大きさが変わったら作り直す
-        if (SrcPixels == null || (!IsReferrenceImage && SrcPixels.Length != DiffractionPixels.Length)) // 261105Cl
+        //if (SrcPixels == null || (!IsReferrenceImage && SrcPixels.Length != DiffractionPixels.Length)) // 261105Cl (261111Cl 変更前)
+        if (SrcPixels == null || (!IsReferrenceImage && SrcPixels.Length != length)) // 261111Cl 変更: DiffractionPixels.Length → length (以下 4 行も)
         {
-            SrcPixels = new double[DiffractionPixels.Length];
-            Filter = new bool[DiffractionPixels.Length];
-            BackgroundPixels = new double[DiffractionPixels.Length];
-            DestPixels = new double[DiffractionPixels.Length];
+            //SrcPixels = new double[DiffractionPixels.Length]; // 261111Cl 変更前 (4 行)
+            //Filter = new bool[DiffractionPixels.Length];
+            //BackgroundPixels = new double[DiffractionPixels.Length];
+            //DestPixels = new double[DiffractionPixels.Length];
+            SrcPixels = new double[length];
+            Filter = new bool[length];
+            BackgroundPixels = new double[length];
+            DestPixels = new double[length];
             scalablePictureBox.PseudoBitmap = new PseudoBitmap(SrcPixels, ImageWidth);
         }
 
-        if (DiffractionPixels.Length == SrcPixels.Length)
+        //if (DiffractionPixels.Length == SrcPixels.Length) // 261111Cl 変更前
+        if (length == SrcPixels.Length) // 261111Cl 変更
         {
-            SimulatedPixels = new double[DiffractionPixels.Length];
-
-            for (int i = 0; i < DiffractionPixels.Length; i++)
-                if (!Filter[i])
-                    SimulatedPixels[i] = ScaleFactor * DiffractionPixels[i] + BackgroundPixels[i];
+            //SimulatedPixels = new double[DiffractionPixels.Length]; // 261111Cl 変更前 (ここから)
+            //
+            //for (int i = 0; i < DiffractionPixels.Length; i++)
+            //    if (!Filter[i])
+            //        SimulatedPixels[i] = ScaleFactor * DiffractionPixels[i] + BackgroundPixels[i]; // 261111Cl 変更前 (ここまで)
+            SimulatedPixels = simulatedPixels ?? GetSimulatedPixels(); // 261111Cl 変更: 計算は GetSimulatedPixels へ (同じ式)
 
             Profile p = setFrequencyProfile(SimulatedPixels);
             // 261105Cl 追加: 0 番目 (参照画像の頻度) は SetImage でしか入らないので、シミュレーションのタブでは空のまま。旧はこのとき下の
@@ -1526,31 +1549,71 @@ public partial class DiffractionPatternControl : UserControlBase
 
         double ramda = 1;
         int count = 0;
-        var Alpha = new DenseMatrix(prmNum, prmNum);
-        var Beta = new DenseMatrix(prmNum, 1);
+        //var Alpha = new DenseMatrix(prmNum, prmNum); // 261111Cl 変更前 (2 行): while の外で 1 回だけ作るので、反復ごとに += と対角の *= (1+λ) が積み重なり、
+        //var Beta = new DenseMatrix(prmNum, 1);       //  棄却されたステップの後は同じヤコビアンを二重に足していた
+        // 261111Cl 追加: λ を掛ける前の JᵀWJ (上三角, 列優先 (k,l) → k + l·prmNum) と JᵀW·r。prm が変わったとき (初回と受理の後) だけ 0 から組み直す。
+        //  棄却の後は prm も残差も同じなので、組み直しても同じ値になる (Marquardt.cs の renewAlpha と同じ扱い)
+        var alphaSum = new double[prmNum * prmNum];
+        var betaSum = new double[prmNum];
+        bool renewAlpha = true;
         int eachHeight = (ImageHeight - 20) / threadTotal + 1;
         var partial = new Matrix[threadTotal][];//260718Cl: 各パーティションの (alpha, beta)
         while (ramda < 1000 && count++ < 100)
         {
-            Parallel.For(0, threadTotal, t =>
-                partial[t] = calcAlphaBeta(Math.Max(10, eachHeight * t), Math.Min(eachHeight * (t + 1), ImageHeight - 10)));
+            #region 261111Cl 変更前
+            //Parallel.For(0, threadTotal, t =>
+            //    partial[t] = calcAlphaBeta(Math.Max(10, eachHeight * t), Math.Min(eachHeight * (t + 1), ImageHeight - 10)));
+            //
+            //for (int t = 0; t < threadTotal; t++)
+            //{
+            //    Matrix[] m = partial[t];
+            //    for (int k = 0; k < prmNum; k++)
+            //    {
+            //        Beta[k, 0] += m[1][k, 0];
+            //        for (int l = 0; l < prmNum; l++)
+            //            Alpha[k, l] += m[0][k, l];
+            //    }
+            //}
+            //for (int k = 0; k < prmNum; k++)
+            //{
+            //    Alpha[k, k] *= (1 + ramda);
+            //    for (int l = k + 1; l < prmNum; l++)
+            //        Alpha[l, k] = Alpha[k, l];
+            //}
+            #endregion
 
-            for (int t = 0; t < threadTotal; t++)
+            if (renewAlpha) // 261111Cl 変更: 反復ごとに 0 から足す (旧は前の反復の値に足し続けていた)
             {
-                Matrix[] m = partial[t];
-                for (int k = 0; k < prmNum; k++)
+                // 261111Cl 変更: 最後の区画は ImageHeight - 10 まで。旧の区画 [eachHeight·t, eachHeight·(t+1)) は 16·eachHeight < ImageHeight - 10 のとき
+                //  下端の行 (最大 9 行。例: 高さ 2048 で 6 行) がヤコビアンに入らず、残差 (全行) と食い違っていた
+                Parallel.For(0, threadTotal, t =>
+                    partial[t] = calcAlphaBeta(Math.Max(10, eachHeight * t), t == threadTotal - 1 ? ImageHeight - 10 : Math.Min(eachHeight * (t + 1), ImageHeight - 10)));
+
+                Array.Clear(alphaSum); // 261111Cl 追加
+                Array.Clear(betaSum); // 261111Cl 追加
+                for (int t = 0; t < threadTotal; t++)
                 {
-                    Beta[k, 0] += m[1][k, 0];
-                    for (int l = 0; l < prmNum; l++)
-                        Alpha[k, l] += m[0][k, l];
+                    Matrix[] m = partial[t];
+                    for (int k = 0; k < prmNum; k++)
+                    {
+                        betaSum[k] += m[1][k, 0]; // 261111Cl 変更
+                        for (int l = 0; l < prmNum; l++)
+                            alphaSum[k + l * prmNum] += m[0][k, l]; // 261111Cl 変更
+                    }
                 }
+                renewAlpha = false; // 261111Cl 追加
             }
+
+            // 261111Cl 変更: λ は、組んだ値の写しにこの反復の分だけ掛ける。下三角は上三角から写す
+            var alphaStorage = (double[])alphaSum.Clone();
             for (int k = 0; k < prmNum; k++)
             {
-                Alpha[k, k] *= (1 + ramda);
+                alphaStorage[k + k * prmNum] *= (1 + ramda);
                 for (int l = k + 1; l < prmNum; l++)
-                    Alpha[l, k] = Alpha[k, l];
+                    alphaStorage[l + k * prmNum] = alphaStorage[k + l * prmNum];
             }
+            var Alpha = new DenseMatrix(prmNum, prmNum, alphaStorage); // 261111Cl 変更
+            var Beta = new DenseMatrix(prmNum, 1, betaSum); // 261111Cl 変更 (betaSum はこの後書き換えない。組み直すのは次の受理の後)
 
             var alphaInv = Alpha.TryInverse();
             if (alphaInv == null)
@@ -1580,6 +1643,7 @@ public partial class DiffractionPatternControl : UserControlBase
             if (ResidualSquareCurrent > ResidualSquareNew)
             {
                 prm = prmNew; //ScaleFactor = prmNew.C;
+                renewAlpha = true; // 261111Cl 追加: prm が変わったので、次の反復でヤコビアンと残差から組み直す
                 if ((ResidualSquareCurrent - ResidualSquareNew) / ResidualSquareCurrent / 0.0000001 > 1 || count < 5 || ramda > 100)
                 {
                     ResidualSquareCurrent = ResidualSquareNew;
