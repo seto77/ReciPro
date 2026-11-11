@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ZLinq;
+// using ZLinq; // 261111Cl 削除: ZLinq を外したため
 using C4 = OpenTK.Mathematics.Color4;
 using M3d = OpenTK.Mathematics.Matrix3d;
 using V3 = OpenTK.Mathematics.Vector3d;
@@ -291,7 +291,8 @@ internal static class SymmetryDiagram
             new Polygon(fillVerts, mat, DrawingMode.Edges) { IgnoreNormalSides = true, ShowClippedSection = false, LineWidth = AxisLineWidth },
             // 旧: .. template.Skip(1).Select(line => new Lines(AffineTransformXY(line, center, u, v, scale), AxisLineWidth, mat)),
             // 260514Cl: ZLinq の AsValueEnumerable() で iterator 確保なしの value-struct chain にする。
-            .. template.AsValueEnumerable().Skip(1).Select(line => new Lines(AffineTransformXY(line, center, u, v, scale), AxisLineWidth, mat)),
+            // .. template.AsValueEnumerable().Skip(1).Select(line => new Lines(AffineTransformXY(line, center, u, v, scale), AxisLineWidth, mat)), // 261111Cl 変更前
+            .. template.Skip(1).Select(line => new Lines(AffineTransformXY(line, center, u, v, scale), AxisLineWidth, mat)), // 261111Cl 変更: ZLinq を外したので標準 LINQ
         ];
     }
 
@@ -326,7 +327,8 @@ internal static class SymmetryDiagram
         var extendedBoundsArray = extendedBounds.Select(b => new[] { b.X, b.Y, b.Z, b.W }).ToArray();
 
         // 260509Cl: 描画 bounds の clipped 多角形頂点は plane に依存しないので一度だけ計算し、各 plane では射影 max のみ取る。
-        var boundsVertices = ValueEnumerable.Range(0, boundsArray.Length)
+        // var boundsVertices = ValueEnumerable.Range(0, boundsArray.Length) // 261111Cl 変更前
+        var boundsVertices = Enumerable.Range(0, boundsArray.Length) // 261111Cl 変更: ZLinq を外したので標準 LINQ
             .Select(i => Geometry.GetClippedPolygon(i, boundsArray))
             .Where(c => c != null)
             .SelectMany(c => c.Select(p => new V3(p[0], p[1], p[2])))
@@ -653,16 +655,22 @@ internal static class SymmetryDiagram
     // 旧: private static readonly V3[][] Screw2_1 = [BuildLens(), BuildLensFin(true), BuildLensFin(false)];
     private static readonly V3[][] Screw2_1 = [LensTemplate, BuildLensFin(true), BuildLensFin(false)];
 
-    private static readonly V3[][] Screw3_1 = [Rotation3[0], .. ValueEnumerable.Range(0, 3).Select(i => BuildRegularPolygonFin(3, i, true,  TemplatePolygonRadius, TemplatePolygonFinRadius))];
-    private static readonly V3[][] Screw3_2 = [Rotation3[0], .. ValueEnumerable.Range(0, 3).Select(i => BuildRegularPolygonFin(3, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))];
-    private static readonly V3[][] Screw4_1 = [Rotation4[0], .. ValueEnumerable.Range(0, 4).Select(i => BuildRegularPolygonFin(4, i, true,  TemplatePolygonRadius, TemplatePolygonFinRadius))];
+    // private static readonly V3[][] Screw3_1 = [Rotation3[0], .. ValueEnumerable.Range(0, 3).Select(i => BuildRegularPolygonFin(3, i, true,  TemplatePolygonRadius, TemplatePolygonFinRadius))]; // 261111Cl 変更前
+    private static readonly V3[][] Screw3_1 = [Rotation3[0], .. Enumerable.Range(0, 3).Select(i => BuildRegularPolygonFin(3, i, true,  TemplatePolygonRadius, TemplatePolygonFinRadius))]; // 261111Cl 変更: ZLinq を外したので標準 LINQ
+    // private static readonly V3[][] Screw3_2 = [Rotation3[0], .. ValueEnumerable.Range(0, 3).Select(i => BuildRegularPolygonFin(3, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))]; // 261111Cl 変更前
+    private static readonly V3[][] Screw3_2 = [Rotation3[0], .. Enumerable.Range(0, 3).Select(i => BuildRegularPolygonFin(3, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))]; // 261111Cl 変更: ZLinq を外したので標準 LINQ
+    // private static readonly V3[][] Screw4_1 = [Rotation4[0], .. ValueEnumerable.Range(0, 4).Select(i => BuildRegularPolygonFin(4, i, true,  TemplatePolygonRadius, TemplatePolygonFinRadius))]; // 261111Cl 変更前
+    private static readonly V3[][] Screw4_1 = [Rotation4[0], .. Enumerable.Range(0, 4).Select(i => BuildRegularPolygonFin(4, i, true,  TemplatePolygonRadius, TemplatePolygonFinRadius))]; // 261111Cl 変更: ZLinq を外したので標準 LINQ
     private static readonly V3[][] Screw4_2 = [Rotation4[0], .. new[] { 0, 2 }       .Select(i => BuildRegularPolygonFin(4, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))];
-    private static readonly V3[][] Screw4_3 = [Rotation4[0], .. ValueEnumerable.Range(0, 4).Select(i => BuildRegularPolygonFin(4, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))];
-    private static readonly V3[][] Screw6_1 = [Rotation6[0], .. ValueEnumerable.Range(0, 6).Select(i => BuildRegularPolygonFin(6, i, true,  TemplatePolygonRadius, TemplatePolygonFinRadius))];
+    // private static readonly V3[][] Screw4_3 = [Rotation4[0], .. ValueEnumerable.Range(0, 4).Select(i => BuildRegularPolygonFin(4, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))]; // 261111Cl 変更前
+    private static readonly V3[][] Screw4_3 = [Rotation4[0], .. Enumerable.Range(0, 4).Select(i => BuildRegularPolygonFin(4, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))]; // 261111Cl 変更: ZLinq を外したので標準 LINQ
+    // private static readonly V3[][] Screw6_1 = [Rotation6[0], .. ValueEnumerable.Range(0, 6).Select(i => BuildRegularPolygonFin(6, i, true,  TemplatePolygonRadius, TemplatePolygonFinRadius))]; // 261111Cl 変更前
+    private static readonly V3[][] Screw6_1 = [Rotation6[0], .. Enumerable.Range(0, 6).Select(i => BuildRegularPolygonFin(6, i, true,  TemplatePolygonRadius, TemplatePolygonFinRadius))]; // 261111Cl 変更: ZLinq を外したので標準 LINQ
     private static readonly V3[][] Screw6_2 = [Rotation6[0], .. new[] { 0, 2, 4 }    .Select(i => BuildRegularPolygonFin(6, i, true,  TemplatePolygonRadius, TemplatePolygonFinRadius))];
     private static readonly V3[][] Screw6_3 = [Rotation6[0], .. new[] { 0, 3 }       .Select(i => BuildRegularPolygonFin(6, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))];
     private static readonly V3[][] Screw6_4 = [Rotation6[0], .. new[] { 0, 2, 4 }    .Select(i => BuildRegularPolygonFin(6, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))];
-    private static readonly V3[][] Screw6_5 = [Rotation6[0], .. ValueEnumerable.Range(0, 6).Select(i => BuildRegularPolygonFin(6, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))];
+    // private static readonly V3[][] Screw6_5 = [Rotation6[0], .. ValueEnumerable.Range(0, 6).Select(i => BuildRegularPolygonFin(6, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))]; // 261111Cl 変更前
+    private static readonly V3[][] Screw6_5 = [Rotation6[0], .. Enumerable.Range(0, 6).Select(i => BuildRegularPolygonFin(6, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))]; // 261111Cl 変更: ZLinq を外したので標準 LINQ
 
     // 旧: private static readonly V3[][] Rotoinversion4 = [BuildLens(), Rotation4[0]];
     private static readonly V3[][] Rotoinversion4 = [LensTemplate, Rotation4[0]];
@@ -688,7 +696,8 @@ internal static class SymmetryDiagram
     {
         const int slices = 20;
         double x = Math.Sqrt(3) / 2;
-        var upper = ValueEnumerable.Range(0, slices).Select(i =>
+        // var upper = ValueEnumerable.Range(0, slices).Select(i => // 261111Cl 変更前
+        var upper = Enumerable.Range(0, slices).Select(i => // 261111Cl 変更: ZLinq を外したので標準 LINQ
         {
             var (sin, cos) = Math.SinCos(i * Math.PI / 3 / slices - Math.PI / 6);
             return new V3(cos - x, sin, 0);
@@ -701,7 +710,8 @@ internal static class SymmetryDiagram
     {
         const int slices = 5;
         double x = Math.Sqrt(3) / 2;
-        return [.. ValueEnumerable.Range(0, slices+1).Select(i =>
+        // return [.. ValueEnumerable.Range(0, slices+1).Select(i => // 261111Cl 変更前
+        return [.. Enumerable.Range(0, slices+1).Select(i => // 261111Cl 変更: ZLinq を外したので標準 LINQ
         {
             var (sin, cos) = Math.SinCos(i * Math.PI / 12 / slices + Math.PI / 6);
             return upper ? new V3(cos - x, sin, 0) : new V3(-cos + x, -sin, 0);
@@ -717,7 +727,8 @@ internal static class SymmetryDiagram
 
     /// <summary>正 n 角形。</summary>
     private static V3[] BuildRegularPolygon(int n, double r) =>
-        [.. ValueEnumerable.Range(0, n).Select(i => PolygonVertex(n, i, r))];
+        // [.. ValueEnumerable.Range(0, n).Select(i => PolygonVertex(n, i, r))]; // 261111Cl 変更前
+        [.. Enumerable.Range(0, n).Select(i => PolygonVertex(n, i, r))]; // 261111Cl 変更: ZLinq を外したので標準 LINQ
 
     /// <summary>正 n 角形の頂点 m から、隣接辺を外側へ延長した直線上を伸びる 1 本の Fin
     /// (open 線分: 始点 = 頂点 m, 終点 = 半径 r2 の円上)。
@@ -817,7 +828,8 @@ internal static class SymmetryDiagram
     //         [.. xyTemplate.Select(p => TransformXY(p, center, u, v, scale))];
     // 260514Cl: ZLinq の AsValueEnumerable() で iterator 確保を避ける (per-axis-symbol で呼ばれる)。
     private static V3[] AffineTransformXY(V3[] xyTemplate, V3 center, V3 u, V3 v, double scale) =>
-        [.. xyTemplate.AsValueEnumerable().Select(p => TransformXY(p, center, u, v, scale))];
+        // [.. xyTemplate.AsValueEnumerable().Select(p => TransformXY(p, center, u, v, scale))]; // 261111Cl 変更前
+        [.. xyTemplate.Select(p => TransformXY(p, center, u, v, scale))]; // 261111Cl 変更: ZLinq を外したので標準 LINQ
 
     /// <summary>ベクトルを正規化する。長さが ToleranceSquared 未満なら false を返し out は default。</summary>
     private static bool TryNormalize(V3 value, out V3 normalized)
@@ -895,7 +907,8 @@ internal static class SymmetryDiagram
     {
         var boundsArray = bounds.Select(b => new[] { b.X, b.Y, b.Z, b.W }).ToArray();
         var invAxes = M3d.Invert(axes);
-        var fracPoints = ValueEnumerable.Range(0, boundsArray.Length)
+        // var fracPoints = ValueEnumerable.Range(0, boundsArray.Length) // 261111Cl 変更前
+        var fracPoints = Enumerable.Range(0, boundsArray.Length) // 261111Cl 変更: ZLinq を外したので標準 LINQ
             .Select(i => Geometry.GetClippedPolygon(i, boundsArray))
             .Where(c => c != null)
             .SelectMany(c => c.Select(p => invAxes * (new V3(p[0], p[1], p[2]) + shift)))

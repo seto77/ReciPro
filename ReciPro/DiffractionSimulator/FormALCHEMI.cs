@@ -764,7 +764,9 @@ public partial class FormALCHEMI : FormBase
                     p.Pt.Add(new PointD(xs[o], y[o])); //260820Cl 変更 (/simplify): 旧 XOf(o)
                 profiles.Add(p);
                 first ??= y;
-                var contrast = y.Max() - y.Min();
+                // var contrast = y.Max() - y.Min(); // 261111Cl 変更前 (SimdLinq)
+                var (yMin, yMax) = y.MinMaxIgnoreNaN(); // 261111Cl 変更: NaN を除いた最小・最大 (作者判断。強度プロファイル)
+                var contrast = yMax - yMin; // 261111Cl 変更
                 var mean = y.Average();
                 stats.Append($"{p.text}: {(mean > 0 ? contrast / mean : 0):p1}");
                 if (!ReferenceEquals(y, first)) stats.Append($" (r = {Correlation(first, y):f2})");

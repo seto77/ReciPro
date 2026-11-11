@@ -454,7 +454,8 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
             textBoxFileName.Text = filename;
 
             Ring.CalcFreq();
-            var (min, max) = Ring.Intensity.MinMax();//260717Cl 変更: Min()/Max()/MinMax() の 3 走査を MinMax() 1 回に
+            // var (min, max) = Ring.Intensity.MinMax();//260717Cl 変更: Min()/Max()/MinMax() の 3 走査を MinMax() 1 回に // 261111Cl 変更前 (SimdLinq)
+            var (min, max) = Ring.Intensity.MinMaxIgnoreNaN(); // 261111Cl 変更: NaN を除いた最小・最大 (作者判断。SimdLinq を外したため)
             trackbarConstantA = min - 1;
             trackbarConstantB = trackBarMaxInt.Maximum / Math.Log(max - trackbarConstantA);
 

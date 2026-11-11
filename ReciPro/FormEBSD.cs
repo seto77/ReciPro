@@ -17,7 +17,7 @@ using System.Drawing.Imaging; // 260724Cl 追加: 実測 EBSD 画像の透明度
 using System.Globalization; // 260812Cl 追加: パターン値 csv を InvariantCulture で書くため (小数点が `,` のロケール対策)
 using System.Text;
 using System.Threading.Tasks;
-using ZLinq;
+// using ZLinq; // 261111Cl 削除: ZLinq を外したため
 #endregion
 
 namespace ReciPro;
@@ -1667,7 +1667,8 @@ public partial class FormEBSD : FormBase
         var maxRatio = trackBarAdvancedBrightnessMax.Value / 100; // 260920Cl 変更: TrackBarAdvanced (表示レンジに対する %、リニア)
         var minRatio = trackBarAdvancedBrightnessMin.Value / 100;
 
-        var (min, max) = Pbmp.SrcValuesGray.MinMax();//260717Cl 変更: Max()+Min() の 2 走査を 1 走査に
+        // var (min, max) = Pbmp.SrcValuesGray.MinMax();//260717Cl 変更: Max()+Min() の 2 走査を 1 走査に // 261111Cl 変更前
+        var (min, max) = Pbmp.SrcValuesGray.MinMaxIgnoreNaN();//260717Cl 変更: Max()+Min() の 2 走査を 1 走査に // 261111Cl 変更: NaN を除いた最小・最大 (作者判断。SimdLinq を外したため)
         // var dev = max - min; // 260920Cl 変更前: 表示レンジは画像の下限〜上限に固定で、これ以上コントラストを弱められなかった
         // Pbmp.MaxValue = dev * maxRatio + min;
         // Pbmp.MinValue = dev * minRatio + min;
@@ -2379,7 +2380,8 @@ public partial class FormEBSD : FormBase
         }
         else values = expImageRaw;
         expPbmp.SrcValuesGray = expPbmp.SrcValuesGrayOriginal = values;
-        (expImageMin, expImageMax) = values.MinMax();
+        // (expImageMin, expImageMax) = values.MinMax(); // 261111Cl 変更前
+        (expImageMin, expImageMax) = values.MinMaxIgnoreNaN(); // 261111Cl 変更: NaN を除いた最小・最大 (作者判断。SimdLinq を外したため)
         if (expImageMax <= expImageMin) expImageMax = expImageMin + 1; //単色画像で表示レンジの分母が 0 になるのを防ぐ
     }
 
@@ -2420,7 +2422,8 @@ public partial class FormEBSD : FormBase
         //3 つのつまみへ落とす: Contrast = 表示レンジ幅 / データ範囲 の常用対数 (符号反転)、Min/Max % = そのレンジ内での位置。
         //  Contrast の表示レンジはデータの中央に対して対称なので、求めた窓 [wLo, wLo+span] が偏っていると Min/Max % だけでは届かない
         //  (晶帯軸の飛び値でデータ範囲の中央が窓からずれるため実際に起きる)。窓を包含できる幅まで広げてから % を決める
-        var (dMin, dMax) = Pbmp.SrcValuesGray.MinMax();
+        // var (dMin, dMax) = Pbmp.SrcValuesGray.MinMax(); // 261111Cl 変更前
+        var (dMin, dMax) = Pbmp.SrcValuesGray.MinMaxIgnoreNaN(); // 261111Cl 変更: NaN を除いた最小・最大 (作者判断。SimdLinq を外したため)
         var center = (dMin + dMax) / 2;
         var needed = Math.Max(span, 2 * Math.Max(center - wLo, wLo + span - center)); //窓を [lower, lower+dev] に収めるのに要る幅
         var contrast = Math.Clamp(-Math.Log10(needed / (dMax - dMin)), trackBarAdvancedContrast.Minimum, trackBarAdvancedContrast.Maximum);
@@ -2581,7 +2584,8 @@ public partial class FormEBSD : FormBase
             if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)//
             {
                 var div = DetectorDivision;
-                var r1 = ValueEnumerable.Range(0, areaStep).Select(n => (double)n / areaStep);
+                // var r1 = ValueEnumerable.Range(0, areaStep).Select(n => (double)n / areaStep); // 261111Cl 変更前
+                var r1 = Enumerable.Range(0, areaStep).Select(n => (double)n / areaStep); // 261111Cl 変更: ZLinq を外したので標準 LINQ
                 area =
                 [
                     ..r1.Select(x => f(2.0 * i / div - 1, 2.0 * (- j - 1 + x)/ div + 1)),
@@ -2592,7 +2596,8 @@ public partial class FormEBSD : FormBase
             }
             else
                 // area = [.. ValueEnumerable.Range(0, areaStep).Select(n => 2.0 * Math.PI * n / areaStep).Select(Θ => f(Math.Sin(Θ), Math.Cos(Θ)))]; // 260723Cl 変更前: 円周
-                area = [.. ValueEnumerable.Range(0, areaStep).Select(n => 4.0 * n / areaStep).Select(t => { var (x, y) = RectPerimeter(t); return f(x, y); })]; // 260723Cl 変更: 矩形周
+                // area = [.. ValueEnumerable.Range(0, areaStep).Select(n => 4.0 * n / areaStep).Select(t => { var (x, y) = RectPerimeter(t); return f(x, y); })]; // 260723Cl 変更: 矩形周 // 261111Cl 変更前
+                area = [.. Enumerable.Range(0, areaStep).Select(n => 4.0 * n / areaStep).Select(t => { var (x, y) = RectPerimeter(t); return f(x, y); })]; // 260723Cl 変更: 矩形周 // 261111Cl 変更: ZLinq を外したので標準 LINQ
 
             //ある立体角に収まるbseだけを抽出
             var bse2 = BSEs.AsParallel().Where(e =>
@@ -3004,7 +3009,8 @@ public partial class FormEBSD : FormBase
         sw.WriteLine(FormattableString.Invariant($"# detector X/Y/Z = {DetX} / {DetY} / {DetZ} mm"));
         sw.WriteLine(FormattableString.Invariant($"# model = {masterPatternCombinationModel}, with BSE distribution = {checkBoxWithBSEDistribution.Checked}"));
         sw.WriteLine(FormattableString.Invariant($"# energy index = {trackBarOutputEnergy.Value}, depth index = {trackBarOutputThickness.Value}"));
-        var (min, max) = values.MinMax();
+        // var (min, max) = values.MinMax(); // 261111Cl 変更前
+        var (min, max) = values.MinMaxIgnoreNaN(); // 261111Cl 変更: NaN を除いた最小・最大 (作者判断。SimdLinq を外したため)
         sw.WriteLine(FormattableString.Invariant($"# min = {min:r}, max = {max:r}"));
         var row = new string[width]; //260812Cl: 行ごとに確保していたのをループ外へ (検出器が大きいと画素数ぶんの割り当てになる)
         for (int y = 0; y < height; y++)

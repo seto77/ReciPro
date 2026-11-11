@@ -1290,7 +1290,8 @@ public partial class FormImageSimulator : FormBase
         toolStripStatusLabel1.Text = $"Generation of Potential images: {temp} ms,   ";
 
         //最大値、最小値の設定
-        double max = radioButtonPotentialModeMagAndPhase.Checked ? Max(images[0].Max(), images[2].Max()) : Max(Abs(images.Max(d => d.Max())), Abs(images.Min(d => d.Min())));
+        // double max = radioButtonPotentialModeMagAndPhase.Checked ? Max(images[0].Max(), images[2].Max()) : Max(Abs(images.Max(d => d.Max())), Abs(images.Min(d => d.Min()))); // 261111Cl 変更前 (SimdLinq)
+        double max = radioButtonPotentialModeMagAndPhase.Checked ? Max(images[0].Max(), images[2].Max()) : Max(Abs(images.Max(d => d.Max())), Abs(DoubleEx.Min(images))); // 261111Cl 変更: 最小は NaN を除いて求める (作者判断。Max は標準 LINQ が NaN を無視する)
         double min = radioButtonPotentialModeMagAndPhase.Checked ? 0 : -max;
 
         //トラックバー設定
@@ -1553,7 +1554,8 @@ public partial class FormImageSimulator : FormBase
         if (!normalizeMin && !normalizeMax)
             return [.. image];
 
-        double min = image.Min(), max = image.Max();
+        // double min = image.Min(), max = image.Max(); // 261111Cl 変更前 (SimdLinq)
+        var (min, max) = image.MinMaxIgnoreNaN(); // 261111Cl 変更: NaN を除いた最小・最大 (作者判断)
         double destMin = normalizeMin ? numericBoxIntensityMin.Value : min;
         double destMax = normalizeMax ? numericBoxIntensityMax.Value : max;
 

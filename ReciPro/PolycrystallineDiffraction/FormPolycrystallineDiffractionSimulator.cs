@@ -445,7 +445,8 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
             //一定の確率で、遺伝させる
             if (setting.Inheritability > rn.NextDouble())
             {
-                double sum = rn.NextDouble() * Crystals[targetCrystal].Crystallites.Density.Sum(), temp = 0;
+                // double sum = rn.NextDouble() * Crystals[targetCrystal].Crystallites.Density.Sum(), temp = 0; // 261111Cl 変更前
+                double sum = rn.NextDouble() * System.Numerics.Tensors.TensorPrimitives.Sum<double>(Crystals[targetCrystal].Crystallites.Density), temp = 0; // 261111Cl 変更: 結晶子数規模の double 配列の和は TensorPrimitives.Sum (作者判断。丸めだけ異なる)
                 for (seed = 0; seed < Crystals[targetCrystal].Crystallites.Density.Length && sum > temp; seed++)
                     temp += Crystals[targetCrystal].Crystallites.Density[seed];
             }//方位選択ここまで
@@ -503,7 +504,8 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
             if (setting.LPO_SuccessTime != beforeSuccessTime && setting.LPO_SuccessTime % ((int)(0.10 / setting.LPO_Ratio)) == 0)
             {
                 residualCurrent = 0;
-                double coeff = Crystals[targetCrystal].Crystallites.TotalCrystalline / Crystals[targetCrystal].Crystallites.Density.Sum();
+                // double coeff = Crystals[targetCrystal].Crystallites.TotalCrystalline / Crystals[targetCrystal].Crystallites.Density.Sum(); // 261111Cl 変更前
+                double coeff = Crystals[targetCrystal].Crystallites.TotalCrystalline / System.Numerics.Tensors.TensorPrimitives.Sum<double>(Crystals[targetCrystal].Crystallites.Density); // 261111Cl 変更: 結晶子数規模の double 配列の和は TensorPrimitives.Sum (作者判断。丸めだけ異なる)
                 for (int i = 0; i < Crystals[targetCrystal].Crystallites.Density.Length; i++)
                     Crystals[targetCrystal].Crystallites.Density[i] *= coeff;
 

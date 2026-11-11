@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using V3 = OpenTK.Mathematics.Vector3d;
 using OpenTK.Mathematics;
-using ZLinq;
+// using ZLinq; // 261111Cl 削除: ZLinq を外したため
 #endregion
 
 namespace ReciPro;
@@ -2193,10 +2193,14 @@ public partial class FormDiffractionSimulator : FormBase
             minD = WaveLength / 2;
         else
             minD = 1 / (new[] {
-             ValueEnumerable.Range(0,height).Select(h => convertScreenToReciprocal(0, h, false).Length ).Max(),
-             ValueEnumerable.Range(0,height).Select(h => convertScreenToReciprocal(width, h, false).Length ).Max(),
-             ValueEnumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, 0, false).Length ).Max(),
-             ValueEnumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, height, false).Length ).Max(),
+             // ValueEnumerable.Range(0,height).Select(h => convertScreenToReciprocal(0, h, false).Length ).Max(), // 261111Cl 変更前
+             Enumerable.Range(0,height).Select(h => convertScreenToReciprocal(0, h, false).Length ).Max(), // 261111Cl 変更: ZLinq を外したので標準 LINQ
+             // ValueEnumerable.Range(0,height).Select(h => convertScreenToReciprocal(width, h, false).Length ).Max(), // 261111Cl 変更前
+             Enumerable.Range(0,height).Select(h => convertScreenToReciprocal(width, h, false).Length ).Max(), // 261111Cl 変更: ZLinq を外したので標準 LINQ
+             // ValueEnumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, 0, false).Length ).Max(), // 261111Cl 変更前
+             Enumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, 0, false).Length ).Max(), // 261111Cl 変更: ZLinq を外したので標準 LINQ
+             // ValueEnumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, height, false).Length ).Max(), // 261111Cl 変更前
+             Enumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, height, false).Length ).Max(), // 261111Cl 変更: ZLinq を外したので標準 LINQ
             }.Max());
 
         //ダイレクトスポットが画面内に含まれる場合
@@ -2204,10 +2208,14 @@ public partial class FormDiffractionSimulator : FormBase
             maxD = double.PositiveInfinity;
         else
             maxD = 1 / (new[] {
-             ValueEnumerable.Range(0,height).Select(h => convertScreenToReciprocal(0, h, false).Length ).Min(),
-             ValueEnumerable.Range(0,height).Select(h => convertScreenToReciprocal(width, h, false).Length ).Min(),
-             ValueEnumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, 0, false).Length ).Min(),
-             ValueEnumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, height, false).Length ).Min(),
+             // ValueEnumerable.Range(0,height).Select(h => convertScreenToReciprocal(0, h, false).Length ).Min(), // 261111Cl 変更前
+             Enumerable.Range(0,height).Select(h => convertScreenToReciprocal(0, h, false).Length ).Min(), // 261111Cl 変更: ZLinq を外したので標準 LINQ
+             // ValueEnumerable.Range(0,height).Select(h => convertScreenToReciprocal(width, h, false).Length ).Min(), // 261111Cl 変更前
+             Enumerable.Range(0,height).Select(h => convertScreenToReciprocal(width, h, false).Length ).Min(), // 261111Cl 変更: ZLinq を外したので標準 LINQ
+             // ValueEnumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, 0, false).Length ).Min(), // 261111Cl 変更前
+             Enumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, 0, false).Length ).Min(), // 261111Cl 変更: ZLinq を外したので標準 LINQ
+             // ValueEnumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, height, false).Length ).Min(), // 261111Cl 変更前
+             Enumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, height, false).Length ).Min(), // 261111Cl 変更: ZLinq を外したので標準 LINQ
             }.Min());
         //最大、最小のd値を決定 ここまで
 
@@ -3773,12 +3781,15 @@ public partial class FormDiffractionSimulator : FormBase
                 beforeEwald = (maxAngle, r, precession);
                 ewaldList.Clear();
                 int div1 = 45, div2 = 60;
-                var rot = ValueEnumerable.Range(0, div2 + 1).Select(n => Matrix3D.Rot(new V3(0, 0, 1), 2 * Math.PI * n / div2)).ToList();
+                // var rot = ValueEnumerable.Range(0, div2 + 1).Select(n => Matrix3D.Rot(new V3(0, 0, 1), 2 * Math.PI * n / div2)).ToList(); // 261111Cl 変更前
+                var rot = Enumerable.Range(0, div2 + 1).Select(n => Matrix3D.Rot(new V3(0, 0, 1), 2 * Math.PI * n / div2)).ToList(); // 261111Cl 変更: ZLinq を外したので標準 LINQ
 
                 //X-ray precessionの時はsinではなくtanで計算することに注意
-                var sin = ValueEnumerable.Range(0, div1).Select(n => precession ? Math.Tan(maxAngle / div1 * n) : Math.Sin(maxAngle / div1 * n)).ToList();
+                // var sin = ValueEnumerable.Range(0, div1).Select(n => precession ? Math.Tan(maxAngle / div1 * n) : Math.Sin(maxAngle / div1 * n)).ToList(); // 261111Cl 変更前
+                var sin = Enumerable.Range(0, div1).Select(n => precession ? Math.Tan(maxAngle / div1 * n) : Math.Sin(maxAngle / div1 * n)).ToList(); // 261111Cl 変更: ZLinq を外したので標準 LINQ
                 //X-ray precessionの時はcosではなくすべて1として計算することに注意
-                var cos = ValueEnumerable.Range(0, div1).Select(n => precession ? 1 : Math.Cos(maxAngle / div1 * n)).ToList();
+                // var cos = ValueEnumerable.Range(0, div1).Select(n => precession ? 1 : Math.Cos(maxAngle / div1 * n)).ToList(); // 261111Cl 変更前
+                var cos = Enumerable.Range(0, div1).Select(n => precession ? 1 : Math.Cos(maxAngle / div1 * n)).ToList(); // 261111Cl 変更: ZLinq を外したので標準 LINQ
 
                 Parallel.For(1, div1, j =>
                 {

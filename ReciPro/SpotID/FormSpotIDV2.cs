@@ -14,7 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MQ = Crystallography.Marquardt;
-using ZLinq;
+// using ZLinq; // 261111Cl 削除: ZLinq を外したため
 #endregion
 
 namespace ReciPro;
@@ -1962,7 +1962,8 @@ public partial class FormSpotIDV2 : FormBase
                 //  (2) ディスク位置の計算 (kvac * BeamDirections[r]) が null で NullReferenceException になって、Amplitudes が null のまま完了していた
                 directions.Add(Matrix3D.Rot(new Vector3DBase(h, -w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * alphaMax) * new Vector3DBase(0, 0, -1)); // 261105Cl
         var rotArray = directions.ToArray();
-        var thicknessArray = ValueEnumerable.Range(50, 500).Select(v => (double)v).ToArray();
+        // var thicknessArray = ValueEnumerable.Range(50, 500).Select(v => (double)v).ToArray(); // 261111Cl 変更前
+        var thicknessArray = Enumerable.Range(50, 500).Select(v => (double)v).ToArray(); // 261111Cl 変更: ZLinq を外したので標準 LINQ
 
         //var g = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"]; // 261105Cl 変更前 (上で selectedGrain として取得済み)
         var g = selectedGrain; // 261105Cl

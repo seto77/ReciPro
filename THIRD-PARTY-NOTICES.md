@@ -33,20 +33,18 @@ These ship as managed assemblies inside the MSI (packaged through the ReciPro pu
 | MathNet.Numerics | 6.0.0-beta2 | Numerical / scientific computing | Bundled (DLL) | https://numerics.mathdotnet.com/ | MIT | No (third-party) | Pre-release (beta) version. Used across all four shipping projects. |
 | MathNet.Numerics.Providers.MKL | 6.0.0-beta2 | Math.NET MKL provider glue/shim | Bundled (managed shim DLL) | https://numerics.mathdotnet.com/ | MIT (glue only) | No (third-party) | Glue is MIT. The Intel MKL native package (`MathNet.Numerics.MKL.Win-x64`) was removed from the build (260405Cl); no native `mkl_rt.dll` is vendored or present in the build output. `TODO: confirm` whether an Intel Simplified Software License (ISSL) notice is required for any runtime-downloaded MKL native binaries. |
 | OpenTK | 4.9.4 | OpenGL/OpenAL/OpenCL bindings | Bundled (DLL) | https://github.com/opentk/opentk | MIT | No (third-party) | Used across all four shipping projects. Ships `glfw3.dll` (zlib/libpng license) as a runtime native asset **for win-x64 only** (via `OpenTK.redist.glfw`, restored version 3.4.0.44); the win-arm64 build instead bundles a self-built `glfw3.dll` — see [GLFW](#glfw-bundled-native-windowing-library) under Native libraries. |
-| SimdLinq | 1.3.2 | SIMD-accelerated LINQ (Cysharp) | Bundled (DLL) | https://github.com/Cysharp/SimdLinq | MIT | No (third-party) | Used across all four shipping projects. |
-| ZLinq | 1.5.6 | Zero-allocation LINQ (Cysharp) | Bundled (DLL) | https://github.com/Cysharp/ZLinq | MIT | No (third-party) | Used across all four shipping projects. |
 | MemoryPack | 1.21.4 | Zero-encoding binary serializer (Cysharp) | Bundled (DLL) | https://github.com/Cysharp/MemoryPack | MIT | No (third-party) | Used by Crystallography (`.cdb3` crystal-database serialization). |
 | PureHDF | 2.1.2 | Pure C# HDF5 reader/writer | Bundled (DLL) | https://github.com/Apollo3zehn/PureHDF | MIT | No (third-party) | Used by Crystallography. |
-| DynamicExpresso.Core | 2.19.3 | Runtime C#-like expression interpreter (symmetry-operation parsing) | Bundled (DLL) | https://github.com/dynamicexpresso/DynamicExpresso | MIT | No (third-party) | Used by Crystallography. Replaced `System.Linq.Dynamic.Core` (260427Cl). |
 | WpfMath | 2.1.0 | WPF LaTeX math rendering (LabelTex/LabelLaTeX) | Bundled (DLL) | https://github.com/ForNeVeR/wpf-math | MIT | No (third-party) | Used by Crystallography.Controls. |
 | System.Management | 10.0.8 | WMI access (Microsoft official package) | Bundled (DLL) | https://github.com/dotnet/runtime | MIT | No (third-party) | Used by Crystallography.OpenGL. |
+| System.Numerics.Tensors | 11.0.0 | SIMD-accelerated span math (`TensorPrimitives`; used for large `double` sums) | Bundled (DLL) | https://github.com/dotnet/runtime | MIT | No (third-party) | Microsoft official package. Used by Crystallography (shared by all four shipping projects) and ReciPro. Added 261111Cl when SimdLinq / ZLinq were removed. |
 
 Target framework: `net10.0-windows` for all four shipping projects (ReciPro, Crystallography, Crystallography.Controls, Crystallography.OpenGL).
 
 Notes on inventory completeness:
 
 - The vendored `OpenTK.GLControl` subproject (under `Crystallography.OpenGL\OpenTK.GLControl\`) is OpenTK's `GLControl` WinForms control source (https://github.com/opentk/GLControl, MIT, © Team OpenTK), copied into the repo. It references `OpenTK.Graphics 4.8.2` and `OpenTK.Windowing.Desktop 4.8.2`, but the subproject is **not** referenced by any shipping project and is not in the shipping build graph. It is covered by the OpenTK (MIT) attribution above.
-- Removed / commented-out packages that are **not** active dependencies and must not be listed: `MathNet.Numerics.MKL.Win-x64` (removed 260405Cl), `NativeMemoryArray` 1.2.2 (removed 260407Cl), `SixLabors.ImageSharp` 4.0.0 (removed 260513Cl), `System.Linq.Dynamic.Core` (replaced 260427Cl), and a legacy `ImagingSolution.Control.GraphicsBox` direct DLL reference (commented out).
+- Removed / commented-out packages that are **not** active dependencies and must not be listed: `MathNet.Numerics.MKL.Win-x64` (removed 260405Cl), `NativeMemoryArray` 1.2.2 (removed 260407Cl), `SixLabors.ImageSharp` 4.0.0 (removed 260513Cl), `System.Linq.Dynamic.Core` (replaced 260427Cl), `DynamicExpresso.Core` (removed 261111Cl; symmetry operations are parsed in-house), `SimdLinq` 1.3.2 and `ZLinq` (removed 261111Cl; replaced by standard LINQ and `System.Numerics.Tensors`), and a legacy `ImagingSolution.Control.GraphicsBox` direct DLL reference (commented out).
 - No SQLite dependency: there is no `Community.CsharpSqlite` or other SQLite reference in any `.csproj`/`.cs` (the crystal database uses the Brotli + MemoryPack `.cdb3` format).
 
 ## Native libraries
@@ -210,7 +208,7 @@ The intended code-signing scope is limited to ReciPro release artifacts and bina
 
 Third-party binaries must **not** be re-signed as if they were maintained by ReciPro. In particular:
 
-- The redistributed **NuGet runtime DLLs** (OpenTK and its win-x64 `glfw3.dll`, MathNet.Numerics, IronPython, BitMiracle.LibTiff.NET, SimdLinq, ZLinq, MemoryPack, PureHDF, DynamicExpresso.Core, WpfMath, System.Management, etc.) keep their own upstream provenance and licenses as listed above and must not be re-signed or relicensed as ReciPro's MIT code.
+- The redistributed **NuGet runtime DLLs** (OpenTK and its win-x64 `glfw3.dll`, MathNet.Numerics, IronPython, BitMiracle.LibTiff.NET, MemoryPack, PureHDF, WpfMath, System.Management, System.Numerics.Tensors, etc.) keep their own upstream provenance and licenses as listed above and must not be re-signed or relicensed as ReciPro's MIT code.
 - The bundled **xraylib** native DLL (`libxrl-11.dll`, BSD-3-Clause) is a third-party component and must not be re-signed or relicensed as ReciPro's MIT code. This applies to both the win-x64 binary (obtained from conda-forge) and the win-arm64 binary (compiled from unmodified upstream source by this repository's CI — compiling third-party source in CI does not make it ReciPro-maintained code; see the PROVENANCE file).
 - The win-arm64 **GLFW** DLL (`glfw3.dll`, zlib/libpng), likewise compiled from unmodified upstream source by this repository's CI, is a third-party component under the same rule.
 

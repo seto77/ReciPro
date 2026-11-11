@@ -14,7 +14,7 @@ using V3 = OpenTK.Mathematics.Vector3d;
 using V4 = OpenTK.Mathematics.Vector4d;
 using OpenTK.Mathematics;
 using System.Collections.Concurrent;
-using ZLinq;
+// using ZLinq; // 261111Cl 削除: ZLinq を外したため
 #endregion
 
 namespace ReciPro;
@@ -819,7 +819,8 @@ public partial class FormStructureViewer : FormBase
                     //ボンド長さの条件を満たす頂点インデックスを検索
                     // 旧: var vIndices = vertexIndices.Where(j => within((vArray[j].O - cArray[i].O).LengthSquared, max2, min2)).ToArray();
                     // 260514Cl: Parallel.ForEach 内の per-cArray[i] hot path。ZLinq の AsValueEnumerable で Where iterator 確保を回避。
-                    var vIndices = vertexIndices.AsValueEnumerable().Where(j => within((vArray[j].O - cArray[i].O).LengthSquared, max2, min2)).ToArray();
+                    // var vIndices = vertexIndices.AsValueEnumerable().Where(j => within((vArray[j].O - cArray[i].O).LengthSquared, max2, min2)).ToArray(); // 261111Cl 変更前
+                    var vIndices = vertexIndices.Where(j => within((vArray[j].O - cArray[i].O).LengthSquared, max2, min2)).ToArray(); // 261111Cl 変更: ZLinq を外したので標準 LINQ
                     int m = vIndices.Length, index = cArray[i].AtomIndex;
                     if (m > 0)
                         lock (lockObj2)

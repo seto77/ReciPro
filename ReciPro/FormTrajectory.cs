@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ZLinq;
+// using ZLinq; // 261111Cl 削除: ZLinq を外したため
 using static IronPython.Modules._ast;
 using V3 = OpenTK.Mathematics.Vector3d;
 using V4 = OpenTK.Mathematics.Vector4d;
@@ -398,7 +398,8 @@ public partial class FormTrajectory : FormBase
         var limit = (int)(maxLength / scaleStep + 1);
         if (checkBoxDrawGuidCircles.Checked)
         {
-            var circleArray = ValueEnumerable.Range(0, 361)
+            // var circleArray = ValueEnumerable.Range(0, 361) // 261111Cl 変更前
+            var circleArray = Enumerable.Range(0, 361) // 261111Cl 変更: ZLinq を外したので標準 LINQ
                 .Select(e => new V3(Math.Cos(e / 180.0 * Math.PI), Math.Sin(e / 180.0 * Math.PI) * cosTilt, Math.Sin(e / 180.0 * Math.PI) * sinTilt));
             for (int i = 1; i <= limit; i++)
             {
