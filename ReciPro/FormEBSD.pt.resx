@@ -288,9 +288,7 @@ passos iguais.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Número de feixes difratados (vetores g) incluídos
 no cálculo dinâmico de ondas de Bloch (1-2048);
-mais feixes melhoram a precisão mas tornam o cálculo mais lento.
-Com o método dressed-tail: número base de
-feixes explícitos (padrão 300).</value>
+mais feixes melhoram a precisão mas tornam o cálculo mais lento.</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>Primeira fatia de profundidade (a mais rasa) do master pattern,

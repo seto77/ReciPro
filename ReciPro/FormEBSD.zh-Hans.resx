@@ -284,9 +284,7 @@ structure factors”时，弱菊池线会融入该颜色。</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>布洛赫波动力学计算中包含的衍射波（g 矢量）
 数目 (1-2048)；衍射波越多精度越高，
-但计算越慢。
-修饰尾部方法中为显式求解的
-基准光束数 (默认 300)。</value>
+但计算越慢。</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>主花样深度切片的第一个（最浅）值，单位为 nm。

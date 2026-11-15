@@ -288,9 +288,7 @@ pasos iguales.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Número de haces difractados (vectores g) incluidos
 en el cálculo dinámico de ondas de Bloch (1-2048);
-más haces mejoran la precisión pero ralentizan el cálculo.
-Con el método dressed-tail: número base de
-haces explícitos (300 por defecto).</value>
+más haces mejoran la precisión pero ralentizan el cálculo.</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>Primera sección de profundidad (la más superficial) del patrón

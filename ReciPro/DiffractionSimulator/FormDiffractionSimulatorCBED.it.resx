@@ -169,9 +169,7 @@ non allarga il semiangolo stesso.</value>
     <value>Numero di fasci diffratti (onde di Bloch)
 inclusi nel calcolo dinamico a diffusione
 multipla, 1-2048. Più onde migliorano la
-precisione ma rallentano il calcolo.
-Con il metodo dressed-tail, è il numero base di
-fasci N (predefinito 300).</value>
+precisione ma rallentano il calcolo.</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Massimo angolo di semi-convergenza (mrad)</value>

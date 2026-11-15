@@ -478,6 +478,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
 
     /// <summary>261110Cl 追加: 新方式 (着衣つきの裾) の切り替え。「回折波の数」の欄は新方式では E1 の基準の本数 N (既定 300)、従来では最大の Bloch 波の数 (既定 64)。
     /// 切り替えのたびに両方の値を覚えて入れ替える (FormEBSD と同じ)</summary>
+    // 261115Cl 追加 (作者の決定 2026-11-15): v.4.952 では checkBoxDressedTail を隠す (FormDiffractionSimulatorCBED.resx の .Visible = False)。チェックが入らないので下のハンドラは走らず、方式は常に従来。
+    //   v.4.953 で戻すときは、resx のその項目を消し、numericBoxMaxNumOfG.ToolTip (11 言語) に新方式の説明を戻す
     int legacyMaxNumOfG = -1, dressedTailMaxNumOfG = BetheMethod.CbedDressedTailDefaults.N;
     private void checkBoxDressedTail_CheckedChanged(object sender, EventArgs e)
     {

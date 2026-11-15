@@ -163,9 +163,7 @@ LACBED). Der Halbwinkel selbst wird dadurch nicht größer.</value>
     <value>Anzahl der gebeugten Strahlen (Bloch-Wellen),
 die in die dynamische Mehrfachstreuungs-
 Berechnung einbezogen werden, 1-2048. Mehr Wellen verbessern
-die Genauigkeit, verlangsamen aber die Berechnung.
-Bei der Dressed-Tail-Methode ist dies die Basisanzahl
-der Strahlen N (Standard 300).</value>
+die Genauigkeit, verlangsamen aber die Berechnung.</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Maximaler halber Konvergenzwinkel (mrad)</value>

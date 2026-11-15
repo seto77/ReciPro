@@ -166,9 +166,7 @@ claro). Este modo não alarga o semiângulo em si.</value>
     <value>Número de feixes difratados (ondas de Bloch)
 incluídos no cálculo dinâmico de espalhamento
 múltiplo, 1-2048. Mais ondas melhoram a
-precisão, mas tornam o cálculo mais lento.
-Com o método dressed-tail, é o número base de
-feixes N (padrão 300).</value>
+precisão, mas tornam o cálculo mais lento.</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Semiângulo máximo de convergência (mrad)</value>

@@ -166,9 +166,7 @@ ensancha el semiángulo en sí.</value>
     <value>Número de haces difractados (ondas de Bloch)
 incluidos en el cálculo dinámico de dispersión
 múltiple, 1-2048. Más ondas mejoran la
-precisión pero ralentizan el cálculo.
-Con el método dressed-tail, es el número base de
-haces N (300 por defecto).</value>
+precisión pero ralentizan el cálculo.</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Semiángulo de convergencia máximo (mrad)</value>

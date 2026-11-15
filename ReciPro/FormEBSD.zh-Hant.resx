@@ -284,9 +284,7 @@ structure factors」時，弱菊池線會融入此顏色。</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>布洛赫波動力學計算中所含的繞射波（g 向量）
 數目 (1-2048)；繞射波越多精度越高，
-但計算越慢。
-修飾尾部方法中為顯式求解的
-基準光束數 (預設 300)。</value>
+但計算越慢。</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>主圖樣深度切片的第一個（最淺）值，單位為 nm。

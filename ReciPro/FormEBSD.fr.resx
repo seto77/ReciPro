@@ -289,9 +289,7 @@ pas égaux.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Nombre de faisceaux diffractés (vecteurs g) inclus
 dans le calcul dynamique en ondes de Bloch (1-2048) ;
-plus de faisceaux améliore la précision mais ralentit le calcul.
-Avec la méthode dressed-tail : nombre de base
-de faisceaux explicites (300 par défaut).</value>
+plus de faisceaux améliore la précision mais ralentit le calcul.</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>Première tranche de profondeur (la moins profonde) du master

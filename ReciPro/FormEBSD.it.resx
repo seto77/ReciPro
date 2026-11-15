@@ -288,9 +288,7 @@ uguali.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Numero di fasci diffratti (vettori g) inclusi
 nel calcolo dinamico a onde di Bloch (1-2048);
-più fasci migliorano l'accuratezza ma rallentano il calcolo.
-Con il metodo dressed-tail: numero base di
-fasci espliciti (predefinito 300).</value>
+più fasci migliorano l'accuratezza ma rallentano il calcolo.</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>Prima sezione di profondità (la meno profonda) del master

@@ -680,9 +680,7 @@ This mode does not widen the semi-angle itself.</value>
     <value>Number of diffracted beams (Bloch waves)
 included in the dynamical, multiple-scattering
 calculation, 1-2048. More waves improve
-accuracy but slow the computation.
-With the dressed-tail method, this is the base number
-of beams N (default 300).</value>
+accuracy but slow the computation.</value>
   </data>
   <data name="numericBoxAlphaMax.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -2132,6 +2130,9 @@ longer again without the MKL library). The number of diffracted waves is
 then the base number of beams (default 300). Non-local absorption is not
 supported; in that case, or when the memory is not enough, the
 conventional method is used (the reason is shown in the status bar).</value>
+  </data>
+  <data name="checkBoxDressedTail.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;checkBoxDressedTail.Name" xml:space="preserve">
     <value>checkBoxDressedTail</value>

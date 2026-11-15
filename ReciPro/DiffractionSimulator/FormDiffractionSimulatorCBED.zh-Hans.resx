@@ -168,8 +168,7 @@ Auto 时此项不可用。</value>
     <value>纳入动力学多重散射计算的
 衍射波（布洛赫波）数目，1-2048。
 波的数目越多精度越高，
-但计算越慢。
-使用修饰尾部方法时，为基准光束数 N（默认 300）。</value>
+但计算越慢。</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>最大会聚半角（mrad）</value>

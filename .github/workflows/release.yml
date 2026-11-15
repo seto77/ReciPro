@@ -684,6 +684,10 @@ jobs:
             Invoke-WebRequest https://dot.net/v1/dotnet-install.ps1 -OutFile "$env:RUNNER_TEMP\dotnet-install.ps1"
             # 261111Cl: .NET 11 GA channel. (261106Ch: -Version 11.0.0-rc.3.26522.148).
             # & "$env:RUNNER_TEMP\dotnet-install.ps1" -Runtime windowsdesktop -Channel 10.0 -Architecture arm64 -InstallDir "$env:RUNNER_TEMP\dotnet"
+            # 261115Cl 追加: -Runtime windowsdesktop は Microsoft.WindowsDesktop.App だけを入れる。土台の Microsoft.NETCore.App (と host) が
+            #   同じ DOTNET_ROOT に無いと、framework-dependent の ReciPro.exe はランタイム不足のダイアログを出して待ち続ける
+            #   (dry_run 43660522046 の Smoke 4 が 10 分で打ち切り。.NET 10 まではランナーに Desktop Runtime が入っていて、この経路は通っていなかった)。
+            & "$env:RUNNER_TEMP\dotnet-install.ps1" -Runtime dotnet -Channel 11.0 -Architecture arm64 -InstallDir "$env:RUNNER_TEMP\dotnet"
             & "$env:RUNNER_TEMP\dotnet-install.ps1" -Runtime windowsdesktop -Channel 11.0 -Architecture arm64 -InstallDir "$env:RUNNER_TEMP\dotnet"
             $env:DOTNET_ROOT = "$env:RUNNER_TEMP\dotnet"
           }

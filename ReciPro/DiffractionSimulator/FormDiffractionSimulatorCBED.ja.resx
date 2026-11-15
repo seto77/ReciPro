@@ -143,8 +143,7 @@
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>動力学的な多重散乱計算に含める回折波（Bloch
 波）の本数 (1〜2048) を設定します。多いほど
-精度は上がりますが計算は遅くなります。
-着衣の裾 (新方式) では、基準の本数 N です (既定 300)。</value>
+精度は上がりますが計算は遅くなります。</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
     <value>収束半角 α</value>

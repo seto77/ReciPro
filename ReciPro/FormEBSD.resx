@@ -1235,9 +1235,7 @@ and the first interval. Editing a box makes the steps equal.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Number of diffracted beams (g-vectors) included
 in the Bloch-wave dynamical calculation (1-2048);
-more beams improve accuracy but slow calculation.
-With the dressed-tail method: the base number
-of explicit beams (default 300).</value>
+more beams improve accuracy but slow calculation.</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxNumOfG.Name" xml:space="preserve">
     <value>numericBoxMaxNumOfG</value>
@@ -1358,6 +1356,9 @@ strongly scattering crystals such as MnAl, the time grows roughly in
 proportion). Unit cells too large for the memory fall back to the
 conventional method (the reason is shown in the status bar).</value>
   </data>
+  <data name="checkBoxDressedTail.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;checkBoxDressedTail.Name" xml:space="preserve">
     <value>checkBoxDressedTail</value>
   </data>
@@ -1399,6 +1400,9 @@ about 20–25 times the time of the conventional N32 and is about
 Strongly scattering crystals (e.g. MnAl) keep up to about 13 %;
 do not use it for quantitative fits. Uncheck it to set the number
 of explicit beams in the number of diffracted waves.</value>
+  </data>
+  <data name="checkBoxDressedTailLight.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;checkBoxDressedTailLight.Name" xml:space="preserve">
     <value>checkBoxDressedTailLight</value>

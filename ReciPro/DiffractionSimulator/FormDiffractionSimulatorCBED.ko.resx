@@ -168,8 +168,7 @@
     <value>동역학적 다중 산란 계산에 포함되는
 회절파(블로흐파)의 개수(1~2048)입니다.
 파동 수가 많을수록 정확도는 높아지지만
-계산은 느려집니다.
-드레스드 테일 방식에서는 기준 빔 수 N입니다(기본 300).</value>
+계산은 느려집니다.</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>최대 반수렴각(mrad)</value>

@@ -166,9 +166,7 @@ n'élargit pas le demi-angle lui-même.</value>
     <value>Nombre d'ondes diffractées (ondes de Bloch) incluses
 dans le calcul dynamique de diffusion multiple, 1-2048.
 Un plus grand nombre d'ondes améliore la précision
-mais ralentit le calcul.
-Avec la méthode dressed-tail, c'est le nombre de base
-de faisceaux N (300 par défaut).</value>
+mais ralentit le calcul.</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Demi-angle de convergence maximal (mrad)</value>
