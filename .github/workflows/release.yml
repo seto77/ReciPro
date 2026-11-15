@@ -95,7 +95,8 @@ jobs:
           $releaseExists = ($LASTEXITCODE -eq 0)
           $global:LASTEXITCODE = 0
           if ($releaseExists -and -not $dryRun) {
-            Write-Host "Release $tag already exists. Skipping."
+            # Write-Host "Release $tag already exists. Skipping."  # 261115Cl 変更前
+            Write-Host "Release $tag already exists (published or draft). Skipping. To rebuild a draft, delete it first: gh release delete $tag --yes"  # 261115Cl 変更: 下書きも数える
             "needed=false" >> $env:GITHUB_OUTPUT
             return
           }
@@ -876,13 +877,24 @@ jobs:
           }
 
           # 260625Cl -R 必須: release job は checkout しない (artifact DL のみ) ため、-R が無いと gh が repo を特定できず "fatal: not a git repository" で失敗する (CSManager 本番で実証)
+          # 261115Cl 変更 (作者の決定 2026-11-15「下書きで止める」): 公開せずに下書きの Release を作る。確かめた資産そのものを公開するため。
+          #   下書きはタグを作らない (公開の時にできる。2026-11-15 に drafttest-261115 で確認)。prepare の gh release view は下書きを
+          #   「既にある」と数えるので、下書きがある間の再実行は skip になる (作り直すときは下書きを消してから)。
+          #   確かめたら手元から公開する: gh release edit <tag> --draft=false --latest (手順は /release の Phase 7)
+          # gh release create $tag $assets `  # 261115Cl 変更前 (そのまま公開していた)
+          #   -R $env:GITHUB_REPOSITORY `
+          #   --target $env:GITHUB_SHA `
+          #   --title "ReciPro $tag" `
+          #   --notes-file $notesPath
           gh release create $tag $assets `
             -R $env:GITHUB_REPOSITORY `
+            --draft `
             --target $env:GITHUB_SHA `
             --title "ReciPro $tag" `
             --notes-file $notesPath
           if ($LASTEXITCODE -ne 0) { throw "gh release create failed (exit $LASTEXITCODE)." }
-          Write-Host "Released $tag with $($assets.Count) assets (arm64Ok=$arm64Ok)."
+          # Write-Host "Released $tag with $($assets.Count) assets (arm64Ok=$arm64Ok)."  # 261115Cl 変更前
+          Write-Host "Created DRAFT release $tag with $($assets.Count) assets (arm64Ok=$arm64Ok). Verify the assets, then publish: gh release edit $tag --draft=false --latest"
 
       - name: Upload staged release assets (dry-run inspection)
         if: ${{ inputs.dry_run }}
