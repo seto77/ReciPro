@@ -161,8 +161,8 @@ effective phase transfer within the aperture</value>
   </data>
   <data name="checkBoxSinW.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAASkAAAAgCAYAAABO4Y7+AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAy
-        tgAAMrYBjHpqdwAABdlJREFUeF7tm0GS2zgMRXWwWeQOuUu2c4EcKLtsci9PgeOvgb8/QNKiuuUevCpV
+        iVBORw0KGgoAAAANSUhEUgAAASkAAAAgCAYAAABO4Y7+AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAABdlJREFUeF7tm0GS2zgMRXWwWeQOuUu2c4EcKLtsci9PgeOvgb8/QNKiuuUevCpV
         mxRJgSDwRaqqt60oiqIoiqIoiqIoiqIoiqIoiqIoiqIoRvlr27Yf27bd7peViz7ms193n9nfGcrnMbdv
         23b7+7/r6rybvRKzG9c3vnkBLMGQJEi6jCvO4aMxf0GY7Lf5zERnlMznZ/v36vHYkv33PflPMNCPP0Mk
         QrCzjfmb774JFoAIiEm/fDhIOIXZbmsg1ul/jwnNjEh52Ofm3zP9jDg88xlHgIicQSQ0o2S2ZfcujwXg
@@ -192,8 +192,8 @@ effective phase transfer within the aperture</value>
   </data>
   <data name="checkBoxEs_HRTEM.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAASEAAAAgCAYAAABdNs4KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAy
-        tgAAMrYBjHpqdwAABSFJREFUeF7tmkGy1DAMRHMwFtyBu7ADDsCF2LH594Jq5neNpkeyrdiTyR/0qlwQ
+        iVBORw0KGgoAAAANSUhEUgAAASEAAAAgCAYAAABdNs4KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAABSFJREFUeF7tmkGy1DAMRHMwFtyBu7ADDsCF2LH594Jq5neNpkeyrdiTyR/0qlwQ
         J1JsWerYA9tWFEVRFEVRFEVRFEVRFEVRFEVRFEXxSnzdtu3Xtm1/3v9cwSN8fnr3C59ouC76zKzF3pjv
         tStOwudt236Y9kiQHExM/B0Jg+SZ4RE+AXwymVlULRBHtP+Z2bVoxbwV257dUfld7AQL81s7DwIJk0nS
         ER7hkwUVgfhVgt8zsxYa81EhUTsCMfL6n8S37ee/Nsrl+bft+/ZFb70AzxahUew2v7XlzvgcBe+O3rdK
@@ -247,8 +247,8 @@ effective phase transfer within the aperture</value>
   </data>
   <data name="checkBoxPCTF.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAU4AAAAWCAYAAACv+XVHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAy
-        tgAAMrYBjHpqdwAABr5JREFUeF7tnE1y5CgQRjnYLGrO0HeZVXtsr9sHmp03vpcmEkiUfGQiQKh+IngR
+        iVBORw0KGgoAAAANSUhEUgAAAU4AAAAWCAYAAACv+XVHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAABr5JREFUeF7tnE1y5CgQRjnYLGrO0HeZVXtsr9sHmp03vpcmEkiUfGQiQKh+IngR
         CpcQpIREvUqoCju3WCwWi8VisVgsFovFYjGJ2+e7u318Y3EV3+bzHYufELrGvr6FNq/QN4Xt27ltc257
         d2674dHzUEx/jo77U2vjr5M2Ot77nO7Pb/fu3jrHE7Wh7YXYnPveOt4Dm3M3GnQ9bV4bEuaoAEeEe1/o
         2sb6NibcJ+BKASXBDQrZkifBsZ8YEuaoAEeE+yCiNIeeMYlznjxvH5u6/f35C6u628cP1PsSx8oYWjws
@@ -282,8 +282,8 @@ effective phase transfer within the aperture</value>
   </data>
   <data name="checkBoxCosW.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAASsAAAAgCAYAAABKFF7DAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAy
-        tgAAMrYBjHpqdwAABdhJREFUeF7tmd1x3DAMhFVYHtJJushrnCrSSt5cgIu6DG64mfUewB/p5Nw5+81o
+        iVBORw0KGgoAAAANSUhEUgAAASsAAAAgCAYAAABKFF7DAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAABdhJREFUeF7tmd1x3DAMhFVYHtJJushrnCrSSt5cgIu6DG64mfUewB/p5Nw5+81o
         fBL/QBBYkfK2GWOMMcYYY4wxxhhjjDHGGGOMMWfzZdu279u2XdoV92bMUb9F29+tbfw1xgyIREGiIXnM
         mCN+i3YQqPgdbUO8TPCyXS4v2+X153b58bJdvmr5UaLP6H+l76gb9ujzIJ43W682a/kT8dqCMeYw7Zt/
         BBKnIuyP+TzzepzByG8jQrggVuHj8O9ZPub+j9h8HiFWZyU9REWfz9BELoQ0TeRPIla7fFOAxNhz9BgR
@@ -313,8 +313,8 @@ effective phase transfer within the aperture</value>
   </data>
   <data name="checkBoxEs_STEM.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAALcAAAAdCAYAAADo6f0XAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAy
-        tgAAMrYBjHpqdwAAA1FJREFUeF7tmkFy2zAMRXmwLnqH3qU7twfIhbLLpvdKB2X+6PsbkCgRdhQXb4YT
+        iVBORw0KGgoAAAANSUhEUgAAALcAAAAdCAYAAADo6f0XAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAA1FJREFUeF7tmkFy2zAMRXmwLnqH3qU7twfIhbLLpvdKB2X+6PsbkCgRdhQXb4YT
         i6IginyE6IxbK4qiKIqiKIpT8a219rO19v5R7PgIFuP1I4b9PUJWX4pP4juVM2AiQiLIuRe7HkLbZ4th
         ku5lrS88bmcZu4KwSbEJe2ut/daTJwBizmJiHpGb0b7YeFmxsbNyAn61H+3S/mj1Kpf23i7tRaufAMh9
         1sxjQmZsBY5uS5ioL0lyd8n8MsIRscHMteclS27dm/Lr/CiIOUuG2Gt9SZP75Z/IJprWbdHl3G63Rr/X
@@ -333,8 +333,8 @@ effective phase transfer within the aperture</value>
   </data>
   <data name="checkBoxACTF.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAVAAAAAVCAYAAAAQCrayAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAy
-        tgAAMrYBjHpqdwAAB0hJREFUeF7tm02S2zYQRnGwVFle5QA5QG6RlSdjr+39XCUrz8Y7H4qpJvujmh+7
+        iVBORw0KGgoAAAANSUhEUgAAAVAAAAAVCAYAAAAQCrayAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAB0hJREFUeF7tm02S2zYQRnGwVFle5QA5QG6RlSdjr+39XCUrz8Y7H4qpJvujmh+7
         QYAEZSrBq2JJxB8BinxqgFJKnU6n0+l0Op1Op/O/5nMabtg4rxWt2rZ9bdXm5fiUnnJcQ6rrd235p+eW
         bq+3dHu/pVvxwKWs1nnlvIshY3rX11KkrIzr6mMLURENZwlJ233/koaqcyTlozrSpuRJvznvcnxKr+ll
         vK7KmeoM4+uTMKT0Lhun5xhSetV6za+7y6Hy3P2BHq1/MkcleLT+LwMC5fQWWDlzXgkqSfemPLPfzRBx
