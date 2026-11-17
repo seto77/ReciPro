@@ -144,7 +144,7 @@ For example, the **Peak Identification** button in Spot ID v2 is hidden, or the 
 **Solution**:
 
 - Check that the CIF file is well-formed
-- Try dragging and dropping the file onto the **Crystal Information** area
+- Try dragging and dropping the file onto the **Crystal information** area
 - Some non-standard CIF extensions may not be supported
 
 ### Symptom: dm3/dm4 file won't load, or "unable to cast … 'System.Single' to 'System.Double'"
@@ -201,7 +201,7 @@ Yes — there are two routes:
 Notes on the native ARM64 package:
 
 - Intel MKL does not exist for ARM64, so the corresponding solver options and menu items are hidden. Dynamical calculations use the bundled NEON-optimized native library; in representative validation cases its results matched the x64 build within the expected floating-point tolerance.
-- 3D views (Structure Viewer and related windows) can run, but Windows on ARM provides OpenGL only through a Direct3D 12 translation layer (GLOn12 / Mesa), so 3D rendering is noticeably slower than on a PC with a native OpenGL driver — this is a platform limitation, not a bug, and a native ARM64 build cannot change it. The **High quality (Per-Pixel Linked List)** transparency mode in Structure Viewer is particularly slow on this driver stack; the default **Approximate** mode is recommended. If 3D views fail to start, install "OpenCL, OpenGL, and Vulkan Compatibility Pack" from the Microsoft Store.
+- 3D views (Structure Viewer and related windows) can run, but Windows on ARM provides OpenGL only through a Direct3D 12 translation layer (GLOn12 / Mesa), so 3D rendering is noticeably slower than on a PC with a native OpenGL driver — this is a platform limitation, not a bug, and a native ARM64 build cannot change it. In Structure Viewer, **High quality (per-pixel linked list, OpenGL 4.3+)** in **Transparency mode** is particularly slow on this driver stack; the default **Approximate (Z depth sorting, OpenGL 4.1+)** is recommended. If 3D views fail to start, install "OpenCL, OpenGL, and Vulkan Compatibility Pack" from the Microsoft Store.
 - The ARM64 package does **not** run on macOS + Wine (see the previous question). On a Mac, use the win-x64 portable ZIP.
 
 ### How should I cite ReciPro?

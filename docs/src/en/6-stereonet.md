@@ -63,7 +63,7 @@ Select what to project onto the net.
 - **Planes** — projects crystal-plane normals \((hkl)\).
 - **Kikuchi line pairs** — projects Kikuchi-line pairs.
 
-### Projection method
+### Projection scheme
 
 | Method | Description |
 |--------|-------------|

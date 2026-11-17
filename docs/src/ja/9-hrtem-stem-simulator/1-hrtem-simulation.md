@@ -54,7 +54,7 @@ $$\chi(u) = \pi\lambda\,\Delta f\,u^2 + \tfrac{\pi}{2}\,C_s\lambda^3 u^4$$
 で、各回折波に $\exp[-i\chi(u)]$ を掛けます。したがって **Δf が負のときがアンダーフォーカス** です（シェルツァーデフォーカスが負になる流儀）。
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:zeroAllToolStripMenuItem_Click / presets1ToolStripMenuItem_Click〜presets4) -->
-> **右クリックメニュー**: TEMの条件パネルでは、**デフォーカスを0 nmに設定** / **デフォーカスをシェルツァー値に設定** / **理想条件 (Cs, Cc, β, ΔV, Δf = 0)** をワンクリックで行えます（最後のものは Cs・Cc・β・ΔV に加えて **デフォーカスも** 0 にします）。同じメニューに顕微鏡プリセットが 4 つあります — *300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔV 0.3) ARM300F*、*200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F*、*200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F*、*200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100*（項目名は英語のみ）。項目名に書かれた加速電圧・Cs・Cc・ΔV を設定し、デフォーカスをシェルツァー値にします（β は変更しません）。右下の **条件プリセット** で開くウィンドウは、利用者が自分の条件を保存するためのものです（[プリセットリスト](index.md#preset-list) 参照）。 <!-- 261105Cl 監査: プリセット名は ΔV (FormImageSimulator.resx presets1〜4ToolStripMenuItem.Text) -->
+> **右クリックメニュー**: TEMの条件パネルでは、**デフォーカスを0 nmに設定** / **デフォーカスをシェルツァー値に設定** / **理想条件 (Cs, Cc, β, ΔV, Δf = 0)** をワンクリックで行えます（最後のものは Cs・Cc・β・ΔV に加えて **デフォーカスも** 0 にします）。同じメニューに顕微鏡プリセットが 4 つあります — *300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔV 0.3) ARM300F*、*200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F*、*200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F*、*200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100*（項目名は英語のみ）。項目名に書かれた加速電圧・Cs・Cc・ΔV を設定し、デフォーカスをシェルツァー値にします（β は変更しません）。右下の **条件プリセット** で開くウィンドウは、利用者が自分の条件を保存するためのものです（[プリセット一覧](index.md#preset-list) 参照）。 <!-- 261105Cl 監査: プリセット名は ΔV (FormImageSimulator.resx presets1〜4ToolStripMenuItem.Text) -->
 
 ### シェルツァーデフォーカス
 
