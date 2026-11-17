@@ -1030,7 +1030,8 @@ public partial class FormMain : FormBase
             FormImageSimulator.RotationChanged();
 
         if (FormEBSD.Visible)
-            FormEBSD.Draw();
+            //FormEBSD.Draw(); // 261117Cl 変更前
+            FormEBSD.Draw(rotating: true); // 261117Cl 変更 (issue #73): ドラッグで回している間は縮小ラスターで軽く描く
 
         if (SkipEulerChange && FormRotation.Visible)//Euler angle が直接入力された時
             FormRotation.SetRotation();

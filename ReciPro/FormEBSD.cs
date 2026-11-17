@@ -1409,8 +1409,29 @@ public partial class FormEBSD : FormBase
 
     #region メイン描画関数
     /// <summary>描画関数</summary>
-    public void Draw(Graphics g = null)
+    /// <param name="rotating">261117Cl 追加 (issue #73): 結晶の回転から呼ぶとき true (FormMain.SetRotation)。
+    /// マウスのボタンを押したまま回している間は、縮小したラスターで軽く描く (<see cref="dragPreviewScale"/>)</param>
+    //public void Draw(Graphics g = null) // 261117Cl シグネチャ変更前
+    public void Draw(Graphics g = null, bool rotating = false)
     {
+        //261117Cl 追加 (issue #73): ドラッグで回している間の軽い表示。縮小率はドラッグの最初の 1 回で決め、ボタンを離すまで変えない
+        //  (途中で変えるとラスターの大きさが毎回変わり、バッファを作り直し続けるため)
+        if (rotating && dragPreviewScale == 1 && Control.MouseButtons != MouseButtons.None && lastFullRenderMs > DragPreviewTargetMs)
+        {
+            dragPreviewScale = Math.Min(MaxDragPreviewScale, (int)Math.Ceiling(Math.Sqrt(lastFullRenderMs / DragPreviewTargetMs)));
+            if (dragPreviewTimer == null)
+            {
+                dragPreviewTimer = new System.Windows.Forms.Timer { Interval = 30 };
+                dragPreviewTimer.Tick += (_, _) =>
+                {
+                    if (Control.MouseButtons != MouseButtons.None) return;
+                    dragPreviewTimer.Stop();
+                    dragPreviewScale = 1;
+                    if (lastRenderWasPreview) { DrawEBSD(); DrawOverlays(); } //離した後に別の描画 (graphicsBox_MouseUp の Draw など) が済んでいれば描き直さない
+                };
+            }
+            dragPreviewTimer.Start();
+        }
         DrawEBSD();
         DrawOverlays(g);
         DrawGeometry();
@@ -1436,6 +1457,22 @@ public partial class FormEBSD : FormBase
     private double[] ebsdModelBackground = [], ebsdValuesMinusBackground = []; // 260921Cl 追加: 合成器の背景 B と P − B (平坦化の入力)
     private (int Width, int Height) ebsdCachedSize = (0, 0); // 260325Cl: PseudoBitmap 再生成判定用
     private int masterPatternCombinationModel = 2; // (260325Ch) 0=current, 1=globally normalized master, 2=absolute MC x differential master
+
+    /// <summary>回転のドラッグ中に使うラスターの縮小率 (縦横それぞれ 1/n。1 = 縮小しない)。261117Cl 追加 (issue #73):
+    /// BSE 分布つきの加重合成 (エネルギー 16 段 × 深さ 40 点) や背景の平坦化は 1 回に数百 ms かかり、ドラッグで回すとカクつく
+    /// (v.4.942 はエネルギー 8 段・平坦化なしで軽かった)。ドラッグの最初の 1 回で、直近の通常の描画時間 <see cref="lastFullRenderMs"/> から
+    /// <see cref="DragPreviewTargetMs"/> に収まる n を決め (時間は画素数に比例 = 1/n² とみる)、ボタンを離したら元の解像度で描き直す。
+    /// 合成モデル・平坦化はそのまま使うので、ドラッグ中の見た目は粗くなるだけで中身は変わらない</summary>
+    private int dragPreviewScale = 1;
+    private const double DragPreviewTargetMs = 30; // 261117Cl 追加
+    private const int MaxDragPreviewScale = 8; // 261117Cl 追加
+    /// <summary>縮小しない DrawEBSD の直近の所要時間 (ms)。261117Cl 追加</summary>
+    private double lastFullRenderMs;
+    /// <summary>直近の DrawEBSD が縮小ラスターだったか (ボタンを離したときに描き直すかの判定)。261117Cl 追加</summary>
+    private bool lastRenderWasPreview;
+    /// <summary>ボタンが離されたかを見るタイマー (ドラッグ中だけ動かす)。261117Cl 追加:
+    /// 回転のドラッグはメイン画面・ステレオネット・回折シミュレーターなど他のフォームからも来るので、マウスのイベントでなくボタンの状態を見る</summary>
+    private System.Windows.Forms.Timer dragPreviewTimer;
 
     /// <summary>MasterPattern → 表示ラスターの合成器 (ピクセルごとの参照テーブル + 3 つの合成モデル)。260726Cl 追加:
     /// ルックアップテーブル構築と 6 つの合成カーネルは Crystallography/EBSD/EbsdPatternComposer.cs へ移設した
@@ -1483,11 +1520,18 @@ public partial class FormEBSD : FormBase
         // int width = graphicsBox.ClientRectangle.Width, height = graphicsBox.ClientRectangle.Height; // 260723Cl 変更前: 画面ピクセル=計算ピクセル (固定表示)
         var (width, height) = PatternRasterSize; // 260723Cl 変更: クランプ付きラスターで計算し、画面への配置は DrawOverlays が担う // 260724Cl: ラスター=現在の視野全体
         if (width <= 0 || height <= 0) return;
+        //261117Cl 追加 (issue #73): 回転のドラッグ中は縮小したラスターで合成する (dragPreviewScale の doc)。
+        //  ラスターは視野全体を覆う規約なので (GetRasterToViewParams)、画素が粗くなるだけで画面上の位置は変わらない。Copy・書き出しの上書き描画は縮小しない
+        int previewScale = dragPreviewScale > 1 && renderCanvasOverride == null && Control.MouseButtons != MouseButtons.None ? dragPreviewScale : 1;
+        if (previewScale > 1) (width, height) = (Math.Max(1, width / previewScale), Math.Max(1, height / previewScale));
 
         //260717Cl 変更: 例外時に skipEBSD_Rendering が true のまま残り以後の描画が止まるため、本体を try/finally で保護
         skipEBSD_Rendering = true;
+        var startTime = Stopwatch.GetTimestamp(); // 261117Cl 追加
         try { DrawEBSDCore(width, height); }
         finally { skipEBSD_Rendering = false; }
+        if (previewScale == 1) lastFullRenderMs = Stopwatch.GetElapsedTime(startTime).TotalMilliseconds; // 261117Cl 追加: 次のドラッグの縮小率を決める
+        lastRenderWasPreview = previewScale > 1; // 261117Cl 追加
     }
 
     private void DrawEBSDCore(int width, int height)
