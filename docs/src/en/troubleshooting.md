@@ -29,7 +29,7 @@ The window will be brought onto your main display. Note that **Switch to**, **Br
 **Solution** (try in order):
 
 1. **Disable OpenGL**: hold the **Ctrl** key while launching ReciPro to start with OpenGL disabled. Recent versions (v4.925 and later) harden OpenGL initialization so the app launches even when OpenGL fails — in that case the 3D features are disabled but the rest of the app works.
-2. **Reset the settings**: in the registry editor, delete the key `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`, then restart. (Equivalent to **Options ▸ Reset registry settings on exit**.)
+2. **Reset the settings**: in the registry editor, delete the key `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`, then restart. (Equivalent to **Options ▸ Reset registry settings on exit (effective after restart)**.)
 3. **Clean reinstall**: uninstall ReciPro, delete the following folders if present (replace `<user>` with your account name), then reinstall:
    - `C:\Users\<user>\AppData\Local\Crystallography Software\ReciPro`
    - `C:\Users\<user>\AppData\Roaming\ReciPro\ReciPro`
