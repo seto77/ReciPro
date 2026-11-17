@@ -139,6 +139,11 @@ internal sealed class GuiCapture : GuiCaptureHarness
                     // ここで DrawGeometry() を呼び GL オブジェクトを再送出する。
                     ebsd.DrawGeometry();
                     Application.DoEvents();
+                    // 261118Cl 追加 (作者決定): 既定のままではバンドが見えないので、撮影では背景を平坦化する。
+                    //   構築と上の描き直しが済んでから UI スレッドで入れる (構築の前に入れると、スレッドプールで走る完了処理の描画が長くなり、
+                    //   上の DrawGeometry の GL 描画と重なって DrawElements でアクセス違反になった。2026-11-18、en・ja とも同じ所で落ちた)
+                    ebsd.CaptureFlattenBackground();
+                    WaitUntilScreenStable(form, trace);
                     break;
                 case FormImageSimulator imageSimulator:
                     imageSimulator.PrepareCaptureForGuiAudit(); // 260524Cl: Simulate を起動

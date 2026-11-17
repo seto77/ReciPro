@@ -1455,6 +1455,9 @@ public partial class FormEBSD : FormBase
     /// 既定 false = 従来どおり B=0 のまま組む (tools のハーネスの挙動は変えない。EbsdIndexTune は PrepareCaptureForGuiAudit を引数なしの反射で呼ぶので、引数でなく欄にした)。
     /// 2026-11-18 の /pages で DB の結晶 (B=0) のまま組み、マスターパターンと EBSD パターンが真っ黒に撮れた</summary>
     internal bool CaptureFillZeroB;
+    /// <summary>261118Cl 追加: 撮影ハーネス (GuiCapture) 用。「背景を平坦化」を入れる。作者決定 (2026-11-18): 既定 (コントラスト 0・平坦化なし) のままでは
+    /// BSE の背景が明るく、バンドが背景の 3 % ほどでマニュアルの図で見えない。撮影のときだけで、既定は変えない</summary>
+    internal void CaptureFlattenBackground() => checkBoxFlattenBackground.Checked = true;
     private double[] ebsdValues = []; // 260325Cl: EBSD パターン描画用バッファ (サイズ変更時のみ再割り当て)
     private double[] ebsdValuesFlattened = []; // 260920Cl 追加: 背景平坦化 (ImageProcess.SubtractGaussianBackground) の出力バッファ (ebsdValues は生値のまま)
     private double[] ebsdValuesPadded = [], ebsdValuesPaddedFlattened = []; // 260921Cl 追加: 平坦化の縁対策で視野の外側まで広げて合成・平坦化するバッファ (DrawEBSDCore の pad 参照)
