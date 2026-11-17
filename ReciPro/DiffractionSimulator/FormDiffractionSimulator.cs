@@ -619,9 +619,13 @@ public partial class FormDiffractionSimulator : FormBase
     /// 戻り値 = 呼び出し前の状態 (呼び出し元が finally で RestoreCaptureKikuchiState へ渡す)。
     /// 呼び出し元は GuiCapture に限定する。
     /// </summary>
-    internal (bool Layer, int Mode) PrepareCaptureKikuchiDynamical()
+    // internal (bool Layer, int Mode) PrepareCaptureKikuchiDynamical() // 261118Cl シグネチャ変更前
+    // 261118Cl 変更: 選ばれていたタブも返す。菊池レイヤーを ON にするとタブが菊池へ自動で切り替わり (6352929c)、戻さないと
+    //   後のモード別の全体図 (-saed/-ped/-xray) が菊池タブのまま撮れていた (2026-11-18 の /pages)
+    internal (bool Layer, int Mode, TabPage Tab) PrepareCaptureKikuchiDynamical()
     {
-        var previous = (toolStripButtonKikuchiLines.Checked, comboBoxKikuchiMode.SelectedIndex);
+        // var previous = (toolStripButtonKikuchiLines.Checked, comboBoxKikuchiMode.SelectedIndex); // 261118Cl 変更前
+        var previous = (toolStripButtonKikuchiLines.Checked, comboBoxKikuchiMode.SelectedIndex, tabControl.SelectedTab); // 261118Cl 変更
         SetCaptureMode("saed"); //X線モードのままだと kV が違い、菊池の計算キーが噛み合わない
         toolStripButtonKikuchiLines.Checked = true; //CheckedChanged → SetVector + Draw で候補反射が用意される
         comboBoxKikuchiMode.SelectedIndex = (int)KikuchiMode.DynamicalBand;
@@ -629,10 +633,12 @@ public partial class FormDiffractionSimulator : FormBase
     }
 
     /// <summary>260807Cl 追加: <see cref="PrepareCaptureKikuchiDynamical"/> の戻り値で元の状態へ戻す</summary>
-    internal void RestoreCaptureKikuchiState((bool Layer, int Mode) previous)
+    // internal void RestoreCaptureKikuchiState((bool Layer, int Mode) previous) // 261118Cl シグネチャ変更前
+    internal void RestoreCaptureKikuchiState((bool Layer, int Mode, TabPage Tab) previous) // 261118Cl 変更: タブも戻す
     {
         comboBoxKikuchiMode.SelectedIndex = previous.Mode;
         toolStripButtonKikuchiLines.Checked = previous.Layer;
+        if (previous.Tab != null) tabControl.SelectedTab = previous.Tab; // 261118Cl 追加: レイヤーを戻した後で (ON→OFF の切り替えでもタブが動きうるので最後に)
     }
 
     /// <summary>260807Cl 追加: --capture 用。菊池タブとその注記ラベル (クロップ対象と採寸対象)。

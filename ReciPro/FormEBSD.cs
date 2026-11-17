@@ -1451,6 +1451,10 @@ public partial class FormEBSD : FormBase
     string masterPatternBWarning = "";
     /// <summary>261104Cl 追加: 自動実行 (PrepareCaptureForGuiAudit) からの構築では B=0 の確認ダイアログを出さない (モーダルで止まるため)</summary>
     bool skipDisplacementParameterPrompt;
+    /// <summary>261118Cl 追加: 撮影ハーネス (GuiCapture) 用。true のとき、自動実行の構築でも B=0 のサイトに確認の OK と同じ 0.5 Å² を入れてから組む (ダイアログは出さない)。
+    /// 既定 false = 従来どおり B=0 のまま組む (tools のハーネスの挙動は変えない。EbsdIndexTune は PrepareCaptureForGuiAudit を引数なしの反射で呼ぶので、引数でなく欄にした)。
+    /// 2026-11-18 の /pages で DB の結晶 (B=0) のまま組み、マスターパターンと EBSD パターンが真っ黒に撮れた</summary>
+    internal bool CaptureFillZeroB;
     private double[] ebsdValues = []; // 260325Cl: EBSD パターン描画用バッファ (サイズ変更時のみ再割り当て)
     private double[] ebsdValuesFlattened = []; // 260920Cl 追加: 背景平坦化 (ImageProcess.SubtractGaussianBackground) の出力バッファ (ebsdValues は生値のまま)
     private double[] ebsdValuesPadded = [], ebsdValuesPaddedFlattened = []; // 260921Cl 追加: 平坦化の縁対策で視野の外側まで広げて合成・平坦化するバッファ (DrawEBSDCore の pad 参照)
@@ -3495,7 +3499,8 @@ public partial class FormEBSD : FormBase
         //   ダイアログ表示中もメイン画面は操作できるので、結晶が切り替わっていたら書き込まずに抜ける。
         var crystal = Crystal;
         var zeroBSites = crystal.Atoms.Where(a => (a.Dsf?.BisoEffective ?? 0) <= 0 && a.Dsf is not { UseIso: false, IsZero: false }).ToArray();
-        if (zeroBSites.Length > 0 && !skipDisplacementParameterPrompt)
+        // if (zeroBSites.Length > 0 && !skipDisplacementParameterPrompt) // 261118Cl 変更前
+        if (zeroBSites.Length > 0 && (!skipDisplacementParameterPrompt || CaptureFillZeroB)) // 261118Cl 変更: 撮影では確認なしで OK と同じ処理をする
         {
             const double defaultBAng2 = 0.5;
             var message = $"{zeroBSites.Length} of {crystal.Atoms.Length} atom site(s) in \"{crystal.Name}\" have B = 0 (the atomic displacement parameter is not set).\r\n\r\n"
@@ -3505,7 +3510,8 @@ public partial class FormEBSD : FormBase
                 // 261105Cl 変更 (作者決定 K1-A7): 案内先を画面のタブ名で書く (主画面の原子の欄 › 原子変位 (B) タブ。en の名前は "Atomic displacement (B)")
                 + $"OK: set B = {defaultBAng2.ToString(CultureInfo.InvariantCulture)} Å² (isotropic) for these site(s) and build. You can change the value later in the main window: atom list › Atomic displacement (B) tab.\r\n"
                 + "Cancel: do not build (set B yourself in the main window: atom list › Atomic displacement (B) tab).";
-            if (MessageBox.Show(this, message, "Atomic displacement parameter B", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK || !ReferenceEquals(crystal, Crystal))
+            // if (MessageBox.Show(this, message, "Atomic displacement parameter B", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK || !ReferenceEquals(crystal, Crystal)) // 261118Cl 変更前
+            if (!skipDisplacementParameterPrompt && (MessageBox.Show(this, message, "Atomic displacement parameter B", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK || !ReferenceEquals(crystal, Crystal))) // 261118Cl 変更: 撮影 (CaptureFillZeroB) では聞かずに OK 扱い
                 return;
             foreach (var a in zeroBSites)
                 if (a.Dsf == null)

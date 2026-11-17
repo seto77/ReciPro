@@ -124,6 +124,7 @@ internal sealed class GuiCapture : GuiCaptureHarness
                     trace($"{form.GetType().Name}\tINFO\tprepared trajectory simulation");
                     break;
                 case FormEBSD ebsd:
+                    ebsd.CaptureFillZeroB = true; // 261118Cl 追加: DB の結晶は B=0 なので、確認の OK と同じ 0.5 Å² を入れて組む (B=0 のままだとマスターパターンが真っ黒)
                     ebsd.PrepareCaptureForGuiAudit(); // 260524Cl: Build MasterPattern を起動
                     trace($"{form.GetType().Name}\tINFO\ttriggered EBSD master pattern build");
                     // 261117Cl 追加: 先に MC と構築の終わりを待つ (上限 300 秒)。画面安定待ちだけだと MC の途中で「完了」と見て撮り、
@@ -307,7 +308,8 @@ internal sealed class GuiCapture : GuiCaptureHarness
             return;
         }
         var name = SanitizeFileName(BuildCapturePath(form, tab)) + "-dynamical";
-        (bool Layer, int Mode) previous = default;
+        // (bool Layer, int Mode) previous = default; // 261118Cl 変更前
+        (bool Layer, int Mode, TabPage Tab) previous = default; // 261118Cl 変更: 選ばれていたタブも戻す
         CaptureVariant(form, name, outDir, trace, //260807Cl /simplify2: 定型部を CaptureVariant へ集約
             // 動力学バンドは debounce 300ms + バックグラウンド計算 + 再描画を経てから注記ラベルにバンド数が出る。
             // 待ち時間は機械と Bands 数で変わるので、他のモード撮影と同じく「画面が止まったら完了」に委ねる
