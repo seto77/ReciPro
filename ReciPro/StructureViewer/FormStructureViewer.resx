@@ -3508,7 +3508,7 @@ point is placed at the center of the view.</value>
     <value>4, 21</value>
   </data>
   <data name="comboBoxProjectionMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 25</value>
+    <value>108, 25</value>
   </data>
   <data name="comboBoxProjectionMode.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3535,13 +3535,13 @@ point is placed at the center of the view.</value>
     <value>NoControl</value>
   </data>
   <data name="trackBarPerspective.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 21</value>
+    <value>114, 21</value>
   </data>
   <data name="trackBarPerspective.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="trackBarPerspective.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 24</value>
+    <value>247, 24</value>
   </data>
   <data name="trackBarPerspective.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>

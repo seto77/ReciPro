@@ -358,7 +358,7 @@
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>電子飛程シミュレータ (Monte Carlo Method)</value>
+    <value>電子飛程シミュレータ (モンテカルロ法)</value>
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
