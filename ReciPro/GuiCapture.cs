@@ -126,6 +126,11 @@ internal sealed class GuiCapture : GuiCaptureHarness
                 case FormEBSD ebsd:
                     ebsd.PrepareCaptureForGuiAudit(); // 260524Cl: Build MasterPattern を起動
                     trace($"{form.GetType().Name}\tINFO\ttriggered EBSD master pattern build");
+                    // 261117Cl 追加: 先に MC と構築の終わりを待つ (上限 300 秒)。画面安定待ちだけだと MC の途中で「完了」と見て撮り、
+                    //   撮影後の Dispose の後で MC の続きが進捗バーに触れてプロセスごと落ちた (2026-11-17、en・ja とも 73 枚で停止)
+                    var ebsdDeadline = Environment.TickCount64 + 300_000;
+                    while (ebsd.IsBuildingForCapture && Environment.TickCount64 < ebsdDeadline) { Application.DoEvents(); System.Threading.Thread.Sleep(50); }
+                    trace($"{form.GetType().Name}\t{(ebsd.IsBuildingForCapture ? "WARN\tEBSD build still running after 300 s" : "INFO\tEBSD build finished")}");
                     WaitUntilScreenStable(form, trace); // 重く非同期なので「画面が変化しなくなったら完了」で待つ
                     // 260725Cl 追加: MasterPattern 構築 (MC/Bethe の非同期完了が ThreadPool スレッドで GL に触れ、WGL
                     // "make context current" 失敗を起こす) の後、3D 幾何ビュー (glControlGeo) が白紙のまま残ることがある。

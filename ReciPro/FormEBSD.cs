@@ -3394,6 +3394,10 @@ public partial class FormEBSD : FormBase
         finally { skipDisplacementParameterPrompt = false; }
     }
 
+    /// <summary>261117Cl 追加: 撮影ハーネス (GuiCapture) 用。構築の前段の MC か Bethe の構築が走っている間 true (判定は SetCrystal と同じ 2 条件)。
+    /// 画面安定待ちだけでは MC の途中を「完了」と見ることがあり、撮影後に窓を Dispose した後で MC の続きが進捗バー等に触れてプロセスごと落ちた (2026-11-17 の /pages)</summary>
+    internal bool IsBuildingForCapture => masterPatternEbsd.IsBuilding || monteCarloCts != null;
+
     /// <summary>
     /// UI 上の設定値を読み取り、MasterPattern の作成を開始する。
     /// 実際の計算本体は Crystallography.EBSD に委譲し、このメソッドでは UI の状態遷移だけを扱う。
