@@ -7,6 +7,19 @@
 
 This page describes what changed in each version of ReciPro. The [release page on GitHub](https://github.com/seto77/ReciPro/releases) gives only a one-line summary and the download links for each version; the details are written here. Versions from v.4.919 on have a section of their own; older versions are listed with their one-line summary.
 
+## v.4.952 (2026-11-17)
+
+Moved to .NET 11 (the MSI build needs .NET Desktop Runtime 11.0). Fixed many calculation errors (STEM TDS/EDX depth phase, anisotropic ADPs, CIF/AMCSD reading, EBSD, diffraction simulator, Spot ID); the Monte Carlo uses a new stopping power.
+
+Many of these errors were found in an audit of all windows, and some are old; recalculate results made under the conditions below.
+
+- **Runtime**: ReciPro now runs on .NET 11. The MSI installer needs the .NET Desktop Runtime 11.0; the portable ZIP includes the runtime. The x64 native library no longer needs the Visual C++ redistributable.
+- **STEM (fix)**: TDS (ADF/HAADF) images and EDX maps lacked the phase along the depth. For crystals tilted 5 mrad off a zone axis the images changed by 23–45 % of their maximum, and by about 1 % on a zone axis; EDX maps change on a zone axis too. Beams are now chosen in order of |g|, and the source-size blur (twice the entered FWHM) and the chromatic envelope were corrected. Diffraction patterns and HRTEM images calculated right after a STEM run were also wrong.
+- **Crystal data (fix)**: Anisotropic U values lost their off-diagonal terms in orthogonal cells (U12 was halved in hexagonal cells), the equivalent isotropic B was off in non-orthogonal cells, and AMC files swapped U13 and U23; the bundled AMCSD was rebuilt. A CIF without a Hall symbol could open in another setting, and coordinates with standard uncertainties were lost when the origin was shifted. With a comma as the decimal separator, SMAP, AMC and .prm files were misread. Import affected crystals again.
+- **EBSD and Monte Carlo**: The Monte Carlo now uses the relativistic Bethe stopping power with the Joy–Luo correction, which also changes the electron range in Beam Interaction and the Trajectory Simulator (CSDA ranges mostly within 4 % of NIST ESTAR). With the EBSD defaults, a Si pattern loses 3.7 % of its total intensity and Au is unchanged. EBSD no longer reuses a master pattern or Monte Carlo result after the crystal, the voltage or the sample tilt changes (build again), and the calibration of a detector on the +Y side is fixed. While the crystal is rotated by dragging, the EBSD pattern is drawn at a reduced resolution and redrawn at full resolution when the mouse button is released (#73).
+- **Changed behaviour**: Near a zone axis, a whole set of equivalent beams is taken, so slightly more beams than requested can be used. In the structure viewer, a positive Translation of lattice planes or of the unit-cell range now moves toward +g or +a, +b, +c (the opposite before; reverse the sign in saved pictures). The zone axis of two planes is h₁ × h₂, and new crystals have a Hill coefficient of 0.5.
+- **Other fixes**: TIFF, MRC, SMV, ITEX, DM and HIS images are read according to their formats. Fixed Debye rings in X-ray precession, 2θ in Back Laue, neutron spots and the scale at start-up in the diffraction simulator, 'View along' a plane (monoclinic and triclinic cells, or an entered up direction), great circles in the Schmidt net, Spot ID v2 refinement, the reflection list of Beam Interaction and many more. UI text was unified across 11 languages.
+
 ## v.4.951 (2026-11-05)
 
 Added 'Details of the chemical composition' to the crystal right-click menu (wt%, at%, normalized atoms, oxide/halide/sulfide conversion). Hidden windows no longer block Windows shutdown, and reordered atoms keep their display checks.
