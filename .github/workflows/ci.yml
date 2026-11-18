@@ -49,6 +49,11 @@ jobs:
       - name: Build
         run: dotnet build ReciPro\ReciPro.csproj -c Release -p:Platform=x64 --no-restore
 
+      # 261118Cl 追加 (作者決定 2026-11-18「動力学計算の最小の独立検査を公開の tests にも置く」): Crystallography の xUnit を走らせる
+      #   (約 30 秒、6,700 本余り。流束の保存と RK4 参照の独立検査を含む)。native (C++) はここでは組まないので、テストは managed で動く。
+      - name: Test (Crystallography.Tests, managed)
+        run: dotnet test Crystallography\tests\Crystallography.Tests\Crystallography.Tests.csproj -c Release
+
   resx-conventions:
     name: resx conventions (text-only / no baked language / font tiers)
     runs-on: ubuntu-latest
