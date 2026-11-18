@@ -1985,7 +1985,8 @@ public partial class FormSpotIDV2 : FormBase
             refineRun = refineCrystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, accVoltage, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto,
                 beamSelection: BetheMethod.CbedBeamSelectionMethod.Legacy, releasePreviousResult: true);
         }
-        catch (Exception ex) when (ex is ArgumentException or InvalidOperationException)
+        // catch (Exception ex) when (ex is ArgumentException or InvalidOperationException) // 261118Cl 変更前 (1 時間より前の版)
+        catch (Exception ex) // 261118Cl 変更 (レビュー): どの例外でも UI を戻す
         {
             refineCrystal.Bethe.CBED_Completed -= Bethe_CbedCompleted;
             refineCrystal.Bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
@@ -2124,7 +2125,14 @@ public partial class FormSpotIDV2 : FormBase
         //var divisionNumber = FormMain.Crystal.Bethe.RotationArrayValidLength; // 261105Cl 変更前
         // var divisionNumber = refineCrystal.Bethe.RotationArrayValidLength; // 261105Cl (監査 I11: 計算している結晶の Bethe) // 261118Cl 変更前
         var divisionNumber = refineRun?.ValidDirectionCount ?? refineCrystal.Bethe.RotationArrayValidLength; // 261118Cl 変更 (単位 5): この run の分母
-        if (solver != null && solver.StartsWith("Compiling disks", StringComparison.Ordinal)) divisionNumber = 1000; // 261118Cl 追加: 円盤の組み立ては千分率で届く
+        // if (solver != null && solver.StartsWith("Compiling disks", StringComparison.Ordinal)) divisionNumber = 1000; // 261118Cl 追加 (1 時間より前の版)
+        // 261118Cl 変更 (レビュー): 円盤の組み立ては千分率で届く。経過時間は精密化の開始からなので、この段は進み具合だけを出す (time/pixel・残り時間は誤るので出さない)
+        if (solver != null && solver.StartsWith("Compiling disks", StringComparison.Ordinal))
+        {
+            if (current > 0 && current <= 1000) toolStripProgressBar.Value = toolStripProgressBar.Maximum * current / 1000;
+            toolStripStatusLabelRefine.Text = $"Compiling disks: {current / 10.0:f1} % completed";
+            skipProgressChangedEvent = false; return;
+        }
         if (divisionNumber <= 0 || current <= 0) { skipProgressChangedEvent = false; return; } // 261118Cl 追加
         var progress = (int)(100.0 * current / divisionNumber);
         if (progress <= 100)

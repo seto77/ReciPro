@@ -218,7 +218,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             runningRun = runningBethe.RunCBED(legacyN, Voltage, Crystal.RotationMatrix, runningThicknesses, Directions, LACBED, solver, numericBoxThread.ValueInteger,
                 beamSelection: beamSelection, dressedTail: dressedTail);
         }
-        catch (Exception ex) when (ex is ArgumentException or InvalidOperationException)
+        // catch (Exception ex) when (ex is ArgumentException or InvalidOperationException) // 261118Cl 変更前 (1 時間より前の版)
+        catch (Exception ex) // 261118Cl 変更 (レビュー): どの例外でも UI を戻す (固まった状態で別の run の結果を取り込まない)
         {
             runningBethe.CBED_Completed -= Bethe_CbedCompleted;
             runningBethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
@@ -233,7 +234,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     {
         //Crystal.Bethe.CancelCBED(); // 261105Cl 変更前
         runningBethe?.CancelCBED(); // 261105Cl 変更 (監査 #32): 計算を始めた結晶の Bethe を止める
-        if (runningBethe != null) { toolStripStatusLabel2.Text = "Stopping...  "; toolStripStatusLabel1.Text = "waiting for the current step to finish."; } // 261118Cl 追加 (単位 5): 止まるまでの間を見せる
+        if (runningBethe != null) { stopping = true; toolStripStatusLabel2.Text = "Stopping...  "; toolStripStatusLabel1.Text = "waiting for the current step to finish."; } // 261118Cl 追加 (単位 5): 止まるまでの間を見せる
         //buttonSimulate.Text = "Simulate"; // 260520Cl: Execute→Simulate (用語統一) // 261105Cl 削除 (監査 D23): 計算中に文言を変えていないのに、英語の "Simulate" で上書きして ja などの訳 (「開始」) を消していた
         buttonStop.Visible = false;
     }
@@ -242,10 +243,12 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     #region BackgroundWorkerからのProgressChanged, Completed
 
     private bool skipProgressChangedEvent = false;
+    private bool stopping; // 261118Cl 追加 (レビュー): Stop を押した後は進捗で「Stopping...」を上書きしない
 
     private void Bethe_CbedProgressChanged(object sender, ProgressChangedEventArgs e)
     {
         if (skipProgressChangedEvent) return;
+        if (stopping) return; // 261118Cl 追加 (レビュー)
 
         skipProgressChangedEvent = true;
 
@@ -291,6 +294,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         //Crystal.Bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
         var bethe = runningBethe; // 261105Cl 変更 (監査 #32): 計算を始めた結晶の Bethe から外す
         var run = runningRun; // 261118Cl 追加 (単位 5)
+        stopping = false; // 261118Cl 追加 (レビュー)
         runningBethe = null; runningRun = null;
         bethe.CBED_Completed -= Bethe_CbedCompleted;
         bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
