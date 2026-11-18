@@ -7,6 +7,8 @@ Last updated: 2026-11-17
 ### Daily (最大14日保持)
 | Date | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
+| 2026-11-16 | 78 | 40 |
+| 2026-11-15 | 36 | 18 |
 | 2026-11-14 | 23 | 11 |
 | 2026-11-13 | 68 | 39 |
 | 2026-11-12 | 68 | 38 |
@@ -22,7 +24,8 @@ Last updated: 2026-11-17
 ### Weekly (最大14週保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026-W46 | 308 | 182 |
+| 2026-W47 | 78 | 40 |
+| 2026-W46 | 344 | 200 |
 | 2026-W45 | 361 | 185 |
 | 2026-W44 | 349 | 204 |
 | 2026-W43 | 216 | 150 |
@@ -39,7 +42,7 @@ Last updated: 2026-11-17
 ### Monthly (最大12か月保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026-11 | 695 | 383 |
+| 2026-11 | 809 | 441 |
 | 2026-10 | 1305 | 759 |
 | 2026-09 | 1710 | 780 |
 | 2026-08 | 1619 | 693 |
@@ -52,13 +55,15 @@ Last updated: 2026-11-17
 ### Yearly (無制限)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026 | 11416 | 5498 |
+| 2026 | 11530 | 5556 |
 
 ## Clones
 
 ### Daily (最大14日保持)
 | Date | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
+| 2026-11-16 | 24 | 11 |
+| 2026-11-15 | 11 | 2 |
 | 2026-11-14 | 14 | 10 |
 | 2026-11-13 | 26 | 15 |
 | 2026-11-12 | 108 | 18 |
@@ -74,7 +79,8 @@ Last updated: 2026-11-17
 ### Weekly (最大14週保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026-W46 | 5739 | 78 |
+| 2026-W47 | 24 | 11 |
+| 2026-W46 | 5750 | 80 |
 | 2026-W45 | 12336 | 231 |
 | 2026-W44 | 153 | 77 |
 | 2026-W43 | 94 | 61 |
@@ -91,7 +97,7 @@ Last updated: 2026-11-17
 ### Monthly (最大12か月保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026-11 | 18092 | 322 |
+| 2026-11 | 18127 | 335 |
 | 2026-10 | 656 | 338 |
 | 2026-09 | 2087 | 280 |
 | 2026-08 | 4965 | 3719 |
@@ -104,7 +110,7 @@ Last updated: 2026-11-17
 ### Yearly (無制限)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026 | 31468 | 7184 |
+| 2026 | 31503 | 7197 |
 
 ## Referrers
 
@@ -396,9 +402,14 @@ Last updated: 2026-11-17
 
 | Release Tag | Release Date | Asset Name | Download Count |
 | ---- | ---- | ---- | ---- |
-| v.4.951 | 2026-11-05 | ReciPro-setup.msi | 293 |
-| v.4.951 | 2026-11-05 | ReciPro-setup_arm64.msi | 18 |
-| v.4.951 | 2026-11-05 | ReciPro-v.4.951.zip | 132 |
+| v.4.952 | 2026-11-17 | ReciPro-setup.msi | 27 |
+| v.4.952 | 2026-11-17 | ReciPro-setup_arm64.msi | 3 |
+| v.4.952 | 2026-11-17 | ReciPro-v.4.952.zip | 10 |
+| v.4.952 | 2026-11-17 | ReciPro-v.4.952_arm64.zip | 3 |
+| v.4.952 | 2026-11-17 | ReciProSetup.msi | 3 |
+| v.4.951 | 2026-11-05 | ReciPro-setup.msi | 317 |
+| v.4.951 | 2026-11-05 | ReciPro-setup_arm64.msi | 19 |
+| v.4.951 | 2026-11-05 | ReciPro-v.4.951.zip | 137 |
 | v.4.951 | 2026-11-05 | ReciPro-v.4.951_arm64.zip | 12 |
 | v.4.951 | 2026-11-05 | ReciProSetup.msi | 13 |
 | v.4.950 | 2026-11-04 | ReciPro-setup.msi | 9 |
@@ -406,14 +417,14 @@ Last updated: 2026-11-17
 | v.4.950 | 2026-11-04 | ReciPro-v.4.950.zip | 2 |
 | v.4.950 | 2026-11-04 | ReciPro-v.4.950_arm64.zip | 2 |
 | v.4.950 | 2026-11-04 | ReciProSetup.msi | 1 |
-| v.4.949 | 2026-10-04 | ReciPro-setup.msi | 762 |
+| v.4.949 | 2026-10-04 | ReciPro-setup.msi | 763 |
 | v.4.949 | 2026-10-04 | ReciPro-setup_arm64.msi | 34 |
 | v.4.949 | 2026-10-04 | ReciPro-v.4.949.zip | 137 |
 | v.4.949 | 2026-10-04 | ReciPro-v.4.949_arm64.zip | 25 |
 | v.4.949 | 2026-10-04 | ReciProSetup.msi | 33 |
 | v.4.948 | 2026-08-29 | ReciPro-setup.msi | 820 |
 | v.4.948 | 2026-08-29 | ReciPro-setup_arm64.msi | 49 |
-| v.4.948 | 2026-08-29 | ReciPro-v.4.948.zip | 144 |
+| v.4.948 | 2026-08-29 | ReciPro-v.4.948.zip | 145 |
 | v.4.948 | 2026-08-29 | ReciPro-v.4.948_arm64.zip | 38 |
 | v.4.948 | 2026-08-29 | ReciProSetup.msi | 42 |
 | v.4.947 | 2026-08-20 | ReciPro-setup.msi | 260 |
@@ -443,7 +454,7 @@ Last updated: 2026-11-17
 | v.4.943 | 2026-07-15 | ReciProSetup.msi | 21 |
 | v.4.942 | 2026-07-01 | ReciPro-setup.msi | 362 |
 | v.4.942 | 2026-07-01 | ReciPro-setup_arm64.msi | 23 |
-| v.4.942 | 2026-07-01 | ReciPro-v.4.942.zip | 88 |
+| v.4.942 | 2026-07-01 | ReciPro-v.4.942.zip | 92 |
 | v.4.942 | 2026-07-01 | ReciPro-v.4.942_arm64.zip | 16 |
 | v.4.942 | 2026-07-01 | ReciProSetup.msi | 43 |
 | v.4.941 | 2026-06-23 | ReciPro-setup.msi | 210 |
@@ -485,9 +496,8 @@ Last updated: 2026-11-17
 | v.4.925 | 2026-04-20 | ReciProSetup.msi | 154 |
 | v.4.924 | 2026-04-14 | ReciProSetup.msi | 186 |
 | v.4.923 | 2026-04-05 | ReciProSetup.msi | 242 |
-| v.4.922 | 2026-04-05 | ReciProSetup.msi | 9 |
 
-**TOTAL: 7206**
+**TOTAL: 7279**
 
 ## Stats
 
