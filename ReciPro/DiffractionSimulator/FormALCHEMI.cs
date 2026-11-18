@@ -533,7 +533,10 @@ public partial class FormALCHEMI : FormBase
         var bethe = Crystal.Bethe;
         try
         {
-            result = await Task.Run(() => bethe.RunAlchemi(request, ((IProgress<AlchemiProgress>)progress).Report, cts.Token), cts.Token);
+            // result = await Task.Run(() => bethe.RunAlchemi(request, ((IProgress<AlchemiProgress>)progress).Report, cts.Token), cts.Token); // 261118Cl 変更前
+            // 261118Cl 変更 (codex2 第 3・4 回の単位 4): 入力 (要求・結晶・全体の設定) は Task.Run に渡す前に UI のスレッドで確定し、専用の BetheMethod で計算する
+            var run = bethe.PrepareAlchemi(request);
+            result = await Task.Run(() => run.Run(((IProgress<AlchemiProgress>)progress).Report, cts.Token), cts.Token);
             sw.Stop();
             resultRow = row;
             resultThetaB = thetaB;
