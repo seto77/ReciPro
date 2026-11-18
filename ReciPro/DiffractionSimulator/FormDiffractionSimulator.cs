@@ -702,32 +702,44 @@ public partial class FormDiffractionSimulator : FormBase
 
     private void Draw(object sender, EventArgs e) => Draw();
 
+    /// <summary>261118Cl 追加 (codex2 第 11 回): 直前の <see cref="Draw(Graphics, bool, bool)"/> の結果。Completed = 今回描き終えたか (描画の一時停止・
+    /// 投影の失敗などで描かなかったら false と理由)、LayerFailure = 今回描いた層のうち今回の条件の結果を出せなかったもの
+    /// (動力学の斑点の失敗、CBED の最後の計算の失敗 (前の円盤を表示)、菊池の動力学の計算中・失敗 (前のプロファイルを表示))</summary>
+    public sealed record DrawStatus(bool Completed, string Reason, string LayerFailure);
+    /// <summary>261118Cl 追加 (codex2 第 11 回): 直前の描画の結果 (<see cref="DrawStatus"/>)。マクロの保存はこれで決める</summary>
+    public DrawStatus LastDrawStatus { get; private set; } = new(false, "not drawn yet", null);
+
     /// <summary>逆空間描画関数</summary>
     /// <param name="g">Graphicsオブジェクトを指定</param>
     /// <param name="drawLabel">ラベルを書く時は、true</param>
     /// <param name="drawOverlappedImage">オーバーラップイメージを描く時はtrue. ただし、trueでも、画像がセットされていない場合は描かない　</param>
-    public void Draw(Graphics g = null, bool drawLabel = true, bool drawOverlappedImage = true)
+    /// <returns>261118Cl 追加 (codex2 第 11 回): 今回描き終えたら true (詳細は <see cref="LastDrawStatus"/>)</returns>
+    // public void Draw(Graphics g = null, bool drawLabel = true, bool drawOverlappedImage = true) // 261118Cl 変更前
+    public bool Draw(Graphics g = null, bool drawLabel = true, bool drawOverlappedImage = true)
     {
         if (this.InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
         {
             //this.Invoke(new Action(() => Draw(g, drawLabel, drawOverlappedImage)), null); // 261111Cl 変更前
-            this.Invoke(() => Draw(g, drawLabel, drawOverlappedImage)); // 261111Cl 変更
-            return;
+            // this.Invoke(() => Draw(g, drawLabel, drawOverlappedImage)); // 261111Cl 変更 // 261118Cl 変更前
+            // return;
+            return this.Invoke(() => Draw(g, drawLabel, drawOverlappedImage)); // 261118Cl 変更: 結果を返す
         }
 
-        if (SkipDrawing) return;
+        // if (SkipDrawing) return; // 261118Cl 変更前 (以下の return 3 か所も同じ: 描かなかった理由を残す)
+        if (SkipDrawing) { LastDrawStatus = new(false, "drawing is suspended (a CBED calculation is running)", null); return false; }
 
         var sw = new Stopwatch();
         sw.Start();
 
         if (formMain == null || formMain.Crystal == null || FormDiffractionSimulatorGeometry == null || formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
-            return;
+        { LastDrawStatus = new(false, "no crystal or detector geometry", null); return false; }
 
         //グラフィックスボックスに描画する場合
         g ??= graphicsBox.Graphics;
 
         if (!SetProjection(g))
-            return;
+        { LastDrawStatus = new(false, "the projection could not be set", null); return false; }
+        var layerFailures = new List<string>(); // 261118Cl 追加 (codex2 第 11 回)
 
         // 261105Cl 追加 (監査 C8): EBSD・ステレオ投影などが同じ結晶の VectorOfG を自分の条件 (d の範囲・Flag1・色なし) で作り直した後は、
         //  黒いスポット・禁制反射の設定の無視などになっていた。この画面の SetVector が作った配列でなければ作り直してから描く
@@ -775,6 +787,8 @@ public partial class FormDiffractionSimulator : FormBase
         //CBEDの重ね合わせ
         if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.Disks != null)
         {
+            if (FormDiffractionSimulatorCBED.LastRunFailure is { } cbedFailure) // 261118Cl 追加 (codex2 第 11 回): 表示するのは前の計算の円盤
+                layerFailures.Add($"CBED: the last calculation failed and the disks shown are from the previous calculation ({cbedFailure})");
             foreach (var disk in FormDiffractionSimulatorCBED.Disks.Where(d => d.Bitmap != null))
             {
                 //260717Cl 変更: 外側の start/end を上書きしていたためローカル変数化 (後続の検出器枠線での再計算も不要に)
@@ -791,13 +805,19 @@ public partial class FormDiffractionSimulator : FormBase
             DrawScale(g);
 
         if (toolStripButtonKikuchiLines.Checked && (bool)timerBlinkKikuchiLine?.Tag)
+        {
             DrawKikuchiLine(g);
+            if (KikuchiDynamicalLayerFailure() is { } kikuchiFailure) layerFailures.Add(kikuchiFailure); // 261118Cl 追加 (codex2 第 11 回)
+        }
 
         if (toolStripButtonDebyeRing.Checked && (bool)timerBlinkDebyeRing?.Tag)
             DrawDebyeRing(g);
 
         if (toolStripButtonDiffractionSpots.Checked && (bool)timerBlinkSpot?.Tag)
+        {
             DrawDiffractionSpots(g, drawLabel);
+            if (LastDynamicalFailure is { } spotFailure) layerFailures.Add(spotFailure.Trim()); // 261118Cl 追加 (codex2 第 11 回): 今回描いた斑点の失敗だけ数える
+        }
 
         //検出器の枠線
         if (fdsg.ShowDetectorArea)
@@ -831,6 +851,7 @@ public partial class FormDiffractionSimulator : FormBase
         }
 
         graphicsBox.Refresh();
+        LastDrawStatus = new(true, null, layerFailures.Count == 0 ? null : string.Join("; ", layerFailures)); // 261118Cl 追加 (codex2 第 11 回)
 
         toolStripStatusLabelTimeForDrawing.Text = $"Time for drawing objects: {StatusBarHelper.FormatElapsed(sw.Elapsed)}.  ";// 260520Cl 時間表記を統一
 
@@ -842,13 +863,16 @@ public partial class FormDiffractionSimulator : FormBase
                 FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedBeams);
             // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更前 (codex2 第 10 回: 失敗した後も前の結果の Beams を今回のものとして出していた)
             //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
-            else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更: 主の結晶が直前の描画で失敗したら空の表と失敗の文
-                FormDiffractionBeamTable.SetTable(Energy, MainCrystalDynamicalFailure == null ? formMain.Crystal.Bethe.Beams : [], MainCrystalDynamicalFailure);
+            // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更: 主の結晶が直前の描画で失敗したら空の表と失敗の文 // 261118Cl 変更前 (第 11 回)
+            //     FormDiffractionBeamTable.SetTable(Energy, MainCrystalDynamicalFailure == null ? formMain.Crystal.Bethe.Beams : [], MainCrystalDynamicalFailure);
+            else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更 (codex2 第 11 回): 斑点を計算したときの主の結晶の反射の写し (共有の Bethe.Beams は像の画面などが書き換える)
+                FormDiffractionBeamTable.SetTable(Energy, MainCrystalDynamicalFailure == null ? MainCrystalDynamicalBeams ?? formMain.Crystal.Bethe.Beams : [], MainCrystalDynamicalFailure);
             else
                 FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal);
         }
 
         Draw3D();
+        return true;
     }
 
     /// <summary>与えられた点集合 pts の中から、もっとも指定した方向に近い点を返す. deg 0 : 右, deg 90: 下, deg 180: 左, deg -90:上</summary>
@@ -880,6 +904,9 @@ public partial class FormDiffractionSimulator : FormBase
     /// <summary>261118Cl 追加 (codex2 第 10 回): 直前の描画で主の結晶 (formMain.Crystal) が失敗したときの文 (null = 成功か動力学でない)。
     /// 失敗の後の Crystal.Bethe.Beams は前に成功した計算の結果なので、反射の表とマクロの SpotInfo は今回のものとして使わない</summary>
     public string MainCrystalDynamicalFailure { get; private set; }
+    /// <summary>261118Cl 追加 (codex2 第 11 回): 直前に斑点を計算したときの主の結晶の動力学の反射の写し (失敗・動力学でないときは null)。
+    /// 共有の Crystal.Bethe.Beams は像の画面 (HRTEM) などが同じ所有元で計算し直すと書き換わるので、反射の表とマクロの SpotInfo はこれを使う</summary>
+    public BetheMethod.Beam[] MainCrystalDynamicalBeams { get; private set; }
 
     /// <summary>回折スポットおよび指数ラベルの描画</summary>
     /// <param name="graphics">描画対象のグラフィックオブジェクト</param>
@@ -995,6 +1022,7 @@ public partial class FormDiffractionSimulator : FormBase
         var sw = new Stopwatch();
         string betheFailure = null; // 261118Cl 追加 (codex2 第 9 回): 動力学の計算の数値の失敗 (後の結晶の成功の時間で上書きしない)
         string mainCrystalFailure = null; // 261118Cl 追加 (codex2 第 10 回): 主の結晶 (formMain.Crystal、反射の表とマクロの SpotInfo の対象) の失敗
+        BetheMethod.Beam[] mainCrystalBeams = null; // 261118Cl 追加 (codex2 第 11 回): 主の結晶の反射の写し
         foreach (var crystal in formMain.Crystals)
         {
             List<Vector3D> gVector;
@@ -1147,6 +1175,7 @@ public partial class FormDiffractionSimulator : FormBase
                     var gPED = crystal.Bethe.GetPrecessionElectronDiffraction(blochNum, Energy, crystal.RotationMatrix, numericBoxThickness.Value,
                         numericBoxPED_Semiangle.Value / 1000, numericBoxPED_Step.ValueInteger);
                     gVector = [.. gPED.Select(g => g.ConvertToVector3D())];
+                    if (ReferenceEquals(crystal, formMain.Crystal)) mainCrystalBeams = gPED; // 261118Cl 追加 (codex2 第 11 回)
 
                     if (eigenValues == null || eigenValues[0] != crystal.Bethe.EigenValuesPED[0])
                         toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects (PED): {StatusBarHelper.FormatElapsed(sw.Elapsed)}.  ";// 260520Cl 時間表記を統一
@@ -1157,6 +1186,7 @@ public partial class FormDiffractionSimulator : FormBase
 
                     var gBethe = crystal.Bethe.GetDifractedBeamAmpriltudes(blochNum, Energy, crystal.RotationMatrix, numericBoxThickness.Value);
                     gVector = [.. gBethe.Select(g => g.ConvertToVector3D())];
+                    if (ReferenceEquals(crystal, formMain.Crystal)) mainCrystalBeams = gBethe; // 261118Cl 追加 (codex2 第 11 回)
 
                     if (eigenValues != crystal.Bethe.EigenValues)
                         toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects: {StatusBarHelper.FormatElapsed(sw.Elapsed)}.  ";// 260520Cl 時間表記を統一
@@ -1321,6 +1351,10 @@ public partial class FormDiffractionSimulator : FormBase
         if (betheFailure != null) // 261118Cl 追加: 数値の失敗があれば状態の欄に残す
             toolStripStatusLabelTimeForBethe.Text = betheFailure;
         (LastDynamicalFailure, MainCrystalDynamicalFailure) = (betheFailure, mainCrystalFailure); // 261118Cl 追加 (codex2 第 10 回)
+        // 261118Cl 追加 (codex2 第 11 回): 主の結晶の反射を写して残す (同じ所有元で像の画面が計算し直すと Psi が書き換わるので、参照でなく写し)
+        MainCrystalDynamicalBeams = mainCrystalFailure == null && mainCrystalBeams != null
+            ? [.. mainCrystalBeams.Select(b => new BetheMethod.Beam(b.Index, b.Vec, (b.Ureal, b.Uimag), (b.Q, b.P)) { Psi = b.Psi, intensity = b.intensity, Lenz = b.Lenz })]
+            : null;
         if (radioButtonBeamBackLaue.Checked) // 261105Cl 追加 (監査 C17): Back Laue のダイレクトスポット (入射ビームの穴) は全結晶を描いた後に 1 回だけ描く (旧は 1 つ目の結晶のループ内)
         {
             var origin = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0)); // 261105Cl
@@ -1595,6 +1629,20 @@ public partial class FormDiffractionSimulator : FormBase
 
     private KikuchiPotentialSnapshot kikuchiSnapshot;
     private List<KikuchiBandProfile> kikuchiProfiles;
+    /// <summary>261118Cl 追加 (codex2 第 11 回): 菊池の動力学のバンドの最後の計算の失敗の文 (成功で null)。失敗の後も前のプロファイルを表示する</summary>
+    private string kikuchiFailure;
+
+    /// <summary>261118Cl 追加 (codex2 第 11 回): 菊池の動力学のバンドの層が今回の条件の結果を出せていないとき、その理由 (計算中・失敗)。動力学のバンドでなければ null</summary>
+    private string KikuchiDynamicalLayerFailure()
+    {
+        if (KikuchiModeSelected != KikuchiMode.DynamicalBand || Source != WaveSource.Electron || formMain?.Crystal is not { } crystal || kikuchiLines == null || kikuchiLines.Count == 0)
+            return null;
+        if (kikuchiFailure != null)
+            return $"Kikuchi dynamical bands: the last calculation failed and the bands shown are from the previous calculation ({kikuchiFailure})";
+        if (kikuchiProfiles == null || KikuchiCurrentKey(crystal) != kikuchiProfilesKey || kikuchiSnapshot?.Matches(crystal, Energy) != true)
+            return "Kikuchi dynamical bands: the calculation for the current conditions has not finished";
+        return null;
+    }
     private KikuchiRequestKey kikuchiProfilesKey; //260806Cl /simplify: 5 つの鏡写しフィールド + O(N) ハッシュを合成キー 1 個へ集約
     private int kikuchiGeneration;
     private double kikuchiAutoScale;
@@ -1816,6 +1864,7 @@ public partial class FormDiffractionSimulator : FormBase
                 return;
             kikuchiProfiles ??= []; //初回失敗でも freshness が成立するように (非 null が条件)
             kikuchiProfilesKey = key;
+            kikuchiFailure = ex.Message; // 261118Cl 追加 (codex2 第 11 回)
             labelKikuchiNotice.Text = Crystallography.Localization.Loc(en: "Dynamical band error: ", ja: "動力学バンド計算エラー: ") + ex.Message; //260806Cl i18n
             return;
         }
@@ -1826,6 +1875,7 @@ public partial class FormDiffractionSimulator : FormBase
         kikuchiSnapshot = snap;
         kikuchiProfiles = profiles;
         kikuchiProfilesKey = key;
+        kikuchiFailure = null; // 261118Cl 追加 (codex2 第 11 回)
         kikuchiPrevSelection = [.. profiles.Select(p => p.Family.Index)];
         kikuchiScaleDirty = !checkBoxKikuchiFixedScale.Checked; //Auto 再決定は計算完了時のみ (ドラッグ中の明るさポンピング防止)
         //260805Cl 追加: worker の結果を注記ラベルで可視化 (バンド数 0 や B 代用の診断が GUI だけで付くように)
@@ -3342,8 +3392,10 @@ public partial class FormDiffractionSimulator : FormBase
             FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedBeams);
         // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更前 (codex2 第 10 回: 失敗した後も前の結果の Beams を今回のものとして出していた)
         //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
-        else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更: 主の結晶が直前の描画で失敗したら空の表と失敗の文
-            FormDiffractionBeamTable.SetTable(Energy, MainCrystalDynamicalFailure == null ? formMain.Crystal.Bethe.Beams : [], MainCrystalDynamicalFailure);
+        // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更: 主の結晶が直前の描画で失敗したら空の表と失敗の文 // 261118Cl 変更前 (第 11 回)
+        //     FormDiffractionBeamTable.SetTable(Energy, MainCrystalDynamicalFailure == null ? formMain.Crystal.Bethe.Beams : [], MainCrystalDynamicalFailure);
+        else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更 (codex2 第 11 回): 斑点を計算したときの主の結晶の反射の写し
+            FormDiffractionBeamTable.SetTable(Energy, MainCrystalDynamicalFailure == null ? MainCrystalDynamicalBeams ?? formMain.Crystal.Bethe.Beams : [], MainCrystalDynamicalFailure);
         else
             FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal);
     }
@@ -3599,8 +3651,11 @@ public partial class FormDiffractionSimulator : FormBase
             //var g = Graphics.FromImage(bmp); // (260611Ch) 旧: Graphics が未解放
             using (var g = Graphics.FromImage(bmp)) // (260611Ch) Bitmap は Clipboard に渡す場合があるため Graphics だけ先に解放
                 Draw(g, true, drawOverlappedImage);
-            if (failOnDynamicalFailure && LastDynamicalFailure is { } failure) // 261118Cl 追加 (codex2 第 10 回)
-                throw new InvalidOperationException($"The image was not saved: {failure.Trim()}");
+            // if (failOnDynamicalFailure && LastDynamicalFailure is { } failure) // 261118Cl 追加 (codex2 第 10 回) // 261118Cl 変更前 (第 11 回: 保存する描画と失敗の印を付けた描画が同じとは限らなかった)
+            //     throw new InvalidOperationException($"The image was not saved: {failure.Trim()}");
+            // 261118Cl 変更 (codex2 第 11 回): この Bitmap を描いた Draw の結果で決める (描かなかった・今回の条件の結果を出せなかった層がある)
+            if (failOnDynamicalFailure && LastDrawStatus is { } status && (!status.Completed || status.LayerFailure != null))
+                throw new InvalidOperationException($"The image was not saved: {(status.Completed ? status.LayerFailure : status.Reason)}");
             if (save)
             {
                 if (filename == "")
@@ -3778,7 +3833,9 @@ public partial class FormDiffractionSimulator : FormBase
             {
                 numericBoxThickness.Value = i;
                 Draw();
-                var intensity = formMain.Crystal.Bethe.Beams[0].Psi.MagnitudeSquared();
+                // var intensity = formMain.Crystal.Bethe.Beams[0].Psi.MagnitudeSquared(); // 261118Cl 変更前 (codex2 第 11 回: 失敗の後も前の結果を読んでいた)
+                if (MainCrystalDynamicalBeams is not { Length: > 0 } beams) break; // 261118Cl 変更: この厚さの計算が失敗したら止める
+                var intensity = beams[0].Psi.MagnitudeSquared();
 
                 sb.AppendLine($"{i}\t{intensity}");
             }

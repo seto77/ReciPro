@@ -63,7 +63,7 @@ jobs:
         with:
           name: crystallography-tests-trx
           path: TestResults/*.trx
-          if-no-files-found: ignore
+          if-no-files-found: warn # 261118Cl (codex2 第 11 回): 試験の前に落ちて TRX が無いことも分かるように
           retention-days: 14
 
   resx-conventions:

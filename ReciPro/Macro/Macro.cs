@@ -1169,6 +1169,8 @@ public class Macro : MacroBase
                 // 261118Cl 追加 (codex2 第 10 回): 直前の描画で主の結晶の動力学の計算が失敗していたら、前の結果の Beams を今回のものとして返さない
                 if (difSim.MainCrystalDynamicalFailure is { } failure)
                     throw new InvalidOperationException($"SpotInfo() has no result for the current conditions: {failure.Trim()}");
+                // 261118Cl 追加 (codex2 第 11 回): 斑点を計算したときの主の結晶の反射の写し (共有の Bethe.Beams は像の画面などが書き換える)。まだ描いていなければ従来どおり
+                var spotBeams = difSim.MainCrystalDynamicalBeams ?? c.Bethe.Beams;
                 if (difSim.FormDiffractionBeamTable.UnitOfPotential == FormDiffractionSpotInfo.UnitOfPotentialEnum.Vg)
                 {
                     //sb.Append("No., R, H, K, L, d, gX, gY, gZ,|g|=1/d, Vg_re, Vg_im, V'g_re, V'g_im, Sg, Pg, Qg, φ_re, φ_im, |φ|^2\n"); // 260723Cl 旧: 検出器座標なし・区切り後空白あり
@@ -1183,7 +1185,8 @@ public class Macro : MacroBase
                 }
 
                 int n = 0;
-                foreach (var b in c.Bethe.Beams)
+                // foreach (var b in c.Bethe.Beams) // 261118Cl 変更前 (codex2 第 11 回)
+                foreach (var b in spotBeams)
                 {
                     var g = b.Vec.Length;
                     sb.Append(Invariant($"{n++},{b.Rating},{b.H},{b.K},{b.L},{1 / g},"));
@@ -1465,8 +1468,10 @@ public class Macro : MacroBase
         public void Simulate() // 261118Cl 変更 (codex2 第 10 回): 失敗したら前の像を残したまま正常に戻らず、失敗をマクロへ返す (続く保存で前の像を今回のものとして保存させない)
         {
             Open(); sim.Simulate(true);
-            if (sim.LastSimulationFailure is { } failure)
-                throw new InvalidOperationException(failure);
+            // if (sim.LastSimulationFailure is { } failure) // 261118Cl 変更前 (codex2 第 11 回: 取消・入力の拒否・絞りの中の反射の不足では、失敗の文が無くても今回の像が無い)
+            //     throw new InvalidOperationException(failure);
+            if (!sim.LastSimulationCompleted)
+                throw new InvalidOperationException(sim.LastSimulationFailure ?? "The simulation did not produce a new image (cancelled, rejected, or nothing to compute); the previous image is kept.");
         }
 
         [Help("Gets or sets whether the unit cell, labels, and scale bar are overprinted on saved images.")]

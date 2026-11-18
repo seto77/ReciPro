@@ -107,6 +107,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     private BetheMethod.CBED_Disk[][] completedDisks;
     /// <summary>261118Cl 追加 (codex2 第 6 回): 表示中の完了した CBED の結果のビーム (回折波の詳細の表に出す反射)。CBED は所有元の Beams (SAED の結果) を書かなくなったので、表はこれから作る</summary>
     public BetheMethod.Beam[] CompletedBeams { get; private set; }
+    /// <summary>261118Cl 追加 (codex2 第 11 回): 最後の計算の失敗の文 (成功で null)。失敗の後も前の円盤を表示し続けるので、回折の画面のマクロの保存はこれを見る</summary>
+    public string LastRunFailure { get; private set; }
     private Vector3DBase[] completedDirections;
     private double completedAlphaMax;
     /// <summary>261105Cl 追加: 最後に完了した run の厚みの列 (nm)。trackBarOutputThickness の値はこの添字</summary>
@@ -310,6 +312,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             toolStripStatusLabel2.Text = "Failed:  ";
             toolStripStatusLabel1.Text = $"Time elapsed: {sec1 + sec2:f2} s,  {e.Error.Message}";
             groupBoxOutput.Enabled = completedDisks != null;
+            LastRunFailure = e.Error.Message; // 261118Cl 追加 (codex2 第 11 回): 表示している円盤は前の計算のもの
         }
         //if (!e.Cancelled) // 261105Cl 変更前
         // else if (!e.Cancelled) // 261105Cl 変更 // 261118Cl 変更前
@@ -319,6 +322,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             // completedDisks = bethe.Disks; // 261118Cl 変更前
             completedDisks = result.Disks;
             CompletedBeams = result.Beams; // 261118Cl 追加 (codex2 第 6 回)
+            LastRunFailure = null; // 261118Cl 追加 (codex2 第 11 回)
             completedDirections = Directions;
             completedAlphaMax = runningAlphaMax;
             CompletedThicknesses = runningThicknesses;

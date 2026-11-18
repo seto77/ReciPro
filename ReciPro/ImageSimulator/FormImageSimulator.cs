@@ -913,6 +913,7 @@ public partial class FormImageSimulator : FormBase
         sw1.Reset(); sw2.Reset(); sw3.Reset(); sw4.Reset(); sw5.Reset();
         sw1.Restart();
         LastSimulationFailure = null; // 261118Cl 追加 (codex2 第 10 回)
+        LastSimulationCompleted = false; // 261118Cl 追加 (codex2 第 11 回): 完了の通知の成功の枝で true
         if (ThicknessArray == null || DefocusArray == null) return;
 
         //ローテーション配列を作る //一辺が2.の正方形の中に一辺1/Nのピクセルを詰め込み、中心ピクセルが、円の中心とちょうど一致するような問題を考える
@@ -1186,6 +1187,7 @@ public partial class FormImageSimulator : FormBase
 
 
             toolStripProgressBar.Value = toolStripProgressBar.Maximum;
+            LastSimulationCompleted = true; // 261118Cl 追加 (codex2 第 11 回)
             toolStripStatusLabel1.Text = $"Completed! Total elapsed time: {(s1 + s2 + s3 + s4 + s5) / 1000.0:f1} s"; // 260520Cl: typo fix (ellapsed → elapsed)
             toolStripStatusLabel1.Text += $"  Stage 1: {s1 / 1000.0:f1} s  Stage 2: {s2 / 1000.0:f1} s  Stage 3: {s3 / 1000.0:f1} s  Stage 4: {s4 / 1000.0:f1} s";
             if (s5 > 0) toolStripStatusLabel1.Text += $"  Stage 5 (EDX): {s5 / 1000.0:f1} s";//260801Cl 追加
@@ -1215,11 +1217,15 @@ public partial class FormImageSimulator : FormBase
     /// <summary>261118Cl 追加 (codex2 第 10 回): 直前の像の計算 (HRTEM・ポテンシャル・STEM) の失敗の文 (成功・計算中は null)。
     /// 失敗しても前の像は残るので、マクロの Simulate はこれを見て失敗を呼び出し元へ返す (前の像を今回のものとして保存させない)</summary>
     public string LastSimulationFailure { get; private set; }
+    /// <summary>261118Cl 追加 (codex2 第 11 回): 直前の像の計算が今回の像を作り終えたか (取消・入力の拒否・絞りの中の反射の不足などで像を作らなかったら false)。
+    /// マクロの Simulate はこれで決める (失敗の文が無くても、今回の像が無ければ前の像を保存させない)</summary>
+    public bool LastSimulationCompleted { get; private set; }
 
     public void SimulateHRTEM(bool realtimeMode = false)
     {
         // 261118Cl 追加 (codex2 第 9 回): 動力学の計算の数値の失敗は操作全体で受け、今回の像を出さずに状態の欄へ出す (前の像は残るのでその旨も)
         LastSimulationFailure = null; // 261118Cl 追加 (codex2 第 10 回)
+        LastSimulationCompleted = false; // 261118Cl 追加 (codex2 第 11 回)
         try { SimulateHRTEMCore(realtimeMode); }
         // catch (NumericFailureException ex) { toolStripStatusLabel1.Text = $"HRTEM failed (the previous image is kept): {ex.Message}"; } // 261118Cl 変更前
         catch (NumericFailureException ex) { toolStripStatusLabel1.Text = LastSimulationFailure = $"HRTEM failed (the previous image is kept): {ex.Message}"; } // 261118Cl 変更: 文を残す
@@ -1268,6 +1274,7 @@ public partial class FormImageSimulator : FormBase
         GeneratePseudBitmap();
 
         toolStripStatusLabel1.Text += $"Drawing: {sw1.ElapsedMilliseconds - temp} ms";
+        LastSimulationCompleted = true; // 261118Cl 追加 (codex2 第 11 回): 今回の像を作り終えた
     }
     #endregion
 
@@ -1281,6 +1288,7 @@ public partial class FormImageSimulator : FormBase
     {
         // 261118Cl 追加 (codex2 第 9 回): 数値の失敗は操作全体で受ける (今回の像を出さない)
         LastSimulationFailure = null; // 261118Cl 追加 (codex2 第 10 回)
+        LastSimulationCompleted = false; // 261118Cl 追加 (codex2 第 11 回)
         try { simulatePotentialCore(realtimeMode, redrawOnly); }
         // catch (NumericFailureException ex) { toolStripStatusLabel1.Text = $"Potential image failed (the previous image is kept): {ex.Message}"; } // 261118Cl 変更前
         catch (NumericFailureException ex) { toolStripStatusLabel1.Text = LastSimulationFailure = $"Potential image failed (the previous image is kept): {ex.Message}"; } // 261118Cl 変更: 文を残す
@@ -1393,6 +1401,7 @@ public partial class FormImageSimulator : FormBase
         //「PseudoBitmap は差し替わったのに描画されていない」セルが残る (差し替え時に Image を外す仕様と対で必要)
         foreach (var b in Boxes)
             b.drawPictureBox();
+        LastSimulationCompleted = true; // 261118Cl 追加 (codex2 第 11 回): 今回の像を作り終えた
     }
     #endregion
 
