@@ -2088,7 +2088,9 @@ public partial class FormSpotIDV2 : FormBase
         //  bestDirection を (0,0,-1) へ重ねる最小の回転 (軸 = bestDirection × (0,0,-1) で面内、角度 = 傾き) を grain.Rotation に左から掛ける
         //  (FormMain の回転ボタンと同じく、画面座標系の回転を左から掛ける流儀)。軸が面内なので、面内の回転 (スポットの位置) は 1 次では変わらない
         var tilt = Math.Asin(Math.Min(1, Math.Sqrt(bestDirection.X * bestDirection.X + bestDirection.Y * bestDirection.Y))); // 261105Cl 追加
-        grain.Rotation = Matrix3D.Rot(Vector3DBase.VectorProduct(bestDirection, new Vector3DBase(0, 0, -1)), tilt) * grain.Rotation; // 261105Cl 追加
+        // grain.Rotation = Matrix3D.Rot(Vector3DBase.VectorProduct(bestDirection, new Vector3DBase(0, 0, -1)), tilt) * grain.Rotation; // 261105Cl 追加 // 261118Cl 変更前
+        // 261118Cl 変更 (codex2 第 6 回): 補正の基準は計算した方位 (result.BaseRotation)。完了の時点の粒の方位は、計算中に変わりうる
+        grain.Rotation = Matrix3D.Rot(Vector3DBase.VectorProduct(bestDirection, new Vector3DBase(0, 0, -1)), tilt) * result.BaseRotation;
         // 261105Cl 変更 (監査 I11): 主窓の結晶が計算した結晶のままのときだけ方位を主窓へ設定する (計算中に替えられたときは粒の方位だけ更新する)
         var applied = FormMain.Crystal == refineCrystal; // 261105Cl 追加
         if (applied) // 261105Cl 追加
@@ -2098,7 +2100,8 @@ public partial class FormSpotIDV2 : FormBase
             scalablePictureBoxAdvanced.Refresh(); // 261105Cl 追加 // 261105Cl 字下げ
         }
 
-        FormMain.FormDiffractionSimulator.Thickness = bestThickness;
+        // FormMain.FormDiffractionSimulator.Thickness = bestThickness; // 261118Cl 変更前: 主窓の結晶が替わっていても厚さを書いていた
+        if (applied) FormMain.FormDiffractionSimulator.Thickness = bestThickness; // 261118Cl 変更 (codex2 第 6 回): 方位と同じ所属の判定
 
         // 261105Cl 追加: 結果をステータスバーへ。最良の方向が探索範囲の外周 (傾きが Search angle range 以上。外周の点はすべてこれに入る) にあるときは、
         //  真の最適が範囲の外にあり得ることを知らせる。粒の方位は更新済みなので、もう一度押せば新しい方位のまわりを探す

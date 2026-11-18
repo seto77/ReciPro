@@ -105,6 +105,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     /// Bethe.Disks は Stop・例外のときに途中の状態 (振幅の無いディスク) で上書きされ、EBSD の計算でも上書きされるので見ない。
     /// 厚み・収束半角は計算したときの値で、計算の後に入力欄を変えても表示・ファイル名は変わらない</summary>
     private BetheMethod.CBED_Disk[][] completedDisks;
+    /// <summary>261118Cl 追加 (codex2 第 6 回): 表示中の完了した CBED の結果のビーム (回折波の詳細の表に出す反射)。CBED は所有元の Beams (SAED の結果) を書かなくなったので、表はこれから作る</summary>
+    public BetheMethod.Beam[] CompletedBeams { get; private set; }
     private Vector3DBase[] completedDirections;
     private double completedAlphaMax;
     /// <summary>261105Cl 追加: 最後に完了した run の厚みの列 (nm)。trackBarOutputThickness の値はこの添字</summary>
@@ -312,6 +314,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             // 261105Cl 追加 (監査 #32・D7): 完了した run だけを結果として公開する。厚みの選択の範囲も、計算した厚みの列に合わせる
             // completedDisks = bethe.Disks; // 261118Cl 変更前
             completedDisks = result.Disks;
+            CompletedBeams = result.Beams; // 261118Cl 追加 (codex2 第 6 回)
             completedDirections = Directions;
             completedAlphaMax = runningAlphaMax;
             CompletedThicknesses = runningThicknesses;
@@ -341,7 +344,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             groupBoxOutput.Enabled = true;
             generateImage();
 
-            FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy);
+            // FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy); // 261118Cl 変更前: 表は前に渡された配列のまま (所有元の Beams = SAED の反射になりえた)
+            FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy, CompletedBeams); // 261118Cl 変更 (codex2 第 6 回): 表示中の CBED の結果の反射
         }
         else
         {
@@ -480,7 +484,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         //textBoxThickness.Text = ThicknessArray[trackBarOutputThickness.Value].ToString(); // 261105Cl 変更前: 今の入力欄の厚み (計算後に範囲を変えると中身と違う値)
         textBoxThickness.Text = CompletedThicknesses[trackBarOutputThickness.Value].ToString(); // 261105Cl 変更 (監査 D7): 計算した厚み
         generateImage();
-        FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy);
+        // FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy); // 261118Cl 変更前
+        FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy, CompletedBeams); // 261118Cl 変更 (codex2 第 6 回)
     }
 
 

@@ -836,7 +836,11 @@ public partial class FormDiffractionSimulator : FormBase
 
         if (FormDiffractionBeamTable.Visible)
         {
-            if (radioButtonIntensityDynamical.Checked)
+            // if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更前 (2 行)
+            //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
+            if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 6 回): 収束ビームの画面では表示中の CBED の結果の反射
+                FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedBeams);
+            else if (radioButtonIntensityDynamical.Checked)
                 FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
             else
                 FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal);
@@ -3302,7 +3306,11 @@ public partial class FormDiffractionSimulator : FormBase
     {
         FormDiffractionBeamTable.Visible = true;
         FormDiffractionBeamTable.BringToFront();
-        if (radioButtonIntensityDynamical.Checked)
+        // if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更前 (2 行)
+        //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
+        if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 6 回)
+            FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedBeams);
+        else if (radioButtonIntensityDynamical.Checked)
             FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
         else
             FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal);
