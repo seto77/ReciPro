@@ -1491,6 +1491,8 @@ public class Macro : MacroBase
         {
             if (!sim.LastSimulationCompleted)
                 throw new InvalidOperationException("The image was not saved: " + (sim.LastSimulationFailure ?? "the last simulation did not produce an image."));
+            if (sim.LastCompletedImageMode != Mode) // 261118Cl 追加 (codex2 第 13 回): 別のモードの像を、このモードの像として保存しない
+                throw new InvalidOperationException($"The image was not saved: the last completed image is {sim.LastCompletedImageMode}, not {Mode}.");
         }
         
         [Help("Saves the simulated image as a TIFF file. If 'filename' is omitted, opens a save dialog.", "string filename")]//260805Cl: Argument 追加 

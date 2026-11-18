@@ -789,6 +789,8 @@ public partial class FormDiffractionSimulator : FormBase
         // 261118Cl 変更 (codex2 第 12 回): 最後の要求が成功で終わっていなければ (計算中・取消・拒否・失敗。円盤がまだ無いときも)、今回の条件の結果は無い
         if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.LastRunFailure is { } cbedFailure)
             layerFailures.Add($"CBED: no result for the last request ({cbedFailure}); {(FormDiffractionSimulatorCBED.Disks != null ? "the disks shown are from the previous calculation" : "no disks are shown")}");
+        else if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.Disks != null && !FormDiffractionSimulatorCBED.CompletedMatchesCurrent) // 261118Cl 追加 (codex2 第 13 回): 成功の後に条件を変えた
+            layerFailures.Add("CBED: the disks shown were computed for other conditions (run the CBED calculation again)");
         if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.Disks != null)
         {
             // if (FormDiffractionSimulatorCBED.LastRunFailure is { } cbedFailure) // 261118Cl 追加 (codex2 第 11 回): 表示するのは前の計算の円盤 // 261118Cl 変更前 (第 12 回: 上へ)
@@ -914,13 +916,17 @@ public partial class FormDiffractionSimulator : FormBase
     /// 共有の Crystal.Bethe.Beams は像の画面 (HRTEM) などが同じ所有元で計算し直すと書き換わるので、反射の表とマクロの SpotInfo はこれを使う</summary>
     public BetheMethod.Beam[] MainCrystalDynamicalBeams { get; private set; }
     /// <summary>261118Cl 追加 (codex2 第 12 回): <see cref="MainCrystalDynamicalBeams"/> を計算した条件 (結晶・エネルギー・厚さ・方位・PED の条件・N)</summary>
-    private (Crystal Crystal, double Energy, double Thickness, (double, double, double, double, double, double, double, double, double) Rotation, bool Ped, double Semiangle, int Step, int Bloch)? mainCrystalDynamicalConditions;
+    // private (Crystal Crystal, double Energy, ...)? mainCrystalDynamicalConditions; // 261118Cl 変更前 (codex2 第 13 回: Crystal の == は温度因子を比べない値の比較で、計算の設定も入っていなかった)
+    private string mainCrystalDynamicalConditions;
     /// <summary>261118Cl 追加 (codex2 第 12 回): 今の条件で計算した主の結晶の動力学の反射 (今の条件で計算していなければ null。失敗は <see cref="MainCrystalDynamicalFailure"/>)</summary>
     public BetheMethod.Beam[] CurrentMainCrystalDynamicalBeams =>
         MainCrystalDynamicalBeams != null && mainCrystalDynamicalConditions == CurrentDynamicalConditions() ? MainCrystalDynamicalBeams : null;
-    private (Crystal, double, double, (double, double, double, double, double, double, double, double, double), bool, double, int, int) CurrentDynamicalConditions() =>
-        (formMain.Crystal, Energy, numericBoxThickness.Value, formMain.Crystal.RotationMatrix.Tuple, radioButtonBeamPrecessionElectron.Checked,
-         numericBoxPED_Semiangle.Value, numericBoxPED_Step.ValueInteger, FormDiffractionSimulatorCBED.Visible ? FormDiffractionSimulatorCBED.MaxNumOfBloch : numericBoxNumOfBlochWave.ValueInteger);
+    /// <summary>261118Cl 変更 (codex2 第 13 回): 条件の鍵。結晶は参照で比べ (同じインスタンスの編集は描き直しで計算し直される)、表面・模型・候補の打ち切り方も入れる</summary>
+    private string CurrentDynamicalConditions() =>
+        formMain.Crystal is not { } c ? null : string.Join("|", System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(c), Energy.ToString("R"), numericBoxThickness.Value.ToString("R"),
+            c.RotationMatrix.Tuple.ToString(), radioButtonBeamPrecessionElectron.Checked, numericBoxPED_Semiangle.Value.ToString("R"), numericBoxPED_Step.ValueInteger,
+            FormDiffractionSimulatorCBED.Visible ? FormDiffractionSimulatorCBED.MaxNumOfBloch : numericBoxNumOfBlochWave.ValueInteger,
+            c.Bethe.Surface.Tuple.ToString(), BetheMethod.ElasticIonModel, BetheMethod.AbsorptionElasticModel, BetheMethod.BeamCandidateCut);
 
     /// <summary>回折スポットおよび指数ラベルの描画</summary>
     /// <param name="graphics">描画対象のグラフィックオブジェクト</param>
@@ -3739,7 +3745,6 @@ public partial class FormDiffractionSimulator : FormBase
             drawOverlappedImage = FormDiffractionSimulatorGeometry.OverlappedImage != null // 261105Cl
                 && MessageBox.Show("Include the overlapped image?", "Copy option", MessageBoxButtons.YesNo) == DialogResult.Yes; // 261105Cl
 
-            graphicsBox.Visible = false;
             var originalSize = graphicsBox.Size;
             var originalResolution = Resolution;
             var originalFoot = new PointD(Foot.X, Foot.Y);
@@ -3747,21 +3752,23 @@ public partial class FormDiffractionSimulator : FormBase
 
             var fdsg = FormDiffractionSimulatorGeometry;
 
-            Resolution = fdsg.DetectorPixelSize;
-            graphicsBox.ClientSize = new Size(fdsg.DetectorWidth, fdsg.DetectorHeight);
-            Foot = new PointD((fdsg.FootX - fdsg.DetectorWidth / 2.0) * fdsg.DetectorPixelSize, (fdsg.FootY - fdsg.DetectorHeight / 2.0) * fdsg.DetectorPixelSize);
-
-            int strSize = (int)(originalResolution / Resolution * originalStringSize);
-            if (strSize > trackBarStrSize.Maximum)
-                trackBarStrSize.Value = trackBarStrSize.Maximum;
-            else if (strSize < trackBarStrSize.Minimum)
-                trackBarStrSize.Value = trackBarStrSize.Minimum;
-            else
-                trackBarStrSize.Value = strSize;
-
-            // 261118Cl 変更 (codex2 第 12 回): 保存・コピーが例外で抜けても、一時に変えた表示の設定 (大きさ・解像度・足・文字の大きさ) を戻す (旧は画面が隠れたまま残りえた)
+            // 261118Cl 変更 (codex2 第 12・13 回): 最初に表示を変えるところから保護し、保存・コピーが例外で抜けても一時に変えた表示の設定
+            //   (大きさ・解像度・足・文字の大きさ) を戻して、先に画面を再表示する (旧は画面が隠れたまま残りえた)
             try
             {
+                graphicsBox.Visible = false;
+                Resolution = fdsg.DetectorPixelSize;
+                graphicsBox.ClientSize = new Size(fdsg.DetectorWidth, fdsg.DetectorHeight);
+                Foot = new PointD((fdsg.FootX - fdsg.DetectorWidth / 2.0) * fdsg.DetectorPixelSize, (fdsg.FootY - fdsg.DetectorHeight / 2.0) * fdsg.DetectorPixelSize);
+
+                int strSize = (int)(originalResolution / Resolution * originalStringSize);
+                if (strSize > trackBarStrSize.Maximum)
+                    trackBarStrSize.Value = trackBarStrSize.Maximum;
+                else if (strSize < trackBarStrSize.Minimum)
+                    trackBarStrSize.Value = trackBarStrSize.Minimum;
+                else
+                    trackBarStrSize.Value = strSize;
+
                 SetVector();
 
                 SaveOrCopy(save, asImage, drawOverlappedImage);
@@ -3772,8 +3779,8 @@ public partial class FormDiffractionSimulator : FormBase
                 Resolution = originalResolution;
                 trackBarStrSize.Value = originalStringSize;
                 Foot = originalFoot;
-                SetVector();
                 graphicsBox.Visible = true;
+                SetVector();
                 Draw();
                 graphicsBox.Refresh();
             }
@@ -3783,27 +3790,29 @@ public partial class FormDiffractionSimulator : FormBase
         {
             drawOverlappedImage = true;
 
-            graphicsBox.Visible = false;
             var originalSize = graphicsBox.Size;
             var originalResolution = Resolution;
             var originalFoot = new PointD(Foot.X, Foot.Y);
 
-            Resolution = FormDiffractionSimulatorCBED.ImagePixelSize;
+            try // 261118Cl 変更 (codex2 第 12・13 回): 最初に表示を変えるところから保護し、例外でも表示の設定を戻して先に再表示する
+            {
+                graphicsBox.Visible = false;
+                Resolution = FormDiffractionSimulatorCBED.ImagePixelSize;
 
-            var coeff = originalResolution / Resolution;
+                var coeff = originalResolution / Resolution;
 
+                graphicsBox.ClientSize = new Size((int)(originalSize.Width * coeff), (int)(originalSize.Height * coeff));
+                Foot = new PointD(0, 0);
 
-            graphicsBox.ClientSize = new Size((int)(originalSize.Width * coeff), (int)(originalSize.Height * coeff));
-            Foot = new PointD(0, 0);
-
-            try { SaveOrCopy(save, asImage, drawOverlappedImage); } // 261118Cl 変更 (codex2 第 12 回): 例外でも下の表示の設定を戻す
+                SaveOrCopy(save, asImage, drawOverlappedImage);
+            }
             finally
             {
                 graphicsBox.Size = originalSize;
                 Resolution = originalResolution;
                 Foot = originalFoot;
-                SetVector();
                 graphicsBox.Visible = true;
+                SetVector();
                 Draw();
                 graphicsBox.Refresh();
             }

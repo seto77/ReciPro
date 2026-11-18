@@ -110,6 +110,17 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     /// <summary>261118Cl 追加 (codex2 第 11 回): 最後の計算の失敗の文 (成功で null)。失敗の後も前の円盤を表示し続けるので、回折の画面のマクロの保存はこれを見る。
     /// 261118Cl 変更 (codex2 第 12 回): 最後の要求が成功で終わっていなければ理由 (計算中・取消・入力の拒否・失敗)。完了の通知では描画を再開する前に確定する</summary>
     public string LastRunFailure { get; private set; }
+    /// <summary>261118Cl 追加 (codex2 第 13 回): 完了した run の条件 (<see cref="RunKey"/>)。今の条件と違えば、表示中の円盤は今の条件の結果ではない</summary>
+    private string completedRunKey, runningRunKey;
+    /// <summary>261118Cl 追加 (codex2 第 13 回): 表示中の円盤が今の条件で計算したものか (完了した run の条件と今の欄の条件が同じ)</summary>
+    public bool CompletedMatchesCurrent => completedRunKey != null && completedRunKey == RunKey();
+    /// <summary>261118Cl 追加 (codex2 第 13 回): run の条件の鍵 (結晶の参照・電圧・方位・N・収束角・分割・厚さ・LACBED・着衣の裾)</summary>
+    private string RunKey()
+    {
+        int legacyN = checkBoxDressedTail.Checked && legacyMaxNumOfG > 0 ? legacyMaxNumOfG : MaxNumOfBloch;
+        return string.Join("|", System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(Crystal), Voltage.ToString("R"), Crystal?.RotationMatrix.Tuple.ToString(), legacyN, MaxNumOfBloch,
+            AlphaMax.ToString("R"), Division, string.Join(",", (ThicknessArray ?? []).Select(t => t.ToString("R"))), LACBED, checkBoxDressedTail.Checked, BetheMethod.BeamCandidateCut);
+    }
     private Vector3DBase[] completedDirections;
     private double completedAlphaMax;
     /// <summary>261105Cl 追加: 最後に完了した run の厚みの列 (nm)。trackBarOutputThickness の値はこの添字</summary>
@@ -174,6 +185,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         if (Division < 2) { toolStripStatusLabel2.Text = "Failed:  "; toolStripStatusLabel1.Text = LastRunFailure = "the disk resolution is too coarse for the convergence angle (fewer than 2 pixels across)."; return; } // 261118Cl 変更 (codex2 第 12 回): 拒否も今回の結果が無いとして残す
 
         LastRunFailure = "the CBED calculation is running"; // 261118Cl 追加 (codex2 第 12 回)
+        runningRunKey = RunKey(); // 261118Cl 追加 (codex2 第 13 回)
         buttonStop.Visible = true;
         sw2.Reset();
         sw1.Restart();
@@ -229,6 +241,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             runningBethe.CBED_Completed -= Bethe_CbedCompleted;
             runningBethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
             runningBethe = null; runningRun = null;
+            LastRunFailure = ex.Message; // 261118Cl 追加 (codex2 第 13 回): 描画を再開する前に、起動できなかった理由を残す (旧は「計算中」のままだった)
             FormDiffractionSimulator.SkipDrawing = false;
             buttonStop.Visible = false;
             toolStripStatusLabel2.Text = "Failed:  ";
@@ -295,7 +308,9 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     {
         buttonStop.Visible = false;
         // 261118Cl 追加 (codex2 第 12 回): 描画を再開する前に、この run の結果の有無を確定する (下の SkipDrawing = false が描き直す)
-        LastRunFailure = e.Error != null ? e.Error.Message : e.Cancelled || e.Result is not BetheMethod.CbedSimulationResult ? "the CBED calculation was cancelled" : null;
+        // LastRunFailure = e.Error != null ? e.Error.Message : e.Cancelled || e.Result is not BetheMethod.CbedSimulationResult ? "the CBED calculation was cancelled" : null; // 261118Cl 変更前 (codex2 第 13 回)
+        // 261118Cl 変更 (codex2 第 13 回): 成功は新しい円盤と画像を公開してから確定する (旧は先に成功の印を付け、下の SkipDrawing = false の再描画が前の円盤を成功として描いた)
+        LastRunFailure = e.Error != null ? e.Error.Message : e.Cancelled || e.Result is not BetheMethod.CbedSimulationResult ? "the CBED calculation was cancelled" : "the CBED result is being published";
         FormDiffractionSimulator.SkipDrawing = false;
         //Crystal.Bethe.CBED_Completed -= Bethe_CbedCompleted; // 261105Cl 変更前
         //Crystal.Bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
@@ -359,6 +374,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
 
             // FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy); // 261118Cl 変更前: 表は前に渡された配列のまま (所有元の Beams = SAED の反射になりえた)
             FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy, CompletedBeams); // 261118Cl 変更 (codex2 第 6 回): 表示中の CBED の結果の反射
+            (completedRunKey, LastRunFailure) = (runningRunKey, null); // 261118Cl 追加 (codex2 第 13 回): 円盤・画像・表を公開した後に成功を確定 (下の Draw で描く)
         }
         else
         {
