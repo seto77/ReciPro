@@ -1298,7 +1298,8 @@ public partial class FormImageSimulator : FormBase
     {
         // 261118Cl 追加 (codex2 第 9 回): 数値の失敗は操作全体で受ける (今回の像を出さない)
         LastSimulationFailure = null; // 261118Cl 追加 (codex2 第 10 回)
-        LastSimulationCompleted = false; // 261118Cl 追加 (codex2 第 11 回)
+        // LastSimulationCompleted = false; // 261118Cl 追加 (codex2 第 11 回) // 261118Cl 変更前 (第 14 回)
+        if (!redrawOnly) LastSimulationCompleted = false; // 261118Cl 変更 (codex2 第 14 回): 表示だけの描き直しは、前の計算の成功の印を変えない
         try { simulatePotentialCore(realtimeMode, redrawOnly); }
         // catch (NumericFailureException ex) { toolStripStatusLabel1.Text = $"Potential image failed (the previous image is kept): {ex.Message}"; } // 261118Cl 変更前
         catch (NumericFailureException ex) { toolStripStatusLabel1.Text = LastSimulationFailure = $"Potential image failed (the previous image is kept): {ex.Message}"; } // 261118Cl 変更: 文を残す
@@ -1411,8 +1412,11 @@ public partial class FormImageSimulator : FormBase
         //「PseudoBitmap は差し替わったのに描画されていない」セルが残る (差し替え時に Image を外す仕様と対で必要)
         foreach (var b in Boxes)
             b.drawPictureBox();
-        LastSimulationCompleted = true; // 261118Cl 追加 (codex2 第 11 回): 今回の像を作り終えた
-        LastCompletedImageMode = ImageModes.POTENTIAL; // 261118Cl 追加 (codex2 第 13 回)
+        if (!redrawOnly) // 261118Cl 変更 (codex2 第 14 回): 表示だけの描き直しで成功の印を立て直さない
+        {
+            LastSimulationCompleted = true; // 261118Cl 追加 (codex2 第 11 回): 今回の像を作り終えた
+            LastCompletedImageMode = ImageModes.POTENTIAL; // 261118Cl 追加 (codex2 第 13 回)
+        }
     }
     #endregion
 

@@ -111,15 +111,22 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     /// 261118Cl 変更 (codex2 第 12 回): 最後の要求が成功で終わっていなければ理由 (計算中・取消・入力の拒否・失敗)。完了の通知では描画を再開する前に確定する</summary>
     public string LastRunFailure { get; private set; }
     /// <summary>261118Cl 追加 (codex2 第 13 回): 完了した run の条件 (<see cref="RunKey"/>)。今の条件と違えば、表示中の円盤は今の条件の結果ではない</summary>
-    private string completedRunKey, runningRunKey;
-    /// <summary>261118Cl 追加 (codex2 第 13 回): 表示中の円盤が今の条件で計算したものか (完了した run の条件と今の欄の条件が同じ)</summary>
-    public bool CompletedMatchesCurrent => completedRunKey != null && completedRunKey == RunKey();
-    /// <summary>261118Cl 追加 (codex2 第 13 回): run の条件の鍵 (結晶の参照・電圧・方位・N・収束角・分割・厚さ・LACBED・着衣の裾)</summary>
-    private string RunKey()
+    // private string completedRunKey, runningRunKey; // 261118Cl 変更前 (codex2 第 14 回: 鍵の結晶は RuntimeHelpers.GetHashCode で、別のインスタンスと衝突しうる)
+    private (Crystal Crystal, string Key)? completedRunKey, runningRunKey;
+    /// <summary>261118Cl 追加 (codex2 第 13 回): 表示中の円盤が今の条件で計算したものか (完了した run の条件と今の欄の条件が同じ)。
+    /// 261118Cl 変更 (codex2 第 14 回): 結晶は参照の同一 (ReferenceEquals) で比べる</summary>
+    public bool CompletedMatchesCurrent => completedRunKey is { } done && RunKey() is var now && ReferenceEquals(done.Crystal, now.Crystal) && done.Key == now.Key;
+    /// <summary>261118Cl 追加 (codex2 第 13 回): run の条件の鍵 (電圧・方位・N・収束角・分割・厚さ・LACBED・着衣の裾・候補の打ち切り方)。
+    /// 261118Cl 変更 (codex2 第 14 回): 結晶の参照と組にし、文化に依らない数の書き方にし、表面・局所法線・非局所吸収・模型・倍率・境界の規則・解き方を足す</summary>
+    private (Crystal Crystal, string Key) RunKey()
     {
         int legacyN = checkBoxDressedTail.Checked && legacyMaxNumOfG > 0 ? legacyMaxNumOfG : MaxNumOfBloch;
-        return string.Join("|", System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(Crystal), Voltage.ToString("R"), Crystal?.RotationMatrix.Tuple.ToString(), legacyN, MaxNumOfBloch,
-            AlphaMax.ToString("R"), Division, string.Join(",", (ThicknessArray ?? []).Select(t => t.ToString("R"))), LACBED, checkBoxDressedTail.Checked, BetheMethod.BeamCandidateCut);
+        var inv = System.Globalization.CultureInfo.InvariantCulture;
+        var bethe = Crystal?.Bethe;
+        return (Crystal, string.Join("|", Voltage.ToString("R", inv), Crystal?.RotationMatrix.Tuple.ToString(), legacyN, MaxNumOfBloch,
+            AlphaMax.ToString("R", inv), Division, string.Join(";", (ThicknessArray ?? []).Select(t => t.ToString("R", inv))), LACBED, checkBoxDressedTail.Checked,
+            BetheMethod.BeamCandidateCut, BetheMethod.BeamCandidateMultiplier, BetheMethod.BeamBoundaryTieMode, BetheMethod.ElasticIonModel, BetheMethod.AbsorptionElasticModel,
+            bethe?.Surface.Tuple.ToString(), bethe?.UseLocalSurfacePerBeamDirection, bethe?.UseNonLocalAbsorption, comboBoxSolver.Text));
     }
     private Vector3DBase[] completedDirections;
     private double completedAlphaMax;
@@ -179,6 +186,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         {
             toolStripStatusLabel2.Text = runningBethe != null && !buttonStop.Visible ? "Stopping...  " : "Busy:  ";
             toolStripStatusLabel1.Text = "the previous CBED calculation has not finished yet.";
+            if (runningBethe == null) LastRunFailure = "a CBED calculation of another window is using this crystal"; // 261118Cl 追加 (codex2 第 14 回): 別の画面の計算中の拒否も今回の結果なしとして残す (自分の計算中なら「計算中」のまま)
             return;
         }
         // if (Division < 2) { toolStripStatusLabel2.Text = "Failed:  "; toolStripStatusLabel1.Text = "the disk resolution is too coarse for the convergence angle (fewer than 2 pixels across)."; return; } // 261118Cl 追加: 1 画素では方向が NaN になる // 261118Cl 変更前 (第 12 回)
@@ -186,6 +194,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
 
         LastRunFailure = "the CBED calculation is running"; // 261118Cl 追加 (codex2 第 12 回)
         runningRunKey = RunKey(); // 261118Cl 追加 (codex2 第 13 回)
+        // 261118Cl 変更 (codex2 第 14 回): 準備 (描画の停止・購読・方向の配列) の例外も下の catch で戻す (旧は try の前で、「計算中」と描画の停止が残った)
+        try { // 字下げは変えない (この try は下の RunCBED の後の catch まで)
         buttonStop.Visible = true;
         sw2.Reset();
         sw1.Restart();
@@ -230,16 +240,20 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         // 261110Cl 変更 (codex2 第 37 回): 新方式では欄の値は新方式の N。従来へ戻るときの最大の Bloch 波の数は、覚えている従来の値 (切り替える前の欄の値)
         int legacyN = checkBoxDressedTail.Checked && legacyMaxNumOfG > 0 ? legacyMaxNumOfG : MaxNumOfBloch;
         // runningBethe.RunCBED(legacyN, Voltage, Crystal.RotationMatrix, runningThicknesses, Directions, LACBED, solver, numericBoxThread.ValueInteger); // 261118Cl 変更前
-        try // 261118Cl 変更 (単位 5): 受理されなかった (入力の検査・二重起動) ときは、始めた状態を戻して理由を出す
+        // try // 261118Cl 変更 (単位 5): 受理されなかった (入力の検査・二重起動) ときは、始めた状態を戻して理由を出す // 261118Cl 変更前 (第 14 回: try を準備の前へ移した)
         {
             runningRun = runningBethe.RunCBED(legacyN, Voltage, Crystal.RotationMatrix, runningThicknesses, Directions, LACBED, solver, numericBoxThread.ValueInteger,
                 beamSelection: beamSelection, dressedTail: dressedTail);
         }
+        }
         // catch (Exception ex) when (ex is ArgumentException or InvalidOperationException) // 261118Cl 変更前 (1 時間より前の版)
         catch (Exception ex) // 261118Cl 変更 (レビュー): どの例外でも UI を戻す (固まった状態で別の run の結果を取り込まない)
         {
-            runningBethe.CBED_Completed -= Bethe_CbedCompleted;
-            runningBethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
+            if (runningBethe != null) // 261118Cl 変更 (codex2 第 14 回): 準備の途中 (購読の前) の例外もここへ来る
+            {
+                runningBethe.CBED_Completed -= Bethe_CbedCompleted;
+                runningBethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
+            }
             runningBethe = null; runningRun = null;
             LastRunFailure = ex.Message; // 261118Cl 追加 (codex2 第 13 回): 描画を再開する前に、起動できなかった理由を残す (旧は「計算中」のままだった)
             FormDiffractionSimulator.SkipDrawing = false;
@@ -370,7 +384,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             if (!string.IsNullOrEmpty(result.SymmetryDetail)) toolStripStatusLabel1.Text += $".   Zone-axis {result.SymmetryDetail}"; // 261111Cl 追加: 晶帯軸の対称で代表の方向だけを解いたとき
 
             groupBoxOutput.Enabled = true;
-            generateImage();
+            try { generateImage(); } // 261118Cl 変更 (codex2 第 14 回): 画像の生成の失敗は「公開中」のまま残さず失敗として確定する
+            catch (Exception ex) { LastRunFailure = $"the CBED result could not be displayed: {ex.Message}"; toolStripStatusLabel2.Text = "Failed:  "; toolStripStatusLabel1.Text = ex.Message; FormDiffractionSimulator.Draw(); return; }
 
             // FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy); // 261118Cl 変更前: 表は前に渡された配列のまま (所有元の Beams = SAED の反射になりえた)
             FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy, CompletedBeams); // 261118Cl 変更 (codex2 第 6 回): 表示中の CBED の結果の反射

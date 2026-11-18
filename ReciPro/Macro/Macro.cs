@@ -1168,7 +1168,8 @@ public class Macro : MacroBase
             if (difSim.CalcMode == FormDiffractionSimulator.CalcModes.Dynamical)
             {
                 // 261118Cl 追加 (codex2 第 10 回): 直前の描画で主の結晶の動力学の計算が失敗していたら、前の結果の Beams を今回のものとして返さない
-                if (difSim.MainCrystalDynamicalFailure is { } failure)
+                // if (difSim.MainCrystalDynamicalFailure is { } failure) // 261118Cl 変更前 (codex2 第 14 回: 別の条件の失敗を今の条件の失敗として報告しえた)
+                if (difSim.CurrentMainCrystalDynamicalFailure is { } failure)
                     throw new InvalidOperationException($"SpotInfo() has no result for the current conditions: {failure.Trim()}");
                 // 261118Cl 追加 (codex2 第 11 回): 斑点を計算したときの主の結晶の反射の写し (共有の Bethe.Beams は像の画面などが書き換える)。まだ描いていなければ従来どおり
                 // var spotBeams = difSim.MainCrystalDynamicalBeams ?? c.Bethe.Beams; // 261118Cl 変更前 (codex2 第 12 回: 別の条件・別の画面の計算を採り込みえた)

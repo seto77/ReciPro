@@ -865,16 +865,19 @@ public partial class FormDiffractionSimulator : FormBase
         {
             // if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更前 (2 行)
             //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
-            if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 6 回): 収束ビームの画面では表示中の CBED の結果の反射
-                FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedBeams);
+            // if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 6 回): 収束ビームの画面では表示中の CBED の結果の反射 // 261118Cl 変更前 (第 14 回)
+            //     FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedBeams);
+            if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 14 回): 今の条件の CBED の結果だけ (違えば空と理由。旧は前の反射に今の電圧を付けた)
+                FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? FormDiffractionSimulatorCBED.CompletedBeams : [],
+                    FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? null : "The CBED disks shown were computed for other conditions (run the CBED calculation again).");
             // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更前 (codex2 第 10 回: 失敗した後も前の結果の Beams を今回のものとして出していた)
             //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
             // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更: 主の結晶が直前の描画で失敗したら空の表と失敗の文 // 261118Cl 変更前 (第 11 回)
             //     FormDiffractionBeamTable.SetTable(Energy, MainCrystalDynamicalFailure == null ? formMain.Crystal.Bethe.Beams : [], MainCrystalDynamicalFailure);
             // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更 (codex2 第 11 回): 斑点を計算したときの主の結晶の反射の写し (共有の Bethe.Beams は像の画面などが書き換える) // 261118Cl 変更前 (第 12 回)
             //     FormDiffractionBeamTable.SetTable(Energy, MainCrystalDynamicalFailure == null ? MainCrystalDynamicalBeams ?? formMain.Crystal.Bethe.Beams : [], MainCrystalDynamicalFailure);
-            else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更 (codex2 第 12 回): 今の条件で計算した反射だけ (未計算・失敗は空と理由)
-                FormDiffractionBeamTable.SetTable(Energy, CurrentMainCrystalDynamicalBeams ?? [], MainCrystalDynamicalFailure ?? (CurrentMainCrystalDynamicalBeams == null ? "The dynamical spots have not been computed for the current conditions (show the diffraction spots)." : null));
+            else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更 (codex2 第 12 回): 今の条件で計算した反射だけ (未計算・失敗は空と理由)。261118Cl (第 14 回) 失敗も今の条件のものだけ
+                FormDiffractionBeamTable.SetTable(Energy, CurrentMainCrystalDynamicalBeams ?? [], CurrentMainCrystalDynamicalFailure ?? (CurrentMainCrystalDynamicalBeams == null ? "The dynamical spots have not been computed for the current conditions (show the diffraction spots)." : null));
             else
                 FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal);
         }
@@ -917,16 +920,26 @@ public partial class FormDiffractionSimulator : FormBase
     public BetheMethod.Beam[] MainCrystalDynamicalBeams { get; private set; }
     /// <summary>261118Cl 追加 (codex2 第 12 回): <see cref="MainCrystalDynamicalBeams"/> を計算した条件 (結晶・エネルギー・厚さ・方位・PED の条件・N)</summary>
     // private (Crystal Crystal, double Energy, ...)? mainCrystalDynamicalConditions; // 261118Cl 変更前 (codex2 第 13 回: Crystal の == は温度因子を比べない値の比較で、計算の設定も入っていなかった)
-    private string mainCrystalDynamicalConditions;
-    /// <summary>261118Cl 追加 (codex2 第 12 回): 今の条件で計算した主の結晶の動力学の反射 (今の条件で計算していなければ null。失敗は <see cref="MainCrystalDynamicalFailure"/>)</summary>
+    // private string mainCrystalDynamicalConditions; // 261118Cl 変更前 (codex2 第 14 回)
+    private (Crystal Crystal, string Key)? mainCrystalDynamicalConditions;
+    /// <summary>261118Cl 追加 (codex2 第 12 回): 今の条件で計算した主の結晶の動力学の反射 (今の条件で計算していなければ null。失敗は <see cref="CurrentMainCrystalDynamicalFailure"/>)</summary>
     public BetheMethod.Beam[] CurrentMainCrystalDynamicalBeams =>
-        MainCrystalDynamicalBeams != null && mainCrystalDynamicalConditions == CurrentDynamicalConditions() ? MainCrystalDynamicalBeams : null;
-    /// <summary>261118Cl 変更 (codex2 第 13 回): 条件の鍵。結晶は参照で比べ (同じインスタンスの編集は描き直しで計算し直される)、表面・模型・候補の打ち切り方も入れる</summary>
-    private string CurrentDynamicalConditions() =>
-        formMain.Crystal is not { } c ? null : string.Join("|", System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(c), Energy.ToString("R"), numericBoxThickness.Value.ToString("R"),
-            c.RotationMatrix.Tuple.ToString(), radioButtonBeamPrecessionElectron.Checked, numericBoxPED_Semiangle.Value.ToString("R"), numericBoxPED_Step.ValueInteger,
+        MainCrystalDynamicalBeams != null && MatchesCurrentDynamicalConditions() ? MainCrystalDynamicalBeams : null;
+    /// <summary>261118Cl 追加 (codex2 第 14 回): 今の条件で計算して失敗したときの文 (別の条件の失敗は返さない。旧は条件 A の失敗を条件 B の未計算として報告しえた)</summary>
+    public string CurrentMainCrystalDynamicalFailure => MainCrystalDynamicalFailure != null && MatchesCurrentDynamicalConditions() ? MainCrystalDynamicalFailure : null;
+    private bool MatchesCurrentDynamicalConditions() =>
+        mainCrystalDynamicalConditions is { } done && CurrentDynamicalConditions() is { } now && ReferenceEquals(done.Crystal, now.Crystal) && done.Key == now.Key;
+    /// <summary>261118Cl 変更 (codex2 第 13 回): 条件の鍵。結晶は参照で比べ (同じインスタンスの編集は描き直しで計算し直される)、表面・模型・候補の打ち切り方も入れる。
+    /// 261118Cl 変更 (codex2 第 14 回): 結晶は RuntimeHelpers.GetHashCode (衝突しうる) でなく参照そのものと組にし、数は文化に依らない書き方、候補の倍率・境界の規則も</summary>
+    private (Crystal Crystal, string Key)? CurrentDynamicalConditions()
+    {
+        if (formMain.Crystal is not { } c) return null;
+        var inv = System.Globalization.CultureInfo.InvariantCulture;
+        return (c, string.Join("|", Energy.ToString("R", inv), numericBoxThickness.Value.ToString("R", inv),
+            c.RotationMatrix.Tuple.ToString(), radioButtonBeamPrecessionElectron.Checked, numericBoxPED_Semiangle.Value.ToString("R", inv), numericBoxPED_Step.ValueInteger,
             FormDiffractionSimulatorCBED.Visible ? FormDiffractionSimulatorCBED.MaxNumOfBloch : numericBoxNumOfBlochWave.ValueInteger,
-            c.Bethe.Surface.Tuple.ToString(), BetheMethod.ElasticIonModel, BetheMethod.AbsorptionElasticModel, BetheMethod.BeamCandidateCut);
+            c.Bethe.Surface.Tuple.ToString(), BetheMethod.ElasticIonModel, BetheMethod.AbsorptionElasticModel, BetheMethod.BeamCandidateCut, BetheMethod.BeamCandidateMultiplier, BetheMethod.BeamBoundaryTieMode));
+    }
 
     /// <summary>回折スポットおよび指数ラベルの描画</summary>
     /// <param name="graphics">描画対象のグラフィックオブジェクト</param>
@@ -1671,6 +1684,8 @@ public partial class FormDiffractionSimulator : FormBase
     private HashSet<(int H, int K, int L)> kikuchiPrevSelection;
     private readonly System.Windows.Forms.Timer timerKikuchiDebounce = new() { Interval = 300 };
     private KikuchiRequestKey kikuchiScheduledKey;
+    /// <summary>261118Cl 追加 (codex2 第 14 回): 計算中の要求の鍵 (計算中に同じ条件で描き直しても予約し直さない。旧は予約し直して世代が進み、先の正常な結果を捨てた)</summary>
+    private KikuchiRequestKey? kikuchiInFlightKey;
     private int kikuchiBandCount = -1;      //260806Cl /simplify: 注記は文字列でなく生データで保持し UpdateKikuchiNotice が組み立てる (i18n 障害の除去)
     private bool kikuchiUsedDefaultBiso;
 
@@ -1777,6 +1792,8 @@ public partial class FormDiffractionSimulator : FormBase
             return; //fresh
         if (key == kikuchiScheduledKey && timerKikuchiDebounce.Enabled)
             return; //同じ条件で予約済みなら restart しない (連続 Draw による timer 飢餓の防止)
+        if (kikuchiInFlightKey == key)
+            return; // 261118Cl 追加 (codex2 第 14 回): 同じ条件を計算中 (完了の通知で描き直す)
         kikuchiScheduledKey = key;
         timerKikuchiDebounce.Stop();
         timerKikuchiDebounce.Start();
@@ -1812,6 +1829,7 @@ public partial class FormDiffractionSimulator : FormBase
         var snap = snapFresh ? oldSnap : new KikuchiPotentialSnapshot(crystal, kV);
         var prev = snapFresh ? kikuchiPrevSelection : null; //結晶・電圧が変わったら順位ヒステリシスはリセット
         int gen = System.Threading.Interlocked.Increment(ref kikuchiGeneration);
+        kikuchiInFlightKey = key; // 261118Cl 追加 (codex2 第 14 回)
         #region 261111Cl 変更前 (Task.Run の中から BeginInvoke で交換し、try と BeginInvoke が入れ子になっていた)
         //Task.Run(() =>
         //{
@@ -1883,6 +1901,7 @@ public partial class FormDiffractionSimulator : FormBase
             Console.WriteLine("Kikuchi dynamical band computation failed: " + ex.Message);
             //260805Cl 追加: 例外を GUI に可視化。260806Cl /simplify2 (C-7): key も公開して毎 Draw の無限再計算を止める
             //(旧プロファイルは残すので、表示は直前の正常結果の再投影のまま)
+            if (gen == kikuchiGeneration) kikuchiInFlightKey = null; // 261118Cl 追加 (codex2 第 14 回)
             if (gen != kikuchiGeneration || IsDisposed)
                 return;
             kikuchiProfiles ??= []; //初回失敗でも freshness が成立するように (非 null が条件)
@@ -1893,6 +1912,7 @@ public partial class FormDiffractionSimulator : FormBase
         }
 
         // ここからは UI スレッド (旧の成功時の BeginInvoke の中身と同じ)
+        if (gen == kikuchiGeneration) kikuchiInFlightKey = null; // 261118Cl 追加 (codex2 第 14 回)
         if (profiles == null || gen != kikuchiGeneration || IsDisposed)
             return;
         kikuchiSnapshot = snap;
@@ -3411,16 +3431,19 @@ public partial class FormDiffractionSimulator : FormBase
         FormDiffractionBeamTable.BringToFront();
         // if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更前 (2 行)
         //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
-        if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 6 回)
-            FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedBeams);
+        // if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 6 回) // 261118Cl 変更前 (第 14 回)
+        //     FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedBeams);
+        if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 14 回): 今の条件の CBED の結果だけ
+            FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? FormDiffractionSimulatorCBED.CompletedBeams : [],
+                FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? null : "The CBED disks shown were computed for other conditions (run the CBED calculation again).");
         // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更前 (codex2 第 10 回: 失敗した後も前の結果の Beams を今回のものとして出していた)
         //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
         // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更: 主の結晶が直前の描画で失敗したら空の表と失敗の文 // 261118Cl 変更前 (第 11 回)
         //     FormDiffractionBeamTable.SetTable(Energy, MainCrystalDynamicalFailure == null ? formMain.Crystal.Bethe.Beams : [], MainCrystalDynamicalFailure);
         // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更 (codex2 第 11 回): 斑点を計算したときの主の結晶の反射の写し // 261118Cl 変更前 (第 12 回)
         //     FormDiffractionBeamTable.SetTable(Energy, MainCrystalDynamicalFailure == null ? MainCrystalDynamicalBeams ?? formMain.Crystal.Bethe.Beams : [], MainCrystalDynamicalFailure);
-        else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更 (codex2 第 12 回): 今の条件で計算した反射だけ
-            FormDiffractionBeamTable.SetTable(Energy, CurrentMainCrystalDynamicalBeams ?? [], MainCrystalDynamicalFailure ?? (CurrentMainCrystalDynamicalBeams == null ? "The dynamical spots have not been computed for the current conditions (show the diffraction spots)." : null));
+        else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更 (codex2 第 12 回): 今の条件で計算した反射だけ。261118Cl (第 14 回) 失敗も今の条件のものだけ
+            FormDiffractionBeamTable.SetTable(Energy, CurrentMainCrystalDynamicalBeams ?? [], CurrentMainCrystalDynamicalFailure ?? (CurrentMainCrystalDynamicalBeams == null ? "The dynamical spots have not been computed for the current conditions (show the diffraction spots)." : null));
         else
             FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal);
     }
@@ -3749,6 +3772,7 @@ public partial class FormDiffractionSimulator : FormBase
             var originalResolution = Resolution;
             var originalFoot = new PointD(Foot.X, Foot.Y);
             var originalStringSize = trackBarStrSize.Value;
+            var originalSkip = skipDrawing; // 261118Cl 追加 (codex2 第 14 回): Resolution の setter は描画の停止を外すので、元の状態を戻す
 
             var fdsg = FormDiffractionSimulatorGeometry;
 
@@ -3775,11 +3799,13 @@ public partial class FormDiffractionSimulator : FormBase
             }
             finally
             {
+                graphicsBox.Visible = true; // 261118Cl 変更 (codex2 第 14 回): 先に再表示する (下の setter が描いて例外を出しても隠れたまま残らない)
                 graphicsBox.Size = originalSize;
                 Resolution = originalResolution;
                 trackBarStrSize.Value = originalStringSize;
                 Foot = originalFoot;
-                graphicsBox.Visible = true;
+                skipDrawing = originalSkip; // 261118Cl 追加 (codex2 第 14 回)
+                // graphicsBox.Visible = true; // 261118Cl 変更前 (上へ)
                 SetVector();
                 Draw();
                 graphicsBox.Refresh();
@@ -3793,6 +3819,7 @@ public partial class FormDiffractionSimulator : FormBase
             var originalSize = graphicsBox.Size;
             var originalResolution = Resolution;
             var originalFoot = new PointD(Foot.X, Foot.Y);
+            var originalSkip = skipDrawing; // 261118Cl 追加 (codex2 第 14 回)
 
             try // 261118Cl 変更 (codex2 第 12・13 回): 最初に表示を変えるところから保護し、例外でも表示の設定を戻して先に再表示する
             {
@@ -3808,10 +3835,12 @@ public partial class FormDiffractionSimulator : FormBase
             }
             finally
             {
+                graphicsBox.Visible = true; // 261118Cl 変更 (codex2 第 14 回): 先に再表示する
                 graphicsBox.Size = originalSize;
                 Resolution = originalResolution;
                 Foot = originalFoot;
-                graphicsBox.Visible = true;
+                skipDrawing = originalSkip; // 261118Cl 追加 (codex2 第 14 回)
+                // graphicsBox.Visible = true; // 261118Cl 変更前 (上へ)
                 SetVector();
                 Draw();
                 graphicsBox.Refresh();
