@@ -68,7 +68,9 @@ public partial class FormDiffractionSpotInfo : FormBase
     }
 
 
-    public void SetTable(double acc = 0, BetheMethod.Beam[] beams = null)
+    // public void SetTable(double acc = 0, BetheMethod.Beam[] beams = null) // 261118Cl 変更前
+    /// <param name="failureMessage">261118Cl 追加 (codex2 第 10 回): 動力学の計算が失敗したときの文 (状態の欄に出す。表は呼び出し側が空にして渡す)</param>
+    public void SetTable(double acc = 0, BetheMethod.Beam[] beams = null, string failureMessage = null)
     {
         var sw = new Stopwatch();
         sw.Start();
@@ -216,6 +218,8 @@ public partial class FormDiffractionSpotInfo : FormBase
             dataGridView.DataMember = "DataTableBethe";
             toolStripStatusLabel1.Text += $"Time for displaying table: {StatusBarHelper.FormatElapsed(sw.Elapsed)}.  ";
         }
+        if (failureMessage != null) // 261118Cl 追加 (codex2 第 10 回)
+            toolStripStatusLabel1.Text = failureMessage;
     }
 
     private void FormDiffractionSimulatorTable_FormClosing(object sender, FormClosingEventArgs e)

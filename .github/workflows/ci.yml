@@ -51,8 +51,20 @@ jobs:
 
       # 261118Cl 追加 (作者決定 2026-11-18「動力学計算の最小の独立検査を公開の tests にも置く」): Crystallography の xUnit を走らせる
       #   (約 30 秒、6,700 本余り。流束の保存と RK4 参照の独立検査を含む)。native (C++) はここでは組まないので、テストは managed で動く。
+      # 261118Cl 変更 (codex2 第 10 回): 揺れて一度だけ落ちた試験の名前が残らなかったので、TRX (失敗名・スタック・出力) を書き、失敗したときも保存する
+      # - name: Test (Crystallography.Tests, managed)
+      #   run: dotnet test Crystallography\tests\Crystallography.Tests\Crystallography.Tests.csproj -c Release
       - name: Test (Crystallography.Tests, managed)
-        run: dotnet test Crystallography\tests\Crystallography.Tests\Crystallography.Tests.csproj -c Release
+        run: dotnet test Crystallography\tests\Crystallography.Tests\Crystallography.Tests.csproj -c Release --logger "trx;LogFileName=crystallography-tests.trx" --results-directory TestResults
+
+      - name: Upload test results (TRX)
+        if: always()
+        uses: actions/upload-artifact@v6 # release.yml と同じ版
+        with:
+          name: crystallography-tests-trx
+          path: TestResults/*.trx
+          if-no-files-found: ignore
+          retention-days: 14
 
   resx-conventions:
     name: resx conventions (text-only / no baked language / font tiers)

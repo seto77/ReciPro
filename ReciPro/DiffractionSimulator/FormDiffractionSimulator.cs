@@ -840,8 +840,10 @@ public partial class FormDiffractionSimulator : FormBase
             //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
             if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 6 回): 収束ビームの画面では表示中の CBED の結果の反射
                 FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedBeams);
-            else if (radioButtonIntensityDynamical.Checked)
-                FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
+            // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更前 (codex2 第 10 回: 失敗した後も前の結果の Beams を今回のものとして出していた)
+            //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
+            else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更: 主の結晶が直前の描画で失敗したら空の表と失敗の文
+                FormDiffractionBeamTable.SetTable(Energy, MainCrystalDynamicalFailure == null ? formMain.Crystal.Bethe.Beams : [], MainCrystalDynamicalFailure);
             else
                 FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal);
         }
@@ -871,6 +873,13 @@ public partial class FormDiffractionSimulator : FormBase
     #endregion
 
     #region DrawDiffractionSpots
+
+    /// <summary>261118Cl 追加 (codex2 第 10 回): 直前の <see cref="DrawDiffractionSpots"/> で動力学の計算が数値の失敗をした結晶の文 (どの結晶も失敗しなければ null)。
+    /// 失敗した結晶の斑点は描かれない。マクロの保存はこれを見て失敗を呼び出し元へ返す</summary>
+    public string LastDynamicalFailure { get; private set; }
+    /// <summary>261118Cl 追加 (codex2 第 10 回): 直前の描画で主の結晶 (formMain.Crystal) が失敗したときの文 (null = 成功か動力学でない)。
+    /// 失敗の後の Crystal.Bethe.Beams は前に成功した計算の結果なので、反射の表とマクロの SpotInfo は今回のものとして使わない</summary>
+    public string MainCrystalDynamicalFailure { get; private set; }
 
     /// <summary>回折スポットおよび指数ラベルの描画</summary>
     /// <param name="graphics">描画対象のグラフィックオブジェクト</param>
@@ -985,6 +994,7 @@ public partial class FormDiffractionSimulator : FormBase
         var bethe = radioButtonIntensityDynamical.Checked;
         var sw = new Stopwatch();
         string betheFailure = null; // 261118Cl 追加 (codex2 第 9 回): 動力学の計算の数値の失敗 (後の結晶の成功の時間で上書きしない)
+        string mainCrystalFailure = null; // 261118Cl 追加 (codex2 第 10 回): 主の結晶 (formMain.Crystal、反射の表とマクロの SpotInfo の対象) の失敗
         foreach (var crystal in formMain.Crystals)
         {
             List<Vector3D> gVector;
@@ -1155,11 +1165,17 @@ public partial class FormDiffractionSimulator : FormBase
                 catch (NumericFailureException ex) // 261118Cl 追加
                 {
                     betheFailure = $"Dynamical calculation failed for {crystal.Name?.Trim()}: {ex.Message}  ";
+                    if (ReferenceEquals(crystal, formMain.Crystal)) mainCrystalFailure = betheFailure; // 261118Cl 追加 (codex2 第 10 回)
                     continue;
                 }
                 if (gVector.Count == 0) // 261118Cl 追加: 反射が無い (正当な空) ときは描かない (旧は下の Max で InvalidOperationException)
                     continue;
                 var max = gVector.Max(g => double.IsInfinity(g.d) ? 0 : g.RawIntensity);
+                // 261118Cl 追加 (codex2 第 10 回): 回折斑点の強度が全部 0 (000 だけ、など) のときは直進ビームを基準にする (旧は 0 で割って直進ビームの相対強度が ∞・NaN)。
+                //   全部 0 なら描かない
+                if (!(max > 0)) max = gVector.Max(g => g.RawIntensity);
+                if (!(max > 0) || !double.IsFinite(max))
+                    continue;
                 //gVector = gVector.Select(g => { g.RelativeIntensity = g.RawIntensity / max; return g; }).ToList();
                 //20220915以下に変更。合ってるかな。
                 gVector.ForEach(g => g.RelativeIntensity = g.RawIntensity / max);
@@ -1304,6 +1320,7 @@ public partial class FormDiffractionSimulator : FormBase
         }
         if (betheFailure != null) // 261118Cl 追加: 数値の失敗があれば状態の欄に残す
             toolStripStatusLabelTimeForBethe.Text = betheFailure;
+        (LastDynamicalFailure, MainCrystalDynamicalFailure) = (betheFailure, mainCrystalFailure); // 261118Cl 追加 (codex2 第 10 回)
         if (radioButtonBeamBackLaue.Checked) // 261105Cl 追加 (監査 C17): Back Laue のダイレクトスポット (入射ビームの穴) は全結晶を描いた後に 1 回だけ描く (旧は 1 つ目の結晶のループ内)
         {
             var origin = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0)); // 261105Cl
@@ -3323,8 +3340,10 @@ public partial class FormDiffractionSimulator : FormBase
         //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
         if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 6 回)
             FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedBeams);
-        else if (radioButtonIntensityDynamical.Checked)
-            FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
+        // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更前 (codex2 第 10 回: 失敗した後も前の結果の Beams を今回のものとして出していた)
+        //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
+        else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更: 主の結晶が直前の描画で失敗したら空の表と失敗の文
+            FormDiffractionBeamTable.SetTable(Energy, MainCrystalDynamicalFailure == null ? formMain.Crystal.Bethe.Beams : [], MainCrystalDynamicalFailure);
         else
             FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal);
     }
@@ -3568,7 +3587,10 @@ public partial class FormDiffractionSimulator : FormBase
     //private void SaveCBEDasCollectiveImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true); // 261105Cl 変更前
     private void SaveCBEDasCollectiveImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true, cbed: true); // 261105Cl
 
-    public void SaveOrCopy(bool save, bool isImage, bool drawOverlappedImage, string filename = "")
+    // public void SaveOrCopy(bool save, bool isImage, bool drawOverlappedImage, string filename = "") // 261118Cl 変更前
+    /// <param name="failOnDynamicalFailure">261118Cl 追加 (codex2 第 10 回): true なら描いた結果に動力学の計算の失敗 (<see cref="LastDynamicalFailure"/>) があるとき、
+    /// 保存・コピーせずに <see cref="InvalidOperationException"/> を投げる (マクロ用。対話の操作は状態の欄に出して従来どおり保存する)</param>
+    public void SaveOrCopy(bool save, bool isImage, bool drawOverlappedImage, string filename = "", bool failOnDynamicalFailure = false)
     {
         if (isImage)
         {
@@ -3577,6 +3599,8 @@ public partial class FormDiffractionSimulator : FormBase
             //var g = Graphics.FromImage(bmp); // (260611Ch) 旧: Graphics が未解放
             using (var g = Graphics.FromImage(bmp)) // (260611Ch) Bitmap は Clipboard に渡す場合があるため Graphics だけ先に解放
                 Draw(g, true, drawOverlappedImage);
+            if (failOnDynamicalFailure && LastDynamicalFailure is { } failure) // 261118Cl 追加 (codex2 第 10 回)
+                throw new InvalidOperationException($"The image was not saved: {failure.Trim()}");
             if (save)
             {
                 if (filename == "")

@@ -1144,7 +1144,8 @@ public class Macro : MacroBase
         public double ExcitationError { get => difSim.ExcitationError; set => difSim.ExcitationError = value; }
 
         [Help("Saves the current simulation image as a PNG file. If 'filename' is omitted, opens a save dialog.", "string filename")]
-        public void SaveAsPng(string filename = "") => difSim.SaveOrCopy(true, true, true, filename);
+        // public void SaveAsPng(string filename = "") => difSim.SaveOrCopy(true, true, true, filename); // 261118Cl 変更前
+        public void SaveAsPng(string filename = "") => difSim.SaveOrCopy(true, true, true, filename, failOnDynamicalFailure: true); // 261118Cl 変更 (codex2 第 10 回): 動力学の計算が失敗した結晶があれば保存せずにマクロへ失敗を返す
 
 
 
@@ -1165,6 +1166,9 @@ public class Macro : MacroBase
             var sb = new StringBuilder();
             if (difSim.CalcMode == FormDiffractionSimulator.CalcModes.Dynamical)
             {
+                // 261118Cl 追加 (codex2 第 10 回): 直前の描画で主の結晶の動力学の計算が失敗していたら、前の結果の Beams を今回のものとして返さない
+                if (difSim.MainCrystalDynamicalFailure is { } failure)
+                    throw new InvalidOperationException($"SpotInfo() has no result for the current conditions: {failure.Trim()}");
                 if (difSim.FormDiffractionBeamTable.UnitOfPotential == FormDiffractionSpotInfo.UnitOfPotentialEnum.Vg)
                 {
                     //sb.Append("No., R, H, K, L, d, gX, gY, gZ,|g|=1/d, Vg_re, Vg_im, V'g_re, V'g_im, Sg, Pg, Qg, φ_re, φ_im, |φ|^2\n"); // 260723Cl 旧: 検出器座標なし・区切り後空白あり
@@ -1457,7 +1461,13 @@ public class Macro : MacroBase
         public void Close() => sim.Visible = false;
 
         [Help("Runs the ### simulation with the current settings.")]
-        public void Simulate() { Open(); sim.Simulate(true); }
+        // public void Simulate() { Open(); sim.Simulate(true); } // 261118Cl 変更前
+        public void Simulate() // 261118Cl 変更 (codex2 第 10 回): 失敗したら前の像を残したまま正常に戻らず、失敗をマクロへ返す (続く保存で前の像を今回のものとして保存させない)
+        {
+            Open(); sim.Simulate(true);
+            if (sim.LastSimulationFailure is { } failure)
+                throw new InvalidOperationException(failure);
+        }
 
         [Help("Gets or sets whether the unit cell, labels, and scale bar are overprinted on saved images.")]
         public bool OverprintSymbols { get => sim.OverprintSymbols; set => sim.OverprintSymbols = value; }

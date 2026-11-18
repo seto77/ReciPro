@@ -912,6 +912,7 @@ public partial class FormImageSimulator : FormBase
         //呼ばれず reset が走らないため、前回の EDX 時間が次の run の表示に混ざっていた
         sw1.Reset(); sw2.Reset(); sw3.Reset(); sw4.Reset(); sw5.Reset();
         sw1.Restart();
+        LastSimulationFailure = null; // 261118Cl 追加 (codex2 第 10 回)
         if (ThicknessArray == null || DefocusArray == null) return;
 
         //ローテーション配列を作る //一辺が2.の正方形の中に一辺1/Nのピクセルを詰め込み、中心ピクセルが、円の中心とちょうど一致するような問題を考える
@@ -976,6 +977,7 @@ public partial class FormImageSimulator : FormBase
             stemBethe.StemCompleted -= StemCompleted;
             stemBethe = null;
             toolStripStatusLabel1.Text = ex.Message;
+            LastSimulationFailure = $"STEM failed: {ex.Message}"; // 261118Cl 追加 (codex2 第 10 回)
             MessageBox.Show(ex.Message, "STEM-EDX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
@@ -1131,6 +1133,7 @@ public partial class FormImageSimulator : FormBase
         if (e.Error is not null)
         {
             toolStripStatusLabel1.Text = $"Failed: {e.Error.Message}";
+            LastSimulationFailure = $"STEM failed (the previous image is kept): {e.Error.Message}"; // 261118Cl 追加 (codex2 第 10 回)
             //260802Cl 追加: STEM-EDX は native 全スライス streaming 経路限定で、条件を外れると NotSupportedException になる。
             //生の英語メッセージだけでは何を直せばよいか分からないので、操作に翻訳して案内する (設計書 §5.9.1-7)。
             //260802Cl 変更: 経路一本化で slice 数や波数の制約は消えた。残るのは native ヘルパ (Crystallography.Native) が
@@ -1209,11 +1212,17 @@ public partial class FormImageSimulator : FormBase
     #endregion;
 
     #region HREMシミュレーション
+    /// <summary>261118Cl 追加 (codex2 第 10 回): 直前の像の計算 (HRTEM・ポテンシャル・STEM) の失敗の文 (成功・計算中は null)。
+    /// 失敗しても前の像は残るので、マクロの Simulate はこれを見て失敗を呼び出し元へ返す (前の像を今回のものとして保存させない)</summary>
+    public string LastSimulationFailure { get; private set; }
+
     public void SimulateHRTEM(bool realtimeMode = false)
     {
         // 261118Cl 追加 (codex2 第 9 回): 動力学の計算の数値の失敗は操作全体で受け、今回の像を出さずに状態の欄へ出す (前の像は残るのでその旨も)
+        LastSimulationFailure = null; // 261118Cl 追加 (codex2 第 10 回)
         try { SimulateHRTEMCore(realtimeMode); }
-        catch (NumericFailureException ex) { toolStripStatusLabel1.Text = $"HRTEM failed (the previous image is kept): {ex.Message}"; }
+        // catch (NumericFailureException ex) { toolStripStatusLabel1.Text = $"HRTEM failed (the previous image is kept): {ex.Message}"; } // 261118Cl 変更前
+        catch (NumericFailureException ex) { toolStripStatusLabel1.Text = LastSimulationFailure = $"HRTEM failed (the previous image is kept): {ex.Message}"; } // 261118Cl 変更: 文を残す
     }
 
     /// <summary>261118Cl 追加: SimulateHRTEM の本体 (旧の SimulateHRTEM の中身。数値の失敗の受けを外側に置くため分けた)</summary>
@@ -1271,8 +1280,10 @@ public partial class FormImageSimulator : FormBase
     private void simulatePotential(bool realtimeMode = false, bool redrawOnly = false)
     {
         // 261118Cl 追加 (codex2 第 9 回): 数値の失敗は操作全体で受ける (今回の像を出さない)
+        LastSimulationFailure = null; // 261118Cl 追加 (codex2 第 10 回)
         try { simulatePotentialCore(realtimeMode, redrawOnly); }
-        catch (NumericFailureException ex) { toolStripStatusLabel1.Text = $"Potential image failed (the previous image is kept): {ex.Message}"; }
+        // catch (NumericFailureException ex) { toolStripStatusLabel1.Text = $"Potential image failed (the previous image is kept): {ex.Message}"; } // 261118Cl 変更前
+        catch (NumericFailureException ex) { toolStripStatusLabel1.Text = LastSimulationFailure = $"Potential image failed (the previous image is kept): {ex.Message}"; } // 261118Cl 変更: 文を残す
     }
 
     /// <summary>261118Cl 追加: simulatePotential の本体 (旧の中身)</summary>
