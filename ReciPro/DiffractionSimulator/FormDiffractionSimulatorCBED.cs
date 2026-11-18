@@ -529,7 +529,11 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         textBoxThickness.Text = CompletedThicknesses[trackBarOutputThickness.Value].ToString(); // 261105Cl 変更 (監査 D7): 計算した厚み
         generateImage();
         // FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy); // 261118Cl 変更前
-        FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy, CompletedBeams); // 261118Cl 変更 (codex2 第 6 回)
+        // FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy, CompletedBeams); // 261118Cl 変更 (codex2 第 6 回) // 261118Cl 変更前 (第 15 回)
+        // 261118Cl 変更 (codex2 第 15 回): 回折の画面の表 (FormDiffractionSimulator の表の更新) と同じ判定。今の条件の結果でなければ空と理由
+        //   (旧は描き直しの後に、前の CompletedBeams に今の電圧を付けて表を上書きした)
+        FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy, CompletedMatchesCurrent ? CompletedBeams : [],
+            CompletedMatchesCurrent ? null : "The CBED disks shown were computed for other conditions (run the CBED calculation again).");
     }
 
 
