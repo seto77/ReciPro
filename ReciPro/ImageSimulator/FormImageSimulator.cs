@@ -1211,6 +1211,14 @@ public partial class FormImageSimulator : FormBase
     #region HREMシミュレーション
     public void SimulateHRTEM(bool realtimeMode = false)
     {
+        // 261118Cl 追加 (codex2 第 9 回): 動力学の計算の数値の失敗は操作全体で受け、今回の像を出さずに状態の欄へ出す (前の像は残るのでその旨も)
+        try { SimulateHRTEMCore(realtimeMode); }
+        catch (NumericFailureException ex) { toolStripStatusLabel1.Text = $"HRTEM failed (the previous image is kept): {ex.Message}"; }
+    }
+
+    /// <summary>261118Cl 追加: SimulateHRTEM の本体 (旧の SimulateHRTEM の中身。数値の失敗の受けを外側に置くため分けた)</summary>
+    private void SimulateHRTEMCore(bool realtimeMode)
+    {
         sw1.Restart();
 
         if (ThicknessArray == null || DefocusArray == null) return;
@@ -1261,6 +1269,14 @@ public partial class FormImageSimulator : FormBase
     //private void simulatePotential(bool realtimeMode = false) // 261105Cl 変更前
     /// <param name="redrawOnly">261105Cl 追加: true なら前回の計算結果 (potentialResult) を今の表示の選択で描き直すだけ</param>
     private void simulatePotential(bool realtimeMode = false, bool redrawOnly = false)
+    {
+        // 261118Cl 追加 (codex2 第 9 回): 数値の失敗は操作全体で受ける (今回の像を出さない)
+        try { simulatePotentialCore(realtimeMode, redrawOnly); }
+        catch (NumericFailureException ex) { toolStripStatusLabel1.Text = $"Potential image failed (the previous image is kept): {ex.Message}"; }
+    }
+
+    /// <summary>261118Cl 追加: simulatePotential の本体 (旧の中身)</summary>
+    private void simulatePotentialCore(bool realtimeMode, bool redrawOnly)
     {
         sw1.Restart();
 
@@ -1808,6 +1824,14 @@ public partial class FormImageSimulator : FormBase
     /// <param name="redrawDiffraction">261111Cl 追加: false なら回折シミュレータを描き直さない (RotationChanged 用。回転時は FormMain が先に FDS.RotationChanged→Draw を呼んでいるため)</param>
     //public void CalculateInsideSpotInfo() // 261111Cl 変更前
     public void CalculateInsideSpotInfo(bool redrawDiffraction = true) // 261111Cl 変更
+    {
+        // 261118Cl 追加 (codex2 第 9 回): 数値の失敗は操作全体で受ける (反射の詳細の表を更新しない)
+        try { CalculateInsideSpotInfoCore(redrawDiffraction); }
+        catch (NumericFailureException ex) { toolStripStatusLabel1.Text = $"Spot information failed: {ex.Message}"; }
+    }
+
+    /// <summary>261118Cl 追加: CalculateInsideSpotInfo の本体 (旧の中身)</summary>
+    private void CalculateInsideSpotInfoCore(bool redrawDiffraction)
     {
         if (!this.Visible)
             return;

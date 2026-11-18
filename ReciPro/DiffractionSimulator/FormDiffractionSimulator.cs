@@ -984,6 +984,7 @@ public partial class FormDiffractionSimulator : FormBase
 
         var bethe = radioButtonIntensityDynamical.Checked;
         var sw = new Stopwatch();
+        string betheFailure = null; // 261118Cl 追加 (codex2 第 9 回): 動力学の計算の数値の失敗 (後の結晶の成功の時間で上書きしない)
         foreach (var crystal in formMain.Crystals)
         {
             List<Vector3D> gVector;
@@ -1124,6 +1125,8 @@ public partial class FormDiffractionSimulator : FormBase
             else if (bethe)
             {
                 sw.Start();
+                try // 261118Cl 追加 (codex2 第 9 回): 数値の失敗 (NumericFailureException) はこの結晶の動力学の斑点だけを省き、状態の欄に場所を出す (運動学への切り替えは利用者の操作で)
+                { // 字下げは変えない
 
                 var blochNum = FormDiffractionSimulatorCBED.Visible ? FormDiffractionSimulatorCBED.MaxNumOfBloch : numericBoxNumOfBlochWave.ValueInteger;
 
@@ -1148,6 +1151,14 @@ public partial class FormDiffractionSimulator : FormBase
                     if (eigenValues != crystal.Bethe.EigenValues)
                         toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects: {StatusBarHelper.FormatElapsed(sw.Elapsed)}.  ";// 260520Cl 時間表記を統一
                 }
+                }
+                catch (NumericFailureException ex) // 261118Cl 追加
+                {
+                    betheFailure = $"Dynamical calculation failed for {crystal.Name?.Trim()}: {ex.Message}  ";
+                    continue;
+                }
+                if (gVector.Count == 0) // 261118Cl 追加: 反射が無い (正当な空) ときは描かない (旧は下の Max で InvalidOperationException)
+                    continue;
                 var max = gVector.Max(g => double.IsInfinity(g.d) ? 0 : g.RawIntensity);
                 //gVector = gVector.Select(g => { g.RelativeIntensity = g.RawIntensity / max; return g; }).ToList();
                 //20220915以下に変更。合ってるかな。
@@ -1291,6 +1302,8 @@ public partial class FormDiffractionSimulator : FormBase
                 }
             }
         }
+        if (betheFailure != null) // 261118Cl 追加: 数値の失敗があれば状態の欄に残す
+            toolStripStatusLabelTimeForBethe.Text = betheFailure;
         if (radioButtonBeamBackLaue.Checked) // 261105Cl 追加 (監査 C17): Back Laue のダイレクトスポット (入射ビームの穴) は全結晶を描いた後に 1 回だけ描く (旧は 1 つ目の結晶のループ内)
         {
             var origin = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0)); // 261105Cl
