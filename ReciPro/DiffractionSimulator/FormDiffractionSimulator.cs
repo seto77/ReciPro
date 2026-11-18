@@ -867,7 +867,7 @@ public partial class FormDiffractionSimulator : FormBase
             //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
             // if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 6 回): 収束ビームの画面では表示中の CBED の結果の反射 // 261118Cl 変更前 (第 14 回)
             //     FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedBeams);
-            if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 14 回): 今の条件の CBED の結果だけ (違えば空と理由。旧は前の反射に今の電圧を付けた)
+            if (FormDiffractionSimulatorCBED.Visible) // 261118Cl 変更 (codex2 第 17 回): 完了の歴に依らず CBED の判定 (初回の失敗・未実行で平行ビームの表へ進まない)。旧: && FormDiffractionSimulatorCBED.CompletedBeams != null (第 14 回: 今の条件の CBED の結果だけ) (違えば空と理由。旧は前の反射に今の電圧を付けた)
                 FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CurrentTableBeams.Beams, FormDiffractionSimulatorCBED.CurrentTableBeams.Reason); // 261118Cl 変更 (codex2 第 16 回): 最後の要求の成功も見る
                 // FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? FormDiffractionSimulatorCBED.CompletedBeams : [], // 261118Cl 変更前 (第 16 回、2 行)
                     // FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? null : "The CBED disks shown were computed for other conditions (run the CBED calculation again).");
@@ -3434,7 +3434,7 @@ public partial class FormDiffractionSimulator : FormBase
         //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
         // if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 6 回) // 261118Cl 変更前 (第 14 回)
         //     FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedBeams);
-        if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 14 回): 今の条件の CBED の結果だけ
+        if (FormDiffractionSimulatorCBED.Visible) // 261118Cl 変更 (codex2 第 17 回): 完了の歴に依らず CBED の判定 (初回の失敗・未実行で平行ビームの表へ進まない)。旧: && FormDiffractionSimulatorCBED.CompletedBeams != null (第 14 回: 今の条件の CBED の結果だけ)
             FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CurrentTableBeams.Beams, FormDiffractionSimulatorCBED.CurrentTableBeams.Reason); // 261118Cl 変更 (codex2 第 16 回): 最後の要求の成功も見る
                 // FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? FormDiffractionSimulatorCBED.CompletedBeams : [], // 261118Cl 変更前 (第 16 回、2 行)
                 // FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? null : "The CBED disks shown were computed for other conditions (run the CBED calculation again).");

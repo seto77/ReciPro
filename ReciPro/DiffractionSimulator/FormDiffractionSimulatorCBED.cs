@@ -120,6 +120,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     /// かつ表示中の円盤が今の条件の結果のときだけ反射を返す (旧は条件だけを見て、同じ条件の再実行が失敗・取消した後も前の成功の反射を出した)。表の全部の入口がこれを使う</summary>
     public (BetheMethod.Beam[] Beams, string Reason) CurrentTableBeams =>
         LastRunFailure != null ? ([], $"The last CBED calculation did not succeed: {LastRunFailure}.")
+        : completedRunKey == null ? ([], "The CBED calculation has not been run yet.") // 261118Cl 追加 (codex2 第 17 回): まだ一度も成功していない
         : !CompletedMatchesCurrent ? ([], "The CBED disks shown were computed for other conditions (run the CBED calculation again).")
         : (CompletedBeams, null);
     /// <summary>261118Cl 追加 (codex2 第 13 回): run の条件の鍵 (電圧・方位・N・収束角・分割・厚さ・LACBED・着衣の裾・候補の打ち切り方)。
