@@ -3712,7 +3712,9 @@ public partial class FormEBSD : FormBase
         {
             toolStripStatusLabelSummary.Text = "MasterPattern failed";
             toolStripStatusLabelProgress.Text = $"Failed after {StatusBarHelper.FormatElapsed(sw2.Elapsed)}";
-            toolStripStatusLabelDetail.Text = "";
+            // toolStripStatusLabelDetail.Text = ""; // 261118Cl 変更前
+            // 261118Cl 変更 (codex2 第 7 回・作者の判断「数値の失敗は明示」): 動力学計算の数値の失敗なら、どの電圧・方向・段で止まったかを出す
+            toolStripStatusLabelDetail.Text = e.Error is NumericFailureException numericFailure ? numericFailure.Message : "";
             // labelMasterPatternInfo.Text = "MasterPattern build failed."; // 260406Cl 廃止: Label2 "MasterPattern failed" で代替
             UpdateMasterPatternSelectors();
             DrawMasterPattern2D();
