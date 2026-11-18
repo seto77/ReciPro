@@ -941,6 +941,12 @@ public partial class FormImageSimulator : FormBase
         var edxRequests = BuildEdxRequests();
         if (!ValidateEdxRequest(edxRequests, division)) return;
 
+        // 261118Cl 追加 (codex2 第 12 回): 計算中の STEM があれば、RunSTEM は黙って戻り、先の run の完了を今回の成功に数えてしまう → 理由を残して止める
+        if (FormMain.Crystal.Bethe.IsSTEM_Busy)
+        {
+            toolStripStatusLabel1.Text = LastSimulationFailure = "STEM is already running; the new request was not started.";
+            return;
+        }
         //260801Cl 追加: run 中に別の結晶へ切り替わっても購読解除・結果取得が同じインスタンスを指すよう snapshot する (codex 20巡)
         stemBethe = FormMain.Crystal.Bethe;
         //260802Cl 削除: stemEdxChannelCount = edxRequests?.Length ?? 0; (StemProgressInfo.ChannelCount が全ステージに載るため不要)

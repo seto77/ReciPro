@@ -1152,7 +1152,8 @@ public class Macro : MacroBase
 
         // 260723Cl Help文言更新 (旧: "Returns spot information for the current dynamical calculation as CSV text.")
         //   Kinematical/Excitation モード対応と検出器座標列 (detX, detY) の追加に伴い記述を拡張。
-        [Help("Returns spot information for the current calculation as CSV text. Units: d in nm, g and Sg in nm^-1, detX/detY in mm (detector coordinates; origin = foot of the perpendicular from the sample). In dynamical mode, dynamical quantities (Ug/Vg, Sg, φ) are included; in kinematical/excitation mode, |F|^2 and relative intensity are included for reflections whose excitation error is within the spot radius.")]
+        // 261118Cl Help に追記 (codex2 第 12 回): 動力学では今の条件で描いた平行ビーム (または PED) の斑点の値で、CBED の円盤の反射ではないこと・未計算や失敗は例外になること
+        [Help("Returns spot information for the current calculation as CSV text. Units: d in nm, g and Sg in nm^-1, detX/detY in mm (detector coordinates; origin = foot of the perpendicular from the sample). In dynamical mode, dynamical quantities (Ug/Vg, Sg, φ) are included; in kinematical/excitation mode, |F|^2 and relative intensity are included for reflections whose excitation error is within the spot radius. In dynamical mode the values are those of the parallel-beam (or PED) spots drawn for the current conditions (not the CBED disks); an error is raised if they have not been computed for the current conditions or the calculation failed.")]
         public string SpotInfo() => (Execute(() => spotInfo()));
         private string spotInfo()
         {
@@ -1170,7 +1171,9 @@ public class Macro : MacroBase
                 if (difSim.MainCrystalDynamicalFailure is { } failure)
                     throw new InvalidOperationException($"SpotInfo() has no result for the current conditions: {failure.Trim()}");
                 // 261118Cl 追加 (codex2 第 11 回): 斑点を計算したときの主の結晶の反射の写し (共有の Bethe.Beams は像の画面などが書き換える)。まだ描いていなければ従来どおり
-                var spotBeams = difSim.MainCrystalDynamicalBeams ?? c.Bethe.Beams;
+                // var spotBeams = difSim.MainCrystalDynamicalBeams ?? c.Bethe.Beams; // 261118Cl 変更前 (codex2 第 12 回: 別の条件・別の画面の計算を採り込みえた)
+                var spotBeams = difSim.CurrentMainCrystalDynamicalBeams // 261118Cl 変更: 今の条件で計算した反射だけ
+                    ?? throw new InvalidOperationException("SpotInfo() has no dynamical result for the current conditions: show the diffraction spots (dynamical) first.");
                 if (difSim.FormDiffractionBeamTable.UnitOfPotential == FormDiffractionSpotInfo.UnitOfPotentialEnum.Vg)
                 {
                     //sb.Append("No., R, H, K, L, d, gX, gY, gZ,|g|=1/d, Vg_re, Vg_im, V'g_re, V'g_im, Sg, Pg, Qg, φ_re, φ_im, |φ|^2\n"); // 260723Cl 旧: 検出器座標なし・区切り後空白あり
@@ -1481,13 +1484,22 @@ public class Macro : MacroBase
         public bool SaveIndividually { get => sim.SaveIndividually; set => sim.SaveIndividually = value; }
 
         [Help("Saves the simulated image as a PNG file. If 'filename' is omitted, opens a save dialog.", "string filename")]//260805Cl: Argument 追加 (引数を取るのにヘルプが SaveImageAsPng() と表示していた)
-        public void SaveImageAsPng(string filename = null) => sim.Save(FormImageSimulator.FormatEnum.PNG, FormImageSimulator.ActionEnum.Save, filename);
+        // public void SaveImageAsPng(string filename = null) => sim.Save(FormImageSimulator.FormatEnum.PNG, FormImageSimulator.ActionEnum.Save, filename); // 261118Cl 変更前 (codex2 第 12 回、下の 2 つも)
+        public void SaveImageAsPng(string filename = null) { RequireImage(); sim.Save(FormImageSimulator.FormatEnum.PNG, FormImageSimulator.ActionEnum.Save, filename); }
+        /// <summary>261118Cl 追加 (codex2 第 12 回): 直前の像の計算が今回の像を作っていなければ (取消・失敗・未計算) 保存しない</summary>
+        private void RequireImage()
+        {
+            if (!sim.LastSimulationCompleted)
+                throw new InvalidOperationException("The image was not saved: " + (sim.LastSimulationFailure ?? "the last simulation did not produce an image."));
+        }
         
         [Help("Saves the simulated image as a TIFF file. If 'filename' is omitted, opens a save dialog.", "string filename")]//260805Cl: Argument 追加 
-        public void SaveImageAsTif(string filename = null) => sim.Save(FormImageSimulator.FormatEnum.TIFF, FormImageSimulator.ActionEnum.Save, filename);
+        // public void SaveImageAsTif(string filename = null) => sim.Save(FormImageSimulator.FormatEnum.TIFF, FormImageSimulator.ActionEnum.Save, filename); // 261118Cl 変更前
+        public void SaveImageAsTif(string filename = null) { RequireImage(); sim.Save(FormImageSimulator.FormatEnum.TIFF, FormImageSimulator.ActionEnum.Save, filename); }
 
         [Help("Saves the simulated image as an EMF file. If 'filename' is omitted, opens a save dialog.", "string filename")]//260805Cl: Argument 追加
-        public void SaveImageAsEmf(string filename = null) => sim.Save(FormImageSimulator.FormatEnum.Meta, FormImageSimulator.ActionEnum.Save, filename);
+        // public void SaveImageAsEmf(string filename = null) => sim.Save(FormImageSimulator.FormatEnum.Meta, FormImageSimulator.ActionEnum.Save, filename); // 261118Cl 変更前
+        public void SaveImageAsEmf(string filename = null) { RequireImage(); sim.Save(FormImageSimulator.FormatEnum.Meta, FormImageSimulator.ActionEnum.Save, filename); }
 
     }
 

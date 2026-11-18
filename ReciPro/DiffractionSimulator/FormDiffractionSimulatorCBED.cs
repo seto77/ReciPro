@@ -107,7 +107,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     private BetheMethod.CBED_Disk[][] completedDisks;
     /// <summary>261118Cl 追加 (codex2 第 6 回): 表示中の完了した CBED の結果のビーム (回折波の詳細の表に出す反射)。CBED は所有元の Beams (SAED の結果) を書かなくなったので、表はこれから作る</summary>
     public BetheMethod.Beam[] CompletedBeams { get; private set; }
-    /// <summary>261118Cl 追加 (codex2 第 11 回): 最後の計算の失敗の文 (成功で null)。失敗の後も前の円盤を表示し続けるので、回折の画面のマクロの保存はこれを見る</summary>
+    /// <summary>261118Cl 追加 (codex2 第 11 回): 最後の計算の失敗の文 (成功で null)。失敗の後も前の円盤を表示し続けるので、回折の画面のマクロの保存はこれを見る。
+    /// 261118Cl 変更 (codex2 第 12 回): 最後の要求が成功で終わっていなければ理由 (計算中・取消・入力の拒否・失敗)。完了の通知では描画を再開する前に確定する</summary>
     public string LastRunFailure { get; private set; }
     private Vector3DBase[] completedDirections;
     private double completedAlphaMax;
@@ -169,8 +170,10 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             toolStripStatusLabel1.Text = "the previous CBED calculation has not finished yet.";
             return;
         }
-        if (Division < 2) { toolStripStatusLabel2.Text = "Failed:  "; toolStripStatusLabel1.Text = "the disk resolution is too coarse for the convergence angle (fewer than 2 pixels across)."; return; } // 261118Cl 追加: 1 画素では方向が NaN になる
+        // if (Division < 2) { toolStripStatusLabel2.Text = "Failed:  "; toolStripStatusLabel1.Text = "the disk resolution is too coarse for the convergence angle (fewer than 2 pixels across)."; return; } // 261118Cl 追加: 1 画素では方向が NaN になる // 261118Cl 変更前 (第 12 回)
+        if (Division < 2) { toolStripStatusLabel2.Text = "Failed:  "; toolStripStatusLabel1.Text = LastRunFailure = "the disk resolution is too coarse for the convergence angle (fewer than 2 pixels across)."; return; } // 261118Cl 変更 (codex2 第 12 回): 拒否も今回の結果が無いとして残す
 
+        LastRunFailure = "the CBED calculation is running"; // 261118Cl 追加 (codex2 第 12 回)
         buttonStop.Visible = true;
         sw2.Reset();
         sw1.Restart();
@@ -291,6 +294,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     private void Bethe_CbedCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
         buttonStop.Visible = false;
+        // 261118Cl 追加 (codex2 第 12 回): 描画を再開する前に、この run の結果の有無を確定する (下の SkipDrawing = false が描き直す)
+        LastRunFailure = e.Error != null ? e.Error.Message : e.Cancelled || e.Result is not BetheMethod.CbedSimulationResult ? "the CBED calculation was cancelled" : null;
         FormDiffractionSimulator.SkipDrawing = false;
         //Crystal.Bethe.CBED_Completed -= Bethe_CbedCompleted; // 261105Cl 変更前
         //Crystal.Bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
@@ -312,7 +317,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             toolStripStatusLabel2.Text = "Failed:  ";
             toolStripStatusLabel1.Text = $"Time elapsed: {sec1 + sec2:f2} s,  {e.Error.Message}";
             groupBoxOutput.Enabled = completedDisks != null;
-            LastRunFailure = e.Error.Message; // 261118Cl 追加 (codex2 第 11 回): 表示している円盤は前の計算のもの
+            // LastRunFailure = e.Error.Message; // 261118Cl 追加 (codex2 第 11 回): 表示している円盤は前の計算のもの // 261118Cl 変更前 (第 12 回: 冒頭で確定する)
         }
         //if (!e.Cancelled) // 261105Cl 変更前
         // else if (!e.Cancelled) // 261105Cl 変更 // 261118Cl 変更前
@@ -322,7 +327,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             // completedDisks = bethe.Disks; // 261118Cl 変更前
             completedDisks = result.Disks;
             CompletedBeams = result.Beams; // 261118Cl 追加 (codex2 第 6 回)
-            LastRunFailure = null; // 261118Cl 追加 (codex2 第 11 回)
+            // LastRunFailure = null; // 261118Cl 追加 (codex2 第 11 回) // 261118Cl 変更前 (第 12 回: 冒頭で確定する)
             completedDirections = Directions;
             completedAlphaMax = runningAlphaMax;
             CompletedThicknesses = runningThicknesses;
