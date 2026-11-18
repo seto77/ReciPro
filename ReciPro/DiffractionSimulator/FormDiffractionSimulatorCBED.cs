@@ -116,6 +116,12 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     /// <summary>261118Cl 追加 (codex2 第 13 回): 表示中の円盤が今の条件で計算したものか (完了した run の条件と今の欄の条件が同じ)。
     /// 261118Cl 変更 (codex2 第 14 回): 結晶は参照の同一 (ReferenceEquals) で比べる</summary>
     public bool CompletedMatchesCurrent => completedRunKey is { } done && RunKey() is var now && ReferenceEquals(done.Crystal, now.Crystal) && done.Key == now.Key;
+    /// <summary>261118Cl 追加 (codex2 第 16 回): 反射の表に出してよい CBED の反射と、出せないときの理由。最後の要求が成功で終わり (<see cref="LastRunFailure"/> が null)、
+    /// かつ表示中の円盤が今の条件の結果のときだけ反射を返す (旧は条件だけを見て、同じ条件の再実行が失敗・取消した後も前の成功の反射を出した)。表の全部の入口がこれを使う</summary>
+    public (BetheMethod.Beam[] Beams, string Reason) CurrentTableBeams =>
+        LastRunFailure != null ? ([], $"The last CBED calculation did not succeed: {LastRunFailure}.")
+        : !CompletedMatchesCurrent ? ([], "The CBED disks shown were computed for other conditions (run the CBED calculation again).")
+        : (CompletedBeams, null);
     /// <summary>261118Cl 追加 (codex2 第 13 回): run の条件の鍵 (電圧・方位・N・収束角・分割・厚さ・LACBED・着衣の裾・候補の打ち切り方)。
     /// 261118Cl 変更 (codex2 第 14 回): 結晶の参照と組にし、文化に依らない数の書き方にし、表面・局所法線・非局所吸収・模型・倍率・境界の規則・解き方を足す</summary>
     private (Crystal Crystal, string Key) RunKey()
@@ -388,8 +394,11 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             catch (Exception ex) { LastRunFailure = $"the CBED result could not be displayed: {ex.Message}"; toolStripStatusLabel2.Text = "Failed:  "; toolStripStatusLabel1.Text = ex.Message; FormDiffractionSimulator.Draw(); return; }
 
             // FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy); // 261118Cl 変更前: 表は前に渡された配列のまま (所有元の Beams = SAED の反射になりえた)
-            FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy, CompletedBeams); // 261118Cl 変更 (codex2 第 6 回): 表示中の CBED の結果の反射
-            (completedRunKey, LastRunFailure) = (runningRunKey, null); // 261118Cl 追加 (codex2 第 13 回): 円盤・画像・表を公開した後に成功を確定 (下の Draw で描く)
+            // FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy, CompletedBeams); // 261118Cl 変更 (codex2 第 6 回): 表示中の CBED の結果の反射 // 261118Cl 変更前 (第 16 回)
+            (completedRunKey, LastRunFailure) = (runningRunKey, null); // 261118Cl 追加 (codex2 第 13 回): 円盤・画像を公開した後に成功を確定 (下の Draw で描く)
+            // 261118Cl 変更 (codex2 第 16 回): 表は成功を確定してから、ほかの入口と同じ判定 (CurrentTableBeams) で書く (UI のスレッドの同じ処理の中なので、間に別の処理は入らない)
+            var (tableBeams, tableReason) = CurrentTableBeams;
+            FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy, tableBeams, tableReason);
         }
         else
         {
@@ -532,8 +541,10 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         // FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy, CompletedBeams); // 261118Cl 変更 (codex2 第 6 回) // 261118Cl 変更前 (第 15 回)
         // 261118Cl 変更 (codex2 第 15 回): 回折の画面の表 (FormDiffractionSimulator の表の更新) と同じ判定。今の条件の結果でなければ空と理由
         //   (旧は描き直しの後に、前の CompletedBeams に今の電圧を付けて表を上書きした)
-        FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy, CompletedMatchesCurrent ? CompletedBeams : [],
-            CompletedMatchesCurrent ? null : "The CBED disks shown were computed for other conditions (run the CBED calculation again).");
+        // FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy, CompletedMatchesCurrent ? CompletedBeams : [],
+        //     CompletedMatchesCurrent ? null : "The CBED disks shown were computed for other conditions (run the CBED calculation again)."); // 261118Cl 変更前 (第 16 回)
+        var (tableBeams, tableReason) = CurrentTableBeams; // 261118Cl 変更 (codex2 第 16 回): 最後の要求の成功も見る
+        FormDiffractionSimulator.FormDiffractionBeamTable.SetTable(FormDiffractionSimulator.waveLengthControl.Energy, tableBeams, tableReason);
     }
 
 

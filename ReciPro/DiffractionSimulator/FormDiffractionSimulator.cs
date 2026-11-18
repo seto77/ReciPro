@@ -868,8 +868,9 @@ public partial class FormDiffractionSimulator : FormBase
             // if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 6 回): 収束ビームの画面では表示中の CBED の結果の反射 // 261118Cl 変更前 (第 14 回)
             //     FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedBeams);
             if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 14 回): 今の条件の CBED の結果だけ (違えば空と理由。旧は前の反射に今の電圧を付けた)
-                FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? FormDiffractionSimulatorCBED.CompletedBeams : [],
-                    FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? null : "The CBED disks shown were computed for other conditions (run the CBED calculation again).");
+                FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CurrentTableBeams.Beams, FormDiffractionSimulatorCBED.CurrentTableBeams.Reason); // 261118Cl 変更 (codex2 第 16 回): 最後の要求の成功も見る
+                // FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? FormDiffractionSimulatorCBED.CompletedBeams : [], // 261118Cl 変更前 (第 16 回、2 行)
+                    // FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? null : "The CBED disks shown were computed for other conditions (run the CBED calculation again).");
             // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更前 (codex2 第 10 回: 失敗した後も前の結果の Beams を今回のものとして出していた)
             //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
             // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更: 主の結晶が直前の描画で失敗したら空の表と失敗の文 // 261118Cl 変更前 (第 11 回)
@@ -3434,8 +3435,9 @@ public partial class FormDiffractionSimulator : FormBase
         // if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 6 回) // 261118Cl 変更前 (第 14 回)
         //     FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedBeams);
         if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CompletedBeams != null) // 261118Cl 変更 (codex2 第 14 回): 今の条件の CBED の結果だけ
-            FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? FormDiffractionSimulatorCBED.CompletedBeams : [],
-                FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? null : "The CBED disks shown were computed for other conditions (run the CBED calculation again).");
+            FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CurrentTableBeams.Beams, FormDiffractionSimulatorCBED.CurrentTableBeams.Reason); // 261118Cl 変更 (codex2 第 16 回): 最後の要求の成功も見る
+                // FormDiffractionBeamTable.SetTable(Energy, FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? FormDiffractionSimulatorCBED.CompletedBeams : [], // 261118Cl 変更前 (第 16 回、2 行)
+                // FormDiffractionSimulatorCBED.CompletedMatchesCurrent ? null : "The CBED disks shown were computed for other conditions (run the CBED calculation again).");
         // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更前 (codex2 第 10 回: 失敗した後も前の結果の Beams を今回のものとして出していた)
         //     FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
         // else if (radioButtonIntensityDynamical.Checked) // 261118Cl 変更: 主の結晶が直前の描画で失敗したら空の表と失敗の文 // 261118Cl 変更前 (第 11 回)

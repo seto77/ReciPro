@@ -349,11 +349,23 @@ jobs:
       # 261118Cl 追加 (codex2 第 15 回「配布物の native の数値検査」): 配布する x64 の payload そのもので、native の 3 flavor を 1 つずつ強制して
       #   ReciPro.exe --smoke を走らせ、検査つきの入口と数値の自己検査 (NativeWrapper.NumericSelfTest) の合格を要求する。
       #   旧い DLL・入口の欠け・有限性の判定が畳まれた DLL (NaN の入力やあふれを Ok と返す) をここで止める。avx512 はランナーの CPU が対応するときだけ。
-      #   GUI (glfw) と xraylib は arm64 の smoke の担当なので、ここでは native の行だけを見る (終了コードは表示のみ)
+      #   自動で選ばれる flavor は終了コード 0 と全項目 (glfw・xraylib を含む) まで、強制した各 flavor は native の行だけを見る (codex2 第 16 回)
       - name: "Smoke x64: native numeric self-test per flavor (portable payload)"
         shell: pwsh
         run: |
           $dir = "${{ steps.portable.outputs.publish_dir }}"
+          # 261118Cl (codex2 第 16 回): 自動で選ばれる flavor (利用者の既定) では通常の smoke を終了コード 0 と全項目まで要求する
+          $out = Join-Path $env:RUNNER_TEMP "smoke-x64-auto.txt"
+          $p = Start-Process -FilePath (Join-Path $dir "ReciPro.exe") -ArgumentList @("--smoke", "`"$out`"") -WorkingDirectory $dir -PassThru
+          if (-not $p.WaitForExit(600000)) { Stop-Process -Id $p.Id -Force; throw "--smoke (auto) did not finish within 10 minutes." }
+          if (-not (Test-Path $out)) { throw "--smoke (auto) produced no output file (exit $($p.ExitCode))." }
+          $result = Get-Content $out -Raw
+          Write-Host "== auto (exit $($p.ExitCode))"; Write-Host $result
+          if ($p.ExitCode -ne 0) { throw "--smoke (auto) reported failure (exit $($p.ExitCode))." }
+          foreach ($expect in @("arch=X64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True", "numericChecks=True", "numericSelfTest=True")) {
+            if ($result -notmatch [regex]::Escape($expect)) { throw "--smoke (auto) output missing expected '$expect'." }
+          }
+          # 各 flavor を強制して数値と DLL 名だけを要求する
           $flavors = @("generic", "avx2")
           if ([System.Runtime.Intrinsics.X86.Avx512F]::IsSupported) { $flavors += "avx512" } else { Write-Host "::warning::This runner has no AVX-512; the avx512 flavor is not smoke-tested." }
           foreach ($flavor in $flavors) {
