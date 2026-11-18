@@ -346,6 +346,32 @@ jobs:
           Write-Host "Portable payload staged (unsigned): $publishDir"
           "publish_dir=$publishDir" >> $env:GITHUB_OUTPUT
 
+      # 261118Cl 追加 (codex2 第 15 回「配布物の native の数値検査」): 配布する x64 の payload そのもので、native の 3 flavor を 1 つずつ強制して
+      #   ReciPro.exe --smoke を走らせ、検査つきの入口と数値の自己検査 (NativeWrapper.NumericSelfTest) の合格を要求する。
+      #   旧い DLL・入口の欠け・有限性の判定が畳まれた DLL (NaN の入力やあふれを Ok と返す) をここで止める。avx512 はランナーの CPU が対応するときだけ。
+      #   GUI (glfw) と xraylib は arm64 の smoke の担当なので、ここでは native の行だけを見る (終了コードは表示のみ)
+      - name: "Smoke x64: native numeric self-test per flavor (portable payload)"
+        shell: pwsh
+        run: |
+          $dir = "${{ steps.portable.outputs.publish_dir }}"
+          $flavors = @("generic", "avx2")
+          if ([System.Runtime.Intrinsics.X86.Avx512F]::IsSupported) { $flavors += "avx512" } else { Write-Host "::warning::This runner has no AVX-512; the avx512 flavor is not smoke-tested." }
+          foreach ($flavor in $flavors) {
+            $out = Join-Path $env:RUNNER_TEMP "smoke-x64-$flavor.txt"
+            if (Test-Path $out) { Remove-Item $out -Force }
+            $env:CRYSTALLOGRAPHY_NATIVE_FLAVOR = $flavor
+            $p = Start-Process -FilePath (Join-Path $dir "ReciPro.exe") -ArgumentList @("--smoke", "`"$out`"") -WorkingDirectory $dir -PassThru
+            if (-not $p.WaitForExit(600000)) { Stop-Process -Id $p.Id -Force; throw "--smoke ($flavor) did not finish within 10 minutes." }
+            Remove-Item Env:CRYSTALLOGRAPHY_NATIVE_FLAVOR
+            if (-not (Test-Path $out)) { throw "--smoke ($flavor) produced no output file (exit $($p.ExitCode))." }
+            $result = Get-Content $out -Raw
+            Write-Host "== $flavor (exit $($p.ExitCode))"; Write-Host $result
+            $dll = if ($flavor -eq "generic") { "Crystallography.Native.dll" } else { "Crystallography.Native.$flavor.dll" }
+            foreach ($expect in @("nativeEnabled=True", "nativeLibrary=$dll", "numericChecks=True", "numericSelfTest=True")) {
+              if ($result -notmatch [regex]::Escape($expect)) { throw "--smoke ($flavor) output missing expected '$expect'." }
+            }
+          }
+
       # 260613Cl 「Generate release checksums」ステップを廃止 (SHA256SUMS.txt の公開をやめる)。
       #   理由: 同一チャネル (同じ release ページ) に置く checksum は改竄対策にならず、
       #   リリースページで初心者を惑わす悪影響の方が大きい (作者決定)。真正性保証は SignPath 署名 (Phase D) で行う。
@@ -584,7 +610,8 @@ jobs:
           Write-Host $result
           if ($p.ExitCode -ne 0) { throw "--smoke reported failure (exit $($p.ExitCode)). See output above." }
           # glfwEnabled は単一ファイルバンドル内の glfw3.dll を実際に抽出・glfwInit して検査した結果
-          foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True")) {
+          # foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True")) { # 261118Cl 変更前
+          foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True", "numericChecks=True", "numericSelfTest=True")) { # 261118Cl: 数値の自己検査 (codex2 第 15 回)
             if ($result -notmatch [regex]::Escape($expect)) { throw "--smoke output missing expected '$expect'." }
           }
 
@@ -707,7 +734,8 @@ jobs:
           $result = Get-Content $out -Raw
           Write-Host $result
           if ($p.ExitCode -ne 0) { throw "--smoke reported failure (exit $($p.ExitCode))." }
-          foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True")) {
+          # foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True")) { # 261118Cl 変更前
+          foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True", "numericChecks=True", "numericSelfTest=True")) { # 261118Cl: 数値の自己検査 (codex2 第 15 回)
             if ($result -notmatch [regex]::Escape($expect)) { throw "--smoke output missing expected '$expect'." }
           }
 

@@ -183,6 +183,10 @@ internal static class Program
         }
         catch (Exception ex) { glfwError = ex.Message; }
 
+        // 261118Cl 追加 (codex2 第 15 回「配布物の native の数値検査」): 読み込んだ native DLL そのもので検査つきの入口を確かめる
+        //   (入口と ABI、正常な EVD・EBSD・CBED、NaN の入力・未収束・特異・あふれを状態で返すこと)。旧い DLL や有限性の判定が畳まれた DLL は False
+        var (numericSelfTest, numericSelfTestDetail) = NativeWrapper.NumericSelfTest();
+
         System.IO.File.WriteAllLines(outPath,
         [
             $"arch={System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture}",
@@ -194,8 +198,12 @@ internal static class Program
             $"xraylibError={Xraylib.LastLoadError}",
             $"glfwEnabled={glfwEnabled}",
             $"glfwError={glfwError}",
+            $"numericChecks={NativeWrapper.NumericChecksAvailable}", // 261118Cl 追加
+            $"numericSelfTest={numericSelfTest}", // 261118Cl 追加
+            $"numericSelfTestDetail={numericSelfTestDetail}", // 261118Cl 追加
         ]);
-        Environment.Exit(NativeWrapper.Enabled && Xraylib.Enabled && glfwEnabled ? 0 : 2);
+        // Environment.Exit(NativeWrapper.Enabled && Xraylib.Enabled && glfwEnabled ? 0 : 2); // 261118Cl 変更前
+        Environment.Exit(NativeWrapper.Enabled && Xraylib.Enabled && glfwEnabled && numericSelfTest ? 0 : 2); // 261118Cl 変更: 数値の自己検査も
     }
 
     // 260428Cl 追加

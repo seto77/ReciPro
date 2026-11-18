@@ -241,7 +241,8 @@ jobs:
           Write-Host $result
           if ($p.ExitCode -ne 0) { throw "--smoke reported failure (exit $($p.ExitCode)). See output above." }
           # glfwEnabled は単一ファイルバンドル内の glfw3.dll を実際に抽出・glfwInit して検査した結果
-          foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True")) {
+          # foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True")) { # 261118Cl 変更前
+          foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True", "numericChecks=True", "numericSelfTest=True")) { # 261118Cl: 数値の自己検査 (codex2 第 15 回)
             if ($result -notmatch [regex]::Escape($expect)) { throw "--smoke output missing expected '$expect'." }
           }
 
@@ -360,7 +361,8 @@ jobs:
           $result = Get-Content $out -Raw
           Write-Host $result
           if ($p.ExitCode -ne 0) { throw "--smoke reported failure (exit $($p.ExitCode))." }
-          foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True")) {
+          # foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True")) { # 261118Cl 変更前
+          foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True", "numericChecks=True", "numericSelfTest=True")) { # 261118Cl: 数値の自己検査 (codex2 第 15 回)
             if ($result -notmatch [regex]::Escape($expect)) { throw "--smoke output missing expected '$expect'." }
           }
 
