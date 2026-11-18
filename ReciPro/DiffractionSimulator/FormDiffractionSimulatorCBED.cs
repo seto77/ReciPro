@@ -97,6 +97,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     /// <summary>261105Cl 追加 (監査 #32・D7・D8): 計算中の run の Bethe (開始時の結晶のもの)・収束半角 (rad)・厚みの列。null = 計算していない。
     /// 計算中に主窓で結晶を替えても、Stop と完了の処理はこの run に対して行う (以前は Crystal.Bethe = 新しい結晶の Bethe に対して行っていた)</summary>
     private BetheMethod runningBethe;
+    private BetheMethod.CbedRunInfo runningRun; // 261118Cl 追加 (単位 5): 受理された run (進捗の分母 = 円の中の方向の数)
     private double runningAlphaMax;
     private double[] runningThicknesses = [];
 
@@ -156,7 +157,15 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     private void buttonSimulate_Click(object sender, EventArgs e)
     {
         //if (Crystal.Bethe.IsCBED_Busy) return; // 261105Cl 変更前
-        if (runningBethe != null || Crystal.Bethe.IsCBED_Busy) return; // 261105Cl 変更: 別の結晶の Bethe で計算中のときも二重に始めない
+        //if (runningBethe != null || Crystal.Bethe.IsCBED_Busy) return; // 261105Cl 変更: 別の結晶の Bethe で計算中のときも二重に始めない // 261118Cl 変更前
+        // 261118Cl 変更 (単位 5): 計算中・止めている途中は、黙って捨てずに理由を出す
+        if (runningBethe != null || Crystal.Bethe.IsCBED_Busy)
+        {
+            toolStripStatusLabel2.Text = runningBethe != null && !buttonStop.Visible ? "Stopping...  " : "Busy:  ";
+            toolStripStatusLabel1.Text = "the previous CBED calculation has not finished yet.";
+            return;
+        }
+        if (Division < 2) { toolStripStatusLabel2.Text = "Failed:  "; toolStripStatusLabel1.Text = "the disk resolution is too coarse for the convergence angle (fewer than 2 pixels across)."; return; } // 261118Cl 追加: 1 画素では方向が NaN になる
 
         buttonStop.Visible = true;
         sw2.Reset();
@@ -190,20 +199,39 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             solver = comboBoxSolver.Text.Contains("MKL") ? BetheMethod.Solver.MtxExp_MKL : BetheMethod.Solver.MtxExp_Eigen;
 
         // 261110Cl 追加: ビーム選択の方式。新方式では「回折波の数」の欄 = E1 の基準の本数 N (既定 300、遅い反射の繰り上げで明示は増える)
-        runningBethe.CbedBeamSelection = checkBoxDressedTail.Checked ? BetheMethod.CbedBeamSelectionMethod.DressedTail : BetheMethod.CbedBeamSelectionMethod.Legacy;
-        if (checkBoxDressedTail.Checked)
-            runningBethe.CbedDressedTail = BetheMethod.CbedDressedTailDefaults with { N = MaxNumOfBloch };
+        // runningBethe.CbedBeamSelection = checkBoxDressedTail.Checked ? BetheMethod.CbedBeamSelectionMethod.DressedTail : BetheMethod.CbedBeamSelectionMethod.Legacy; // 261118Cl 変更前 (3 行。所有元に残り続けた)
+        // if (checkBoxDressedTail.Checked)
+        //     runningBethe.CbedDressedTail = BetheMethod.CbedDressedTailDefaults with { N = MaxNumOfBloch };
+        // 261118Cl 変更 (単位 5): 方式と着衣の設定は RunCBED の引数で、この run にだけ渡す
+        var beamSelection = checkBoxDressedTail.Checked ? BetheMethod.CbedBeamSelectionMethod.DressedTail : BetheMethod.CbedBeamSelectionMethod.Legacy;
+        var dressedTail = checkBoxDressedTail.Checked ? BetheMethod.CbedDressedTailDefaults with { N = MaxNumOfBloch } : null;
 
         //Crystal.Bethe.RunCBED(MaxNumOfBloch, Voltage, Crystal.RotationMatrix, ThicknessArray, Directions, LACBED, solver, numericBoxThread.ValueInteger); // 261105Cl 変更前
         // runningBethe.RunCBED(MaxNumOfBloch, Voltage, Crystal.RotationMatrix, runningThicknesses, Directions, LACBED, solver, numericBoxThread.ValueInteger); // 261105Cl 変更 // 261110Cl 変更前
         // 261110Cl 変更 (codex2 第 37 回): 新方式では欄の値は新方式の N。従来へ戻るときの最大の Bloch 波の数は、覚えている従来の値 (切り替える前の欄の値)
         int legacyN = checkBoxDressedTail.Checked && legacyMaxNumOfG > 0 ? legacyMaxNumOfG : MaxNumOfBloch;
-        runningBethe.RunCBED(legacyN, Voltage, Crystal.RotationMatrix, runningThicknesses, Directions, LACBED, solver, numericBoxThread.ValueInteger);
+        // runningBethe.RunCBED(legacyN, Voltage, Crystal.RotationMatrix, runningThicknesses, Directions, LACBED, solver, numericBoxThread.ValueInteger); // 261118Cl 変更前
+        try // 261118Cl 変更 (単位 5): 受理されなかった (入力の検査・二重起動) ときは、始めた状態を戻して理由を出す
+        {
+            runningRun = runningBethe.RunCBED(legacyN, Voltage, Crystal.RotationMatrix, runningThicknesses, Directions, LACBED, solver, numericBoxThread.ValueInteger,
+                beamSelection: beamSelection, dressedTail: dressedTail);
+        }
+        catch (Exception ex) when (ex is ArgumentException or InvalidOperationException)
+        {
+            runningBethe.CBED_Completed -= Bethe_CbedCompleted;
+            runningBethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
+            runningBethe = null; runningRun = null;
+            FormDiffractionSimulator.SkipDrawing = false;
+            buttonStop.Visible = false;
+            toolStripStatusLabel2.Text = "Failed:  ";
+            toolStripStatusLabel1.Text = ex.Message;
+        }
     }
     private void buttonStop_Click(object sender, EventArgs e)
     {
         //Crystal.Bethe.CancelCBED(); // 261105Cl 変更前
         runningBethe?.CancelCBED(); // 261105Cl 変更 (監査 #32): 計算を始めた結晶の Bethe を止める
+        if (runningBethe != null) { toolStripStatusLabel2.Text = "Stopping...  "; toolStripStatusLabel1.Text = "waiting for the current step to finish."; } // 261118Cl 追加 (単位 5): 止まるまでの間を見せる
         //buttonSimulate.Text = "Simulate"; // 260520Cl: Execute→Simulate (用語統一) // 261105Cl 削除 (監査 D23): 計算中に文言を変えていないのに、英語の "Simulate" で上書きして ja などの訳 (「開始」) を消していた
         buttonStop.Visible = false;
     }
@@ -238,13 +266,16 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         else
         {
             var sec = sw1.ElapsedMilliseconds / 1000.0;
-            var progress = (int)(100.0 * current / DivisionNumber);
+            var total = runningRun?.ValidDirectionCount ?? DivisionNumber; // 261118Cl 変更 (単位 5): 分母はこの run の円の中の方向の数 (計算中に欄を変えてもずれない)
+            if (total <= 0 || current <= 0) { skipProgressChangedEvent = false; return; }
+            // var progress = (int)(100.0 * current / DivisionNumber); // 261118Cl 変更前 (DivisionNumber → total、以下 4 か所)
+            var progress = (int)(100.0 * current / total);
             if (progress <= 100)
-                toolStripProgressBar.Value = (int)(100.0 * current / DivisionNumber);
+                toolStripProgressBar.Value = progress;
             toolStripStatusLabel2.Text = message;
             toolStripStatusLabel1.Text = $"Elapsed time : {sec:f2} s,  time/pixel: ";
             toolStripStatusLabel1.Text += sec / current > 0.9 ? $"{sec / current:f2} s,  " : $"{sec / current * 1000:f2} ms, ";
-            toolStripStatusLabel1.Text += $"{100.0 * current / DivisionNumber:f1} % completed,  wait for {sec * (DivisionNumber - current) / current:f2} s";
+            toolStripStatusLabel1.Text += $"{100.0 * current / total:f1} % completed,  wait for {sec * (total - current) / current:f2} s";
         }
         // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
         skipProgressChangedEvent = false;
@@ -257,7 +288,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         //Crystal.Bethe.CBED_Completed -= Bethe_CbedCompleted; // 261105Cl 変更前
         //Crystal.Bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
         var bethe = runningBethe; // 261105Cl 変更 (監査 #32): 計算を始めた結晶の Bethe から外す
-        runningBethe = null;
+        var run = runningRun; // 261118Cl 追加 (単位 5)
+        runningBethe = null; runningRun = null;
         bethe.CBED_Completed -= Bethe_CbedCompleted;
         bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
         sw1.Stop(); // 261105Cl 追加: Bloch の段階で中止・例外になったとき、経過時間が流れ続けないように
@@ -274,10 +306,12 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             groupBoxOutput.Enabled = completedDisks != null;
         }
         //if (!e.Cancelled) // 261105Cl 変更前
-        else if (!e.Cancelled) // 261105Cl 変更
+        // else if (!e.Cancelled) // 261105Cl 変更 // 261118Cl 変更前
+        else if (!e.Cancelled && e.Result is BetheMethod.CbedSimulationResult result) // 261118Cl 変更 (単位 5): 結果はこの run の e.Result から読む (所有元のプロパティは、通知の中の描画で SAED などが書き換えうる)
         {
             // 261105Cl 追加 (監査 #32・D7): 完了した run だけを結果として公開する。厚みの選択の範囲も、計算した厚みの列に合わせる
-            completedDisks = bethe.Disks;
+            // completedDisks = bethe.Disks; // 261118Cl 変更前
+            completedDisks = result.Disks;
             completedDirections = Directions;
             completedAlphaMax = runningAlphaMax;
             CompletedThicknesses = runningThicknesses;
@@ -291,15 +325,18 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             toolStripStatusLabel2.Text = "100% completed!  ";
             toolStripStatusLabel1.Text = $"Total time: {sec1 + sec2:f2} s   ";
             toolStripStatusLabel1.Text += $"Bloch problem: {sec1:f2} s (";
-            toolStripStatusLabel1.Text += sec1 / DivisionNumber > 1 ? $"{sec1 / DivisionNumber:f2} s " : $"{sec1 / DivisionNumber * 1000:f2} ms ";
+            // toolStripStatusLabel1.Text += sec1 / DivisionNumber > 1 ? $"{sec1 / DivisionNumber:f2} s " : $"{sec1 / DivisionNumber * 1000:f2} ms "; // 261118Cl 変更前
+            int nPix = Math.Max(1, result.ValidDirectionCount); // 261118Cl 変更 (単位 5): この run の方向の数
+            toolStripStatusLabel1.Text += sec1 / nPix > 1 ? $"{sec1 / nPix:f2} s " : $"{sec1 / nPix * 1000:f2} ms ";
             toolStripStatusLabel1.Text += $"/pixel).   Compiling disks: {sec2:f2} s"; // 260520Cl: typo fix (pixes → pixel)
             // 261110Cl 追加: ビーム選択の方式 (新方式を要求して従来へ戻ったら理由も)。内訳はステータスの説明に
-            if (bethe.CbedBeamSelectionUsed == BetheMethod.CbedBeamSelectionMethod.DressedTail)
-                toolStripStatusLabel1.Text += $".   Beam selection: dressed tail ({bethe.Beams.Length} disks)";
-            else if (bethe.CbedBeamSelection == BetheMethod.CbedBeamSelectionMethod.DressedTail)
-                toolStripStatusLabel1.Text += $".   Beam selection: conventional (the dressed-tail method was not used: {bethe.CbedBeamSelectionFallbackReason})";
-            toolStripStatusLabel1.ToolTipText = bethe.CbedBeamSelectionUsed == BetheMethod.CbedBeamSelectionMethod.DressedTail ? bethe.CbedBeamSelectionDetail : "";
-            if (!string.IsNullOrEmpty(bethe.CbedSymmetryDetail)) toolStripStatusLabel1.Text += $".   Zone-axis {bethe.CbedSymmetryDetail}"; // 261111Cl 追加: 晶帯軸の対称で代表の方向だけを解いたとき
+            // 261118Cl 変更 (単位 5): 方式・ビーム数・理由・内訳・対称はこの run の結果から (旧は所有元の bethe.* を読んだ。以下 5 行の変更前は bethe.CbedBeamSelectionUsed・bethe.Beams.Length・bethe.CbedBeamSelection・bethe.CbedBeamSelectionFallbackReason・bethe.CbedBeamSelectionDetail・bethe.CbedSymmetryDetail)
+            if (result.Used == BetheMethod.CbedBeamSelectionMethod.DressedTail)
+                toolStripStatusLabel1.Text += $".   Beam selection: dressed tail ({result.Beams.Length} disks)";
+            else if (result.Requested == BetheMethod.CbedBeamSelectionMethod.DressedTail)
+                toolStripStatusLabel1.Text += $".   Beam selection: conventional (the dressed-tail method was not used: {result.FallbackReason})";
+            toolStripStatusLabel1.ToolTipText = result.Used == BetheMethod.CbedBeamSelectionMethod.DressedTail ? result.Detail : "";
+            if (!string.IsNullOrEmpty(result.SymmetryDetail)) toolStripStatusLabel1.Text += $".   Zone-axis {result.SymmetryDetail}"; // 261111Cl 追加: 晶帯軸の対称で代表の方向だけを解いたとき
 
             groupBoxOutput.Enabled = true;
             generateImage();

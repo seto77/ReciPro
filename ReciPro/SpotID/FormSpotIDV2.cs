@@ -1910,10 +1910,14 @@ public partial class FormSpotIDV2 : FormBase
     #region Refine thickness and direction機能
     /// <summary>261105Cl 追加 (監査 I11): 精密化を計算している結晶。完了ハンドラは、その間に主窓の結晶が替わっても、この結晶の Bethe から結果を読む</summary>
     private Crystal refineCrystal;
+    /// <summary>261118Cl 追加 (codex2 の単位 5): 受理された精密化の CBED の run (進捗の分母) と、開始時に選んでいた粒 (完了の処理で読み直さない)</summary>
+    private BetheMethod.CbedRunInfo refineRun;
+    private Grain refineGrain;
 
     private void ButtonRefineThicknessAndDirection_Click(object sender, EventArgs e)
     {
-        if (FormMain.Crystal.Bethe.IsCBED_Busy) return;
+        // if (FormMain.Crystal.Bethe.IsCBED_Busy) return; // 261118Cl 変更前
+        if (FormMain.Crystal.Bethe.IsCBED_Busy) { toolStripStatusLabelRefine.Text = "The previous CBED calculation has not finished yet."; return; } // 261118Cl 変更 (単位 5): 黙って捨てずに理由を出す
         // 261105Cl 追加: 粒が選ばれていないときは何もしない (旧は下の bindingSourceGrains.Current で例外になり、splitContainer1 が無効のまま残った)
         if (bindingSourceGrains.Current is not DataRowView) return;
         // 261105Cl 追加 (監査 I11): この精密化は電子線の動力学回折 (Bethe 法) と比べるので、電子線のときだけ行う (旧は X 線・中性子でも 200 kV の電子線で計算していた)
@@ -1972,7 +1976,23 @@ public partial class FormSpotIDV2 : FormBase
         //  電子線以外の線源ではこの動力学計算は意味を持たないので、従来どおり 200 kV のままにしておく
         var accVoltage = waveLengthControl1.WaveSource == WaveSource.Electron ? waveLengthControl1.Energy : 200; // 261105Cl
         //FormMain.Crystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, accVoltage, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto); // 261105Cl 変更前 (1 時間以上前の別セッションの変更なので残す)
-        refineCrystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, accVoltage, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto); // 261105Cl
+        // refineCrystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, accVoltage, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto); // 261105Cl // 261118Cl 変更前
+        // 261118Cl 変更 (codex2 の単位 5): CBED 画面の方式を受け継がず従来の選び方で。結果は完了の処理で使い切るので、前回の結果は受理の時点で手放す
+        //   (次の精密化の間に前回の大きな Disks を持ち続けない)。受理されなければ状態を戻して理由を出す
+        refineGrain = selectedGrain;
+        try
+        {
+            refineRun = refineCrystal.Bethe.RunCBED(numericBoxDiffractedWaves.ValueInteger, accVoltage, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto,
+                beamSelection: BetheMethod.CbedBeamSelectionMethod.Legacy, releasePreviousResult: true);
+        }
+        catch (Exception ex) when (ex is ArgumentException or InvalidOperationException)
+        {
+            refineCrystal.Bethe.CBED_Completed -= Bethe_CbedCompleted;
+            refineCrystal.Bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
+            refineRun = null; refineGrain = null;
+            splitContainer1.Enabled = true;
+            toolStripStatusLabelRefine.Text = ex.Message;
+        }
     }
 
     private void Bethe_CbedCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -1998,12 +2018,15 @@ public partial class FormSpotIDV2 : FormBase
         var spots = dataSet.DataTableSpot.Spots;
 
         //現在選択しているグレインと対応させる
-        var grain = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"];
+        // var grain = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"]; // 261118Cl 変更前: 完了の時点で選ばれている粒を読んでいた
+        var grain = refineGrain ?? (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"]; // 261118Cl 変更 (単位 5): 開始時の粒
+        var result = (BetheMethod.CbedSimulationResult)e.Result; // 261118Cl 追加 (単位 5): この run の結果 (失敗・取消は上で戻っている)
 
         //Bethe.Disk中のインデックスと、g.Indicesの対応付け
         //260718Cl 変更: index ごとの disk 全走査 + spots.Max の反復を、(H,K,L)→index 辞書 (重複キーは旧挙動どおり不採用) と maxA の一次計算に
         //var disks = FormMain.Crystal.Bethe.Disks; // 261105Cl 変更前
-        var disks = bethe.Disks; // 261105Cl
+        // var disks = bethe.Disks; // 261105Cl // 261118Cl 変更前
+        var disks = result.Disks; // 261118Cl 変更 (単位 5)
         var maxA = spots.Count > 0 ? spots.Max(s => s.A) : 1.0;//260718Cl (codex 指摘): 旧は foreach 内で呼ぶため空 spots で Max が走らなかった。ループ前 hoist に伴い空ガード
         var diskIndex = new Dictionary<(int H, int K, int L), int>();
         for (int i = 0; i < disks[0].Length; i++)
@@ -2021,10 +2044,10 @@ public partial class FormSpotIDV2 : FormBase
         // R = (oI_1 - a * cI_1)^2 + (oI_2 - a * cI_2)^2 + .... + (oI_n - a * cI_n)^2 の最小化問題
         //この時 a = (oI_1 * cI_1 + oI_2 * cI_2 + ... oI_n * cI_n) / (cI_1^2 + cI_2^2 + ... cI_n^2)
         //for (int t = 0; t < FormMain.Crystal.Bethe.Thicknesses.Length; t++) // 261105Cl 変更前
-        for (int t = 0; t < bethe.Thicknesses.Length; t++) // 261105Cl
+        for (int t = 0; t < result.Thicknesses.Length; t++) // 261105Cl // 261118Cl 変更 (単位 5): bethe.Thicknesses → result.Thicknesses (以下 3 か所も同じ)
         {
             //for (int r = 0; r < FormMain.Crystal.Bethe.BeamDirections.Length; r++) // 261105Cl 変更前
-            for (int r = 0; r < bethe.BeamDirections.Length; r++) // 261105Cl
+            for (int r = 0; r < result.BeamDirections.Length; r++) // 261105Cl
             {
                 //var numer = corrTable.Sum(c => c.intensity * disks[t][c.index].Amplitudes[r].MagnitudeSquared()); // 261105Cl 変更前
                 //var denom = corrTable.Sum(c => Math.Pow(disks[t][c.index].Amplitudes[r].MagnitudeSquared(), 2)); // 261105Cl 変更前
@@ -2042,8 +2065,8 @@ public partial class FormSpotIDV2 : FormBase
                         bestResidual = residual;
                         //bestThickness = FormMain.Crystal.Bethe.Thicknesses[t]; // 261105Cl 変更前
                         //bestDirection = FormMain.Crystal.Bethe.BeamDirections[r]; // 261105Cl 変更前
-                        bestThickness = bethe.Thicknesses[t]; // 261105Cl
-                        bestDirection = bethe.BeamDirections[r]; // 261105Cl
+                        bestThickness = result.Thicknesses[t]; // 261105Cl
+                        bestDirection = result.BeamDirections[r]; // 261105Cl
                     }
                 }
             }
@@ -2096,7 +2119,10 @@ public partial class FormSpotIDV2 : FormBase
         var current = e.ProgressPercentage;
         var solver = (string)e.UserState; var sec = sw.ElapsedMilliseconds / 1000.0;
         //var divisionNumber = FormMain.Crystal.Bethe.RotationArrayValidLength; // 261105Cl 変更前
-        var divisionNumber = refineCrystal.Bethe.RotationArrayValidLength; // 261105Cl (監査 I11: 計算している結晶の Bethe)
+        // var divisionNumber = refineCrystal.Bethe.RotationArrayValidLength; // 261105Cl (監査 I11: 計算している結晶の Bethe) // 261118Cl 変更前
+        var divisionNumber = refineRun?.ValidDirectionCount ?? refineCrystal.Bethe.RotationArrayValidLength; // 261118Cl 変更 (単位 5): この run の分母
+        if (solver != null && solver.StartsWith("Compiling disks", StringComparison.Ordinal)) divisionNumber = 1000; // 261118Cl 追加: 円盤の組み立ては千分率で届く
+        if (divisionNumber <= 0 || current <= 0) { skipProgressChangedEvent = false; return; } // 261118Cl 追加
         var progress = (int)(100.0 * current / divisionNumber);
         if (progress <= 100)
             toolStripProgressBar.Value = toolStripProgressBar.Maximum * current / divisionNumber;
