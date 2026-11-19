@@ -949,12 +949,14 @@ dinâmica por ondas de Bloch</value>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Número de feixes difratados (ondas de Bloch) incluídos no
 cálculo dinâmico de espalhamento múltiplo. Mais
-ondas melhoram a precisão mas tornam o cálculo mais lento.</value>
+ondas em geral melhoram a precisão mas tornam o cálculo mais lento.
+A intensidade de cada reflexão pode subir ou descer conforme o número.</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Número de feixes difratados (ondas de Bloch) incluídos no
 cálculo dinâmico de espalhamento múltiplo. Mais
-ondas melhoram a precisão mas tornam o cálculo mais lento.</value>
+ondas em geral melhoram a precisão mas tornam o cálculo mais lento.
+A intensidade de cada reflexão pode subir ou descer conforme o número.</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>Define a espessura da amostra</value>

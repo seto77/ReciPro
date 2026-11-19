@@ -143,7 +143,9 @@
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>動力学的な多重散乱計算に含める回折波（Bloch
 波）の本数 (1〜2048) を設定します。多いほど
-精度は上がりますが計算は遅くなります。</value>
+一般に精度は上がりますが計算は遅くなります。
+個々の反射の強度は本数で上下することがあり
+ます。</value>
   </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
     <value>収束半角 α</value>

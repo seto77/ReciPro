@@ -289,7 +289,8 @@ pas égaux.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Nombre de faisceaux diffractés (vecteurs g) inclus
 dans le calcul dynamique en ondes de Bloch (1-2048) ;
-plus de faisceaux améliore la précision mais ralentit le calcul.</value>
+plus de faisceaux améliore en général la précision mais ralentit le calcul.
+L'intensité en un point donné du diagramme peut augmenter ou diminuer selon ce nombre.</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>Première tranche de profondeur (la moins profonde) du master

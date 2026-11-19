@@ -679,8 +679,9 @@ This mode does not widen the semi-angle itself.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Number of diffracted beams (Bloch waves)
 included in the dynamical, multiple-scattering
-calculation, 1-2048. More waves improve
-accuracy but slow the computation.</value>
+calculation, 1-2048. More waves generally improve
+accuracy but slow the computation. Individual
+reflection intensities can rise or fall with the number.</value>
   </data>
   <data name="numericBoxAlphaMax.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>

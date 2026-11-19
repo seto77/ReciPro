@@ -168,8 +168,9 @@ non allarga il semiangolo stesso.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Numero di fasci diffratti (onde di Bloch)
 inclusi nel calcolo dinamico a diffusione
-multipla, 1-2048. Più onde migliorano la
-precisione ma rallentano il calcolo.</value>
+multipla, 1-2048. Più onde in genere migliorano la
+precisione ma rallentano il calcolo. L'intensità dei
+singoli riflessi può salire o scendere con il numero.</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Massimo angolo di semi-convergenza (mrad)</value>

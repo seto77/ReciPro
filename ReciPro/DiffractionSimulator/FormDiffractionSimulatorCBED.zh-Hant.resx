@@ -167,7 +167,8 @@ MKL 函式庫）。結果應相同，但速度
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>納入動力學多重散射計算的繞射波
 （布洛赫波）數目，1-2048。波數越多
-精度越高，但計算越慢。</value>
+精度一般越高，但計算越慢。個別反射
+的強度可能隨數目增減而升降。</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>最大半會聚角（mrad）</value>

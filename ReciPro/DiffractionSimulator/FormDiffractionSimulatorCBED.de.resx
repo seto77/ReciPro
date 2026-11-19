@@ -163,7 +163,8 @@ LACBED). Der Halbwinkel selbst wird dadurch nicht größer.</value>
     <value>Anzahl der gebeugten Strahlen (Bloch-Wellen),
 die in die dynamische Mehrfachstreuungs-
 Berechnung einbezogen werden, 1-2048. Mehr Wellen verbessern
-die Genauigkeit, verlangsamen aber die Berechnung.</value>
+meist die Genauigkeit, verlangsamen aber die Berechnung.
+Die Intensität einzelner Reflexe kann mit der Anzahl steigen oder fallen.</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Maximaler halber Konvergenzwinkel (mrad)</value>

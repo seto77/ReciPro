@@ -165,8 +165,9 @@ n'élargit pas le demi-angle lui-même.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Nombre d'ondes diffractées (ondes de Bloch) incluses
 dans le calcul dynamique de diffusion multiple, 1-2048.
-Un plus grand nombre d'ondes améliore la précision
-mais ralentit le calcul.</value>
+Un plus grand nombre d'ondes améliore en général la précision
+mais ralentit le calcul. L'intensité d'une réflexion donnée
+peut augmenter ou diminuer selon ce nombre.</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Demi-angle de convergence maximal (mrad)</value>

@@ -944,12 +944,14 @@ Beam/Top/Right 方向導引箭頭。</value>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>設定動力學多重散射計算中所含的
 繞射波（布洛赫波）數量。波數越多
-精度越高，但計算速度越慢。</value>
+精度一般越高，但計算速度越慢。個別
+反射的強度可能隨波數增減而升降。</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>設定動力學多重散射計算中所含的
 繞射波（布洛赫波）數量。波數越多
-精度越高，但計算速度越慢。</value>
+精度一般越高，但計算速度越慢。個別
+反射的強度可能隨波數增減而升降。</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>設定試料的厚度</value>

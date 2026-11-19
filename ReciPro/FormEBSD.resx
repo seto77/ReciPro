@@ -1235,7 +1235,8 @@ and the first interval. Editing a box makes the steps equal.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Number of diffracted beams (g-vectors) included
 in the Bloch-wave dynamical calculation (1-2048);
-more beams improve accuracy but slow calculation.</value>
+more beams generally improve accuracy but slow calculation.
+Intensities at individual points of the pattern can rise or fall with the number.</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxNumOfG.Name" xml:space="preserve">
     <value>numericBoxMaxNumOfG</value>

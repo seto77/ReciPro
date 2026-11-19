@@ -1040,7 +1040,9 @@ Beam/Top/Right の方向ガイド矢印を表示します。</value>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>動力学的な多重散乱計算に含める
 回折波（Bloch 波）の本数を設定します。多い
-ほど精度は上がりますが計算は遅くなります。</value>
+ほど一般に精度は上がりますが計算は遅くなり
+ます。個々の反射の強度は本数で上下すること
+があります。</value>
   </data>
   <data name="numericBoxThickness.HeaderText" xml:space="preserve">
     <value>試料厚さ</value>
@@ -1344,7 +1346,9 @@ Beam/Top/Right の方向ガイド矢印を表示します。</value>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>動力学的な多重散乱計算に含める
 回折波（Bloch 波）の本数を設定します。多い
-ほど精度は上がりますが計算は遅くなります。</value>
+ほど一般に精度は上がりますが計算は遅くなり
+ます。個々の反射の強度は本数で上下すること
+があります。</value>
   </data>
   <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
     <value>試料厚さを設定</value>

@@ -167,8 +167,9 @@ Auto 时此项不可用。</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>纳入动力学多重散射计算的
 衍射波（布洛赫波）数目，1-2048。
-波的数目越多精度越高，
-但计算越慢。</value>
+波的数目越多精度一般越高，
+但计算越慢。单个反射的强度
+可能随数目增减而升降。</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>最大会聚半角（mrad）</value>

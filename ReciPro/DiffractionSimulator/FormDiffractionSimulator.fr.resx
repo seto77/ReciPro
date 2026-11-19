@@ -937,12 +937,14 @@ par ondes de Bloch (dynamique)</value>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Nombre de faisceaux diffractés (ondes de Bloch) inclus dans
 le calcul dynamique de diffusion multiple. Davantage
-d'ondes améliore la précision mais ralentit le calcul.</value>
+d'ondes améliore en général la précision mais ralentit le calcul.
+L'intensité d'une réflexion donnée peut augmenter ou diminuer selon ce nombre.</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Nombre de faisceaux diffractés (ondes de Bloch) inclus dans
 le calcul dynamique de diffusion multiple. Davantage
-d'ondes améliore la précision mais ralentit le calcul.</value>
+d'ondes améliore en général la précision mais ralentit le calcul.
+L'intensité d'une réflexion donnée peut augmenter ou diminuer selon ce nombre.</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>Définir une épaisseur de l'échantillon</value>

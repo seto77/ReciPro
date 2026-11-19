@@ -943,12 +943,14 @@ con onde di Bloch (dinamica)</value>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Numero di fasci diffratti (onde di Bloch) inclusi nel
 calcolo dinamico di scattering multiplo. Un numero maggiore
-di onde migliora la precisione ma rallenta il calcolo.</value>
+di onde in genere migliora la precisione ma rallenta il calcolo.
+L'intensità dei singoli riflessi può salire o scendere con il numero.</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Numero di fasci diffratti (onde di Bloch) inclusi nel
 calcolo dinamico di scattering multiplo. Un numero maggiore
-di onde migliora la precisione ma rallenta il calcolo.</value>
+di onde in genere migliora la precisione ma rallenta il calcolo.
+L'intensità dei singoli riflessi può salire o scendere con il numero.</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>Imposta lo spessore del campione</value>

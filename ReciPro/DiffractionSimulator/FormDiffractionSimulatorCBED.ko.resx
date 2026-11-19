@@ -167,8 +167,9 @@
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>동역학적 다중 산란 계산에 포함되는
 회절파(블로흐파)의 개수(1~2048)입니다.
-파동 수가 많을수록 정확도는 높아지지만
-계산은 느려집니다.</value>
+파동 수가 많을수록 대체로 정확도는 높아지지만
+계산은 느려집니다. 개별 반사의 강도는
+개수에 따라 오르내릴 수 있습니다.</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>최대 반수렴각(mrad)</value>

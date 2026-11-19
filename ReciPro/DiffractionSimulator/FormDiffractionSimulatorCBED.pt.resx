@@ -165,8 +165,9 @@ claro). Este modo não alarga o semiângulo em si.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Número de feixes difratados (ondas de Bloch)
 incluídos no cálculo dinâmico de espalhamento
-múltiplo, 1-2048. Mais ondas melhoram a
-precisão, mas tornam o cálculo mais lento.</value>
+múltiplo, 1-2048. Mais ondas em geral melhoram a
+precisão, mas tornam o cálculo mais lento. A intensidade
+de cada reflexão pode subir ou descer conforme o número.</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Semiângulo máximo de convergência (mrad)</value>

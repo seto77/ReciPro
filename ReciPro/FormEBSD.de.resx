@@ -290,7 +290,8 @@ Feldes ergibt gleiche Abstände.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Anzahl der gebeugten Strahlen (g-Vektoren), die in die
 dynamische Bloch-Wellen-Rechnung einbezogen werden (1-2048);
-mehr Strahlen erhöhen die Genauigkeit, verlangsamen aber die Rechnung.</value>
+mehr Strahlen erhöhen meist die Genauigkeit, verlangsamen aber die Rechnung.
+Die Intensität an einzelnen Stellen des Musters kann mit der Anzahl steigen oder fallen.</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
     <value>Erste (flachste) Tiefenscheibe des Master-Patterns, in nm.

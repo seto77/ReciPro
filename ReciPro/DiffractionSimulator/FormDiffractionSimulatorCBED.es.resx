@@ -165,8 +165,9 @@ ensancha el semiángulo en sí.</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Número de haces difractados (ondas de Bloch)
 incluidos en el cálculo dinámico de dispersión
-múltiple, 1-2048. Más ondas mejoran la
-precisión pero ralentizan el cálculo.</value>
+múltiple, 1-2048. Más ondas suelen mejorar la
+precisión pero ralentizan el cálculo. La intensidad
+de cada reflexión puede subir o bajar según el número.</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Semiángulo de convergencia máximo (mrad)</value>

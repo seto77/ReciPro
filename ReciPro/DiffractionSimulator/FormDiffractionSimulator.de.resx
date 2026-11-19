@@ -950,12 +950,14 @@ Beugungsberechnung (dynamisch)</value>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Anzahl der gebeugten Strahlen (Bloch-Wellen), die in die
 dynamische Mehrfachstreuungsberechnung einbezogen werden. Mehr
-Wellen verbessern die Genauigkeit, verlangsamen aber die Berechnung.</value>
+Wellen verbessern meist die Genauigkeit, verlangsamen aber die Berechnung.
+Die Intensität einzelner Reflexe kann mit der Anzahl steigen oder fallen.</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Anzahl der gebeugten Strahlen (Bloch-Wellen), die in die
 dynamische Mehrfachstreuungsberechnung einbezogen werden. Mehr
-Wellen verbessern die Genauigkeit, verlangsamen aber die Berechnung.</value>
+Wellen verbessern meist die Genauigkeit, verlangsamen aber die Berechnung.
+Die Intensität einzelner Reflexe kann mit der Anzahl steigen oder fallen.</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>Legt eine Dicke der Probe fest</value>

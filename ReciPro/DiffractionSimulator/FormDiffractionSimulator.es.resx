@@ -945,13 +945,15 @@ ondas de Bloch (dinámico)</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Número de haces difractados (ondas de Bloch) incluidos en el
-cálculo dinámico de dispersión múltiple. Más ondas mejoran la
-precisión pero ralentizan el cálculo.</value>
+cálculo dinámico de dispersión múltiple. Más ondas suelen mejorar la
+precisión pero ralentizan el cálculo. La intensidad de cada
+reflexión puede subir o bajar según el número.</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Número de haces difractados (ondas de Bloch) incluidos en el
-cálculo dinámico de dispersión múltiple. Más ondas mejoran la
-precisión pero ralentizan el cálculo.</value>
+cálculo dinámico de dispersión múltiple. Más ondas suelen mejorar la
+precisión pero ralentizan el cálculo. La intensidad de cada
+reflexión puede subir o bajar según el número.</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>Establece el espesor de la muestra</value>

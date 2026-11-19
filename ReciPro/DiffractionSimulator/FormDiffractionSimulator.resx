@@ -6963,7 +6963,8 @@ the cone more smoothly but take longer.</value>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Number of diffracted beams (Bloch waves) included in
 the dynamical, multiple-scattering calculation. More
-waves improve accuracy but slow the computation.</value>
+waves generally improve accuracy but slow the computation.
+Individual reflection intensities can rise or fall with the number.</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Name" xml:space="preserve">
     <value>numericBoxNumOfBlochWave</value>

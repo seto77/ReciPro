@@ -271,7 +271,9 @@ PCHIP補間で圧縮し、生成ソースを出力します。</value>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Bloch 波動力学計算に含める回折波（g
 ベクトル）の本数 (1-2048) を設定します。多い
-ほど精度は上がりますが計算は遅くなります。</value>
+ほど一般に精度は上がりますが計算は遅くなり
+ます。パターンの個々の場所の強度は本数で上
+下することがあります。</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
     <value>非局所吸収モデル</value>
