@@ -7,6 +7,15 @@
 
 This page describes what changed in each version of ReciPro. The [release page on GitHub](https://github.com/seto77/ReciPro/releases) gives only a one-line summary and the download links for each version; the details are written here. Versions from v.4.919 on have a section of their own; older versions are listed with their one-line summary.
 
+## v.4.953 (2026-11-21)
+
+Fixed a start-up crash of v.4.952 at 150 % display scaling. Dynamical calculations (SAED/PED, CBED, STEM, HRTEM, Kikuchi, EBSD) now report numeric failures instead of showing stale results; fixed EBSD master patterns on hexagonal grids.
+
+- **Start-up (fix)**: with the Windows display scale at 150 %, v.4.952 stopped at start-up with 'Parameter is not valid'. The diffraction simulator, drawn while still hidden, lost its drawing buffer when its pending layout ran; it now prepares the reflections before taking the buffer.
+- **Dynamical calculations**: numeric failures in SAED/PED, CBED, STEM, HRTEM, the Kikuchi bands and the EBSD master pattern (non-finite values, failed eigen-decompositions) are detected and reported, and the layer or image is no longer shown as a current result. The reflection table and the macros (SpotInfo, SaveAsPng, Simulate and the image-saving functions) use only results computed for the current conditions and raise an error otherwise.
+- **EBSD**: on trigonal and hexagonal grids above 512, block centres outside the hexagon gave pixels solved for another direction (up to 70 % off in a test on Mg); fixed. With TDS on, the back-scattered source is aligned with each direction's incident beam (the Si calibration moves within its repeat spread; intensities change by 0.02–0.2 %). Grids above 1024 share the beam set over 3 × 3 instead of 5 × 5 blocks (more accurate; at grid 2048 about 7 % more CPU time and 2 GiB more memory).
+- **Other fixes**: ALCHEMI could use the mean inner potential U₀ of a previously calculated voltage (yields off by up to 4.6 ppm). CBED and ALCHEMI runs keep the settings they started with. The formula images of the CTF window were drawn at about 0.29 times their size; numeric boxes no longer show '-0.000', and a few cut-off labels were fixed.
+
 ## v.4.952 (2026-11-17)
 
 Moved to .NET 11 (the MSI build needs .NET Desktop Runtime 11.0). Fixed many calculation errors (STEM TDS/EDX depth phase, anisotropic ADPs, CIF/AMCSD reading, EBSD, diffraction simulator, Spot ID); the Monte Carlo uses a new stopping power.
