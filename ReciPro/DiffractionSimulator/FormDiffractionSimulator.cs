@@ -735,6 +735,14 @@ public partial class FormDiffractionSimulator : FormBase
         if (formMain == null || formMain.Crystal == null || FormDiffractionSimulatorGeometry == null || formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
         { LastDrawStatus = new(false, "no crystal or detector geometry", null); return false; }
 
+        // 261105Cl 追加 (監査 C8): EBSD・ステレオ投影などが同じ結晶の VectorOfG を自分の条件 (d の範囲・Flag1・色なし) で作り直した後は、
+        //  黒いスポット・禁制反射の設定の無視などになっていた。この画面の SetVector が作った配列でなければ作り直してから描く
+        // 261121Cl 移動: g を取る前に済ませる。SetVector はステータスバーの文字を書き換え、レイアウトがまだ済んでいない画面
+        //  (表示の拡大率 150 % で、起動中のまだ表示していないこの画面) ではそれで graphicsBox の大きさが変わる。大きさが変わると
+        //  描画バッファが作り直されて先に取った g が破棄され、下の FillRectangle が "Parameter is not valid" で落ちて起動できなかった (v.4.952)
+        if (toolStripButtonDiffractionSpots.Checked && formMain.Crystals.Any(c => !ownVectorOfG.TryGetValue(c, out var own) || !ReferenceEquals(own, c.VectorOfG))) // 261105Cl
+            SetVector(); // 261105Cl
+
         //グラフィックスボックスに描画する場合
         g ??= graphicsBox.Graphics;
 
@@ -742,10 +750,8 @@ public partial class FormDiffractionSimulator : FormBase
         { LastDrawStatus = new(false, "the projection could not be set", null); return false; }
         var layerFailures = new List<string>(); // 261118Cl 追加 (codex2 第 11 回)
 
-        // 261105Cl 追加 (監査 C8): EBSD・ステレオ投影などが同じ結晶の VectorOfG を自分の条件 (d の範囲・Flag1・色なし) で作り直した後は、
-        //  黒いスポット・禁制反射の設定の無視などになっていた。この画面の SetVector が作った配列でなければ作り直してから描く
-        if (toolStripButtonDiffractionSpots.Checked && formMain.Crystals.Any(c => !ownVectorOfG.TryGetValue(c, out var own) || !ReferenceEquals(own, c.VectorOfG))) // 261105Cl
-            SetVector(); // 261105Cl
+        //if (toolStripButtonDiffractionSpots.Checked && formMain.Crystals.Any(c => !ownVectorOfG.TryGetValue(c, out var own) || !ReferenceEquals(own, c.VectorOfG))) // 261105Cl // 261121Cl 移動前 (g を取る前へ移した)
+        //    SetVector(); // 261105Cl // 261121Cl 移動前
 
         //背景を描画
         //if (drawOverlappedImage) // 261105Cl 変更前 (監査 C10): 重ね画像を描かないとき (検出器範囲の保存・コピーで "No") は背景まで描かず、透明な画像になっていた
