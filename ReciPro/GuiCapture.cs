@@ -43,6 +43,8 @@ internal sealed class GuiCapture : GuiCaptureHarness
             imageSimulator.FormMain = captureFormMain; // 260524Cl: Simulate が FormMain.Crystal を参照するため注入
         else if (form is FormCTF ctf)
             ctf.FormImageSimulator = captureFormMain?.FormImageSimulator; // 261118Cl 追加: 単独で作ると親が無く、ImageMode などで例外になってグラフが空のまま撮れていた (アプリでは像シミュレータが自分を渡す)
+        else if (form is FormPolycrystallineDiffractionSimulator poly)
+            poly.formMain = captureFormMain; // 261123Cl 追加: 単独で作ると formMain が無く、Load と結晶一覧の選択で NullReferenceException になっていた (アプリでは FormMain が自分を渡す)
         else if (form is FormStereonet stereonet)
             stereonet.formMain = captureFormMain; // 260524Cl: 軸/極のプロットは formMain.Crystal が必要
         else if (form is FormRotationMatrix rotation)
