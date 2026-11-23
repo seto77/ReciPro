@@ -372,7 +372,7 @@ simulation</value>
     <value>Bloch-Wellen-Einstellungen</value>
   </data>
   <data name="numericBoxNumOfBlochWave.HeaderText" xml:space="preserve">
-    <value>Anzahl gebeugter Wellen</value>
+    <value>Gebeugte Wellen</value>
   </data>
   <data name="numericBoxThickness.HeaderText" xml:space="preserve">
     <value>Dicke</value>

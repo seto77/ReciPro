@@ -6937,7 +6937,7 @@ the cone more smoothly but take longer.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxNumOfBlochWave.HeaderText" xml:space="preserve">
-    <value>Number of diffracted waves</value>
+    <value>Diffracted waves</value>
   </data>
   <data name="numericBoxNumOfBlochWave.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 20</value>

@@ -61,7 +61,7 @@ The moment **Precession (electron)** is selected, **Intensity calculation** is f
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:numericBoxNumOfBlochWave, numericBoxThickness) -->
 | Parameter | Description | Recommended |
 |-----------|-------------|-------------|
-| **Number of diffracted waves** | Number of Bloch waves included in the eigenvalue problem (8–1000, default 240). Larger values give more accurate intensities but the computation time grows as $O(N^3)$ | 50–200 |
+| **Diffracted waves** | Number of Bloch waves included in the eigenvalue problem (8–1000, default 240). Larger values give more accurate intensities but the computation time grows as $O(N^3)$ | 50–200 |
 | **Thickness** | Specimen thickness used in the dynamical calculation (nm; 0.01–10000, default 50) | — |
 
 The computational cost is roughly "number of steps × Bloch-wave calculation per direction". For details of the dynamical calculation, see [Dynamical calculation (Bloch-wave method)](../appendix/a3-bloch-wave/calculation.md).

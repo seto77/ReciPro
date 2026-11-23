@@ -146,7 +146,8 @@ internal static class Program
             new GuiCapture().Run(captureDir);  // 260525Cl: captureDir が null なら docs/src/assets/cap-{en|ja}-auto が既定。260820Cl: インスタンス化
             // GuiCapture.Run(args.Length >= 2 ? args[1] : null); // 260525Cl 旧
             // return; // 旧実装: Main の return だけでは OpenTK/WinForms 周辺スレッドが残り DLL を掴むことがあった
-            Environment.Exit(0); // (260523Ch) --capture 完了後は開発者ツールとしてプロセスを確実に終了させる (この後に到達しないため旧 return; は削除)
+            //Environment.Exit(0); // (260523Ch) --capture 完了後は開発者ツールとしてプロセスを確実に終了させる (この後に到達しないため旧 return; は削除)
+            Environment.Exit(Environment.ExitCode); // 261123Cl 変更: ハーネスが画面を取れずに止めたときの 2 を返す (通常は 0)
         }
 
         //260807Cl 追加: **1 フォームだけを DrawToBitmap で撮る headless モード**。

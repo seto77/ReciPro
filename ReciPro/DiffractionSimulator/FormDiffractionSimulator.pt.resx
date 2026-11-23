@@ -372,7 +372,7 @@ intensidade relativa</value>
     <value>Configurações de ondas de Bloch</value>
   </data>
   <data name="numericBoxNumOfBlochWave.HeaderText" xml:space="preserve">
-    <value>Número de ondas difratadas</value>
+    <value>Ondas difratadas</value>
   </data>
   <data name="numericBoxThickness.HeaderText" xml:space="preserve">
     <value>Espessura</value>

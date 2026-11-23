@@ -366,7 +366,7 @@ intensidad relativa</value>
     <value>Ajustes de ondas de Bloch</value>
   </data>
   <data name="numericBoxNumOfBlochWave.HeaderText" xml:space="preserve">
-    <value>Número de ondas difractadas</value>
+    <value>Ondas difractadas</value>
   </data>
   <data name="numericBoxThickness.HeaderText" xml:space="preserve">
     <value>Espesor</value>

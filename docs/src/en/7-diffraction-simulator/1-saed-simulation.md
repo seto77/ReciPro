@@ -76,7 +76,7 @@ Active only when **Intensity calculation = Dynamical**.
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:numericBoxNumOfBlochWave, numericBoxThickness) -->
 | Parameter | Description |
 |-----------|-------------|
-| **Number of diffracted waves** | Number of Bloch waves included in the eigenvalue problem (8–1000, default 240). Larger values give more accurate intensities but increase computation time as $O(N^3)$ |
+| **Diffracted waves** | Number of Bloch waves included in the eigenvalue problem (8–1000, default 240). Larger values give more accurate intensities but increase computation time as $O(N^3)$ |
 | **Thickness** | Specimen thickness (nm) used in the dynamical calculation (0.01–10000 nm, default 50 nm) |
 
 ---

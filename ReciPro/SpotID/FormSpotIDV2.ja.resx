@@ -497,10 +497,12 @@ X 線・中性子では常に無視します（運動学的に扱うため）。
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="Range.HeaderText" xml:space="preserve">
-    <value>範囲 (半径)</value>
+    <value>範囲
+(半径)</value>
   </data>
   <data name="A.HeaderText" xml:space="preserve">
-    <value>A (強度)</value>
+    <value>A
+(強度)</value>
   </data>
   <data name="Column2.HeaderText" xml:space="preserve">
     <value>直接</value>

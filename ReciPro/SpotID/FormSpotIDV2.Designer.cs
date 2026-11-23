@@ -332,7 +332,8 @@ namespace ReciPro
             Range.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(Range, "Range");
             Range.Name = "Range";
-            // 
+            Range.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable; // 261123Cl 追加: 並べ替えの矢印の場所を空け、ja の見出し「範囲」が 1 字ずつ折れないようにする (値はほぼ全部同じで並べ替えの用が無い)
+            //
             // x0
             // 
             x0.DataPropertyName = "x0";

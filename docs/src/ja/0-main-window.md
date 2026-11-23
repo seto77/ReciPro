@@ -236,7 +236,7 @@ UI 言語を切り替えます。English・日本語・Deutsch・Français・Esp
 原子リストの行を右クリックして **等価な原子位置を表示** を選ぶと、空間群の対称操作で生成される全ての等価位置を一覧する小ウィンドウが開きます。**コピー** ボタンで一覧をタブ区切りテキストとしてコピーできます（表計算ソフトへの貼り付けなどに便利です）。
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: AtomControl.resx: radioButtonOriginShiftPlus/Minus, buttonOriginShift1–9, buttonOriginShiftCustom) -->
-**原点シフト**: 全原子座標の原点を移動します。**+** / **−** で符号を選び、プリセットのベクトル — (⅛ ⅛ ⅛)、(¼ ¼ ¼)、(0 ¼ ⅛)、(¼ 0 ¼)、(0 ¼ ¼)、(¼ ¼ 0)、(¼ −¼ 0)、(¼ −¼ ¼)、(0 ¼ −⅛) — のボタンを押すか、**Apply custom shift** で任意量を指定します。
+**原点シフト**: 全原子座標の原点を移動します。**+** / **−** で符号を選び、プリセットのベクトル — (⅛ ⅛ ⅛)、(¼ ¼ ¼)、(0 ¼ ⅛)、(¼ 0 ¼)、(0 ¼ ¼)、(¼ ¼ 0)、(¼ −¼ 0)、(¼ −¼ ¼)、(0 ¼ −⅛) — のボタンを押すか、**カスタムシフトを適用** で任意量を指定します。
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: AtomControl.ja.resx buttonAddAtom/buttonChange/buttonAtomUp/buttonAtomDown/buttonDeleteAtom, tabPageDebyeWaller, label3, label13, radioButtonIsotoropy/Anisotropy, tabPageScatteringFactor, label4-6) -->
 **原子変位 (B)**（原子変位パラメータ。デバイ–ワラー因子・温度因子とも呼ぶ）:
