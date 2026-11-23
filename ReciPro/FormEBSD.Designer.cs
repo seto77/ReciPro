@@ -254,6 +254,18 @@
             flowLayoutPanelThicknessRange = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelAbsorptionOptions = new System.Windows.Forms.FlowLayoutPanel();
             statusStripMain = new System.Windows.Forms.StatusStrip();
+            menuStripEBSD = new System.Windows.Forms.MenuStrip();
+            fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            openExperimentalImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparatorFile1 = new System.Windows.Forms.ToolStripSeparator();
+            loadMasterPatternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            saveMasterPatternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            saveMasterPatternMovieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparatorFile2 = new System.Windows.Forms.ToolStripSeparator();
+            saveEbsdPatternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            copyEbsdPatternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparatorFile3 = new System.Windows.Forms.ToolStripSeparator();
+            closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             toolStripStatusLabelProgress = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabelSummary = new System.Windows.Forms.ToolStripStatusLabel();
@@ -335,6 +347,7 @@
             flowLayoutPanelThicknessRange.SuspendLayout();
             flowLayoutPanelAbsorptionOptions.SuspendLayout();
             statusStripMain.SuspendLayout();
+            menuStripEBSD.SuspendLayout();
             flowLayoutPanelMasterPatternSelectors.SuspendLayout();
             panelMasterPattern3D.SuspendLayout();
             groupBoxMasterPattern.SuspendLayout();
@@ -2290,6 +2303,78 @@
             // 
             splitContainer2.Panel2.Controls.Add(groupBoxEBSDPattern);
             // 
+            // menuStripEBSD (261124Cl 追加: File メニュー)
+            // 
+            resources.ApplyResources(menuStripEBSD, "menuStripEBSD");
+            menuStripEBSD.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem });
+            menuStripEBSD.Name = "menuStripEBSD";
+            // 
+            // fileToolStripMenuItem
+            // 
+            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { openExperimentalImageToolStripMenuItem, toolStripSeparatorFile1, loadMasterPatternToolStripMenuItem, saveMasterPatternToolStripMenuItem, saveMasterPatternMovieToolStripMenuItem, toolStripSeparatorFile2, saveEbsdPatternToolStripMenuItem, copyEbsdPatternToolStripMenuItem, toolStripSeparatorFile3, closeToolStripMenuItem });
+            captureExtender.SetCapture(fileToolStripMenuItem, true);
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
+            // 
+            // openExperimentalImageToolStripMenuItem
+            // 
+            openExperimentalImageToolStripMenuItem.Name = "openExperimentalImageToolStripMenuItem";
+            resources.ApplyResources(openExperimentalImageToolStripMenuItem, "openExperimentalImageToolStripMenuItem");
+            openExperimentalImageToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O;
+            openExperimentalImageToolStripMenuItem.Click += openExperimentalImageToolStripMenuItem_Click;
+            // 
+            // toolStripSeparatorFile1
+            // 
+            toolStripSeparatorFile1.Name = "toolStripSeparatorFile1";
+            resources.ApplyResources(toolStripSeparatorFile1, "toolStripSeparatorFile1");
+            // 
+            // loadMasterPatternToolStripMenuItem
+            // 
+            loadMasterPatternToolStripMenuItem.Name = "loadMasterPatternToolStripMenuItem";
+            resources.ApplyResources(loadMasterPatternToolStripMenuItem, "loadMasterPatternToolStripMenuItem");
+            loadMasterPatternToolStripMenuItem.Click += buttonLoadMasterPattern_Click;
+            // 
+            // saveMasterPatternToolStripMenuItem
+            // 
+            saveMasterPatternToolStripMenuItem.Name = "saveMasterPatternToolStripMenuItem";
+            resources.ApplyResources(saveMasterPatternToolStripMenuItem, "saveMasterPatternToolStripMenuItem");
+            saveMasterPatternToolStripMenuItem.Click += buttonSaveMasterPattern_Click;
+            // 
+            // saveMasterPatternMovieToolStripMenuItem
+            // 
+            saveMasterPatternMovieToolStripMenuItem.Name = "saveMasterPatternMovieToolStripMenuItem";
+            resources.ApplyResources(saveMasterPatternMovieToolStripMenuItem, "saveMasterPatternMovieToolStripMenuItem");
+            saveMasterPatternMovieToolStripMenuItem.Click += buttonSaveMovie_Click;
+            // 
+            // toolStripSeparatorFile2
+            // 
+            toolStripSeparatorFile2.Name = "toolStripSeparatorFile2";
+            resources.ApplyResources(toolStripSeparatorFile2, "toolStripSeparatorFile2");
+            // 
+            // saveEbsdPatternToolStripMenuItem
+            // 
+            saveEbsdPatternToolStripMenuItem.Name = "saveEbsdPatternToolStripMenuItem";
+            resources.ApplyResources(saveEbsdPatternToolStripMenuItem, "saveEbsdPatternToolStripMenuItem");
+            saveEbsdPatternToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S;
+            saveEbsdPatternToolStripMenuItem.Click += buttonSaveImage_Click;
+            // 
+            // copyEbsdPatternToolStripMenuItem
+            // 
+            copyEbsdPatternToolStripMenuItem.Name = "copyEbsdPatternToolStripMenuItem";
+            resources.ApplyResources(copyEbsdPatternToolStripMenuItem, "copyEbsdPatternToolStripMenuItem");
+            copyEbsdPatternToolStripMenuItem.Click += buttonCopyImage_Click;
+            // 
+            // toolStripSeparatorFile3
+            // 
+            toolStripSeparatorFile3.Name = "toolStripSeparatorFile3";
+            resources.ApplyResources(toolStripSeparatorFile3, "toolStripSeparatorFile3");
+            // 
+            // closeToolStripMenuItem
+            // 
+            closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            resources.ApplyResources(closeToolStripMenuItem, "closeToolStripMenuItem");
+            closeToolStripMenuItem.Click += closeToolStripMenuItem_Click;
+            // 
             // FormEBSD
             // 
             AllowDrop = true;
@@ -2299,6 +2384,8 @@
             Controls.Add(splitContainer1);
             Controls.Add(panelSpacerBottom);
             Controls.Add(statusStripMain);
+            Controls.Add(menuStripEBSD);
+            MainMenuStrip = menuStripEBSD;
             Name = "FormEBSD";
             FormClosing += FormEBSD_FormClosing;
             Load += FormEBSD_Load;
@@ -2439,6 +2526,8 @@
             splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
+            menuStripEBSD.ResumeLayout(false);
+            menuStripEBSD.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -2510,6 +2599,18 @@
         private System.Windows.Forms.GroupBox groupBoxSimulationParameters;
         private System.Windows.Forms.TabPage tabPageOverlays;
         private System.Windows.Forms.StatusStrip statusStripMain;
+        private System.Windows.Forms.MenuStrip menuStripEBSD;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openExperimentalImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorFile1;
+        private System.Windows.Forms.ToolStripMenuItem loadMasterPatternToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveMasterPatternToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveMasterPatternMovieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorFile2;
+        private System.Windows.Forms.ToolStripMenuItem saveEbsdPatternToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyEbsdPatternToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorFile3;
+        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelProgress;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelSummary;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;

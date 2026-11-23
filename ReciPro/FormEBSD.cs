@@ -850,6 +850,9 @@ public partial class FormEBSD : FormBase
         Visible = false;
     }
 
+    /// <summary>261124Cl 追加 (作者指示 11-24): File → 閉じる。× と同じく隠す (<see cref="FormEBSD_FormClosing"/>)</summary>
+    private void closeToolStripMenuItem_Click(object sender, EventArgs e) => Close();
+
     #endregion
 
     #region DrawGeometry() OpenGLで入射電子、試料、検出器の幾何学を描画し、ステレオネット上に検出器の輪郭を描画
@@ -2312,6 +2315,13 @@ public partial class FormEBSD : FormBase
         // 複数ファイル時はドロップ順で最初の対応画像だけを読む
         if (e.Data?.GetData(DataFormats.FileDrop) is string[] files && files.FirstOrDefault(IsExperimentalImageFile) is string file)
             ReadExperimentalImage(file);
+    }
+
+    /// <summary>261124Cl 追加 (作者指示 11-24): File → 実測画像を開く。これまで実測画像はドラッグ＆ドロップでしか読めなかった (読み込みは同じ <see cref="ReadExperimentalImage"/>)</summary>
+    private void openExperimentalImageToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        using var dlg = new OpenFileDialog { Filter = "Image files (*.tif;*.tiff;*.png;*.bmp;*.jpg;*.jpeg)|*.tif;*.tiff;*.png;*.bmp;*.jpg;*.jpeg|All files (*.*)|*.*" };
+        if (dlg.ShowDialog(this) == DialogResult.OK) ReadExperimentalImage(dlg.FileName);
     }
 
     /// <summary>実測 EBSD 画像を読み込み、検出器のピクセル数 (DetWidth/DetHeight) を画像サイズに合わせ、検出器全体が収まる表示にして再描画する。260724Cl 追加
@@ -3859,6 +3869,9 @@ public partial class FormEBSD : FormBase
             CrystalName = Crystal.Name ?? "", CrystalFingerprint = MasterPatternFile.CrystalFingerprint(Crystal), BeamEnergyKeV = Voltage,
             Creator = $"ReciPro {Application.ProductVersion}", Note = "Build conditions were not recorded.",
         };
+        // 261124Cl 追加 (形式 v2): 結晶を同梱する。構築したパターンは構築時に入っている。v1 から読んだパターンは入っていないので、指紋が今の結晶と同じときだけ今の結晶を入れる
+        if (string.IsNullOrEmpty(info.CrystalData) && Crystal != null && info.CrystalFingerprint == MasterPatternFile.CrystalFingerprint(Crystal))
+            info.CrystalData = Convert.ToBase64String(Crystal2.Serialize(Crystal.ToCrystal2()));
         var sw = Stopwatch.StartNew();
         try
         {
@@ -3888,7 +3901,16 @@ public partial class FormEBSD : FormBase
         if (masterPatternEbsd.IsBuilding || FormMain?.Crystal == null) return false;
         var sw = Stopwatch.StartNew();
         toolStripStatusLabelSummary.Text = "Loading MasterPattern...";
-        toolStripStatusLabelDetail.Text = path;
+        // toolStripStatusLabelDetail.Text = path; // 261124Cl 変更前
+        // 261124Cl 変更 (作者決定 11-24): 本体 (約 1 GB) を読む間、見出しの条件 (結晶・電圧・格子) を見せる (見本の画像は入れない)
+        try
+        {
+            var head = MasterPatternFile.ReadInfo(path);
+            toolStripStatusLabelDetail.Text = $"{System.IO.Path.GetFileName(path)}: {head.CrystalName}, {head.BeamEnergyKeV:g6} keV"
+                + (head.GridSize > 0 ? $", grid {head.GridSize}, {head.Energies.Length} energies, {head.Depths.Length} depths" : "")
+                + $", {head.BackscatteredElectronCount:N0} MC electrons";
+        }
+        catch (Exception) { toolStripStatusLabelDetail.Text = path; } // 読めない見出しは、下の本体の読み込みが理由を出す
         MasterPattern mp; MasterPatternFileInfo info; EbsdBackscatteredElectron[] electrons;
         try { (mp, info, electrons) = await Task.Run(() => MasterPatternFile.Load(path)); }
         catch (Exception ex)
@@ -3951,7 +3973,11 @@ public partial class FormEBSD : FormBase
         ActivateMasterPattern("MasterPattern loaded",
             $"{System.IO.Path.GetFileName(path)}: {mp.GridSize} x {mp.GridSize}, {mp.Energies.Length} energies, {mp.Depths.Length} depths, {info.CrystalName}, {info.BeamEnergyKeV:g6} keV, "
             + (reuseElectrons ? $"{electrons.Length:N0} saved MC electrons" : "new Monte Carlo")
-            + (problem != null ? $" | WARNING: {problem}" : ""),
+            + (problem != null ? $" | WARNING: {problem}" : "")
+            // 261124Cl 追加 (作者決定 11-24): 物理の版が今と違うファイルは、警告して読む
+            + (info.PhysicsVersion != MasterPatternFile.PhysicsVersion
+                ? $" | WARNING: made with physics version {(string.IsNullOrEmpty(info.PhysicsVersion) ? "(not recorded)" : info.PhysicsVersion)}, now {MasterPatternFile.PhysicsVersion}. Build again for the current physics."
+                : ""),
             sw.Elapsed);
         return true;
     }
@@ -3999,13 +4025,41 @@ public partial class FormEBSD : FormBase
         using var dlg = new OpenFileDialog { Filter = masterPatternFileFilter };
         if (dlg.ShowDialog(this) != DialogResult.OK) return;
         string problem;
-        try { problem = MasterPatternFile.CheckCompatibility(MasterPatternFile.ReadInfo(dlg.FileName), Crystal, Voltage); }
+        MasterPatternFileInfo head;
+        // try { problem = MasterPatternFile.CheckCompatibility(MasterPatternFile.ReadInfo(dlg.FileName), Crystal, Voltage); } // 261124Cl 変更前 (見出しを下でも使う)
+        try { head = MasterPatternFile.ReadInfo(dlg.FileName); problem = MasterPatternFile.CheckCompatibility(head, Crystal, Voltage); }
         catch (Exception ex) // 別の種類のファイル・壊れた見出し・新しい版の形式
         {
             toolStripStatusLabelSummary.Text = "MasterPattern load failed";
             toolStripStatusLabelDetail.Text = ex.Message;
             MessageBox.Show(this, ex.Message, "Load master pattern", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
+        }
+        // 261124Cl 追加 (作者決定 11-24): 合わないとき、ファイルに同梱の結晶 (形式 v2) があれば、それを一覧に足し、電圧も合わせて読み込めるようにする
+        if (problem != null)
+        {
+            bool crystalDiffers = head.CrystalFingerprint != MasterPatternFile.CrystalFingerprint(Crystal);
+            bool voltageDiffers = Math.Abs(head.BeamEnergyKeV - Voltage) > 1E-6;
+            var fileCrystal = crystalDiffers ? head.GetCrystal() : null;
+            // 同梱の結晶が見出しの指紋と同じに戻るときだけ使う (戻らなければ足しても読めない)
+            bool canFix = (!crystalDiffers || fileCrystal != null && MasterPatternFile.CrystalFingerprint(fileCrystal) == head.CrystalFingerprint)
+                && (crystalDiffers || voltageDiffers) && head.BeamEnergyKeV > 0;
+            if (canFix)
+            {
+                var steps = new List<string>();
+                if (crystalDiffers) steps.Add($"add the file's crystal (\"{head.CrystalName}\") to the crystal list and select it");
+                if (voltageDiffers) steps.Add($"set the accelerating voltage to {head.BeamEnergyKeV:g6} kV");
+                if (MessageBox.Show(this, problem + "\r\n\r\n" + char.ToUpper(steps[0][0]) + string.Join(", and ", steps)[1..] + ", then load the file?",
+                    "Load master pattern", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                    return;
+                if (crystalDiffers)
+                {
+                    FormMain.listBox.Items.Add(fileCrystal);
+                    FormMain.listBox.SelectedIndex = FormMain.listBox.Items.Count - 1; // 主画面が今の結晶を替え、この窓の SetCrystal も呼ぶ
+                }
+                if (voltageDiffers) waveLengthControl.Energy = head.BeamEnergyKeV;
+                problem = MasterPatternFile.CheckCompatibility(head, Crystal, Voltage);
+            }
         }
         if (problem != null)
         {

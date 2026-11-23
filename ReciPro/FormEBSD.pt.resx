@@ -233,7 +233,7 @@ grade de pixels do detector em vez de uma imagem.</value>
     <value>Salvar</value>
   </data>
   <data name="buttonSaveMasterPattern.ToolTip" xml:space="preserve">
-    <value>Salva o padrão mestre atual (e, se existirem, os elétrons de
+    <value>Salva o master pattern atual (e, se existirem, os elétrons de
 Monte Carlo) em um arquivo (*.rpmp). O arquivo pode ser
 carregado depois em vez de construir o padrão novamente.</value>
   </data>
@@ -241,10 +241,34 @@ carregado depois em vez de construir o padrão novamente.</value>
     <value>Carregar</value>
   </data>
   <data name="buttonLoadMasterPattern.ToolTip" xml:space="preserve">
-    <value>Carrega um arquivo de padrão mestre (*.rpmp) salvo para o mesmo
+    <value>Carrega um arquivo de master pattern (*.rpmp) salvo para o mesmo
 cristal e a mesma tensão de aceleração. Se o arquivo contiver os
 elétrons de Monte Carlo e a inclinação da amostra e o limiar de
 energia forem iguais, o cálculo de Monte Carlo é omitido.</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arquivo</value>
+  </data>
+  <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Abrir imagem experimental...</value>
+  </data>
+  <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Carregar master pattern...</value>
+  </data>
+  <data name="saveMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Salvar master pattern...</value>
+  </data>
+  <data name="saveMasterPatternMovieToolStripMenuItem.Text" xml:space="preserve">
+    <value>Salvar vídeo do master pattern...</value>
+  </data>
+  <data name="saveEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Salvar padrão EBSD...</value>
+  </data>
+  <data name="copyEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copiar padrão EBSD</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Fechar</value>
   </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>Copiar</value>

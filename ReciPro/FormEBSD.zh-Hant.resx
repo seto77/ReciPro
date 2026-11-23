@@ -243,6 +243,30 @@
 若檔案包含蒙地卡羅電子, 且試料傾斜與能量閾值與目前相同,
 則不再執行蒙地卡羅。</value>
   </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>開啟實驗影像...</value>
+  </data>
+  <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>載入主圖樣...</value>
+  </data>
+  <data name="saveMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>儲存主圖樣...</value>
+  </data>
+  <data name="saveMasterPatternMovieToolStripMenuItem.Text" xml:space="preserve">
+    <value>儲存主圖樣影片...</value>
+  </data>
+  <data name="saveEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>儲存 EBSD 圖樣...</value>
+  </data>
+  <data name="copyEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>複製 EBSD 圖樣</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>關閉</value>
+  </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>複製</value>
   </data>

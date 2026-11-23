@@ -6681,6 +6681,165 @@ does the same. There is no undo.</value>
   <data name="&gt;&gt;statusStripMain.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="menuStripEBSD.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="menuStripEBSD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 4</value>
+  </data>
+  <data name="menuStripEBSD.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 2, 0, 2</value>
+  </data>
+  <data name="menuStripEBSD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1402, 25</value>
+  </data>
+  <data name="menuStripEBSD.TabIndex" type="System.Int32, mscorlib">
+    <value>153</value>
+  </data>
+  <data name="menuStripEBSD.Text" xml:space="preserve">
+    <value>menuStripEBSD</value>
+  </data>
+  <data name="&gt;&gt;menuStripEBSD.Name" xml:space="preserve">
+    <value>menuStripEBSD</value>
+  </data>
+  <data name="&gt;&gt;menuStripEBSD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStripEBSD.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStripEBSD.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 21</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
+    <value>fileToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="openExperimentalImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Open experimental image...</value>
+  </data>
+  <data name="openExperimentalImageToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+O</value>
+  </data>
+  <data name="&gt;&gt;openExperimentalImageToolStripMenuItem.Name" xml:space="preserve">
+    <value>openExperimentalImageToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;openExperimentalImageToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripSeparatorFile1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 6</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparatorFile1.Name" xml:space="preserve">
+    <value>toolStripSeparatorFile1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparatorFile1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="loadMasterPatternToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Load master pattern...</value>
+  </data>
+  <data name="&gt;&gt;loadMasterPatternToolStripMenuItem.Name" xml:space="preserve">
+    <value>loadMasterPatternToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;loadMasterPatternToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="saveMasterPatternToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="saveMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save master pattern...</value>
+  </data>
+  <data name="&gt;&gt;saveMasterPatternToolStripMenuItem.Name" xml:space="preserve">
+    <value>saveMasterPatternToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;saveMasterPatternToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="saveMasterPatternMovieToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="saveMasterPatternMovieToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save master pattern movie...</value>
+  </data>
+  <data name="&gt;&gt;saveMasterPatternMovieToolStripMenuItem.Name" xml:space="preserve">
+    <value>saveMasterPatternMovieToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;saveMasterPatternMovieToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripSeparatorFile2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 6</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparatorFile2.Name" xml:space="preserve">
+    <value>toolStripSeparatorFile2</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparatorFile2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="saveEbsdPatternToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="saveEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save EBSD pattern...</value>
+  </data>
+  <data name="saveEbsdPatternToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+S</value>
+  </data>
+  <data name="&gt;&gt;saveEbsdPatternToolStripMenuItem.Name" xml:space="preserve">
+    <value>saveEbsdPatternToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;saveEbsdPatternToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="copyEbsdPatternToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="copyEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copy EBSD pattern</value>
+  </data>
+  <data name="&gt;&gt;copyEbsdPatternToolStripMenuItem.Name" xml:space="preserve">
+    <value>copyEbsdPatternToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;copyEbsdPatternToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripSeparatorFile3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 6</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparatorFile3.Name" xml:space="preserve">
+    <value>toolStripSeparatorFile3</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparatorFile3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="closeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="&gt;&gt;closeToolStripMenuItem.Name" xml:space="preserve">
+    <value>closeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;closeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="toolStripProgressBar.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
@@ -7786,7 +7945,7 @@ does the same. There is no undo.</value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1410, 761</value>
+    <value>1410, 786</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>

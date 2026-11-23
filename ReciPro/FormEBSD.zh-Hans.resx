@@ -232,16 +232,40 @@
     <value>保存</value>
   </data>
   <data name="buttonSaveMasterPattern.ToolTip" xml:space="preserve">
-    <value>将当前的主图样 (以及蒙特卡罗电子, 如有) 保存到
+    <value>将当前的主花样 (以及蒙特卡罗电子, 如有) 保存到
 文件 (*.rpmp)。之后可以直接加载, 无需重新构建。</value>
   </data>
   <data name="buttonLoadMasterPattern.Text" xml:space="preserve">
     <value>加载</value>
   </data>
   <data name="buttonLoadMasterPattern.ToolTip" xml:space="preserve">
-    <value>加载针对同一晶体和加速电压保存的主图样文件 (*.rpmp)。
+    <value>加载针对同一晶体和加速电压保存的主花样文件 (*.rpmp)。
 若文件包含蒙特卡罗电子, 且样品倾斜和能量阈值与当前相同,
 则不再运行蒙特卡罗。</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>打开实验图像...</value>
+  </data>
+  <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>加载主花样...</value>
+  </data>
+  <data name="saveMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>保存主花样...</value>
+  </data>
+  <data name="saveMasterPatternMovieToolStripMenuItem.Text" xml:space="preserve">
+    <value>保存主花样视频...</value>
+  </data>
+  <data name="saveEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>保存 EBSD花样...</value>
+  </data>
+  <data name="copyEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>复制 EBSD花样</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>关闭</value>
   </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>复制</value>

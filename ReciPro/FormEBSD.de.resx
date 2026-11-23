@@ -247,6 +247,30 @@ Kristall und dieselbe Beschleunigungsspannung gespeichert wurde.
 Enthält sie die Monte-Carlo-Elektronen und stimmen Probenkippung
 und Energieschwelle überein, entfällt der Monte-Carlo-Lauf.</value>
   </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Datei</value>
+  </data>
+  <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Experimentelles Bild öffnen...</value>
+  </data>
+  <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Master-Pattern laden...</value>
+  </data>
+  <data name="saveMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Master-Pattern speichern...</value>
+  </data>
+  <data name="saveMasterPatternMovieToolStripMenuItem.Text" xml:space="preserve">
+    <value>Video des Master-Patterns speichern...</value>
+  </data>
+  <data name="saveEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>EBSD-Muster speichern...</value>
+  </data>
+  <data name="copyEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>EBSD-Muster kopieren</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>Kopieren</value>
   </data>

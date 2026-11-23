@@ -247,6 +247,30 @@ même cristal et la même tension d'accélération. Si le fichier contient
 les électrons Monte-Carlo et que l'inclinaison de l'échantillon et le
 seuil d'énergie sont identiques, le calcul Monte-Carlo est omis.</value>
   </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Fichier</value>
+  </data>
+  <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ouvrir une image expérimentale...</value>
+  </data>
+  <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Charger le master pattern...</value>
+  </data>
+  <data name="saveMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Enregistrer le master pattern...</value>
+  </data>
+  <data name="saveMasterPatternMovieToolStripMenuItem.Text" xml:space="preserve">
+    <value>Enregistrer la vidéo du master pattern...</value>
+  </data>
+  <data name="saveEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Enregistrer le motif EBSD...</value>
+  </data>
+  <data name="copyEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copier le motif EBSD</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>Copier</value>
   </data>

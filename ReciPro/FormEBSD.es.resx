@@ -243,6 +243,30 @@ mismo cristal y el mismo voltaje de aceleración. Si el archivo
 contiene los electrones de Monte Carlo y la inclinación de la muestra
 y el umbral de energía coinciden, se omite el cálculo de Monte Carlo.</value>
   </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Archivo</value>
+  </data>
+  <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Abrir imagen experimental...</value>
+  </data>
+  <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Cargar patrón maestro...</value>
+  </data>
+  <data name="saveMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Guardar patrón maestro...</value>
+  </data>
+  <data name="saveMasterPatternMovieToolStripMenuItem.Text" xml:space="preserve">
+    <value>Guardar vídeo del patrón maestro...</value>
+  </data>
+  <data name="saveEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Guardar patrón EBSD...</value>
+  </data>
+  <data name="copyEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copiar patrón EBSD</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>Copiar</value>
   </data>

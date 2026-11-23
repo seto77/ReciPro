@@ -246,6 +246,30 @@ cristallo e la stessa tensione di accelerazione. Se il file contiene
 gli elettroni Monte Carlo e l'inclinazione del campione e la soglia
 di energia coincidono, il calcolo Monte Carlo viene saltato.</value>
   </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Apri immagine sperimentale...</value>
+  </data>
+  <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Carica master pattern...</value>
+  </data>
+  <data name="saveMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Salva master pattern...</value>
+  </data>
+  <data name="saveMasterPatternMovieToolStripMenuItem.Text" xml:space="preserve">
+    <value>Salva video del master pattern...</value>
+  </data>
+  <data name="saveEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Salva pattern EBSD...</value>
+  </data>
+  <data name="copyEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copia pattern EBSD</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>Copia</value>
   </data>

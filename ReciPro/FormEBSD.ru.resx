@@ -234,18 +234,42 @@
     <value>Сохранить</value>
   </data>
   <data name="buttonSaveMasterPattern.ToolTip" xml:space="preserve">
-    <value>Сохранить текущий мастер-паттерн (и, если есть, электроны
+    <value>Сохранить текущую мастер-картину (и, если есть, электроны
 Монте-Карло) в файл (*.rpmp). Файл можно загрузить позже
-вместо повторного построения паттерна.</value>
+вместо повторного построения картины.</value>
   </data>
   <data name="buttonLoadMasterPattern.Text" xml:space="preserve">
     <value>Загрузить</value>
   </data>
   <data name="buttonLoadMasterPattern.ToolTip" xml:space="preserve">
-    <value>Загрузить файл мастер-паттерна (*.rpmp), сохранённый для того же
+    <value>Загрузить файл мастер-картины (*.rpmp), сохранённый для того же
 кристалла и того же ускоряющего напряжения. Если в файле есть
 электроны Монте-Карло, а наклон образца и порог энергии совпадают,
 расчёт Монте-Карло не выполняется.</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Открыть экспериментальное изображение...</value>
+  </data>
+  <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Загрузить мастер-картину...</value>
+  </data>
+  <data name="saveMasterPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сохранить мастер-картину...</value>
+  </data>
+  <data name="saveMasterPatternMovieToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сохранить видео мастер-картины...</value>
+  </data>
+  <data name="saveEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сохранить картину EBSD...</value>
+  </data>
+  <data name="copyEbsdPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>Копировать картину EBSD</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Закрыть</value>
   </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>Копировать</value>

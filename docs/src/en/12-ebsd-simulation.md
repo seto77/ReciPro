@@ -14,6 +14,22 @@ The status bar at the bottom shows the progress of the running calculation and a
 
 ---
 
+## File menu
+
+![File menu](../assets/cap-en-auto/FormEBSD.menuStripEBSD.fileToolStripMenuItem.png)
+
+| Item | Action |
+|------|--------|
+| **Open experimental image...** (<kbd>CTRL</kbd>+<kbd>O</kbd>) | Load a TIFF / PNG / BMP / JPEG image as the experimental EBSD image (the same as dropping the file on the window; see [Experimental image](#experimental-image)) |
+| **Load master pattern...** / **Save master pattern...** | The same as **Load** / **Save** below the master pattern (see [Master pattern](#master-pattern)) |
+| **Save master pattern movie...** | The same as **Save movie** in the **3D** tab of the master pattern |
+| **Save EBSD pattern...** (<kbd>CTRL</kbd>+<kbd>S</kbd>) / **Copy EBSD pattern** | The same as **Save** / **Copy** above the EBSD pattern |
+| **Close** | Close the window |
+
+<!-- 261124Cl 追加: FormEBSD の File メニュー -->
+
+---
+
 ## Keyboard & mouse shortcuts
 
 The centre EBSD (Kikuchi) pattern and the right-hand master-pattern views respond to different mouse actions.
@@ -24,7 +40,8 @@ The centre EBSD (Kikuchi) pattern and the right-hand master-pattern views respon
 | Left-drag the pattern near the centre | Tilt the crystal |
 | Left-drag the pattern's outer area | Spin the crystal |
 | Double-click the pattern | Pick the detector sub-cell under the cursor and show its statistics (while **Zone axis** picking is on: add a zone axis; see [Zone-axis picking](#zone-axis-picking)) |
-| Drop an image file on the window | Load it as the experimental EBSD image |
+| Drop an image file on the window, or <kbd>CTRL</kbd>+<kbd>O</kbd> | Load it as the experimental EBSD image |
+| <kbd>CTRL</kbd>+<kbd>S</kbd> | Save the EBSD pattern (the same as **Save** above the pattern) |
 | Left-drag a 3-D view (geometry / master sphere) | Rotate it |
 | Right-drag, or Mouse wheel, on a 3-D view | Zoom |
 | <kbd>CTRL</kbd> + Right double-click a 3-D view | Toggle orthographic / perspective |
@@ -118,7 +135,7 @@ The master pattern is the backscatter diffraction intensity over all directions,
 
 If any atom site has no atomic displacement parameter (B = 0), a dialog appears when **Build master pattern** is pressed. Sites with B = 0 cause no absorption, and if every site has B = 0 the master pattern with **Non-local source** is blank. **OK** sets an isotropic B = 0.5 Å² for those sites and builds (the value can be changed later in the main window); **Cancel** stops without building. Sites with anisotropic parameters (Bij) are left as they are.
 
-**Save** writes the current master pattern to a file (`*.rpmp`, ReciPro master pattern). When the Monte-Carlo electrons are available they are saved too. **Load** reads such a file instead of building the pattern again; the file must have been made for the same crystal (cell, atoms and B) and the same accelerating voltage, otherwise it is not loaded and the reason is shown. If the file holds the Monte-Carlo electrons and the sample tilt and the energy threshold are the same as now, the Monte Carlo is not run again, so the result is exactly the same each time the file is loaded. A file for grid 512 is about 1.3 GB. <!-- 261124Cl 追加: FormEBSD.cs buttonSaveMasterPattern_Click / buttonLoadMasterPattern_Click -->
+**Save** writes the current master pattern to a file (`*.rpmp`, ReciPro master pattern). When the Monte-Carlo electrons are available they are saved too. **Load** reads such a file instead of building the pattern again; the file must have been made for the same crystal (cell, atoms and B) and the same accelerating voltage. If they differ, the reason is shown; files saved by this version also contain the crystal, and you can choose to add that crystal to the crystal list (and set the accelerating voltage) and load the file. If the file holds the Monte-Carlo electrons and the sample tilt and the energy threshold are the same as now, the Monte Carlo is not run again, so the result is exactly the same each time the file is loaded. If the file was computed with an older version of the physics, it is still loaded and the status bar shows a warning; build the pattern again to use the current physics. A file for grid 512 is about 0.6–0.8 GB and loads in about a second (files saved before v.4.954 are about 1.3 GB and are still read). <!-- 261124Cl 追加: FormEBSD.cs buttonSaveMasterPattern_Click / buttonLoadMasterPattern_Click -->
 
 - **2D** tab : equal-area (Lambert) projection of a hemisphere. **Hemisphere** selects the projected hemisphere (+Z / −Z).
 - **3D** tab : a sphere with the intensity mapped onto it. It can be rotated with the mouse, and an inset at the top-left shows the synchronised crystal axes (a/b/c). **Axis labels** / **Axis arrows** toggle the labels/arrows, and **View along** looks down the zone axis [u v w] entered next to it.
