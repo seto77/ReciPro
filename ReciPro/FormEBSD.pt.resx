@@ -229,6 +229,23 @@ grade de pixels do detector em vez de uma imagem.</value>
   <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
     <value>Criar master pattern</value>
   </data>
+  <data name="buttonSaveMasterPattern.Text" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="buttonSaveMasterPattern.ToolTip" xml:space="preserve">
+    <value>Salva o padrão mestre atual (e, se existirem, os elétrons de
+Monte Carlo) em um arquivo (*.rpmp). O arquivo pode ser
+carregado depois em vez de construir o padrão novamente.</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Text" xml:space="preserve">
+    <value>Carregar</value>
+  </data>
+  <data name="buttonLoadMasterPattern.ToolTip" xml:space="preserve">
+    <value>Carrega um arquivo de padrão mestre (*.rpmp) salvo para o mesmo
+cristal e a mesma tensão de aceleração. Se o arquivo contiver os
+elétrons de Monte Carlo e a inclinação da amostra e o limiar de
+energia forem iguais, o cálculo de Monte Carlo é omitido.</value>
+  </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>Copiar</value>
   </data>

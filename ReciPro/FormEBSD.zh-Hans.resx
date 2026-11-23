@@ -228,6 +228,21 @@
   <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
     <value>构建主花样</value>
   </data>
+  <data name="buttonSaveMasterPattern.Text" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="buttonSaveMasterPattern.ToolTip" xml:space="preserve">
+    <value>将当前的主图样 (以及蒙特卡罗电子, 如有) 保存到
+文件 (*.rpmp)。之后可以直接加载, 无需重新构建。</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Text" xml:space="preserve">
+    <value>加载</value>
+  </data>
+  <data name="buttonLoadMasterPattern.ToolTip" xml:space="preserve">
+    <value>加载针对同一晶体和加速电压保存的主图样文件 (*.rpmp)。
+若文件包含蒙特卡罗电子, 且样品倾斜和能量阈值与当前相同,
+则不再运行蒙特卡罗。</value>
+  </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>复制</value>
   </data>

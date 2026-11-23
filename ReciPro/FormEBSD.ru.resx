@@ -230,6 +230,23 @@
   <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
     <value>Создать мастер-картину</value>
   </data>
+  <data name="buttonSaveMasterPattern.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="buttonSaveMasterPattern.ToolTip" xml:space="preserve">
+    <value>Сохранить текущий мастер-паттерн (и, если есть, электроны
+Монте-Карло) в файл (*.rpmp). Файл можно загрузить позже
+вместо повторного построения паттерна.</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Text" xml:space="preserve">
+    <value>Загрузить</value>
+  </data>
+  <data name="buttonLoadMasterPattern.ToolTip" xml:space="preserve">
+    <value>Загрузить файл мастер-паттерна (*.rpmp), сохранённый для того же
+кристалла и того же ускоряющего напряжения. Если в файле есть
+электроны Монте-Карло, а наклон образца и порог энергии совпадают,
+расчёт Монте-Карло не выполняется.</value>
+  </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>Копировать</value>
   </data>

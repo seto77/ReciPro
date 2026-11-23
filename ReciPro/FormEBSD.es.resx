@@ -226,6 +226,23 @@ en la rejilla de píxeles del detector en vez de una imagen.</value>
   <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
     <value>Crear patrón maestro</value>
   </data>
+  <data name="buttonSaveMasterPattern.Text" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="buttonSaveMasterPattern.ToolTip" xml:space="preserve">
+    <value>Guarda el patrón maestro actual (y, si existen, los electrones
+de Monte Carlo) en un archivo (*.rpmp). El archivo puede
+cargarse más tarde en lugar de volver a construir el patrón.</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Text" xml:space="preserve">
+    <value>Cargar</value>
+  </data>
+  <data name="buttonLoadMasterPattern.ToolTip" xml:space="preserve">
+    <value>Carga un archivo de patrón maestro (*.rpmp) guardado para el
+mismo cristal y el mismo voltaje de aceleración. Si el archivo
+contiene los electrones de Monte Carlo y la inclinación de la muestra
+y el umbral de energía coinciden, se omite el cálculo de Monte Carlo.</value>
+  </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>Copiar</value>
   </data>

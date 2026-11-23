@@ -230,6 +230,23 @@ au lieu d'une image.</value>
   <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
     <value>Créer le master pattern</value>
   </data>
+  <data name="buttonSaveMasterPattern.Text" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="buttonSaveMasterPattern.ToolTip" xml:space="preserve">
+    <value>Enregistre le master pattern actuel (et, le cas échéant, les
+électrons Monte-Carlo) dans un fichier (*.rpmp). Le fichier peut
+être chargé plus tard au lieu de reconstruire le pattern.</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Text" xml:space="preserve">
+    <value>Charger</value>
+  </data>
+  <data name="buttonLoadMasterPattern.ToolTip" xml:space="preserve">
+    <value>Charge un fichier de master pattern (*.rpmp) enregistré pour le
+même cristal et la même tension d'accélération. Si le fichier contient
+les électrons Monte-Carlo et que l'inclinaison de l'échantillon et le
+seuil d'énergie sont identiques, le calcul Monte-Carlo est omis.</value>
+  </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>Copier</value>
   </data>

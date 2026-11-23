@@ -118,6 +118,8 @@ The master pattern is the backscatter diffraction intensity over all directions,
 
 If any atom site has no atomic displacement parameter (B = 0), a dialog appears when **Build master pattern** is pressed. Sites with B = 0 cause no absorption, and if every site has B = 0 the master pattern with **Non-local source** is blank. **OK** sets an isotropic B = 0.5 Å² for those sites and builds (the value can be changed later in the main window); **Cancel** stops without building. Sites with anisotropic parameters (Bij) are left as they are.
 
+**Save** writes the current master pattern to a file (`*.rpmp`, ReciPro master pattern). When the Monte-Carlo electrons are available they are saved too. **Load** reads such a file instead of building the pattern again; the file must have been made for the same crystal (cell, atoms and B) and the same accelerating voltage, otherwise it is not loaded and the reason is shown. If the file holds the Monte-Carlo electrons and the sample tilt and the energy threshold are the same as now, the Monte Carlo is not run again, so the result is exactly the same each time the file is loaded. A file for grid 512 is about 1.3 GB. <!-- 261124Cl 追加: FormEBSD.cs buttonSaveMasterPattern_Click / buttonLoadMasterPattern_Click -->
+
 - **2D** tab : equal-area (Lambert) projection of a hemisphere. **Hemisphere** selects the projected hemisphere (+Z / −Z).
 - **3D** tab : a sphere with the intensity mapped onto it. It can be rotated with the mouse, and an inset at the top-left shows the synchronised crystal axes (a/b/c). **Axis labels** / **Axis arrows** toggle the labels/arrows, and **View along** looks down the zone axis [u v w] entered next to it.
 - **Energy / Depth** sliders : select the energy/depth slice to preview.

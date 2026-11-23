@@ -158,6 +158,8 @@
             labelMasterPattern2DHemisphere = new System.Windows.Forms.Label();
             comboBoxMasterPattern2DHemisphere = new System.Windows.Forms.ComboBox();
             buttonCreateMasterPattern = new System.Windows.Forms.Button();
+            buttonSaveMasterPattern = new System.Windows.Forms.Button();
+            buttonLoadMasterPattern = new System.Windows.Forms.Button();
             buttonMasterPattern2DCopy = new System.Windows.Forms.Button();
             buttonMasterPattern3DCopy = new System.Windows.Forms.Button();
             checkBoxMasterPattern3DAxisLabel = new System.Windows.Forms.CheckBox();
@@ -1080,6 +1082,22 @@
             toolTip.SetToolTip(buttonCreateMasterPattern, resources.GetString("buttonCreateMasterPattern.ToolTip"));
             buttonCreateMasterPattern.UseVisualStyleBackColor = false;
             buttonCreateMasterPattern.Click += buttonCreateMasterPattern_Click;
+            // 
+            // buttonSaveMasterPattern
+            // 
+            resources.ApplyResources(buttonSaveMasterPattern, "buttonSaveMasterPattern");
+            buttonSaveMasterPattern.Name = "buttonSaveMasterPattern";
+            toolTip.SetToolTip(buttonSaveMasterPattern, resources.GetString("buttonSaveMasterPattern.ToolTip"));
+            buttonSaveMasterPattern.UseVisualStyleBackColor = true;
+            buttonSaveMasterPattern.Click += buttonSaveMasterPattern_Click;
+            // 
+            // buttonLoadMasterPattern
+            // 
+            resources.ApplyResources(buttonLoadMasterPattern, "buttonLoadMasterPattern");
+            buttonLoadMasterPattern.Name = "buttonLoadMasterPattern";
+            toolTip.SetToolTip(buttonLoadMasterPattern, resources.GetString("buttonLoadMasterPattern.ToolTip"));
+            buttonLoadMasterPattern.UseVisualStyleBackColor = true;
+            buttonLoadMasterPattern.Click += buttonLoadMasterPattern_Click;
             // 
             // buttonMasterPattern2DCopy
             // 
@@ -2106,6 +2124,8 @@
             // 
             resources.ApplyResources(flowLayoutPanelMasterPatternButtons, "flowLayoutPanelMasterPatternButtons");
             flowLayoutPanelMasterPatternButtons.Controls.Add(buttonCreateMasterPattern);
+            flowLayoutPanelMasterPatternButtons.Controls.Add(buttonSaveMasterPattern);
+            flowLayoutPanelMasterPatternButtons.Controls.Add(buttonLoadMasterPattern);
             flowLayoutPanelMasterPatternButtons.Controls.Add(buttonStop);
             flowLayoutPanelMasterPatternButtons.Controls.Add(buttonFitNistElasticSampler);
             flowLayoutPanelMasterPatternButtons.Name = "flowLayoutPanelMasterPatternButtons";
@@ -2510,6 +2530,8 @@
         private System.Windows.Forms.TrackBar trackBarMasterPatternEnergy;
         private System.Windows.Forms.TrackBar trackBarMasterPatternDepth;
         private System.Windows.Forms.Button buttonCreateMasterPattern;
+        private System.Windows.Forms.Button buttonSaveMasterPattern;
+        private System.Windows.Forms.Button buttonLoadMasterPattern;
         // private System.Windows.Forms.Label labelMasterPatternInfo; // 260406Cl 廃止
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPatternSelectors;
         private System.Windows.Forms.GroupBox groupBoxMasterPattern;

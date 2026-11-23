@@ -3956,6 +3956,70 @@ public partial class FormEBSD : FormBase
         return true;
     }
 
+    /// <summary>261124Cl 追加: マスターパターンのファイルの絞り込み (保存・読み込みのダイアログで共用)</summary>
+    private static readonly string masterPatternFileFilter = $"ReciPro master pattern (*{MasterPatternFile.Extension})|*{MasterPatternFile.Extension}";
+
+    /// <summary>261124Cl 追加 (作者指示 11-24): 「保存」ボタン。今の MasterPattern (と、あれば MC の電子) を .rpmp に保存する (<see cref="SaveMasterPatternTo"/>)。
+    /// 保存は UI スレッドで行う (grid 512 で約 1.3 GB、数秒〜十数秒)。その間は待ちのカーソルにし、状態欄に「Saving…」を出す</summary>
+    private void buttonSaveMasterPattern_Click(object sender, EventArgs e)
+    {
+        if (masterPatternEbsd.IsBuilding || monteCarloCts != null)
+        {
+            toolStripStatusLabelSummary.Text = "MasterPattern not saved";
+            toolStripStatusLabelDetail.Text = "Wait until the running calculation has finished.";
+            return;
+        }
+        if (MasterPattern == null)
+        {
+            toolStripStatusLabelSummary.Text = "No MasterPattern to save";
+            toolStripStatusLabelDetail.Text = "Build or load a master pattern first.";
+            return;
+        }
+        var crystalName = new[] { masterPatternInfo?.CrystalName, Crystal?.Name, "MasterPattern" }.First(s => !string.IsNullOrWhiteSpace(s));
+        var name = $"{crystalName}_{(masterPatternInfo?.BeamEnergyKeV ?? Voltage):g6}kV"; // 既定の名前 = 結晶名_電圧
+        foreach (var c in System.IO.Path.GetInvalidFileNameChars()) name = name.Replace(c, '_');
+        using var dlg = new SaveFileDialog { Filter = masterPatternFileFilter, DefaultExt = MasterPatternFile.Extension, FileName = name + MasterPatternFile.Extension };
+        if (dlg.ShowDialog(this) != DialogResult.OK) return;
+        UseWaitCursor = true;
+        try { SaveMasterPatternTo(dlg.FileName); }
+        finally { UseWaitCursor = false; }
+    }
+
+    /// <summary>261124Cl 追加 (作者指示 11-24): 「読み込み」ボタン。.rpmp を読み込み、構築の完了と同じ状態にする (<see cref="LoadMasterPatternFromAsync"/>)。
+    /// 本体 (約 1 GB) を読む前に見出しだけで今の結晶・加速電圧と照合し、合わなければ理由を示して読まない (別の結晶・電圧のパターンは使わない)</summary>
+    private async void buttonLoadMasterPattern_Click(object sender, EventArgs e)
+    {
+        if (masterPatternEbsd.IsBuilding || monteCarloCts != null)
+        {
+            toolStripStatusLabelSummary.Text = "MasterPattern not loaded";
+            toolStripStatusLabelDetail.Text = "Wait until the running calculation has finished.";
+            return;
+        }
+        if (Crystal == null) return;
+        using var dlg = new OpenFileDialog { Filter = masterPatternFileFilter };
+        if (dlg.ShowDialog(this) != DialogResult.OK) return;
+        string problem;
+        try { problem = MasterPatternFile.CheckCompatibility(MasterPatternFile.ReadInfo(dlg.FileName), Crystal, Voltage); }
+        catch (Exception ex) // 別の種類のファイル・壊れた見出し・新しい版の形式
+        {
+            toolStripStatusLabelSummary.Text = "MasterPattern load failed";
+            toolStripStatusLabelDetail.Text = ex.Message;
+            MessageBox.Show(this, ex.Message, "Load master pattern", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+        if (problem != null)
+        {
+            toolStripStatusLabelSummary.Text = "MasterPattern not loaded";
+            toolStripStatusLabelDetail.Text = problem;
+            MessageBox.Show(this, problem + "\r\n\r\nSelect the crystal and the accelerating voltage that the file was made for, or build a new master pattern.",
+                "Load master pattern", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+        buttonCreateMasterPattern.Enabled = buttonSaveMasterPattern.Enabled = buttonLoadMasterPattern.Enabled = false; // 読んでいる間に構築・保存・読み込みを重ねない
+        try { await LoadMasterPatternFromAsync(dlg.FileName); }
+        finally { buttonCreateMasterPattern.Enabled = buttonSaveMasterPattern.Enabled = buttonLoadMasterPattern.Enabled = true; }
+    }
+
     /// <summary>進行中の MonteCarlo / MasterPattern build を停止する。</summary>
     private void buttonStop_Click(object sender, EventArgs e)
     {

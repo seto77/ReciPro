@@ -304,9 +304,6 @@ U' (熱散漫散乱、TDS) の側で、両者は独立です。</value>
 当てはめには使わないでください。外すと、明示の本数を回折波の数の
 欄で指定できます。</value>
   </data>
-  <data name="checkBoxDressedTailLight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
   <data name="checkBoxDressedTail.Text" xml:space="preserve">
     <value>着衣つきの裾 (新方式)</value>
   </data>
@@ -320,9 +317,6 @@ U' (熱散漫散乱、TDS) の側で、両者は独立です。</value>
 など散乱の強い結晶では増やすと正確になり、時間はほぼ本数に比例)。
 メモリに収まらない大きな単位胞は
 従来の方式に戻ります (理由はステータスバーに出ます)。</value>
-  </data>
-  <data name="checkBoxDressedTail.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>深さ範囲</value>
@@ -556,6 +550,23 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   </data>
   <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
     <value>マスターパターンを構築</value>
+  </data>
+  <data name="buttonSaveMasterPattern.Text" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="buttonSaveMasterPattern.ToolTip" xml:space="preserve">
+    <value>今のマスターパターン (と、あれば Monte-Carlo の電子) を
+ファイル (*.rpmp) に保存します。後で構築し直さずに
+読み込めます。</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Text" xml:space="preserve">
+    <value>読み込み</value>
+  </data>
+  <data name="buttonLoadMasterPattern.ToolTip" xml:space="preserve">
+    <value>同じ結晶・加速電圧で保存したマスターパターンのファイル
+(*.rpmp) を読み込みます。ファイルに Monte-Carlo の電子が
+あり、試料傾斜と打ち切りエネルギーが今と同じなら、
+Monte-Carlo を走らせません。</value>
   </data>
   <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
     <value>Monte-Carloに続くBloch波(Bethe)動力学
@@ -1337,6 +1348,12 @@ E_c を編集した後は、分布を切り替えても入力値を保持しま�
   <data name="checkBoxTDSBackground.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="checkBoxDressedTail.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxDressedTailLight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
   <data name="checkBoxRangesFromMonteCarlo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
@@ -1407,6 +1424,12 @@ E_c を編集した後は、分布を切り替えても入力値を保持しま�
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonCreateMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonSaveMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonMasterPattern2DCopy.Font" type="System.Drawing.Font, System.Drawing">

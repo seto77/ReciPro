@@ -229,6 +229,23 @@ griglia di pixel del rivelatore invece di un'immagine.</value>
   <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
     <value>Crea master pattern</value>
   </data>
+  <data name="buttonSaveMasterPattern.Text" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="buttonSaveMasterPattern.ToolTip" xml:space="preserve">
+    <value>Salva il master pattern corrente (e, se presenti, gli elettroni
+Monte Carlo) in un file (*.rpmp). Il file può essere caricato
+in seguito invece di ricostruire il pattern.</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Text" xml:space="preserve">
+    <value>Carica</value>
+  </data>
+  <data name="buttonLoadMasterPattern.ToolTip" xml:space="preserve">
+    <value>Carica un file di master pattern (*.rpmp) salvato per lo stesso
+cristallo e la stessa tensione di accelerazione. Se il file contiene
+gli elettroni Monte Carlo e l'inclinazione del campione e la soglia
+di energia coincidono, il calcolo Monte Carlo viene saltato.</value>
+  </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>Copia</value>
   </data>

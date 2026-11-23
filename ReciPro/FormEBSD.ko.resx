@@ -229,6 +229,22 @@
   <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
     <value>마스터 패턴 생성</value>
   </data>
+  <data name="buttonSaveMasterPattern.Text" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="buttonSaveMasterPattern.ToolTip" xml:space="preserve">
+    <value>현재 마스터 패턴 (및 있으면 몬테카를로 전자) 을
+파일 (*.rpmp) 로 저장합니다. 나중에 다시 구축하지 않고
+불러올 수 있습니다.</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Text" xml:space="preserve">
+    <value>불러오기</value>
+  </data>
+  <data name="buttonLoadMasterPattern.ToolTip" xml:space="preserve">
+    <value>같은 결정·가속 전압으로 저장한 마스터 패턴 파일 (*.rpmp)
+을 불러옵니다. 파일에 몬테카를로 전자가 있고 시료 기울기와
+에너지 문턱값이 지금과 같으면 몬테카를로를 실행하지 않습니다.</value>
+  </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>복사</value>
   </data>

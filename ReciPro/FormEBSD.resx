@@ -475,7 +475,7 @@ with PCHIP interpolation and emit generated source.</value>
     <value>flowLayoutPanelMasterPatternButtons</value>
   </data>
   <data name="&gt;&gt;buttonFitNistElasticSampler.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1604,7 +1604,7 @@ Start, End and Step define the depth slices.</value>
     <value>flowLayoutPanelMasterPatternButtons</value>
   </data>
   <data name="&gt;&gt;buttonStop.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="numericBoxEnergy.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -3049,6 +3049,89 @@ then Bloch-wave (Bethe) dynamical diffraction.</value>
   </data>
   <data name="&gt;&gt;buttonCreateMasterPattern.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="buttonSaveMasterPattern.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonSaveMasterPattern.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonSaveMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="buttonSaveMasterPattern.Location" type="System.Drawing.Point, System.Drawing">
+    <value>145, 0</value>
+  </data>
+  <data name="buttonSaveMasterPattern.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="buttonSaveMasterPattern.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 27</value>
+  </data>
+  <data name="buttonSaveMasterPattern.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="buttonSaveMasterPattern.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="buttonSaveMasterPattern.ToolTip" xml:space="preserve">
+    <value>Save the current master pattern (and the Monte-Carlo
+electrons, if any) to a file (*.rpmp). The file can be
+loaded later instead of building the pattern again.</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveMasterPattern.Name" xml:space="preserve">
+    <value>buttonSaveMasterPattern</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveMasterPattern.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveMasterPattern.Parent" xml:space="preserve">
+    <value>flowLayoutPanelMasterPatternButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveMasterPattern.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonLoadMasterPattern.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonLoadMasterPattern.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 0</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 27</value>
+  </data>
+  <data name="buttonLoadMasterPattern.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Text" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="buttonLoadMasterPattern.ToolTip" xml:space="preserve">
+    <value>Load a master-pattern file (*.rpmp) saved for the same
+crystal and accelerating voltage. If the file holds the
+Monte-Carlo electrons and the sample tilt and the energy
+threshold are the same, the Monte-Carlo run is skipped.</value>
+  </data>
+  <data name="&gt;&gt;buttonLoadMasterPattern.Name" xml:space="preserve">
+    <value>buttonLoadMasterPattern</value>
+  </data>
+  <data name="&gt;&gt;buttonLoadMasterPattern.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonLoadMasterPattern.Parent" xml:space="preserve">
+    <value>flowLayoutPanelMasterPatternButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonLoadMasterPattern.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="buttonMasterPattern2DCopy.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

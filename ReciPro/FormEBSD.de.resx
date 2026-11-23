@@ -230,6 +230,23 @@ eines Bildes.</value>
   <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
     <value>Master-Pattern erstellen</value>
   </data>
+  <data name="buttonSaveMasterPattern.Text" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="buttonSaveMasterPattern.ToolTip" xml:space="preserve">
+    <value>Das aktuelle Master-Pattern (und, falls vorhanden, die
+Monte-Carlo-Elektronen) in eine Datei (*.rpmp) speichern.
+Die Datei kann später geladen werden, statt das Pattern neu zu erstellen.</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Text" xml:space="preserve">
+    <value>Laden</value>
+  </data>
+  <data name="buttonLoadMasterPattern.ToolTip" xml:space="preserve">
+    <value>Eine Master-Pattern-Datei (*.rpmp) laden, die für denselben
+Kristall und dieselbe Beschleunigungsspannung gespeichert wurde.
+Enthält sie die Monte-Carlo-Elektronen und stimmen Probenkippung
+und Energieschwelle überein, entfällt der Monte-Carlo-Lauf.</value>
+  </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>Kopieren</value>
   </data>

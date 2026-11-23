@@ -228,6 +228,21 @@
   <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
     <value>建立主圖樣</value>
   </data>
+  <data name="buttonSaveMasterPattern.Text" xml:space="preserve">
+    <value>儲存</value>
+  </data>
+  <data name="buttonSaveMasterPattern.ToolTip" xml:space="preserve">
+    <value>將目前的主圖樣 (以及蒙地卡羅電子, 如有) 儲存到
+檔案 (*.rpmp)。之後可以直接載入, 無需重新建立。</value>
+  </data>
+  <data name="buttonLoadMasterPattern.Text" xml:space="preserve">
+    <value>載入</value>
+  </data>
+  <data name="buttonLoadMasterPattern.ToolTip" xml:space="preserve">
+    <value>載入針對同一晶體與加速電壓儲存的主圖樣檔案 (*.rpmp)。
+若檔案包含蒙地卡羅電子, 且試料傾斜與能量閾值與目前相同,
+則不再執行蒙地卡羅。</value>
+  </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>複製</value>
   </data>
