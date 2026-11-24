@@ -336,6 +336,7 @@ public partial class FormMain : FormBase
     private void FormMain_Load(object sender, EventArgs e)
     {
         if (DesignMode) return;
+        Application.Idle += lockCrystalEditingDuringEbsdBuild; // 261124Cl 追加 (作者の決定 2026-11-24、codex2 査読 C1-07)
 
         //260602Cl 追加: Portable ZIP 版は実行フォルダに README-PORTABLE.txt を同梱する (MSI 版には無い)。
         //         この場合 MSI ベースの自動更新は成り立たないため「Check Updates」メニューを隠す。
@@ -654,9 +655,20 @@ public partial class FormMain : FormBase
     /// <summary>クローズ時</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
+    /// <summary>261124Cl 追加 (作者の決定 2026-11-24 = 計算中は編集を止める、codex2 査読 C1-07): EBSD のマスターパターンの構築 (前段の MC を含む) の間は、
+    /// 結晶の編集欄と結晶リストを使えなくする。EBSD の窓を閉じていても計算は続くので、窓の表示ではなく計算中かどうかで決める。
+    /// 構築の終わり方 (完了・取り消し・失敗) がいくつもあるので、始まりと終わりの両方に手を入れる代わりに、アイドルのたびに今の状態に合わせる</summary>
+    private void lockCrystalEditingDuringEbsdBuild(object sender, EventArgs e)
+    {
+        bool building = FormEBSD is { IsDisposed: false } && FormEBSD.IsBuildingForCapture;
+        if (crystalControl.Enabled == building)
+            crystalControl.Enabled = listBox.Enabled = !building;
+    }
+
     private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
     {
         e.Cancel = false;
+        Application.Idle -= lockCrystalEditingDuringEbsdBuild; // 261124Cl 追加
         // 260723Cl 追加: Named Pipe リスナー停止 (Join しないのでデッドロックしない)。
         // 設定保存より前に止め、終了処理中に新しいリクエストを受け付けない (codex 指摘)
         macroPipeListener?.Stop();

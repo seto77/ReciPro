@@ -756,6 +756,7 @@ nav:
           - A3.3. CBED: appendix/a3-bloch-wave/cbed.md
           - A3.4. STEM: appendix/a3-bloch-wave/stem.md
           - A3.5. EBSD: appendix/a3-bloch-wave/ebsd.md
+          - A3.6. ALCHEMI: appendix/a3-bloch-wave/alchemi.md # 261124Cl 追加 (ALCHEMI の式を理論の付録に集める)
       - Appendix A4. Symmetry and Space Groups:
           - appendix/a4-symmetry-space-groups/index.md
           - A4.1. Space-group symbols and symmetry diagrams: appendix/a4-symmetry-space-groups/symbols-and-diagrams.md

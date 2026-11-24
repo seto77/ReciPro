@@ -145,7 +145,7 @@ Rotate by angle Step (default 10°). ↺ / ↻ rotate about the screen normal. C
 
 ![View along](../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
-Align a zone axis [*uvw*] or crystal plane (*hkl*) perpendicular to the screen.
+Point a zone axis [*uvw*] or the normal of a crystal plane (*hkl*) along the viewing direction (the plane then lies parallel to the screen).
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:buttonSetVector_Click, Rotate(Vector3DBase,double), checkBoxFixAxis_CheckedChanged/checkBoxFixPlane_CheckedChanged) -->
 - **Fix**: when checked, subsequent rotations (arrows, mouse drag) are all performed about the specified zone axis or plane normal, so that direction stays fixed. Only one of the two **Fix** boxes can be on, and it cannot be checked while the index is 0 0 0.
@@ -159,7 +159,7 @@ Align a zone axis [*uvw*] or crystal plane (*hkl*) perpendicular to the screen.
 | Mouse drag | You want to rotate freely while watching the crystal axes. | **Current orientation** panel |
 | Arrow buttons | You want small, repeatable rotations. | **Arrows** panel |
 | Zone axis | You know the viewing direction, such as \([001]\) or \([110]\). | **View along** / zone-axis input |
-| Plane normal | You want a crystal plane \((hkl)\) normal to the screen. | **View along** / plane input |
+| Plane normal | You want the normal of a crystal plane \((hkl)\) along the viewing direction (the plane lies parallel to the screen). | **View along** / plane input |
 | Euler angles | You need a reproducible numeric orientation. | **Euler angles (Z-X-Z)** |
 
 See [Rotation Geometry](4-rotation-geometry.md) and [Appendix A1. Coordinate systems](appendix/a1-coordinate-system/1-orientation.md) for the rotation matrices and coordinate conventions.
