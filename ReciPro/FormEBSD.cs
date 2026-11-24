@@ -191,6 +191,12 @@ public partial class FormEBSD : FormBase
     /// (<see cref="MasterPatternFile.CrystalFingerprint"/>) と加速電圧 (kV)。窓を閉じている間の結晶の変更や電圧の変更のあとで、
     /// 旧い MC の結果を表示し続けないように照合する (MasterPattern の <see cref="masterPatternBasis"/> と同じ考え方)</summary>
     (string CrystalFingerprint, double VoltageKeV) bsesBasis = ("", double.NaN);
+    /// <summary>261124Cl 追加 (codex2 査読 中 4): <see cref="BSEs"/> を作った MC の入射数と打ち切りエネルギー [keV] (MC の完了時、またはファイルから使い回したときに控える)。
+    /// 保存するファイルの来歴に書く (以前は保存の時点の定数と欄の値を書いており、ファイルから使い回した電子の来歴を書き換えていた)</summary>
+    // (int IncidentCount, double EnergyThresholdKeV) bsesMcConditions = (0, double.NaN); // 261124Cl 変更前 (同日)
+    // 261124Cl 変更 (codex2 査読 3 往復目 中 1): 電子を作った結晶の指紋と電圧も控える (保存の判定用)。画面の変更を見る bsesBasis (今の Voltage) とは分ける:
+    //   ファイルの電圧が 20.0000005 keV で画面が 20 のように互換の許容の中で違うとき、bsesBasis では保存の見出しと一致せず、電子が落ちていた
+    (int IncidentCount, double EnergyThresholdKeV, string CrystalFingerprint, double VoltageKeV) bsesMcConditions = (0, double.NaN, "", double.NaN);
     /// <summary>261105Cl 追加 (監査 F5): 直近の MC が自動で決めた範囲のうち、エネルギーの下限 (keV、損失の 95 % 点) と深さ (出射方向の経路長) の上限 (nm、99.9 % 点)。
     /// 「範囲を MC から自動」が OFF のとき、手入力の範囲が MC の分布の外 (重なりが無い) かを構築の前に判定するのに使う (欄は書き換えないのでここに控える)</summary>
     (double EnergyLowerKeV, double DepthUpperNm) lastMcAutoRanges = (double.NaN, double.NaN);
@@ -2582,6 +2588,7 @@ public partial class FormEBSD : FormBase
     /// <param name="e"></param>
     private async void buttonBSE_Click(object sender, EventArgs e)
     {
+        if (masterPatternFileBusy) return; // 261124Cl 追加 (codex2 査読 2 往復目 高 1): マスターパターンの保存・読み込みの最中は MC を始めない (読み込みの結晶の切り替えと取り合う)
         if (masterPatternEbsd.IsBuilding)
         {
             // toolStripStatusLabelProgress.Text = "MasterPattern is running. Wait for it to finish or press Stop."; // 260406Cl Label1→Label2: 進捗専用に整理
@@ -3337,6 +3344,7 @@ public partial class FormEBSD : FormBase
             BSEs = result.Bses;
             bsesSampleTilt = sampleTilt; //260921Cl 追加 (/simplify): このワーカーが MC に使った傾斜
             bsesBasis = (MasterPatternFile.CrystalFingerprint(cry), energy); // 261105Cl 追加 (監査 F 追加 c): この MC の結晶・電圧
+            bsesMcConditions = (loop, energyThreshold, bsesBasis.CrystalFingerprint, energy); // 261124Cl 追加 (codex2 査読 中 4、3 往復目 中 1): この MC の入射数・打ち切りエネルギー・結晶・電圧
             lastMcAutoRanges = (result.energyEnd, result.depthEnd); // 261105Cl 追加 (監査 F5): 手入力の範囲が MC の分布の外かの判定用 (欄を書き換えないときも控える)
             // 261105Cl 変更 (監査 F5・作者決定): 「範囲を MC から自動」が OFF なら欄 (と深さの不等間隔格子) を書き換えない。
             //   以前は常に書き換え、手で入れた範囲は次の Simulate・構築で必ず上書きされていた。重みの分布 (下の mcDistribution) は MC の格子で作り、
@@ -3423,6 +3431,7 @@ public partial class FormEBSD : FormBase
     /// </summary>
     private async void buttonCreateMasterPattern_Click(object sender, EventArgs e)
     {
+        if (masterPatternFileBusy) return; // 261124Cl 追加 (codex2 査読 2 往復目 高 1): マスターパターンの保存・読み込みの最中は構築しない
         #region お蔵入り // (260327Ch) 旧 bwEBSD 実行中チェックは ebsdNew 本命化に伴い退避
         //if (Crystal?.Bethe?.bwEBSD?.IsBusy == true)
         //{
@@ -3864,7 +3873,8 @@ public partial class FormEBSD : FormBase
     internal bool SaveMasterPatternTo(string path)
     {
         if (MasterPattern == null) { toolStripStatusLabelSummary.Text = "No MasterPattern to save"; return false; }
-        var info = masterPatternInfo ?? new MasterPatternFileInfo
+        // var info = masterPatternInfo ?? new MasterPatternFileInfo // 261124Cl 変更前: 画面の記録 (masterPatternInfo) そのものを保存が書き換えていた (失敗しても)
+        var info = masterPatternInfo?.Clone() ?? new MasterPatternFileInfo // 261124Cl 変更 (codex2 査読 中 4): 写しに書いて保存する
         {
             CrystalName = Crystal.Name ?? "", CrystalFingerprint = MasterPatternFile.CrystalFingerprint(Crystal), BeamEnergyKeV = Voltage,
             Creator = $"ReciPro {Application.ProductVersion}", Note = "Build conditions were not recorded.",
@@ -3877,8 +3887,15 @@ public partial class FormEBSD : FormBase
         {
             toolStripStatusLabelSummary.Text = "Saving MasterPattern..."; statusStripMain.Refresh();
             //MasterPatternFile.Save(MasterPattern, path, info); //260921Cl 変更前: MC の電子も一緒に保存する (読み込み時に MC をやり直さない・乱数の揺らぎを入れない)
-            bool withElectrons = BSEs is { Length: > 0 } && double.IsFinite(bsesSampleTilt);
-            if (withElectrons) { info.McSampleTiltRad = bsesSampleTilt; info.McEnergyThresholdKeV = EnergyThreshold; info.McIncidentCount = BackscatterMonteCarloLoopCount; }
+            // bool withElectrons = BSEs is { Length: > 0 } && double.IsFinite(bsesSampleTilt); // 261124Cl 変更前
+            // if (withElectrons) { info.McSampleTiltRad = bsesSampleTilt; info.McEnergyThresholdKeV = EnergyThreshold; info.McIncidentCount = BackscatterMonteCarloLoopCount; }
+            // 261124Cl 変更 (codex2 査読 中 4): 電子はこのパターンと同じ結晶・電圧で作ったものだけを入れ、来歴は電子を作ったときの条件 (bsesMcConditions) を書く
+            // bool withElectrons = BSEs is { Length: > 0 } && double.IsFinite(bsesSampleTilt) && bsesBasis == masterPatternBasis; // 261124Cl 変更前 (同日)
+            // bool withElectrons = BSEs is { Length: > 0 } && double.IsFinite(bsesSampleTilt) && bsesBasis == (info.CrystalFingerprint, info.BeamEnergyKeV); // 261124Cl 変更前 (同日、2 往復目)
+            bool withElectrons = BSEs is { Length: > 0 } && double.IsFinite(bsesSampleTilt)
+                && (bsesMcConditions.CrystalFingerprint, bsesMcConditions.VoltageKeV) == (info.CrystalFingerprint, info.BeamEnergyKeV); // 261124Cl 変更 (3 往復目 中 1): 見出しの結晶・電圧で作った電子だけ (電子の来歴で照らす)
+            if (withElectrons) { info.McSampleTiltRad = bsesSampleTilt; info.McEnergyThresholdKeV = bsesMcConditions.EnergyThresholdKeV; info.McIncidentCount = bsesMcConditions.IncidentCount; }
+            else { info.McSampleTiltRad = double.NaN; info.McEnergyThresholdKeV = double.NaN; info.McIncidentCount = 0; } // 電子を入れないときは来歴も空に (読み込んだファイルの来歴を残さない)
             MasterPatternFile.Save(MasterPattern, path, info, withElectrons ? BSEs : null);
             toolStripStatusLabelSummary.Text = "MasterPattern saved";
             toolStripStatusLabelDetail.Text = $"{path} ({new System.IO.FileInfo(path).Length / 1048576.0:f0} MB, {StatusBarHelper.FormatElapsed(sw.Elapsed)})";
@@ -3896,7 +3913,9 @@ public partial class FormEBSD : FormBase
     /// ファイルに MC の電子が入っていて、試料傾斜・打ち切りエネルギーが今と同じならそれを読み込んだパターンの格子へ再ビニングする (MC なし)。
     /// 入っていなければ MC だけを走らせる (手元の電子は別の結晶・電圧のものかもしれないので使い回さない)。</summary>
     /// <param name="allowMismatch">false (既定) なら、今の結晶・電圧と作成条件が違うファイルは読み込まない</param>
-    internal async Task<bool> LoadMasterPatternFromAsync(string path, bool allowMismatch = false)
+    /// <param name="preloaded">261124Cl 追加 (codex2 査読 高 4): 呼び手が既に読み終えた中身 (null ならここで読む)。結晶・電圧を切り替える前に本体を読み切って確かめるため</param>
+    // internal async Task<bool> LoadMasterPatternFromAsync(string path, bool allowMismatch = false) // 261124Cl 旧シグネチャ
+    internal async Task<bool> LoadMasterPatternFromAsync(string path, bool allowMismatch = false, MasterPatternFileContent preloaded = null)
     {
         if (masterPatternEbsd.IsBuilding || FormMain?.Crystal == null) return false;
         var sw = Stopwatch.StartNew();
@@ -3912,11 +3931,18 @@ public partial class FormEBSD : FormBase
         }
         catch (Exception) { toolStripStatusLabelDetail.Text = path; } // 読めない見出しは、下の本体の読み込みが理由を出す
         MasterPattern mp; MasterPatternFileInfo info; EbsdBackscatteredElectron[] electrons;
-        try { (mp, info, electrons) = await Task.Run(() => MasterPatternFile.Load(path)); }
+        // try { (mp, info, electrons) = await Task.Run(() => MasterPatternFile.Load(path)); } // 261124Cl 変更前
+        try { (mp, info, electrons) = preloaded ?? await Task.Run(() => MasterPatternFile.Load(path)); } // 261124Cl 変更: 読み終えた中身があればそれを使う
         catch (Exception ex)
         {
             toolStripStatusLabelSummary.Text = "MasterPattern load failed";
             toolStripStatusLabelDetail.Text = ex.Message;
+            return false;
+        }
+        if (mp.GridSize < 2) // 261124Cl 追加 (codex2 査読 4 往復目 中 1): ファイルとしては読めても、EBSD の描画は GridSize < 2 で例外になる。差し替えの前に断る
+        {
+            toolStripStatusLabelSummary.Text = "MasterPattern not loaded";
+            toolStripStatusLabelDetail.Text = $"The grid of the file ({mp.GridSize}) is too small to display.";
             return false;
         }
         // 261105Cl 追加 (監査 F 追加 b): ファイルを読んでいる間に構築・Calc BSE が始まっていたら差し込まない (構築中は SetMasterPattern も拒む。MC の最中だと MC の結果と取り合う)
@@ -3938,15 +3964,33 @@ public partial class FormEBSD : FormBase
         masterPatternBasis = (MasterPatternFile.CrystalFingerprint(Crystal), Voltage); // 261105Cl 追加 (監査 #15): 読み込んだ時点の結晶・電圧に対するもの (allowMismatch で読み込んだときも、以後の結晶・電圧の変更で破棄できるように)
 
         bool reuseElectrons = electrons is { Length: > 0 } && Math.Abs(info.McSampleTiltRad - SmpTilt) < 1E-9 && Math.Abs(info.McEnergyThresholdKeV - EnergyThreshold) < 1E-9;
+        bool mcCompleted = false; // 261124Cl 追加 (codex2 査読 中 3): 読み込みの後の MC が最後まで済んだか (止めた・失敗したら BSE の重みなし)
+        string mcFailure = null; // 261124Cl 追加 (codex2 査読 2 往復目 中 3): MC が例外で止まった理由
+        // 261124Cl 追加 (codex2 査読 4 往復目 中 3): メモリ不足は後始末して続けず投げ直す。並列の中のものは AggregateException に包まれて来る
+        static bool IsOutOfMemory(Exception ex) => ex is OutOfMemoryException || ex is AggregateException ae && ae.Flatten().InnerExceptions.Any(e => e is OutOfMemoryException);
+        // 261124Cl 追加 (codex2 査読 3 往復目 中 4): MC・電子の後処理が失敗したときの後始末 (2 つの道で共用)。電子・分布・極点図・両グラフを捨て、BSE の重みなしの表示へ進む
+        void DropMc(string why)
+        {
+            mcFailure = why;
+            BSEs = []; bsesSampleTilt = double.NaN; bsesBasis = ("", double.NaN); mcDistribution = null;
+            poleFigureControl.Vectors = [];
+            graphControlEnergyProfile.ClearProfile();
+            graphControlDepthProfile.ClearProfile();
+        }
         if (reuseElectrons)
         {
             BSEs = electrons;
             bsesSampleTilt = info.McSampleTiltRad;
             bsesBasis = masterPatternBasis; // 261105Cl 追加 (監査 F 追加 c): 読み込んだパターンと同じ結晶・電圧 (互換を確かめて読み込んだもの)
+            bsesMcConditions = (info.McIncidentCount, info.McEnergyThresholdKeV, info.CrystalFingerprint, info.BeamEnergyKeV); // 261124Cl 追加 (codex2 査読 中 4、3 往復目 中 1): 使い回した電子の来歴はファイルのもの
+            try // 261124Cl 追加 (3 往復目 中 4): 後処理の失敗でも読み込みの完了へ進む
+            {
             RebinMcDistribution(allowCreate: true); //読み込んだパターンの格子・今の源深さモード・非晶質層・蛍光体重みで分布を作る
             var poleFigureRotation = M3.CreateRotationX(bsesSampleTilt); //MC 完了時 (RunMonteCarloAndSetRangesAsync) と同じ後処理
             poleFigureControl.Vectors = [.. BSEs.Select(e => new V4(poleFigureRotation * e.Vec, e.Energy))];
             CalcStatistics();
+            }
+            catch (Exception ex) when (!IsOutOfMemory(ex)) { reuseElectrons = false; DropMc(ex.Message); }
         }
         else
         {
@@ -3954,9 +3998,23 @@ public partial class FormEBSD : FormBase
             // try { await RunMonteCarloAndSetRangesAsync(statusPrefix: "MasterPattern (loaded)"); } //失敗しても BSE 重み無しの表示はできるので続ける // 261105Cl 変更前
             // finally { buttonCreateMasterPattern.Enabled = true; }
             // 261105Cl 変更 (監査 F 追加 b): 構築の MC と同じく取り消し可能にする。SetCrystal・電圧の変更・Stop が止められ、Calc BSE とも重ならない (monteCarloCts を見る)
+            // 261124Cl 追加 (codex2 査読 中 3): 手元の電子は使わないので先に捨てる。MC を止めたとき・失敗したときに、前の電子で新しいパターンを重み付けし、その電子を保存してしまわないため
+            BSEs = [];
+            bsesSampleTilt = double.NaN;
+            bsesBasis = ("", double.NaN);
+            mcDistribution = null;
+            poleFigureControl.Vectors = []; // SetCrystal の破棄と同じく BSE 分布の表示も消す (MC が済めば作り直される)
+            graphControlEnergyProfile.ClearProfile();
+            graphControlDepthProfile.ClearProfile();
             monteCarloCts = new System.Threading.CancellationTokenSource();
             buttonStop.Visible = true;
-            try { await RunMonteCarloAndSetRangesAsync(statusPrefix: "MasterPattern (loaded)", cancellationToken: monteCarloCts.Token); } //失敗しても BSE 重み無しの表示はできるので続ける
+            // try { await RunMonteCarloAndSetRangesAsync(statusPrefix: "MasterPattern (loaded)", cancellationToken: monteCarloCts.Token); } //失敗しても BSE 重み無しの表示はできるので続ける // 261124Cl 変更前: 結果を捨てていた
+            try { mcCompleted = await RunMonteCarloAndSetRangesAsync(statusPrefix: "MasterPattern (loaded)", cancellationToken: monteCarloCts.Token); } //失敗しても BSE 重み無しの表示はできるので続ける (261124Cl: 結果を表示に使う)
+            catch (Exception ex) when (!IsOutOfMemory(ex)) // 261124Cl 追加 (codex2 査読 2 往復目 中 3): MC の例外でも、差し替えたパターンの表示へ進む (途中の電子・分布は捨てる)
+            {
+                mcCompleted = false;
+                DropMc(ex.Message); // 261124Cl (3 往復目 中 4): 極点図・グラフも捨てる (旧: 電子・分布だけ)
+            }
             finally { DisposeMonteCarloCts(); buttonStop.Visible = false; buttonCreateMasterPattern.Enabled = true; }
             // 261105Cl 追加 (監査 F 追加 b): MC の間に結晶・電圧が替わると、SetCrystal が読み込んだ MasterPattern を破棄している (MasterPattern = null)。
             //   以前はそのまま ActivateMasterPattern へ進んで MasterPattern.Depths で NullReferenceException だった。窓を閉じていて SetCrystal が呼ばれなかったときは
@@ -3969,10 +4027,19 @@ public partial class FormEBSD : FormBase
                 return false;
             }
         }
-        EnsureMcDistributionMatchesMasterPattern();
+        // EnsureMcDistributionMatchesMasterPattern(); // 261124Cl 変更前
+        try // 261124Cl 変更 (codex2 査読 4 往復目 中 2): MC とファイルの格子が違うときの作り直しの失敗も同じ後始末へ
+        {
+            // 261124Cl (5 往復目 中): 例外を出さずに false を返す (分布を作れない) ときも、重みを使えたとは表示しない
+            if (!EnsureMcDistributionMatchesMasterPattern() && (mcCompleted || reuseElectrons))
+            { mcCompleted = false; reuseElectrons = false; DropMc("the BSE distribution could not be matched to the master pattern grid"); }
+        }
+        catch (Exception ex) when (!IsOutOfMemory(ex)) { mcCompleted = false; reuseElectrons = false; DropMc(ex.Message); }
         ActivateMasterPattern("MasterPattern loaded",
             $"{System.IO.Path.GetFileName(path)}: {mp.GridSize} x {mp.GridSize}, {mp.Energies.Length} energies, {mp.Depths.Length} depths, {info.CrystalName}, {info.BeamEnergyKeV:g6} keV, "
-            + (reuseElectrons ? $"{electrons.Length:N0} saved MC electrons" : "new Monte Carlo")
+            // + (reuseElectrons ? $"{electrons.Length:N0} saved MC electrons" : "new Monte Carlo") // 261124Cl 変更前
+            + (reuseElectrons ? $"{electrons.Length:N0} saved MC electrons" : mcCompleted ? "new Monte Carlo"
+                : mcFailure != null ? $"BSE weighting failed: {mcFailure}" : "Monte Carlo not completed (no BSE weighting)") // 261124Cl 変更 (codex2 査読 中 3、2・3 往復目 中): MC と使い回した電子の後処理のどちらの失敗も
             + (problem != null ? $" | WARNING: {problem}" : "")
             // 261124Cl 追加 (作者決定 11-24): 物理の版が今と違うファイルは、警告して読む
             + (info.PhysicsVersion != MasterPatternFile.PhysicsVersion
@@ -3985,10 +4052,25 @@ public partial class FormEBSD : FormBase
     /// <summary>261124Cl 追加: マスターパターンのファイルの絞り込み (保存・読み込みのダイアログで共用)</summary>
     private static readonly string masterPatternFileFilter = $"ReciPro master pattern (*{MasterPatternFile.Extension})|*{MasterPatternFile.Extension}";
 
+    /// <summary>261124Cl 追加 (codex2 査読 高 5): マスターパターンのファイルを保存・読み込みしている間 true。ボタンと File メニューの両方から入るので、
+    /// ボタンを無効にするだけでは重なりを防げない (メニューは同じ処理を直接呼ぶ)</summary>
+    private bool masterPatternFileBusy = false;
+
+    /// <summary>261124Cl 追加 (codex2 査読 高 5): 保存・読み込みの間、ボタンと File メニューの項目を止める・戻す。
+    /// 戻すとき、構築ボタンは計算 (構築・MC) が走っていなければだけ有効にする (読み込みの間に始まった Calc BSE の無効を勝手に解かない)</summary>
+    private void SetMasterPatternFileBusy(bool busy)
+    {
+        masterPatternFileBusy = busy;
+        buttonSaveMasterPattern.Enabled = buttonLoadMasterPattern.Enabled = !busy;
+        saveMasterPatternToolStripMenuItem.Enabled = loadMasterPatternToolStripMenuItem.Enabled = !busy;
+        buttonCreateMasterPattern.Enabled = !busy && monteCarloCts == null && !masterPatternEbsd.IsBuilding;
+    }
+
     /// <summary>261124Cl 追加 (作者指示 11-24): 「保存」ボタン。今の MasterPattern (と、あれば MC の電子) を .rpmp に保存する (<see cref="SaveMasterPatternTo"/>)。
     /// 保存は UI スレッドで行う (grid 512 で約 1.3 GB、数秒〜十数秒)。その間は待ちのカーソルにし、状態欄に「Saving…」を出す</summary>
     private void buttonSaveMasterPattern_Click(object sender, EventArgs e)
     {
+        if (masterPatternFileBusy) return; // 261124Cl 追加 (codex2 査読 高 5): 読み込み・保存の最中 (メニューからも入れる)
         if (masterPatternEbsd.IsBuilding || monteCarloCts != null)
         {
             toolStripStatusLabelSummary.Text = "MasterPattern not saved";
@@ -4007,14 +4089,17 @@ public partial class FormEBSD : FormBase
         using var dlg = new SaveFileDialog { Filter = masterPatternFileFilter, DefaultExt = MasterPatternFile.Extension, FileName = name + MasterPatternFile.Extension };
         if (dlg.ShowDialog(this) != DialogResult.OK) return;
         UseWaitCursor = true;
+        SetMasterPatternFileBusy(true); // 261124Cl 追加 (codex2 査読 高 5)
         try { SaveMasterPatternTo(dlg.FileName); }
-        finally { UseWaitCursor = false; }
+        // finally { UseWaitCursor = false; } // 261124Cl 変更前
+        finally { UseWaitCursor = false; SetMasterPatternFileBusy(false); }
     }
 
     /// <summary>261124Cl 追加 (作者指示 11-24): 「読み込み」ボタン。.rpmp を読み込み、構築の完了と同じ状態にする (<see cref="LoadMasterPatternFromAsync"/>)。
     /// 本体 (約 1 GB) を読む前に見出しだけで今の結晶・加速電圧と照合し、合わなければ理由を示して読まない (別の結晶・電圧のパターンは使わない)</summary>
     private async void buttonLoadMasterPattern_Click(object sender, EventArgs e)
     {
+        if (masterPatternFileBusy) return; // 261124Cl 追加 (codex2 査読 高 5): 読み込み・保存の最中 (メニューからも入れる)
         if (masterPatternEbsd.IsBuilding || monteCarloCts != null)
         {
             toolStripStatusLabelSummary.Text = "MasterPattern not loaded";
@@ -4035,6 +4120,10 @@ public partial class FormEBSD : FormBase
             MessageBox.Show(this, ex.Message, "Load master pattern", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
+        SetMasterPatternFileBusy(true); // 261124Cl 追加 (codex2 査読 高 5): ここから終わりまで、ボタンとメニューの保存・読み込み・構築を止める
+        try
+        {
+        MasterPatternFileContent preloaded = null;
         // 261124Cl 追加 (作者決定 11-24): 合わないとき、ファイルに同梱の結晶 (形式 v2) があれば、それを一覧に足し、電圧も合わせて読み込めるようにする
         if (problem != null)
         {
@@ -4042,8 +4131,14 @@ public partial class FormEBSD : FormBase
             bool voltageDiffers = Math.Abs(head.BeamEnergyKeV - Voltage) > 1E-6;
             var fileCrystal = crystalDiffers ? head.GetCrystal() : null;
             // 同梱の結晶が見出しの指紋と同じに戻るときだけ使う (戻らなければ足しても読めない)
+            // bool canFix = (!crystalDiffers || fileCrystal != null && MasterPatternFile.CrystalFingerprint(fileCrystal) == head.CrystalFingerprint)
+            //     && (crystalDiffers || voltageDiffers) && head.BeamEnergyKeV > 0; // 261124Cl 変更前 (同日)
             bool canFix = (!crystalDiffers || fileCrystal != null && MasterPatternFile.CrystalFingerprint(fileCrystal) == head.CrystalFingerprint)
-                && (crystalDiffers || voltageDiffers) && head.BeamEnergyKeV > 0;
+                && (crystalDiffers || voltageDiffers) && double.IsFinite(head.BeamEnergyKeV) && head.BeamEnergyKeV > 0; // 261124Cl 変更 (codex2 査読 2 往復目 中 2): 不正な電圧には切り替えを持ちかけない
+            // 261124Cl 追加 (codex2 査読 2 往復目 低): 同梱の結晶があるのに戻した指紋が合わないとき (座標の丸めなど) は、そのことを案内に足す
+            if (crystalDiffers && fileCrystal != null && !canFix && MasterPatternFile.CrystalFingerprint(fileCrystal) != head.CrystalFingerprint)
+                problem += " The crystal stored in the file could not be restored exactly (its fingerprint differs), so it is not added; select the original crystal instead.";
+            var askedBasis = (MasterPatternFile.CrystalFingerprint(Crystal), Voltage); // 問うた時点の結晶・電圧 (本体を読む間に替わっていないかを後で照らす)
             if (canFix)
             {
                 var steps = new List<string>();
@@ -4052,6 +4147,32 @@ public partial class FormEBSD : FormBase
                 if (MessageBox.Show(this, problem + "\r\n\r\n" + char.ToUpper(steps[0][0]) + string.Join(", and ", steps)[1..] + ", then load the file?",
                     "Load master pattern", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                     return;
+                // 261124Cl 追加 (codex2 査読 高 4): 結晶・電圧を切り替える前に本体を読み切って確かめる。切り替えは今のパターンと電子を捨てるので、
+                //   その後で本体が壊れていると分かると、今のパターンを失い、足した結晶・変えた電圧だけが残る
+                toolStripStatusLabelSummary.Text = "Reading MasterPattern...";
+                toolStripStatusLabelDetail.Text = dlg.FileName;
+                try { preloaded = await Task.Run(() => MasterPatternFile.Load(dlg.FileName)); }
+                catch (Exception ex)
+                {
+                    toolStripStatusLabelSummary.Text = "MasterPattern load failed";
+                    toolStripStatusLabelDetail.Text = ex.Message;
+                    MessageBox.Show(this, ex.Message, "Load master pattern", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                // 261124Cl 追加 (codex2 査読 2 往復目 高 1): 一覧や電圧に触れる前に照らし直す。読む間に結晶・電圧が替わった・計算が始まった・ファイルが置き換わったなら切り替えない
+                if (preloaded.MasterPattern.GridSize < 2) // 261124Cl 追加 (4 往復目 中 1): 描けない格子なら、結晶を切り替える前に断る
+                {
+                    toolStripStatusLabelSummary.Text = "MasterPattern not loaded";
+                    toolStripStatusLabelDetail.Text = $"The grid of the file ({preloaded.MasterPattern.GridSize}) is too small to display.";
+                    return;
+                }
+                if (masterPatternEbsd.IsBuilding || monteCarloCts != null || (MasterPatternFile.CrystalFingerprint(Crystal), Voltage) != askedBasis
+                    || preloaded.Info.CrystalFingerprint != head.CrystalFingerprint || !(preloaded.Info.BeamEnergyKeV == head.BeamEnergyKeV)) // 261124Cl (3 往復目 高): 同じファイルを 2 度読んだ値なので完全一致 (NaN は不一致)
+                {
+                    toolStripStatusLabelSummary.Text = "MasterPattern not loaded";
+                    toolStripStatusLabelDetail.Text = "The crystal, the accelerating voltage or a calculation changed while the file was being read, or the file was replaced. Load it again.";
+                    return;
+                }
                 if (crystalDiffers)
                 {
                     FormMain.listBox.Items.Add(fileCrystal);
@@ -4069,9 +4190,12 @@ public partial class FormEBSD : FormBase
                 "Load master pattern", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
-        buttonCreateMasterPattern.Enabled = buttonSaveMasterPattern.Enabled = buttonLoadMasterPattern.Enabled = false; // 読んでいる間に構築・保存・読み込みを重ねない
-        try { await LoadMasterPatternFromAsync(dlg.FileName); }
-        finally { buttonCreateMasterPattern.Enabled = buttonSaveMasterPattern.Enabled = buttonLoadMasterPattern.Enabled = true; }
+        // buttonCreateMasterPattern.Enabled = buttonSaveMasterPattern.Enabled = buttonLoadMasterPattern.Enabled = false; // 読んでいる間に構築・保存・読み込みを重ねない // 261124Cl 変更前 (3 行)
+        // try { await LoadMasterPatternFromAsync(dlg.FileName); }
+        // finally { buttonCreateMasterPattern.Enabled = buttonSaveMasterPattern.Enabled = buttonLoadMasterPattern.Enabled = true; }
+        await LoadMasterPatternFromAsync(dlg.FileName, preloaded: preloaded); // 261124Cl 変更: 読み切った中身があれば使う
+        }
+        finally { SetMasterPatternFileBusy(false); } // 261124Cl 変更 (codex2 査読 高 5): 構築ボタンは計算が走っていなければだけ戻す
     }
 
     /// <summary>進行中の MonteCarlo / MasterPattern build を停止する。</summary>
