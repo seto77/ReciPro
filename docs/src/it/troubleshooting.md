@@ -47,9 +47,10 @@ Se nessuno di questi rimedi aiuta, la causa potrebbe risiedere nell'ambiente del
 
 **Soluzione**:
 
-1. Andare in **Opzioni ▸ Disabilita tutto il rendering OpenGL (richiede il riavvio)** (oppure tenere premuto **Ctrl** durante l'avvio).
-2. Riavviare ReciPro.
-3. Il Visualizzatore struttura e alcune funzioni 3D useranno il rendering software.
+- Per disattivare OpenGL solo per questo avvio, tenere premuto **Ctrl** all'avvio di ReciPro.
+- Per disattivarlo in modo permanente, selezionare **Opzioni ▸ Disabilita tutto il rendering OpenGL (richiede il riavvio)** e riavviare ReciPro.
+
+Finché OpenGL è disattivato, i pulsanti **Visualizzatore struttura** e **Geometria di rotazione** della finestra principale non sono disponibili e gli assi 3D della finestra principale sono nascosti.
 
 ### Sintomo: una GPU integrata o più vecchia (Intel/AMD) non riesce a eseguire il rendering
 
@@ -111,8 +112,7 @@ Ad esempio, il pulsante **Peak Identification** in Spot ID v2 è nascosto, oppur
 
 **Soluzione**:
 
-- Ridurre **No. of Bloch waves** (50–200 di solito sono sufficienti per i calcoli di routine)
-- Usare il risolutore **Eigen** per ≤ 500 onde; **MKL** per > 500 onde
+- Ridurre **Onde diffratte** (iniziare con poche e usare il numero oltre il quale l'immagine o le intensità non cambiano più; la STEM può richiedere più di 1000 onde)
 - Ridurre la risoluzione dell'immagine per le simulazioni STEM
 - Chiudere altre applicazioni che consumano molta memoria
 
@@ -120,7 +120,7 @@ Ad esempio, il pulsante **Peak Identification** in Spot ID v2 è nascosto, oppur
 
 **Causa**: i fattori di temperatura atomici (B) sono impostati a zero.
 
-**Soluzione**: impostare B ≥ 0.5 Å² per tutti gli atomi. L'intensità TDS richiede fattori di temperatura diversi da zero.
+**Soluzione**: Verificare che nessun parametro di spostamento atomico sia nullo o mancante e inserire valori noti (ad es. dalla letteratura). L'intensità TDS richiede fattori di temperatura non nulli. Se i valori non sono noti, per un calcolo di prova si può usare B ≈ 0.5 Å².
 
 ---
 

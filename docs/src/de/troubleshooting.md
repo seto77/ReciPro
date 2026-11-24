@@ -47,9 +47,10 @@ Wenn nichts davon hilft, kann die Ursache in der Betriebssystemumgebung selbst l
 
 **Lösung**:
 
-1. Gehen Sie zu **Optionen ▸ Gesamtes OpenGL-Rendering deaktivieren (Neustart erforderlich)** (oder halten Sie beim Start **Ctrl** gedrückt).
-2. Starten Sie ReciPro neu.
-3. Die Strukturansicht und einige 3D-Funktionen verwenden dann Software-Rendering.
+- Um OpenGL nur für diesen Start zu deaktivieren, halten Sie beim Start von ReciPro **Ctrl** gedrückt.
+- Um es dauerhaft zu deaktivieren, aktivieren Sie **Optionen ▸ Gesamtes OpenGL-Rendering deaktivieren (Neustart erforderlich)** und starten ReciPro neu.
+
+Solange OpenGL deaktiviert ist, sind die Schaltflächen **Struktur-Ansicht** und **Rotations-Geometrie** im Hauptfenster nicht verfügbar, und die 3D-Achsen des Hauptfensters werden ausgeblendet.
 
 ### Symptom: Integrierte oder ältere GPU (Intel/AMD) rendert nicht
 
@@ -111,8 +112,7 @@ Zum Beispiel ist die Schaltfläche **Peak Identification** in Spot ID v2 verdeck
 
 **Lösung**:
 
-- Verringern Sie **No. of Bloch waves** (50–200 reichen für Routineberechnungen meist aus)
-- Verwenden Sie den **Eigen**-Löser für ≤ 500 Wellen; **MKL** für > 500 Wellen
+- Verringern Sie **Gebeugte Wellen** (mit wenigen beginnen und die Anzahl verwenden, ab der sich Bild bzw. Intensitäten nicht mehr ändern; STEM kann mehr als 1000 Wellen erfordern)
 - Verringern Sie die Bildauflösung für STEM-Simulationen
 - Schließen Sie andere speicherintensive Anwendungen
 
@@ -120,7 +120,7 @@ Zum Beispiel ist die Schaltfläche **Peak Identification** in Spot ID v2 verdeck
 
 **Ursache**: Die atomaren Temperaturfaktoren (B) sind auf null gesetzt.
 
-**Lösung**: Setzen Sie B ≥ 0.5 Å² für alle Atome. Die TDS-Intensität erfordert von null verschiedene Temperaturfaktoren.
+**Lösung**: Prüfen Sie, dass kein Atomauslenkungsparameter null ist oder fehlt, und geben Sie bekannte Werte ein (z. B. aus der Literatur). Die TDS-Intensität erfordert von null verschiedene Temperaturfaktoren. Sind die Werte unbekannt, kann für eine Testrechnung B ≈ 0.5 Å² verwendet werden.
 
 ---
 

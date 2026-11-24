@@ -783,6 +783,7 @@ public partial class FormSpotIDV2 : FormBase
                 var intensity = 0.0;
                 var prms = prmsList[i];
                 var h = (prms.H1 + prms.H2) / 2.0 * 8.0;
+                if (!(h > 0)) h = prms.Range; // 261124Cl 追加 (C2-01): 旧版で幅が 0 に上書きされた表でも 0 にしない (フィッティング半径で積分する)
                 for (int y = Math.Max(0, (int)(prms.Y0 - h - 1)); y < Math.Min(height, (int)(prms.Y0 + h + 2)); y++)
                     for (int x = Math.Max(0, (int)(prms.X0 - h - 1)); x < Math.Min(width, (int)(prms.X0 + h + 2)); x++)
                         if ((x - prms.X0) * (x - prms.X0) + (y - prms.Y0) * (y - prms.Y0) < h * h)
@@ -810,7 +811,8 @@ public partial class FormSpotIDV2 : FormBase
         for (int i = 0; i < prmsList.Count; i++)
         {
             var prms = prmsList[i];
-            dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensities[i] }, new[] { 0.0, 0.0, 0.0 }, 0);
+            //dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensities[i] }, new[] { 0.0, 0.0, 0.0 }, 0); // 261124Cl 変更前: 幅 (H1, H2) と θ, η を 0 で上書きしたので、続けて Global Fit すると積分半径が 0 になり全スポットの強度が 0 になった (codex2 査読 C2-01)
+            dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, prms.H1, prms.H2, prms.Theta, prms.Eta, intensities[i] }, new[] { 0.0, 0.0, 0.0 }, 0); // 261124Cl 変更 (作者の決定): 幅と形は残し、積分強度だけを更新する
         }
         bindingSourceObsSpots.DataMember = "DataTableSpot";
 
@@ -864,7 +866,8 @@ public partial class FormSpotIDV2 : FormBase
         for (int i = 0; i < prmsAll.Length; i++)
         {
             var prms = prmsAll[i];
-            dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensities[i] }, new[] { 0.0, 0.0, 0.0 }, 0);
+            //dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensities[i] }, new[] { 0.0, 0.0, 0.0 }, 0); // 261124Cl 変更前: 幅 (H1, H2) と θ, η を 0 で上書きしたので、続けて Global Fit すると積分半径が 0 になり全スポットの強度が 0 になった (codex2 査読 C2-01)
+            dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, prms.H1, prms.H2, prms.Theta, prms.Eta, intensities[i] }, new[] { 0.0, 0.0, 0.0 }, 0); // 261124Cl 変更 (作者の決定): 幅と形は残し、積分強度だけを更新する
         }
         bindingSourceObsSpots.DataMember = "DataTableSpot";
         toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {StatusBarHelper.FormatElapsed(sw.Elapsed)}";

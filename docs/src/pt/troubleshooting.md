@@ -47,9 +47,10 @@ Se nada disso ajudar, a causa pode estar no próprio ambiente do sistema operaci
 
 **Solução**:
 
-1. Vá em **Opções ▸ Desativar toda a renderização OpenGL (requer reinício)** (ou mantenha **Ctrl** pressionado ao iniciar).
-2. Reinicie o ReciPro.
-3. O Visualizador de estrutura e alguns recursos 3D passarão a usar renderização por software.
+- Para desativar o OpenGL apenas nesta inicialização, mantenha **Ctrl** pressionada ao iniciar o ReciPro.
+- Para desativá-lo permanentemente, marque **Opções ▸ Desativar toda a renderização OpenGL (requer reinício)** e reinicie o ReciPro.
+
+Enquanto o OpenGL estiver desativado, os botões **Visualizador de Estrutura** e **Geometria de Rotação** da janela principal ficam indisponíveis e os eixos 3D da janela principal ficam ocultos.
 
 ### Sintoma: GPU integrada ou antiga (Intel/AMD) não renderiza
 
@@ -111,8 +112,7 @@ Por exemplo, o botão **Peak Identification** no Spot ID v2 está oculto, ou a p
 
 **Solução**:
 
-- Reduza **No. of Bloch waves** (50–200 geralmente é suficiente para cálculos de rotina)
-- Use o solucionador **Eigen** para ≤ 500 ondas; **MKL** para > 500 ondas
+- Reduza **Ondas difratadas** (comece com poucas e use o número a partir do qual a imagem ou as intensidades não mudam mais; STEM pode exigir mais de 1000 ondas)
 - Reduza a resolução da imagem para simulações STEM
 - Feche outros aplicativos que consomem muita memória
 
@@ -120,7 +120,7 @@ Por exemplo, o botão **Peak Identification** no Spot ID v2 está oculto, ou a p
 
 **Causa**: Os fatores de temperatura atômicos (B) estão definidos como zero.
 
-**Solução**: Defina B ≥ 0.5 Å² para todos os átomos. A intensidade do TDS requer fatores de temperatura diferentes de zero.
+**Solução**: Verifique se nenhum parâmetro de deslocamento atômico é zero ou está ausente e insira valores conhecidos (por exemplo, da literatura). A intensidade TDS requer fatores de temperatura diferentes de zero. Se os valores forem desconhecidos, B ≈ 0.5 Å² pode ser usado para um cálculo de teste.
 
 ---
 

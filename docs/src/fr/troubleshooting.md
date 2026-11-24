@@ -47,9 +47,10 @@ Si rien de tout cela n'aide, la cause peut être l'environnement du système d'e
 
 **Solution** :
 
-1. Allez dans **Options ▸ Désactiver tout le rendu OpenGL (redémarrage requis)** (ou maintenez **Ctrl** enfoncé pendant le lancement).
-2. Redémarrez ReciPro.
-3. Le Visualiseur de structure et certaines fonctions 3D utiliseront le rendu logiciel.
+- Pour désactiver OpenGL pour ce lancement seulement, maintenez **Ctrl** enfoncé au démarrage de ReciPro.
+- Pour le désactiver durablement, cochez **Options ▸ Désactiver tout le rendu OpenGL (redémarrage requis)** et redémarrez ReciPro.
+
+Tant qu'OpenGL est désactivé, les boutons **Visualiseur de structure** et **Géométrie de rotation** de la fenêtre principale sont indisponibles et les axes 3D de la fenêtre principale sont masqués.
 
 ### Symptôme : Un GPU intégré ou ancien (Intel/AMD) ne parvient pas à effectuer le rendu
 
@@ -111,8 +112,7 @@ Par exemple, le bouton **Peak Identification** dans Spot ID v2 est masqué, ou l
 
 **Solution** :
 
-- Réduisez **No. of Bloch waves** (50–200 suffisent généralement pour les calculs de routine)
-- Utilisez le solveur **Eigen** pour ≤ 500 ondes ; **MKL** pour > 500 ondes
+- Réduisez **Ondes diffractées** (commencez petit et utilisez le nombre au-delà duquel l'image ou les intensités ne changent plus ; la STEM peut nécessiter plus de 1000 ondes)
 - Réduisez la résolution de l'image pour les simulations STEM
 - Fermez les autres applications gourmandes en mémoire
 
@@ -120,7 +120,7 @@ Par exemple, le bouton **Peak Identification** dans Spot ID v2 est masqué, ou l
 
 **Cause** : Les facteurs de température atomiques (B) sont réglés à zéro.
 
-**Solution** : Réglez B ≥ 0.5 Å² pour tous les atomes. L'intensité TDS nécessite des facteurs de température non nuls.
+**Solution** : Vérifiez qu'aucun paramètre de déplacement atomique n'est nul ou manquant, et saisissez les valeurs connues (par ex. de la littérature). L'intensité TDS nécessite des facteurs de température non nuls. Si les valeurs sont inconnues, B ≈ 0.5 Å² peut servir pour un calcul d'essai.
 
 ---
 

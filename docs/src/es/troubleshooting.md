@@ -47,9 +47,10 @@ Si nada de esto ayuda, la causa puede estar en el propio entorno del sistema ope
 
 **Solución**:
 
-1. Vaya a **Opciones ▸ Desactivar todo el renderizado OpenGL (requiere reinicio)** (o mantenga pulsada **Ctrl** al iniciar).
-2. Reinicie ReciPro.
-3. El Visor de estructura y algunas funciones 3D usarán entonces renderizado por software.
+- Para desactivar OpenGL solo en este inicio, mantenga pulsada **Ctrl** al iniciar ReciPro.
+- Para desactivarlo de forma permanente, marque **Opciones ▸ Desactivar todo el renderizado OpenGL (requiere reinicio)** y reinicie ReciPro.
+
+Mientras OpenGL está desactivado, los botones **Visor de estructura** y **Geometría de rotación** de la ventana principal no están disponibles y los ejes 3D de la ventana principal se ocultan.
 
 ### Síntoma: Una GPU integrada o antigua (Intel/AMD) no renderiza
 
@@ -111,8 +112,7 @@ Por ejemplo, el botón **Peak Identification** de Spot ID v2 queda oculto, o la 
 
 **Solución**:
 
-- Reduzca **No. of Bloch waves** (50–200 suele bastar para cálculos rutinarios)
-- Use el solucionador **Eigen** para ≤ 500 ondas; **MKL** para > 500 ondas
+- Reduzca **Ondas difractadas** (empiece con pocas y use el número a partir del cual la imagen o las intensidades ya no cambian; STEM puede requerir más de 1000 ondas)
 - Reduzca la resolución de imagen para las simulaciones STEM
 - Cierre otras aplicaciones que consuman mucha memoria
 
@@ -120,7 +120,7 @@ Por ejemplo, el botón **Peak Identification** de Spot ID v2 queda oculto, o la 
 
 **Causa**: Los factores de temperatura atómicos (B) están establecidos en cero.
 
-**Solución**: Establezca B ≥ 0.5 Å² para todos los átomos. La intensidad TDS requiere factores de temperatura distintos de cero.
+**Solución**: Compruebe que ningún parámetro de desplazamiento atómico sea cero o falte, e introduzca valores conocidos (p. ej., de la bibliografía). La intensidad TDS requiere factores de temperatura distintos de cero. Si los valores son desconocidos, puede usarse B ≈ 0.5 Å² para un cálculo de prueba.
 
 ---
 
