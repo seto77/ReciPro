@@ -681,7 +681,22 @@ public partial class FormMain : FormBase
         ChangeClipboardChain(this.Handle, NextHandle);
 
         //260717Cl 変更: List 経由の二段構築を Cast().ToArray() に短縮
-        ConvertCrystalData.SaveCrystalListXml(listBox.Items.Cast<Crystal>().ToArray(), UserAppDataPath + "default.xml");
+        //ConvertCrystalData.SaveCrystalListXml(listBox.Items.Cast<Crystal>().ToArray(), UserAppDataPath + "default.xml"); // 261124Cl 変更前: 失敗しても黙っていた
+        // 261124Cl 変更 (PDIndexer の査読 C-03 のアプリ側): 保存は書き切ってから置き換えるようになった (失敗しても前回の default.xml は残る)。失敗したらそのことを知らせる
+        if (!ConvertCrystalData.SaveCrystalListXml(listBox.Items.Cast<Crystal>().ToArray(), UserAppDataPath + "default.xml"))
+            MessageBox.Show(this, Crystallography.Localization.Loc(
+                en: "Could not save the crystal list (default.xml). The changes made in this session are lost; the previous list is kept.",
+                ja: "結晶リスト (default.xml) を保存できませんでした。今回の変更は失われます (前回のリストは残っています)。",
+                de: "Die Kristallliste (default.xml) konnte nicht gespeichert werden. Die Änderungen dieser Sitzung gehen verloren; die vorherige Liste bleibt erhalten.",
+                fr: "Impossible d'enregistrer la liste de cristaux (default.xml). Les modifications de cette session sont perdues ; la liste précédente est conservée.",
+                es: "No se pudo guardar la lista de cristales (default.xml). Los cambios de esta sesión se pierden; se conserva la lista anterior.",
+                pt: "Não foi possível salvar a lista de cristais (default.xml). As alterações desta sessão foram perdidas; a lista anterior foi mantida.",
+                it: "Impossibile salvare l'elenco dei cristalli (default.xml). Le modifiche di questa sessione vanno perse; l'elenco precedente è conservato.",
+                ru: "Не удалось сохранить список кристаллов (default.xml). Изменения этого сеанса потеряны; предыдущий список сохранён.",
+                zhHans: "无法保存晶体列表 (default.xml)。本次的更改将丢失（保留之前的列表）。",
+                zhHant: "無法儲存晶體清單 (default.xml)。本次的變更將遺失（保留先前的清單）。",
+                ko: "결정 목록(default.xml)을 저장하지 못했습니다. 이번 세션의 변경 사항은 사라지며, 이전 목록은 유지됩니다."),
+                "ReciPro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
     }
     #endregion
 
