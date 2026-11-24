@@ -7,6 +7,15 @@
 
 This page describes what changed in each version of ReciPro. The [release page on GitHub](https://github.com/seto77/ReciPro/releases) gives only a one-line summary and the download links for each version; the details are written here. Versions from v.4.919 on have a section of their own; older versions are listed with their one-line summary.
 
+## v.4.954 (2026-11-24)
+
+Spot ID v2 measures the angle of three spots (Shift+click) and reads LZW/Deflate/PackBits TIFF; EBSD saves and loads master patterns (compact new format) and has a File menu; unified mouse zoom and menus, with Shortcut hints menus.
+
+- **Spot ID v2**: hold Shift and left-click three spots in turn (end, vertex, end; e.g. No.6 → No.0 → No.8) to measure the angle on the image. Lines, an arc and the value are drawn on the image and the status bar shows ∠6–0–8 = 89.73°; Shift + click away from the spots, or Esc, clears it (#74). TIFF images compressed with LZW, Deflate (zip) or PackBits can now be loaded.
+- **EBSD master patterns**: Save / Load buttons next to Build master pattern, and a new File menu. Files use a compact new format (about 0.5–0.6 times the size; a grid-512 file loads in about 0.7 s instead of 6 s) that carries the crystal and the Monte Carlo electrons. Loading a file of another crystal offers to add that crystal, and a file built with older physics gives a warning. Older files can still be read.
+- **Mouse and menus**: EBSD zone-axis picking uses the Spot ID v2 gestures (left double-click adds, left click selects, Ctrl + right-click removes a point). Right-click zooms out by 1/1.2 in every view, and the Stereonet and the EBSD Kikuchi pattern also zoom with the mouse wheel. EBSD, Stereonet, Diffraction simulator and HRTEM/STEM have a Shortcut hints menu, and File menus use Load / Save throughout.
+- **Other fixes**: the box for the number of diffracted waves in the diffraction simulator had no room in seven languages (now headed 'Diffracted waves'); the Spot ID v2 Japanese column headers broke after every character; very large CBED dressed-tail problems now fall back with a reason instead of failing; Spot ID v2 Global fit and Donut no longer fail with no spots.
+
 ## v.4.953 (2026-11-21)
 
 Fixed a start-up crash of v.4.952 at 150 % display scaling. Dynamical calculations (SAED/PED, CBED, STEM, HRTEM, Kikuchi, EBSD) now report numeric failures instead of showing stale results; fixed EBSD master patterns on hexagonal grids.
