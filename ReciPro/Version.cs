@@ -8,6 +8,7 @@ internal static class Version
     //260805Cl 表記統一: 版番と日付括弧の間にスペースを1つ入れる。⚠この行より上の行(このコメント含む)に版番キーワード (v-e-r の 3 文字) を書かない (CI と旧版の更新チェックが History 先頭行より先に拾う。260820Cl: このコメント自身がそれを含んでいて v.4.947 のリリースノートがコメント文になった。CI 側は版番の数字まで見るよう修正済み)
     public const string History =
         "History" +
+        "\r\n ver4.954 (2026/11/24)  Spot ID v2 measures the angle of three spots (Shift+click) and reads LZW/Deflate/PackBits TIFF; EBSD saves and loads master patterns (compact new format) and has a File menu; unified mouse zoom and menus, with Shortcut hints menus. (see https://github.com/seto77/ReciPro/issues/74)" + // 261124Cl 追加
         "\r\n ver4.953 (2026/11/21)  Fixed a start-up crash of v.4.952 at 150 % display scaling. Dynamical calculations (SAED/PED, CBED, STEM, HRTEM, Kikuchi, EBSD) now report numeric failures instead of showing stale results; fixed EBSD master patterns on hexagonal grids." + // 261121Cl 追加
         "\r\n ver4.952 (2026/11/17)  Moved to .NET 11 (the MSI build needs .NET Desktop Runtime 11.0). Fixed many calculation errors (STEM TDS/EDX depth phase, anisotropic ADPs, CIF/AMCSD reading, EBSD, diffraction simulator, Spot ID); the Monte Carlo uses a new stopping power. (see https://github.com/seto77/ReciPro/issues/73)" + // 261117Cl 追加
         "\r\n ver4.951 (2026/11/05)  Added 'Details of the chemical composition' to the crystal right-click menu (wt%, at%, normalized atoms, oxide/halide/sulfide conversion). Hidden windows no longer block Windows shutdown, and reordered atoms keep their display checks." + // 261105Cl 追加
