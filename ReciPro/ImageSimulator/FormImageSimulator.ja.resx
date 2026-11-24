@@ -1382,13 +1382,13 @@ microscopy, 走査透過電子顕微鏡）像を、収束半角と
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>画像として (PNG 形式)</value>
+    <value>画像として (PNG 形式)...</value>
   </data>
   <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>画像として (TIFF 形式)</value>
+    <value>画像として (TIFF 形式)...</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>メタファイルとして (EMF)</value>
+    <value>メタファイルとして (EMF)...</value>
   </data>
   <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
     <value>   シリーズ画像モードで個別に保存 </value>
@@ -1416,14 +1416,14 @@ microscopy, 走査透過電子顕微鏡）像を、収束半角と
     <value>保存画像に単位胞、ラベル、スケールバーを重ね印刷します。</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
-    <value>TEMパラメータを読み込み</value>
+    <value>TEMパラメータを読込...</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>「TEMパラメータを保存」で保存したファイル (*.rpis) から計算条件を
 読み込みます。ファイルに無い項目 (古い版のファイルなど) は初期値になります。</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
-    <value>TEMパラメータを保存</value>
+    <value>TEMパラメータを保存...</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>今の計算条件 (条件プリセットと同じ項目) を XML ファイル (*.rpis) に
@@ -1520,5 +1520,32 @@ Managed code(.NET)。通常は Native が高速です。</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.HeaderText" xml:space="preserve">
     <value>収束半角 α</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>ショートカットヒント</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + C（画像グリッドにフォーカス時） : 画像をメタファイルとしてクリップボードへコピー</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>左ドラッグ／中ドラッグ : 画像を平行移動（全ペイン連動）</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>ホイール上／下 : カーソル位置を中心にズームイン（×2）／ズームアウト（×1/2）</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右ドラッグで矩形選択 : 選択範囲にズームイン</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右クリック／右ダブルクリック : ズームアウト（×1/1.2。ダブルクリックは 2 回分）</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 右ドラッグで矩形 : 矩形領域を選択</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>ペインを左ダブルクリック : そのペインを最大化／グリッドに戻す（複数ペイン時）</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>マウス移動（ボタンなし） : カーソル位置の座標（pm）とピクセル値を表示</value>
   </data>
 </root>

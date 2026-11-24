@@ -34,9 +34,9 @@ I risultati vengono mostrati come uno o più riquadri immagine. Utilizzano la [n
 | <kbd>F1</kbd> | Apre questa pagina del manuale online |
 | <kbd>CTRL</kbd>+<kbd>C</kbd> (griglia immagini attiva) | Copia l'immagine o le immagini negli appunti come metafile |
 | Trascinamento sinistro / centrale | Sposta l'immagine (tutti i riquadri si muovono insieme) |
-| Rotellina del mouse su / giù | Zoom avanti (×2) / indietro (×0.5) in corrispondenza del cursore |
+| Rotellina del mouse su / giù | Zoom avanti (×2) / indietro (×1/2) in corrispondenza del cursore |
 | Trascinamento di un rettangolo con il tasto destro | Zoom avanti nella regione selezionata |
-| Clic destro / doppio clic destro | Zoom indietro (×0.5) |
+| Clic destro / doppio clic destro | Zoom indietro (×1/1.2) |
 | <kbd>CTRL</kbd> + trascinamento di un rettangolo con il tasto destro | Seleziona un'area rettangolare |
 | Doppio clic sinistro su un riquadro | Ingrandisce quel riquadro / ripristina la griglia (layout a più riquadri) |
 | Movimento del mouse (senza tasto) | Legge la posizione (pm) e il valore del pixel in corrispondenza del cursore |

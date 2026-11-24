@@ -26,6 +26,13 @@ public partial class FormSpotIDV2 : FormBase
     public object tagCalcSpot = "Calc";
     public object tagScale = "Scale";
 
+    /// <summary>261124Cl 追加 (GitHub #74): Shift + 左クリックで選んだスポット (端点 → 頂点 → 端点、最大 3 個)。
+    /// 番号は削除で振り直されるので行そのものを持ち、番号は表示のたびに読む</summary>
+    private readonly List<DataSetReciPro.DataTableSpotRow> angleSpots = [];
+
+    /// <summary>261124Cl 追加 (GitHub #74): 測角の Shift + 左押下からボタンを離すまで true。この間のマウス移動 (パン) を消費する</summary>
+    private bool angleMouseHeld = false;
+
     public FormSpotIDv2Details FormSpotDetails;
 
     public FormMain FormMain;
@@ -296,12 +303,44 @@ public partial class FormSpotIDV2 : FormBase
     #endregion
 
     #region マウスイベント
+    /// <summary>261124Cl 追加: 画像の点 pt から画面上 10 px 以内で最も近いスポットの番号 (No)。無ければ -1。座標が有限でないスポットは除く。
+    /// 左クリック (選択)・Ctrl + 右クリック (削除)・Shift + 左クリック (角の測定) で共通</summary>
+    private int findSpotNear(PointD pt)
+    {
+        var nearest = dataSet.DataTableSpot.Spots?.Where(s => double.IsFinite(s.X) && double.IsFinite(s.Y))
+            .Select(s => (s.No, Distance: (new PointD(s.X, s.Y) - pt).Length)).DefaultIfEmpty((No: -1, Distance: double.MaxValue)).MinBy(s => s.Distance);
+        return nearest is { No: >= 0 } n && n.Distance * scalablePictureBoxAdvanced.ZoomAndCenter.Zoom < 10 ? n.No : -1;
+    }
+
     private bool scalablePictureBoxAdvanced1_MouseDown2(object sender, MouseEventArgs e, Crystallography.PointD pt)
     {
         skipEvent = false;
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
         if (p == null)
             return true;
+
+        // 261124Cl 追加 (GitHub #74): Shift + 左クリックで角を測るスポットを選ぶ (端点 → 頂点 → 端点)。4 回目は新しい測定を始める。
+        //  ダブルクリックの判定より先に置き、Shift 付きの 2 打目でスポットが増えないようにする (2 打目は何もしない)。
+        //  押したままの移動はボタンを離すまで MouseMove2 で消費する (測る操作の途中で画像を動かさない)。押すたびに決め直す (前の押下の MouseUp が届かなくても残らない)
+        if (e.Button == MouseButtons.Left)
+            angleMouseHeld = ModifierKeys == Keys.Shift;
+        if (angleMouseHeld)
+        {
+            if (e.Clicks >= 2)
+                return true;
+            updateAngle(); // 表から外れた行 (削除・全消去) を先に捨てる (外れた行の値は読めない)
+            // 261124Cl 変更 (作者指示): どのスポットからも離れた所 (画面上 10 px より遠い) を Shift + クリックしたら、選んだ点を全部解除する。
+            //  旧 (同日): 空振りでは前の結果を残していた。スポットの近くなら吸着する。3 点そろった後は次の測定の 1 点目。
+            //  測定の途中で、もう選んだスポットを指したときは何もしない (同じスポットを 2 度使う A–B–A は作らない)
+            var no = findSpotNear(pt);
+            if (no < 0 || angleSpots.Count == 3)
+                angleSpots.Clear();
+            if (no >= 0 && !angleSpots.Any(r => r.No == no))
+                angleSpots.Add((DataSetReciPro.DataTableSpotRow)dataSet.DataTableSpot.Rows[no]);
+            updateAngle();
+            scalablePictureBoxAdvanced.Refresh();
+            return true;
+        }
 
         if (e.Button == MouseButtons.Left && e.Clicks == 2)//左ダブルクリック　スポット追加
         {
@@ -324,13 +363,17 @@ public partial class FormSpotIDV2 : FormBase
         }
         else if (e.Button == MouseButtons.Left && e.Clicks == 1)//左クリック スポット選択
         {
-            var spots = dataSet.DataTableSpot.Spots;
-            if (spots != null && spots.Any())
+            //var spots = dataSet.DataTableSpot.Spots; // 261124Cl 変更前 (当たり判定は findSpotNear へまとめた)
+            //if (spots != null && spots.Any())
+            //{
+            //    var min = spots.Min(s => (s.X - pt.X) * (s.X - pt.X) + (s.Y - pt.Y) * (s.Y - pt.Y));
+            //    if (Math.Sqrt(min) * scalablePictureBoxAdvanced.ZoomAndCenter.Zoom < 10)
+            //    {
+            //        var num = spots.First(s => (s.X - pt.X) * (s.X - pt.X) + (s.Y - pt.Y) * (s.Y - pt.Y) == min).No;
+            var num = findSpotNear(pt); // 261124Cl 変更
             {
-                var min = spots.Min(s => (s.X - pt.X) * (s.X - pt.X) + (s.Y - pt.Y) * (s.Y - pt.Y));
-                if (Math.Sqrt(min) * scalablePictureBoxAdvanced.ZoomAndCenter.Zoom < 10)
+                if (num >= 0) // 261124Cl 変更
                 {
-                    var num = spots.First(s => (s.X - pt.X) * (s.X - pt.X) + (s.Y - pt.Y) * (s.Y - pt.Y) == min).No;
                     scalablePictureBoxAdvanced.FixZoomAndCenter = true;
                     bindingSourceObsSpots.Position = bindingSourceObsSpots.Find("No", num);
                     scalablePictureBoxAdvanced.FixZoomAndCenter = false;
@@ -342,16 +385,23 @@ public partial class FormSpotIDV2 : FormBase
         else if (e.Button == MouseButtons.Right && ModifierKeys == Keys.Control)//右クリック
         {
             skipEvent = true;
-            var spots = dataSet.DataTableSpot.Spots;
-            if (spots != null && spots.Count != 0)
+            //var spots = dataSet.DataTableSpot.Spots; // 261124Cl 変更前 (当たり判定は findSpotNear へまとめた)
+            //if (spots != null && spots.Count != 0)
+            //{
+            //    var min = spots.Min(s => (s.X - pt.X) * (s.X - pt.X) + (s.Y - pt.Y) * (s.Y - pt.Y));
+            //    if (Math.Sqrt(min) * scalablePictureBoxAdvanced.ZoomAndCenter.Zoom < 10)
+            //    {
+            //        bindingSourceObsSpots.DataMember = "";
+            //        dataSet.DataTableSpot.Remove(spots.First(s => (s.X - pt.X) * (s.X - pt.X) + (s.Y - pt.Y) * (s.Y - pt.Y) == min).No);
+            //        bindingSourceObsSpots.DataMember = "DataTableSpot";
+            //    }
+            //}
+            var num = findSpotNear(pt); // 261124Cl 変更
+            if (num >= 0)
             {
-                var min = spots.Min(s => (s.X - pt.X) * (s.X - pt.X) + (s.Y - pt.Y) * (s.Y - pt.Y));
-                if (Math.Sqrt(min) * scalablePictureBoxAdvanced.ZoomAndCenter.Zoom < 10)
-                {
-                    bindingSourceObsSpots.DataMember = "";
-                    dataSet.DataTableSpot.Remove(spots.First(s => (s.X - pt.X) * (s.X - pt.X) + (s.Y - pt.Y) * (s.Y - pt.Y) == min).No);
-                    bindingSourceObsSpots.DataMember = "DataTableSpot";
-                }
+                bindingSourceObsSpots.DataMember = "";
+                dataSet.DataTableSpot.Remove(num);
+                bindingSourceObsSpots.DataMember = "DataTableSpot";
             }
 
             if (dataSet.DataTableSpot.Rows.Count > 0)
@@ -639,7 +689,8 @@ public partial class FormSpotIDV2 : FormBase
     // 260428Cl async 化: 重い計算 (MQ.Solve + intensity 集計) を Task.Run でバックグラウンドへ移行
     private async void ButtonGlobalFit_Click(object sender, EventArgs e)
     {
-        if (dataSet.DataTableSpot.Spots.Count == 0) return;
+        //if (dataSet.DataTableSpot.Spots.Count == 0) return; // 261124Cl 変更前: 全消去の直後は Spots が null を返し、ここで NullReferenceException (codex2 査読)
+        if (dataSet.DataTableSpot.Rows.Count == 0) return; // 261124Cl 変更
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
         if (p == null || p.SrcValuesGray == null) return;
 
@@ -689,6 +740,7 @@ public partial class FormSpotIDV2 : FormBase
             MessageBox.Show("Global Fit requires a Direct (000) spot to be marked.\r\nNo Direct spot was found in the spot list.",
                 "Global Fit", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             toolStripStatusLabelIdentifySpot.Text = "";
+            bindingSourceObsSpots.DataMember = "DataTableSpot"; // 261124Cl 追加 (codex2 査読): 外したバインドを戻す。戻さないと表が空のままで、後の全消去なども ListChanged が届かない
             Enabled = true;
             return;
         }
@@ -750,6 +802,7 @@ public partial class FormSpotIDV2 : FormBase
             MessageBox.Show("Global Fit failed to converge (the background model could not be solved).\r\nCheck that the Direct spot position and Fitting Range are reasonable.",
                 "Global Fit", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             toolStripStatusLabelIdentifySpot.Text = "";
+            bindingSourceObsSpots.DataMember = "DataTableSpot"; // 261124Cl 追加 (codex2 査読): 同上
             Enabled = true;
             return;
         }
@@ -769,7 +822,8 @@ public partial class FormSpotIDV2 : FormBase
     // 260428Cl async 化: ピクセル積分ループを Task.Run でバックグラウンドへ移行
     private async void buttonDonut_Click(object sender, EventArgs e)
     {
-        if (dataSet.DataTableSpot.Spots.Count == 0) return;
+        //if (dataSet.DataTableSpot.Spots.Count == 0) return; // 261124Cl 変更前: 全消去の直後は Spots が null を返し、ここで NullReferenceException (codex2 査読)
+        if (dataSet.DataTableSpot.Rows.Count == 0) return; // 261124Cl 変更
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
         if (p == null || p.SrcValuesGray == null) return;
 
@@ -858,6 +912,7 @@ public partial class FormSpotIDV2 : FormBase
             }
         }
         setDebyeRings(); // 261105Cl 追加 (監査 I10): 直接スポットの位置・校正 (ResetDspacing で d が書き換わる) が変わったら、Debye リングもガイド円と同じく置き直す
+        updateAngle(); // 261124Cl 追加 (GitHub #74): 再フィット・Ctrl+矢印の移動・削除に角の表示を追従させる
 
         scalablePictureBoxAdvanced.Refresh();
         if (FormSpotDetails != null && FormSpotDetails.Visible)
@@ -2166,6 +2221,15 @@ public partial class FormSpotIDV2 : FormBase
 
     private void FormSpotIDV2_KeyDown(object sender, KeyEventArgs e)
     {
+        if (e.KeyCode == Keys.Escape && angleSpots.Count != 0) // 261124Cl 追加 (GitHub #74): Esc で角の測定を消す
+        {
+            angleSpots.Clear();
+            updateAngle();
+            scalablePictureBoxAdvanced.Refresh();
+            e.Handled = e.SuppressKeyPress = true;
+            return;
+        }
+
         if (bindingSourceObsSpots.Current != null && bindingSourceObsSpots.Current is DataRowView view)
         {
             if (e.Control && (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left))
@@ -2189,6 +2253,88 @@ public partial class FormSpotIDV2 : FormBase
                 catch { }
                 e.SuppressKeyPress = true;
             }
+        }
+    }
+
+    /// <summary>261124Cl 追加 (GitHub #74): 選んだスポットの番号と、3 個そろえば画像上の角 ∠A–B–C (頂点 B、0〜180°) をステータスバーに出す。
+    /// 削除・全消去・CSV の読み込みで行が表から外れていたら測定を捨てる</summary>
+    private void updateAngle()
+    {
+        if (angleSpots.Any(r => r.RowState is DataRowState.Detached or DataRowState.Deleted))
+            angleSpots.Clear();
+        if (angleSpots.Count == 0)
+        {
+            toolStripStatusLabelAngle.Text = "";
+            return;
+        }
+        var text = "∠" + string.Join("–", angleSpots.Select(r => r.No.ToString()).Concat(Enumerable.Repeat("?", 3 - angleSpots.Count)));
+        if (angleSpots.Count == 3)
+        {
+            var angle = imageAngle();
+            text += double.IsNaN(angle) ? " = —" : $" = {angle:f2}°";
+        }
+        toolStripStatusLabelAngle.Text = text;
+    }
+
+    /// <summary>261124Cl 追加 (GitHub #74): 測角の Shift + 左押下のあと、離すまでの移動を消費する (画像が跳ばないように)</summary>
+    private bool scalablePictureBoxAdvanced_MouseMove2(object sender, MouseEventArgs e, Crystallography.PointD pt)
+        => angleMouseHeld && (e.Button & MouseButtons.Left) == MouseButtons.Left;
+
+    /// <summary>261124Cl 追加 (GitHub #74): 左ボタンを離したら消費をやめる (離す処理そのものはコントロール本体に任せる)</summary>
+    private bool scalablePictureBoxAdvanced_MouseUp2(object sender, MouseEventArgs e, Crystallography.PointD pt)
+    {
+        if (e.Button == MouseButtons.Left)
+            angleMouseHeld = false;
+        return false;
+    }
+
+    /// <summary>261124Cl 追加 (GitHub #74): 画像の画素座標 (フィットした x0, y0) での角 ∠A–B–C (度、0〜180°)。頂点と端点が重なれば NaN</summary>
+    private double imageAngle()
+    {
+        PointD b = new(angleSpots[1].x0, angleSpots[1].y0), u = new PointD(angleSpots[0].x0, angleSpots[0].y0) - b, v = new PointD(angleSpots[2].x0, angleSpots[2].y0) - b;
+        if (u.Length == 0 || v.Length == 0)
+            return double.NaN;
+        return Math.Atan2(Math.Abs(u.X * v.Y - u.Y * v.X), u * v) / Math.PI * 180;
+    }
+
+    /// <summary>261124Cl 追加 (GitHub #74): 選んだスポットに丸、順に結ぶ線、3 個そろえば頂点の弧と角の値を描く</summary>
+    private void scalablePictureBoxAdvanced_Paint2(object sender, PaintEventArgs e)
+    {
+        if (angleSpots.Count == 0 || angleSpots.Any(r => r.RowState is DataRowState.Detached or DataRowState.Deleted))
+            return;
+        var pts = angleSpots.Select(r => scalablePictureBoxAdvanced.ConvertToClientPt(new PointD(r.x0, r.y0)).ToPointF()).ToArray();
+        if (pts.Any(p => !float.IsFinite(p.X) || !float.IsFinite(p.Y))) // 再フィットで座標が NaN になったスポットは描かない (GDI+ が例外を出す)
+            return;
+        var s = DeviceDpi / 96f; // 丸・弧・余白・線幅は画面の拡大率に合わせる
+        var g = e.Graphics;
+        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+        using var pen = new Pen(Color.Orange, 2f * s);
+        foreach (var p in pts)
+            g.DrawEllipse(pen, p.X - 9 * s, p.Y - 9 * s, 18 * s, 18 * s);
+        for (int i = 1; i < pts.Length; i++)
+            g.DrawLine(pen, pts[i - 1], pts[i]);
+
+        var angle = pts.Length == 3 ? imageAngle() : double.NaN;
+        if (!double.IsNaN(angle))
+        {
+            // 画面の座標 (y 下向き) で x 軸から時計回りの角。DrawArc も同じ向きに測る
+            var a1 = Math.Atan2(pts[0].Y - pts[1].Y, pts[0].X - pts[1].X) / Math.PI * 180;
+            var a2 = Math.Atan2(pts[2].Y - pts[1].Y, pts[2].X - pts[1].X) / Math.PI * 180;
+            var sweep = a2 - a1;
+            if (sweep > 180) sweep -= 360;
+            else if (sweep <= -180) sweep += 360;
+            // 弧の半径は 28 px (拡大率倍)。縮小表示で辺が短いときは辺の 6 割まで縮め、弧が線からはみ出さないようにする
+            var r = (float)Math.Min(28 * s, 0.6 * Math.Min(double.Hypot(pts[0].X - pts[1].X, pts[0].Y - pts[1].Y), double.Hypot(pts[2].X - pts[1].X, pts[2].Y - pts[1].Y)));
+            if (r >= 2) g.DrawArc(pen, pts[1].X - r, pts[1].Y - r, 2 * r, 2 * r, (float)a1, (float)sweep);
+
+            // 角の値は、弧の二等分線の上で弧の外側に置く
+            var mid = (a1 + sweep / 2) / 180 * Math.PI;
+            var label = $"{angle:f2}°"; // ステータスバーと同じ小数 2 桁 (画像を保存して転記した値と照合できるように)
+            using var font = new Font(Font.FontFamily, 11f, FontStyle.Bold);
+            var size = g.MeasureString(label, font);
+            var c = new PointF(pts[1].X + (float)Math.Cos(mid) * (r + 6 * s + size.Width / 2), pts[1].Y + (float)Math.Sin(mid) * (r + 4 * s + size.Height / 2));
+            g.DrawString(label, font, Brushes.Black, c.X - size.Width / 2 + 1, c.Y - size.Height / 2 + 1);
+            g.DrawString(label, font, Brushes.Orange, c.X - size.Width / 2, c.Y - size.Height / 2);
         }
     }
 

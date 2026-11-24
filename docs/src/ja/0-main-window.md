@@ -30,7 +30,7 @@ ReciProを起動すると、メインウィンドウが表示されます。こ�
 | 方位ウィジェットを右ダブルクリック | ウィジェットの画像をクリップボードにコピー |
 | 機能ボタンをシングルクリック | そのウィンドウを開閉（最小化中のウィンドウは閉じずに元のサイズに戻す） |
 | 機能ボタンをダブルクリック | ウィンドウを強制的に表示し前面へ |
-| 結晶リストを右クリック | コンテキストメニュー（名前の変更／CIFで出力／複製／削除） |
+| 結晶リストを右クリック | コンテキストメニュー（名前の変更／CIF として書き出し／複製／削除） |
 | 晶帯軸指数のラベル（*現在の結晶方位* の下の `[u v w]`）をダブルクリック | 最大UVWボックスの表示/非表示 |
 | ウィンドウにファイルをドロップ | 結晶リスト（`.xml`, `.out`。置換か追加かを確認）または結晶（`.cif`, `.amc`）を読込 <!-- 261105Cl 監査: .cdb2 はドロップで読めないので外した (FormMain.cs:FormMain_DragDrop) --> |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> | アクティブなウィンドウの GUI キャプチャツール（実験的機能）を開く |
@@ -57,12 +57,12 @@ ReciProを起動すると、メインウィンドウが表示されます。こ�
 
 | メニュー項目 | 説明 |
 |-------------|------|
-| 結晶リストを読込 (現在のリストを消去) | 結晶リストファイル(`*.xml`, `*.out`)を読み込み、現在のリストを置換。読み込む結晶を選ぶダイアログが開く <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:ReadCrystalList (showSelectionDialog=true → FormCrystalSelection), SaveCrystalDataToolStripMenuItem_Click) --> |
-| 結晶リストを読込 (現在のリストに追加) | 結晶リストを読み込み、現在のリストに追加（同じ選択ダイアログが開く） |
+| 結晶リストを読込 (現在のリストを消去)... | 結晶リストファイル(`*.xml`, `*.out`)を読み込み、現在のリストを置換。読み込む結晶を選ぶダイアログが開く <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:ReadCrystalList (showSelectionDialog=true → FormCrystalSelection), SaveCrystalDataToolStripMenuItem_Click) --> |
+| 結晶リストを読込 (現在のリストに追加)... | 結晶リストを読み込み、現在のリストに追加（同じ選択ダイアログが開く） |
 | 結晶リストを初期状態に戻す | ReciPro に同梱の結晶リストを再読込 |
-| CIFあるいはAMCファイルから結晶を読み込み | CIF / AMC ファイルから結晶を1つ読み込み |
-| 結晶リストを保存 | 現在の結晶リストを保存（書き出す結晶を選ぶダイアログが開く） |
-| 選択結晶をCIF形式で書き出し | 選択中の結晶をCIFフォーマットで保存 |
+| CIF・AMC ファイルから結晶を取り込み... | CIF / AMC ファイルから結晶を1つ読み込み |
+| 結晶リストを保存... | 現在の結晶リストを保存（書き出す結晶を選ぶダイアログが開く） |
+| 選択した結晶を CIF として書き出し... | 選択中の結晶をCIFフォーマットで保存 |
 | すべての結晶を削除 | すべての結晶をリストから削除 <!-- 261105Cl 監査 (組 K): メニューとボタンの名前を揃えた (FormMain.ja.resx toolStripMenuItem1 / buttonClearAllCrystals) --> |
 | 閉じる | アプリケーションを終了 |
 
@@ -178,7 +178,7 @@ UI 言語を切り替えます。English・日本語・Deutsch・Français・Esp
 ![結晶リスト](../assets/cap-ja-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalList.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: ReciPro/initial.xml (Crystal 66 件), FormMain.ja.resx exportAsCIFFormatToolStripMenuItem.Text) -->
-読み込まれた結晶を表示（初期状態で 66 結晶）。結晶を選択すると **結晶情報** に詳細が表示され、計算対象に設定されます。**結晶リストを右クリック**するとコンテキストメニュー（*名前の変更*・*CIFで出力*・*複製*・*削除*）が表示されます。
+読み込まれた結晶を表示（初期状態で 66 結晶）。結晶を選択すると **結晶情報** に詳細が表示され、計算対象に設定されます。**結晶リストを右クリック**するとコンテキストメニュー（*名前の変更*・*CIF として書き出し*・*複製*・*削除*）が表示されます。
 
 ![結晶編集ボタン](../assets/cap-ja-auto/FormMain.toolStripContainer1.splitContainer.flowLayoutPanelCrystalEdit.png)
 
@@ -271,9 +271,9 @@ UI 言語を切り替えます。English・日本語・Deutsch・Français・Esp
 | 化学組成の詳細 | [化学組成の詳細](#chemical-composition) ウィンドウを開く (重量%・原子%・規格化した原子数・酸化物などへの換算)。 |
 | ビーム相互作用 | [ビーム相互作用](3-beam-interaction.md) ウィンドウを開く。 |
 | 対称性情報 | [対称性情報](2-symmetry-information.md) ウィンドウを開く。 |
-| CIFファイル又はAMCファイルから読み込み | CIF / AMC ファイルから結晶を読み込む。 |
-| CIFファイルとして出力 | 現在の結晶を CIF 形式で書き出す。 |
-| 読み込み時の格子定数に戻す | 格子定数を最初に読み込んだ値に戻す。 <!-- 261105Cl 監査: メニュー名を CrystalControl.ja.resx revertCellConstantsToolStripMenuItem.Text に合わせた --> |
+| CIF・AMC ファイルから取り込み... | CIF / AMC ファイルから結晶を読み込む。 |
+| CIF として書き出し... | 現在の結晶を CIF 形式で書き出す。 |
+| 読込時の格子定数に戻す | 格子定数を最初に読み込んだ値に戻す。 <!-- 261105Cl 監査: メニュー名を CrystalControl.ja.resx revertCellConstantsToolStripMenuItem.Text に合わせた --> |
 | P1に変換 | 空間群を P1 に展開する。 |
 | 超構造に変換 | a, b, c を整数倍した超構造に変換する（サイズ指定ダイアログ）。 |
 | 異なる軸・原点セッティングの空間群に変換 | 等価な空間群（軸の取り方を変えたセッティング）に変換する。 |

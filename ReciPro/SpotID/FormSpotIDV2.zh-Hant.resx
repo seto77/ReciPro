@@ -60,7 +60,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Ctrl + 右鍵點擊：移除繞射點</value>
+    <value>Ctrl + 右鍵點按某個繞射點 : 刪除最近的繞射點</value>
+  </data>
+  <data name="toolStripMenuItemAngle.Text" xml:space="preserve">
+    <value>按住 Shift 依序左鍵點按三個繞射點 : 測量影像上的角度（端點 → 頂點 → 端點）；Esc 清除</value>
   </data>
   <data name="Column2.HeaderText" xml:space="preserve">
     <value>直接</value>
@@ -87,7 +90,7 @@
     <value>像素大小</value>
   </data>
   <data name="doubleClickAddSpotToolStripMenuItem.Text" xml:space="preserve">
-    <value>左鍵拖曳：拖曳影像</value>
+    <value>左鍵拖曳 / 中鍵拖曳 : 平移</value>
   </data>
   <data name="noDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
     <value>編號</value>
@@ -129,16 +132,16 @@
     <value>偵測 &amp;&amp; 擬合繞射點</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>右鍵點擊：縮小</value>
+    <value>右鍵點按 / 右鍵雙擊 : 縮小（×1/1.2）</value>
   </data>
   <data name="numericBoxAcceptableError.HeaderText" xml:space="preserve">
     <value>可接受誤差</value>
   </data>
   <data name="toolStripMenuItem7.Text" xml:space="preserve">
-    <value>右鍵拖曳：放大</value>
+    <value>右鍵拖出一個框 : 放大到所選區域</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>Ctrl + 左鍵雙擊：新增直射點</value>
+    <value>Ctrl + 左鍵雙擊 : 新增一個繞射點並將其標記為直射 (000) 束</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>停止</value>
@@ -174,7 +177,7 @@
     <value>晶體名稱</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>另存為中繼檔 (EMF)</value>
+    <value>另存為中繼檔 (EMF)...</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
     <value>單晶粒</value>
@@ -201,7 +204,7 @@
     <value>已指派繞射點</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>另存為影像 (PNG 格式)</value>
+    <value>另存為影像 (PNG 格式)...</value>
   </data>
   <data name="groupBoxOptics.Text" xml:space="preserve">
     <value>光學</value>
@@ -216,7 +219,7 @@
     <value>辨識繞射點</value>
   </data>
   <data name="loadToolStripMenuItem.Text" xml:space="preserve">
-    <value>載入</value>
+    <value>載入...</value>
   </data>
   <data name="noDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>編號</value>
@@ -225,7 +228,7 @@
     <value>儲存</value>
   </data>
   <data name="toolStripMenuItem6.Text" xml:space="preserve">
-    <value>左鍵點擊：選取繞射點</value>
+    <value>左鍵點按某個繞射點 : 選取最近的繞射點</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.Text" xml:space="preserve">
     <value>顯示符號</value>
@@ -234,7 +237,7 @@
     <value>複製</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
-    <value>左鍵雙擊：新增繞射點</value>
+    <value>左鍵雙擊影像 : 新增一個繞射點（經峰擬合）</value>
   </data>
   <data name="buttonCopyToClipboard.Text" xml:space="preserve">
     <value>複製</value>
@@ -429,5 +432,14 @@ X 射線與中子一律忽略這些反射
   </data>
   <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
     <value>顯示擬合函數的詳細參數</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>滑鼠滾輪上 / 下 : 在游標處放大（×2）/ 縮小（×1/2）</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 方向鍵 : 將所選繞射點移動一個像素</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>雙擊某個繞射點的列首 : 縮放到該繞射點（×2）</value>
   </data>
 </root>

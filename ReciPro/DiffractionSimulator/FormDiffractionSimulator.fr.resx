@@ -218,28 +218,28 @@ l'intensité relative</value>
     <value>Code développeur</value>
   </data>
   <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>comme image (format PNG)</value>
+    <value>Comme image (format PNG)...</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>comme métafichier (EMF)</value>
+    <value>Comme métafichier (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Enregistrer l'image</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>comme image (format PNG)</value>
+    <value>Comme image (format PNG)...</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>comme métafichier (EMF)</value>
+    <value>Comme métafichier (EMF)...</value>
   </data>
   <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>Enregistrer la zone du détecteur</value>
   </data>
   <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
-    <value>comme images individuelles (format PNG)</value>
+    <value>Comme images individuelles (format PNG)...</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
-    <value>comme images individuelles (format TIFF)</value>
+    <value>Comme images individuelles (format TIFF)...</value>
   </data>
   <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>comme image collective (format PNG)</value>
@@ -275,10 +275,10 @@ l'intensité relative</value>
     <value>Copier les disques CBED</value>
   </data>
   <data name="toolStripMenuItemSaveMovieDiffractionPattern.Text" xml:space="preserve">
-    <value>Cliché de diffraction</value>
+    <value>Cliché de diffraction...</value>
   </data>
   <data name="toolStripMenuItemSaveMovieReciprocalSpace.Text" xml:space="preserve">
-    <value>Espace réciproque</value>
+    <value>Espace réciproque...</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Enregistrer la vidéo</value>
@@ -636,6 +636,7 @@ affichés avec la même intensité.</value>
 Glisser-gauche (au bord de l'écran) : rotation autour de l'axe normal au moniteur
 Clic-droit : zoom arrière
 Glisser-droit : zoom avant sur la zone sélectionnée
+Molette : zoom avant / arrière à la position du curseur
 Glisser-milieu : déplacer l'image simulée
 Double-clic-gauche : afficher les informations du vecteur g</value>
   </data>
@@ -1260,5 +1261,38 @@ calcul plus long.</value>
   </data>
   <data name="labelKikuchiQuality.Text" xml:space="preserve">
     <value>Qualité</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Aide raccourcis clavier</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glissement gauche près du centre : Incliner le cristal</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glissement gauche dans la zone extérieure : Faire pivoter le cristal autour de l'axe du faisceau</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Double-clic gauche sur une réflexion : Afficher les détails de la réflexion</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glissement milieu : Déplacer le diagramme</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + Glissement milieu : Déplacer le centre du détecteur</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Molette de la souris : Zoomer / dézoomer d'un facteur ×2 par cran</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clic droit : Dézoomer (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glissement droit d'un cadre : Zoomer sur la région sélectionnée</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Double-clic droit sur la barre d'état : Copier un résumé textuel des réglages actuels</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Double-clic droit sur un bouton de couche actif : Faire clignoter cette couche</value>
   </data>
 </root>

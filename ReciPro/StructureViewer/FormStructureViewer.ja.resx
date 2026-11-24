@@ -838,13 +838,13 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>動画を保存</value>
   </data>
   <data name="exportModelToolStripMenuItem.Text" xml:space="preserve">
-    <value>3Dモデルを出力 (3MF/STL)...</value>
+    <value>3D モデルを書き出し (3MF/STL)...</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>メイン</value>
+    <value>メイン...</value>
   </data>
   <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>結晶軸</value>
+    <value>結晶軸...</value>
   </data>
   <data name="toolToolStripMenuItem.Text" xml:space="preserve">
     <value>ツール</value>
@@ -1225,16 +1225,16 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>VESTA 風にする</value>
   </data>
   <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
-    <value>メイン</value>
+    <value>メイン...</value>
   </data>
   <data name="saveLegendToolStripMenuItem.Text" xml:space="preserve">
-    <value>凡例</value>
+    <value>凡例...</value>
   </data>
   <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>結晶軸</value>
+    <value>結晶軸...</value>
   </data>
   <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
-    <value>光源方向</value>
+    <value>光源方向...</value>
   </data>
   <data name="copyMainToolStripMenuItem.Text" xml:space="preserve">
     <value>メイン</value>
@@ -1249,15 +1249,33 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>光源方向</value>
   </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+SHIFT+c:  メイン画像をクリップボードにコピー</value>
+    <value>Ctrl + Shift + C : 描画画像をクリップボードにコピー</value>
   </data>
   <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+ マウス右ダブルクリック:  透視投影 &lt;=&gt; 正射影 を交互に切り替え</value>
+    <value>Ctrl + 右ダブルクリック : 正射投影／透視投影の切替</value>
   </data>
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
-    <value>CTRL+ マウス右ボタンで上下:  透視の度合いを変更</value>
+    <value>Ctrl + 右ドラッグ上下 : カメラ距離を変更（透視投影時のみ）</value>
   </data>
   <data name="sizeControl1.HeaderText" xml:space="preserve">
     <value>サイズ (W×H)</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>メインビューを左ドラッグ : モデルを回転</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>原子を左ダブルクリック : クリックした原子の座標と、その周りの近接原子への距離・結合角を表示</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右ドラッグ上下、またはホイール : ズーム</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>中ドラッグ : 平行移動</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>結晶軸 ウィジェットを左ドラッグ : モデルを回転（面内回転なし）</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>光源 ウィジェットを左ドラッグ : 照明方向を変更</value>
   </data>
 </root>

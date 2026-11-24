@@ -227,28 +227,28 @@ intensità relativa</value>
     <value>Codice sviluppatore</value>
   </data>
   <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>come immagine (formato PNG)</value>
+    <value>Come immagine (formato PNG)...</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>come metafile (EMF)</value>
+    <value>Come metafile (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Salva immagine</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>come immagine (formato PNG)</value>
+    <value>Come immagine (formato PNG)...</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>come metafile (EMF)</value>
+    <value>Come metafile (EMF)...</value>
   </data>
   <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>Salva area rivelatore</value>
   </data>
   <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
-    <value>come immagini singole (formato PNG)</value>
+    <value>Come immagini singole (formato PNG)...</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
-    <value>come immagini singole (formato TIFF)</value>
+    <value>Come immagini singole (formato TIFF)...</value>
   </data>
   <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>come immagine collettiva (formato PNG)</value>
@@ -284,10 +284,10 @@ intensità relativa</value>
     <value>Copia dischi CBED</value>
   </data>
   <data name="toolStripMenuItemSaveMovieDiffractionPattern.Text" xml:space="preserve">
-    <value>Pattern di diffrazione</value>
+    <value>Pattern di diffrazione...</value>
   </data>
   <data name="toolStripMenuItemSaveMovieReciprocalSpace.Text" xml:space="preserve">
-    <value>Spazio reciproco</value>
+    <value>Spazio reciproco...</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Salva video</value>
@@ -642,6 +642,7 @@ visualizzati con la stessa intensità.</value>
 Trascinamento sinistro (sul bordo dello schermo): ruota attorno all'asse normale al monitor
 Clic destro: rimpicciolisci
 Trascinamento destro: ingrandisci l'area selezionata
+Rotella: ingrandisci / riduci nella posizione del cursore
 Trascinamento centrale: trascina l'immagine simulata
 Doppio clic sinistro: visualizza le informazioni del vettore g</value>
   </data>
@@ -1266,5 +1267,38 @@ lungo.</value>
   </data>
   <data name="labelKikuchiQuality.Text" xml:space="preserve">
     <value>Qualità</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Suggerimenti scorciatoie</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento sinistro vicino al centro : Inclinare il cristallo</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento sinistro nell'area esterna : Far ruotare il cristallo attorno all'asse del fascio</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Doppio clic sinistro su un riflesso : Mostrare i dettagli del riflesso</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento centrale : Spostare il pattern</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + Trascinamento centrale : Spostare il centro del rivelatore</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rotellina del mouse : Zoom avanti / indietro di ×2 per scatto</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clic destro : Zoom indietro (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento destro di un riquadro : Zoom avanti sulla regione selezionata</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Doppio clic destro sulla barra di stato : Copiare un riepilogo testuale delle impostazioni correnti</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Doppio clic destro su un pulsante di livello acceso : Far lampeggiare quel livello accendendolo e spegnendolo</value>
   </data>
 </root>

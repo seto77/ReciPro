@@ -132,7 +132,7 @@ Zum Beispiel ist die Schaltfläche **Peak Identification** in Spot ID v2 verdeck
 
 **Lösung**:
 
-- **Klicken Sie mit der rechten Maustaste** in den Hauptzeichenbereich, um herauszuzoomen (diese Ansichten haben keinen Mausrad-Zoom — siehe [21. Tastatur- & Maus-Kurzbefehle](21-shortcuts.md)).
+- **Klicken Sie mit der rechten Maustaste** in den Hauptzeichenbereich oder drehen Sie das Mausrad zu sich hin, um herauszuzoomen (siehe [21. Tastatur- & Maus-Kurzbefehle](21-shortcuts.md)).
 - Prüfen Sie die Energie der einfallenden Welle im Bereich **Wellenquelle** rechts: Röntgen ≈ 1–100 keV, Elektron ≈ 10–1000 keV sind angemessen.
 
 ---

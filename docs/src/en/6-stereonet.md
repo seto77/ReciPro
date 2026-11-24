@@ -16,10 +16,13 @@ The stereonet itself is a 2-D projection; an optional 3-D sphere can be shown wi
 | Left-drag near the centre | Tilt the crystal |
 | Left-drag the outer area | Spin the crystal about the view axis |
 | Left double-click | Switch between **Planes** and **Axes** projection |
-| Right-click | Zoom out |
+| Mouse wheel up / down | Zoom in (×2) / out (×1/2) at the cursor |
+| Right-click | Zoom out (×1/1.2) |
 | Right-drag a box | Zoom in to the selected region |
 | Middle-drag | Pan |
 | Move the mouse (no button) | Read off the (hkl)/[uvw] under the cursor — useful for indexing a measured spot (also in the lower hemisphere) <!-- 261105Cl 監査: 下半球の読み取り (268779a1) --> |
+
+These combinations are also listed in the window's **Shortcut hints** menu.
 
 Dragging on the net rotates the **crystal**; the rotation state is shared across all windows.
 

@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>&amp;Exportar o cristal selecionado como arquivo CIF</value>
+    <value>&amp;Exportar o cristal selecionado como arquivo CIF...</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Licença</value>
@@ -129,7 +129,7 @@
     <value>&amp;Verificar atualizações</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Carregar lista de cristais (substituir lista atual)</value>
+    <value>&amp;Carregar lista de cristais (substituir lista atual)...</value>
   </data>
   <data name="toolStripMenuItemDarkMode.Text" xml:space="preserve">
     <value>Modo escuro</value>
@@ -141,7 +141,7 @@
     <value>Ângulos de Euler</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Exportar como CIF</value>
+    <value>&amp;Exportar como CIF...</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
     <value>Redefinir rotação</value>
@@ -159,7 +159,7 @@
     <value>Funções</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
-    <value>Carregar &amp;lista de cristais (adicionar à lista atual)</value>
+    <value>Carregar &amp;lista de cristais (adicionar à lista atual)...</value>
   </data>
   <data name="buttonClearAllCrystals.Text" xml:space="preserve">
     <value>Limpar todos os cristais</value>
@@ -201,7 +201,7 @@
     <value>&amp;Redefinir para a lista de cristais inicial</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Salvar lista de cristais</value>
+    <value>&amp;Salvar lista de cristais...</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
     <value>Baixar biblioteca MKL</value>
@@ -238,7 +238,7 @@
     <value>Plano</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Importar cristal de arquivo CIF ou AMC</value>
+    <value>&amp;Importar cristal de arquivo CIF ou AMC...</value>
   </data>
   <data name="renameToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Renomear</value>

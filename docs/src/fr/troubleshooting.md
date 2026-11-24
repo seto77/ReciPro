@@ -132,7 +132,7 @@ Par exemple, le bouton **Peak Identification** dans Spot ID v2 est masqué, ou l
 
 **Solution** :
 
-- **Cliquez avec le bouton droit** dans la zone de dessin principale pour dézoomer (ces vues n'ont pas de zoom à la molette — voir [21. Raccourcis clavier et souris](21-shortcuts.md)).
+- **Cliquez avec le bouton droit** dans la zone de dessin principale, ou tournez la molette vers vous, pour dézoomer (voir [21. Raccourcis clavier et souris](21-shortcuts.md)).
 - Vérifiez l'énergie de l'onde incidente dans le panneau **Source d'onde** à droite : rayons X ≈ 1–100 keV, électrons ≈ 10–1000 keV sont appropriés.
 
 ---

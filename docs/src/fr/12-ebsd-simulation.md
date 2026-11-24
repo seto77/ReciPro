@@ -23,6 +23,8 @@ La vue centrale de la figure EBSD (de Kikuchi) et les vues du master pattern sit
 | <kbd>F1</kbd> | Ouvrir cette page du manuel en ligne |
 | Glisser-gauche la figure près du centre | Incliner le cristal |
 | Glisser-gauche dans la zone extérieure de la figure | Faire tourner le cristal |
+| Molette vers le haut / bas sur la figure | Zoomer (×2) / dézoomer (×1/2) au niveau du curseur |
+| Clic droit / glisser un rectangle avec le bouton droit sur la figure | Dézoomer (×1/1.2) / zoomer sur le rectangle |
 | Double-clic sur la figure | Sélectionner la sous-cellule du détecteur sous le curseur et afficher ses statistiques (tant que la sélection **Zone axis** est activée : ajouter un axe de zone ; voir [Sélection des axes de zone](#zone-axis-picking)) |
 | Déposer un fichier image sur la fenêtre | Le charger comme image EBSD expérimentale |
 | Glisser-gauche dans une vue 3D (géométrie / sphère du master) | La faire pivoter |
@@ -205,7 +207,7 @@ L'orientation qui explique l'image est ensuite recherchée par l'un des deux mot
 
 Au lieu d'apparier l'image entière, l'orientation peut aussi être trouvée à partir d'intersections de bandes (axes de zone) pointées à la main sur l'image expérimentale.
 
-- **Zone axis** : active la sélection. Tant qu'elle est active, un double-clic gauche sur la figure ajoute un point, <kbd>CTRL</kbd> + double-clic gauche supprime le point situé à moins de 5 pixels écran, et <kbd>SHIFT</kbd> + double-clic gauche sélectionne un point (dessiné en jaune ; les autres sont en cyan, numérotés). Lorsqu'elle est désactivée, le double-clic sélectionne une cellule du détecteur comme d'habitude.
+- **Zone axis** : active la sélection. Tant qu'elle est active, un double-clic gauche sur la figure ajoute un point, <kbd>CTRL</kbd> + clic droit supprime le point situé à moins de 5 pixels écran, et un clic gauche sélectionne le point situé à moins de 5 pixels écran (dessiné en jaune ; les autres sont en cyan, numérotés). Lorsqu'elle est désactivée, le double-clic sélectionne une cellule du détecteur comme d'habitude.
 - **[u v w]** : l'indice d'axe de zone du point sélectionné. Laissez 0 0 0 pour que la recherche l'attribue ; saisir un indice contraint la recherche (utile pour les cristaux de basse symétrie et les axes d'indices élevés).
 - **+ geometry** : optimise aussi le centre du détecteur (X, Y, Z, mm) en même temps que l'orientation, en minimisant le résidu en pixels entre les positions prédites et pointées des axes de zone. Il faut au moins 4 points attribués ; la sélection d'un candidat applique alors aussi la géométrie affinée.
 - **Find** : recherche les orientations qui expliquent les axes de zone pointés (au moins 2 points ; trois suffisent généralement, deux sont ambigus). La tolérance angulaire est de 2°, puis de 5° si rien n'est trouvé. Jusqu'à 10 candidats sont écrits dans le même tableau de candidats, et cliquer sur une ligne les applique comme ci-dessus.

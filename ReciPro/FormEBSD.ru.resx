@@ -251,7 +251,7 @@
     <value>Файл</value>
   </data>
   <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Открыть экспериментальное изображение...</value>
+    <value>Загрузить экспериментальное изображение...</value>
   </data>
   <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
     <value>Загрузить мастер-картину...</value>
@@ -1106,5 +1106,44 @@ A(E) = exp(-(E0 - E) / E_c), в кэВ. Меньше означает, что к
 ним. Диапазон, у которого нижняя граница не меньше верхней, энергия
 выше E0 или диапазон вне распределения Монте-Карло отклоняется с
 сообщением.</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Подсказки по сочетаниям клавиш</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание картины левой кнопкой вблизи центра : Наклонить кристалл</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание левой кнопкой во внешней области картины : Вращать кристалл</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Колесо мыши вверх / вниз над картиной : Увеличить (×2) / уменьшить (×1/2) масштаб у курсора</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Щелчок правой кнопкой / перетаскивание прямоугольника правой кнопкой по картине : Уменьшить масштаб (×1/1.2) / увеличить прямоугольник</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Двойной щелчок по картине : Выбрать подъячейку детектора под курсором и показать её статистику</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание левой кнопкой в 3D-виде : Повернуть его</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание правой кнопкой или колесо мыши в 3D-виде : Масштабирование</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + двойной щелчок правой кнопкой в 3D-виде : Переключить ортографическую / перспективную проекцию</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание / колесо на 2D master pattern : Панорамирование / масштабирование изображения</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Двойной щелчок левой кнопкой (Zone axis вкл.) : Добавить точку</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Щелчок левой кнопкой (Zone axis вкл.) : Выделить точку</value>
+  </data>
+  <data name="shortcutHint12ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + щелчок правой кнопкой (Zone axis вкл.) : Удалить точку</value>
   </data>
 </root>

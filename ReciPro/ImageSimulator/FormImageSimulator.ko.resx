@@ -347,13 +347,13 @@ Simulator"에 표시됩니다</value>
     <value>시뮬레이션</value>
   </data>
   <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>이미지로 (PNG 형식)</value>
+    <value>이미지로 (PNG 형식)...</value>
   </data>
   <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>이미지로 (TIFF 형식)</value>
+    <value>이미지로 (TIFF 형식)...</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>메타파일로 (EMF)</value>
+    <value>메타파일로 (EMF)...</value>
   </data>
   <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
     <value>   연속 이미지 모드에서 개별 저장 </value>
@@ -374,14 +374,14 @@ Simulator"에 표시됩니다</value>
     <value>     기호 겹쳐 인쇄</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
-    <value>TEM 파라미터 불러오기</value>
+    <value>TEM 파라미터 불러오기...</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>'TEM 파라미터 저장'으로 저장한 파일(*.rpis)에서 시뮬레이션 조건을
 불러옵니다. 파일에 없는 항목(예: 이전 버전의 파일)은 기본값이 됩니다.</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
-    <value>TEM 파라미터 저장</value>
+    <value>TEM 파라미터 저장...</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>현재 시뮬레이션 조건(사전 설정과 같은 항목)을 XML 파일(*.rpis)에
@@ -949,5 +949,32 @@ Step 및 Num과 조합하여 아래의
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
     <value>유효 전자원 크기 (FWHM)</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>단축키 힌트</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + C (이미지 그리드에 포커스) : 이미지를 메타파일로 클립보드에 복사</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>왼쪽 드래그 / 가운데 드래그 : 이미지 이동 (모든 창이 함께 이동)</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>마우스 휠 위 / 아래 : 커서 위치에서 확대 (×2) / 축소 (×1/2)</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>마우스 오른쪽 버튼으로 사각형 드래그 : 선택한 영역으로 확대</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>마우스 오른쪽 클릭 / 오른쪽 더블 클릭 : 축소 (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 마우스 오른쪽 버튼으로 사각형 드래그 : 직사각형 영역 선택</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>창을 왼쪽 더블 클릭 : 해당 창 최대화 / 그리드 복원 (다중 창 레이아웃)</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>마우스 이동 (버튼 없음) : 커서 위치의 좌표(pm)와 픽셀 값 읽기</value>
   </data>
 </root>

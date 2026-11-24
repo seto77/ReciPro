@@ -342,13 +342,13 @@ Simulator"</value>
     <value>Simular</value>
   </data>
   <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>como imagen (formato PNG)</value>
+    <value>Como imagen (formato PNG)...</value>
   </data>
   <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>como imagen (formato TIFF)</value>
+    <value>Como imagen (formato TIFF)...</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>como metarchivo (EMF)</value>
+    <value>Como metarchivo (EMF)...</value>
   </data>
   <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
     <value>   Guardar individualmente en modo de imagen en serie </value>
@@ -369,7 +369,7 @@ Simulator"</value>
     <value>     Sobreimprimir símbolos</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
-    <value>Cargar parámetros TEM</value>
+    <value>Cargar parámetros TEM...</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>Carga las condiciones de simulación desde un archivo guardado con
@@ -377,7 +377,7 @@ Simulator"</value>
 archivo (p. ej., de una versión anterior) toman su valor predeterminado.</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
-    <value>Guardar parámetros TEM</value>
+    <value>Guardar parámetros TEM...</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>Guarda las condiciones de simulación actuales (los mismos
@@ -947,5 +947,32 @@ a lo largo del eje horizontal de la cuadrícula de imágenes en serie.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
     <value>Tamaño efectivo de la fuente (FWHM)</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Atajos de teclado</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + C (rejilla de imágenes enfocada) : Copiar la imagen o las imágenes al portapapeles como metarchivo</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastrar con el botón izquierdo / central : Desplazar la imagen (todos los paneles se mueven juntos)</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rueda del ratón arriba / abajo : Acercar (×2) / alejar (×1/2) en la posición del cursor</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastrar un rectángulo con el botón derecho : Acercar a la región seleccionada</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clic derecho / doble clic derecho : Alejar (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + arrastrar un rectángulo con el botón derecho : Seleccionar un área rectangular</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Doble clic izquierdo sobre un panel : Maximizar ese panel / restaurar la rejilla (diseños de varios paneles)</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mover el ratón (sin botón) : Leer la posición (pm) y el valor de píxel en la posición del cursor</value>
   </data>
 </root>

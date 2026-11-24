@@ -23,6 +23,8 @@ La vista central del patrón EBSD (de Kikuchi) y las vistas del master pattern d
 | <kbd>F1</kbd> | Abrir esta página del manual en línea |
 | Arrastrar con el botón izquierdo el patrón cerca del centro | Inclinar el cristal |
 | Arrastrar con el botón izquierdo la zona exterior del patrón | Girar el cristal |
+| Rueda del ratón arriba / abajo sobre el patrón | Acercar (×2) / alejar (×1/2) el zoom en el cursor |
+| Clic derecho / arrastrar un rectángulo con el botón derecho sobre el patrón | Alejar el zoom (×1/1.2) / acercar al rectángulo |
 | Doble clic sobre el patrón | Seleccionar la subcelda del detector bajo el cursor y mostrar su estadística (con la selección **Zone axis** activada: añade un eje de zona; véase [Selección manual de ejes de zona](#zone-axis-picking)) |
 | Soltar un archivo de imagen sobre la ventana | Cargarlo como imagen EBSD experimental |
 | Arrastrar con el botón izquierdo una vista 3D (geometría / esfera maestra) | Rotarla |
@@ -207,7 +209,7 @@ A continuación, la orientación que explica la imagen se busca con uno de los d
 
 En lugar de comparar la imagen completa, la orientación también puede hallarse a partir de intersecciones de bandas (ejes de zona) seleccionadas a mano sobre la imagen experimental.
 
-- **Zone axis** : activa la selección. Mientras está activa, un doble clic izquierdo sobre el patrón añade un punto, <kbd>CTRL</kbd> + doble clic izquierdo elimina el punto situado a menos de 5 píxeles de pantalla, y <kbd>SHIFT</kbd> + doble clic izquierdo selecciona un punto (dibujado en amarillo; los demás, numerados, en cian). Mientras está desactivada, el doble clic selecciona una celda del detector como de costumbre.
+- **Zone axis** : activa la selección. Mientras está activa, un doble clic izquierdo sobre el patrón añade un punto, <kbd>CTRL</kbd> + clic derecho elimina el punto situado a menos de 5 píxeles de pantalla, y un clic izquierdo selecciona el punto situado a menos de 5 píxeles de pantalla (dibujado en amarillo; los demás, numerados, en cian). Mientras está desactivada, el doble clic selecciona una celda del detector como de costumbre.
 - **[u v w]** : el índice de eje de zona del punto seleccionado. Déjelo en 0 0 0 para que la búsqueda lo asigne; escribir un índice restringe la búsqueda (útil para cristales de baja simetría y ejes de índices altos).
 - **+ geometry** : optimiza también el centro del detector (X, Y, Z, mm) junto con la orientación, minimizando el residuo en píxeles entre las posiciones predichas y seleccionadas de los ejes de zona. Necesita al menos 4 puntos asignados; al elegir un candidato se aplica también la geometría refinada.
 - **Find** : busca las orientaciones que explican los ejes de zona seleccionados (al menos 2 puntos; tres suelen bastar, dos son ambiguos). La tolerancia angular es de 2°, y se reintenta con 5° si no se encuentra nada. Se escriben hasta 10 candidatos en la misma tabla de candidatos, y al hacer clic en una fila se aplican como se ha descrito arriba.

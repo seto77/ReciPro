@@ -55,12 +55,12 @@ If you are new to ReciPro, refer to the following steps:
 
 | Menu item | Description |
 |-----------|-------------|
-| Load crystal list (replace current list) | Load a crystal-list file (`*.xml`, `*.out`), replacing the current list; a dialog lets you choose which crystals to load <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:ReadCrystalList (showSelectionDialog=true → FormCrystalSelection), SaveCrystalDataToolStripMenuItem_Click) --> |
-| Load crystal list (add to current list) | Load a crystal-list file and append it to the current list (with the same selection dialog) |
+| Load crystal list (replace current list)... | Load a crystal-list file (`*.xml`, `*.out`), replacing the current list; a dialog lets you choose which crystals to load <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:ReadCrystalList (showSelectionDialog=true → FormCrystalSelection), SaveCrystalDataToolStripMenuItem_Click) --> |
+| Load crystal list (add to current list)... | Load a crystal-list file and append it to the current list (with the same selection dialog) |
 | Reset to initial crystal list | Reload the crystal list ReciPro ships with |
-| Import crystal from a CIF or AMC file | Load a single crystal from a CIF / AMC file |
-| Save crystal list | Save the current crystal list (a dialog lets you choose which crystals to write) |
-| Export the selected crystal as a CIF file | Save the selected crystal in CIF format |
+| Import crystal from CIF or AMC... | Load a single crystal from a CIF / AMC file |
+| Save crystal list... | Save the current crystal list (a dialog lets you choose which crystals to write) |
+| Export the selected crystal as CIF... | Save the selected crystal in CIF format |
 | Clear all crystals | Remove every crystal from the list |
 | Exit | Close the application |
 
@@ -263,7 +263,7 @@ Right-click an empty area of the control for these main actions:
 | Beam Interaction | Open the [Beam Interaction](3-beam-interaction.md) window. |
 | Symmetry Information | Open the [Symmetry Information](2-symmetry-information.md) window. |
 | Import from CIF or AMC... | Load a crystal from a CIF / AMC file. |
-| Export to CIF | Export the current crystal as CIF. |
+| Export as CIF... | Export the current crystal as CIF. |
 | Revert cell constants | Restore the cell constants to the values first loaded. |
 | Convert to P1 space group | Expand the structure to space group P1. |
 | Convert to a superstructure | Convert to a superstructure with integer multiples of a, b, c (size dialog). |

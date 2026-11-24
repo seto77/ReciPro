@@ -18,6 +18,7 @@ Die Reflexliste erstellen Sie direkt auf dem geladenen Bild. Der Bildbereich nut
 | Linksklick auf einen Reflex | Den nächstgelegenen Reflex auswählen |
 | <kbd>CTRL</kbd> + Rechtsklick auf einen Reflex | Den nächstgelegenen Reflex löschen |
 | <kbd>CTRL</kbd> + Pfeiltasten | Den ausgewählten Reflex um ein Pixel verschieben |
+| <kbd>SHIFT</kbd> gedrückt halten und nacheinander drei Reflexe links anklicken | Den Winkel im Bild messen: Ende → Scheitel → Ende (z. B. ∠6–0–8). Linien, ein Bogen und der Wert werden ins Bild gezeichnet, und der Wert (∠6–0–8 = 89.73°) erscheint in der Statusleiste. <kbd>SHIFT</kbd> + Linksklick auf einen weiteren Reflex beginnt eine neue Messung; <kbd>ESC</kbd> löscht sie |
 | Linksziehen / Mittelziehen (leerer Bereich) | Das Bild verschieben |
 | Mausrad | Am Cursor hinein-/herauszoomen |
 | Rechtsziehen eines Rahmens | In den ausgewählten Bereich hineinzoomen |

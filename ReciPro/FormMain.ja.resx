@@ -399,22 +399,22 @@ v2</value>
     <value>ファイル(&amp;F)</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>結晶リストを読込 (現在のリストを消去)(&amp;L)</value>
+    <value>結晶リストを読込 (現在のリストを消去)...(&amp;L)</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
-    <value>結晶リストを読込 (現在のリストに追加)(&amp;A)</value>
+    <value>結晶リストを読込 (現在のリストに追加)...(&amp;A)</value>
   </data>
   <data name="toolStripMenuItemReadInitialCrystalList.Text" xml:space="preserve">
     <value>結晶リストを初期状態に戻す(&amp;R)</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>CIFあるいはAMCファイルから結晶を読み込み(&amp;I)</value>
+    <value>CIF・AMC ファイルから結晶を取り込み...(&amp;I)</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>結晶リストを保存(&amp;S)</value>
+    <value>結晶リストを保存...(&amp;S)</value>
   </data>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>選択結晶をCIF形式で書き出し(&amp;E)</value>
+    <value>選択した結晶を CIF として書き出し...(&amp;E)</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>すべての結晶を削除(&amp;C)</value>
@@ -503,7 +503,7 @@ v2</value>
     <value>名前の変更(&amp;R)</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
-    <value>CIFで出力(&amp;E)</value>
+    <value>CIF として書き出し...(&amp;E)</value>
   </data>
   <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
     <value>複製(&amp;U)</value>

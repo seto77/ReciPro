@@ -16,7 +16,8 @@ Das Stereonetz selbst ist eine 2-D-Projektion; eine optionale 3-D-Kugel kann mit
 | Linksziehen nahe der Mitte | Den Kristall kippen |
 | Linksziehen im äußeren Bereich | Den Kristall um die Blickachse drehen |
 | Linksdoppelklick | Zwischen der Projektion **Ebenen** und **Achsen** umschalten |
-| Rechtsklick | Herauszoomen |
+| Mausrad auf / ab | Hineinzoomen (×2) / Herauszoomen (×1/2) am Cursor |
+| Rechtsklick | Herauszoomen (×1/1.2) |
 | Rechtsziehen eines Rahmens | In den ausgewählten Bereich hineinzoomen |
 | Mittelziehen | Verschieben |
 | Maus bewegen (ohne Taste) | Die (hkl)/[uvw] unter dem Cursor ablesen — nützlich zum Indizieren eines gemessenen Reflexes (auch auf der unteren Halbkugel) <!-- 261105Cl 監査: 下半球の読み取り (268779a1) --> |

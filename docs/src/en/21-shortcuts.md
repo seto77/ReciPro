@@ -55,12 +55,13 @@ Used by the [Diffraction Simulator](7-diffraction-simulator/index.md) pattern, t
 |--------|--------|
 | Left-drag near the centre | Tilt the crystal |
 | Left-drag the outer area | Spin the crystal about the view/beam axis |
-| Right-click | Zoom out |
+| Mouse wheel up / down | Zoom in (×2) / out (×1/2) at the cursor |
+| Right-click | Zoom out (×1/1.2) |
 | Right-drag a box | Zoom in to the selected region |
 | Middle-drag | Pan |
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:graphicsBox_MouseWheel (MouseWheelZoom=true は回折シミュレータのみ), GraphicsBox.cs:OnMouseWheel) -->
-Only the Diffraction Simulator pattern also zooms with the mouse wheel (×2 / ×0.5, re-centred on the cursor); the Stereonet and the EBSD Kikuchi pattern have **no** mouse-wheel zoom. There is no <kbd>+</kbd> / <kbd>-</kbd> key zoom.
+<!-- 261124Cl 作者の決定: ステレオネットと EBSD の菊池パターンにもホイールズームを付け、右クリックの縮小率を全表示で 1/1.2 に揃えた -->The Diffraction Simulator pattern, the Stereonet and the EBSD Kikuchi pattern all zoom with the mouse wheel, re-centred on the cursor. There is no <kbd>+</kbd> / <kbd>-</kbd> key zoom.
 
 ### Image views { #image }
 
@@ -69,9 +70,9 @@ Used by the [HRTEM/STEM](9-hrtem-stem-simulator/index.md) result panes, the [Spo
 | Action | Result |
 |--------|--------|
 | Left-drag / Middle-drag | Pan |
-| Mouse wheel up / down | Zoom in (×2) / out (×0.5) at the cursor |
+| Mouse wheel up / down | Zoom in (×2) / out (×1/2) at the cursor |
 | Right-drag a box | Zoom in to the selected region |
-| Right-click / Right double-click | Zoom out (×0.5) |
+| Right-click / Right double-click | Zoom out (×1/1.2; a double-click counts twice) |
 
 ---
 
@@ -124,11 +125,11 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 | Move the mouse over the net | Read off the (hkl)/[uvw] under the cursor |
 
 ### 7. Diffraction simulator
-[Open page →](7-diffraction-simulator/index.md) — the pattern is a [diffraction-pattern view](#pattern), plus wheel zoom.
+[Open page →](7-diffraction-simulator/index.md) — the pattern is a [diffraction-pattern view](#pattern).
 
 | Shortcut | Action |
 |----------|--------|
-| Mouse wheel up / down | Zoom in (×2) / out (×0.5), re-centring the view on the cursor position (on the fixed centre when the centre **Fix** box is on) <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:graphicsBox_MouseWheel) --> |
+| Mouse wheel up / down | Zoom in (×2) / out (×1/2), re-centring the view on the cursor position (on the fixed centre when the centre **Fix** box is on) <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:graphicsBox_MouseWheel) --> |
 | Left double-click a spot | Show reflection details (index, *d*, structure factor, excitation error) |
 | <kbd>CTRL</kbd> + Middle-drag | Move the detector centre (when the detector area is shown) |
 | Right double-click the status bar | Copy a text summary of the current settings |
@@ -166,6 +167,7 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 | Left-click a spot | Select the nearest spot |
 | <kbd>CTRL</kbd> + Right-click a spot | Delete the nearest spot |
 | <kbd>CTRL</kbd> + arrow keys | Nudge the selected spot by one pixel |
+| Hold <kbd>SHIFT</kbd> and left-click three spots in turn | Measure the angle on the image (end → vertex → end); <kbd>SHIFT</kbd> + click away from the spots or <kbd>ESC</kbd> clears it |
 | Double-click a spot's row header | Zoom to that spot (×2) |
 
 ### 12. EBSD simulation
@@ -174,7 +176,7 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 | Shortcut | Action |
 |----------|--------|
 | Double-click the Kikuchi pattern | Pick the detector sub-cell under the cursor and show its statistics |
-| With **Zone axis** picking on: left double-click / <kbd>CTRL</kbd> + left double-click / <kbd>SHIFT</kbd> + left double-click the pattern | Add a zone-axis point / remove the point within 5 screen pixels / select that point <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormEBSD.cs:HandleZoneAxisDoubleClick) --> |
+| With **Zone axis** picking on: left double-click / left-click / <kbd>CTRL</kbd> + right-click the pattern | Add a zone-axis point / select the point within 5 screen pixels / remove the point within 5 screen pixels (the same combinations as spot editing in [Spot ID v2](#11-spot-id-v2)) <!-- 261124Cl 作者の決定で変更 (旧: CTRL + 左ダブルクリックで削除、SHIFT + 左ダブルクリックで選択) --> <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormEBSD.cs:HandleZoneAxisDoubleClick) --> |
 
 ### 20. Macro
 [Open page →](20-macro/index.md)

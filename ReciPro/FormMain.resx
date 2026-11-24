@@ -3400,13 +3400,13 @@ patterns from crystal orientation.</value>
     <value>304, 22</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Load crystal list (replace current list)</value>
+    <value>&amp;Load crystal list (replace current list)...</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>304, 22</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
-    <value>Load crystal list (&amp;add to current list)</value>
+    <value>Load crystal list (&amp;add to current list)...</value>
   </data>
   <data name="toolStripMenuItemReadInitialCrystalList.Size" type="System.Drawing.Size, System.Drawing">
     <value>304, 22</value>
@@ -3421,7 +3421,7 @@ patterns from crystal orientation.</value>
     <value>304, 22</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Import crystal from a CIF or AMC file</value>
+    <value>&amp;Import crystal from CIF or AMC...</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 6</value>
@@ -3430,13 +3430,13 @@ patterns from crystal orientation.</value>
     <value>304, 22</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Save crystal list</value>
+    <value>&amp;Save crystal list...</value>
   </data>
   <data name="toolStripMenuItemExportCIF.Size" type="System.Drawing.Size, System.Drawing">
     <value>304, 22</value>
   </data>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>&amp;Export the selected crystal as a CIF file</value>
+    <value>&amp;Export the selected crystal as CIF...</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 6</value>
@@ -3717,7 +3717,7 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>127, 20</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Export as CIF</value>
+    <value>&amp;Export as CIF...</value>
   </data>
   <data name="duplicateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 22</value>

@@ -230,28 +230,28 @@ simulation</value>
     <value>Entwicklercode</value>
   </data>
   <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>als Bild (PNG-Format)</value>
+    <value>Als Bild (PNG-Format)...</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>als Metadatei (EMF)</value>
+    <value>Als Metadatei (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Bild speichern</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>als Bild (PNG-Format)</value>
+    <value>Als Bild (PNG-Format)...</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>als Metadatei (EMF)</value>
+    <value>Als Metadatei (EMF)...</value>
   </data>
   <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>Detektorbereich speichern</value>
   </data>
   <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
-    <value>als Einzelbilder (PNG-Format)</value>
+    <value>Als Einzelbilder (PNG-Format)...</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
-    <value>als Einzelbilder (TIFF-Format)</value>
+    <value>Als Einzelbilder (TIFF-Format)...</value>
   </data>
   <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>als Sammelbild (PNG-Format)</value>
@@ -287,10 +287,10 @@ simulation</value>
     <value>CBED-Scheiben kopieren</value>
   </data>
   <data name="toolStripMenuItemSaveMovieDiffractionPattern.Text" xml:space="preserve">
-    <value>Beugungsmuster</value>
+    <value>Beugungsmuster...</value>
   </data>
   <data name="toolStripMenuItemSaveMovieReciprocalSpace.Text" xml:space="preserve">
-    <value>Reziproker Raum</value>
+    <value>Reziproker Raum...</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Video speichern</value>
@@ -649,6 +649,7 @@ mit derselben Intensität dargestellt.</value>
 Linksziehen (am Bildschirmrand): Drehung um die zum Monitor senkrechte Achse
 Rechtsklick: Verkleinern
 Rechtsziehen: Den ausgewählten Bereich vergrößern
+Mausrad: Vergrößern / Verkleinern an der Cursorposition
 Mittleres Ziehen: Das simulierte Bild verschieben
 Linker Doppelklick: Die Informationen des g-Vektors anzeigen</value>
   </data>
@@ -1270,5 +1271,38 @@ Struktur glatter auf, kostet aber mehr Rechenzeit.</value>
   </data>
   <data name="labelKikuchiQuality.Text" xml:space="preserve">
     <value>Qualität</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Tastenkürzel-Hinweise</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Linksziehen nahe der Mitte : Den Kristall kippen</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Linksziehen im äußeren Bereich : Den Kristall um die Strahlachse drehen</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Linksdoppelklick auf einen Reflex : Reflexdetails anzeigen (Index, d, Strukturfaktor, Anregungsfehler)</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mittelziehen : Das Muster verschieben</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + Mittelziehen : Das Detektorzentrum verschieben</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mausrad : Pro Raststufe um ×2 hinein-/herauszoomen</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rechtsklick : Herauszoomen (×1/1,2)</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rechtsziehen eines Rahmens : In den ausgewählten Bereich hineinzoomen</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rechtsdoppelklick auf die Statusleiste : Eine Textzusammenfassung der aktuellen Einstellungen kopieren</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rechtsdoppelklick auf eine aktive Ebenen-Schaltfläche : Diese Ebene ein- und ausblinken lassen</value>
   </data>
 </root>

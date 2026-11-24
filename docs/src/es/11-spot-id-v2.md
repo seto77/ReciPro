@@ -18,6 +18,7 @@ La lista de reflexiones se construye directamente sobre la imagen cargada. El pa
 | Clic izquierdo sobre una reflexión | Seleccionar la reflexión más cercana |
 | <kbd>CTRL</kbd> + clic derecho sobre una reflexión | Eliminar la reflexión más cercana |
 | <kbd>CTRL</kbd> + teclas de flecha | Desplazar la reflexión seleccionada un píxel |
+| Mantener <kbd>SHIFT</kbd> y hacer clic izquierdo en tres reflexiones sucesivamente | Medir el ángulo en la imagen: extremo → vértice → extremo (p. ej. ∠6–0–8). Se dibujan líneas, un arco y el valor en la imagen, y el valor (∠6–0–8 = 89.73°) aparece en la barra de estado. <kbd>SHIFT</kbd> + clic izquierdo en otra reflexión inicia una nueva medición; <kbd>ESC</kbd> la borra |
 | Arrastrar con izquierdo / con central (área vacía) | Desplazar la imagen |
 | Rueda del ratón | Acercar/alejar el zoom en el cursor |
 | Arrastrar con derecho un recuadro | Acercar el zoom a la región seleccionada |

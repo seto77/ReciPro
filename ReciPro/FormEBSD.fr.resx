@@ -251,7 +251,7 @@ seuil d'énergie sont identiques, le calcul Monte-Carlo est omis.</value>
     <value>Fichier</value>
   </data>
   <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ouvrir une image expérimentale...</value>
+    <value>Charger une image expérimentale...</value>
   </data>
   <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
     <value>Charger le master pattern...</value>
@@ -1124,5 +1124,44 @@ Désactivé : les champs gardent vos valeurs et le master pattern est
 créé avec elles. Une plage dont la borne inférieure n'est pas sous la
 borne supérieure, une énergie au-dessus de E0 ou une plage hors de la
 distribution Monte-Carlo est refusée avec un message.</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Aide raccourcis clavier</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glisser-gauche la figure près du centre : Incliner le cristal</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glisser-gauche dans la zone extérieure de la figure : Faire tourner le cristal</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Molette vers le haut / bas sur la figure : Zoomer (×2) / dézoomer (×1/2) au niveau du curseur</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clic droit / glisser un rectangle avec le bouton droit sur la figure : Dézoomer (×1/1.2) / zoomer sur le rectangle</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Double-clic sur la figure : Sélectionner la sous-cellule du détecteur sous le curseur et afficher ses statistiques</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glisser-gauche dans une vue 3D : La faire pivoter</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glisser-droit, ou molette de la souris, sur une vue 3D : Zoomer</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + double-clic droit sur une vue 3D : Basculer entre orthographique / perspective</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glisser / molette sur le master pattern 2D : Déplacer / zoomer l'image</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Double-clic gauche (Zone axis activé) : Ajouter un point</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clic gauche (Zone axis activé) : Sélectionner un point</value>
+  </data>
+  <data name="shortcutHint12ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + clic droit (Zone axis activé) : Supprimer un point</value>
   </data>
 </root>

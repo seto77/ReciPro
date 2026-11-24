@@ -320,16 +320,16 @@
     <value>對稱元素</value>
   </data>
   <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
-    <value>主影像</value>
+    <value>主影像...</value>
   </data>
   <data name="saveLegendToolStripMenuItem.Text" xml:space="preserve">
-    <value>圖例</value>
+    <value>圖例...</value>
   </data>
   <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>晶軸</value>
+    <value>晶軸...</value>
   </data>
   <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
-    <value>光照方向</value>
+    <value>光照方向...</value>
   </data>
   <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
     <value>儲存影像</value>
@@ -350,10 +350,10 @@
     <value>複製影像至剪貼簿</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>主影像</value>
+    <value>主影像...</value>
   </data>
   <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>晶軸</value>
+    <value>晶軸...</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
     <value>儲存影片</value>
@@ -368,13 +368,13 @@
     <value>工具</value>
   </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+SHIFT+c：  複製主影像至剪貼簿</value>
+    <value>Ctrl + Shift + C : 將算繪後的影像複製到剪貼簿</value>
   </data>
   <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+ 滑鼠右鍵雙擊：  切換透視 &lt;=&gt; 正交投影</value>
+    <value>Ctrl + 右鍵雙擊 : 切換正交／透視投影</value>
   </data>
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
-    <value>CTRL+ 滑鼠右鍵上/下：  變更透視程度</value>
+    <value>Ctrl + 右鍵向上/向下拖曳 : 變更相機距離（僅透視模式）</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>快速鍵提示</value>
@@ -886,5 +886,23 @@ VESTA 風格的預設值 (VESTA 是廣泛使用的
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>結構檢視器</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在主檢視中左鍵拖曳 : 旋轉模型</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在原子上左鍵雙擊 : 顯示所點原子的座標，以及其周圍鄰近原子的距離與鍵角</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右鍵向上/向下拖曳，或滑鼠滾輪 : 縮放</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>中鍵拖曳 : 平移</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在晶軸操作器上左鍵拖曳 : 旋轉模型（無平面內自旋）</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在光源操作器上左鍵拖曳 : 變更照明方向</value>
   </data>
 </root>

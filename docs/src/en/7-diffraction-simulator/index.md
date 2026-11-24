@@ -72,6 +72,8 @@ These apply to the diffraction-pattern window shared by the X-ray, SAED, and PED
 | Right double-click the status bar | Copy a text summary of the current settings: crystal and Euler angles, source, energy, wavelength, optics, spot shape, intensity calculation (for **Dynamical** also the thickness, the number of diffracted waves and, for PED, the precession angle) and the detector geometry <!-- 261105Cl 監査: statusStrip1_MouseDown (C24) --> |
 | Right double-click a lit layer button (Spots / Kikuchi / Debye / Scale) | Blink that layer on and off |
 
+These combinations are also listed in the window's **Shortcut hints** menu.
+
 The auxiliary windows opened from here add a few more:
 
 | Shortcut | Action |

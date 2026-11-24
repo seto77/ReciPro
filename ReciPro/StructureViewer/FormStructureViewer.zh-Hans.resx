@@ -320,16 +320,16 @@
     <value>对称元素</value>
   </data>
   <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
-    <value>主图像</value>
+    <value>主图像...</value>
   </data>
   <data name="saveLegendToolStripMenuItem.Text" xml:space="preserve">
-    <value>图例</value>
+    <value>图例...</value>
   </data>
   <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>晶轴</value>
+    <value>晶轴...</value>
   </data>
   <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
-    <value>光照方向</value>
+    <value>光照方向...</value>
   </data>
   <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
     <value>保存图像</value>
@@ -350,10 +350,10 @@
     <value>复制图像到剪贴板</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>主图像</value>
+    <value>主图像...</value>
   </data>
   <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>晶轴</value>
+    <value>晶轴...</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
     <value>保存视频</value>
@@ -368,13 +368,13 @@
     <value>工具</value>
   </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+SHIFT+c:  将主图像复制到剪贴板</value>
+    <value>Ctrl + Shift + C : 将渲染的图像复制到剪贴板</value>
   </data>
   <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+ 鼠标右键双击:  在透视 &lt;=&gt; 正交投影之间交替切换</value>
+    <value>Ctrl + 右键双击 : 在正交/透视投影之间切换</value>
   </data>
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
-    <value>CTRL+ 鼠标右键上/下:  更改透视程度</value>
+    <value>Ctrl + 右键向上/向下拖动 : 更改相机距离（仅透视模式）</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>快捷键提示</value>
@@ -879,5 +879,23 @@ VESTA 风格的默认值（VESTA 是一款广泛使用的
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>结构查看器</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在主视图中左键拖动 : 旋转模型</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>左键双击某个原子 : 显示所单击原子的坐标，以及其周围近邻原子的距离和键角</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右键向上/向下拖动，或滚动鼠标滚轮 : 缩放</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>中键拖动 : 平移</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>拖动 晶体轴 小部件 : 旋转模型（无平面内自旋）</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>拖动 光源 小部件 : 更改照明方向</value>
   </data>
 </root>

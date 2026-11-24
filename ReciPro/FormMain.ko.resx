@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>선택한 결정을 CIF 파일로 내보내기(&amp;E)</value>
+    <value>선택한 결정을 CIF 파일로 내보내기...(&amp;E)</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
     <value>라이선스(&amp;L)</value>
@@ -132,7 +132,7 @@
     <value>업데이트 확인(&amp;C)</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>결정 목록 불러오기 (현재 목록 교체)(&amp;L)</value>
+    <value>결정 목록 불러오기 (현재 목록 교체)...(&amp;L)</value>
   </data>
   <data name="toolStripMenuItemDarkMode.Text" xml:space="preserve">
     <value>다크 모드</value>
@@ -144,7 +144,7 @@
     <value>오일러 각</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
-    <value>CIF로 내보내기(&amp;E)</value>
+    <value>CIF로 내보내기...(&amp;E)</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
     <value>회전 초기화</value>
@@ -162,7 +162,7 @@
     <value>기능</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
-    <value>결정 목록 불러오기 (현재 목록에 추가)(&amp;A)</value>
+    <value>결정 목록 불러오기 (현재 목록에 추가)...(&amp;A)</value>
   </data>
   <data name="buttonClearAllCrystals.Text" xml:space="preserve">
     <value>모든 결정 지우기</value>
@@ -204,7 +204,7 @@
     <value>초기 결정 목록으로 재설정(&amp;R)</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>결정 목록 저장(&amp;S)</value>
+    <value>결정 목록 저장...(&amp;S)</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
     <value>MKL 라이브러리 다운로드</value>
@@ -241,7 +241,7 @@
     <value>면</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>CIF 또는 AMC 파일에서 결정 가져오기(&amp;I)</value>
+    <value>CIF 또는 AMC 파일에서 결정 가져오기...(&amp;I)</value>
   </data>
   <data name="renameToolStripMenuItem.Text" xml:space="preserve">
     <value>이름 바꾸기(&amp;R)</value>

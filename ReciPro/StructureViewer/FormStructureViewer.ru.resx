@@ -320,16 +320,16 @@
     <value>Эл. симм.</value>
   </data>
   <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
-    <value>Основное изображение</value>
+    <value>Основное изображение...</value>
   </data>
   <data name="saveLegendToolStripMenuItem.Text" xml:space="preserve">
-    <value>Легенда</value>
+    <value>Легенда...</value>
   </data>
   <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Кристаллографические оси</value>
+    <value>Кристаллографические оси...</value>
   </data>
   <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
-    <value>Направление света</value>
+    <value>Направление света...</value>
   </data>
   <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
     <value>Сохранить изображение</value>
@@ -350,10 +350,10 @@
     <value>Копировать изображение в буфер обмена</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Основное изображение</value>
+    <value>Основное изображение...</value>
   </data>
   <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Кристаллографические оси</value>
+    <value>Кристаллографические оси...</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить видео</value>
@@ -368,13 +368,13 @@
     <value>Инструменты</value>
   </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+SHIFT+c:  Копировать основное изображение в буфер обмена</value>
+    <value>Ctrl + Shift + C : Скопировать отрисованное изображение в буфер обмена</value>
   </data>
   <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+ Двойной щелчок правой кнопкой мыши:  Переключение перспективной &lt;=&gt; ортогональной проекции</value>
+    <value>Ctrl + двойной щелчок правой кнопкой : Переключить ортографическую / перспективную проекцию</value>
   </data>
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
-    <value>CTRL+ Правая кнопка мыши вверх/вниз:  Изменить степень перспективы</value>
+    <value>Ctrl + перетаскивание правой кнопкой вверх/вниз : Изменить расстояние до камеры (только в режиме перспективы)</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>Подсказки по сочетаниям клавиш</value>
@@ -897,5 +897,23 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Просмотр структуры</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание левой кнопкой в основной области : Повернуть модель</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Двойной щелчок левой кнопкой по атому : Показать координаты атома, по которому щёлкнули, а также расстояния и валентные углы окружающих его соседей</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание правой кнопкой вверх/вниз или колесо мыши : Масштабирование</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание средней кнопкой : Панорамирование</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание левой кнопкой за гизмо осей кристалла : Повернуть модель (без поворота в плоскости)</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание левой кнопкой за гизмо света : Изменить направление освещения</value>
   </data>
 </root>

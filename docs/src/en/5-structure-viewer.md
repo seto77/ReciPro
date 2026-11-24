@@ -23,6 +23,8 @@ The window has a main 3-D view plus two small gizmos — the **crystal-axes** bo
 | Left-drag the **crystal-axes** gizmo | Rotate the model (no in-plane spin) |
 | Left-drag the **light** gizmo | Change the lighting direction |
 
+These combinations are also listed in the window's **Shortcut hints** menu.
+
 The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts from the [main window](0-main-window.md#keyboard-mouse-shortcuts) also work while this window is focused.
 
 → See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
@@ -51,7 +53,7 @@ The 3-D crystal structure, drawn together with the light-direction gizmo, the cr
 | Save image ▸ Main image / Legend / Crystal axes / Light direction | Save the main view, the atom legend or one of the gizmos as PNG |
 | Copy image to clipboard ▸ Main image / Legend / Crystal axes / Light direction <!-- 261105Cl 監査: copyToClipboardToolStripMenuItem.Text --> | Copy the image (Ctrl+Shift+C copies the main view) |
 | Save movie ▸ Main image / Crystal axes | Save a rotation/translation movie of the main view or of the crystal-axes gizmo as MP4 (speed, duration, fps, quality and so on) |
-| Export 3D model (3MF/STL) | Write the displayed structure out as a solid model for 3D printing |
+| Export 3D model (3MF/STL)... | Write the displayed structure out as a solid model for 3D printing |
 
 **Tools** menu: **I like VESTA** (same as the *Like Vesta* toolbar button) and **Enable DDP** (shows/hides the *Dual Depth Peeling* entry in [Transparency mode](#transparency-mode)).
 
@@ -68,7 +70,7 @@ Set the movie length (**Duration**), the frame rate (**FPS**, 1–120), and the 
 
 #### Export 3D model (3MF/STL)
 
-**Export 3D model (3MF/STL)** writes the structure currently drawn on screen out as a solid model for 3D printing. Only closed solids can be exported — atoms (spheres and ellipsoids), bonds (cylinders) and coordination polyhedra. Atom labels, bound planes, lattice planes and symmetry-element symbols are not exported. <!-- 261105Cl 監査: 配位多面体を出力し、対称要素は出さない (6c31fc0d) --> The unit cell frame is made of line segments, so it is replaced by cylinders (with spheres at the corners) only when you tick the corresponding option. **Clip objects by bound planes** is not applied to the output: objects crossing the bound planes are exported whole (the dialog notes this). <!-- 261106Cl 作者の決定 H10 -->
+**Export 3D model (3MF/STL)...** writes the structure currently drawn on screen out as a solid model for 3D printing. Only closed solids can be exported — atoms (spheres and ellipsoids), bonds (cylinders) and coordination polyhedra. Atom labels, bound planes, lattice planes and symmetry-element symbols are not exported. <!-- 261105Cl 監査: 配位多面体を出力し、対称要素は出さない (6c31fc0d) --> The unit cell frame is made of line segments, so it is replaced by cylinders (with spheres at the corners) only when you tick the corresponding option. **Clip objects by bound planes** is not applied to the output: objects crossing the bound planes are exported whole (the dialog notes this). <!-- 261106Cl 作者の決定 H10 -->
 
 ![Export 3D model dialog](../assets/cap-en-auto/FormExport3DModel.png)
 

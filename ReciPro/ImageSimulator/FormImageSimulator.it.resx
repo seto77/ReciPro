@@ -336,13 +336,13 @@ Simulator"</value>
     <value>Simula</value>
   </data>
   <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>come immagine (formato PNG)</value>
+    <value>Come immagine (formato PNG)...</value>
   </data>
   <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>come immagine (formato TIFF)</value>
+    <value>Come immagine (formato TIFF)...</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>come metafile (EMF)</value>
+    <value>Come metafile (EMF)...</value>
   </data>
   <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
     <value>   Salva singolarmente in modalità immagine seriale </value>
@@ -363,7 +363,7 @@ Simulator"</value>
     <value>     Sovrastampa simboli</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
-    <value>Carica parametri TEM</value>
+    <value>Carica parametri TEM...</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>Carica le condizioni di simulazione da un file salvato con
@@ -371,7 +371,7 @@ Simulator"</value>
 (ad es. di una versione precedente) assumono il valore predefinito.</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
-    <value>Salva parametri TEM</value>
+    <value>Salva parametri TEM...</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>Salva le condizioni di simulazione attuali (le stesse voci
@@ -938,5 +938,32 @@ lungo l'asse orizzontale della griglia di immagini seriali.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
     <value>Dim. efficace della sorgente (FWHM)</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Suggerimenti scorciatoie</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + C (griglia immagini attiva) : Copia l'immagine o le immagini negli appunti come metafile</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento sinistro / centrale : Sposta l'immagine (tutti i riquadri si muovono insieme)</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rotellina del mouse su / giù : Zoom avanti (×2) / indietro (×1/2) in corrispondenza del cursore</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento di un rettangolo con il tasto destro : Zoom avanti nella regione selezionata</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clic destro / doppio clic destro : Zoom indietro (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + trascinamento di un rettangolo con il tasto destro : Seleziona un'area rettangolare</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Doppio clic sinistro su un riquadro : Ingrandisce quel riquadro / ripristina la griglia</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Movimento del mouse (senza tasto) : Legge la posizione (pm) e il valore del pixel in corrispondenza del cursore</value>
   </data>
 </root>

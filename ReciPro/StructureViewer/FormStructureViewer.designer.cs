@@ -217,6 +217,12 @@
             toolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             iLikeVESTAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint02ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint03ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint04ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint05ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint08ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint09ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -1978,28 +1984,56 @@
             resources.ApplyResources(iLikeVESTAToolStripMenuItem, "iLikeVESTAToolStripMenuItem");
             iLikeVESTAToolStripMenuItem.Click += toolStripButtonLikeVesta_Click;
             // 
+            // shortcutHint02ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint02ToolStripMenuItem, "shortcutHint02ToolStripMenuItem");
+            shortcutHint02ToolStripMenuItem.Name = "shortcutHint02ToolStripMenuItem";
+            // 
+            // shortcutHint03ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint03ToolStripMenuItem, "shortcutHint03ToolStripMenuItem");
+            shortcutHint03ToolStripMenuItem.Name = "shortcutHint03ToolStripMenuItem";
+            // 
+            // shortcutHint04ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint04ToolStripMenuItem, "shortcutHint04ToolStripMenuItem");
+            shortcutHint04ToolStripMenuItem.Name = "shortcutHint04ToolStripMenuItem";
+            // 
+            // shortcutHint05ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint05ToolStripMenuItem, "shortcutHint05ToolStripMenuItem");
+            shortcutHint05ToolStripMenuItem.Name = "shortcutHint05ToolStripMenuItem";
+            // 
+            // shortcutHint08ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint08ToolStripMenuItem, "shortcutHint08ToolStripMenuItem");
+            shortcutHint08ToolStripMenuItem.Name = "shortcutHint08ToolStripMenuItem";
+            // 
+            // shortcutHint09ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint09ToolStripMenuItem, "shortcutHint09ToolStripMenuItem");
+            shortcutHint09ToolStripMenuItem.Name = "shortcutHint09ToolStripMenuItem";
+            // 
             // helpToolStripMenuItem
             // 
-            helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem, cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem, toolStripMenuItem2 });
+            helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem, shortcutHint02ToolStripMenuItem, shortcutHint03ToolStripMenuItem, shortcutHint04ToolStripMenuItem, shortcutHint05ToolStripMenuItem, toolStripMenuItem2, cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem, shortcutHint08ToolStripMenuItem, shortcutHint09ToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             resources.ApplyResources(helpToolStripMenuItem, "helpToolStripMenuItem");
+            captureExtender.SetCapture(helpToolStripMenuItem, true);
             // 
             // cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem
             // 
             resources.ApplyResources(cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem, "cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem");
-            cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.ForeColor = System.Drawing.SystemColors.HotTrack;
             cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Name = "cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem";
             // 
             // cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem
             // 
             resources.ApplyResources(cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem, "cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem");
-            cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.ForeColor = System.Drawing.SystemColors.HotTrack;
             cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Name = "cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem";
             // 
             // toolStripMenuItem2
             // 
             resources.ApplyResources(toolStripMenuItem2, "toolStripMenuItem2");
-            toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.HotTrack;
             toolStripMenuItem2.Name = "toolStripMenuItem2";
             // 
             // toolTip
@@ -2208,6 +2242,12 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonLegend;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint02ToolStripMenuItem; // 261124Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint03ToolStripMenuItem; // 261124Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint04ToolStripMenuItem; // 261124Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint05ToolStripMenuItem; // 261124Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint08ToolStripMenuItem; // 261124Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint09ToolStripMenuItem; // 261124Cl 追加
         private System.Windows.Forms.ToolStripMenuItem cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;

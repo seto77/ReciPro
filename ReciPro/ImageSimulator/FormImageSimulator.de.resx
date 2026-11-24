@@ -351,13 +351,13 @@ Simulator" angezeigt</value>
     <value>Simulieren</value>
   </data>
   <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>als Bild (PNG-Format)</value>
+    <value>Als Bild (PNG-Format)...</value>
   </data>
   <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>als Bild (TIFF-Format)</value>
+    <value>Als Bild (TIFF-Format)...</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>als Metadatei (EMF)</value>
+    <value>Als Metadatei (EMF)...</value>
   </data>
   <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
     <value>   Einzeln speichern im Serienbildmodus </value>
@@ -378,7 +378,7 @@ Simulator" angezeigt</value>
     <value>      Symbole überdrucken</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
-    <value>TEM-Parameter laden</value>
+    <value>TEM-Parameter laden...</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>Lädt Simulationsbedingungen aus einer mit „TEM-Parameter speichern“
@@ -386,7 +386,7 @@ gespeicherten Datei (*.rpis). Einträge, die in der Datei fehlen
 (z. B. aus einer älteren Version), erhalten ihre Standardwerte.</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
-    <value>TEM-Parameter speichern</value>
+    <value>TEM-Parameter speichern...</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>Speichert die aktuellen Simulationsbedingungen (dieselben
@@ -956,5 +956,32 @@ der horizontalen Achse des Bildserien-Gitters variiert.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
     <value>Effektive Quellgröße (FWHM)</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Tastenkürzel-Hinweise</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + C (Bildraster fokussiert) : Das/die Bild(er) als Metafile in die Zwischenablage kopieren</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Linke Maustaste ziehen / mittlere Maustaste ziehen : Bild verschieben (alle Bereiche bewegen sich gemeinsam)</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mausrad nach oben / unten : Hinein- (×2) / Herauszoomen (×1/2) an der Cursorposition</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mit rechter Maustaste ein Rechteck ziehen : In den ausgewählten Bereich hineinzoomen</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rechtsklick / Rechter Doppelklick : Herauszoomen (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + mit rechter Maustaste ein Rechteck ziehen : Einen rechteckigen Bereich auswählen</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Linker Doppelklick auf einen Bereich : Diesen Bereich maximieren / das Raster wiederherstellen</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Maus bewegen (ohne Taste) : Position (pm) und Pixelwert an der Cursorposition ablesen</value>
   </data>
 </root>

@@ -18,6 +18,7 @@ Vous construisez la liste des taches directement sur l'image chargée. Le volet 
 | Clic gauche sur une tache | Sélectionner la tache la plus proche |
 | <kbd>CTRL</kbd> + clic droit sur une tache | Supprimer la tache la plus proche |
 | <kbd>CTRL</kbd> + touches fléchées | Déplacer la tache sélectionnée d'un pixel |
+| Maintenir <kbd>SHIFT</kbd> et cliquer (gauche) sur trois taches successivement | Mesurer l'angle sur l'image : extrémité → sommet → extrémité (p. ex. ∠6–0–8). Des lignes, un arc et la valeur sont dessinés sur l'image, et la valeur (∠6–0–8 = 89.73°) s'affiche dans la barre d'état. <kbd>SHIFT</kbd> + clic gauche sur une autre tache commence une nouvelle mesure ; <kbd>ESC</kbd> l'efface |
 | Glisser gauche / Glisser milieu (zone vide) | Déplacer l'image |
 | Molette de la souris | Zoomer / dézoomer au curseur |
 | Glisser droit d'un cadre | Zoomer sur la région sélectionnée |

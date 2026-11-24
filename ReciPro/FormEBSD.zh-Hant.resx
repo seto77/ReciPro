@@ -247,7 +247,7 @@
     <value>檔案</value>
   </data>
   <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>開啟實驗影像...</value>
+    <value>載入實驗影像...</value>
   </data>
   <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
     <value>載入主圖樣...</value>
@@ -995,5 +995,44 @@ A(E) = exp(-(E0 - E) / E_c)，損失的部分轉為平坦基座，
 長度的 99.9 % 處，40 個不等間距點）。此時範圍欄為唯讀。
 關閉：範圍欄保留您輸入的值，並依此範圍建立主圖樣。若下限不小於上限、
 能量高於 E0 或範圍與 MC 分佈不重疊，則不建立並以訊息提示。</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>快速鍵提示</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在圖樣中央附近左鍵拖曳 : 傾斜晶體</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在圖樣外側區域左鍵拖曳 : 旋轉晶體</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在圖樣上滾動滑鼠滾輪 : 在游標處放大（×2）/ 縮小（×1/2）</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在圖樣上右鍵點按 / 以右鍵拖曳出方框 : 縮小（×1/1.2）/ 放大至方框</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>雙擊圖樣 : 選取游標下的偵測器子格並顯示其統計資料</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在 3D 檢視（幾何／master 球面）左鍵拖曳 : 旋轉</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在 3D 檢視上右鍵拖曳或滾動滑鼠滾輪 : 縮放</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 在 3D 檢視上右鍵雙擊 : 切換正交／透視投影</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在 2D master pattern 上拖曳／滾輪 : 平移／縮放影像</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>左鍵雙擊（Zone axis 開啟時） : 新增點</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>左鍵點按（Zone axis 開啟時） : 選取點</value>
+  </data>
+  <data name="shortcutHint12ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 右鍵點按（Zone axis 開啟時） : 移除點</value>
   </data>
 </root>

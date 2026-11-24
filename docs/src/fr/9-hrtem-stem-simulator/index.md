@@ -34,9 +34,9 @@ Les résultats sont affichés sous la forme d'un ou plusieurs volets d'image. Il
 | <kbd>F1</kbd> | Ouvrir cette page du manuel en ligne |
 | <kbd>CTRL</kbd>+<kbd>C</kbd> (grille d'images sélectionnée) | Copier la ou les images dans le presse-papiers sous forme de métafichier |
 | Glisser avec le bouton gauche / le bouton du milieu | Déplacer l'image (tous les volets se déplacent ensemble) |
-| Molette vers le haut / vers le bas | Zoom avant (×2) / arrière (×0.5) à la position du curseur |
+| Molette vers le haut / vers le bas | Zoom avant (×2) / arrière (×1/2) à la position du curseur |
 | Glisser un rectangle avec le bouton droit | Zoomer sur la région sélectionnée |
-| Clic droit / Double-clic droit | Zoom arrière (×0.5) |
+| Clic droit / Double-clic droit | Zoom arrière (×1/1.2) |
 | <kbd>CTRL</kbd> + glisser un rectangle avec le bouton droit | Sélectionner une zone rectangulaire |
 | Double-clic gauche sur un volet | Agrandir ce volet / restaurer la grille (dispositions à plusieurs volets) |
 | Déplacer la souris (sans bouton) | Lire la position (pm) et la valeur du pixel à la position du curseur |

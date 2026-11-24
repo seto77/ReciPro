@@ -155,6 +155,9 @@ namespace ReciPro
             copyAsBitmapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             copyCandidateListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             shortcutHintsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint02ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint09ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint11ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             doubleClickAddSpotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -162,8 +165,10 @@ namespace ReciPro
             toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItemAngle = new System.Windows.Forms.ToolStripMenuItem();
             statusStrip = new System.Windows.Forms.StatusStrip();
             toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            toolStripStatusLabelAngle = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabelImageFilter = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabelFindSpot = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabelIdentifySpot = new System.Windows.Forms.ToolStripStatusLabel();
@@ -242,6 +247,9 @@ namespace ReciPro
             scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
             scalablePictureBoxAdvanced.StatusVisible = false;
             scalablePictureBoxAdvanced.MouseDown2 += scalablePictureBoxAdvanced1_MouseDown2;
+            scalablePictureBoxAdvanced.Paint2 += scalablePictureBoxAdvanced_Paint2;
+            scalablePictureBoxAdvanced.MouseMove2 += scalablePictureBoxAdvanced_MouseMove2;
+            scalablePictureBoxAdvanced.MouseUp2 += scalablePictureBoxAdvanced_MouseUp2;
             scalablePictureBoxAdvanced.StatusChanged += scalablePictureBoxAdvanced_StatusChanged;
             scalablePictureBoxAdvanced.FilterChanged += ScalablePictureBoxAdvanced_FilterChanged;
             // 
@@ -1213,11 +1221,27 @@ namespace ReciPro
             resources.ApplyResources(copyCandidateListToolStripMenuItem, "copyCandidateListToolStripMenuItem");
             copyCandidateListToolStripMenuItem.Click += copyOrSaveCandidateListToolStripMenuItem_Click;
             // 
+            // shortcutHint02ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint02ToolStripMenuItem, "shortcutHint02ToolStripMenuItem");
+            shortcutHint02ToolStripMenuItem.Name = "shortcutHint02ToolStripMenuItem";
+            // 
+            // shortcutHint09ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint09ToolStripMenuItem, "shortcutHint09ToolStripMenuItem");
+            shortcutHint09ToolStripMenuItem.Name = "shortcutHint09ToolStripMenuItem";
+            // 
+            // shortcutHint11ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint11ToolStripMenuItem, "shortcutHint11ToolStripMenuItem");
+            shortcutHint11ToolStripMenuItem.Name = "shortcutHint11ToolStripMenuItem";
+            // 
             // shortcutHintsToolStripMenuItem
             // 
-            shortcutHintsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { doubleClickAddSpotToolStripMenuItem, toolStripMenuItem7, toolStripMenuItem1, toolStripMenuItem6, toolStripMenuItem5, toolStripMenuItem4, toolStripMenuItem3 });
+            shortcutHintsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { doubleClickAddSpotToolStripMenuItem, shortcutHint02ToolStripMenuItem, toolStripMenuItem7, toolStripMenuItem1, toolStripMenuItem5, toolStripMenuItem4, toolStripMenuItem6, toolStripMenuItem3, shortcutHint09ToolStripMenuItem, toolStripMenuItemAngle, shortcutHint11ToolStripMenuItem });
             shortcutHintsToolStripMenuItem.Name = "shortcutHintsToolStripMenuItem";
             resources.ApplyResources(shortcutHintsToolStripMenuItem, "shortcutHintsToolStripMenuItem");
+            captureExtender.SetCapture(shortcutHintsToolStripMenuItem, true);
             // 
             // doubleClickAddSpotToolStripMenuItem
             // 
@@ -1254,10 +1278,15 @@ namespace ReciPro
             resources.ApplyResources(toolStripMenuItem3, "toolStripMenuItem3");
             toolStripMenuItem3.Name = "toolStripMenuItem3";
             // 
+            // toolStripMenuItemAngle
+            // 
+            resources.ApplyResources(toolStripMenuItemAngle, "toolStripMenuItemAngle");
+            toolStripMenuItemAngle.Name = "toolStripMenuItemAngle";
+            // 
             // statusStrip
             // 
             statusStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
-            statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabelImageFilter, toolStripStatusLabelFindSpot, toolStripStatusLabelIdentifySpot, toolStripStatusLabelRefine });
+            statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabelAngle, toolStripStatusLabelImageFilter, toolStripStatusLabelFindSpot, toolStripStatusLabelIdentifySpot, toolStripStatusLabelRefine });
             resources.ApplyResources(statusStrip, "statusStrip");
             statusStrip.Name = "statusStrip";
             // 
@@ -1266,6 +1295,12 @@ namespace ReciPro
             toolStripProgressBar.Maximum = 10000;
             toolStripProgressBar.Name = "toolStripProgressBar";
             resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
+            // 
+            // toolStripStatusLabelAngle
+            // 
+            toolStripStatusLabelAngle.ForeColor = System.Drawing.Color.DarkOrange;
+            toolStripStatusLabelAngle.Name = "toolStripStatusLabelAngle";
+            resources.ApplyResources(toolStripStatusLabelAngle, "toolStripStatusLabelAngle");
             // 
             // toolStripStatusLabelImageFilter
             // 
@@ -1413,6 +1448,9 @@ namespace ReciPro
         public ScalablePictureBoxAdvanced scalablePictureBoxAdvanced;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripMenuItem shortcutHintsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint02ToolStripMenuItem; // 261124Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint09ToolStripMenuItem; // 261124Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint11ToolStripMenuItem; // 261124Cl 追加
         private System.Windows.Forms.ToolStripMenuItem doubleClickAddSpotToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
@@ -1427,6 +1465,8 @@ namespace ReciPro
         private NumericBox numericBoxSemiangle;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelImageFilter;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelRefine;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAngle; // 261124Cl 追加 (GitHub #74): ショートカットヒント「Shift + 左クリック ×3 : 角を測る」
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelAngle; // 261124Cl 追加 (GitHub #74): 測った角 (∠A–B–C = …°) を出す
         private System.Windows.Forms.GroupBox groupBoxSpot;
         // private System.Windows.Forms.DataGridView dataGridViewSpots; // 260518Ch 旧実装: DPI変更時に列幅が追従しない
         private Crystallography.Controls.DpiAwareDataGridView dataGridViewSpots; // 260518Ch

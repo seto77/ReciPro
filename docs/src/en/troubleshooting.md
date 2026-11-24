@@ -132,7 +132,7 @@ For example, the **Peak Identification** button in Spot ID v2 is hidden, or the 
 
 **Solution**:
 
-- **Right-click** the main drawing area to zoom out (these views have no mouse-wheel zoom — see [21. Keyboard & mouse shortcuts](21-shortcuts.md)).
+- **Right-click** the main drawing area, or roll the mouse wheel towards you, to zoom out (see [21. Keyboard & mouse shortcuts](21-shortcuts.md)).
 - Check the incident-wave energy in the **Wave source** panel on the right: X-ray ≈ 1–100 keV, electron ≈ 10–1000 keV are appropriate.
 
 ---

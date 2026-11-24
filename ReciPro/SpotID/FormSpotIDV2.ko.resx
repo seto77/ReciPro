@@ -60,7 +60,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Ctrl + 오른쪽 클릭 : 스폿 제거</value>
+    <value>Ctrl + 스폿 마우스 오른쪽 클릭 : 가장 가까운 스폿 삭제</value>
+  </data>
+  <data name="toolStripMenuItemAngle.Text" xml:space="preserve">
+    <value>Shift를 누른 채 스폿 세 개를 차례로 왼쪽 클릭 : 이미지 위의 각도 측정 (끝점 → 꼭짓점 → 끝점). Esc로 지움</value>
   </data>
   <data name="Column2.HeaderText" xml:space="preserve">
     <value>직접</value>
@@ -87,7 +90,7 @@
     <value>픽셀 크기</value>
   </data>
   <data name="doubleClickAddSpotToolStripMenuItem.Text" xml:space="preserve">
-    <value>왼쪽 드래그 : 이미지 이동</value>
+    <value>왼쪽 끌기 / 가운데 끌기 : 이동</value>
   </data>
   <data name="noDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
     <value>번호</value>
@@ -129,16 +132,16 @@
     <value>스폿 검출 &amp;&amp; 피팅</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>오른쪽 클릭 : 축소</value>
+    <value>마우스 오른쪽 클릭 / 오른쪽 더블 클릭 : 축소 (×1/1.2)</value>
   </data>
   <data name="numericBoxAcceptableError.HeaderText" xml:space="preserve">
     <value>허용 오차</value>
   </data>
   <data name="toolStripMenuItem7.Text" xml:space="preserve">
-    <value>오른쪽 드래그: 확대</value>
+    <value>오른쪽으로 사각형 끌기 : 선택한 영역으로 확대</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>Ctrl + 왼쪽 더블 클릭 : 직접 스폿 추가</value>
+    <value>Ctrl + 왼쪽 더블 클릭 : 스폿을 추가하고 직접빔(000)으로 표시</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>정지</value>
@@ -174,7 +177,7 @@
     <value>결정 이름</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>메타파일로 (EMF)</value>
+    <value>메타파일로 (EMF)...</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
     <value>단일 결정립</value>
@@ -201,7 +204,7 @@
     <value>할당된 스폿</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>이미지로 (PNG 형식)</value>
+    <value>이미지로 (PNG 형식)...</value>
   </data>
   <data name="groupBoxOptics.Text" xml:space="preserve">
     <value>광학계</value>
@@ -216,7 +219,7 @@
     <value>스폿 식별</value>
   </data>
   <data name="loadToolStripMenuItem.Text" xml:space="preserve">
-    <value>불러오기</value>
+    <value>불러오기...</value>
   </data>
   <data name="noDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>번호</value>
@@ -225,7 +228,7 @@
     <value>저장</value>
   </data>
   <data name="toolStripMenuItem6.Text" xml:space="preserve">
-    <value>왼쪽 클릭 : 스폿 선택</value>
+    <value>스폿 왼쪽 클릭 : 가장 가까운 스폿 선택</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.Text" xml:space="preserve">
     <value>기호 표시</value>
@@ -234,7 +237,7 @@
     <value>복사</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
-    <value>왼쪽 더블 클릭 : 스폿 추가</value>
+    <value>이미지 왼쪽 더블 클릭 : 스폿 추가 (피크 피팅)</value>
   </data>
   <data name="buttonCopyToClipboard.Text" xml:space="preserve">
     <value>복사</value>
@@ -430,5 +433,14 @@ mrad)입니다.</value>
   </data>
   <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
     <value>피팅 함수의 상세 매개변수를 표시</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>마우스 휠 위 / 아래 : 커서 위치에서 확대 (×2) / 축소 (×1/2)</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 화살표 키 : 선택한 스폿을 1픽셀 이동</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>스폿 행 머리글 더블 클릭 : 해당 스폿으로 확대 (×2)</value>
   </data>
 </root>

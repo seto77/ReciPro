@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>&amp;Экспортировать выбранный кристалл в файл CIF</value>
+    <value>&amp;Экспортировать выбранный кристалл в файл CIF...</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Лицензия</value>
@@ -132,7 +132,7 @@
     <value>&amp;Проверить обновления</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Загрузить список кристаллов (заменить текущий список)</value>
+    <value>&amp;Загрузить список кристаллов (заменить текущий список)...</value>
   </data>
   <data name="toolStripMenuItemDarkMode.Text" xml:space="preserve">
     <value>Тёмная тема</value>
@@ -144,7 +144,7 @@
     <value>Углы Эйлера</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Экспортировать как CIF</value>
+    <value>&amp;Экспортировать как CIF...</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
     <value>Сбросить поворот</value>
@@ -162,7 +162,7 @@
     <value>Функции</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
-    <value>Загрузить &amp;список кристаллов (добавить к текущему списку)</value>
+    <value>Загрузить &amp;список кристаллов (добавить к текущему списку)...</value>
   </data>
   <data name="buttonClearAllCrystals.Text" xml:space="preserve">
     <value>Очистить все кристаллы</value>
@@ -204,7 +204,7 @@
     <value>Сбросить &amp;к исходному списку кристаллов</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>С&amp;охранить список кристаллов</value>
+    <value>С&amp;охранить список кристаллов...</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
     <value>Скачать библиотеку MKL</value>
@@ -241,7 +241,7 @@
     <value>Плоскость</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Импортировать кристалл из файла CIF или AMC</value>
+    <value>&amp;Импортировать кристалл из файла CIF или AMC...</value>
   </data>
   <data name="renameToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Переименовать</value>

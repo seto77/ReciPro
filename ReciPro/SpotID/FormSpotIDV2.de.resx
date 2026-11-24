@@ -60,7 +60,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Strg + Rechtsklick : Reflex entfernen</value>
+    <value>Ctrl + Rechtsklick auf einen Reflex : Den nächstgelegenen Reflex löschen</value>
+  </data>
+  <data name="toolStripMenuItemAngle.Text" xml:space="preserve">
+    <value>Shift gedrückt halten und nacheinander drei Reflexe links anklicken : Den Winkel im Bild messen (Ende → Scheitel → Ende); Esc löscht ihn</value>
   </data>
   <data name="Column2.HeaderText" xml:space="preserve">
     <value>Di- rekt</value>
@@ -87,7 +90,7 @@
     <value>Pixelgröße</value>
   </data>
   <data name="doubleClickAddSpotToolStripMenuItem.Text" xml:space="preserve">
-    <value>Linksziehen : Bild ziehen</value>
+    <value>Linksziehen / Mittelziehen : Verschieben</value>
   </data>
   <data name="noDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
     <value>Nr.</value>
@@ -129,16 +132,16 @@
     <value>Reflexe finden &amp;&amp; anpassen</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>Rechtsklick : Verkleinern</value>
+    <value>Rechtsklick / Rechts-Doppelklick : Herauszoomen (×1/1.2)</value>
   </data>
   <data name="numericBoxAcceptableError.HeaderText" xml:space="preserve">
     <value>Zulässiger Fehler</value>
   </data>
   <data name="toolStripMenuItem7.Text" xml:space="preserve">
-    <value>Rechtsziehen: Vergrößern</value>
+    <value>Rechtsziehen eines Rahmens : In den gewählten Bereich hineinzoomen</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>Strg + Doppel-Linksklick : Primärreflex hinzufügen</value>
+    <value>Ctrl + Links-Doppelklick : Einen Reflex hinzufügen und als direkten (000) Strahl markieren</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>Stopp</value>
@@ -174,7 +177,7 @@
     <value>Kristallname</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>als Metadatei (EMF)</value>
+    <value>Als Metadatei (EMF)...</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
     <value>Einzelkorn</value>
@@ -201,7 +204,7 @@
     <value>Zugeordnete Reflexe</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>als Bild (PNG-Format)</value>
+    <value>Als Bild (PNG-Format)...</value>
   </data>
   <data name="groupBoxOptics.Text" xml:space="preserve">
     <value>Optik</value>
@@ -216,7 +219,7 @@
     <value>Reflexe identifizieren</value>
   </data>
   <data name="loadToolStripMenuItem.Text" xml:space="preserve">
-    <value>Laden</value>
+    <value>Laden...</value>
   </data>
   <data name="noDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Nr.</value>
@@ -225,7 +228,7 @@
     <value>Speichern</value>
   </data>
   <data name="toolStripMenuItem6.Text" xml:space="preserve">
-    <value>Linksklick : Reflex auswählen</value>
+    <value>Linksklick auf einen Reflex : Den nächstgelegenen Reflex auswählen</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.Text" xml:space="preserve">
     <value>Symbol anzeigen</value>
@@ -234,7 +237,7 @@
     <value>Kopieren</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
-    <value>Doppel-Linksklick : Reflex hinzufügen</value>
+    <value>Links-Doppelklick auf das Bild : Einen Reflex hinzufügen (Peak-angepasst)</value>
   </data>
   <data name="buttonCopyToClipboard.Text" xml:space="preserve">
     <value>Kopieren</value>
@@ -430,5 +433,14 @@ festlegen (Standard: Elektronen, 200 kV).</value>
   </data>
   <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
     <value>Detaillierte Parameter der Anpassungsfunktion anzeigen</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mausrad auf / ab : Hineinzoomen (×2) / Herauszoomen (×1/2) am Cursor</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + Pfeiltasten : Den gewählten Reflex um ein Pixel verschieben</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Doppelklick auf den Zeilenkopf eines Reflexes : Zu diesem Reflex zoomen (×2)</value>
   </data>
 </root>

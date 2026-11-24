@@ -69,13 +69,13 @@
     <value>Как изображение</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>как изображение (формат PNG)</value>
+    <value>Как изображение (формат PNG)...</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>как метафайл (EMF)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>как метафайл (EMF)</value>
+    <value>Как метафайл (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить изображение</value>
@@ -96,7 +96,7 @@
     <value>Сохранить видео</value>
   </data>
   <data name="toolStripMenuItemSaveMovieStereonet.Text" xml:space="preserve">
-    <value>Стереосеть</value>
+    <value>Стереосеть...</value>
   </data>
   <data name="groupBoxMode.Text" xml:space="preserve">
     <value>Режим</value>
@@ -317,6 +317,7 @@
 Перетаскивание левой кнопкой (у края экрана): поворот вокруг оси, перпендикулярной монитору
 Щелчок правой кнопкой: уменьшение масштаба
 Перетаскивание правой кнопкой: увеличение выбранной области
+Колёсико: увеличение / уменьшение масштаба в точке курсора
 Перетаскивание средней кнопкой: перетаскивание смоделированного изображения
 </value>
   </data>
@@ -748,5 +749,32 @@
   </data>
   <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
     <value>Цвет</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Подсказки по сочетаниям клавиш</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание левой кнопкой вблизи центра : Наклонить кристалл</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание левой кнопкой во внешней области : Вращать кристалл вокруг оси обзора</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Двойной щелчок левой кнопкой : Переключение между проекцией Плоскости и Оси</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Колесо мыши вверх / вниз : Увеличить (×2) / уменьшить (×1/2) масштаб у курсора</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Щелчок правой кнопкой : Уменьшить масштаб (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание рамки правой кнопкой : Увеличить масштаб выбранной области</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание средней кнопкой : Панорамирование</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перемещение мыши (без нажатой кнопки) : Считать (hkl)/[uvw] под курсором</value>
   </data>
 </root>

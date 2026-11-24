@@ -132,7 +132,7 @@ Ad esempio, il pulsante **Peak Identification** in Spot ID v2 è nascosto, oppur
 
 **Soluzione**:
 
-- **Fare clic con il pulsante destro** nell'area di disegno principale per ridurre lo zoom (queste viste non hanno lo zoom con la rotellina del mouse — vedere [21. Scorciatoie da tastiera e mouse](21-shortcuts.md)).
+- **Fare clic con il pulsante destro** nell'area di disegno principale, oppure ruotare la rotellina del mouse verso di sé, per ridurre lo zoom (vedere [21. Scorciatoie da tastiera e mouse](21-shortcuts.md)).
 - Controllare l'energia dell'onda incidente nel pannello **Sorgente d'onda** a destra: raggi X ≈ 1–100 keV, elettroni ≈ 10–1000 keV sono valori appropriati.
 
 ---

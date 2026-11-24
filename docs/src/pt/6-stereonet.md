@@ -16,7 +16,8 @@ A estereonete em si é uma projeção 2-D; uma esfera 3-D opcional pode ser exib
 | Arrastar com o botão esquerdo perto do centro | Inclinar o cristal |
 | Arrastar com o botão esquerdo na área externa | Girar o cristal em torno do eixo de visualização |
 | Clique duplo esquerdo | Alternar entre a projeção **Planos** e **Eixos** |
-| Clique direito | Diminuir o zoom |
+| Roda do mouse para cima / baixo | Ampliar (×2) / reduzir (×1/2) o zoom no cursor |
+| Clique direito | Diminuir o zoom (×1/1.2) |
 | Arrastar com o botão direito uma caixa | Aumentar o zoom na região selecionada |
 | Arrastar com o botão do meio | Deslocar |
 | Mover o mouse (sem botão) | Ler o (hkl)/[uvw] sob o cursor — útil para indexar um reflexo medido (também no hemisfério inferior) <!-- 261105Cl 監査: 下半球の読み取り (268779a1) --> |

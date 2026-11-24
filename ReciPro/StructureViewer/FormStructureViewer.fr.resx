@@ -305,16 +305,16 @@ des limites</value>
     <value>Élém. sym.</value>
   </data>
   <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
-    <value>Image principale</value>
+    <value>Image principale...</value>
   </data>
   <data name="saveLegendToolStripMenuItem.Text" xml:space="preserve">
-    <value>Légende</value>
+    <value>Légende...</value>
   </data>
   <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Axes cristallins</value>
+    <value>Axes cristallins...</value>
   </data>
   <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
-    <value>Direction de la lumière</value>
+    <value>Direction de la lumière...</value>
   </data>
   <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
     <value>Enregistrer l'image</value>
@@ -335,10 +335,10 @@ des limites</value>
     <value>Copier l'image dans le presse-papiers</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Image principale</value>
+    <value>Image principale...</value>
   </data>
   <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Axes cristallins</value>
+    <value>Axes cristallins...</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
     <value>Enregistrer la vidéo</value>
@@ -353,13 +353,13 @@ des limites</value>
     <value>Outils</value>
   </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+MAJ+c :  Copier l'image principale dans le presse-papiers</value>
+    <value>Ctrl + Shift + C : Copier l'image rendue dans le presse-papiers</value>
   </data>
   <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+ Double-clic droit de la souris :  Basculer entre projection perspective &lt;=&gt; orthogonale</value>
+    <value>Ctrl + double-clic droit : Basculer entre la projection orthographique et perspective</value>
   </data>
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
-    <value>CTRL+ Souris droite haut/bas :  Modifier le degré de perspective</value>
+    <value>Ctrl + glisser-droite vers le haut/bas : Modifier la distance de la caméra (mode perspective uniquement)</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>Aide raccourcis clavier</value>
@@ -882,5 +882,23 @@ ou à la molette sur la vue.</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Visualiseur de structure</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glisser-gauche dans la vue principale : Faire pivoter le modèle</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Double-clic gauche sur un atome : Afficher les coordonnées de l'atome cliqué ainsi que les distances et les angles de liaison des voisins qui l'entourent</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glisser-droite vers le haut/bas, ou molette de la souris : Zoomer</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glisser-milieu : Déplacer</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glisser-gauche sur le gizmo des axes cristallins : Faire pivoter le modèle (sans rotation dans le plan)</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glisser-gauche sur le gizmo de lumière : Modifier la direction de l'éclairage</value>
   </data>
 </root>

@@ -320,16 +320,16 @@ dai limiti</value>
     <value>Elem. sim.</value>
   </data>
   <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
-    <value>Immagine principale</value>
+    <value>Immagine principale...</value>
   </data>
   <data name="saveLegendToolStripMenuItem.Text" xml:space="preserve">
-    <value>Legenda</value>
+    <value>Legenda...</value>
   </data>
   <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Assi cristallini</value>
+    <value>Assi cristallini...</value>
   </data>
   <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
-    <value>Direzione luce</value>
+    <value>Direzione luce...</value>
   </data>
   <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
     <value>Salva immagine</value>
@@ -350,10 +350,10 @@ dai limiti</value>
     <value>Copia immagine negli appunti</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Immagine principale</value>
+    <value>Immagine principale...</value>
   </data>
   <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Assi cristallini</value>
+    <value>Assi cristallini...</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
     <value>Salva video</value>
@@ -365,13 +365,13 @@ dai limiti</value>
     <value>Strumenti</value>
   </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+MAIUSC+c:  Copia immagine principale negli appunti</value>
+    <value>Ctrl + Shift + C : Copia l'immagine renderizzata negli appunti</value>
   </data>
   <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+ Doppio clic destro mouse:  Alterna proiezione prospettica &lt;=&gt; ortogonale</value>
+    <value>Ctrl + doppio clic destro : Alterna la proiezione ortografica / prospettica</value>
   </data>
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
-    <value>CTRL+ Mouse destro su/giù:  Cambia il grado di prospettiva</value>
+    <value>Ctrl + trascinamento con il tasto destro su/giù : Cambia la distanza della camera (solo in modalità prospettica)</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>Suggerimenti scorciatoie</value>
@@ -894,5 +894,23 @@ con il tasto destro / rotellina del mouse sulla vista.</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Visualizzatore struttura</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento con il tasto sinistro nella vista principale : Ruota il modello</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Doppio clic sinistro su un atomo : Mostra le coordinate dell'atomo cliccato e le distanze e gli angoli di legame dei vicini attorno a esso</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento con il tasto destro su/giù, o rotellina del mouse : Zoom</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento con il tasto centrale : Spostamento</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento con il tasto sinistro sul gizmo degli assi cristallografici : Ruota il modello (senza rotazione nel piano)</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento con il tasto sinistro sul gizmo della luce : Cambia la direzione dell'illuminazione</value>
   </data>
 </root>

@@ -18,6 +18,7 @@ L'elenco degli spot si costruisce direttamente sull'immagine caricata. Il riquad
 | Clic sinistro su uno spot | Seleziona lo spot più vicino |
 | <kbd>CTRL</kbd> + clic destro su uno spot | Elimina lo spot più vicino |
 | <kbd>CTRL</kbd> + tasti freccia | Sposta lo spot selezionato di un pixel |
+| Tenere premuto <kbd>SHIFT</kbd> e fare clic sinistro su tre spot in sequenza | Misura l'angolo sull'immagine: estremo → vertice → estremo (ad es. ∠6–0–8). Linee, un arco e il valore vengono disegnati sull'immagine e il valore (∠6–0–8 = 89.73°) compare nella barra di stato. <kbd>SHIFT</kbd> + clic sinistro su un altro spot avvia una nuova misura; <kbd>ESC</kbd> la cancella |
 | Trascinamento sinistro / centrale (area vuota) | Sposta l'immagine |
 | Rotellina del mouse | Zoom avanti / indietro alla posizione del cursore |
 | Trascinamento destro di un riquadro | Zoom avanti sulla regione selezionata |

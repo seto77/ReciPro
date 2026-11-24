@@ -34,12 +34,14 @@ Results are shown as one or more image panes. They use ReciPro's standard [image
 | <kbd>F1</kbd> | Open this page of the online manual |
 | <kbd>CTRL</kbd>+<kbd>C</kbd> (image grid focused) | Copy the image(s) to the clipboard as a metafile |
 | Left-drag / Middle-drag | Pan the image (all panes move together) |
-| Mouse wheel up / down | Zoom in (×2) / out (×0.5) at the cursor |
+| Mouse wheel up / down | Zoom in (×2) / out (×1/2) at the cursor |
 | Right-drag a box | Zoom in to the selected region |
-| Right-click / Right double-click | Zoom out (×0.5) |
+| Right-click / Right double-click | Zoom out (×1/1.2; a double-click counts twice) |
 | <kbd>CTRL</kbd> + Right-drag a box | Select a rectangular area |
 | Left double-click a pane | Maximize that pane / restore the grid (multi-pane layouts) |
 | Move the mouse (no button) | Read the position (pm) and pixel value at the cursor |
+
+These combinations are also listed in the window's **Shortcut hints** menu.
 
 → See **[21. Keyboard & mouse shortcuts](../21-shortcuts.md)** for every window at a glance.
 
@@ -158,7 +160,7 @@ The microscope presets (ARM300F, 2100F, …) are not in this list; they are in t
 - **Save image** : save as **as image (PNG format)**, **as image (TIFF format)**, or **as metafile (EMF)**. PNG and EMF save what is displayed (display range and color scale); **Save individually for serial image mode** (on by default) writes each pane to its own file instead of one tiled image. TIFF always writes one floating-point file per pane, without overlays. It stores the pixel values after **Normalization** (and after **Gaussian blur (FWHM)** if applied), not the **Adjust** display range; with the defaults (**Min** 0, **Max** 1, **For each image**) each image is scaled to 0–1, so uncheck **Min** / **Max** to export the computed intensities. EDX maps are always written unscaled.
 - **Copy image** : copy to the clipboard **as image** or **as metafile (EMF)**.
 - **Overprint symbols** (on by default) : burns the unit cell, labels, and scale bar into the saved or copied PNG / EMF image.
-- **Load TEM parameters** / **Save TEM parameters** : read or write the simulator settings as an XML file (`*.rpis`). The file holds the same items as a [preset](#preset-list) — image mode, accelerating voltage, aberrations, defocus, objective aperture, thickness and the single/serial settings, image size and resolution, STEM settings and so on — so conditions can be kept or shared between computers. Items missing from a file (for example one written by an older version) are set to the window's initial values and unknown items are ignored; a file that cannot be read is reported with a message. Loading does not recalculate the image. <!-- 261106Cl 作者の決定 E7: FormPresets.cs ImageSimulatorSetting.SaveXml/LoadXml -->
+- **Load TEM parameters...** / **Save TEM parameters...** : read or write the simulator settings as an XML file (`*.rpis`). The file holds the same items as a [preset](#preset-list) — image mode, accelerating voltage, aberrations, defocus, objective aperture, thickness and the single/serial settings, image size and resolution, STEM settings and so on — so conditions can be kept or shared between computers. Items missing from a file (for example one written by an older version) are set to the window's initial values and unknown items are ignored; a file that cannot be read is reported with a message. Loading does not recalculate the image. <!-- 261106Cl 作者の決定 E7: FormPresets.cs ImageSimulatorSetting.SaveXml/LoadXml -->
 
 ## Help menu
 

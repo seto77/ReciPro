@@ -250,7 +250,7 @@ energia forem iguais, o cálculo de Monte Carlo é omitido.</value>
     <value>Arquivo</value>
   </data>
   <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Abrir imagem experimental...</value>
+    <value>Carregar imagem experimental...</value>
   </data>
   <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
     <value>Carregar master pattern...</value>
@@ -1110,5 +1110,44 @@ Desligado: os campos mantêm os valores digitados e o master pattern é
 criado com eles. Uma faixa cujo limite inferior não está abaixo do
 superior, uma energia acima de E0 ou uma faixa fora da distribuição de
 Monte Carlo é recusada com uma mensagem.</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Dicas de atalhos</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar com o botão esquerdo o padrão perto do centro : Inclinar o cristal</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar com o botão esquerdo a área externa do padrão : Girar o cristal</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Roda do mouse para cima / baixo no padrão : Ampliar (×2) / reduzir (×1/2) o zoom no cursor</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clique direito / arrastar uma caixa com o botão direito no padrão : Reduzir o zoom (×1/1.2) / ampliar a caixa</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clique duplo no padrão : Selecionar a subcélula do detector sob o cursor e mostrar suas estatísticas</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar com o botão esquerdo uma vista 3D : Rotacionar</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar com o botão direito, ou roda do mouse, em uma vista 3D : Zoom</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + Clique duplo direito em uma vista 3D : Alternar ortográfica / perspectiva</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar / roda do mouse no master pattern 2D : Deslocar / aplicar zoom à imagem</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clique duplo esquerdo (Zone axis ativado) : Adicionar um ponto</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clique esquerdo (Zone axis ativado) : Selecionar um ponto</value>
+  </data>
+  <data name="shortcutHint12ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + clique direito (Zone axis ativado) : Remover um ponto</value>
   </data>
 </root>

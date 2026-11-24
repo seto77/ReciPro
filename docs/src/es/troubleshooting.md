@@ -132,7 +132,7 @@ Por ejemplo, el botón **Peak Identification** de Spot ID v2 queda oculto, o la 
 
 **Solución**:
 
-- **Haga clic derecho** en el área de dibujo principal para alejar el zoom (estas vistas no tienen zoom con la rueda del ratón; véase [21. Atajos de teclado y ratón](21-shortcuts.md)).
+- **Haga clic derecho** en el área de dibujo principal, o gire la rueda del ratón hacia usted, para alejar el zoom (véase [21. Atajos de teclado y ratón](21-shortcuts.md)).
 - Compruebe la energía de la onda incidente en el panel **Fuente de ondas** de la derecha: rayos X ≈ 1–100 keV, electrones ≈ 10–1000 keV son valores adecuados.
 
 ---

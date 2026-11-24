@@ -69,13 +69,13 @@
     <value>为图像</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>为图像 (PNG格式)</value>
+    <value>为图像 (PNG格式)...</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>为图元文件 (EMF)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>为图元文件 (EMF)</value>
+    <value>为图元文件 (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>保存图像</value>
@@ -96,7 +96,7 @@
     <value>保存视频</value>
   </data>
   <data name="toolStripMenuItemSaveMovieStereonet.Text" xml:space="preserve">
-    <value>极射赤平投影</value>
+    <value>极射赤平投影...</value>
   </data>
   <data name="groupBoxMode.Text" xml:space="preserve">
     <value>模式</value>
@@ -317,6 +317,7 @@
 左键拖动（屏幕边缘）：  绕垂直于显示器的轴旋转
 右键单击：缩小
 右键拖动：放大所选区域
+滚轮：以光标位置为中心放大/缩小
 中键拖动：拖动模拟图像
 </value>
   </data>
@@ -743,5 +744,32 @@
   </data>
   <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
     <value>颜色</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>快捷键提示</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在中心附近左键拖动 : 倾斜晶体</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在外侧区域左键拖动 : 围绕视轴旋转晶体</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>左键双击 : 在 晶面 和 晶轴 投影之间切换</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>鼠标滚轮上 / 下 : 在光标处放大（×2）/ 缩小（×1/2）</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右键单击 : 缩小（×1/1.2）</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右键拖出一个矩形框 : 放大到所选区域</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>中键拖动 : 平移</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>移动鼠标（不按任何按键） : 读取光标下的 (hkl)/[uvw]——用于标定测得的衍射斑点（下半球也可）</value>
   </data>
 </root>

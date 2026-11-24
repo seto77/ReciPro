@@ -23,6 +23,8 @@ Die zentrale EBSD-(Kikuchi-)Musteransicht und die rechtsseitigen Master-Muster-A
 | <kbd>F1</kbd> | Diese Seite des Online-Handbuchs öffnen |
 | Muster nahe der Mitte links ziehen | Kristall kippen |
 | Im äußeren Bereich des Musters links ziehen | Kristall drehen |
+| Mausrad auf / ab auf dem Muster | Hineinzoomen (×2) / Herauszoomen (×1/2) am Cursor |
+| Rechtsklick / Rechtsziehen eines Rahmens auf dem Muster | Herauszoomen (×1/1.2) / in den Rahmen hineinzoomen |
 | Doppelklick auf das Muster | Die Detektor-Teilzelle unter dem Cursor auswählen und ihre Statistik anzeigen (bei eingeschalteter Auswahl **Zone axis**: eine Zonenachse hinzufügen; siehe [Zonenachsen-Auswahl](#zone-axis-picking)) |
 | Bilddatei auf das Fenster ziehen | Sie als experimentelles EBSD-Bild laden |
 | In einer 3D-Ansicht (Geometrie / Master-Kugel) links ziehen | Drehen |
@@ -207,7 +209,7 @@ Für die Suche nach der Orientierung, die das Bild erklärt, stehen zwei Verfahr
 
 Statt das ganze Bild abzugleichen, lässt sich die Orientierung auch aus Bandschnittpunkten (Zonenachsen) bestimmen, die von Hand auf dem experimentellen Bild ausgewählt werden.
 
-- **Zone axis** : schaltet die Auswahl ein. Solange sie eingeschaltet ist, fügt ein linker Doppelklick auf das Muster einen Punkt hinzu, <kbd>CTRL</kbd> + linker Doppelklick entfernt den Punkt im Umkreis von 5 Bildschirmpixeln, und <kbd>SHIFT</kbd> + linker Doppelklick wählt einen Punkt aus (gelb gezeichnet; die übrigen sind cyan und nummeriert). Ist sie ausgeschaltet, wählt ein Doppelklick wie gewohnt eine Detektorzelle aus.
+- **Zone axis** : schaltet die Auswahl ein. Solange sie eingeschaltet ist, fügt ein linker Doppelklick auf das Muster einen Punkt hinzu, <kbd>CTRL</kbd> + Rechtsklick entfernt den Punkt im Umkreis von 5 Bildschirmpixeln, und ein Linksklick wählt den Punkt im Umkreis von 5 Bildschirmpixeln aus (gelb gezeichnet; die übrigen sind cyan und nummeriert). Ist sie ausgeschaltet, wählt ein Doppelklick wie gewohnt eine Detektorzelle aus.
 - **[u v w]** : der Zonenachsenindex des ausgewählten Punktes. Lassen Sie 0 0 0 stehen, damit die Suche ihn zuordnet; ein eingegebener Index schränkt die Suche ein (nützlich bei Kristallen niedriger Symmetrie und hochindizierten Achsen).
 - **+ geometry** : optimiert zusammen mit der Orientierung auch das Detektorzentrum (X, Y, Z, mm), indem das Pixelresiduum zwischen vorhergesagten und ausgewählten Zonenachsenpositionen minimiert wird. Dafür sind mindestens 4 zugeordnete Punkte nötig; die Auswahl eines Kandidaten übernimmt dann auch die verfeinerte Geometrie.
 - **Find** : sucht die Orientierungen, die die ausgewählten Zonenachsen erklären (mindestens 2 Punkte; drei genügen meist, zwei sind mehrdeutig). Die Winkeltoleranz beträgt 2°; wird nichts gefunden, wird mit 5° erneut gesucht. Bis zu 10 Kandidaten werden in dieselbe Kandidatentabelle geschrieben, und ein Klick auf eine Zeile wendet sie wie oben an.

@@ -60,7 +60,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Ctrl + Clic droit : Supprimer la tache</value>
+    <value>Ctrl + clic droit sur une tache : Supprimer la tache la plus proche</value>
+  </data>
+  <data name="toolStripMenuItemAngle.Text" xml:space="preserve">
+    <value>Maintenir Shift et cliquer (gauche) sur trois taches successivement : Mesurer l'angle sur l'image (extrémité → sommet → extrémité)</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.Text" xml:space="preserve">
     <value>Ignorer les réflexions interdites</value>
@@ -84,7 +87,7 @@
     <value>Taille de pixel</value>
   </data>
   <data name="doubleClickAddSpotToolStripMenuItem.Text" xml:space="preserve">
-    <value>Glisser gauche : Déplacer l'image</value>
+    <value>Glisser avec le bouton gauche / du milieu : Déplacement</value>
   </data>
   <data name="noDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
     <value>N°</value>
@@ -126,16 +129,16 @@
     <value>Détecter &amp;&amp; ajuster les taches</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>Clic droit : Dézoomer</value>
+    <value>Clic droit / double-clic droit : Dézoomer (×1/1.2)</value>
   </data>
   <data name="numericBoxAcceptableError.HeaderText" xml:space="preserve">
     <value>Erreur acceptable</value>
   </data>
   <data name="toolStripMenuItem7.Text" xml:space="preserve">
-    <value>Glisser droit : Zoomer</value>
+    <value>Glisser un cadre avec le bouton droit : Zoomer sur la région sélectionnée</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>Ctrl + Double-clic gauche : Ajouter la tache directe</value>
+    <value>Ctrl + double-clic gauche : Ajouter une tache et la marquer comme faisceau direct (000)</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>Arrêter</value>
@@ -171,7 +174,7 @@
     <value>Nom du cristal</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>comme métafichier (EMF)</value>
+    <value>Comme métafichier (EMF)...</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
     <value>Grain unique</value>
@@ -198,7 +201,7 @@
     <value>Taches assignées</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>comme image (format PNG)</value>
+    <value>Comme image (format PNG)...</value>
   </data>
   <data name="groupBoxOptics.Text" xml:space="preserve">
     <value>Optique</value>
@@ -213,7 +216,7 @@
     <value>Identifier les taches</value>
   </data>
   <data name="loadToolStripMenuItem.Text" xml:space="preserve">
-    <value>Charger</value>
+    <value>Charger...</value>
   </data>
   <data name="noDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>N°</value>
@@ -222,7 +225,7 @@
     <value>Enregistrer</value>
   </data>
   <data name="toolStripMenuItem6.Text" xml:space="preserve">
-    <value>Clic gauche : Sélectionner une tache</value>
+    <value>Clic gauche sur une tache : Sélectionner la tache la plus proche</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.Text" xml:space="preserve">
     <value>Afficher le symbole</value>
@@ -231,7 +234,7 @@
     <value>Copier</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
-    <value>Double-clic gauche : Ajouter une tache</value>
+    <value>Double-clic gauche sur l'image : Ajouter une tache (ajustée au pic)</value>
   </data>
   <data name="buttonCopyToClipboard.Text" xml:space="preserve">
     <value>Copier</value>
@@ -427,5 +430,14 @@ l'indexation (par défaut : électrons, 200 kV).</value>
   </data>
   <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
     <value>Afficher les paramètres détaillés de la fonction d'ajustement</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Molette de la souris vers le haut / bas : Zoomer (×2) / dézoomer (×1/2) au niveau du curseur</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + touches fléchées : Déplacer la tache sélectionnée d'un pixel</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Double-clic sur l'en-tête de ligne d'une tache : Zoomer sur cette tache (×2)</value>
   </data>
 </root>

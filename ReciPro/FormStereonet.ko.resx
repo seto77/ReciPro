@@ -69,13 +69,13 @@
     <value>이미지로</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>이미지로 (PNG 형식)</value>
+    <value>이미지로 (PNG 형식)...</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>메타파일로 (EMF)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>메타파일로 (EMF)</value>
+    <value>메타파일로 (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>이미지 저장</value>
@@ -96,7 +96,7 @@
     <value>동영상 저장</value>
   </data>
   <data name="toolStripMenuItemSaveMovieStereonet.Text" xml:space="preserve">
-    <value>스테레오넷</value>
+    <value>스테레오넷...</value>
   </data>
   <data name="groupBoxMode.Text" xml:space="preserve">
     <value>모드</value>
@@ -317,6 +317,7 @@
 왼쪽 드래그(화면 가장자리): 모니터에 수직인 축으로 회전
 오른쪽 클릭: 축소
 오른쪽 드래그: 선택 영역을 확대
+휠: 커서 위치를 중심으로 확대/축소
 가운데 드래그: 시뮬레이션 이미지를 드래그
 </value>
   </data>
@@ -748,5 +749,32 @@
   </data>
   <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
     <value>색</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>단축키 힌트</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>중심 부근에서 왼쪽 드래그 : 결정을 기울입니다</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>바깥 영역에서 왼쪽 드래그 : 결정을 시선 축을 중심으로 회전합니다</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>왼쪽 더블 클릭 : 면과 축 투영을 전환합니다</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>마우스 휠 위 / 아래 : 커서 위치에서 확대 (×2) / 축소 (×1/2)</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>마우스 오른쪽 클릭 : 축소 (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>박스를 오른쪽 드래그 : 선택한 영역으로 확대</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>가운데 드래그 : 이동</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>마우스 이동 (버튼 없음) : 커서 아래의 (hkl)/[uvw]를 읽습니다</value>
   </data>
 </root>

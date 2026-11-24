@@ -249,7 +249,7 @@
     <value>파일</value>
   </data>
   <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>실험 이미지 열기...</value>
+    <value>실험 이미지 불러오기...</value>
   </data>
   <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
     <value>마스터 패턴 불러오기...</value>
@@ -1052,5 +1052,44 @@ E_c를 수정한 뒤에는 분포를 바꿔도 입력값을 유지합니다.
 꺼짐: 범위 칸은 입력한 값을 유지하고 그 범위로 마스터 패턴을
 생성합니다. 하한이 상한 이상이거나, 에너지가 E0를 넘거나, MC 분포와
 겹치지 않는 범위이면 생성하지 않고 메시지로 알립니다.</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>단축키 힌트</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>패턴의 중심 부근을 왼쪽 드래그 : 결정을 기울입니다</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>패턴의 바깥쪽 영역을 왼쪽 드래그 : 결정을 회전시킵니다</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>패턴에서 마우스 휠 위 / 아래 : 커서 위치에서 확대 (×2) / 축소 (×1/2)</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>패턴에서 오른쪽 클릭 / 오른쪽 드래그로 사각형 : 축소 (×1/1.2) / 사각형 영역 확대</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>패턴을 더블 클릭 : 커서 아래의 검출기 하위 셀을 선택하고 통계를 표시합니다</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>3D 보기를 왼쪽 드래그 : 회전</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>3D 보기에서 오른쪽 드래그 또는 마우스 휠 : 확대/축소</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 3D 보기에서 오른쪽 더블 클릭 : 정사영 / 원근 전환</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>2D master pattern에서 드래그 / 휠 : 이미지 이동 / 확대·축소</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>왼쪽 더블 클릭 (Zone axis 켜짐) : 점 추가</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>왼쪽 클릭 (Zone axis 켜짐) : 점 선택</value>
+  </data>
+  <data name="shortcutHint12ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 오른쪽 클릭 (Zone axis 켜짐) : 점 제거</value>
   </data>
 </root>

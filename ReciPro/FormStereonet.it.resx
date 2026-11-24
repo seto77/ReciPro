@@ -66,13 +66,13 @@
     <value>Come immagine</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>come immagine (formato PNG)</value>
+    <value>Come immagine (formato PNG)...</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>come metafile (EMF)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>come metafile (EMF)</value>
+    <value>Come metafile (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Salva immagine</value>
@@ -93,7 +93,7 @@
     <value>Salva video</value>
   </data>
   <data name="toolStripMenuItemSaveMovieStereonet.Text" xml:space="preserve">
-    <value>Stereogramma</value>
+    <value>Stereogramma...</value>
   </data>
   <data name="groupBoxMode.Text" xml:space="preserve">
     <value>Modalità</value>
@@ -314,6 +314,7 @@ sull’intensità</value>
 Trascinamento sinistro (al bordo dello schermo): ruota attorno all'asse normale al monitor
 Clic destro: riduci lo zoom
 Trascinamento destro: ingrandisci l'area selezionata
+Rotella: ingrandisci / riduci nella posizione del cursore
 Trascinamento centrale: trascina l'immagine simulata
 </value>
   </data>
@@ -745,5 +746,32 @@ più vicini alla posizione del cursore sulla proiezione stereografica.</value>
   </data>
   <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
     <value>Colore</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Suggerimenti scorciatoie</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento sinistro vicino al centro : Inclina il cristallo</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento sinistro nell'area esterna : Ruota il cristallo attorno all'asse di vista</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Doppio clic sinistro : Commuta tra la proiezione Piani e Assi</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rotellina del mouse su / giù : Ingrandisci (×2) / Riduci (×1/2) in corrispondenza del cursore</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clic destro : Riduci lo zoom (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento destro di un riquadro : Ingrandisci la regione selezionata</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinamento centrale : Sposta la vista</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Muovi il mouse (senza pulsante) : Leggi i valori (hkl)/[uvw] sotto il cursore</value>
   </data>
 </root>

@@ -2781,7 +2781,8 @@ public partial class FormDiffractionSimulator : FormBase
                     Foot = FixedCenter;
                 else
                     Foot = -(ptStart + ptEnd) / 2;
-                Resolution *= 1.2;
+                //Resolution *= 1.2; // 261124Cl 変更前
+                Resolution *= GraphicsBox.ClickZoomOutFactor; // 261124Cl 変更: 右クリックの縮小率は全表示で共通の定数
             }
             else if (Math.Abs(MouseRangeEnd.X - MouseRangeStart.X) > 10 && Math.Abs(MouseRangeEnd.Y - MouseRangeStart.Y) > 10)
             {

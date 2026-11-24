@@ -2766,19 +2766,19 @@ and assigns hkl indices to the observed spots.</value>
     <value>101, 22</value>
   </data>
   <data name="loadToolStripMenuItem.Text" xml:space="preserve">
-    <value>Load</value>
+    <value>Load...</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>193, 22</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>as metafile (EMF)</value>
+    <value>As metafile (EMF)...</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>193, 22</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>as image (PNG format)</value>
+    <value>As image (PNG format)...</value>
   </data>
   <data name="saveCandidateListToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>193, 22</value>
@@ -2829,7 +2829,7 @@ and assigns hkl indices to the observed spots.</value>
     <value>303, 22</value>
   </data>
   <data name="doubleClickAddSpotToolStripMenuItem.Text" xml:space="preserve">
-    <value>Left drag : Drag the image</value>
+    <value>Left-drag / Middle-drag : Pan</value>
   </data>
   <data name="toolStripMenuItem7.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2838,7 +2838,7 @@ and assigns hkl indices to the observed spots.</value>
     <value>303, 22</value>
   </data>
   <data name="toolStripMenuItem7.Text" xml:space="preserve">
-    <value>Right drag: Zoom in</value>
+    <value>Right-drag a box : Zoom in to the selected region</value>
   </data>
   <data name="toolStripMenuItem1.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2847,7 +2847,7 @@ and assigns hkl indices to the observed spots.</value>
     <value>303, 22</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>Right click : Zoom out</value>
+    <value>Right-click / Right double-click : Zoom out (×1/1.2; a double-click counts twice)</value>
   </data>
   <data name="toolStripMenuItem6.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2856,7 +2856,7 @@ and assigns hkl indices to the observed spots.</value>
     <value>303, 22</value>
   </data>
   <data name="toolStripMenuItem6.Text" xml:space="preserve">
-    <value>Left click : Select a spot</value>
+    <value>Left-click a spot : Select the nearest spot</value>
   </data>
   <data name="toolStripMenuItem5.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2865,7 +2865,7 @@ and assigns hkl indices to the observed spots.</value>
     <value>303, 22</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
-    <value>Left double click : Add a spot</value>
+    <value>Left double-click the image : Add a spot (peak-fitted)</value>
   </data>
   <data name="toolStripMenuItem4.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2874,7 +2874,7 @@ and assigns hkl indices to the observed spots.</value>
     <value>303, 22</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>Ctrl + left double click : Add the direct spot</value>
+    <value>Ctrl + Left double-click : Add a spot and mark it as the direct (000) beam</value>
   </data>
   <data name="toolStripMenuItem3.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2883,7 +2883,16 @@ and assigns hkl indices to the observed spots.</value>
     <value>303, 22</value>
   </data>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Ctrl + right click : Remove the spot</value>
+    <value>Ctrl + Right-click a spot : Delete the nearest spot</value>
+  </data>
+  <data name="toolStripMenuItemAngle.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripMenuItemAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 22</value>
+  </data>
+  <data name="toolStripMenuItemAngle.Text" xml:space="preserve">
+    <value>Hold Shift and left-click three spots in turn : Measure the angle on the image (end → vertex → end)</value>
   </data>
   <data name="shortcutHintsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 19</value>
@@ -2923,6 +2932,9 @@ and assigns hkl indices to the observed spots.</value>
   </metadata>
   <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 20</value>
+  </data>
+  <data name="toolStripStatusLabelAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 21</value>
   </data>
   <data name="toolStripStatusLabelImageFilter.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 21</value>
@@ -3263,6 +3275,12 @@ and assigns hkl indices to the observed spots.</value>
   <data name="&gt;&gt;toolStripMenuItem3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStripMenuItemAngle.Name" xml:space="preserve">
+    <value>toolStripMenuItemAngle</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolStripProgressBar.Name" xml:space="preserve">
     <value>toolStripProgressBar</value>
   </data>
@@ -3293,6 +3311,12 @@ and assigns hkl indices to the observed spots.</value>
   <data name="&gt;&gt;toolStripStatusLabelRefine.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStripStatusLabelAngle.Name" xml:space="preserve">
+    <value>toolStripStatusLabelAngle</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabelAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;backgroundWorkerSpotID.Name" xml:space="preserve">
     <value>backgroundWorkerSpotID</value>
   </data>
@@ -3310,5 +3334,50 @@ and assigns hkl indices to the observed spots.</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mouse wheel up / down : Zoom in (×2) / out (×1/2) at the cursor</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + arrow keys : Nudge the selected spot by one pixel</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Double-click a spot's row header : Zoom to that spot (×2)</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 22</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint02ToolStripMenuItem.Name" xml:space="preserve">
+    <value>shortcutHint02ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint02ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 22</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint09ToolStripMenuItem.Name" xml:space="preserve">
+    <value>shortcutHint09ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint09ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 22</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint11ToolStripMenuItem.Name" xml:space="preserve">
+    <value>shortcutHint11ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint11ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

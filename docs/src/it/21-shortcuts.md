@@ -54,11 +54,12 @@ Utilizzate dalla figura del [Simulatore di diffrazione](7-diffraction-simulator/
 |--------|--------|
 | Trascinamento sinistro vicino al centro | Inclina il cristallo |
 | Trascinamento sinistro nell'area esterna | Fai ruotare il cristallo attorno all'asse di vista/fascio |
-| Clic destro | Riduci lo zoom |
+| Rotellina del mouse su / giù | Ingrandisci (×2) / Riduci (×1/2) in corrispondenza del cursore |
+| Clic destro | Riduci lo zoom (×1/1.2) |
 | Trascinamento destro di un riquadro | Ingrandisci la regione selezionata |
 | Trascinamento centrale | Spostamento |
 
-Solo la figura del Simulatore di diffrazione si ingrandisce anche con la rotellina del mouse (×2 / ×0.5, ricentrando sul cursore); lo Stereogramma e la figura di Kikuchi di EBSD **non** hanno lo zoom con la rotellina del mouse. Non esiste lo zoom con i tasti <kbd>+</kbd> / <kbd>-</kbd>.
+<!-- 261124Cl 作者の決定: ステレオネットと EBSD の菊池パターンにもホイールズームを付け、右クリックの縮小率を全表示で 1/1.2 に揃えた -->La figura del Simulatore di diffrazione, lo Stereogramma e la figura di Kikuchi di EBSD si ingrandiscono tutti anche con la rotellina del mouse (×2 / ×1/2, ricentrando sul cursore). Non esiste lo zoom con i tasti <kbd>+</kbd> / <kbd>-</kbd>.
 
 ### Viste immagine { #image }
 
@@ -67,9 +68,9 @@ Utilizzate dai pannelli dei risultati di [HRTEM/STEM](9-hrtem-stem-simulator/ind
 | Azione | Risultato |
 |--------|--------|
 | Trascinamento sinistro / Trascinamento centrale | Spostamento |
-| Rotellina del mouse su / giù | Ingrandisci (×2) / Riduci (×0.5) in corrispondenza del cursore |
+| Rotellina del mouse su / giù | Ingrandisci (×2) / Riduci (×1/2) in corrispondenza del cursore |
 | Trascinamento destro di un riquadro | Ingrandisci la regione selezionata |
-| Clic destro / Doppio clic destro | Riduci lo zoom (×0.5) |
+| Clic destro / Doppio clic destro | Riduci lo zoom (×1/1.2) |
 
 ---
 
@@ -122,11 +123,11 @@ Le Informazioni di simmetria non hanno combinazioni speciali di tasti/mouse. Nel
 | Sposta il mouse sulla rete | Leggi il (hkl)/[uvw] sotto il cursore |
 
 ### 7. Simulatore di diffrazione
-[Apri pagina →](7-diffraction-simulator/index.md) — la figura è una [vista a figura di diffrazione](#pattern), con in più lo zoom con la rotellina.
+[Apri pagina →](7-diffraction-simulator/index.md) — la figura è una [vista a figura di diffrazione](#pattern).
 
 | Scorciatoia | Azione |
 |----------|--------|
-| Rotellina del mouse su / giù | Ingrandisci (×2) / Riduci (×0.5), ricentrando la vista sulla posizione del cursore (sul centro fisso quando la casella **Fissa** del centro è attiva) |
+| Rotellina del mouse su / giù | Ingrandisci (×2) / Riduci (×1/2), ricentrando la vista sulla posizione del cursore (sul centro fisso quando la casella **Fissa** del centro è attiva) |
 | Doppio clic sinistro su una riflessione | Mostra i dettagli della riflessione (indice, *d*, fattore di struttura, errore di eccitazione) |
 | <kbd>CTRL</kbd> + Trascinamento centrale | Sposta il centro del rivelatore (quando l'area del rivelatore è visualizzata) |
 | Doppio clic destro sulla barra di stato | Copia un riepilogo testuale delle impostazioni correnti |
@@ -164,6 +165,7 @@ Le Informazioni di simmetria non hanno combinazioni speciali di tasti/mouse. Nel
 | Clic sinistro su una riflessione | Seleziona la riflessione più vicina |
 | <kbd>CTRL</kbd> + Clic destro su una riflessione | Elimina la riflessione più vicina |
 | <kbd>CTRL</kbd> + tasti freccia | Sposta la riflessione selezionata di un pixel |
+| Tenere premuto <kbd>SHIFT</kbd> e fare clic sinistro su tre riflessioni in sequenza | Misura l'angolo sull'immagine (estremo → vertice → estremo); <kbd>ESC</kbd> lo cancella |
 | Doppio clic sull'intestazione di riga di una riflessione | Zoom su quella riflessione (×2) |
 
 ### 12. Simulazione EBSD
@@ -172,7 +174,7 @@ Le Informazioni di simmetria non hanno combinazioni speciali di tasti/mouse. Nel
 | Scorciatoia | Azione |
 |----------|--------|
 | Doppio clic sulla figura di Kikuchi | Seleziona la sotto-cella del rivelatore sotto il cursore e mostra le sue statistiche |
-| Con la selezione **Zone axis** attiva: doppio clic sinistro / <kbd>CTRL</kbd> + doppio clic sinistro / <kbd>SHIFT</kbd> + doppio clic sinistro sulla figura | Aggiungi un punto di asse di zona / rimuovi il punto entro 5 pixel dello schermo / seleziona quel punto |
+| Con la selezione **Zone axis** attiva: doppio clic sinistro / clic sinistro / <kbd>CTRL</kbd> + clic destro sulla figura | Aggiungi un punto di asse di zona / seleziona il punto entro 5 pixel dello schermo / rimuovi il punto entro 5 pixel dello schermo (le stesse combinazioni della modifica delle riflessioni in [Spot ID v2](#11-spot-id-v2)) | <!-- 261124Cl 作者の決定で変更 (旧: CTRL + 左ダブルクリックで削除、SHIFT + 左ダブルクリックで選択) -->
 
 ### 20. Macro
 [Apri pagina →](20-macro/index.md)

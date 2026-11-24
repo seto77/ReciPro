@@ -69,13 +69,13 @@
     <value>Como imagem</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>como imagem (formato PNG)</value>
+    <value>Como imagem (formato PNG)...</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>como metarquivo (EMF)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>como metarquivo (EMF)</value>
+    <value>Como metarquivo (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Salvar imagem</value>
@@ -96,7 +96,7 @@
     <value>Salvar vídeo</value>
   </data>
   <data name="toolStripMenuItemSaveMovieStereonet.Text" xml:space="preserve">
-    <value>Estereonete</value>
+    <value>Estereonete...</value>
   </data>
   <data name="groupBoxMode.Text" xml:space="preserve">
     <value>Modo</value>
@@ -317,6 +317,7 @@ na intensidade</value>
 Arrastar com o botão esquerdo (na borda da tela):  Girar pelo eixo normal ao monitor
 Clique com o botão direito: Reduzir o zoom
 Arrastar com o botão direito: Ampliar a área selecionada
+Roda do mouse: Ampliar / reduzir na posição do cursor
 Arrastar com o botão do meio: Arrastar a imagem simulada
 </value>
   </data>
@@ -748,5 +749,32 @@ mais próximos da posição do cursor na estereonete.</value>
   </data>
   <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
     <value>Cor</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Dicas de atalhos</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar com o botão esquerdo perto do centro : Inclinar o cristal</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar com o botão esquerdo na área externa : Girar o cristal em torno do eixo de visualização</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clique duplo esquerdo : Alternar entre a projeção Planos e Eixos</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Roda do mouse para cima / baixo : Ampliar (×2) / reduzir (×1/2) o zoom no cursor</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clique direito : Diminuir o zoom (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar com o botão direito uma caixa : Aumentar o zoom na região selecionada</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar com o botão do meio : Deslocar</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mover o mouse (sem botão) : Ler o (hkl)/[uvw] sob o cursor — útil para indexar um reflexo medido</value>
   </data>
 </root>

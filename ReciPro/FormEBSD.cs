@@ -2137,8 +2137,31 @@ public partial class FormEBSD : FormBase
 
     private void graphicsBox_MouseDown(object sender, MouseEventArgs e)
     {
+        // 261124Cl 追加 (codex2 査読): ホイールの再描画が保留中なら先に済ませる。視野だけ先に変わっていて、見えている点とクリックの判定がずれるため
+        if (wheelDrawTimer?.Enabled == true)
+        {
+            wheelDrawTimer.Stop();
+            DrawEBSD(); DrawOverlays();
+        }
+        // 261124Cl 追加 (作者の決定: 点の編集を Spot ID v2 と揃える): 晶帯軸を拾うモードでは Ctrl + 右クリック = 画面上 5 px 以内の点を削除。
+        //  ズームには回さない (外れても縮小しない。Spot ID v2 の Ctrl + 右クリックと同じ)。修飾キーは Ctrl だけ (Spot ID v2 と同じ)。
+        //  2 打目 (Ctrl + 右ダブルクリック) は 2 点目を消さないよう何もしない。押すたびに決め直す (前の MouseUp を取りこぼしても次の右クリックが壊れない)。
+        //  離したときの再描画 (Draw) も省く (zoneAxisRightConsumed)
+        if (e.Button == MouseButtons.Right)
+            zoneAxisRightConsumed = ZoneAxisPickingActive && ModifierKeys == Keys.Control;
+        if (zoneAxisRightConsumed)
+        {
+            if (e.Clicks == 1)
+                HandleZoneAxisPick(e.Location, ZoneAxisPickAction.Remove);
+            return;
+        }
+        // 261124Cl 追加 (作者の決定): 晶帯軸を拾うモードでは左クリック = 画面上 5 px 以内の点を選ぶ (Spot ID v2 の「左クリック = 選ぶ」と同じ)。
+        //  押した位置を覚え、ドラッグ (結晶の回転) にならずに離したときだけ選ぶ (MouseUp)。左ドラッグで結晶を回せるよう、ここでは return しない
+        zoneAxisClickStart = e.Button == MouseButtons.Left && e.Clicks == 1 && ZoneAxisPickingActive && ModifierKeys == Keys.None ? e.Location : null;
+
         // 260723Cl 追加: 右ボタン=ズーム操作開始、中ボタン=平行移動開始
-        if (e.Button == MouseButtons.Right && e.Clicks == 1)
+        //if (e.Button == MouseButtons.Right && e.Clicks == 1) // 261124Cl 変更前: 右ダブルクリックの 2 打目を拾わず、1 回分しか縮まなかった
+        if (e.Button == MouseButtons.Right) // 261124Cl 変更 (作者の決定): 2 打目も縮小に数え、回折シミュレーター・ステレオネット・画像ビューと同じく 2 回分縮める
         {
             mouseRangeMode = true;
             mouseRangeStart = mouseRangeEnd = e.Location;
@@ -2154,7 +2177,8 @@ public partial class FormEBSD : FormBase
         //チェックボックスが ON のときだけこちらが横取りする
         if (e.Button == MouseButtons.Left && e.Clicks == 2 && ZoneAxisPickingActive)
         {
-            HandleZoneAxisDoubleClick(e.Location);
+            //HandleZoneAxisDoubleClick(e.Location); // 261124Cl 変更前
+            if (ModifierKeys == Keys.None) HandleZoneAxisPick(e.Location, ZoneAxisPickAction.Add); // 261124Cl 変更: 追加は修飾キー無しのダブルクリックだけ (旧 Ctrl = 削除・Shift = 選択は廃止)
             return;
         }
 
@@ -2181,6 +2205,20 @@ public partial class FormEBSD : FormBase
 
     private void graphicsBox_MouseUp(object sender, MouseEventArgs e)
     {
+        // 261124Cl 追加: 晶帯軸の Ctrl + 右クリック (削除) は、離したときに何も描き直さない (重い Draw を避ける)
+        if (zoneAxisRightConsumed && e.Button == MouseButtons.Right)
+        {
+            zoneAxisRightConsumed = false;
+            return;
+        }
+        // 261124Cl 追加: 晶帯軸を拾うモードの左クリック = 点を選ぶ。ドラッグの閾値の中で離したときだけ。まったく動かしていなければ結晶も回っていないので Draw を省く
+        //  ドラッグの閾値を越えた時点で MouseMove が zoneAxisClickStart を捨てるので、残っていればクリック。閾値の中では結晶を回していないので Draw も省く
+        if (e.Button == MouseButtons.Left && zoneAxisClickStart is Point clickStart)
+        {
+            zoneAxisClickStart = null;
+            HandleZoneAxisPick(clickStart, ZoneAxisPickAction.Select);
+            return;
+        }
         // 260723Cl 追加: 右ボタン確定 — 微小移動なら縮小、十分な矩形なら拡大 (閾値は ScalablePictureBox と同じ)
         if (mouseRangeMode && e.Button == MouseButtons.Right)
         {
@@ -2189,7 +2227,8 @@ public partial class FormEBSD : FormBase
             int dx = Math.Abs(mouseRangeStart.X - mouseRangeEnd.X), dy = Math.Abs(mouseRangeStart.Y - mouseRangeEnd.Y);
             if (dx < 3 && dy < 3)
                 //縮小: クリック点を新しい画面中心にして表示解像度 (mm/px) を 2 倍
-                SetView(convertScreenToDetector(new PointD(e.X, e.Y)), Resolution * 2);
+                //SetView(convertScreenToDetector(new PointD(e.X, e.Y)), Resolution * 2); // 261124Cl 変更前
+                SetView(convertScreenToDetector(new PointD(e.X, e.Y)), Resolution * GraphicsBox.ClickZoomOutFactor); // 261124Cl 変更 (作者指示): 縮小率を回折シミュレーターと同じ 1/1.2 にする
             else if (dx > 10 && dy > 10)
             {
                 //拡大: 選択矩形全体が画面に収まる解像度へ (縦横比は保持)
@@ -2206,8 +2245,34 @@ public partial class FormEBSD : FormBase
         Draw();
     }
 
+    /// <summary>261124Cl 追加 (作者の決定): 菊池パターンもホイールでズームする (回折シミュレーターと同じ向き・倍率。奥 = ×2、手前 = ×1/2、カーソル位置が新しい中心)。
+    /// Resolution は「画面 1 画素あたりの長さ」で倍率と逆向きなので割る。範囲の上下限は SetView が numericBoxResolution の範囲で切る</summary>
+    //  261124Cl 追加 (codex2 査読): 視野 (中心・解像度) は 1 段ごとに更新するが、重いパターンの再計算は連続した回転の最後にまとめて 1 回だけ行う
+    private void graphicsBox_MouseWheel(object sender, MouseEventArgs e)
+    {
+        if (e.Delta == 0) return;
+        SetView(convertScreenToDetector(new PointD(e.X, e.Y)), Resolution / GraphicsBox.GetWheelZoomFactor(e.Delta), draw: false);
+        if (wheelDrawTimer == null)
+        {
+            wheelDrawTimer = new System.Windows.Forms.Timer(components) { Interval = 80 };
+            wheelDrawTimer.Tick += (_, _) => { wheelDrawTimer.Stop(); if (Visible) { DrawEBSD(); DrawOverlays(); } }; // 閉じた (非表示の) 後は描かない
+        }
+        wheelDrawTimer.Stop();
+        wheelDrawTimer.Start();
+    }
+
+    /// <summary>261124Cl 追加: ホイールのズームの再描画をまとめるタイマー (最後の 1 段から 80 ms 後に 1 回描く)</summary>
+    private System.Windows.Forms.Timer wheelDrawTimer;
+
+    /// <summary>261124Cl 追加: 晶帯軸を拾うモードで左を押した位置 (離したときにドラッグでなければ点を選ぶ)。null = 選ぶ対象の押下ではない</summary>
+    private Point? zoneAxisClickStart;
+
+    /// <summary>261124Cl 追加: 晶帯軸の Ctrl + 右クリックで押下を消費した (離したときの縮小・再描画を省く)</summary>
+    private bool zoneAxisRightConsumed;
+
     /// <summary>表示中心 (表示パターン座標 mm) と表示解像度 (mm/px) を設定し、numericBoxResolution へ書き戻して再描画する。260723Cl 追加</summary>
-    private void SetView(PointD centerView, double resolution)
+    //private void SetView(PointD centerView, double resolution) // 261124Cl 変更前
+    private void SetView(PointD centerView, double resolution, bool draw = true) // 261124Cl 変更: draw = false で視野だけ更新する (ホイールの連続回転用)
     {
         resolution = Math.Clamp(resolution, numericBoxResolution.Minimum > 0 ? numericBoxResolution.Minimum : 1E-4, numericBoxResolution.Maximum);
         viewPan = new PointD(centerView.X - DetectorCenterView.X, centerView.Y - DetectorCenterView.Y);
@@ -2215,7 +2280,8 @@ public partial class FormEBSD : FormBase
         try { numericBoxResolution.Value = resolution; }
         finally { skipViewEvent = false; }
         // DrawOverlays(); // 260724Cl 変更前
-        DrawEBSD(); DrawOverlays(); // 260724Cl 変更: パターンは視野依存になったため、ズーム確定時に再計算する
+        //DrawEBSD(); DrawOverlays(); // 260724Cl 変更: パターンは視野依存になったため、ズーム確定時に再計算する // 261124Cl 変更前
+        if (draw) { wheelDrawTimer?.Stop(); DrawEBSD(); DrawOverlays(); } // 261124Cl 変更 (すぐ描くなら保留中のホイールの描画は不要)
     }
 
     /// <summary>ラバーバンド矩形 (右ドラッグのズーム範囲) を描画バッファより手前に描画する。260723Cl 追加</summary>
@@ -2249,6 +2315,16 @@ public partial class FormEBSD : FormBase
             DrawOverlays();
             lastMousePos = mousePos;
             return;
+        }
+
+        // 261124Cl 追加 (codex2 査読): 晶帯軸を拾うモードの左押下は、ドラッグの閾値を越えるまでクリック (点の選択) とみなし、結晶を回さない。
+        //  越えたらクリックの候補を捨てて回転に移る (lastMousePos は押した位置のままなので、それまでの移動も回転に入る)
+        if (e.Button == MouseButtons.Left && zoneAxisClickStart is Point pressAt)
+        {
+            var drag = SystemInformation.DragSize;
+            if (Math.Abs(e.X - pressAt.X) <= drag.Width / 2 && Math.Abs(e.Y - pressAt.Y) <= drag.Height / 2)
+                return;
+            zoneAxisClickStart = null;
         }
 
         //左ボタンが押されながらマウスが動いたとき
@@ -4877,8 +4953,55 @@ public partial class FormEBSD : FormBase
 
     #region 手動晶帯軸からの方位探索 260921Cl 追加 (作者指示)
 
-    /// <summary>左ダブルクリック = 追加、Ctrl = 5 画面 px 以内を削除、Shift = 選択して指数を手入力。</summary>
-    private void HandleZoneAxisDoubleClick(Point screen)
+    // 261124Cl 変更前 (作者の決定で操作を Spot ID v2 と揃えたため、下の HandleZoneAxisPick へ置き換え):
+    ///// <summary>左ダブルクリック = 追加、Ctrl = 5 画面 px 以内を削除、Shift = 選択して指数を手入力。</summary>
+    //private void HandleZoneAxisDoubleClick(Point screen)
+    //{
+    //    var view = convertScreenToDetector(new PointD(screen.X, screen.Y));
+    //    double radiusMm = 5 * Resolution; //「画面上で半径 5 ピクセル以内」(作者指示) を表示 mm へ換算
+    //
+    //    int near = -1; double best = double.MaxValue;
+    //    for (int k = 0; k < zoneAxisPicks.Count; k++)
+    //    {
+    //        var q = ZoneAxisPixelToView(zoneAxisPicks[k].Col, zoneAxisPicks[k].Row);
+    //        double d2 = (q.X - view.X) * (q.X - view.X) + (q.Y - view.Y) * (q.Y - view.Y);
+    //        if (d2 < best) { best = d2; near = k; }
+    //    }
+    //    bool hit = near >= 0 && best <= radiusMm * radiusMm;
+    //
+    //    if ((ModifierKeys & Keys.Control) == Keys.Control)
+    //    {
+    //        if (!hit) return;
+    //        zoneAxisPicks.RemoveAt(near);
+    //        if (selectedZoneAxisPick == near) selectedZoneAxisPick = -1;
+    //        else if (selectedZoneAxisPick > near) selectedZoneAxisPick--;
+    //    }
+    //    else if ((ModifierKeys & Keys.Shift) == Keys.Shift)
+    //    {
+    //        if (!hit) return;
+    //        selectedZoneAxisPick = near;
+    //    }
+    //    else
+    //    {
+    //        var (col, row) = ZoneAxisViewToPixel(view);
+    //        if (col < 0 || row < 0 || col > expPbmp.Width - 1 || row > expPbmp.Height - 1) return; //画像の外は拾わない
+    //        zoneAxisPicks.Add(new EbsdZoneAxisPick(col, row));
+    //        selectedZoneAxisPick = zoneAxisPicks.Count - 1;
+    //    }
+    //    SyncZoneAxisIndexControl();
+    //    InvalidateIndexingResults(); //点が変われば前の候補は無効
+    //    ReportZoneAxisStatus();
+    //    DrawOverlays();
+    //}
+
+    /// <summary>261124Cl 追加: 晶帯軸の点の編集の種類</summary>
+    private enum ZoneAxisPickAction { Add, Select, Remove }
+
+    /// <summary>261124Cl 追加 (作者の決定: 操作を Spot ID v2 と揃える。旧 HandleZoneAxisDoubleClick を置き換え):
+    /// 左ダブルクリック = 追加、左クリック = 画面上 5 px 以内の点を選んで指数を手入力、Ctrl + 右クリック = 画面上 5 px 以内の点を削除。
+    /// 旧は 左ダブルクリック = 追加、Ctrl + 左ダブルクリック = 削除、Shift + 左ダブルクリック = 選択 だった
+    /// (Ctrl + 左ダブルクリックが Spot ID v2 では「直接スポットとして追加」で、意味が逆だった)</summary>
+    private void HandleZoneAxisPick(Point screen, ZoneAxisPickAction action)
     {
         var view = convertScreenToDetector(new PointD(screen.X, screen.Y));
         double radiusMm = 5 * Resolution; //「画面上で半径 5 ピクセル以内」(作者指示) を表示 mm へ換算
@@ -4892,17 +5015,17 @@ public partial class FormEBSD : FormBase
         }
         bool hit = near >= 0 && best <= radiusMm * radiusMm;
 
-        if ((ModifierKeys & Keys.Control) == Keys.Control)
+        if (action == ZoneAxisPickAction.Select)
+        {
+            if (!hit || selectedZoneAxisPick == near) return;
+            selectedZoneAxisPick = near;
+        }
+        else if (action == ZoneAxisPickAction.Remove)
         {
             if (!hit) return;
             zoneAxisPicks.RemoveAt(near);
             if (selectedZoneAxisPick == near) selectedZoneAxisPick = -1;
             else if (selectedZoneAxisPick > near) selectedZoneAxisPick--;
-        }
-        else if ((ModifierKeys & Keys.Shift) == Keys.Shift)
-        {
-            if (!hit) return;
-            selectedZoneAxisPick = near;
         }
         else
         {
@@ -4912,8 +5035,8 @@ public partial class FormEBSD : FormBase
             selectedZoneAxisPick = zoneAxisPicks.Count - 1;
         }
         SyncZoneAxisIndexControl();
-        InvalidateIndexingResults(); //点が変われば前の候補は無効
-        ReportZoneAxisStatus();
+        if (action != ZoneAxisPickAction.Select) InvalidateIndexingResults(); //点が変われば前の候補は無効 (選ぶだけでは点の集合は変わらないので消さない)
+        ReportZoneAxisStatus(); // 選んだときもステータスの「#n selected」を合わせる
         DrawOverlays();
     }
 

@@ -34,9 +34,9 @@ Os resultados são exibidos como um ou mais painéis de imagem. Eles usam a [nav
 | <kbd>F1</kbd> | Abrir esta página do manual on-line |
 | <kbd>CTRL</kbd>+<kbd>C</kbd> (grade de imagens em foco) | Copiar a(s) imagem(ns) para a área de transferência como metarquivo |
 | Arrastar com o botão esquerdo / arrastar com o botão do meio | Deslocar a imagem (todos os painéis se movem em conjunto) |
-| Roda do mouse para cima / para baixo | Aproximar (×2) / afastar (×0.5) na posição do cursor |
+| Roda do mouse para cima / para baixo | Aproximar (×2) / afastar (×1/2) na posição do cursor |
 | Arrastar uma caixa com o botão direito | Aproximar na região selecionada |
-| Clique direito / clique duplo direito | Afastar (×0.5) |
+| Clique direito / clique duplo direito | Afastar (×1/1.2) |
 | <kbd>CTRL</kbd> + arrastar uma caixa com o botão direito | Selecionar uma área retangular |
 | Clique duplo esquerdo em um painel | Maximizar esse painel / restaurar a grade (layouts com vários painéis) |
 | Mover o mouse (sem botão) | Ler a posição (pm) e o valor do pixel na posição do cursor |

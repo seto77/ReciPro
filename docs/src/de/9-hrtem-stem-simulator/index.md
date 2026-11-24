@@ -34,9 +34,9 @@ Die Ergebnisse werden als ein oder mehrere Bildbereiche angezeigt. Sie verwenden
 | <kbd>F1</kbd> | Diese Seite des Online-Handbuchs öffnen |
 | <kbd>CTRL</kbd>+<kbd>C</kbd> (Bildraster fokussiert) | Das/die Bild(er) als Metafile in die Zwischenablage kopieren |
 | Linke Maustaste ziehen / mittlere Maustaste ziehen | Bild verschieben (alle Bereiche bewegen sich gemeinsam) |
-| Mausrad nach oben / unten | Hinein- (×2) / Herauszoomen (×0.5) an der Cursorposition |
+| Mausrad nach oben / unten | Hinein- (×2) / Herauszoomen (×1/2) an der Cursorposition |
 | Mit rechter Maustaste ein Rechteck ziehen | In den ausgewählten Bereich hineinzoomen |
-| Rechtsklick / Rechter Doppelklick | Herauszoomen (×0.5) |
+| Rechtsklick / Rechter Doppelklick | Herauszoomen (×1/1.2) |
 | <kbd>CTRL</kbd> + mit rechter Maustaste ein Rechteck ziehen | Einen rechteckigen Bereich auswählen |
 | Linker Doppelklick auf einen Bereich | Diesen Bereich maximieren / das Raster wiederherstellen (Mehrbereich-Layouts) |
 | Maus bewegen (ohne Taste) | Position (pm) und Pixelwert an der Cursorposition ablesen |

@@ -18,6 +18,7 @@ Você constrói a lista de spots diretamente sobre a imagem carregada. O painel 
 | Clique esquerdo em um spot | Selecionar o spot mais próximo |
 | <kbd>CTRL</kbd> + clique direito em um spot | Excluir o spot mais próximo |
 | <kbd>CTRL</kbd> + teclas de seta | Deslocar o spot selecionado em um pixel |
+| Segurar <kbd>SHIFT</kbd> e clicar com o botão esquerdo em três spots em sequência | Medir o ângulo na imagem: extremo → vértice → extremo (p. ex. ∠6–0–8). Linhas, um arco e o valor são desenhados na imagem, e o valor (∠6–0–8 = 89.73°) aparece na barra de status. <kbd>SHIFT</kbd> + clique esquerdo em outro spot inicia uma nova medição; <kbd>ESC</kbd> a apaga |
 | Arrastar com botão esquerdo / meio (área vazia) | Deslocar a imagem |
 | Roda do mouse | Aproximar / afastar o zoom no cursor |
 | Arrastar uma caixa com o botão direito | Aproximar o zoom na região selecionada |

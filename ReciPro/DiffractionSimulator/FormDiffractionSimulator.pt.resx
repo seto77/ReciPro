@@ -230,28 +230,28 @@ intensidade relativa</value>
     <value>Código de desenvolvedor</value>
   </data>
   <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>como imagem (formato PNG)</value>
+    <value>Como imagem (formato PNG)...</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>como metarquivo (EMF)</value>
+    <value>Como metarquivo (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Salvar imagem</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>como imagem (formato PNG)</value>
+    <value>Como imagem (formato PNG)...</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>como metarquivo (EMF)</value>
+    <value>Como metarquivo (EMF)...</value>
   </data>
   <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>Salvar área do detector</value>
   </data>
   <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
-    <value>como imagens individuais (formato PNG)</value>
+    <value>Como imagens individuais (formato PNG)...</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
-    <value>como imagens individuais (formato TIFF)</value>
+    <value>Como imagens individuais (formato TIFF)...</value>
   </data>
   <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>como imagem coletiva (formato PNG)</value>
@@ -287,10 +287,10 @@ intensidade relativa</value>
     <value>Copiar discos CBED</value>
   </data>
   <data name="toolStripMenuItemSaveMovieDiffractionPattern.Text" xml:space="preserve">
-    <value>Padrão de difração</value>
+    <value>Padrão de difração...</value>
   </data>
   <data name="toolStripMenuItemSaveMovieReciprocalSpace.Text" xml:space="preserve">
-    <value>Espaço recíproco</value>
+    <value>Espaço recíproco...</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Salvar vídeo</value>
@@ -649,6 +649,7 @@ exibidos com a mesma intensidade.</value>
 Arrastar com o botão esquerdo (na borda da tela):  Rotacionar em torno do eixo normal ao monitor
 Clique com o botão direito: Reduzir zoom
 Arrastar com o botão direito: Ampliar a área selecionada
+Roda do mouse: Ampliar / reduzir na posição do cursor
 Arrastar com o botão do meio: Arrastar a imagem simulada
 Clique duplo com o botão esquerdo: Exibir as informações do vetor g</value>
   </data>
@@ -1266,5 +1267,38 @@ com mais suavidade, ao custo de mais tempo de cálculo.</value>
   </data>
   <data name="labelKikuchiQuality.Text" xml:space="preserve">
     <value>Qualidade</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Dicas de atalhos</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar com o botão esquerdo perto do centro : Inclinar o cristal</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar com o botão esquerdo na área externa : Girar o cristal em torno do eixo do feixe</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clique duplo esquerdo em um reflexo : Mostrar detalhes do reflexo</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar com o botão do meio : Deslocar o padrão</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + Arrastar com o botão do meio : Mover o centro do detector</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Roda do mouse : Ampliar / reduzir o zoom por ×2 a cada passo da roda</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clique direito : Reduzir o zoom (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar com o botão direito um retângulo : Ampliar o zoom na região selecionada</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clique duplo direito na barra de status : Copiar um resumo em texto das configurações atuais</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clique duplo direito em um botão de camada ativo : Piscar essa camada ligando e desligando</value>
   </data>
 </root>

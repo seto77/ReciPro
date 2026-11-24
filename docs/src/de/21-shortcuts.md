@@ -54,11 +54,12 @@ Verwendet vom Muster des [Beugungssimulators](7-diffraction-simulator/index.md),
 |--------|--------|
 | Linksziehen nahe der Mitte | Den Kristall kippen |
 | Linksziehen im äußeren Bereich | Den Kristall um die Blick-/Strahlachse drehen |
-| Rechtsklick | Herauszoomen |
+| Mausrad auf / ab | Hineinzoomen (×2) / Herauszoomen (×1/2) am Cursor |
+| Rechtsklick | Herauszoomen (×1/1.2) |
 | Rechtsziehen eines Rahmens | In den gewählten Bereich hineinzoomen |
 | Mittelziehen | Verschieben |
 
-Nur das Muster des Beugungssimulators zoomt zusätzlich mit dem Mausrad (×2 / ×0.5, zentriert auf den Cursor); das Stereonetz und das EBSD-Kikuchi-Muster haben **kein** Zoomen per Mausrad. Ein Zoomen mit den Tasten <kbd>+</kbd> / <kbd>-</kbd> gibt es nicht.
+<!-- 261124Cl 作者の決定: ステレオネットと EBSD の菊池パターンにもホイールズームを付け、右クリックの縮小率を全表示で 1/1.2 に揃えた -->Das Muster des Beugungssimulators, das Stereonetz und das EBSD-Kikuchi-Muster zoomen alle auch mit dem Mausrad (×2 / ×1/2, zentriert auf den Cursor). Ein Zoomen mit den Tasten <kbd>+</kbd> / <kbd>-</kbd> gibt es nicht.
 
 ### Bildansichten { #image }
 
@@ -67,9 +68,9 @@ Verwendet von den Ergebnisbereichen von [HRTEM/STEM](9-hrtem-stem-simulator/inde
 | Aktion | Ergebnis |
 |--------|--------|
 | Linksziehen / Mittelziehen | Verschieben |
-| Mausrad auf / ab | Hineinzoomen (×2) / Herauszoomen (×0.5) am Cursor |
+| Mausrad auf / ab | Hineinzoomen (×2) / Herauszoomen (×1/2) am Cursor |
 | Rechtsziehen eines Rahmens | In den gewählten Bereich hineinzoomen |
-| Rechtsklick / Rechts-Doppelklick | Herauszoomen (×0.5) |
+| Rechtsklick / Rechts-Doppelklick | Herauszoomen (×1/1.2) |
 
 ---
 
@@ -122,11 +123,11 @@ Symmetrieinformationen haben keine besonderen Tasten-/Mauskombinationen. In der 
 | Maus über das Netz bewegen | Die (hkl)/[uvw] unter dem Cursor ablesen |
 
 ### 7. Beugungssimulator
-[Seite öffnen →](7-diffraction-simulator/index.md) — das Muster ist eine [Beugungsmuster-Ansicht](#pattern), zusätzlich mit Mausrad-Zoom.
+[Seite öffnen →](7-diffraction-simulator/index.md) — das Muster ist eine [Beugungsmuster-Ansicht](#pattern).
 
 | Kurzbefehl | Aktion |
 |----------|--------|
-| Mausrad auf / ab | Hineinzoomen (×2) / Herauszoomen (×0.5), wobei die Ansicht auf die Cursorposition zentriert wird (auf das feste Zentrum, wenn das Kontrollkästchen **Fest** des Zentrums aktiviert ist) |
+| Mausrad auf / ab | Hineinzoomen (×2) / Herauszoomen (×1/2), wobei die Ansicht auf die Cursorposition zentriert wird (auf das feste Zentrum, wenn das Kontrollkästchen **Fest** des Zentrums aktiviert ist) |
 | Links-Doppelklick auf einen Reflex | Reflexdetails anzeigen (Index, *d*, Strukturfaktor, Anregungsfehler) |
 | <kbd>CTRL</kbd> + Mittelziehen | Das Detektorzentrum verschieben (wenn der Detektorbereich angezeigt wird) |
 | Rechts-Doppelklick auf die Statusleiste | Eine Textzusammenfassung der aktuellen Einstellungen kopieren |
@@ -164,6 +165,7 @@ Symmetrieinformationen haben keine besonderen Tasten-/Mauskombinationen. In der 
 | Linksklick auf einen Reflex | Den nächstgelegenen Reflex auswählen |
 | <kbd>CTRL</kbd> + Rechtsklick auf einen Reflex | Den nächstgelegenen Reflex löschen |
 | <kbd>CTRL</kbd> + Pfeiltasten | Den gewählten Reflex um ein Pixel verschieben |
+| <kbd>SHIFT</kbd> gedrückt halten und nacheinander drei Reflexe links anklicken | Den Winkel im Bild messen (Ende → Scheitel → Ende); <kbd>ESC</kbd> löscht ihn |
 | Doppelklick auf den Zeilenkopf eines Reflexes | Zu diesem Reflex zoomen (×2) |
 
 ### 12. EBSD-Simulation
@@ -172,7 +174,7 @@ Symmetrieinformationen haben keine besonderen Tasten-/Mauskombinationen. In der 
 | Kurzbefehl | Aktion |
 |----------|--------|
 | Doppelklick auf das Kikuchi-Muster | Die Detektor-Teilzelle unter dem Cursor auswählen und ihre Statistik anzeigen |
-| Bei eingeschalteter Auswahl **Zone axis**: linker Doppelklick / <kbd>CTRL</kbd> + linker Doppelklick / <kbd>SHIFT</kbd> + linker Doppelklick auf das Muster | Einen Zonenachsenpunkt hinzufügen / den Punkt im Umkreis von 5 Bildschirmpixeln entfernen / diesen Punkt auswählen |
+| Bei eingeschalteter Auswahl **Zone axis**: linker Doppelklick / Linksklick / <kbd>CTRL</kbd> + Rechtsklick auf das Muster | Einen Zonenachsenpunkt hinzufügen / den Punkt im Umkreis von 5 Bildschirmpixeln auswählen / den Punkt im Umkreis von 5 Bildschirmpixeln entfernen (dieselben Kombinationen wie beim Bearbeiten von Reflexen in [Spot ID v2](#11-spot-id-v2)) | <!-- 261124Cl 作者の決定で変更 (旧: CTRL + 左ダブルクリックで削除、SHIFT + 左ダブルクリックで選択) -->
 
 ### 20. Makro
 [Seite öffnen →](20-macro/index.md)

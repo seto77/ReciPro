@@ -351,13 +351,13 @@ Simulator"</value>
     <value>Simular</value>
   </data>
   <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>como imagem (formato PNG)</value>
+    <value>Como imagem (formato PNG)...</value>
   </data>
   <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>como imagem (formato TIFF)</value>
+    <value>Como imagem (formato TIFF)...</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>como metarquivo (EMF)</value>
+    <value>Como metarquivo (EMF)...</value>
   </data>
   <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
     <value>   Salvar individualmente no modo de imagem em série </value>
@@ -378,7 +378,7 @@ Simulator"</value>
     <value>     Sobrepor símbolos</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
-    <value>Carregar parâmetros TEM</value>
+    <value>Carregar parâmetros TEM...</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>Carrega as condições de simulação de um arquivo salvo com
@@ -386,7 +386,7 @@ Simulator"</value>
 (p. ex., de uma versão anterior) recebem o valor padrão.</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
-    <value>Salvar parâmetros TEM</value>
+    <value>Salvar parâmetros TEM...</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>Salva as condições de simulação atuais (os mesmos itens
@@ -956,5 +956,32 @@ ao longo do eixo horizontal da grade de imagens em série.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
     <value>Tamanho efetivo da fonte (FWHM)</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Dicas de atalhos</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + C (grade de imagens em foco) : Copiar a(s) imagem(ns) para a área de transferência como metarquivo</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar com o botão esquerdo / arrastar com o botão do meio : Deslocar a imagem (todos os painéis se movem em conjunto)</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Roda do mouse para cima / para baixo : Aproximar (×2) / afastar (×1/2) na posição do cursor</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastar uma caixa com o botão direito : Aproximar na região selecionada</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clique direito / clique duplo direito : Afastar (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + arrastar uma caixa com o botão direito : Selecionar uma área retangular</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clique duplo esquerdo em um painel : Maximizar esse painel / restaurar a grade (layouts com vários painéis)</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mover o mouse (sem botão) : Ler a posição (pm) e o valor do pixel na posição do cursor</value>
   </data>
 </root>

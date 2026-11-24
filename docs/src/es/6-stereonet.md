@@ -16,7 +16,8 @@ El estereograma en sí es una proyección 2-D; opcionalmente se puede mostrar un
 | Arrastrar con el botón izquierdo cerca del centro | Inclinar el cristal |
 | Arrastrar con el botón izquierdo en la zona exterior | Girar el cristal alrededor del eje de visión |
 | Doble clic izquierdo | Alternar entre la proyección de **Planos** y de **Ejes** |
-| Clic derecho | Alejar el zoom |
+| Rueda del ratón arriba / abajo | Acercar el zoom (×2) / alejarlo (×1/2) en el cursor |
+| Clic derecho | Alejar el zoom (×1/1.2) |
 | Arrastrar un recuadro con el botón derecho | Acercar el zoom a la región seleccionada |
 | Arrastrar con el botón central | Desplazar |
 | Mover el ratón (sin botón) | Leer los índices (hkl)/[uvw] bajo el cursor — útil para indexar un reflejo medido (también en el hemisferio inferior) <!-- 261105Cl 監査: 下半球の読み取り (268779a1) --> |

@@ -16,7 +16,8 @@ Le stéréonet lui-même est une projection 2-D ; une sphère 3-D facultative pe
 | Glisser-gauche près du centre | Incliner le cristal |
 | Glisser-gauche dans la zone extérieure | Faire tourner le cristal autour de l'axe de visée |
 | Double-clic gauche | Basculer entre la projection **Plans** et **Axes** |
-| Clic droit | Dézoomer |
+| Molette de la souris vers le haut / bas | Zoomer (×2) / dézoomer (×1/2) au niveau du curseur |
+| Clic droit | Dézoomer (×1/1.2) |
 | Glisser-droit d'un cadre | Zoomer sur la région sélectionnée |
 | Glisser-milieu | Déplacer |
 | Déplacer la souris (sans bouton) | Lire les (hkl)/[uvw] sous le curseur — utile pour indexer une tache mesurée (aussi dans l'hémisphère inférieur) <!-- 261105Cl 監査: 下半球の読み取り (268779a1) --> |

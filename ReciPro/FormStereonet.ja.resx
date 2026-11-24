@@ -113,6 +113,7 @@
 左ドラッグ（画面端）: モニターに垂直な軸で回転
 右クリック: ズームアウト
 右ドラッグ: 選択領域をズームイン
+ホイール: カーソル位置を中心にズームイン／アウト
 中ドラッグ: シミュレーション画像をドラッグ</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
@@ -904,16 +905,16 @@ Miller 指数 (h k l) としてラベル表示します。</value>
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>画像として (PNG 形式)</value>
+    <value>画像として (PNG 形式)...</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>メタファイルとして (EMF)</value>
+    <value>メタファイルとして (EMF)...</value>
   </data>
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
     <value>動画を保存</value>
   </data>
   <data name="toolStripMenuItemSaveMovieStereonet.Text" xml:space="preserve">
-    <value>ステレオネット</value>
+    <value>ステレオネット...</value>
   </data>
   <data name="buttonYusaModeStop.Text" xml:space="preserve">
     <value>停止</value>
@@ -956,5 +957,32 @@ Miller 指数 (h k l) としてラベル表示します。</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>傾斜 X/Y:</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>ショートカットヒント</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>中心付近を左ドラッグ : 結晶を傾ける</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>外周を左ドラッグ : 視線軸まわりに結晶を回す</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>左ダブルクリック : 面指数 / 方向指数 投影の切替</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>ホイール上／下 : カーソル位置を中心にズームイン（×2）／ズームアウト（×1/2）</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右クリック : ズームアウト（×1/1.2）</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右ドラッグで矩形選択 : 選択範囲にズームイン</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>中ドラッグ : 平行移動</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>マウス移動（ボタンなし） : カーソル位置の (hkl)/[uvw] を表示</value>
   </data>
 </root>

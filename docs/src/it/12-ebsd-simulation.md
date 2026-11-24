@@ -23,6 +23,8 @@ La vista centrale del pattern EBSD (di Kikuchi) e le viste del master pattern su
 | <kbd>F1</kbd> | Apre questa pagina del manuale online |
 | Trascinare con il tasto sinistro il pattern vicino al centro | Inclina il cristallo |
 | Trascinare con il tasto sinistro l'area esterna del pattern | Ruota il cristallo |
+| Rotellina del mouse su / giù sulla figura | Ingrandisci (×2) / Riduci (×1/2) in corrispondenza del cursore |
+| Clic destro / trascinamento di un rettangolo con il tasto destro sulla figura | Riduci lo zoom (×1/1.2) / ingrandisci il rettangolo |
 | Doppio clic sul pattern | Seleziona la sotto-cella del rivelatore sotto il cursore e mostra le sue statistiche (quando la selezione **Zone axis** è attiva: aggiunge un asse di zona; vedi [Selezione degli assi di zona](#selezione-degli-assi-di-zona)) |
 | Rilasciare un file immagine sulla finestra | Lo carica come immagine EBSD sperimentale |
 | Trascinare con il tasto sinistro una vista 3D (geometria / sfera master) | Ruotala |
@@ -205,7 +207,7 @@ L'orientazione che spiega l'immagine viene poi cercata con uno dei due motori.
 
 Invece di confrontare l'intera immagine, l'orientazione si può trovare anche dalle intersezioni di bande (assi di zona) selezionate a mano sull'immagine sperimentale.
 
-- **Zone axis** : attiva la selezione. Quando è attiva, un doppio clic sinistro sul pattern aggiunge un punto, <kbd>CTRL</kbd> + doppio clic sinistro rimuove il punto entro 5 pixel dello schermo e <kbd>SHIFT</kbd> + doppio clic sinistro seleziona un punto (disegnato in giallo; gli altri sono in ciano, numerati). Quando è disattivata, il doppio clic seleziona come di consueto una cella del rivelatore.
+- **Zone axis** : attiva la selezione. Quando è attiva, un doppio clic sinistro sul pattern aggiunge un punto, <kbd>CTRL</kbd> + clic destro rimuove il punto entro 5 pixel dello schermo e un clic sinistro seleziona il punto entro 5 pixel dello schermo (disegnato in giallo; gli altri sono in ciano, numerati). Quando è disattivata, il doppio clic seleziona come di consueto una cella del rivelatore.
 - **[u v w]** : l'indice dell'asse di zona del punto selezionato. Lasciare 0 0 0 perché sia la ricerca ad assegnarlo; digitare un indice vincola la ricerca (utile per cristalli a bassa simmetria e assi ad alti indici).
 - **+ geometry** : ottimizza anche il centro del rivelatore (X, Y, Z, mm) insieme all'orientazione, minimizzando il residuo in pixel tra le posizioni previste e quelle selezionate degli assi di zona. Richiede almeno 4 punti assegnati; selezionando poi un candidato viene applicata anche la geometria raffinata.
 - **Find** : cerca le orientazioni che spiegano gli assi di zona selezionati (almeno 2 punti; tre di solito bastano, due sono ambigui). La tolleranza angolare è di 2°, riprovata a 5° se non si trova nulla. Fino a 10 candidati vengono scritti nella stessa tabella dei candidati e, facendo clic su una riga, vengono applicati come sopra.

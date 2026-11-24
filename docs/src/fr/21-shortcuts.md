@@ -54,11 +54,12 @@ Utilisées par la figure du [Simulateur de diffraction](7-diffraction-simulator/
 |--------|--------|
 | Glisser avec le bouton gauche près du centre | Incliner le cristal |
 | Glisser avec le bouton gauche dans la zone extérieure | Faire tourner le cristal autour de l'axe de visée/du faisceau |
-| Clic droit | Dézoomer |
+| Molette de la souris vers le haut / bas | Zoomer (×2) / dézoomer (×1/2) au niveau du curseur |
+| Clic droit | Dézoomer (×1/1.2) |
 | Glisser un cadre avec le bouton droit | Zoomer sur la région sélectionnée |
 | Glisser avec le bouton du milieu | Déplacement |
 
-Seule la figure du Simulateur de diffraction zoome aussi avec la molette de la souris (×2 / ×0.5, recentrée sur le curseur) ; le Stéréonet et la figure de Kikuchi de l'EBSD n'ont **pas** de zoom à la molette. Il n'y a pas de zoom par les touches <kbd>+</kbd> / <kbd>-</kbd>.
+<!-- 261124Cl 作者の決定: ステレオネットと EBSD の菊池パターンにもホイールズームを付け、右クリックの縮小率を全表示で 1/1.2 に揃えた -->La figure du Simulateur de diffraction, le Stéréonet et la figure de Kikuchi de l'EBSD zooment tous avec la molette de la souris (×2 / ×1/2, recentrée sur le curseur). Il n'y a pas de zoom par les touches <kbd>+</kbd> / <kbd>-</kbd>.
 
 ### Vues d'image { #image }
 
@@ -67,9 +68,9 @@ Utilisées par les panneaux de résultat du [HRTEM/STEM](9-hrtem-stem-simulator/
 | Action | Résultat |
 |--------|--------|
 | Glisser avec le bouton gauche / du milieu | Déplacement |
-| Molette de la souris vers le haut / bas | Zoomer (×2) / dézoomer (×0.5) au niveau du curseur |
+| Molette de la souris vers le haut / bas | Zoomer (×2) / dézoomer (×1/2) au niveau du curseur |
 | Glisser un cadre avec le bouton droit | Zoomer sur la région sélectionnée |
-| Clic droit / double-clic droit | Dézoomer (×0.5) |
+| Clic droit / double-clic droit | Dézoomer (×1/1.2) |
 
 ---
 
@@ -122,11 +123,11 @@ Les Informations de symétrie n'ont pas de combinaisons clavier/souris particuli
 | Déplacer la souris sur le réseau | Lire les (hkl)/[uvw] sous le curseur |
 
 ### 7. Simulateur de diffraction
-[Ouvrir la page →](7-diffraction-simulator/index.md) — la figure est une [vue de figure de diffraction](#pattern), avec en plus le zoom à la molette.
+[Ouvrir la page →](7-diffraction-simulator/index.md) — la figure est une [vue de figure de diffraction](#pattern).
 
 | Raccourci | Action |
 |----------|--------|
-| Molette de la souris vers le haut / bas | Zoomer (×2) / dézoomer (×0.5) en recentrant la vue sur la position du curseur (sur le centre fixe lorsque la case **Fixer** du centre est cochée) |
+| Molette de la souris vers le haut / bas | Zoomer (×2) / dézoomer (×1/2) en recentrant la vue sur la position du curseur (sur le centre fixe lorsque la case **Fixer** du centre est cochée) |
 | Double-clic gauche sur une tache | Afficher les détails de la réflexion (indice, *d*, facteur de structure, erreur d'excitation) |
 | <kbd>CTRL</kbd> + glisser avec le bouton du milieu | Déplacer le centre du détecteur (lorsque la zone du détecteur est affichée) |
 | Double-clic droit sur la barre d'état | Copier un résumé textuel des réglages actuels |
@@ -164,6 +165,7 @@ Les Informations de symétrie n'ont pas de combinaisons clavier/souris particuli
 | Clic gauche sur une tache | Sélectionner la tache la plus proche |
 | <kbd>CTRL</kbd> + clic droit sur une tache | Supprimer la tache la plus proche |
 | <kbd>CTRL</kbd> + touches fléchées | Déplacer la tache sélectionnée d'un pixel |
+| Maintenir <kbd>SHIFT</kbd> et cliquer (gauche) sur trois taches successivement | Mesurer l'angle sur l'image (extrémité → sommet → extrémité) ; <kbd>ESC</kbd> l'efface |
 | Double-clic sur l'en-tête de ligne d'une tache | Zoomer sur cette tache (×2) |
 
 ### 12. Simulation EBSD
@@ -172,7 +174,7 @@ Les Informations de symétrie n'ont pas de combinaisons clavier/souris particuli
 | Raccourci | Action |
 |----------|--------|
 | Double-clic sur la figure de Kikuchi | Sélectionner la sous-cellule du détecteur sous le curseur et afficher ses statistiques |
-| Avec la sélection **Zone axis** activée : double-clic gauche / <kbd>CTRL</kbd> + double-clic gauche / <kbd>SHIFT</kbd> + double-clic gauche sur la figure | Ajouter un point d'axe de zone / supprimer le point situé à moins de 5 pixels écran / sélectionner ce point |
+| Avec la sélection **Zone axis** activée : double-clic gauche / clic gauche / <kbd>CTRL</kbd> + clic droit sur la figure | Ajouter un point d'axe de zone / sélectionner le point situé à moins de 5 pixels écran / supprimer le point situé à moins de 5 pixels écran (mêmes combinaisons que l'édition des taches dans [Spot ID v2](#11-spot-id-v2)) | <!-- 261124Cl 作者の決定で変更 (旧: CTRL + 左ダブルクリックで削除、SHIFT + 左ダブルクリックで選択) -->
 
 ### 20. Macro
 [Ouvrir la page →](20-macro/index.md)

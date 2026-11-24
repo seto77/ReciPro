@@ -230,28 +230,28 @@
     <value>Код разработчика</value>
   </data>
   <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>как изображение (формат PNG)</value>
+    <value>Как изображение (формат PNG)...</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>как метафайл (EMF)</value>
+    <value>Как метафайл (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить изображение</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>как изображение (формат PNG)</value>
+    <value>Как изображение (формат PNG)...</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>как метафайл (EMF)</value>
+    <value>Как метафайл (EMF)...</value>
   </data>
   <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить область детектора</value>
   </data>
   <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
-    <value>как отдельные изображения (формат PNG)</value>
+    <value>Как отдельные изображения (формат PNG)...</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
-    <value>как отдельные изображения (формат TIFF)</value>
+    <value>Как отдельные изображения (формат TIFF)...</value>
   </data>
   <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>как сводное изображение (формат PNG)</value>
@@ -287,10 +287,10 @@
     <value>Копировать диски CBED</value>
   </data>
   <data name="toolStripMenuItemSaveMovieDiffractionPattern.Text" xml:space="preserve">
-    <value>Дифракционная картина</value>
+    <value>Дифракционная картина...</value>
   </data>
   <data name="toolStripMenuItemSaveMovieReciprocalSpace.Text" xml:space="preserve">
-    <value>Обратное пространство</value>
+    <value>Обратное пространство...</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Сохранить видео</value>
@@ -647,6 +647,7 @@ s_g, показывающая, насколько узел обратной ре
 Перетаскивание левой кнопкой (у края экрана): поворот вокруг оси, перпендикулярной монитору
 Щелчок правой кнопкой: уменьшение масштаба
 Перетаскивание правой кнопкой: увеличение выделенной области
+Колёсико: увеличение / уменьшение масштаба в точке курсора
 Перетаскивание средней кнопкой: перемещение смоделированного изображения
 Двойной щелчок левой кнопкой: отображение информации о векторе g</value>
   </data>
@@ -1267,5 +1268,38 @@ Tanh = tanh(x); мягкий ограничитель (по умолчанию).
   </data>
   <data name="labelKikuchiQuality.Text" xml:space="preserve">
     <value>Качество</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Подсказки по сочетаниям клавиш</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание левой кнопкой вблизи центра : Наклонить кристалл</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание левой кнопкой во внешней области : Вращать кристалл вокруг оси пучка</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Двойной щелчок левой кнопкой по рефлексу : Показать сведения о рефлексе</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание средней кнопкой : Панорамировать картину</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + Перетаскивание средней кнопкой : Переместить центр детектора (когда показана область детектора)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Колёсико мыши : Увеличить / уменьшить масштаб в 2 раза за один щелчок колёсика</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Щелчок правой кнопкой : Уменьшить масштаб (×1/1,2)</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание правой кнопкой рамки : Увеличить масштаб до выбранной области</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Двойной щелчок правой кнопкой по строке состояния : Скопировать текстовую сводку текущих настроек</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Двойной щелчок правой кнопкой по активной кнопке слоя : Включить и выключить мигание этого слоя</value>
   </data>
 </root>

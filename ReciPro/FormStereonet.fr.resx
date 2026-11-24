@@ -69,13 +69,13 @@
     <value>Comme image</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>comme image (format PNG)</value>
+    <value>Comme image (format PNG)...</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>comme métafichier (EMF)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>comme métafichier (EMF)</value>
+    <value>Comme métafichier (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Enregistrer l'image</value>
@@ -96,7 +96,7 @@
     <value>Enregistrer la vidéo</value>
   </data>
   <data name="toolStripMenuItemSaveMovieStereonet.Text" xml:space="preserve">
-    <value>Stéréonet</value>
+    <value>Stéréonet...</value>
   </data>
   <data name="groupBoxProjectionObject.Text" xml:space="preserve">
     <value>Objet de projection</value>
@@ -302,6 +302,7 @@ sur l’intensité</value>
 Glisser gauche (au bord de l'écran) : rotation autour de l'axe normal au moniteur
 Clic droit : zoom arrière
 Glisser droit : zoom avant sur la zone sélectionnée
+Molette : zoom avant / arrière à la position du curseur
 Glisser milieu : déplacer l'image simulée
 </value>
   </data>
@@ -733,5 +734,32 @@ les plus proches de la position du curseur sur le canevas stéréographique.</va
   </data>
   <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
     <value>Couleur</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Aide raccourcis clavier</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glisser-gauche près du centre : Incliner le cristal</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glisser-gauche dans la zone extérieure : Faire tourner le cristal autour de l'axe de visée</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Double-clic gauche : Basculer entre la projection Plans et Axes</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Molette de la souris vers le haut / bas : Zoomer (×2) / dézoomer (×1/2) au niveau du curseur</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clic droit : Dézoomer (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glisser-droit d'un cadre : Zoomer sur la région sélectionnée</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Glisser-milieu : Déplacer</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Déplacer la souris (sans bouton) : Lire les (hkl)/[uvw] sous le curseur</value>
   </data>
 </root>

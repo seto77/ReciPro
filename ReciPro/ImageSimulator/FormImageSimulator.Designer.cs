@@ -258,6 +258,15 @@ namespace ReciPro
             buttonSimulate = new System.Windows.Forms.Button();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHintsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint01ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint02ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint03ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint04ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint05ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint06ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint07ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHint08ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItemSavePNG = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItemSaveTIFF = new System.Windows.Forms.ToolStripMenuItem();
@@ -2289,10 +2298,57 @@ namespace ReciPro
             // menuStrip1
             // 
             resources.ApplyResources(menuStrip1, "menuStrip1");
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, helpToolStripMenuItem });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, shortcutHintsToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
             menuStrip1.ShowItemToolTips = true;
             toolTip.SetToolTip(menuStrip1, resources.GetString("menuStrip1.ToolTip"));
+            // 
+            // shortcutHintsToolStripMenuItem
+            // 
+            shortcutHintsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { shortcutHint01ToolStripMenuItem, shortcutHint02ToolStripMenuItem, shortcutHint03ToolStripMenuItem, shortcutHint04ToolStripMenuItem, shortcutHint05ToolStripMenuItem, shortcutHint06ToolStripMenuItem, shortcutHint07ToolStripMenuItem, shortcutHint08ToolStripMenuItem });
+            shortcutHintsToolStripMenuItem.Name = "shortcutHintsToolStripMenuItem";
+            resources.ApplyResources(shortcutHintsToolStripMenuItem, "shortcutHintsToolStripMenuItem");
+            captureExtender.SetCapture(shortcutHintsToolStripMenuItem, true);
+            // 
+            // shortcutHint01ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint01ToolStripMenuItem, "shortcutHint01ToolStripMenuItem");
+            shortcutHint01ToolStripMenuItem.Name = "shortcutHint01ToolStripMenuItem";
+            // 
+            // shortcutHint02ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint02ToolStripMenuItem, "shortcutHint02ToolStripMenuItem");
+            shortcutHint02ToolStripMenuItem.Name = "shortcutHint02ToolStripMenuItem";
+            // 
+            // shortcutHint03ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint03ToolStripMenuItem, "shortcutHint03ToolStripMenuItem");
+            shortcutHint03ToolStripMenuItem.Name = "shortcutHint03ToolStripMenuItem";
+            // 
+            // shortcutHint04ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint04ToolStripMenuItem, "shortcutHint04ToolStripMenuItem");
+            shortcutHint04ToolStripMenuItem.Name = "shortcutHint04ToolStripMenuItem";
+            // 
+            // shortcutHint05ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint05ToolStripMenuItem, "shortcutHint05ToolStripMenuItem");
+            shortcutHint05ToolStripMenuItem.Name = "shortcutHint05ToolStripMenuItem";
+            // 
+            // shortcutHint06ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint06ToolStripMenuItem, "shortcutHint06ToolStripMenuItem");
+            shortcutHint06ToolStripMenuItem.Name = "shortcutHint06ToolStripMenuItem";
+            // 
+            // shortcutHint07ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint07ToolStripMenuItem, "shortcutHint07ToolStripMenuItem");
+            shortcutHint07ToolStripMenuItem.Name = "shortcutHint07ToolStripMenuItem";
+            // 
+            // shortcutHint08ToolStripMenuItem
+            // 
+            resources.ApplyResources(shortcutHint08ToolStripMenuItem, "shortcutHint08ToolStripMenuItem");
+            shortcutHint08ToolStripMenuItem.Name = "shortcutHint08ToolStripMenuItem";
             // 
             // fileToolStripMenuItem
             // 
@@ -2624,6 +2680,15 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBoxShowLabel;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shortcutHintsToolStripMenuItem; // 261124Cl 追加: ショートカットヒント (Spot ID v2・構造ビューアと同じ書式)
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint01ToolStripMenuItem; // 261124Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint02ToolStripMenuItem; // 261124Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint03ToolStripMenuItem; // 261124Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint04ToolStripMenuItem; // 261124Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint05ToolStripMenuItem; // 261124Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint06ToolStripMenuItem; // 261124Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint07ToolStripMenuItem; // 261124Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem shortcutHint08ToolStripMenuItem; // 261124Cl 追加
         private System.Windows.Forms.StatusStrip statusStrip1;
         private Crystallography.Controls.NumericBox numericBoxHRTEM_ObjAperY;
         private Crystallography.Controls.NumericBox numericBoxHRTEM_ObjAperX;

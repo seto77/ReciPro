@@ -60,7 +60,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Ctrl + clique direito : Remover o spot</value>
+    <value>Ctrl + clique direito em um ponto : Excluir o ponto mais próximo</value>
+  </data>
+  <data name="toolStripMenuItemAngle.Text" xml:space="preserve">
+    <value>Segurar Shift e clicar com o botão esquerdo em três pontos em sequência : Medir o ângulo na imagem (extremo → vértice → extremo); Esc apaga</value>
   </data>
   <data name="Column2.HeaderText" xml:space="preserve">
     <value>Di- reto</value>
@@ -87,7 +90,7 @@
     <value>Tamanho do pixel</value>
   </data>
   <data name="doubleClickAddSpotToolStripMenuItem.Text" xml:space="preserve">
-    <value>Arrastar esquerdo : Arrastar a imagem</value>
+    <value>Arrastar com o botão esquerdo / Arrastar com o botão do meio : Deslocar</value>
   </data>
   <data name="noDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
     <value>Nº</value>
@@ -129,16 +132,16 @@
     <value>Detectar &amp;&amp; ajustar spots</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>Clique direito : Reduzir zoom</value>
+    <value>Clique direito / clique duplo direito : Reduzir o zoom (×1/1.2)</value>
   </data>
   <data name="numericBoxAcceptableError.HeaderText" xml:space="preserve">
     <value>Erro aceitável</value>
   </data>
   <data name="toolStripMenuItem7.Text" xml:space="preserve">
-    <value>Arrastar direito: Ampliar zoom</value>
+    <value>Arrastar uma caixa com o botão direito : Ampliar o zoom na região selecionada</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>Ctrl + clique duplo esquerdo : Adicionar o spot direto</value>
+    <value>Ctrl + clique duplo esquerdo : Adicionar um ponto e marcá-lo como feixe direto (000)</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>Parar</value>
@@ -174,7 +177,7 @@
     <value>Nome do cristal</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>como metarquivo (EMF)</value>
+    <value>Como metarquivo (EMF)...</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
     <value>Grão único</value>
@@ -201,7 +204,7 @@
     <value>Spots atribuídos</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>como imagem (formato PNG)</value>
+    <value>Como imagem (formato PNG)...</value>
   </data>
   <data name="groupBoxOptics.Text" xml:space="preserve">
     <value>Óptica</value>
@@ -213,7 +216,7 @@
     <value>Identificar spots</value>
   </data>
   <data name="loadToolStripMenuItem.Text" xml:space="preserve">
-    <value>Carregar</value>
+    <value>Carregar...</value>
   </data>
   <data name="noDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Nº</value>
@@ -222,7 +225,7 @@
     <value>Salvar</value>
   </data>
   <data name="toolStripMenuItem6.Text" xml:space="preserve">
-    <value>Clique esquerdo : Selecionar um spot</value>
+    <value>Clique esquerdo em um ponto : Selecionar o ponto mais próximo</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.Text" xml:space="preserve">
     <value>Mostrar símbolo</value>
@@ -231,7 +234,7 @@
     <value>Copiar</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
-    <value>Clique duplo esquerdo : Adicionar um spot</value>
+    <value>Clique duplo esquerdo na imagem : Adicionar um ponto (ajustado ao pico)</value>
   </data>
   <data name="buttonCopyToClipboard.Text" xml:space="preserve">
     <value>Copiar</value>
@@ -427,5 +430,14 @@ indexação (padrão: elétrons, 200 kV).</value>
   </data>
   <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
     <value>Exibir parâmetros detalhados da função de ajuste</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Roda do mouse para cima / baixo : Ampliar (×2) / reduzir (×1/2) o zoom no cursor</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + teclas de seta : Deslocar o ponto selecionado em um pixel</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clique duplo no cabeçalho da linha de um ponto : Dar zoom nesse ponto (×2)</value>
   </data>
 </root>

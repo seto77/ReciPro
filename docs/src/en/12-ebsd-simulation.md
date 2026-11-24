@@ -20,7 +20,7 @@ The status bar at the bottom shows the progress of the running calculation and a
 
 | Item | Action |
 |------|--------|
-| **Open experimental image...** (<kbd>CTRL</kbd>+<kbd>O</kbd>) | Load a TIFF / PNG / BMP / JPEG image as the experimental EBSD image (the same as dropping the file on the window; see [Experimental image](#experimental-image)) |
+| **Load experimental image...** (<kbd>CTRL</kbd>+<kbd>O</kbd>) | Load a TIFF / PNG / BMP / JPEG image as the experimental EBSD image (the same as dropping the file on the window; see [Experimental image](#experimental-image)) |
 | **Load master pattern...** / **Save master pattern...** | The same as **Load** / **Save** below the master pattern (see [Master pattern](#master-pattern)) |
 | **Save master pattern movie...** | The same as **Save movie** in the **3D** tab of the master pattern |
 | **Save EBSD pattern...** (<kbd>CTRL</kbd>+<kbd>S</kbd>) / **Copy EBSD pattern** | The same as **Save** / **Copy** above the EBSD pattern |
@@ -39,6 +39,8 @@ The centre EBSD (Kikuchi) pattern and the right-hand master-pattern views respon
 | <kbd>F1</kbd> | Open this page of the online manual |
 | Left-drag the pattern near the centre | Tilt the crystal |
 | Left-drag the pattern's outer area | Spin the crystal |
+| Mouse wheel up / down on the pattern | Zoom in (×2) / out (×1/2) at the cursor |
+| Right-click / right-drag a box on the pattern | Zoom out (×1/1.2) / zoom in to the box |
 | Double-click the pattern | Pick the detector sub-cell under the cursor and show its statistics (while **Zone axis** picking is on: add a zone axis; see [Zone-axis picking](#zone-axis-picking)) |
 | Drop an image file on the window, or <kbd>CTRL</kbd>+<kbd>O</kbd> | Load it as the experimental EBSD image |
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Save the EBSD pattern (the same as **Save** above the pattern) |
@@ -46,6 +48,8 @@ The centre EBSD (Kikuchi) pattern and the right-hand master-pattern views respon
 | Right-drag, or Mouse wheel, on a 3-D view | Zoom |
 | <kbd>CTRL</kbd> + Right double-click a 3-D view | Toggle orthographic / perspective |
 | Drag / wheel on the 2-D master pattern | Pan / zoom the image |
+
+These combinations are also listed in the window's **Shortcut hints** menu.
 
 The 3-D views use ReciPro's standard [view navigation](21-shortcuts.md) (panning disabled).
 
@@ -229,7 +233,7 @@ The orientation that explains the image is then searched for with one of two eng
 
 Instead of matching the whole image, the orientation can also be found from band intersections (zone axes) picked by hand on the experimental image.
 
-- **Zone axis** : turns picking on. While it is on, a left double-click on the pattern adds a point, <kbd>CTRL</kbd> + left double-click removes the point within 5 screen pixels, and <kbd>SHIFT</kbd> + left double-click selects a point (drawn in yellow; the others are cyan, numbered). While it is off, double-click selects a detector cell as usual.
+- **Zone axis** : turns picking on. While it is on, a left double-click on the pattern adds a point, <kbd>CTRL</kbd> + right-click removes the point within 5 screen pixels, and a left-click selects the point within 5 screen pixels (drawn in yellow; the others are cyan, numbered). While it is off, double-click selects a detector cell as usual.
 - **[u v w]** : the zone-axis index of the selected point. Leave 0 0 0 to let the search assign it; typing an index constrains the search (useful for low-symmetry crystals and high-index axes).
 - **+ geometry** : also optimizes the detector centre (X, Y, Z, mm) together with the orientation by minimizing the pixel residual between the predicted and picked zone-axis positions. It needs at least 4 assigned points; selecting a candidate then applies the refined geometry as well.
 - **Find** : searches the orientations that explain the picked zone axes (at least 2 points; three are usually enough, two are ambiguous). The angular tolerance is 2°, retried at 5° if nothing is found. Up to 10 candidates are written to the same candidate table, and clicking a row applies them as above.

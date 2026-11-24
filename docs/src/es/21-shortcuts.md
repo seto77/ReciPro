@@ -54,11 +54,12 @@ Usadas por el patrón del [Simulador de difracción](7-diffraction-simulator/ind
 |--------|--------|
 | Arrastrar con el botón izquierdo cerca del centro | Inclinar el cristal |
 | Arrastrar con el botón izquierdo en la zona exterior | Girar el cristal alrededor del eje de visión/haz |
-| Clic derecho | Alejar el zoom |
+| Rueda del ratón arriba / abajo | Acercar el zoom (×2) / alejarlo (×1/2) en el cursor |
+| Clic derecho | Alejar el zoom (×1/1.2) |
 | Arrastrar un recuadro con el botón derecho | Acercar el zoom a la región seleccionada |
 | Arrastrar con el botón central | Desplazar |
 
-Solo el patrón del Simulador de difracción hace además zoom con la rueda del ratón (×2 / ×0.5, recentrado en el cursor); el Estereograma y el patrón de Kikuchi de EBSD **no** tienen zoom con la rueda del ratón. No hay zoom con las teclas <kbd>+</kbd> / <kbd>-</kbd>.
+<!-- 261124Cl 作者の決定: ステレオネットと EBSD の菊池パターンにもホイールズームを付け、右クリックの縮小率を全表示で 1/1.2 に揃えた -->El patrón del Simulador de difracción, el Estereograma y el patrón de Kikuchi de EBSD hacen zoom con la rueda del ratón (×2 / ×1/2, recentrado en el cursor). No hay zoom con las teclas <kbd>+</kbd> / <kbd>-</kbd>.
 
 ### Vistas de imagen { #image }
 
@@ -67,9 +68,9 @@ Usadas por los paneles de resultados de [HRTEM/STEM](9-hrtem-stem-simulator/inde
 | Acción | Resultado |
 |--------|--------|
 | Arrastrar con el botón izquierdo / central | Desplazar |
-| Rueda del ratón arriba / abajo | Acercar el zoom (×2) / alejarlo (×0.5) en el cursor |
+| Rueda del ratón arriba / abajo | Acercar el zoom (×2) / alejarlo (×1/2) en el cursor |
 | Arrastrar un recuadro con el botón derecho | Acercar el zoom a la región seleccionada |
-| Clic derecho / doble clic derecho | Alejar el zoom (×0.5) |
+| Clic derecho / doble clic derecho | Alejar el zoom (×1/1.2) |
 
 ---
 
@@ -122,11 +123,11 @@ La Información de simetría no tiene combinaciones especiales de teclas/ratón.
 | Mover el ratón sobre la red | Leer el (hkl)/[uvw] bajo el cursor |
 
 ### 7. Simulador de difracción
-[Abrir página →](7-diffraction-simulator/index.md) — el patrón es una [vista de patrón de difracción](#pattern), con zoom con la rueda además.
+[Abrir página →](7-diffraction-simulator/index.md) — el patrón es una [vista de patrón de difracción](#pattern).
 
 | Atajo | Acción |
 |----------|--------|
-| Rueda del ratón arriba / abajo | Acercar (×2) / alejar (×0.5) el zoom, recentrando la vista en la posición del cursor (en el centro fijo cuando la casilla **Fijar** del centro está activada) |
+| Rueda del ratón arriba / abajo | Acercar (×2) / alejar (×1/2) el zoom, recentrando la vista en la posición del cursor (en el centro fijo cuando la casilla **Fijar** del centro está activada) |
 | Doble clic izquierdo en una reflexión | Mostrar los detalles de la reflexión (índice, *d*, factor de estructura, error de excitación) |
 | <kbd>CTRL</kbd> + arrastrar con el botón central | Mover el centro del detector (cuando se muestra el área del detector) |
 | Doble clic derecho en la barra de estado | Copiar un resumen de texto de los ajustes actuales |
@@ -164,6 +165,7 @@ La Información de simetría no tiene combinaciones especiales de teclas/ratón.
 | Clic izquierdo en un spot | Seleccionar el spot más cercano |
 | <kbd>CTRL</kbd> + clic derecho en un spot | Eliminar el spot más cercano |
 | <kbd>CTRL</kbd> + teclas de flecha | Desplazar el spot seleccionado un píxel |
+| Mantener <kbd>SHIFT</kbd> y hacer clic izquierdo en tres spots sucesivamente | Medir el ángulo en la imagen (extremo → vértice → extremo); <kbd>ESC</kbd> lo borra |
 | Doble clic en el encabezado de fila de un spot | Acercar el zoom a ese spot (×2) |
 
 ### 12. Simulación EBSD
@@ -172,7 +174,7 @@ La Información de simetría no tiene combinaciones especiales de teclas/ratón.
 | Atajo | Acción |
 |----------|--------|
 | Doble clic en el patrón de Kikuchi | Elegir la subcelda del detector bajo el cursor y mostrar sus estadísticas |
-| Con la selección **Zone axis** activada: doble clic izquierdo / <kbd>CTRL</kbd> + doble clic izquierdo / <kbd>SHIFT</kbd> + doble clic izquierdo sobre el patrón | Añadir un punto de eje de zona / eliminar el punto situado a menos de 5 píxeles de pantalla / seleccionar ese punto |
+| Con la selección **Zone axis** activada: doble clic izquierdo / clic izquierdo / <kbd>CTRL</kbd> + clic derecho sobre el patrón | Añadir un punto de eje de zona / seleccionar el punto situado a menos de 5 píxeles de pantalla / eliminar el punto situado a menos de 5 píxeles de pantalla (las mismas combinaciones que la edición de spots en [Spot ID v2](#11-spot-id-v2)) | <!-- 261124Cl 作者の決定で変更 (旧: CTRL + 左ダブルクリックで削除、SHIFT + 左ダブルクリックで選択) -->
 
 ### 20. Macro
 [Abrir página →](20-macro/index.md)

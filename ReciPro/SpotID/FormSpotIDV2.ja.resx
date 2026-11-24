@@ -455,16 +455,16 @@ X 線・中性子では常に無視します（運動学的に扱うため）。
     <value>ファイル</value>
   </data>
   <data name="loadToolStripMenuItem.Text" xml:space="preserve">
-    <value>開く</value>
+    <value>読込...</value>
   </data>
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
     <value>保存</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>メタファイルとして (EMF)</value>
+    <value>メタファイルとして (EMF)...</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>画像として (PNG 形式)</value>
+    <value>画像として (PNG 形式)...</value>
   </data>
   <data name="copyToolStripMenuItem.Text" xml:space="preserve">
     <value>コピー</value>
@@ -485,13 +485,16 @@ X 線・中性子では常に無視します（運動学的に扱うため）。
     <value>ショートカットヒント</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
-    <value>左ダブルクリック : スポットを追加</value>
+    <value>画像を左ダブルクリック : スポットを追加（ピークフィッティング）</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>Ctrl + 左ダブルクリック : 直接スポットを追加</value>
+    <value>Ctrl + 左ダブルクリック : スポットを追加し、直接（000）ビームに指定</value>
   </data>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Ctrl + 右クリック : スポットを削除</value>
+    <value>Ctrl + スポットを右クリック : 最も近いスポットを削除</value>
+  </data>
+  <data name="toolStripMenuItemAngle.Text" xml:space="preserve">
+    <value>Shift を押しながら 3 つのスポットを順に左クリック : 画像上の角を測る（端点 → 頂点 → 端点の順）</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -523,15 +526,24 @@ X 線・中性子では常に無視します（運動学的に扱うため）。
     <value>結晶名</value>
   </data>
   <data name="doubleClickAddSpotToolStripMenuItem.Text" xml:space="preserve">
-    <value>左ドラッグ : 画像を移動</value>
+    <value>左ドラッグ／中ドラッグ : 平行移動</value>
   </data>
   <data name="toolStripMenuItem7.Text" xml:space="preserve">
-    <value>右ドラッグ : 拡大</value>
+    <value>右ドラッグで矩形 : 選択範囲にズームイン</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>右クリック : 縮小</value>
+    <value>右クリック／右ダブルクリック : ズームアウト（×1/1.2。ダブルクリックは 2 回分）</value>
   </data>
   <data name="toolStripMenuItem6.Text" xml:space="preserve">
-    <value>左クリック : スポットを選択</value>
+    <value>スポットを左クリック : 最も近いスポットを選択</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>ホイール上／下 : カーソル位置を中心にズームイン（×2）／ズームアウト（×1/2）</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 矢印キー : 選択中のスポットを1ピクセル移動</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>スポット行のヘッダーをダブルクリック : そのスポットへズーム（×2）</value>
   </data>
 </root>

@@ -69,13 +69,13 @@
     <value>Como imagen</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>como imagen (formato PNG)</value>
+    <value>Como imagen (formato PNG)...</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>como metarchivo (EMF)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>como metarchivo (EMF)</value>
+    <value>Como metarchivo (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Guardar imagen</value>
@@ -96,7 +96,7 @@
     <value>Guardar vídeo</value>
   </data>
   <data name="toolStripMenuItemSaveMovieStereonet.Text" xml:space="preserve">
-    <value>Estereograma</value>
+    <value>Estereograma...</value>
   </data>
   <data name="groupBoxMode.Text" xml:space="preserve">
     <value>Modo</value>
@@ -314,6 +314,7 @@ en la intensidad</value>
 Arrastrar con el botón izquierdo (en el borde de la pantalla):  Girar alrededor del eje normal al monitor
 Clic derecho: Alejar
 Arrastrar con el botón derecho: Acercar el área seleccionada
+Rueda: Acercar / alejar en la posición del cursor
 Arrastrar con el botón central: Arrastrar la imagen simulada
 </value>
   </data>
@@ -745,5 +746,32 @@ más próximos a la posición del cursor en la proyección estereográfica.</val
   </data>
   <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
     <value>Color</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Atajos de teclado</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastrar con el botón izquierdo cerca del centro : Inclinar el cristal</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastrar con el botón izquierdo en la zona exterior : Girar el cristal alrededor del eje de visión</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Doble clic izquierdo : Alternar entre la proyección de Planos y de Ejes</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rueda del ratón arriba / abajo : Acercar el zoom (×2) / alejarlo (×1/2) en el cursor</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clic derecho : Alejar el zoom (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastrar un recuadro con el botón derecho : Acercar el zoom a la región seleccionada</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Arrastrar con el botón central : Desplazar</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mover el ratón (sin botón) : Leer los índices (hkl)/[uvw] bajo el cursor</value>
   </data>
 </root>

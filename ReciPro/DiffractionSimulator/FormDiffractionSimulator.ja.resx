@@ -552,6 +552,7 @@ excess/deficient の符号までです。 「B→0.5」: B = 0
 左ドラッグ（画面端）: モニターに垂直な軸で回転
 右クリック: ズームアウト
 右ドラッグ: 選択領域をズームイン
+ホイール: カーソル位置を中心にズームイン／アウト
 中ドラッグ: シミュレーション画像をドラッグ
 左ダブルクリック: gベクトルの情報を表示</value>
   </data>
@@ -1750,28 +1751,28 @@ excess/deficient の微細構造が滑らかになりますが
     <value>画像を保存</value>
   </data>
   <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>画像として (PNG 形式)</value>
+    <value>画像として (PNG 形式)...</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>メタファイルとして (EMF)</value>
+    <value>メタファイルとして (EMF)...</value>
   </data>
   <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>検出器領域を保存</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>画像として (PNG 形式)</value>
+    <value>画像として (PNG 形式)...</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>メタファイルとして (EMF)</value>
+    <value>メタファイルとして (EMF)...</value>
   </data>
   <data name="saveCBEDPatternToolStripMenuItem.Text" xml:space="preserve">
     <value>CBED ディスクを保存</value>
   </data>
   <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
-    <value>個別の画像として (PNG 形式)</value>
+    <value>個別の画像として (PNG 形式)...</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
-    <value>個別の画像として (TIFF 形式)</value>
+    <value>個別の画像として (TIFF 形式)...</value>
   </data>
   <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>1 枚にまとめた画像として (PNG 形式)</value>
@@ -1807,10 +1808,10 @@ excess/deficient の微細構造が滑らかになりますが
     <value>動画を保存</value>
   </data>
   <data name="toolStripMenuItemSaveMovieDiffractionPattern.Text" xml:space="preserve">
-    <value>回折パターン</value>
+    <value>回折パターン...</value>
   </data>
   <data name="toolStripMenuItemSaveMovieReciprocalSpace.Text" xml:space="preserve">
-    <value>逆空間</value>
+    <value>逆空間...</value>
   </data>
   <data name="pageSetupToolStripMenuItem.Text" xml:space="preserve">
     <value>プリント設定</value>
@@ -1847,5 +1848,38 @@ excess/deficient の微細構造が滑らかになりますが
   </data>
   <data name="basicConceptOfBethesMethodToolStripMenuItem.Text" xml:space="preserve">
     <value>Bethe法の基本概念</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>ショートカットヒント</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>中心付近を左ドラッグ : 結晶を傾ける</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>外周を左ドラッグ : ビーム軸まわりに結晶を回す</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>スポットを左ダブルクリック : 反射の詳細を表示（指数・d・構造因子・励起誤差）</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>中ドラッグ : パターンを平行移動</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 中ドラッグ : 検出器中心を移動（検出器領域の表示時）</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>マウスホイール : 1 ノッチごとに ×2 でズームイン／アウト</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右クリック : ズームアウト（×1/1.2）</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右ドラッグで矩形選択 : 選択範囲にズームイン</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>ステータスバーを右ダブルクリック : 現在の設定のテキスト要約をコピー</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>点灯中のレイヤーボタンを右ダブルクリック : そのレイヤーを点滅</value>
   </data>
 </root>

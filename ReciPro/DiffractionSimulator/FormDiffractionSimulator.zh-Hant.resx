@@ -230,28 +230,28 @@
     <value>開發者程式碼</value>
   </data>
   <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>存為影像 (PNG 格式)</value>
+    <value>存為影像 (PNG 格式)...</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>存為中繼檔 (EMF)</value>
+    <value>存為中繼檔 (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>儲存影像</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>存為影像 (PNG 格式)</value>
+    <value>存為影像 (PNG 格式)...</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>存為中繼檔 (EMF)</value>
+    <value>存為中繼檔 (EMF)...</value>
   </data>
   <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>儲存偵測器區域</value>
   </data>
   <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
-    <value>存為個別影像 (PNG 格式)</value>
+    <value>存為個別影像 (PNG 格式)...</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
-    <value>存為個別影像 (TIFF 格式)</value>
+    <value>存為個別影像 (TIFF 格式)...</value>
   </data>
   <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>存為合成影像 (PNG 格式)</value>
@@ -287,10 +287,10 @@
     <value>複製 CBED 圓盤</value>
   </data>
   <data name="toolStripMenuItemSaveMovieDiffractionPattern.Text" xml:space="preserve">
-    <value>繞射圖樣</value>
+    <value>繞射圖樣...</value>
   </data>
   <data name="toolStripMenuItemSaveMovieReciprocalSpace.Text" xml:space="preserve">
-    <value>倒空間</value>
+    <value>倒空間...</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>儲存影片</value>
@@ -647,6 +647,7 @@ Ewald 球的程度。</value>
 左鍵拖曳（畫面邊緣）：以垂直於螢幕的軸旋轉
 右鍵點擊：縮小
 右鍵拖曳：放大所選區域
+滾輪：以游標位置為中心放大/縮小
 中鍵拖曳：拖曳模擬影像
 左鍵雙擊：顯示 g 向量的資訊</value>
   </data>
@@ -1219,5 +1220,38 @@ unbalanced」：本版本的吸收與漫散射源並非由同一散射核導出�
   </data>
   <data name="labelKikuchiQuality.Text" xml:space="preserve">
     <value>品質</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>快速鍵提示</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在中心附近左鍵拖曳 : 傾斜晶體</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在外圍區域左鍵拖曳 : 繞束軸旋轉晶體</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>左鍵雙擊某一反射 : 顯示反射詳細資訊（指數、d、結構因子、偏離向量）</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>中鍵拖曳 : 平移圖樣</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 中鍵拖曳 : 移動偵測器中心（顯示偵測器區域時）</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>滑鼠滾輪 : 每一格放大 / 縮小 ×2；游標下的點會移到檢視中心</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右鍵點按 : 縮小（×1/1.2）</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右鍵拖曳出方框 : 放大至所選區域</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右鍵雙擊狀態列 : 複製目前設定的文字摘要</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右鍵雙擊已點亮的圖層按鈕 : 使該圖層閃爍開關</value>
   </data>
 </root>

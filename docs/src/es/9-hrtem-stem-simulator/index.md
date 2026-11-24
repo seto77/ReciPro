@@ -34,9 +34,9 @@ Los resultados se muestran como uno o varios paneles de imagen. Utilizan la [nav
 | <kbd>F1</kbd> | Abrir esta página del manual en línea |
 | <kbd>CTRL</kbd>+<kbd>C</kbd> (rejilla de imágenes enfocada) | Copiar la imagen o las imágenes al portapapeles como metarchivo |
 | Arrastrar con el botón izquierdo / central | Desplazar la imagen (todos los paneles se mueven juntos) |
-| Rueda del ratón arriba / abajo | Acercar (×2) / alejar (×0.5) en la posición del cursor |
+| Rueda del ratón arriba / abajo | Acercar (×2) / alejar (×1/2) en la posición del cursor |
 | Arrastrar un rectángulo con el botón derecho | Acercar a la región seleccionada |
-| Clic derecho / doble clic derecho | Alejar (×0.5) |
+| Clic derecho / doble clic derecho | Alejar (×1/1.2) |
 | <kbd>CTRL</kbd> + arrastrar un rectángulo con el botón derecho | Seleccionar un área rectangular |
 | Doble clic izquierdo sobre un panel | Maximizar ese panel / restaurar la rejilla (diseños de varios paneles) |
 | Mover el ratón (sin botón) | Leer la posición (pm) y el valor de píxel en la posición del cursor |

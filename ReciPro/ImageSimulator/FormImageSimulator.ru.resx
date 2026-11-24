@@ -348,13 +348,13 @@ Simulator"</value>
     <value>Моделировать</value>
   </data>
   <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>как изображение (формат PNG)</value>
+    <value>Как изображение (формат PNG)...</value>
   </data>
   <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>как изображение (формат TIFF)</value>
+    <value>Как изображение (формат TIFF)...</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>как метафайл (EMF)</value>
+    <value>Как метафайл (EMF)...</value>
   </data>
   <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
     <value>   Сохранять по отдельности в серийном режиме </value>
@@ -375,7 +375,7 @@ Simulator"</value>
     <value>     Печатать символы поверх</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
-    <value>Загрузить параметры ПЭМ</value>
+    <value>Загрузить параметры ПЭМ...</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>Загружает условия моделирования из файла, сохранённого командой
@@ -383,7 +383,7 @@ Simulator"</value>
 (например, из старой версии), получают значения по умолчанию.</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
-    <value>Сохранить параметры ПЭМ</value>
+    <value>Сохранить параметры ПЭМ...</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>Сохраняет текущие условия моделирования (те же параметры,
@@ -953,5 +953,32 @@ U'g) как изображения действительной и мнимой 
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
     <value>Эфф. размер источника (FWHM)</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Подсказки по сочетаниям клавиш</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + C (фокус на сетке изображений) : Скопировать изображение(я) в буфер обмена как метафайл</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание левой / средней кнопкой : Панорамировать изображение (все области двигаются вместе)</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Колесо мыши вверх / вниз : Приблизить (×2) / отдалить (×1/2) у курсора</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Перетаскивание прямоугольника правой кнопкой : Приблизить к выбранной области</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Щелчок правой кнопкой / двойной щелчок правой кнопкой : Отдалить (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + перетаскивание прямоугольника правой кнопкой : Выбрать прямоугольную область</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Двойной щелчок левой кнопкой по области : Развернуть эту область / восстановить сетку (многооконные раскладки)</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Движение мыши (без кнопки) : Прочитать положение (pm) и значение пикселя у курсора</value>
   </data>
 </root>

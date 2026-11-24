@@ -250,7 +250,7 @@ di energia coincidono, il calcolo Monte Carlo viene saltato.</value>
     <value>File</value>
   </data>
   <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Apri immagine sperimentale...</value>
+    <value>Carica immagine sperimentale...</value>
   </data>
   <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
     <value>Carica master pattern...</value>
@@ -1119,5 +1119,44 @@ Disattivo: i campi mantengono i valori inseriti e il master pattern
 viene creato con essi. Un intervallo con limite inferiore non sotto
 quello superiore, un'energia sopra E0 o un intervallo fuori dalla
 distribuzione Monte Carlo viene rifiutato con un messaggio.</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Suggerimenti scorciatoie</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinare con il tasto sinistro il pattern vicino al centro : Inclina il cristallo</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinare con il tasto sinistro l'area esterna del pattern : Ruota il cristallo</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rotellina del mouse su / giù sulla figura : Ingrandisci (×2) / Riduci (×1/2) in corrispondenza del cursore</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clic destro / trascinamento di un rettangolo con il tasto destro sulla figura : Riduci lo zoom (×1/1.2) / ingrandisci il rettangolo</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Doppio clic sul pattern : Seleziona la sotto-cella del rivelatore sotto il cursore e mostra le sue statistiche</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinare con il tasto sinistro una vista 3D : Ruotala</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinare con il tasto destro, o rotellina del mouse, su una vista 3D : Zoom</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + doppio clic destro su una vista 3D : Commuta tra ortografica / prospettica</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascinare / rotellina sul master pattern 2D : Sposta / zooma l'immagine</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Doppio clic sinistro (Zone axis attivo) : Aggiungi un punto</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clic sinistro (Zone axis attivo) : Seleziona un punto</value>
+  </data>
+  <data name="shortcutHint12ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + clic destro (Zone axis attivo) : Rimuovi un punto</value>
   </data>
 </root>

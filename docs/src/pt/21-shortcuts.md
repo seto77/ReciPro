@@ -54,11 +54,12 @@ Usadas pelo padrão do [Simulador de difração](7-diffraction-simulator/index.m
 |--------|--------|
 | Arrastar com o botão esquerdo perto do centro | Inclinar o cristal |
 | Arrastar com o botão esquerdo na área externa | Girar o cristal em torno do eixo de visão/feixe |
-| Clique direito | Reduzir o zoom |
+| Roda do mouse para cima / baixo | Ampliar (×2) / reduzir (×1/2) o zoom no cursor |
+| Clique direito | Reduzir o zoom (×1/1.2) |
 | Arrastar uma caixa com o botão direito | Ampliar o zoom na região selecionada |
 | Arrastar com o botão do meio | Deslocar |
 
-Apenas o padrão do Simulador de difração também aceita zoom pela roda do mouse (×2 / ×0,5, recentrado no cursor); a Estereonete e o padrão de Kikuchi do EBSD **não** têm zoom pela roda do mouse. Não há zoom pelas teclas <kbd>+</kbd> / <kbd>-</kbd>.
+<!-- 261124Cl 作者の決定: ステレオネットと EBSD の菊池パターンにもホイールズームを付け、右クリックの縮小率を全表示で 1/1.2 に揃えた -->O padrão do Simulador de difração, a Estereonete e o padrão de Kikuchi do EBSD aceitam zoom pela roda do mouse (×2 / ×1/2, recentrado no cursor). Não há zoom pelas teclas <kbd>+</kbd> / <kbd>-</kbd>.
 
 ### Visualizações de imagem { #image }
 
@@ -67,9 +68,9 @@ Usadas pelos painéis de resultado do [HRTEM/STEM](9-hrtem-stem-simulator/index.
 | Ação | Resultado |
 |--------|--------|
 | Arrastar com o botão esquerdo / Arrastar com o botão do meio | Deslocar |
-| Roda do mouse para cima / baixo | Ampliar (×2) / reduzir (×0.5) o zoom no cursor |
+| Roda do mouse para cima / baixo | Ampliar (×2) / reduzir (×1/2) o zoom no cursor |
 | Arrastar uma caixa com o botão direito | Ampliar o zoom na região selecionada |
-| Clique direito / clique duplo direito | Reduzir o zoom (×0.5) |
+| Clique direito / clique duplo direito | Reduzir o zoom (×1/1.2) |
 
 ---
 
@@ -122,11 +123,11 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 | Mover o mouse sobre a rede | Ler o (hkl)/[uvw] sob o cursor |
 
 ### 7. Simulador de difração
-[Abrir página →](7-diffraction-simulator/index.md) — o padrão é uma [visualização de padrão de difração](#pattern), com zoom pela roda do mouse.
+[Abrir página →](7-diffraction-simulator/index.md) — o padrão é uma [visualização de padrão de difração](#pattern).
 
 | Atalho | Ação |
 |----------|--------|
-| Roda do mouse para cima / baixo | Ampliar (×2) / reduzir (×0,5) o zoom, recentrando a visualização na posição do cursor (no centro fixo quando a caixa **Fixar** do centro está marcada) |
+| Roda do mouse para cima / baixo | Ampliar (×2) / reduzir (×1/2) o zoom, recentrando a visualização na posição do cursor (no centro fixo quando a caixa **Fixar** do centro está marcada) |
 | Clique duplo esquerdo em um ponto | Mostrar detalhes da reflexão (índice, *d*, fator de estrutura, erro de excitação) |
 | <kbd>CTRL</kbd> + arrastar com o botão do meio | Mover o centro do detector (quando a área do detector é exibida) |
 | Clique duplo direito na barra de status | Copiar um resumo em texto das configurações atuais |
@@ -164,6 +165,7 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 | Clique esquerdo em um ponto | Selecionar o ponto mais próximo |
 | <kbd>CTRL</kbd> + clique direito em um ponto | Excluir o ponto mais próximo |
 | <kbd>CTRL</kbd> + teclas de seta | Deslocar o ponto selecionado em um pixel |
+| Segurar <kbd>SHIFT</kbd> e clicar com o botão esquerdo em três pontos em sequência | Medir o ângulo na imagem (extremo → vértice → extremo); <kbd>ESC</kbd> apaga |
 | Clique duplo no cabeçalho da linha de um ponto | Dar zoom nesse ponto (×2) |
 
 ### 12. Simulação EBSD
@@ -172,7 +174,7 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 | Atalho | Ação |
 |----------|--------|
 | Clique duplo no padrão de Kikuchi | Selecionar a subcélula do detector sob o cursor e mostrar suas estatísticas |
-| Com a seleção **Zone axis** ativada: clique duplo esquerdo / <kbd>CTRL</kbd> + clique duplo esquerdo / <kbd>SHIFT</kbd> + clique duplo esquerdo no padrão | Adicionar um ponto de eixo de zona / remover o ponto a até 5 pixels de tela / selecionar esse ponto |
+| Com a seleção **Zone axis** ativada: clique duplo esquerdo / clique esquerdo / <kbd>CTRL</kbd> + clique direito no padrão | Adicionar um ponto de eixo de zona / selecionar o ponto a até 5 pixels de tela / remover o ponto a até 5 pixels de tela (as mesmas combinações da edição de pontos no [Spot ID v2](#11-spot-id-v2)) | <!-- 261124Cl 作者の決定で変更 (旧: CTRL + 左ダブルクリックで削除、SHIFT + 左ダブルクリックで選択) -->
 
 ### 20. Macro
 [Abrir página →](20-macro/index.md)

@@ -320,16 +320,16 @@ der Grenzen liegen</value>
     <value>Sym.-Elem.</value>
   </data>
   <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
-    <value>Hauptbild</value>
+    <value>Hauptbild...</value>
   </data>
   <data name="saveLegendToolStripMenuItem.Text" xml:space="preserve">
-    <value>Legende</value>
+    <value>Legende...</value>
   </data>
   <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Kristallachsen</value>
+    <value>Kristallachsen...</value>
   </data>
   <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
-    <value>Lichtrichtung</value>
+    <value>Lichtrichtung...</value>
   </data>
   <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
     <value>Bild speichern</value>
@@ -350,10 +350,10 @@ der Grenzen liegen</value>
     <value>Bild in Zwischenablage kopieren</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Hauptbild</value>
+    <value>Hauptbild...</value>
   </data>
   <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Kristallachsen</value>
+    <value>Kristallachsen...</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
     <value>Video speichern</value>
@@ -368,13 +368,13 @@ der Grenzen liegen</value>
     <value>Werkzeuge</value>
   </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>STRG+UMSCHALT+c:  Hauptbild in Zwischenablage kopieren</value>
+    <value>Ctrl + Shift + C : Das gerenderte Bild in die Zwischenablage kopieren</value>
   </data>
   <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>STRG+ Maus-Rechtsdoppelklick:  Perspektivische &lt;=&gt; orthogonale Projektion wechseln</value>
+    <value>Ctrl + rechter Doppelklick : Zwischen orthografischer und perspektivischer Projektion umschalten</value>
   </data>
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
-    <value>STRG+ Maus rechts auf/ab:  Grad der Perspektive ändern</value>
+    <value>Ctrl + Rechtsziehen nach oben/unten : Den Kameraabstand ändern (nur im Perspektivmodus)</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>Tastenkürzel-Hinweise</value>
@@ -897,5 +897,23 @@ der Ansicht (Ziehen mit rechter Maustaste/Mausrad).</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Strukturansicht</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Linksziehen in der Hauptansicht : Das Modell drehen</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Linker Doppelklick auf ein Atom : Die Koordinaten des angeklickten Atoms sowie die Abstände und Bindungswinkel der Nachbarn um es herum anzeigen</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rechtsziehen nach oben/unten oder Mausrad : Zoomen</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mittelziehen : Verschieben</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Linksziehen am Kristallachsen-Gizmo : Das Modell drehen (keine Drehung in der Ebene)</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Linksziehen am Licht-Gizmo : Die Beleuchtungsrichtung ändern</value>
   </data>
 </root>

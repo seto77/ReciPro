@@ -320,16 +320,16 @@
     <value>대칭 요소</value>
   </data>
   <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
-    <value>주 이미지</value>
+    <value>주 이미지...</value>
   </data>
   <data name="saveLegendToolStripMenuItem.Text" xml:space="preserve">
-    <value>범례</value>
+    <value>범례...</value>
   </data>
   <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>결정축</value>
+    <value>결정축...</value>
   </data>
   <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
-    <value>광원 방향</value>
+    <value>광원 방향...</value>
   </data>
   <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
     <value>이미지 저장</value>
@@ -350,10 +350,10 @@
     <value>이미지를 클립보드에 복사</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>주 이미지</value>
+    <value>주 이미지...</value>
   </data>
   <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>결정축</value>
+    <value>결정축...</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
     <value>동영상 저장</value>
@@ -368,13 +368,13 @@
     <value>도구</value>
   </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+SHIFT+c:  주 이미지를 클립보드에 복사</value>
+    <value>Ctrl + Shift + C : 렌더링된 이미지를 클립보드에 복사</value>
   </data>
   <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+ 마우스 오른쪽 더블클릭:  원근 &lt;=&gt; 직교 투영 번갈아 전환</value>
+    <value>Ctrl + 오른쪽 더블 클릭 : 정사영 / 원근 투영 전환</value>
   </data>
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
-    <value>CTRL+ 마우스 오른쪽 위/아래:  원근 정도 변경</value>
+    <value>Ctrl + 오른쪽 드래그 위/아래 : 카메라 거리 변경(원근 모드에서만)</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>단축키 힌트</value>
@@ -886,5 +886,23 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>구조 뷰어</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>메인 뷰 왼쪽 드래그 : 모델 회전</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>원자 왼쪽 더블 클릭 : 클릭한 원자의 좌표와, 그 주위 이웃 원자들의 거리 및 결합각 표시</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>오른쪽 드래그 위/아래, 또는 마우스 휠 : 확대/축소</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>가운데 드래그 : 이동</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>결정축 기즈모 왼쪽 드래그 : 모델 회전(평면 내 회전 없음)</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>광원 기즈모 왼쪽 드래그 : 조명 방향 변경</value>
   </data>
 </root>

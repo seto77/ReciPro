@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>將選取的晶體匯出為 CIF 檔案(&amp;E)</value>
+    <value>將選取的晶體匯出為 CIF 檔案...(&amp;E)</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
     <value>授權(&amp;L)</value>
@@ -132,7 +132,7 @@
     <value>檢查更新(&amp;C)</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>載入晶體清單（取代目前清單）(&amp;L)</value>
+    <value>載入晶體清單（取代目前清單）...(&amp;L)</value>
   </data>
   <data name="toolStripMenuItemDarkMode.Text" xml:space="preserve">
     <value>深色模式</value>
@@ -144,7 +144,7 @@
     <value>尤拉角</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
-    <value>匯出為 CIF(&amp;E)</value>
+    <value>匯出為 CIF...(&amp;E)</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
     <value>重設旋轉</value>
@@ -162,7 +162,7 @@
     <value>功能</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
-    <value>載入晶體清單（加入目前清單）(&amp;A)</value>
+    <value>載入晶體清單（加入目前清單）...(&amp;A)</value>
   </data>
   <data name="buttonClearAllCrystals.Text" xml:space="preserve">
     <value>清除所有晶體</value>
@@ -204,7 +204,7 @@
     <value>重設為初始晶體清單(&amp;R)</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>儲存晶體清單(&amp;S)</value>
+    <value>儲存晶體清單...(&amp;S)</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
     <value>下載 MKL 程式庫</value>
@@ -241,7 +241,7 @@
     <value>晶面</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>從 CIF 或 AMC 檔案匯入晶體(&amp;I)</value>
+    <value>從 CIF 或 AMC 檔案匯入晶體...(&amp;I)</value>
   </data>
   <data name="renameToolStripMenuItem.Text" xml:space="preserve">
     <value>重新命名(&amp;R)</value>

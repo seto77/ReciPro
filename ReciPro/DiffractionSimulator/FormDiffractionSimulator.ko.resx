@@ -230,28 +230,28 @@
     <value>개발자 코드</value>
   </data>
   <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>이미지로 (PNG 형식)</value>
+    <value>이미지로 (PNG 형식)...</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>메타파일로 (EMF)</value>
+    <value>메타파일로 (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>이미지 저장</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>이미지로 (PNG 형식)</value>
+    <value>이미지로 (PNG 형식)...</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>메타파일로 (EMF)</value>
+    <value>메타파일로 (EMF)...</value>
   </data>
   <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>검출기 영역 저장</value>
   </data>
   <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
-    <value>개별 이미지로 (PNG 형식)</value>
+    <value>개별 이미지로 (PNG 형식)...</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
-    <value>개별 이미지로 (TIFF 형식)</value>
+    <value>개별 이미지로 (TIFF 형식)...</value>
   </data>
   <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>통합 이미지로 (PNG 형식)</value>
@@ -287,10 +287,10 @@
     <value>CBED 디스크 복사</value>
   </data>
   <data name="toolStripMenuItemSaveMovieDiffractionPattern.Text" xml:space="preserve">
-    <value>회절 패턴</value>
+    <value>회절 패턴...</value>
   </data>
   <data name="toolStripMenuItemSaveMovieReciprocalSpace.Text" xml:space="preserve">
-    <value>역공간</value>
+    <value>역공간...</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>동영상 저장</value>
@@ -643,6 +643,7 @@ g 벡터의 길이)가 표시됩니다</value>
 왼쪽 드래그(화면 가장자리): 모니터에 수직한 축으로 회전
 오른쪽 클릭: 축소
 오른쪽 드래그: 선택 영역을 확대
+휠: 커서 위치를 중심으로 확대/축소
 가운데 드래그: 시뮬레이션 이미지를 드래그
 왼쪽 더블 클릭: g 벡터의 정보를 표시</value>
   </data>
@@ -1241,5 +1242,38 @@ nm²)를 대용했습니다.</value>
   </data>
   <data name="labelKikuchiQuality.Text" xml:space="preserve">
     <value>품질</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>단축키 힌트</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>중심 부근에서 왼쪽 드래그 : 결정을 기울입니다</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>외곽 영역에서 왼쪽 드래그 : 빔 축을 중심으로 결정을 돌립니다</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>스폿을 왼쪽 더블 클릭 : 반사 상세 정보 표시(지수, d, 구조 인자, 여기 오차)</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>가운데 드래그 : 패턴을 이동합니다</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 가운데 드래그 : 검출기 중심을 이동합니다(검출기 영역이 표시되어 있을 때)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>마우스 휠 : 한 칸마다 ×2로 확대 / 축소합니다. 커서 아래의 점이 보기 중앙으로 옵니다</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>오른쪽 클릭 : 축소 (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>오른쪽 드래그로 박스 지정 : 선택한 영역으로 확대</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>상태 표시줄을 오른쪽 더블 클릭 : 현재 설정의 텍스트 요약을 복사</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>켜진 레이어 버튼을 오른쪽 더블 클릭 : 해당 레이어를 깜빡이며 켜고 끔</value>
   </data>
 </root>

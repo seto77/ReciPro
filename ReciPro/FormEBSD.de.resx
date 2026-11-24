@@ -251,7 +251,7 @@ und Energieschwelle überein, entfällt der Monte-Carlo-Lauf.</value>
     <value>Datei</value>
   </data>
   <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Experimentelles Bild öffnen...</value>
+    <value>Experimentelles Bild laden...</value>
   </data>
   <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
     <value>Master-Pattern laden...</value>
@@ -1116,5 +1116,44 @@ Aus: Die Felder behalten Ihre Eingaben, und das Master-Pattern wird
 damit erstellt. Ein Bereich mit unterer Grenze nicht unter der oberen,
 einer Energie über E0 oder ohne Überlappung mit der Monte-Carlo-
 Verteilung wird mit einer Meldung abgelehnt.</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Tastenkürzel-Hinweise</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Muster nahe der Mitte links ziehen : Kristall kippen</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Im äußeren Bereich des Musters links ziehen : Kristall drehen</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mausrad auf / ab auf dem Muster : Hineinzoomen (×2) / Herauszoomen (×1/2) am Cursor</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rechtsklick / Rechtsziehen eines Rahmens auf dem Muster : Herauszoomen (×1/1.2) / in den Rahmen hineinzoomen</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Doppelklick auf das Muster : Die Detektor-Teilzelle unter dem Cursor auswählen und ihre Statistik anzeigen</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>In einer 3D-Ansicht links ziehen : Drehen</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rechts ziehen oder Mausrad in einer 3D-Ansicht : Zoomen</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + Rechtsdoppelklick in einer 3D-Ansicht : Orthografisch / perspektivisch umschalten</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ziehen / Mausrad auf dem 2D-Master-Muster : Bild verschieben / zoomen</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Linker Doppelklick (Zone axis ein) : Punkt hinzufügen</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Linksklick (Zone axis ein) : Punkt auswählen</value>
+  </data>
+  <data name="shortcutHint12ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + Rechtsklick (Zone axis ein) : Punkt entfernen</value>
   </data>
 </root>

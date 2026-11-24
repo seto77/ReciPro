@@ -16,7 +16,8 @@ Lo stereogramma in sé è una proiezione 2-D; una sfera 3-D opzionale può esser
 | Trascinamento sinistro vicino al centro | Inclina il cristallo |
 | Trascinamento sinistro nell'area esterna | Ruota il cristallo attorno all'asse di vista |
 | Doppio clic sinistro | Commuta tra la proiezione **Piani** e **Assi** |
-| Clic destro | Riduci lo zoom |
+| Rotellina del mouse su / giù | Ingrandisci (×2) / Riduci (×1/2) in corrispondenza del cursore |
+| Clic destro | Riduci lo zoom (×1/1.2) |
 | Trascinamento destro di un riquadro | Ingrandisci la regione selezionata |
 | Trascinamento centrale | Sposta la vista |
 | Muovi il mouse (senza pulsante) | Leggi i valori (hkl)/[uvw] sotto il cursore — utile per indicizzare un riflesso misurato (anche nell'emisfero inferiore) <!-- 261105Cl 監査: 下半球の読み取り (268779a1) --> |

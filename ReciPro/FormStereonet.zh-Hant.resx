@@ -69,13 +69,13 @@
     <value>複製為影像</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>另存為影像 (PNG 格式)</value>
+    <value>另存為影像 (PNG 格式)...</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>複製為中繼檔 (EMF)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>另存為中繼檔 (EMF)</value>
+    <value>另存為中繼檔 (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>儲存影像</value>
@@ -96,7 +96,7 @@
     <value>儲存影片</value>
   </data>
   <data name="toolStripMenuItemSaveMovieStereonet.Text" xml:space="preserve">
-    <value>極網</value>
+    <value>極網...</value>
   </data>
   <data name="groupBoxMode.Text" xml:space="preserve">
     <value>模式</value>
@@ -317,6 +317,7 @@
 左鍵拖曳（畫面邊緣）：繞垂直於螢幕的軸旋轉
 右鍵點擊：縮小
 右鍵拖曳：放大所選區域
+滾輪：以游標位置為中心放大/縮小
 中鍵拖曳：拖曳模擬影像
 </value>
   </data>
@@ -748,5 +749,32 @@ Ewald 球繞射列表的輻射源（電子/X射線等）
   </data>
   <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
     <value>顏色</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>快速鍵提示</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在中心附近左鍵拖曳 : 傾斜晶體</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>在外圍區域左鍵拖曳 : 使晶體繞視軸自旋</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>左鍵雙擊 : 在 晶面 與 軸 投影之間切換</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>滑鼠滾輪上 / 下 : 在游標處放大（×2）/ 縮小（×1/2）</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右鍵點按 : 縮小（×1/1.2）</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右鍵拖曳框選 : 放大至選取的區域</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>中鍵拖曳 : 平移</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>移動滑鼠（不按任何鍵） : 讀取游標下的 (hkl)/[uvw] — 對量測斑點的指標化很有用（下半球中亦可）</value>
   </data>
 </root>

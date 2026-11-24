@@ -132,7 +132,7 @@ Por exemplo, o botão **Peak Identification** no Spot ID v2 está oculto, ou a p
 
 **Solução**:
 
-- **Clique com o botão direito** na área de desenho principal para reduzir o zoom (essas vistas não têm zoom pela roda do mouse — consulte [21. Atalhos de teclado e mouse](21-shortcuts.md)).
+- **Clique com o botão direito** na área de desenho principal, ou gire a roda do mouse em sua direção, para reduzir o zoom (consulte [21. Atalhos de teclado e mouse](21-shortcuts.md)).
 - Verifique a energia da onda incidente no painel **Fonte de ondas** à direita: raios X ≈ 1–100 keV, elétrons ≈ 10–1000 keV são adequados.
 
 ---

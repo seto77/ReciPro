@@ -19,11 +19,14 @@ You build the spot list directly on the loaded image. The image pane uses ReciPr
 | Left-click a spot | Select the nearest spot |
 | <kbd>CTRL</kbd> + Right-click a spot | Delete the nearest spot |
 | <kbd>CTRL</kbd> + arrow keys | Nudge the selected spot by one pixel |
+| Hold <kbd>SHIFT</kbd> and left-click three spots in turn | Measure the angle on the image: end → vertex → end (e.g. ∠6–0–8). Lines, an arc and the value are drawn on the image, and the value (∠6–0–8 = 89.73°) appears in the status bar. <kbd>SHIFT</kbd> + left-click another spot to start a new measurement; <kbd>SHIFT</kbd> + left-click away from every spot, or <kbd>ESC</kbd>, clears it |
 | Left-drag / Middle-drag (empty area) | Pan the image |
 | Mouse wheel | Zoom in / out at the cursor |
 | Right-drag a box | Zoom in to the selected region |
-| Right double-click | Zoom out |
+| Right-click / Right double-click | Zoom out (×1/1.2; a double-click counts twice) |
 | Double-click a spot's row header (table) | Zoom to that spot (×2) |
+
+These combinations are also listed in the window's **Shortcut hints** menu.
 
 → See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
 
@@ -32,7 +35,7 @@ You build the spot list directly on the loaded image. The image pane uses ReciPr
 ## File menu
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSpotIDv1.Designer.cs (画像読み込み無し) / FormSpotIDV2.Designer.cs: saveToolStripMenuItem, copyToolStripMenuItem) -->
-Open a diffraction image; **Save** / **Copy** write the displayed image as a Metafile (EMF) or an image (PNG). Images can also be loaded by drag and drop. For a Gatan DM3/DM4 file calibrated in nm⁻¹, the radiation is set to electrons and the accelerating voltage and the pixel size (nm⁻¹) are read from the file (the camera length is not needed in that case).
+Open a diffraction image; **Save** / **Copy** write the displayed image as a Metafile (EMF) or an image (PNG). Images can also be loaded by drag and drop. TIFF images may be uncompressed or LZW-, Deflate (zip)- or PackBits-compressed. For a Gatan DM3/DM4 file calibrated in nm⁻¹, the radiation is set to electrons and the accelerating voltage and the pixel size (nm⁻¹) are read from the file (the camera length is not needed in that case).
 
 **Save ▸ Candidate list (CSV)...** exports the orientation candidates found by the indexing, and **Copy ▸ Candidate list (TSV)** puts the same table on the clipboard: one row per candidate × grain, with the rank, the grain index, the crystal name, the ZXZ Euler angles (°), the nine rotation-matrix elements, the mean-squared residual (nm⁻²), the number of assigned spots and the spot → (hkl) assignments. The CSV always uses a period as the decimal separator; the TSV can be pasted straight into a spreadsheet.
 
@@ -67,7 +70,7 @@ The window position and the calibration (source, energy, camera length, and the 
 - **Fitting range (radius)**: The radius (px) of the circular region used to fit each spot's peak. Pixels inside this circle are fitted with a pseudo-Voigt function.
 - **Apply to all**: Sets the fitting radius of every spot to the current **Fitting range (radius)** value.
 - **Delete / Clear all spots**: Remove the selected spot, or all detected spots.
-- **Save** / **Copy**: Save the spot table to a CSV file, or copy it to the clipboard as tab-separated text. Both work even with a single spot. The CSV always uses a period as the decimal separator and can be read back with **File ▸ Load** (an image must be loaded first; the spots are added to those already listed). <!-- 261105Cl 監査: GetSpotListText / readCSV (7f65908) --> <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSpotIDV2.Designer.cs / FormSpotIDV2.resx の ToolTip) -->
+- **Save** / **Copy**: Save the spot table to a CSV file, or copy it to the clipboard as tab-separated text. Both work even with a single spot. The CSV always uses a period as the decimal separator and can be read back with **File ▸ Load...** (an image must be loaded first; the spots are added to those already listed). <!-- 261105Cl 監査: GetSpotListText / readCSV (7f65908) --> <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSpotIDV2.Designer.cs / FormSpotIDV2.resx の ToolTip) -->
 - **Re-fit all**: Re-fit the positions and intensities of all detected spots.
 - **Show symbols** / **Show numbers**: Show marker symbols / numbers on the observed spots (both on by default).
 - **Global fit**: Perform a global fit of all spot positions at once (experimental).

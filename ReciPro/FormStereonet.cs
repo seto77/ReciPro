@@ -793,6 +793,13 @@ public partial class FormStereonet : FormBase
                 MouseRangeEnd = new Point(e.X, e.Y);
             return;
         }
+        // 261124Cl 追加 (codex2 査読): 回転の起点を今の表示の座標で取り直す。ホイールで中心・倍率を変えた直後にマウスを動かさず左を押すと、
+        //  起点がズーム前の座標のままで、最初のわずかな移動で結晶方位が跳んでいた
+        if (e.Button == MouseButtons.Left)
+        {
+            lastMousePositionSrc = convertClientToSrc(e.Location);
+            lastMousePositionClient = e.Location;
+        }
         if (e.Button == MouseButtons.Left && e.Clicks == 2)
         {
             if (radioButtonPlanes.Checked) radioButtonAxes.Checked = true;
@@ -813,8 +820,9 @@ public partial class FormStereonet : FormBase
             if (Math.Abs(MouseRangeEnd.X - MouseRangeStart.X) < 2 && Math.Abs(MouseRangeEnd.Y - MouseRangeStart.Y) < 2)
             {//選択範囲があまりに小さすぎたら縮小
                 centerPt = (ptStart + ptEnd) / 2;
-                mag *= 0.5;
-                if (mag < Math.Min(graphicsBox.ClientSize.Width / 2.4, graphicsBox.ClientSize.Height / 2.4))
+                //mag *= 0.5; // 261124Cl 変更前
+                mag /= GraphicsBox.ClickZoomOutFactor; // 261124Cl 変更 (作者の決定): 右クリックの縮小率を ReciPro の全表示で 1/1.2 に揃える
+                if (mag <= Math.Min(graphicsBox.ClientSize.Width / 2.4, graphicsBox.ClientSize.Height / 2.4)) // 261124Cl 変更 (旧 <): 下限ちょうどでもネット全体を中央に戻す (ホイールと同じ)
                 {
                     centerPt = new PointD(0, 0);
                     mag = Math.Min(graphicsBox.ClientSize.Width / 2.4, graphicsBox.ClientSize.Height / 2.4);
@@ -833,6 +841,22 @@ public partial class FormStereonet : FormBase
             MouseRangeEnd = new Point(-1, -1);
         }
         //formMain.ChangeRotMatrix(this);
+    }
+
+    /// <summary>261124Cl 追加 (作者の決定): ホイールでもズームする (回折シミュレーターと同じ向き・倍率。奥 = ×2、手前 = ×1/2、カーソル位置が新しい中心)。
+    /// 縮小の下限 (ネット全体が収まる倍率) と拡大の上限 (10000) は右ボタンのズームと同じ</summary>
+    private void graphicsBox_MouseWheel(object sender, MouseEventArgs e)
+    {
+        if (e.Delta == 0) return;
+        centerPt = convertClientToSrc(e.Location);
+        mag = Math.Min(mag * GraphicsBox.GetWheelZoomFactor(e.Delta), 10000);
+        var minMag = Math.Min(graphicsBox.ClientSize.Width / 2.4, graphicsBox.ClientSize.Height / 2.4);
+        if (mag <= minMag) // 下限ちょうどでもネット全体を中央に戻す
+        {
+            centerPt = new PointD(0, 0);
+            mag = minMag;
+        }
+        Draw();
     }
 
     private PointD lastMousePositionSrc = new();

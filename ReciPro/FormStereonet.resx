@@ -159,6 +159,7 @@
 Left drag (at the edge of the screen):  Rotate by the axis normal to monitor
 Right click: Zoom out
 Right-drag: Zoom in the selected area
+Wheel: Zoom in / out at the cursor
 Middle drag: Drag the simulated image
 </value>
   </data>
@@ -3688,7 +3689,7 @@ Ewald-sphere reflection list shown on the stereonet</value>
     <value>210, 22</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>as image (PNG format)</value>
+    <value>As image (PNG format)...</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Enabled" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3697,7 +3698,7 @@ Ewald-sphere reflection list shown on the stereonet</value>
     <value>210, 22</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>as metafile (EMF)</value>
+    <value>As metafile (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 22</value>
@@ -3733,7 +3734,7 @@ Ewald-sphere reflection list shown on the stereonet</value>
     <value>132, 22</value>
   </data>
   <data name="toolStripMenuItemSaveMovieStereonet.Text" xml:space="preserve">
-    <value>Stereonet</value>
+    <value>Stereonet...</value>
   </data>
   <data name="toolStripMenuItemSaveMovie3D.ShortcutKeyDisplayString" xml:space="preserve">
     <value />
@@ -3742,7 +3743,7 @@ Ewald-sphere reflection list shown on the stereonet</value>
     <value>132, 22</value>
   </data>
   <data name="toolStripMenuItemSaveMovie3D.Text" xml:space="preserve">
-    <value>3D</value>
+    <value>3D...</value>
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 22</value>
@@ -5515,5 +5516,137 @@ the cursor position on the stereonet.</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Shortcut hints</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Left-drag near the centre : Tilt the crystal</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Left-drag the outer area : Spin the crystal about the view axis</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Left double-click : Switch between Planes and Axes projection</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mouse wheel up / down : Zoom in (×2) / out (×1/2) at the cursor</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Right-click : Zoom out (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Right-drag a box : Zoom in to the selected region</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Middle-drag : Pan</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Move the mouse (no button) : Read off the (hkl)/[uvw] under the cursor</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 20</value>
+  </data>
+  <data name="&gt;&gt;shortcutHintsToolStripMenuItem.Name" xml:space="preserve">
+    <value>shortcutHintsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;shortcutHintsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 22</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint01ToolStripMenuItem.Name" xml:space="preserve">
+    <value>shortcutHint01ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint01ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 22</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint02ToolStripMenuItem.Name" xml:space="preserve">
+    <value>shortcutHint02ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint02ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 22</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint03ToolStripMenuItem.Name" xml:space="preserve">
+    <value>shortcutHint03ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint03ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 22</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint04ToolStripMenuItem.Name" xml:space="preserve">
+    <value>shortcutHint04ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint04ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 22</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint05ToolStripMenuItem.Name" xml:space="preserve">
+    <value>shortcutHint05ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint05ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 22</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint06ToolStripMenuItem.Name" xml:space="preserve">
+    <value>shortcutHint06ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint06ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 22</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint07ToolStripMenuItem.Name" xml:space="preserve">
+    <value>shortcutHint07ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint07ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 22</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint08ToolStripMenuItem.Name" xml:space="preserve">
+    <value>shortcutHint08ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;shortcutHint08ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

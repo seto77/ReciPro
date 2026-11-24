@@ -60,7 +60,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Ctrl + правый клик : удалить рефлекс</value>
+    <value>Ctrl + щелчок правой кнопкой по рефлексу : Удалить ближайший рефлекс</value>
+  </data>
+  <data name="toolStripMenuItemAngle.Text" xml:space="preserve">
+    <value>Удерживая Shift, щёлкнуть левой кнопкой по трём рефлексам по очереди : Измерить угол на изображении (конец → вершина → конец); Esc сбрасывает</value>
   </data>
   <data name="Column2.HeaderText" xml:space="preserve">
     <value>Пря- мой</value>
@@ -87,7 +90,7 @@
     <value>Размер пикселя</value>
   </data>
   <data name="doubleClickAddSpotToolStripMenuItem.Text" xml:space="preserve">
-    <value>Перетаскивание левой : перетащить изображение</value>
+    <value>Перетаскивание левой / средней кнопкой : Панорамирование</value>
   </data>
   <data name="noDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
     <value>№</value>
@@ -129,16 +132,16 @@
     <value>Найти &amp;&amp; подогнать рефлексы</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>Правый клик : уменьшить</value>
+    <value>Щелчок правой кнопкой / двойной щелчок правой кнопкой : Уменьшить масштаб (×1/1.2)</value>
   </data>
   <data name="numericBoxAcceptableError.HeaderText" xml:space="preserve">
     <value>Допустимая ошибка</value>
   </data>
   <data name="toolStripMenuItem7.Text" xml:space="preserve">
-    <value>Перетаскивание правой: увеличить</value>
+    <value>Перетаскивание правой кнопкой рамки : Увеличить масштаб до выбранной области</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>Ctrl + двойной левый клик : добавить прямой рефлекс</value>
+    <value>Ctrl + двойной щелчок левой кнопкой : Добавить рефлекс и пометить его как прямой (000) пучок</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>Стоп</value>
@@ -174,7 +177,7 @@
     <value>Название кристалла</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>как метафайл (EMF)</value>
+    <value>Как метафайл (EMF)...</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
     <value>Одно зерно</value>
@@ -201,7 +204,7 @@
     <value>Назначенные рефлексы</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>как изображение (формат PNG)</value>
+    <value>Как изображение (формат PNG)...</value>
   </data>
   <data name="groupBoxOptics.Text" xml:space="preserve">
     <value>Оптика</value>
@@ -216,7 +219,7 @@
     <value>Идентифицировать рефлексы</value>
   </data>
   <data name="loadToolStripMenuItem.Text" xml:space="preserve">
-    <value>Загрузить</value>
+    <value>Загрузить...</value>
   </data>
   <data name="noDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>№</value>
@@ -225,7 +228,7 @@
     <value>Сохранить</value>
   </data>
   <data name="toolStripMenuItem6.Text" xml:space="preserve">
-    <value>Левый клик : выбрать рефлекс</value>
+    <value>Щелчок левой кнопкой по рефлексу : Выбрать ближайший рефлекс</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.Text" xml:space="preserve">
     <value>Показать символ</value>
@@ -234,7 +237,7 @@
     <value>Копировать</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
-    <value>Двойной левый клик : добавить рефлекс</value>
+    <value>Двойной щелчок левой кнопкой по изображению : Добавить рефлекс (с подгонкой пика)</value>
   </data>
   <data name="buttonCopyToClipboard.Text" xml:space="preserve">
     <value>Копир.</value>
@@ -429,5 +432,14 @@
   </data>
   <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
     <value>Показать подробные параметры функции подгонки</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Колесо мыши вверх / вниз : Увеличить (×2) / уменьшить (×1/2) масштаб у курсора</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + клавиши со стрелками : Сдвинуть выбранный рефлекс на один пиксель</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Двойной щелчок по заголовку строки рефлекса : Масштабировать к этому рефлексу (×2)</value>
   </data>
 </root>

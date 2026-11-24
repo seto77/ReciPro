@@ -23,6 +23,8 @@ A vista central do padrão EBSD (de Kikuchi) e as vistas do master pattern do la
 | <kbd>F1</kbd> | Abrir esta página do manual on-line |
 | Arrastar com o botão esquerdo o padrão perto do centro | Inclinar o cristal |
 | Arrastar com o botão esquerdo a área externa do padrão | Girar o cristal |
+| Roda do mouse para cima / baixo no padrão | Ampliar (×2) / reduzir (×1/2) o zoom no cursor |
+| Clique direito / arrastar uma caixa com o botão direito no padrão | Reduzir o zoom (×1/1.2) / ampliar a caixa |
 | Clique duplo no padrão | Selecionar a subcélula do detector sob o cursor e mostrar suas estatísticas (enquanto a seleção **Zone axis** estiver ativada: adicionar um eixo de zona; veja [Seleção de eixos de zona](#zone-axis-picking)) |
 | Soltar um arquivo de imagem sobre a janela | Carregá-lo como imagem EBSD experimental |
 | Arrastar com o botão esquerdo uma vista 3D (geometria / esfera master) | Rotacionar |
@@ -205,7 +207,7 @@ A orientação que explica a imagem é então procurada por um de dois mecanismo
 
 Em vez de comparar a imagem inteira, a orientação também pode ser determinada a partir de interseções de bandas (eixos de zona) selecionadas manualmente na imagem experimental.
 
-- **Zone axis** : ativa a seleção. Enquanto estiver ativada, um clique duplo esquerdo no padrão adiciona um ponto, <kbd>CTRL</kbd> + clique duplo esquerdo remove o ponto a até 5 pixels de tela e <kbd>SHIFT</kbd> + clique duplo esquerdo seleciona um ponto (desenhado em amarelo; os demais ficam em ciano, numerados). Enquanto estiver desativada, o clique duplo seleciona uma célula do detector como de costume.
+- **Zone axis** : ativa a seleção. Enquanto estiver ativada, um clique duplo esquerdo no padrão adiciona um ponto, <kbd>CTRL</kbd> + clique direito remove o ponto a até 5 pixels de tela e um clique esquerdo seleciona o ponto a até 5 pixels de tela (desenhado em amarelo; os demais ficam em ciano, numerados). Enquanto estiver desativada, o clique duplo seleciona uma célula do detector como de costume.
 - **[u v w]** : o índice do eixo de zona do ponto selecionado. Deixe 0 0 0 para que a busca o atribua; digitar um índice restringe a busca (útil para cristais de baixa simetria e eixos de índices altos).
 - **+ geometry** : otimiza também o centro do detector (X, Y, Z, mm) junto com a orientação, minimizando o resíduo em pixels entre as posições previstas e selecionadas dos eixos de zona. Requer pelo menos 4 pontos atribuídos; ao selecionar um candidato, a geometria refinada também é aplicada.
 - **Find** : busca as orientações que explicam os eixos de zona selecionados (pelo menos 2 pontos; três costumam bastar, dois são ambíguos). A tolerância angular é de 2°, com nova tentativa a 5° se nada for encontrado. Até 10 candidatos são escritos na mesma tabela de candidatos, e clicar numa linha os aplica como acima.

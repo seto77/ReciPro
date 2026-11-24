@@ -344,13 +344,13 @@
     <value>模擬</value>
   </data>
   <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>為影像 (PNG 格式)</value>
+    <value>為影像 (PNG 格式)...</value>
   </data>
   <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>為影像 (TIFF 格式)</value>
+    <value>為影像 (TIFF 格式)...</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>為中繼檔 (EMF)</value>
+    <value>為中繼檔 (EMF)...</value>
   </data>
   <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
     <value>   序列影像模式下個別儲存 </value>
@@ -371,14 +371,14 @@
     <value>     疊印符號</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
-    <value>載入 TEM 參數</value>
+    <value>載入 TEM 參數...</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>從以「儲存 TEM 參數」儲存的檔案 (*.rpis) 讀取模擬條件。
 檔案中沒有的項目（例如舊版本的檔案）將設為預設值。</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
-    <value>儲存 TEM 參數</value>
+    <value>儲存 TEM 參數...</value>
   </data>
   <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>將目前的模擬條件（與預設設定相同的項目）儲存到 XML 檔案 (*.rpis)。
@@ -944,5 +944,32 @@ sin(theta)/lambda (nm^-1) 表示；
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
     <value>有效電子源尺寸 (FWHM)</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>快速鍵提示</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + C (聚焦於影像網格時) : 將影像以中繼檔 (metafile) 複製到剪貼簿</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>左鍵拖曳 / 中鍵拖曳 : 平移影像 (所有窗格一起移動)</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>滑鼠滾輪向上 / 向下 : 在游標處放大 (×2) / 縮小 (×1/2)</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>以右鍵拖曳出方框 : 放大至所選區域</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>右鍵點按 / 右鍵雙擊 : 縮小 (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 以右鍵拖曳出方框 : 選取矩形區域</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>左鍵雙擊某窗格 : 將該窗格最大化 / 還原格線 (多窗格版面)</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>移動滑鼠 (不按鍵) : 讀取游標處的位置 (pm) 與像素值</value>
   </data>
 </root>

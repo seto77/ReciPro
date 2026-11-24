@@ -69,13 +69,13 @@
     <value>Als Bild</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>als Bild (PNG-Format)</value>
+    <value>Als Bild (PNG-Format)...</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>als Metadatei (EMF)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>als Metadatei (EMF)</value>
+    <value>Als Metadatei (EMF)...</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Bild speichern</value>
@@ -96,7 +96,7 @@
     <value>Video speichern</value>
   </data>
   <data name="toolStripMenuItemSaveMovieStereonet.Text" xml:space="preserve">
-    <value>Stereonetz</value>
+    <value>Stereonetz...</value>
   </data>
   <data name="groupBoxMode.Text" xml:space="preserve">
     <value>Modus</value>
@@ -317,6 +317,7 @@ Intensität anwenden</value>
 Linksziehen (am Bildschirmrand):  Drehen um die zum Monitor senkrechte Achse
 Rechtsklick: Verkleinern
 Rechtsziehen: Gewählten Bereich vergrößern
+Mausrad: Vergrößern / Verkleinern an der Cursorposition
 Mittelziehen: Simuliertes Bild verschieben
 </value>
   </data>
@@ -748,5 +749,32 @@ die der Cursorposition auf dem Stereonetz am nächsten liegen.</value>
   </data>
   <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
     <value>Farbe</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Tastenkürzel-Hinweise</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Linksziehen nahe der Mitte : Den Kristall kippen</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Linksziehen im äußeren Bereich : Den Kristall um die Blickachse drehen</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Linksdoppelklick : Zwischen der Projektion Ebenen und Achsen umschalten</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mausrad auf / ab : Hineinzoomen (×2) / Herauszoomen (×1/2) am Cursor</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rechtsklick : Herauszoomen (×1/1.2)</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rechtsziehen eines Rahmens : In den ausgewählten Bereich hineinzoomen</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mittelziehen : Verschieben</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Maus bewegen (ohne Taste) : Die (hkl)/[uvw] unter dem Cursor ablesen</value>
   </data>
 </root>

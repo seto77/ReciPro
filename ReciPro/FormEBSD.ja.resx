@@ -572,10 +572,10 @@ Monte-Carlo を走らせません。</value>
     <value>ファイル</value>
   </data>
   <data name="openExperimentalImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>実測画像を開く...</value>
+    <value>実測画像を読込...</value>
   </data>
   <data name="loadMasterPatternToolStripMenuItem.Text" xml:space="preserve">
-    <value>マスターパターンを読み込む...</value>
+    <value>マスターパターンを読込...</value>
   </data>
   <data name="saveMasterPatternToolStripMenuItem.Text" xml:space="preserve">
     <value>マスターパターンを保存...</value>
@@ -1285,13 +1285,13 @@ E_c を編集した後は、分布を切り替えても入力値を保持しま�
   </data>
   <data name="checkBoxPickZoneAxis.ToolTip" xml:space="preserve">
     <value>実測パターン上のバンド交点 (晶帯軸) を拾います。
-左ダブルクリックで追加、Ctrl + 左ダブルクリックで
-画面上 5 px 以内の点を削除、Shift + 左ダブルクリックで
-点を選んで [u v w] を手入力できます。
+左ダブルクリックで追加、左クリックで画面上 5 px 以内の
+点を選んで [u v w] を手入力、Ctrl + 右クリックで
+点を削除できます。
 オフの間はダブルクリックで検出器セルを選びます。</value>
   </data>
   <data name="indexControlZoneAxis.ToolTip" xml:space="preserve">
-    <value>Shift + 左ダブルクリックで選んだ点の晶帯軸指数 [u v w]。
+    <value>左クリックで選んだ点の晶帯軸指数 [u v w]。
 0 0 0 のままなら探索が自動で割り当てます。指数を入れると
 探索の拘束条件になり、低対称の結晶や高指数の軸で効きます。</value>
   </data>
@@ -1593,5 +1593,44 @@ E_c を編集した後は、分布を切り替えても入力値を保持しま�
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>ショートカットヒント</value>
+  </data>
+  <data name="shortcutHint01ToolStripMenuItem.Text" xml:space="preserve">
+    <value>パターン中心付近を左ドラッグ : 結晶を傾ける</value>
+  </data>
+  <data name="shortcutHint02ToolStripMenuItem.Text" xml:space="preserve">
+    <value>パターン外周を左ドラッグ : 結晶を回す</value>
+  </data>
+  <data name="shortcutHint03ToolStripMenuItem.Text" xml:space="preserve">
+    <value>パターンでホイール上／下 : カーソル位置を中心にズームイン（×2）／ズームアウト（×1/2）</value>
+  </data>
+  <data name="shortcutHint04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>パターンを右クリック／右ドラッグで矩形 : ズームアウト（×1/1.2）／選択範囲にズームイン</value>
+  </data>
+  <data name="shortcutHint05ToolStripMenuItem.Text" xml:space="preserve">
+    <value>パターンをダブルクリック : カーソル位置の検出器セルを選択し統計を表示</value>
+  </data>
+  <data name="shortcutHint06ToolStripMenuItem.Text" xml:space="preserve">
+    <value>3Dビュー（幾何／マスター球）を左ドラッグ : 回転</value>
+  </data>
+  <data name="shortcutHint07ToolStripMenuItem.Text" xml:space="preserve">
+    <value>3Dビューを右ドラッグ、またはホイール : ズーム</value>
+  </data>
+  <data name="shortcutHint08ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 3Dビューを右ダブルクリック : 正射投影／透視投影の切替</value>
+  </data>
+  <data name="shortcutHint09ToolStripMenuItem.Text" xml:space="preserve">
+    <value>2Dマスターパターンをドラッグ／ホイール : 画像を平行移動／ズーム</value>
+  </data>
+  <data name="shortcutHint10ToolStripMenuItem.Text" xml:space="preserve">
+    <value>左ダブルクリック （晶帯軸がオン） : 点を追加</value>
+  </data>
+  <data name="shortcutHint11ToolStripMenuItem.Text" xml:space="preserve">
+    <value>左クリック （晶帯軸がオン） : 点を選択</value>
+  </data>
+  <data name="shortcutHint12ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ctrl + 右クリック （晶帯軸がオン） : 点を削除</value>
   </data>
 </root>
