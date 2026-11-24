@@ -144,7 +144,7 @@ The distance from the [projection center](#projection-center) (not from the orig
 
 #### Show bounding planes / Opacity
 
-Show or hide the bound planes themselves. When shown, **Opacity** sets transparency (0 = transparent, 1 = opaque).
+Show or hide the bound planes themselves. When shown, **Opacity** ranges from 0 (fully transparent) to 1 (fully opaque).
 
 #### Clip objects by bound planes
 

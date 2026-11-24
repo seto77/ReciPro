@@ -166,7 +166,7 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 | <kbd>CTRL</kbd> + Left double-click | Add a spot and mark it as the direct (000) beam |
 | Left-click a spot | Select the nearest spot |
 | <kbd>CTRL</kbd> + Right-click a spot | Delete the nearest spot |
-| <kbd>CTRL</kbd> + arrow keys | Nudge the selected spot by one pixel |
+| <kbd>CTRL</kbd> + arrow keys | Nudge the selected spot by one screen pixel |
 | Hold <kbd>SHIFT</kbd> and left-click three spots in turn | Measure the angle on the image (end → vertex → end); <kbd>SHIFT</kbd> + click away from the spots or <kbd>ESC</kbd> clears it |
 | Double-click a spot's row header | Zoom to that spot (×2) |
 

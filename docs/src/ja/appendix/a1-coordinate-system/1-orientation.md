@@ -24,7 +24,7 @@ ReciProで行う演算のほとんどは*方向*（すなわち3×3の回転行�
 
 ## 結晶の初期方位
 
-初期状態（初回起動時、または **Reset rotation** を押した後）の方位は次のように定義されます。
+初期状態（初回起動時、または **回転をリセット** を押した後）の方位は次のように定義されます。
 
 1. <span class="rp-blue">$c$</span>軸が<span class="rp-blue">$Z$</span>軸方向に一致
 2. <span class="rp-green">$b$</span>軸が<span class="rp-green">$Y$</span><span class="rp-blue">$Z$</span>平面上にあり、<span class="rp-green">$Y$</span>軸に近い方向

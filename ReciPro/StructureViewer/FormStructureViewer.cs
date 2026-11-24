@@ -1635,16 +1635,19 @@ public partial class FormStructureViewer : FormBase
         }
 
         if (bmp != null)
+        try // 261124Cl 追加: 保存・コピーで例外が出ても Bitmap を解放する (codex2 第 3 回)
         {
             if (name.Contains("save"))
             {
-                var dialog = new SaveFileDialog { Filter = "Picture File[*.png]|*.png;" };
+                //var dialog = new SaveFileDialog { Filter = "Picture File[*.png]|*.png;" }; // 261124Cl 変更前: ダイアログと Bitmap を解放していなかった (codex2 第 2 回 C2-24)
+                using var dialog = new SaveFileDialog { Filter = "Picture File[*.png]|*.png;" }; // 261124Cl
                 if (dialog.ShowDialog() == DialogResult.OK)
                     bmp.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
             }
             else
-                Clipboard.SetDataObject(bmp, true, 10, 100);
+                Clipboard.SetDataObject(bmp, true, 10, 100); // copy = true なのでこの後に解放してよい
         }
+        finally { bmp.Dispose(); } // 261124Cl 追加
     }
 
     #endregion イメージ保存orコピー

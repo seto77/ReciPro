@@ -81,7 +81,7 @@ ReciPro.DifSim.Energy = 200  # 200 keV
 ReciPro.DifSim.Calc_Kinematical()
 ReciPro.DifSim.SkipRendering = True  # バッチ処理中は描画をスキップ
 
-for i in range(80):  # 結晶数に合わせて変更
+for i in range(ReciPro.CrystalList.Count):  # 結晶リストの全結晶
     ReciPro.CrystalList.SelectedIndex = i
     name = ReciPro.Crystal.Name
     ReciPro.Dir.ProjectAlongAxis(0, 0, 1)  # [001] に投影

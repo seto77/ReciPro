@@ -89,7 +89,7 @@ where here $s$ is the **path length** along the trajectory (the variable of the 
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-with $J$ the **mean excitation energy** of the solid. This non-relativistic sketch shows the scaling only; ReciPro evaluates the modified **Jablonski (2008)** form, which stays well-behaved at low energy (the older **Joy–Luo (1989)** empirical form is also implemented). The **plasmon energy** $E_p$ in the scalar table is a related but separate characterisation of the same electronic excitations. The **inelastic mean free path** (IMFP) is the corresponding average distance between energy-losing collisions; ReciPro can evaluate it from the **TPP-2M** predictive formula,
+with $J$ the **mean excitation energy** of the solid. This non-relativistic sketch shows the scaling only; by default ReciPro evaluates the **relativistic Bethe** electron collision stopping power with the mean excitation energy $J$ replaced by the **Joy–Luo (1989)** substitution $J' = J/(1 + kJ/E)$ ($k = 0.0299\ln Z + 0.7307$, with $E$ and $J$ in keV; the modified **Jablonski (2008)** form and the original Joy–Luo empirical form are also implemented). The **plasmon energy** $E_p$ in the scalar table is a related but separate characterisation of the same electronic excitations. The **inelastic mean free path** (IMFP) is the corresponding average distance between energy-losing collisions; ReciPro can evaluate it from the **TPP-2M** predictive formula,
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 

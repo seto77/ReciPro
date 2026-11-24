@@ -124,7 +124,7 @@ Par exemple, le bouton **Peak Identification** dans Spot ID v2 est masqué, ou l
 
 ---
 
-## Simulateur de diffraction
+## Simulateur de diffraction {#diffraction-simulator}
 
 ### Symptôme : Le diagramme de diffraction est vide / rien n'est dessiné
 

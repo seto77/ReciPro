@@ -1245,8 +1245,13 @@ public partial class FormSpotIDV2 : FormBase
     private void buttonStop_Click(object sender, EventArgs e)
         => backgroundWorkerSpotID.CancelAsync();
 
+    //private void backgroundWorkerSpotID_DoWork(object sender, DoWorkEventArgs e) // 261124Cl 変更前: 停止 (CancelAsync) を e.Cancel に伝えず、途中までの候補を正常な結果として表に出していた (codex2 第 2 回 C2-15)
+    //    => e.Result = identifySpots((List<Crystal>)(e.Argument));
     private void backgroundWorkerSpotID_DoWork(object sender, DoWorkEventArgs e)
-        => e.Result = identifySpots((List<Crystal>)(e.Argument));
+    {
+        e.Result = identifySpots((List<Crystal>)(e.Argument));
+        if (backgroundWorkerSpotID.CancellationPending) e.Cancel = true; // 261124Cl 追加
+    }
 
     private void backgroundWorkerSpotID_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
@@ -1267,6 +1272,10 @@ public partial class FormSpotIDV2 : FormBase
                 MessageBox.Show(this, Localization.Loc(en: "Identification failed: ", ja: "同定に失敗しました: ", de: "Identifizierung fehlgeschlagen: ", // 261105Cl 追加
                     fr: "Échec de l'identification : ", es: "La identificación falló: ", pt: "A identificação falhou: ", it: "Identificazione non riuscita: ",
                     ru: "Ошибка идентификации: ", zhHans: "识别失败: ", zhHant: "識別失敗: ", ko: "식별 실패: ") + e.Error.Message);
+            else if (e.Cancelled) // 261124Cl 追加: 停止したときは表を書き換えない (前の候補を残す)。e.Cancelled のとき e.Result は読めない
+                toolStripStatusLabelIdentifySpot.Text = Localization.Loc(en: "  Identification stopped.", ja: "  同定を中止しました。", de: "  Identifizierung abgebrochen.",
+                    fr: "  Identification interrompue.", es: "  Identificación detenida.", pt: "  Identificação interrompida.", it: "  Identificazione interrotta.",
+                    ru: "  Идентификация остановлена.", zhHans: "  已停止识别。", zhHant: "  已停止識別。", ko: "  식별을 중지했습니다.");
             else if (e.Result is List<List<Grain>> candidates) // 261105Cl
             {
                 setCandidates(candidates); // 260801Cl 変更: 表への反映を setCandidates() へ (マクロの同期実行と共通化) // 261105Cl 字下げ
@@ -1426,6 +1435,7 @@ public partial class FormSpotIDV2 : FormBase
 
         if (radioButtonMultiGrain.Checked)
         {
+            candidates.Sort(compareCandidate); // 261124Cl 追加: 相ごとに並べた候補を相の順に連結したまま先頭 5 件へ切っていたので、2 番目以降の相の最良候補から始める枝が消えていた (codex2 第 2 回 C2-02)
             if (candidates.Count > 5)
                 candidates.RemoveRange(5, candidates.Count - 5);
             for (int n = 1; n < numericBoxMaxGrainNum.Value; n++)

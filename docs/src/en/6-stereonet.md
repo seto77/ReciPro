@@ -146,9 +146,9 @@ How the stereonet outline is drawn — the bounding circle and the optional grea
 
 #### Index labels
 
-- **Size** — size of the index labels.
-- **Specify color** — use a single fixed colour for all index labels instead of the per-spot colour, useful when the points are colour-coded but you want all labels in one colour for readability.
-- **Delimiter** — character placed between the indices in each label: **None** (e.g. 100), **Space** (1 0 0), or **Comma** (1,0,0).
+- **Size** : size of the index labels.
+- **Specify color** : use a single fixed colour for all index labels instead of the per-spot colour, useful when the points are colour-coded but you want all labels in one colour for readability.
+- **Delimiter** : character placed between the indices in each label: **None** (e.g. 100), **Space** (1 0 0), or **Comma** (1,0,0).
 
 #### Kikuchi line mode
 

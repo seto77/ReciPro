@@ -39,7 +39,7 @@
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormTrajectory.cs:EnergyThreshold = 2, DrawStatistics / Crystallography/EBSD/MonteCarlo.cs:MonteCarlo(thresholdKev)) -->
 電子は試料から出るか、エネルギーが **2 keV**（固定のしきい値）まで下がるまで追跡されます。2 keV より大きいエネルギーで試料から出た電子を後方散乱電子として数え、統計情報の η (全入射電子に対する割合)・平均エネルギー、ステレオネット、ヒストグラムはこれらの電子から求めます。統計情報の散乱断面積・平均自由行程・阻止能は、ビームエネルギーにおけるモデルの値です。
 
-散乱モデル自体はユーザーが選ぶものではありません。弾性散乱断面積は同梱の NIST Mott 表 (適用範囲外では遮蔽 Rutherford にフォールバック)、阻止能は Jablonski (2008) の修正形を使います。実際に使われたモデル名は **統計情報** の散乱断面積と阻止能の隣に表示されます。各モデルの中身は [減衰・輸送](appendix/a2-beam-interaction/attenuation-transport.md) を参照してください。
+散乱モデル自体はユーザーが選ぶものではありません。弾性散乱断面積は同梱の NIST Mott 表 (適用範囲外では遮蔽 Rutherford にフォールバック)、阻止能は Joy–Luo 補正付きの相対論的 Bethe 式を使います。実際に使われたモデル名は **統計情報** の散乱断面積と阻止能の隣に表示されます。各モデルの中身は [減衰・輸送](appendix/a2-beam-interaction/attenuation-transport.md) を参照してください。
 
 ### 3D の飛程表示
 

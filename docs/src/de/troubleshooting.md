@@ -124,7 +124,7 @@ Zum Beispiel ist die Schaltfläche **Peak Identification** in Spot ID v2 verdeck
 
 ---
 
-## Beugungssimulator
+## Beugungssimulator {#diffraction-simulator}
 
 ### Symptom: Das Beugungsmuster ist leer / es wird nichts gezeichnet
 

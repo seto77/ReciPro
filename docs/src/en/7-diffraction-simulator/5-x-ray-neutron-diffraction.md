@@ -104,7 +104,7 @@ Controls how each diffraction spot is rendered.
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:Draw (円で塗りつぶすとき / 点広がり関数で描画するとき)) -->
 - **Solid sphere / Gaussian** : geometric model of the reciprocal-lattice point. **Solid sphere** draws the cross-section between a sphere and the Ewald sphere; with **Kinematical & exc. error** the sphere radius is $R \times I_\text{rel}^{1/3}$ (so the sphere *volume* is proportional to the relative intensity), with **Only excitation error** it is *R* itself. **Gaussian** uses the cross-section between a 3-D Gaussian with σ = *R* and the Ewald sphere (the integral of the 2-D Gaussian corresponds to the diffraction intensity); spots with $\lvert S_g\rvert \ge 3R$ are not drawn.
-- **Opacity** : transparency of the spot (0 = transparent, 1 = opaque).
+- **Opacity** : opacity of the spot, from 0 (fully transparent) to 1 (fully opaque).
 - **Spot radius (R)** : radius of the reciprocal-lattice point. The rendered spot size is determined by the combination of **Appearance** and **Intensity calculation**.
 - **Brightness** : active only in **Gaussian** mode. Sets the integrated intensity of the rendered Gaussian. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.Designer.cs:comboBoxScaleColorScale / FormDiffractionSimulator.cs:comboBoxScaleColorScale_SelectedIndexChanged, radioButtonPointSpread_CheckedChanged) -->
 - **Color scale** (Gaussian only) : **Gray**, **Cold-warm**, **Spectrum** or **Fire**.

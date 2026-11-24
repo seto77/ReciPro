@@ -39,7 +39,7 @@ Changing **Sample tilt** or **Energy** after a run does not change the result sh
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormTrajectory.cs:EnergyThreshold = 2, DrawStatistics / Crystallography/EBSD/MonteCarlo.cs:MonteCarlo(thresholdKev)) -->
 An electron is tracked until it leaves the sample or its energy falls to **2 keV** (fixed threshold). Electrons that leave with more than 2 keV are counted as backscattered electrons; η (their fraction of all incident electrons), the average BSE energy, the stereonet and the histograms below are computed from these electrons. The cross section, mean free path and stopping power in **Statistics** are model values at the beam energy.
 
-The scattering models themselves are not user-selectable: the elastic cross sections come from the bundled NIST Mott table (falling back to screened Rutherford outside its range), and the stopping power from the modified Jablonski (2008) form. The model actually used is printed next to the cross section and the stopping power in **Statistics**. See [Attenuation & transport](appendix/a2-beam-interaction/attenuation-transport.md) for what these models are.
+The scattering models themselves are not user-selectable: the elastic cross sections come from the bundled NIST Mott table (falling back to screened Rutherford outside its range), and the stopping power from the relativistic Bethe formula with the Joy–Luo correction. The model actually used is printed next to the cross section and the stopping power in **Statistics**. See [Attenuation & transport](appendix/a2-beam-interaction/attenuation-transport.md) for what these models are.
 
 ### 3-D trajectory view
 

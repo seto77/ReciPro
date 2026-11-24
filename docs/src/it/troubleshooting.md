@@ -124,7 +124,7 @@ Ad esempio, il pulsante **Peak Identification** in Spot ID v2 è nascosto, oppur
 
 ---
 
-## Simulatore di diffrazione
+## Simulatore di diffrazione {#diffraction-simulator}
 
 ### Sintomo: la figura di diffrazione è vuota / non viene disegnato nulla
 

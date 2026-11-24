@@ -299,7 +299,7 @@ ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60,
 | `STEM.AngularResolution` | 収束ビームの角度分解能 (mrad) |
 | `STEM.SliceThickness` | TDS計算用のスライス厚さ (nm) |
 | `HRTEM.Mode_LinearImage()` | 線形像（準コヒーレント）モデルを使用 |
-| `HRTEM.Mode_TCC()` | TCC（透過相互係数）モデルを使用 |
+| `HRTEM.Mode_TCC()` | TCC（透過交差係数）モデルを使用 |
 
 ### 単一/シリーズ画像モード
 

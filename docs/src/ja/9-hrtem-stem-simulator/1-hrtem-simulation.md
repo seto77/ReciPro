@@ -134,7 +134,7 @@ $$E_\text{s}(u)=\exp\!\left[-\pi^2\beta^2u^2\left(\Delta f+C_s\lambda^2u^2\right
 | **開始 / 刻み / 個数** <!-- 261105Cl 監査 (組 K): numericBoxThickness/DefocusStart・Step・Num.HeaderText を訳した --> | 開始値・刻み幅・枚数。下のリスト欄に展開され、直接編集も可能 |
 | **横軸の方向** | 厚さとデフォーカスの両方をスイープしたとき、グリッドの横方向に並べる量（厚さ / デフォーカス） |
 
-厚さとデフォーカスの両方をスイープすると、行 × 列のマトリクス画像が生成されます。<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.Designer.cs:numericBoxThicknessNum / BuildPseudoGrid) -->**Num** はそれぞれ最大 20 です。一方だけをスイープして 3 枚以上になるときは、1 列ではなく正方形に近いグリッドに折り返して並べます。
+厚さとデフォーカスの両方をスイープすると、行 × 列のマトリクス画像が生成されます。<!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.Designer.cs:numericBoxThicknessNum / BuildPseudoGrid) -->厚さとデフォーカスの **個数** は、それぞれ最大 20 です。一方だけをスイープして 3 枚以上になるときは、1 列ではなく正方形に近いグリッドに折り返して並べます。
 
 ---
 

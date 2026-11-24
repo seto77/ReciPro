@@ -22,7 +22,7 @@ The screenshot above has **Show samples** turned on, displaying the built-in sam
 | Double-click a row in the function-help list | Insert that function's signature at the caret |
 | Drop a `.mcr` file on the window | <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMacro.cs:ReadMacroFile) --> Load it into the editor and add it to the macro list (the file name becomes the macro name) |
 
-**Run**, **Step**, and **Stop** are buttons (no key accelerator).
+**Run macro**, **Step by step**, and **Stop** are buttons (no key accelerator). After starting **Step by step**, advance with **Next step** (<kbd>F10</kbd>).
 
 → See **[21. Keyboard & mouse shortcuts](../21-shortcuts.md)** for every window at a glance.
 

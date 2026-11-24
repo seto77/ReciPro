@@ -124,7 +124,7 @@ Por exemplo, o botão **Peak Identification** no Spot ID v2 está oculto, ou a p
 
 ---
 
-## Simulador de difração
+## Simulador de difração {#diffraction-simulator}
 
 ### Sintoma: O padrão de difração está em branco / nada é desenhado
 

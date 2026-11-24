@@ -49,7 +49,7 @@ Look up the page you need from the combination of **Wave source** and **Optics**
 | Neutron | Parallel beam | Neutron diffraction | [neutron section of X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:WaveLengthControl_WaveSourceChanged, radioButtonBeamParallel_CheckedChanged; FormDiffractionSimulator.resx) -->
-> **Note**: The incident-beam (**Optics**) choices change with the wavelength. For electrons: **Parallel beam, Precession (electron), Convergence (electron)**; for X-rays: **Parallel beam, Precession (X-ray, ZOLZ), Back Laue (X-ray)**; for neutrons: **Parallel beam** only. Changing the wave source always resets the optics to **Parallel beam**. Selecting **Precession (electron)** or **Convergence (electron)** automatically switches the intensity calculation to **Dynamical theory**; **Dynamical theory** is offered only for electrons (selecting X-ray or neutron falls back to **Kinematical & exc. error**). Back Laue uses a white (polychromatic) beam.
+> **Note**: The incident-beam (**Optics**) choices depend on the radiation type. For electrons: **Parallel beam, Precession (electron), Convergence (electron)**; for X-rays: **Parallel beam, Precession (X-ray, ZOLZ), Back Laue (X-ray)**; for neutrons: **Parallel beam** only. Changing the wave source always resets the optics to **Parallel beam**. Selecting **Precession (electron)** or **Convergence (electron)** automatically switches the intensity calculation to **Dynamical theory**; **Dynamical theory** is offered only for electrons (selecting X-ray or neutron falls back to **Kinematical & exc. error**). Back Laue uses a white (polychromatic) beam.
 
 ---
 
@@ -70,7 +70,7 @@ These apply to the diffraction-pattern window shared by the X-ray, SAED, and PED
 | Right-click | Zoom out (×1/1.2) |
 | Right-drag a box | Zoom in to the selected region |
 | Right double-click the status bar | Copy a text summary of the current settings: crystal and Euler angles, source, energy, wavelength, optics, spot shape, intensity calculation (for **Dynamical** also the thickness, the number of diffracted waves and, for PED, the precession angle) and the detector geometry <!-- 261105Cl 監査: statusStrip1_MouseDown (C24) --> |
-| Right double-click a lit layer button (Spots / Kikuchi / Debye / Scale) | Blink that layer on and off |
+| Right double-click a lit layer button (**Spots** / **Kikuchi lines** / **Debye rings** / **Scale**) | Blink that layer on and off |
 
 These combinations are also listed in the window's **Shortcut hints** menu.
 

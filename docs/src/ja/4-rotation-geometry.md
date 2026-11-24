@@ -74,7 +74,7 @@ $$
 同じ行列 (\(R_{ij}\) = \(i\) 行 \(j\) 列) は次の場所に現れます:
 
 - このウィンドウの **エクセル形式でコピー** / **エクセル形式を貼り付け** (3 × 3 タブ区切り、上の行から順)
-- [マクロ API](20-macro/1-built-in-functions.md) の `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()`・`Dir.GetEuler()` (9 要素を行順 \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\) で列挙)
+- [マクロ API](20-macro/1-built-in-functions.md) の `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` (9 要素を行順 \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\) で列挙)・`Dir.GetEuler()` (\([\phi, \theta, \psi]\) の 3 要素をラジアンで返す)
 - [Spot ID v2](11-spot-id-v2.md) が保存する候補リストの **R11**–**R33** 列
 
 ### OpenGLウィンドウ

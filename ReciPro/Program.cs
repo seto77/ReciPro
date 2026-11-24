@@ -160,7 +160,8 @@ internal static class Program
         {
             // GuiCapture.CaptureSingleForm(args[1], args[2]); // 260820Cl 旧 (static)
             new GuiCapture().CaptureSingleForm(args[1], args[2]); // 260820Cl: インスタンス化
-            Environment.Exit(0);
+            //Environment.Exit(0); // 261124Cl 変更前: フォーム名が無いときハーネスが立てた終了コード 2 を 0 で上書きしていた (codex2 第 2 回 C2-25)
+            Environment.Exit(Environment.ExitCode); // 261124Cl 変更: --capture と同じ
         }
 
         Application.Run(new FormMain());

@@ -47,9 +47,10 @@ If none of these help, the cause may be the OS environment itself; please [open 
 
 **Solution**:
 
-1. Go to **Options ▸ Disable all OpenGL rendering (requires restart)** (or hold **Ctrl** while launching).
-2. Restart ReciPro.
-3. Structure Viewer and some 3D features will use software rendering.
+- To disable OpenGL for one launch only, hold **Ctrl** while starting ReciPro.
+- To keep it disabled, check **Options ▸ Disable all OpenGL rendering (requires restart)** and restart ReciPro.
+
+While OpenGL is disabled, the **Structure Viewer** and **Rotation Geometry** buttons of the main window are unavailable and the 3D axes of the main window are hidden.
 
 ### Symptom: Integrated or older GPU (Intel/AMD) fails to render
 
@@ -111,8 +112,7 @@ For example, the **Peak Identification** button in Spot ID v2 is hidden, or the 
 
 **Solution**:
 
-- Reduce **No. of Bloch waves** (50–200 is usually sufficient for routine calculations)
-- Use the **Eigen** solver for ≤ 500 waves; **MKL** for > 500 waves
+- Reduce **Diffracted waves** (start small and use the number beyond which the image or intensities no longer change; STEM may need more than 1000 waves)
 - Reduce image resolution for STEM simulations
 - Close other memory-intensive applications
 
@@ -120,11 +120,11 @@ For example, the **Peak Identification** button in Spot ID v2 is hidden, or the 
 
 **Cause**: Atomic temperature factors (B) are set to zero.
 
-**Solution**: Set B ≥ 0.5 Å² for all atoms. TDS intensity requires non-zero temperature factors.
+**Solution**: Check that no atomic displacement parameter is zero or missing, and enter known values (e.g. from the literature). TDS intensity requires non-zero temperature factors. If the values are unknown, B ≈ 0.5 Å² can be used for a trial calculation.
 
 ---
 
-## Diffraction simulator
+## Diffraction simulator {#diffraction-simulator}
 
 ### Symptom: The diffraction pattern is blank / nothing is drawn
 

@@ -35,7 +35,7 @@ Enter **Acc. voltage** (kV, default 200) and **Camera length** (mm, default 1000
 Enter the geometry of the diffraction spots.
 
 - To enter spot-to-spot distance on the detector, use the **mm** box.
-- If you know the *d*-value, enter it in **Å** or **nm⁻¹** units.
+- Enter the spacing *d* in the **Å** field, or the reciprocal length 1/*d* in the **nm⁻¹** field (e.g. *d* = 2.0 Å ↔ 1/*d* = 5.0 nm⁻¹).
 
 **Three sides mode** : Enter the lengths of the three sides of a triangle with the direct spot as one vertex.
 

@@ -82,7 +82,7 @@ ReciPro.DifSim.Energy = 200  # 200 keV
 ReciPro.DifSim.Calc_Kinematical()
 ReciPro.DifSim.SkipRendering = True
 
-for i in range(80):  # adjust to your crystal count
+for i in range(ReciPro.CrystalList.Count):  # every crystal in the list
     ReciPro.CrystalList.SelectedIndex = i
     name = ReciPro.Crystal.Name
     ReciPro.Dir.ProjectAlongAxis(0, 0, 1)

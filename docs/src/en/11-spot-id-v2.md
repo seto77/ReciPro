@@ -18,7 +18,7 @@ You build the spot list directly on the loaded image. The image pane uses ReciPr
 | <kbd>CTRL</kbd> + Left double-click | Add a spot and mark it as the direct (000) beam |
 | Left-click a spot | Select the nearest spot |
 | <kbd>CTRL</kbd> + Right-click a spot | Delete the nearest spot |
-| <kbd>CTRL</kbd> + arrow keys | Nudge the selected spot by one pixel |
+| <kbd>CTRL</kbd> + arrow keys | Nudge the selected spot by one screen pixel |
 | Hold <kbd>SHIFT</kbd> and left-click three spots in turn | Measure the angle on the image: end → vertex → end (e.g. ∠6–0–8). Lines, an arc and the value are drawn on the image, and the value (∠6–0–8 = 89.73°) appears in the status bar. <kbd>SHIFT</kbd> + left-click another spot to start a new measurement; <kbd>SHIFT</kbd> + left-click away from every spot, or <kbd>ESC</kbd>, clears it |
 | Left-drag / Middle-drag (empty area) | Pan the image |
 | Mouse wheel | Zoom in / out at the cursor |
@@ -87,7 +87,7 @@ The window position and the calibration (source, energy, camera length, and the 
 ![Index](../assets/cap-en-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
 
 - **Identify spots**: Run the indexing algorithm to find the best-matching crystal and zone axis. While it runs, a **Stop** button takes its place and interrupts the search. It needs a loaded image, at least two spots and at least one crystal selected in the crystal list of the main window; otherwise a message says what is missing. While Spot ID v2 is open, the main window's crystal list allows multiple selection. <!-- 261105Cl 監査: buttonIdentifySpots_Click (494ef52)、FormMain.cs の複数選択 (4020433) -->
-- **Acceptable error**: Relative d-spacing tolerance in % (0.1–10, default 2). The angle tolerance between spots is derived from it as asin(tolerance)/2. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSpotIDV2.cs: ToleranceLength / ToleranceAngle) -->
+- **Acceptable error**: Relative d-spacing tolerance in % (0.1–10, default 2). For a tolerance of *p* %, the angle tolerance between spots is ½ arcsin(*p*/100) rad (about 0.573° for the default 2 %). <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSpotIDV2.cs: ToleranceLength / ToleranceAngle) -->
 - **Ignore prohibited reflections** (default off; electron diffraction only): When checked, all systematically absent reflections, including those forbidden by screw axes and glide planes, are excluded from the candidate reflections. When unchecked, only the absences due to lattice centring (I, F, A, B, C, R) are excluded, so screw/glide-forbidden reflections that can appear through multiple diffraction remain candidates. For X-rays and neutrons all absent reflections are always excluded (kinematical treatment); the box is then shown checked and greyed out, and returns to its previous state when the source is set back to electrons. <!-- 261106Cl 作者の決定 I4 --> <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSpotIDV2.cs: SetGVector(..., checkBoxIgnoreMultipleDiffraction.Checked, ...) / PolyCrystal.cs: SetGVector) -->
 - **Single grain / Multiple grains**: Search for a single orientation (single crystal), or for several orientations (a polycrystalline / multi-grain region). For multiple grains, **Max. num. of grains** sets the upper limit on the number of grains to search for.
 - **Show zone axis** / **Show symbol** / **Show label**: Overlay the zone axis and the symbols / index labels of the calculated spots. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSpotIDV2.Designer.cs / FormSpotIDV2.resx の ToolTip) -->

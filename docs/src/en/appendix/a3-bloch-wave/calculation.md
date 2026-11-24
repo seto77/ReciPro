@@ -180,6 +180,6 @@ For STEM, check this together with the detector-angle setting. For CBED, inspect
 ## See also
 
 - [Appendix A3. Dynamical Diffraction by the Bloch-Wave Method](index.md)
-- [7.2. SAED simulation](../../7-diffraction-simulator/1-saed-simulation.md)
-- [7.4. CBED simulation](../../7-diffraction-simulator/3-cbed-simulation.md)
+- [7.1. SAED simulation](../../7-diffraction-simulator/1-saed-simulation.md)
+- [7.3. CBED simulation](../../7-diffraction-simulator/3-cbed-simulation.md)
 - [7. Diffraction simulator](../../7-diffraction-simulator/index.md)

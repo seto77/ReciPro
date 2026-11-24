@@ -1,13 +1,13 @@
 # 対称性情報 (Symmetry Information)
 
-**Symmetry Information** は、選択した結晶の空間群対称性の詳細情報を表示し、さらに*International Tables for Crystallography* Vol. A の様式に沿った対称要素・一般位置の模式図を描画します。
+**対称性情報** は、選択した結晶の空間群対称性の詳細情報を表示し、さらに*International Tables for Crystallography* Vol. A の様式に沿った対称要素・一般位置の模式図を描画します。
 
 ![対称性情報](../assets/cap-ja-auto/FormSymmetryInformation.png)
 
 ウィンドウは、空間群の情報（左上）、計算・表のタブ領域（右上）、2つの模式図（下部）から構成されます。
 
 !!! tip "対称性の理論的背景 (Appendix A4)"
-    ヘルマン・モーガン/Hall/シェーンフリース記号が実際に何を表しているか、**Properties**（群の性質）タブの群論的分類（中心対称・Sohncke・共型 (シンモルフィック)・極性、…）、下部の対称要素・一般位置模式図の意味、そして **Group Relations...**（群の関係）が示す群・部分群の関係は、すべて **[Appendix A4. 対称性と空間群](appendix/a4-symmetry-space-groups/index.md)** で説明しています。
+    ヘルマン・モーガン/Hall/シェーンフリース記号が実際に何を表しているか、**群の性質**タブの群論的分類（中心対称・Sohncke・共型 (シンモルフィック)・極性、…）、下部の対称要素・一般位置模式図の意味、そして **群の関係...**が示す群・部分群の関係は、すべて **[Appendix A4. 対称性と空間群](appendix/a4-symmetry-space-groups/index.md)** で説明しています。
 
 ---
 
@@ -23,14 +23,14 @@
 
 左上のパネルには、現在の空間群について以下が表示されます。
 
-- **Number**（1〜230）と設定インデックス
-- **Crystal System**（結晶系）
-- **Point Group**（点群） : ヘルマン・モーガン (HM) 記号とシェーンフリース (SF) 記号 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:LocalizeLabels (groupBoxPointGroup=点群)) -->
-- **Space Group**（空間群） : HM短縮記号・HM完全記号・SF記号・**Hall記号**
+- **番号**（1〜230）と設定インデックス
+- **結晶系**
+- **点群** : ヘルマン・モーガン (HM) 記号とシェーンフリース (SF) 記号 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:LocalizeLabels (groupBoxPointGroup=点群)) -->
+- **空間群** : HM短縮記号・HM完全記号・SF記号・**Hall記号**
 
 ---
 
-## Geometrics Calculation（幾何計算）
+## 幾何計算
 
 ![幾何計算](../assets/cap-ja-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageGeometrics.png)
 
@@ -45,7 +45,7 @@
 
 ---
 
-## Wyckoff Positions（ワイコフ位置）
+## ワイコフ位置
 
 ![ワイコフ位置](../assets/cap-ja-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
@@ -54,7 +54,7 @@
 
 ---
 
-## Conditions（反射条件）
+## 反射条件
 
 ![反射条件](../assets/cap-ja-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageConditions.png)
 
@@ -65,7 +65,7 @@
 
 ---
 
-## Operations（対称操作）
+## 対称操作
 
 ![対称操作](../assets/cap-ja-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageOperations.png)
 
@@ -75,7 +75,7 @@
 
 ---
 
-## Properties（群の性質）
+## 群の性質
 
 ![群の性質](../assets/cap-ja-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageProperties.png)
 
@@ -85,7 +85,7 @@
 
 ---
 
-## Settings（設定一覧）
+## 設定一覧
 
 ![設定一覧](../assets/cap-ja-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageSettings.png)
 

@@ -6,10 +6,10 @@ When ReciPro launches, the main window appears. From this window you select the 
 
 | Area | Location | Description |
 |------|----------|-------------|
-| **File menu** | Top | File operations, options, help |
+| **Menu bar** | Top | File operations, options, help |
 | **Rotation control** | Left | View/set crystal orientation |
-| **Crystal List** | Upper centre | Select and manage crystals |
-| **Crystal Information** | Lower centre | Edit lattice parameters, symmetry, atoms |
+| **Crystal list** | Upper centre | Select and manage crystals |
+| **Crystal information** | Lower centre | Edit lattice parameters, symmetry, atoms |
 | **Functions** | Right | Launch simulation/analysis windows |
 
 ---
@@ -41,7 +41,7 @@ The main window installs several **application-wide** shortcuts. They keep worki
 
 If you are new to ReciPro, refer to the following steps:
 
-1. Select the target crystal in **Crystal List**. To use a CIF/AMC file, drag and drop it into **Crystal Information**.
+1. Select the target crystal in **Crystal list**. To use a CIF/AMC file, drag and drop it into **Crystal information**.
 2. If you edit lattice parameters or atom positions, press **Add** or **Replace** so the changes are written back to the crystal list.
 3. Set the crystal orientation in **Rotation control** using a zone axis, crystal plane, Euler angles, or mouse dragging.
 4. Open the desired tool from **Functions**. Diffraction, HRTEM/STEM, EBSD, and other calculation windows use the currently selected crystal and orientation.

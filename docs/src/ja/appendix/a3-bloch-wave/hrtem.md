@@ -1,6 +1,6 @@
 # HRTEM 像形成
 
-HRTEM 像は、出射面の波動関数（[動力学コア](calculation.md) で求めた透過係数 $T_{\mathbf g}$）を対物レンズに通すことで形成されます。ReciPro は2つのモデルを用意しています：高速な **準コヒーレント**近似と、より厳密な **透過相互係数（TCC）** モデルです。GUI の説明は [HRTEM シミュレータ](../../9-hrtem-stem-simulator/1-hrtem-simulation.md) のページも参照してください。
+HRTEM 像は、出射面の波動関数（[動力学コア](calculation.md) で求めた透過係数 $T_{\mathbf g}$）を対物レンズに通すことで形成されます。ReciPro は2つのモデルを用意しています：高速な **準コヒーレント**近似と、より厳密な **透過交差係数（TCC）** モデルです。GUI の説明は [HRTEM シミュレータ](../../9-hrtem-stem-simulator/1-hrtem-simulation.md) のページも参照してください。
 
 ---
 
@@ -47,9 +47,9 @@ $$E_c(\mathbf u) = \exp\!\left[-\tfrac{1}{2}\left(\pi\lambda\Delta_0\, u^2\right
 
 ---
 
-## 透過相互係数（TCC）モデル
+## 透過交差係数（TCC）モデル
 
-部分コヒーレンスを厳密に扱うモデルです。すべての波の対 $(\mathbf g, \mathbf h)$ が透過相互係数を通して干渉します。
+部分コヒーレンスを厳密に扱うモデルです。すべての波の対 $(\mathbf g, \mathbf h)$ が透過交差係数を通して干渉します。
 
 $$I(\mathbf R) = \sum_{\mathbf g}\sum_{\mathbf h} T_{\mathbf g}\,T_{\mathbf h}^{*}\,\exp\!\left[2\pi i(\mathbf G-\mathbf H)\cdot\mathbf R\right]\mathrm{TCC}(\mathbf K+\mathbf G,\ \mathbf K+\mathbf H)$$
 

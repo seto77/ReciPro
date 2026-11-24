@@ -74,7 +74,7 @@ To apply it to crystallographic indices, first convert them to Cartesian coordin
 The same matrix, with \(R_{ij}\) = row \(i\), column \(j\), appears as:
 
 - **Copy to Excel** / **Paste from Excel** in this window (3 × 3, tab-separated, rows from top to bottom);
-- `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` and `Dir.GetEuler()` in the [macro API](20-macro/1-built-in-functions.md) (nine elements in row order \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\));
+- `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` in the [macro API](20-macro/1-built-in-functions.md) (nine elements in row order \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\)) and `Dir.GetEuler()` (returns the three angles \([\phi, \theta, \psi]\) in radians);
 - the columns **R11**–**R33** of the candidate list saved by [Spot ID v2](11-spot-id-v2.md).
 
 ### OpenGL windows

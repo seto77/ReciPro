@@ -914,7 +914,8 @@ public partial class FormImageSimulator : FormBase
         sw1.Restart();
         LastSimulationFailure = null; // 261118Cl 追加 (codex2 第 10 回)
         LastSimulationCompleted = false; // 261118Cl 追加 (codex2 第 11 回): 完了の通知の成功の枝で true
-        if (ThicknessArray == null || DefocusArray == null) return;
+        //if (ThicknessArray == null || DefocusArray == null) return; // 261124Cl 変更前: 空のリストで長さ 0 の配列を計算へ渡していた (HRTEM と同じ。codex2 第 3 回)
+        if (ThicknessArray is not { Length: > 0 } || DefocusArray is not { Length: > 0 }) return; // 261124Cl
 
         //ローテーション配列を作る //一辺が2.の正方形の中に一辺1/Nのピクセルを詰め込み、中心ピクセルが、円の中心とちょうど一致するような問題を考える
         //260718Cl 変更: List+spread を固定長配列に、円内ピクセル数 (stemDirectionTotal) も同じループで数える (旧: inside ローカル関数で全 index を再走査)
@@ -1245,7 +1246,8 @@ public partial class FormImageSimulator : FormBase
     {
         sw1.Restart();
 
-        if (ThicknessArray == null || DefocusArray == null) return;
+        //if (ThicknessArray == null || DefocusArray == null) return; // 261124Cl 変更前: 連続膜厚で欄が空だと長さ 0 の配列が返り、次の ThicknessArray[0] で例外になった (codex2 第 2 回 C2-11)
+        if (ThicknessArray is not { Length: > 0 } || DefocusArray is not { Length: > 0 }) return; // 261124Cl
 
         Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]);
 
