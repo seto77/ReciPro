@@ -24,7 +24,7 @@ A janela tem uma área de desenho do padrão de difração à **esquerda** e, à
 | **PED** | Difração de elétrons em precessão | [Simulação PED](2-ped-simulation.md) |
 | **CBED** | Difração de elétrons com feixe convergente | [Simulação CBED](3-cbed-simulation.md) |
 
-> **ALCHEMI não é um modo.** Ao contrário de raios X / SAED / PED / CBED, determinados pela combinação de comprimento de onda e feixe incidente, o simulador ALCHEMI é uma **janela filha** aberta pelo menu **Opções**, por isso é listado aqui separadamente.
+> **ALCHEMI não é um modo.** Ao contrário de raios X / SAED / PED / CBED, determinados pela combinação do tipo de radiação e da óptica do feixe incidente, o simulador ALCHEMI é uma **janela filha** aberta pelo menu **Opções**, por isso é listado aqui separadamente.
 
 | Janela filha | Conteúdo | Página |
 |------|------|------|
@@ -48,7 +48,7 @@ Localize a página de que precisa a partir da combinação de **Fonte de ondas**
 | Raios X | Retro-Laue (raios X) | Laue de retroreflexão | [Simulação de difração de raios X](5-x-ray-neutron-diffraction.md) |
 | Nêutrons | Feixe paralelo | Difração de nêutrons | [seção de nêutrons da Simulação de difração de raios X](5-x-ray-neutron-diffraction.md) |
 
-> **Nota**: As opções de feixe incidente (**Óptica**) mudam com o comprimento de onda. Para elétrons: **Feixe paralelo, Precessão (elétrons), Convergência (elétrons)**; para raios X: **Feixe paralelo, Precessão (raios X, ZOLZ), Retro-Laue (raios X)**; para nêutrons: apenas **Feixe paralelo**. Mudar a fonte de ondas sempre redefine a óptica para **Feixe paralelo**. Selecionar **Precessão (elétrons)** ou **Convergência (elétrons)** alterna automaticamente o cálculo de intensidade para **Teoria dinâmica**; a **Teoria dinâmica** só é oferecida para elétrons (ao selecionar raios X ou nêutrons, o cálculo volta para **Cinemático & erro exc.**). O Retro-Laue (Back Laue) usa um feixe branco (policromático).
+> **Nota**: As opções de feixe incidente (**Óptica**) dependem do tipo de radiação. Para elétrons: **Feixe paralelo, Precessão (elétrons), Convergência (elétrons)**; para raios X: **Feixe paralelo, Precessão (raios X, ZOLZ), Retro-Laue (raios X)**; para nêutrons: apenas **Feixe paralelo**. Mudar a fonte de ondas sempre redefine a óptica para **Feixe paralelo**. Selecionar **Precessão (elétrons)** ou **Convergência (elétrons)** alterna automaticamente o cálculo de intensidade para **Teoria dinâmica**; a **Teoria dinâmica** só é oferecida para elétrons (ao selecionar raios X ou nêutrons, o cálculo volta para **Cinemático & erro exc.**). O Retro-Laue (Back Laue) usa um feixe branco (policromático).
 
 ---
 

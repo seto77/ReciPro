@@ -197,7 +197,7 @@ STEM simulation is computationally expensive, so set the following parameters ap
 
 ## Importance of the temperature factor
 
-For HAADF-STEM simulation, atoms must have a non-zero isotropic temperature factor (Debye-Waller factor). Use known values (e.g. from the literature); if the value is unknown, $B \approx 0.5\ \text{Å}^2$ can be used for a trial calculation. With a zero temperature factor the TDS intensity is zero and the HAADF image is not computed correctly.
+For HAADF-STEM simulation, atoms must have a non-zero atomic displacement parameter (Debye-Waller factor; isotropic B or anisotropic). Use known values (e.g. from the literature); if the value is unknown, $B \approx 0.5\ \text{Å}^2$ can be used for a trial calculation. Sites with zero displacement do not contribute to TDS; if all sites have zero displacement, the TDS intensity is zero and the HAADF image is not computed correctly.
 
 | Detector | Range | Main contribution |
 |----------|-------|-------------------|

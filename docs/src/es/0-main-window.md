@@ -141,7 +141,7 @@ Rota por el ángulo **Paso** (por defecto 10°). ↺ / ↻ rotan en torno a la n
 
 ![Ver según](../assets/cap-es-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
-Alinea un eje de zona [*uvw*] o un plano cristalino (*hkl*) perpendicular a la pantalla.
+Alinea un eje de zona [*uvw*] o la normal a un plano cristalino (*hkl*) con la dirección de observación. En el segundo caso, el plano queda paralelo a la pantalla.
 
 - **Fijar**: cuando está marcada, todas las rotaciones posteriores (flechas, arrastre con el ratón) se realizan en torno al eje de zona o la normal del plano especificados, de modo que esa dirección permanece fija. Solo puede estar activa una de las dos casillas **Fijar**, y no se puede marcar mientras el índice sea 0 0 0.
 - **Eje**: coloca el eje de zona introducido \([uvw]\) perpendicular a la pantalla. Si además se establece **Plano** y el eje está contenido en ese plano ($uh+vk+wl=0$), la normal del plano apunta hacia arriba en la pantalla; en caso contrario, la dirección hacia arriba se elige automáticamente.
@@ -154,7 +154,7 @@ Alinea un eje de zona [*uvw*] o un plano cristalino (*hkl*) perpendicular a la p
 | Arrastrar con el ratón | Desea rotar libremente mientras observa los ejes del cristal. | Panel **Orientación actual** |
 | Botones de flecha | Desea rotaciones pequeñas y repetibles. | Panel **Flechas** |
 | Eje de zona | Conoce la dirección de visualización, como \([001]\) o \([110]\). | **Ver según** / entrada de eje de zona |
-| Normal del plano | Desea un plano cristalino \((hkl)\) normal a la pantalla. | **Ver según** / entrada de plano |
+| Normal del plano | Desea alinear la normal a un plano cristalino \((hkl)\) con la dirección de observación. El plano queda paralelo a la pantalla. | **Ver según** / entrada de plano |
 | Ángulos de Euler | Necesita una orientación numérica reproducible. | **Ángulos de Euler (Z-X-Z)** |
 
 Consulte [Geometría de rotación](4-rotation-geometry.md) y [Apéndice A1. Sistemas de coordenadas](appendix/a1-coordinate-system/1-orientation.md) para las matrices de rotación y las convenciones de coordenadas.

@@ -141,7 +141,7 @@ Gira pelo ângulo **Passo** (padrão 10°). ↺ / ↻ giram em torno da normal d
 
 ![Ver ao longo](../assets/cap-pt-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
-Alinha um eixo de zona [*uvw*] ou um plano cristalino (*hkl*) perpendicular à tela.
+Alinha um eixo de zona [*uvw*] ou a normal a um plano cristalino (*hkl*) com a direção de observação. No segundo caso, o plano fica paralelo à tela.
 
 - **Fixar**: quando marcado, todas as rotações subsequentes (setas, arrasto com o mouse) são realizadas em torno do eixo de zona ou da normal do plano especificados, de modo que essa direção permanece fixa. Apenas uma das duas caixas **Fixar** pode estar marcada, e ela não pode ser marcada enquanto o índice for 0 0 0.
 - **Eixo**: coloca o eixo de zona inserido \([uvw]\) perpendicular à tela. Se **Plano** também estiver definido e o eixo estiver contido nesse plano ($uh+vk+wl=0$), a normal do plano é apontada para cima na tela; caso contrário, uma direção para cima é escolhida automaticamente.
@@ -154,7 +154,7 @@ Alinha um eixo de zona [*uvw*] ou um plano cristalino (*hkl*) perpendicular à t
 | Arrastar com o mouse | Você quer girar livremente enquanto observa os eixos cristalinos. | Painel **Orientação atual** |
 | Botões de seta | Você quer rotações pequenas e repetíveis. | Painel **Setas** |
 | Eixo de zona | Você conhece a direção de observação, como \([001]\) ou \([110]\). | **Visualizar ao longo de** / entrada de eixo de zona |
-| Normal do plano | Você quer um plano cristalino \((hkl)\) normal à tela. | **Visualizar ao longo de** / entrada de plano |
+| Normal do plano | Você quer alinhar a normal a um plano cristalino \((hkl)\) com a direção de observação. O plano fica paralelo à tela. | **Visualizar ao longo de** / entrada de plano |
 | Ângulos de Euler | Você precisa de uma orientação numérica reproduzível. | **Ângulos de Euler (Z-X-Z)** |
 
 Consulte [Geometria de rotação](4-rotation-geometry.md) e [Apêndice A1. Sistemas de coordenadas](appendix/a1-coordinate-system/1-orientation.md) para as matrizes de rotação e as convenções de coordenadas.

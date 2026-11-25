@@ -17,7 +17,7 @@ Die Reflexliste erstellen Sie direkt auf dem geladenen Bild. Der Bildbereich nut
 | <kbd>CTRL</kbd> + linker Doppelklick | Einen Reflex hinzufügen und als direkten (000) Strahl markieren |
 | Linksklick auf einen Reflex | Den nächstgelegenen Reflex auswählen |
 | <kbd>CTRL</kbd> + Rechtsklick auf einen Reflex | Den nächstgelegenen Reflex löschen |
-| <kbd>CTRL</kbd> + Pfeiltasten | Den ausgewählten Reflex um ein Pixel verschieben |
+| <kbd>CTRL</kbd> + Pfeiltasten | Den ausgewählten Reflex um ein Bildschirmpixel verschieben |
 | <kbd>SHIFT</kbd> gedrückt halten und nacheinander drei Reflexe links anklicken | Den Winkel im Bild messen: Ende → Scheitel → Ende (z. B. ∠6–0–8). Linien, ein Bogen und der Wert werden ins Bild gezeichnet, und der Wert (∠6–0–8 = 89.73°) erscheint in der Statusleiste. <kbd>SHIFT</kbd> + Linksklick auf einen weiteren Reflex beginnt eine neue Messung; <kbd>ESC</kbd> löscht sie |
 | Linksziehen / Mittelziehen (leerer Bereich) | Das Bild verschieben |
 | Mausrad | Am Cursor hinein-/herauszoomen |
@@ -82,7 +82,7 @@ Die Fensterposition und die Kalibrierung (Strahlungsquelle, Energie, Kameraläng
 ![Index](../assets/cap-de-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
 
 - **Reflexe identifizieren**: Führt den Indizierungsalgorithmus aus, um den am besten passenden Kristall und die Zonenachse zu finden. Während der Suche tritt eine Schaltfläche **Stopp** an ihre Stelle, mit der die Suche abgebrochen wird. Erforderlich sind ein geladenes Bild, mindestens zwei Reflexe und mindestens ein in der Kristallliste des Hauptfensters ausgewählter Kristall; andernfalls meldet eine Nachricht, was fehlt. Solange Spot ID v2 geöffnet ist, erlaubt die Kristallliste des Hauptfensters Mehrfachauswahl. <!-- 261105Cl 監査: buttonIdentifySpots_Click (494ef52)、FormMain.cs の複数選択 (4020433) -->
-- **Zulässiger Fehler**: Relative Toleranz des Netzebenenabstands in % (0,1–10, Standard 2). Die Winkeltoleranz zwischen Reflexen wird daraus als asin(Toleranz)/2 abgeleitet.
+- **Zulässiger Fehler**: Relative Toleranz des Netzebenenabstands in % (0,1–10, Standard 2). Bei einer Eingabe von *p* % beträgt die Winkeltoleranz zwischen Reflexen ½ arcsin(*p*/100) rad (beim Standardwert von 2 % etwa 0,573°).
 - **Verbotene Reflexe ignorieren** (standardmäßig aus; nur Elektronenbeugung): Wenn aktiviert, werden alle systematisch ausgelöschten Reflexe, einschließlich der durch Schraubenachsen und Gleitspiegelebenen verbotenen, von den Kandidatenreflexen ausgeschlossen. Wenn deaktiviert, werden nur die Auslöschungen aufgrund der Gitterzentrierung (I, F, A, B, C, R) ausgeschlossen, sodass durch Schrauben-/Gleitspiegelsymmetrie verbotene Reflexe, die durch Mehrfachbeugung erscheinen können, Kandidaten bleiben. Für Röntgenstrahlen und Neutronen werden stets alle ausgelöschten Reflexe ausgeschlossen (kinematische Behandlung); das Kontrollkästchen wird dann aktiviert und ausgegraut angezeigt und kehrt in seinen vorherigen Zustand zurück, wenn die Quelle wieder auf Elektronen gestellt wird. <!-- 261106Cl 作者の決定 I4 -->
 - **Einzelkorn / Mehrere Körner**: Suche nach einer einzelnen Orientierung (Einkristall) oder nach mehreren Orientierungen (ein polykristalliner / Mehrkorn-Bereich). Für mehrere Körner legt **Max. Anzahl Körner** die Obergrenze für die Anzahl der zu suchenden Körner fest.
 - **Zonenachse anzeigen** / **Symbol anzeigen** / **Beschriftung anzeigen**: Die Zonenachse sowie die Symbole / Indexbeschriftungen der berechneten Reflexe einblenden.

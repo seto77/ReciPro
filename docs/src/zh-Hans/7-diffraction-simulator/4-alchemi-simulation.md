@@ -16,38 +16,14 @@ GUI 条件：波源 = 电子（晶体、加速电压与取向取自上级衍射�
 
 ## 计算的内容
 
-对每个入射取向，用布洛赫波法求解晶体内部的波场；对每一对位点 $s$ 与电离通道 $c$，将电离产额解析地积分到厚度 $t$。
+对每个入射取向，ReciPro 用布洛赫波法求解晶体内部的波场。对每一对位点与电离通道，沿厚度解析积分至 $t$，得到每个入射电子的电离产额。总产额为两项之和。
 
-$$
-Y_\text{dyn} = \mathrm{Re} \sum_{jj'} \alpha_j^{*}\,\bigl(C^{\dagger} \mu_{s,c} C\bigr)_{jj'}\, \alpha_{j'}\, F_{jj'}(t),
-\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda},
-\qquad \lambda = 2\pi i\left(\gamma_j - \overline{\gamma_{j'}}\right)
-$$
+- **沟道电离产额**来自相干布洛赫场在各位点原子处引起的电离。计算采用 **Bote–Salvat** 模型的电离总截面、**Temari** 生成的 DHFS 表中的归一化电离形状因子（与 [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md) 使用同一套表），并乘以德拜–沃勒因子，可计入各向异性原子位移。这相当于 ICSC（Oxley & Allen 2003）的**局域形状因子近似**。
+- **非沟道成分**来自因热漫散射吸收而脱离相干波场的电子。这些电子沿随机方向继续传播，在穿过样品剩余厚度时引起电离。
 
-其中 $\gamma_j$ 为[动力学核心](../appendix/a3-bloch-wave/calculation.md)中布洛赫波的本征值，$\alpha_j$ 为其激发振幅；在简并极限 $\lambda \to 0$ 下，$F_{jj'}(t) \to t$。
-
-电离矩阵 $\mu$ 仅取决于两个反射之差 $G = \mathbf{g}_h - \mathbf{g}_g$。
-
-$$
-\mu_{hg} = \sum_a \mathrm{Occ}_a\, e^{-M_a(G)}\, \sigma_c\, F_c(|G|/2)\, e^{-2\pi i\,G \cdot \mathbf{r}_a}
-$$
-
-- $\sigma_c$：电离总截面，采用 **Bote–Salvat** 模型
-- $F_c(s)$：归一化电离形状因子，来自 **Temari** 生成的 DHFS 表（与 [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md) 相同的表）
-- $e^{-M_a(G)}$：德拜–沃勒因子（支持各向异性 ADP）
-
-对 X 射线谱线系，$\sigma_c$ 是对其各支壳层 $i$ 的 $\sum_i B_i \sigma_i$，$F_c$ 是各支壳层形状因子以 $B_i \sigma_i$ 加权的平均（$B_i$ 为经 Coster–Kronig 与辐射级联后的荧光产额 × 线分支比；xraylib 4.2.1）。
-
-这相当于 ICSC（Oxley & Allen 2003）的**局域形状因子近似**。未使用双动量 MDFF。
+公式和符号定义见 [A3.6. ALCHEMI 计算](../appendix/a3-bloch-wave/alchemi.md)。
 
 ### 非沟道成分
-
-因热漫散射吸收而脱离相干布洛赫场的电子，会以方向随机化的电子形式走完剩余厚度，并在那里同样产生电离。
-
-$$
-Y_\text{dech} = \frac{\mu_{00}}{V_c}\,\bigl(t - L_\text{coh}(t)\bigr),
-\qquad L_\text{coh}(t) = \int_0^t \sum_g |\psi_g(z)|^2\,dz
-$$
 
 在**计算**框中取消勾选**包含非沟道成分**会去掉该项。在典型厚度下它占总产额的数十个百分点，省略后位点衬度会显得比实际更强。
 
@@ -95,7 +71,7 @@ $$
 |------|------|--------|
 | **最大衍射波数** | 每个取向的布洛赫波数上限（1–1600）。整个扫描的并集会更大 | 120 |
 | **求解器** | 本征值问题的计算引擎：**本机**（Eigen C++）或**托管**（.NET）。在本机求解器不可用的环境中，选择被固定为托管 | 本机 |
-| **包含非沟道成分** | 是否加上上述 $Y_\text{dech}$ | 开 |
+| **包含非沟道成分** | 是否加上非沟道成分（[A3.6](../appendix/a3-bloch-wave/alchemi.md) 中的 $Y_\text{dech}$） | 开 |
 | **角展宽** | 将曲线与入射束的角展宽做卷积：**无** 或 **Gaussian**（半高全宽，mrad）。这是取向轴上的后处理，在显示归一化**之前**应用 | 无 |
 
 **1600 波的上限与电离形状因子的收录范围 $s \le 16\ \text{Å}^{-1}$ 是配套的。** 实测表明即使 1600 波，基组所需的 $s$ 也只有约 10.5 Å⁻¹，因此只要遵守该上限就不会用尽收录范围。实际达到的数值显示在图下方[基组诊断](#基组诊断)框的第一行。
@@ -255,7 +231,7 @@ v1 的电离矩阵只是单一矢量 $G = \mathbf{g}_h - \mathbf{g}_g$ 的函数
 ### 模型前提
 
 - **仅限示踪近似**：位点响应的线性叠加只在掺杂原子不扰动弹性波场的稀薄极限下成立。有限浓度的 VCA 不在 v1 范围内
-- **局域形状因子近似**：$\mu$ 仅是 $G = \mathbf{g}_h - \mathbf{g}_g$ 的函数，而非双动量 MDFF（OAR 1999 的 Model A）。对轻元素 K 壳层与低能吸收边，该近似最弱（[见上](#local-approximation)）
+- **局域形状因子近似**：电离矩阵 $\mu$（见 [A3.6](../appendix/a3-bloch-wave/alchemi.md)）仅是 $G = \mathbf{g}_h - \mathbf{g}_g$ 的函数，而非双动量 MDFF（OAR 1999 的 Model A）。对轻元素 K 壳层与低能吸收边，该近似最弱（[见上](#local-approximation)）
 - **壳层通道是空穴，谱线系是产生的 X 射线光子**：只对谱线系乘以荧光产额与线分支（不含俄歇级联）
 - **加速电压下限为 80 kV**：这是能保证 $s = 16\ \text{Å}^{-1}$ 的最低电压，并非拒绝阈值
 

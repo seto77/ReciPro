@@ -16,38 +16,14 @@ La fenêtre présente **les réglages à gauche** (balayage, épaisseur, calcul,
 
 ## Ce qui est calculé
 
-Pour chaque orientation incidente, le champ d'onde dans le cristal est résolu par la méthode des ondes de Bloch, et pour chaque couple site $s$ / canal d'ionisation $c$ le rendement d'ionisation est intégré analytiquement jusqu'à l'épaisseur $t$.
+Pour chaque direction d'incidence, ReciPro calcule le champ d'onde dans le cristal par la méthode des ondes de Bloch. Pour chaque couple formé d'un site et d'un canal d'ionisation, il intègre analytiquement le rendement d'ionisation par électron incident jusqu'à l'épaisseur $t$. Le rendement est la somme de deux composantes.
 
-$$
-Y_\text{dyn} = \mathrm{Re} \sum_{jj'} \alpha_j^{*}\,\bigl(C^{\dagger} \mu_{s,c} C\bigr)_{jj'}\, \alpha_{j'}\, F_{jj'}(t),
-\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda},
-\qquad \lambda = 2\pi i\left(\gamma_j - \overline{\gamma_{j'}}\right)
-$$
+- Le **rendement par chenalisation** provient de l'ionisation produite par le champ de Bloch cohérent au niveau des atomes de chaque site. Le calcul utilise les sections efficaces totales d'ionisation du modèle **Bote–Salvat**, les facteurs de forme d'ionisation normalisés des tables DHFS générées par **Temari** (les mêmes que pour [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md)) et les facteurs de Debye-Waller, qui prennent en compte les déplacements atomiques anisotropes. Cela correspond à l'**approximation du facteur de forme local** d'ICSC (Oxley & Allen 2003).
+- La **composante déchenalisée** provient des électrons que l'absorption thermique diffuse retire du champ cohérent. Ils poursuivent leur trajet dans des directions aléatoires et ionisent des atomes dans l'épaisseur restante.
 
-où les $\gamma_j$ sont les valeurs propres des ondes de Bloch du [cœur dynamique](../appendix/a3-bloch-wave/calculation.md) et les $\alpha_j$ leurs amplitudes d'excitation ; $F_{jj'}(t) \to t$ dans la limite dégénérée $\lambda \to 0$.
-
-La matrice d'ionisation $\mu$ ne dépend que de la différence de deux réflexions, $G = \mathbf{g}_h - \mathbf{g}_g$.
-
-$$
-\mu_{hg} = \sum_a \mathrm{Occ}_a\, e^{-M_a(G)}\, \sigma_c\, F_c(|G|/2)\, e^{-2\pi i\,G \cdot \mathbf{r}_a}
-$$
-
-- $\sigma_c$ : section efficace totale d'ionisation, modèle **Bote–Salvat**
-- $F_c(s)$ : facteur de forme d'ionisation normalisé, tables DHFS générées par **Temari** (les mêmes tables que [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md))
-- $e^{-M_a(G)}$ : facteur de Debye-Waller (les ADP anisotropes sont pris en charge)
-
-Pour une série de raies X, $\sigma_c$ est $\sum_i B_i \sigma_i$ sur ses sous-couches $i$ et $F_c$ est la moyenne de leurs facteurs de forme pondérée par $B_i \sigma_i$, où $B_i$ est le rendement de fluorescence × le branchement des raies après les cascades Coster–Kronig et radiatives (xraylib 4.2.1).
-
-Cela correspond à l'**approximation du facteur de forme local** d'ICSC (Oxley & Allen 2003). La MDFF à deux impulsions n'est pas utilisée.
+Les formules et les définitions des symboles figurent dans [A3.6. Calcul ALCHEMI](../appendix/a3-bloch-wave/alchemi.md).
 
 ### Composante déchenalisée
-
-Les électrons retirés du champ de Bloch cohérent par l'absorption thermique diffuse parcourent l'épaisseur restante en tant qu'électrons de direction aléatoire, et y ionisent également.
-
-$$
-Y_\text{dech} = \frac{\mu_{00}}{V_c}\,\bigl(t - L_\text{coh}(t)\bigr),
-\qquad L_\text{coh}(t) = \int_0^t \sum_g |\psi_g(z)|^2\,dz
-$$
 
 Décocher **Inclure la composante déchenalisée** dans le cadre **Calcul** supprime ce terme. Il représente plusieurs dizaines de pour cent du rendement total aux épaisseurs usuelles ; l'omettre fait paraître le contraste de site plus fort qu'il ne l'est.
 
@@ -95,7 +71,7 @@ Le contraste de site varie fortement — et peut même changer de signe — entr
 |---------|-------------|--------|
 | **Ondes diffr. max.** | Borne supérieure du nombre d'ondes de Bloch par orientation (1–1600). L'union sur tout le balayage est plus grande | 120 |
 | **Solveur** | Moteur de calcul du problème aux valeurs propres : **Natif** (Eigen C++) ou **Managé** (.NET). Là où le solveur natif est indisponible, le choix est fixé à Managé | Natif |
-| **Inclure la composante déchenalisée** | Ajouter ou non $Y_\text{dech}$ ci-dessus | activé |
+| **Inclure la composante déchenalisée** | Ajouter ou non la composante déchenalisée ($Y_\text{dech}$ dans [A3.6](../appendix/a3-bloch-wave/alchemi.md)) | activé |
 | **Étalement angulaire** | Convolue la courbe avec l'étalement angulaire du faisceau incident : **Aucun** ou **Gaussian** avec une largeur à mi-hauteur en mrad. C'est un post-traitement sur l'axe des orientations, appliqué **avant** la normalisation d'affichage | Aucun |
 
 **Le plafond de 1600 faisceaux est le pendant de la plage tabulée $s \le 16\ \text{Å}^{-1}$ du facteur de forme d'ionisation.** En pratique, même 1600 faisceaux n'exigent qu'environ 10,5 Å⁻¹, de sorte que la plage tabulée n'est jamais épuisée tant que le plafond est respecté. La valeur réellement atteinte est indiquée sur la première ligne de la zone de [diagnostic de base](#diagnostic-de-base) sous le graphique.
@@ -256,7 +232,7 @@ L'énergie de la raie ne suffit pas à certifier un résultat : l'extension spat
 ### Hypothèses du modèle
 
 - **Approximation traceur uniquement** : la superposition linéaire des réponses de site n'est valable que dans la limite diluée où le dopant ne perturbe pas le champ d'onde élastique. La VCA à concentration finie est hors du périmètre de la v1
-- **Approximation du facteur de forme local** : $\mu$ n'est fonction que de $G = \mathbf{g}_h - \mathbf{g}_g$, et non de la MDFF à deux impulsions (Modèle A d'OAR 1999). L'approximation est la plus faible pour les couches K des éléments légers et les seuils de basse énergie — voir [ci-dessus](#local-approximation)
+- **Approximation du facteur de forme local** : la matrice d'ionisation $\mu$ ([A3.6](../appendix/a3-bloch-wave/alchemi.md)) n'est fonction que de $G = \mathbf{g}_h - \mathbf{g}_g$, et non de la MDFF à deux impulsions (Modèle A d'OAR 1999). L'approximation est la plus faible pour les couches K des éléments légers et les seuils de basse énergie — voir [ci-dessus](#local-approximation)
 - **Des lacunes pour les canaux de couche, des photons X générés pour les séries de raies** : le rendement de fluorescence et le branchement des raies ne sont appliqués qu'aux séries de raies, sans la cascade Auger
 - **La borne inférieure de la tension d'accélération est 80 kV** : c'est la tension la plus basse à laquelle $s = 16\ \text{Å}^{-1}$ peut être garanti, non un seuil de refus
 

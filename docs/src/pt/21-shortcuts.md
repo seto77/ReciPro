@@ -164,7 +164,7 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 | <kbd>CTRL</kbd> + clique duplo esquerdo | Adicionar um ponto e marcá-lo como feixe direto (000) |
 | Clique esquerdo em um ponto | Selecionar o ponto mais próximo |
 | <kbd>CTRL</kbd> + clique direito em um ponto | Excluir o ponto mais próximo |
-| <kbd>CTRL</kbd> + teclas de seta | Deslocar o ponto selecionado em um pixel |
+| <kbd>CTRL</kbd> + teclas de seta | Deslocar o ponto selecionado em um pixel da tela |
 | Segurar <kbd>SHIFT</kbd> e clicar com o botão esquerdo em três pontos em sequência | Medir o ângulo na imagem (extremo → vértice → extremo); <kbd>ESC</kbd> apaga |
 | Clique duplo no cabeçalho da linha de um ponto | Dar zoom nesse ponto (×2) |
 

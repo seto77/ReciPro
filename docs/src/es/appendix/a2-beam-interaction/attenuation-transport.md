@@ -89,7 +89,7 @@ donde aquí $s$ es la **longitud de recorrido** a lo largo de la trayectoria (la
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-con $J$ la **energía media de excitación** del sólido. Este esbozo no relativista muestra solo el escalado; ReciPro evalúa la forma de **Jablonski (2008)** modificada, que se mantiene bien comportada a baja energía (también está implementada la forma empírica más antigua de **Joy–Luo (1989)**). La **energía de plasmón** $E_p$ en la tabla escalar es una caracterización relacionada pero distinta de las mismas excitaciones electrónicas. El **recorrido libre medio inelástico** (IMFP) es la distancia media correspondiente entre colisiones con pérdida de energía; ReciPro puede evaluarlo a partir de la fórmula predictiva **TPP-2M**,
+con $J$ la **energía media de excitación** del sólido. Este esbozo no relativista muestra solo el escalado; por defecto, ReciPro calcula el poder de frenado por colisiones de los electrones con la **fórmula relativista de Bethe**, sustituyendo la energía media de excitación $J$ por $J' = J/(1 + kJ/E)$ según **Joy–Luo (1989)** ($k = 0.0299\ln Z + 0.7307$, con $E$ y $J$ en keV). También están implementadas la fórmula modificada de **Jablonski (2008)** y la fórmula empírica original de Joy–Luo. La **energía de plasmón** $E_p$ en la tabla escalar es una caracterización relacionada pero distinta de las mismas excitaciones electrónicas. El **recorrido libre medio inelástico** (IMFP) es la distancia media correspondiente entre colisiones con pérdida de energía; ReciPro puede evaluarlo a partir de la fórmula predictiva **TPP-2M**,
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 

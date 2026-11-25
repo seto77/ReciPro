@@ -32,7 +32,7 @@ Saisissez **Tension accél.** (kV, 200 par défaut) et **Longueur de caméra** (
 Saisissez la géométrie des taches de diffraction.
 
 - Pour saisir la distance entre deux taches sur le détecteur, utilisez le champ **mm**.
-- Si vous connaissez la valeur *d*, saisissez-la dans les unités **Å** ou **nm⁻¹**.
+- Saisissez la distance interréticulaire *d* dans le champ **Å**, ou la norme du vecteur du réseau réciproque 1/*d* dans le champ **nm⁻¹** (par exemple *d* = 2,0 Å ↔ 1/*d* = 5,0 nm⁻¹).
 
 **Mode Trois côtés** : Saisissez les longueurs des trois côtés d'un triangle dont l'un des sommets est le direct spot.
 

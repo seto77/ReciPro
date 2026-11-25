@@ -17,7 +17,7 @@ La lista de reflexiones se construye directamente sobre la imagen cargada. El pa
 | <kbd>CTRL</kbd> + doble clic izquierdo | Añadir una reflexión y marcarla como el haz directo (000) |
 | Clic izquierdo sobre una reflexión | Seleccionar la reflexión más cercana |
 | <kbd>CTRL</kbd> + clic derecho sobre una reflexión | Eliminar la reflexión más cercana |
-| <kbd>CTRL</kbd> + teclas de flecha | Desplazar la reflexión seleccionada un píxel |
+| <kbd>CTRL</kbd> + teclas de flecha | Desplazar la reflexión seleccionada un píxel de pantalla |
 | Mantener <kbd>SHIFT</kbd> y hacer clic izquierdo en tres reflexiones sucesivamente | Medir el ángulo en la imagen: extremo → vértice → extremo (p. ej. ∠6–0–8). Se dibujan líneas, un arco y el valor en la imagen, y el valor (∠6–0–8 = 89.73°) aparece en la barra de estado. <kbd>SHIFT</kbd> + clic izquierdo en otra reflexión inicia una nueva medición; <kbd>ESC</kbd> la borra |
 | Arrastrar con izquierdo / con central (área vacía) | Desplazar la imagen |
 | Rueda del ratón | Acercar/alejar el zoom en el cursor |
@@ -82,7 +82,7 @@ La posición de la ventana y la calibración (fuente, energía, longitud de cám
 ![Index](../assets/cap-es-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
 
 - **Identificar reflexiones**: Ejecuta el algoritmo de indexación para encontrar el cristal y el eje de zona que mejor coinciden. Mientras se ejecuta, un botón **Detener** ocupa su lugar e interrumpe la búsqueda. Necesita una imagen cargada, al menos dos reflexiones y al menos un cristal seleccionado en la lista de cristales de la ventana principal; si falta algo, un mensaje indica qué. Mientras Spot ID v2 está abierto, la lista de cristales de la ventana principal admite la selección múltiple. <!-- 261105Cl 監査: buttonIdentifySpots_Click (494ef52)、FormMain.cs の複数選択 (4020433) -->
-- **Error admisible**: Tolerancia relativa del espaciado interplanar, en % (0.1–10, por defecto 2). La tolerancia angular entre reflexiones se deriva de ella como asin(tolerancia)/2.
+- **Error admisible**: Tolerancia relativa del espaciado interplanar, en % (0.1–10, por defecto 2). Si se introduce *p* %, la tolerancia angular entre reflexiones es de ½ arcsin(*p*/100) rad (aproximadamente 0,573° para el valor por defecto del 2 %).
 - **Ignorar reflexiones prohibidas** (desactivado por defecto; solo difracción de electrones): Cuando está activado, todas las reflexiones sistemáticamente ausentes, incluidas las prohibidas por ejes helicoidales y planos de deslizamiento, se excluyen de las reflexiones candidatas. Cuando está desactivado, solo se excluyen las ausencias debidas al centrado de la red (I, F, A, B, C, R), de modo que las reflexiones prohibidas por ejes helicoidales o planos de deslizamiento que pueden aparecer por difracción múltiple siguen siendo candidatas. Para rayos X y neutrones siempre se excluyen todas las reflexiones ausentes (tratamiento cinemático); la casilla se muestra entonces marcada y atenuada, y vuelve a su estado anterior cuando la fuente vuelve a ser de electrones. <!-- 261106Cl 作者の決定 I4 -->
 - **Grano único / Múltiples granos**: Buscar una única orientación (monocristal) o varias orientaciones (una región policristalina / multigrano). Para varios granos, **Núm. máx. de granos** establece el límite superior del número de granos que se buscarán.
 - **Mostrar eje de zona** / **Mostrar símbolo** / **Mostrar etiqueta**: Superponen el eje de zona y los símbolos / etiquetas de índices de las reflexiones calculadas.

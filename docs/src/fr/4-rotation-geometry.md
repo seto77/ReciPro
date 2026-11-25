@@ -73,7 +73,7 @@ Pour l'appliquer à des indices cristallographiques, convertissez-les d'abord en
 La même matrice (\(R_{ij}\) = ligne \(i\), colonne \(j\)) apparaît dans :
 
 - **Copier vers Excel** / **Coller depuis Excel** dans cette fenêtre (3 × 3, séparée par tabulations, lignes de haut en bas) ;
-- `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` et `Dir.GetEuler()` dans l'[API de macros](20-macro/1-built-in-functions.md) (neuf éléments dans l'ordre des lignes \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\)) ;
+- `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` dans l'[API de macros](20-macro/1-built-in-functions.md) (neuf éléments dans l'ordre des lignes \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\)) et `Dir.GetEuler()` (renvoie les trois angles \([\phi, \theta, \psi]\) en radians) ;
 - les colonnes **R11**–**R33** de la liste de candidats enregistrée par [Spot ID v2](11-spot-id-v2.md).
 
 ### Fenêtres OpenGL

@@ -190,7 +190,7 @@ La simulation STEM est coûteuse en calcul, il convient donc de régler les para
 
 ## Importance du facteur de température
 
-Pour la simulation HAADF-STEM, les atomes doivent posséder un facteur de température isotrope (facteur de Debye-Waller) non nul. Si la valeur est inconnue, fixez $B \approx 0.5\ \text{Å}^2$. Avec un facteur de température nul, l'intensité TDS est nulle et l'image HAADF n'est pas calculée correctement.
+Pour la simulation HAADF-STEM, les atomes doivent posséder un facteur de température isotrope (facteur de Debye-Waller) non nul. Utilisez les valeurs connues, par exemple celles de la littérature. Si la valeur est inconnue, vous pouvez utiliser $B \approx 0.5\ \text{Å}^2$ pour un calcul d'essai. Avec un facteur de température nul, l'intensité TDS est nulle et l'image HAADF n'est pas calculée correctement.
 
 | Détecteur | Plage | Contribution principale |
 |----------|-------|-------------------|

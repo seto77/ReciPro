@@ -37,7 +37,7 @@ Cambiar **Inclinación de la muestra** o **Energía** después de una ejecución
 
 Cada electrón se sigue hasta que abandona la muestra o su energía cae a **2 keV** (umbral fijo). Los electrones que salen con más de 2 keV se cuentan como electrones retrodispersados; η (su fracción respecto de todos los electrones incidentes), la energía media de BSE, el estereograma y los histogramas descritos más abajo se calculan a partir de estos electrones. La sección eficaz, el recorrido libre medio y el poder de frenado de **Estadísticas** son valores del modelo a la energía del haz.
 
-Los modelos de dispersión en sí no son seleccionables por el usuario: las secciones eficaces elásticas proceden de la tabla de Mott del NIST incluida (con Rutherford apantallado como alternativa fuera de su rango), y el poder de frenado de la forma de Jablonski modificada (2008). El modelo realmente utilizado se indica junto a la sección eficaz y al poder de frenado en **Estadísticas**. Consulte [Atenuación y transporte](appendix/a2-beam-interaction/attenuation-transport.md) para saber en qué consisten estos modelos.
+Los modelos de dispersión en sí no son seleccionables por el usuario: las secciones eficaces elásticas proceden de la tabla de Mott del NIST incluida (con Rutherford apantallado como alternativa fuera de su rango), y el poder de frenado de la fórmula relativista de Bethe con la corrección de Joy–Luo. El modelo realmente utilizado se indica junto a la sección eficaz y al poder de frenado en **Estadísticas**. Consulte [Atenuación y transporte](appendix/a2-beam-interaction/attenuation-transport.md) para saber en qué consisten estos modelos.
 
 ### Vista 3-D de trayectorias
 

@@ -164,7 +164,7 @@ La Información de simetría no tiene combinaciones especiales de teclas/ratón.
 | <kbd>CTRL</kbd> + doble clic izquierdo | Añadir un spot y marcarlo como el haz directo (000) |
 | Clic izquierdo en un spot | Seleccionar el spot más cercano |
 | <kbd>CTRL</kbd> + clic derecho en un spot | Eliminar el spot más cercano |
-| <kbd>CTRL</kbd> + teclas de flecha | Desplazar el spot seleccionado un píxel |
+| <kbd>CTRL</kbd> + teclas de flecha | Desplazar el spot seleccionado un píxel de pantalla |
 | Mantener <kbd>SHIFT</kbd> y hacer clic izquierdo en tres spots sucesivamente | Medir el ángulo en la imagen (extremo → vértice → extremo); <kbd>ESC</kbd> lo borra |
 | Doble clic en el encabezado de fila de un spot | Acercar el zoom a ese spot (×2) |
 

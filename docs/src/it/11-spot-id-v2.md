@@ -17,7 +17,7 @@ L'elenco degli spot si costruisce direttamente sull'immagine caricata. Il riquad
 | <kbd>CTRL</kbd> + doppio clic sinistro | Aggiunge uno spot e lo contrassegna come fascio diretto (000) |
 | Clic sinistro su uno spot | Seleziona lo spot più vicino |
 | <kbd>CTRL</kbd> + clic destro su uno spot | Elimina lo spot più vicino |
-| <kbd>CTRL</kbd> + tasti freccia | Sposta lo spot selezionato di un pixel |
+| <kbd>CTRL</kbd> + tasti freccia | Sposta lo spot selezionato di un pixel sullo schermo |
 | Tenere premuto <kbd>SHIFT</kbd> e fare clic sinistro su tre spot in sequenza | Misura l'angolo sull'immagine: estremo → vertice → estremo (ad es. ∠6–0–8). Linee, un arco e il valore vengono disegnati sull'immagine e il valore (∠6–0–8 = 89.73°) compare nella barra di stato. <kbd>SHIFT</kbd> + clic sinistro su un altro spot avvia una nuova misura; <kbd>ESC</kbd> la cancella |
 | Trascinamento sinistro / centrale (area vuota) | Sposta l'immagine |
 | Rotellina del mouse | Zoom avanti / indietro alla posizione del cursore |
@@ -82,7 +82,7 @@ La posizione della finestra e la calibrazione (sorgente, energia, lunghezza di c
 ![Index](../assets/cap-it-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
 
 - **Identifica spot**: Esegue l'algoritmo di indicizzazione per trovare il cristallo e l'asse di zona che meglio corrispondono. Durante l'esecuzione al suo posto compare un pulsante **Arresta** che interrompe la ricerca. Richiede un'immagine caricata, almeno due spot e almeno un cristallo selezionato nell'elenco dei cristalli della finestra principale; altrimenti un messaggio indica cosa manca. Mentre Spot ID v2 è aperto, l'elenco dei cristalli della finestra principale consente la selezione multipla. <!-- 261105Cl 監査: buttonIdentifySpots_Click (494ef52)、FormMain.cs の複数選択 (4020433) -->
-- **Errore accettabile**: Tolleranza relativa sulla distanza interplanare in % (0,1–10, predefinito 2). La tolleranza sull'angolo tra gli spot ne viene derivata come asin(tolleranza)/2.
+- **Errore accettabile**: Tolleranza relativa sulla distanza interplanare in % (0,1–10, predefinito 2). Per un valore inserito di *p* %, la tolleranza sull'angolo tra gli spot è pari a ½ arcsin(*p*/100) rad (circa 0,573° per il valore predefinito del 2 %).
 - **Ignora riflessioni proibite** (disattivato per impostazione predefinita; solo diffrazione elettronica): Se selezionato, tutte le riflessioni sistematicamente estinte, comprese quelle proibite da assi elicoidali e piani di scorrimento, vengono escluse dalle riflessioni candidate. Se non selezionato, vengono escluse solo le estinzioni dovute alla centratura del reticolo (I, F, A, B, C, R), per cui le riflessioni proibite da assi elicoidali o piani di scorrimento, che possono comparire per diffrazione multipla, restano candidate. Per i raggi X e i neutroni tutte le riflessioni estinte vengono sempre escluse (trattazione cinematica); la casella appare allora spuntata e disattivata, e torna allo stato precedente quando la sorgente viene reimpostata su elettroni. <!-- 261106Cl 作者の決定 I4 -->
 - **Grano singolo / Grani multipli**: Cerca un singolo orientamento (monocristallo) oppure più orientamenti (una regione policristallina / multigrano). Per più grani, **N. max. di grani** imposta il limite superiore al numero di grani da cercare.
 - **Mostra asse di zona** / **Mostra simbolo** / **Mostra etichetta**: Sovrappone l'asse di zona e i simboli / le etichette degli indici degli spot calcolati.

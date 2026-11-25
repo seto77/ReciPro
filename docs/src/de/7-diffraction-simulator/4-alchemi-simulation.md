@@ -16,38 +16,14 @@ Das Fenster hat **links die Einstellungen** (Scan, Dicke, Berechnung, Ionisation
 
 ## Was berechnet wird
 
-Für jede einfallende Orientierung wird das Wellenfeld im Kristall mit der Bloch-Wellen-Methode gelöst, und für jedes Paar aus Platz $s$ und Ionisationskanal $c$ wird die Ionisationsausbeute analytisch bis zur Dicke $t$ integriert.
+Für jede Einfallsrichtung berechnet ReciPro das Wellenfeld im Kristall mit der Bloch-Wellen-Methode. Für jede Kombination aus Platz und Ionisationskanal wird die Ionisationsausbeute pro einfallendem Elektron bis zur Dicke $t$ analytisch integriert. Die Ausbeute setzt sich aus zwei Anteilen zusammen.
 
-$$
-Y_\text{dyn} = \mathrm{Re} \sum_{jj'} \alpha_j^{*}\,\bigl(C^{\dagger} \mu_{s,c} C\bigr)_{jj'}\, \alpha_{j'}\, F_{jj'}(t),
-\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda},
-\qquad \lambda = 2\pi i\left(\gamma_j - \overline{\gamma_{j'}}\right)
-$$
+- Der **Channelling-Anteil** entsteht durch die Ionisation, die das kohärente Bloch-Feld an den Atomen des jeweiligen Platzes bewirkt. Die Rechnung verwendet totale Ionisationsquerschnitte aus dem **Bote–Salvat**-Modell, normierte Ionisationsformfaktoren aus den von **Temari** erzeugten DHFS-Tabellen (wie bei [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md)) und Debye-Waller-Faktoren, die auch anisotrope Atomauslenkungen berücksichtigen. Dies entspricht der **lokalen Formfaktor-Näherung** von ICSC (Oxley & Allen 2003).
+- Zum **Dechannelling-Anteil** tragen Elektronen bei, die dem kohärenten Feld durch thermisch-diffuse Absorption entzogen wurden. Sie bewegen sich in zufälligen Richtungen weiter und ionisieren Atome auf ihrem Weg durch die verbleibende Probendicke.
 
-Dabei sind $\gamma_j$ die Bloch-Wellen-Eigenwerte des [dynamischen Kerns](../appendix/a3-bloch-wave/calculation.md) und $\alpha_j$ ihre Anregungsamplituden; im entarteten Grenzfall $\lambda \to 0$ gilt $F_{jj'}(t) \to t$.
-
-Die Ionisationsmatrix $\mu$ hängt nur von der Differenz zweier Reflexe ab, $G = \mathbf{g}_h - \mathbf{g}_g$.
-
-$$
-\mu_{hg} = \sum_a \mathrm{Occ}_a\, e^{-M_a(G)}\, \sigma_c\, F_c(|G|/2)\, e^{-2\pi i\,G \cdot \mathbf{r}_a}
-$$
-
-- $\sigma_c$ : totaler Ionisationsquerschnitt aus dem **Bote–Salvat**-Modell
-- $F_c(s)$ : normierter Ionisationsformfaktor aus von **Temari** erzeugten DHFS-Tabellen (dieselben Tabellen wie [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md))
-- $e^{-M_a(G)}$ : Debye-Waller-Faktor (anisotrope ADPs werden unterstützt)
-
-Für eine Röntgen-Linienserie ist $\sigma_c$ die Summe $\sum_i B_i \sigma_i$ über ihre Unterschalen $i$ und $F_c$ das mit $B_i \sigma_i$ gewichtete Mittel ihrer Formfaktoren; dabei ist $B_i$ Fluoreszenzausbeute × Linienverzweigung nach den Coster-Kronig- und Strahlungskaskaden (xraylib 4.2.1).
-
-Das entspricht der **lokalen Formfaktor-Näherung** von ICSC (Oxley & Allen 2003). Die Zwei-Impuls-MDFF wird nicht verwendet.
+Die Formeln und die Definitionen der Symbole stehen in [A3.6. ALCHEMI-Berechnung](../appendix/a3-bloch-wave/alchemi.md).
 
 ### Dechannelling-Anteil
-
-Elektronen, die durch thermisch-diffuse Absorption aus dem kohärenten Bloch-Feld entfernt werden, durchlaufen die restliche Dicke als richtungsmäßig randomisierte Elektronen und ionisieren auch dort.
-
-$$
-Y_\text{dech} = \frac{\mu_{00}}{V_c}\,\bigl(t - L_\text{coh}(t)\bigr),
-\qquad L_\text{coh}(t) = \int_0^t \sum_g |\psi_g(z)|^2\,dz
-$$
 
 Das Abwählen von **Dechannelling-Anteil einbeziehen** im Feld **Berechnung** lässt diesen Term entfallen. Er macht bei typischen Dicken mehrere zehn Prozent der Gesamtausbeute aus; wird er weggelassen, erscheint der Platzkontrast stärker, als er ist.
 
@@ -95,7 +71,7 @@ Der Platzkontrast ändert sich zwischen dünnen und dicken Proben stark und kann
 |---------|--------------|----------|
 | **Gebeugte Wellen** | Obergrenze der Zahl der Bloch-Wellen pro Orientierung (1–1600). Die Vereinigung über den gesamten Scan ist größer | 120 |
 | **Löser** | Rechenkern für das Eigenwertproblem: **Nativ** (Eigen C++) oder **Verwaltet** (.NET). Wo der native Löser nicht verfügbar ist, wird die Auswahl auf Verwaltet festgelegt | Nativ |
-| **Dechannelling-Anteil einbeziehen** | Ob $Y_\text{dech}$ (oben) addiert wird | ein |
+| **Dechannelling-Anteil einbeziehen** | Ob der Dechannelling-Anteil ($Y_\text{dech}$ in [A3.6](../appendix/a3-bloch-wave/alchemi.md)) addiert wird | ein |
 | **Winkelverbreiterung** | Faltet die Kurve mit der Winkelverbreiterung des einfallenden Strahls: **Keine** oder **Gaussian** mit einer Halbwertsbreite in mrad. Ein Nachbearbeitungsschritt auf der Orientierungsachse, angewendet **vor** der Anzeigenormierung | Keine |
 
 **Die Obergrenze von 1600 Strahlen ist das Gegenstück zum tabellierten Bereich $s \le 16\ \text{Å}^{-1}$ des Ionisationsformfaktors.** In der Praxis erfordern selbst 1600 Strahlen nur etwa 10,5 Å⁻¹, sodass der tabellierte Bereich bei Einhaltung der Obergrenze nie ausgeschöpft wird. Der tatsächlich erreichte Wert steht in der ersten Zeile des Felds [Basisdiagnose](#basisdiagnose) unter dem Diagramm.
@@ -256,7 +232,7 @@ Die Energie der Linie allein kann ein Ergebnis nicht absichern: Die räumliche A
 ### Modellannahmen
 
 - **Nur Tracer-Näherung** : Die lineare Überlagerung von Platzantworten gilt nur im verdünnten Grenzfall, in dem das Dotierungsatom das elastische Wellenfeld nicht stört. VCA bei endlicher Konzentration liegt außerhalb des Umfangs von v1
-- **Lokale Formfaktor-Näherung** : $\mu$ ist allein eine Funktion von $G = \mathbf{g}_h - \mathbf{g}_g$, nicht die Zwei-Impuls-MDFF (Modell A von OAR 1999). Die Näherung ist bei K-Schalen leichter Elemente und niederenergetischen Kanten am schwächsten — siehe [oben](#local-approximation)
+- **Lokale Formfaktor-Näherung** : Die Ionisationsmatrix $\mu$ ([A3.6](../appendix/a3-bloch-wave/alchemi.md)) ist allein eine Funktion von $G = \mathbf{g}_h - \mathbf{g}_g$, nicht die Zwei-Impuls-MDFF (Modell A von OAR 1999). Die Näherung ist bei K-Schalen leichter Elemente und niederenergetischen Kanten am schwächsten — siehe [oben](#local-approximation)
 - **Löcher für Schalenkanäle, erzeugte Röntgenphotonen für Linienserien** : Fluoreszenzausbeute und Linienverzweigung werden nur bei den Linienserien angewendet, ohne die Auger-Kaskade
 - **Die untere Grenze der Beschleunigungsspannung liegt bei 80 kV** : Das ist die niedrigste Spannung, bei der $s = 16\ \text{Å}^{-1}$ garantiert werden kann, keine Ablehnungsschwelle
 

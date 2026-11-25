@@ -141,7 +141,7 @@ Dreht um den Winkel Schritt (Standard 10°). ↺ / ↻ drehen um die Bildschirmn
 
 ![Blick entlang](../assets/cap-de-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
-Richtet eine Zonenachse [*uvw*] oder eine Kristallebene (*hkl*) senkrecht zum Bildschirm aus.
+Richtet eine Zonenachse [*uvw*] oder die Normale einer Kristallebene (*hkl*) in Blickrichtung aus. Im zweiten Fall liegt die Ebene parallel zum Bildschirm.
 
 - **Fest**: Wenn aktiviert, werden alle nachfolgenden Drehungen (Pfeile, Ziehen mit der Maus) um die angegebene Zonenachse bzw. Ebenennormale ausgeführt, sodass diese Richtung fest bleibt. Nur eines der beiden **Fest**-Kästchen kann aktiv sein, und es lässt sich nicht aktivieren, solange der Index 0 0 0 ist.
 - **Achse**: Stellt die eingegebene Zonenachse \([uvw]\) senkrecht zum Bildschirm. Wenn zusätzlich **Ebene** gesetzt ist und die Achse in dieser Ebene liegt ($uh+vk+wl=0$), wird die Ebenennormale auf dem Bildschirm nach oben ausgerichtet; andernfalls wird eine Aufwärtsrichtung automatisch gewählt.
@@ -154,7 +154,7 @@ Richtet eine Zonenachse [*uvw*] oder eine Kristallebene (*hkl*) senkrecht zum Bi
 | Ziehen mit der Maus | Sie frei drehen möchten, während Sie die Kristallachsen beobachten. | Panel **Orientierung** |
 | Pfeilschaltflächen | Sie kleine, wiederholbare Drehungen möchten. | Panel **Pfeile** |
 | Zonenachse | Sie die Blickrichtung kennen, etwa \([001]\) oder \([110]\). | **Blick entlang** / Zonenachsen-Eingabe |
-| Ebenennormale | Sie eine Kristallebene \((hkl)\) senkrecht zum Bildschirm möchten. | **Blick entlang** / Ebenen-Eingabe |
+| Ebenennormale | Sie möchten die Normale einer Kristallebene \((hkl)\) in Blickrichtung ausrichten. Die Ebene liegt dann parallel zum Bildschirm. | **Blick entlang** / Ebenen-Eingabe |
 | Euler-Winkel | Sie eine reproduzierbare numerische Orientierung benötigen. | **Euler-Winkel (Z-X-Z)** |
 
 Siehe [Rotationsgeometrie](4-rotation-geometry.md) und [Anhang A1. Koordinatensysteme](appendix/a1-coordinate-system/1-orientation.md) für die Rotationsmatrizen und Koordinatenkonventionen.

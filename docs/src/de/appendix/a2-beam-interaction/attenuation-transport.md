@@ -89,7 +89,7 @@ wobei hier $s$ die **Weglänge** entlang der Trajektorie ist (die Variable der *
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-mit $J$ der **mittleren Anregungsenergie** des Festkörpers. Diese nichtrelativistische Skizze zeigt nur die Skalierung; ReciPro wertet die modifizierte **Jablonski (2008)**-Form aus, die bei niedriger Energie gutartig bleibt (die ältere empirische **Joy–Luo (1989)**-Form ist ebenfalls implementiert). Die **Plasmonenenergie** $E_p$ in der Skalartabelle ist eine verwandte, aber getrennte Charakterisierung derselben elektronischen Anregungen. Die **inelastische mittlere freie Weglänge** (IMFP) ist die entsprechende mittlere Distanz zwischen energieverlustbehafteten Stößen; ReciPro kann sie aus der **TPP-2M**-Vorhersageformel auswerten,
+mit $J$ der **mittleren Anregungsenergie** des Festkörpers. Diese nichtrelativistische Skizze zeigt nur die Skalierung; standardmäßig berechnet ReciPro das Stoßbremsvermögen für Elektronen mit der **relativistischen Bethe-Formel** und ersetzt dabei die mittlere Anregungsenergie $J$ nach **Joy–Luo (1989)** durch $J' = J/(1 + kJ/E)$ ($k = 0.0299\ln Z + 0.7307$, $E$ und $J$ in keV). Die modifizierte Formel von **Jablonski (2008)** und die ursprüngliche empirische Formel von Joy–Luo sind ebenfalls implementiert. Die **Plasmonenenergie** $E_p$ in der Skalartabelle ist eine verwandte, aber getrennte Charakterisierung derselben elektronischen Anregungen. Die **inelastische mittlere freie Weglänge** (IMFP) ist die entsprechende mittlere Distanz zwischen energieverlustbehafteten Stößen; ReciPro kann sie aus der **TPP-2M**-Vorhersageformel auswerten,
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 

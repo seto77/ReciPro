@@ -164,7 +164,7 @@ Symmetrieinformationen haben keine besonderen Tasten-/Mauskombinationen. In der 
 | <kbd>CTRL</kbd> + Links-Doppelklick | Einen Reflex hinzufügen und als direkten (000) Strahl markieren |
 | Linksklick auf einen Reflex | Den nächstgelegenen Reflex auswählen |
 | <kbd>CTRL</kbd> + Rechtsklick auf einen Reflex | Den nächstgelegenen Reflex löschen |
-| <kbd>CTRL</kbd> + Pfeiltasten | Den gewählten Reflex um ein Pixel verschieben |
+| <kbd>CTRL</kbd> + Pfeiltasten | Den gewählten Reflex um ein Bildschirmpixel verschieben |
 | <kbd>SHIFT</kbd> gedrückt halten und nacheinander drei Reflexe links anklicken | Den Winkel im Bild messen (Ende → Scheitel → Ende); <kbd>ESC</kbd> löscht ihn |
 | Doppelklick auf den Zeilenkopf eines Reflexes | Zu diesem Reflex zoomen (×2) |
 

@@ -164,7 +164,7 @@ Les Informations de symétrie n'ont pas de combinaisons clavier/souris particuli
 | <kbd>CTRL</kbd> + double-clic gauche | Ajouter une tache et la marquer comme faisceau direct (000) |
 | Clic gauche sur une tache | Sélectionner la tache la plus proche |
 | <kbd>CTRL</kbd> + clic droit sur une tache | Supprimer la tache la plus proche |
-| <kbd>CTRL</kbd> + touches fléchées | Déplacer la tache sélectionnée d'un pixel |
+| <kbd>CTRL</kbd> + touches fléchées | Déplacer la tache sélectionnée d'un pixel à l'écran |
 | Maintenir <kbd>SHIFT</kbd> et cliquer (gauche) sur trois taches successivement | Mesurer l'angle sur l'image (extrémité → sommet → extrémité) ; <kbd>ESC</kbd> l'efface |
 | Double-clic sur l'en-tête de ligne d'une tache | Zoomer sur cette tache (×2) |
 

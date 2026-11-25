@@ -17,7 +17,7 @@ Vous construisez la liste des taches directement sur l'image chargée. Le volet 
 | <kbd>CTRL</kbd> + double-clic gauche | Ajouter une tache et la marquer comme faisceau direct (000) |
 | Clic gauche sur une tache | Sélectionner la tache la plus proche |
 | <kbd>CTRL</kbd> + clic droit sur une tache | Supprimer la tache la plus proche |
-| <kbd>CTRL</kbd> + touches fléchées | Déplacer la tache sélectionnée d'un pixel |
+| <kbd>CTRL</kbd> + touches fléchées | Déplacer la tache sélectionnée d'un pixel à l'écran |
 | Maintenir <kbd>SHIFT</kbd> et cliquer (gauche) sur trois taches successivement | Mesurer l'angle sur l'image : extrémité → sommet → extrémité (p. ex. ∠6–0–8). Des lignes, un arc et la valeur sont dessinés sur l'image, et la valeur (∠6–0–8 = 89.73°) s'affiche dans la barre d'état. <kbd>SHIFT</kbd> + clic gauche sur une autre tache commence une nouvelle mesure ; <kbd>ESC</kbd> l'efface |
 | Glisser gauche / Glisser milieu (zone vide) | Déplacer l'image |
 | Molette de la souris | Zoomer / dézoomer au curseur |
@@ -82,7 +82,7 @@ La position de la fenêtre et l'étalonnage (source, énergie, longueur de camé
 ![Index](../assets/cap-fr-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
 
 - **Identifier les taches** : Exécute l'algorithme d'indexation pour trouver le cristal et l'axe de zone qui correspondent le mieux. Pendant l'exécution, un bouton **Arrêter** prend sa place et interrompt la recherche. Il faut une image chargée, au moins deux taches et au moins un cristal sélectionné dans la liste des cristaux de la fenêtre principale ; sinon, un message indique ce qui manque. Tant que Spot ID v2 est ouvert, la liste des cristaux de la fenêtre principale permet la sélection multiple. <!-- 261105Cl 監査: buttonIdentifySpots_Click (494ef52)、FormMain.cs の複数選択 (4020433) -->
-- **Erreur acceptable** : Tolérance relative sur la distance interréticulaire en % (0.1–10, 2 par défaut). La tolérance angulaire entre taches en est déduite sous la forme asin(tolérance)/2.
+- **Erreur acceptable** : Tolérance relative sur la distance interréticulaire en % (0.1–10, 2 par défaut). Pour une valeur saisie de *p* %, la tolérance angulaire entre taches vaut ½ arcsin(*p*/100) rad (environ 0,573° pour la valeur par défaut de 2 %).
 - **Ignorer les réflexions interdites** (désactivé par défaut ; diffraction électronique uniquement) : Lorsque cette option est cochée, toutes les réflexions systématiquement éteintes, y compris celles interdites par les axes hélicoïdaux et les plans de glissement, sont exclues des réflexions candidates. Lorsqu'elle est décochée, seules les extinctions dues au centrage du réseau (I, F, A, B, C, R) sont exclues, de sorte que les réflexions interdites par hélice/glissement qui peuvent apparaître par diffraction multiple restent candidates. Pour les rayons X et les neutrons, toutes les réflexions éteintes sont toujours exclues (traitement cinématique) ; la case est alors affichée cochée et grisée, et revient à son état précédent lorsque la source repasse aux électrons. <!-- 261106Cl 作者の決定 I4 -->
 - **Grain unique / Grains multiples** : Recherche d'une orientation unique (monocristal), ou de plusieurs orientations (une région polycristalline / à grains multiples). Pour plusieurs grains, **Nb max. de grains** définit la limite supérieure du nombre de grains à rechercher.
 - **Afficher l'axe de zone** / **Afficher le symbole** / **Afficher l'étiquette** : Superposer l'axe de zone ainsi que les symboles / étiquettes d'indices des taches calculées.

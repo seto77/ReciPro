@@ -16,38 +16,14 @@ La ventana tiene **los ajustes a la izquierda** (barrido, espesor, cálculo, can
 
 ## Qué se calcula
 
-Para cada orientación incidente se resuelve el campo de ondas dentro del cristal con el método de ondas de Bloch, y para cada par de sitio $s$ y canal de ionización $c$ el rendimiento de ionización se integra analíticamente hasta el espesor $t$.
+Para cada dirección de incidencia, ReciPro calcula el campo de ondas dentro del cristal mediante el método de ondas de Bloch. Para cada par de sitio y canal de ionización, integra analíticamente el rendimiento de ionización por electrón incidente hasta el espesor $t$. El rendimiento es la suma de dos componentes.
 
-$$
-Y_\text{dyn} = \mathrm{Re} \sum_{jj'} \alpha_j^{*}\,\bigl(C^{\dagger} \mu_{s,c} C\bigr)_{jj'}\, \alpha_{j'}\, F_{jj'}(t),
-\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda},
-\qquad \lambda = 2\pi i\left(\gamma_j - \overline{\gamma_{j'}}\right)
-$$
+- El **rendimiento por canalización** se debe a la ionización que produce el campo de Bloch coherente en los átomos de cada sitio. El cálculo utiliza las secciones eficaces totales de ionización del modelo **Bote–Salvat**, los factores de forma de ionización normalizados de las tablas DHFS generadas por **Temari** (las mismas que en [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md)) y los factores de Debye-Waller, que admiten desplazamientos atómicos anisótropos. Esto corresponde a la **aproximación de factor de forma local** de ICSC (Oxley & Allen 2003).
+- La **componente descanalizada** procede de los electrones que la absorción térmica difusa extrae del campo coherente. Estos electrones continúan en direcciones aleatorias y producen ionización al recorrer el espesor restante.
 
-donde $\gamma_j$ son los valores propios de las ondas de Bloch del [núcleo dinámico](../appendix/a3-bloch-wave/calculation.md) y $\alpha_j$ sus amplitudes de excitación; $F_{jj'}(t) \to t$ en el límite degenerado $\lambda \to 0$.
-
-La matriz de ionización $\mu$ solo depende de la diferencia de dos reflexiones, $G = \mathbf{g}_h - \mathbf{g}_g$.
-
-$$
-\mu_{hg} = \sum_a \mathrm{Occ}_a\, e^{-M_a(G)}\, \sigma_c\, F_c(|G|/2)\, e^{-2\pi i\,G \cdot \mathbf{r}_a}
-$$
-
-- $\sigma_c$ : sección eficaz total de ionización, modelo **Bote–Salvat**
-- $F_c(s)$ : factor de forma de ionización normalizado, tablas DHFS generadas por **Temari** (las mismas tablas que [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md))
-- $e^{-M_a(G)}$ : factor de Debye-Waller (se admiten ADP anisótropos)
-
-Para una serie de líneas de rayos X, $\sigma_c$ es $\sum_i B_i \sigma_i$ sobre sus subcapas $i$ y $F_c$ es la media de sus factores de forma ponderada por $B_i \sigma_i$, donde $B_i$ es el rendimiento de fluorescencia × la ramificación de líneas tras las cascadas Coster–Kronig y radiativas (xraylib 4.2.1).
-
-Corresponde a la **aproximación de factor de forma local** de ICSC (Oxley & Allen 2003). No se usa la MDFF de dos momentos.
+Las fórmulas y las definiciones de los símbolos se encuentran en [A3.6. Cálculo de ALCHEMI](../appendix/a3-bloch-wave/alchemi.md).
 
 ### Componente descanalizada
-
-Los electrones extraídos del campo de Bloch coherente por la absorción térmica difusa recorren el espesor restante como electrones de dirección aleatoria, y también ionizan allí.
-
-$$
-Y_\text{dech} = \frac{\mu_{00}}{V_c}\,\bigl(t - L_\text{coh}(t)\bigr),
-\qquad L_\text{coh}(t) = \int_0^t \sum_g |\psi_g(z)|^2\,dz
-$$
 
 Desmarcar **Incluir la componente descanalizada** en el cuadro **Cálculo** elimina este término. Supone decenas de por ciento del rendimiento total a espesores típicos, así que omitirlo hace que el contraste de sitio parezca más fuerte de lo que es.
 
@@ -95,7 +71,7 @@ El contraste de sitio cambia mucho —e incluso puede invertir su signo— entre
 |----------|-------------|----------------|
 | **Ondas difr. máx.** | Cota superior del número de ondas de Bloch por orientación (1–1600). La unión sobre todo el barrido es mayor | 120 |
 | **Solucionador** | Motor de cálculo del problema de autovalores: **Nativo** (Eigen C++) o **Gestionado** (.NET). Donde el solucionador nativo no está disponible, la elección queda fijada en Gestionado | Nativo |
-| **Incluir la componente descanalizada** | Si se suma $Y_\text{dech}$ anterior | activado |
+| **Incluir la componente descanalizada** | Si se suma la componente descanalizada ($Y_\text{dech}$ en [A3.6](../appendix/a3-bloch-wave/alchemi.md)) | activado |
 | **Dispersión angular** | Convoluciona la curva con la dispersión angular del haz incidente: **Ninguno** o **Gaussian** con una anchura a media altura en mrad. Es un posprocesado sobre el eje de orientaciones, aplicado **antes** de la normalización de visualización | Ninguno |
 
 **El tope de 1600 haces es la contrapartida del rango tabulado $s \le 16\ \text{Å}^{-1}$ del factor de forma de ionización.** En la práctica, incluso 1600 haces solo requieren unos 10,5 Å⁻¹, así que el rango tabulado nunca se agota mientras se respete el tope. El valor realmente alcanzado se indica en la primera línea del cuadro de [diagnóstico de la base](#diagnóstico-de-la-base) bajo el gráfico.
@@ -256,7 +232,7 @@ La energía de la línea por sí sola no puede certificar un resultado: influyen
 ### Supuestos del modelo
 
 - **Solo aproximación de trazador** : la superposición lineal de respuestas de sitio solo vale en el límite diluido en que el dopante no perturba el campo de ondas elástico. La VCA a concentración finita queda fuera del alcance de la v1
-- **Aproximación de factor de forma local** : $\mu$ es función únicamente de $G = \mathbf{g}_h - \mathbf{g}_g$, no la MDFF de dos momentos (Modelo A de OAR 1999). La aproximación es más débil para capas K de elementos ligeros y bordes de baja energía — véase [arriba](#local-approximation)
+- **Aproximación de factor de forma local** : la matriz de ionización $\mu$ ([A3.6](../appendix/a3-bloch-wave/alchemi.md)) es función únicamente de $G = \mathbf{g}_h - \mathbf{g}_g$, no la MDFF de dos momentos (Modelo A de OAR 1999). La aproximación es más débil para capas K de elementos ligeros y bordes de baja energía — véase [arriba](#local-approximation)
 - **Vacantes para los canales de capa, fotones de rayos X generados para las series de líneas** : el rendimiento de fluorescencia y la ramificación de líneas se aplican solo a las series de líneas, sin la cascada Auger
 - **La cota inferior de la tensión de aceleración es 80 kV** : es la tensión más baja a la que puede garantizarse $s = 16\ \text{Å}^{-1}$, no un umbral de rechazo
 

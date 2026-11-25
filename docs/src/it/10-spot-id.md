@@ -32,7 +32,7 @@ Inserisci **Tens. accel.** (kV, predefinito 200) e **Lunghezza di camera** (mm, 
 Inserisci la geometria dei riflessi di diffrazione.
 
 - Per inserire la distanza tra due riflessi sul rivelatore, usa la casella **mm**.
-- Se conosci il valore *d*, inseriscilo nelle unità **Å** o **nm⁻¹**.
+- Inserisci la distanza interplanare *d* nella casella **Å**, oppure il modulo del vettore del reticolo reciproco 1/*d* nella casella **nm⁻¹** (per esempio *d* = 2,0 Å ↔ 1/*d* = 5,0 nm⁻¹).
 
 Modalità **Tre lati** : Inserisci le lunghezze dei tre lati di un triangolo che ha come uno dei vertici il direct spot.
 

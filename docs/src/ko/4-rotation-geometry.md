@@ -73,7 +73,7 @@ $$
 같은 행렬(\(R_{ij}\) = \(i\) 행 \(j\) 열)은 다음에 나타납니다:
 
 - 이 창의 **Excel로 복사** / **Excel에서 붙여넣기** (3 × 3 탭 구분, 위 행부터 차례로);
-- [매크로 API](20-macro/1-built-in-functions.md)의 `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` 와 `Dir.GetEuler()` (9 요소를 행 순서 \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\) 로 나열);
+- [매크로 API](20-macro/1-built-in-functions.md)의 `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` (9개 요소를 행 순서 \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\)로 나열) 및 `Dir.GetEuler()` (세 각 \([\phi, \theta, \psi]\)를 라디안 단위로 반환);
 - [Spot ID v2](11-spot-id-v2.md) 가 저장하는 후보 목록의 **R11**–**R33** 열.
 
 ### OpenGL 창

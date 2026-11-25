@@ -1805,7 +1805,14 @@ public partial class FormSpotIDV2 : FormBase
 
                 // 261105Cl 追加 (監査 I11): 複数の結晶で同定したとき、粒の結晶が主窓の結晶と違えば、主窓のリストでその結晶を選んでから方位を設定する
                 //  (FormSpotIDv1Results のダブルクリックと同じ選び方)。旧は別の結晶の粒の方位を主窓の結晶に設定し、晶帯軸の表示・精密化もその結晶で行っていた
-                if (g.Crystal != null && g.Crystal != FormMain.Crystal && FormMain.listBox.Items.IndexOf(g.Crystal) is int listIndex && listIndex >= 0) // 261105Cl 追加
+                //if (g.Crystal != null && g.Crystal != FormMain.Crystal && FormMain.listBox.Items.IndexOf(g.Crystal) is int listIndex && listIndex >= 0) // 261105Cl 追加 // 261125Cl 変更前
+                // 261125Cl 変更 (codex2 の 11-25 の議論 観点 C §1-1): Crystal の == と IndexOf は中身の比較なので、中身が同じ別の行 (同じ結晶を 2 行に置いて
+                //  方位・ADP を比べるとき) を選んでいた。粒が同定に使った実体そのもの (参照) で探す
+                int listIndex = -1; // 261125Cl 追加
+                if (g.Crystal != null && !ReferenceEquals(g.Crystal, FormMain.Crystal)) // 261125Cl 追加
+                    for (int i = 0; i < FormMain.listBox.Items.Count; i++) // 261125Cl 追加
+                        if (ReferenceEquals(FormMain.listBox.Items[i], g.Crystal)) { listIndex = i; break; } // 261125Cl 追加
+                if (listIndex >= 0) // 261125Cl 追加
                 {
                     var mode = FormMain.listBox.SelectionMode; // 261105Cl 追加
                     FormMain.listBox.SelectionMode = SelectionMode.One; // 261105Cl 追加
@@ -1813,7 +1820,8 @@ public partial class FormSpotIDV2 : FormBase
                     FormMain.listBox.SelectionMode = mode; // 261105Cl 追加
                 }
                 //FormMain.SetRotation(g.Rotation); // 261105Cl 変更前
-                if (g.Crystal == null || g.Crystal == FormMain.Crystal) // 261105Cl 追加: 結晶がリストから消えているなど、主窓で選べなかったときは別の結晶へ方位を設定しない
+                //if (g.Crystal == null || g.Crystal == FormMain.Crystal) // 261105Cl 追加: 結晶がリストから消えているなど、主窓で選べなかったときは別の結晶へ方位を設定しない // 261125Cl 変更前
+                if (g.Crystal == null || ReferenceEquals(g.Crystal, FormMain.Crystal)) // 261125Cl 変更: 参照で比べる (上と同じ理由)
                     FormMain.SetRotation(g.Rotation); // 261105Cl 字下げ
             }
 
@@ -1996,9 +2004,12 @@ public partial class FormSpotIDV2 : FormBase
         }
         // 261105Cl 追加 (監査 I11): 粒を同定した結晶が主窓の結晶と違うときは計算しない (旧は主窓の結晶で計算していた)。粒を選ぶと主窓でもその結晶が選ばれるので、通常は一致する
         var selectedGrain = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"]; // 261105Cl 追加
-        if (selectedGrain.Crystal != null && selectedGrain.Crystal != FormMain.Crystal)
+        //if (selectedGrain.Crystal != null && selectedGrain.Crystal != FormMain.Crystal) // 261125Cl 変更前
+        if (selectedGrain.Crystal != null && !ReferenceEquals(selectedGrain.Crystal, FormMain.Crystal)) // 261125Cl 変更: 中身が同じ別の結晶でも別とみなす
         {
-            toolStripStatusLabelRefine.Text = $"The selected grain belongs to {selectedGrain.CrystalName}, not to the crystal in the main window. Select the grain again (this selects its crystal) and retry."; // 261105Cl 追加
+            //toolStripStatusLabelRefine.Text = $"The selected grain belongs to {selectedGrain.CrystalName}, not to the crystal in the main window. Select the grain again (this selects its crystal) and retry."; // 261105Cl 追加 // 261125Cl 変更前
+            // 261125Cl 変更 (codex2 の査読 L2 §3): 参照で比べるようになったので、結晶を「入れ替え」た (新しい実体になった) 後は選び直しても戻らない。その場合は同定し直す
+            toolStripStatusLabelRefine.Text = $"The selected grain belongs to {selectedGrain.CrystalName}, not to the crystal in the main window. Select the grain again (this selects its crystal) and retry; if the crystal was replaced or edited in the list, identify the spots again.";
             return; // 261105Cl 追加
         }
         refineCrystal = FormMain.Crystal; // 261105Cl 追加
@@ -2161,7 +2172,8 @@ public partial class FormSpotIDV2 : FormBase
         // 261118Cl 変更 (codex2 第 6 回): 補正の基準は計算した方位 (result.BaseRotation)。完了の時点の粒の方位は、計算中に変わりうる
         grain.Rotation = Matrix3D.Rot(Vector3DBase.VectorProduct(bestDirection, new Vector3DBase(0, 0, -1)), tilt) * result.BaseRotation;
         // 261105Cl 変更 (監査 I11): 主窓の結晶が計算した結晶のままのときだけ方位を主窓へ設定する (計算中に替えられたときは粒の方位だけ更新する)
-        var applied = FormMain.Crystal == refineCrystal; // 261105Cl 追加
+        //var applied = FormMain.Crystal == refineCrystal; // 261105Cl 追加 // 261125Cl 変更前
+        var applied = ReferenceEquals(FormMain.Crystal, refineCrystal); // 261125Cl 変更 (codex2 の 11-25 の議論 観点 C §1-1): 中身が同じ別の結晶へ方位・厚さを書かない
         if (applied) // 261105Cl 追加
         {
             FormMain.SetRotation(grain.Rotation); // 261105Cl 追加 // 261105Cl 字下げ

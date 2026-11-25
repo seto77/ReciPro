@@ -4118,9 +4118,17 @@ public partial class FormEBSD : FormBase
                 : mcFailure != null ? $"BSE weighting failed: {mcFailure}" : "Monte Carlo not completed (no BSE weighting)") // 261124Cl 変更 (codex2 査読 中 3、2・3 往復目 中): MC と使い回した電子の後処理のどちらの失敗も
             + (problem != null ? $" | WARNING: {problem}" : "")
             // 261124Cl 追加 (作者決定 11-24): 物理の版が今と違うファイルは、警告して読む
-            + (info.PhysicsVersion != MasterPatternFile.PhysicsVersion
-                ? $" | WARNING: made with physics version {(string.IsNullOrEmpty(info.PhysicsVersion) ? "(not recorded)" : info.PhysicsVersion)}, now {MasterPatternFile.PhysicsVersion}. Build again for the current physics."
-                : ""),
+            //+ (info.PhysicsVersion != MasterPatternFile.PhysicsVersion
+            //    ? $" | WARNING: made with physics version {(string.IsNullOrEmpty(info.PhysicsVersion) ? "(not recorded)" : info.PhysicsVersion)}, now {MasterPatternFile.PhysicsVersion}. Build again for the current physics."
+            //    : ""), // 261125Cl 変更前
+            // 261125Cl 変更 (codex2 の 11-25 の議論 第 2 回 §1 = 案 a): 版の違いは一律に知らせ、261118 → 261124 の組だけは影響する結晶を具体的に書く
+            //  (六方軸の [210]/[120] 二回軸の面指数変換の直し e4301e9 が効くのは、その操作を持ち異方性の原子変位を使う結晶だけ。等方なら作り直しは要らない)
+            + (info.PhysicsVersion == MasterPatternFile.PhysicsVersion ? ""
+                : info.PhysicsVersion == "261118" && MasterPatternFile.PhysicsVersion == "261124"
+                    ? " | NOTE: made with physics version 261118 (now 261124). If the crystal uses hexagonal axes with a [210] or [120] two-fold axis (or a mirror or glide plane normal to it)"
+                      + " and anisotropic displacement parameters, build again before quantitative comparison; with isotropic displacements only, no rebuild is needed for this change."
+                      + (MasterPatternFile.FingerprintIncludesIonModel(info) ? "" : " Files of this version do not record the elastic ion model (Neutral or ion); build again if it may differ from the current one.") // 261125Cl 追加: 旧い指紋はイオン模型を含まない (今の模型が中性でも出す。codex2 の査読 L2 §1)
+                    : $" | WARNING: made with physics version {(string.IsNullOrEmpty(info.PhysicsVersion) ? "(not recorded)" : info.PhysicsVersion)}, now {MasterPatternFile.PhysicsVersion}. Build again for the current physics."),
             sw.Elapsed);
         return true;
     }
@@ -4203,16 +4211,21 @@ public partial class FormEBSD : FormBase
         // 261124Cl 追加 (作者決定 11-24): 合わないとき、ファイルに同梱の結晶 (形式 v2) があれば、それを一覧に足し、電圧も合わせて読み込めるようにする
         if (problem != null)
         {
-            bool crystalDiffers = head.CrystalFingerprint != MasterPatternFile.CrystalFingerprint(Crystal);
+            //bool crystalDiffers = head.CrystalFingerprint != MasterPatternFile.CrystalFingerprint(Crystal); // 261125Cl 変更前
+            var withIon = MasterPatternFile.FingerprintIncludesIonModel(head); // 261125Cl 追加: 旧いファイル (版 261118 以前) は旧い形の指紋で照合する
+            bool crystalDiffers = head.CrystalFingerprint != MasterPatternFile.CrystalFingerprint(Crystal, withIon); // 261125Cl 変更
             bool voltageDiffers = Math.Abs(head.BeamEnergyKeV - Voltage) > 1E-6;
             var fileCrystal = crystalDiffers ? head.GetCrystal() : null;
             // 同梱の結晶が見出しの指紋と同じに戻るときだけ使う (戻らなければ足しても読めない)
             // bool canFix = (!crystalDiffers || fileCrystal != null && MasterPatternFile.CrystalFingerprint(fileCrystal) == head.CrystalFingerprint)
             //     && (crystalDiffers || voltageDiffers) && head.BeamEnergyKeV > 0; // 261124Cl 変更前 (同日)
-            bool canFix = (!crystalDiffers || fileCrystal != null && MasterPatternFile.CrystalFingerprint(fileCrystal) == head.CrystalFingerprint)
-                && (crystalDiffers || voltageDiffers) && double.IsFinite(head.BeamEnergyKeV) && head.BeamEnergyKeV > 0; // 261124Cl 変更 (codex2 査読 2 往復目 中 2): 不正な電圧には切り替えを持ちかけない
+            //bool canFix = (!crystalDiffers || fileCrystal != null && MasterPatternFile.CrystalFingerprint(fileCrystal) == head.CrystalFingerprint)
+            //    && (crystalDiffers || voltageDiffers) && double.IsFinite(head.BeamEnergyKeV) && head.BeamEnergyKeV > 0; // 261124Cl 変更 // 261125Cl 変更前
+            bool canFix = (!crystalDiffers || fileCrystal != null && MasterPatternFile.CrystalFingerprint(fileCrystal, withIon) == head.CrystalFingerprint)
+                && (crystalDiffers || voltageDiffers) && double.IsFinite(head.BeamEnergyKeV) && head.BeamEnergyKeV > 0; // 261125Cl 変更 (withIon) (codex2 査読 2 往復目 中 2): 不正な電圧には切り替えを持ちかけない
             // 261124Cl 追加 (codex2 査読 2 往復目 低): 同梱の結晶があるのに戻した指紋が合わないとき (座標の丸めなど) は、そのことを案内に足す
-            if (crystalDiffers && fileCrystal != null && !canFix && MasterPatternFile.CrystalFingerprint(fileCrystal) != head.CrystalFingerprint)
+            //if (crystalDiffers && fileCrystal != null && !canFix && MasterPatternFile.CrystalFingerprint(fileCrystal) != head.CrystalFingerprint) // 261125Cl 変更前
+            if (crystalDiffers && fileCrystal != null && !canFix && MasterPatternFile.CrystalFingerprint(fileCrystal, withIon) != head.CrystalFingerprint) // 261125Cl 変更
                 problem += " The crystal stored in the file could not be restored exactly (its fingerprint differs), so it is not added; select the original crystal instead.";
             var askedBasis = (MasterPatternFile.CrystalFingerprint(Crystal), Voltage); // 問うた時点の結晶・電圧 (本体を読む間に替わっていないかを後で照らす)
             if (canFix)

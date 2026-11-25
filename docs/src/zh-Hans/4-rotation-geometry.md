@@ -73,7 +73,7 @@ $$
 同一矩阵（\(R_{ij}\) = 第 \(i\) 行第 \(j\) 列）出现于：
 
 - 本窗口的 **复制到 Excel** / **从 Excel 粘贴**（3 × 3 制表符分隔，自上而下逐行）；
-- [宏 API](20-macro/1-built-in-functions.md) 的 `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` 与 `Dir.GetEuler()`（9 个元素按行序 \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\) 排列）；
+- [宏 API](20-macro/1-built-in-functions.md) 的 `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()`（9 个元素按行序 \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\) 排列），以及 `Dir.GetEuler()`（返回三个角 \([\phi, \theta, \psi]\)，单位为弧度）；
 - [Spot ID v2](11-spot-id-v2.md) 保存的候选列表中的 **R11**–**R33** 列。
 
 ### OpenGL 窗口

@@ -16,38 +16,14 @@ La finestra ha **le impostazioni a sinistra** (scansione, spessore, calcolo, can
 
 ## Che cosa viene calcolato
 
-Per ogni orientazione incidente il campo d'onda all'interno del cristallo viene risolto con il metodo delle onde di Bloch e, per ogni coppia sito $s$ / canale di ionizzazione $c$, la resa di ionizzazione viene integrata analiticamente fino allo spessore $t$.
+Per ogni direzione di incidenza, ReciPro calcola il campo d'onda nel cristallo con il metodo delle onde di Bloch. Per ogni coppia di sito e canale di ionizzazione, integra analiticamente la resa di ionizzazione per elettrone incidente fino allo spessore $t$. La resa è la somma di due componenti.
 
-$$
-Y_\text{dyn} = \mathrm{Re} \sum_{jj'} \alpha_j^{*}\,\bigl(C^{\dagger} \mu_{s,c} C\bigr)_{jj'}\, \alpha_{j'}\, F_{jj'}(t),
-\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda},
-\qquad \lambda = 2\pi i\left(\gamma_j - \overline{\gamma_{j'}}\right)
-$$
+- La **resa da canalizzazione** deriva dall'ionizzazione che il campo di Bloch coerente produce negli atomi di ciascun sito. Il calcolo usa le sezioni d'urto totali di ionizzazione del modello **Bote–Salvat**, i fattori di forma di ionizzazione normalizzati delle tabelle DHFS generate da **Temari** (le stesse di [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md)) e i fattori di Debye-Waller, che tengono conto anche degli spostamenti atomici anisotropi. Ciò corrisponde all'**approssimazione del fattore di forma locale** di ICSC (Oxley & Allen 2003).
+- La **componente decanalizzata** è prodotta dagli elettroni sottratti al campo coerente dall'assorbimento termico diffuso. Questi elettroni proseguono in direzioni casuali e ionizzano gli atomi lungo lo spessore rimanente.
 
-dove $\gamma_j$ sono gli autovalori delle onde di Bloch del [nucleo dinamico](../appendix/a3-bloch-wave/calculation.md) e $\alpha_j$ le relative ampiezze di eccitazione; $F_{jj'}(t) \to t$ nel limite degenere $\lambda \to 0$.
-
-La matrice di ionizzazione $\mu$ dipende solo dalla differenza di due riflessi, $G = \mathbf{g}_h - \mathbf{g}_g$.
-
-$$
-\mu_{hg} = \sum_a \mathrm{Occ}_a\, e^{-M_a(G)}\, \sigma_c\, F_c(|G|/2)\, e^{-2\pi i\,G \cdot \mathbf{r}_a}
-$$
-
-- $\sigma_c$ : sezione d'urto totale di ionizzazione, modello **Bote–Salvat**
-- $F_c(s)$ : fattore di forma di ionizzazione normalizzato, tabelle DHFS generate da **Temari** (le stesse tabelle di [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md))
-- $e^{-M_a(G)}$ : fattore di Debye-Waller (sono supportati ADP anisotropi)
-
-Per una serie di righe X, $\sigma_c$ è $\sum_i B_i \sigma_i$ sui suoi sottogusci $i$ e $F_c$ è la media dei loro fattori di forma pesata con $B_i \sigma_i$, dove $B_i$ è resa di fluorescenza × ramificazione delle righe dopo le cascate Coster–Kronig e radiative (xraylib 4.2.1).
-
-Corrisponde all'**approssimazione del fattore di forma locale** di ICSC (Oxley & Allen 2003). La MDFF a due impulsi non viene usata.
+Le formule e le definizioni dei simboli sono riportate in [A3.6. Calcolo ALCHEMI](../appendix/a3-bloch-wave/alchemi.md).
 
 ### Componente decanalizzata
-
-Gli elettroni sottratti al campo di Bloch coerente dall'assorbimento termico diffuso percorrono lo spessore rimanente come elettroni di direzione casuale, e ionizzano anche lì.
-
-$$
-Y_\text{dech} = \frac{\mu_{00}}{V_c}\,\bigl(t - L_\text{coh}(t)\bigr),
-\qquad L_\text{coh}(t) = \int_0^t \sum_g |\psi_g(z)|^2\,dz
-$$
 
 Deselezionare **Includi la componente decanalizzata** nel riquadro **Calcolo** elimina questo termine. Agli spessori tipici vale decine di punti percentuali della resa totale, quindi ometterlo fa apparire il contrasto di sito più forte di quanto sia.
 
@@ -95,7 +71,7 @@ Il contrasto di sito cambia molto — e può perfino invertire segno — tra cam
 |------|-------------|-------------|
 | **Onde diffr. max.** | Limite superiore del numero di onde di Bloch per orientazione (1–1600). L'unione su tutta la scansione è maggiore | 120 |
 | **Risolutore** | Motore di calcolo del problema agli autovalori: **Nativo** (Eigen C++) o **Gestito** (.NET). Dove il risolutore nativo non è disponibile, la scelta è fissata su Gestito | Nativo |
-| **Includi la componente decanalizzata** | Se aggiungere $Y_\text{dech}$ sopra | attivo |
+| **Includi la componente decanalizzata** | Se aggiungere la componente decanalizzata ($Y_\text{dech}$ in [A3.6](../appendix/a3-bloch-wave/alchemi.md)) | attivo |
 | **Allargamento angolare** | Convolve la curva con l'allargamento angolare del fascio incidente: **Nessuno** o **Gaussian** con una larghezza a metà altezza in mrad. È una post-elaborazione sull'asse delle orientazioni, applicata **prima** della normalizzazione di visualizzazione | Nessuno |
 
 **Il tetto di 1600 fasci è la controparte dell'intervallo tabulato $s \le 16\ \text{Å}^{-1}$ del fattore di forma di ionizzazione.** In pratica anche 1600 fasci richiedono solo circa 10,5 Å⁻¹, quindi l'intervallo tabulato non viene mai esaurito finché il tetto è rispettato. Il valore effettivamente raggiunto è riportato nella prima riga della casella di [diagnostica della base](#diagnostica-della-base) sotto il grafico.
@@ -256,7 +232,7 @@ L'energia della riga da sola non può certificare un risultato: entrano l'estens
 ### Ipotesi del modello
 
 - **Solo approssimazione a tracciante** : la sovrapposizione lineare delle risposte di sito vale solo nel limite diluito in cui il drogante non perturba il campo d'onda elastico. La VCA a concentrazione finita è fuori dall'ambito della v1
-- **Approssimazione del fattore di forma locale** : $\mu$ è funzione del solo $G = \mathbf{g}_h - \mathbf{g}_g$, non della MDFF a due impulsi (Modello A di OAR 1999). L'approssimazione è più debole per i gusci K degli elementi leggeri e per le soglie di bassa energia — vedere [sopra](#local-approximation)
+- **Approssimazione del fattore di forma locale** : la matrice di ionizzazione $\mu$ ([A3.6](../appendix/a3-bloch-wave/alchemi.md)) è funzione del solo $G = \mathbf{g}_h - \mathbf{g}_g$, non della MDFF a due impulsi (Modello A di OAR 1999). L'approssimazione è più debole per i gusci K degli elementi leggeri e per le soglie di bassa energia — vedere [sopra](#local-approximation)
 - **Lacune per i canali di guscio, fotoni X generati per le serie di righe** : la resa di fluorescenza e la ramificazione delle righe sono applicate solo alle serie di righe, senza la cascata Auger
 - **Il limite inferiore della tensione di accelerazione è 80 kV** : è la tensione più bassa alla quale si può garantire $s = 16\ \text{Å}^{-1}$, non una soglia di rifiuto
 

@@ -141,7 +141,7 @@ Pivote de l'angle **Pas** (10° par défaut). ↺ / ↻ pivotent autour de la no
 
 ![Vue selon](../assets/cap-fr-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
-Aligne un axe de zone [*uvw*] ou un plan cristallin (*hkl*) perpendiculairement à l'écran.
+Aligne un axe de zone [*uvw*] ou la normale à un plan cristallin (*hkl*) sur la direction d'observation. Dans le second cas, le plan est parallèle à l'écran.
 
 - **Fixer** : lorsqu'elle est cochée, toutes les rotations suivantes (flèches, glisser à la souris) s'effectuent autour de l'axe de zone ou de la normale au plan spécifiés, de sorte que cette direction reste fixe. Une seule des deux cases **Fixer** peut être cochée, et elle ne peut pas l'être tant que l'indice vaut 0 0 0.
 - **Axe** : place l'axe de zone saisi \([uvw]\) perpendiculairement à l'écran. Si **Plan** est également défini et que l'axe appartient à ce plan ($uh+vk+wl=0$), la normale au plan est orientée vers le haut de l'écran ; sinon, une direction vers le haut est choisie automatiquement.
@@ -154,7 +154,7 @@ Aligne un axe de zone [*uvw*] ou un plan cristallin (*hkl*) perpendiculairement 
 | Glisser avec la souris | Vous voulez pivoter librement tout en observant les axes du cristal. | Panneau **Orientation actuelle** |
 | Boutons fléchés | Vous voulez de petites rotations reproductibles. | Panneau **Flèches** |
 | Axe de zone | Vous connaissez la direction de visée, telle que \([001]\) ou \([110]\). | **Vue selon** / saisie de l'axe de zone |
-| Normale au plan | Vous voulez un plan cristallin \((hkl)\) normal à l'écran. | **Vue selon** / saisie du plan |
+| Normale au plan | Vous souhaitez aligner la normale à un plan cristallin \((hkl)\) sur la direction d'observation. Le plan est alors parallèle à l'écran. | **Vue selon** / saisie du plan |
 | Angles d'Euler | Vous avez besoin d'une orientation numérique reproductible. | **Angles d'Euler (Z-X-Z)** |
 
 Voir [Géométrie de rotation](4-rotation-geometry.md) et [Annexe A1. Systèmes de coordonnées](appendix/a1-coordinate-system/1-orientation.md) pour les matrices de rotation et les conventions de coordonnées.

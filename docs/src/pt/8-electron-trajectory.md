@@ -37,7 +37,7 @@ Alterar **Inclinação da amostra** ou **Energia** depois de uma execução não
 
 Um elétron é rastreado até deixar a amostra ou até sua energia cair para **2 keV** (limiar fixo). Os elétrons que saem com mais de 2 keV são contados como elétrons retroespalhados; η (sua fração em relação a todos os elétrons incidentes), a energia média de BSE, a estereonete e os histogramas abaixo são calculados a partir desses elétrons. A seção de choque, o livre caminho médio e o poder de freamento em **Estatísticas** são valores do modelo na energia do feixe.
 
-Os próprios modelos de espalhamento não podem ser escolhidos pelo usuário: as seções de choque elásticas vêm da tabela NIST Mott incluída (com recurso ao Rutherford blindado fora de seu intervalo), e o poder de freamento da forma modificada de Jablonski (2008). O modelo efetivamente usado é indicado ao lado da seção de choque e do poder de freamento em **Estatísticas**. Consulte [Atenuação e transporte](appendix/a2-beam-interaction/attenuation-transport.md) para saber o que são esses modelos.
+Os próprios modelos de espalhamento não podem ser escolhidos pelo usuário: as seções de choque elásticas vêm da tabela NIST Mott incluída (com recurso ao Rutherford blindado fora de seu intervalo), e o poder de freamento da fórmula relativística de Bethe com a correção de Joy–Luo. O modelo efetivamente usado é indicado ao lado da seção de choque e do poder de freamento em **Estatísticas**. Consulte [Atenuação e transporte](appendix/a2-beam-interaction/attenuation-transport.md) para saber o que são esses modelos.
 
 ### Vista 3D das trajetórias
 

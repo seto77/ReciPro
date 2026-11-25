@@ -17,7 +17,7 @@ Você constrói a lista de spots diretamente sobre a imagem carregada. O painel 
 | <kbd>CTRL</kbd> + clique duplo esquerdo | Adicionar um spot e marcá-lo como o feixe direto (000) |
 | Clique esquerdo em um spot | Selecionar o spot mais próximo |
 | <kbd>CTRL</kbd> + clique direito em um spot | Excluir o spot mais próximo |
-| <kbd>CTRL</kbd> + teclas de seta | Deslocar o spot selecionado em um pixel |
+| <kbd>CTRL</kbd> + teclas de seta | Deslocar o spot selecionado em um pixel da tela |
 | Segurar <kbd>SHIFT</kbd> e clicar com o botão esquerdo em três spots em sequência | Medir o ângulo na imagem: extremo → vértice → extremo (p. ex. ∠6–0–8). Linhas, um arco e o valor são desenhados na imagem, e o valor (∠6–0–8 = 89.73°) aparece na barra de status. <kbd>SHIFT</kbd> + clique esquerdo em outro spot inicia uma nova medição; <kbd>ESC</kbd> a apaga |
 | Arrastar com botão esquerdo / meio (área vazia) | Deslocar a imagem |
 | Roda do mouse | Aproximar / afastar o zoom no cursor |
@@ -82,7 +82,7 @@ A posição da janela e a calibração (fonte, energia, comprimento de câmera e
 ![Index](../assets/cap-pt-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
 
 - **Identificar spots**: Executa o algoritmo de indexação para encontrar o cristal e o eixo de zona que melhor correspondem. Durante a execução, um botão **Parar** ocupa o seu lugar e interrompe a busca. São necessários uma imagem carregada, pelo menos dois spots e pelo menos um cristal selecionado na lista de cristais da janela principal; caso contrário, uma mensagem informa o que falta. Enquanto o Spot ID v2 está aberto, a lista de cristais da janela principal permite seleção múltipla. <!-- 261105Cl 監査: buttonIdentifySpots_Click (494ef52)、FormMain.cs の複数選択 (4020433) -->
-- **Erro aceitável**: Tolerância relativa do espaçamento d em % (0.1–10, padrão 2). A tolerância angular entre spots é derivada dela como asin(tolerância)/2.
+- **Erro aceitável**: Tolerância relativa do espaçamento d em % (0.1–10, padrão 2). Para um valor de *p* %, a tolerância angular entre spots é de ½ arcsin(*p*/100) rad (cerca de 0,573° para o valor padrão de 2 %).
 - **Ignorar reflexões proibidas** (desativado por padrão; apenas difração de elétrons): Quando marcado, todas as reflexões sistematicamente ausentes, incluindo as proibidas por eixos helicoidais e planos de deslizamento, são excluídas das reflexões candidatas. Quando desmarcado, apenas as ausências devidas à centragem da rede (I, F, A, B, C, R) são excluídas, de modo que as reflexões proibidas por eixos helicoidais/planos de deslizamento, que podem aparecer por difração múltipla, continuam candidatas. Para raios X e nêutrons, todas as reflexões ausentes são sempre excluídas (tratamento cinemático); a caixa aparece então marcada e esmaecida, e volta ao estado anterior quando a fonte volta a ser elétrons. <!-- 261106Cl 作者の決定 I4 -->
 - **Grão único / Múltiplos grãos**: Buscar uma única orientação (monocristal) ou várias orientações (uma região policristalina / de múltiplos grãos). Para múltiplos grãos, **Nº máx. de grãos** define o limite superior do número de grãos a buscar.
 - **Mostrar eixo de zona** / **Mostrar símbolo** / **Mostrar rótulo**: Sobrepõem o eixo de zona e os símbolos / rótulos de índice dos spots calculados.

@@ -73,7 +73,7 @@ $$
 Та же матрица (\(R_{ij}\) = строка \(i\), столбец \(j\)) появляется:
 
 - в **Копировать** / **Вставить из Excel** этого окна (3 × 3, через табуляцию, строки сверху вниз);
-- в [API макросов](20-macro/1-built-in-functions.md): `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` и `Dir.GetEuler()` (девять элементов в порядке строк \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\));
+- в [API макросов](20-macro/1-built-in-functions.md): `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` (девять элементов в порядке строк \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\)) и `Dir.GetEuler()` (возвращает три угла \([\phi, \theta, \psi]\) в радианах);
 - в столбцах **R11**–**R33** списка кандидатов, сохраняемого [Spot ID v2](11-spot-id-v2.md).
 
 ### Окна OpenGL

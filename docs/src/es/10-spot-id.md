@@ -32,7 +32,7 @@ Introduzca **Volt. acel.** (kV, por defecto 200) y **Longitud de cámara** (mm, 
 Introduzca la geometría de las reflexiones de difracción.
 
 - Para introducir la distancia entre reflexiones en el detector, use la casilla **mm**.
-- Si conoce el valor *d*, introdúzcalo en unidades **Å** o **nm⁻¹**.
+- Introduzca el espaciado interplanar *d* en la casilla **Å**, o la longitud del vector de la red recíproca 1/*d* en la casilla **nm⁻¹** (por ejemplo, *d* = 2,0 Å ↔ 1/*d* = 5,0 nm⁻¹).
 
 **Modo Tres lados** : Introduzca las longitudes de los tres lados de un triángulo cuyo vértice es el direct spot.
 

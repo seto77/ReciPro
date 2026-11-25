@@ -32,7 +32,7 @@ Geben Sie **Beschl.-Spannung** (kV, Standard 200) und **Kameralänge** (mm, Stan
 Geben Sie die Geometrie der Beugungsreflexe ein.
 
 - Um den Abstand zwischen zwei Reflexen auf dem Detektor einzugeben, verwenden Sie das Feld **mm**.
-- Wenn Sie den *d*-Wert kennen, geben Sie ihn in den Einheiten **Å** oder **nm⁻¹** ein.
+- Geben Sie den Netzebenenabstand *d* in das Feld **Å** oder die Länge des reziproken Gittervektors 1/*d* in das Feld **nm⁻¹** ein (z. B. *d* = 2,0 Å ↔ 1/*d* = 5,0 nm⁻¹).
 
 **Drei Seiten** : Geben Sie die Längen der drei Seiten eines Dreiecks ein, dessen einer Eckpunkt der Primärstrahlreflex ist.
 

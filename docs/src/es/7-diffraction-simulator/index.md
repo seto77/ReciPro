@@ -24,7 +24,7 @@ La ventana tiene un área de dibujo del patrón de difracción a la **izquierda*
 | **PED** | Difracción de electrones por precesión | [Simulación PED](2-ped-simulation.md) |
 | **CBED** | Difracción de electrones por haz convergente | [Simulación CBED](3-cbed-simulation.md) |
 
-> **ALCHEMI no es un modo.** A diferencia de rayos X / SAED / PED / CBED, que se determinan por la combinación de longitud de onda y haz incidente, el simulador ALCHEMI es una **ventana secundaria** que se abre desde el menú **Opciones**, por lo que aquí se indica por separado.
+> **ALCHEMI no es un modo.** A diferencia de rayos X / SAED / PED / CBED, que se determinan por la combinación del tipo de radiación y la óptica del haz incidente, el simulador ALCHEMI es una **ventana secundaria** que se abre desde el menú **Opciones**, por lo que aquí se indica por separado.
 
 | Ventana secundaria | Contenido | Página |
 |------|------|------|
@@ -48,7 +48,7 @@ Busque la página que necesita a partir de la combinación de **Fuente de ondas*
 | Rayos X | Laue posterior (rayos X) | Laue de retrorreflexión | [Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md) |
 | Neutrones | Haz paralelo | Difracción de neutrones | [sección de neutrones de la Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md) |
 
-> **Nota**: Las opciones de haz incidente (**Óptica**) cambian con la longitud de onda. Para electrones: **Haz paralelo, Precesión (electrones), Convergencia (electrones)**; para rayos X: **Haz paralelo, Precesión (rayos X, ZOLZ), Laue posterior (rayos X)**; para neutrones: solo **Haz paralelo**. Al cambiar la fuente de ondas, la óptica vuelve siempre a **Haz paralelo**. Al seleccionar **Precesión (electrones)** o **Convergencia (electrones)** se cambia automáticamente el cálculo de intensidad a **Teoría dinámica**; **Teoría dinámica** solo se ofrece para electrones (al seleccionar rayos X o neutrones se vuelve a **Cinemática & err. exc.**). Back Laue usa un haz blanco (policromático).
+> **Nota**: Las opciones de haz incidente (**Óptica**) dependen del tipo de radiación. Para electrones: **Haz paralelo, Precesión (electrones), Convergencia (electrones)**; para rayos X: **Haz paralelo, Precesión (rayos X, ZOLZ), Laue posterior (rayos X)**; para neutrones: solo **Haz paralelo**. Al cambiar la fuente de ondas, la óptica vuelve siempre a **Haz paralelo**. Al seleccionar **Precesión (electrones)** o **Convergencia (electrones)** se cambia automáticamente el cálculo de intensidad a **Teoría dinámica**; **Teoría dinámica** solo se ofrece para electrones (al seleccionar rayos X o neutrones se vuelve a **Cinemática & err. exc.**). Back Laue usa un haz blanco (policromático).
 
 ---
 

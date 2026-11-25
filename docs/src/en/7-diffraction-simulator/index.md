@@ -24,7 +24,7 @@ The window has a diffraction-pattern drawing area on the **left** and, on the **
 | **PED** | Precession electron diffraction | [PED Simulation](2-ped-simulation.md) |
 | **CBED** | Convergent-beam electron diffraction | [CBED Simulation](3-cbed-simulation.md) |
 
-> **ALCHEMI is not a mode.** Unlike X-ray / SAED / PED / CBED, which are selected by the combination of wavelength and incident beam, the ALCHEMI simulator is a **child window** opened from the **Options** menu, so it is listed separately here.
+> **ALCHEMI is not a mode.** Unlike X-ray / SAED / PED / CBED, which are selected by the combination of radiation type and incident-beam optics, the ALCHEMI simulator is a **child window** opened from the **Options** menu, so it is listed separately here.
 
 | Child window | Contents | Page |
 |------|------|------|

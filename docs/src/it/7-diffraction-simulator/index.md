@@ -24,7 +24,7 @@ La finestra presenta **a sinistra** un'area di disegno per il pattern di diffraz
 | **PED** | Diffrazione elettronica a precessione | [Simulazione PED](2-ped-simulation.md) |
 | **CBED** | Diffrazione elettronica a fascio convergente | [Simulazione CBED](3-cbed-simulation.md) |
 
-> **ALCHEMI non è una modalità.** A differenza di raggi X / SAED / PED / CBED, determinati dalla combinazione di lunghezza d'onda e fascio incidente, il simulatore ALCHEMI è una **finestra figlia** che si apre dal menu **Opzioni**; qui è quindi elencato separatamente.
+> **ALCHEMI non è una modalità.** A differenza di raggi X / SAED / PED / CBED, determinati dalla combinazione del tipo di radiazione e dell'ottica del fascio incidente, il simulatore ALCHEMI è una **finestra figlia** che si apre dal menu **Opzioni**; qui è quindi elencato separatamente.
 
 | Finestra figlia | Contenuto | Pagina |
 |------|------|------|
@@ -48,7 +48,7 @@ Individua la pagina che ti serve dalla combinazione di **Sorgente d'onda** e **O
 | Raggi X | Back Laue (raggi X) | Laue in retrodiffusione | [Simulazione di diffrazione di raggi X](5-x-ray-neutron-diffraction.md) |
 | Neutroni | Fascio parallelo | Diffrazione di neutroni | [sezione neutroni della Simulazione di diffrazione di raggi X](5-x-ray-neutron-diffraction.md) |
 
-> **Note**: Le scelte del fascio incidente (**Ottica**) cambiano con la lunghezza d'onda. Per gli elettroni: **Fascio parallelo, Precessione (elettroni), Convergenza (elettroni)**; per i raggi X: **Fascio parallelo, Precessione (raggi X, ZOLZ), Back Laue (raggi X)**; per i neutroni: solo **Fascio parallelo**. Ogni cambio della sorgente d'onda riporta sempre l'ottica a **Fascio parallelo**. La selezione di **Precessione (elettroni)** o **Convergenza (elettroni)** commuta automaticamente il calcolo dell'intensità su **Teoria dinamica**; **Teoria dinamica** è disponibile solo per gli elettroni (selezionando raggi X o neutroni si torna a **Cinematica & err. ecc.**). Back Laue usa un fascio bianco (policromatico).
+> **Note**: Le scelte del fascio incidente (**Ottica**) dipendono dal tipo di radiazione. Per gli elettroni: **Fascio parallelo, Precessione (elettroni), Convergenza (elettroni)**; per i raggi X: **Fascio parallelo, Precessione (raggi X, ZOLZ), Back Laue (raggi X)**; per i neutroni: solo **Fascio parallelo**. Ogni cambio della sorgente d'onda riporta sempre l'ottica a **Fascio parallelo**. La selezione di **Precessione (elettroni)** o **Convergenza (elettroni)** commuta automaticamente il calcolo dell'intensità su **Teoria dinamica**; **Teoria dinamica** è disponibile solo per gli elettroni (selezionando raggi X o neutroni si torna a **Cinematica & err. ecc.**). Back Laue usa un fascio bianco (policromatico).
 
 ---
 

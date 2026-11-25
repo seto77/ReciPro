@@ -73,7 +73,7 @@ Para aplicá-la a índices cristalográficos, converta-os primeiro em coordenada
 A mesma matriz (\(R_{ij}\) = linha \(i\), coluna \(j\)) aparece em:
 
 - **Copiar** / **Colar do Excel** nesta janela (3 × 3, separada por tabulações, linhas de cima para baixo);
-- `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` e `Dir.GetEuler()` na [API de macros](20-macro/1-built-in-functions.md) (nove elementos na ordem das linhas \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\));
+- `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` na [API de macros](20-macro/1-built-in-functions.md) (nove elementos na ordem das linhas \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\)) e `Dir.GetEuler()` (retorna os três ângulos \([\phi, \theta, \psi]\) em radianos);
 - as colunas **R11**–**R33** da lista de candidatos salva pelo [Spot ID v2](11-spot-id-v2.md).
 
 ### Janelas OpenGL

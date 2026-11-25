@@ -192,7 +192,7 @@ Die STEM-Simulation ist rechenaufwendig, daher sollten die folgenden Parameter a
 
 ## Bedeutung des Temperaturfaktors
 
-Für die HAADF-STEM-Simulation müssen die Atome einen von null verschiedenen isotropen Temperaturfaktor (Debye-Waller-Faktor) besitzen. Ist der Wert unbekannt, setze $B \approx 0.5\ \text{Å}^2$. Bei einem Temperaturfaktor von null ist die TDS-Intensität null und das HAADF-Bild wird nicht korrekt berechnet.
+Für die HAADF-STEM-Simulation müssen die Atome einen von null verschiedenen isotropen Temperaturfaktor (Debye-Waller-Faktor) besitzen. Verwende bekannte Werte, etwa aus der Literatur. Ist der Wert unbekannt, kann für eine Proberechnung $B \approx 0.5\ \text{Å}^2$ verwendet werden. Bei einem Temperaturfaktor von null ist die TDS-Intensität null und das HAADF-Bild wird nicht korrekt berechnet.
 
 | Detektor | Bereich | Hauptbeitrag |
 |----------|-------|-------------------|

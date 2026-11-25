@@ -24,7 +24,7 @@ La fenêtre comporte **à gauche** une zone de tracé du diagramme de diffractio
 | **PED** | Diffraction électronique en précession | [Simulation PED](2-ped-simulation.md) |
 | **CBED** | Diffraction électronique en faisceau convergent | [Simulation CBED](3-cbed-simulation.md) |
 
-> **ALCHEMI n'est pas un mode.** Contrairement aux rayons X / SAED / PED / CBED, déterminés par la combinaison de la longueur d'onde et du faisceau incident, le simulateur ALCHEMI est une **fenêtre enfant** ouverte depuis le menu **Options** ; il est donc indiqué ici séparément.
+> **ALCHEMI n'est pas un mode.** Contrairement aux rayons X / SAED / PED / CBED, déterminés par la combinaison du type de rayonnement et de l'optique du faisceau incident, le simulateur ALCHEMI est une **fenêtre enfant** ouverte depuis le menu **Options** ; il est donc indiqué ici séparément.
 
 | Fenêtre enfant | Contenu | Page |
 |------|------|------|
@@ -48,7 +48,7 @@ Recherchez la page dont vous avez besoin à partir de la combinaison de la **Sou
 | Rayons X | Laue en retour (rayons X) | Laue en rétroréflexion | [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
 | Neutrons | Faisceau parallèle | Diffraction des neutrons | [section neutrons de la Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
 
-> **Note** : Les choix de faisceau incident (**Optique**) changent avec la longueur d'onde. Pour les électrons : **Faisceau parallèle, Précession (électrons), Convergence (électrons)** ; pour les rayons X : **Faisceau parallèle, Précession (rayons X, ZOLZ), Laue en retour (rayons X)** ; pour les neutrons : **Faisceau parallèle** uniquement. Changer de source d'onde ramène toujours l'optique sur **Faisceau parallèle**. Sélectionner **Précession (électrons)** ou **Convergence (électrons)** bascule automatiquement le calcul d'intensité sur **Théorie dynamique** ; **Théorie dynamique** n'est proposée que pour les électrons (choisir les rayons X ou les neutrons revient à **Cinématique & err. exc.**). Le mode Laue en retour utilise un faisceau blanc (polychromatique).
+> **Note** : Les choix de faisceau incident (**Optique**) dépendent du type de rayonnement. Pour les électrons : **Faisceau parallèle, Précession (électrons), Convergence (électrons)** ; pour les rayons X : **Faisceau parallèle, Précession (rayons X, ZOLZ), Laue en retour (rayons X)** ; pour les neutrons : **Faisceau parallèle** uniquement. Changer de source d'onde ramène toujours l'optique sur **Faisceau parallèle**. Sélectionner **Précession (électrons)** ou **Convergence (électrons)** bascule automatiquement le calcul d'intensité sur **Théorie dynamique** ; **Théorie dynamique** n'est proposée que pour les électrons (choisir les rayons X ou les neutrons revient à **Cinématique & err. exc.**). Le mode Laue en retour utilise un faisceau blanc (polychromatique).
 
 ---
 

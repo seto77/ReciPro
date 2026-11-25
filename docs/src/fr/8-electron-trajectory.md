@@ -37,7 +37,7 @@ Modifier **Inclinaison de l'échantillon** ou **Énergie** après un calcul ne c
 
 Un électron est suivi jusqu'à ce qu'il quitte l'échantillon ou que son énergie tombe à **2 keV** (seuil fixe). Les électrons qui sortent avec plus de 2 keV sont comptés comme électrons rétrodiffusés ; η (leur fraction parmi tous les électrons incidents), l'énergie BSE moyenne, le stéréonet et les histogrammes ci-dessous sont calculés à partir de ces électrons. La section efficace, le libre parcours moyen et le pouvoir d'arrêt affichés dans **Statistiques** sont des valeurs de modèle à l'énergie du faisceau.
 
-Les modèles de diffusion eux-mêmes ne sont pas sélectionnables par l'utilisateur : les sections efficaces élastiques proviennent de la table de Mott NIST fournie (avec repli sur la formule de Rutherford écrantée hors de son domaine), et le pouvoir d'arrêt de la forme de Jablonski modifiée (2008). Le modèle effectivement utilisé est indiqué à côté de la section efficace et du pouvoir d'arrêt dans **Statistiques**. Voir [Atténuation et transport](appendix/a2-beam-interaction/attenuation-transport.md) pour la description de ces modèles.
+Les modèles de diffusion eux-mêmes ne sont pas sélectionnables par l'utilisateur : les sections efficaces élastiques proviennent de la table de Mott NIST fournie (avec repli sur la formule de Rutherford écrantée hors de son domaine), et le pouvoir d'arrêt de la formule relativiste de Bethe avec la correction de Joy–Luo. Le modèle effectivement utilisé est indiqué à côté de la section efficace et du pouvoir d'arrêt dans **Statistiques**. Voir [Atténuation et transport](appendix/a2-beam-interaction/attenuation-transport.md) pour la description de ces modèles.
 
 ### Vue 3-D des trajectoires
 

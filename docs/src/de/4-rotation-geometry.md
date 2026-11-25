@@ -73,7 +73,7 @@ Für kristallographische Indizes rechnen Sie diese zuerst in kartesische Koordin
 Dieselbe Matrix (\(R_{ij}\) = Zeile \(i\), Spalte \(j\)) erscheint als:
 
 - **Kopieren** / **Aus Excel einfügen** in diesem Fenster (3 × 3, tabulatorgetrennt, Zeilen von oben nach unten);
-- `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` und `Dir.GetEuler()` in der [Makro-API](20-macro/1-built-in-functions.md) (neun Elemente in Zeilenreihenfolge \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\));
+- `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` in der [Makro-API](20-macro/1-built-in-functions.md) (neun Elemente in Zeilenreihenfolge \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\)) sowie `Dir.GetEuler()` (liefert die drei Winkel \([\phi, \theta, \psi]\) im Bogenmaß);
 - die Spalten **R11**–**R33** der Kandidatenliste, die [Spot ID v2](11-spot-id-v2.md) speichert.
 
 ### OpenGL-Fenster

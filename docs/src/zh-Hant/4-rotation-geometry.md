@@ -73,7 +73,7 @@ $$
 同一矩陣（\(R_{ij}\) = 第 \(i\) 列第 \(j\) 行）出現於：
 
 - 本視窗的 **複製到 Excel** / **從 Excel 貼上**（3 × 3 定位字元分隔，由上而下逐列）；
-- [巨集 API](20-macro/1-built-in-functions.md) 的 `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` 與 `Dir.GetEuler()`（9 個元素按列序 \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\) 排列）；
+- [巨集 API](20-macro/1-built-in-functions.md) 的 `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()`（9 個元素按列序 \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\) 排列），以及 `Dir.GetEuler()`（傳回三個角 \([\phi, \theta, \psi]\)，單位為弧度）；
 - [Spot ID v2](11-spot-id-v2.md) 儲存的候選清單中的 **R11**–**R33** 欄。
 
 ### OpenGL 視窗

@@ -89,7 +89,7 @@ où ici $s$ est la **longueur de parcours** le long de la trajectoire (la variab
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-avec $J$ l'**énergie d'excitation moyenne** du solide. Cette esquisse non relativiste ne montre que la mise à l'échelle ; ReciPro évalue la forme de **Jablonski (2008)** modifiée, qui reste bien conditionnée à basse énergie (l'ancienne forme empirique de **Joy–Luo (1989)** est également implémentée). L'**énergie de plasmon** $E_p$ dans le tableau scalaire est une caractérisation apparentée mais distincte des mêmes excitations électroniques. Le **libre parcours moyen inélastique** (IMFP) est la distance moyenne correspondante entre collisions avec perte d'énergie ; ReciPro peut l'évaluer à partir de la formule prédictive **TPP-2M**,
+avec $J$ l'**énergie d'excitation moyenne** du solide. Cette esquisse non relativiste ne montre que la mise à l'échelle ; par défaut, ReciPro calcule le pouvoir d'arrêt par collision des électrons avec la **formule relativiste de Bethe**, en remplaçant l'énergie d'excitation moyenne $J$ par $J' = J/(1 + kJ/E)$ selon **Joy–Luo (1989)** ($k = 0.0299\ln Z + 0.7307$, avec $E$ et $J$ en keV). La formule modifiée de **Jablonski (2008)** et la formule empirique originale de Joy–Luo sont également implémentées. L'**énergie de plasmon** $E_p$ dans le tableau scalaire est une caractérisation apparentée mais distincte des mêmes excitations électroniques. Le **libre parcours moyen inélastique** (IMFP) est la distance moyenne correspondante entre collisions avec perte d'énergie ; ReciPro peut l'évaluer à partir de la formule prédictive **TPP-2M**,
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 

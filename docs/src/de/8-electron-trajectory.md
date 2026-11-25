@@ -37,7 +37,7 @@ Eine Änderung von **Probenkippung** oder **Energie** nach einem Lauf ändert da
 
 Ein Elektron wird verfolgt, bis es die Probe verlässt oder seine Energie auf **2 keV** fällt (fester Schwellenwert). Elektronen, die mit mehr als 2 keV austreten, werden als rückgestreute Elektronen gezählt; η (ihr Anteil an allen einfallenden Elektronen), die mittlere BSE-Energie, das Stereonetz und die Histogramme unten werden aus diesen Elektronen berechnet. Wirkungsquerschnitt, mittlere freie Weglänge und Bremsvermögen in der **Statistik** sind Modellwerte bei der Strahlenergie.
 
-Die Streumodelle selbst sind nicht wählbar: Die elastischen Wirkungsquerschnitte stammen aus der mitgelieferten NIST-Mott-Tabelle (außerhalb ihres Gültigkeitsbereichs wird auf die abgeschirmte Rutherford-Formel zurückgegriffen), das Bremsvermögen aus der modifizierten Jablonski-Form (2008). Das tatsächlich verwendete Modell wird in der **Statistik** neben dem Wirkungsquerschnitt und dem Bremsvermögen angegeben. Was diese Modelle sind, erläutert [Abschwächung & Transport](appendix/a2-beam-interaction/attenuation-transport.md).
+Die Streumodelle selbst sind nicht wählbar: Die elastischen Wirkungsquerschnitte stammen aus der mitgelieferten NIST-Mott-Tabelle (außerhalb ihres Gültigkeitsbereichs wird auf die abgeschirmte Rutherford-Formel zurückgegriffen), das Bremsvermögen aus der relativistischen Bethe-Formel mit der Joy–Luo-Korrektur. Das tatsächlich verwendete Modell wird in der **Statistik** neben dem Wirkungsquerschnitt und dem Bremsvermögen angegeben. Was diese Modelle sind, erläutert [Abschwächung & Transport](appendix/a2-beam-interaction/attenuation-transport.md).
 
 ### 3-D-Trajektorienansicht
 

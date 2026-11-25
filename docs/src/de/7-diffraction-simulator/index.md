@@ -24,7 +24,7 @@ Das Fenster besitzt **links** einen Zeichenbereich für das Beugungsmuster und *
 | **PED** | Präzessions-Elektronenbeugung | [PED-Simulation](2-ped-simulation.md) |
 | **CBED** | Konvergente Elektronenbeugung | [CBED-Simulation](3-cbed-simulation.md) |
 
-> **ALCHEMI ist kein Modus.** Anders als Röntgen / SAED / PED / CBED, die sich aus der Kombination von Wellenlänge und einfallendem Strahl ergeben, ist der ALCHEMI-Simulator ein **Unterfenster**, das über das Menü **Optionen** geöffnet wird; er ist deshalb hier getrennt aufgeführt.
+> **ALCHEMI ist kein Modus.** Anders als Röntgen / SAED / PED / CBED, die sich aus der Kombination von Strahlungsart und Optik des einfallenden Strahls ergeben, ist der ALCHEMI-Simulator ein **Unterfenster**, das über das Menü **Optionen** geöffnet wird; er ist deshalb hier getrennt aufgeführt.
 
 | Unterfenster | Inhalt | Seite |
 |------|------|------|
@@ -48,7 +48,7 @@ Suchen Sie die benötigte Seite anhand der Kombination aus **Wellenquelle** und 
 | Röntgen | Rück-Laue (Röntgen) | Rückstrahl-Laue | [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md) |
 | Neutron | Paralleler Strahl | Neutronenbeugung | [Neutronen-Abschnitt der Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md) |
 
-> **Hinweis**: Die Auswahlmöglichkeiten für den einfallenden Strahl (**Optik**) ändern sich mit der Wellenlänge. Für Elektronen: **Paralleler Strahl, Präzession (Elektron), Konvergenz (Elektron)**; für Röntgenstrahlen: **Paralleler Strahl, Präzession (Röntgen, ZOLZ), Rück-Laue (Röntgen)**; für Neutronen: nur **Paralleler Strahl**. Ein Wechsel der Wellenquelle setzt die Optik stets auf **Paralleler Strahl** zurück. Die Auswahl von **Präzession (Elektron)** oder **Konvergenz (Elektron)** schaltet die Intensitätsberechnung automatisch auf **Dynamische Theorie** um; **Dynamische Theorie** wird nur für Elektronen angeboten (bei Auswahl von Röntgenstrahlen oder Neutronen wird auf **Kinematisch & Anr.-Fehler** zurückgeschaltet). Rück-Laue verwendet einen weißen (polychromatischen) Strahl.
+> **Hinweis**: Die Auswahlmöglichkeiten für den einfallenden Strahl (**Optik**) hängen von der Art der Strahlung ab. Für Elektronen: **Paralleler Strahl, Präzession (Elektron), Konvergenz (Elektron)**; für Röntgenstrahlen: **Paralleler Strahl, Präzession (Röntgen, ZOLZ), Rück-Laue (Röntgen)**; für Neutronen: nur **Paralleler Strahl**. Ein Wechsel der Wellenquelle setzt die Optik stets auf **Paralleler Strahl** zurück. Die Auswahl von **Präzession (Elektron)** oder **Konvergenz (Elektron)** schaltet die Intensitätsberechnung automatisch auf **Dynamische Theorie** um; **Dynamische Theorie** wird nur für Elektronen angeboten (bei Auswahl von Röntgenstrahlen oder Neutronen wird auf **Kinematisch & Anr.-Fehler** zurückgeschaltet). Rück-Laue verwendet einen weißen (polychromatischen) Strahl.
 
 ---
 

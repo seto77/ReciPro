@@ -141,7 +141,7 @@ Ruota dell'angolo **Passo** (predefinito 10°). ↺ / ↻ ruotano attorno alla n
 
 ![Vista lungo](../assets/cap-it-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
-Allinea un asse di zona [*uvw*] o un piano reticolare (*hkl*) perpendicolarmente allo schermo.
+Allinea un asse di zona [*uvw*] o la normale a un piano reticolare (*hkl*) con la direzione di osservazione. Nel secondo caso il piano è parallelo allo schermo.
 
 - **Fissa**: quando è spuntata, tutte le rotazioni successive (frecce, trascinamento con il mouse) vengono eseguite attorno all'asse di zona o alla normale al piano specificati, così che quella direzione resti fissa. Può essere attiva una sola delle due caselle **Fissa**, e non può essere spuntata finché l'indice è 0 0 0.
 - **Asse**: pone l'asse di zona immesso \([uvw]\) perpendicolare allo schermo. Se è impostato anche **Piano** e l'asse giace in quel piano ($uh+vk+wl=0$), la normale al piano viene orientata verso l'alto sullo schermo; altrimenti la direzione verso l'alto viene scelta automaticamente.
@@ -154,7 +154,7 @@ Allinea un asse di zona [*uvw*] o un piano reticolare (*hkl*) perpendicolarmente
 | Trascinamento con il mouse | Vuoi ruotare liberamente osservando gli assi del cristallo. | Pannello **Orientazione attuale** |
 | Pulsanti freccia | Vuoi rotazioni piccole e ripetibili. | Pannello **Frecce** |
 | Asse di zona | Conosci la direzione di osservazione, come \([001]\) o \([110]\). | **Vista lungo** / immissione asse di zona |
-| Normale al piano | Vuoi un piano reticolare \((hkl)\) normale allo schermo. | **Vista lungo** / immissione piano |
+| Normale al piano | Vuoi allineare la normale a un piano reticolare \((hkl)\) con la direzione di osservazione. Il piano è quindi parallelo allo schermo. | **Vista lungo** / immissione piano |
 | Angoli di Eulero | Hai bisogno di un'orientazione numerica riproducibile. | **Angoli di Eulero (Z-X-Z)** |
 
 Vedi [Geometria di rotazione](4-rotation-geometry.md) e [Appendice A1. Sistemi di coordinate](appendix/a1-coordinate-system/1-orientation.md) per le matrici di rotazione e le convenzioni sulle coordinate.

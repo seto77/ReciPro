@@ -190,7 +190,7 @@ A simulação STEM é computacionalmente cara, portanto defina os parâmetros a 
 
 ## Importância do fator de temperatura
 
-Para a simulação HAADF-STEM, os átomos devem ter um fator de temperatura isotrópico (fator de Debye-Waller) diferente de zero. Se o valor for desconhecido, defina $B \approx 0.5\ \text{Å}^2$. Com um fator de temperatura nulo, a intensidade TDS é zero e a imagem HAADF não é calculada corretamente.
+Para a simulação HAADF-STEM, os átomos devem ter um fator de temperatura isotrópico (fator de Debye-Waller) diferente de zero. Use valores conhecidos, por exemplo os da literatura. Se o valor for desconhecido, pode-se usar $B \approx 0.5\ \text{Å}^2$ em um cálculo de teste. Com um fator de temperatura nulo, a intensidade TDS é zero e a imagem HAADF não é calculada corretamente.
 
 | Detector | Faixa | Contribuição principal |
 |----------|-------|-------------------|

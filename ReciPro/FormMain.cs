@@ -68,7 +68,15 @@ public partial class FormMain : FormBase
                     if (bytes is { Length: > 0 } && bytes[0] == Crystal2.ID && !(CrystalControl.LastSentToClipboard is { } sent && bytes.AsSpan().SequenceEqual(sent)))
                     {
                         var c2 = Crystal2.Deserialize(bytes[1..]);
-                        crystalControl.Crystal = Crystal2.GetCrystal(c2);
+                        //crystalControl.Crystal = Crystal2.GetCrystal(c2); // 261125Cl 変更前
+                        // 261125Cl 変更 (codex2 の 11-25 の議論 観点 C §1-7): 読めなかったとき (版の違う姉妹アプリ・壊れたデータ) は null を代入して今の結晶を空にしていた。
+                        //  今の結晶はそのままにし、状態欄に知らせる
+                        Crystal received = null;
+                        try { received = Crystal2.GetCrystal(c2); } catch { received = null; }
+                        if (received != null)
+                            crystalControl.Crystal = received;
+                        else
+                            toolStripStatusLabel.Text = "Could not read the crystal sent from another application (a different version?). The current crystal is unchanged.";
                     }
                 }
 

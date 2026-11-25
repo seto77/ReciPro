@@ -164,7 +164,7 @@ Le Informazioni di simmetria non hanno combinazioni speciali di tasti/mouse. Nel
 | <kbd>CTRL</kbd> + Doppio clic sinistro | Aggiungi una riflessione e contrassegnala come fascio diretto (000) |
 | Clic sinistro su una riflessione | Seleziona la riflessione più vicina |
 | <kbd>CTRL</kbd> + Clic destro su una riflessione | Elimina la riflessione più vicina |
-| <kbd>CTRL</kbd> + tasti freccia | Sposta la riflessione selezionata di un pixel |
+| <kbd>CTRL</kbd> + tasti freccia | Sposta la riflessione selezionata di un pixel sullo schermo |
 | Tenere premuto <kbd>SHIFT</kbd> e fare clic sinistro su tre riflessioni in sequenza | Misura l'angolo sull'immagine (estremo → vertice → estremo); <kbd>ESC</kbd> lo cancella |
 | Doppio clic sull'intestazione di riga di una riflessione | Zoom su quella riflessione (×2) |
 

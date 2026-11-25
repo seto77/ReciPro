@@ -89,7 +89,7 @@ dove qui $s$ è la **lunghezza del cammino** lungo la traiettoria (la variabile 
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-con $J$ l'**energia media di eccitazione** del solido. Questo schizzo non relativistico mostra soltanto lo scaling; ReciPro valuta la forma di **Jablonski (2008)** modificata, che si mantiene regolare alle basse energie (è implementata anche la precedente forma empirica di **Joy–Luo (1989)**). L'**energia del plasmone** $E_p$ nella tabella scalare è una caratterizzazione collegata ma distinta delle stesse eccitazioni elettroniche. Il **libero cammino medio anelastico** (IMFP) è la corrispondente distanza media tra le collisioni con perdita di energia; ReciPro può valutarlo dalla formula predittiva **TPP-2M**,
+con $J$ l'**energia media di eccitazione** del solido. Questo schizzo non relativistico mostra soltanto lo scaling; per impostazione predefinita ReciPro calcola il potere frenante per collisioni degli elettroni con la **formula relativistica di Bethe**, sostituendo l'energia media di eccitazione $J$ con $J' = J/(1 + kJ/E)$ secondo **Joy–Luo (1989)** ($k = 0.0299\ln Z + 0.7307$, con $E$ e $J$ in keV). Sono implementate anche la formula modificata di **Jablonski (2008)** e la formula empirica originale di Joy–Luo. L'**energia del plasmone** $E_p$ nella tabella scalare è una caratterizzazione collegata ma distinta delle stesse eccitazioni elettroniche. Il **libero cammino medio anelastico** (IMFP) è la corrispondente distanza media tra le collisioni con perdita di energia; ReciPro può valutarlo dalla formula predittiva **TPP-2M**,
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 

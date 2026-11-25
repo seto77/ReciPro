@@ -16,38 +16,14 @@ GUI 條件：波源 = 電子（晶體、加速電壓與取向取自上層繞射�
 
 ## 計算的內容
 
-對每個入射取向，以布洛赫波法求解晶體內部的波場；對每一組位點 $s$ 與游離通道 $c$，將游離產率解析地積分至厚度 $t$。
+對每個入射取向，ReciPro 以布洛赫波法求解晶體內部的波場。對每一組位點與游離通道，沿厚度解析積分至 $t$，得到每個入射電子的游離產率。總產率為兩項之和。
 
-$$
-Y_\text{dyn} = \mathrm{Re} \sum_{jj'} \alpha_j^{*}\,\bigl(C^{\dagger} \mu_{s,c} C\bigr)_{jj'}\, \alpha_{j'}\, F_{jj'}(t),
-\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda},
-\qquad \lambda = 2\pi i\left(\gamma_j - \overline{\gamma_{j'}}\right)
-$$
+- **通道游離產率**來自同調布洛赫場在各位點原子處引起的游離。計算採用 **Bote–Salvat** 模型的游離總截面、**Temari** 產生的 DHFS 表中的正規化游離形狀因子（與 [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md) 使用同一組表），並乘以德拜–沃勒因子，可計入非等向性原子位移。這相當於 ICSC（Oxley & Allen 2003）的**局域形狀因子近似**。
+- **非通道成分**來自因熱漫散射吸收而脫離同調波場的電子。這些電子沿隨機方向繼續傳播，在穿過試樣剩餘厚度時引起游離。
 
-其中 $\gamma_j$ 為[動力學核心](../appendix/a3-bloch-wave/calculation.md)的布洛赫波本徵值，$\alpha_j$ 為其激發振幅；在簡併極限 $\lambda \to 0$ 下，$F_{jj'}(t) \to t$。
-
-游離矩陣 $\mu$ 僅取決於兩個反射之差 $G = \mathbf{g}_h - \mathbf{g}_g$。
-
-$$
-\mu_{hg} = \sum_a \mathrm{Occ}_a\, e^{-M_a(G)}\, \sigma_c\, F_c(|G|/2)\, e^{-2\pi i\,G \cdot \mathbf{r}_a}
-$$
-
-- $\sigma_c$：游離總截面，採用 **Bote–Salvat** 模型
-- $F_c(s)$：正規化游離形狀因子，來自 **Temari** 生成的 DHFS 表（與 [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md) 相同的表）
-- $e^{-M_a(G)}$：德拜–沃勒因子（支援非等向性 ADP）
-
-對 X 光譜線系，$\sigma_c$ 是對其各支殼層 $i$ 的 $\sum_i B_i \sigma_i$，$F_c$ 是各支殼層形狀因子以 $B_i \sigma_i$ 加權的平均（$B_i$ 為經 Coster–Kronig 與輻射級聯後的螢光產率 × 譜線分支比；xraylib 4.2.1）。
-
-這相當於 ICSC（Oxley & Allen 2003）的**局域形狀因子近似**。未使用雙動量 MDFF。
+公式與符號定義見 [A3.6. ALCHEMI 計算](../appendix/a3-bloch-wave/alchemi.md)。
 
 ### 非通道成分
-
-因熱漫散射吸收而脫離同調布洛赫場的電子，會以方向隨機化的電子形式走完剩餘厚度，並在該處同樣造成游離。
-
-$$
-Y_\text{dech} = \frac{\mu_{00}}{V_c}\,\bigl(t - L_\text{coh}(t)\bigr),
-\qquad L_\text{coh}(t) = \int_0^t \sum_g |\psi_g(z)|^2\,dz
-$$
 
 在**計算**框中取消勾選**包含非通道成分**會移除此項。在典型厚度下它占總產率的數十個百分點，省略後位點對比度會顯得比實際更強。
 
@@ -95,7 +71,7 @@ $$
 |------|------|--------|
 | **最大繞射波數** | 每個取向的布洛赫波數上限（1–1600）。整個掃描的聯集會更大 | 120 |
 | **求解器** | 特徵值問題的計算引擎：**原生**（Eigen C++）或**託管**（.NET）。在原生求解器不可用的環境中，選擇會固定為託管 | 原生 |
-| **包含非通道成分** | 是否加上上述 $Y_\text{dech}$ | 開 |
+| **包含非通道成分** | 是否加上非通道成分（[A3.6](../appendix/a3-bloch-wave/alchemi.md) 中的 $Y_\text{dech}$） | 開 |
 | **角展寬** | 將曲線與入射束的角展寬做摺積：**無** 或 **Gaussian**（半高全寬，mrad）。這是取向軸上的後處理，於顯示歸一化**之前**套用 | 無 |
 
 **1600 波的上限與游離形狀因子的收錄範圍 $s \le 16\ \text{Å}^{-1}$ 是成對的。** 實際上即使 1600 波也僅需約 10.5 Å⁻¹，因此只要遵守此上限就不會用盡收錄範圍。實際達到的數值顯示於圖下方[基組診斷](#基組診斷)框的第一列。
@@ -255,7 +231,7 @@ v1 的游離矩陣僅是單一向量 $G = \mathbf{g}_h - \mathbf{g}_g$ 的函數
 ### 模型前提
 
 - **僅限示蹤近似**：位點響應的線性疊加只在摻雜原子不擾動彈性波場的稀薄極限下成立。有限濃度的 VCA 不在 v1 範圍內
-- **局域形狀因子近似**：$\mu$ 僅是 $G = \mathbf{g}_h - \mathbf{g}_g$ 的函數，而非雙動量 MDFF（OAR 1999 的 Model A）。對輕元素 K 殼層與低能吸收邊，該近似最弱（[見上](#local-approximation)）
+- **局域形狀因子近似**：游離矩陣 $\mu$（見 [A3.6](../appendix/a3-bloch-wave/alchemi.md)）僅是 $G = \mathbf{g}_h - \mathbf{g}_g$ 的函數，而非雙動量 MDFF（OAR 1999 的 Model A）。對輕元素 K 殼層與低能吸收邊，該近似最弱（[見上](#local-approximation)）
 - **殼層通道是空孔，譜線系是產生的 X 光光子**：只對譜線系乘以螢光產率與譜線分支（不含歐傑級聯）
 - **加速電壓下限為 80 kV**：這是能保證 $s = 16\ \text{Å}^{-1}$ 的最低電壓，並非拒絕門檻
 

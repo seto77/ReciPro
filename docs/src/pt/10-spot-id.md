@@ -32,7 +32,7 @@ Insira **Tensão acel.** (kV, padrão 200) e **Comprimento da câmera** (mm, pad
 Insira a geometria das reflexões de difração.
 
 - Para inserir a distância entre reflexões no detector, use a caixa **mm**.
-- Se você conhece o valor de *d*, insira-o nas unidades **Å** ou **nm⁻¹**.
+- Insira o espaçamento interplanar *d* na caixa **Å**, ou o módulo do vetor da rede recíproca 1/*d* na caixa **nm⁻¹** (por exemplo, *d* = 2,0 Å ↔ 1/*d* = 5,0 nm⁻¹).
 
 Modo **Três lados** : Insira os comprimentos dos três lados de um triângulo que tem o direct spot como um dos vértices.
 
