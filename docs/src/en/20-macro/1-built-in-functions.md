@@ -12,7 +12,7 @@ Complete reference of classes and functions available in ReciPro macros.
 | `File.GetFileName()` | Show file-picker dialog, return selected path |
 | `File.GetFileNames()` | Show multi-file-picker dialog, return list of paths |
 | `File.ReadCrystalList(filename)` | Load a crystal list file (*.xml); omit `filename` to open a dialog |
-| `File.ReadCrystal(filename)` | Load a CIF/AMC crystal file; omit `filename` to open a dialog |
+| `File.ReadCrystal(filename)` | Load a CIF/AMC crystal file; omit `filename` to open a dialog. If the named file cannot be read, the macro stops with an error and the current crystal is unchanged |
 | `File.ExportAsCIF(filename)` | Export the current crystal as CIF; omit `filename` to open a dialog |
 | `File.ReadText(filename)` | Read a text file (UTF-8) and return it as a string; omit `filename` to open a dialog. Pairs with `Crystal.LoadCifText()` / `SaveText()` |
 | `File.SaveText(textData, filename)` | Save text data to a file; writes `textData` as UTF-8, and omitting `filename` opens a save dialog |

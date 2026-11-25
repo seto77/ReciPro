@@ -14,7 +14,7 @@ ReciProマクロで使用可能な組み込みクラスと関数の一覧です�
 | `File.GetFileName()` | ファイル選択ダイアログを表示し、選択されたファイルのパスを返す |
 | `File.GetFileNames()` | 複数ファイル選択ダイアログを表示し、選択されたファイルパスのリストを返す |
 | `File.ReadCrystalList(filename)` | 結晶リストファイル (*.xml) を読み込み。`filename` を省略するとダイアログを開く |
-| `File.ReadCrystal(filename)` | CIF/AMC形式の結晶ファイルを読み込み。`filename` を省略するとダイアログを開く |
+| `File.ReadCrystal(filename)` | CIF/AMC形式の結晶ファイルを読み込み。`filename` を省略するとダイアログを開く。指定したファイルを読めなければ、エラーでマクロを止める (今の結晶はそのまま) |
 | `File.ExportAsCIF(filename)` | 現在選択中の結晶をCIF形式で保存。`filename` を省略するとダイアログを開く |
 | `File.ReadText(filename)` | テキストファイルを UTF-8 で読み、文字列として返す。`filename` 省略でダイアログを開く。`Crystal.LoadCifText()` / `SaveText()` と組で使う |
 | `File.SaveText(textData, filename)` | テキストデータをファイルに保存。`textData` を UTF-8 で書き出す。`filename` を省略すると保存ダイアログを開く |

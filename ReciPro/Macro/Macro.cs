@@ -469,8 +469,16 @@ public class Macro : MacroBase
         [Help("Loads a crystal list file in XML format. If 'filename' is omitted, opens a file selection dialog.", "string filename")]
         public void ReadCrystalList(string filename = "") => Execute(() => main.ReadCrystalList(filename, false, false));
 
-        [Help("Loads a crystal file in CIF or AMC format. If 'filename' is omitted, opens a file selection dialog.", "string filename")]
-        public void ReadCrystal(string filename = "") => Execute(() => main.ReadCrystal(filename));
+        //[Help("Loads a crystal file in CIF or AMC format. If 'filename' is omitted, opens a file selection dialog.", "string filename")]
+        //public void ReadCrystal(string filename = "") => Execute(() => main.ReadCrystal(filename)); // 261125Cl 変更前
+        // 261125Cl 変更 (作者の決定 11-25 22:1x = 例外で止める): 読めなかったときは前の結晶のまま黙って進んでいたので、一括処理で B の名前の出力に A の結晶が入った。
+        //  ファイル名を指定して読めなければ例外でマクロを止める (ダイアログを取り消したときは従来どおり止めない)
+        [Help("Loads a crystal file in CIF or AMC format. If 'filename' is omitted, opens a file selection dialog. Raises an error (stops the macro) if the named file cannot be read; the current crystal is then unchanged.", "string filename")]
+        public void ReadCrystal(string filename = "")
+        {
+            if (!Execute(() => main.ReadCrystal(filename)) && filename != "")
+                throw new InvalidOperationException($"Could not read a crystal from {filename}. The current crystal is unchanged.");
+        }
 
         [Help("Exports the selected crystal in CIF format. If 'filename' is omitted, opens a save dialog.", "string filename")]
         public void ExportAsCIF(string filename = "") => Execute(() => main.ExportCIF(filename));

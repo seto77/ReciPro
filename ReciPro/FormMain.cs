@@ -214,6 +214,9 @@ public partial class FormMain : FormBase
     public double Theta { get => numericBoxEulerTheta.RadianValue; set => numericBoxEulerTheta.RadianValue = value; }
     public double Psi { get => numericBoxEulerPsi.RadianValue; set => numericBoxEulerPsi.RadianValue = value; }
 
+    /// <summary>261125Cl 追加: 起動時に default.xml を読めず初期リストを表示しているか (このときは終了時に原本を上書きしない)</summary>
+    private bool defaultCrystalListUnreadable = false;
+
     public static string UserAppDataPath => new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
 
     //260717Cl 修正: setter が value ではなく Crystal (getter) を自己代入していた
@@ -552,8 +555,17 @@ public partial class FormMain : FormBase
         ReadCrystalList(UserAppDataPath + "default.xml", false, true);
 
         //何らかの理由(前回が不正終了だったなど)でdefalut.xmlが壊れている場合はinitial.xmlを読み込む
+        //if (listBox.Items.Count == 0) // 261125Cl 変更前
+        //    ReadCrystalList(UserAppDataPath + "initial.xml", false, true);
+        // 261125Cl 変更 (codex2 の 11-25 の議論 観点 I §1-1、作者の決定「もう少し直して出す」): 200 バイト以上ある default.xml から 1 件も読めないのは、
+        //  10 MB 超・30 秒の時間切れ・壊れた XML のどれか。旧はここで初期リストに切り替え、終了時にそれで原本を上書きしていた (多数の結晶を溜めた原本を失う)。
+        //  初期リストを表示するのは同じだが、このセッションでは原本を上書きしない (終了時は別名で保存する。FormMain_FormClosing)
         if (listBox.Items.Count == 0)
+        {
+            defaultCrystalListUnreadable = true;
             ReadCrystalList(UserAppDataPath + "initial.xml", false, true);
+            toolStripStatusLabel.Text = $"Could not read the crystal list {UserAppDataPath}default.xml (too large, timed out or broken). Showing the initial list; the original file is kept and this session's list will be saved under another name.";
+        }
 
         //ReciProSetup.msiは削除 アンインストール出来なくなるかもしれないので、削除はやめた方がいいかも 20240208
         //if (File.Exists(UserAppDataPath + "ReciProSetup.msi"))
@@ -703,7 +715,10 @@ public partial class FormMain : FormBase
         //260717Cl 変更: List 経由の二段構築を Cast().ToArray() に短縮
         //ConvertCrystalData.SaveCrystalListXml(listBox.Items.Cast<Crystal>().ToArray(), UserAppDataPath + "default.xml"); // 261124Cl 変更前: 失敗しても黙っていた
         // 261124Cl 変更 (PDIndexer の査読 C-03 のアプリ側): 保存は書き切ってから置き換えるようになった (失敗しても前回の default.xml は残る)。失敗したらそのことを知らせる
-        if (!ConvertCrystalData.SaveCrystalListXml(listBox.Items.Cast<Crystal>().ToArray(), UserAppDataPath + "default.xml"))
+        //if (!ConvertCrystalData.SaveCrystalListXml(listBox.Items.Cast<Crystal>().ToArray(), UserAppDataPath + "default.xml")) // 261125Cl 変更前
+        // 261125Cl 変更: 起動時に default.xml を読めなかったセッションでは原本を上書きせず、別名 (default_recovered_日時.xml) に保存する
+        if (!ConvertCrystalData.SaveCrystalListXml(listBox.Items.Cast<Crystal>().ToArray(),
+            UserAppDataPath + (defaultCrystalListUnreadable ? $"default_recovered_{DateTime.Now:yyyyMMdd_HHmmss}.xml" : "default.xml")))
             MessageBox.Show(this, Crystallography.Localization.Loc(
                 en: "Could not save the crystal list (default.xml). The changes made in this session are lost; the previous list is kept.",
                 ja: "結晶リスト (default.xml) を保存できませんでした。今回の変更は失われます (前回のリストは残っています)。",
@@ -1849,7 +1864,9 @@ public partial class FormMain : FormBase
     private void readCrystalFromCIFOrAMCFileToolStripMenuItem_Click(object sender, EventArgs e) => ReadCrystal();
 
 
-    public void ReadCrystal(string fileName = "")
+    //public void ReadCrystal(string fileName = "") // 261125Cl 旧シグネチャ
+    /// <returns>261125Cl 追加: 結晶を読み込めたら true (ダイアログを取り消したときも false)</returns>
+    public bool ReadCrystal(string fileName = "") // 261125Cl 変更: 成否を返す (マクロが失敗で止まれるように)
     {
         var interactive = fileName == ""; // 261105Cl 追加: ダイアログで選んだときだけ、読めなかったことを画面に出す (マクロは止めない)
         if (fileName == "")
@@ -1858,11 +1875,13 @@ public partial class FormMain : FormBase
             if (dlg.ShowDialog() == DialogResult.OK)
                 fileName = dlg.FileName;
             else
-                return;
+                //return; // 261125Cl 変更前
+                return false; // 261125Cl 変更
         }
 
         //crystalControl.ReadCrystal(fileName); // 261105Cl 変更前
-        crystalControl.ReadCrystal(fileName, showError: interactive); // 261105Cl 変更
+        //crystalControl.ReadCrystal(fileName, showError: interactive); // 261105Cl 変更 // 261125Cl 変更前
+        return crystalControl.ReadCrystal(fileName, showError: interactive); // 261125Cl 変更: 成否を返す
     }
 
     private void readCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
