@@ -38,6 +38,11 @@ public partial class FormSpotIDV2 : FormBase
     public FormMain FormMain;
 
     private bool skipEvent = false;
+    /// <summary>261126Cl 追加 (作者の決定 11-26): スポットの表に、旧い定義 (v.4.955 より前) の A・η を含む行がある (旧 CSV を読み込んだ)。
+    /// 保存すると見出しを Direct_v2_mixed にする。表が空になってから新しく作った・読み込んだときに解除する</summary>
+    internal bool spotTableHasLegacyIntensity = false;
+    /// <summary>261126Cl 追加 (codex2 査読 s4 中): スポットの行を消した・表を空にした回数。同定の開始時に控え、完了時に変わっていたら結果 (古い番号の HKL) を捨てる</summary>
+    private int spotTableRemovalVersion = 0;
     public PointD DirectSpot => dataSet.DataTableSpot.DirectSpotPosition;
 
     public double PixelSize
@@ -162,6 +167,7 @@ public partial class FormSpotIDV2 : FormBase
             return; // 261105Cl 追加
         }
         dataSet.DataTableSpot.Clear(); // 261105Cl 移動
+        spotTableHasLegacyIntensity = false; // 261126Cl 追加: 表を空にしたので旧い定義の行は無い
         dataSet.DataTableCandidate.Clear(); // 261105Cl 移動
         scalablePictureBoxAdvanced.Symbols.RemoveAll(s => s.Tag == tagCalcSpot); // 261105Cl 移動
 
@@ -622,6 +628,7 @@ public partial class FormSpotIDV2 : FormBase
     private void buttonClearSpots_Click(object sender, EventArgs e)
     {
         dataSet.DataTableSpot.Clear();
+        spotTableHasLegacyIntensity = false; // 261126Cl 追加: 表を空にしたので旧い定義の行は無い
         scalablePictureBoxAdvanced.Symbols?.RemoveAll(s => s.Tag == tagObsSpot);
         scalablePictureBoxAdvanced.Refresh();
     }
@@ -679,6 +686,9 @@ public partial class FormSpotIDV2 : FormBase
                 dataSet.DataTableSpot.SetPrms(i, area, results[i].PrmsPv, results[i].PrmsBg, results[i].R);
                 dataSet.DataTableSpot.ResetDspacing();
             }
+        // 261126Cl 追加 (codex2 査読 s4 中): 全部の行を今の定義でフィットし直せたら、旧い定義の行は残っていない
+        if (results.Length == dataSet.DataTableSpot.Rows.Count && results.All(r => !double.IsPositiveInfinity(r.R)))
+            spotTableHasLegacyIntensity = false;
 
         bindingSourceObsSpots.DataMember = "DataTableSpot";
         toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {StatusBarHelper.FormatElapsed(sw.Elapsed)}";
@@ -727,7 +737,8 @@ public partial class FormSpotIDV2 : FormBase
                         Math.Max(pp[2], 30),//H1
                         Math.Max(pp[3], 30),//H2
                         pp[4],//Theta
-                        Math.Min(Math.Max(pp[5], 0), 1.5),//Eta
+                        // Math.Min(Math.Max(pp[5], 0), 1.5),//Eta // 261126Cl 変更前
+                        Math.Min(Math.Max(pp[5], 0), 1),//Eta 261126Cl 変更: η は Lorentz の面積比 [0,1]
                         Math.Max(pp[6], 1E-10)//A
                     };
                 functions.AddRange(new[] { func1, func2, func3 });
@@ -886,6 +897,13 @@ public partial class FormSpotIDV2 : FormBase
     private void bindingSourceObsSpots_ListChanged(object sender, ListChangedEventArgs e)
     {
         if (skipEvent) return;
+        // 261126Cl 追加 (codex2 査読 s13 中 4): スポットの行を消すと番号 (No) が振り直されるので、同定の候補 (古い番号で HKL を持つ) を捨てる
+        if (e.ListChangedType == ListChangedType.ItemDeleted || dataSet.DataTableSpot.Count == 0)
+        {
+            dataSet.DataTableCandidate.Clear();
+            spotTableRemovalVersion++; // 261126Cl 追加: 同定中なら、その結果を捨てる
+            if (dataSet.DataTableSpot.Count == 0) spotTableHasLegacyIntensity = false; // 261126Cl 追加: 旧い定義の行は残っていない
+        }
         scalablePictureBoxAdvanced.Symbols?.RemoveAll(s => s.Tag == tagObsSpot);
         if (dataSet.DataTableSpot.Spots != null)
         {
@@ -1054,10 +1072,17 @@ public partial class FormSpotIDV2 : FormBase
     {
         var culture = delimiter == ',' ? System.Globalization.CultureInfo.InvariantCulture : System.Globalization.CultureInfo.CurrentCulture; // 261105Cl 追加
         var sb = new StringBuilder();
-        sb.Append("Direct" + delimiter);
+        //sb.Append("Direct" + delimiter); // 261126Cl 変更前 (4 行)
+        //for (int i = 1; i < dataGridViewSpots.Columns.Count - 1; i++)
+        //    if (dataGridViewSpots.Columns[i].Visible)
+        //        sb.Append(dataGridViewSpots.Columns[i].HeaderText + delimiter);
+        // 261126Cl 変更 (作者の決定 11-26): CSV の見出しは固定の 1 行。先頭を Direct_v2 (旧い定義の行が混ざっていれば Direct_v2_mixed) にして、
+        //  2D 擬 Voigt の A・η の定義を替えた版のファイルだと分かるようにする (旧版は 1 行目が "Direct," でないので読まない = 旧い定義として誤読しない)。
+        //  列名は画面の見出し (言語ごとの訳。日本語は改行を含み、CSV の 1 行目が割れていた) ではなく列のデータの名前。クリップボード (TSV) は画面の見出しのまま (改行は空白に)
+        sb.Append((delimiter == ',' ? (spotTableHasLegacyIntensity ? "Direct_v2_mixed" : "Direct_v2") : "Direct") + delimiter);
         for (int i = 1; i < dataGridViewSpots.Columns.Count - 1; i++)
-            if (dataGridViewSpots.Columns[i].Visible)
-                sb.Append(dataGridViewSpots.Columns[i].HeaderText + delimiter);
+            if (delimiter == ',' || dataGridViewSpots.Columns[i].Visible) // 261126Cl 変更 (codex2 査読 s4 中): CSV は非表示の列も書く (読み込みは列の位置で読むので、列を隠すと値がずれていた)
+                sb.Append((delimiter == ',' ? dataGridViewSpots.Columns[i].DataPropertyName : dataGridViewSpots.Columns[i].HeaderText.Replace("\r", "").Replace('\n', ' ')) + delimiter);
         sb.Append("\r\n");
 
         // 260801Cl 修正: 行ループの上限が Rows.Count - 1 で、末尾の 1 スポットが常に落ちていた
@@ -1067,7 +1092,7 @@ public partial class FormSpotIDV2 : FormBase
         {
             sb.Append(((bool)dataGridViewSpots[0, j].Value ? "*" : "") + delimiter);
             for (int i = 1; i < dataGridViewSpots.ColumnCount - 1; i++)
-                if (dataGridViewSpots.Columns[i].Visible)
+                if (delimiter == ',' || dataGridViewSpots.Columns[i].Visible) // 261126Cl 変更: 同上
                     //sb.Append(dataGridViewSpots[i, j].Value.ToString() + delimiter); // 261105Cl 変更前
                     sb.Append(Convert.ToString(dataGridViewSpots[i, j].Value, culture) + delimiter); // 261105Cl
             sb.Append("\r\n");
@@ -1141,25 +1166,48 @@ public partial class FormSpotIDV2 : FormBase
             var f = new Func<string, double>(x => Convert.ToDouble(x, System.Globalization.CultureInfo.InvariantCulture)); // 261105Cl 変更 (監査 I9): GetSpotListText の CSV と同じ InvariantCulture で読む
 
             var dataList = new List<string[]>();
+            bool legacy = false; // 261126Cl 追加
+            int headerLines = 0; // 261126Cl 追加: 旧い見出しの続きとして読み飛ばした行の数
             using (var sr = new StreamReader(filename))
             {
-                if (sr.ReadLine().StartsWith("Direct,"))
+                //if (sr.ReadLine().StartsWith("Direct,")) // 261126Cl 変更前 (3 行)
+                //    while (sr.Peek() > -1)
+                //        dataList.Add(sr.ReadLine().Split(new[] { ',' }));
+                // 261126Cl 変更 (作者の決定 11-26): Direct_v2 (今の定義) と Direct_v2_mixed (旧い定義の行を含む) と旧い Direct (v.4.955 より前) を読む。
+                //  旧い見出しは日本語の列名に改行を含むので、データの行 (2 列目が整数の番号) が始まるまでの行は見出しの続きとして読み飛ばす
+                var first = sr.ReadLine() ?? "";
+                bool v2 = first.StartsWith("Direct_v2,") || first.StartsWith("Direct_v2_mixed,");
+                legacy = first.StartsWith("Direct_v2_mixed,") || (!v2 && first.StartsWith("Direct,"));
+                if (v2 || first.StartsWith("Direct,"))
+                {
+                    bool inData = v2;
                     while (sr.Peek() > -1)
-                        dataList.Add(sr.ReadLine().Split(new[] { ',' }));
+                    {
+                        var cells = sr.ReadLine().Split(new[] { ',' });
+                        // 旧い見出しの続き (日本語の列名の改行で割れた行。高々 2 行) だけを読み飛ばす。それより多い・データの後の不正な行は下の検査で失敗にする (codex2 査読 s4 中)
+                        if (!inData && headerLines < 2 && !(cells.Length >= 14 && int.TryParse(cells[1], System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, out _)))
+                        {
+                            headerLines++;
+                            continue;
+                        }
+                        inData = true;
+                        dataList.Add(cells);
+                    }
+                }
                 else
                 {// 261105Cl
                     // 261105Cl 追加 (監査 I9): スポット一覧でない CSV は知らせる (旧は黙って戻り、下の DataMember を戻さないので表が空のままだった。戻すのは finally で)
-                    MessageBox.Show(this, Localization.Loc(en: "This CSV file is not a spot list saved by Spot ID v2 (its first line must start with \"Direct,\").", // 261105Cl 追加
-                        ja: "この CSV ファイルは Spot ID v2 で保存したスポット一覧ではありません (1 行目が \"Direct,\" で始まる必要があります)。",
-                        de: "Diese CSV-Datei ist keine mit Spot ID v2 gespeicherte Reflexliste (die erste Zeile muss mit \"Direct,\" beginnen).",
-                        fr: "Ce fichier CSV n'est pas une liste de taches enregistrée par Spot ID v2 (sa première ligne doit commencer par \"Direct,\").",
-                        es: "Este archivo CSV no es una lista de manchas guardada por Spot ID v2 (su primera línea debe empezar por \"Direct,\").",
-                        pt: "Este arquivo CSV não é uma lista de pontos salva pelo Spot ID v2 (a primeira linha deve começar com \"Direct,\").",
-                        it: "Questo file CSV non è un elenco di spot salvato da Spot ID v2 (la prima riga deve iniziare con \"Direct,\").",
-                        ru: "Этот CSV-файл не является списком рефлексов, сохранённым Spot ID v2 (первая строка должна начинаться с \"Direct,\").",
-                        zhHans: "此 CSV 文件不是由 Spot ID v2 保存的斑点列表 (第一行必须以 \"Direct,\" 开头)。",
-                        zhHant: "此 CSV 檔案不是由 Spot ID v2 儲存的斑點清單 (第一行必須以 \"Direct,\" 開頭)。",
-                        ko: "이 CSV 파일은 Spot ID v2에서 저장한 스폿 목록이 아닙니다 (첫 줄이 \"Direct,\"로 시작해야 합니다)."));
+                    MessageBox.Show(this, Localization.Loc(en: "This CSV file is not a spot list saved by Spot ID v2 (its first line must start with \"Direct\").", // 261105Cl 追加
+                        ja: "この CSV ファイルは Spot ID v2 で保存したスポット一覧ではありません (1 行目が \"Direct\" で始まる必要があります)。",
+                        de: "Diese CSV-Datei ist keine mit Spot ID v2 gespeicherte Reflexliste (die erste Zeile muss mit \"Direct\" beginnen).",
+                        fr: "Ce fichier CSV n'est pas une liste de taches enregistrée par Spot ID v2 (sa première ligne doit commencer par \"Direct\").",
+                        es: "Este archivo CSV no es una lista de manchas guardada por Spot ID v2 (su primera línea debe empezar por \"Direct\").",
+                        pt: "Este arquivo CSV não é uma lista de pontos salva pelo Spot ID v2 (a primeira linha deve começar com \"Direct\").",
+                        it: "Questo file CSV non è un elenco di spot salvato da Spot ID v2 (la prima riga deve iniziare con \"Direct\").",
+                        ru: "Этот CSV-файл не является списком рефлексов, сохранённым Spot ID v2 (первая строка должна начинаться с \"Direct\").",
+                        zhHans: "此 CSV 文件不是由 Spot ID v2 保存的斑点列表 (第一行必须以 \"Direct\" 开头)。",
+                        zhHant: "此 CSV 檔案不是由 Spot ID v2 儲存的斑點清單 (第一行必須以 \"Direct\" 開頭)。",
+                        ko: "이 CSV 파일은 Spot ID v2에서 저장한 스폿 목록이 아닙니다 (첫 줄이 \"Direct\"로 시작해야 합니다)."));
                     return; // 261105Cl 字下げ
                 }// 261105Cl
             }
@@ -1171,21 +1219,45 @@ public partial class FormSpotIDV2 : FormBase
             });
 
             var offset = dataSet.DataTableSpot.Rows.Count; // 261105Cl 追加 (監査 I9): 既にスポットがあるときは後ろに足されるので、hkl を書く行をずらす (旧は先頭の行に書いていた)
-            for (int i = 0; i < dataList.Count; i++)
+            // 261126Cl 追加 (codex2 査読 s4 高・中): 全行を変換して確かめてから足す (途中の行が壊れていると、前の行だけ足されて再試行で重複していた)。
+            //  値は有限であること (θ が Infinity だと角度を π ずつ戻すループが終わらなかった)
+            var parsed = new List<(bool Direct, double[] V, string Hkl)>();
+            foreach (var d in dataList)
             {
-                var d = dataList[i];
+                if (d.Length < 14) throw new FormatException($"Too few columns ({d.Length}) in a spot row.");
+                var v = new double[12];
+                for (int k = 0; k < 12; k++)
+                    if (!double.IsFinite(v[k] = f(d[k + 2]))) throw new FormatException($"Non-finite value in a spot row: {d[k + 2]}");
+                parsed.Add((d[0] == "*", v, d.Length == 17 ? d[15] : ""));
+            }
+            // 261126Cl 追加: 空の表に読み込んだらそのファイルの印を、足したときは旧い定義の行が混ざるかを引き継ぐ。1 行も足さないときは変えない
+            if (parsed.Count > 0)
+                spotTableHasLegacyIntensity = (offset > 0 && spotTableHasLegacyIntensity) || legacy;
+            for (int i = 0; i < parsed.Count; i++)
+            {
+                //var d = dataList[i]; // 261126Cl 変更前 (3 行。上で変換済み)
+                //(double Range, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R) =
+                //DataSetReciPro.DataTableSpotDataTable.ConvertPrmsToOriginalValues(f(d[2]), f(d[3]), f(d[4]), f(d[5]), f(d[6]), f(d[7]), f(d[8]), f(d[9]), f(d[10]), f(d[11]), f(d[12]), f(d[13]));
+                var v = parsed[i].V; // 261126Cl
                 (double Range, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R) =
-                DataSetReciPro.DataTableSpotDataTable.ConvertPrmsToOriginalValues(f(d[2]), f(d[3]), f(d[4]), f(d[5]), f(d[6]), f(d[7]), f(d[8]), f(d[9]), f(d[10]), f(d[11]), f(d[12]), f(d[13]));
+                DataSetReciPro.DataTableSpotDataTable.ConvertPrmsToOriginalValues(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8], v[9], v[10], v[11]); // 261126Cl
 
-                dataSet.DataTableSpot.Add(d[0] == "*", Range, X0, Y0, H1, H2, Theta, Eta, A, B0, Bx, By, R);
-                if (d.Length == 17 && d[15] != "")
+                dataSet.DataTableSpot.Add(parsed[i].Direct, Range, X0, Y0, H1, H2, Theta, Eta, A, B0, Bx, By, R); // 261126Cl d[0] == "*" → parsed[i].Direct
+                //if (d.Length == 17 && d[15] != "") // 261126Cl 変更前
+                if (parsed[i].Hkl != "") // 261126Cl
                     //dataSet.DataTableSpot.SetHKL(i, d[15]); // 261105Cl 変更前
-                    dataSet.DataTableSpot.SetHKL(offset + i, d[15]); // 261105Cl
+                    //dataSet.DataTableSpot.SetHKL(offset + i, d[15]); // 261105Cl // 261126Cl 変更前
+                    dataSet.DataTableSpot.SetHKL(offset + i, parsed[i].Hkl); // 261126Cl
 
             }
 
             //bindingSourceObsSpots.DataMember = "DataTableSpot"; // 261105Cl 変更前 (下の finally へ。例外・途中の return でも戻す)
             scalablePictureBoxAdvanced.Refresh();
+            // 261126Cl 追加: 旧い定義の A・η は換算しないで読んだことを知らせる (マクロの LoadFile も通るので MessageBox は出さない)
+            if (legacy)
+                toolStripStatusLabelFindSpot.Text = Localization.Loc(
+                    en: "Loaded a spot list with the old definition of A and η (before v.4.955). They are not converted; refit the spots to compare intensities.",
+                    ja: "旧い定義 (v.4.955 より前) の A・η を含むスポット一覧を読み込みました。換算はしていません。強度を比べるにはスポットをフィットし直してください。");
         }
         //catch { MessageBox.Show("File open error"); } // 261105Cl 変更前
         catch (Exception ex) // 261105Cl 変更: 11 言語に
@@ -1219,8 +1291,12 @@ public partial class FormSpotIDV2 : FormBase
                 ko: "식별하기 전에 회절 패턴을 불러오고 스폿을 두 개 이상 등록하세요."));
             return; // 261105Cl 追加
         }
-        var crystals = FormMain.listBox.SelectedItems.Cast<Crystal>().ToList(); // 261105Cl 追加 (旧は RunWorkerAsync の引数で直接作っていた)
-        if (crystals.Count == 0) // 261105Cl 追加
+        //var crystals = FormMain.listBox.SelectedItems.Cast<Crystal>().ToList(); // 261105Cl 追加 (旧は RunWorkerAsync の引数で直接作っていた) // 261126Cl 変更前
+        //if (crystals.Count == 0) // 261105Cl 追加 // 261126Cl 変更前
+        // 261126Cl 変更 (作者の決定 11-26): 同定には主画面の編集中の値 (FormMain.Crystals = 回折シミュレータと同じ) を使う。UI スレッドでここで取る
+        var phases = captureIdentificationPhases();
+        if (phases is null) return; // 格子・空間群が不正 (理由はステータスバー)
+        if (phases.Count == 0)
         {
             MessageBox.Show(this, Localization.Loc(en: "Select at least one crystal in the crystal list of the main window.", // 261105Cl 追加
                 ja: "メインウィンドウの結晶リストで結晶を 1 つ以上選んでください。",
@@ -1242,17 +1318,23 @@ public partial class FormSpotIDV2 : FormBase
         buttonStop.Visible = true;
         //260801Cl 変更: 選択結晶の収集を Cast<Crystal>() に (旧: for ループで 1 件ずつ Add。Identify() と同じ処理が二重にあった)
         //backgroundWorkerSpotID.RunWorkerAsync(FormMain.listBox.SelectedItems.Cast<Crystal>().ToList()); // 261105Cl 変更前
-        backgroundWorkerSpotID.RunWorkerAsync(crystals); // 261105Cl 変更 (上で集めた一覧を渡す)
+        //backgroundWorkerSpotID.RunWorkerAsync(crystals); // 261105Cl 変更 (上で集めた一覧を渡す) // 261126Cl 変更前
+        identifyRemovalVersion = spotTableRemovalVersion; // 261126Cl 追加
+        backgroundWorkerSpotID.RunWorkerAsync(phases); // 261126Cl
     }
 
     private void buttonStop_Click(object sender, EventArgs e)
         => backgroundWorkerSpotID.CancelAsync();
 
+    /// <summary>261126Cl 追加: 同定を始めたときの <see cref="spotTableRemovalVersion"/></summary>
+    private int identifyRemovalVersion;
+
     //private void backgroundWorkerSpotID_DoWork(object sender, DoWorkEventArgs e) // 261124Cl 変更前: 停止 (CancelAsync) を e.Cancel に伝えず、途中までの候補を正常な結果として表に出していた (codex2 第 2 回 C2-15)
     //    => e.Result = identifySpots((List<Crystal>)(e.Argument));
     private void backgroundWorkerSpotID_DoWork(object sender, DoWorkEventArgs e)
     {
-        e.Result = identifySpots((List<Crystal>)(e.Argument));
+        //e.Result = identifySpots((List<Crystal>)(e.Argument)); // 261126Cl 変更前
+        e.Result = identifySpots((List<IdentificationPhase>)e.Argument); // 261126Cl
         if (backgroundWorkerSpotID.CancellationPending) e.Cancel = true; // 261124Cl 追加
     }
 
@@ -1279,6 +1361,8 @@ public partial class FormSpotIDV2 : FormBase
                 toolStripStatusLabelIdentifySpot.Text = Localization.Loc(en: "  Identification stopped.", ja: "  同定を中止しました。", de: "  Identifizierung abgebrochen.",
                     fr: "  Identification interrompue.", es: "  Identificación detenida.", pt: "  Identificação interrompida.", it: "  Identificazione interrotta.",
                     ru: "  Идентификация остановлена.", zhHans: "  已停止识别。", zhHant: "  已停止識別。", ko: "  식별을 중지했습니다.");
+            else if (identifyRemovalVersion != spotTableRemovalVersion) // 261126Cl 追加 (codex2 査読 s4 中): 同定中にスポットの行を消した → 番号が変わったので結果を捨てる
+                toolStripStatusLabelIdentifySpot.Text = Localization.Loc(en: "  Spots were removed during identification; identify again.", ja: "  同定中にスポットを削除したので、結果を捨てました。同定し直してください。");
             else if (e.Result is List<List<Grain>> candidates) // 261105Cl
             {
                 setCandidates(candidates); // 260801Cl 変更: 表への反映を setCandidates() へ (マクロの同期実行と共通化) // 261105Cl 字下げ
@@ -1321,6 +1405,63 @@ public partial class FormSpotIDV2 : FormBase
         skipProgressChangedEvent = false;
     }
 
+    /// <summary>261126Cl 追加 (作者の決定 11-26・codex2 の相談 n2 §3): 同定した相。開始の時点の、主画面の結晶リストの登録行 (Registered)・
+    /// 実際に同定に使った結晶 (Effective = 編集中の値。主選択の行なら crystalControl の結晶、ほかの選択の行は登録行そのもの)・格子 6 値と空間群を持つ。
+    /// 方位・厚さを主画面へ書き戻すのは、今の主選択の行と編集中の結晶がこの 3 つと一致するときだけ (別の結晶・同定後に編集した結晶へ書かない)</summary>
+    internal sealed class IdentificationPhase(Crystal registered, Crystal effective)
+    {
+        internal readonly Crystal Registered = registered;
+        internal readonly Crystal Effective = effective;
+        internal readonly (double A, double B, double C, double Alpha, double Beta, double Gamma) Cell = effective.CellValue;
+        internal readonly int Series = effective.SymmetrySeriesNumber;
+        internal readonly string Name = effective.Name;
+        internal readonly int Argb = effective.Argb;
+
+        /// <summary>261126Cl 追加: selectedRow (主画面の主選択の行) と current (主画面の編集中の結晶) が、同定した時と同じか。
+        /// 登録行を選び直した直後は行と編集中の結晶が同じ参照なので、phase.Matches(row, row) で「その行がこの相の登録行で、編集されていない」を確かめられる</summary>
+        internal bool Matches(object selectedRow, Crystal current)
+            => current is not null && ReferenceEquals(Registered, selectedRow)
+                && ReferenceEquals(Effective, current) && current.CellValue == Cell
+                && current.SymmetrySeriesNumber == Series;
+    }
+
+    /// <summary>261126Cl 追加: 同定できる格子と空間群か (辺は正、角は (0, π)、体積は正で有限、空間群の番号は範囲内)。編集の途中の不正な値で同定しない</summary>
+    private static bool hasIdentificationCell(Crystal crystal)
+    {
+        if (crystal is null || (uint)crystal.SymmetrySeriesNumber >= (uint)SymmetryStatic.Symmetries.Length)
+            return false;
+        var (a, b, c, alpha, beta, gamma) = crystal.CellValue;
+        if (!(a > 0 && b > 0 && c > 0 && alpha > 0 && alpha < Math.PI && beta > 0 && beta < Math.PI && gamma > 0 && gamma < Math.PI))
+            return false;
+        double ca = Math.Cos(alpha), cb = Math.Cos(beta), cg = Math.Cos(gamma);
+        double volume2 = a * a * b * b * c * c * (1 - ca * ca - cb * cb - cg * cg + 2 * ca * cb * cg);
+        return double.IsFinite(volume2) && volume2 > 0;
+    }
+
+    /// <summary>261126Cl 追加: 主画面で選んだ相を、編集中の値 (FormMain.Crystals。回折シミュレータと同じ規則) で取る。UI スレッドで呼ぶ。
+    /// 格子・空間群が不正な相があれば、ステータスバーに理由を出して null</summary>
+    private List<IdentificationPhase> captureIdentificationPhases()
+    {
+        var effective = FormMain.Crystals; // 選択が 1 行なら [編集中]、複数なら選択の順で、主選択の行だけ編集中に置き換えたもの
+        var phases = new List<IdentificationPhase>(effective.Length);
+        for (int i = 0; i < effective.Length; i++)
+        {
+            var registered = (Crystal)FormMain.listBox.SelectedItems[i];
+            if (!hasIdentificationCell(effective[i]))
+            {
+                var name = effective[i]?.Name ?? registered?.Name;
+                toolStripStatusLabelFindSpot.Text = Localization.Loc(
+                    en: $"Cannot identify phase {i + 1} ({name}): invalid unit cell or space group.",
+                    ja: $"相 {i + 1} ({name}) の格子または空間群が不正なため同定できません。");
+                return null;
+            }
+            phases.Add(new IdentificationPhase(registered, effective[i]));
+        }
+        return phases;
+    }
+
+    /* 261126Cl 変更前: 主画面の結晶そのものを書き換え、終わったら戻していた。編集中の結晶を渡すと、表示中の回折シミュレータが同じ結晶の VectorOfG を
+     * 作り直す割り込みと競合しうる (codex2 の相談 n2 §2) ので、同定は相ごとの作業用の結晶 (格子と空間群だけ) で行う
     /// <summary>261105Cl 追加 (監査 I7): 同定 (identifySpotsCore) は主窓の結晶リストの結晶オブジェクトそのものの AngleResolution (180°)・GrainSize (6 nm)・
     /// Crystallites (方位 1 つ)・VectorOfG (強度なし・消滅則で間引いたもの) を書き換える。旧はそのまま戻さなかったので、以後の多結晶回折は
     /// AngleResolution = 180° (SquareDiv = 0) の結晶子で空の図形になり、書き換えた値は結晶リストの保存にも残り、回折シミュレーターは
@@ -1339,10 +1480,15 @@ public partial class FormSpotIDV2 : FormBase
                 (crystals[j].AngleResolution, crystals[j].GrainSize, crystals[j].Crystallites, crystals[j].VectorOfG, crystals[j].VectorOfG_P) = saved[j];
         }
     }
+    */
 
     //private List<List<Grain>> identifySpots(List<Crystal> crystals) // 261105Cl 変更前
-    private List<List<Grain>> identifySpotsCore(List<Crystal> crystals) // 261105Cl 変更: 本体はそのまま。上の identifySpots から呼ぶ
+    //private List<List<Grain>> identifySpotsCore(List<Crystal> crystals) // 261105Cl 変更: 本体はそのまま。上の identifySpots から呼ぶ // 261126Cl 変更前
+    private List<List<Grain>> identifySpots(List<IdentificationPhase> phases) // 261126Cl 変更
     {
+        // 261126Cl 追加: 位置の同定は格子と空間群だけで足りる (反射は WaveSource.None で作り、消滅則は空間群から。構造因子は使わない)。
+        //  相ごとの作業用の結晶なので、主画面の結晶の AngleResolution・Crystallites・VectorOfG には触らない (旧の退避・復元は不要)
+        var crystals = phases.Select(phase => new Crystal(phase.Cell, phase.Series, phase.Name, Color.FromArgb(phase.Argb))).ToList();
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
         var Detector = new AreaDetector(p.Width, p.Height, PixelSize, dataSet.DataTableSpot.DirectSpotPosition, waveLengthControl1.Property, CameraLength);
         Detector.setMaxReciprocalZ();
@@ -1421,7 +1567,9 @@ public partial class FormSpotIDV2 : FormBase
                     //  同定中に選択を変えると、別の結晶の名前・スポット位置が付いていた
                     //cand[j].CrystalName = ((Crystal)FormMain.listBox.SelectedItems[id]).Name; // 261105Cl 変更前
                     //cand[j].Spots = ((Crystal)FormMain.listBox.SelectedItems[id]).Crystallites.GetSpotPosition(Detector, cand[j].Rotation); // 261105Cl 変更前
-                    cand[j].Crystal = crystals[id]; // 261105Cl 追加 (Grain.Crystal。精密化・粒の選択で、主窓の結晶と照合する)
+                    //cand[j].Crystal = crystals[id]; // 261105Cl 追加 (Grain.Crystal。精密化・粒の選択で、主窓の結晶と照合する) // 261126Cl 変更前
+                    cand[j].Phase = phases[id]; // 261126Cl 追加
+                    cand[j].Crystal = phases[id].Effective; // 261126Cl 変更: 作業用ではなく、同定に使った主画面の結晶 (編集中の値なら編集中の結晶)
                     cand[j].CrystalName = crystals[id].Name; // 261105Cl
                     cand[j].Spots = crystals[id].Crystallites.GetSpotPosition(Detector, cand[j].Rotation); // 261105Cl
                 }
@@ -1712,6 +1860,8 @@ public partial class FormSpotIDV2 : FormBase
 
         /// <summary>261105Cl 追加: この粒を同定した結晶 (主窓の結晶リストの結晶オブジェクト)。粒の選択・精密化で、主窓の結晶と同じものかを確かめるのに使う</summary>
         public Crystal Crystal;
+        /// <summary>261126Cl 追加: この粒を同定した相 (登録行・同定に使った結晶・格子と空間群)。主画面への書き戻しの照合に使う</summary>
+        internal IdentificationPhase Phase;
 
         // 260801Cl 削除: 呼び出し箇所ゼロで、かつ新しい compareGrain (割当スポット数優先) と矛盾する順序だったため。
         // 残しておくと引数なしの Sort()/OrderBy() が意図と違う順序を黙って返す罠になる。
@@ -1733,10 +1883,11 @@ public partial class FormSpotIDV2 : FormBase
     {
         try
         {
+            dataSet.DataTableGrain.Clear(); // 261126Cl 移動 (codex2 査読 s13 中 4): 候補が無くなったときも前の粒を残さない
             if (bindingSourceCandidates.Current != null)
             {
                 var c = (List<Grain>)((DataRowView)bindingSourceCandidates.Current).Row["Candidate"];
-                dataSet.DataTableGrain.Clear();
+                //dataSet.DataTableGrain.Clear(); // 261126Cl 変更前 (上へ移動)
                 for (int i = 0; i < c.Count; i++)
                     dataSet.DataTableGrain.Add(c[i]);
             }
@@ -1752,7 +1903,10 @@ public partial class FormSpotIDV2 : FormBase
 
             var calcSpots = new List<ScalablePictureBox.Symbol>();
             //260422Cl Miller-Bravais 判定はループ外で一度だけ取得
-            var useMB = FormMain.MillerBravaisActive;
+            //var useMB = FormMain.MillerBravaisActive; // 261126Cl 変更前: 主画面の結晶の晶系で決めていた (別の相の粒にも同じ表記)
+            // 261126Cl 変更: 4 指数にするかは粒の相の晶系で決める (主画面の結晶とは別の相の粒もある)
+            bool useMB(Grain grain) => grain?.Phase is { } ph ? FormMain.UseMillerBravais && SymmetryStatic.MillerBravaisCapable(ph.Series) : FormMain.MillerBravaisActive;
+            string zoneAxis = null; // 261126Cl 追加: 主画面へ方位を書いたときだけ、その晶帯軸を題にする
             if (dataGridViewGrains.SelectedRows.Count > 1)
             {
                 foreach (DataGridViewRow r in dataGridViewGrains.Rows)
@@ -1766,7 +1920,7 @@ public partial class FormSpotIDV2 : FormBase
                         foreach (var spot in g.Spots)
                         {
                             var s = new ScalablePictureBox.Symbol(
-                                $"{name}{n}: {FormMain.PlaneString(spot.Index.h, spot.Index.k, spot.Index.l, useMB)}",
+                                $"{name}{n}: {FormMain.PlaneString(spot.Index.h, spot.Index.k, spot.Index.l, useMB(g))}", // 261126Cl useMB → useMB(g)
                                 new PointD(spot.X, spot.Y),
                                 Color.LightGreen, Color.DarkGreen, 5);
                             s.Tag = tagCalcSpot;
@@ -1796,7 +1950,7 @@ public partial class FormSpotIDV2 : FormBase
                 foreach (var spot in g.Spots)
                 {
                     var s = new ScalablePictureBox.Symbol(
-                       FormMain.PlaneString(spot.Index.h, spot.Index.k, spot.Index.l, useMB),                                                             // 260422Cl Miller-Bravais 4 指数対応 (useMB は呼出元で hoist)
+                       FormMain.PlaneString(spot.Index.h, spot.Index.k, spot.Index.l, useMB(g)),                                                             // 260422Cl Miller-Bravais 4 指数対応 (useMB は呼出元で hoist) // 261126Cl useMB → useMB(g)
                        new PointD(spot.X, spot.Y),
                         Color.LightGreen, Color.DarkGreen, 5);
                     s.Tag = tagCalcSpot;
@@ -1809,9 +1963,17 @@ public partial class FormSpotIDV2 : FormBase
                 // 261125Cl 変更 (codex2 の 11-25 の議論 観点 C §1-1): Crystal の == と IndexOf は中身の比較なので、中身が同じ別の行 (同じ結晶を 2 行に置いて
                 //  方位・ADP を比べるとき) を選んでいた。粒が同定に使った実体そのもの (参照) で探す
                 int listIndex = -1; // 261125Cl 追加
-                if (g.Crystal != null && !ReferenceEquals(g.Crystal, FormMain.Crystal)) // 261125Cl 追加
-                    for (int i = 0; i < FormMain.listBox.Items.Count; i++) // 261125Cl 追加
-                        if (ReferenceEquals(FormMain.listBox.Items[i], g.Crystal)) { listIndex = i; break; } // 261125Cl 追加
+                //if (g.Crystal != null && !ReferenceEquals(g.Crystal, FormMain.Crystal)) // 261125Cl 追加 // 261126Cl 変更前 (3 行)
+                //    for (int i = 0; i < FormMain.listBox.Items.Count; i++) // 261125Cl 追加
+                //        if (ReferenceEquals(FormMain.listBox.Items[i], g.Crystal)) { listIndex = i; break; } // 261125Cl 追加
+                // 261126Cl 変更 (作者の決定 11-26・codex2 の相談 n2 §1): 粒の相が今の主画面の結晶と違うときだけ、その相の登録行を選ぶ。
+                //  ただし主画面に未登録の編集があるとき (主選択の行と編集中の結晶が別の参照) は切り替えない (選び直すと編集が消える)。
+                //  探す行は「登録行がこの相の登録行で、同定の後に替わっていない」もの (Matches(row, row))
+                var phase = g.Phase;
+                if (phase != null && phase.Matches(FormMain.listBox.SelectedItem, FormMain.Crystal) == false
+                    && ReferenceEquals(FormMain.listBox.SelectedItem, FormMain.Crystal))
+                    for (int i = 0; i < FormMain.listBox.Items.Count; i++)
+                        if (FormMain.listBox.Items[i] is Crystal row && phase.Matches(row, row)) { listIndex = i; break; }
                 if (listIndex >= 0) // 261125Cl 追加
                 {
                     var mode = FormMain.listBox.SelectionMode; // 261105Cl 追加
@@ -1821,12 +1983,21 @@ public partial class FormSpotIDV2 : FormBase
                 }
                 //FormMain.SetRotation(g.Rotation); // 261105Cl 変更前
                 //if (g.Crystal == null || g.Crystal == FormMain.Crystal) // 261105Cl 追加: 結晶がリストから消えているなど、主窓で選べなかったときは別の結晶へ方位を設定しない // 261125Cl 変更前
-                if (g.Crystal == null || ReferenceEquals(g.Crystal, FormMain.Crystal)) // 261125Cl 変更: 参照で比べる (上と同じ理由)
-                    FormMain.SetRotation(g.Rotation); // 261105Cl 字下げ
+                //if (g.Crystal == null || ReferenceEquals(g.Crystal, FormMain.Crystal)) // 261125Cl 変更: 参照で比べる (上と同じ理由) // 261126Cl 変更前 (2 行)
+                //    FormMain.SetRotation(g.Rotation); // 261105Cl 字下げ
+                // 261126Cl 変更: 方位は、今の主選択の行と編集中の結晶が同定した相と同じとき (同定の後に替えていない) だけ書く。
+                //  相の無い粒 (旧い経路) は従来どおり参照で比べる
+                if (phase != null ? phase.Matches(FormMain.listBox.SelectedItem, FormMain.Crystal) : g.Crystal == null || ReferenceEquals(g.Crystal, FormMain.Crystal))
+                {
+                    FormMain.SetRotation(g.Rotation);
+                    zoneAxis = FormMain.CurrentZoneAxis;
+                }
             }
 
             scalablePictureBoxAdvanced.Symbols.AddRange(calcSpots);
-            scalablePictureBoxAdvanced.Title = (FormMain.CurrentZoneAxis, new Font(WineCompat.Resolve("Arial"), 20f), Color.White, Color.Red); //260610Cl Wine時フォント切替
+            //scalablePictureBoxAdvanced.Title = (FormMain.CurrentZoneAxis, new Font(WineCompat.Resolve("Arial"), 20f), Color.White, Color.Red); //260610Cl Wine時フォント切替 // 261126Cl 変更前
+            // 261126Cl 変更: 主画面へ方位を書かなかった (別の相・複数の粒・同定の後に編集した) ときは、主画面の晶帯軸を題にしない
+            scalablePictureBoxAdvanced.Title = zoneAxis is null ? default : (zoneAxis, new Font(WineCompat.Resolve("Arial"), 20f), Color.White, Color.Red);
 
             checkBoxShowObsSpots_CheckedChanged(sender, e);
             //scalablePictureBoxAdvanced.Refresh(); //上のイベントで呼ばれるので、コメントアウト
@@ -1915,6 +2086,10 @@ public partial class FormSpotIDV2 : FormBase
         //if (scalablePictureBoxAdvanced.PseudoBitmap == null || scalablePictureBoxAdvanced.PseudoBitmap.Width == 0) // 261105Cl 変更前 (画像の有無は setDebyeRings の中で見る)
         //    return;
         //260718Cl: 全体がコメントアウトされていた Debye リング描画の旧実装を削除 (履歴は git 参照)
+        // 261126Cl 追加: 主画面の結晶を替えた・編集したら、選んでいる粒がもう主画面の結晶と一致しないとき、晶帯軸の題を消す (別の結晶の晶帯軸を残さない)
+        if (bindingSourceGrains?.Current is not DataRowView current || current.Row.RowState is DataRowState.Deleted or DataRowState.Detached
+            || current.Row["Grain"] is not Grain grain || FormMain is null || grain.Phase?.Matches(FormMain.listBox.SelectedItem, FormMain.Crystal) != true)
+            scalablePictureBoxAdvanced.Title = default;
         setDebyeRings(); // 261105Cl 追加
         scalablePictureBoxAdvanced.Refresh(); // 261105Cl 追加
     }
@@ -1950,12 +2125,15 @@ public partial class FormSpotIDV2 : FormBase
         var maxR = new[] { new PointD(0, 0), new PointD(p.Width, 0), new PointD(0, p.Height), new PointD(p.Width, p.Height) }.Max(corner => (corner - direct).Length);
         var dMin = waveLength / 2 / Math.Sin(Math.Atan(maxR * pixelSize / cameraLength) / 2);
 
-        var crystals = FormMain.listBox.SelectedItems.Cast<Crystal>().ToList();
+        //var crystals = FormMain.listBox.SelectedItems.Cast<Crystal>().ToList(); // 261126Cl 変更前
+        var crystals = FormMain.Crystals; // 261126Cl 変更 (作者の決定 11-26): 同定と同じく、編集中の値 (回折シミュレータと同じ規則) のリングを描く
         foreach (var c in debyeRingCache.Keys.Where(c => !crystals.Any(s => ReferenceEquals(s, c))).ToList())
             debyeRingCache.Remove(c); // 選択から外れた結晶の一覧は捨てる
-        for (int j = 0; j < crystals.Count; j++)
+        //for (int j = 0; j < crystals.Count; j++) // 261126Cl 変更前
+        for (int j = 0; j < crystals.Length; j++) // 261126Cl
         {
             var c = crystals[j];
+            if (!hasIdentificationCell(c)) continue; // 261126Cl 追加: 編集の途中の不正な格子ではリングを作らない
             var key = $"{c.A} {c.B} {c.C} {c.Alpha} {c.Beta} {c.Gamma} {c.SymmetrySeriesNumber}";
             if (!debyeRingCache.TryGetValue(c, out var cache) || cache.Key != key || cache.DMin > dMin)
             {
@@ -2005,11 +2183,19 @@ public partial class FormSpotIDV2 : FormBase
         // 261105Cl 追加 (監査 I11): 粒を同定した結晶が主窓の結晶と違うときは計算しない (旧は主窓の結晶で計算していた)。粒を選ぶと主窓でもその結晶が選ばれるので、通常は一致する
         var selectedGrain = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"]; // 261105Cl 追加
         //if (selectedGrain.Crystal != null && selectedGrain.Crystal != FormMain.Crystal) // 261125Cl 変更前
-        if (selectedGrain.Crystal != null && !ReferenceEquals(selectedGrain.Crystal, FormMain.Crystal)) // 261125Cl 変更: 中身が同じ別の結晶でも別とみなす
+        //if (selectedGrain.Crystal != null && !ReferenceEquals(selectedGrain.Crystal, FormMain.Crystal)) // 261125Cl 変更: 中身が同じ別の結晶でも別とみなす // 261126Cl 変更前
+        // 261126Cl 変更 (作者の決定 11-26): 同定した相 (登録行・同定に使った結晶・格子と空間群) と、今の主選択の行・編集中の結晶が一致するときだけ精密化する。
+        //  同定の後に格子・空間群を編集した・別の行を選んだ・入れ替えたときは同定し直す。相の無い粒 (旧い経路) は従来どおり参照で比べる
+        if (selectedGrain.Phase != null ? !selectedGrain.Phase.Matches(FormMain.listBox.SelectedItem, FormMain.Crystal)
+            : selectedGrain.Crystal != null && !ReferenceEquals(selectedGrain.Crystal, FormMain.Crystal))
         {
             //toolStripStatusLabelRefine.Text = $"The selected grain belongs to {selectedGrain.CrystalName}, not to the crystal in the main window. Select the grain again (this selects its crystal) and retry."; // 261105Cl 追加 // 261125Cl 変更前
             // 261125Cl 変更 (codex2 の査読 L2 §3): 参照で比べるようになったので、結晶を「入れ替え」た (新しい実体になった) 後は選び直しても戻らない。その場合は同定し直す
-            toolStripStatusLabelRefine.Text = $"The selected grain belongs to {selectedGrain.CrystalName}, not to the crystal in the main window. Select the grain again (this selects its crystal) and retry; if the crystal was replaced or edited in the list, identify the spots again.";
+            //toolStripStatusLabelRefine.Text = $"The selected grain belongs to {selectedGrain.CrystalName}, not to the crystal in the main window. Select the grain again (this selects its crystal) and retry; if the crystal was replaced or edited in the list, identify the spots again."; // 261126Cl 変更前
+            // 261126Cl 変更 (codex2 査読 s13 低): 主画面に未登録の編集があると、粒を選び直しても結晶は切り替わらない (編集を守るため) ので、案内を実際の手順に
+            toolStripStatusLabelRefine.Text = Localization.Loc(
+                en: $"The selected grain belongs to {selectedGrain.CrystalName}, which is not the crystal (or not its values) in the main window. Save or discard pending edits, select {selectedGrain.CrystalName} in the main window, and retry; if the crystal was edited or replaced after identification, identify the spots again.",
+                ja: $"選んだ粒は {selectedGrain.CrystalName} のもので、主画面の結晶 (またはその値) と一致しません。主画面の未登録の編集を確定するか取り消し、{selectedGrain.CrystalName} を選んでからやり直してください。同定の後に結晶を編集・入れ替えたときは、同定し直してください。");
             return; // 261105Cl 追加
         }
         refineCrystal = FormMain.Crystal; // 261105Cl 追加
@@ -2173,11 +2359,18 @@ public partial class FormSpotIDV2 : FormBase
         grain.Rotation = Matrix3D.Rot(Vector3DBase.VectorProduct(bestDirection, new Vector3DBase(0, 0, -1)), tilt) * result.BaseRotation;
         // 261105Cl 変更 (監査 I11): 主窓の結晶が計算した結晶のままのときだけ方位を主窓へ設定する (計算中に替えられたときは粒の方位だけ更新する)
         //var applied = FormMain.Crystal == refineCrystal; // 261105Cl 追加 // 261125Cl 変更前
-        var applied = ReferenceEquals(FormMain.Crystal, refineCrystal); // 261125Cl 変更 (codex2 の 11-25 の議論 観点 C §1-1): 中身が同じ別の結晶へ方位・厚さを書かない
+        //var applied = ReferenceEquals(FormMain.Crystal, refineCrystal); // 261125Cl 変更 (codex2 の 11-25 の議論 観点 C §1-1): 中身が同じ別の結晶へ方位・厚さを書かない // 261126Cl 変更前
+        // 261126Cl 変更: 加えて、計算の間に主選択の行・格子・空間群が替わっていないこと (同定した相と一致すること)
+        var applied = ReferenceEquals(FormMain.Crystal, refineCrystal)
+            && (grain.Phase == null || grain.Phase.Matches(FormMain.listBox.SelectedItem, FormMain.Crystal));
         if (applied) // 261105Cl 追加
         {
             FormMain.SetRotation(grain.Rotation); // 261105Cl 追加 // 261105Cl 字下げ
-            scalablePictureBoxAdvanced.Title = (FormMain.CurrentZoneAxis, new Font(WineCompat.Resolve("Arial"), 20f), Color.White, Color.Red); // 261105Cl 追加: 晶帯軸の表示を更新 // 261105Cl 字下げ
+            //scalablePictureBoxAdvanced.Title = (FormMain.CurrentZoneAxis, new Font(WineCompat.Resolve("Arial"), 20f), Color.White, Color.Red); // 261105Cl 追加: 晶帯軸の表示を更新 // 261105Cl 字下げ // 261126Cl 変更前
+            // 261126Cl 変更 (codex2 査読 s13 低): 晶帯軸の題は、精密化した粒だけを表示しているときに出す (複数の粒の重ね描きには出さない)
+            var rows = dataGridViewGrains.SelectedRows;
+            scalablePictureBoxAdvanced.Title = rows.Count == 1 && rows[0].DataBoundItem is DataRowView view && ReferenceEquals(view["Grain"], grain)
+                ? (FormMain.CurrentZoneAxis, new Font(WineCompat.Resolve("Arial"), 20f), Color.White, Color.Red) : default;
             scalablePictureBoxAdvanced.Refresh(); // 261105Cl 追加 // 261105Cl 字下げ
         }
 
@@ -2385,13 +2578,17 @@ public partial class FormSpotIDV2 : FormBase
         if (scalablePictureBoxAdvanced.PseudoBitmap == null || dataSet.DataTableSpot.Rows.Count < 2)
             return 0;
 
-        var crystals = FormMain.listBox.SelectedItems.Cast<Crystal>().ToList();
-        if (crystals.Count == 0)
+        //var crystals = FormMain.listBox.SelectedItems.Cast<Crystal>().ToList(); // 261126Cl 変更前 (3 行)
+        //if (crystals.Count == 0)
+        //    return 0;
+        var phases = captureIdentificationPhases(); // 261126Cl 変更 (作者の決定 11-26): GUI と同じく編集中の値で同定する
+        if (phases is null || phases.Count == 0)
             return 0;
 
         sw.Restart();
         clearStatusLabel();
-        var candidates = identifySpots(crystals);
+        //var candidates = identifySpots(crystals); // 261126Cl 変更前
+        var candidates = identifySpots(phases); // 261126Cl
         if (candidates == null)
             return 0;
         setCandidates(candidates);

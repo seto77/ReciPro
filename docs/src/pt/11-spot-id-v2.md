@@ -65,13 +65,13 @@ A posição da janela e a calibração (fonte, energia, comprimento de câmera e
 - **Intervalo de ajuste (raio)**: O raio (px) da região circular usada para ajustar o pico de cada spot. Os pixels dentro deste círculo são ajustados com uma função pseudo-Voigt.
 - **Aplicar a todos**: Define o raio de ajuste de cada spot como o valor atual de **Intervalo de ajuste (raio)**.
 - **Excluir / Limpar tudo**: Remover o spot selecionado ou todos os spots detectados.
-- **Salvar** / **Copiar**: Salvar a tabela de spots num arquivo CSV ou copiá-la para a área de transferência como texto separado por tabulações. Ambos funcionam mesmo com um único spot. O CSV usa sempre o ponto como separador decimal e pode ser lido de volta com **Arquivo ▸ Carregar** (é preciso carregar uma imagem antes; os spots são adicionados aos já listados). <!-- 261105Cl 監査: GetSpotListText / readCSV (7f65908) -->
+- **Salvar** / **Copiar**: Salvar a tabela de spots num arquivo CSV ou copiá-la para a área de transferência como texto separado por tabulações. Ambos funcionam mesmo com um único spot. O CSV usa sempre o ponto como separador decimal e pode ser lido de volta com **Arquivo ▸ Carregar** (é preciso carregar uma imagem antes; os spots são adicionados aos já listados). Desde a v.4.955, a primeira linha do CSV começa com `Direct_v2` (`Direct_v2_mixed` se a tabela contiver pontos lidos de um arquivo antigo); versões anteriores do ReciPro não conseguem ler esses arquivos. Arquivos CSV de versões anteriores (primeira linha `Direct,`) ainda podem ser carregados, mas seus A e η mantêm a definição antiga (não são convertidos; reajuste os pontos para comparar intensidades). <!-- 261126Cl 作者の決定 11-26 (CSV の識別子) --> <!-- 261105Cl 監査: GetSpotListText / readCSV (7f65908) -->
 - **Reajustar tudo**: Reajustar as posições e intensidades de todos os spots detectados.
 - **Símbolos** / **Números**: Mostrar símbolos marcadores / números sobre os spots observados (ambos ativados por padrão).
 - **Ajuste global**: Realizar um ajuste global de todas as posições dos spots de uma só vez (experimental).
 - **Donut**: Aplicar uma subtração de fundo em forma de rosca (experimental); a caixa ao lado define a largura (px) do anel em torno de cada spot cuja média é subtraída como fundo local.
 - **Detalhes spot**: Quando marcado, abre uma janela mostrando informações detalhadas sobre o spot atualmente selecionado.
-- **Detalhes função** (desmarcado quando a janela é aberta): Mostra uma figura da função pseudo-Voigt bidimensional e seus parâmetros (x_0, y_0, H1, H2, θ, η, A, B_0, B_x, B_y) usados na tabela de spots.
+- **Detalhes função** (desmarcado quando a janela é aberta): Mostra uma figura da função pseudo-Voigt bidimensional e seus parâmetros (x_0, y_0, H1, H2, θ, η, A, B_0, B_x, B_y) usados na tabela de spots. A é a intensidade integrada do ponto em todo o plano (sem o fundo) e η a fração de área da componente lorentziana (0–1); esta normalização foi introduzida na v.4.955 (versões anteriores usavam outra escala para A e η). <!-- 261126Cl 作者の決定 11-26 (2D 擬 Voigt の正規化) -->
 
 ![Details of the spot](../assets/cap-pt-auto/FormSpotIDv2Details.png)
 

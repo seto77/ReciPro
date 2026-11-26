@@ -8,6 +8,7 @@ namespace ReciPro;
 
 public partial class FormSpotIDv2Details : FormBase
 {
+    private string baseTitle; // 261126Cl 追加: 題の元の文字列
     public FormSpotIDV2 FormSpotID;
     public int BoxWide => scalablePictureBoxAdvanced.PictureSize.Width;
     public int BoxHeight => scalablePictureBoxAdvanced.PictureSize.Height;
@@ -73,6 +74,12 @@ public partial class FormSpotIDv2Details : FormBase
         }
 
         var (_, _, Range, X0, Y0, H1, H2, Theta, Eta, A, B0, Bx, By, _) = FormSpotID.dataSet.DataTableSpot.GetPrms(selectedIndex);
+        // 261126Cl 追加 (codex2 査読 s4 中): 旧い CSV (A・η が旧い定義) を読んだ表では、旧い係数を今の式で描くので保存時の曲線と違いうる。題でそのことを知らせる
+        baseTitle ??= Text;
+        Text = FormSpotID.spotTableHasLegacyIntensity
+            ? baseTitle + Localization.Loc(en: "  (the table has spots with the old definition of A and η; their curves are not the saved ones — refit them)",
+                ja: "  (表に旧い定義の A・η の行があります。その曲線は保存時のものではありません。フィットし直してください)")
+            : baseTitle;
         var funcs = new List<Marquardt.Function>
             {
                 new Marquardt.Function(Marquardt.FuncType.PV2E, X0, Y0, H1, H2, Theta, Eta, A),

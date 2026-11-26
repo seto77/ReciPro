@@ -300,7 +300,8 @@ namespace ReciPro
 
             public void SetHKL(int index, string hkl)
             {
-                if (index < 0 || index > Rows.Count)
+                //if (index < 0 || index > Rows.Count) // 261126Cl 変更前: index == Rows.Count を通して例外になっていた
+                if (index < 0 || index >= Rows.Count) // 261126Cl 変更 (codex2 査読 s13 中 4)
                     return;
                 var r = (DataTableSpotRow)Rows[index];
                 r.HKL = hkl;

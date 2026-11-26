@@ -1502,7 +1502,11 @@ public partial class FormMain : FormBase
     {
         if (crystalControl.StrainControlVisible) return;
 
+        var previous = crystalControl.Crystal; // 261126Cl 追加
         crystalControl.GenerateFromInterface();
+        // 261126Cl 追加 (codex2 査読 s13 中 3): 生成に失敗 (不正な格子) すると前の結晶がそのまま残る。それを足すと同じ結晶の参照がリストの 2 行に入り、
+        //  編集・Spot ID の照合で行を区別できなくなる
+        if (ReferenceEquals(previous, crystalControl.Crystal)) return;
         if (crystalControl.Crystal != null)
             listBox.Items.Add(crystalControl.Crystal);
         listBox.SelectedIndex = listBox.Items.Count - 1;
