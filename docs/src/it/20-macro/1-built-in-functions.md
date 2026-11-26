@@ -243,7 +243,7 @@ Queste tre classi di simulazione delle immagini condividono molti membri. Per ev
 |----------|-------------|
 | `#.Open()` | Apre la finestra del Simulatore HRTEM/STEM |
 | `#.Close()` | Chiude la finestra del Simulatore HRTEM/STEM |
-| `#.Simulate()` | Esegue la simulazione con le impostazioni correnti |
+| `#.Simulate()` | Esegue la simulazione con le impostazioni correnti; genera un errore mentre è ancora in corso un calcolo STEM |
 
 ### Microscopio / ottica
 

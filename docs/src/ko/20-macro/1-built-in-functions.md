@@ -243,7 +243,7 @@ ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60,
 |----------|-------------|
 | `#.Open()` | 이미지 시뮬레이터 창을 열기 |
 | `#.Close()` | 이미지 시뮬레이터 창을 닫기 |
-| `#.Simulate()` | 현재 설정으로 시뮬레이션을 실행 |
+| `#.Simulate()` | 현재 설정으로 시뮬레이션을 실행; STEM 계산이 진행 중이면 오류 |
 
 ### 현미경 / 광학계
 

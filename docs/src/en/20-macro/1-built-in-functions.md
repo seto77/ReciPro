@@ -243,7 +243,7 @@ These three image-simulation classes share many members. To avoid repetition, th
 |----------|-------------|
 | `#.Open()` | Open the Image Simulator window |
 | `#.Close()` | Close the Image Simulator window |
-| `#.Simulate()` | Run the simulation with the current settings |
+| `#.Simulate()` | Run the simulation with the current settings; raises an error while a STEM calculation is still running |
 
 ### Microscope / optics
 

@@ -876,8 +876,27 @@ public partial class FormImageSimulator : FormBase
         Simulate();
     }
 
+    /// <summary>261126Cl 追加: この窓で STEM を計算中 (RunSTEM の開始から完了の通知まで、stemBethe が実行中のインスタンスを指す)</summary>
+    //  261126Cl 変更 (codex2 査読 r1): simulateSTEM の中 (EDX の続行の確認のダイアログ・同期の待ち) も含める。ダイアログは Named Pipe の要求を処理するので、
+    //  stemBethe を入れる前でもモード替えや 2 本目が入りえた
+    internal bool StemRunning => insideStemCall || stemBethe is not null;
+    private bool insideStemCall; // 261126Cl 追加
+    /// <summary>261126Cl 追加 (codex2 査読 r1): 計算を始めた時の結晶の格子 (完了の時に、その間に主窓で選んだ別の結晶の格子を A の像に重ねない)</summary>
+    private Matrix3D runningStemMatrixReal, displayedStemMatrixReal;
+    /// <summary>261126Cl 追加: 2 本目の要求を断るときの文 (マクロへは例外で返す)</summary>
+    internal const string StemBusyMessage = "STEM is still running in the image simulator; the new request was not started. Wait for it to finish or press Stop.";
+
     public void Simulate(bool sync = false)
     {
+        // 261126Cl 追加 (作者の決定 11-26: 画像窓ごとに 1 本): STEM の計算中は、どのモードの要求も断る。以前は進捗を 0 に戻してから
+        //  今の結晶の Bethe だけを見ていたので、別の結晶を選んでから呼ぶと 2 本目が始まり、stemBethe が上書きされて 1 本目の完了の処理が
+        //  2 本目の購読を外し・2 本目の結果を表示に使っていた。1 本目の進捗・失敗の文 (LastSimulationFailure) には触らない
+        if (StemRunning)
+        {
+            if (sync) throw new InvalidOperationException(StemBusyMessage);
+            toolTip.Show(StemBusyMessage, this, 3000);
+            return;
+        }
         toolStripStatusLabel1.Text = "";
         toolStripProgressBar.Value = 0;
 
@@ -886,7 +905,12 @@ public partial class FormImageSimulator : FormBase
         else if (ImageMode == ImageModes.POTENTIAL)
             simulatePotential();
         else if (ImageMode == ImageModes.STEM)
-            simulateSTEM(sync);
+        //    simulateSTEM(sync); // 261126Cl 変更前
+        {
+            insideStemCall = true; // 261126Cl 変更: 準備 (EDX の確認) から戻るまで窓を予約する
+            try { simulateSTEM(sync); }
+            finally { insideStemCall = false; }
+        }
     }
 
     /// <summary>
@@ -939,8 +963,15 @@ public partial class FormImageSimulator : FormBase
             }
 
         //260801Cl 追加: EDX 要求は購読前に検証する (エラーで抜けるときに購読解除の後始末が要らない)
+        var crystalAtRequest = FormMain.Crystal; // 261126Cl 追加
         var edxRequests = BuildEdxRequests();
         if (!ValidateEdxRequest(edxRequests, division)) return;
+        // 261126Cl 追加 (codex2 査読 r2): 続行の確認の間に (Named Pipe などで) 結晶が替わったら始めない。EDX のチャネルは確認の前の結晶の元素で決めてある
+        if (!ReferenceEquals(FormMain.Crystal, crystalAtRequest))
+        {
+            toolStripStatusLabel1.Text = LastSimulationFailure = "The crystal changed before STEM started; the request was not started.";
+            return;
+        }
 
         // 261118Cl 追加 (codex2 第 12 回): 計算中の STEM があれば、RunSTEM は黙って戻り、先の run の完了を今回の成功に数えてしまう → 理由を残して止める
         if (FormMain.Crystal.Bethe.IsSTEM_Busy)
@@ -950,6 +981,7 @@ public partial class FormImageSimulator : FormBase
         }
         //260801Cl 追加: run 中に別の結晶へ切り替わっても購読解除・結果取得が同じインスタンスを指すよう snapshot する (codex 20巡)
         stemBethe = FormMain.Crystal.Bethe;
+        runningStemMatrixReal = new Matrix3D(FormMain.Crystal.MatrixReal); // 261126Cl 追加
         //260802Cl 削除: stemEdxChannelCount = edxRequests?.Length ?? 0; (StemProgressInfo.ChannelCount が全ステージに載るため不要)
 
         toolStripProgressBar.Maximum = stemDirectionTotal;
@@ -1001,7 +1033,10 @@ public partial class FormImageSimulator : FormBase
             // 260428Cl 同期マクロ呼び出し用の UI ポンプ。Macro 自体が同期 API のため、ここでは DoEvents を残す (Macro の async 化時に削除予定)
             //260802Cl 変更: 待つ相手をローカルに退避する (旧: stemBethe.IsSTEM_Busy)。DoEvents 中に StemCompleted が
             //走ると stemBethe は null になるので、次のループ条件で NullReferenceException になり得た
-            for (var running = stemBethe; running.IsSTEM_Busy;)
+            //for (var running = stemBethe; running.IsSTEM_Busy;) // 261126Cl 変更前
+            // 261126Cl 変更 (codex2 査読 r1): 画面の完了の処理 (StemCompleted) が終わるまで待つ。worker の IsBusy は完了の通知が BeginInvoke に
+            //  積まれた (--capture) 時点で false になり、LastSimulationCompleted を立てる前にマクロへ戻っていた。stemBethe は StemCompleted の finally で null
+            while (stemBethe is not null)
             {
                 Application.DoEvents();
                 Thread.Sleep(100);
@@ -1134,86 +1169,93 @@ public partial class FormImageSimulator : FormBase
             bethe.StemCompleted -= StemCompleted;
             bethe.StemProgressChanged -= stemProgressChanged;
         }
-        long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds, s4 = sw4.ElapsedMilliseconds, s5 = sw5.ElapsedMilliseconds;
-
-        //260801Cl 追加: e.Error を e.Cancelled より先に見る (旧実装は e.Error を確認しておらず、
-        //worker が例外で落ちても「完了」として旧結果を再描画していた。codex 20巡)
-        if (e.Error is not null)
+        try // 261126Cl 追加 (codex2 査読 r1): 描画などで例外が出ても、ボタンの復帰と窓の予約の解除 (stemBethe = null) は必ず行う (同期の待ちが終わらなくなる)
         {
-            toolStripStatusLabel1.Text = $"Failed: {e.Error.Message}";
-            LastSimulationFailure = $"STEM failed (the previous image is kept): {e.Error.Message}"; // 261118Cl 追加 (codex2 第 10 回)
-            //260802Cl 追加: STEM-EDX は native 全スライス streaming 経路限定で、条件を外れると NotSupportedException になる。
-            //生の英語メッセージだけでは何を直せばよいか分からないので、操作に翻訳して案内する (設計書 §5.9.1-7)。
-            //260802Cl 変更: 経路一本化で slice 数や波数の制約は消えた。残るのは native ヘルパ (Crystallography.Native) が
-            //無い環境だけで、これは利用者の操作では直せないので案内文もその旨に寄せる。
-            //var msg = e.Error is NotSupportedException // 261105Cl 変更前 (案内が経路一本化の前の「スライス数が多すぎる」のままだった)
-            //    ? Loc(en: "STEM-EDX could not run with these settings: the number of depth slices is too large for the calculation path it needs.\r\nIncrease 'Slice thickness (TDS)', reduce the specimen thickness, or increase 'Diffracted waves'.",
-            //          ja: "この設定では STEM-EDX を実行できません。深さ方向のスライス数が、必要な計算経路に対して多すぎます。\r\n「スライス厚 (TDS)」を大きくするか、試料の厚さを減らすか、「回折波」の数を増やしてください。",
-            //          de: "STEM-EDX konnte mit diesen Einstellungen nicht laufen: die Zahl der Tiefenschichten ist für den benötigten Rechenweg zu groß.\r\nErhöhen Sie 'Schichtdicke (TDS)', verringern Sie die Probendicke oder erhöhen Sie 'Wellen'.",
-            //          fr: "STEM-EDX n'a pas pu s'exécuter avec ces réglages : le nombre de tranches en profondeur est trop grand pour le chemin de calcul requis.\r\nAugmentez « Épaisseur de tranche (TDS) », réduisez l'épaisseur de l'échantillon ou augmentez le nombre d'ondes.",
-            //          es: "STEM-EDX no pudo ejecutarse con estos ajustes: el número de capas en profundidad es demasiado grande para la ruta de cálculo necesaria.\r\nAumente 'Espesor de capa (TDS)', reduzca el espesor de la muestra o aumente el número de ondas.",
-            //          pt: "O STEM-EDX não pôde ser executado com estas definições: o número de fatias em profundidade é grande demais para o caminho de cálculo necessário.\r\nAumente 'Espessura da fatia (TDS)', reduza a espessura da amostra ou aumente o número de ondas.",
-            //          it: "STEM-EDX non ha potuto essere eseguito con queste impostazioni: il numero di fette in profondità è troppo grande per il percorso di calcolo richiesto.\r\nAumentare 'Spessore della fetta (TDS)', ridurre lo spessore del campione o aumentare il numero di onde.",
-            //          ru: "STEM-EDX не удалось запустить с этими настройками: число слоёв по глубине слишком велико для требуемого пути расчёта.\r\nУвеличьте «Толщина слоя (TDS)», уменьшите толщину образца или увеличьте число волн.",
-            //          zhHans: "当前设置无法运行 STEM-EDX：深度方向的切片数对所需的计算路径而言过多。\r\n请增大「切片厚度 (TDS)」、减小试样厚度，或增加衍射波数。",
-            //          zhHant: "目前設定無法執行 STEM-EDX：深度方向的切片數對所需的計算路徑而言過多。\r\n請增大「切片厚度 (TDS)」、減小試樣厚度，或增加繞射波數。",
-            //          ko: "현재 설정으로는 STEM-EDX 를 실행할 수 없습니다. 깊이 방향 슬라이스 수가 필요한 계산 경로에 비해 너무 많습니다.\r\n「슬라이스 두께 (TDS)」를 크게 하거나, 시료 두께를 줄이거나, 회절파 수를 늘리세요.")
-            //    : e.Error.Message;
-            //261105Cl 変更: NotSupportedException は今は「native ヘルパが使えない」ときだけ (BetheMethod.StemDoWork)。
-            //実行前の ValidateEdxRequest で止めるようにしたので通常は来ないが、来たときも実際の原因を案内する
-            var msg = e.Error is NotSupportedException
-                ? Loc(en: "STEM-EDX could not run: it requires the native library (Crystallography.Native), which is not available in this session (it could not be loaded, or it is turned off in Options).\r\nClear the checkbox to run without EDX.",
-                      ja: "STEM-EDX を実行できませんでした。ネイティブライブラリ (Crystallography.Native) が必要ですが、このセッションでは使えません (読み込めなかったか、オプションで無効にされています)。\r\nEDX なしで実行するにはチェックを外してください。",
-                      de: "STEM-EDX konnte nicht laufen: es benötigt die native Bibliothek (Crystallography.Native), die in dieser Sitzung nicht verfügbar ist (sie konnte nicht geladen werden oder ist in den Optionen ausgeschaltet).\r\nDeaktivieren Sie das Kontrollkästchen, um ohne EDX zu rechnen.",
-                      fr: "STEM-EDX n'a pas pu s'exécuter : il nécessite la bibliothèque native (Crystallography.Native), qui n'est pas disponible dans cette session (elle n'a pas pu être chargée ou elle est désactivée dans les Options).\r\nDécochez la case pour calculer sans EDX.",
-                      es: "STEM-EDX no pudo ejecutarse: requiere la biblioteca nativa (Crystallography.Native), que no está disponible en esta sesión (no se pudo cargar o está desactivada en Opciones).\r\nDesmarque la casilla para calcular sin EDX.",
-                      pt: "O STEM-EDX não pôde ser executado: requer a biblioteca nativa (Crystallography.Native), que não está disponível nesta sessão (não pôde ser carregada ou está desativada em Opções).\r\nDesmarque a caixa para calcular sem EDX.",
-                      it: "STEM-EDX non ha potuto essere eseguito: richiede la libreria nativa (Crystallography.Native), che non è disponibile in questa sessione (non è stato possibile caricarla oppure è disattivata in Opzioni).\r\nDeselezionare la casella per calcolare senza EDX.",
-                      ru: "Не удалось выполнить STEM-EDX: требуется нативная библиотека (Crystallography.Native), которая недоступна в этом сеансе (её не удалось загрузить или она отключена в меню Параметры).\r\nСнимите флажок, чтобы считать без EDX.",
-                      zhHans: "无法运行 STEM-EDX：需要原生库 (Crystallography.Native)，但本次会话中不可用（无法加载，或已在选项中关闭）。\r\n取消勾选可在不计算 EDX 的情况下运行。",
-                      zhHant: "無法執行 STEM-EDX：需要原生程式庫 (Crystallography.Native)，但本次工作階段中無法使用（無法載入，或已在選項中關閉）。\r\n取消勾選可在不計算 EDX 的情況下執行。",
-                      ko: "STEM-EDX 를 실행할 수 없습니다. 네이티브 라이브러리 (Crystallography.Native) 가 필요하지만 이 세션에서는 사용할 수 없습니다 (로드할 수 없었거나 옵션에서 꺼져 있습니다).\r\nEDX 없이 실행하려면 체크를 해제하세요.")
-                : e.Error.Message;
-            MessageBox.Show(msg, "STEM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds, s4 = sw4.ElapsedMilliseconds, s5 = sw5.ElapsedMilliseconds;
+
+            //260801Cl 追加: e.Error を e.Cancelled より先に見る (旧実装は e.Error を確認しておらず、
+            //worker が例外で落ちても「完了」として旧結果を再描画していた。codex 20巡)
+            if (e.Error is not null)
+            {
+                toolStripStatusLabel1.Text = $"Failed: {e.Error.Message}";
+                LastSimulationFailure = $"STEM failed (the previous image is kept): {e.Error.Message}"; // 261118Cl 追加 (codex2 第 10 回)
+                //260802Cl 追加: STEM-EDX は native 全スライス streaming 経路限定で、条件を外れると NotSupportedException になる。
+                //生の英語メッセージだけでは何を直せばよいか分からないので、操作に翻訳して案内する (設計書 §5.9.1-7)。
+                //260802Cl 変更: 経路一本化で slice 数や波数の制約は消えた。残るのは native ヘルパ (Crystallography.Native) が
+                //無い環境だけで、これは利用者の操作では直せないので案内文もその旨に寄せる。
+                //var msg = e.Error is NotSupportedException // 261105Cl 変更前 (案内が経路一本化の前の「スライス数が多すぎる」のままだった)
+                //    ? Loc(en: "STEM-EDX could not run with these settings: the number of depth slices is too large for the calculation path it needs.\r\nIncrease 'Slice thickness (TDS)', reduce the specimen thickness, or increase 'Diffracted waves'.",
+                //          ja: "この設定では STEM-EDX を実行できません。深さ方向のスライス数が、必要な計算経路に対して多すぎます。\r\n「スライス厚 (TDS)」を大きくするか、試料の厚さを減らすか、「回折波」の数を増やしてください。",
+                //          de: "STEM-EDX konnte mit diesen Einstellungen nicht laufen: die Zahl der Tiefenschichten ist für den benötigten Rechenweg zu groß.\r\nErhöhen Sie 'Schichtdicke (TDS)', verringern Sie die Probendicke oder erhöhen Sie 'Wellen'.",
+                //          fr: "STEM-EDX n'a pas pu s'exécuter avec ces réglages : le nombre de tranches en profondeur est trop grand pour le chemin de calcul requis.\r\nAugmentez « Épaisseur de tranche (TDS) », réduisez l'épaisseur de l'échantillon ou augmentez le nombre d'ondes.",
+                //          es: "STEM-EDX no pudo ejecutarse con estos ajustes: el número de capas en profundidad es demasiado grande para la ruta de cálculo necesaria.\r\nAumente 'Espesor de capa (TDS)', reduzca el espesor de la muestra o aumente el número de ondas.",
+                //          pt: "O STEM-EDX não pôde ser executado com estas definições: o número de fatias em profundidade é grande demais para o caminho de cálculo necessário.\r\nAumente 'Espessura da fatia (TDS)', reduza a espessura da amostra ou aumente o número de ondas.",
+                //          it: "STEM-EDX non ha potuto essere eseguito con queste impostazioni: il numero di fette in profondità è troppo grande per il percorso di calcolo richiesto.\r\nAumentare 'Spessore della fetta (TDS)', ridurre lo spessore del campione o aumentare il numero di onde.",
+                //          ru: "STEM-EDX не удалось запустить с этими настройками: число слоёв по глубине слишком велико для требуемого пути расчёта.\r\nУвеличьте «Толщина слоя (TDS)», уменьшите толщину образца или увеличьте число волн.",
+                //          zhHans: "当前设置无法运行 STEM-EDX：深度方向的切片数对所需的计算路径而言过多。\r\n请增大「切片厚度 (TDS)」、减小试样厚度，或增加衍射波数。",
+                //          zhHant: "目前設定無法執行 STEM-EDX：深度方向的切片數對所需的計算路徑而言過多。\r\n請增大「切片厚度 (TDS)」、減小試樣厚度，或增加繞射波數。",
+                //          ko: "현재 설정으로는 STEM-EDX 를 실행할 수 없습니다. 깊이 방향 슬라이스 수가 필요한 계산 경로에 비해 너무 많습니다.\r\n「슬라이스 두께 (TDS)」를 크게 하거나, 시료 두께를 줄이거나, 회절파 수를 늘리세요.")
+                //    : e.Error.Message;
+                //261105Cl 変更: NotSupportedException は今は「native ヘルパが使えない」ときだけ (BetheMethod.StemDoWork)。
+                //実行前の ValidateEdxRequest で止めるようにしたので通常は来ないが、来たときも実際の原因を案内する
+                var msg = e.Error is NotSupportedException
+                    ? Loc(en: "STEM-EDX could not run: it requires the native library (Crystallography.Native), which is not available in this session (it could not be loaded, or it is turned off in Options).\r\nClear the checkbox to run without EDX.",
+                          ja: "STEM-EDX を実行できませんでした。ネイティブライブラリ (Crystallography.Native) が必要ですが、このセッションでは使えません (読み込めなかったか、オプションで無効にされています)。\r\nEDX なしで実行するにはチェックを外してください。",
+                          de: "STEM-EDX konnte nicht laufen: es benötigt die native Bibliothek (Crystallography.Native), die in dieser Sitzung nicht verfügbar ist (sie konnte nicht geladen werden oder ist in den Optionen ausgeschaltet).\r\nDeaktivieren Sie das Kontrollkästchen, um ohne EDX zu rechnen.",
+                          fr: "STEM-EDX n'a pas pu s'exécuter : il nécessite la bibliothèque native (Crystallography.Native), qui n'est pas disponible dans cette session (elle n'a pas pu être chargée ou elle est désactivée dans les Options).\r\nDécochez la case pour calculer sans EDX.",
+                          es: "STEM-EDX no pudo ejecutarse: requiere la biblioteca nativa (Crystallography.Native), que no está disponible en esta sesión (no se pudo cargar o está desactivada en Opciones).\r\nDesmarque la casilla para calcular sin EDX.",
+                          pt: "O STEM-EDX não pôde ser executado: requer a biblioteca nativa (Crystallography.Native), que não está disponível nesta sessão (não pôde ser carregada ou está desativada em Opções).\r\nDesmarque a caixa para calcular sem EDX.",
+                          it: "STEM-EDX non ha potuto essere eseguito: richiede la libreria nativa (Crystallography.Native), che non è disponibile in questa sessione (non è stato possibile caricarla oppure è disattivata in Opzioni).\r\nDeselezionare la casella per calcolare senza EDX.",
+                          ru: "Не удалось выполнить STEM-EDX: требуется нативная библиотека (Crystallography.Native), которая недоступна в этом сеансе (её не удалось загрузить или она отключена в меню Параметры).\r\nСнимите флажок, чтобы считать без EDX.",
+                          zhHans: "无法运行 STEM-EDX：需要原生库 (Crystallography.Native)，但本次会话中不可用（无法加载，或已在选项中关闭）。\r\n取消勾选可在不计算 EDX 的情况下运行。",
+                          zhHant: "無法執行 STEM-EDX：需要原生程式庫 (Crystallography.Native)，但本次工作階段中無法使用（無法載入，或已在選項中關閉）。\r\n取消勾選可在不計算 EDX 的情況下執行。",
+                          ko: "STEM-EDX 를 실행할 수 없습니다. 네이티브 라이브러리 (Crystallography.Native) 가 필요하지만 이 세션에서는 사용할 수 없습니다 (로드할 수 없었거나 옵션에서 꺼져 있습니다).\r\nEDX 없이 실행하려면 체크를 해제하세요.")
+                    : e.Error.Message;
+                MessageBox.Show(msg, "STEM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!e.Cancelled)
+            {
+                //260802Cl 追加: 表示元をこの run の結果 1 個に固定する (設計書 §5.9.1-5)。
+                //失敗・cancel では更新しない = 次の成功 run まで前回の表示を保つ。以後 ComboBox も左右の像も
+                //厚み/デフォーカスのラベルも、すべてこの snapshot から作る
+                displayedStemResult = bethe?.ResultStem;
+                displayedStemMatrixReal = runningStemMatrixReal; // 261126Cl 追加: 表示の結果と格子は同じ run のもの
+                //260801Cl 追加: 特性 X 線の ComboBox は「今回の run が公開した EdxSignals」から作る (GeneratePseudBitmap より先に)
+                RenewEdxDisplayList();
+                //260802Cl 追加: --capture が元素マップのスクショを撮るための切替 (通常操作では常に false)
+                //判定に radioButtonSTEM_target_EDX.Enabled は使えない: Enabled の getter は「実効値」で、
+                //この時点ではまだ splitContainer1.Enabled=false (計算中の UI ロック) なので必ず false になる
+                if (CaptureSelectEdxAfterRun && EdxDisplayAvailable)
+                    radioButtonSTEM_target_EDX.Checked = true;
+                //SendImage(ThicknessArray.Length, DefocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
+                GeneratePseudBitmap();
+
+
+                toolStripProgressBar.Value = toolStripProgressBar.Maximum;
+                LastSimulationCompleted = true; // 261118Cl 追加 (codex2 第 11 回)
+                LastCompletedImageMode = ImageModes.STEM; // 261118Cl 追加 (codex2 第 13 回)
+                toolStripStatusLabel1.Text = $"Completed! Total elapsed time: {(s1 + s2 + s3 + s4 + s5) / 1000.0:f1} s"; // 260520Cl: typo fix (ellapsed → elapsed)
+                toolStripStatusLabel1.Text += $"  Stage 1: {s1 / 1000.0:f1} s  Stage 2: {s2 / 1000.0:f1} s  Stage 3: {s3 / 1000.0:f1} s  Stage 4: {s4 / 1000.0:f1} s";
+                if (s5 > 0) toolStripStatusLabel1.Text += $"  Stage 5 (EDX): {s5 / 1000.0:f1} s";//260801Cl 追加
+
+            }
+            else
+            {
+                toolStripStatusLabel1.Text = $"Interrupted! Total elapsed time: {(s1 + s2 + s3 + s4 + s5) / 1000.0:f1} s"; // 260520Cl: typo fix (Interupted → Interrupted, ellapsed → elapsed)
+            }
         }
-        else if (!e.Cancelled)
+        finally // 261126Cl 追加
         {
-            //260802Cl 追加: 表示元をこの run の結果 1 個に固定する (設計書 §5.9.1-5)。
-            //失敗・cancel では更新しない = 次の成功 run まで前回の表示を保つ。以後 ComboBox も左右の像も
-            //厚み/デフォーカスのラベルも、すべてこの snapshot から作る
-            displayedStemResult = bethe?.ResultStem;
-            //260801Cl 追加: 特性 X 線の ComboBox は「今回の run が公開した EdxSignals」から作る (GeneratePseudBitmap より先に)
-            RenewEdxDisplayList();
-            //260802Cl 追加: --capture が元素マップのスクショを撮るための切替 (通常操作では常に false)
-            //判定に radioButtonSTEM_target_EDX.Enabled は使えない: Enabled の getter は「実効値」で、
-            //この時点ではまだ splitContainer1.Enabled=false (計算中の UI ロック) なので必ず false になる
-            if (CaptureSelectEdxAfterRun && EdxDisplayAvailable)
-                radioButtonSTEM_target_EDX.Checked = true;
-            //SendImage(ThicknessArray.Length, DefocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
-            GeneratePseudBitmap();
-
-
-            toolStripProgressBar.Value = toolStripProgressBar.Maximum;
-            LastSimulationCompleted = true; // 261118Cl 追加 (codex2 第 11 回)
-            LastCompletedImageMode = ImageModes.STEM; // 261118Cl 追加 (codex2 第 13 回)
-            toolStripStatusLabel1.Text = $"Completed! Total elapsed time: {(s1 + s2 + s3 + s4 + s5) / 1000.0:f1} s"; // 260520Cl: typo fix (ellapsed → elapsed)
-            toolStripStatusLabel1.Text += $"  Stage 1: {s1 / 1000.0:f1} s  Stage 2: {s2 / 1000.0:f1} s  Stage 3: {s3 / 1000.0:f1} s  Stage 4: {s4 / 1000.0:f1} s";
-            if (s5 > 0) toolStripStatusLabel1.Text += $"  Stage 5 (EDX): {s5 / 1000.0:f1} s";//260801Cl 追加
-
+            toolStripStatusLabel2.Text = "";
+            this.buttonSimulate.Visible = true;
+            this.buttonStop.Visible = false;
+            this.buttonStop.Enabled = true;//260801Cl 追加 (buttonStop_Click で無効化した分を戻す)
+            this.splitContainer1.Enabled = true;
+            FormPresets.Enabled = true;//261105Cl 追加 (simulateSTEM で無効化した分を戻す)
+            stemBethe = null;//260801Cl 追加
+            //260801Cl 修正: sw3 の Stop/Reset が 2 回書かれ sw4 が reset されていなかった (旧: sw3.Reset(); sw3.Reset();)
+            sw1.Stop(); sw1.Reset(); sw2.Stop(); sw2.Reset(); sw3.Stop(); sw3.Reset(); sw4.Stop(); sw4.Reset(); sw5.Stop(); sw5.Reset();
         }
-        else
-        {
-            toolStripStatusLabel1.Text = $"Interrupted! Total elapsed time: {(s1 + s2 + s3 + s4 + s5) / 1000.0:f1} s"; // 260520Cl: typo fix (Interupted → Interrupted, ellapsed → elapsed)
-        }
-        toolStripStatusLabel2.Text = "";
-        this.buttonSimulate.Visible = true;
-        this.buttonStop.Visible = false;
-        this.buttonStop.Enabled = true;//260801Cl 追加 (buttonStop_Click で無効化した分を戻す)
-        this.splitContainer1.Enabled = true;
-        FormPresets.Enabled = true;//261105Cl 追加 (simulateSTEM で無効化した分を戻す)
-        stemBethe = null;//260801Cl 追加
-        //260801Cl 修正: sw3 の Stop/Reset が 2 回書かれ sw4 が reset されていなかった (旧: sw3.Reset(); sw3.Reset();)
-        sw1.Stop(); sw1.Reset(); sw2.Stop(); sw2.Reset(); sw3.Stop(); sw3.Reset(); sw4.Stop(); sw4.Reset(); sw5.Stop(); sw5.Reset();
         // 260428Cl Application.DoEvents() を削除 (RunWorkerCompleted は UI スレッドで動作するため不要)
     }
 
@@ -1441,7 +1483,8 @@ public partial class FormImageSimulator : FormBase
             var result = displayedStemResult;
             if (result?.ImageBoth is null)
                 return;
-            var mat = result.Rotation * FormMain.Crystal.MatrixReal;
+            //var mat = result.Rotation * FormMain.Crystal.MatrixReal; // 261126Cl 変更前
+            var mat = result.Rotation * (displayedStemMatrixReal ?? FormMain.Crystal.MatrixReal); // 261126Cl 変更: 像を計算した時の結晶の格子
 
             //EDX を選んでいる間だけ、特性 X 線の選択と EDX 専用の表示オプションを出す
             var edx = radioButtonSTEM_target_EDX.Checked ? SelectedEdxSignal : null;
@@ -2287,6 +2330,9 @@ public partial class FormImageSimulator : FormBase
                 loadTEMParameterToolStripMenuItem.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
+        // 261126Cl 追加 (codex2 査読 r1): STEM の計算中は読み込まない (メニューは無効にした splitContainer1 の外にあり、画像のモードも替えるので、
+        //  完了の時に別のモードのまま STEM の成功として記録し、マクロの保存が古い像を書いていた)
+        if (StemRunning) { toolTip.Show(StemBusyMessage, this, 3000); return; }
         Setting = setting;
     }
 

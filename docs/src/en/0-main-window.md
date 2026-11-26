@@ -75,7 +75,7 @@ If you are new to ReciPro, refer to the following steps:
 | Use ionic scattering factors | Use ionic electron scattering factors (Peng) for the atoms' assigned ions in the dynamical (Bloch-wave) electron calculations, including Kikuchi profiles; the $g \neq 0$ monopole term is added only to the elastic coefficients $U_g$ (TDS absorption and the Kikuchi TDS source use the finite ionic part). When unchecked, neutral-atom factors are used. If the unit cell is not charge-neutral ($\Sigma q \neq 0$), the monopole term is dropped and only the finite (screened-ion) part is used; a notice is shown when the option is switched on <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:toolStripMenuItemIonicScattering_CheckedChanged, BetheMethod.cs:ElasticIonModel) --> |
 | Download MKL library | Download the Intel MKL native library (~55 MB); once installed it is used automatically for large computations |
 | Accept external macro commands (named pipe) | Listen on the named pipe `ReciPro.Macro.v1` and run macros sent by external programs — see [External control](20-macro/3-external-control.md) |
-| Reset registry settings on exit (effective after restart) | Reset settings on next restart |
+| Reset registry settings on exit (effective after restart) | Reset settings on next restart (registered macros are kept) |
 | Disable Crystallography.Native library (requires restart) | Fall back to managed code if the native (C++) library fails to load |
 | Disable all OpenGL rendering (requires restart) | For older GPUs / remote desktop |
 | Disable OpenGL text rendering (requires restart) | Workaround for text-rendering issues on some GPUs |

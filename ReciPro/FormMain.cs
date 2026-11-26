@@ -702,7 +702,18 @@ public partial class FormMain : FormBase
         //旧: Registry(Reg.Mode.Write);
         if (resetRegistryToolStripMenuItem.Checked)
         {
-            try { Microsoft.Win32.Registry.CurrentUser.DeleteSubKeyTree(@"Software\Crystallography\ReciPro", false); }
+            //try { Microsoft.Win32.Registry.CurrentUser.DeleteSubKeyTree(@"Software\Crystallography\ReciPro", false); } // 261126Cl 変更前: 登録マクロも消していた
+            // 261126Cl 変更 (作者の決定 11-26): 登録マクロ (値 "Macro") は残し、それ以外の値とサブキーを消す。キーごと消してから書き戻す形にしないのは、
+            //  書き戻しに失敗したときにマクロを失わないため。このセッションで編集したマクロは通常の終了と同じく保存する
+            try
+            {
+                using var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(@"Software\Crystallography\ReciPro");
+                key.SetValue("Macro", FormMacro.ZippedMacros);
+                foreach (var name in key.GetValueNames().Where(n => !string.Equals(n, "Macro", StringComparison.OrdinalIgnoreCase))) // 値の名前は大小文字を区別しない (codex2 査読 r1)
+                    key.DeleteValue(name, false);
+                foreach (var sub in key.GetSubKeyNames())
+                    key.DeleteSubKeyTree(sub, false);
+            }
             catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"Reset registry failed: {ex.Message}"); }
         }
         else

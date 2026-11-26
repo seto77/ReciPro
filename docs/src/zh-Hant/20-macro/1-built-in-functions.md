@@ -243,7 +243,7 @@ ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60,
 |----------|-------------|
 | `#.Open()` | 開啟 HRTEM/STEM 模擬器視窗 |
 | `#.Close()` | 關閉 HRTEM/STEM 模擬器視窗 |
-| `#.Simulate()` | 以目前設定執行模擬 |
+| `#.Simulate()` | 以目前設定執行模擬；STEM 計算仍在進行時報錯 |
 
 ### 顯微鏡 / 光學
 

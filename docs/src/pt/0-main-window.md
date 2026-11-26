@@ -74,7 +74,7 @@ Se você é novo no ReciPro, siga estes passos:
 | Usar fatores de dispersão iônicos | Usar os fatores de espalhamento de elétrons iônicos (Peng) para os íons atribuídos aos átomos nos cálculos dinâmicos de elétrons (ondas de Bloch), incluindo os perfis de Kikuchi; o termo de monopolo $g \neq 0$ é somado apenas aos coeficientes elásticos $U_g$ (a absorção TDS e a fonte TDS de Kikuchi usam a parte iônica finita). Quando desmarcado, são usados os fatores de átomos neutros. Se a célula unitária não for eletricamente neutra ($\Sigma q \neq 0$), o termo de monopolo é descartado e apenas a parte finita (íon blindado) é usada; um aviso é exibido quando a opção é ativada |
 | Baixar biblioteca MKL | Baixar a biblioteca nativa Intel MKL (~55 MB); depois de instalada é usada automaticamente em cálculos grandes |
 | Aceitar comandos de macro externos (pipe nomeado) | Escutar no pipe nomeado `ReciPro.Macro.v1` e executar macros enviadas por programas externos — ver [Controle externo](20-macro/3-external-control.md) |
-| Redefinir configurações do registro ao sair (efetivo após reiniciar) | Redefinir as configurações na próxima reinicialização |
+| Redefinir configurações do registro ao sair (efetivo após reiniciar) | Redefinir as configurações na próxima reinicialização (as macros registradas são mantidas) |
 | Desativar biblioteca Crystallography.Native (requer reinício) | Voltar ao código gerenciado caso a biblioteca nativa (C++) não consiga ser carregada |
 | Desativar toda a renderização OpenGL (requer reinício) | Para GPUs mais antigas / área de trabalho remota |
 | Desativar renderização de texto OpenGL (requer reinício) | Solução alternativa para problemas de renderização de texto em algumas GPUs |

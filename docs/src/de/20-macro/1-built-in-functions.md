@@ -243,7 +243,7 @@ Diese drei Bildsimulationsklassen teilen sich viele Mitglieder. Um Wiederholunge
 |----------|-------------|
 | `#.Open()` | Das Fenster des Bildsimulators öffnen |
 | `#.Close()` | Das Fenster des Bildsimulators schließen |
-| `#.Simulate()` | Die Simulation mit den aktuellen Einstellungen ausführen |
+| `#.Simulate()` | Die Simulation mit den aktuellen Einstellungen ausführen; löst einen Fehler aus, solange noch eine STEM-Berechnung läuft |
 
 ### Mikroskop / Optik
 

@@ -1470,12 +1470,19 @@ public class Macro : MacroBase
         public double GaussianBlurFWHM { get => sim.GaussianBlurFWHM; set => sim.GaussianBlurFWHM = value; }
 
         [Help("Opens the ### simulator window.")]
-        public void Open() { sim.Visible = true; sim.ImageMode = Mode; }
+        //public void Open() { sim.Visible = true; sim.ImageMode = Mode; } // 261126Cl 変更前
+        public void Open() // 261126Cl 変更: STEM の計算中に別のモードへ替えない (完了の時に違うモードで描くことになる)
+        {
+            if (sim.StemRunning && sim.ImageMode != Mode)
+                throw new InvalidOperationException(FormImageSimulator.StemBusyMessage);
+            sim.Visible = true; sim.ImageMode = Mode;
+        }
 
         [Help("Closes the ### simulator window.")]
         public void Close() => sim.Visible = false;
 
-        [Help("Runs the ### simulation with the current settings.")]
+        //[Help("Runs the ### simulation with the current settings.")] // 261126Cl 変更前
+        [Help("Runs the ### simulation with the current settings. Raises an error if a STEM calculation is still running in the image simulator.")] // 261126Cl
         // public void Simulate() { Open(); sim.Simulate(true); } // 261118Cl 変更前
         public void Simulate() // 261118Cl 変更 (codex2 第 10 回): 失敗したら前の像を残したまま正常に戻らず、失敗をマクロへ返す (続く保存で前の像を今回のものとして保存させない)
         {

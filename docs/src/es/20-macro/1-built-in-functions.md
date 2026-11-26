@@ -243,7 +243,7 @@ Estas tres clases de simulación de imágenes comparten muchos miembros. Para ev
 |----------|-------------|
 | `#.Open()` | Abrir la ventana del Simulador de imágenes |
 | `#.Close()` | Cerrar la ventana del Simulador de imágenes |
-| `#.Simulate()` | Ejecutar la simulación con los ajustes actuales |
+| `#.Simulate()` | Ejecutar la simulación con los ajustes actuales; genera un error mientras haya un cálculo STEM en curso |
 
 ### Microscopio / óptica
 

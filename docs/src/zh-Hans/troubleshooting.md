@@ -29,7 +29,7 @@ ReciPro 已启动（在任务管理器中可见），但其窗口始终不在屏
 **解决方法**（按顺序尝试）：
 
 1. **禁用 OpenGL**：启动 ReciPro 时按住 **Ctrl** 键，以禁用 OpenGL 的方式启动。较新的版本（v4.925 及以后）强化了 OpenGL 初始化，因此即使 OpenGL 失败应用也能启动——在这种情况下 3D 功能被禁用，但应用的其余部分可正常工作。
-2. **重置设置**：在注册表编辑器中删除键 `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`，然后重新启动。（等同于 **选项 ▸ 退出时重置注册表设置（重启后生效）**。）
+2. **重置设置**：在注册表编辑器中删除键 `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`，然后重新启动。（这样也会删除已注册的宏。**选项 ▸ 退出时重置注册表设置（重启后生效）** 会重置同样的设置，但保留宏。）
 3. **干净重装**：卸载 ReciPro，删除以下文件夹（如果存在，将 `<user>` 替换为你的账户名），然后重新安装：
    - `C:\Users\<user>\AppData\Local\Crystallography Software\ReciPro`
    - `C:\Users\<user>\AppData\Roaming\ReciPro\ReciPro`
@@ -164,7 +164,7 @@ ReciPro 已启动（在任务管理器中可见），但其窗口始终不在屏
 如果设置变得损坏：
 
 1. **选项 ▸ 退出时重置注册表设置（重启后生效）**
-2. 重新启动 ReciPro——窗口位置、波长、相机长度等将被重置为默认值
+2. 重新启动 ReciPro——窗口位置、波长、相机长度等将被重置为默认值（保留已注册的宏）
 
 ---
 

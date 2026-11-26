@@ -267,7 +267,7 @@ ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60,
 |------|------|
 | `#.Open()` | 画像シミュレータウィンドウを開く |
 | `#.Close()` | 画像シミュレータウィンドウを閉じる |
-| `#.Simulate()` | 現在の設定でシミュレーションを実行 |
+| `#.Simulate()` | 現在の設定でシミュレーションを実行。STEM の計算中はエラー (2 本目は始めない) |
 
 ### 顕微鏡・光学条件
 

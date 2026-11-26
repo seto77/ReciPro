@@ -29,7 +29,7 @@ La fenêtre sera ramenée sur votre écran principal. Notez que **Basculer vers*
 **Solution** (à essayer dans l'ordre) :
 
 1. **Désactiver OpenGL** : maintenez la touche **Ctrl** enfoncée pendant le lancement de ReciPro pour démarrer avec OpenGL désactivé. Les versions récentes (v4.925 et ultérieures) renforcent l'initialisation d'OpenGL afin que l'application se lance même lorsqu'OpenGL échoue — dans ce cas, les fonctions 3D sont désactivées mais le reste de l'application fonctionne.
-2. **Réinitialiser les paramètres** : dans l'éditeur du Registre, supprimez la clé `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`, puis redémarrez. (Équivaut à **Options ▸ Réinitialiser les réglages du registre à la fermeture**.)
+2. **Réinitialiser les paramètres** : dans l'éditeur du Registre, supprimez la clé `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`, puis redémarrez. (Cela supprime aussi les macros enregistrées. **Options ▸ Réinitialiser les réglages du registre à la fermeture** réinitialise les mêmes réglages, mais conserve les macros.)
 3. **Réinstallation propre** : désinstallez ReciPro, supprimez les dossiers suivants s'ils sont présents (remplacez `<user>` par le nom de votre compte), puis réinstallez :
    - `C:\Users\<user>\AppData\Local\Crystallography Software\ReciPro`
    - `C:\Users\<user>\AppData\Roaming\ReciPro\ReciPro`
@@ -164,7 +164,7 @@ Par exemple, le bouton **Peak Identification** dans Spot ID v2 est masqué, ou l
 Si les paramètres deviennent corrompus :
 
 1. **Options ▸ Réinitialiser les réglages du registre à la fermeture (effectif après redémarrage)**
-2. Redémarrez ReciPro — les positions des fenêtres, la longueur d'onde, la longueur de caméra, etc. seront réinitialisées aux valeurs par défaut
+2. Redémarrez ReciPro — les positions des fenêtres, la longueur d'onde, la longueur de caméra, etc. seront réinitialisées aux valeurs par défaut ; les macros enregistrées sont conservées
 
 ---
 
