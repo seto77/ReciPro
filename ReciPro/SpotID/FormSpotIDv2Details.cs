@@ -54,6 +54,8 @@ public partial class FormSpotIDv2Details : FormBase
                 scalablePictureBoxAdvanced.PseudoBitmap = mainPb; // グレー値未ロード時のみ共有 (自前生成しない)
         }
 
+        baseTitle ??= Text; // 261126Cl 追加 (codex2 の査読 s5): 題は表が空でも更新する (旧い表の最後の行を消した後に警告を残さない)
+        if (!FormSpotID.spotTableHasLegacyIntensity) Text = baseTitle; // 261126Cl 追加
         if (FormSpotID.bindingSourceObsSpots.Current == null)
             return;
 

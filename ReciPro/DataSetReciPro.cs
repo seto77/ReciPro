@@ -240,10 +240,15 @@ namespace ReciPro
                     H2 = h1;
                     theta += Math.PI / 2;
                 }
-                while (theta > Math.PI)
-                    theta -= Math.PI;
-                while (theta < 0)
-                    theta += Math.PI;
+                //while (theta > Math.PI) // 261126Cl 変更前 (4 行): 大きい有限の θ では theta - π == theta になり終わらなかった (codex2 の査読 s5)
+                //    theta -= Math.PI;
+                //while (theta < 0)
+                //    theta += Math.PI;
+                if (theta > Math.PI || theta < 0) // 261126Cl: 剰余で [0, π) へ (π ちょうどは従来どおり π のまま)
+                {
+                    theta %= Math.PI;
+                    if (theta < 0) theta += Math.PI;
+                }
                 var Theta = theta / Math.PI * 180.0;
                 var B0 = b0 + bx * x0 + by * y0;
                 var R = r * 100;
@@ -267,7 +272,9 @@ namespace ReciPro
             public static (double Range, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R)
                 ConvertPrmsToOriginalValues(double range, double x0, double y0, double h1, double h2, double theta, double eta, double a, double b0, double bx, double by, double r)
                 //=> (range, x0, y0, h1, h2, theta / 180.0 * Math.PI, eta, a, b0 - bx * x0 - by * y0, bx, by, r); // 260813Cl 旧: R の逆変換が無く setRow の R=r*100 と非対称。CSV 読み戻し→再保存や GetPrms→SetPrms 往復で R(%) が 100 倍化 (清華大 Xinyue 氏の round-trip 報告で発覚)
-                => (range, x0, y0, h1, h2, theta / 180.0 * Math.PI, eta, a, b0 - bx * x0 - by * y0, bx, by, r / 100); // 260813Cl
+                //=> (range, x0, y0, h1, h2, theta / 180.0 * Math.PI, eta, a, b0 - bx * x0 - by * y0, bx, by, r / 100); // 260813Cl // 261126Cl 変更前
+                // 261126Cl 変更 (codex2 の査読 s6): θ (度) は度のまま 180 の剰余を取ってから変換する (巨大な値をラジアンにしてから剰余を取ると精度を失い方位がずれた)
+                => (range, x0, y0, h1, h2, (theta % 180.0 + (theta % 180.0 < 0 ? 180.0 : 0)) / 180.0 * Math.PI, eta, a, b0 - bx * x0 - by * y0, bx, by, r / 100);
 
 
             /// <summary>d値の値を再計算する</summary>

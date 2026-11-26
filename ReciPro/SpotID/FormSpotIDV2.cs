@@ -413,7 +413,8 @@ public partial class FormSpotIDV2 : FormBase
             if (dataSet.DataTableSpot.Rows.Count > 0)
                 bindingSourceObsSpots.Position = 0;
             skipEvent = false;
-            bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemDeleted, 0));
+            //bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemDeleted, 0)); // 261126Cl 変更前: スポットの無い所でも削除を知らせ、同定の結果を捨てていた (codex2 の査読 s5)
+            bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(num >= 0 ? ListChangedType.ItemDeleted : ListChangedType.Reset, 0)); // 261126Cl
             return true;
         }
         return false;
@@ -666,6 +667,7 @@ public partial class FormSpotIDV2 : FormBase
         var spotsSnapshot = dataSet.DataTableSpot.Spots
             .Select((s, i) => (X: s.X, Y: s.Y, Area: dataSet.DataTableSpot.GetPrms(i).Range))
             .ToArray();
+        var rowsSnapshot = dataSet.DataTableSpot.Rows.Cast<System.Data.DataRow>().ToArray(); // 261126Cl 追加 (codex2 の査読 s6): 書き戻す前に同じ行か (参照) を確かめる
         var max = toolStripProgressBar.Maximum;
         IProgress<int> progress = new Progress<int>(n => toolStripProgressBar.Value = n * max / spotsSnapshot.Length);
 
@@ -679,15 +681,22 @@ public partial class FormSpotIDV2 : FormBase
             }).ToArray();
         });
 
-        for (int i = 0; i < results.Length; i++)
-            if (!double.IsPositiveInfinity(results[i].R))
+        // 261126Cl 追加 (codex2 の査読 s5): 計算の間に (マクロの LoadFile などで) 画像やスポットの表が替わっていたら書き戻さない
+        bool sameInput = ReferenceEquals(scalablePictureBoxAdvanced.PseudoBitmap, p) && ReferenceEquals(p.SrcValuesGray, srcValues)
+            && dataSet.DataTableSpot.Rows.Count == spotsSnapshot.Length
+            && dataSet.DataTableSpot.Spots.Select((s, i) => s.X == spotsSnapshot[i].X && s.Y == spotsSnapshot[i].Y).All(x => x)
+            && Enumerable.Range(0, rowsSnapshot.Length).All(i => ReferenceEquals(dataSet.DataTableSpot.Rows[i], rowsSnapshot[i]) && dataSet.DataTableSpot.GetPrms(i).Range == spotsSnapshot[i].Area); // 261126Cl: 行の参照と計算に使った範囲も
+        for (int i = 0; i < results.Length && sameInput; i++) // 261126Cl && sameInput
+            //if (!double.IsPositiveInfinity(results[i].R)) // 261126Cl 変更前: NaN も成功扱いだった
+            if (double.IsFinite(results[i].R)) // 261126Cl
             {
                 var area = dataSet.DataTableSpot.GetPrms(i).Range;
                 dataSet.DataTableSpot.SetPrms(i, area, results[i].PrmsPv, results[i].PrmsBg, results[i].R);
                 dataSet.DataTableSpot.ResetDspacing();
             }
         // 261126Cl 追加 (codex2 査読 s4 中): 全部の行を今の定義でフィットし直せたら、旧い定義の行は残っていない
-        if (results.Length == dataSet.DataTableSpot.Rows.Count && results.All(r => !double.IsPositiveInfinity(r.R)))
+        //if (results.Length == dataSet.DataTableSpot.Rows.Count && results.All(r => !double.IsPositiveInfinity(r.R))) // 261126Cl 変更前 (s4 の直しの版)
+        if (sameInput && results.All(r => double.IsFinite(r.R)))
             spotTableHasLegacyIntensity = false;
 
         bindingSourceObsSpots.DataMember = "DataTableSpot";
@@ -869,19 +878,25 @@ public partial class FormSpotIDV2 : FormBase
                         else if (r < range2 * range2)
                             mantle.Add(srcValues[x + y * width]);
                     }
-                result[i] = core.Sum() - (mantle.Sum() * core.Count / mantle.Count);
+                //result[i] = core.Sum() - (mantle.Sum() * core.Count / mantle.Count); // 261126Cl 変更前: 環が空 (画像の外) だと NaN を表に入れ、保存した CSV を読めなくなった (codex2 の査読 s6)
+                result[i] = mantle.Count > 0 ? core.Sum() - (mantle.Sum() * core.Count / mantle.Count) : double.NaN; // 261126Cl: NaN = 更新しない印
             }
             return result;
         });
+        int skippedDonut = 0; // 261126Cl 追加
 
         for (int i = 0; i < prmsAll.Length; i++)
         {
             var prms = prmsAll[i];
             //dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensities[i] }, new[] { 0.0, 0.0, 0.0 }, 0); // 261124Cl 変更前: 幅 (H1, H2) と θ, η を 0 で上書きしたので、続けて Global Fit すると積分半径が 0 になり全スポットの強度が 0 になった (codex2 査読 C2-01)
+            if (!double.IsFinite(intensities[i])) { skippedDonut++; continue; } // 261126Cl 追加: 背景の環に画素が無い行は強度を更新しない
             dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, prms.H1, prms.H2, prms.Theta, prms.Eta, intensities[i] }, new[] { 0.0, 0.0, 0.0 }, 0); // 261124Cl 変更 (作者の決定): 幅と形は残し、積分強度だけを更新する
         }
         bindingSourceObsSpots.DataMember = "DataTableSpot";
         toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {StatusBarHelper.FormatElapsed(sw.Elapsed)}";
+        if (skippedDonut > 0) // 261126Cl 追加
+            //toolStripStatusLabelIdentifySpot.Text += Localization.Loc(en: $"  ({skippedDonut} spots not updated: no background pixels in the ring)", ja: $"  ({skippedDonut} 個のスポットは背景の環に画素が無いので更新しませんでした)"); // 261126Cl 変更前 (理由を言い切っていた。NaN の画素でも起きる。codex2 の査読 s7)
+            toolStripStatusLabelIdentifySpot.Text += Localization.Loc(en: $"  ({skippedDonut} spots not updated: the intensity could not be computed)", ja: $"  ({skippedDonut} 個のスポットは強度を算出できなかったので更新しませんでした)"); // 261126Cl
         Enabled = true;
     }
 
@@ -1177,6 +1192,7 @@ public partial class FormSpotIDV2 : FormBase
                 //  旧い見出しは日本語の列名に改行を含むので、データの行 (2 列目が整数の番号) が始まるまでの行は見出しの続きとして読み飛ばす
                 var first = sr.ReadLine() ?? "";
                 bool v2 = first.StartsWith("Direct_v2,") || first.StartsWith("Direct_v2_mixed,");
+                bool jaSplitHeader = !v2 && first.TrimEnd(',', ' ').EndsWith("範囲"); // 261126Cl 追加: 旧版の日本語の見出し「…,範囲 / (半径),…」が改行で割れている
                 legacy = first.StartsWith("Direct_v2_mixed,") || (!v2 && first.StartsWith("Direct,"));
                 if (v2 || first.StartsWith("Direct,"))
                 {
@@ -1185,7 +1201,12 @@ public partial class FormSpotIDV2 : FormBase
                     {
                         var cells = sr.ReadLine().Split(new[] { ',' });
                         // 旧い見出しの続き (日本語の列名の改行で割れた行。高々 2 行) だけを読み飛ばす。それより多い・データの後の不正な行は下の検査で失敗にする (codex2 査読 s4 中)
-                        if (!inData && headerLines < 2 && !(cells.Length >= 14 && int.TryParse(cells[1], System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, out _)))
+                        // 261126Cl 変更 (codex2 の査読 s5): データの行の 1 列目は Direct の印 ("" か "*")。見出しの続きは列名で始まるので、それで見分ける (先頭のデータの行の No が壊れていても黙って捨てない)
+                        //if (!inData && headerLines < 2 && !(cells.Length >= 14 && int.TryParse(cells[1], System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, out _)))
+                        //if (!inData && headerLines < 2 && cells[0] != "" && cells[0] != "*") // 261126Cl 変更前 (s5 の直しの版): Direct の印が壊れた先頭の行も黙って捨てた
+                        // 261126Cl 変更 (codex2 の査読 s6): 見出しの続きは、旧版の日本語の列名「範囲\n(半径)」「A\n(強度)」が割れた行だけ (ほかの言語の列名に改行は無い)
+                        // 261126Cl (codex2 の査読 s7): 1 行目が「範囲」で途中で切れた日本語の見出しのときだけ、17 列に満たない続きの行を読み飛ばす
+                        if (!inData && jaSplitHeader && headerLines < 2 && cells.Length < 17 && (cells[0] == "(半径)" || cells[0] == "(強度)"))
                         {
                             headerLines++;
                             continue;
@@ -1212,10 +1233,18 @@ public partial class FormSpotIDV2 : FormBase
                 }// 261105Cl
             }
 
+            // 261126Cl 追加 (codex2 の査読 s6): 並べる前に各行の列数・末尾の空・No を検査する (列を隠した旧いファイルで、列不足の案内より先に並べ替えが失敗していた)
+            foreach (var d in dataList)
+            {
+                if (d.Length != 17) throw new FormatException($"A spot row has {d.Length} columns (17 expected). Spot lists saved with hidden columns cannot be read; save them again with all columns shown.");
+                if (d[16] != "") throw new FormatException($"Unexpected text after the last column: {d[16]}");
+                if (!int.TryParse(d[1], System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, out _)) throw new FormatException($"Invalid spot number: {d[1]}");
+            }
             dataList.Sort((a, b) =>
             {
-                var c = Convert.ToInt32(a[1]) - Convert.ToInt32(b[1]);
-                return (c > 0) ? 1 : (c < 0) ? -1 : 0;
+                //var c = Convert.ToInt32(a[1]) - Convert.ToInt32(b[1]); // 261126Cl 変更前 (2 行)
+                //return (c > 0) ? 1 : (c < 0) ? -1 : 0;
+                return int.Parse(a[1], System.Globalization.CultureInfo.InvariantCulture).CompareTo(int.Parse(b[1], System.Globalization.CultureInfo.InvariantCulture)); // 261126Cl: 検査済みの No で
             });
 
             var offset = dataSet.DataTableSpot.Rows.Count; // 261105Cl 追加 (監査 I9): 既にスポットがあるときは後ろに足されるので、hkl を書く行をずらす (旧は先頭の行に書いていた)
@@ -1224,10 +1253,16 @@ public partial class FormSpotIDV2 : FormBase
             var parsed = new List<(bool Direct, double[] V, string Hkl)>();
             foreach (var d in dataList)
             {
-                if (d.Length < 14) throw new FormatException($"Too few columns ({d.Length}) in a spot row.");
+                //if (d.Length < 14) throw new FormatException($"Too few columns ({d.Length}) in a spot row."); // 261126Cl 変更前 (s4 の直しの版)
+                // 261126Cl 変更 (codex2 の査読 s5): 全列 (Direct, No, Range〜R, d, hkl) + 末尾の空 = 17。旧版で列を隠して保存したファイルは位置で読むと値がずれるので断る
+                if (d.Length != 17) throw new FormatException($"A spot row has {d.Length} columns (17 expected). Spot lists saved with hidden columns cannot be read; save them again with all columns shown.");
+                if (d[0] != "" && d[0] != "*") throw new FormatException($"Invalid Direct mark in a spot row: {d[0]}");
+                if (!int.TryParse(d[1], System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, out _)) throw new FormatException($"Invalid spot number: {d[1]}");
                 var v = new double[12];
                 for (int k = 0; k < 12; k++)
-                    if (!double.IsFinite(v[k] = f(d[k + 2]))) throw new FormatException($"Non-finite value in a spot row: {d[k + 2]}");
+                    //if (!double.IsFinite(v[k] = f(d[k + 2]))) throw new FormatException($"Non-finite value in a spot row: {d[k + 2]}"); // 261126Cl 変更前 (s4 の直しの版)
+                    // 261126Cl: R (k = 11) の +∞ はフィットの失敗の印 (手で置いたスポット)。アプリ自身が書くので許す
+                    if (!double.IsFinite(v[k] = f(d[k + 2])) && !(k == 11 && double.IsPositiveInfinity(v[k]))) throw new FormatException($"Non-finite value in a spot row: {d[k + 2]}");
                 parsed.Add((d[0] == "*", v, d.Length == 17 ? d[15] : ""));
             }
             // 261126Cl 追加: 空の表に読み込んだらそのファイルの印を、足したときは旧い定義の行が混ざるかを引き継ぐ。1 行も足さないときは変えない
@@ -1254,7 +1289,8 @@ public partial class FormSpotIDV2 : FormBase
             //bindingSourceObsSpots.DataMember = "DataTableSpot"; // 261105Cl 変更前 (下の finally へ。例外・途中の return でも戻す)
             scalablePictureBoxAdvanced.Refresh();
             // 261126Cl 追加: 旧い定義の A・η は換算しないで読んだことを知らせる (マクロの LoadFile も通るので MessageBox は出さない)
-            if (legacy)
+            //if (legacy) // 261126Cl 変更前 (s4 の直しの版)
+            if (legacy && parsed.Count > 0) // 261126Cl (codex2 の査読 s5): 見出しだけの旧い CSV では知らせない
                 toolStripStatusLabelFindSpot.Text = Localization.Loc(
                     en: "Loaded a spot list with the old definition of A and η (before v.4.955). They are not converted; refit the spots to compare intensities.",
                     ja: "旧い定義 (v.4.955 より前) の A・η を含むスポット一覧を読み込みました。換算はしていません。強度を比べるにはスポットをフィットし直してください。");
