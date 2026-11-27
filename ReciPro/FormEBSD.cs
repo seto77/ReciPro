@@ -4123,12 +4123,29 @@ public partial class FormEBSD : FormBase
             //    : ""), // 261125Cl 変更前
             // 261125Cl 変更 (codex2 の 11-25 の議論 第 2 回 §1 = 案 a): 版の違いは一律に知らせ、261118 → 261124 の組だけは影響する結晶を具体的に書く
             //  (六方軸の [210]/[120] 二回軸の面指数変換の直し e4301e9 が効くのは、その操作を持ち異方性の原子変位を使う結晶だけ。等方なら作り直しは要らない)
+            //+ (info.PhysicsVersion == MasterPatternFile.PhysicsVersion ? "" // 261127Cl 変更前 (6 行)
+            //    : info.PhysicsVersion == "261118" && MasterPatternFile.PhysicsVersion == "261124"
+            //        ? " | NOTE: made with physics version 261118 (now 261124). If the crystal uses hexagonal axes with a [210] or [120] two-fold axis (or a mirror or glide plane normal to it)"
+            //          + " and anisotropic displacement parameters, build again before quantitative comparison; with isotropic displacements only, no rebuild is needed for this change."
+            //          + (MasterPatternFile.FingerprintIncludesIonModel(info) ? "" : " Files of this version do not record the elastic ion model (Neutral or ion); build again if it may differ from the current one.") // 261125Cl 追加: 旧い指紋はイオン模型を含まない (今の模型が中性でも出す。codex2 の査読 L2 §1)
+            //        : $" | WARNING: made with physics version {(string.IsNullOrEmpty(info.PhysicsVersion) ? "(not recorded)" : info.PhysicsVersion)}, now {MasterPatternFile.PhysicsVersion}. Build again for the current physics."),
+            // 261127Cl 変更 (作者の決定 11-27、ビーム候補の列挙の既定を C に = 版 261127。文言は codex2 の査読 e6: 測った条件の外へ一般化しない):
+            //   261118 (v.4.954) と 261124 (未公開の中間版) は列挙の既定の替わりを知らせ、261118 には従来の六方晶の注意も続ける
             + (info.PhysicsVersion == MasterPatternFile.PhysicsVersion ? ""
-                : info.PhysicsVersion == "261118" && MasterPatternFile.PhysicsVersion == "261124"
-                    ? " | NOTE: made with physics version 261118 (now 261124). If the crystal uses hexagonal axes with a [210] or [120] two-fold axis (or a mirror or glide plane normal to it)"
-                      + " and anisotropic displacement parameters, build again before quantitative comparison; with isotropic displacements only, no rebuild is needed for this change."
+                : info.PhysicsVersion is "261118" or "261124" && MasterPatternFile.PhysicsVersion == "261127"
+                    ? $" | NOTE: made with physics version {info.PhysicsVersion} (now 261127). The default beam-candidate enumeration changed in 261127. At a fixed beam count, the selected reflections and intensities can change."
+                      + " Rebuild with matching settings for quantitative comparison."
+                      + (info.PhysicsVersion == "261118" ? " Also, if the crystal uses hexagonal axes with a [210] or [120] two-fold axis (or a mirror or glide plane normal to it)"
+                        + " and anisotropic displacement parameters, build again before quantitative comparison." : "")
                       + (MasterPatternFile.FingerprintIncludesIonModel(info) ? "" : " Files of this version do not record the elastic ion model (Neutral or ion); build again if it may differ from the current one.") // 261125Cl 追加: 旧い指紋はイオン模型を含まない (今の模型が中性でも出す。codex2 の査読 L2 §1)
-                    : $" | WARNING: made with physics version {(string.IsNullOrEmpty(info.PhysicsVersion) ? "(not recorded)" : info.PhysicsVersion)}, now {MasterPatternFile.PhysicsVersion}. Build again for the current physics."),
+                    : $" | WARNING: made with physics version {(string.IsNullOrEmpty(info.PhysicsVersion) ? "(not recorded)" : info.PhysicsVersion)}, now {MasterPatternFile.PhysicsVersion}. Build again for the current physics.")
+            // 261127Cl 追加 (codex2 の査読 e6 中): 版が同じでも、記録した列挙 ("Quadratic/…" = C、裸の Legacy・Shell = B) が今のプロセスと違えば知らせる
+            //   (RECIPRO_BEAM_ENUMERATION=B で作ったファイルを既定の C で読んだときなど。"" (着衣の裾・記録なし) と診断・研究用は判定しない)
+            + (info.PhysicsVersion == MasterPatternFile.PhysicsVersion
+                && (info.BeamCandidateCut is "Legacy" or "Shell" ? false : info.BeamCandidateCut?.StartsWith("Quadratic/") == true ? true : (bool?)null) is bool fileC
+                && fileC != BetheMethod.QuadraticBeamEnumeration
+                    ? $" | NOTE: made with the {(fileC ? "quadratic (C)" : "breadth-first (B)")} beam-candidate enumeration; this session uses the {(BetheMethod.QuadraticBeamEnumeration ? "quadratic (C)" : "breadth-first (B)")} one. Rebuild with matching settings for quantitative comparison."
+                    : ""),
             sw.Elapsed);
         return true;
     }

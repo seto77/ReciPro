@@ -57,6 +57,13 @@ jobs:
       - name: Test (Crystallography.Tests, managed)
         run: dotnet test Crystallography\tests\Crystallography.Tests\Crystallography.Tests.csproj -c Release --logger "trx;LogFileName=crystallography-tests.trx" --results-directory TestResults
 
+      # 261127Cl 追加 (codex2 の査読 e6): ビーム候補の列挙の既定は 11-27 から C。旧い結果を再現する B (環境変数で選ぶ、プロセスの開始時に 1 回だけ読む) も、
+      #   列挙・打ち切り・EBSD の記録・鍵の試験だけ別のプロセスで通す (数秒)
+      - name: Test (beam enumeration B, managed)
+        env:
+          RECIPRO_BEAM_ENUMERATION: B
+        run: dotnet test Crystallography\tests\Crystallography.Tests\Crystallography.Tests.csproj -c Release --no-build --filter "FullyQualifiedName~BeamCandidateShellCut|FullyQualifiedName~EbsdBackSourceBlockAxis|FullyQualifiedName~QuadraticBeamEnumeration|FullyQualifiedName~HklKey" --logger "trx;LogFileName=crystallography-tests-enum-b.trx" --results-directory TestResults
+
       - name: Upload test results (TRX)
         if: always()
         uses: actions/upload-artifact@v6 # release.yml と同じ版
