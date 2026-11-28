@@ -32,7 +32,8 @@
 * **Rotação flexível do cristal** : Defina a orientação por índices de eixo de zona/plano cristalino ou arrastando o mouse. A notação de Miller-Bravais (4 índices *hkil*) é suportada para os sistemas trigonal/hexagonal. O estado de rotação é sincronizado entre todas as janelas de simulação.
 * **Simulação de difração** : Difração eletrônica cinemática e dinâmica (método de ondas de Bloch), difração de raios X (incluindo câmeras de precessão e back-Laue), difração eletrônica de precessão (PED) e difração eletrônica de feixe convergente (CBED). Uma simulação de suporte TEM vincula o padrão de difração aos ângulos de inclinação do suporte.
 * **Simulação HRTEM / STEM** : Simulação de imagens TEM de alta resolução com modelos de coerência parcial; STEM com espalhamento térmico difuso.
-* **EBSD e trajetórias eletrônicas** : Simulação de padrões EBSD e simulação de Monte Carlo das trajetórias eletrônicas (veja [8. Trajetórias eletrônicas](8-electron-trajectory.md)).
+* **Simulação EBSD** : Padrões EBSD dinâmicos (ondas de Bloch) projetados a partir de um master pattern de toda a esfera e ponderados pelas distribuições de Monte Carlo dos elétrons retroespalhados; os master patterns podem ser salvos e recarregados. Padrões experimentais podem ser indexados por busca Radon ou por dicionário, com calibração automática da geometria do detector (veja [12. Simulação EBSD](12-ebsd-simulation.md)).
+* **Trajetórias eletrônicas** : Simulação de Monte Carlo das trajetórias eletrônicas na amostra (veja [8. Trajetórias eletrônicas](8-electron-trajectory.md)).
 * **Indexação de reflexões** : Detecção, ajuste e indexação automáticos de reflexões de difração a partir de imagens experimentais (Spot ID v1/v2).
 * **Macro** : Macro com sintaxe Python para automatizar operações (veja [20. Macro](20-macro/index.md)).
 * **Tema claro / escuro** : A interface segue um modo de cor claro ou escuro selecionável.

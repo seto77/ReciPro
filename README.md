@@ -282,9 +282,11 @@ The bundled AMCSD database and all core features work entirely offline.
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormBeamInteraction.png" height="320px" alt="Beam Interaction">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormStructureViewer.png" height="320px" alt="Structure Viewer">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormStereonet.png" height="320px" alt="Stereonet">
-<img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormDiffractionSimulator.png" height="320px" alt="Diffraction Simulator">
+<img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormDiffractionSimulator-showcase.png" height="320px" alt="Diffraction Simulator">
+<img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormDiffractionSimulator-cbed.png" height="320px" alt="CBED (Si [111])">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormALCHEMI.png" height="320px" alt="ALCHEMI Simulator">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormImageSimulator.png" height="320px" alt="HRTEM/STEM Simulator">
+<img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormImageSimulator-stem-edx.png" height="320px" alt="STEM-EDX">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormEBSD.png" height="320px" alt="EBSD Simulator">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormSpotIDV2.png" height="320px" alt="Spot ID v2">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormMacro.png" height="320px" alt="Macro">

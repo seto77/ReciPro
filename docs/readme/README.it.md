@@ -252,9 +252,11 @@ La banca dati AMCSD inclusa e tutte le funzioni principali funzionano interament
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormBeamInteraction.png" height="320px" alt="Interazione del fascio">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormStructureViewer.png" height="320px" alt="Visualizzatore di strutture">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormStereonet.png" height="320px" alt="Proiezione stereografica">
-<img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormDiffractionSimulator.png" height="320px" alt="Simulatore di diffrazione">
+<img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormDiffractionSimulator-showcase.png" height="320px" alt="Simulatore di diffrazione">
+<img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormDiffractionSimulator-cbed.png" height="320px" alt="CBED (Si [111])">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormALCHEMI.png" height="320px" alt="Simulatore ALCHEMI">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormImageSimulator.png" height="320px" alt="Simulatore HRTEM/STEM">
+<img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormImageSimulator-stem-edx.png" height="320px" alt="STEM-EDX">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormEBSD.png" height="320px" alt="Simulatore EBSD">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormSpotIDV2.png" height="320px" alt="Spot ID v2">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormMacro.png" height="320px" alt="Macro">

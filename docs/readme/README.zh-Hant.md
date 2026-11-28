@@ -252,9 +252,11 @@
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormBeamInteraction.png" height="320px" alt="射束交互作用">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormStructureViewer.png" height="320px" alt="結構檢視器">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormStereonet.png" height="320px" alt="極射投影">
-<img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormDiffractionSimulator.png" height="320px" alt="繞射模擬器">
+<img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormDiffractionSimulator-showcase.png" height="320px" alt="繞射模擬器">
+<img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormDiffractionSimulator-cbed.png" height="320px" alt="CBED (Si [111])">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormALCHEMI.png" height="320px" alt="ALCHEMI 模擬器">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormImageSimulator.png" height="320px" alt="HRTEM/STEM 模擬器">
+<img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormImageSimulator-stem-edx.png" height="320px" alt="STEM-EDX">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormEBSD.png" height="320px" alt="EBSD 模擬器">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormSpotIDV2.png" height="320px" alt="Spot ID v2">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormMacro.png" height="320px" alt="巨集">

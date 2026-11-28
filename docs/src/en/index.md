@@ -32,7 +32,8 @@
 * **Flexible crystal rotation** : Set orientation by zone-axis/crystal-plane indices or by mouse drag. Miller–Bravais (4-index *hkil*) notation is supported for trigonal/hexagonal systems. Rotation state is synchronised across all simulation windows.
 * **Diffraction simulation** : Kinematical and dynamical (Bloch wave) electron diffraction, X-ray diffraction (including precession and back-Laue cameras), precession electron diffraction (PED), and convergent-beam electron diffraction (CBED). A TEM-holder simulation links the diffraction pattern to holder tilt angles.
 * **HRTEM / STEM simulation** : High-resolution TEM image simulation with partial-coherence models; STEM with thermal diffuse scattering.
-* **EBSD & electron trajectory** : EBSD pattern simulation and Monte-Carlo electron-trajectory simulation (see [8. Electron trajectory](8-electron-trajectory.md)).
+* **EBSD simulation** : Dynamical (Bloch wave) EBSD patterns projected from a full-sphere master pattern, weighted by Monte-Carlo distributions of the backscattered electrons; master patterns can be saved and reloaded. Experimental patterns can be indexed by Radon or dictionary search, with automatic calibration of the detector geometry (see [12. EBSD simulation](12-ebsd-simulation.md)).
+* **Electron trajectory** : Monte-Carlo simulation of electron trajectories in the sample (see [8. Electron trajectory](8-electron-trajectory.md)).
 * **Spot indexing** : Automatic detection, fitting, and indexing of diffraction spots from experimental images (Spot ID v1/v2).
 * **Macro** : Python-syntax macro for automating operations (see [20. Macro](20-macro/index.md)).
 * **Light / dark theme** : The interface follows a selectable light or dark colour mode.

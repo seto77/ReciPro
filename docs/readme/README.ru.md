@@ -252,9 +252,11 @@
 <img src="https://seto77.github.io/ReciPro/assets/cap-ru-auto/FormBeamInteraction.png" height="320px" alt="Взаимодействие пучка">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ru-auto/FormStructureViewer.png" height="320px" alt="Просмотр структуры">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ru-auto/FormStereonet.png" height="320px" alt="Стереографическая проекция">
-<img src="https://seto77.github.io/ReciPro/assets/cap-ru-auto/FormDiffractionSimulator.png" height="320px" alt="Симулятор дифракции">
+<img src="https://seto77.github.io/ReciPro/assets/cap-ru-auto/FormDiffractionSimulator-showcase.png" height="320px" alt="Симулятор дифракции">
+<img src="https://seto77.github.io/ReciPro/assets/cap-ru-auto/FormDiffractionSimulator-cbed.png" height="320px" alt="CBED (Si [111])">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ru-auto/FormALCHEMI.png" height="320px" alt="Симулятор ALCHEMI">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ru-auto/FormImageSimulator.png" height="320px" alt="Симулятор HRTEM/STEM">
+<img src="https://seto77.github.io/ReciPro/assets/cap-ru-auto/FormImageSimulator-stem-edx.png" height="320px" alt="STEM-EDX">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ru-auto/FormEBSD.png" height="320px" alt="Симулятор EBSD">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ru-auto/FormSpotIDV2.png" height="320px" alt="Spot ID v2">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ru-auto/FormMacro.png" height="320px" alt="Макросы">

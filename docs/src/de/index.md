@@ -32,7 +32,8 @@
 * **Flexible Kristalldrehung** : Orientierung über Zonenachsen-/Netzebenen-Indizes oder per Maus-Drag festlegen. Die Miller-Bravais-Notation (4-Index *hkil*) wird für trigonale/hexagonale Systeme unterstützt. Der Rotationszustand wird über alle Simulationsfenster synchronisiert.
 * **Beugungssimulation** : Kinematische und dynamische (Bloch-Wellen-Methode) Elektronenbeugung, Röntgenbeugung (einschließlich Präzessions- und Rücklaue-Kameras), Präzessions-Elektronenbeugung (PED) und konvergente Elektronenbeugung (CBED). Eine TEM-Halter-Simulation verknüpft das Beugungsmuster mit den Kippwinkeln des Halters.
 * **HRTEM-/STEM-Simulation** : Hochauflösende TEM-Bildsimulation mit Modellen partieller Kohärenz; STEM mit thermisch diffuser Streuung.
-* **EBSD & Elektronenbahnen** : EBSD-Mustersimulation und Monte-Carlo-Simulation der Elektronenbahnen (siehe [8. Elektronenbahnen](8-electron-trajectory.md)).
+* **EBSD-Simulation** : Dynamische (Bloch-Wellen-)EBSD-Muster, aus einem Master-Muster über die gesamte Kugel projiziert und mit Monte-Carlo-Verteilungen der rückgestreuten Elektronen gewichtet; Master-Muster lassen sich speichern und wieder laden. Experimentelle Muster können per Radon- oder Dictionary-Suche indiziert werden, mit automatischer Kalibrierung der Detektorgeometrie (siehe [12. EBSD-Simulation](12-ebsd-simulation.md)).
+* **Elektronenbahnen** : Monte-Carlo-Simulation der Elektronenbahnen in der Probe (siehe [8. Elektronenbahnen](8-electron-trajectory.md)).
 * **Reflex-Indizierung** : Automatische Erkennung, Anpassung und Indizierung von Beugungsreflexen aus experimentellen Bildern (Spot ID v1/v2).
 * **Makro** : Makro in Python-Syntax zur Automatisierung von Operationen (siehe [20. Makro](20-macro/index.md)).
 * **Helles / dunkles Design** : Die Oberfläche folgt einem wählbaren hellen oder dunklen Farbmodus.

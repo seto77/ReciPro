@@ -252,9 +252,11 @@ v.4.942以降、リリース成果物（*ReciPro-setup.msi* インストーラ�
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormBeamInteraction.png" height="320px" alt="ビーム相互作用">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormStructureViewer.png" height="320px" alt="結晶構造ビューア">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormStereonet.png" height="320px" alt="ステレオ投影">
-<img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormDiffractionSimulator.png" height="320px" alt="回折シミュレータ">
+<img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormDiffractionSimulator-showcase.png" height="320px" alt="回折シミュレータ">
+<img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormDiffractionSimulator-cbed.png" height="320px" alt="CBED (Si [111])">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormALCHEMI.png" height="320px" alt="ALCHEMI シミュレータ">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormImageSimulator.png" height="320px" alt="HRTEM/STEMシミュレータ">
+<img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormImageSimulator-stem-edx.png" height="320px" alt="STEM-EDX">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormEBSD.png" height="320px" alt="EBSDシミュレータ">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormSpotIDV2.png" height="320px" alt="Spot ID v2">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormMacro.png" height="320px" alt="マクロ">
