@@ -100,6 +100,7 @@ v.4.942 부터 릴리스 산출물(*ReciPro-setup.msi* 설치 파일과 포터�
   * 면 및/또는 축 사이의 주기성과 각도의 기하학적 계산.
   * 등가 원자 위치 생성.
   * 비표준 축 설정(예: *Pbnm* → *Pnma*)과 원점 이동 간의 간편한 변환.
+* **군 관계**: 극대 부분군과 극소 상위군(*t*, *k* 및 동형)과 변환 행렬, 다단계 Bärnighausen 트리, 궤도 분열, 도메인과 쌍정, 새로 나타나는 반사, 32개 점군의 Hasse 도표.
 
 ### 원자의 성질
 
@@ -161,6 +162,8 @@ v.4.942 부터 릴리스 산출물(*ReciPro-setup.msi* 설치 파일과 포터�
 * **CBED**(수렴 빔 전자 회절): 사용자가 지정한 수렴 반각과 분할 수로 CBED 패턴을 시뮬레이션합니다. 시료 두께 결정을 위한 두께별 시뮬레이션을 지원합니다.
   * 위치 평균 CBED(PACBED) 패턴.
   * 대각도 CBED(LA-CBED) 시뮬레이션.
+* **기쿠치 밴드**: 기쿠치 선과 동역학 이론으로 계산한 기쿠치 밴드를 회절 패턴 위에 겹쳐 표시합니다.
+* **ALCHEMI**(미리보기): 계통 열을 따라 자리별 이온화 로킹 곡선을 계산하여, 채널링 증강 미세분석으로 도펀트의 점유 자리를 결정하는 데 활용합니다(1차원 순방향 계산).
 
 ### HRTEM 시뮬레이터
 
@@ -181,6 +184,15 @@ v.4.942 부터 릴리스 산출물(*ReciPro-setup.msi* 설치 파일과 포터�
   * 수렴 빔은 다수의 평면파 중첩으로 취급하며 겹침을 정확히 계산합니다.
   * 비탄성 산란 전자는 흡수 퍼텐셜 모델로 계산합니다.
   * 두께–디포커스 시리즈 이미지를 생성할 수 있습니다.
+
+### EBSD 시뮬레이터
+
+* SEM에서의 전자후방산란회절(EBSD) 패턴을 동역학 이론(블로흐파 방법)으로 시뮬레이션합니다.
+  * 후방산란전자의 몬테카를로 시뮬레이션으로 깊이·출사 방향·에너지 분포를 구하고, 이를 동역학 계산의 에너지·깊이 범위 설정과 패턴의 가중에 사용합니다.
+  * 전체 구면의 동역학적 master pattern을 현재 결정 방위에 맞춰 검출기에 투영하며, 결정 회전을 실시간으로 따라갑니다.
+  * 검출기와 시료의 기하구조, 배경 평탄화, 형광체 응답, 기쿠치 선과 정대축 오버레이.
+  * master pattern은 결정 및 몬테카를로 결과와 함께 저장하고 불러올 수 있습니다.
+  * **실험 패턴의 지수 부여**: 방위 탐색(Radon 변환 기반 템플릿 매칭 또는 사전 검색), 정대축 선택, 검출기 기하구조의 자동 보정.
 
 ### Spot ID
 
@@ -204,11 +216,11 @@ v.4.942 부터 릴리스 산출물(*ReciPro-setup.msi* 설치 파일과 포터�
   * 예: 결정을 1° 간격으로 회전시키며 각 단계에서 회절 패턴이나 STEM 이미지를 저장.
   * ReciPro 고유 함수는 "ReciPro" 네임스페이스에서 사용할 수 있습니다.
   * 사용 예는 [매뉴얼](https://seto77.github.io/ReciPro/ko/20-macro/2-examples/)에 있습니다.
+  * 외부 프로그램에서(명명된 파이프로) 매크로를 보내거나 명령줄에서 무인으로 실행할 수도 있습니다.
 
 ### 기타 기능
 
 * **전자 비정 시뮬레이터**: 물질 내 전자 비정(飛程)의 몬테카를로 시뮬레이션.
-* **EBSD**(전자 후방 산란 회절): 개발 중.
 
 ## 기술적 세부 사항
 
@@ -236,11 +248,14 @@ v.4.942 부터 릴리스 산출물(*ReciPro-setup.msi* 설치 파일과 포터�
 <img src="https://seto77.github.io/ReciPro/assets/cap-ko-auto/FormMain.png" height="320px" alt="메인 창">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ko-auto/FormCrystalDatabase.png" height="320px" alt="결정 데이터베이스">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ko-auto/FormSymmetryInformation.png" height="320px" alt="대칭성 정보">
+<img src="https://seto77.github.io/ReciPro/assets/cap-ko-auto/FormGroupRelations.png" height="320px" alt="군 관계">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ko-auto/FormBeamInteraction.png" height="320px" alt="빔 상호작용">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ko-auto/FormStructureViewer.png" height="320px" alt="구조 뷰어">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ko-auto/FormStereonet.png" height="320px" alt="스테레오 투영">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ko-auto/FormDiffractionSimulator.png" height="320px" alt="회절 시뮬레이터">
+<img src="https://seto77.github.io/ReciPro/assets/cap-ko-auto/FormALCHEMI.png" height="320px" alt="ALCHEMI 시뮬레이터">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ko-auto/FormImageSimulator.png" height="320px" alt="HRTEM/STEM 시뮬레이터">
+<img src="https://seto77.github.io/ReciPro/assets/cap-ko-auto/FormEBSD.png" height="320px" alt="EBSD 시뮬레이터">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ko-auto/FormSpotIDV2.png" height="320px" alt="Spot ID v2">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ko-auto/FormMacro.png" height="320px" alt="매크로">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ko-auto/FormTrajectory.png" height="320px" alt="전자 비정 시뮬레이터">

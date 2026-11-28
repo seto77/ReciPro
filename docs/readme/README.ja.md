@@ -100,6 +100,7 @@ v.4.942以降、リリース成果物（*ReciPro-setup.msi* インストーラ�
   * 面や軸どうしの周期性・角度の幾何学的計算。
   * 等価な原子位置の生成。
   * 非標準軸設定（例: *Pbnm* から *Pnma*）や原点移動の簡単な変換。
+* **群の関係**: 極大部分群・極小超群（*t*・*k*・同形）と変換行列、多段の Bärnighausen 樹形図、軌道の分裂、ドメインと双晶、新たに現れる反射、32点群のハッセ図。
 
 ### 原子の性質
 
@@ -161,6 +162,8 @@ v.4.942以降、リリース成果物（*ReciPro-setup.msi* インストーラ�
 * **CBED**（収束電子回折）: 収束半角と分割数を指定してCBEDパターンをシミュレーションします。試料厚さの決定に向けて、厚さを変えた一括シミュレーションにも対応しています。
   * 位置平均CBED（PACBED）パターン。
   * 大角度CBED（LA-CBED）シミュレーション。
+* **菊池バンド**: 菊池線と、動力学理論による菊池バンドを回折図形に重ねて表示します。
+* **ALCHEMI**（プレビュー）: 系統列に沿ったサイトごとのイオン化ロッキングカーブを計算し、チャネリング増強微小分析によるドーパントの占有サイト決定を支援します（1次元の順計算）。
 
 ### HRTEMシミュレータ
 
@@ -181,6 +184,15 @@ v.4.942以降、リリース成果物（*ReciPro-setup.msi* インストーラ�
   * 収束ビームは多数の平面波の重ね合わせとして扱われ、重なりが正確に計算されます。
   * 非弾性散乱電子は吸収ポテンシャルモデルを用いて計算されます。
   * 厚さ・デフォーカスのシリーズ像を生成できます。
+
+### EBSDシミュレータ
+
+* SEM における電子線後方散乱回折（EBSD）パターンを動力学理論（ブロッホ波法）でシミュレーションします。
+  * 後方散乱電子のモンテカルロシミュレーションで深さ・出射方向・エネルギーの分布を求め、動力学計算のエネルギーと深さの範囲の設定とパターンの重み付けに用います。
+  * 全球の動力学的マスターパターンを現在の結晶方位で検出器に投影し、結晶の回転に実時間で追従します。
+  * 検出器と試料の配置、背景の平坦化、蛍光体の応答、菊池線・晶帯軸の補助図形。
+  * マスターパターンは結晶とモンテカルロの結果とともに保存・読込できます。
+  * **実測パターンの指数付け**: 方位探索（Radon テンプレート照合または辞書探索）、晶帯軸のピッキング、検出器配置の自動較正。
 
 ### Spot ID
 
@@ -204,11 +216,11 @@ v.4.942以降、リリース成果物（*ReciPro-setup.msi* インストーラ�
   * 例: 結晶を1°刻みで回転させ、各ステップで回折図形やSTEM像を保存する。
   * ReciPro固有の関数は "ReciPro" 名前空間で利用できます。
   * 使用例は [マニュアル](https://seto77.github.io/ReciPro/ja/20-macro/2-examples/) にあります。
+  * 外部のプログラムから（名前付きパイプ経由で）マクロを送ったり、コマンドラインから無人で実行したりもできます。
 
 ### その他の機能
 
 * **電子線飛程シミュレータ**: 物質中の電子線の飛程のモンテカルロシミュレーション。
-* **EBSD**（電子線後方散乱回折）: 開発中。
 
 ## 技術的な詳細
 
@@ -236,11 +248,14 @@ v.4.942以降、リリース成果物（*ReciPro-setup.msi* インストーラ�
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormMain.png" height="320px" alt="メインウィンドウ">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormCrystalDatabase.png" height="320px" alt="結晶データベース">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormSymmetryInformation.png" height="320px" alt="対称性情報">
+<img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormGroupRelations.png" height="320px" alt="群の関係">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormBeamInteraction.png" height="320px" alt="ビーム相互作用">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormStructureViewer.png" height="320px" alt="結晶構造ビューア">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormStereonet.png" height="320px" alt="ステレオ投影">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormDiffractionSimulator.png" height="320px" alt="回折シミュレータ">
+<img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormALCHEMI.png" height="320px" alt="ALCHEMI シミュレータ">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormImageSimulator.png" height="320px" alt="HRTEM/STEMシミュレータ">
+<img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormEBSD.png" height="320px" alt="EBSDシミュレータ">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormSpotIDV2.png" height="320px" alt="Spot ID v2">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormMacro.png" height="320px" alt="マクロ">
 <img src="https://seto77.github.io/ReciPro/assets/cap-ja-auto/FormTrajectory.png" height="320px" alt="電子線飛程シミュレータ">

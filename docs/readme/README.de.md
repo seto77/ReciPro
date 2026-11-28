@@ -100,6 +100,7 @@ Die mitgelieferte AMCSD-Datenbank und alle Kernfunktionen arbeiten vollständig 
   * Geometrische Berechnung von Periodizität und/oder Winkeln zwischen Ebenen und/oder Achsen.
   * Erzeugung äquivalenter Atompositionen.
   * Einfache Umrechnung zwischen nicht standardisierten Achsenaufstellungen (z. B. *Pbnm* nach *Pnma*) und Ursprungsverschiebungen.
+* **Gruppenrelationen**: maximale Untergruppen und minimale Obergruppen (*t*, *k* und isomorph) mit Transformationsmatrizen, mehrstufige Bärnighausen-Stammbäume, Aufspaltung der Punktlagen, Domänen und Zwillinge, neue Reflexe sowie das Hasse-Diagramm der 32 Punktgruppen.
 
 ### Atomare Eigenschaften
 
@@ -161,6 +162,8 @@ Die mitgelieferte AMCSD-Datenbank und alle Kernfunktionen arbeiten vollständig 
 * **CBED** (Konvergente Elektronenbeugung): Simuliert CBED-Aufnahmen mit frei wählbarem Konvergenz-Halbwinkel und Unterteilungszahl. Simulationen über die Dicke hinweg zur Bestimmung der Probendicke werden unterstützt.
   * Positionsgemittelte CBED-Aufnahmen (PACBED).
   * Großwinkel-CBED-Simulation (LA-CBED).
+* **Kikuchi-Bänder**: Kikuchi-Linien sowie dynamisch berechnete Kikuchi-Bänder, über das Beugungsbild gelegt.
+* **ALCHEMI** (Vorschau): platzaufgelöste Ionisations-Rockingkurven entlang einer systematischen Reihe, um die Gitterplätze von Dotieratomen durch kanalisierungsverstärkte Mikroanalyse zu bestimmen (eindimensionale Vorwärtsrechnung).
 
 ### HRTEM-Simulator
 
@@ -181,6 +184,15 @@ Die mitgelieferte AMCSD-Datenbank und alle Kernfunktionen arbeiten vollständig 
   * Der konvergente Strahl wird als Überlagerung vieler ebener Wellen mit exakter Überlappungsberechnung behandelt.
   * Inelastisch gestreute Elektronen werden über das absorptive Potentialmodell berechnet.
   * Bildserien über Dicke und Defokus können erzeugt werden.
+
+### EBSD-Simulator
+
+* Simuliert Elektronenrückstreubeugungsmuster (EBSD) im REM mit der dynamischen Theorie (Bloch-Wellen-Methode).
+  * Eine Monte-Carlo-Simulation der rückgestreuten Elektronen liefert deren Tiefen-, Austrittsrichtungs- und Energieverteilungen; diese legen die Energie- und Tiefenbereiche der dynamischen Rechnung fest und gewichten das Muster.
+  * Das dynamische Master-Muster über die gesamte Kugel wird für die aktuelle Kristallorientierung auf den Detektor projiziert und folgt der Kristalldrehung in Echtzeit.
+  * Detektor- und Probengeometrie, Hintergrundkorrektur, Ansprechverhalten des Leuchtschirms sowie Overlays von Kikuchi-Linien und Zonenachsen.
+  * Master-Muster lassen sich zusammen mit dem Kristall und dem Monte-Carlo-Ergebnis speichern und laden.
+  * **Indizierung experimenteller Muster**: Orientierungssuche (Radon-Template-Matching oder Dictionary-Suche), Zonenachsen-Auswahl und automatische Kalibrierung der Detektorgeometrie.
 
 ### Spot ID
 
@@ -204,11 +216,11 @@ Die mitgelieferte AMCSD-Datenbank und alle Kernfunktionen arbeiten vollständig 
   * Beispiel: einen Kristall in 1°-Schritten drehen und bei jedem Schritt Beugungsbilder oder STEM-Bilder speichern.
   * ReciPro-spezifische Funktionen stehen im Namensraum "ReciPro" zur Verfügung.
   * Anwendungsbeispiele finden Sie im [Handbuch](https://seto77.github.io/ReciPro/de/20-macro/2-examples/).
+  * Makros können auch von externen Programmen (über eine Named Pipe) gesendet oder unbeaufsichtigt über die Kommandozeile ausgeführt werden.
 
 ### Weitere Funktionen
 
 * **Elektronenreichweiten-Simulator**: Monte-Carlo-Simulation der Elektronenreichweite in Materialien.
-* **EBSD** (Elektronenrückstreubeugung): in Entwicklung.
 
 ## Technische Details
 
@@ -236,11 +248,14 @@ Die mitgelieferte AMCSD-Datenbank und alle Kernfunktionen arbeiten vollständig 
 <img src="https://seto77.github.io/ReciPro/assets/cap-de-auto/FormMain.png" height="320px" alt="Hauptfenster">
 <img src="https://seto77.github.io/ReciPro/assets/cap-de-auto/FormCrystalDatabase.png" height="320px" alt="Kristalldatenbank">
 <img src="https://seto77.github.io/ReciPro/assets/cap-de-auto/FormSymmetryInformation.png" height="320px" alt="Symmetrieinformationen">
+<img src="https://seto77.github.io/ReciPro/assets/cap-de-auto/FormGroupRelations.png" height="320px" alt="Gruppenrelationen">
 <img src="https://seto77.github.io/ReciPro/assets/cap-de-auto/FormBeamInteraction.png" height="320px" alt="Strahl-Wechselwirkung">
 <img src="https://seto77.github.io/ReciPro/assets/cap-de-auto/FormStructureViewer.png" height="320px" alt="Strukturbetrachter">
 <img src="https://seto77.github.io/ReciPro/assets/cap-de-auto/FormStereonet.png" height="320px" alt="Stereogramm">
 <img src="https://seto77.github.io/ReciPro/assets/cap-de-auto/FormDiffractionSimulator.png" height="320px" alt="Beugungssimulator">
+<img src="https://seto77.github.io/ReciPro/assets/cap-de-auto/FormALCHEMI.png" height="320px" alt="ALCHEMI-Simulator">
 <img src="https://seto77.github.io/ReciPro/assets/cap-de-auto/FormImageSimulator.png" height="320px" alt="HRTEM/STEM-Simulator">
+<img src="https://seto77.github.io/ReciPro/assets/cap-de-auto/FormEBSD.png" height="320px" alt="EBSD-Simulator">
 <img src="https://seto77.github.io/ReciPro/assets/cap-de-auto/FormSpotIDV2.png" height="320px" alt="Spot ID v2">
 <img src="https://seto77.github.io/ReciPro/assets/cap-de-auto/FormMacro.png" height="320px" alt="Makro">
 <img src="https://seto77.github.io/ReciPro/assets/cap-de-auto/FormTrajectory.png" height="320px" alt="Elektronenreichweiten-Simulator">

@@ -100,6 +100,7 @@
   * 面與面、軸與軸之間週期性與/或夾角的幾何計算。
   * 產生等效原子位置。
   * 可於非標準軸設定之間（例如 *Pbnm* 轉為 *Pnma*）以及原點位移之間輕鬆轉換。
+* **群關係**：極大子群與極小超群（*t*、*k* 及同構）及其變換矩陣、多層 Bärnighausen 樹、軌道分裂、疇與雙晶、新出現的繞射，以及 32 種點群的 Hasse 圖。
 
 ### 原子性質
 
@@ -161,6 +162,8 @@
 * **CBED**（會聚束電子繞射）：可指定會聚半角與分割數模擬 CBED 圖樣。支援沿厚度方向的模擬，用以判定試樣厚度。
   * 位置平均 CBED（PACBED）圖樣。
   * 大角度 CBED（LA-CBED）模擬。
+* **菊池帶**：在繞射圖樣上疊加菊池線以及由動力學理論計算的菊池帶。
+* **ALCHEMI**（預覽）：沿系統列計算依位置分解的游離搖擺曲線，用於藉由通道增強微區分析確定摻雜原子的佔位（一維正向計算）。
 
 ### HRTEM 模擬器
 
@@ -181,6 +184,15 @@
   * 會聚束視為多個平面波的疊加，並精確計算重疊部分。
   * 非彈性散射電子以吸收位能模型計算。
   * 可產生厚度–失焦系列影像。
+
+### EBSD 模擬器
+
+* 以動力學理論（Bloch 波方法）模擬 SEM 中的電子背向散射繞射（EBSD）圖樣。
+  * 透過背向散射電子的蒙地卡羅模擬得到其深度、出射方向與能量分布，用於設定動力學計算的能量與深度範圍並對圖樣加權。
+  * 全球面的動力學 master pattern 依目前晶體方位投影到偵測器上，並即時跟隨晶體旋轉。
+  * 偵測器與試樣幾何、背景平坦化、螢光屏響應，以及菊池線與晶帶軸疊加。
+  * master pattern 可連同晶體與蒙地卡羅結果一起儲存與讀取。
+  * **實驗圖樣標定**：方位搜尋（基於 Radon 轉換的模板比對或字典搜尋）、晶帶軸選取，以及偵測器幾何的自動校準。
 
 ### Spot ID
 
@@ -204,11 +216,11 @@
   * 範例：以 1° 為間隔旋轉晶體，並在每一步儲存繞射圖樣或 STEM 影像。
   * ReciPro 專用函式位於「ReciPro」命名空間中。
   * 使用範例請見[手冊](https://seto77.github.io/ReciPro/zh-Hant/20-macro/2-examples/)。
+  * 巨集也可以由外部程式（透過具名管道）傳送，或從命令列無人值守地執行。
 
 ### 其他功能
 
 * **電子射程模擬器**：材料中電子射程的蒙地卡羅模擬。
-* **EBSD**（電子背向散射繞射）：開發中。
 
 ## 技術細節
 
@@ -236,11 +248,14 @@
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormMain.png" height="320px" alt="主視窗">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormCrystalDatabase.png" height="320px" alt="晶體資料庫">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormSymmetryInformation.png" height="320px" alt="對稱性資訊">
+<img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormGroupRelations.png" height="320px" alt="群關係">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormBeamInteraction.png" height="320px" alt="射束交互作用">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormStructureViewer.png" height="320px" alt="結構檢視器">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormStereonet.png" height="320px" alt="極射投影">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormDiffractionSimulator.png" height="320px" alt="繞射模擬器">
+<img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormALCHEMI.png" height="320px" alt="ALCHEMI 模擬器">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormImageSimulator.png" height="320px" alt="HRTEM/STEM 模擬器">
+<img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormEBSD.png" height="320px" alt="EBSD 模擬器">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormSpotIDV2.png" height="320px" alt="Spot ID v2">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormMacro.png" height="320px" alt="巨集">
 <img src="https://seto77.github.io/ReciPro/assets/cap-zh-Hant-auto/FormTrajectory.png" height="320px" alt="電子射程模擬器">

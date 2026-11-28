@@ -101,6 +101,7 @@ The bundled AMCSD database and all core features work entirely offline.
   * Geometrical calculation of periodicity and/or angle between planes and/or axes.
   * Generation of equivalent atomic positions.
   * Easy conversion between non-standard axis settings (e.g. *Pbnm* to *Pnma*) and origin shifts.
+* **Group relations**: maximal subgroups and minimal supergroups (*t*, *k* and isomorphic) with transformation matrices, multi-level Bärnighausen trees, orbit splitting, domains and twins, new reflections, and the 32 point groups as a Hasse diagram.
 
 ### Atomic Properties
 
@@ -162,6 +163,8 @@ The bundled AMCSD database and all core features work entirely offline.
 * **CBED** (Convergent Beam Electron Diffraction): Simulates CBED patterns with user-specified convergence semi-angle and division number. Through-thickness simulation is supported for sample thickness determination.
   * Position-averaged CBED (PACBED) patterns.
   * Large-angle CBED (LA-CBED) simulation.
+* **Kikuchi bands**: Kikuchi lines, and Kikuchi bands by dynamical theory, overlaid on the diffraction pattern.
+* **ALCHEMI** (preview): Site-resolved ionization rocking curves along a systematic row, for locating dopant sites by channelling-enhanced microanalysis (1D forward calculation).
 
 ### HRTEM Simulator
 
@@ -212,6 +215,15 @@ The bundled AMCSD database and all core features work entirely offline.
       numbers; the full attribution, including what was changed in the requantization,
       is in [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md).
 
+### EBSD Simulator
+
+* Simulates electron backscatter diffraction (EBSD) patterns in the SEM by dynamical (Bloch-wave) theory.
+  * A Monte Carlo simulation of the backscattered electrons gives their depth, exit-direction and energy distributions, which set the energy and depth ranges of the dynamical calculation and weight the pattern.
+  * The dynamical master pattern over the full sphere is projected onto the detector for the current crystal orientation, and follows the crystal rotation in real time.
+  * Detector and sample geometry, background flattening, phosphor response, and Kikuchi-line and zone-axis overlays.
+  * Master patterns can be saved and loaded together with the crystal and the Monte Carlo result.
+  * **Indexing of experimental patterns**: orientation search (Radon template matching or dictionary search), zone-axis picking, and automatic calibration of the detector geometry.
+
 ### Spot ID
 
 * Semi-automatic diffraction spot indexing for experimental SAED patterns.
@@ -234,11 +246,11 @@ The bundled AMCSD database and all core features work entirely offline.
   * Example: Rotate a crystal in 1° steps and save diffraction patterns or STEM images at each step.
   * ReciPro-specific functions are available in the "ReciPro" namespace.
   * Usage examples are available in the [manual](https://seto77.github.io/ReciPro/en/20-macro/2-examples/).
+  * Macros can also be sent from external programs (named pipe) or run unattended from the command line.
 
 ### Other Features
 
 * **Electron Range Simulator**: Monte Carlo simulation of electron range in materials.
-* **EBSD** (Electron Backscatter Diffraction): Under development.
 
 ## Technical Details
 
@@ -266,11 +278,14 @@ The bundled AMCSD database and all core features work entirely offline.
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormMain.png" height="320px" alt="Main window">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormCrystalDatabase.png" height="320px" alt="Crystal Database">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormSymmetryInformation.png" height="320px" alt="Symmetry Information">
+<img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormGroupRelations.png" height="320px" alt="Group Relations">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormBeamInteraction.png" height="320px" alt="Beam Interaction">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormStructureViewer.png" height="320px" alt="Structure Viewer">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormStereonet.png" height="320px" alt="Stereonet">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormDiffractionSimulator.png" height="320px" alt="Diffraction Simulator">
+<img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormALCHEMI.png" height="320px" alt="ALCHEMI Simulator">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormImageSimulator.png" height="320px" alt="HRTEM/STEM Simulator">
+<img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormEBSD.png" height="320px" alt="EBSD Simulator">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormSpotIDV2.png" height="320px" alt="Spot ID v2">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormMacro.png" height="320px" alt="Macro">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormTrajectory.png" height="320px" alt="Electron Range Simulator">

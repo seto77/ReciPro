@@ -100,6 +100,7 @@ La banca dati AMCSD inclusa e tutte le funzioni principali funzionano interament
   * Calcolo geometrico della periodicità e/o degli angoli tra piani e/o assi.
   * Generazione delle posizioni atomiche equivalenti.
   * Conversione agevole tra impostazioni di assi non standard (ad es. da *Pbnm* a *Pnma*) e traslazioni dell'origine.
+* **Relazioni di gruppo**: sottogruppi massimali e sopragruppi minimali (*t*, *k* e isomorfi) con matrici di trasformazione, alberi di Bärnighausen a più livelli, suddivisione delle orbite, domini e geminati, nuove riflessioni e il diagramma di Hasse dei 32 gruppi puntuali.
 
 ### Proprietà atomiche
 
@@ -161,6 +162,8 @@ La banca dati AMCSD inclusa e tutte le funzioni principali funzionano interament
 * **CBED** (diffrazione elettronica a fascio convergente): simula figure CBED con semiangolo di convergenza e numero di suddivisioni definiti dall'utente. È supportata la simulazione al variare dello spessore per determinare lo spessore del campione.
   * Figure CBED mediate sulla posizione (PACBED).
   * Simulazione CBED a grande angolo (LA-CBED).
+* **Bande di Kikuchi**: linee di Kikuchi e bande di Kikuchi calcolate con la teoria dinamica, sovrapposte al pattern di diffrazione.
+* **ALCHEMI** (anteprima): curve di rocking di ionizzazione risolte per sito lungo una fila sistematica, per individuare i siti dei droganti mediante microanalisi potenziata dalla canalizzazione (calcolo diretto unidimensionale).
 
 ### Simulatore HRTEM
 
@@ -181,6 +184,15 @@ La banca dati AMCSD inclusa e tutte le funzioni principali funzionano interament
   * Il fascio convergente è trattato come sovrapposizione di molte onde piane con calcolo accurato delle sovrapposizioni.
   * Gli elettroni diffusi anelasticamente sono calcolati con il modello del potenziale assorbente.
   * È possibile generare serie di immagini spessore-defocus.
+
+### Simulatore EBSD
+
+* Simula i pattern di diffrazione degli elettroni retrodiffusi (EBSD) al SEM con la teoria dinamica (metodo delle onde di Bloch).
+  * Una simulazione Monte Carlo degli elettroni retrodiffusi fornisce le loro distribuzioni in profondità, direzione di uscita ed energia, che fissano gli intervalli di energia e profondità del calcolo dinamico e pesano il pattern.
+  * Il master pattern dinamico sull'intera sfera viene proiettato sul rivelatore per l'orientazione corrente del cristallo e ne segue la rotazione in tempo reale.
+  * Geometria del rivelatore e del campione, appiattimento dello sfondo, risposta del fosforo e sovrapposizione di linee di Kikuchi e assi di zona.
+  * I master pattern possono essere salvati e caricati insieme al cristallo e al risultato Monte Carlo.
+  * **Indicizzazione di pattern sperimentali**: ricerca dell'orientazione (confronto con modelli tramite trasformata di Radon o ricerca a dizionario), selezione degli assi di zona e calibrazione automatica della geometria del rivelatore.
 
 ### Spot ID
 
@@ -204,11 +216,11 @@ La banca dati AMCSD inclusa e tutte le funzioni principali funzionano interament
   * Esempio: ruotare un cristallo a passi di 1° e salvare a ogni passo le figure di diffrazione o le immagini STEM.
   * Le funzioni specifiche di ReciPro sono disponibili nello spazio dei nomi "ReciPro".
   * Esempi d'uso sono disponibili nel [manuale](https://seto77.github.io/ReciPro/it/20-macro/2-examples/).
+  * Le macro possono anche essere inviate da programmi esterni (named pipe) o eseguite senza supervisione dalla riga di comando.
 
 ### Altre funzioni
 
 * **Simulatore del percorso elettronico**: simulazione Monte Carlo del percorso degli elettroni nei materiali.
-* **EBSD** (diffrazione di elettroni retrodiffusi): in fase di sviluppo.
 
 ## Dettagli tecnici
 
@@ -236,11 +248,14 @@ La banca dati AMCSD inclusa e tutte le funzioni principali funzionano interament
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormMain.png" height="320px" alt="Finestra principale">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormCrystalDatabase.png" height="320px" alt="Banca dati cristallografica">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormSymmetryInformation.png" height="320px" alt="Informazioni di simmetria">
+<img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormGroupRelations.png" height="320px" alt="Relazioni di gruppo">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormBeamInteraction.png" height="320px" alt="Interazione del fascio">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormStructureViewer.png" height="320px" alt="Visualizzatore di strutture">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormStereonet.png" height="320px" alt="Proiezione stereografica">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormDiffractionSimulator.png" height="320px" alt="Simulatore di diffrazione">
+<img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormALCHEMI.png" height="320px" alt="Simulatore ALCHEMI">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormImageSimulator.png" height="320px" alt="Simulatore HRTEM/STEM">
+<img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormEBSD.png" height="320px" alt="Simulatore EBSD">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormSpotIDV2.png" height="320px" alt="Spot ID v2">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormMacro.png" height="320px" alt="Macro">
 <img src="https://seto77.github.io/ReciPro/assets/cap-it-auto/FormTrajectory.png" height="320px" alt="Simulatore del percorso elettronico">
