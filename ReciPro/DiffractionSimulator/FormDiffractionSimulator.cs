@@ -632,6 +632,46 @@ public partial class FormDiffractionSimulator : FormBase
         return previous;
     }
 
+    /// <summary>
+    /// 261128Cl 追加: --capture 用。README の見本の図にする: 電子線 200 kV・平行・動力学的な強度・Gauss の点・動力学の菊池バンド。
+    /// 方位は呼び出し元 (GuiCapture) が FormMain で決める。画像の左上に重なる設定タブは後ろへ回す。
+    /// モード別の全体図の後に撮るので、元へは戻さない (X 線モードのまま抜けるのと同じ扱い)
+    /// </summary>
+    internal void PrepareCaptureShowcase()
+    {
+        Source = WaveSource.Electron;
+        Energy = 200; // 直前の X 線モードの波長を引き継がないように
+        BeamMode = BeamModes.Parallel;
+        CalcMode = CalcModes.Dynamical;
+        radioButtonPointSpread.Checked = true; // Gaussian
+        numericBoxSpotRadius.Value = 0.1; // Gauss の幅 (nm⁻¹)。既定 0.2 では中心付近の点が飽和して潰れる
+        toolStripButtonIndexLabels.Checked = false; // 指数のラベルは出さない (点と菊池バンドを見せる)
+        Resolution = 0.1; // 少し引いて、菊池バンドの交わりを広く見せる
+        toolStripButtonKikuchiLines.Checked = true;
+        comboBoxKikuchiMode.SelectedIndex = (int)KikuchiMode.DynamicalBand;
+        comboBoxKikuchiQuality.SelectedIndex = (int)KikuchiQuality.High;
+        numericBoxKikuchiBandNumber.Value = 50;
+        HideCaptureSettingTabs();
+    }
+
+    /// <summary>261128Cl 追加: --capture 用。CBED (収束ビーム) の図にする。収束モードを選ぶと CBED の窓が開くので、それを返す</summary>
+    internal FormDiffractionSimulatorCBED PrepareCaptureCbed()
+    {
+        toolStripButtonKikuchiLines.Checked = false;
+        Source = WaveSource.Electron;
+        Energy = 200;
+        BeamMode = BeamModes.Convergence;
+        HideCaptureSettingTabs();
+        return FormDiffractionSimulatorCBED;
+    }
+
+    /// <summary>261128Cl 追加: --capture 用。画像の左上に重なる設定タブを後ろへ回す (マウスが画像の上へ出たときと同じ)</summary>
+    internal void HideCaptureSettingTabs()
+    {
+        splitContainer1.BringToFront();
+        graphicsBox.Refresh();
+    }
+
     /// <summary>260807Cl 追加: <see cref="PrepareCaptureKikuchiDynamical"/> の戻り値で元の状態へ戻す</summary>
     // internal void RestoreCaptureKikuchiState((bool Layer, int Mode) previous) // 261118Cl シグネチャ変更前
     internal void RestoreCaptureKikuchiState((bool Layer, int Mode, TabPage Tab) previous) // 261118Cl 変更: タブも戻す

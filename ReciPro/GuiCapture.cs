@@ -218,6 +218,7 @@ internal sealed class GuiCapture : GuiCaptureHarness
             //こちらと同様にモードを明示すること
             CaptureKikuchiDynamicalShot(diffractionSimulatorForModeShots, outDir, trace);
             CaptureDiffractionSimulatorModeShots(diffractionSimulatorForModeShots, name, outDir, trace);
+            CaptureDiffractionShowcaseShots(diffractionSimulatorForModeShots, name, outDir, trace); // 261128Cl 追加: README の見本の図 (モード別の後に撮る)
         }
 
         base.CaptureExtraShots(form, name, outDir, trace); // FormBeamInteraction (線種×タブ) / FormGroupRelations (詳細タブ)
@@ -246,6 +247,7 @@ internal sealed class GuiCapture : GuiCaptureHarness
         foreach (var (mode, suffix, edx) in modes)
         {
             var name = baseName + "-" + suffix; // 例: FormImageSimulator-stem
+            Action restoreShowcase = null; // 261128Cl 追加
             CaptureVariant(sim, name, outDir, trace, //260807Cl /simplify2: 定型部を CaptureVariant へ集約
                 apply: () =>
                 {
@@ -254,10 +256,18 @@ internal sealed class GuiCapture : GuiCaptureHarness
                     // 260802Cl 削除: sim.SelectAvailableEdxChannels() — 元素×殻の選択 UI が無くなり、
                     // EDX が ON なら利用可能な特性 X 線を常に全部計算するようになったため不要 (作者指示)
                     sim.CaptureSelectEdxAfterRun = edx; // 260802Cl: 計算後に表示信号を EDX へ (元素マップを撮るため)
+                    // 261128Cl 追加 (作者指示): STEM-EDX は README の見本を兼ねるので、スピネル [110]・収差補正の条件・広い視野で Al-K を撮る
+                    if (edx)
+                    {
+                        var restoreAxis = SetCaptureCrystalAxis(sim.FormMain, null, (1, 1, 0));
+                        var restoreSim = sim.PrepareCaptureStemEdxShowcase();
+                        restoreShowcase = () => { restoreSim(); restoreAxis(); };
+                    }
                 },
                 prepare: sim.PrepareCaptureForGuiAudit, // 現在モードの Simulate を起動 (HRTEM/POTENTIAL は同期、STEM は非同期)
                 waitStable: true,
-                capture: () => CaptureScreen(GetWindowVisualBounds(sim), sim, trace, name, retryIfSolid: true));
+                capture: () => CaptureScreen(GetWindowVisualBounds(sim), sim, trace, name, retryIfSolid: true),
+                restore: () => restoreShowcase?.Invoke()); // 261128Cl 追加
 
             //260801Cl 追加: 元素×殻セレクタは panelModeOptions のスクロール下端に来て全体像には写らないので、
             //選択済みの状態で GroupBox 単体も撮る (既定パスの crop は EDX OFF = 折りたたみ状態のもの)
@@ -344,6 +354,85 @@ internal sealed class GuiCapture : GuiCaptureHarness
             },
             // 撮影後は元のモード・レイヤー状態へ戻す (後続の全体画像・モードショットに影響させない)
             restore: () => form.RestoreCaptureKikuchiState(previous));
+    }
+
+    /// <summary>
+    /// 261128Cl 追加 (作者指示): README の見本の図を 2 枚撮る。
+    /// <c>FormDiffractionSimulator-showcase.png</c> = スピネル [111] の動力学の電子回折 (Gauss の点・動力学の菊池バンド)、
+    /// <c>FormDiffractionSimulator-cbed.png</c> = Si [111] の CBED。どちらも撮った後で結晶と方位を元に戻す。
+    /// </summary>
+    private void CaptureDiffractionShowcaseShots(FormDiffractionSimulator sim, string baseName, string outDir, Action<string> trace)
+    {
+        Action restore = null;
+        CaptureVariant(sim, baseName + "-showcase", outDir, trace,
+            apply: () =>
+            {
+                restore = SetCaptureCrystalAxis(sim.formMain, null, (1, 1, 1));
+                sim.PrepareCaptureShowcase();
+            },
+            prepare: () => { sim.PrepareCaptureForGuiAudit(); sim.HideCaptureSettingTabs(); },
+            waitStable: true, // 動力学の菊池バンドは debounce + バックグラウンド計算
+            capture: () => { sim.HideCaptureSettingTabs(); return CaptureScreen(GetWindowVisualBounds(sim), sim, trace, baseName + "-showcase", retryIfSolid: true); },
+            restore: () => restore?.Invoke());
+
+        FormDiffractionSimulatorCBED cbed = null;
+        CaptureVariant(sim, baseName + "-cbed", outDir, trace,
+            apply: () =>
+            {
+                restore = SetCaptureCrystalAxis(sim.formMain, "Silicon", (1, 1, 1));
+                cbed = sim.PrepareCaptureCbed();
+            },
+            prepare: () =>
+            {
+                cbed.RunForCapture(thickness: 150, beams: 300);
+                var sw = System.Diagnostics.Stopwatch.StartNew();
+                while (cbed.IsRunningForCapture && sw.Elapsed < TimeSpan.FromMinutes(10))
+                {
+                    Application.DoEvents();
+                    System.Threading.Thread.Sleep(100);
+                }
+                trace($"{baseName}-cbed\tINFO\tCBED finished in {sw.Elapsed.TotalSeconds:f1} s{(cbed.IsRunningForCapture ? " (timed out)" : "")}");
+                sim.HideCaptureSettingTabs();
+            },
+            waitStable: true,
+            capture: () =>
+            {
+                // CBED の窓が回折図に重なるので横へずらす (隠すと回折図の円盤も描かれなくなる)
+                var screen = Screen.FromControl(sim).WorkingArea;
+                cbed.Left = sim.Right + cbed.Width <= screen.Right ? sim.Right : Math.Max(screen.Left, sim.Left - cbed.Width);
+                cbed.Top = sim.Bottom + cbed.Height <= screen.Bottom ? sim.Bottom : cbed.Top;
+                Settle(sim, TabSwitchSettleMs, trace);
+                return CaptureScreen(GetWindowVisualBounds(sim), sim, trace, baseName + "-cbed", retryIfSolid: true);
+            },
+            restore: () =>
+            {
+                sim.BeamMode = FormDiffractionSimulator.BeamModes.Parallel; // CBED の窓も隠れる
+                restore?.Invoke();
+            });
+    }
+
+    /// <summary>
+    /// 261128Cl 追加: 見本の図のために結晶 (null なら今のまま) を選び、[uvw] を入射方向に立てる。
+    /// 戻り値 = 元の結晶と方位へ戻す処理
+    /// </summary>
+    private static Action SetCaptureCrystalAxis(FormMain main, string crystal, (int U, int V, int W) axis)
+    {
+        if (main?.Crystal == null)
+            return () => { };
+        var previousCrystal = main.Crystal;
+        var previousRotation = new Matrix3D(main.Crystal.RotationMatrix);
+        if (crystal != null)
+            main.PrepareCaptureCrystalSelection(crystal);
+        main.SetAxis(axis.U, axis.V, axis.W);
+        main.ProjectAlongAxis();
+        Application.DoEvents();
+        return () =>
+        {
+            if (crystal != null)
+                main.PrepareCaptureCrystalSelection(previousCrystal.Name);
+            main.SetRotation(previousRotation);
+            Application.DoEvents();
+        };
     }
 
     /// <summary>260820Cl: ハーネスの GPU 描画フック。OpenGL (GLControlAlpha) の可視バッファ更新と GLFW エラーコールバックの非 throw 化を注入する。</summary>

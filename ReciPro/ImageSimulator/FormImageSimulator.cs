@@ -391,6 +391,28 @@ public partial class FormImageSimulator : FormBase
     /// EDX を選べるようになるのは結果が公開されてからなので、Simulate を投げる前には設定できない。</summary>
     internal bool CaptureSelectEdxAfterRun;
 
+    /// <summary>261128Cl 追加: --capture 用。EDX へ切り替えたあとに表示する特性 X 線 (ShortLabel の先頭一致、例 "Al")。null なら先頭のまま</summary>
+    internal string CaptureEdxChannel;
+
+    /// <summary>261128Cl 追加: --capture 用。README の見本の STEM-EDX 図にする (収差補正の条件・広い視野・厚み 30 nm で Al-K を出す)。
+    /// 配色は Gray のまま (EDX は非負の量なので Cold-warm は不適、§5.9-5)。
+    /// 方位は呼び出し元 (GuiCapture) が FormMain で決める。戻り値 = 元へ戻す処理</summary>
+    internal Action PrepareCaptureStemEdxShowcase()
+    {
+        var (resolution, thickness, size, cs, defocus) = (ImageResolution, Thickness, ImageSize, Cs, Defocus);
+        ImageSize = new Size(512, 512);
+        Cs = 0; // 収差補正 STEM の条件。既定 (Cs 1 mm・Scherzer デフォーカス) のまま 25 mrad で収束させるとプローブが広がって像がぼける
+        Defocus = 0;
+        ImageResolution = 0.005; // 5 pm/px → 2.56 nm (スピネル [110] で 3 × 4 胞ほど)
+        Thickness = 30;
+        CaptureEdxChannel = "Al";
+        return () =>
+        {
+            (ImageResolution, Thickness, ImageSize, Cs, Defocus) = (resolution, thickness, size, cs, defocus);
+            CaptureEdxChannel = null;
+        };
+    }
+
     /// <summary>計算対象のチャネル = 候補のうち利用可能なもの全部 (260802Cl 変更、作者指示)。
     /// 旧実装は CheckedListBox のチェック状態から引いていた。</summary>
     private IonizationChannelSpec[] AvailableEdxChannels
@@ -1226,7 +1248,13 @@ public partial class FormImageSimulator : FormBase
                 //判定に radioButtonSTEM_target_EDX.Enabled は使えない: Enabled の getter は「実効値」で、
                 //この時点ではまだ splitContainer1.Enabled=false (計算中の UI ロック) なので必ず false になる
                 if (CaptureSelectEdxAfterRun && EdxDisplayAvailable)
+                {
                     radioButtonSTEM_target_EDX.Checked = true;
+                    // 261128Cl 追加: 見本の図では表示する特性 X 線も選ぶ
+                    if (CaptureEdxChannel != null)
+                        for (int i = 0; i < comboBoxEdxDisplay.Items.Count; i++)
+                            if ($"{comboBoxEdxDisplay.Items[i]}".StartsWith(CaptureEdxChannel, StringComparison.Ordinal)) { comboBoxEdxDisplay.SelectedIndex = i; break; }
+                }
                 //SendImage(ThicknessArray.Length, DefocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
                 GeneratePseudBitmap();
 

@@ -269,6 +269,20 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             toolStripStatusLabel1.Text = ex.Message;
         }
     }
+    /// <summary>261128Cl 追加: --capture 用。厚み 1 つ・回折波の数を指定して計算を始める (Simulate ボタンと同じ)</summary>
+    internal void RunForCapture(double thickness, int beams)
+    {
+        numericBoxWholeThicknessStart.Value = thickness;
+        numericBoxThicknessEnd.Value = thickness;
+        numericBoxMaxNumOfG.Value = beams;
+        checkBoxDrawGuideCircles.Checked = false; // 見本の図では円盤の縁の黄色い線を描かない
+        trackBarGamma.Value = 500; // 外側の円盤を持ち上げる (中心から 20 mm 先で約 3 倍)
+        buttonSimulate_Click(buttonSimulate, EventArgs.Empty);
+    }
+
+    /// <summary>261128Cl 追加: --capture 用。計算中か (完了の通知で runningBethe が null に戻る)</summary>
+    internal bool IsRunningForCapture => runningBethe != null;
+
     private void buttonStop_Click(object sender, EventArgs e)
     {
         //Crystal.Bethe.CancelCBED(); // 261105Cl 変更前
